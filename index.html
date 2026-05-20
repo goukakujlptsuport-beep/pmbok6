@@ -41,12 +41,11 @@
     </div>
   </header>
 
-  <div id="content-wrap">
-    <div id="content"></div>
-  </div>
+  <!-- Chapter content rendered in iframe to preserve original HTML/CSS -->
+  <iframe id="chapter-frame" title="Nội dung chương"></iframe>
 </div>
 
-<!-- HIGHLIGHT POPUP -->
+<!-- HIGHLIGHT POPUP (in parent page, positioned over iframe) -->
 <div id="highlight-popup" hidden>
   <button class="hl-color" data-color="yellow" title="Vàng" aria-label="Gạch vàng">🟡</button>
   <button class="hl-color" data-color="green" title="Xanh" aria-label="Gạch xanh">🟢</button>
