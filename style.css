@@ -184,6 +184,14 @@ mark.hl[data-note]:not([data-note=""]):after {
   display: flex; align-items: center; justify-content: center;
 }
 #highlight-popup button:hover { background: rgba(255,255,255,0.1); }
+#hl-close-btn {
+  font-size: 0.75rem !important;
+  color: #8896b0;
+  min-width: 28px !important; min-height: 28px !important;
+  border-left: 1px solid rgba(255,255,255,0.15) !important;
+  margin-left: 0.2rem;
+  border-radius: 0 4px 4px 0 !important;
+}
 
 /* ── NOTE MODAL ── */
 #note-modal {

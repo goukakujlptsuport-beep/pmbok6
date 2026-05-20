@@ -249,7 +249,8 @@ let noteTargetHighlight = null;   // existing mark being edited
 let noteTargetPending = null;     // pending range for new highlight
 
 document.addEventListener('mouseup', handleSelectionEnd);
-document.addEventListener('touchend', handleSelectionEnd);
+// touchend: delay to let browser finish synthetic mouse events before showing popup
+document.addEventListener('touchend', () => setTimeout(handleSelectionEnd, 50));
 
 function handleSelectionEnd() {
   const sel = window.getSelection();
@@ -337,9 +338,16 @@ function hidePopup() {
   activeHighlightEl = null;
 }
 
+// Close popup when clicking/touching outside it
 document.addEventListener('mousedown', e => {
   if (!popup.hidden && !popup.contains(e.target)) hidePopup();
 });
+document.addEventListener('touchstart', e => {
+  if (!popup.hidden && !popup.contains(e.target)) hidePopup();
+}, { passive: true });
+
+// Close button on popup
+document.getElementById('hl-close-btn').addEventListener('click', () => hidePopup());
 
 // ── APPLY / SAVE HIGHLIGHTS ──
 function generateId() {
