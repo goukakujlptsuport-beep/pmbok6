@@ -1,0 +1,78 @@
+PMBOK® Guide
+Hướng Dẫn Quản Lý Dự Án
+Lần xuất bản thứ 6 · Tiếng Việt
+Chương 3 · Vai Trò PM
+3.1 Tổng Quan
+3.2 Định Nghĩa Quản Lý Dự Án
+3.3 Phạm Vi Ảnh Hưởng
+3.3.1 Dự Án
+3.3.2 Tổ Chức
+3.3.3 Ngành
+3.3.4 Kỷ Luật Chuyên Môn
+3.3.5 Xuyên Suốt Kỷ Luật
+3.4 Tam Giác Tài Năng PMI
+3.4.1 Kỹ Năng Kỹ Thuật
+3.4.2 Kỹ Năng Chiến Lược
+3.4.3 Kỹ Năng Lãnh Đạo
+3.4.4 Lãnh Đạo vs Quản Lý
+3.4.5 Phong Cách Lãnh Đạo
+3.4.6 Tính Cách
+3.5 Thực Hiện Tích Hợp
+3.5.1 Cấp Độ Quy Trình
+3.5.2 Cấp Độ Nhận Thức
+3.5.3 Cấp Độ Bối Cảnh
+3.5.4 Tích Hợp & Phức Tạp
+Chương 3
+VAI TRÒ CỦA NGƯỜI QUẢN LÝ DỰ ÁN
+The Role of the Project Manager
+3.1 TỔNG QUAN (OVERVIEW)
+Người quản lý dự án đóng một vai trò quan trọng trong việc lãnh đạo một nhóm dự án nhằm đạt được các mục tiêu của dự án. Vai trò này thể hiện rõ ràng trong suốt dự án. Nhiều người quản lý dự án tham gia vào một dự án từ khi khởi tạo cho đến khi kết thúc. Tuy nhiên, ở một số tổ chức, người quản lý dự án có thể tham gia vào các hoạt động đánh giá và phân tích trước khi dự án bắt đầu. Các hoạt động này có thể bao gồm việc tham khảo ý kiến của các nhà lãnh đạo điều hành và các nhà lãnh đạo doanh nghiệp về các ý tưởng nhằm thúc đẩy các mục tiêu chiến lược, cải thiện hiệu suất tổ chức, hoặc đáp ứng nhu cầu của khách hàng. Trong một số môi trường tổ chức nhất định, người quản lý dự án cũng có thể được yêu cầu tham gia vào việc quản lý hoặc phân tích các hoạt động kinh doanh để đảm bảo rằng lợi ích kinh doanh dự kiến của dự án được hiện thực hóa.
+Vai trò của người quản lý dự án có thể thay đổi tùy theo tổ chức. Quan trọng nhất là vai trò này phải được điều chỉnh để phù hợp với tổ chức theo cách thức mang lại giá trị lớn nhất cho tổ chức, dự án và nhóm làm việc. Chương này nhấn mạnh các khía cạnh cốt lõi của vai trò này mà được áp dụng trong hầu hết mọi môi trường tổ chức.
+3.2 ĐỊNH NGHĨA VỀ NGƯỜI QUẢN LÝ DỰ ÁN (DEFINITION OF A PROJECT MANAGER)
+Người quản lý dự án (Project Manager) là người được tổ chức thực hiện phân công để dẫn dắt nhóm chịu trách nhiệm hoàn thành các mục tiêu của dự án.
+Vai trò của người quản lý dự án khác với vai trò của người quản lý chức năng (functional manager) hoặc người quản lý hoạt động vận hành (operations manager). Thông thường, người quản lý chức năng tập trung vào việc giám sát hành chính hoặc quản lý đối với một đơn vị chuyên môn, trong khi người quản lý vận hành đảm bảo rằng các hoạt động kinh doanh diễn ra một cách hiệu quả. Tùy thuộc vào cấu trúc của tổ chức, người quản lý dự án có thể báo cáo cho người quản lý chức năng. Trong các trường hợp khác, người quản lý dự án có thể nằm trong một tập hợp các dự án do một người quản lý danh mục đầu tư (portfolio manager) hoặc người quản lý chương trình (program manager) phụ trách, người chịu trách nhiệm cuối cùng cho toàn bộ hệ thống các dự án kinh doanh trên toàn tổ chức. Trong kiểu cấu trúc này, người quản lý dự án làm việc chặt chẽ với người quản lý danh mục hoặc chương trình để đạt được mục tiêu chung của tổ chức.
+3.3 PHẠM VI ẢNH HƯỞNG CỦA NGƯỜI QUẢN LÝ DỰ ÁN (THE PROJECT MANAGER'S SPHERE OF INFLUENCE)
+Người quản lý dự án hoàn thành nhiều vai trò trong phạm vi ảnh hưởng của mình. Những vai trò này phản ánh năng lực của người quản lý dự án và đại diện cho giá trị cùng những đóng góp của nghề quản lý dự án.
+3.3.1 DỰ ÁN (THE PROJECT)
+Người quản lý dự án lãnh đạo nhóm dự án để đáp ứng các mục tiêu dự án và kỳ vọng của các bên liên quan. Người quản lý dự án làm việc để cân bằng các ràng buộc cạnh tranh với nhau của dự án bằng cách sử dụng các nguồn lực có sẵn. Người quản lý dự án thực hiện giao tiếp giữa nhà tài trợ, các thành viên nhóm, và các bên liên quan khác. Điều này bao gồm việc đưa ra phương hướng và trình bày tầm nhìn thành công cho dự án.
+3.3.2 TỔ CHỨC (THE ORGANIZATION)
+Người quản lý dự án chủ động tương tác với những người quản lý dự án khác, thể hiện một vai trò quan trọng mạnh mẽ bên trong tổ chức. Người quản lý dự án không chỉ chịu trách nhiệm về kết quả kinh doanh của dự án được giao, mà còn làm việc cùng với các nhà tài trợ, những nhà quản lý danh mục đầu tư và chương trình khác để giải quyết những khó khăn liên quan đến việc sắp xếp thứ tự ưu tiên các dự án, nhu cầu nguồn lực, và sự tương tác giữa các dự án.
+3.3.3 NGÀNH (THE INDUSTRY)
+Người quản lý dự án liên tục nắm bắt thông tin về các xu hướng hiện tại của ngành. Người quản lý dự án tiếp nhận thông tin này và đánh giá xem nó có thể tác động như thế nào đến các dự án hiện tại và tương lai của họ. Các xu hướng có thể bao gồm công nghệ, thị trường mới, kỹ thuật phát triển sản phẩm, công cụ quản lý dự án, hoặc các xu hướng phát triển bền vững.
+3.3.4 KỶ LUẬT CHUYÊN MÔN (PROFESSIONAL DISCIPLINE)
+Sự chia sẻ kiến thức liên tục là rất quan trọng để đảm bảo nâng cao tính chuyên nghiệp và năng lực trong nghề quản lý dự án. Người quản lý dự án phục vụ kỷ luật chuyên môn thông qua việc chia sẻ kiến thức, kinh nghiệm, và học hỏi thông qua các tổ chức nghề nghiệp, chương trình đào tạo, hoặc các cộng đồng thực hành chuyên môn.
+3.3.5 XUYÊN SUỐT CÁC KỶ LUẬT (ACROSS DISCIPLINES)
+Một người quản lý dự án chuyên nghiệp có thể chọn hướng dẫn hoặc giáo dục các chuyên gia ở các lĩnh vực khác về cách tiếp cận quản lý dự án có thể mang lại giá trị như thế nào. Người quản lý dự án có thể đóng vai trò như một đại sứ không chính thức trong việc truyền đạt giá trị của quản lý dự án cho tổ chức rộng lớn hơn.
+3.4 TAM GIÁC TÀI NĂNG PMI (PMI TALENT TRIANGLE)
+Nghiên cứu gần đây của PMI cho thấy người sử dụng lao động mong muốn những người quản lý dự án không chỉ sở hữu các kỹ năng kỹ thuật, mà còn cả kỹ năng lãnh đạo, và khả năng tư duy chiến lược cùng trí tuệ kinh doanh. Để đạt hiệu quả cao nhất, người quản lý dự án cần có sự cân bằng của ba tập hợp kỹ năng cốt lõi này, tạo thành Tam giác Tài năng PMI (PMI Talent Triangle®). Tam giác tài năng tập trung vào ba tập hợp kỹ năng chính:
+Quản lý dự án kỹ thuật (Technical project management). Kiến thức, kỹ năng và hành vi liên quan đến các lĩnh vực cụ thể của quản lý dự án, chương trình, và danh mục đầu tư. Nó là khía cạnh kỹ thuật của việc thực hiện vai trò này.
+Quản lý kinh doanh và chiến lược (Strategic and business management). Kiến thức và chuyên môn về ngành cũng như tổ chức nhằm giúp nâng cao hiệu suất và mang lại kết quả kinh doanh tốt hơn.
+Lãnh đạo (Leadership). Kiến thức, kỹ năng, và hành vi cần thiết để hướng dẫn, tạo động lực, và chỉ đạo một nhóm nhằm giúp tổ chức đạt được mục tiêu kinh doanh của mình.
+3.4.1 KỸ NĂNG QUẢN LÝ DỰ ÁN KỸ THUẬT (TECHNICAL PROJECT MANAGEMENT SKILLS)
+Kỹ năng quản lý dự án kỹ thuật được định nghĩa là kỹ năng áp dụng hiệu quả kiến thức về quản lý dự án vào việc đem lại những kết quả mong muốn cho các chương trình hoặc dự án. Có rất nhiều kỹ năng quản lý dự án kỹ thuật, bao gồm khả năng tập trung vào các yếu tố kỹ thuật quan trọng (ví dụ: quản lý phạm vi, chi phí, nguồn lực), khả năng điều chỉnh các công cụ và kỹ thuật theo nhu cầu của dự án, và khả năng lập kế hoạch cũng như ưu tiên các vấn đề.
+3.4.2 KỸ NĂNG QUẢN LÝ KINH DOANH VÀ CHIẾN LƯỢC (STRATEGIC AND BUSINESS MANAGEMENT SKILLS)
+Các kỹ năng quản lý kinh doanh và chiến lược bao gồm khả năng nhìn nhận tổng thể về tổ chức và thực hiện các quyết định cũng như hành động phù hợp để hỗ trợ cho sự liên kết và đổi mới chiến lược. Kỹ năng này đòi hỏi sự hiểu biết về doanh nghiệp đủ để giải thích và truyền đạt các yếu tố kinh doanh cho các bên liên quan, bao gồm các kiến thức về tài chính, tiếp thị, và vận hành. Người quản lý dự án cũng cần giải thích về cách mà dự án liên kết với chiến lược tổng thể và cách thức dự án đóng góp vào giá trị kinh doanh.
+3.4.3 KỸ NĂNG LÃNH ĐẠO (LEADERSHIP SKILLS)
+Kỹ năng lãnh đạo liên quan đến khả năng hướng dẫn, động viên, và định hướng một nhóm. Những kỹ năng này có thể bao gồm việc thể hiện các năng lực thiết yếu như thương lượng, khả năng phục hồi, giao tiếp, giải quyết vấn đề, tư duy phản biện, và kỹ năng tương tác giữa các cá nhân. Người quản lý dự án thường làm việc chặt chẽ với nhiều bên liên quan, do đó kỹ năng lãnh đạo đóng vai trò trung tâm trong việc giúp nhóm đi đúng hướng để đáp ứng các mục tiêu dự án.
+3.4.4 SO SÁNH LÃNH ĐẠO VÀ QUẢN LÝ (COMPARISON OF LEADERSHIP AND MANAGEMENT)
+Các từ lãnh đạo và quản lý thường được sử dụng thay thế cho nhau, nhưng chúng không đồng nghĩa. Việc quản lý (management) liên quan chặt chẽ hơn đến việc chỉ đạo thông qua quyền lực vị trí được biết đến hoặc được cấp phó. Ngược lại, lãnh đạo (leadership) liên quan đến việc hướng dẫn, tạo ảnh hưởng, và cộng tác bằng cách sử dụng sức mạnh cá nhân hay sức mạnh dựa trên các mối quan hệ. Người quản lý dự án hiệu quả cần áp dụng cả hai tùy thuộc vào tình huống.
+3.4.5 PHONG CÁCH LÃNH ĐẠO (LEADERSHIP STYLES)
+Người quản lý dự án sử dụng nhiều phong cách lãnh đạo khác nhau. Các phong cách lãnh đạo này bao gồm nhưng không giới hạn ở:
+Laissez-faire (Tự do): Cho phép nhóm tự đưa ra quyết định và tự thiết lập các mục tiêu của họ, duy trì kiểu quản lý can thiệp tối thiểu.
+Transactional (Giao dịch): Tập trung vào các mục tiêu, thông tin phản hồi, và thành tích để xác định các phần thưởng, quản lý bằng ngoại lệ.
+Servant leader (Lãnh đạo phục vụ): Đặt người khác lên hàng đầu, tập trung vào sự tăng trưởng, học hỏi, và phát triển của những người trong nhóm.
+Transformational (Chuyển đổi): Tạo năng lượng, truyền cảm hứng cho những người theo dõi thông qua việc khuyến khích sự đổi mới và sáng tạo.
+Charismatic (Uy tín): Có khả năng truyền cảm hứng, tính cách lôi cuốn, mạnh mẽ, và tự tin sâu sắc.
+Interactional (Tương tác): Sự kết hợp giữa giao dịch, chuyển đổi, và phong cách lôi cuốn.
+3.4.6 TÍNH CÁCH (PERSONALITY)
+Tính cách đề cập đến những khác biệt của mỗi cá nhân trong suy nghĩ, cảm xúc, và cách cư xử. Các đặc điểm tính cách được đánh giá cao ở người quản lý dự án bao gồm: đích thực (authentic), lịch sự (courteous), sáng tạo (creative), hiểu biết văn hóa (cultural), có trí tuệ cảm xúc (emotional), trí tuệ (intellectual), có tư duy quản lý (managerial), nhận thức chính trị (political), định hướng phục vụ (service-oriented), xã hội (social), và tư duy hệ thống (systemic).
+3.5 THỰC HIỆN TÍCH HỢP (PERFORMING INTEGRATION)
+Vai trò của người quản lý dự án bao gồm cả việc thực hiện tích hợp. Trách nhiệm này không thể được ủy quyền. Tích hợp liên quan đến việc làm việc chặt chẽ với nhà tài trợ để hiểu các mục tiêu chiến lược và điều phối các yếu tố dự án để đạt được kết quả mong muốn.
+3.5.1 THỰC HIỆN TÍCH HỢP Ở CẤP ĐỘ QUY TRÌNH (PERFORMING INTEGRATION AT THE PROCESS LEVEL)
+Tích hợp ở cấp độ quy trình có nghĩa là hiểu biết cách thức các quy trình quản lý dự án tương tác với nhau trong dự án. Nếu có một thay đổi xảy ra trong một quy trình, người quản lý dự án phải đánh giá và tích hợp sự thay đổi đó vào toàn bộ các quy trình liên quan khác.
+3.5.2 TÍCH HỢP Ở CẤP ĐỘ NHẬN THỨC (INTEGRATION AT THE COGNITIVE LEVEL)
+Người quản lý dự án phải sử dụng kinh nghiệm, chuyên môn, và khả năng thấu hiểu của chính mình (nhận thức) để tích hợp hàng loạt các biến số liên quan đến dự án. Điều này đòi hỏi người quản lý dự án phải tổng hợp thông tin, áp dụng tư duy phản biện, và đưa ra quyết định toàn diện.
+3.5.3 TÍCH HỢP Ở CẤP ĐỘ BỐI CẢNH (INTEGRATION AT THE CONTEXT LEVEL)
+Tích hợp ở cấp độ bối cảnh là việc nhận thức rằng các dự án không hoạt động trong một môi trường bị cô lập. Người quản lý dự án cần quan tâm đến các công nghệ mới, các mạng lưới xã hội, truyền thông tổ chức, và những biến động bên ngoài. Sự hiểu biết về những bối cảnh này hỗ trợ hiệu quả cho nỗ lực tích hợp dự án của người quản lý.
+3.5.4 TÍCH HỢP VÀ SỰ PHỨC TẠP (INTEGRATION AND COMPLEXITY)
+Một dự án càng lớn và phức tạp thì khả năng tích hợp thành công càng khó khăn. Sự phức tạp của dự án thường xuất phát từ hành vi hệ thống, hành vi của con người, và sự mơ hồ (ambiguity). Người quản lý dự án phải xem xét tất cả các thành phần này để nhận diện điểm yếu, thiết kế lại cấu trúc công việc, và tích hợp thông tin trong một môi trường đầy thách thức nhằm mang lại sự thành công.

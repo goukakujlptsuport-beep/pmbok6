@@ -1,0 +1,393 @@
+PMBOK® Guide
+Hướng Dẫn Quản Lý Dự Án
+Lần xuất bản thứ 6 · Tiếng Việt
+Chương 7 · Quản Lý Chi Phí
+7.1 Lập KH Quản Lý Chi Phí
+7.2 Ước Lượng Chi Phí
+7.3 Xác Định Ngân Sách
+7.4 Kiểm Soát Chi Phí
+Chương 7
+QUẢN LÝ CHI PHÍ DỰ ÁN
+Project Cost Management
+Quản lý Chi phí Dự án (Project Cost Management) bao gồm các quy trình liên quan đến việc lập kế hoạch, ước lượng, lập ngân sách, tài trợ, cấp vốn, quản lý, và kiểm soát chi phí để dự án có thể được hoàn thành trong ngân sách đã được phê duyệt. Các quy trình Quản lý Chi phí Dự án bao gồm:
+7.1 Lập kế hoạch Quản lý Chi phí (Plan Cost Management) — Quy trình định nghĩa cách thức chi phí dự án sẽ được ước lượng, lập ngân sách, quản lý, giám sát và kiểm soát.
+7.2 Ước lượng Chi phí (Estimate Costs) — Quy trình phát triển một sự ước tính gần đúng về các nguồn lực tiền tệ cần thiết để hoàn thành công việc dự án.
+7.3 Xác định Ngân sách (Determine Budget) — Quy trình tổng hợp các chi phí ước lượng của các hoạt động cá nhân hoặc các gói công việc để thiết lập một đường cơ sở chi phí (cost baseline) được ủy quyền.
+7.4 Kiểm soát Chi phí (Control Costs) — Quy trình theo dõi tình trạng của dự án để cập nhật chi phí dự án và quản lý các thay đổi đối với đường cơ sở chi phí.
+Hình 7-1 cung cấp một cái nhìn tổng quan về các quy trình Quản lý Chi phí Dự án. Các quy trình Quản lý Chi phí Dự án được trình bày như các quy trình rời rạc với các giao diện được xác định rõ ràng, mặc dù trong thực tế chúng trùng lặp và tương tác theo những cách không thể được trình bày chi tiết hoàn toàn trong Hướng dẫn PMBOK®. Các quy trình này tương tác với nhau và với các quy trình trong các Lĩnh vực Kiến thức khác.
+Trên một số dự án, đặc biệt là những dự án có phạm vi nhỏ hơn, việc ước lượng chi phí và lập ngân sách chi phí được liên kết chặt chẽ với nhau và có thể được xem như một quy trình duy nhất có thể được thực hiện bởi một người trong một khoảng thời gian tương đối ngắn. Chúng được trình bày ở đây như là các quy trình riêng biệt bởi vì các công cụ và kỹ thuật cho mỗi quy trình là khác nhau. Khả năng ảnh hưởng đến chi phí là lớn nhất ở các giai đoạn đầu của dự án, làm cho việc định nghĩa phạm vi sớm trở nên rất quan trọng (xem Mục 5.3).
+Hình 7-1. Tổng quan về Quản lý Chi phí Dự án (Project Cost Management Overview)
+CÁC KHÁI NIỆM CHÍNH CHO QUẢN LÝ CHI PHÍ DỰ ÁN (KEY CONCEPTS FOR PROJECT COST MANAGEMENT)
+Quản lý Chi phí Dự án chủ yếu quan tâm đến chi phí của các nguồn lực cần thiết để hoàn thành các hoạt động dự án. Quản lý Chi phí Dự án nên xem xét tác động của các quyết định dự án lên chi phí định kỳ (recurring cost) sau này trong việc sử dụng, duy trì và hỗ trợ sản phẩm, dịch vụ hoặc kết quả của dự án. Ví dụ, việc giới hạn số lần đánh giá thiết kế có thể làm giảm chi phí của dự án nhưng có thể làm tăng chi phí vận hành của sản phẩm tạo ra.
+Một khía cạnh khác của quản lý chi phí là việc nhận ra rằng các bên liên quan (stakeholders) khác nhau đo lường chi phí dự án theo những cách khác nhau và ở những thời điểm khác nhau. Ví dụ, chi phí của một hạng mục được mua lại có thể được đo lường khi quyết định mua lại được đưa ra hoặc cam kết, khi đơn hàng được đặt, khi hạng mục được giao, hoặc khi chi phí thực tế phát sinh hay được ghi nhận cho các mục đích kế toán dự án. Trong nhiều tổ chức, việc dự đoán và phân tích hiệu quả tài chính tương lai của sản phẩm của dự án được thực hiện bên ngoài dự án. Ở những tổ chức khác, chẳng hạn như dự án xây dựng cơ sở vật chất vốn (capital facilities project), Quản lý Chi phí Dự án có thể bao gồm công việc này. Khi các dự đoán và phân tích như vậy được bao gồm, Quản lý Chi phí Dự án có thể giải quyết các quy trình bổ sung và nhiều kỹ thuật quản lý tài chính chung như lợi tức đầu tư (return on investment), dòng tiền chiết khấu (discounted cash flow), và phân tích thời gian hoàn vốn đầu tư (investment payback analysis).
+XU HƯỚNG VÀ THỰC HÀNH MỚI NỔI TRONG QUẢN LÝ CHI PHÍ DỰ ÁN (TRENDS AND EMERGING PRACTICES IN PROJECT COST MANAGEMENT)
+Trong thực hành Quản lý Chi phí Dự án, các xu hướng bao gồm việc mở rộng quản lý giá trị thu được (Earned Value Management - EVM) để kết hợp khái niệm tiến độ thu được (Earned Schedule - ES).
+ES là một phần mở rộng cho lý thuyết và thực hành của EVM. Lý thuyết tiến độ thu được thay thế các thước đo phương sai tiến độ được sử dụng trong EVM truyền thống (giá trị thu được – giá trị theo kế hoạch) bằng ES và thời gian thực tế (Actual Time - AT). Sử dụng phương trình thay thế để tính phương sai tiến độ (ES – AT), nếu lượng tiến độ thu được lớn hơn 0, thì dự án được coi là vượt tiến độ. Nói cách khác, dự án đã thu được nhiều hơn so với kế hoạch tại một thời điểm nhất định. Chỉ số hiệu suất tiến độ (SPI) sử dụng các số liệu tiến độ thu được là ES/AT. Điều này chỉ ra hiệu quả mà công việc đang được hoàn thành. Lý thuyết tiến độ thu được cũng cung cấp các công thức để dự báo ngày hoàn thành dự án, sử dụng tiến độ thu được, thời gian thực tế, và thời lượng ước lượng.
+NHỮNG CÂN NHẮC VỀ VIỆC ĐIỀU CHỈNH (TAILORING CONSIDERATIONS)
+Bởi vì mỗi dự án là duy nhất, người quản lý dự án có thể cần phải điều chỉnh cách áp dụng các quy trình Quản lý Chi phí Dự án. Những cân nhắc cho việc điều chỉnh bao gồm nhưng không giới hạn ở:
+Quản lý kiến thức (Knowledge management). Tổ chức có một kho lưu trữ cơ sở dữ liệu tài chính và quản lý kiến thức chính thức mà người quản lý dự án bắt buộc phải sử dụng và có thể truy cập dễ dàng không?
+Ước lượng và lập ngân sách (Estimating and budgeting). Tổ chức có các chính sách, thủ tục, và hướng dẫn liên quan đến việc ước lượng chi phí và lập ngân sách chính thức hoặc phi chính thức hiện có không?
+Quản lý giá trị thu được (Earned value management). Tổ chức có sử dụng quản lý giá trị thu được trong việc quản lý các dự án không?
+Sử dụng phương pháp tiếp cận agile (Use of agile approach). Tổ chức có sử dụng các phương pháp luận agile trong việc quản lý các dự án không? Điều này tác động đến việc ước lượng chi phí như thế nào?
+Quản trị (Governance). Tổ chức có các chính sách, thủ tục, và hướng dẫn quản trị và kiểm toán chính thức hoặc phi chính thức không?
+NHỮNG CÂN NHẮC ĐỐI VỚI MÔI TRƯỜNG AGILE/THÍCH NGHI (CONSIDERATIONS FOR AGILE/ADAPTIVE ENVIRONMENTS)
+Các dự án có mức độ không chắc chắn cao hoặc những dự án mà phạm vi chưa được định nghĩa đầy đủ có thể không được hưởng lợi từ các phép tính chi phí chi tiết do có những thay đổi thường xuyên. Thay vào đó, các phương pháp ước lượng nhẹ (lightweight estimation methods) có thể được sử dụng để tạo ra một dự báo tổng quan (high-level), nhanh chóng về chi phí lao động của dự án, sau đó có thể dễ dàng được điều chỉnh khi có thay đổi phát sinh. Các ước tính chi tiết được dành riêng cho các khoảng thời gian lập kế hoạch ngắn hạn theo kiểu đúng lúc (just-in-time).
+Trong trường hợp các dự án có tính biến động cao đồng thời phải chịu các ngân sách nghiêm ngặt, phạm vi và tiến độ thường được điều chỉnh nhiều hơn để duy trì trong các ràng buộc về chi phí.
+7.1 LẬP KẾ HOẠCH QUẢN LÝ CHI PHÍ (PLAN COST MANAGEMENT)
+Lập kế hoạch Quản lý Chi phí là quy trình định nghĩa cách thức chi phí dự án sẽ được ước lượng, lập ngân sách, quản lý, giám sát và kiểm soát. Lợi ích chính của quy trình này là nó cung cấp hướng dẫn và chỉ đạo về cách thức chi phí dự án sẽ được quản lý xuyên suốt dự án. Quy trình này được thực hiện một lần hoặc tại các điểm được xác định trước trong dự án. Các đầu vào, công cụ và kỹ thuật, cùng đầu ra của quy trình này được mô tả trong Hình 7-2. Hình 7-3 mô tả sơ đồ luồng dữ liệu của quy trình.
+Nỗ lực lập kế hoạch quản lý chi phí diễn ra sớm trong quá trình lập kế hoạch dự án và thiết lập khuôn khổ cho từng quy trình quản lý chi phí để hiệu suất của các quy trình sẽ được hiệu quả và phối hợp nhịp nhàng. Các quy trình quản lý chi phí và các công cụ, kỹ thuật liên quan của chúng được lập thành tài liệu trong kế hoạch quản lý chi phí. Kế hoạch quản lý chi phí là một thành phần của kế hoạch quản lý dự án.
+7.1.1 LẬP KẾ HOẠCH QUẢN LÝ CHI PHÍ: ĐẦU VÀO (PLAN COST MANAGEMENT: INPUTS)
+7.1.1.1 ĐIỀU LỆ DỰ ÁN (PROJECT CHARTER)
+Được mô tả trong Mục 4.2.3.1. Điều lệ dự án cung cấp các nguồn lực tài chính đã được phê duyệt trước, từ đó các chi phí chi tiết của dự án được phát triển. Điều lệ dự án cũng định nghĩa các yêu cầu phê duyệt dự án, điều này sẽ ảnh hưởng đến việc quản lý chi phí dự án.
+7.1.1.2 KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN)
+Được mô tả trong Mục 4.2.3.1. Các thành phần của kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:
+Kế hoạch quản lý tiến độ (Schedule management plan). Được mô tả trong Mục 6.1.3.1. Kế hoạch quản lý tiến độ thiết lập các tiêu chí và các hoạt động để phát triển, giám sát, và kiểm soát tiến độ. Kế hoạch quản lý tiến độ cung cấp các quy trình và kiểm soát sẽ tác động đến việc ước lượng và quản lý chi phí.
+Kế hoạch quản lý rủi ro (Risk management plan). Được mô tả trong Mục 11.1.3.1. Kế hoạch quản lý rủi ro cung cấp phương pháp tiếp cận cho việc nhận diện, phân tích, và giám sát rủi ro. Kế hoạch quản lý rủi ro cung cấp các quy trình và kiểm soát sẽ tác động đến việc ước lượng và quản lý chi phí.
+7.1.1.3 CÁC YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP (ENTERPRISE ENVIRONMENTAL FACTORS)
+Các yếu tố môi trường doanh nghiệp có thể ảnh hưởng đến quy trình Lập kế hoạch Quản lý Chi phí bao gồm nhưng không giới hạn ở:
+Văn hóa và cấu trúc tổ chức có thể ảnh hưởng đến quản lý chi phí.
+Điều kiện thị trường mô tả những sản phẩm, dịch vụ, và kết quả nào có sẵn trên thị trường khu vực và toàn cầu.
+Tỷ giá hối đoái tiền tệ đối với các chi phí dự án được lấy từ nhiều quốc gia.
+Thông tin thương mại được xuất bản như thông tin về mức giá nguồn lực thường có sẵn từ các cơ sở dữ liệu thương mại, theo dõi chi phí kỹ năng và nguồn nhân lực, đồng thời cung cấp chi phí tiêu chuẩn cho vật liệu và thiết bị. Danh sách giá được xuất bản của người bán (seller) là một nguồn thông tin khác.
+Hệ thống thông tin quản lý dự án cung cấp các khả năng thay thế để quản lý chi phí.
+Sự khác biệt về năng suất ở các vùng khác nhau trên thế giới có thể có ảnh hưởng lớn đến chi phí của dự án.
+7.1.1.4 TÀI SẢN QUY TRÌNH TỔ CHỨC (ORGANIZATIONAL PROCESS ASSETS)
+Các tài sản quy trình tổ chức có thể ảnh hưởng đến quy trình Lập kế hoạch Quản lý Chi phí bao gồm nhưng không giới hạn ở:
+Thủ tục kiểm soát tài chính (ví dụ: báo cáo thời gian, các đánh giá bắt buộc về chi tiêu và giải ngân, mã kế toán, và các điều khoản hợp đồng tiêu chuẩn);
+Thông tin lịch sử và kho lưu trữ bài học kinh nghiệm;
+Cơ sở dữ liệu tài chính; và
+Các chính sách, thủ tục, và hướng dẫn liên quan đến ước lượng và lập ngân sách chi phí chính thức và phi chính thức hiện có.
+7.1.2 LẬP KẾ HOẠCH QUẢN LÝ CHI PHÍ: CÔNG CỤ VÀ KỸ THUẬT (PLAN COST MANAGEMENT: TOOLS AND TECHNIQUES)
+7.1.2.1 ĐÁNH GIÁ CHUYÊN GIA (EXPERT JUDGMENT)
+Được mô tả trong Mục 4.1.2.1. Chuyên môn nên được xem xét từ các cá nhân hoặc nhóm có kiến thức chuyên môn hoặc được đào tạo về các chủ đề sau:
+Các dự án tương tự trước đây;
+Thông tin trong ngành, kỷ luật, và lĩnh vực ứng dụng;
+Ước lượng chi phí và lập ngân sách; và
+Quản lý giá trị thu được (Earned value management).
+7.1.2.2 PHÂN TÍCH DỮ LIỆU (DATA ANALYSIS)
+Một kỹ thuật phân tích dữ liệu có thể được sử dụng cho quy trình này bao gồm nhưng không giới hạn ở phân tích các phương án thay thế (alternatives analysis). Phân tích các phương án thay thế có thể bao gồm việc xem xét các lựa chọn tài trợ chiến lược như: tự tài trợ (self-funding), tài trợ bằng vốn cổ phần (funding with equity), hoặc tài trợ bằng nợ (funding with debt). Nó cũng có thể bao gồm việc cân nhắc các cách để có được các nguồn lực dự án như làm (making), mua (purchasing), thuê (renting), hoặc cho thuê dài hạn (leasing).
+7.1.2.3 CÁC CUỘC HỌP (MEETINGS)
+Các nhóm dự án có thể tổ chức các cuộc họp lập kế hoạch để phát triển kế hoạch quản lý chi phí. Những người tham dự có thể bao gồm người quản lý dự án, nhà tài trợ dự án, một số thành viên được chọn của nhóm dự án, các bên liên quan được chọn, bất kỳ ai có trách nhiệm về chi phí dự án, và những người khác nếu cần thiết.
+7.1.3 LẬP KẾ HOẠCH QUẢN LÝ CHI PHÍ: ĐẦU RA (PLAN COST MANAGEMENT: OUTPUTS)
+7.1.3.1 KẾ HOẠCH QUẢN LÝ CHI PHÍ (COST MANAGEMENT PLAN)
+Kế hoạch quản lý chi phí là một thành phần của kế hoạch quản lý dự án và mô tả cách thức chi phí dự án sẽ được lập kế hoạch, cấu trúc, và kiểm soát. Các quy trình quản lý chi phí và các công cụ, kỹ thuật liên quan của chúng được lập thành tài liệu trong kế hoạch quản lý chi phí.
+Ví dụ, kế hoạch quản lý chi phí có thể thiết lập những điều sau:
+Đơn vị đo lường (Units of measure). Mỗi đơn vị được sử dụng trong các phép đo (chẳng hạn như giờ công, ngày công, hoặc tuần cho các phép đo thời gian; mét, lít, tấn, km, hoặc yard khối cho các phép đo số lượng; hoặc khoản gộp (lump sum) ở dạng tiền tệ) được định nghĩa cho mỗi nguồn lực.
+Mức độ chính xác (độ thu gọn) (Level of precision). Đây là mức độ mà các ước lượng chi phí sẽ được làm tròn lên hoặc xuống (ví dụ: 995,59 USD thành 1.000 USD), dựa trên phạm vi của các hoạt động và quy mô của dự án.
+Mức độ chính xác (độ sai số) (Level of accuracy). Khoảng chấp nhận được (ví dụ: ±10%) được sử dụng để xác định các ước lượng chi phí thực tế sẽ được chỉ định, và có thể bao gồm một số tiền cho dự phòng (contingencies).
+Liên kết các thủ tục của tổ chức (Organizational procedures links). Cấu trúc phân chia công việc (WBS) (Mục 5.4) cung cấp khuôn khổ cho kế hoạch quản lý chi phí, cho phép sự nhất quán với các ước lượng, ngân sách, và kiểm soát chi phí. Thành phần WBS được sử dụng cho kế toán chi phí dự án được gọi là tài khoản kiểm soát (control account). Mỗi tài khoản kiểm soát được gán một mã hoặc (các) số tài khoản duy nhất liên kết trực tiếp đến hệ thống kế toán của tổ chức thực hiện.
+Các ngưỡng kiểm soát (Control thresholds). Các ngưỡng phương sai (Variance thresholds) cho việc giám sát hiệu suất chi phí có thể được chỉ định để biểu thị một mức độ biến đổi đã được thỏa thuận cho phép trước khi cần phải thực hiện hành động nào đó. Các ngưỡng này thường được thể hiện dưới dạng phần trăm sai lệch so với kế hoạch đường cơ sở (baseline plan).
+Các quy tắc đo lường hiệu suất (Rules of performance measurement). Các quy tắc đo lường hiệu suất của quản lý giá trị thu được (EVM) được thiết lập. Ví dụ, kế hoạch quản lý chi phí có thể:
+Xác định các điểm trong WBS mà tại đó việc đo lường các tài khoản kiểm soát sẽ được thực hiện;
+Thiết lập các kỹ thuật EVM (ví dụ: cột mốc có trọng số, công thức cố định, phần trăm hoàn thành, v.v.) sẽ được áp dụng; và
+Chỉ định các phương pháp theo dõi và các công thức tính toán EVM cho việc tính toán các dự báo ước tính khi hoàn thành (EAC) để cung cấp một sự kiểm tra tính hợp lệ đối với EAC từ dưới lên (bottom-up EAC).
+Định dạng báo cáo (Reporting formats). Các định dạng và tần suất cho các báo cáo chi phí khác nhau được định nghĩa.
+Các chi tiết bổ sung (Additional details). Các chi tiết bổ sung về hoạt động quản lý chi phí bao gồm nhưng không giới hạn ở:
+Mô tả các lựa chọn tài trợ chiến lược.
+Thủ tục hạch toán các biến động tỷ giá hối đoái tiền tệ, và
+Thủ tục cho việc ghi chép chi phí dự án.
+Để biết thêm thông tin cụ thể liên quan đến quản lý giá trị thu được, hãy tham khảo Tiêu chuẩn Thực hành cho Quản lý Giá trị Thu được – Xuất bản Lần 2 [17].
+7.2 ƯỚC LƯỢNG CHI PHÍ (ESTIMATE COSTS)
+Ước lượng Chi phí là quy trình phát triển một sự ước tính gần đúng về chi phí của các nguồn lực cần thiết để hoàn thành công việc dự án. Lợi ích chính của quy trình này là nó xác định các nguồn lực tiền tệ cần thiết cho dự án. Quy trình này được thực hiện định kỳ trong suốt dự án khi cần thiết. Các đầu vào, công cụ và kỹ thuật, cùng đầu ra của quy trình này được mô tả trong Hình 7-4. Hình 7-5 mô tả sơ đồ luồng dữ liệu của quy trình.
+Một ước lượng chi phí là một sự đánh giá định lượng về các chi phí có khả năng xảy ra đối với các nguồn lực được yêu cầu để hoàn thành hoạt động. Đó là một dự đoán dựa trên thông tin được biết tại một thời điểm nhất định. Ước lượng chi phí bao gồm việc nhận diện và xem xét các lựa chọn thay thế chi phí (costing alternatives) để khởi tạo và hoàn thành dự án. Các đánh đổi chi phí và rủi ro nên được cân nhắc, chẳng hạn như làm (make) hay mua (buy), mua hay thuê (lease), và việc chia sẻ các nguồn lực nhằm đạt được chi phí tối ưu cho dự án.
+Ước lượng chi phí thường được biểu thị bằng đơn vị của một loại tiền tệ nào đó (nghĩa là đô la, euro, yên, v.v.), mặc dù trong một số trường hợp, các đơn vị đo lường khác, chẳng hạn như giờ công hoặc ngày công, được sử dụng để tạo điều kiện thuận lợi cho việc so sánh bằng cách loại bỏ các tác động của biến động tiền tệ.
+Các ước lượng chi phí nên được xem xét và tinh chỉnh (refined) trong suốt quá trình thực hiện dự án để phản ánh các chi tiết bổ sung khi chúng có sẵn và khi các giả định được kiểm tra. Độ chính xác của một ước tính dự án sẽ tăng lên khi dự án tiến triển qua vòng đời dự án. Ví dụ, một dự án trong giai đoạn khởi tạo có thể có ước tính mức độ thô (rough order of magnitude - ROM) nằm trong khoảng từ -25% đến +75%. Ở giai đoạn sau của dự án, khi có nhiều thông tin hơn, các ước tính chính thức (definitive estimates) có thể thu hẹp phạm vi độ chính xác xuống từ -5% đến +10%. Trong một số tổ chức, có những hướng dẫn cho việc khi nào các sự tinh chỉnh đó có thể được thực hiện và mức độ tin cậy hoặc độ chính xác được mong đợi.
+Chi phí được ước lượng cho tất cả các nguồn lực sẽ được tính vào dự án. Điều này bao gồm nhưng không giới hạn ở lao động, vật liệu, thiết bị, dịch vụ, và cơ sở vật chất, cũng như các danh mục đặc biệt chẳng hạn như mức trợ cấp lạm phát, chi phí tài trợ (cost of financing), hoặc chi phí dự phòng (contingency costs). Các ước lượng chi phí có thể được trình bày ở cấp độ hoạt động hoặc ở dạng tóm tắt.
+7.2.1 ƯỚC LƯỢNG CHI PHÍ: ĐẦU VÀO (ESTIMATE COSTS: INPUTS)
+7.2.1.1 KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN)
+Được mô tả trong Mục 4.2.3.1. Các thành phần của kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:
+Kế hoạch quản lý chi phí (Cost management plan). Được mô tả trong Mục 7.1.3.1. Kế hoạch quản lý chi phí mô tả các phương pháp ước lượng có thể được sử dụng và mức độ chính xác (độ thu gọn) cũng như độ sai số (accuracy) cần thiết cho việc ước lượng chi phí.
+Kế hoạch quản lý chất lượng (Quality management plan). Được mô tả trong Mục 8.1.3.1. Kế hoạch quản lý chất lượng mô tả các hoạt động và nguồn lực cần thiết để nhóm quản lý dự án đạt được các mục tiêu chất lượng đã đề ra cho dự án.
+Đường cơ sở phạm vi (Scope baseline). Được mô tả trong Mục 5.4.3.1. Đường cơ sở phạm vi bao gồm tuyên bố phạm vi dự án, WBS, và từ điển WBS:
+Tuyên bố phạm vi dự án. Tuyên bố phạm vi (Mục 5.3.3.1) phản ánh các ràng buộc về cấp vốn theo từng khoảng thời gian cho việc chi tiêu quỹ của dự án hoặc các giả định và ràng buộc tài chính khác.
+Cấu trúc phân chia công việc. WBS (Mục 5.4.3.1) cung cấp mối quan hệ giữa tất cả các sản phẩm giao nộp của dự án và các thành phần khác nhau của chúng.
+Từ điển WBS. Từ điển WBS (Mục 5.4.3.1) và các bản mô tả chi tiết công việc liên quan cung cấp sự nhận diện các sản phẩm giao nộp và bản mô tả công việc trong mỗi thành phần WBS cần thiết để sản xuất ra từng sản phẩm giao nộp.
+7.2.1.2 TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS)
+Các tài liệu dự án có thể được coi là đầu vào cho quy trình này bao gồm nhưng không giới hạn ở:
+Sổ đăng ký bài học kinh nghiệm (Lessons learned register). Được mô tả trong Mục 4.4.3.1. Những bài học đã được thu nhận sớm hơn trong dự án liên quan đến việc phát triển các ước lượng chi phí có thể được áp dụng vào các giai đoạn sau của dự án để cải thiện độ sai số (accuracy) và độ thu gọn (precision) của các ước lượng chi phí.
+Tiến độ dự án (Project schedule). Được mô tả trong Mục 6.5.3.2. Tiến độ bao gồm loại, số lượng, và lượng thời gian mà nhóm làm việc và các nguồn lực vật chất sẽ hoạt động trong dự án. Các ước lượng thời lượng (Mục 6.4.3.1) sẽ ảnh hưởng đến các ước lượng chi phí khi nguồn lực được tính phí theo đơn vị thời gian và khi có sự biến động chi phí theo mùa. Tiến độ cũng cung cấp thông tin hữu ích cho các dự án có kết hợp chi phí tài trợ (cost of financing) (bao gồm cả phí lãi suất).
+Yêu cầu nguồn lực (Resource requirements). Được mô tả trong Mục 9.2.3.1. Yêu cầu nguồn lực xác định các loại và số lượng các nguồn lực cần thiết cho mỗi gói công việc hoặc hoạt động.
+Sổ đăng ký rủi ro (Risk register). Được mô tả trong Mục 11.2.3.1. Sổ đăng ký rủi ro chứa các chi tiết về các rủi ro dự án riêng lẻ đã được xác định và ưu tiên, và những rủi ro nào yêu cầu phải có các kế hoạch đối phó rủi ro. Sổ đăng ký rủi ro cung cấp thông tin chi tiết có thể được sử dụng để ước lượng chi phí.
+7.2.1.3 CÁC YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP (ENTERPRISE ENVIRONMENTAL FACTORS)
+Các yếu tố môi trường doanh nghiệp có thể ảnh hưởng đến quy trình Ước lượng Chi phí bao gồm nhưng không giới hạn ở:
+Điều kiện thị trường. Những điều kiện này mô tả những sản phẩm, dịch vụ, và kết quả nào có sẵn trên thị trường, từ ai, và theo những điều khoản, điều kiện nào. Các điều kiện cung và cầu của khu vực và/hoặc toàn cầu ảnh hưởng rất lớn đến chi phí nguồn lực.
+Thông tin thương mại được xuất bản. Thông tin về mức giá nguồn lực thường có sẵn từ các cơ sở dữ liệu thương mại, theo dõi chi phí kỹ năng và nguồn nhân lực, đồng thời cung cấp chi phí tiêu chuẩn cho vật liệu và thiết bị. Bảng giá công khai của người bán là một nguồn thông tin khác.
+Tỷ giá hối đoái và lạm phát. Đối với các dự án quy mô lớn kéo dài nhiều năm với nhiều loại tiền tệ, sự biến động của các loại tiền tệ và lạm phát cần phải được thấu hiểu và đưa vào quy trình Ước lượng Chi phí.
+7.2.1.4 TÀI SẢN QUY TRÌNH TỔ CHỨC (ORGANIZATIONAL PROCESS ASSETS)
+Các tài sản quy trình tổ chức có thể ảnh hưởng đến quy trình Ước lượng Chi phí bao gồm nhưng không giới hạn ở:
+Các chính sách ước lượng chi phí;
+Các biểu mẫu ước lượng chi phí;
+Thông tin lịch sử và kho lưu trữ bài học kinh nghiệm.
+7.2.2 ƯỚC LƯỢNG CHI PHÍ: CÔNG CỤ VÀ KỸ THUẬT (ESTIMATE COSTS: TOOLS AND TECHNIQUES)
+7.2.2.1 ĐÁNH GIÁ CHUYÊN GIA (EXPERT JUDGMENT)
+Được mô tả trong Mục 4.1.2.1. Chuyên môn nên được xem xét từ các cá nhân hoặc nhóm có kiến thức chuyên môn hoặc được đào tạo về các chủ đề sau:
+Các dự án tương tự trước đây;
+Thông tin trong ngành, kỷ luật, và lĩnh vực ứng dụng; và
+Các phương pháp ước lượng chi phí.
+7.2.2.2 ƯỚC LƯỢNG TƯƠNG TỰ (ANALOGOUS ESTIMATING)
+Được mô tả trong Mục 6.4.2.2. Ước lượng chi phí tương tự sử dụng các giá trị, hoặc các thuộc tính, của một dự án trước đó tương tự với dự án hiện tại. Các giá trị và thuộc tính của dự án có thể bao gồm nhưng không giới hạn ở: phạm vi, chi phí, ngân sách, thời lượng, và các phép đo quy mô (ví dụ: kích thước, trọng lượng). Việc so sánh các giá trị, hoặc thuộc tính của dự án này trở thành cơ sở để ước tính thông số hoặc phép đo tương tự cho dự án hiện tại.
+7.2.2.3 ƯỚC LƯỢNG THEO THAM SỐ (PARAMETRIC ESTIMATING)
+Được mô tả trong Mục 6.4.2.3. Ước lượng theo tham số sử dụng mối quan hệ thống kê giữa dữ liệu lịch sử liên quan và các biến số khác (ví dụ: diện tích mét vuông trong xây dựng) để tính toán ước lượng chi phí cho công việc dự án. Kỹ thuật này có thể mang lại mức độ chính xác cao hơn tùy thuộc vào sự tinh vi và dữ liệu nền tảng được xây dựng trong mô hình. Các ước lượng chi phí theo tham số có thể được áp dụng cho toàn bộ dự án hoặc cho các đoạn của một dự án, kết hợp với các phương pháp ước lượng khác.
+7.2.2.4 ƯỚC LƯỢNG TỪ DƯỚI LÊN (BOTTOM-UP ESTIMATING)
+Được mô tả trong Mục 6.4.2.5. Ước lượng từ dưới lên là một phương pháp để ước tính một thành phần của công việc. Chi phí của từng gói công việc cá nhân hoặc các hoạt động được ước lượng ở mức độ chi tiết đã chỉ định cao nhất. Chi phí chi tiết sau đó được tổng hợp hoặc "cuộn lên" (rolled up) các cấp độ cao hơn cho mục đích báo cáo và theo dõi sau này. Chi phí và độ chính xác của ước lượng chi phí từ dưới lên thường bị ảnh hưởng bởi quy mô hoặc các thuộc tính khác của hoạt động cá nhân hay gói công việc.
+7.2.2.5 ƯỚC LƯỢNG BA ĐIỂM (THREE-POINT ESTIMATING)
+Được mô tả trong Mục 6.4.2.4. Độ chính xác của các ước lượng chi phí một điểm (single-point cost estimates) có thể được cải thiện bằng cách xem xét sự không chắc chắn và rủi ro của việc ước lượng, và sử dụng ba ước tính để xác định một khoảng xấp xỉ cho chi phí của một hoạt động:
+Có khả năng nhất (Most likely - cM). Chi phí của hoạt động, dựa trên sự đánh giá nỗ lực thực tế cho công việc được yêu cầu và bất kỳ khoản chi phí dự đoán nào.
+Lạc quan (Optimistic - cO). Chi phí dựa trên phân tích tình huống tốt nhất (best-case scenario) cho hoạt động.
+Bi quan (Pessimistic - cP). Chi phí dựa trên phân tích tình huống xấu nhất (worst-case scenario) cho hoạt động.
+Tùy thuộc vào phân phối giả định của các giá trị trong phạm vi của ba ước tính, chi phí kỳ vọng (expected cost), cE, có thể được tính toán bằng cách sử dụng một công thức. Hai công thức được sử dụng phổ biến là phân phối tam giác (triangular distribution) và phân phối beta (beta distribution). Các công thức là:
+Phân phối tam giác. $ cE = (cO + cM + cP) / 3 $
+Phân phối beta. $ cE = (cO + 4cM + cP) / 6 $
+Ước lượng chi phí dựa trên ba điểm với một phân phối giả định cung cấp một mức chi phí kỳ vọng và làm rõ phạm vi không chắc chắn xung quanh chi phí kỳ vọng đó.
+7.2.2.6 PHÂN TÍCH DỮ LIỆU (DATA ANALYSIS)
+Các kỹ thuật phân tích dữ liệu có thể được sử dụng trong quy trình Ước lượng Chi phí bao gồm nhưng không giới hạn ở:
+Phân tích các phương án thay thế (Alternatives analysis). Phân tích các phương án thay thế là một kỹ thuật được sử dụng để đánh giá các lựa chọn đã được xác định nhằm lựa chọn xem những phương án hoặc phương pháp tiếp cận nào sẽ được sử dụng để thực thi và hoàn thành công việc của dự án. Một ví dụ có thể là việc đánh giá các tác động về chi phí, tiến độ, nguồn lực, và chất lượng của việc mua (buying) so với tự làm (making) một sản phẩm giao nộp.
+Phân tích dự trữ (Reserve analysis). Các ước lượng chi phí có thể bao gồm các khoản dự phòng cho tình huống bất trắc (contingency reserves - đôi khi được gọi là phụ cấp dự phòng) để tính đến sự không chắc chắn của chi phí. Dự phòng cho tình huống bất trắc là một phần ngân sách nằm trong đường cơ sở chi phí được phân bổ cho các rủi ro đã được xác định. Dự phòng cho tình huống bất trắc thường được xem là phần ngân sách dùng để giải quyết những "điều chưa biết đã biết" (known-unknowns) có thể ảnh hưởng đến dự án. Ví dụ, việc phải làm lại (rework) một số sản phẩm giao nộp dự án có thể được lường trước, nhưng số lượng công việc làm lại này thì chưa biết. Các dự phòng bất trắc có thể được ước lượng để bù đắp cho phần công việc làm lại chưa biết này. Các dự phòng bất trắc có thể được cấp ở mọi cấp độ, từ các hoạt động cụ thể cho đến toàn bộ dự án. Dự phòng bất trắc có thể là một tỷ lệ phần trăm của chi phí ước lượng, một con số cố định, hoặc có thể được phát triển bằng các phương pháp phân tích định lượng.
+Khi có thông tin chính xác hơn về dự án, khoản dự phòng cho tình huống bất trắc có thể được sử dụng, cắt giảm, hoặc loại bỏ. Dự phòng cần được xác định rõ ràng trong các tài liệu chi phí. Các dự phòng cho tình huống bất trắc là một phần của đường cơ sở chi phí và là một phần của tổng yêu cầu về cấp vốn cho dự án.
+Chi phí chất lượng (Cost of quality). Các giả định về chi phí chất lượng (Mục 8.1.2.3) có thể được sử dụng để chuẩn bị cho các ước tính. Điều này bao gồm việc đánh giá tác động chi phí của khoản đầu tư thêm vào sự phù hợp (conformance) so với chi phí của sự không phù hợp (nonconformance). Nó cũng có thể bao gồm việc xem xét mức giảm chi phí ngắn hạn so với tác động của những vấn đề thường xuyên xảy ra hơn ở giai đoạn sau trong vòng đời sản phẩm.
+7.2.2.7 HỆ THỐNG THÔNG TIN QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT INFORMATION SYSTEM - PMIS)
+Được mô tả trong Mục 4.3.2.2. Hệ thống thông tin quản lý dự án có thể bao gồm các bảng tính (spreadsheets), phần mềm mô phỏng (simulation software), và các công cụ phân tích thống kê để hỗ trợ việc ước lượng chi phí. Các công cụ như vậy làm đơn giản hóa việc sử dụng một số kỹ thuật ước lượng chi phí và qua đó tạo điều kiện thuận lợi cho việc cân nhắc nhanh chóng các phương án thay thế ước tính chi phí.
+7.2.2.8 RA QUYẾT ĐỊNH (DECISION MAKING)
+Các kỹ thuật ra quyết định có thể được sử dụng trong quy trình Ước lượng Chi phí bao gồm nhưng không giới hạn ở biểu quyết (voting). Được mô tả trong Mục 5.2.2.4, biểu quyết là một quá trình đánh giá với nhiều lựa chọn và một kết quả kỳ vọng dưới dạng các hành động trong tương lai. Những kỹ thuật này rất hữu ích trong việc gắn kết các thành viên nhóm vào dự án nhằm nâng cao độ chính xác của ước tính và tăng cường sự cam kết đối với các ước tính đang được xây dựng.
+7.2.3 ƯỚC LƯỢNG CHI PHÍ: ĐẦU RA (ESTIMATE COSTS: OUTPUTS)
+7.2.3.1 ƯỚC LƯỢNG CHI PHÍ (COST ESTIMATES)
+Ước lượng chi phí bao gồm các đánh giá định lượng về các chi phí có khả năng cần thiết để hoàn thành công việc dự án, cũng như các khoản dự phòng bất trắc (contingency amounts) để tính đến các rủi ro đã xác định, và các khoản dự phòng quản lý (management reserve) để trang trải cho công việc chưa được lên kế hoạch. Ước lượng chi phí có thể được trình bày ở dạng tóm tắt hoặc dạng chi tiết. Chi phí được ước lượng cho tất cả các nguồn lực được áp dụng vào ước tính chi phí. Điều này bao gồm nhưng không giới hạn ở lao động trực tiếp, vật tư, thiết bị, dịch vụ, cơ sở vật chất, công nghệ thông tin, và các hạng mục đặc biệt như chi phí tài trợ (bao gồm phí lãi suất), một mức trợ cấp lạm phát, tỷ giá hối đoái, hoặc một khoản dự phòng rủi ro chi phí (cost contingency reserve). Các chi phí gián tiếp (Indirect costs), nếu được bao gồm trong ước tính dự án, có thể được gộp ở cấp độ hoạt động hoặc ở các cấp độ cao hơn.
+7.2.3.2 CƠ SỞ CỦA CÁC ƯỚC TÍNH (BASIS OF ESTIMATES)
+Mức độ và loại thông tin chi tiết bổ sung hỗ trợ cho ước lượng chi phí có thể thay đổi theo từng lĩnh vực ứng dụng. Bất kể mức độ chi tiết là bao nhiêu, các tài liệu hỗ trợ cần cung cấp một sự thấu hiểu rõ ràng và trọn vẹn về cách thức ước lượng chi phí được tạo ra.
+Các chi tiết hỗ trợ cho các ước lượng chi phí có thể bao gồm:
+Tài liệu về cơ sở của ước tính (nghĩa là nó được phát triển như thế nào),
+Tài liệu ghi lại tất cả các giả định được đưa ra.
+Tài liệu về bất kỳ ràng buộc nào đã được biết.
+Tài liệu về các rủi ro đã được xác định khi ước lượng chi phí.
+Dấu hiệu chỉ ra phạm vi của các ước tính có thể có (ví dụ: 10.000 USD (±10%) để chỉ ra rằng hạng mục này được kỳ vọng có chi phí nằm trong một khoảng giá trị), và
+Dấu hiệu chỉ ra mức độ tin cậy của ước tính cuối cùng.
+7.2.3.3 CẬP NHẬT TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS UPDATES)
+Các tài liệu dự án có thể được cập nhật như là kết quả của việc thực hiện quy trình này bao gồm nhưng không giới hạn ở:
+Sổ nhật ký giả định (Assumption log). Được mô tả trong Mục 4.1.3.2. Trong quy trình Ước lượng Chi phí, các giả định mới có thể được đưa ra, các ràng buộc mới có thể được xác định, và các giả định hoặc ràng buộc hiện tại có thể được xem xét lại và thay đổi. Sổ nhật ký giả định cần được cập nhật với những thông tin mới này.
+Sổ đăng ký bài học kinh nghiệm (Lessons learned register). Được mô tả trong Mục 4.4.3.1. Sổ đăng ký bài học kinh nghiệm có thể được cập nhật với các kỹ thuật đã mang lại hiệu quả trong việc phát triển các ước lượng chi phí.
+Sổ đăng ký rủi ro (Risk register). Được mô tả trong Mục 11.2.3.1. Sổ đăng ký rủi ro có thể được cập nhật khi các phương án phản hồi rủi ro thích hợp được lựa chọn và thống nhất trong quá trình Ước lượng Chi phí.
+7.3 XÁC ĐỊNH NGÂN SÁCH (DETERMINE BUDGET)
+Xác định Ngân sách là quy trình tổng hợp các chi phí ước lượng của các hoạt động cá nhân hoặc các gói công việc để thiết lập một đường cơ sở chi phí (cost baseline) được ủy quyền. Lợi ích chính của quy trình này là nó xác định đường cơ sở chi phí để từ đó hiệu suất dự án có thể được giám sát và kiểm soát. Quy trình này được thực hiện một lần hoặc tại các điểm được xác định trước trong dự án. Các đầu vào, công cụ và kỹ thuật, cùng đầu ra của quy trình này được mô tả trong Hình 7-6. Hình 7-7 mô tả sơ đồ luồng dữ liệu của quy trình.
+Ngân sách dự án bao gồm tất cả các quỹ được ủy quyền để thực hiện dự án. Đường cơ sở chi phí là phiên bản được phê duyệt của ngân sách dự án được chia theo từng giai đoạn thời gian (time-phased project budget), bao gồm các dự phòng cho tình huống bất trắc (contingency reserves), nhưng không bao gồm các dự phòng quản lý (management reserves).
+Hình 7-6. Xác định Ngân sách: Đầu vào, Công cụ & Kỹ thuật, và Đầu ra (Determine Budget: Inputs, Tools & Techniques, and Outputs)
+Hình 7-7. Xác định Ngân sách: Sơ đồ Luồng Dữ liệu (Determine Budget: Data Flow Diagram)
+7.3.1 XÁC ĐỊNH NGÂN SÁCH: ĐẦU VÀO (DETERMINE BUDGET: INPUTS)
+7.3.1.1 KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN)
+Được mô tả trong Mục 4.2.3.1. Các thành phần của kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:
+Kế hoạch quản lý chi phí (Cost management plan). Được mô tả trong Mục 7.1.3.1. Kế hoạch quản lý chi phí mô tả cách thức chi phí dự án sẽ được cấu trúc thành ngân sách dự án.
+Kế hoạch quản lý nguồn lực (Resource management plan). Được mô tả trong Mục 9.1.3.1. Kế hoạch quản lý nguồn lực cung cấp thông tin về các mức giá (nhân sự và các nguồn lực khác), ước lượng về chi phí đi lại, và các chi phí dự kiến khác cần thiết để ước lượng toàn bộ ngân sách dự án.
+Đường cơ sở phạm vi (Scope baseline). Được mô tả trong Mục 5.4.3.1. Đường cơ sở phạm vi bao gồm tuyên bố phạm vi dự án, WBS, và các chi tiết trong từ điển WBS để phục vụ cho việc ước lượng và quản lý chi phí.
+7.3.1.2 TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS)
+Ví dụ về các tài liệu dự án có thể được coi là đầu vào cho quy trình này bao gồm nhưng không giới hạn ở:
+Cơ sở của các ước tính (Basis of estimates). Được mô tả trong Mục 6.4.3.2. Các chi tiết hỗ trợ cho các ước lượng chi phí được chứa trong cơ sở của các ước tính cần chỉ định rõ mọi giả định cơ bản liên quan đến việc bao gồm hay loại trừ các chi phí gián tiếp (indirect costs) hoặc các chi phí khác trong ngân sách dự án.
+Ước lượng chi phí (Cost estimates). Được mô tả trong Mục 7.2.3.1. Ước lượng chi phí cho từng hoạt động bên trong một gói công việc được tổng hợp lại để có được ước lượng chi phí cho mỗi gói công việc đó.
+Tiến độ dự án (Project schedule). Được mô tả trong Mục 6.5.3.2. Tiến độ dự án bao gồm các ngày bắt đầu và ngày kết thúc đã được lên kế hoạch cho các hoạt động, cột mốc, gói công việc, và tài khoản kiểm soát của dự án. Thông tin này có thể được sử dụng để tổng hợp chi phí cho các kỳ lịch (calendar periods) mà trong đó chi phí dự kiến sẽ phát sinh.
+Sổ đăng ký rủi ro (Risk register). Được mô tả trong Mục 11.2.3.1. Sổ đăng ký rủi ro cần được xem xét để cân nhắc cách tổng hợp chi phí của các phương án đối phó rủi ro. Các cập nhật cho sổ đăng ký rủi ro được bao gồm trong phần cập nhật tài liệu dự án được mô tả ở Mục 11.5.3.3.
+7.3.1.3 TÀI LIỆU KINH DOANH (BUSINESS DOCUMENTS)
+Được mô tả trong Mục 1.2.6. Các tài liệu kinh doanh có thể được coi là đầu vào cho quy trình này bao gồm nhưng không giới hạn ở:
+Luận cứ kinh doanh (Business case). Luận cứ kinh doanh nhận diện các yếu tố thành công then chốt của dự án, bao gồm cả các yếu tố thành công về tài chính.
+Kế hoạch quản lý lợi ích (Benefits management plan). Kế hoạch quản lý lợi ích bao gồm các lợi ích mục tiêu, chẳng hạn như tính toán giá trị hiện tại ròng (net present value calculations), khung thời gian để hiện thực hóa các lợi ích, và các chỉ số (metrics) liên quan đến những lợi ích đó.
+7.3.1.4 CÁC THỎA THUẬN (AGREEMENTS)
+Được mô tả trong Mục 12.2.3.2. Các thông tin thỏa thuận áp dụng và các chi phí liên quan đến các sản phẩm, dịch vụ, hoặc kết quả đã hoặc sẽ được mua đều được tính vào khi xác định ngân sách.
+7.3.1.5 CÁC YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP (ENTERPRISE ENVIRONMENTAL FACTORS)
+Các yếu tố môi trường doanh nghiệp có thể ảnh hưởng đến quy trình Xác định Ngân sách bao gồm nhưng không giới hạn ở tỷ giá hối đoái. Đối với các dự án quy mô lớn kéo dài nhiều năm với nhiều loại tiền tệ, sự biến động của các loại tiền tệ cần phải được thấu hiểu và đưa vào trong quy trình Xác định Ngân sách.
+7.3.1.6 TÀI SẢN QUY TRÌNH TỔ CHỨC (ORGANIZATIONAL PROCESS ASSETS)
+Các tài sản quy trình tổ chức có thể ảnh hưởng đến quy trình Xác định Ngân sách bao gồm nhưng không giới hạn ở:
+Các chính sách, thủ tục, và hướng dẫn liên quan đến lập ngân sách chi phí chính thức và phi chính thức hiện có;
+Thông tin lịch sử và kho lưu trữ bài học kinh nghiệm.
+Các công cụ lập ngân sách chi phí; và
+Các phương pháp báo cáo.
+7.3.2 XÁC ĐỊNH NGÂN SÁCH: CÔNG CỤ VÀ KỸ THUẬT (DETERMINE BUDGET: TOOLS AND TECHNIQUES)
+7.3.2.1 ĐÁNH GIÁ CHUYÊN GIA (EXPERT JUDGMENT)
+Được mô tả trong Mục 4.1.2.1. Chuyên môn nên được xem xét từ các cá nhân hoặc nhóm có kiến thức chuyên môn hoặc được đào tạo về các chủ đề sau:
+Các dự án tương tự trước đây;
+Thông tin trong ngành, kỷ luật, và lĩnh vực ứng dụng;
+Các nguyên tắc tài chính; và
+Các yêu cầu và nguồn tài trợ.
+7.3.2.2 TỔNG HỢP CHI PHÍ (COST AGGREGATION)
+Các ước lượng chi phí được tổng hợp (aggregated) theo các gói công việc theo WBS. Các ước lượng chi phí của gói công việc sau đó được tổng hợp lên các cấp độ thành phần cao hơn của WBS (như tài khoản kiểm soát) và, cuối cùng, là cho toàn bộ dự án.
+7.3.2.3 PHÂN TÍCH DỮ LIỆU (DATA ANALYSIS)
+Một kỹ thuật phân tích dữ liệu có thể được sử dụng trong quy trình Xác định Ngân sách bao gồm nhưng không giới hạn ở phân tích dự trữ (reserve analysis), có thể được dùng để thiết lập các khoản dự phòng quản lý (management reserves) cho dự án. Dự phòng quản lý là một khoản ngân sách dự án được giữ lại cho các mục đích kiểm soát quản lý và được dự trữ cho các công việc không lường trước được (unforeseen work) nằm trong phạm vi của dự án. Dự phòng quản lý nhằm mục đích giải quyết những "điều chưa biết chưa biết" (unknown unknowns) có thể ảnh hưởng đến dự án. Khoản dự phòng quản lý không được tính vào đường cơ sở chi phí nhưng lại là một phần của tổng ngân sách dự án và các yêu cầu cấp vốn. Khi một khoản dự phòng quản lý được sử dụng để tài trợ cho công việc không lường trước, số tiền dự phòng quản lý đã sử dụng sẽ được cộng vào đường cơ sở chi phí, và do đó đòi hỏi một sự thay đổi đã được phê duyệt đối với đường cơ sở chi phí.
+7.3.2.4 XEM XÉT THÔNG TIN LỊCH SỬ (HISTORICAL INFORMATION REVIEW)
+Việc xem xét thông tin lịch sử có thể hỗ trợ trong việc phát triển các ước tính tham số (parametric estimates) hoặc ước tính tương tự (analogous estimates). Thông tin lịch sử có thể bao gồm các đặc điểm của dự án (tham số) để phát triển các mô hình toán học dự đoán tổng chi phí dự án. Những mô hình này có thể đơn giản (ví dụ: xây dựng nhà ở được tính dựa trên một mức chi phí nhất định trên mỗi mét vuông) hoặc phức tạp (ví dụ: một mô hình chi phí phát triển phần mềm sử dụng nhiều hệ số điều chỉnh riêng biệt, mỗi yếu tố có rất nhiều điểm bên trong nó).
+Cả chi phí lẫn độ chính xác của các mô hình tương tự và tham số đều có thể biến đổi rất lớn. Chúng thường đáng tin cậy nhất khi:
+Thông tin lịch sử được sử dụng để phát triển mô hình là chính xác.
+Các tham số được sử dụng trong mô hình có thể dễ dàng định lượng được, và
+Các mô hình có khả năng mở rộng (scalable), sao cho chúng hoạt động được đối với các dự án lớn, dự án nhỏ, và các giai đoạn của một dự án.
+7.3.2.5 ĐỐI CHIẾU GIỚI HẠN CẤP VỐN (FUNDING LIMIT RECONCILIATION)
+Việc chi tiêu các quỹ tài chính (expenditure of funds) cần được đối chiếu (reconciled) với bất kỳ giới hạn cấp vốn nào (funding limits) dựa trên sự cam kết của các nguồn quỹ cho dự án. Sự chênh lệch giữa các giới hạn cấp vốn và các khoản chi tiêu theo kế hoạch đôi khi sẽ đòi hỏi phải lên lịch lại cho công việc để làm phẳng tốc độ chi tiêu. Điều này được thực hiện bằng cách đặt ra các ràng buộc về ngày áp đặt (imposed date constraints) cho công việc trong tiến độ dự án.
+7.3.2.6 TÀI TRỢ/CẤP VỐN (FINANCING)
+Tài trợ liên quan đến việc thu nhận các nguồn vốn (funding) cho các dự án. Đối với các dự án cơ sở hạ tầng, công nghiệp, và dịch vụ công cộng dài hạn, việc tìm kiếm các nguồn tài trợ bên ngoài là rất phổ biến. Nếu một dự án được tài trợ từ bên ngoài, tổ chức cung cấp tài trợ có thể có những yêu cầu nhất định bắt buộc phải được đáp ứng.
+7.3.3 XÁC ĐỊNH NGÂN SÁCH: ĐẦU RA (DETERMINE BUDGET: OUTPUTS)
+7.3.3.1 ĐƯỜNG CƠ SỞ CHI PHÍ (COST BASELINE)
+Đường cơ sở chi phí là phiên bản được phê duyệt của ngân sách dự án theo từng giai đoạn thời gian (time-phased project budget), loại trừ mọi khoản dự phòng quản lý, và chỉ có thể được thay đổi thông qua các thủ tục kiểm soát thay đổi chính thức. Nó được sử dụng làm cơ sở để so sánh với các kết quả thực tế. Đường cơ sở chi phí được phát triển dưới dạng tổng của các ngân sách đã được phê duyệt cho các hoạt động tiến độ khác nhau.
+Hình 7-8 minh họa các thành phần khác nhau của ngân sách dự án và đường cơ sở chi phí. Các ước lượng chi phí cho các hoạt động dự án khác nhau, cùng với bất kỳ khoản dự phòng cho tình huống bất trắc nào (xem Mục 7.2.2.6) cho các hoạt động này, được tổng hợp vào chi phí của các gói công việc (work package) liên quan. Các ước lượng chi phí của gói công việc, cùng với bất kỳ khoản dự phòng bất trắc nào được ước tính cho các gói công việc, được tổng hợp vào các tài khoản kiểm soát (control accounts). Tổng số của các tài khoản kiểm soát sẽ tạo nên đường cơ sở chi phí. Do các ước lượng chi phí tạo nên đường cơ sở chi phí được gắn trực tiếp vào các hoạt động tiến độ, điều này cho phép tạo ra một cái nhìn theo từng giai đoạn thời gian (time-phased view) của đường cơ sở chi phí, thường được hiển thị dưới dạng đường cong chữ S (S-curve), như được minh họa trong Hình 7-9. Đối với các dự án sử dụng quản lý giá trị thu được (EVM), đường cơ sở chi phí được gọi là đường cơ sở đo lường hiệu suất (performance measurement baseline).
+Các dự phòng quản lý (management reserves) (Mục 7.2.2.3) được thêm vào đường cơ sở chi phí để tạo ra ngân sách dự án. Khi có những thay đổi đòi hỏi việc sử dụng các dự phòng quản lý phát sinh, quy trình kiểm soát thay đổi được sử dụng để lấy phê duyệt nhằm chuyển các quỹ dự phòng quản lý thích hợp vào đường cơ sở chi phí.
+Hình 7-8. Các Thành phần của Ngân sách Dự án (Project Budget Components)
+Hình 7-9. Đường cơ sở Chi phí, Khoản chi tiêu, và Các Yêu cầu Cấp vốn (Cost Baseline, Expenditures, and Funding Requirements)
+7.3.3.2 CÁC YÊU CẦU CẤP VỐN DỰ ÁN (PROJECT FUNDING REQUIREMENTS)
+Tổng các yêu cầu cấp vốn và các yêu cầu cấp vốn định kỳ (ví dụ: hàng quý, hàng năm) được dẫn xuất (derived) từ đường cơ sở chi phí. Đường cơ sở chi phí sẽ bao gồm các khoản chi tiêu dự kiến cộng với các khoản nợ (liabilities) dự kiến. Việc cấp vốn thường diễn ra với số lượng tăng dần (incremental amounts), và có thể không được phân bổ đều, xuất hiện dưới dạng các bậc thang trong Hình 7-9. Tổng số quỹ cần thiết là các quỹ được bao gồm trong đường cơ sở chi phí cộng với các dự phòng quản lý, nếu có. Các yêu cầu cấp vốn có thể bao gồm (các) nguồn cung cấp vốn.
+7.3.3.3 CẬP NHẬT TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS UPDATES)
+Các tài liệu dự án có thể được cập nhật như là kết quả của việc thực hiện quy trình này bao gồm nhưng không giới hạn ở:
+Ước lượng chi phí (Cost estimates). Được mô tả trong Mục 7.2.3.1. Các ước lượng chi phí được cập nhật để ghi nhận mọi thông tin bổ sung.
+Tiến độ dự án (Project schedule). Được mô tả trong Mục 6.5.3.2. Các chi phí ước lượng cho từng hoạt động có thể được ghi lại như một phần của tiến độ dự án.
+Sổ đăng ký rủi ro (Risk register). Được mô tả trong Mục 11.2.3.1. Các rủi ro mới được nhận diện trong quy trình này được ghi lại trong sổ đăng ký rủi ro và được quản lý bằng cách sử dụng các quy trình quản lý rủi ro.
+7.4 KIỂM SOÁT CHI PHÍ (CONTROL COSTS)
+Kiểm soát Chi phí là quy trình theo dõi trạng thái của dự án để cập nhật các chi phí của dự án và quản lý những thay đổi đối với đường cơ sở chi phí. Lợi ích chính của quy trình này là đường cơ sở chi phí được duy trì xuyên suốt dự án. Quy trình này được thực hiện xuyên suốt dự án. Các đầu vào, công cụ và kỹ thuật, cùng đầu ra của quy trình này được mô tả trong Hình 7-10. Hình 7-11 mô tả sơ đồ luồng dữ liệu của quy trình.
+Hình 7-10. Kiểm soát Chi phí: Đầu vào, Công cụ & Kỹ thuật, và Đầu ra (Control Costs: Inputs, Tools & Techniques, and Outputs)
+Hình 7-11. Kiểm soát Chi phí: Sơ đồ Luồng Dữ liệu (Control Costs: Data Flow Diagram)
+Việc cập nhật ngân sách đòi hỏi sự am hiểu về các chi phí thực tế đã được chi tiêu cho đến nay. Bất kỳ sự gia tăng nào đối với ngân sách được ủy quyền đều chỉ có thể được phê duyệt thông qua quy trình Thực hiện Kiểm soát Thay đổi Tích hợp (Mục 4.6). Việc giám sát chi tiêu của các quỹ mà không xem xét đến giá trị của công việc đang được hoàn thành tương ứng với những chi tiêu đó sẽ có ít giá trị đối với dự án, ngoài việc theo dõi dòng tiền chảy ra. Phần lớn nỗ lực của việc kiểm soát chi phí bao gồm việc phân tích mối quan hệ giữa sự tiêu thụ quỹ của dự án và công việc đang được hoàn thành cho những chi tiêu đó. Chìa khóa để kiểm soát chi phí hiệu quả là quản lý đường cơ sở chi phí đã được phê duyệt.
+Kiểm soát chi phí dự án bao gồm:
+Tác động lên các yếu tố tạo ra những thay đổi đối với đường cơ sở chi phí được ủy quyền;
+Đảm bảo rằng tất cả các yêu cầu thay đổi đều được xử lý một cách kịp thời;
+Quản lý các thay đổi thực tế khi và lúc chúng xảy ra;
+Đảm bảo rằng các khoản chi tiêu không vượt quá số tiền cấp vốn được ủy quyền theo từng khoảng thời gian, theo thành phần WBS, theo hoạt động, và về tổng thể cho toàn dự án;
+Giám sát hiệu suất chi phí để cô lập và thấu hiểu các phương sai (variances) so với đường cơ sở chi phí đã phê duyệt;
+Giám sát hiệu suất công việc so với nguồn quỹ đã chi tiêu;
+Ngăn chặn các thay đổi không được phê duyệt đưa vào các báo cáo về chi phí hoặc việc sử dụng nguồn lực;
+Thông báo cho các bên liên quan thích hợp về tất cả các thay đổi đã được phê duyệt và chi phí liên quan; và
+Đưa các khoản vượt chi phí (cost overruns) dự kiến về trong giới hạn có thể chấp nhận được.
+7.4.1 KIỂM SOÁT CHI PHÍ: ĐẦU VÀO (CONTROL COSTS: INPUTS)
+7.4.1.1 KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN)
+Được mô tả trong Mục 4.2.3.1. Các thành phần của kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:
+Kế hoạch quản lý chi phí (Cost management plan). Được mô tả trong Mục 7.1.3.1. Kế hoạch quản lý chi phí mô tả cách thức chi phí dự án sẽ được quản lý và kiểm soát.
+Đường cơ sở chi phí (Cost baseline). Được mô tả trong Mục 7.3.3.1. Đường cơ sở chi phí được so sánh với kết quả thực tế để xác định xem liệu có cần thiết thay đổi, hành động khắc phục, hoặc hành động phòng ngừa hay không.
+Đường cơ sở đo lường hiệu suất (Performance measurement baseline). Được mô tả trong Mục 4.2.3.1. Khi sử dụng phân tích giá trị thu được (EVM), đường cơ sở đo lường hiệu suất được so sánh với kết quả thực tế để xác định xem liệu có cần thiết thay đổi, hành động khắc phục, hoặc hành động phòng ngừa hay không.
+7.4.1.2 TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS)
+Các ví dụ về tài liệu dự án có thể được coi là đầu vào cho quy trình này bao gồm nhưng không giới hạn ở sổ đăng ký bài học kinh nghiệm. Được mô tả trong Mục 4.4.3.1. Bài học kinh nghiệm được rút ra ở các giai đoạn trước trong dự án có thể được áp dụng vào các giai đoạn sau để cải thiện việc kiểm soát chi phí.
+7.4.1.3 CÁC YÊU CẦU CẤP VỐN DỰ ÁN (PROJECT FUNDING REQUIREMENTS)
+Được mô tả trong Mục 7.3.3.2. Các yêu cầu cấp vốn dự án bao gồm các khoản chi tiêu dự kiến cộng với các khoản nợ dự kiến.
+7.4.1.4 DỮ LIỆU HIỆU SUẤT CÔNG VIỆC (WORK PERFORMANCE DATA)
+Được mô tả trong Mục 4.3.3.2. Dữ liệu hiệu suất công việc chứa các dữ liệu về tình trạng của dự án, chẳng hạn như những chi phí nào đã được ủy quyền, đã phát sinh, đã xuất hóa đơn, và đã được thanh toán.
+7.4.1.5 TÀI SẢN QUY TRÌNH TỔ CHỨC (ORGANIZATIONAL PROCESS ASSETS)
+Các tài sản quy trình tổ chức có thể ảnh hưởng đến quy trình Kiểm soát Chi phí bao gồm nhưng không giới hạn ở:
+Các chính sách, thủ tục, và hướng dẫn liên quan đến kiểm soát chi phí chính thức và phi chính thức hiện có;
+Các công cụ kiểm soát chi phí; và
+Các phương pháp giám sát và báo cáo sẽ được sử dụng.
+7.4.2 KIỂM SOÁT CHI PHÍ: CÔNG CỤ VÀ KỸ THUẬT (CONTROL COSTS: TOOLS AND TECHNIQUES)
+7.4.2.1 ĐÁNH GIÁ CHUYÊN GIA (EXPERT JUDGMENT)
+Được mô tả trong Mục 4.1.2.1. Các ví dụ về đánh giá chuyên gia trong quy trình Kiểm soát Chi phí bao gồm nhưng không giới hạn ở:
+Phân tích phương sai (Variance analysis).
+Phân tích giá trị thu được (Earned value analysis).
+Dự báo (Forecasting), và
+Phân tích tài chính (Financial analysis).
+7.4.2.2 PHÂN TÍCH DỮ LIỆU (DATA ANALYSIS)
+Các kỹ thuật phân tích dữ liệu có thể được sử dụng để kiểm soát chi phí bao gồm nhưng không giới hạn ở:
+Phân tích giá trị thu được (Earned value analysis - EVA). Phân tích giá trị thu được so sánh đường cơ sở đo lường hiệu suất với tiến độ thực tế và hiệu suất chi phí thực tế. EVM tích hợp đường cơ sở phạm vi với đường cơ sở chi phí và đường cơ sở tiến độ để hình thành nên đường cơ sở đo lường hiệu suất. EVM phát triển và giám sát ba khía cạnh then chốt cho mỗi gói công việc và tài khoản kiểm soát:
+Giá trị theo kế hoạch (Planned value - PV). PV là ngân sách được ủy quyền gán cho công việc đã được lập tiến độ. Đây là ngân sách được ủy quyền lên kế hoạch cho công việc sẽ được hoàn thành đối với một hoạt động hoặc một thành phần WBS, không bao gồm dự phòng quản lý. Ngân sách này được phân bổ theo từng giai đoạn trong suốt vòng đời dự án, nhưng tại một thời điểm nhất định, PV định nghĩa công việc vật lý đáng lẽ ra phải được hoàn thành. Tổng số PV đôi khi được gọi là đường cơ sở đo lường hiệu suất (PMB). Tổng giá trị kế hoạch cho dự án cũng được gọi là ngân sách khi hoàn thành (budget at completion - BAC).
+Giá trị thu được (Earned value - EV). EV là thước đo công việc đã được thực hiện, được thể hiện bằng ngân sách được ủy quyền cho công việc đó. Nó là ngân sách liên kết với công việc được ủy quyền đã được hoàn thành. EV đang được đo lường cần phải liên quan đến PMB, và EV được đo lường không thể lớn hơn ngân sách PV được ủy quyền cho một thành phần. EV thường được sử dụng để tính tỷ lệ phần trăm hoàn thành của một dự án. Tiêu chí đo lường tiến độ cần được thiết lập cho mỗi thành phần WBS để đo lường công việc đang tiến hành. Người quản lý dự án giám sát EV, cả theo kiểu tăng dần (incremental) để xác định trạng thái hiện tại, và theo kiểu tích lũy (cumulative) để xác định các xu hướng hiệu suất dài hạn.
+Chi phí thực tế (Actual cost - AC). AC là chi phí đã được thực hiện, phát sinh từ công việc được thực hiện trên một hoạt động trong một khoảng thời gian cụ thể. Đây là tổng chi phí đã phát sinh trong việc hoàn thành công việc mà EV đo lường. Định nghĩa của AC cần phải tương ứng với những gì đã được lập ngân sách trong PV và được đo lường trong EV (ví dụ: chỉ số giờ trực tiếp, chỉ chi phí trực tiếp, hoặc tất cả chi phí bao gồm cả chi phí gián tiếp). AC sẽ không có giới hạn trên; bất cứ khoản nào đã chi tiêu để đạt được EV sẽ đều được đo lường.
+Phân tích phương sai (Variance analysis). Được mô tả trong Mục 4.5.2.2. Phân tích phương sai, khi được sử dụng trong EVM, là sự giải thích (nguyên nhân, tác động, và các hành động khắc phục) cho các phương sai về chi phí (CV = EV - AC), tiến độ (SV = EV - PV), và phương sai khi hoàn thành (VAC = BAC - EAC). Các phương sai về chi phí và tiến độ là các thước đo được phân tích thường xuyên nhất. Đối với các dự án không sử dụng phân tích giá trị thu được chính thức, các phân tích phương sai tương tự có thể được thực hiện bằng cách so sánh chi phí theo kế hoạch (planned cost) với chi phí thực tế (actual cost) để xác định sự chênh lệch giữa đường cơ sở chi phí và hiệu suất dự án thực tế. Việc phân tích sâu hơn có thể được thực hiện để xác định nguyên nhân và mức độ sai lệch so với đường cơ sở tiến độ, cũng như bất kỳ hành động khắc phục hoặc phòng ngừa nào cần thiết. Các phép đo hiệu suất chi phí được sử dụng để đánh giá mức độ biến đổi so với đường cơ sở chi phí ban đầu. Một khía cạnh quan trọng của kiểm soát chi phí dự án bao gồm việc xác định nguyên nhân và mức độ sai lệch so với đường cơ sở chi phí (xem Mục 7.3.3.1) và quyết định xem hành động khắc phục hoặc phòng ngừa có được yêu cầu hay không. Phạm vi phần trăm của các phương sai có thể chấp nhận được sẽ có xu hướng giảm đi khi càng có nhiều công việc được hoàn thành. Các ví dụ về phân tích phương sai bao gồm nhưng không giới hạn ở:
+Phương sai tiến độ (Schedule variance - SV). SV là thước đo hiệu suất tiến độ, được thể hiện bằng sự chênh lệch giữa giá trị thu được (EV) và giá trị theo kế hoạch (PV). Đó là khoảng thời gian mà dự án đang vượt trước hoặc chậm trễ so với ngày giao hàng theo kế hoạch, tại một thời điểm nhất định. Nó là một phép đo hiệu suất tiến độ của dự án. Nó bằng giá trị thu được (EV) trừ đi giá trị theo kế hoạch (PV). Phương sai tiến độ EVA là một chỉ số (metric) hữu ích vì nó có thể chỉ ra khi nào dự án đang bị chậm lại hoặc đang vượt trước tiến độ đường cơ sở của nó. Phương sai tiến độ EVA cuối cùng sẽ bằng không khi dự án hoàn thành bởi vì tất cả các giá trị theo kế hoạch sẽ đều đã được thu được. Phương sai tiến độ được sử dụng tốt nhất khi kết hợp với việc lập tiến độ theo phương pháp đường găng (CPM) và quản lý rủi ro. Phương trình: SV = EV - PV.
+Phương sai chi phí (Cost variance - CV). CV là số tiền thâm hụt (deficit) hay thặng dư (surplus) của ngân sách tại một thời điểm nhất định, được thể hiện bằng sự chênh lệch giữa giá trị thu được (EV) và chi phí thực tế (AC). Nó là một phép đo hiệu suất chi phí của dự án. Nó bằng giá trị thu được (EV) trừ đi chi phí thực tế (AC). Phương sai chi phí ở cuối dự án sẽ là sự chênh lệch giữa ngân sách khi hoàn thành (BAC) và số tiền thực tế đã chi tiêu. CV đặc biệt quan trọng vì nó chỉ ra mối quan hệ giữa hiệu suất vật lý và các chi phí đã được chi tiêu. CV âm thường rất khó để dự án có thể khôi phục lại được. Phương trình: CV = EV - AC.
+Chỉ số hiệu suất tiến độ (Schedule performance index - SPI). SPI là thước đo độ hiệu quả của tiến độ, được thể hiện bằng tỷ lệ giữa giá trị thu được trên giá trị theo kế hoạch. Nó đo lường mức độ hiệu quả mà nhóm dự án đang hoàn thành công việc. Đôi khi nó được sử dụng kết hợp với chỉ số hiệu suất chi phí (CPI) để dự báo các ước lượng ngày hoàn thành dự án cuối cùng. Giá trị SPI nhỏ hơn 1.0 cho biết có ít công việc được hoàn thành hơn so với kế hoạch. Giá trị SPI lớn hơn 1.0 cho biết có nhiều công việc được hoàn thành hơn so với kế hoạch. Bởi vì SPI đo lường tất cả công việc của dự án, hiệu suất trên đường găng (critical path) cũng cần phải được phân tích để xác định xem dự án sẽ kết thúc sớm hơn hay trễ hơn so với ngày kết thúc đã được lập kế hoạch. SPI bằng tỷ lệ giữa EV và PV. Phương trình: SPI = EV / PV.
+Chỉ số hiệu suất chi phí (Cost performance index - CPI). CPI là thước đo độ hiệu quả về chi phí đối với các nguồn lực đã được lập ngân sách, được thể hiện bằng tỷ lệ giữa giá trị thu được trên chi phí thực tế. Nó được coi là chỉ số (metric) EVA quan trọng nhất và đo lường sự hiệu quả về chi phí cho công việc đã hoàn thành. Giá trị CPI nhỏ hơn 1.0 cho biết dự án đang bị vượt chi phí cho công việc đã hoàn thành. Giá trị CPI lớn hơn 1.0 cho biết dự án đang tiết kiệm chi phí hơn so với hiệu suất tính đến thời điểm hiện tại. CPI bằng tỷ lệ giữa EV và AC. Phương trình: CPI = EV / AC.
+Phân tích xu hướng (Trend analysis). Được mô tả trong Mục 4.5.2.2. Phân tích xu hướng xem xét hiệu suất dự án theo thời gian để xác định xem liệu hiệu suất đang được cải thiện hay đang xấu đi. Các kỹ thuật phân tích đồ họa rất hữu ích cho việc thấu hiểu hiệu suất tính đến thời điểm hiện tại và để so sánh với các mục tiêu hiệu suất trong tương lai dưới dạng BAC so với ước tính khi hoàn thành (EAC) và các ngày hoàn thành. Các ví dụ về kỹ thuật phân tích xu hướng bao gồm nhưng không giới hạn ở:
+Biểu đồ (Charts). Trong phân tích giá trị thu được, ba thông số: giá trị theo kế hoạch (PV), giá trị thu được (EV), và chi phí thực tế (AC) có thể được giám sát và báo cáo theo từng khoảng thời gian (thường là hàng tuần hoặc hàng tháng) và theo cơ sở tích lũy. Hình 7-12 sử dụng các đường cong chữ S (S-curves) để hiển thị dữ liệu EV cho một dự án đang vượt ngân sách (over budget) và chậm tiến độ (behind schedule).
+Dự báo (Forecasting). Khi dự án tiến triển, nhóm dự án có thể phát triển một dự báo cho ước tính khi hoàn thành (EAC) mà có thể khác với ngân sách khi hoàn thành (BAC) dựa trên hiệu suất của dự án. Nếu thấy rõ ràng là BAC không còn khả thi nữa, người quản lý dự án nên xem xét EAC đã được dự báo. Việc dự báo EAC liên quan đến việc thực hiện các dự báo về các điều kiện và sự kiện trong tương lai của dự án dựa trên thông tin hiệu suất hiện tại và các kiến thức khác sẵn có tại thời điểm dự báo. Các bản dự báo được tạo ra, cập nhật, và ban hành lại dựa trên dữ liệu hiệu suất công việc (Mục 4.3.3.2) được cung cấp khi dự án được thực thi. Thông tin hiệu suất công việc bao trùm hiệu suất trong quá khứ của dự án và bất kỳ thông tin nào có thể ảnh hưởng đến dự án trong tương lai.
+EAC thường dựa trên các chi phí thực tế (AC) phát sinh cho công việc đã hoàn thành, cộng với một ước tính để hoàn thành (Estimate To Complete - ETC) phần công việc còn lại. Nhóm dự án có trách nhiệm phải dự đoán những gì họ có thể gặp phải để thực hiện ETC, dựa trên kinh nghiệm của họ tính đến thời điểm hiện tại. Phân tích giá trị thu được (EVA) hoạt động hiệu quả kết hợp với các dự báo thủ công (manual forecasts) về chi phí EAC yêu cầu. Phương pháp dự báo EAC phổ biến nhất là một sự tổng hợp từ dưới lên, thủ công (manual, bottom-up summation) được thực hiện bởi người quản lý dự án và nhóm dự án.
+Phương pháp EAC từ dưới lên của người quản lý dự án xây dựng dựa trên các chi phí thực tế và kinh nghiệm phát sinh cho công việc đã hoàn thành, và đòi hỏi một ước tính mới (new estimate) để hoàn thành khối lượng công việc còn lại của dự án. Phương trình: EAC = AC + Bottom-up ETC.
+EAC thủ công của người quản lý dự án sẽ nhanh chóng được so sánh với một dải các EAC được tính toán, đại diện cho nhiều kịch bản rủi ro khác nhau. Khi tính toán các giá trị EAC, các giá trị CPI và SPI tích lũy thường được sử dụng. Mặc dù dữ liệu EVM nhanh chóng cung cấp nhiều phương pháp EAC thống kê, chỉ có ba trong số những phương pháp phổ biến nhất được mô tả dưới đây:
+Dự báo EAC cho công việc ETC được thực hiện ở mức giá theo ngân sách. Phương pháp EAC này chấp nhận hiệu suất dự án thực tế tính đến nay (bất kể là thuận lợi hay không thuận lợi) như được đại diện bởi các chi phí thực tế, và dự đoán rằng mọi công việc ETC trong tương lai sẽ được hoàn thành ở mức giá theo ngân sách. Khi hiệu suất thực tế không thuận lợi, giả định rằng hiệu suất trong tương lai sẽ được cải thiện chỉ nên được chấp nhận khi được củng cố bởi phân tích rủi ro dự án. Phương trình: $ EAC = AC + (BAC - EV) $.
+Dự báo EAC cho công việc ETC được thực hiện ở CPI hiện tại. Phương pháp này giả định rằng những gì dự án đã trải qua tính đến thời điểm hiện tại có thể được kỳ vọng sẽ tiếp tục trong tương lai. Công việc ETC được giả định sẽ được thực hiện ở cùng một chỉ số hiệu suất chi phí tích lũy (CPI) như dự án đã phát sinh tính đến thời điểm hiện tại. Phương trình: $ EAC = BAC / CPI $.
+Dự báo EAC cho công việc ETC cân nhắc cả hai yếu tố SPI và CPI. Trong dự báo này, công việc ETC sẽ được thực hiện với một tốc độ hiệu suất xem xét cả hai chỉ số hiệu suất chi phí (CPI) và tiến độ (SPI). Phương pháp này hữu ích nhất khi tiến độ dự án là một yếu tố tác động đến nỗ lực ETC. Những biến thể của phương pháp này gán trọng số (weight) cho CPI và SPI ở các giá trị khác nhau (ví dụ: 80/20, 50/50, hoặc một tỷ lệ nào đó khác) theo đánh giá của người quản lý dự án. Phương trình: $ EAC = AC + [(BAC - EV) / (CPI \times SPI)] $.
+Phân tích dự trữ (Reserve analysis). Được mô tả trong Mục 7.2.2.6. Trong quá trình kiểm soát chi phí, phân tích dự trữ được sử dụng để theo dõi tình trạng của các khoản dự phòng cho tình huống bất trắc (contingency reserves) và dự phòng quản lý (management reserves) của dự án nhằm xác định xem liệu các khoản dự phòng này có còn cần thiết nữa hay không, hoặc có cần phải yêu cầu bổ sung thêm dự phòng hay không. Khi công việc trong dự án tiến triển, các dự phòng này có thể được sử dụng như kế hoạch để bù đắp chi phí của các phương án đối phó rủi ro hoặc các tình huống bất trắc khác. Ngược lại, khi các cơ hội (opportunities) được nắm bắt và dẫn đến việc tiết kiệm chi phí, ngân quỹ có thể được cộng thêm vào số tiền dự phòng bất trắc, hoặc được lấy ra khỏi dự án như một khoản biên lợi nhuận/lợi nhuận (margin/profit).
+Nếu các rủi ro đã xác định không xảy ra, các dự phòng bất trắc chưa sử dụng có thể được gỡ bỏ khỏi ngân sách dự án để giải phóng nguồn lực cho các dự án hoặc hoạt động vận hành khác. Việc phân tích rủi ro bổ sung trong quá trình thực hiện dự án có thể cho thấy sự cần thiết phải yêu cầu bổ sung các khoản dự phòng vào ngân sách dự án.
+Hình 7-12. Giá trị Thu được, Giá trị Theo kế hoạch, và Chi phí Thực tế (Earned Value, Planned Value, and Actual Costs)
+7.4.2.3 CHỈ SỐ HIỆU SUẤT ĐỂ HOÀN THÀNH (TO-COMPLETE PERFORMANCE INDEX)
+Chỉ số hiệu suất để hoàn thành (To-complete performance index - TCPI) là một thước đo hiệu suất chi phí cần phải đạt được với các nguồn lực còn lại để đáp ứng một mục tiêu quản lý đã được chỉ định, thể hiện dưới dạng tỷ lệ giữa chi phí để hoàn thành công việc còn tồn đọng trên ngân sách còn lại. TCPI là chỉ số hiệu suất chi phí được tính toán cần phải đạt được trên phần công việc còn lại nhằm đáp ứng một mục tiêu quản lý đã định, chẳng hạn như BAC hoặc EAC. Nếu thấy rõ ràng là BAC không còn khả thi nữa, người quản lý dự án nên xem xét EAC đã dự báo. Một khi được phê duyệt, EAC có thể thay thế BAC trong tính toán TCPI. Phương trình cho TCPI dựa trên BAC: $ (BAC - EV) / (BAC - AC) $.
+TCPI được hiển thị về mặt khái niệm trong Hình 7-13. Phương trình tính TCPI được trình bày ở phía dưới bên trái là số lượng công việc còn lại (được định nghĩa là BAC trừ đi EV) chia cho số quỹ còn lại (có thể là BAC trừ đi AC, hoặc EAC trừ đi AC).
+Nếu CPI tích lũy nằm dưới mức đường cơ sở (như minh họa trong Hình 7-13), mọi công việc tương lai của dự án sẽ cần được thực hiện ngay lập tức trong phạm vi của TCPI (BAC) (như được phản ánh bởi đường trên cùng của Hình 7-13) để duy trì bên trong BAC đã được ủy quyền. Liệu mức hiệu suất này có thể đạt được hay không là một quyết định đánh giá phụ thuộc vào nhiều yếu tố, bao gồm rủi ro, thời gian còn lại của dự án, và hiệu suất kỹ thuật. Mức hiệu suất này được thể hiện dưới dạng đường TCPI (EAC). Phương trình cho TCPI dựa trên EAC: $ (BAC - EV) / (EAC - AC) $. Bảng 7-1 cung cấp các công thức EVM.
+Bảng 7-1. Bảng Tóm tắt Các Phép tính Giá trị Thu được (Earned Value Calculations Summary Table)
+Phân tích Giá trị Thu được (Earned Value Analysis)
+Chữ viết tắt (Abbreviation)
+Tên (Name)
+Định nghĩa Thuật ngữ (Lexicon Definition)
+Cách Sử dụng (How Used)
+Phương trình (Equation)
+Diễn giải Kết quả (Interpretation of Result)
+PV
+Giá trị Theo kế hoạch (Planned Value)
+Ngân sách được ủy quyền gán cho công việc đã lên tiến độ.
+Giá trị của công việc dự kiến sẽ được hoàn thành tính đến một thời điểm, thường là ngày lấy dữ liệu, hoặc khi dự án hoàn thành.
+EV
+Giá trị Thu được (Earned Value)
+Thước đo công việc đã thực hiện, thể hiện bằng ngân sách được ủy quyền cho công việc đó.
+Giá trị theo kế hoạch của tất cả công việc đã được hoàn thành (thu được) tính đến một thời điểm, thường là ngày lấy dữ liệu, mà không tham chiếu đến chi phí thực tế.
+EV = Tổng giá trị theo kế hoạch của công việc đã hoàn thành
+AC
+Chi phí Thực tế (Actual Cost)
+Chi phí đã thực hiện, phát sinh từ công việc được thực hiện trên một hoạt động trong một khoảng thời gian cụ thể.
+Chi phí thực tế của tất cả công việc đã hoàn thành tính đến một thời điểm, thường là ngày lấy dữ liệu.
+BAC
+Ngân sách Khi hoàn thành (Budget at Completion)
+Tổng tất cả các ngân sách được thiết lập cho công việc cần thực hiện.
+Giá trị của tổng số công việc theo kế hoạch, tức là đường cơ sở chi phí dự án.
+CV
+Phương sai Chi phí (Cost Variance)
+Số tiền thâm hụt hoặc thặng dư ngân sách tại một thời điểm, bằng chênh lệch giữa giá trị thu được và chi phí thực tế.
+Chênh lệch giữa giá trị của công việc hoàn thành tính đến một thời điểm và chi phí thực tế tính đến cùng thời điểm đó.
+CV = EV - AC
+Dương = Dưới mức chi phí kế hoạchBằng 0 = Đúng mức chi phí kế hoạchÂm = Vượt mức chi phí kế hoạch
+SV
+Phương sai Tiến độ (Schedule Variance)
+Khoảng thời gian dự án vượt trước hoặc chậm trễ so với ngày giao hàng kế hoạch tại một thời điểm, bằng chênh lệch giữa giá trị thu được và giá trị theo kế hoạch.
+Chênh lệch giữa công việc hoàn thành tính đến một thời điểm và công việc dự kiến sẽ hoàn thành tính đến cùng thời điểm đó.
+SV = EV - PV
+Dương = Vượt trước Tiến độBằng 0 = Đúng tiến độÂm = Chậm trễ Tiến độ
+VAC
+Phương sai Khi hoàn thành (Variance at Completion)
+Dự báo số tiền thâm hụt hoặc thặng dư ngân sách, bằng chênh lệch giữa ngân sách khi hoàn thành và ước tính khi hoàn thành.
+Sự chênh lệch chi phí được ước lượng tại thời điểm hoàn thành dự án.
+VAC = BAC - EAC
+Dương = Dưới mức chi phí kế hoạchBằng 0 = Đúng mức chi phí kế hoạchÂm = Vượt mức chi phí kế hoạch
+CPI
+Chỉ số Hiệu suất Chi phí (Cost Performance Index)
+Thước đo hiệu suất chi phí của các nguồn lực được lập ngân sách, bằng tỷ lệ giữa giá trị thu được và chi phí thực tế.
+CPI bằng 1.0 nghĩa là dự án đang đi đúng ngân sách, công việc thực tế thực hiện có giá trị chính xác bằng chi phí đã bỏ ra. Các giá trị khác hiển thị phần trăm chi phí vượt hoặc thấp hơn ngân sách đối với công việc đã hoàn thành.
+CPI = EV/AC
+Lớn hơn 1.0 = Dưới mức chi phí kế hoạch
+SPI
+Chỉ số Hiệu suất Tiến độ (Schedule Performance Index)
+Thước đo hiệu suất tiến độ, bằng tỷ lệ giữa giá trị thu được và giá trị theo kế hoạch.
+SPI bằng 1.0 nghĩa là dự án đi đúng tiến độ, công việc thực tế thực hiện chính xác bằng với công việc dự kiến. Các giá trị khác hiển thị tỷ lệ phần trăm chi phí vượt hoặc thấp hơn ngân sách đối với công việc đã được lập kế hoạch.
+SPI = EV/PV
+Lớn hơn 1.0 = Vượt trước tiến độChính xác 1.0 = Đúng tiến độNhỏ hơn 1.0 = Chậm trễ tiến độ
+EAC
+Ước tính Khi hoàn thành (Estimate At Completion)
+Tổng chi phí dự kiến để hoàn thành toàn bộ công việc, bằng tổng của chi phí thực tế tính đến thời điểm hiện tại và ước tính để hoàn thành.
+Nếu CPI dự kiến sẽ giữ nguyên trong phần còn lại của dự án, EAC có thể được tính bằng:Nếu công việc tương lai sẽ được hoàn thành ở mức giá theo kế hoạch, sử dụng:Nếu kế hoạch ban đầu không còn hợp lệ, sử dụng:Nếu cả CPI và SPI đều ảnh hưởng đến phần công việc còn lại, sử dụng:Giả định công việc đang tiến hành theo kế hoạch, chi phí hoàn thành phần công việc được ủy quyền còn lại được tính bằng:Ước tính lại phần công việc còn lại từ dưới lên.
+EAC = BAC/CPIEAC = AC + BAC - EV
+ETC
+Ước tính Để hoàn thành (Estimate to Complete)
+Chi phí dự kiến để hoàn thành tất cả công việc dự án còn lại.
+Mức độ hiệu suất cần được duy trì để hoàn thành đúng kế hoạch.
+ETC = EAC - AC(CPI x SPI)
+TCPI
+Chỉ số Hiệu suất Để hoàn thành (To Complete Performance Index)
+Thước đo hiệu suất chi phí phải đạt được với nguồn lực còn lại để đáp ứng một mục tiêu quản lý đã chỉ định, bằng tỷ lệ giữa chi phí hoàn thành công việc tồn đọng và ngân sách còn lại.
+Mức độ hiệu suất cần được duy trì để hoàn thành đúng kế hoạch.
+TCPI = (BAC - EV)/(BAC - AC)
+Lớn hơn 1.0 = Khó hoàn thành hơnChính xác 1.0 = Mức độ hoàn thành không đổiNhỏ hơn 1.0 = Dễ hoàn thành hơn
+Hình 7-13. Chỉ số Hiệu suất Để hoàn thành (TCPI) (To-Complete Performance Index)
+7.4.2.4 HỆ THỐNG THÔNG TIN QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT INFORMATION SYSTEM - PMIS)
+Được mô tả trong Mục 4.3.2.2. Các hệ thống thông tin quản lý dự án thường được sử dụng để giám sát ba khía cạnh của EVM (PV, EV, và AC), để hiển thị các xu hướng bằng đồ thị, và để dự báo một dải các kết quả cuối cùng có thể có của dự án.
+7.4.3 KIỂM SOÁT CHI PHÍ: ĐẦU RA (CONTROL COSTS: OUTPUTS)
+7.4.3.1 THÔNG TIN HIỆU SUẤT CÔNG VIỆC (WORK PERFORMANCE INFORMATION)
+Được mô tả trong Mục 4.5.1.3. Thông tin hiệu suất công việc bao gồm thông tin về cách dự án đang thực hiện so với đường cơ sở chi phí. Các phương sai trong công việc được thực hiện và chi phí của công việc đó được đánh giá ở cấp độ gói công việc và cấp độ tài khoản kiểm soát. Đối với các dự án sử dụng phân tích giá trị thu được, các chỉ số CV, CPI, EAC, VAC, và TCPI được ghi nhận để đưa vào các báo cáo hiệu suất công việc (Mục 4.5.3.1).
+7.4.3.2 DỰ BÁO CHI PHÍ (COST FORECASTS)
+Giá trị EAC được tính toán hoặc giá trị EAC từ dưới lên (bottom-up EAC) sẽ được lập tài liệu và truyền đạt cho các bên liên quan.
+7.4.3.3 CÁC YÊU CẦU THAY ĐỔI (CHANGE REQUESTS)
+Được mô tả trong Mục 4.3.3.4. Việc phân tích hiệu suất dự án có thể dẫn đến một yêu cầu thay đổi đối với các đường cơ sở chi phí và tiến độ hoặc các thành phần khác của kế hoạch quản lý dự án. Các yêu cầu thay đổi được xử lý để xem xét và xử lý thông qua quy trình Thực hiện Kiểm soát Thay đổi Tích hợp (Mục 4.6).
+7.4.3.4 CẬP NHẬT KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN UPDATES)
+Bất kỳ thay đổi nào đối với kế hoạch quản lý dự án đều trải qua quy trình kiểm soát thay đổi của tổ chức thông qua một yêu cầu thay đổi. Các thành phần có thể yêu cầu thay đổi cho kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:
+Kế hoạch quản lý chi phí (Cost management plan). Được mô tả trong Mục 7.1.3.1. Những thay đổi đối với kế hoạch quản lý chi phí, chẳng hạn như thay đổi về các ngưỡng kiểm soát hoặc các mức độ chính xác được chỉ định cần thiết trong việc quản lý chi phí của dự án, được kết hợp lại để phản hồi với các ý kiến từ các bên liên quan.
+Đường cơ sở chi phí (Cost baseline). Được mô tả trong Mục 7.3.3.1. Những thay đổi đối với đường cơ sở chi phí được kết hợp để phản hồi với các thay đổi đã được phê duyệt về phạm vi, nguồn lực, hoặc ước lượng chi phí. Trong một số trường hợp, các phương sai chi phí có thể nghiêm trọng đến mức cần phải có một đường cơ sở chi phí sửa đổi để cung cấp một nền tảng thực tế cho việc đo lường hiệu suất.
+Đường cơ sở đo lường hiệu suất (Performance measurement baseline). Được mô tả trong Mục 4.2.3.1. Những thay đổi đối với đường cơ sở đo lường hiệu suất được kết hợp để phản hồi với các thay đổi được phê duyệt về phạm vi, hiệu suất tiến độ, hoặc ước lượng chi phí. Trong một số trường hợp, các phương sai hiệu suất có thể nghiêm trọng đến mức một yêu cầu thay đổi được trình lên để sửa đổi đường cơ sở đo lường hiệu suất nhằm cung cấp một nền tảng thực tế cho việc đo lường hiệu suất.
+7.4.3.5 CẬP NHẬT TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS UPDATES)
+Các tài liệu dự án có thể được cập nhật như là kết quả của việc thực hiện quy trình này bao gồm nhưng không giới hạn ở:
+Sổ nhật ký giả định (Assumption log). Được mô tả trong Mục 4.1.3.2. Hiệu suất chi phí có thể chỉ ra sự cần thiết phải sửa đổi các giả định về năng suất của nguồn lực và các yếu tố khác ảnh hưởng đến hiệu suất chi phí.
+Cơ sở của các ước tính (Basis of estimates). Được mô tả trong Mục 6.4.3.2. Hiệu suất chi phí có thể chỉ ra sự cần thiết phải xem xét lại cơ sở ban đầu của các ước lượng.
+Ước lượng chi phí (Cost estimates). Được mô tả trong Mục 7.2.3.1. Ước lượng chi phí có thể cần được cập nhật để phản ánh mức độ hiệu quả chi phí thực tế của dự án.
+Sổ đăng ký bài học kinh nghiệm (Lessons learned register). Được mô tả trong Mục 4.4.3.1. Sổ đăng ký bài học kinh nghiệm có thể được cập nhật với các kỹ thuật mang lại hiệu quả trong việc duy trì ngân sách, phân tích phương sai, phân tích giá trị thu được, dự báo, và các hành động khắc phục đã được sử dụng để phản hồi lại các phương sai chi phí.
+Sổ đăng ký rủi ro (Risk register). Được mô tả trong Mục 11.2.3.1. Sổ đăng ký rủi ro có thể được cập nhật nếu các phương sai chi phí đã vượt qua, hoặc có khả năng sẽ vượt qua, ngưỡng rủi ro về chi phí.

@@ -1,0 +1,262 @@
+PMBOK® Guide
+Hướng Dẫn Quản Lý Dự Án
+Lần xuất bản thứ 6 · Tiếng Việt
+Chương 2 · Môi Trường Dự Án
+2.1 Tổng Quan
+2.2 Yếu Tố Môi Trường Doanh Nghiệp (EEFs)
+2.2.1 EEFs Nội Bộ
+2.2.2 EEFs Bên Ngoài
+2.3 Tài Sản Quy Trình Tổ Chức (OPAs)
+2.3.1 Quy Trình & Chính Sách
+2.3.2 Kho Kiến Thức
+2.4 Hệ Thống Tổ Chức
+2.4.1 Tổng Quan Hệ Thống
+2.4.2 Khung Quản Trị
+2.4.3 Các Yếu Tố Quản Lý
+2.4.4 Cấu Trúc Tổ Chức
+Chương 2
+MÔI TRƯỜNG HOẠT ĐỘNG CỦA DỰ ÁN
+The Environment in which Projects Operate
+2.1 TỔNG QUAN (OVERVIEW)
+Các dự án tồn tại và hoạt động trong những môi trường có thể có ảnh hưởng đến chúng. Những ảnh hưởng này có thể tác động thuận lợi hoặc không thuận lợi đến dự án. Hai hạng mục ảnh hưởng chính là các yếu tố môi trường doanh nghiệp (enterprise environmental factors - EEFs) và tài sản quy trình tổ chức (organizational process assets - OPAs).
+EEFs bắt nguồn từ môi trường bên ngoài dự án và thường ở bên ngoài doanh nghiệp. EEFs có thể tác động ở cấp độ tổ chức, danh mục đầu tư, chương trình, hoặc dự án. Xem Phần 2.2 để biết thêm thông tin về EEFs.
+OPAs là yếu tố nội bộ của tổ chức. Chúng có thể phát sinh từ chính tổ chức, một danh mục đầu tư, một chương trình, một dự án khác, hoặc sự kết hợp của những yếu tố này. Hình 2-1 cho thấy sự phân chia các ảnh hưởng đối với dự án thành EEFs và OPAs. Xem Phần 2.3 để biết thêm thông tin về OPAs.
+Hình 2-1. Các Ảnh Hưởng Tác Động Lên Dự Án (Project Influences)
+Ngoài EEFs và OPAs, các hệ thống tổ chức (organizational systems) cũng đóng vai trò quan trọng trong vòng đời dự án. Các yếu tố hệ thống tác động đến quyền lực, sự ảnh hưởng, lợi ích, năng lực, và khả năng chính trị của những người hành động trong hệ thống tổ chức sẽ được thảo luận sâu hơn trong phần về hệ thống tổ chức (xem Phần 2.4).
+2.2 YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP (ENTERPRISE ENVIRONMENTAL FACTORS - EEFS)
+Các yếu tố môi trường doanh nghiệp (EEFs) đề cập đến những điều kiện không nằm dưới sự kiểm soát của nhóm dự án, nhưng lại ảnh hưởng, cản trở, hoặc định hướng dự án. Những điều kiện này có thể nằm ở bên trong và/hoặc bên ngoài tổ chức. EEFs được coi là đầu vào cho nhiều quy trình quản lý dự án, đặc biệt là đối với hầu hết các quy trình lập kế hoạch. Những yếu tố này có thể nâng cao hoặc hạn chế các lựa chọn quản lý dự án. Ngoài ra, những yếu tố này có thể có ảnh hưởng tích cực hoặc tiêu cực đến kết quả.
+EEFs thay đổi rất nhiều về loại hình hoặc bản chất. Những yếu tố này cần được xem xét nếu muốn dự án đạt được hiệu quả. EEFs bao gồm nhưng không giới hạn ở các yếu tố được mô tả trong các Phần 2.2.1 và 2.2.2.
+2.2.1 EEFS NỘI BỘ TỔ CHỨC (EEFS INTERNAL TO THE ORGANIZATION)
+Các yếu tố môi trường doanh nghiệp (EEFs) sau đây là yếu tố nội bộ của tổ chức:
+Văn hóa, cấu trúc, và quản trị tổ chức. Các ví dụ bao gồm tầm nhìn, sứ mệnh, giá trị, niềm tin, chuẩn mực văn hóa, phong cách lãnh đạo, hệ thống cấp bậc và các mối quan hệ thẩm quyền, phong cách tổ chức, đạo đức, và quy tắc ứng xử.
+Sự phân bổ địa lý của các cơ sở vật chất và nguồn lực. Các ví dụ bao gồm vị trí nhà máy, các nhóm làm việc ảo (virtual teams), hệ thống dùng chung, và điện toán đám mây.
+Cơ sở hạ tầng. Các ví dụ bao gồm cơ sở vật chất hiện có, thiết bị, các kênh viễn thông của tổ chức, phần cứng công nghệ thông tin, tính sẵn có, và năng lực.
+Phần mềm công nghệ thông tin. Các ví dụ bao gồm các công cụ phần mềm lập tiến độ, hệ thống quản lý cấu hình, giao diện web kết nối với các hệ thống tự động trực tuyến khác, và hệ thống ủy quyền công việc.
+Tính sẵn có của nguồn lực. Các ví dụ bao gồm những ràng buộc về hợp đồng và mua sắm, các nhà cung cấp và nhà thầu phụ đã được phê duyệt, và các thỏa thuận hợp tác.
+Năng lực nhân viên. Các ví dụ bao gồm chuyên môn của nguồn nhân lực hiện tại, kỹ năng, năng lực, và kiến thức chuyên ngành.
+2.2.2 EEFS BÊN NGOÀI TỔ CHỨC (EEFS EXTERNAL TO THE ORGANIZATION)
+Các yếu tố môi trường doanh nghiệp (EEFs) sau đây là yếu tố bên ngoài tổ chức:
+Điều kiện thị trường. Các ví dụ bao gồm các đối thủ cạnh tranh, thị phần nhận diện thương hiệu, và nhãn hiệu thương mại.
+Các ảnh hưởng và vấn đề xã hội, văn hóa. Các ví dụ bao gồm bối cảnh chính trị, quy tắc ứng xử, đạo đức, và nhận thức.
+Các hạn chế về pháp lý. Các ví dụ bao gồm luật pháp và quy định của quốc gia hoặc địa phương liên quan đến an ninh, bảo vệ dữ liệu, hành vi kinh doanh, việc làm, và mua sắm.
+Cơ sở dữ liệu thương mại. Các ví dụ bao gồm kết quả đối chuẩn (benchmarking), dữ liệu ước tính chi phí chuẩn hóa, thông tin nghiên cứu rủi ro ngành, và cơ sở dữ liệu rủi ro.
+Nghiên cứu học thuật. Các ví dụ bao gồm các nghiên cứu ngành, ấn phẩm, và kết quả đối chuẩn.
+Các tiêu chuẩn của chính phủ hoặc ngành. Các ví dụ bao gồm các quy định của cơ quan quản lý và các tiêu chuẩn liên quan đến sản phẩm, sản xuất, môi trường, chất lượng, và tay nghề.
+Các cân nhắc về tài chính. Các ví dụ bao gồm tỷ giá hối đoái, lãi suất, tỷ lệ lạm phát, thuế quan, và vị trí địa lý.
+Các yếu tố môi trường vật lý. Các ví dụ bao gồm điều kiện làm việc, thời tiết, và các hạn chế liên quan.
+2.3 TÀI SẢN QUY TRÌNH TỔ CHỨC (ORGANIZATIONAL PROCESS ASSETS)
+Tài sản quy trình tổ chức (Organizational process assets - OPAs) là các kế hoạch, quy trình, chính sách, thủ tục, và cơ sở kiến thức mang tính đặc thù và được sử dụng bởi tổ chức thực hiện. Những tài sản này ảnh hưởng đến việc quản lý dự án.
+OPAs bao gồm bất kỳ tạo tác, thực hành, hoặc kiến thức nào từ bất kỳ hoặc tất cả các tổ chức tham gia vào dự án mà có thể được sử dụng để thực hiện hoặc quản trị dự án. OPAs cũng bao gồm các bài học kinh nghiệm từ các dự án trước đó của tổ chức và thông tin lịch sử. OPAs có thể bao gồm các tiến độ đã hoàn thành, dữ liệu rủi ro, và dữ liệu giá trị thu được (earned value). OPAs là đầu vào cho nhiều quy trình quản lý dự án. Vì OPAs là tài sản nội bộ của tổ chức, các thành viên trong nhóm dự án có thể cập nhật và bổ sung vào tài sản quy trình tổ chức khi cần thiết trong suốt dự án. Chúng có thể được nhóm thành hai hạng mục:
+Các quy trình, chính sách, và thủ tục; và
+Các cơ sở kiến thức của tổ chức.
+Nhìn chung, các tài sản trong hạng mục đầu tiên không được cập nhật như một phần của công việc dự án. Các quy trình, chính sách, và thủ tục thường được thiết lập bởi văn phòng quản lý dự án (PMO) hoặc một chức năng khác bên ngoài dự án. Chúng chỉ có thể được cập nhật bằng cách tuân theo các chính sách thích hợp của tổ chức liên quan đến việc cập nhật các quy trình, chính sách, hoặc thủ tục. Một số tổ chức khuyến khích nhóm dự án điều chỉnh các mẫu, vòng đời, và danh sách kiểm tra cho phù hợp với dự án. Trong những trường hợp này, nhóm quản lý dự án nên điều chỉnh những tài sản đó để đáp ứng nhu cầu của dự án.
+Các tài sản trong hạng mục thứ hai được cập nhật xuyên suốt dự án bằng thông tin của dự án. Ví dụ: thông tin về hiệu suất tài chính, bài học kinh nghiệm, các chỉ số hiệu suất, cũng như các vấn đề và lỗi (defects) được cập nhật liên tục trong suốt dự án.
+2.3.1 QUY TRÌNH, CHÍNH SÁCH VÀ THỦ TỤC (PROCESSES, POLICIES, AND PROCEDURES)
+Các quy trình và thủ tục của tổ chức để tiến hành công việc dự án bao gồm nhưng không giới hạn ở:
+Khởi tạo và Lập kế hoạch (Initiating and Planning):
+Hướng dẫn và tiêu chí để điều chỉnh bộ quy trình và thủ tục tiêu chuẩn của tổ chức nhằm đáp ứng các nhu cầu cụ thể của dự án;
+Các tiêu chuẩn cụ thể của tổ chức như các chính sách (ví dụ: chính sách nhân sự, chính sách sức khỏe và an toàn, chính sách bảo mật và tính bảo mật, chính sách chất lượng, chính sách mua sắm, và chính sách môi trường);
+Các vòng đời của sản phẩm và dự án, cùng các phương pháp và thủ tục (ví dụ: phương pháp quản lý dự án, số liệu ước tính, kiểm toán quy trình, mục tiêu cải tiến, danh sách kiểm tra, và các định nghĩa quy trình chuẩn hóa để sử dụng trong tổ chức);
+Các biểu mẫu (ví dụ: kế hoạch quản lý dự án, tài liệu dự án, sổ đăng ký dự án, định dạng báo cáo, biểu mẫu hợp đồng, danh mục rủi ro, mẫu phát biểu rủi ro, định nghĩa xác suất và tác động, ma trận xác suất và tác động, và mẫu sổ đăng ký các bên liên quan); và
+Danh sách các nhà cung cấp đã được phê duyệt trước và các loại thỏa thuận hợp đồng khác nhau (ví dụ: hợp đồng giá cố định, hợp đồng hoàn trả chi phí, và hợp đồng thời gian và vật liệu).
+Thực thi, Giám sát và Kiểm soát (Executing, Monitoring, and Controlling):
+Thủ tục kiểm soát thay đổi, bao gồm các bước theo đó các tiêu chuẩn, chính sách, kế hoạch và thủ tục của tổ chức thực hiện hoặc bất kỳ tài liệu dự án nào sẽ được sửa đổi, và cách thức mà mọi thay đổi sẽ được phê duyệt và xác nhận;
+Ma trận truy xuất nguồn gốc (Traceability matrices);
+Các thủ tục kiểm soát tài chính (ví dụ: báo cáo thời gian, xem xét các khoản chi tiêu và giải ngân bắt buộc, mã kế toán, và các điều khoản hợp đồng tiêu chuẩn);
+Thủ tục quản lý vấn đề và lỗi (ví dụ: xác định kiểm soát đối với vấn đề và lỗi, nhận diện và giải quyết vấn đề và lỗi, và theo dõi các mục hành động);
+Kiểm soát tính sẵn có của nguồn lực và quản lý phân công;
+Yêu cầu về giao tiếp của tổ chức (ví dụ: công nghệ giao tiếp cụ thể có sẵn, phương tiện giao tiếp được ủy quyền, chính sách lưu giữ hồ sơ, hội nghị truyền hình, công cụ cộng tác, và yêu cầu bảo mật);
+Thủ tục ưu tiên, phê duyệt, và ban hành giấy ủy quyền công việc;
+Các biểu mẫu (ví dụ: sổ đăng ký rủi ro, nhật ký vấn đề, và nhật ký thay đổi);
+Hướng dẫn tiêu chuẩn hóa, hướng dẫn công việc, tiêu chí đánh giá đề xuất, và tiêu chí đo lường hiệu suất; và
+Thủ tục xác minh và xác nhận sản phẩm, dịch vụ, hoặc kết quả.
+Đóng dự án (Closing). Hướng dẫn hoặc yêu cầu đóng dự án (ví dụ: kiểm toán dự án cuối cùng, đánh giá dự án, chấp nhận sản phẩm giao nộp, đóng hợp đồng, phân công lại nguồn lực, và chuyển giao kiến thức cho bộ phận sản xuất và/hoặc vận hành).
+2.3.2 KHO LƯU TRỮ KIẾN THỨC TỔ CHỨC (ORGANIZATIONAL KNOWLEDGE REPOSITORIES)
+Các kho lưu trữ kiến thức của tổ chức để lưu trữ và truy xuất thông tin bao gồm nhưng không giới hạn ở:
+Các kho kiến thức quản lý cấu hình chứa các phiên bản của các thành phần phần mềm và phần cứng cũng như đường cơ sở (baselines) của tất cả các tiêu chuẩn, chính sách, thủ tục của tổ chức thực hiện, và bất kỳ tài liệu dự án nào;
+Các kho dữ liệu tài chính chứa thông tin như số giờ lao động, chi phí phát sinh, ngân sách, và mọi khoản vượt chi phí dự án;
+Kho kiến thức về thông tin lịch sử và bài học kinh nghiệm (ví dụ: hồ sơ và tài liệu dự án, tất cả thông tin và tài liệu đóng dự án, thông tin liên quan đến kết quả của các quyết định lựa chọn dự án trước đó và thông tin hiệu suất dự án trước đó, và thông tin từ các hoạt động quản lý rủi ro);
+Các kho dữ liệu quản lý vấn đề và lỗi chứa trạng thái vấn đề và lỗi, thông tin kiểm soát, cách giải quyết vấn đề và lỗi, và kết quả của các mục hành động;
+Các kho dữ liệu cho các chỉ số đo lường (metrics) được sử dụng để thu thập và cung cấp sẵn dữ liệu đo lường về quy trình và sản phẩm; và
+Các tệp dự án từ các dự án trước đây (ví dụ: phạm vi, chi phí, tiến độ, và đường cơ sở đo lường hiệu suất, lịch dự án, sơ đồ mạng lưới tiến độ dự án, sổ đăng ký rủi ro, báo cáo rủi ro, và sổ đăng ký các bên liên quan).
+2.4 HỆ THỐNG TỔ CHỨC (ORGANIZATIONAL SYSTEMS)
+2.4.1 TỔNG QUAN (OVERVIEW)
+Các dự án hoạt động trong những giới hạn bị áp đặt bởi tổ chức thông qua cấu trúc và khuôn khổ quản trị của họ. Để hoạt động hiệu quả và năng suất, người quản lý dự án cần hiểu rõ trách nhiệm, bổn phận giải trình, và thẩm quyền nằm ở đâu trong tổ chức. Sự thấu hiểu này sẽ giúp người quản lý dự án sử dụng quyền lực, tầm ảnh hưởng, năng lực, khả năng lãnh đạo, và khả năng chính trị của bản thân một cách hiệu quả để hoàn thành dự án thành công.
+Sự tương tác của nhiều yếu tố bên trong một tổ chức cá thể tạo ra một hệ thống duy nhất tác động đến dự án hoạt động trong hệ thống đó. Hệ thống tổ chức dẫn xuất sẽ xác định quyền lực, tầm ảnh hưởng, lợi ích, năng lực, và khả năng chính trị của những người có thể hành động trong hệ thống. Các yếu tố hệ thống bao gồm nhưng không giới hạn ở:
+Các yếu tố quản lý.
+Các khung quản trị, và
+Các loại cấu trúc tổ chức.
+Thông tin đầy đủ và sự giải thích về các yếu tố của hệ thống tổ chức cũng như cách thức kết hợp các yếu tố này tác động đến một dự án nằm ngoài phạm vi của hướng dẫn này. Có những chuyên ngành với các tài liệu, phương pháp luận, và thực hành liên quan đề cập đến các yếu tố này chuyên sâu hơn những gì có thể có trong hướng dẫn này. Phần này cung cấp một cái nhìn tổng quan về các yếu tố này và mối quan hệ qua lại giữa chúng.
+Tổng quan này bắt đầu bằng việc thảo luận chung về các hệ thống. Hệ thống là một tập hợp các thành phần khác nhau cùng nhau có thể tạo ra các kết quả không thể đạt được nếu chỉ dựa vào từng thành phần riêng lẻ. Thành phần là một phần tử có thể nhận dạng được trong dự án hoặc tổ chức, cung cấp một chức năng cụ thể hoặc một nhóm các chức năng liên quan. Sự tương tác của các thành phần hệ thống khác nhau tạo ra văn hóa và năng lực của tổ chức. Có một số nguyên tắc liên quan đến hệ thống:
+Các hệ thống có tính năng động (dynamic).
+Các hệ thống có thể được tối ưu hóa.
+Các thành phần của hệ thống có thể được tối ưu hóa.
+Hệ thống và các thành phần của nó không thể được tối ưu hóa cùng một lúc, và
+Các hệ thống có tính phi tuyến trong khả năng phản hồi (một sự thay đổi ở đầu vào không tạo ra một sự thay đổi có thể dự đoán được ở đầu ra).
+Nhiều thay đổi có thể xảy ra bên trong hệ thống và giữa hệ thống với môi trường của nó. Khi những thay đổi này diễn ra, hành vi thích nghi xảy ra trong các thành phần, từ đó lại làm tăng thêm tính năng động của hệ thống. Tính năng động của hệ thống được xác định bởi sự tương tác giữa các thành phần dựa trên các mối quan hệ và sự phụ thuộc tồn tại giữa các thành phần đó.
+Các hệ thống thường là trách nhiệm của ban quản lý tổ chức. Ban quản lý tổ chức xem xét các đánh đổi tối ưu hóa giữa các thành phần và hệ thống để có hành động phù hợp nhằm đạt được kết quả tốt nhất cho tổ chức. Kết quả của sự xem xét này sẽ tác động đến dự án đang được thực hiện. Do đó, điều quan trọng là người quản lý dự án phải tính đến những kết quả này khi xác định cách thức thực hiện các mục tiêu của dự án. Ngoài ra, người quản lý dự án cũng nên xem xét đến khung quản trị của tổ chức.
+2.4.2 CÁC KHUNG QUẢN TRỊ TỔ CHỨC (ORGANIZATIONAL GOVERNANCE FRAMEWORKS)
+Nghiên cứu gần đây của PMI tiết lộ rằng quản trị (governance) đề cập đến các sắp xếp về mặt tổ chức hoặc cấu trúc ở mọi cấp độ của một tổ chức được thiết kế để xác định và ảnh hưởng đến hành vi của các thành viên trong tổ chức [9]. Nghiên cứu này gợi ý rằng khái niệm về quản trị là đa chiều và:
+Bao gồm việc xem xét con người, vai trò, cấu trúc, và các chính sách; và
+Đòi hỏi phải cung cấp sự định hướng và giám sát thông qua dữ liệu và phản hồi.
+2.4.2.1 KHUNG QUẢN TRỊ (GOVERNANCE FRAMEWORK)
+Quản trị là khuôn khổ trong đó thẩm quyền được thực thi trong các tổ chức. Khung này bao gồm nhưng không giới hạn ở:
+Các quy tắc.
+Chính sách.
+Thủ tục.
+Chuẩn mực (Norms).
+Các mối quan hệ.
+Hệ thống, và
+Quy trình.
+Khuôn khổ này ảnh hưởng đến cách thức:
+Các mục tiêu của tổ chức được thiết lập và hoàn thành.
+Rủi ro được theo dõi và đánh giá, và
+Hiệu suất được tối ưu hóa.
+2.4.2.2 QUẢN TRỊ DANH MỤC, CHƯƠNG TRÌNH VÀ DỰ ÁN (GOVERNANCE OF PORTFOLIOS, PROGRAMS, AND PROJECTS)
+Cuốn Hướng dẫn Thực hành: Quản trị Danh mục, Chương trình, và Dự án (The Governance of Portfolios, Programs, and Projects: A Practice Guide) [10] mô tả một khung quản trị chung giúp gắn kết quản lý dự án tổ chức (OPM) với quản lý danh mục, chương trình và dự án. Hướng dẫn thực hành mô tả bốn miền quản trị là sự liên kết, rủi ro, hiệu suất, và truyền thông. Mỗi miền có các chức năng sau: giám sát, kiểm soát, tích hợp, và ra quyết định. Mỗi chức năng có các quy trình và hoạt động hỗ trợ quản trị cho các dự án độc lập, hoặc các dự án hoạt động trong môi trường danh mục hoặc chương trình.
+Quản trị dự án đề cập đến khung, chức năng, và các quy trình định hướng cho các hoạt động quản lý dự án nhằm tạo ra một sản phẩm, dịch vụ, hoặc kết quả duy nhất để đáp ứng các mục tiêu về tổ chức, chiến lược, và vận hành. Không có một khung quản trị duy nhất nào đạt hiệu quả trong tất cả các tổ chức. Một khung quản trị cần được điều chỉnh phù hợp với văn hóa tổ chức, các loại dự án, và nhu cầu của tổ chức để có thể mang lại hiệu quả.
+Để biết thêm thông tin về quản trị dự án, bao gồm cả việc triển khai nó, xem Hướng dẫn Thực hành: Quản trị Danh mục, Chương trình, và Dự án [10].
+2.4.3 CÁC YẾU TỐ QUẢN LÝ (MANAGEMENT ELEMENTS)
+Các yếu tố quản lý là những thành phần cấu thành nên các chức năng hoặc nguyên tắc chính của quản lý chung trong tổ chức. Các yếu tố quản lý chung được phân bổ trong tổ chức theo khung quản trị của nó và loại cấu trúc tổ chức được lựa chọn.
+Các chức năng hoặc nguyên tắc chính của quản lý bao gồm nhưng không giới hạn ở:
+Phân công công việc sử dụng các kỹ năng chuyên môn và tính sẵn sàng để thực hiện công việc;
+Quyền hạn được giao để thực hiện công việc;
+Trách nhiệm thực hiện công việc được phân công phù hợp dựa trên các thuộc tính như kỹ năng và kinh nghiệm;
+Kỷ luật hành động (ví dụ: tôn trọng chính quyền, con người, và luật lệ);
+Thống nhất chỉ huy (ví dụ: đối với bất kỳ hành động hoặc hoạt động nào, chỉ có một người ra lệnh cho một cá nhân);
+Thống nhất chỉ đạo (ví dụ: một kế hoạch và một người đứng đầu cho một nhóm các hoạt động có cùng mục tiêu);
+Mục tiêu chung của tổ chức được ưu tiên hơn so với mục tiêu cá nhân;
+Được trả công công bằng cho công việc đã thực hiện;
+Sử dụng nguồn lực tối ưu;
+Kênh liên lạc rõ ràng;
+Đúng vật liệu giao cho đúng người làm đúng việc vào đúng thời điểm;
+Đối xử công bằng và bình đẳng với mọi người tại nơi làm việc;
+Sự an toàn rõ ràng về các vị trí công việc;
+Sự an toàn của mọi người tại nơi làm việc;
+Sự đóng góp cởi mở vào việc lập kế hoạch và thực hiện bởi mỗi người; và
+Tinh thần (morale) tối ưu.
+Việc thực hiện các yếu tố quản lý này được giao cho các cá nhân được chọn lựa trong tổ chức. Những cá nhân này có thể thực hiện các chức năng được ghi nhận bên trong nhiều cấu trúc tổ chức khác nhau. Ví dụ, trong một cấu trúc phân cấp, có các cấp độ ngang và dọc bên trong tổ chức. Các cấp bậc này trải dài từ cấp quản lý trực tuyến (line management) cho đến cấp quản lý điều hành (executive management). Trách nhiệm, bổn phận giải trình, và quyền hạn được gán cho cấp bậc sẽ chỉ ra cách cá nhân đó có thể thực hiện chức năng được ghi nhận trong cấu trúc tổ chức đó.
+2.4.4 CÁC LOẠI CẤU TRÚC TỔ CHỨC (ORGANIZATIONAL STRUCTURE TYPES)
+Việc xác định loại hình cấu trúc tổ chức phù hợp là kết quả của việc nghiên cứu những đánh đổi giữa hai biến số chính. Các biến số đó là các loại cấu trúc tổ chức có sẵn để sử dụng và cách tối ưu hóa chúng cho một tổ chức nhất định. Không có một cấu trúc "một cỡ vừa cho tất cả" (one-size-fits-all) nào cho bất kỳ tổ chức nào. Cấu trúc cuối cùng cho một tổ chức nhất định là duy nhất do có vô số các biến số cần được xem xét. Các phần 2.4.4.1 và 2.4.4.2 đưa ra các ví dụ về một số yếu tố cần được đưa vào khi xem xét hai biến số đã nêu. Phần 2.4.4.3 thảo luận về một cấu trúc tổ chức phổ biến trong quản lý dự án.
+2.4.4.1 CÁC LOẠI CẤU TRÚC TỔ CHỨC (ORGANIZATIONAL STRUCTURE TYPES)
+Các cấu trúc tổ chức có nhiều hình thức hoặc loại hình khác nhau. Bảng 2-1 so sánh một số loại cấu trúc tổ chức và tầm ảnh hưởng của chúng lên các dự án.
+2.4.4.2 CÁC YẾU TỐ TRONG VIỆC LỰA CHỌN CẤU TRÚC TỔ CHỨC (FACTORS IN ORGANIZATION STRUCTURE SELECTION)
+Mỗi tổ chức đều cân nhắc vô số các yếu tố để đưa vào cấu trúc tổ chức của mình. Mỗi yếu tố có thể mang một mức độ quan trọng khác nhau trong phân tích cuối cùng. Sự kết hợp giữa yếu tố, giá trị của nó, và mức độ quan trọng tương đối cung cấp cho những người ra quyết định của tổ chức thông tin phù hợp để đưa vào phân tích.
+Các yếu tố cần xem xét trong việc lựa chọn một cấu trúc tổ chức bao gồm nhưng không giới hạn ở:
+Mức độ phù hợp với các mục tiêu của tổ chức.
+Khả năng chuyên môn hóa.
+Phạm vi kiểm soát (Span of control), hiệu suất, và tính hiệu quả.
+Lộ trình rõ ràng cho việc leo thang (escalation) các quyết định.
+Đường lối và phạm vi quyền hạn rõ ràng.
+Khả năng ủy quyền.
+Phân công bổn phận giải trình (Accountability assignment).
+Phân công trách nhiệm.
+Khả năng thích ứng của thiết kế.
+Sự đơn giản của thiết kế.
+Hiệu quả thực hiện.
+Các cân nhắc về chi phí.
+Vị trí thực tế (ví dụ: cùng địa điểm, theo khu vực, và không gian ảo), và
+Giao tiếp rõ ràng (ví dụ: chính sách, trạng thái công việc, và tầm nhìn của tổ chức).
+Bảng 2-1. Ảnh hưởng của Cấu trúc Tổ chức lên Dự án (Influences of Organizational Structures on Projects)
+Loại Cấu trúc Tổ chức
+Đặc điểm Dự án
+Nhóm Công việc được Sắp xếp theo:
+Thẩm quyền của Người Quản lý Dự án
+Vai trò của Người Quản lý Dự án
+Sự sẵn có của Nguồn lực
+Ai Quản lý Ngân sách Dự án?
+Nhân sự Hành chính Quản lý Dự án
+Hữu cơ hoặc Đơn giản (Organic or Simple)
+Linh hoạt; mọi người làm việc sát cánh bên nhau
+Ít hoặc không có
+Bán thời gian; có thể hoặc không thể là một vai trò công việc được chỉ định như điều phối viên
+Ít hoặc không có
+Chủ sở hữu hoặc người vận hành
+Ít hoặc không có
+Chức năng (tập trung) (Functional)
+Công việc đang được thực hiện (ví dụ: kỹ thuật, sản xuất)
+Ít hoặc không có
+Bán thời gian; có thể hoặc không thể là một vai trò công việc được chỉ định như điều phối viên
+Ít hoặc không có
+Người quản lý chức năng
+Bán thời gian
+Đa bộ phận (có thể sao chép các chức năng cho mỗi bộ phận với rất ít sự tập trung)
+Một trong các yếu tố: sản phẩm; quy trình sản xuất; danh mục; chương trình; khu vực địa lý; loại khách hàng
+Ít hoặc không có
+Bán thời gian; có thể hoặc không thể là một vai trò công việc được chỉ định như điều phối viên
+Ít hoặc không có
+Người quản lý chức năng
+Bán thời gian
+Ma trận - mạnh (Matrix - strong)
+Theo chức năng công việc, với người quản lý dự án là một chức năng
+Trung bình đến cao
+Vai trò công việc được chỉ định toàn thời gian
+Trung bình đến cao
+Người quản lý dự án
+Toàn thời gian
+Ma trận - yếu (Matrix - weak)
+Chức năng công việc
+Thấp
+Bán thời gian; được thực hiện như một phần của công việc khác và không phải là một vai trò được chỉ định như điều phối viên
+Thấp
+Người quản lý chức năng
+Bán thời gian
+Ma trận - cân bằng (Matrix - balanced)
+Chức năng công việc
+Thấp đến trung bình
+Bán thời gian; được nhúng vào các chức năng như một kỹ năng và có thể không phải là một vai trò được chỉ định như điều phối viên
+Thấp đến trung bình
+Hỗn hợp
+Bán thời gian
+Định hướng dự án (hỗn hợp, lai) (Project-oriented)
+Dự án
+Cao đến gần như tuyệt đối
+Vai trò công việc được chỉ định toàn thời gian
+Cao đến gần như tuyệt đối
+Người quản lý dự án
+Toàn thời gian
+Ảo (Virtual)
+Cấu trúc mạng lưới với các nút (nodes) tại các điểm tiếp xúc với những người khác
+Thấp đến trung bình
+Toàn thời gian hoặc bán thời gian
+Thấp đến trung bình
+Hỗn hợp
+Có thể là toàn thời gian hoặc bán thời gian
+Lai ghép (Hybrid)
+Pha trộn giữa các loại hình khác
+Hỗn hợp
+Hỗn hợp
+Hỗn hợp
+Hỗn hợp
+Hỗn hợp
+PMO*
+Pha trộn giữa các loại hình khác
+Cao đến gần như tuyệt đối
+Vai trò công việc được chỉ định toàn thời gian
+Cao đến gần như tuyệt đối
+Người quản lý dự án
+Toàn thời gian
+*PMO đề cập đến một tổ chức hoặc văn phòng quản lý danh mục, chương trình, hoặc dự án.
+2.4.4.3 VĂN PHÒNG QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT OFFICE)
+Văn phòng quản lý dự án (Project Management Office - PMO) là một cấu trúc tổ chức nhằm chuẩn hóa các quy trình quản trị liên quan đến dự án và tạo điều kiện thuận lợi cho việc chia sẻ nguồn lực, phương pháp luận, công cụ, và kỹ thuật. Trách nhiệm của một PMO có thể dao động từ việc cung cấp các chức năng hỗ trợ quản lý dự án cho đến việc quản lý trực tiếp một hoặc nhiều dự án.
+Có một số loại PMO trong các tổ chức. Mỗi loại thay đổi tùy theo mức độ kiểm soát và ảnh hưởng mà nó có đối với các dự án trong tổ chức, chẳng hạn như:
+Hỗ trợ (Supportive). Các PMO hỗ trợ cung cấp vai trò tư vấn cho các dự án bằng cách cung cấp các biểu mẫu, thực hành tốt nhất, đào tạo, quyền truy cập thông tin, và các bài học kinh nghiệm từ những dự án khác. Loại PMO này đóng vai trò như một kho lưu trữ dự án. Mức độ kiểm soát do PMO cung cấp là thấp.
+Kiểm soát (Controlling). Các PMO kiểm soát cung cấp sự hỗ trợ và yêu cầu sự tuân thủ thông qua nhiều phương tiện khác nhau. Mức độ kiểm soát do PMO cung cấp ở mức độ trung bình. Sự tuân thủ có thể bao gồm:
+Việc áp dụng các khung hoặc phương pháp luận quản lý dự án;
+Việc sử dụng các biểu mẫu, mẫu, và công cụ cụ thể; và
+Sự tuân thủ với các khung quản trị.
+Chỉ đạo (Directive). Các PMO chỉ đạo nắm quyền kiểm soát các dự án bằng cách quản lý trực tiếp các dự án. Các nhà quản lý dự án được PMO phân công và báo cáo cho PMO. Mức độ kiểm soát do PMO cung cấp là cao.
+Văn phòng quản lý dự án có thể có trách nhiệm trên toàn tổ chức. Nó có thể đóng một vai trò trong việc hỗ trợ sự liên kết chiến lược và mang lại giá trị cho tổ chức. PMO tích hợp dữ liệu và thông tin từ các dự án chiến lược của tổ chức và đánh giá cách thức hoàn thành các mục tiêu chiến lược ở cấp độ cao hơn. PMO là cầu nối tự nhiên giữa các danh mục đầu tư, chương trình, dự án của tổ chức, và các hệ thống đo lường của tổ chức (ví dụ: thẻ điểm cân bằng - balanced scorecard).
+Các dự án do PMO hỗ trợ hoặc quản lý có thể không có liên quan đến nhau ngoài việc được quản lý cùng với nhau. Hình thức, chức năng, và cấu trúc cụ thể của một PMO phụ thuộc vào nhu cầu của tổ chức mà nó hỗ trợ.
+Một PMO có thể có quyền hành động như một bên liên quan không thể thiếu và một người ra quyết định chính trong suốt vòng đời của mỗi dự án nhằm giữ cho nó phù hợp với các mục tiêu kinh doanh. PMO có thể:
+Đưa ra các khuyến nghị.
+Dẫn dắt việc chuyển giao kiến thức.
+Chấm dứt các dự án, và
+Thực hiện các hành động khác, khi cần thiết.
+Chức năng chính của PMO là hỗ trợ các nhà quản lý dự án theo nhiều cách, có thể bao gồm nhưng không giới hạn ở:
+Quản lý các nguồn lực dùng chung trên tất cả các dự án do PMO điều hành;
+Xác định và phát triển phương pháp luận, các thực hành tốt nhất, và các tiêu chuẩn quản lý dự án;
+Huấn luyện, cố vấn, đào tạo, và giám sát;
+Giám sát việc tuân thủ các tiêu chuẩn, chính sách, thủ tục, và biểu mẫu quản lý dự án thông qua việc kiểm toán dự án;
+Phát triển và quản lý các chính sách, thủ tục, biểu mẫu dự án, và tài liệu dùng chung khác (tài sản quy trình tổ chức); và
+Điều phối sự giao tiếp trên các dự án.

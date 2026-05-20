@@ -566,8 +566,13 @@ function loadChapter(id) {
   currentChapterId = id;
   state.lastChapter = id;
   hidePopup();
-  // Reset TTS when switching chapter
-  if (typeof ttsStop === 'function') { ttsStop(); ttsBlocks = []; }
+  // Reset audio when switching chapter
+  if (audioPlayer) {
+    audioPlayer.pause();
+    audioPlayer.currentTime = 0;
+    clearAudioHighlight();
+  }
+  currentAudioPath = null;
 
   document.querySelectorAll('#chapter-nav a').forEach(a => {
     a.classList.toggle('active', a.dataset.id === id);
@@ -1043,168 +1048,150 @@ const audioSpeed  = document.getElementById('audio-speed');
 const audioClose  = document.getElementById('audio-close');
 const btnAudio    = document.getElementById('btn-audio');
 
-let ttsBlocks     = [];   // array of text blocks from chapter
-let ttsIndex      = 0;    // current block index
-let ttsUtterance  = null;
-let ttsPaused     = false;
+// Pre-generated audio player state
+let audioPlayer = null;
+let currentAudioPath = null;
+let audioHighlightedElement = null;
+let audioMetadata = {};
 
-function ttsSupported() {
-  return 'speechSynthesis' in window;
-}
-
-function getVietnameseVoice() {
-  const voices = speechSynthesis.getVoices();
-  return voices.find(v => v.lang.startsWith('vi')) || null;
-}
-
-function ttsSetStatus(text) {
-  audioStatus.textContent = text;
-}
-
-function ttsStop() {
-  speechSynthesis.cancel();
-  ttsIndex   = 0;
-  ttsPaused  = false;
-  ttsUtterance = null;
-  audioPlay.textContent = '▶';
-  audioPlay.classList.remove('playing');
-  ttsSetStatus('Sẵn sàng');
-  // Clear highlight in iframe
-  const frame = document.getElementById('chapter-frame');
-  if (frame.contentWindow) {
-    frame.contentWindow.postMessage({ type: 'clearAudioHighlight' }, '*');
+function initAudioPlayer() {
+  if (!audioPlayer) {
+    audioPlayer = new Audio();
+    audioPlayer.addEventListener('play', onAudioPlay);
+    audioPlayer.addEventListener('pause', onAudioPause);
+    audioPlayer.addEventListener('ended', onAudioEnded);
+    audioPlayer.addEventListener('timeupdate', onAudioTimeUpdate);
   }
 }
 
-function ttsSpeakBlock(index) {
-  if (index >= ttsBlocks.length) {
-    ttsStop();
-    ttsSetStatus('Đã đọc xong ✓');
-    return;
-  }
-  const text = ttsBlocks[index];
-  ttsUtterance = new SpeechSynthesisUtterance(text);
-  ttsUtterance.rate = parseFloat(audioSpeed.value);
-  ttsUtterance.lang = 'vi-VN';
+function toggleAudioPlayback() {
+  if (!audioPlayer) initAudioPlayer();
 
-  const voice = getVietnameseVoice();
-  if (voice) ttsUtterance.voice = voice;
-
-  // Highlight current block in iframe
-  const frame = document.getElementById('chapter-frame');
-  if (frame.contentWindow) {
-    frame.contentWindow.postMessage({ type: 'highlightSentence', text }, '*');
+  if (!currentAudioPath) {
+    currentAudioPath = 'audio/' + currentChapterId + '.mp3';
+    audioPlayer.src = currentAudioPath;
+    loadAudioMetadata();
   }
 
-  const total = ttsBlocks.length;
-  ttsSetStatus(`Đang đọc... (${index + 1}/${total})`);
-
-  ttsUtterance.onend = () => {
-    if (!ttsPaused) {
-      ttsIndex = index + 1;
-      ttsSpeakBlock(ttsIndex);
-    }
-  };
-
-  ttsUtterance.onerror = (e) => {
-    if (e.error !== 'interrupted') {
-      ttsSetStatus('Lỗi đọc: ' + e.error);
-    }
-  };
-
-  speechSynthesis.speak(ttsUtterance);
+  if (audioPlayer.paused) {
+    audioPlayer.play().catch(err => {
+      audioStatus.textContent = 'Lỗi: không thể phát âm thanh';
+      console.error('Playback failed:', err);
+    });
+  } else {
+    audioPlayer.pause();
+  }
 }
 
-function ttsPlay() {
-  if (!ttsSupported()) {
-    alert('Trình duyệt của bạn không hỗ trợ đọc to (Web Speech API).');
-    return;
-  }
-
-  if (ttsPaused) {
-    // Resume
-    speechSynthesis.resume();
-    ttsPaused = false;
-    audioPlay.textContent = '⏸';
-    audioPlay.classList.add('playing');
-    ttsSetStatus('Đang đọc...');
-    return;
-  }
-
-  if (speechSynthesis.speaking) {
-    // Pause
-    speechSynthesis.pause();
-    ttsPaused = true;
-    audioPlay.textContent = '▶';
-    audioPlay.classList.remove('playing');
-    ttsSetStatus('Đã tạm dừng');
-    return;
-  }
-
-  // Start fresh
-  if (ttsBlocks.length === 0) {
-    ttsSetStatus('Đang lấy nội dung...');
-    const frame = document.getElementById('chapter-frame');
-    if (!frame.contentWindow) return;
-    frame.contentWindow.postMessage({ type: 'getText' }, '*');
-    // Wait for chapterText message — handled in message listener below
-    return;
-  }
-
-  // Resume from current index
-  ttsSpeakBlock(ttsIndex);
-  audioPlay.textContent = '⏸';
-  audioPlay.classList.add('playing');
+function stopAudio() {
+  if (!audioPlayer) return;
+  audioPlayer.pause();
+  audioPlayer.currentTime = 0;
+  clearAudioHighlight();
 }
 
-// Handle chapterText response from iframe
-function onChapterText(blocks) {
-  ttsBlocks = blocks.filter(b => b.trim().length > 5);
-  ttsIndex  = 0;
-  if (ttsBlocks.length === 0) {
-    ttsSetStatus('Không có nội dung để đọc');
-    return;
-  }
-  ttsSpeakBlock(0);
-  audioPlay.textContent = '⏸';
-  audioPlay.classList.add('playing');
+function changeAudioSpeed(e) {
+  if (!audioPlayer) return;
+  audioPlayer.playbackRate = parseFloat(e.target.value);
 }
 
-// Open audio bar and start
-btnAudio.addEventListener('click', () => {
-  if (!ttsSupported()) {
-    alert('Trình duyệt của bạn không hỗ trợ đọc to (Web Speech API).\nThử Chrome hoặc Safari.');
-    return;
-  }
-  audioBar.hidden = false;
-  btnAudio.classList.add('active');
-  // Reset and start
-  ttsStop();
-  ttsBlocks = [];
-  ttsIndex  = 0;
-  ttsPlay();
-});
-
-audioPlay.addEventListener('click', ttsPlay);
-
-audioStop.addEventListener('click', () => {
-  ttsStop();
-  ttsSetStatus('Đã dừng');
-});
-
-audioClose.addEventListener('click', () => {
-  ttsStop();
+function closeAudioBar() {
+  stopAudio();
   audioBar.hidden = true;
   btnAudio.classList.remove('active');
-  ttsBlocks = [];
-});
+}
 
-audioSpeed.addEventListener('change', () => {
-  if (speechSynthesis.speaking && !ttsPaused) {
-    // Restart current block with new speed
-    speechSynthesis.cancel();
-    setTimeout(() => ttsSpeakBlock(ttsIndex), 100);
+function onAudioPlay() {
+  audioPlay.classList.add('playing');
+  audioPlay.textContent = '⏸';
+}
+
+function onAudioPause() {
+  audioPlay.classList.remove('playing');
+  audioPlay.textContent = '▶';
+}
+
+function onAudioEnded() {
+  audioPlay.classList.remove('playing');
+  audioPlay.textContent = '▶';
+  clearAudioHighlight();
+  audioStatus.textContent = 'Đã đọc xong ✓';
+}
+
+function onAudioTimeUpdate() {
+  updateAudioStatus();
+  syncAudioHighlight();
+}
+
+function updateAudioStatus() {
+  if (!audioPlayer) return;
+  const current = formatTime(audioPlayer.currentTime);
+  const duration = formatTime(audioPlayer.duration || 0);
+  audioStatus.textContent = `${current} / ${duration}`;
+}
+
+function formatTime(seconds) {
+  if (!isFinite(seconds)) return '0:00';
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${mins}:${secs.toString().padStart(2, '0')}`;
+}
+
+function syncAudioHighlight() {
+  if (!audioPlayer || !audioMetadata[currentChapterId]) return;
+
+  const metadata = audioMetadata[currentChapterId];
+  const estimatedDuration = metadata.estimated_duration_sec;
+  const progress = audioPlayer.currentTime / (audioPlayer.duration || estimatedDuration);
+
+  const frame = document.getElementById('chapter-frame');
+  if (!frame || !frame.contentDocument) return;
+
+  const paragraphs = frame.contentDocument.querySelectorAll('p');
+  const targetIdx = Math.floor(progress * paragraphs.length);
+
+  if (targetIdx >= 0 && targetIdx < paragraphs.length) {
+    const para = paragraphs[targetIdx];
+    if (audioHighlightedElement) {
+      audioHighlightedElement.style.backgroundColor = '';
+    }
+    para.style.backgroundColor = 'rgba(201, 168, 76, 0.2)';
+    audioHighlightedElement = para;
   }
+}
+
+function clearAudioHighlight() {
+  if (audioHighlightedElement) {
+    audioHighlightedElement.style.backgroundColor = '';
+    audioHighlightedElement = null;
+  }
+}
+
+async function loadAudioMetadata() {
+  try {
+    const response = await fetch('audio-metadata/' + currentChapterId + '.json');
+    if (response.ok) {
+      audioMetadata[currentChapterId] = await response.json();
+    }
+  } catch (err) {
+    console.warn('Audio metadata not found for ' + currentChapterId);
+  }
+}
+
+// Audio bar event listeners
+audioPlay.addEventListener('click', toggleAudioPlayback);
+audioStop.addEventListener('click', () => {
+  stopAudio();
+  audioStatus.textContent = 'Đã dừng';
+});
+audioClose.addEventListener('click', closeAudioBar);
+audioSpeed.addEventListener('change', changeAudioSpeed);
+
+// Open audio bar button
+btnAudio.addEventListener('click', () => {
+  audioBar.hidden = false;
+  btnAudio.classList.add('active');
+  if (!audioPlayer) initAudioPlayer();
 });
 
 // ── EXPORT / IMPORT ──

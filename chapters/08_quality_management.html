@@ -1,10 +1,540 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <title>08_quality_management</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chương 8 – Quản Lý Chất Lượng Dự Án | PMBOK® Guide Lần 6</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a3;
+    --cream: #fdf8f0;
+    --text: #2c2c2c;
+    --text-light: #5a5a5a;
+    --border: #d4c89a;
+    --accent: #8b1a1a;
+    --sidebar-w: 260px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Merriweather', Georgia, serif;
+    background: var(--cream);
+    color: var(--text);
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* SIDEBAR */
+  #sidebar {
+    width: var(--sidebar-w);
+    background: var(--navy);
+    color: #ccd4e8;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    overflow-y: auto;
+    z-index: 100;
+    padding: 0 0 2rem;
+    border-right: 3px solid var(--gold);
+  }
+  #sidebar-header {
+    background: linear-gradient(135deg, #0f1d3a 0%, #1a2744 100%);
+    padding: 1.5rem 1.2rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  #sidebar-header .book-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  #sidebar-header h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+  }
+  #sidebar-header .edition {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    color: var(--gold-light);
+    font-style: italic;
+  }
+  #sidebar nav { padding: 0.8rem 0; }
+  #sidebar nav a {
+    display: block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    color: #aab8d0;
+    text-decoration: none;
+    padding: 0.45rem 1.2rem;
+    line-height: 1.4;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+  }
+  #sidebar nav a:hover, #sidebar nav a.active {
+    color: #fff;
+    background: rgba(201,168,76,0.12);
+    border-left-color: var(--gold);
+  }
+  #sidebar nav .section-group { margin-top: 0.4rem; }
+  #sidebar nav .group-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 0.8rem 1.2rem 0.3rem;
+    opacity: 0.85;
+  }
+  #sidebar nav a.sub {
+    padding-left: 2rem;
+    font-size: 0.75rem;
+    color: #8896b0;
+  }
+  #sidebar nav a.sub:hover { color: #ccd4e8; }
+
+  /* MAIN */
+  #main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    max-width: 900px;
+    padding: 0 3rem 5rem;
+  }
+
+  /* CHAPTER HEADER */
+  .chapter-hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #2a3a6a 100%);
+    color: white;
+    padding: 3rem 3rem 2.5rem;
+    margin: 0 -3rem 3rem;
+    border-bottom: 4px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-hero::before {
+    content: '8';
+    position: absolute;
+    right: 2rem; top: 50%;
+    transform: translateY(-50%);
+    font-size: 12rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.05);
+    font-family: 'Merriweather', serif;
+    line-height: 1;
+  }
+  .chapter-hero .ch-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .chapter-hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+  }
+  .chapter-hero .ch-en {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+    font-style: italic;
+  }
+
+  /* CONTENT STYLES */
+  h2 {
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  h3 {
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin: 2rem 0 0.7rem;
+    padding-left: 0.8rem;
+    border-left: 4px solid var(--gold);
+  }
+  h4 {
+    font-size: 1rem;
+    color: var(--accent);
+    margin: 1.5rem 0 0.5rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  h5 {
+    font-size: 0.95rem;
+    color: var(--navy);
+    margin: 1.2rem 0 0.5rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+  }
+  p {
+    font-size: 0.97rem;
+    line-height: 1.85;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  /* BILINGUAL TERM */
+  .term {
+    display: inline;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .term-en {
+    font-style: italic;
+    color: var(--text-light);
+    font-size: 0.88em;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  /* BULLET LISTS */
+  ul.pmbok {
+    list-style: none;
+    margin: 0.5rem 0 1rem 0;
+    padding: 0;
+  }
+  ul.pmbok li {
+    position: relative;
+    padding: 0.3rem 0 0.3rem 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--text);
+  }
+  ul.pmbok li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.7rem;
+    top: 0.5rem;
+  }
+  ul.pmbok.check li::before { content: '☑'; color: #2d7a2d; font-size: 0.9rem; top: 0.35rem; }
+  ul.pmbok.dash li::before { content: '■'; color: var(--navy); font-size: 0.6rem; top: 0.5rem; }
+
+  /* FIGURE */
+  .figure-wrap {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1.2rem;
+    background: #f8f5ee;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .figure-wrap img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  }
+  .figure-caption {
+    margin-top: 0.75rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.83rem;
+    color: var(--text-light);
+    font-style: italic;
+  }
+  .figure-caption strong {
+    color: var(--navy);
+    font-style: normal;
+  }
+
+  /* TABLES */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+  .table-wrap > .table-caption {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.82rem;
+    font-style: italic;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.84rem;
+  }
+  table th {
+    background: var(--navy);
+    color: white;
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+  table td {
+    padding: 0.55rem 0.8rem;
+    border: 1px solid #ddd;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  table tr:nth-child(even) td { background: #f9f6ef; }
+
+  @media(max-width:900px){
+    #sidebar { display: none; }
+    #main { margin-left: 0; padding: 0 1.2rem 4rem; }
+    .chapter-hero { margin: 0 -1.2rem 2rem; padding: 2rem 1.5rem; }
+  }
+</style>
 </head>
 <body>
-    
+
+<aside id="sidebar">
+  <div id="sidebar-header">
+    <div class="book-label">PMBOK® Guide</div>
+    <h2>Hướng Dẫn Quản Lý Dự Án</h2>
+    <div class="edition">Lần xuất bản thứ 6 · Tiếng Việt</div>
+  </div>
+  <nav>
+    <div class="section-group">
+      <div class="group-label">Chương 8 · Quản Lý Chất Lượng</div>
+      <a href="#s8-0">Tổng Quan Nền Tảng</a>
+      <a href="#s8-1">8.1 Lập KH Quản Lý Chất Lượng</a>
+      <a href="#s8-1-1" class="sub">8.1.1 Đầu Vào</a>
+      <a href="#s8-1-2" class="sub">8.1.2 Công Cụ & Kỹ Thuật</a>
+      <a href="#s8-1-3" class="sub">8.1.3 Đầu Ra</a>
+      <a href="#s8-2">8.2 Quản Lý Chất Lượng</a>
+      <a href="#s8-2-1" class="sub">8.2.1 Đầu Vào</a>
+      <a href="#s8-2-2" class="sub">8.2.2 Công Cụ & Kỹ Thuật</a>
+      <a href="#s8-2-3" class="sub">8.2.3 Đầu Ra</a>
+      <a href="#s8-3">8.3 Kiểm Soát Chất Lượng</a>
+      <a href="#s8-3-1" class="sub">8.3.1 Đầu Vào</a>
+      <a href="#s8-3-2" class="sub">8.3.2 Công Cụ & Kỹ Thuật</a>
+      <a href="#s8-3-3" class="sub">8.3.3 Đầu Ra</a>
+    </div>
+  </nav>
+</aside>
+
+<main id="main">
+
+  <div class="chapter-hero">
+    <div class="ch-label">Chương 8</div>
+    <h1>QUẢN LÝ CHẤT LƯỢNG DỰ ÁN</h1>
+    <div class="ch-en">Project Quality Management</div>
+  </div>
+
+  <h2 id="s8-0">TỔNG QUAN NỀN TẢNG <span class="term-en">(OVERVIEW)</span></h2>
+
+  <p>Quản lý Chất lượng Dự án (<span class="term">Project Quality Management</span>) bao gồm các quy trình nhằm tích hợp chính sách chất lượng của tổ chức liên quan đến việc lập kế hoạch, quản lý, và kiểm soát các yêu cầu chất lượng của dự án và sản phẩm, nhằm đáp ứng các mục tiêu của các bên liên quan. Quản lý Chất lượng Dự án cũng hỗ trợ các hoạt động cải tiến quy trình liên tục (<span class="term">continuous process improvement</span>) được thực hiện thay mặt cho tổ chức thực hiện.</p>
+
+  <p>Các quy trình Quản lý Chất lượng Dự án bao gồm:</p>
+
+  <ul class="pmbok dash">
+    <li><strong>8.1 Lập kế hoạch Quản lý Chất lượng (<span class="term-en">Plan Quality Management</span>)</strong> — Quy trình xác định các yêu cầu và/hoặc tiêu chuẩn chất lượng cho dự án và các sản phẩm giao nộp của nó, đồng thời ghi lại cách dự án sẽ chứng minh sự tuân thủ với các yêu cầu và/hoặc tiêu chuẩn chất lượng.</li>
+    <li><strong>8.2 Quản lý Chất lượng (<span class="term-en">Manage Quality</span>)</strong> — Quy trình chuyển đổi kế hoạch quản lý chất lượng thành các hoạt động chất lượng có thể thực thi được nhằm kết hợp các chính sách chất lượng của tổ chức vào dự án.</li>
+    <li><strong>8.3 Kiểm soát Chất lượng (<span class="term-en">Control Quality</span>)</strong> — Quy trình giám sát và ghi lại các kết quả của việc thực thi các hoạt động quản lý chất lượng để đánh giá hiệu suất và đảm bảo các đầu ra của dự án là hoàn chỉnh, chính xác, và đáp ứng kỳ vọng của khách hàng.</li>
+  </ul>
+
+  <p>Hình 8-1 cung cấp một cái nhìn tổng quan về các quy trình Quản lý Chất lượng Dự án. Các quy trình Quản lý Chất lượng Dự án được trình bày như các quy trình rời rạc với các giao diện được xác định rõ ràng, mặc dù trong thực tế chúng trùng lặp và tương tác theo những cách không thể được trình bày chi tiết hoàn toàn trong Hướng dẫn PMBOK®. Ngoài ra, các quy trình chất lượng này có thể khác nhau giữa các ngành công nghiệp và các công ty khác nhau.</p>
+
+  <div class="figure-wrap">
+    <div class="figure-caption"><strong>Hình 8-1.</strong> Sơ đồ Tổng quan về Quản lý Chất lượng Dự án <span class="term-en">(Project Quality Management Overview)</span></div>
+  </div>
+
+  <h5>CÁC KHÁI NIỆM CHÍNH CHO QUẢN LÝ CHẤT LƯỢNG DỰ ÁN <span class="term-en">(KEY CONCEPTS)</span></h5>
+  <p>Quản lý Chất lượng Dự án giải quyết việc quản lý dự án và các sản phẩm giao nộp (<span class="term">deliverables</span>) của dự án. Nó áp dụng cho tất cả các dự án, bất kể tính chất của các sản phẩm giao nộp của chúng. Các biện pháp đo lường và kỹ thuật chất lượng đều mang tính đặc thù cho loại sản phẩm giao nộp được tạo ra bởi dự án.</p>
+
+  <p>Việc không đáp ứng các yêu cầu chất lượng có thể gây ra những hậu quả tiêu cực nghiêm trọng đối với bất kỳ hoặc tất cả các bên liên quan của dự án. Ví dụ:</p>
+  <ul class="pmbok dash">
+    <li>Đáp ứng các yêu cầu của khách hàng bằng cách bắt nhóm dự án làm việc quá sức (<span class="term">overworking</span>) có thể dẫn đến sự gia tăng số lượng lỗi, hao mòn nhân sự, hoặc sự vắng mặt.</li>
+    <li>Việc đáp ứng các mục tiêu về tiến độ dự án bằng cách vội vã thực hiện các hoạt động kiểm tra chất lượng theo kế hoạch có thể dẫn đến các sai sót chưa bị phát hiện, chi phí làm lại lớn và rủi ro lỗi hệ thống tăng cao.</li>
+  </ul>
+
+  <p>Chất lượng (<span class="term">Quality</span>) và Cấp độ tính năng (<span class="term">Grade</span>) không phải là những khái niệm giống nhau:</p>
+  <ul class="pmbok">
+    <li><strong>Chất lượng (Quality):</strong> Là mức độ mà một tập hợp các đặc tính cố hữu (<span class="term">inherent characteristics</span>) đáp ứng các yêu cầu.</li>
+    <li><strong>Cấp độ tính năng (Grade):</strong> Là một phân loại hoặc xếp hạng (<span class="term">category or rank</span>) được gán cho các sản phẩm giao nộp có cùng mục đích sử dụng nhưng khác nhau ở các đặc tính kỹ thuật.</li>
+  </ul>
+  <p>Người quản lý dự án và nhóm quản lý dự án có trách nhiệm đánh giá sự đánh đổi để cung cấp mức độ chất lượng và cấp độ tính năng được yêu cầu. Một sản phẩm có cấp độ tính năng thấp (có số lượng tính năng giới hạn), nhưng chất lượng cao (không có lỗi rõ ràng, tài liệu hướng dẫn dễ đọc) thì vẫn có thể chấp nhận được. Tuy nhiên, một sản phẩm có cấp độ tính năng cao (nhiều tính năng tinh vi), nhưng chất lượng thấp (có nhiều lỗi, tài liệu hướng dẫn tồi) thì hoàn toàn không thể chấp nhận được.</p>
+
+  <p>Để đạt hiệu quả tối ưu, điều quan trọng là phải phân biệt được hai thuật ngữ: Sự phòng ngừa (<span class="term">Prevention</span>) và Sự kiểm tra (<span class="term">Inspection</span>); Sự biến đổi ngẫu nhiên (<span class="term">Common causes</span>) và Sự biến đổi đặc biệt (<span class="term">Special causes</span>); Sai số (<span class="term">Tolerance</span>) và Giới hạn kiểm soát (<span class="term">Control limits</span>).</p>
+
+  <p>Có 5 cấp độ quản lý chất lượng hiệu quả ngày càng cao bao gồm:</p>
+  <ul class="pmbok check">
+    <li>Để khách hàng phát hiện ra các lỗi (Cấp độ này gây tốn kém nhất, tổn hại uy tín nặng nề).</li>
+    <li>Tìm và sửa các lỗi trước khi sản phẩm giao nộp được gửi đến khách hàng thông qua một quy trình kiểm soát chất lượng nghiêm ngặt.</li>
+    <li>Sử dụng quy trình đảm bảo chất lượng để kiểm tra và sửa đổi chính các quy trình hoạt động, thay vì chỉ sửa đổi các lỗi đơn lẻ.</li>
+    <li>Tích hợp văn hóa chất lượng vào toàn bộ kế hoạch và việc thực thi trên toàn tổ chức và dự án.</li>
+    <li>Tạo lập văn hóa chất lượng bền vững trên toàn tổ chức hướng đến sự hoàn hảo và liên tục cải tiến.</li>
+  </ul>
+
+  <p>Các xu hướng tiếp cận hiện đại trong quản lý chất lượng bao gồm:</p>
+  <ul class="pmbok">
+    <li><strong>Sự hài lòng của khách hàng (Customer satisfaction):</strong> Hiểu, đánh giá, xác định, và quản lý các yêu cầu sao cho đáp ứng được kỳ vọng của khách hàng.</li>
+    <li><strong>Cải tiến liên tục (Continuous improvement):</strong> Chu trình Kế hoạch-Thực hiện-Kiểm tra-Hành động (<span class="term">Plan-Do-Check-Act - PDCA</span>) là cơ sở cho việc cải tiến chất lượng. Các sáng kiến như TQM, Six Sigma, và Lean Six Sigma được áp dụng rộng rãi.</li>
+    <li><strong>Trách nhiệm của ban quản lý (Management responsibility):</strong> Thành công đòi hỏi sự tham gia của tất cả các thành viên, nhưng ban quản lý chịu trách nhiệm cung cấp đầy đủ các nguồn lực cần thiết.</li>
+    <li><strong>Mối quan hệ hợp tác với nhà cung cấp (Mutually beneficial partnerships with suppliers):</strong> Tổ chức và các nhà cung cấp phụ thuộc lẫn nhau, việc hợp tác tăng cường khả năng tạo ra giá trị cho cả hai bên.</li>
+  </ul>
+
+  <h3 id="s8-1">8.1 LẬP KẾ HOẠCH QUẢN LÝ CHẤT LƯỢNG <span class="term-en">(PLAN QUALITY MANAGEMENT)</span></h3>
+  <p>Lập kế hoạch Quản lý Chất lượng là quy trình xác định các yêu cầu và/hoặc tiêu chuẩn chất lượng cho dự án và các sản phẩm giao nộp của nó, đồng thời ghi lại cách dự án sẽ chứng minh sự tuân thủ với các yêu cầu và/hoặc tiêu chuẩn chất lượng. Lợi ích chính của quy trình này là nó cung cấp hướng dẫn và định hướng về cách chất lượng sẽ được quản lý và xác minh xuyên suốt dự án. Quy trình này được thực hiện một lần hoặc tại các điểm được xác định trước trong dự án.</p>
+
+  <h4 id="s8-1-1">8.1.1 LẬP KẾ HOẠCH QUẢN LÝ CHẤT LƯỢNG: ĐẦU VÀO <span class="term-en">(INPUTS)</span></h4>
+  <h5>8.1.1.1 ĐIỀU LỆ DỰ ÁN <span class="term-en">(PROJECT CHARTER)</span></h5>
+  <p>Điều lệ dự án cung cấp mô tả dự án cấp cao, các đặc tính sản phẩm, và các tiêu chí phê duyệt dự án tổng thể, các yêu cầu có thể đo lường được và các mốc thời gian chính có tác động lớn đến quản lý chất lượng.</p>
+
+  <h5>8.1.1.2 KẾ HOẠCH QUẢN LÝ DỰ ÁN <span class="term-en">(PROJECT MANAGEMENT PLAN)</span></h5>
+  <p>Các thành phần bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok dash">
+    <li><strong>Kế hoạch quản lý yêu cầu (Requirements management plan):</strong> Xác định cách thức quản lý và phân tích các yêu cầu.</li>
+    <li><strong>Kế hoạch quản lý rủi ro (Risk management plan):</strong> Cung cấp phương pháp tiếp cận để nhận diện, phân tích và theo dõi các rủi ro liên quan đến chất lượng.</li>
+    <li><strong>Kế hoạch quản lý sự tham gia của bên liên quan (Stakeholder engagement plan):</strong> Cung cấp các tài liệu hướng dẫn về cách thức ghi chép các nhu cầu và kỳ vọng của bên liên quan.</li>
+    <li><strong>Đường cơ sở phạm vi (Scope baseline):</strong> Tuyên bố phạm vi dự án, WBS và từ điển WBS chứa đựng các tiêu chí chấp nhận, mô tả kỹ thuật sản phẩm quan trọng.</li>
+  </ul>
+
+  <h5>8.1.1.3 TÀI LIỆU DỰ ÁN <span class="term-en">(PROJECT DOCUMENTS)</span></h5>
+  <p>Bao gồm sổ nhật ký giả định, tài liệu yêu cầu, ma trận truy xuất nguồn gốc yêu cầu, sổ đăng ký rủi ro, và sổ đăng ký các bên liên quan.</p>
+
+  <h5>8.1.1.4 CÁC YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP VÀ TÀI SẢN QUY TRÌNH TỔ CHỨC <span class="term-en">(EEFS & OPAS)</span></h5>
+  <p>Các tiêu chuẩn của chính phủ hoặc ngành, các quy định pháp lý, điều kiện thị trường, hệ thống thông tin quản lý dự án (PMIS), chính sách chất lượng của tổ chức thực hiện, các biểu mẫu mẫu và cơ sở dữ liệu lịch sử bài học kinh nghiệm.</p>
+
+  <h4 id="s8-1-2">8.1.2 LẬP KẾ HOẠCH QUẢN LÝ CHẤT LƯỢNG: CÔNG CỤ VÀ KỸ THUẬT <span class="term-en">(TOOLS & TECHNIQUES)</span></h4>
+  <h5>8.1.2.1 ĐÁNH GIÁ CHUYÊN GIA <span class="term-en">(EXPERT JUDGMENT)</span></h5>
+  <p>Kiến thức từ các chuyên gia về đo lường chất lượng, kiểm thử phần mềm/sản phẩm, các tiêu chuẩn ISO hoặc các quy chuẩn ngành cụ thể.</p>
+
+  <h5>8.1.2.2 THU THẬP DỮ LIỆU <span class="term-en">(DATA GATHERING)</span></h5>
+  <ul class="pmbok">
+    <li><strong>Đối chuẩn (Benchmarking):</strong> So sánh các thực hành dự án hiện tại hoặc đã được lên kế hoạch với các dự án có thể so sánh được (nội bộ hoặc bên ngoài) để xác định các thực hành tốt nhất và thiết lập các tiêu chuẩn đo lường.</li>
+    <li><strong>Động não (Brainstorming):</strong> Thu thập các ý tưởng đa dạng về tiêu chuẩn chất lượng từ nhóm dự án.</li>
+    <li><strong>Phỏng vấn (Interviews):</strong> Trao đổi trực tiếp với các bên liên quan để tìm ra các yêu cầu chất lượng cụ thể hoặc ngầm định.</li>
+  </ul>
+
+  <h5>8.1.2.3 PHÂN TÍCH DỮ LIỆU <span class="term-en">(DATA ANALYSIS)</span></h5>
+  <ul class="pmbok">
+    <li><strong>Phân tích chi phí - lợi ích (Cost-benefit analysis):</strong> So sánh chi phí của việc thực hiện các bước đảm bảo chất lượng với lợi ích thu được. Lợi ích chính của việc đáp ứng yêu cầu chất lượng bao gồm ít phải làm lại hơn, năng suất cao hơn, chi phí thấp hơn, và sự hài lòng của khách hàng tăng cao.</li>
+    <li><strong>Chi phí chất lượng (Cost of quality - COQ):</strong> Bao gồm việc phân tích toàn bộ chi phí đầu tư cho chất lượng. COQ được chia thành:
+      <ul class="pmbok dash">
+        <li>Chi phí phù hợp (<span class="term">Cost of Conformance</span>): Gồm chi phí phòng ngừa (đào tạo, lập tài liệu quy trình, trang thiết bị tốt) và chi phí đánh giá (kiểm thử, kiểm tra, phá hủy sản phẩm thử nghiệm).</li>
+        <li>Chi phí không phù hợp (<span class="term">Cost of Nonconformance</span>): Gồm chi phí sai hỏng nội bộ (làm lại, sửa lỗi trước khi giao hàng) và chi phí sai hỏng bên ngoài (bảo hành, trách nhiệm pháp lý, mất khách hàng).</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h5>8.1.2.4 RA QUYẾT ĐỊNH <span class="term-en">(DECISION MAKING)</span></h5>
+  <p>Phân tích quyết định đa tiêu chí (<span class="term">Multicriteria decision analysis</span>) được sử dụng để xếp hạng và ưu tiên các yêu cầu chất lượng hoặc các giải pháp kỹ thuật dựa trên các tiêu chí trọng số được định nghĩa trước.</p>
+
+  <h5>8.1.2.5 TRÌNH BÀY DỮ LIỆU <span class="term-en">(DATA REPRESENTATION)</span></h5>
+  <ul class="pmbok dash">
+    <li><strong>Sơ đồ luồng (Flowcharts):</strong> Thể hiện bằng hình ảnh đồ họa chuỗi các bước quy trình, giúp xác định các điểm tiềm ẩn rủi ro hoặc lỗi chất lượng.</li>
+    <li><strong>Sơ đồ ma trận (Matrix diagrams):</strong> Thể hiện mối quan hệ giữa các yếu tố, các chỉ số đo lường hiệu suất và các mục tiêu chất lượng.</li>
+    <li><strong>Bản đồ tư duy (Mind mapping):</strong> Tổ chức trực quan các thông tin và ý tưởng liên quan đến chất lượng một cách logic.</li>
+  </ul>
+
+  <h5>8.1.2.6 LẬP KẾ HOẠCH KIỂM THỬ VÀ ĐÁNH GIÁ <span class="term-en">(TEST AND INSPECTION PLANNING)</span></h5>
+  <p>Xác định cách thức kiểm tra và kiểm thử sản phẩm giao nộp nhằm chứng minh sản phẩm đáp ứng đầy đủ các tiêu chí chấp nhận và đặc tả kỹ thuật.</p>
+
+  <h4 id="s8-1-3">8.1.3 LẬP KẾ HOẠCH QUẢN LÝ CHẤT LƯỢNG: ĐẦU RA <span class="term-en">(OUTPUTS)</span></h4>
+  <h5>8.1.3.1 KẾ HOẠCH QUẢN LÝ CHẤT LƯỢNG <span class="term-en">(QUALITY MANAGEMENT PLAN)</span></h5>
+  <p>Một thành phần của kế hoạch quản lý dự án, mô tả cách thức hệ thống quy trình, chính sách, tiêu chuẩn chất lượng của tổ chức thực hiện sẽ được áp dụng cụ thể vào dự án. Nó bao gồm các quy trình kiểm soát, các mục tiêu chất lượng, vai trò chịu trách nhiệm, các tài liệu biểu mẫu chất lượng và các thủ tục xử lý khi phát hiện lỗi không phù hợp.</p>
+
+  <h5>8.1.3.2 CÁC CHÌ SỐ CHẤT LƯỢNG <span class="term-en">(QUALITY METRICS)</span></h5>
+  <p>Mô tả cụ thể một thuộc tính của dự án hoặc sản phẩm và cách thức quy trình Kiểm soát Chất lượng sẽ đo lường nó. Các ví dụ bao gồm: tỷ lệ lỗi phần mềm, số lượng lỗi chức năng trên một nghìn dòng code, thời gian phản hồi hệ thống, hoặc số lượng các mục kiểm tra bị trượt.</p>
+
+  <h5>8.1.3.3 CẬP NHẬT KẾ HOẠCH QUẢN LÝ DỰ ÁN VÀ TÀI LIỆU DỰ ÁN <span class="term-en">(UPDATES)</span></h5>
+  <p>Cập nhật đường cơ sở chi phí, đường cơ sở tiến độ, kế hoạch quản lý rủi ro, ma trận truy xuất nguồn gốc yêu cầu, sổ đăng ký rủi ro và các bên liên quan.</p>
+
+  <h2 id="s8-2">8.2 QUẢN LÝ CHẤT LƯỢNG <span class="term-en">(MANAGE QUALITY)</span></h2>
+  <p>Quản lý Chất lượng là quy trình chuyển đổi kế hoạch quản lý chất lượng thành các hoạt động chất lượng có thể thực thi được nhằm kết hợp các chính sách chất lượng của tổ chức vào dự án. Lợi ích chính của quy trình này là nó nâng cao xác suất đáp ứng các mục tiêu chất lượng, nhận diện các quy trình không hiệu quả và xác định nguyên nhân của chất lượng kém. Quy trình này được thực hiện xuyên suốt dự án.</p>
+
+  <p>Quản lý Chất lượng đôi khi được gọi là Đảm bảo Chất lượng (<span class="term">Quality Assurance - QA</span>), tuy nhiên Quản lý Chất lượng có phạm vi rộng hơn QA vì nó tập trung cả vào các khía cạnh thiết kế sản phẩm, cải tiến quy trình liên tục và sử dụng các tạo tác chất lượng khác để gia tăng hiệu suất công việc.</p>
+
+  <h4 id="s8-2-1">8.2.1 QUẢN LÝ CHẤT LƯỢNG: ĐẦU VÀO <span class="term-en">(INPUTS)</span></h4>
+  <p>Đầu vào bao gồm Kế hoạch quản lý chất lượng, các tài liệu dự án (sổ đăng ký bài học kinh nghiệm, đo lường kiểm soát chất lượng, các chỉ số chất lượng, báo cáo rủi ro) và tài sản quy trình tổ chức (OPAs).</p>
+
+  <h4 id="s8-2-2">8.2.2 QUẢN LÝ CHẤT LƯỢNG: CÔNG CỤ VÀ KỸ THUẬT <span class="term-en">(TOOLS & TECHNIQUES)</span></h4>
+  <h5>8.2.2.1 THU THẬP DỮ LIỆU <span class="term-en">(DATA GATHERING)</span></h5>
+  <p>Sử dụng bảng danh sách kiểm tra (<span class="term">Checklists</span>) như một công cụ cấu trúc để xác minh rằng một tập hợp các bước bắt buộc đã được thực hiện đầy đủ.</p>
+
+  <h5>8.2.2.2 PHÂN TÍCH DỮ LIỆU <span class="term-en">(DATA ANALYSIS)</span></h5>
+  <ul class="pmbok">
+    <li><strong>Phân tích các phương án thay thế (Alternatives analysis):</strong> Đánh giá các phương án kỹ thuật hoặc vận hành để chọn giải pháp chất lượng tối ưu.</li>
+    <li><strong>Phân tích tài liệu (Document analysis):</strong> Đánh giá các tài liệu báo cáo hiệu suất, kết quả kiểm thử để tìm ra lỗi hoặc điểm bất thường trong hệ thống.</li>
+    <li><strong>Phân tích quy trình (Process analysis):</strong> Nhận diện các cải tiến cần thiết cho quy trình, xác định các bước không tạo ra giá trị gia tăng hoặc các lãng phí (waste).</li>
+    <li><strong>Phân tích nguyên nhân gốc rễ (Root cause analysis - RCA):</strong> Kỹ thuật phân tích nhằm xác định lý do cốt lõi dẫn đến một lỗi, vấn đề, hoặc sự sai lệch. Việc loại bỏ nguyên nhân gốc rễ sẽ ngăn chặn lỗi tái phát.</li>
+  </ul>
+
+  <h5>8.2.2.3 TRÌNH BÀY DỮ LIỆU <span class="term-en">(DATA REPRESENTATION)</span></h5>
+  <p></p>
+  <ul class="pmbok">
+    <li><strong>Sơ đồ nhân quả (Cause-and-effect diagrams):</strong> Còn được gọi là sơ đồ xương cá (<span class="term">fishbone diagrams</span>) hoặc sơ đồ Ishikawa. Sơ đồ này chia nhỏ các nguyên nhân tiềm ẩn gây ra lỗi thành các danh mục chính (ví dụ: Con người, Máy móc, Phương pháp, Vật liệu) để tìm ra nguồn gốc của vấn đề.</li>
+    <li><strong>Biểu đồ Pareto (Pareto diagrams):</strong> Một dạng biểu đồ cột đặc biệt hiển thị số lượng lỗi được sắp xếp theo tần suất xuất hiện giảm dần, giúp nhóm dự án tập trung vào các nguyên nhân chính gây ra phần lớn các vấn đề (quy tắc 80/20).</li>
+    <li><strong>Biểu đồ Histogram:</strong> Hiển thị phân phối tần suất của một biến số biến đổi trong quy trình.</li>
+    <li><strong>Biểu đồ phân tán (Scatter diagrams):</strong> Thể hiện mối quan hệ giữa hai biến số, giúp xác định xem liệu một sự thay đổi trong một thuộc tính có liên quan đến một thay đổi ở thuộc tính khác hay không.</li>
+  </ul>
+
+  <h5>8.2.2.4 KIỂM TOÁN <span class="term-en">(AUDITS)</span></h5>
+  <p>Kiểm toán chất lượng (<span class="term">Quality Audits</span>) là một cuộc đánh giá độc lập, có cấu trúc nhằm xác định xem các hoạt động của dự án có tuân thủ đúng theo các chính sách, quy trình và thủ tục của tổ chức hay không. Mục tiêu là chia sẻ thực hành tốt, khắc phục các điểm không tuân thủ, và nâng cao hiệu quả quy trình nhằm giảm chi phí chất lượng kém.</p>
+
+  <h5>8.2.2.5 THIẾT KẾ VÌ X <span class="term-en">(DESIGN FOR X - DFX)</span></h5>
+  <p>Một tập hợp các hướng dẫn kỹ thuật được áp dụng trong quá trình thiết kế sản phẩm nhằm tối ưu hóa một khía cạnh cụ thể "X" của sản phẩm (ví dụ: Thiết kế vì khả năng sản xuất - Design for Manufacturing, Thiết kế vì tính bền vững, Thiết kế vì độ tin cậy). DfX có thể giúp hạ thấp chi phí và cải thiện chất lượng sản phẩm cuối cùng một cách đáng kể.</p>
+
+  <h5>8.2.2.6 GIẢI QUYẾT VẤN ĐỀ <span class="term-en">(PROBLEM SOLVING)</span></h5>
+  <p>Phương pháp tiếp cận có cấu trúc để giải quyết các vấn đề chất lượng, bao gồm các bước: xác định vấn đề, tìm nguyên nhân gốc rễ, đưa ra các giải pháp thay thế, chọn giải pháp tối ưu, thực hiện và xác minh tính hiệu quả của giải pháp.</p>
+
+  <h4 id="s8-2-3">8.2.3 QUẢN LÝ CHẤT LƯỢNG: ĐẦU RA <span class="term-en">(OUTPUTS)</span></h4>
+  <ul class="pmbok dash">
+    <li><strong>Báo cáo chất lượng (Quality reports):</strong> Tài liệu tóm tắt các vấn đề quản lý chất lượng gặp phải, các khuyến nghị cải tiến quy trình, sản phẩm, và các hành động khắc phục (như làm lại, sửa lỗi).</li>
+    <li><strong>Tài liệu kiểm thử và đánh giá (Test and evaluation documents):</strong> Được sử dụng để đánh giá việc đáp ứng các mục tiêu chất lượng. Các tài liệu này có thể bao gồm danh sách kiểm tra kiểm thử (test checklists) và ma trận yêu cầu kiểm thử.</li>
+    <li><strong>Yêu cầu thay đổi (Change requests):</strong> Nếu quy trình Quản lý Chất lượng phát hiện ra các điểm cần sửa đổi trong quy trình hoặc đường cơ sở.</li>
+    <li><strong>Cập nhật kế hoạch quản lý dự án và tài liệu dự án:</strong> Cập nhật kế hoạch quản lý chất lượng, các đường cơ sở hiệu suất, sổ nhật ký vấn đề, sổ đăng ký bài học kinh nghiệm, rủi ro.</li>
+  </ul>
+
+  <h2 id="s8-3">8.3 KIỂM SOÁT CHẤT LƯỢNG <span class="term-en">(CONTROL QUALITY)</span></h2>
+  <p>Kiểm soát Chất lượng là quy trình giám sát và ghi lại các kết quả của việc thực thi các hoạt động quản lý chất lượng để đánh giá hiệu suất và đảm bảo các đầu ra của dự án là hoàn chỉnh, chính xác, và đáp ứng kỳ vọng của khách hàng. Lợi ích chính của quy trình này là xác minh rằng các sản phẩm giao nộp của dự án đáp ứng tất cả các yêu cầu do các bên liên quan chỉ định cho việc nghiệm thu chính thức. Quy trình này được thực hiện xuyên suốt dự án.</p>
+
+  <h4 id="s8-3-1">8.3.1 KIỂM SOÁT CHẤT LƯỢNG: ĐẦU VÀO <span class="term-en">(INPUTS)</span></h4>
+  <p>Bao gồm: Kế hoạch quản lý dự án, tài liệu dự án (nhật ký vấn đề, bài học kinh nghiệm, các chỉ số chất lượng, tài liệu kiểm thử và đánh giá), yêu cầu thay đổi đã được phê duyệt, các sản phẩm giao nộp (deliverables - công việc thô), dữ liệu hiệu suất công việc (work performance data), EEFs và OPAs.</p>
+
+  <h4 id="s8-3-2">8.3.2 KIỂM SOÁT CHẤT LƯỢNG: CÔNG CỤ VÀ KỸ THUẬT <span class="term-en">(TOOLS & TECHNIQUES)</span></h4>
+  <h5>8.3.2.1 THU THẬP DỮ LIỆU <span class="term-en">(DATA GATHERING)</span></h5>
+  <ul class="pmbok">
+    <li><strong>Bảng kiểm đếm (Check sheets):</strong> Còn được gọi là bảng đếm (tally sheets), được sử dụng để tổ chức và thu thập dữ liệu một cách hiệu quả khi thực hiện kiểm tra thực tế nhằm ghi lại các sự kiện lỗi.</li>
+    <li><strong>Lấy mẫu thống kê (Statistical sampling):</strong> Lựa chọn một phần của tập hợp sản phẩm (nhóm mẫu) để tiến hành kiểm tra nhằm tiết kiệm chi phí và thời gian.</li>
+    <li><strong>Bản câu hỏi và khảo sát:</strong> Thu thập phản hồi từ người dùng/khách hàng về chất lượng dịch vụ hoặc sản phẩm sau khi bàn giao thử nghiệm.</li>
+  </ul>
+
+  <h5>8.3.2.2 PHÂN TÍCH DỮ LIỆU VÀ KIỂM TRA <span class="term-en">(DATA ANALYSIS & INSPECTION)</span></h5>
+  <ul class="pmbok">
+    <li><strong>Kiểm tra (Inspection):</strong> Việc kiểm tra, đánh giá trực tiếp đối với một sản phẩm giao nộp để xác định xem nó có tuân thủ các tiêu chuẩn chất lượng và tiêu chí chấp nhận hay không. Kết quả của một cuộc kiểm tra có thể được gọi là các phát hiện (<span class="term">findings</span>).</li>
+    <li><strong>Kiểm thử / Đánh giá sản phẩm (Testing):</strong> Các hoạt động có cấu trúc và có tính chất kỹ thuật nhằm phát hiện lỗi, bugs, hoặc các sự cố vận hành của sản phẩm trước khi giao hàng.</li>
+  </ul>
+
+  <h5>8.3.2.3 BIỂU ĐỒ KIỂM SOÁT <span class="term-en">(CONTROL CHARTS)</span></h5>
+  <p>
+
+[Image of a Control Chart with Upper and Lower Control Limits]
+</p>
+  <p>Biểu đồ kiểm soát (<span class="term">Control charts</span>) được sử dụng để xác định xem liệu một quy trình có đang ở trạng thái ổn định hoặc có hiệu suất hoạt động có thể dự đoán được hay không. Các giới hạn kiểm soát trên và dưới (Upper/Lower Control Limits) thường được thiết lập ở mức ±3 độ lệch chuẩn (standard deviations) so với mức trung bình của quy trình. Quy trình được coi là mất kiểm soát nếu một điểm dữ liệu vượt ngoài giới hạn kiểm soát hoặc nếu có 7 điểm dữ liệu liên tiếp nằm về một phía của đường trung bình (quy tắc số 7 - rule of seven).</p>
+
+  <h4 id="s8-3-3">8.3.3 KIỂM SOÁT CHẤT LƯỢNG: ĐẦU RA <span class="term-en">(OUTPUTS)</span></h4>
+  <ul class="pmbok check">
+    <li><strong>Đo lường kiểm soát chất lượng (Quality control measurements):</strong> Kết quả được lập thành văn bản của các hoạt động kiểm soát chất lượng, thể hiện dưới dạng các thông số cụ thể chứng minh mức độ tuân thủ tiêu chuẩn.</li>
+    <li><strong>Sản phẩm giao nộp đã được xác minh (Verified deliverables):</strong> Các sản phẩm giao nộp đã qua kiểm tra chất lượng và được chứng nhận là chính xác, không có lỗi. Các sản phẩm này sẽ là đầu vào trực tiếp cho quy trình Xác nhận Phạm vi (<span class="term">Validate Scope</span>) để khách hàng/nhà tài trợ nghiệm thu chính thức.</li>
+    <li><strong>Thông tin hiệu suất công việc (Work performance information):</strong> Thông tin được đúc kết từ việc đối chiếu dữ liệu thực tế (lỗi, tỉ lệ trượt kiểm thử) với tiêu chuẩn đường cơ sở, bao gồm nguyên nhân của sự không phù hợp và các bước xử lý tiếp theo.</li>
+    <li><strong>Yêu cầu thay đổi (Change requests):</strong> Đề xuất các hành động khắc phục hoặc phòng ngừa (như sửa lỗi/bug) đối với các sản phẩm không đạt chuẩn.</li>
+    <li><strong>Cập nhật kế hoạch quản lý dự án và tài liệu dự án:</strong> Cập nhật kế hoạch quản lý chất lượng, nhật ký vấn đề, sổ đăng ký bài học kinh nghiệm, sổ đăng ký rủi ro, tài liệu kiểm thử và đánh giá.</li>
+  </ul>
+
+</main>
 </body>
 </html>
