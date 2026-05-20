@@ -527,7 +527,10 @@ async function loadFromGist() {
     const data = await gistRequest('GET', `/gists/${gistConfig.gistId}`);
     const content = data.files[GIST_FILENAME] && data.files[GIST_FILENAME].content;
     if (content) Object.assign(state, JSON.parse(content));
-  } catch (_) {}
+  } catch (err) {
+    console.warn('loadFromGist failed:', err.message);
+    setSyncIndicator('error');
+  }
 }
 
 async function saveToGist() {
@@ -554,13 +557,13 @@ document.getElementById('gist-connect').addEventListener('click', async () => {
   statusEl.className = '';
   try {
     gistConfig = { token, gistId: null };
-    await gistRequest('GET', '/gists');
     await findOrCreateGist();
     await loadFromGist();
     saveGistConfig(gistConfig);
     statusEl.textContent = '✓ Kết nối thành công!';
     statusEl.className = 'ok';
     renderSidebar();
+    loadChapter(state.lastChapter);
     setTimeout(() => { document.getElementById('gist-modal').hidden = true; }, 1200);
   } catch (err) {
     statusEl.textContent = 'Lỗi: ' + err.message;
