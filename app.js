@@ -148,8 +148,10 @@ const BRIDGE_SCRIPT = `
 
   const ORIGIN = window.parent.location.origin;
 
-  // Hide chapter's own sidebar
+  // Hide chapter's own sidebar and fix main layout
   document.querySelector('#sidebar')?.remove();
+  const mainEl = document.querySelector('#main');
+  if (mainEl) { mainEl.style.marginLeft = '0'; mainEl.style.maxWidth = '100%'; }
 
   // ── SCROLL TRACKING ──
   let scrollTimer;
@@ -370,13 +372,17 @@ function loadChapter(id) {
     return;
   }
 
-  // Load chapter in iframe
-  frame.src = `chapters/${id}.html`;
-
+  // IMPORTANT: assign onload BEFORE setting src to avoid missing the event on cached loads
   frame.onload = () => {
     try {
-      // Inject bridge script
       const iwin = frame.contentWindow;
+
+      // Fix chapter layout: chapter HTML has margin-left:260px for its own sidebar.
+      // We removed the sidebar, so reset the margin so content fills the iframe.
+      const mainEl = iwin.document.querySelector('#main');
+      if (mainEl) mainEl.style.marginLeft = '0';
+
+      // Inject bridge script
       const script = iwin.document.createElement('script');
       script.textContent = BRIDGE_SCRIPT;
       iwin.document.body.appendChild(script);
@@ -406,6 +412,9 @@ function loadChapter(id) {
       console.warn('iframe bridge error:', err);
     }
   };
+
+  // Set src AFTER onload handler is assigned
+  frame.src = `chapters/${id}.html`;
 }
 
 // ── MESSAGES FROM IFRAME ──
