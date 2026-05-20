@@ -115,9 +115,19 @@ function loadFromLocalStorage() {
 async function saveData() {
   try {
     localStorage.setItem(LS_KEY, JSON.stringify(state));
-    setSyncIndicator('saved');
   } catch (_) {
     setSyncIndicator('error');
+    return;
+  }
+  if (gistConfig && gistConfig.token && gistConfig.gistId) {
+    try {
+      await saveToGist();
+      setSyncIndicator('saved');
+    } catch (_) {
+      setSyncIndicator('error');
+    }
+  } else {
+    setSyncIndicator('saved');
   }
 }
 
@@ -465,9 +475,146 @@ document.getElementById('note-save').addEventListener('click', () => {
   document.getElementById('note-modal').hidden = true;
 });
 
+// ── GIST SYNC ──
+const GIST_FILENAME = 'pmbok6-progress.json';
+const LS_GIST_KEY = 'pmbok6_gist';
+
+function loadGistConfig() {
+  try {
+    const raw = localStorage.getItem(LS_GIST_KEY);
+    if (raw) gistConfig = JSON.parse(raw);
+  } catch (_) {}
+}
+
+function saveGistConfig(cfg) {
+  gistConfig = cfg;
+  localStorage.setItem(LS_GIST_KEY, JSON.stringify(cfg));
+}
+
+async function gistRequest(method, path, body) {
+  const res = await fetch('https://api.github.com' + path, {
+    method,
+    headers: {
+      'Authorization': 'Bearer ' + gistConfig.token,
+      'Accept': 'application/vnd.github+json',
+      'Content-Type': 'application/json',
+    },
+    body: body ? JSON.stringify(body) : undefined,
+  });
+  if (!res.ok) throw new Error(`GitHub API ${res.status}`);
+  return res.json();
+}
+
+async function findOrCreateGist() {
+  const gists = await gistRequest('GET', '/gists');
+  const found = gists.find(g => g.files && g.files[GIST_FILENAME]);
+  if (found) {
+    saveGistConfig({ ...gistConfig, gistId: found.id });
+    return found.id;
+  }
+  const created = await gistRequest('POST', '/gists', {
+    description: 'PMBOK 6 learning progress',
+    public: false,
+    files: { [GIST_FILENAME]: { content: JSON.stringify(state, null, 2) } },
+  });
+  saveGistConfig({ ...gistConfig, gistId: created.id });
+  return created.id;
+}
+
+async function loadFromGist() {
+  if (!gistConfig || !gistConfig.token || !gistConfig.gistId) return;
+  try {
+    const data = await gistRequest('GET', `/gists/${gistConfig.gistId}`);
+    const content = data.files[GIST_FILENAME] && data.files[GIST_FILENAME].content;
+    if (content) Object.assign(state, JSON.parse(content));
+  } catch (_) {}
+}
+
+async function saveToGist() {
+  if (!gistConfig || !gistConfig.token || !gistConfig.gistId) return;
+  await gistRequest('PATCH', `/gists/${gistConfig.gistId}`, {
+    files: { [GIST_FILENAME]: { content: JSON.stringify(state, null, 2) } },
+  });
+}
+
+// ── GIST MODAL ──
+document.getElementById('btn-gist-settings').addEventListener('click', () => {
+  document.getElementById('gist-modal').hidden = false;
+});
+
+document.getElementById('gist-offline').addEventListener('click', () => {
+  document.getElementById('gist-modal').hidden = true;
+});
+
+document.getElementById('gist-connect').addEventListener('click', async () => {
+  const token = document.getElementById('gist-token-input').value.trim();
+  if (!token) return;
+  const statusEl = document.getElementById('gist-status');
+  statusEl.textContent = 'Đang kiểm tra token...';
+  statusEl.className = '';
+  try {
+    gistConfig = { token, gistId: null };
+    await gistRequest('GET', '/gists');
+    await findOrCreateGist();
+    await loadFromGist();
+    saveGistConfig(gistConfig);
+    statusEl.textContent = '✓ Kết nối thành công!';
+    statusEl.className = 'ok';
+    renderSidebar();
+    setTimeout(() => { document.getElementById('gist-modal').hidden = true; }, 1200);
+  } catch (err) {
+    statusEl.textContent = 'Lỗi: ' + err.message;
+    statusEl.className = 'error';
+    gistConfig = null;
+  }
+});
+
+document.getElementById('sync-indicator').addEventListener('click', () => {
+  if (document.getElementById('sync-indicator').classList.contains('sync-error')) {
+    scheduleSave();
+  }
+});
+
+// ── EXPORT / IMPORT ──
+document.getElementById('btn-export').addEventListener('click', () => {
+  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'pmbok6-progress.json';
+  a.click();
+  URL.revokeObjectURL(url);
+});
+
+document.getElementById('import-file').addEventListener('change', e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      Object.assign(state, JSON.parse(ev.target.result));
+      localStorage.setItem(LS_KEY, JSON.stringify(state));
+      renderSidebar();
+      loadChapter(state.lastChapter);
+      document.getElementById('gist-modal').hidden = true;
+    } catch (_) {
+      alert('File JSON không hợp lệ.');
+    }
+  };
+  reader.readAsText(file);
+});
+
 // ── BOOT ──
 document.addEventListener('DOMContentLoaded', async () => {
   loadFromLocalStorage();
+  loadGistConfig();
+  if (gistConfig && gistConfig.token && gistConfig.gistId) {
+    setSyncIndicator('saving');
+    await loadFromGist();
+    setSyncIndicator('saved');
+  } else if (!gistConfig) {
+    document.getElementById('gist-modal').hidden = false;
+  }
   renderSidebar();
   loadChapter(state.lastChapter);
 });
