@@ -48,17 +48,17 @@
 
 <!-- HIGHLIGHT POPUP -->
 <div id="highlight-popup" hidden>
-  <button class="hl-color" data-color="yellow" title="Vàng">🟡</button>
-  <button class="hl-color" data-color="green" title="Xanh">🟢</button>
-  <button class="hl-color" data-color="red" title="Đỏ">🔴</button>
+  <button class="hl-color" data-color="yellow" title="Vàng" aria-label="Gạch vàng">🟡</button>
+  <button class="hl-color" data-color="green" title="Xanh" aria-label="Gạch xanh">🟢</button>
+  <button class="hl-color" data-color="red" title="Đỏ" aria-label="Gạch đỏ">🔴</button>
   <button id="hl-note-btn" title="Ghi chú">✏️</button>
   <button id="hl-delete-btn" hidden title="Xóa">🗑</button>
 </div>
 
 <!-- NOTE MODAL -->
-<div id="note-modal" hidden>
+<div id="note-modal" hidden role="dialog" aria-modal="true" aria-labelledby="note-modal-title">
   <div id="note-modal-box">
-    <h3>Ghi chú</h3>
+    <h3 id="note-modal-title">Ghi chú</h3>
     <textarea id="note-textarea" rows="4" placeholder="Nhập ghi chú..."></textarea>
     <div id="note-modal-actions">
       <button id="note-cancel">Hủy</button>
@@ -68,9 +68,9 @@
 </div>
 
 <!-- GIST SETUP MODAL -->
-<div id="gist-modal" hidden>
+<div id="gist-modal" hidden role="dialog" aria-modal="true" aria-labelledby="gist-modal-title">
   <div id="gist-modal-box">
-    <h3>⚙ Kết nối GitHub Gist</h3>
+    <h3 id="gist-modal-title">⚙ Kết nối GitHub Gist</h3>
     <ol>
       <li>Vào <strong>github.com → Settings → Developer Settings → Personal Access Tokens (classic)</strong></li>
       <li>Tạo token với quyền: <code>gist</code></li>
@@ -83,9 +83,9 @@
     </div>
     <p id="gist-status"></p>
     <p class="gist-note">🔒 Token chỉ lưu trong localStorage, không gửi đi đâu ngoài api.github.com</p>
-    <hr style="margin: 1rem 0; border-color: #eee;">
-    <p style="font-size:0.82rem;color:#666;margin-bottom:0.5rem">Sao lưu thủ công:</p>
-    <div style="display:flex;gap:0.5rem">
+    <hr class="gist-divider">
+    <p class="gist-backup-label">Sao lưu thủ công:</p>
+    <div class="gist-backup-actions">
       <button id="btn-export">⬇ Xuất JSON</button>
       <label id="btn-import-label">⬆ Nhập JSON<input type="file" id="import-file" accept=".json" hidden></label>
     </div>
