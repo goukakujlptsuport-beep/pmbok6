@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chương 5 – Quản Lý Phạm Vi Dự Án | PMBOK® Guide Lần 6</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a3;
+    --cream: #fdf8f0;
+    --text: #2c2c2c;
+    --text-light: #5a5a5a;
+    --border: #d4c89a;
+    --accent: #8b1a1a;
+    --sidebar-w: 260px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Merriweather', Georgia, serif;
+    background: var(--cream);
+    color: var(--text);
+    display: flex;
+    min-height: 100vh;
+  }
+  /* SIDEBAR */
+  #sidebar {
+    width: var(--sidebar-w);
+    background: var(--navy);
+    color: #ccd4e8;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    overflow-y: auto;
+    z-index: 100;
+    padding: 0 0 2rem;
+    border-right: 3px solid var(--gold);
+  }
+  #sidebar-header {
+    background: linear-gradient(135deg, #0f1d3a 0%, #1a2744 100%);
+    padding: 1.5rem 1.2rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  #sidebar-header .book-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  #sidebar-header h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+  }
+  #sidebar-header .edition {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    color: var(--gold-light);
+    font-style: italic;
+  }
+  #sidebar nav { padding: 0.8rem 0; }
+  #sidebar nav a {
+    display: block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    color: #aab8d0;
+    text-decoration: none;
+    padding: 0.45rem 1.2rem;
+    line-height: 1.4;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+  }
+  #sidebar nav a:hover, #sidebar nav a.active {
+    color: #fff;
+    background: rgba(201,168,76,0.12);
+    border-left-color: var(--gold);
+  }
+  #sidebar nav .section-group { margin-top: 0.4rem; }
+  #sidebar nav .group-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 0.8rem 1.2rem 0.3rem;
+    opacity: 0.85;
+  }
+  #sidebar nav a.sub {
+    padding-left: 2rem;
+    font-size: 0.75rem;
+    color: #8896b0;
+  }
+  #sidebar nav a.sub:hover { color: #ccd4e8; }
+  /* MAIN */
+  #main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    max-width: 900px;
+    padding: 0 3rem 5rem;
+  }
+  /* CHAPTER HEADER */
+  .chapter-hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #2a3a6a 100%);
+    color: white;
+    padding: 3rem 3rem 2.5rem;
+    margin: 0 -3rem 3rem;
+    border-bottom: 4px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-hero::before {
+    content: '5';
+    position: absolute;
+    right: 2rem; top: 50%;
+    transform: translateY(-50%);
+    font-size: 12rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.05);
+    font-family: 'Merriweather', serif;
+    line-height: 1;
+  }
+  .chapter-hero .ch-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .chapter-hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+  }
+  .chapter-hero .ch-en {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+    font-style: italic;
+  }
+  /* CONTENT STYLES */
+  h2 {
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  h3 {
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin: 2rem 0 0.7rem;
+    padding-left: 0.8rem;
+    border-left: 4px solid var(--gold);
+  }
+  h4 {
+    font-size: 1rem;
+    color: var(--accent);
+    margin: 1.5rem 0 0.5rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  h5 {
+    font-size: 0.95rem;
+    color: var(--navy);
+    margin: 1.2rem 0 0.5rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+  }
+  p {
+    font-size: 0.97rem;
+    line-height: 1.85;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+  /* BILINGUAL TERM */
+  .term {
+    display: inline;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .term-en {
+    font-style: italic;
+    color: var(--text-light);
+    font-size: 0.88em;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+  /* BULLET LISTS */
+  ul.pmbok {
+    list-style: none;
+    margin: 0.5rem 0 1rem 0;
+    padding: 0;
+  }
+  ul.pmbok li {
+    position: relative;
+    padding: 0.3rem 0 0.3rem 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--text);
+  }
+  ul.pmbok li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.7rem;
+    top: 0.5rem;
+  }
+  ul.pmbok.check li::before { content: '☑'; color: #2d7a2d; font-size: 0.9rem; top: 0.35rem; }
+  ul.pmbok.dash li::before { content: '■'; color: var(--navy); font-size: 0.6rem; top: 0.5rem; }
+  /* FIGURE */
+  .figure-wrap {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1.2rem;
+    background: #f8f5ee;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .figure-wrap img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  }
+  .figure-caption {
+    margin-top: 0.75rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.83rem;
+    color: var(--text-light);
+    font-style: italic;
+  }
+  .figure-caption strong {
+    color: var(--navy);
+    font-style: normal;
+  }
+  /* TABLES */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+  .table-wrap > .table-caption {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.82rem;
+    font-style: italic;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.84rem;
+  }
+  table th {
+    background: var(--navy);
+    color: white;
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+  table td {
+    padding: 0.55rem 0.8rem;
+    border: 1px solid #ddd;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  table tr:nth-child(even) td { background: #f9f6ef; }
+  @media(max-width:900px){
+    #sidebar { display: none; }
+    #main { margin-left: 0; padding: 0 1.2rem 4rem; }
+    .chapter-hero { margin: 0 -1.2rem 2rem; padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<aside id="sidebar">
+  <div id="sidebar-header">
+    <div class="book-label">PMBOK® Guide</div>
+    <h2>Hướng Dẫn Quản Lý Dự Án</h2>
+    <div class="edition">Lần xuất bản thứ 6 · Tiếng Việt</div>
+  </div>
+  <nav>
+    <div class="section-group">
+      <div class="group-label">Chương 5 · Quản Lý Phạm Vi</div>
+      <a href="#s5-1">5.1 Lập KH Quản Lý Phạm Vi</a>
+      <a href="#s5-2">5.2 Thu Thập Yêu Cầu</a>
+      <a href="#s5-3">5.3 Định Nghĩa Phạm Vi</a>
+      <a href="#s5-4">5.4 Tạo Cấu Trúc WBS</a>
+      <a href="#s5-5">5.5 Xác Nhận Phạm Vi</a>
+      <a href="#s5-6">5.6 Kiểm Soát Phạm Vi</a>
+    </div>
+  </nav>
+</aside>
+
+<main id="main">
+
+  <div class="chapter-hero">
+    <div class="ch-label">Chương 5</div>
+    <h1>QUẢN LÝ PHẠM VI DỰ ÁN</h1>
+    <div class="ch-en">Project Scope Management</div>
+  </div>
+
+  <p>Quản lý Phạm vi Dự án (<span class="term">Project Scope Management</span>) bao gồm các quy trình cần thiết để đảm bảo rằng dự án bao gồm tất cả các công việc được yêu cầu, và chỉ những công việc được yêu cầu, để hoàn thành dự án thành công. Quản lý phạm vi dự án chủ yếu liên quan đến việc định nghĩa và kiểm soát những gì được và không được bao gồm trong dự án.</p>
+
+  <p>Các quy trình Quản lý Phạm vi Dự án bao gồm:</p>
+
+  <ul class="pmbok dash">
+    <li><strong>5.1 Lập kế hoạch Quản lý Phạm vi (<span class="term-en">Plan Scope Management</span>)</strong> — Quy trình tạo ra một kế hoạch quản lý phạm vi ghi lại cách thức phạm vi dự án và sản phẩm sẽ được định nghĩa, xác nhận, và kiểm soát.</li>
+    <li><strong>5.2 Thu thập Yêu cầu (<span class="term-en">Collect Requirements</span>)</strong> — Quy trình xác định, lập tài liệu, và quản lý các nhu cầu và yêu cầu của các bên liên quan để đáp ứng các mục tiêu của dự án.</li>
+    <li><strong>5.3 Định nghĩa Phạm vi (<span class="term-en">Define Scope</span>)</strong> — Quy trình phát triển một bản mô tả chi tiết về dự án và sản phẩm.</li>
+    <li><strong>5.4 Tạo Cấu trúc Phân chia Công việc (<span class="term-en">Create WBS</span>)</strong> — Quy trình chia nhỏ các sản phẩm giao nộp của dự án và công việc dự án thành các thành phần nhỏ hơn, dễ quản lý hơn.</li>
+    <li><strong>5.5 Xác nhận Phạm vi (<span class="term-en">Validate Scope</span>)</strong> — Quy trình chính thức hóa việc nghiệm thu các sản phẩm giao nộp của dự án đã hoàn thành.</li>
+    <li><strong>5.6 Kiểm soát Phạm vi (<span class="term-en">Control Scope</span>)</strong> — Quy trình theo dõi trạng thái của phạm vi dự án và sản phẩm, đồng thời quản lý các thay đổi đối với đường cơ sở phạm vi.</li>
+  </ul>
+
+  <p>Hình 5-1 cung cấp một cái nhìn tổng quan về các quy trình Quản lý Phạm vi Dự án. Các quy trình Quản lý Phạm vi Dự án được trình bày như những quy trình rời rạc với các giao diện được xác định rõ ràng, tuy nhiên trong thực tế, chúng trùng lặp và tương tác theo những cách không thể trình bày chi tiết hoàn toàn trong Hướng dẫn PMBOK®.</p>
+
+  <div class="figure-wrap">
+    <div class="figure-caption"><strong>Hình 5-1.</strong> Tổng quan về Quản lý Phạm vi Dự án <span class="term-en">(Project Scope Management Overview)</span></div>
+  </div>
+
+  <h3 id="key-concepts">CÁC KHÁI NIỆM CHÍNH CHO QUẢN LÝ PHẠM VI DỰ ÁN <span class="term-en">(KEY CONCEPTS FOR PROJECT SCOPE MANAGEMENT)</span></h3>
+  <p>Trong bối cảnh dự án, thuật ngữ "phạm vi" (<span class="term">scope</span>) có thể đề cập đến:</p>
+  <ul class="pmbok">
+    <li><strong>Phạm vi sản phẩm (<span class="term">Product scope</span>).</strong> Các tính năng và chức năng đặc trưng cho một sản phẩm, dịch vụ, hoặc kết quả.</li>
+    <li><strong>Phạm vi dự án (<span class="term">Project scope</span>).</strong> Công việc được thực hiện để bàn giao một sản phẩm, dịch vụ, hoặc kết quả với các tính năng và chức năng đã được chỉ định. Thuật ngữ "phạm vi dự án" đôi khi được xem là bao gồm cả phạm vi sản phẩm.</li>
+  </ul>
+
+  <p>Các vòng đời dự án có thể trải dài trên một dải liên tục, từ các phương pháp tiếp cận dự đoán (predictive) ở một đầu cho đến các phương pháp tiếp cận thích nghi (adaptive) hoặc linh hoạt (agile) ở đầu kia. Trong một vòng đời dự đoán, các sản phẩm giao nộp của dự án được định nghĩa vào lúc bắt đầu dự án và mọi thay đổi đối với phạm vi đều được quản lý dần dần. Trong một vòng đời thích nghi hoặc linh hoạt, các sản phẩm giao nộp được phát triển qua nhiều lần lặp (iterations), nơi một phạm vi chi tiết được định nghĩa và phê duyệt cho mỗi lần lặp trước khi nó bắt đầu.</p>
+
+  <p>Các dự án có vòng đời thích nghi được thiết kế để phản hồi với mức độ thay đổi cao và đòi hỏi sự tham gia liên tục của các bên liên quan. Phạm vi tổng thể của một dự án thích nghi sẽ được chia nhỏ thành một tập hợp các yêu cầu và công việc cần thực hiện, đôi khi được gọi là một danh sách tồn đọng của sản phẩm (<span class="term">product backlog</span>). Vào lúc bắt đầu của một lần lặp, nhóm sẽ làm việc để xác định xem bao nhiêu hạng mục có mức độ ưu tiên cao nhất trong danh sách tồn đọng có thể được bàn giao trong lần lặp tiếp theo. Ba quy trình (Thu thập Yêu cầu, Định nghĩa Phạm vi, và Tạo WBS) được lặp lại cho mỗi lần lặp. Ngược lại, trong một dự án dự đoán, các quy trình này được thực hiện vào khoảng đầu của dự án và được cập nhật khi cần thiết, sử dụng quy trình kiểm soát thay đổi tích hợp.</p>
+
+  <p>Trong một vòng đời thích nghi hoặc linh hoạt, nhà tài trợ và đại diện khách hàng nên liên tục tham gia vào dự án để cung cấp phản hồi về các sản phẩm giao nộp khi chúng được tạo ra, và để đảm bảo rằng product backlog phản ánh đúng các nhu cầu hiện tại của họ. Hai quy trình (Xác nhận Phạm vi và Kiểm soát Phạm vi) được lặp lại cho mỗi lần lặp. Ngược lại, trong một dự án dự đoán, Xác nhận Phạm vi xảy ra với mỗi lần đánh giá sản phẩm giao nộp hoặc giai đoạn, và Kiểm soát Phạm vi là một quy trình đang diễn ra (ongoing).</p>
+
+  <p>Trong các dự án dự đoán, đường cơ sở phạm vi (<span class="term">scope baseline</span>) của dự án là phiên bản được phê duyệt của tuyên bố phạm vi dự án, cấu trúc phân chia công việc (WBS), và từ điển WBS liên quan. Một đường cơ sở chỉ có thể được thay đổi thông qua các thủ tục kiểm soát thay đổi chính thức và được sử dụng làm cơ sở để so sánh khi thực hiện các quy trình Xác nhận Phạm vi và Kiểm soát Phạm vi cũng như các quy trình kiểm soát khác. Các dự án có vòng đời thích nghi sử dụng backlogs (bao gồm các yêu cầu sản phẩm và user stories) để phản ánh nhu cầu hiện tại của họ.</p>
+
+  <p>Việc hoàn thành phạm vi dự án được đo lường dựa trên kế hoạch quản lý dự án, trong khi việc hoàn thành phạm vi sản phẩm được đo lường dựa trên các yêu cầu sản phẩm. Thuật ngữ "yêu cầu" (<span class="term">requirement</span>) được định nghĩa là một điều kiện hoặc khả năng bắt buộc phải có trong một sản phẩm, dịch vụ, hoặc kết quả để thỏa mãn một thỏa thuận hoặc đặc tả kỹ thuật được áp đặt chính thức khác.</p>
+
+  <p>Xác nhận Phạm vi là quy trình chính thức hóa việc nghiệm thu các sản phẩm giao nộp của dự án đã hoàn thành. Các sản phẩm giao nộp đã được xác minh (verified deliverables) thu được từ quy trình Kiểm soát Chất lượng là một đầu vào cho quy trình Xác nhận Phạm vi. Một trong những đầu ra của Xác nhận Phạm vi là các sản phẩm giao nộp đã được nghiệm thu (accepted deliverables) được ký duyệt chính thức và phê duyệt bởi bên liên quan có thẩm quyền. Do đó, bên liên quan cần tham gia sớm trong quá trình lập kế hoạch (đôi khi là cả lúc khởi tạo) và cung cấp các đầu vào về chất lượng của sản phẩm giao nộp để Kiểm soát Chất lượng có thể đánh giá hiệu suất và đề xuất các thay đổi cần thiết.</p>
+
+  <h3 id="trends">XU HƯỚNG VÀ THỰC HÀNH MỚI NỔI TRONG QUẢN LÝ PHẠM VI DỰ ÁN <span class="term-en">(TRENDS AND EMERGING PRACTICES IN PROJECT SCOPE MANAGEMENT)</span></h3>
+  <p>Các yêu cầu luôn là một mối quan tâm trong quản lý dự án và tiếp tục nhận được nhiều sự chú ý hơn trong nghề. Khi môi trường toàn cầu trở nên phức tạp hơn, các tổ chức đang bắt đầu nhận ra cách sử dụng phân tích kinh doanh để tạo lợi thế cạnh tranh của họ bằng cách định nghĩa, quản lý, và kiểm soát các hoạt động yêu cầu. Các hoạt động phân tích kinh doanh có thể bắt đầu trước khi một dự án được khởi tạo và một người quản lý dự án được chỉ định. Theo tài liệu Quản lý Yêu cầu: Hướng dẫn Thực hành [14], quy trình quản lý yêu cầu bắt đầu bằng một đánh giá nhu cầu, có thể bắt đầu ở bước lập kế hoạch danh mục đầu tư, lập kế hoạch chương trình, hoặc bên trong một dự án rời rạc.</p>
+
+  <p>Việc khơi gợi, lập tài liệu, và quản lý các yêu cầu của các bên liên quan diễn ra bên trong các quy trình Quản lý Phạm vi Dự án. Các xu hướng và thực hành mới nổi đối với Quản lý Phạm vi Dự án bao gồm nhưng không giới hạn ở việc tập trung vào sự cộng tác với các chuyên gia phân tích kinh doanh để:</p>
+  <ul class="pmbok check">
+    <li>Xác định vấn đề và nhận diện nhu cầu kinh doanh;</li>
+    <li>Xác định và đề xuất các giải pháp khả thi để đáp ứng những nhu cầu đó;</li>
+    <li>Khơi gợi, lập tài liệu, và quản lý các yêu cầu của bên liên quan nhằm đáp ứng các mục tiêu kinh doanh và dự án; và</li>
+    <li>Tạo điều kiện thuận lợi cho việc thực hiện thành công sản phẩm, dịch vụ, hoặc kết quả cuối cùng của chương trình hoặc dự án [7].</li>
+  </ul>
+
+  <p>Quy trình kết thúc bằng việc đóng các yêu cầu, điều này chuyển giao sản phẩm, dịch vụ, hoặc kết quả cho người tiếp nhận nhằm mục đích đo lường, giám sát, hiện thực hóa, và duy trì lợi ích theo thời gian.</p>
+
+  <p>Vai trò với trách nhiệm thực hiện phân tích kinh doanh nên được phân công cho các nguồn lực có đủ kỹ năng và chuyên môn phân tích kinh doanh. Nếu một chuyên gia phân tích kinh doanh được phân công cho một dự án, các hoạt động liên quan đến yêu cầu là trách nhiệm của vai trò đó. Người quản lý dự án có trách nhiệm đảm bảo rằng công việc liên quan đến yêu cầu được tính đến trong kế hoạch quản lý dự án và các hoạt động liên quan đến yêu cầu được thực hiện đúng hạn, trong ngân sách và mang lại giá trị.</p>
+
+  <p>Mối quan hệ giữa người quản lý dự án và chuyên gia phân tích kinh doanh nên là một quan hệ đối tác cộng tác. Một dự án sẽ có khả năng thành công cao hơn nếu các nhà quản lý dự án và chuyên gia phân tích kinh doanh hiểu rõ vai trò và trách nhiệm của nhau để đạt được thành công các mục tiêu của dự án.</p>
+
+  <h3 id="tailoring">NHỮNG CÂN NHẮC VỀ VIỆC ĐIỀU CHỈNH <span class="term-en">(TAILORING CONSIDERATIONS)</span></h3>
+  <p>Vì mỗi dự án là duy nhất, người quản lý dự án sẽ cần phải điều chỉnh cách áp dụng các quy trình Quản lý Phạm vi Dự án. Những cân nhắc cho việc điều chỉnh bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li><strong>Quản lý kiến thức và yêu cầu.</strong> Tổ chức có hệ thống quản lý kiến thức và yêu cầu chính thức hay phi chính thức không? Những hướng dẫn nào mà người quản lý dự án nên thiết lập để các yêu cầu có thể được tái sử dụng trong tương lai?</li>
+    <li><strong>Xác nhận và kiểm soát.</strong> Tổ chức có các chính sách, quy trình, và hướng dẫn hiện có về xác nhận và kiểm soát chính thức hay phi chính thức không?</li>
+    <li><strong>Phương pháp phát triển.</strong> Tổ chức có sử dụng các phương pháp tiếp cận agile trong quản lý dự án không? Phương pháp phát triển là lặp lại hay tăng dần? Một phương pháp dự đoán có được sử dụng không? Liệu một phương pháp lai (hybrid) có mang lại hiệu suất không?</li>
+    <li><strong>Sự ổn định của các yêu cầu.</strong> Có những khu vực nào của dự án có yêu cầu không ổn định không? Những yêu cầu không ổn định có đòi hỏi việc sử dụng các kỹ thuật lean, agile, hoặc các kỹ thuật thích nghi khác cho đến khi chúng ổn định và được định nghĩa rõ ràng không?</li>
+    <li><strong>Quản trị.</strong> Tổ chức có các chính sách, thủ tục, và hướng dẫn về quản trị và kiểm toán chính thức hay phi chính thức không?</li>
+  </ul>
+
+  <h3 id="agile">NHỮNG CÂN NHẮC ĐỐI VỚI MÔI TRƯỜNG AGILE/THÍCH NGHI <span class="term-en">(CONSIDERATIONS FOR AGILE/ADAPTIVE ENVIRONMENTS)</span></h3>
+  <p>Trong các dự án có yêu cầu liên tục tiến hóa, rủi ro cao, hoặc có mức độ không chắc chắn đáng kể, phạm vi thường không được hiểu rõ vào đầu dự án hoặc nó tiến hóa dần trong quá trình thực hiện. Các phương pháp Agile cố tình dành ít thời gian hơn để cố gắng định nghĩa và thống nhất phạm vi ở giai đoạn đầu của dự án, thay vào đó dành nhiều thời gian hơn để thiết lập quy trình cho việc khám phá và tinh chỉnh phạm vi liên tục. Nhiều môi trường với các yêu cầu mới nổi nhận thấy rằng thường có một khoảng cách giữa các yêu cầu kinh doanh thực tế và các yêu cầu kinh doanh được nêu ra ban đầu. Do đó, các phương pháp Agile có chủ đích xây dựng và xem xét các nguyên mẫu (prototypes) và các phiên bản phát hành để tinh chỉnh các yêu cầu. Kết quả là, phạm vi được định nghĩa và tái định nghĩa xuyên suốt dự án. Trong các phương pháp tiếp cận agile, các yêu cầu cấu thành nên backlog.</p>
+
+  <h2 id="s5-1">5.1 LẬP KẾ HOẠCH QUẢN LÝ PHẠM VI <span class="term-en">(PLAN SCOPE MANAGEMENT)</span></h2>
+  <p>Lập kế hoạch Quản lý Phạm vi là quy trình tạo ra một kế hoạch quản lý phạm vi ghi lại cách thức phạm vi dự án và sản phẩm sẽ được định nghĩa, xác nhận, và kiểm soát. Lợi ích chính của quy trình này là nó cung cấp hướng dẫn và định hướng về cách thức phạm vi sẽ được quản lý xuyên suốt dự án. Quy trình này được thực hiện một lần hoặc tại các điểm được xác định trước trong dự án. Các đầu vào, công cụ và kỹ thuật, cùng đầu ra của quy trình này được mô tả trong Hình 5-2. Hình 5-3 mô tả sơ đồ luồng dữ liệu của quy trình.</p>
+
+  <div class="figure-wrap">
+    <div class="figure-caption"><strong>Hình 5-2.</strong> Lập kế hoạch Quản lý Phạm vi: Đầu vào, Công cụ & Kỹ thuật, và Đầu ra <span class="term-en">(Plan Scope Management: Inputs, Tools & Techniques, and Outputs)</span></div>
+  </div>
+
+  <div class="figure-wrap">
+    <img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//ab2cdbcc-ac3c-4ca5-93e4-f985c8666f61/markdown_2/imgs/img_in_image_box_190_771_1028_1260.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A00Z%2F-1%2F%2F4d8bd835941c9d3ca9b7a979fc7c563af51cd2ea9659170b3d8c043d4489444c" alt="Hình 5-3" width="68%" />
+    <div class="figure-caption"><strong>Hình 5-3.</strong> Lập kế hoạch Quản lý Phạm vi: Sơ đồ Luồng Dữ liệu <span class="term-en">(Plan Scope Management: Data Flow Diagram)</span></div>
+  </div>
+
+  <p>Kế hoạch quản lý phạm vi là một thành phần của kế hoạch quản lý dự án hoặc chương trình, nó mô tả cách thức phạm vi sẽ được định nghĩa, phát triển, giám sát, kiểm soát, và xác nhận. Việc phát triển kế hoạch quản lý phạm vi và đi vào chi tiết phạm vi dự án bắt đầu bằng việc phân tích thông tin có trong điều lệ dự án (Mục 4.1.3.1), các kế hoạch phụ trợ được phê duyệt mới nhất của kế hoạch quản lý dự án (Mục 4.2.3.1), thông tin lịch sử có trong tài sản quy trình tổ chức (Mục 2.3), và bất kỳ yếu tố môi trường doanh nghiệp liên quan nào khác (Mục 2.2).</p>
+
+  <h4 id="s5-1-1">5.1.1 LẬP KẾ HOẠCH QUẢN LÝ PHẠM VI: ĐẦU VÀO <span class="term-en">(PLAN SCOPE MANAGEMENT: INPUTS)</span></h4>
+  
+  <h5>5.1.1.1 ĐIỀU LỆ DỰ ÁN <span class="term-en">(PROJECT CHARTER)</span></h5>
+  <p>Được mô tả trong Mục 4.1.3.1. Điều lệ dự án ghi lại mục đích của dự án, bản mô tả cấp cao về dự án, các giả định, các ràng buộc, và các yêu cầu cấp cao mà dự án có ý định đáp ứng.</p>
+
+  <h5>5.1.1.2 KẾ HOẠCH QUẢN LÝ DỰ ÁN <span class="term-en">(PROJECT MANAGEMENT PLAN)</span></h5>
+  <p>Được mô tả trong Mục 4.2.3.1. Các thành phần của kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li><strong>Kế hoạch quản lý chất lượng (Quality management plan).</strong> Được mô tả trong Mục 8.1.3.1. Cách thức quản lý phạm vi dự án và sản phẩm có thể bị ảnh hưởng bởi cách mà các chính sách chất lượng, phương pháp luận, và tiêu chuẩn của tổ chức được triển khai trong dự án.</li>
+    <li><strong>Mô tả vòng đời dự án (Project life cycle description).</strong> Vòng đời dự án quyết định chuỗi các giai đoạn mà dự án trải qua từ lúc khởi tạo cho đến khi kết thúc dự án.</li>
+    <li><strong>Phương pháp phát triển (Development approach).</strong> Phương pháp phát triển xác định xem phương pháp waterfall (thác nước), lặp lại (iterative), thích nghi (adaptive), linh hoạt (agile), hay lai (hybrid) sẽ được sử dụng.</li>
+  </ul>
+
+  <h5>5.1.1.3 CÁC YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP <span class="term-en">(ENTERPRISE ENVIRONMENTAL FACTORS)</span></h5>
+  <p>Các yếu tố môi trường doanh nghiệp có thể ảnh hưởng đến quy trình Lập kế hoạch Quản lý Phạm vi bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok check">
+    <li>Văn hóa tổ chức;</li>
+    <li>Cơ sở hạ tầng;</li>
+    <li>Quản trị nhân sự; và</li>
+    <li>Điều kiện thị trường.</li>
+  </ul>
+
+  <h5>5.1.1.4 TÀI SẢN QUY TRÌNH TỔ CHỨC <span class="term-en">(ORGANIZATIONAL PROCESS ASSETS)</span></h5>
+  <p>Các tài sản quy trình tổ chức có thể ảnh hưởng đến quy trình Lập kế hoạch Quản lý Phạm vi bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok check">
+    <li>Các chính sách và thủ tục; và</li>
+    <li>Thông tin lịch sử và các kho lưu trữ bài học kinh nghiệm.</li>
+  </ul>
+
+  <h4 id="s5-1-2">5.1.2 LẬP KẾ HOẠCH QUẢN LÝ PHẠM VI: CÔNG CỤ VÀ KỸ THUẬT <span class="term-en">(PLAN SCOPE MANAGEMENT: TOOLS AND TECHNIQUES)</span></h4>
+
+  <h5>5.1.2.1 ĐÁNH GIÁ CHUYÊN GIA <span class="term-en">(EXPERT JUDGMENT)</span></h5>
+  <p>Được mô tả trong Mục 4.1.2.1. Chuyên môn nên được xem xét từ các cá nhân hoặc nhóm có kiến thức chuyên môn hoặc được đào tạo về các chủ đề sau:</p>
+  <ul class="pmbok check">
+    <li>Các dự án tương tự trước đây; và</li>
+    <li>Thông tin trong ngành, kỷ luật, và lĩnh vực ứng dụng.</li>
+  </ul>
+
+  <h5>5.1.2.2 PHÂN TÍCH DỮ LIỆU <span class="term-en">(DATA ANALYSIS)</span></h5>
+  <p>Một kỹ thuật phân tích dữ liệu có thể được sử dụng cho quy trình này bao gồm nhưng không giới hạn ở phân tích các phương án thay thế (alternatives analysis). Nhiều cách khác nhau để thu thập yêu cầu, phát triển chi tiết phạm vi dự án và sản phẩm, tạo sản phẩm, xác nhận phạm vi, và kiểm soát phạm vi đều được đánh giá.</p>
+
+  <h5>5.1.2.3 CÁC CUỘC HỌP <span class="term-en">(MEETINGS)</span></h5>
+  <p>Các nhóm dự án có thể tham dự các cuộc họp dự án để phát triển kế hoạch quản lý phạm vi. Những người tham dự có thể bao gồm người quản lý dự án, nhà tài trợ dự án, một số thành viên được chọn của nhóm dự án, các bên liên quan được chọn, bất kỳ ai có trách nhiệm về bất kỳ quy trình quản lý phạm vi nào, và những người khác nếu cần thiết.</p>
+
+  <h4 id="s5-1-3">5.1.3 LẬP KẾ HOẠCH QUẢN LÝ PHẠM VI: ĐẦU RA <span class="term-en">(PLAN SCOPE MANAGEMENT: OUTPUTS)</span></h4>
+  
+  <h5>5.1.3.1 KẾ HOẠCH QUẢN LÝ PHẠM VI <span class="term-en">(SCOPE MANAGEMENT PLAN)</span></h5>
+  <p>Kế hoạch quản lý phạm vi là một thành phần của kế hoạch quản lý dự án mô tả cách thức phạm vi sẽ được định nghĩa, phát triển, giám sát, kiểm soát, và xác nhận. Các thành phần của kế hoạch quản lý phạm vi bao gồm:</p>
+  <ul class="pmbok check">
+    <li>Quy trình chuẩn bị tuyên bố phạm vi dự án;</li>
+    <li>Quy trình cho phép tạo Cấu trúc phân chia công việc (WBS) từ tuyên bố phạm vi dự án chi tiết;</li>
+    <li>Quy trình thiết lập cách thức đường cơ sở phạm vi sẽ được phê duyệt và duy trì; và</li>
+    <li>Quy trình chỉ định cách thức đạt được sự chấp nhận chính thức đối với các sản phẩm giao nộp của dự án đã hoàn thành.</li>
+  </ul>
+  <p>Kế hoạch quản lý phạm vi có thể là chính thức hoặc phi chính thức, được đóng khung rộng rãi hoặc cực kỳ chi tiết, dựa trên nhu cầu của dự án.</p>
+
+  <h5>5.1.3.2 KẾ HOẠCH QUẢN LÝ YÊU CẦU <span class="term-en">(REQUIREMENTS MANAGEMENT PLAN)</span></h5>
+  <p>Kế hoạch quản lý yêu cầu là một thành phần của kế hoạch quản lý dự án mô tả cách thức các yêu cầu dự án và sản phẩm sẽ được phân tích, lập tài liệu, và quản lý. Theo cuốn Phân tích Kinh doanh cho Người Thực hành: Hướng dẫn Thực hành [7], một số tổ chức gọi đây là kế hoạch phân tích kinh doanh. Các thành phần của kế hoạch quản lý yêu cầu có thể bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li>Cách thức các hoạt động yêu cầu sẽ được lên kế hoạch, theo dõi, và báo cáo;</li>
+    <li>Các hoạt động quản lý cấu hình như: cách các thay đổi sẽ được khởi xướng; cách phân tích tác động; cách chúng sẽ được truy xuất, theo dõi, và báo cáo; cũng như các cấp thẩm quyền cần thiết để phê duyệt những thay đổi này;</li>
+    <li>Quy trình ưu tiên các yêu cầu;</li>
+    <li>Các chỉ số (Metrics) sẽ được sử dụng và lý do sử dụng chúng; và</li>
+    <li>Cấu trúc truy xuất nguồn gốc phản ánh các thuộc tính yêu cầu được nắm bắt trên ma trận truy xuất nguồn gốc.</li>
+  </ul>
+
+  <h2 id="s5-2">5.2 THU THẬP YÊU CẦU <span class="term-en">(COLLECT REQUIREMENTS)</span></h2>
+  <p>Thu thập Yêu cầu là quy trình xác định, lập tài liệu, và quản lý các nhu cầu và yêu cầu của các bên liên quan để đáp ứng mục tiêu. Lợi ích chính của quy trình này là nó cung cấp nền tảng cho việc định nghĩa phạm vi sản phẩm và phạm vi dự án. Quy trình này được thực hiện một lần hoặc tại các điểm được xác định trước trong dự án. Các đầu vào, công cụ và kỹ thuật, cùng đầu ra của quy trình được mô tả trong Hình 5-4. Hình 5-5 mô tả sơ đồ luồng dữ liệu của quy trình.</p>
+
+  <div class="figure-wrap">
+    <div class="figure-caption"><strong>Hình 5-4.</strong> Thu thập Yêu cầu: Đầu vào, Công cụ & Kỹ thuật, và Đầu ra <span class="term-en">(Collect Requirements: Inputs, Tools & Techniques, and Outputs)</span></div>
+  </div>
+
+  <div class="figure-wrap">
+    <img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//b80d287a-3cd3-48c6-a173-02c4d2a47e25/markdown_2/imgs/img_in_image_box_194_149_1028_1087.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A23%3A51Z%2F-1%2F%2F40c3d778bcd5cadafe499779f6390c13f9068d6276939c6a95f00fe19bf069cc" alt="Hình 5-5" width="68%" />
+    <div class="figure-caption"><strong>Hình 5-5.</strong> Thu thập Yêu cầu: Sơ đồ Luồng Dữ liệu <span class="term-en">(Collect Requirements: Data Flow Diagram)</span></div>
+  </div>
+
+  <p>Hướng dẫn PMBOK® không đề cập cụ thể đến các yêu cầu sản phẩm vì chúng mang tính đặc thù theo ngành. Lưu ý rằng Phân tích Kinh doanh cho Người Thực hành: Hướng dẫn Thực hành [7] cung cấp thông tin chuyên sâu hơn về các yêu cầu sản phẩm. Sự thành công của dự án bị ảnh hưởng trực tiếp bởi sự tham gia tích cực của các bên liên quan vào việc khám phá và chia nhỏ các nhu cầu thành các yêu cầu của dự án và sản phẩm, cũng như bởi sự cẩn trọng trong việc xác định, lập tài liệu, và quản lý các yêu cầu của sản phẩm, dịch vụ, hoặc kết quả của dự án. Các yêu cầu bao gồm các điều kiện hoặc khả năng bắt buộc phải có trong một sản phẩm, dịch vụ, hoặc kết quả để đáp ứng một thỏa thuận hoặc đặc tả kỹ thuật được áp đặt chính thức khác. Các yêu cầu bao gồm những nhu cầu và kỳ vọng được định lượng và lập thành văn bản của nhà tài trợ, khách hàng, và các bên liên quan khác. Những yêu cầu này cần được khơi gợi, phân tích, và ghi lại với đủ mức độ chi tiết để đưa vào đường cơ sở phạm vi và để có thể đo lường một khi quá trình thực thi dự án bắt đầu. Các yêu cầu trở thành nền tảng của WBS. Lập kế hoạch chi phí, tiến độ, chất lượng, và mua sắm đều dựa trên các yêu cầu này.</p>
+
+  <h4 id="s5-2-1">5.2.1 THU THẬP YÊU CẦU: ĐẦU VÀO <span class="term-en">(COLLECT REQUIREMENTS: INPUTS)</span></h4>
+  
+  <h5>5.2.1.1 ĐIỀU LỆ DỰ ÁN <span class="term-en">(PROJECT CHARTER)</span></h5>
+  <p>Được mô tả trong Mục 4.1.3.1. Điều lệ dự án ghi lại mô tả cấp cao của dự án và các yêu cầu cấp cao sẽ được sử dụng để phát triển các yêu cầu chi tiết.</p>
+
+  <h5>5.2.1.2 KẾ HOẠCH QUẢN LÝ DỰ ÁN <span class="term-en">(PROJECT MANAGEMENT PLAN)</span></h5>
+  <p>Được mô tả trong Mục 4.2.3.1. Các thành phần của kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li><strong>Kế hoạch quản lý phạm vi (Scope management plan).</strong> Được mô tả trong Mục 5.1.3.1. Kế hoạch quản lý phạm vi chứa thông tin về cách thức phạm vi dự án sẽ được định nghĩa và phát triển.</li>
+    <li><strong>Kế hoạch quản lý yêu cầu (Requirements management plan).</strong> Được mô tả trong Mục 5.1.3.2. Kế hoạch quản lý yêu cầu có thông tin về cách các yêu cầu dự án sẽ được thu thập, phân tích, và lập thành tài liệu.</li>
+    <li><strong>Kế hoạch quản lý sự tham gia của bên liên quan (Stakeholder engagement plan).</strong> Được mô tả trong Mục 13.2.3.1. Kế hoạch quản lý sự tham gia của bên liên quan được sử dụng để hiểu các yêu cầu giao tiếp của các bên liên quan và mức độ tham gia của họ nhằm đánh giá và thích ứng với mức độ tham gia của các bên liên quan trong các hoạt động yêu cầu.</li>
+  </ul>
+
+  <h5>5.2.1.3 TÀI LIỆU DỰ ÁN <span class="term-en">(PROJECT DOCUMENTS)</span></h5>
+  <p>Các ví dụ về tài liệu dự án có thể được coi là đầu vào cho quy trình này bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li><strong>Sổ nhật ký giả định (Assumption Log).</strong> Được mô tả trong Mục 4.1.3.2. Sổ nhật ký giả định xác định các giả định về sản phẩm, dự án, môi trường, các bên liên quan, và các yếu tố khác có thể ảnh hưởng đến các yêu cầu.</li>
+    <li><strong>Sổ đăng ký bài học kinh nghiệm (Lessons learned register).</strong> Được mô tả trong Mục 4.4.3.1. Sổ đăng ký bài học kinh nghiệm được sử dụng để cung cấp thông tin về các kỹ thuật thu thập yêu cầu hiệu quả, đặc biệt là đối với các dự án đang sử dụng phương pháp phát triển sản phẩm lặp lại hoặc thích nghi.</li>
+    <li><strong>Sổ đăng ký các bên liên quan (Stakeholder Register).</strong> Được mô tả trong Mục 13.1.3.1. Sổ đăng ký các bên liên quan được sử dụng để xác định các bên liên quan có thể cung cấp thông tin về các yêu cầu. Nó cũng nắm bắt các yêu cầu và kỳ vọng mà các bên liên quan dành cho dự án.</li>
+  </ul>
+
+  <h5>5.2.1.4 TÀI LIỆU KINH DOANH <span class="term-en">(BUSINESS DOCUMENTS)</span></h5>
+  <p>Được mô tả trong Mục 1.2.6. Một tài liệu kinh doanh có thể ảnh hưởng đến quy trình Thu thập Yêu cầu là luận cứ kinh doanh (business case), có thể mô tả các tiêu chí bắt buộc, mong muốn, và tùy chọn để đáp ứng nhu cầu kinh doanh.</p>
+
+  <h5>5.2.1.5 CÁC THỎA THUẬN <span class="term-en">(AGREEMENTS)</span></h5>
+  <p>Được mô tả trong Mục 12.2.3.2. Các thỏa thuận có thể chứa các yêu cầu của dự án và sản phẩm.</p>
+
+  <h5>5.2.1.6 CÁC YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP <span class="term-en">(ENTERPRISE ENVIRONMENTAL FACTORS)</span></h5>
+  <p>Các yếu tố môi trường doanh nghiệp có thể ảnh hưởng đến quy trình Thu thập Yêu cầu bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok check">
+    <li>Văn hóa tổ chức;</li>
+    <li>Cơ sở hạ tầng;</li>
+    <li>Quản trị nhân sự; và</li>
+    <li>Điều kiện thị trường.</li>
+  </ul>
+
+  <h5>5.2.1.7 TÀI SẢN QUY TRÌNH TỔ CHỨC <span class="term-en">(ORGANIZATIONAL PROCESS ASSETS)</span></h5>
+  <p>Các tài sản quy trình tổ chức có thể ảnh hưởng đến quy trình Thu thập Yêu cầu bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok check">
+    <li>Các chính sách và thủ tục; và</li>
+    <li>Thông tin lịch sử và kho lưu trữ bài học kinh nghiệm với thông tin từ các dự án trước đó.</li>
+  </ul>
+
+  <h4 id="s5-2-2">5.2.2 THU THẬP YÊU CẦU: CÔNG CỤ VÀ KỸ THUẬT <span class="term-en">(COLLECT REQUIREMENTS: TOOLS AND TECHNIQUES)</span></h4>
+
+  <h5>5.2.2.1 ĐÁNH GIÁ CHUYÊN GIA <span class="term-en">(EXPERT JUDGMENT)</span></h5>
+  <p>Được mô tả trong Mục 4.1.2.1. Chuyên môn nên được xem xét từ các cá nhân hoặc nhóm có kiến thức chuyên môn hoặc được đào tạo về các chủ đề sau:</p>
+  <ul class="pmbok check">
+    <li>Phân tích kinh doanh;</li>
+    <li>Khơi gợi yêu cầu;</li>
+    <li>Phân tích yêu cầu;</li>
+    <li>Lập tài liệu yêu cầu;</li>
+    <li>Các yêu cầu dự án trong các dự án tương tự trước đây;</li>
+    <li>Các kỹ thuật vẽ sơ đồ;</li>
+    <li>Điều phối; và</li>
+    <li>Quản lý xung đột.</li>
+  </ul>
+
+  <h5>5.2.2.2 THU THẬP DỮ LIỆU <span class="term-en">(DATA GATHERING)</span></h5>
+  <p>Các kỹ thuật thu thập dữ liệu có thể được sử dụng cho quy trình này bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li><strong>Động não (Brainstorming).</strong> Được mô tả trong Mục 4.1.2.2. Động não là một kỹ thuật được sử dụng để tạo ra và thu thập nhiều ý tưởng liên quan đến các yêu cầu dự án và sản phẩm.</li>
+    <li><strong>Phỏng vấn (Interviews).</strong> Phỏng vấn là một phương pháp chính thức hoặc phi chính thức để lấy thông tin từ các bên liên quan bằng cách nói chuyện trực tiếp với họ. Nó thường được thực hiện bằng cách đặt các câu hỏi đã được chuẩn bị sẵn hoặc ngẫu hứng và ghi lại các câu trả lời. Phỏng vấn thường được tiến hành trên cơ sở cá nhân giữa một người phỏng vấn và một người được phỏng vấn, nhưng cũng có thể liên quan đến nhiều người phỏng vấn và/hoặc nhiều người được phỏng vấn. Phỏng vấn những người tham gia dự án có kinh nghiệm, các nhà tài trợ, các nhà quản lý khác, và các chuyên gia về chủ đề có thể giúp xác định và định nghĩa các tính năng và chức năng của các sản phẩm giao nộp mong muốn. Phỏng vấn cũng hữu ích cho việc lấy thông tin bảo mật.</li>
+    <li><strong>Nhóm tập trung (Focus groups).</strong> Các nhóm tập trung tập hợp các bên liên quan có đủ điều kiện và các chuyên gia về chủ đề để tìm hiểu về kỳ vọng và thái độ của họ đối với một sản phẩm, dịch vụ, hoặc kết quả đề xuất. Một người điều hành đã được đào tạo sẽ hướng dẫn nhóm thông qua một cuộc thảo luận tương tác được thiết kế để mang tính đàm thoại nhiều hơn là một cuộc phỏng vấn một-kèm-một.</li>
+    <li><strong>Bảng câu hỏi và khảo sát (Questionnaires and surveys).</strong> Bảng câu hỏi và khảo sát là các tập hợp câu hỏi bằng văn bản được thiết kế để nhanh chóng thu thập thông tin từ một lượng lớn người trả lời. Bảng câu hỏi và/hoặc khảo sát phù hợp nhất với các đối tượng đa dạng, khi cần có sự phản hồi nhanh chóng, khi người trả lời phân tán về mặt địa lý, và khi việc phân tích thống kê có thể phù hợp.</li>
+    <li><strong>Đối chuẩn (Benchmarking).</strong> Được mô tả trong Mục 8.1.2.2. Đối chuẩn bao gồm việc so sánh các sản phẩm, quy trình, và thực hành thực tế hoặc đã được lên kế hoạch với những sản phẩm của các tổ chức có thể so sánh được nhằm xác định các thực hành tốt nhất, tạo ra ý tưởng cải tiến, và cung cấp một cơ sở để đo lường hiệu suất. Các tổ chức được so sánh trong quá trình đối chuẩn có thể là nội bộ hoặc bên ngoài.</li>
+  </ul>
+
+  <h5>5.2.2.3 PHÂN TÍCH DỮ LIỆU <span class="term-en">(DATA ANALYSIS)</span></h5>
+  <p>Được mô tả trong Mục 4.5.2.2. Kỹ thuật phân tích dữ liệu có thể được sử dụng cho quy trình này bao gồm nhưng không giới hạn ở phân tích tài liệu (document analysis). Phân tích tài liệu bao gồm việc xem xét và đánh giá bất kỳ thông tin được ghi chép lại có liên quan nào. Trong quy trình này, phân tích tài liệu được sử dụng để khơi gợi các yêu cầu bằng cách phân tích tài liệu hiện có và xác định các thông tin có liên quan đến các yêu cầu. Có một phạm vi rộng các tài liệu có thể được phân tích để giúp khơi gợi các yêu cầu liên quan. Các ví dụ về các tài liệu có thể được phân tích bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok check">
+    <li>Các thỏa thuận;</li>
+    <li>Các kế hoạch kinh doanh;</li>
+    <li>Tài liệu về giao diện hoặc quy trình kinh doanh;</li>
+    <li>Kho lưu trữ các quy tắc kinh doanh;</li>
+    <li>Các luồng quy trình hiện tại (Current process flows);</li>
+    <li>Tài liệu tiếp thị;</li>
+    <li>Các chính sách và thủ tục;</li>
+    <li>Nhật ký vấn đề/lỗi (Problem/issue logs);</li>
+    <li>Tài liệu quy định như luật, quy chuẩn, hoặc sắc lệnh, v.v.;</li>
+    <li>Yêu cầu đề xuất (Requests for proposal); và</li>
+    <li>Các tình huống sử dụng (Use cases).</li>
+  </ul>
+
+  <h5>5.2.2.4 RA QUYẾT ĐỊNH <span class="term-en">(DECISION MAKING)</span></h5>
+  <p>Các kỹ thuật ra quyết định có thể được sử dụng trong quy trình Thu thập Yêu cầu bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li><strong>Biểu quyết (Voting).</strong> Biểu quyết là một kỹ thuật ra quyết định tập thể và là một quy trình đánh giá có nhiều lựa chọn với kết quả mong đợi là các hành động trong tương lai. Những kỹ thuật này có thể được sử dụng để tạo ra, phân loại, và ưu tiên các yêu cầu sản phẩm. Các ví dụ về kỹ thuật biểu quyết bao gồm:
+      <ul class="pmbok check">
+        <li><strong>Nhất trí (Unanimity).</strong> Một quyết định đạt được mà trong đó mọi người đều đồng ý với một hướng hành động duy nhất.</li>
+        <li><strong>Đa số (Majority).</strong> Một quyết định đạt được với sự ủng hộ từ hơn 50% các thành viên của nhóm. Việc có một nhóm với số lượng người tham gia lẻ có thể đảm bảo một quyết định sẽ được đưa ra thay vì dẫn đến sự bế tắc (tie).</li>
+        <li><strong>Số đông (Plurality).</strong> Một quyết định đạt được khi khối lớn nhất trong một nhóm quyết định, ngay cả khi không đạt được đa số (trên 50%). Phương pháp này thường được sử dụng khi số lượng lựa chọn được đề cử lớn hơn hai.</li>
+      </ul>
+    </li>
+    <li><strong>Ra quyết định độc đoán (Autocratic decision making).</strong> Trong phương pháp này, một cá nhân chịu trách nhiệm đưa ra quyết định thay cho nhóm.</li>
+    <li><strong>Phân tích quyết định đa tiêu chí (Multicriteria decision analysis).</strong> Một kỹ thuật sử dụng ma trận quyết định để cung cấp phương pháp phân tích có hệ thống nhằm thiết lập các tiêu chí, như mức độ rủi ro, sự không chắc chắn, và định giá, để đánh giá và xếp hạng nhiều ý tưởng.</li>
+  </ul>
+
+  <h5>5.2.2.5 TRÌNH BÀY DỮ LIỆU <span class="term-en">(DATA REPRESENTATION)</span></h5>
+  <p>Các kỹ thuật trình bày dữ liệu có thể được sử dụng cho quy trình này bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li><strong>Biểu đồ tương đồng (Affinity diagrams).</strong> Biểu đồ tương đồng cho phép một lượng lớn các ý tưởng được phân loại vào các nhóm để xem xét và phân tích.</li>
+    <li><strong>Bản đồ tư duy (Mind mapping).</strong> Bản đồ tư duy hợp nhất các ý tưởng được tạo ra từ các phiên động não cá nhân vào một bản đồ duy nhất để phản ánh sự tương đồng và khác biệt trong sự thấu hiểu và để tạo ra các ý tưởng mới.</li>
+  </ul>
+
+  <h5>5.2.2.6 KỸ NĂNG TƯƠNG TÁC CÁ NHÂN VÀ LÀM VIỆC NHÓM <span class="term-en">(INTERPERSONAL AND TEAM SKILLS)</span></h5>
+  <p>Được mô tả trong Mục 4.1.2.3. Các kỹ năng tương tác cá nhân và làm việc nhóm có thể được sử dụng trong quy trình này bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li><strong>Kỹ thuật nhóm danh nghĩa (Nominal group technique).</strong> Kỹ thuật nhóm danh nghĩa nâng cao hiệu quả của việc động não bằng một quy trình biểu quyết được sử dụng để xếp hạng các ý tưởng hữu ích nhất để tiếp tục động não hoặc để ưu tiên. Kỹ thuật nhóm danh nghĩa là một dạng động não có cấu trúc bao gồm bốn bước:
+      <ul class="pmbok dash">
+        <li>Một câu hỏi hoặc vấn đề được đặt ra cho nhóm. Mỗi người âm thầm tự tạo ra và viết xuống các ý tưởng của họ.</li>
+        <li>Người điều hành viết các ý tưởng lên bảng lật (flip chart) cho đến khi tất cả ý tưởng được ghi lại.</li>
+        <li>Mỗi ý tưởng được ghi lại sẽ được thảo luận cho đến khi tất cả các thành viên trong nhóm hiểu rõ.</li>
+        <li>Các cá nhân bỏ phiếu kín để ưu tiên các ý tưởng, thường sử dụng thang điểm từ 1 – 5, với 1 là thấp nhất và 5 là cao nhất. Việc biểu quyết có thể diễn ra trong nhiều vòng để giảm thiểu và tập trung vào các ý tưởng. Sau mỗi vòng, các phiếu bầu được kiểm và các ý tưởng có điểm cao nhất được lựa chọn.</li>
+      </ul>
+    </li>
+    <li><strong>Quan sát/trò chuyện (Observation/conversation).</strong> Quan sát và trò chuyện cung cấp một cách trực tiếp để xem các cá nhân trong môi trường của họ và cách họ thực hiện công việc hoặc nhiệm vụ và thực hiện các quy trình. Kỹ thuật này đặc biệt hữu ích cho các quy trình chi tiết khi những người sử dụng sản phẩm gặp khó khăn hoặc miễn cưỡng trong việc nói rõ các yêu cầu của họ. Quan sát cũng được biết đến như là "job shadowing" (theo dõi công việc). Nó thường được thực hiện từ bên ngoài bởi một người quan sát xem một chuyên gia kinh doanh đang thực hiện một công việc. Nó cũng có thể được thực hiện bởi một "người quan sát tham gia" (participant observer), người thực sự thực hiện quy trình hoặc thủ tục để trải nghiệm cách nó được thực hiện nhằm khám phá các yêu cầu bị ẩn giấu.</li>
+    <li><strong>Điều phối (Facilitation).</strong> Được mô tả trong Mục 4.1.2.3. Điều phối được sử dụng với các phiên họp tập trung đưa các bên liên quan chính lại với nhau để định nghĩa các yêu cầu sản phẩm. Các hội thảo (Workshops) có thể được sử dụng để nhanh chóng định nghĩa các yêu cầu liên chức năng và dung hòa những khác biệt giữa các bên liên quan. Do tính chất nhóm tương tác của chúng, các phiên được điều phối tốt có thể xây dựng niềm tin, bồi đắp các mối quan hệ, và cải thiện giao tiếp giữa các thành viên, từ đó có thể dẫn đến sự đồng thuận cao hơn từ các bên liên quan. Ngoài ra, các vấn đề có thể được phát hiện sớm hơn và được giải quyết nhanh hơn so với các phiên riêng lẻ.
+      <br>Kỹ năng điều phối được sử dụng trong các tình huống sau, nhưng không giới hạn ở:
+      <ul class="pmbok dash">
+        <li><strong>Thiết kế/phát triển ứng dụng chung (Joint application design/development - JAD).</strong> Các phiên JAD được sử dụng trong ngành phát triển phần mềm. Các phiên được điều phối này tập trung vào việc đưa các chuyên gia chủ đề kinh doanh và nhóm phát triển lại với nhau để thu thập các yêu cầu và cải thiện quy trình phát triển phần mềm.</li>
+        <li><strong>Triển khai chức năng chất lượng (Quality function deployment - QFD).</strong> Trong ngành sản xuất, QFD là một kỹ thuật điều phối khác giúp xác định các đặc tính quan trọng cho việc phát triển sản phẩm mới. QFD bắt đầu bằng việc thu thập nhu cầu của khách hàng, còn được gọi là tiếng nói của khách hàng (voice of the customer - VOC). Những nhu cầu này sau đó được phân loại và ưu tiên một cách khách quan, và các mục tiêu được đặt ra để đạt được chúng.</li>
+        <li><strong>User stories.</strong> User stories, là những mô tả bằng văn bản ngắn gọn về chức năng được yêu cầu, thường được phát triển trong một hội thảo yêu cầu. User stories mô tả vai trò của bên liên quan (role), những gì bên liên quan cần hoàn thành (goal), và lợi ích mang lại cho bên liên quan (motivation).</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h5>5.2.2.7 BIỂU ĐỒ BỐI CẢNH <span class="term-en">(CONTEXT DIAGRAM)</span></h5>
+  <p>Biểu đồ bối cảnh là một ví dụ về mô hình phạm vi. Biểu đồ bối cảnh mô tả trực quan phạm vi sản phẩm bằng cách chỉ ra một hệ thống kinh doanh (quy trình, thiết bị, hệ thống máy tính, v.v.), và cách thức mọi người và các hệ thống khác (actors) tương tác với nó (xem Hình 5-6). Biểu đồ bối cảnh hiển thị các đầu vào cho hệ thống kinh doanh, (các) tác nhân cung cấp đầu vào, các đầu ra từ hệ thống kinh doanh, và (các) tác nhân nhận đầu ra.</p>
+
+  <div class="figure-wrap">
+    <div class="figure-caption">Hệ thống Quản lý Tài năng HR của Công ty ABC</div>
+    <div class="figure-caption"><strong>Hình 5-6.</strong> Biểu đồ Bối cảnh <span class="term-en">(Context Diagram)</span></div>
+  </div>
+
+  <h5>5.2.2.8 NGUYÊN MẪU <span class="term-en">(PROTOTYPES)</span></h5>
+  <p>Tạo nguyên mẫu (Prototyping) là một phương pháp lấy phản hồi sớm về các yêu cầu bằng cách cung cấp một mô hình của sản phẩm mong đợi trước khi thực sự xây dựng nó. Các ví dụ về nguyên mẫu là các sản phẩm quy mô nhỏ, các mô hình 2D và 3D tạo bằng máy tính, các bản mô phỏng (mock-ups), hoặc bản giả lập (simulations). Các nguyên mẫu cho phép các bên liên quan thử nghiệm với mô hình của sản phẩm cuối cùng thay vì bị giới hạn trong việc thảo luận các đại diện trừu tượng về yêu cầu của họ. Các nguyên mẫu hỗ trợ khái niệm phát triển dần dần trong các chu kỳ lặp lại của việc tạo mô phỏng, thử nghiệm người dùng, tạo phản hồi, và chỉnh sửa nguyên mẫu. Khi đã thực hiện đủ các chu kỳ phản hồi, các yêu cầu thu được từ nguyên mẫu đã đủ hoàn chỉnh để chuyển sang giai đoạn thiết kế hoặc xây dựng.</p>
+
+  <p>Kịch bản phân cảnh (Storyboarding) là một kỹ thuật tạo nguyên mẫu hiển thị trình tự hoặc điều hướng qua một chuỗi các hình ảnh hoặc hình minh họa. Kịch bản phân cảnh được sử dụng trong nhiều dự án ở nhiều ngành công nghiệp khác nhau, như phim ảnh, quảng cáo, thiết kế giảng dạy, và trong các dự án agile và phát triển phần mềm khác. Trong phát triển phần mềm, kịch bản phân cảnh sử dụng các mô phỏng (mock-ups) để hiển thị các đường dẫn điều hướng qua các trang web, màn hình, hoặc các giao diện người dùng khác.</p>
+
+  <h4 id="s5-2-3">5.2.3 THU THẬP YÊU CẦU: ĐẦU RA <span class="term-en">(COLLECT REQUIREMENTS: OUTPUTS)</span></h4>
+  
+  <h5>5.2.3.1 TÀI LIỆU YÊU CẦU <span class="term-en">(REQUIREMENTS DOCUMENTATION)</span></h5>
+  <p>Tài liệu yêu cầu mô tả cách thức các yêu cầu riêng lẻ đáp ứng nhu cầu kinh doanh của dự án. Các yêu cầu có thể bắt đầu ở mức độ cao và dần dần trở nên chi tiết hơn khi có thêm thông tin về các yêu cầu được biết. Trước khi được thiết lập làm đường cơ sở, các yêu cầu cần phải không rõ ràng (có thể đo lường và kiểm tra được), có thể truy xuất nguồn gốc, hoàn chỉnh, nhất quán, và được chấp nhận bởi các bên liên quan chính. Định dạng của tài liệu yêu cầu có thể từ một tài liệu đơn giản liệt kê tất cả các yêu cầu được phân loại theo bên liên quan và mức độ ưu tiên, đến các dạng phức tạp hơn chứa tóm tắt điều hành, các mô tả chi tiết, và các tệp đính kèm.</p>
+
+  <p>Nhiều tổ chức phân loại các yêu cầu thành các loại khác nhau, chẳng hạn như giải pháp kinh doanh và giải pháp kỹ thuật, giải pháp trước đây đề cập đến nhu cầu của bên liên quan và giải pháp sau đề cập đến cách những nhu cầu đó sẽ được thực hiện. Các yêu cầu có thể được nhóm thành các phân loại cho phép tinh chỉnh thêm và chi tiết hơn khi các yêu cầu được phát triển. Những phân loại này bao gồm:</p>
+  <ul class="pmbok">
+    <li><strong>Yêu cầu kinh doanh (Business requirements).</strong> Chúng mô tả các nhu cầu ở cấp độ cao hơn của toàn bộ tổ chức, chẳng hạn như các vấn đề kinh doanh hoặc cơ hội, và lý do tại sao một dự án được thực hiện.</li>
+    <li><strong>Yêu cầu của bên liên quan (Stakeholder requirements).</strong> Chúng mô tả nhu cầu của một bên liên quan hoặc một nhóm các bên liên quan.</li>
+    <li><strong>Yêu cầu giải pháp (Solution requirements).</strong> Chúng mô tả các tính năng, chức năng, và đặc điểm của sản phẩm, dịch vụ, hoặc kết quả sẽ đáp ứng các yêu cầu kinh doanh và của các bên liên quan. Các yêu cầu giải pháp được chia tiếp thành các yêu cầu chức năng và phi chức năng:
+      <ul class="pmbok dash">
+        <li><strong>Yêu cầu chức năng (Functional requirements).</strong> Yêu cầu chức năng mô tả các hành vi của sản phẩm. Ví dụ bao gồm các hành động, quy trình, dữ liệu, và tương tác mà sản phẩm cần thực thi.</li>
+        <li><strong>Yêu cầu phi chức năng (Nonfunctional requirements).</strong> Yêu cầu phi chức năng bổ sung cho các yêu cầu chức năng và mô tả các điều kiện môi trường hoặc phẩm chất cần thiết để sản phẩm hoạt động hiệu quả. Các ví dụ bao gồm: độ tin cậy, bảo mật, hiệu suất, an toàn, mức độ dịch vụ, khả năng hỗ trợ, lưu giữ/xóa bỏ, v.v.</li>
+      </ul>
+    </li>
+    <li><strong>Yêu cầu chuyển đổi và sẵn sàng (Transition and readiness requirements).</strong> Chúng mô tả các khả năng tạm thời, chẳng hạn như yêu cầu chuyển đổi dữ liệu và đào tạo, cần thiết để chuyển đổi từ trạng thái hiện tại (as-is state) sang trạng thái mong muốn trong tương lai.</li>
+    <li><strong>Yêu cầu dự án (Project requirements).</strong> Chúng mô tả các hành động, quy trình, hoặc các điều kiện khác mà dự án cần đáp ứng. Các ví dụ bao gồm ngày của các cột mốc, nghĩa vụ hợp đồng, các ràng buộc, v.v.</li>
+    <li><strong>Yêu cầu chất lượng (Quality requirements).</strong> Những yêu cầu này nắm bắt bất kỳ điều kiện hoặc tiêu chí nào cần thiết để xác nhận việc hoàn thành thành công của một sản phẩm giao nộp dự án hoặc đáp ứng các yêu cầu dự án khác. Các ví dụ bao gồm các bài kiểm tra, chứng nhận, xác nhận, v.v.</li>
+  </ul>
+
+  <h5>5.2.3.2 MA TRẬN TRUY XUẤT NGUỒN GỐC YÊU CẦU <span class="term-en">(REQUIREMENTS TRACEABILITY MATRIX)</span></h5>
+  <p>Ma trận truy xuất nguồn gốc yêu cầu là một lưới (grid) liên kết các yêu cầu của sản phẩm từ nguồn gốc của chúng cho đến các sản phẩm giao nộp đáp ứng chúng. Việc triển khai một ma trận truy xuất nguồn gốc yêu cầu giúp đảm bảo rằng mỗi yêu cầu đều tăng thêm giá trị kinh doanh bằng cách liên kết nó với các mục tiêu kinh doanh và dự án. Nó cung cấp một phương tiện để theo dõi các yêu cầu trong suốt vòng đời dự án, giúp đảm bảo rằng các yêu cầu được phê duyệt trong tài liệu yêu cầu sẽ được giao vào lúc kết thúc dự án. Cuối cùng, nó cung cấp một cấu trúc để quản lý các thay đổi đối với phạm vi sản phẩm.</p>
+
+  <p>Việc truy xuất các yêu cầu bao gồm nhưng không giới hạn ở việc liên kết với:</p>
+  <ul class="pmbok">
+    <li>Nhu cầu kinh doanh, cơ hội, mục đích, và mục tiêu;</li>
+    <li class="check">Mục tiêu dự án;</li>
+    <li class="check">Phạm vi dự án và sản phẩm giao nộp WBS;</li>
+    <li class="check">Thiết kế sản phẩm;</li>
+    <li class="check">Phát triển sản phẩm;</li>
+    <li>Chiến lược kiểm thử và kịch bản kiểm thử; và</li>
+    <li class="check">Từ các yêu cầu cấp cao cho đến các yêu cầu chi tiết hơn.</li>
+  </ul>
+
+  <p>Các thuộc tính liên quan đến mỗi yêu cầu có thể được ghi lại trong ma trận truy xuất nguồn gốc yêu cầu. Những thuộc tính này giúp xác định thông tin chính về yêu cầu. Các thuộc tính điển hình được sử dụng trong ma trận truy xuất nguồn gốc yêu cầu có thể bao gồm: một mã định danh duy nhất (unique identifier), một mô tả bằng văn bản về yêu cầu, lý do đưa vào, người chủ sở hữu, nguồn, mức độ ưu tiên, phiên bản, trạng thái hiện tại (chẳng hạn như hoạt động, bị hủy, hoãn lại, thêm vào, được phê duyệt, được chỉ định, hoàn thành), và ngày cập nhật trạng thái. Các thuộc tính bổ sung để đảm bảo rằng yêu cầu đã đáp ứng sự hài lòng của các bên liên quan có thể bao gồm tính ổn định, độ phức tạp, và các tiêu chí chấp nhận. Hình 5-7 cung cấp một ví dụ về một ma trận truy xuất nguồn gốc yêu cầu với các thuộc tính liên quan của nó.</p>
+
+  <div class="table-wrap">
+    <div class="table-caption"><strong>Hình 5-7.</strong> Ví dụ về Ma trận Truy xuất Nguồn gốc Yêu cầu <span class="term-en">(Example of a Requirements Traceability Matrix)</span></div>
+    <table>
+      <tr><td colspan="10" style="font-weight:bold; background-color: var(--navy); color: white; text-align: center;">Ma trận Truy xuất Nguồn gốc Yêu cầu (Requirements Traceability Matrix)</td></tr>
+      <tr><td colspan="2" style="font-weight:bold;">Tên Dự án:</td><td colspan="8"></td></tr>
+      <tr><td colspan="2" style="font-weight:bold;">Trung tâm Chi phí:</td><td colspan="8"></td></tr>
+      <tr><td colspan="2" style="font-weight:bold;">Mô tả Dự án:</td><td colspan="8"></td></tr>
+      <tr>
+        <th style='text-align: center; word-wrap: break-word;'>ID</th>
+        <th style='text-align: center; word-wrap: break-word;'>Associate ID</th>
+        <th style='text-align: center; word-wrap: break-word;'>Mô tả Yêu cầu</th>
+        <th style='text-align: center; word-wrap: break-word;'>Nhu cầu KD, Cơ hội, Mục đích, Mục tiêu</th>
+        <th style='text-align: center; word-wrap: break-word;'>Mục tiêu Dự án</th>
+        <th style='text-align: center; word-wrap: break-word;'>Sản phẩm giao nộp WBS</th>
+        <th style='text-align: center; word-wrap: break-word;'>Thiết kế Sản phẩm</th>
+        <th style='text-align: center; word-wrap: break-word;'>Phát triển Sản phẩm</th>
+        <th style='text-align: center; word-wrap: break-word;'>Các trường hợp Kiểm thử</th>
+        <th style='text-align: center; word-wrap: break-word;'></th>
+      </tr>
+      <tr>
+        <td rowspan="4" style="text-align:center;">001</td>
+        <td style='text-align: center;'>1.0</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td style='text-align: center;'>1.1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td style='text-align: center;'>1.2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td style='text-align: center;'>1.2.1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td rowspan="3" style="text-align:center;">002</td>
+        <td style='text-align: center;'>2.0</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td style='text-align: center;'>2.1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td style='text-align: center;'>2.1.1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td rowspan="3" style="text-align:center;">003</td>
+        <td style='text-align: center;'>3.0</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td style='text-align: center;'>3.1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td style='text-align: center;'>3.2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td style='text-align: center;'>004</td>
+        <td style='text-align: center;'>4.0</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td style='text-align: center;'>005</td>
+        <td style='text-align: center;'>5.0</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+      </tr>
+    </table>
+  </div>
+
+  <h2 id="s5-3">5.3 ĐỊNH NGHĨA PHẠM VI <span class="term-en">(DEFINE SCOPE)</span></h2>
+  <p>Định nghĩa Phạm vi là quy trình phát triển một mô tả chi tiết về dự án và sản phẩm. Lợi ích chính của quy trình này là nó mô tả các ranh giới của sản phẩm, dịch vụ, hoặc kết quả cũng như các tiêu chí chấp nhận. Các đầu vào, công cụ và kỹ thuật, cùng đầu ra của quy trình này được mô tả trong Hình 5-8. Hình 5-9 mô tả sơ đồ luồng dữ liệu của quy trình.</p>
+
+  <div class="figure-wrap">
+    <div class="figure-caption"><strong>Hình 5-8.</strong> Định nghĩa Phạm vi: Đầu vào, Công cụ & Kỹ thuật, và Đầu ra <span class="term-en">(Define Scope: Inputs, Tools & Techniques, and Outputs)</span></div>
+  </div>
+
+  <div class="figure-wrap">
+    <div class="figure-caption"><strong>Hình 5-9.</strong> Định nghĩa Phạm vi: Sơ đồ Luồng Dữ liệu <span class="term-en">(Define Scope: Data Flow Diagram)</span></div>
+  </div>
+
+  <p>Bởi vì tất cả các yêu cầu được xác định trong quy trình Thu thập Yêu cầu có thể không được bao gồm trong dự án, quy trình Định nghĩa Phạm vi sẽ chọn lựa các yêu cầu cuối cùng của dự án từ tài liệu yêu cầu được phát triển trong quy trình Thu thập Yêu cầu. Sau đó, nó phát triển một mô tả chi tiết về dự án và sản phẩm, dịch vụ, hoặc kết quả.</p>
+
+  <p>Việc chuẩn bị một tuyên bố phạm vi dự án chi tiết được xây dựng dựa trên các sản phẩm giao nộp chính, các giả định, và các ràng buộc được ghi lại trong quá trình khởi tạo dự án. Trong quá trình lập kế hoạch dự án, phạm vi dự án được xác định và mô tả với độ đặc thù lớn hơn khi có thêm thông tin về dự án được biết. Các rủi ro, giả định, và ràng buộc hiện tại được phân tích về tính hoàn chỉnh và được thêm vào hoặc cập nhật khi cần thiết. Quy trình Định nghĩa Phạm vi có thể lặp đi lặp lại rất nhiều lần. Trong các dự án có vòng đời lặp lại (iterative life cycle), một tầm nhìn cấp cao sẽ được phát triển cho toàn bộ dự án, nhưng phạm vi chi tiết được xác định cho từng lần lặp một, và việc lập kế hoạch chi tiết cho lần lặp tiếp theo được thực hiện khi công việc đang tiến triển đối với phạm vi dự án và các sản phẩm giao nộp của lần lặp hiện tại.</p>
+
+  <h4 id="s5-3-1">5.3.1 ĐỊNH NGHĨA PHẠM VI: ĐẦU VÀO <span class="term-en">(DEFINE SCOPE: INPUTS)</span></h4>
+  
+  <h5>5.3.1.1 ĐIỀU LỆ DỰ ÁN <span class="term-en">(PROJECT CHARTER)</span></h5>
+  <p>Được mô tả trong Mục 4.1.3.1. Điều lệ dự án cung cấp bản mô tả cấp cao về dự án, đặc điểm sản phẩm, và các yêu cầu phê duyệt.</p>
+
+  <h5>5.3.1.2 KẾ HOẠCH QUẢN LÝ DỰ ÁN <span class="term-en">(PROJECT MANAGEMENT PLAN)</span></h5>
+  <p>Được mô tả trong Mục 4.2.3.1. Thành phần kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở kế hoạch quản lý phạm vi như được mô tả trong Mục 5.1.3.1, trong đó ghi lại cách thức phạm vi dự án sẽ được định nghĩa, xác nhận, và kiểm soát.</p>
+
+  <h5>5.3.1.3 TÀI LIỆU DỰ ÁN <span class="term-en">(PROJECT DOCUMENTS)</span></h5>
+  <p>Ví dụ về các tài liệu dự án có thể được coi là đầu vào cho quy trình này bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li><strong>Sổ nhật ký giả định (Assumption log).</strong> Được mô tả trong Mục 4.1.3.2. Sổ nhật ký giả định xác định các giả định và ràng buộc về sản phẩm, dự án, môi trường, các bên liên quan, và các yếu tố khác có thể ảnh hưởng đến phạm vi dự án và sản phẩm.</li>
+    <li><strong>Tài liệu yêu cầu (Requirements documentation).</strong> Được mô tả trong Mục 5.2.3.1. Tài liệu yêu cầu xác định các yêu cầu sẽ được tích hợp vào phạm vi.</li>
+    <li><strong>Sổ đăng ký rủi ro (Risk register).</strong> Được mô tả trong Mục 11.2.3.1. Sổ đăng ký rủi ro chứa các chiến lược đối phó có thể ảnh hưởng đến phạm vi dự án, chẳng hạn như giảm thiểu hoặc thay đổi phạm vi dự án và sản phẩm để tránh hoặc giảm nhẹ rủi ro.</li>
+  </ul>
+
+  <h5>5.3.1.4 CÁC YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP <span class="term-en">(ENTERPRISE ENVIRONMENTAL FACTORS)</span></h5>
+  <p>Các yếu tố môi trường doanh nghiệp có thể ảnh hưởng đến quy trình Định nghĩa Phạm vi bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok check">
+    <li>Văn hóa tổ chức;</li>
+    <li>Cơ sở hạ tầng;</li>
+    <li>Quản trị nhân sự; và</li>
+    <li>Điều kiện thị trường.</li>
+  </ul>
+
+  <h5>5.3.1.5 TÀI SẢN QUY TRÌNH TỔ CHỨC <span class="term-en">(ORGANIZATIONAL PROCESS ASSETS)</span></h5>
+  <p>Các tài sản quy trình tổ chức có thể ảnh hưởng đến quy trình Định nghĩa Phạm vi bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li>Các chính sách, thủ tục, và biểu mẫu cho một tuyên bố phạm vi dự án;</li>
+    <li>Hồ sơ dự án từ các dự án trước đó; và</li>
+    <li>Bài học kinh nghiệm từ các giai đoạn hoặc dự án trước đó.</li>
+  </ul>
+
+  <h4 id="s5-3-2">5.3.2 ĐỊNH NGHĨA PHẠM VI: CÔNG CỤ VÀ KỸ THUẬT <span class="term-en">(DEFINE SCOPE: TOOLS AND TECHNIQUES)</span></h4>
+
+  <h5>5.3.2.1 ĐÁNH GIÁ CHUYÊN GIA <span class="term-en">(EXPERT JUDGMENT)</span></h5>
+  <p>Được mô tả trong Mục 4.1.2.1. Chuyên môn nên được xem xét từ các cá nhân hoặc nhóm có kiến thức về hoặc kinh nghiệm đối với các dự án tương tự.</p>
+
+  <h5>5.3.2.2 PHÂN TÍCH DỮ LIỆU <span class="term-en">(DATA ANALYSIS)</span></h5>
+  <p>Ví dụ về kỹ thuật phân tích dữ liệu có thể được sử dụng trong quy trình này bao gồm nhưng không giới hạn ở phân tích các phương án thay thế (alternatives analysis). Phân tích các phương án thay thế có thể được sử dụng để đánh giá các cách thức nhằm đáp ứng các yêu cầu và mục tiêu được xác định trong điều lệ dự án.</p>
+
+  <h5>5.3.2.3 RA QUYẾT ĐỊNH <span class="term-en">(DECISION MAKING)</span></h5>
+  <p>Được mô tả trong Mục 5.1.2.2. Một kỹ thuật ra quyết định có thể được sử dụng trong quy trình này bao gồm nhưng không giới hạn ở phân tích quyết định đa tiêu chí (multicriteria decision analysis). Được mô tả trong Mục 8.1.2.4, phân tích quyết định đa tiêu chí là một kỹ thuật sử dụng ma trận quyết định để cung cấp một cách tiếp cận phân tích có hệ thống nhằm thiết lập các tiêu chí, chẳng hạn như yêu cầu, tiến độ, ngân sách, và nguồn lực, nhằm tinh chỉnh phạm vi dự án và sản phẩm cho dự án.</p>
+
+  <h5>5.3.2.4 KỸ NĂNG TƯƠNG TÁC CÁ NHÂN VÀ LÀM VIỆC NHÓM <span class="term-en">(INTERPERSONAL AND TEAM SKILLS)</span></h5>
+  <p>Được mô tả trong Mục 4.1.2.3. Ví dụ về kỹ năng tương tác cá nhân và làm việc nhóm là điều phối (facilitation). Điều phối được sử dụng trong các hội thảo và phiên làm việc với các bên liên quan chính, những người có nhiều kỳ vọng hoặc lĩnh vực chuyên môn đa dạng. Mục tiêu là đạt được sự thấu hiểu chung và liên chức năng về các sản phẩm giao nộp của dự án cùng ranh giới của dự án và sản phẩm.</p>
+
+  <h5>5.3.2.5 PHÂN TÍCH SẢN PHẨM <span class="term-en">(PRODUCT ANALYSIS)</span></h5>
+  <p>Phân tích sản phẩm có thể được sử dụng để định nghĩa các sản phẩm và dịch vụ. Nó bao gồm việc đặt câu hỏi về một sản phẩm hoặc dịch vụ và hình thành các câu trả lời để mô tả việc sử dụng, đặc điểm, và các khía cạnh liên quan khác của những gì sẽ được giao.</p>
+  <p>Mỗi lĩnh vực ứng dụng có một hoặc nhiều phương pháp được chấp nhận chung để chuyển đổi các mô tả sản phẩm hoặc dịch vụ cấp cao thành các sản phẩm giao nộp có ý nghĩa. Các yêu cầu được thu thập ở cấp độ cao và được chia nhỏ theo mức độ chi tiết cần thiết để thiết kế sản phẩm cuối cùng. Ví dụ về các kỹ thuật phân tích sản phẩm bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li>Phân rã sản phẩm (Product breakdown).</li>
+    <li>Phân tích yêu cầu (Requirements analysis).</li>
+    <li class="check">Phân tích hệ thống (Systems analysis).</li>
+    <li class="check">Kỹ thuật hệ thống (Systems engineering).</li>
+    <li>Phân tích giá trị (Value analysis), và</li>
+    <li>Kỹ thuật giá trị (Value engineering).</li>
+  </ul>
+
+  <h4 id="s5-3-3">5.3.3 ĐỊNH NGHĨA PHẠM VI: ĐẦU RA <span class="term-en">(DEFINE SCOPE: OUTPUTS)</span></h4>
+  
+  <h5>5.3.3.1 TUYÊN BỐ PHẠM VI DỰ ÁN <span class="term-en">(PROJECT SCOPE STATEMENT)</span></h5>
+  <p>Tuyên bố phạm vi dự án là bản mô tả phạm vi dự án, các sản phẩm giao nộp chính, các giả định, và các ràng buộc. Tuyên bố phạm vi dự án ghi lại toàn bộ phạm vi, bao gồm phạm vi dự án và phạm vi sản phẩm. Nó mô tả chi tiết các sản phẩm giao nộp của dự án. Nó cũng cung cấp sự thấu hiểu chung về phạm vi dự án giữa các bên liên quan của dự án. Nó có thể chứa các nội dung loại trừ phạm vi (scope exclusions) rõ ràng, giúp hỗ trợ trong việc quản lý kỳ vọng của các bên liên quan. Nó cho phép nhóm dự án thực hiện việc lập kế hoạch chi tiết hơn, hướng dẫn công việc của nhóm dự án trong suốt quá trình thực thi, và cung cấp đường cơ sở (baseline) để đánh giá xem các yêu cầu thay đổi hoặc công việc bổ sung có nằm trong hay ngoài ranh giới của dự án hay không.</p>
+
+  <p>Mức độ và mức độ chi tiết mà tại đó tuyên bố phạm vi dự án xác định công việc sẽ được thực hiện và công việc bị loại trừ có thể giúp xác định khả năng nhóm quản lý dự án kiểm soát phạm vi tổng thể của dự án tốt đến mức nào. Tuyên bố phạm vi dự án chi tiết, có thể trực tiếp hoặc tham chiếu đến các tài liệu khác, bao gồm các thành phần sau:</p>
+  <ul class="pmbok">
+    <li><strong>Mô tả phạm vi sản phẩm (Product scope description).</strong> Phát triển dần các đặc điểm của sản phẩm, dịch vụ, hoặc kết quả được mô tả trong điều lệ dự án và tài liệu yêu cầu.</li>
+    <li><strong>Sản phẩm giao nộp (Deliverables).</strong> Bất kỳ sản phẩm, kết quả, hoặc khả năng thực hiện một dịch vụ duy nhất và có thể xác minh được nào được yêu cầu sản xuất để hoàn thành một quy trình, giai đoạn, hoặc dự án. Sản phẩm giao nộp cũng bao gồm các kết quả phụ trợ, chẳng hạn như báo cáo và tài liệu quản lý dự án. Các sản phẩm giao nộp này có thể được mô tả ở mức độ tóm tắt hoặc rất chi tiết.</li>
+    <li><strong>Tiêu chí chấp nhận (Acceptance criteria).</strong> Một tập hợp các điều kiện phải được đáp ứng trước khi các sản phẩm giao nộp được chấp nhận.</li>
+    <li><strong>Loại trừ của dự án (Project exclusions).</strong> Xác định những gì bị loại trừ khỏi dự án. Việc nêu rõ ràng những gì nằm ngoài phạm vi (out of scope) của dự án sẽ giúp quản lý kỳ vọng của các bên liên quan và có thể làm giảm sự rình rập mở rộng phạm vi (scope creep).</li>
+  </ul>
+
+  <p>Mặc dù điều lệ dự án và tuyên bố phạm vi dự án đôi khi được xem là có chứa một mức độ dư thừa nhất định, nhưng chúng khác nhau ở mức độ chi tiết chứa trong mỗi tài liệu. Điều lệ dự án chứa thông tin cấp cao, trong khi tuyên bố phạm vi dự án chứa mô tả chi tiết về các thành phần của phạm vi. Những thành phần này được phát triển dần trong suốt dự án. Bảng 5-1 mô tả một số yếu tố chính đối với mỗi tài liệu.</p>
+
+  <div class="table-wrap">
+    <div class="table-caption"><strong>Bảng 5-1.</strong> Các yếu tố của Điều lệ Dự án và Tuyên bố Phạm vi Dự án <span class="term-en">(Elements of the Project Charter and Project Scope Statement)</span></div>
+    <table>
+      <tr>
+        <th>Điều lệ Dự án (Project Charter)</th>
+        <th>Tuyên bố Phạm vi Dự án (Project Scope Statement)</th>
+      </tr>
+      <tr>
+        <td>Mục đích dự án (Project purpose)</td>
+        <td>Mô tả phạm vi dự án (phát triển dần dần)</td>
+      </tr>
+      <tr>
+        <td>Các mục tiêu dự án có thể đo lường và tiêu chí thành công liên quan</td>
+        <td>Các sản phẩm giao nộp của dự án (Project deliverables)</td>
+      </tr>
+      <tr>
+        <td>Yêu cầu cấp cao</td>
+        <td>Tiêu chí chấp nhận (Acceptance criteria)</td>
+      </tr>
+      <tr>
+        <td>Mô tả dự án cấp cao, ranh giới, và các sản phẩm giao nộp chính</td>
+        <td>Loại trừ của dự án (Project exclusions)</td>
+      </tr>
+      <tr>
+        <td>Rủi ro tổng thể dự án</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Lịch trình cột mốc tóm tắt</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Nguồn tài chính được phê duyệt trước</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Danh sách các bên liên quan chính</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Yêu cầu phê duyệt dự án (điều gì cấu thành thành công, ai quyết định thành công, ai ký nghiệm thu)</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Tiêu chí thoát dự án (điều kiện để đóng hoặc hủy bỏ dự án/giai đoạn)</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Người quản lý dự án được phân công, trách nhiệm, và mức thẩm quyền</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>Tên và thẩm quyền của nhà tài trợ hoặc người cấp quyền cho điều lệ dự án</td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+
+  <h5>5.3.3.2 CẬP NHẬT TÀI LIỆU DỰ ÁN <span class="term-en">(PROJECT DOCUMENTS UPDATES)</span></h5>
+  <p>Các tài liệu dự án có thể được cập nhật như là kết quả của việc thực hiện quy trình này bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li><strong>Sổ nhật ký giả định (Assumption log).</strong> Được mô tả trong Mục 4.1.3.2. Sổ nhật ký giả định được cập nhật với các giả định hoặc ràng buộc bổ sung được xác định trong quá trình này.</li>
+    <li><strong>Tài liệu yêu cầu (Requirements documentation).</strong> Được mô tả trong Mục 5.2.3.1. Tài liệu yêu cầu có thể được cập nhật với các yêu cầu bổ sung hoặc bị thay đổi.</li>
+    <li><strong>Ma trận truy xuất nguồn gốc yêu cầu (Requirements traceability matrix).</strong> Được mô tả trong Mục 5.2.3.2. Ma trận truy xuất nguồn gốc yêu cầu có thể được cập nhật để phản ánh các thay đổi trong tài liệu yêu cầu.</li>
+    <li><strong>Sổ đăng ký các bên liên quan (Stakeholder register).</strong> Được mô tả trong Mục 13.1.3.1. Khi có thêm thông tin về các bên liên quan hiện tại hoặc các bên liên quan mới được thu thập trong quá trình này, thông tin đó sẽ được ghi lại trong sổ đăng ký các bên liên quan.</li>
+  </ul>
+
+  <h2 id="s5-4">5.4 TẠO CẤU TRÚC PHÂN CHIA CÔNG VIỆC <span class="term-en">(CREATE WBS)</span></h2>
+  <p>Tạo Cấu trúc Phân chia Công việc (Create WBS) là quy trình chia nhỏ các sản phẩm giao nộp của dự án và công việc dự án thành các thành phần nhỏ hơn, dễ quản lý hơn. Lợi ích chính của quy trình này là nó cung cấp một khung sườn (framework) về những gì cần được bàn giao. Quy trình này được thực hiện một lần hoặc tại các điểm được xác định trước trong dự án. Các đầu vào, công cụ và kỹ thuật, cùng đầu ra của quy trình được mô tả trong Hình 5-10. Hình 5-11 mô tả sơ đồ luồng dữ liệu của quy trình.</p>
+
+  <div class="figure-wrap">
+    <div class="figure-caption"><strong>Hình 5-10.</strong> Tạo WBS: Đầu vào, Công cụ & Kỹ thuật, và Đầu ra <span class="term-en">(Create WBS: Inputs, Tools & Techniques, and Outputs)</span></div>
+  </div>
+
+  <div class="figure-wrap">
+    <div class="figure-caption"><strong>Hình 5-11.</strong> Tạo WBS: Sơ đồ Luồng Dữ liệu <span class="term-en">(Create WBS: Data Flow Diagram)</span></div>
+  </div>
+
+  <p>WBS là sự phân rã có tính phân cấp của toàn bộ phạm vi công việc cần được thực hiện bởi nhóm dự án nhằm hoàn thành các mục tiêu dự án và tạo ra các sản phẩm giao nộp theo yêu cầu. WBS tổ chức và định nghĩa toàn bộ phạm vi của dự án và đại diện cho công việc được chỉ định trong tuyên bố phạm vi dự án đã được phê duyệt hiện tại.</p>
+
+  <p>Công việc đã lên kế hoạch được chứa bên trong cấp độ thấp nhất của các thành phần WBS, được gọi là các gói công việc (work packages). Một gói công việc có thể được sử dụng để nhóm các hoạt động nơi công việc được lên tiến độ và ước lượng, giám sát, và kiểm soát. Trong ngữ cảnh của WBS, "công việc" đề cập đến các sản phẩm công việc hoặc sản phẩm giao nộp là kết quả của một hoạt động và không phải là bản thân hoạt động đó.</p>
+
+  <h4 id="s5-4-1">5.4.1 TẠO WBS: ĐẦU VÀO <span class="term-en">(CREATE WBS: INPUTS)</span></h4>
+  
+  <h5>5.4.1.1 KẾ HOẠCH QUẢN LÝ DỰ ÁN <span class="term-en">(PROJECT MANAGEMENT PLAN)</span></h5>
+  <p>Thành phần kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở kế hoạch quản lý phạm vi. Được mô tả trong Mục 5.1.3.1, kế hoạch quản lý phạm vi ghi lại cách thức WBS sẽ được tạo ra từ tuyên bố phạm vi dự án.</p>
+
+  <h5>5.4.1.2 TÀI LIỆU DỰ ÁN <span class="term-en">(PROJECT DOCUMENTS)</span></h5>
+  <p>Các ví dụ về tài liệu dự án có thể được coi là đầu vào cho quy trình này bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li><strong>Tuyên bố phạm vi dự án (Project scope statement).</strong> Được mô tả trong Mục 5.3.3.1. Tuyên bố phạm vi dự án mô tả công việc sẽ được thực hiện và công việc bị loại trừ.</li>
+    <li><strong>Tài liệu yêu cầu (Requirements documentation).</strong> Được mô tả trong Mục 5.2.3.1. Các yêu cầu chi tiết mô tả cách thức các yêu cầu riêng lẻ đáp ứng nhu cầu kinh doanh của dự án.</li>
+  </ul>
+
+  <h5>5.4.1.3 CÁC YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP <span class="term-en">(ENTERPRISE ENVIRONMENTAL FACTORS)</span></h5>
+  <p>Các yếu tố môi trường doanh nghiệp có thể ảnh hưởng đến quy trình Tạo WBS bao gồm nhưng không giới hạn ở các tiêu chuẩn WBS theo ngành cụ thể (industry-specific WBS standards) có liên quan đến bản chất của dự án. Các tiêu chuẩn đặc thù của ngành này có thể đóng vai trò như những nguồn tài liệu tham khảo bên ngoài cho việc tạo WBS.</p>
+
+  <h5>5.4.1.4 TÀI SẢN QUY TRÌNH TỔ CHỨC <span class="term-en">(ORGANIZATIONAL PROCESS ASSETS)</span></h5>
+  <p>Các tài sản quy trình tổ chức có thể ảnh hưởng đến quy trình Tạo WBS bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li>Các chính sách, thủ tục, và biểu mẫu mẫu cho WBS;</li>
+    <li>Hồ sơ dự án từ các dự án trước đây; và</li>
+    <li>Bài học kinh nghiệm từ các dự án trước đây.</li>
+  </ul>
+
+  <h4 id="s5-4-2">5.4.2 TẠO WBS: CÔNG CỤ VÀ KỸ THUẬT <span class="term-en">(CREATE WBS: TOOLS AND TECHNIQUES)</span></h4>
+
+  <h5>5.4.2.1 ĐÁNH GIÁ CHUYÊN GIA <span class="term-en">(EXPERT JUDGMENT)</span></h5>
+  <p>Được mô tả trong Mục 4.1.2.1. Chuyên môn nên được xem xét từ các cá nhân hoặc nhóm có kiến thức về hoặc kinh nghiệm với các dự án tương tự.</p>
+
+  <h5>5.4.2.2 PHÂN RÃ <span class="term-en">(DECOMPOSITION)</span></h5>
+  <p>Phân rã là một kỹ thuật được sử dụng để chia và chia nhỏ phạm vi dự án và các sản phẩm giao nộp của dự án thành các phần nhỏ hơn, dễ quản lý hơn. Gói công việc (work package) là công việc được xác định ở mức độ thấp nhất của WBS mà chi phí và thời lượng của nó có thể được ước lượng và quản lý. Mức độ phân rã thường được hướng dẫn bởi mức độ kiểm soát cần thiết để quản lý dự án hiệu quả. Mức độ chi tiết cho các gói công việc sẽ thay đổi tùy theo quy mô và độ phức tạp của dự án. Việc phân rã toàn bộ công việc dự án thành các gói công việc thường bao gồm các hoạt động sau:</p>
+  <ul class="pmbok">
+    <li>Xác định và phân tích các sản phẩm giao nộp và công việc liên quan.</li>
+    <li>Cấu trúc và tổ chức WBS.</li>
+    <li>Phân rã các cấp WBS trên thành các thành phần chi tiết cấp thấp hơn.</li>
+    <li>Phát triển và gán các mã nhận dạng cho các thành phần WBS.</li>
+    <li>Xác minh rằng mức độ phân rã của các sản phẩm giao nộp là phù hợp.</li>
+  </ul>
+  <p>Một phần của WBS với một số nhánh của WBS được phân rã xuống mức gói công việc được thể hiện trong Hình 5-12.</p>
+
+  <div class="figure-wrap">
+    <div class="figure-caption"><strong>Hình 5-12.</strong> Ví dụ về WBS được phân rã xuống mức Gói Công việc <span class="term-en">(Sample WBS Decomposed Down Through Work Packages)</span></div>
+  </div>
+
+  <p>Một cấu trúc WBS có thể được tạo ra thông qua nhiều cách tiếp cận khác nhau. Một số phương pháp phổ biến bao gồm phương pháp từ trên xuống (top-down approach), việc sử dụng các hướng dẫn đặc thù của tổ chức, và việc sử dụng các biểu mẫu WBS. Một cách tiếp cận từ dưới lên (bottom-up approach) có thể được sử dụng để nhóm các thành phần phụ. Cấu trúc WBS có thể được thể hiện ở nhiều dạng, chẳng hạn như:</p>
+  <ul class="pmbok">
+    <li>Sử dụng các giai đoạn của vòng đời dự án làm cấp độ phân rã thứ hai, với các sản phẩm và dự án được chèn vào cấp độ thứ ba, như trong Hình 5-13;</li>
+    <li>Sử dụng các sản phẩm giao nộp chính làm cấp độ phân rã thứ hai, như trong Hình 5-14; và</li>
+    <li>Kết hợp các thành phần phụ (subcomponents) có thể được phát triển bởi các tổ chức bên ngoài nhóm dự án, chẳng hạn như công việc thầu. Người bán (seller) sau đó sẽ phát triển một WBS hợp đồng hỗ trợ như một phần của công việc thầu đó.</li>
+  </ul>
+
+  <div class="figure-wrap">
+    <div class="figure-caption"><strong>Hình 5-13.</strong> Ví dụ WBS được tổ chức theo Giai đoạn <span class="term-en">(Sample WBS Organized by Phase)</span></div>
+  </div>
+
+  <div class="figure-wrap">
+    <div class="figure-caption">Lưu ý: WBS này chỉ mang tính minh họa. Nó không nhằm mục đích đại diện cho toàn bộ phạm vi dự án của bất kỳ dự án cụ thể nào, cũng không ngụ ý rằng đây là cách duy nhất để tổ chức một WBS trong loại dự án này.</div>
+    <div class="figure-caption"><strong>Hình 5-14.</strong> Ví dụ WBS với Các Sản phẩm giao nộp Chính <span class="term-en">(Sample WBS with Major Deliverables)</span></div>
+  </div>
+
+  <p>Việc phân rã các thành phần WBS cấp cao yêu cầu chia nhỏ công việc cho mỗi sản phẩm giao nộp hoặc thành phần phụ thành các thành phần cơ bản nhất của nó, trong đó các thành phần WBS đại diện cho các sản phẩm, dịch vụ, hoặc kết quả có thể xác minh được. Nếu sử dụng phương pháp agile, các epics có thể được phân rã thành các user stories. WBS có thể được cấu trúc dưới dạng một dàn bài (outline), một sơ đồ tổ chức, hoặc phương pháp khác xác định sự phân chia theo cấp bậc. Việc xác minh tính đúng đắn của sự phân rã yêu cầu việc xác định rằng các thành phần WBS cấp thấp hơn là cần thiết và đủ để hoàn thành các sản phẩm giao nộp cấp cao tương ứng. Các sản phẩm giao nộp khác nhau có thể có các mức độ phân rã khác nhau. Để đạt đến mức gói công việc, công việc đối với một số sản phẩm giao nộp chỉ cần được phân rã đến cấp độ tiếp theo, trong khi những sản phẩm khác cần phân rã thêm nhiều cấp độ. Khi công việc được phân rã thành các cấp độ chi tiết lớn hơn, khả năng lập kế hoạch, quản lý, và kiểm soát công việc sẽ được nâng cao. Tuy nhiên, việc phân rã quá mức có thể dẫn đến nỗ lực quản lý không hiệu quả, sử dụng nguồn lực không hiệu quả, giảm hiệu suất thực hiện công việc, và gặp khó khăn trong việc tổng hợp dữ liệu trên các cấp độ khác nhau của WBS.</p>
+
+  <p>Sự phân rã có thể không khả thi đối với một sản phẩm giao nộp hoặc thành phần phụ sẽ được hoàn thành trong tương lai xa. Nhóm quản lý dự án thường đợi cho đến khi sản phẩm giao nộp hoặc thành phần phụ đó được thống nhất, sau đó các chi tiết của WBS mới được phát triển. Kỹ thuật này đôi khi được gọi là lập kế hoạch theo làn sóng cuộn (rolling wave planning).</p>
+
+  <p>WBS đại diện cho tất cả công việc của sản phẩm và dự án, bao gồm cả công việc quản lý dự án. Tổng số công việc ở các cấp thấp nhất phải được cuộn lên (roll up) các cấp cao hơn để đảm bảo rằng không có gì bị bỏ sót và không có công việc thừa nào được thực hiện. Đây đôi khi được gọi là quy tắc 100 phần trăm (100 percent rule).</p>
+
+  <p>Để biết thông tin cụ thể liên quan đến WBS, hãy tham khảo Tiêu chuẩn Thực hành cho Cấu trúc Phân chia Công việc - Xuất bản Lần hai [15]. Tiêu chuẩn này chứa các ví dụ về mẫu WBS dành riêng cho ngành có thể được điều chỉnh cho các dự án cụ thể trong một lĩnh vực ứng dụng cụ thể.</p>
+
+  <h4 id="s5-4-3">5.4.3 TẠO WBS: ĐẦU RA <span class="term-en">(CREATE WBS: OUTPUTS)</span></h4>
+  
+  <h5>5.4.3.1 ĐƯỜNG CƠ SỞ PHẠM VI <span class="term-en">(SCOPE BASELINE)</span></h5>
+  <p>Đường cơ sở phạm vi là phiên bản được phê duyệt của một tuyên bố phạm vi, WBS, và từ điển WBS liên quan của nó, vốn chỉ có thể thay đổi thông qua các thủ tục kiểm soát thay đổi chính thức và được sử dụng làm cơ sở để so sánh. Nó là một thành phần của kế hoạch quản lý dự án. Các thành phần của đường cơ sở phạm vi bao gồm:</p>
+  <ul class="pmbok">
+    <li><strong>Tuyên bố phạm vi dự án (Project scope statement).</strong> Tuyên bố phạm vi dự án bao gồm bản mô tả phạm vi dự án, các sản phẩm giao nộp chính, các giả định, và các ràng buộc (Mục 5.3.3.1).</li>
+    <li><strong>Cấu trúc Phân chia Công việc (WBS).</strong> WBS là một sự phân rã có tính phân cấp của toàn bộ phạm vi công việc mà nhóm dự án sẽ thực hiện để đạt được các mục tiêu dự án và tạo ra các sản phẩm giao nộp cần thiết. Mỗi cấp độ giảm dần của WBS đại diện cho một sự định nghĩa ngày càng chi tiết về công việc dự án.</li>
+    <li><strong>Gói công việc (Work package).</strong> Cấp độ thấp nhất của WBS là một gói công việc có mã định danh duy nhất. Các mã định danh này cung cấp một cấu trúc cho việc tổng hợp theo thứ bậc các thông tin về chi phí, tiến độ, và nguồn lực, và tạo thành một mã tài khoản (code of accounts). Mỗi gói công việc là một phần của một tài khoản kiểm soát (control account). Tài khoản kiểm soát là một điểm kiểm soát của ban quản lý nơi phạm vi, ngân sách, và tiến độ được tích hợp và so sánh với giá trị thu được (earned value) để đo lường hiệu suất. Một tài khoản kiểm soát có hai hoặc nhiều gói công việc, mặc dù mỗi gói công việc chỉ được liên kết với một tài khoản kiểm soát duy nhất.</li>
+    <li><strong>Gói lập kế hoạch (Planning package).</strong> Một tài khoản kiểm soát có thể bao gồm một hoặc nhiều gói lập kế hoạch. Gói lập kế hoạch là một thành phần cấu trúc phân chia công việc nằm dưới tài khoản kiểm soát và nằm trên gói công việc, với nội dung công việc đã biết nhưng chưa có các hoạt động tiến độ chi tiết.</li>
+    <li><strong>Từ điển WBS (WBS dictionary).</strong> Từ điển WBS là tài liệu cung cấp các thông tin chi tiết về sản phẩm giao nộp, hoạt động, và việc lập tiến độ cho mỗi thành phần trong WBS. Từ điển WBS là một tài liệu hỗ trợ cho WBS. Phần lớn thông tin bao gồm trong từ điển WBS được tạo ra bởi các quy trình khác và được thêm vào tài liệu này ở giai đoạn sau. Thông tin trong từ điển WBS có thể bao gồm nhưng không giới hạn ở:
+      <ul class="pmbok check">
+        <li>Mã định danh tài khoản (Code of account identifier).</li>
+        <li>Mô tả công việc (Description of work).</li>
+        <li class="dash">Các giả định và ràng buộc (Assumptions and constraints).</li>
+        <li class="dash">Tổ chức chịu trách nhiệm (Responsible organization).</li>
+        <li>Các cột mốc tiến độ (Schedule milestones).</li>
+        <li class="dash">Các hoạt động tiến độ liên quan (Associated schedule activities).</li>
+        <li class="dash">Nguồn lực cần thiết (Resources required).</li>
+        <li class="dash">Ước lượng chi phí (Cost estimates).</li>
+        <li>Yêu cầu chất lượng (Quality requirements).</li>
+        <li class="dash">Tiêu chí chấp nhận (Acceptance criteria).</li>
+        <li class="dash">Tài liệu tham khảo kỹ thuật (Technical references), và</li>
+        <li>Thông tin thỏa thuận (Agreement information).</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h5>5.4.3.2 CẬP NHẬT TÀI LIỆU DỰ ÁN <span class="term-en">(PROJECT DOCUMENTS UPDATES)</span></h5>
+  <p>Các tài liệu dự án có thể được cập nhật như là kết quả của việc thực hiện quy trình này bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li class="dash"><strong>Sổ nhật ký giả định (Assumption log).</strong> Được mô tả trong Mục 4.1.3.2. Sổ nhật ký giả định được cập nhật với các giả định hoặc ràng buộc bổ sung được xác định trong quá trình Tạo WBS.</li>
+    <li class="dash"><strong>Tài liệu yêu cầu (Requirements documentation).</strong> Được mô tả trong Mục 5.2.3.1. Tài liệu yêu cầu có thể được cập nhật để bao gồm các thay đổi đã được phê duyệt từ kết quả của quy trình Tạo WBS.</li>
+  </ul>
+
+  <h2 id="s5-5">5.5 XÁC NHẬN PHẠM VI <span class="term-en">(VALIDATE SCOPE)</span></h2>
+  <p>Xác nhận Phạm vi là quy trình chính thức hóa việc nghiệm thu các sản phẩm giao nộp của dự án đã hoàn thành. Lợi ích chính của quy trình này là mang lại tính khách quan cho quá trình chấp nhận và làm tăng xác suất được nghiệm thu của sản phẩm, dịch vụ, hoặc kết quả cuối cùng thông qua việc xác nhận từng sản phẩm giao nộp. Quy trình này được thực hiện định kỳ trong suốt dự án khi cần thiết. Các đầu vào, công cụ và kỹ thuật, cùng đầu ra của quy trình được mô tả trong Hình 5-15. Hình 5-16 mô tả sơ đồ luồng dữ liệu của quy trình.</p>
+
+  <div class="figure-wrap">
+    <div class="figure-caption"><strong>Hình 5-15.</strong> Xác nhận Phạm vi: Đầu vào, Công cụ & Kỹ thuật, và Đầu ra <span class="term-en">(Validate Scope: Inputs, Tools & Techniques, and Outputs)</span></div>
+  </div>
+
+  <div class="figure-wrap">
+    <div class="figure-caption"><strong>Hình 5-16.</strong> Xác nhận Phạm vi: Sơ đồ Luồng Dữ liệu <span class="term-en">(Validate Scope: Data Flow Diagram)</span></div>
+  </div>
+
+  <p>Các sản phẩm giao nộp đã được xác minh (verified deliverables) có được từ quy trình Kiểm soát Chất lượng sẽ được xem xét với khách hàng hoặc nhà tài trợ để đảm bảo rằng chúng được hoàn thành thỏa đáng và đã được khách hàng hoặc nhà tài trợ nghiệm thu chính thức. Trong quy trình này, các đầu ra thu được từ các quy trình Lập kế hoạch trong Lĩnh vực Kiến thức Quản lý Phạm vi Dự án (chẳng hạn như tài liệu yêu cầu hoặc đường cơ sở phạm vi) cũng như dữ liệu hiệu suất công việc thu được từ các quy trình Thực thi trong các Lĩnh vực Kiến thức khác, sẽ là nền tảng để thực hiện việc xác nhận và nghiệm thu cuối cùng.</p>
+
+  <p>Quy trình Xác nhận Phạm vi khác với quy trình Kiểm soát Chất lượng ở chỗ quy trình trước chủ yếu quan tâm đến việc nghiệm thu các sản phẩm giao nộp, trong khi quy trình sau chủ yếu quan tâm đến tính đúng đắn của các sản phẩm giao nộp và việc đáp ứng các yêu cầu chất lượng được xác định cho các sản phẩm giao nộp. Kiểm soát Chất lượng thường được thực hiện trước Xác nhận Phạm vi, mặc dù hai quy trình này có thể được thực hiện song song.</p>
+
+  <h4 id="s5-5-1">5.5.1 XÁC NHẬN PHẠM VI: ĐẦU VÀO <span class="term-en">(VALIDATE SCOPE: INPUTS)</span></h4>
+  
+  <h5>5.5.1.1 KẾ HOẠCH QUẢN LÝ DỰ ÁN <span class="term-en">(PROJECT MANAGEMENT PLAN)</span></h5>
+  <p>Được mô tả trong Mục 4.2.3.1. Các thành phần của kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li><strong>Kế hoạch quản lý phạm vi (Scope management plan).</strong> Được mô tả trong Mục 5.1.3.1. Kế hoạch quản lý dự án quy định cách thức làm thế nào để đạt được sự chấp nhận chính thức đối với các sản phẩm giao nộp dự án đã hoàn thành.</li>
+    <li><strong>Kế hoạch quản lý yêu cầu (Requirements management plan).</strong> Được mô tả trong Mục 5.1.3.2. Kế hoạch quản lý yêu cầu mô tả cách các yêu cầu dự án được xác nhận.</li>
+    <li><strong>Đường cơ sở phạm vi (Scope baseline).</strong> Được mô tả trong Mục 5.4.3.1. Đường cơ sở phạm vi được so sánh với các kết quả thực tế để xác định xem liệu có cần thiết một thay đổi, một hành động khắc phục, hay hành động phòng ngừa nào không.</li>
+  </ul>
+
+  <h5>5.5.1.2 TÀI LIỆU DỰ ÁN <span class="term-en">(PROJECT DOCUMENTS)</span></h5>
+  <p>Các tài liệu dự án có thể được coi là đầu vào cho quy trình này bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li><strong>Sổ đăng ký bài học kinh nghiệm (Lessons learned register).</strong> Được mô tả trong Mục 4.4.3.1. Các bài học thu được sớm trong dự án có thể được áp dụng vào các giai đoạn sau của dự án để cải thiện tính hiệu quả và hiệu suất của việc xác nhận các sản phẩm giao nộp.</li>
+    <li><strong>Báo cáo chất lượng (Quality reports).</strong> Được mô tả trong Mục 8.2.3.1. Thông tin được trình bày trong báo cáo chất lượng có thể bao gồm tất cả các vấn đề đảm bảo chất lượng được xử lý hoặc báo cáo (escalated) bởi nhóm, các khuyến nghị để cải tiến, và bảng tóm tắt các phát hiện từ quy trình Kiểm soát Chất lượng. Thông tin này được xem xét trước khi chấp nhận sản phẩm.</li>
+    <li><strong>Tài liệu yêu cầu (Requirements documentation).</strong> Được mô tả trong Mục 5.2.3.1. Các yêu cầu được so sánh với kết quả thực tế để xác định xem liệu có cần thiết thay đổi, hành động khắc phục, hoặc hành động phòng ngừa hay không.</li>
+    <li><strong>Ma trận truy xuất nguồn gốc yêu cầu (Requirements traceability matrix).</strong> Được mô tả trong Mục 5.2.3.2. Ma trận truy xuất nguồn gốc yêu cầu chứa thông tin về các yêu cầu, bao gồm cách chúng sẽ được xác nhận.</li>
+  </ul>
+
+  <h5>5.5.1.3 CÁC SẢN PHẨM GIAO NỘP ĐÃ ĐƯỢC XÁC MINH <span class="term-en">(VERIFIED DELIVERABLES)</span></h5>
+  <p>Các sản phẩm giao nộp đã được xác minh là các sản phẩm giao nộp của dự án đã được hoàn thành và kiểm tra về tính đúng đắn thông qua quy trình Kiểm soát Chất lượng.</p>
+
+  <h5>5.5.1.4 DỮ LIỆU HIỆU SUẤT CÔNG VIỆC <span class="term-en">(WORK PERFORMANCE DATA)</span></h5>
+  <p>Được mô tả trong Mục 4.3.3.2. Dữ liệu hiệu suất công việc có thể bao gồm mức độ tuân thủ các yêu cầu, số lượng các điểm không phù hợp (nonconformities), mức độ nghiêm trọng của sự không phù hợp, hoặc số lượng các chu kỳ xác nhận đã được thực hiện trong một khoảng thời gian.</p>
+
+  <h4 id="s5-5-2">5.5.2 XÁC NHẬN PHẠM VI: CÔNG CỤ VÀ KỸ THUẬT <span class="term-en">(VALIDATE SCOPE: TOOLS AND TECHNIQUES)</span></h4>
+
+  <h5>5.5.2.1 KIỂM TRA <span class="term-en">(INSPECTION)</span></h5>
+  <p>Được mô tả trong Mục 8.3.2.3. Kiểm tra bao gồm các hoạt động như đo lường, xem xét, và xác nhận để quyết định xem liệu công việc và các sản phẩm giao nộp có đáp ứng các yêu cầu và tiêu chí chấp nhận sản phẩm hay không. Các hoạt động kiểm tra đôi khi được gọi là đánh giá (reviews), đánh giá sản phẩm (product reviews), và kiểm tra trực tiếp (walkthroughs). Trong một số lĩnh vực ứng dụng, các thuật ngữ khác nhau này có ý nghĩa duy nhất và cụ thể.</p>
+
+  <h5>5.5.2.2 RA QUYẾT ĐỊNH <span class="term-en">(DECISION MAKING)</span></h5>
+  <p>Được mô tả trong Mục 5.2.2.4. Một ví dụ về việc ra quyết định có thể được sử dụng trong quy trình này bao gồm nhưng không giới hạn ở việc biểu quyết (voting). Biểu quyết được sử dụng để đi đến kết luận khi việc xác nhận được thực hiện bởi nhóm dự án và các bên liên quan khác.</p>
+
+  <h4 id="s5-5-3">5.5.3 XÁC NHẬN PHẠM VI: ĐẦU RA <span class="term-en">(VALIDATE SCOPE: OUTPUTS)</span></h4>
+  
+  <h5>5.5.3.1 CÁC SẢN PHẨM GIAO NỘP ĐÃ ĐƯỢC CHẤP NHẬN <span class="term-en">(ACCEPTED DELIVERABLES)</span></h5>
+  <p>Các sản phẩm giao nộp đáp ứng các tiêu chí nghiệm thu sẽ được ký kết và phê duyệt chính thức bởi khách hàng hoặc nhà tài trợ. Tài liệu chính thức nhận được từ khách hàng hoặc nhà tài trợ xác nhận sự chấp nhận chính thức của bên liên quan đối với các sản phẩm giao nộp của dự án sẽ được chuyển tiếp đến quy trình Đóng Dự án hoặc Giai đoạn (Mục 4.7).</p>
+
+  <h5>5.5.3.2 THÔNG TIN HIỆU SUẤT CÔNG VIỆC <span class="term-en">(WORK PERFORMANCE INFORMATION)</span></h5>
+  <p>Thông tin hiệu suất công việc bao gồm thông tin về tiến độ của dự án, chẳng hạn như những sản phẩm giao nộp nào đã được chấp nhận và những sản phẩm nào chưa được chấp nhận cùng với các lý do tại sao. Thông tin này được ghi nhận như được mô tả trong Mục 10.3.3.1 và được truyền đạt cho các bên liên quan.</p>
+
+  <h5>5.5.3.3 YÊU CẦU THAY ĐỔI <span class="term-en">(CHANGE REQUESTS)</span></h5>
+  <p>Các sản phẩm giao nộp đã hoàn thành nhưng chưa được chấp nhận chính thức sẽ được ghi lại, cùng với các lý do không nghiệm thu các sản phẩm giao nộp đó. Những sản phẩm giao nộp đó có thể yêu cầu một thay đổi cho việc sửa chữa lỗi (defect repair). Các yêu cầu thay đổi (như được mô tả trong Mục 4.3.3.4) sẽ được xử lý để xem xét và quyết định thông qua quy trình Thực hiện Kiểm soát Thay đổi Tích hợp (Mục 4.6).</p>
+
+  <h5>5.5.3.4 CẬP NHẬT TÀI LIỆU DỰ ÁN <span class="term-en">(PROJECT DOCUMENTS UPDATES)</span></h5>
+  <p>Các tài liệu dự án có thể được cập nhật như là kết quả của việc thực hiện quy trình này bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li><strong>Sổ đăng ký bài học kinh nghiệm (Lessons learned register).</strong> Được mô tả trong Mục 4.4.3.1. Sổ đăng ký bài học kinh nghiệm được cập nhật với thông tin về những thách thức đã gặp phải và cách phòng tránh chúng cũng như các phương pháp xác nhận sản phẩm giao nộp đã hoạt động hiệu quả.</li>
+    <li><strong>Tài liệu yêu cầu (Requirements documentation).</strong> Được mô tả trong Mục 5.2.3.1. Tài liệu yêu cầu có thể được cập nhật với các kết quả thực tế của hoạt động xác nhận. Điều được đặc biệt quan tâm là khi kết quả thực tế tốt hơn yêu cầu hoặc khi một yêu cầu đã được miễn trừ.</li>
+    <li><strong>Ma trận truy xuất nguồn gốc yêu cầu (Requirements traceability matrix).</strong> Được mô tả trong Mục 5.2.3.2. Ma trận truy xuất nguồn gốc yêu cầu được cập nhật với kết quả xác nhận, bao gồm cả phương pháp được sử dụng và kết quả đạt được.</li>
+  </ul>
+
+  <h2 id="s5-6">5.6 KIỂM SOÁT PHẠM VI <span class="term-en">(CONTROL SCOPE)</span></h2>
+  <p>Kiểm soát Phạm vi là quy trình theo dõi trạng thái của dự án và phạm vi sản phẩm, đồng thời quản lý các thay đổi đối với đường cơ sở phạm vi. Lợi ích chính của quy trình này là đường cơ sở phạm vi được duy trì xuyên suốt dự án. Quy trình này được thực hiện xuyên suốt dự án. Các đầu vào, công cụ và kỹ thuật, cùng đầu ra của quy trình được mô tả trong Hình 5-17. Hình 5-18 mô tả sơ đồ luồng dữ liệu của quy trình.</p>
+
+  <div class="figure-wrap">
+    <div class="figure-caption"><strong>Hình 5-17.</strong> Kiểm soát Phạm vi: Đầu vào, Công cụ & Kỹ thuật, và Đầu ra <span class="term-en">(Control Scope: Inputs, Tools & Techniques, and Outputs)</span></div>
+  </div>
+
+  <div class="figure-wrap">
+    <div class="figure-caption"><strong>Hình 5-18.</strong> Kiểm soát Phạm vi: Sơ đồ Luồng Dữ liệu <span class="term-en">(Control Scope: Data Flow Diagram)</span></div>
+  </div>
+
+  <p>Kiểm soát phạm vi dự án đảm bảo rằng tất cả các thay đổi được yêu cầu và các hành động khắc phục hay phòng ngừa được đề xuất đều được xử lý thông qua quy trình Thực hiện Kiểm soát Thay đổi Tích hợp (xem Mục 4.6). Kiểm soát Phạm vi cũng được sử dụng để quản lý các thay đổi thực tế khi chúng xảy ra và được tích hợp với các quy trình kiểm soát khác. Sự mở rộng không kiểm soát đối với phạm vi sản phẩm hoặc dự án mà không có sự điều chỉnh nào về thời gian, chi phí, và nguồn lực được gọi là sự rình rập mở rộng phạm vi (scope creep). Sự thay đổi là không thể tránh khỏi; do đó, cần phải có một số loại quy trình kiểm soát thay đổi mang tính bắt buộc cho mỗi dự án.</p>
+
+  <h4 id="s5-6-1">5.6.1 KIỂM SOÁT PHẠM VI: ĐẦU VÀO <span class="term-en">(CONTROL SCOPE: INPUTS)</span></h4>
+  
+  <h5>5.6.1.1 KẾ HOẠCH QUẢN LÝ DỰ ÁN <span class="term-en">(PROJECT MANAGEMENT PLAN)</span></h5>
+  <p>Được mô tả trong Mục 4.2.3.1. Các thành phần của kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li><strong>Kế hoạch quản lý phạm vi (Scope management plan).</strong> Được mô tả trong Mục 5.1.3.1. Kế hoạch quản lý phạm vi lập tài liệu cách thức quản lý phạm vi dự án và sản phẩm sẽ được kiểm soát.</li>
+    <li><strong>Kế hoạch quản lý yêu cầu (Requirements management plan).</strong> Được mô tả trong Mục 5.1.3.2. Kế hoạch quản lý yêu cầu mô tả cách các yêu cầu dự án sẽ được quản lý.</li>
+    <li><strong>Kế hoạch quản lý thay đổi (Change management plan).</strong> Được mô tả trong Mục 4.2.3.1. Kế hoạch quản lý thay đổi định nghĩa quy trình để quản lý thay đổi trong dự án.</li>
+    <li><strong>Kế hoạch quản lý cấu hình (Configuration management plan).</strong> Được mô tả trong Mục 4.2.3.1. Kế hoạch quản lý cấu hình xác định các hạng mục nào có thể cấu hình được, các hạng mục nào yêu cầu kiểm soát thay đổi chính thức, và quy trình để kiểm soát thay đổi đối với những hạng mục đó.</li>
+    <li><strong>Đường cơ sở phạm vi (Scope baseline).</strong> Được mô tả trong Mục 5.4.3.1. Đường cơ sở phạm vi được so sánh với kết quả thực tế để xác định xem liệu có cần thiết thay đổi, hành động khắc phục, hay hành động phòng ngừa hay không.</li>
+    <li><strong>Đường cơ sở đo lường hiệu suất (Performance measurement baseline).</strong> Được mô tả trong Mục 4.2.3.1. Khi sử dụng phân tích giá trị thu được (earned value analysis), đường cơ sở đo lường hiệu suất sẽ được so sánh với các kết quả thực tế để xác định xem liệu có cần một sự thay đổi, một hành động khắc phục, hay hành động phòng ngừa nào không.</li>
+  </ul>
+
+  <h5>5.6.1.2 TÀI LIỆU DỰ ÁN <span class="term-en">(PROJECT DOCUMENTS)</span></h5>
+  <p>Các tài liệu dự án có thể được coi là đầu vào cho quy trình này bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li><strong>Sổ đăng ký bài học kinh nghiệm (Lessons learned register).</strong> Được mô tả trong Mục 4.4.3.1. Những bài học đã được thu thập sớm hơn trong dự án có thể được áp dụng ở các giai đoạn sau của dự án để cải thiện việc kiểm soát phạm vi.</li>
+    <li><strong>Tài liệu yêu cầu (Requirements documentation).</strong> Được mô tả trong Mục 5.2.3.1. Tài liệu yêu cầu được sử dụng để phát hiện bất kỳ sự sai lệch nào (deviation) trong phạm vi đã thỏa thuận đối với dự án hoặc sản phẩm.</li>
+    <li><strong>Ma trận truy xuất nguồn gốc yêu cầu (Requirements traceability matrix).</strong> Được mô tả trong Mục 5.2.3.2. Ma trận truy xuất nguồn gốc yêu cầu giúp phát hiện tác động của bất kỳ sự thay đổi hay sai lệch nào từ đường cơ sở phạm vi đối với các mục tiêu của dự án. Nó cũng có thể cung cấp trạng thái của các yêu cầu đang được kiểm soát.</li>
+  </ul>
+
+  <h5>5.6.1.3 DỮ LIỆU HIỆU SUẤT CÔNG VIỆC <span class="term-en">(WORK PERFORMANCE DATA)</span></h5>
+  <p>Dữ liệu hiệu suất công việc có thể bao gồm số lượng các yêu cầu thay đổi nhận được, số lượng yêu cầu được chấp nhận, và số lượng các sản phẩm giao nộp đã được xác minh, xác nhận, và hoàn thành.</p>
+
+  <h5>5.6.1.4 TÀI SẢN QUY TRÌNH TỔ CHỨC <span class="term-en">(ORGANIZATIONAL PROCESS ASSETS)</span></h5>
+  <p>Các tài sản quy trình tổ chức có thể ảnh hưởng đến quy trình Kiểm soát Phạm vi bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok check">
+    <li>Các chính sách, thủ tục, và hướng dẫn liên quan đến kiểm soát phạm vi chính thức và phi chính thức hiện có; và</li>
+    <li>Các phương pháp giám sát, báo cáo, và các biểu mẫu được sử dụng.</li>
+  </ul>
+
+  <h4 id="s5-6-2">5.6.2 KIỂM SOÁT PHẠM VI: CÔNG CỤ VÀ KỸ THUẬT <span class="term-en">(CONTROL SCOPE: TOOLS AND TECHNIQUES)</span></h4>
+
+  <h5>5.6.2.1 PHÂN TÍCH DỮ LIỆU <span class="term-en">(DATA ANALYSIS)</span></h5>
+  <p>Các kỹ thuật phân tích dữ liệu có thể được sử dụng trong quy trình Kiểm soát Phạm vi bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li><strong>Phân tích phương sai (Variance analysis).</strong> Được mô tả trong Mục 4.5.2.2. Phân tích phương sai được sử dụng để so sánh đường cơ sở (baseline) với kết quả thực tế và xác định xem liệu sự sai lệch (phương sai) có nằm trong ngưỡng cho phép hay không, hoặc liệu các hành động khắc phục hay phòng ngừa có phù hợp không.</li>
+    <li><strong>Phân tích xu hướng (Trend analysis).</strong> Được mô tả trong Mục 4.5.2.2. Phân tích xu hướng xem xét hiệu suất dự án theo thời gian để xác định xem hiệu suất đang cải thiện hay ngày càng xấu đi.</li>
+  </ul>
+  <p>Các khía cạnh quan trọng của việc kiểm soát phạm vi dự án bao gồm việc xác định nguyên nhân và mức độ sai lệch so với đường cơ sở phạm vi (Mục 5.4.3.1), và quyết định xem hành động khắc phục hay phòng ngừa có được yêu cầu hay không.</p>
+
+  <h4 id="s5-6-3">5.6.3 KIỂM SOÁT PHẠM VI: ĐẦU RA <span class="term-en">(CONTROL SCOPE: OUTPUTS)</span></h4>
+  
+  <h5>5.6.3.1 THÔNG TIN HIỆU SUẤT CÔNG VIỆC <span class="term-en">(WORK PERFORMANCE INFORMATION)</span></h5>
+  <p>Thông tin hiệu suất công việc được tạo ra bao gồm thông tin có tương quan và được ngữ cảnh hóa (contextualized) về việc phạm vi dự án và phạm vi sản phẩm đang hoạt động như thế nào khi so sánh với đường cơ sở phạm vi. Nó có thể bao gồm các phân loại của những thay đổi đã nhận, các sai lệch phạm vi đã được xác định và nguyên nhân của chúng, cách chúng tác động đến tiến độ hay chi phí, và các dự báo về hiệu suất phạm vi trong tương lai.</p>
+
+  <h5>5.6.3.2 YÊU CẦU THAY ĐỔI <span class="term-en">(CHANGE REQUESTS)</span></h5>
+  <p>Được mô tả trong Mục 4.3.3.4. Việc phân tích hiệu suất dự án có thể dẫn đến một yêu cầu thay đổi đối với các đường cơ sở về phạm vi và tiến độ hoặc các thành phần khác của kế hoạch quản lý dự án. Các yêu cầu thay đổi được xử lý để xem xét và đưa ra quyết định thông qua quy trình Thực hiện Kiểm soát Thay đổi Tích hợp (Mục 4.6).</p>
+
+  <h5>5.6.3.3 CẬP NHẬT KẾ HOẠCH QUẢN LÝ DỰ ÁN <span class="term-en">(PROJECT MANAGEMENT PLAN UPDATES)</span></h5>
+  <p>Bất kỳ thay đổi nào đối với kế hoạch quản lý dự án đều trải qua quy trình kiểm soát thay đổi của tổ chức thông qua một yêu cầu thay đổi. Các thành phần có thể yêu cầu thay đổi cho kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li><strong>Kế hoạch quản lý phạm vi (Scope management plan).</strong> Được mô tả trong Mục 5.1.3.1. Kế hoạch quản lý phạm vi có thể được cập nhật để phản ánh một sự thay đổi trong cách phạm vi được quản lý.</li>
+    <li><strong>Đường cơ sở phạm vi (Scope baseline).</strong> Được mô tả trong Mục 5.4.3.1. Những thay đổi đối với đường cơ sở phạm vi được kết hợp lại để phản hồi các thay đổi được phê duyệt trong phạm vi, tuyên bố phạm vi, WBS, hoặc từ điển WBS. Trong một số trường hợp, các sai lệch phạm vi có thể nghiêm trọng đến mức cần một đường cơ sở phạm vi sửa đổi để cung cấp một cơ sở thực tế cho việc đo lường hiệu suất.</li>
+    <li><strong>Đường cơ sở tiến độ (Schedule baseline).</strong> Được mô tả trong Mục 6.5.3.1. Những thay đổi đối với đường cơ sở tiến độ được kết hợp để phản hồi các thay đổi được phê duyệt về phạm vi, nguồn lực, hoặc ước lượng tiến độ. Trong một số trường hợp, các sai lệch tiến độ có thể nghiêm trọng đến mức cần phải có một đường cơ sở tiến độ sửa đổi để cung cấp một cơ sở thực tế cho việc đo lường hiệu suất.</li>
+    <li><strong>Đường cơ sở chi phí (Cost baseline).</strong> Được mô tả trong Mục 7.3.3.1. Những thay đổi đối với đường cơ sở chi phí được kết hợp để phản hồi các thay đổi được phê duyệt về phạm vi, nguồn lực, hoặc ước lượng chi phí. Trong một số trường hợp, các sai lệch chi phí có thể nghiêm trọng đến mức cần một đường cơ sở chi phí sửa đổi để cung cấp một cơ sở thực tế cho việc đo lường hiệu suất.</li>
+    <li><strong>Đường cơ sở đo lường hiệu suất (Performance measurement baseline).</strong> Được mô tả trong Mục 4.2.3.1. Những thay đổi đối với đường cơ sở đo lường hiệu suất được kết hợp để phản hồi các thay đổi được phê duyệt trong phạm vi, hiệu suất tiến độ, hoặc ước lượng chi phí. Trong một số trường hợp, các sai lệch hiệu suất có thể nghiêm trọng đến mức một yêu cầu thay đổi được đưa ra để điều chỉnh lại đường cơ sở đo lường hiệu suất nhằm cung cấp một cơ sở thực tế cho việc đo lường hiệu suất.</li>
+  </ul>
+
+  <h5>5.6.3.4 CẬP NHẬT TÀI LIỆU DỰ ÁN <span class="term-en">(PROJECT DOCUMENTS UPDATES)</span></h5>
+  <p>Các tài liệu dự án có thể được cập nhật như là kết quả của việc thực hiện quy trình này bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li><strong>Sổ đăng ký bài học kinh nghiệm (Lessons learned register).</strong> Được mô tả trong Mục 4.4.3.1. Sổ đăng ký bài học kinh nghiệm có thể được cập nhật với các kỹ thuật quản lý (controlling) phạm vi hiệu quả và tối ưu, bao gồm các nguyên nhân gây ra phương sai và các hành động khắc phục đã được lựa chọn.</li>
+    <li><strong>Tài liệu yêu cầu (Requirements documentation).</strong> Được mô tả trong Mục 5.2.3.1. Tài liệu yêu cầu có thể được cập nhật với các yêu cầu bổ sung hoặc bị thay đổi.</li>
+    <li><strong>Ma trận truy xuất nguồn gốc yêu cầu (Requirements traceability matrix).</strong> Được mô tả trong Mục 5.2.3.2. Ma trận truy xuất nguồn gốc yêu cầu có thể được cập nhật để phản ánh những thay đổi trong tài liệu yêu cầu.</li>
+  </ul>
+
+</main>
+</body>
+</html>

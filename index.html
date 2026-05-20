@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PMBOK® Guide 6 – Tiếng Việt</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside id="sidebar">
+  <div id="sidebar-header">
+    <button id="sidebar-close" aria-label="Đóng menu">✕</button>
+    <div class="book-label">PMBOK® Guide</div>
+    <h2>Hướng Dẫn Quản Lý Dự Án</h2>
+    <div class="edition">Lần xuất bản thứ 6 · Tiếng Việt</div>
+  </div>
+  <div id="progress-bar-wrap">
+    <div id="progress-label">Tiến độ: <span id="progress-count">0</span>/16 chương</div>
+    <div id="progress-bar"><div id="progress-fill"></div></div>
+  </div>
+  <nav id="chapter-nav"></nav>
+  <div id="sidebar-footer">
+    <button id="btn-gist-settings">⚙ Cài đặt Gist</button>
+  </div>
+</aside>
+
+<!-- OVERLAY for mobile -->
+<div id="sidebar-overlay"></div>
+
+<!-- MAIN -->
+<div id="main">
+  <header id="toolbar">
+    <button id="btn-hamburger" aria-label="Mở menu">☰</button>
+    <span id="toolbar-chapter-title"></span>
+    <div id="toolbar-right">
+      <button id="btn-mark-done" title="Đánh dấu đã đọc xong">✓ Xong</button>
+      <span id="sync-indicator" class="sync-saved">☁ Đã lưu</span>
+    </div>
+  </header>
+
+  <div id="content-wrap">
+    <div id="content"></div>
+  </div>
+</div>
+
+<!-- HIGHLIGHT POPUP -->
+<div id="highlight-popup" hidden>
+  <button class="hl-color" data-color="yellow" title="Vàng">🟡</button>
+  <button class="hl-color" data-color="green" title="Xanh">🟢</button>
+  <button class="hl-color" data-color="red" title="Đỏ">🔴</button>
+  <button id="hl-note-btn" title="Ghi chú">✏️</button>
+  <button id="hl-delete-btn" hidden title="Xóa">🗑</button>
+</div>
+
+<!-- NOTE MODAL -->
+<div id="note-modal" hidden>
+  <div id="note-modal-box">
+    <h3>Ghi chú</h3>
+    <textarea id="note-textarea" rows="4" placeholder="Nhập ghi chú..."></textarea>
+    <div id="note-modal-actions">
+      <button id="note-cancel">Hủy</button>
+      <button id="note-save">Lưu</button>
+    </div>
+  </div>
+</div>
+
+<!-- GIST SETUP MODAL -->
+<div id="gist-modal" hidden>
+  <div id="gist-modal-box">
+    <h3>⚙ Kết nối GitHub Gist</h3>
+    <ol>
+      <li>Vào <strong>github.com → Settings → Developer Settings → Personal Access Tokens (classic)</strong></li>
+      <li>Tạo token với quyền: <code>gist</code></li>
+      <li>Dán token vào đây:</li>
+    </ol>
+    <input type="password" id="gist-token-input" placeholder="ghp_xxxxxxxxxxxx">
+    <div id="gist-modal-actions">
+      <button id="gist-connect">Kết nối</button>
+      <button id="gist-offline">Bỏ qua — dùng offline</button>
+    </div>
+    <p id="gist-status"></p>
+    <p class="gist-note">🔒 Token chỉ lưu trong localStorage, không gửi đi đâu ngoài api.github.com</p>
+    <hr style="margin: 1rem 0; border-color: #eee;">
+    <p style="font-size:0.82rem;color:#666;margin-bottom:0.5rem">Sao lưu thủ công:</p>
+    <div style="display:flex;gap:0.5rem">
+      <button id="btn-export">⬇ Xuất JSON</button>
+      <label id="btn-import-label">⬆ Nhập JSON<input type="file" id="import-file" accept=".json" hidden></label>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

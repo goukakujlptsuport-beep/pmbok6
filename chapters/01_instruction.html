@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chương 1 – Giới Thiệu | PMBOK® Guide Lần 6</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a3;
+    --cream: #fdf8f0;
+    --text: #2c2c2c;
+    --text-light: #5a5a5a;
+    --border: #d4c89a;
+    --accent: #8b1a1a;
+    --sidebar-w: 260px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Merriweather', Georgia, serif;
+    background: var(--cream);
+    color: var(--text);
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* SIDEBAR */
+  #sidebar {
+    width: var(--sidebar-w);
+    background: var(--navy);
+    color: #ccd4e8;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    overflow-y: auto;
+    z-index: 100;
+    padding: 0 0 2rem;
+    border-right: 3px solid var(--gold);
+  }
+  #sidebar-header {
+    background: linear-gradient(135deg, #0f1d3a 0%, #1a2744 100%);
+    padding: 1.5rem 1.2rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  #sidebar-header .book-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  #sidebar-header h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+  }
+  #sidebar-header .edition {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    color: var(--gold-light);
+    font-style: italic;
+  }
+  #sidebar nav { padding: 0.8rem 0; }
+  #sidebar nav a {
+    display: block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    color: #aab8d0;
+    text-decoration: none;
+    padding: 0.45rem 1.2rem;
+    line-height: 1.4;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+  }
+  #sidebar nav a:hover, #sidebar nav a.active {
+    color: #fff;
+    background: rgba(201,168,76,0.12);
+    border-left-color: var(--gold);
+  }
+  #sidebar nav .section-group { margin-top: 0.4rem; }
+  #sidebar nav .group-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 0.8rem 1.2rem 0.3rem;
+    opacity: 0.85;
+  }
+  #sidebar nav a.sub {
+    padding-left: 2rem;
+    font-size: 0.75rem;
+    color: #8896b0;
+  }
+  #sidebar nav a.sub:hover { color: #ccd4e8; }
+
+  /* MAIN */
+  #main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    max-width: 900px;
+    padding: 0 3rem 5rem;
+  }
+
+  /* CHAPTER HEADER */
+  .chapter-hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #2a3a6a 100%);
+    color: white;
+    padding: 3rem 3rem 2.5rem;
+    margin: 0 -3rem 3rem;
+    border-bottom: 4px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-hero::before {
+    content: '1';
+    position: absolute;
+    right: 2rem; top: 50%;
+    transform: translateY(-50%);
+    font-size: 12rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.05);
+    font-family: 'Merriweather', serif;
+    line-height: 1;
+  }
+  .chapter-hero .ch-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .chapter-hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+  }
+  .chapter-hero .ch-en {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+    font-style: italic;
+  }
+
+  /* CONTENT STYLES */
+  h2 {
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  h3 {
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin: 2rem 0 0.7rem;
+    padding-left: 0.8rem;
+    border-left: 4px solid var(--gold);
+  }
+  h4 {
+    font-size: 1rem;
+    color: var(--accent);
+    margin: 1.5rem 0 0.5rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  p {
+    font-size: 0.97rem;
+    line-height: 1.85;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  /* BILINGUAL TERM */
+  .term {
+    display: inline;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .term-en {
+    font-style: italic;
+    color: var(--text-light);
+    font-size: 0.88em;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  /* BULLET LISTS */
+  ul.pmbok {
+    list-style: none;
+    margin: 0.5rem 0 1rem 0;
+    padding: 0;
+  }
+  ul.pmbok li {
+    position: relative;
+    padding: 0.3rem 0 0.3rem 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--text);
+  }
+  ul.pmbok li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.7rem;
+    top: 0.5rem;
+  }
+  ul.pmbok.check li::before { content: '☑'; color: #2d7a2d; font-size: 0.9rem; top: 0.35rem; }
+  ul.pmbok.dash li::before { content: '■'; color: var(--navy); font-size: 0.6rem; top: 0.5rem; }
+  ul.pmbok.circle li::before { content: '○'; color: var(--navy); font-size: 0.7rem; top: 0.45rem; }
+
+  /* DEFINITION BOX */
+  .def-box {
+    background: linear-gradient(135deg, #f5f0e8 0%, #ede8d8 100%);
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--gold);
+    border-radius: 0 6px 6px 0;
+    padding: 1rem 1.2rem;
+    margin: 1.2rem 0;
+    font-size: 0.93rem;
+    line-height: 1.7;
+  }
+  .def-box .def-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+
+  /* FIGURE */
+  .figure-wrap {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1.2rem;
+    background: #f8f5ee;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .figure-wrap img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  }
+  .figure-caption {
+    margin-top: 0.75rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.83rem;
+    color: var(--text-light);
+    font-style: italic;
+  }
+  .figure-caption strong {
+    color: var(--navy);
+    font-style: normal;
+  }
+
+  /* TABLES */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+  .table-wrap > .table-caption {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.82rem;
+    font-style: italic;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.84rem;
+  }
+  table th {
+    background: var(--navy);
+    color: white;
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+  table td {
+    padding: 0.55rem 0.8rem;
+    border: 1px solid #ddd;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  table tr:nth-child(even) td { background: #f9f6ef; }
+
+  .cite {
+    font-size: 0.75rem;
+    color: #666;
+    vertical-align: super;
+    margin-left: 2px;
+  }
+
+  @media(max-width:900px){
+    #sidebar { display: none; }
+    #main { margin-left: 0; padding: 0 1.2rem 4rem; }
+    .chapter-hero { margin: 0 -1.2rem 2rem; padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<aside id="sidebar">
+  <div id="sidebar-header">
+    <div class="book-label">PMBOK® Guide</div>
+    <h2>Hướng Dẫn Quản Lý Dự Án</h2>
+    <div class="edition">Lần xuất bản thứ 6 · Tiếng Việt</div>
+  </div>
+  <nav>
+    <div class="section-group">
+      <div class="group-label">Chương 1 · Giới Thiệu</div>
+      <a href="#s1-1">1.1 Tổng Quan & Mục Đích</a>
+      <a href="#s1-1-1" class="sub">1.1.1 Tiêu Chuẩn QLDA</a>
+      <a href="#s1-1-2" class="sub">1.1.2 Từ Vựng Chung</a>
+      <a href="#s1-1-3" class="sub">1.1.3 Quy Tắc Đạo Đức</a>
+      <a href="#s1-2">1.2 Các Yếu Tố Nền Tảng</a>
+      <a href="#s1-2-1" class="sub">1.2.1 Dự Án</a>
+      <a href="#s1-2-2" class="sub">1.2.2 Tầm Quan Trọng</a>
+      <a href="#s1-2-3" class="sub">1.2.3 Quan Hệ Dự Án/Chương Trình/Danh Mục</a>
+      <a href="#s1-2-4" class="sub">1.2.4 Thành Phần Hướng Dẫn</a>
+      <a href="#s1-2-5" class="sub">1.2.5 Điều Chỉnh</a>
+      <a href="#s1-2-6" class="sub">1.2.6 Tài Liệu Kinh Doanh</a>
+    </div>
+  </nav>
+</aside>
+
+<main id="main">
+
+  <div class="chapter-hero">
+    <div class="ch-label">Chương 1</div>
+    <h1>GIỚI THIỆU</h1>
+    <div class="ch-en">Introduction</div>
+  </div>
+
+  <h2 id="s1-1">1.1 TỔNG QUAN VÀ MỤC ĐÍCH CỦA HƯỚNG DẪN NÀY <span class="term-en">(OVERVIEW AND PURPOSE OF THIS GUIDE)</span></h2>
+
+  <p>Quản lý dự án (<span class="term">Project management</span>) không phải là điều mới mẻ. Nó đã được sử dụng hàng trăm năm qua. Các ví dụ về kết quả của dự án bao gồm:</p>
+
+  <ul class="pmbok check">
+    <li>Kim tự tháp Giza.</li>
+    <li>Thế vận hội Olympic.</li>
+    <li>Vạn Lý Trường Thành.</li>
+    <li>Đền Taj Mahal.</li>
+    <li>Việc xuất bản một cuốn sách thiếu nhi.</li>
+    <li>Kênh đào Panama.</li>
+    <li>Sự phát triển của máy bay phản lực thương mại.</li>
+    <li>Vắc-xin bại liệt.</li>
+    <li class="dash">Con người đặt chân lên mặt trăng.</li>
+    <li>Các ứng dụng phần mềm thương mại.</li>
+    <li>Các thiết bị di động sử dụng hệ thống định vị toàn cầu (GPS).</li>
+    <li class="pmbok">Đưa Trạm Không gian Quốc tế vào quỹ đạo Trái Đất.</li>
+  </ul>
+
+  <p>Kết quả của những dự án này là thành quả của các nhà lãnh đạo và quản lý khi áp dụng các thực hành, nguyên tắc, quy trình, công cụ và kỹ thuật quản lý dự án vào công việc của họ. Các nhà quản lý của những dự án này đã sử dụng một tập hợp các kỹ năng cốt lõi và áp dụng kiến thức để làm hài lòng khách hàng và những người khác tham gia vào cũng như bị ảnh hưởng bởi dự án. Vào giữa thế kỷ 20, các nhà quản lý dự án bắt đầu công việc tìm kiếm sự công nhận cho quản lý dự án như một nghề nghiệp. Một khía cạnh của công việc này liên quan đến việc đạt được thỏa thuận về nội dung của khối kiến thức (<span class="term">body of knowledge - BOK</span>) được gọi là quản lý dự án. BOK này được biết đến với tên gọi Khối kiến thức Quản lý Dự án (<span class="term">Project Management Body of Knowledge - PMBOK</span>). Viện Quản lý Dự án (<span class="term">Project Management Institute - PMI</span>) đã đưa ra một nền tảng gồm các biểu đồ và bảng chú giải thuật ngữ cho PMBOK. Các nhà quản lý dự án nhanh chóng nhận ra rằng không có một cuốn sách duy nhất nào có thể chứa toàn bộ PMBOK. Do đó, PMI đã phát triển và xuất bản Hướng dẫn về Khối kiến thức Quản lý Dự án (<span class="term">A Guide to the Project Management Body of Knowledge - PMBOK® Guide</span>).</p>
+
+  <p>PMI định nghĩa khối kiến thức quản lý dự án (<span class="term">PMBOK</span>) là một thuật ngữ mô tả kiến thức trong nghề quản lý dự án. Khối kiến thức quản lý dự án bao gồm các thực hành truyền thống đã được chứng minh và được áp dụng rộng rãi cũng như các thực hành sáng tạo đang nổi lên trong nghề.</p>
+
+  <p>Khối kiến thức (<span class="term">BOK</span>) bao gồm cả các tài liệu đã xuất bản và chưa xuất bản. Khối kiến thức này không ngừng phát triển. Hướng dẫn PMBOK® này xác định một tập hợp con của khối kiến thức quản lý dự án thường được công nhận là thực hành tốt.</p>
+
+  <ul class="pmbok">
+    <li>Thường được công nhận (<span class="term">Generally recognized</span>) có nghĩa là các kiến thức và thực hành được mô tả có thể áp dụng cho hầu hết các dự án trong hầu hết thời gian, và có sự đồng thuận về giá trị cũng như tính hữu ích của chúng.</li>
+    <li class="dash">Thực hành tốt (<span class="term">Good practice</span>) có nghĩa là có sự đồng thuận chung rằng việc áp dụng kiến thức, kỹ năng, công cụ và kỹ thuật vào các quy trình quản lý dự án có thể nâng cao cơ hội thành công của nhiều dự án trong việc mang lại các giá trị và kết quả kinh doanh như mong đợi.</li>
+  </ul>
+
+  <p>Người quản lý dự án làm việc với nhóm dự án và các bên liên quan khác để xác định và sử dụng các thực hành tốt thường được công nhận phù hợp cho mỗi dự án. Việc xác định sự kết hợp thích hợp của các quy trình, đầu vào, công cụ, kỹ thuật, đầu ra và các giai đoạn vòng đời để quản lý một dự án được gọi là "điều chỉnh" (<span class="term">tailoring</span>) ứng dụng của các kiến thức được mô tả trong hướng dẫn này.</p>
+
+  <p>Hướng dẫn PMBOK® này khác với một phương pháp luận (<span class="term">methodology</span>). Phương pháp luận là một hệ thống các thực hành, kỹ thuật, quy trình và quy tắc được sử dụng bởi những người làm việc trong một chuyên ngành. Hướng dẫn PMBOK® này là nền tảng để dựa vào đó các tổ chức có thể xây dựng các phương pháp luận, chính sách, quy trình, quy tắc, công cụ và kỹ thuật, cũng như các giai đoạn vòng đời cần thiết để thực hành quản lý dự án.</p>
+
+  <h3 id="s1-1-1">1.1.1 TIÊU CHUẨN CHO QUẢN LÝ DỰ ÁN <span class="term-en">(THE STANDARD FOR PROJECT MANAGEMENT)</span></h3>
+  <p>Hướng dẫn này dựa trên Tiêu chuẩn Quản lý Dự án (<span class="term">The Standard for Project Management</span>) [1]. Tiêu chuẩn là một tài liệu được thiết lập bởi một cơ quan có thẩm quyền, tập quán hoặc sự đồng thuận chung như một mô hình hoặc ví dụ. Là một tiêu chuẩn của Viện Tiêu chuẩn Quốc gia Hoa Kỳ (<span class="term">American National Standards Institute - ANSI</span>), Tiêu chuẩn Quản lý Dự án được phát triển bằng cách sử dụng một quy trình dựa trên các khái niệm về sự đồng thuận, tính mở, thủ tục hợp pháp và sự cân bằng. Tiêu chuẩn Quản lý Dự án là một tài liệu tham khảo nền tảng cho các chương trình phát triển chuyên môn quản lý dự án của PMI và thực hành quản lý dự án. Vì quản lý dự án cần được điều chỉnh để phù hợp với nhu cầu của dự án, tiêu chuẩn và hướng dẫn đều dựa trên các thực hành mang tính mô tả (<span class="term">descriptive practices</span>), thay vì các thực hành mang tính quy định (<span class="term">prescriptive practices</span>). Do đó, tiêu chuẩn này xác định các quy trình được coi là thực hành tốt trên hầu hết các dự án, trong hầu hết thời gian. Tiêu chuẩn này cũng xác định các đầu vào và đầu ra thường gắn liền với những quy trình đó. Tiêu chuẩn không yêu cầu bất kỳ quy trình hoặc thực hành cụ thể nào phải được thực hiện. Tiêu chuẩn Quản lý Dự án được bao gồm như Phần II của Hướng dẫn Khối kiến thức Quản lý Dự án (PMBOK Guide).</p>
+
+  <p>Hướng dẫn PMBOK® cung cấp thêm chi tiết về các khái niệm chính, xu hướng mới nổi, các cân nhắc cho việc điều chỉnh các quy trình quản lý dự án, và thông tin về cách áp dụng các công cụ và kỹ thuật vào các dự án. Người quản lý dự án có thể sử dụng một hoặc nhiều phương pháp luận để thực hiện các quy trình quản lý dự án được nêu trong tiêu chuẩn.</p>
+
+  <p>Phạm vi của hướng dẫn này giới hạn trong chuyên ngành quản lý dự án, thay vì toàn bộ phổ danh mục đầu tư, chương trình và dự án. Danh mục đầu tư và chương trình sẽ chỉ được đề cập đến mức độ chúng tương tác với các dự án. PMI xuất bản hai tiêu chuẩn khác giải quyết vấn đề quản lý danh mục đầu tư và chương trình:</p>
+  <ul class="pmbok check">
+    <li>Tiêu chuẩn Quản lý Danh mục Đầu tư (<span class="term">The Standard for Portfolio Management</span>) [2].</li>
+    <li>Tiêu chuẩn Quản lý Chương trình (<span class="term">The Standard for Program Management</span>) [3].</li>
+  </ul>
+
+  <h3 id="s1-1-2">1.1.2 TỪ VỰNG CHUNG <span class="term-en">(COMMON VOCABULARY)</span></h3>
+  <p>Từ vựng chung là một yếu tố thiết yếu của một chuyên ngành chuyên nghiệp. Từ điển Thuật ngữ Quản lý Dự án của PMI (<span class="term">PMI Lexicon of Project Management Terms</span>) [4] cung cấp từ vựng chuyên môn nền tảng có thể được sử dụng một cách nhất quán bởi các tổ chức, các nhà quản lý danh mục đầu tư, chương trình, dự án và các bên liên quan khác của dự án. Từ điển này sẽ tiếp tục phát triển theo thời gian. Bảng chú giải thuật ngữ của hướng dẫn này bao gồm các từ vựng trong Từ điển cùng với các định nghĩa bổ sung. Có thể có các thuật ngữ đặc thù của ngành khác được sử dụng trong các dự án mà được định nghĩa bởi các tài liệu của ngành đó.</p>
+
+  <h3 id="s1-1-3">1.1.3 QUY TẮC ĐẠO ĐỨC VÀ ỨNG XỬ NGHỀ NGHIỆP <span class="term-en">(CODE OF ETHICS AND PROFESSIONAL CONDUCT)</span></h3>
+  <p>PMI công bố Quy tắc Đạo đức và Ứng xử Nghề nghiệp (<span class="term">Code of Ethics and Professional Conduct</span>) [5] để truyền niềm tin vào nghề quản lý dự án và giúp một cá nhân đưa ra các quyết định sáng suốt, đặc biệt khi phải đối mặt với những tình huống khó khăn nơi cá nhân đó có thể bị yêu cầu thỏa hiệp sự chính trực hoặc các giá trị của mình. Những giá trị mà cộng đồng quản lý dự án toàn cầu xác định là quan trọng nhất là trách nhiệm, tôn trọng, công bằng và trung thực. Quy tắc Đạo đức và Ứng xử Nghề nghiệp khẳng định bốn giá trị này là nền tảng của nó.</p>
+
+  <p>Quy tắc Đạo đức và Ứng xử Nghề nghiệp bao gồm cả các tiêu chuẩn khát vọng (<span class="term">aspirational standards</span>) và các tiêu chuẩn bắt buộc (<span class="term">mandatory standards</span>). Các tiêu chuẩn khát vọng mô tả hành vi mà các chuyên gia, những người cũng là thành viên PMI, người có chứng chỉ hoặc tình nguyện viên, cố gắng duy trì. Mặc dù việc tuân thủ các tiêu chuẩn khát vọng không dễ dàng đo lường được, hành xử phù hợp với các tiêu chuẩn này là một kỳ vọng đối với những ai tự coi mình là chuyên gia—điều này không phải là tùy chọn. Các tiêu chuẩn bắt buộc thiết lập các yêu cầu cứng rắn và, trong một số trường hợp, giới hạn hoặc cấm hành vi của chuyên gia. Các chuyên gia, những người cũng là thành viên PMI, người có chứng chỉ hoặc tình nguyện viên, nếu không hành xử phù hợp với các tiêu chuẩn này sẽ phải chịu các thủ tục kỷ luật trước Ủy ban Đánh giá Đạo đức của PMI.</p>
+
+  <h2 id="s1-2">1.2 CÁC YẾU TỐ NỀN TẢNG <span class="term-en">(FOUNDATIONAL ELEMENTS)</span></h2>
+  <p>Phần này mô tả các yếu tố nền tảng cần thiết để làm việc trong và thấu hiểu kỷ luật quản lý dự án.</p>
+
+  <h3 id="s1-2-1">1.2.1 DỰ ÁN <span class="term-en">(PROJECTS)</span></h3>
+  <p>Một dự án là một nỗ lực tạm thời được thực hiện để tạo ra một sản phẩm, dịch vụ hoặc kết quả duy nhất.</p>
+  
+  <ul class="pmbok">
+    <li><strong>Sản phẩm, dịch vụ hoặc kết quả duy nhất.</strong> Các dự án được thực hiện để hoàn thành các mục tiêu bằng cách tạo ra các sản phẩm giao nộp (deliverables). Mục tiêu (<span class="term">objective</span>) được định nghĩa là một kết quả mà công việc được hướng tới, một vị trí chiến lược cần đạt được, một mục đích cần hoàn thành, một kết quả cần đạt được, một sản phẩm cần được tạo ra, hoặc một dịch vụ cần được thực hiện. Sản phẩm giao nộp (<span class="term">deliverable</span>) được định nghĩa là bất kỳ sản phẩm, kết quả, hoặc khả năng thực hiện một dịch vụ duy nhất và có thể xác minh được nào cần được tạo ra để hoàn thành một quy trình, giai đoạn, hoặc dự án. Các sản phẩm giao nộp có thể là hữu hình hoặc vô hình.</li>
+  </ul>
+
+  <p>Việc hoàn thành các mục tiêu của dự án có thể tạo ra một hoặc nhiều sản phẩm giao nộp sau:</p>
+  <ul class="pmbok dash">
+    <li>Một sản phẩm duy nhất có thể là một thành phần của một mục khác, một sự nâng cấp hoặc chỉnh sửa cho một mục, hoặc một mục cuối cùng hoàn toàn mới (ví dụ: việc sửa một lỗi trong một mục cuối cùng);</li>
+    <li>Một dịch vụ duy nhất hoặc một khả năng thực hiện một dịch vụ (ví dụ: một chức năng kinh doanh hỗ trợ sản xuất hoặc phân phối);</li>
+    <li>Một kết quả duy nhất, chẳng hạn như một thành quả hoặc tài liệu (ví dụ: một dự án nghiên cứu phát triển kiến thức có thể được sử dụng để xác định xem liệu một xu hướng có tồn tại hay một quy trình mới sẽ mang lại lợi ích cho xã hội); và</li>
+    <li>Một sự kết hợp duy nhất của một hoặc nhiều sản phẩm, dịch vụ, hoặc kết quả (ví dụ: một ứng dụng phần mềm, các tài liệu đi kèm của nó, và các dịch vụ hỗ trợ bàn giúp việc).</li>
+  </ul>
+
+  <p>Các yếu tố lặp đi lặp lại có thể hiện diện trong một số sản phẩm giao nộp và hoạt động của dự án. Sự lặp lại này không làm thay đổi các đặc tính cơ bản và duy nhất của công việc dự án. Ví dụ, các tòa nhà văn phòng có thể được xây dựng bằng cùng một vật liệu hoặc tương tự và bởi cùng một hoặc các nhóm khác nhau. Tuy nhiên, mỗi dự án xây dựng tòa nhà vẫn duy nhất về các đặc điểm chính (ví dụ: vị trí, thiết kế, môi trường, hoàn cảnh, những người tham gia).</p>
+  
+  <p>Các dự án được thực hiện ở mọi cấp độ tổ chức. Một dự án có thể liên quan đến một cá nhân hoặc một nhóm. Một dự án có thể liên quan đến một đơn vị tổ chức duy nhất hoặc nhiều đơn vị tổ chức từ nhiều tổ chức khác nhau.</p>
+
+  <p>Các ví dụ về dự án bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok dash">
+    <li>Phát triển một hợp chất dược phẩm mới cho thị trường.</li>
+    <li>Mở rộng dịch vụ hướng dẫn viên du lịch.</li>
+    <li class="check">Sáp nhập hai tổ chức.</li>
+    <li>Cải thiện một quy trình kinh doanh trong một tổ chức.</li>
+    <li>Mua sắm và lắp đặt một hệ thống phần cứng máy tính mới để sử dụng trong một tổ chức.</li>
+    <li class="check">Khám phá dầu mỏ tại một khu vực.</li>
+    <li>Sửa đổi một chương trình phần mềm máy tính được sử dụng trong một tổ chức.</li>
+    <li>Tiến hành nghiên cứu để phát triển một quy trình sản xuất mới.</li>
+    <li>Xây dựng một tòa nhà.</li>
+  </ul>
+
+  <ul class="pmbok">
+    <li><strong>Nỗ lực tạm thời.</strong> Bản chất tạm thời của các dự án chỉ ra rằng một dự án có điểm khởi đầu và kết thúc xác định. Tạm thời không nhất thiết có nghĩa là dự án có thời gian ngắn. Điểm kết thúc của dự án đạt được khi một hoặc nhiều điều sau đây là đúng:
+      <ul class="pmbok dash">
+        <li>Các mục tiêu của dự án đã đạt được;</li>
+        <li>Các mục tiêu sẽ không hoặc không thể đạt được;</li>
+        <li>Nguồn tài trợ cạn kiệt hoặc không còn có sẵn để phân bổ cho dự án;</li>
+        <li>Nhu cầu cho dự án không còn tồn tại (ví dụ: khách hàng không còn muốn dự án hoàn thành, sự thay đổi trong chiến lược hoặc ưu tiên làm kết thúc dự án, ban quản lý tổ chức chỉ đạo kết thúc dự án);</li>
+        <li>Nguồn nhân lực hoặc vật chất không còn có sẵn; hoặc</li>
+        <li class="check">Dự án bị chấm dứt vì lý do pháp lý hoặc sự thuận tiện.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>Các dự án là tạm thời, nhưng các sản phẩm giao nộp của chúng có thể tồn tại vượt ra ngoài sự kết thúc của dự án. Các dự án có thể tạo ra các sản phẩm giao nộp mang tính xã hội, kinh tế, vật chất, hoặc môi trường. Ví dụ, một dự án xây dựng đài tưởng niệm quốc gia sẽ tạo ra một sản phẩm giao nộp dự kiến sẽ tồn tại trong nhiều thế kỷ.</p>
+
+  <ul class="pmbok">
+    <li><strong>Dự án thúc đẩy sự thay đổi.</strong> Các dự án thúc đẩy sự thay đổi trong các tổ chức. Từ quan điểm kinh doanh, một dự án nhằm mục đích chuyển dịch một tổ chức từ trạng thái này sang trạng thái khác để đạt được một mục tiêu cụ thể (xem Hình 1-1). Trước khi dự án bắt đầu, tổ chức thường được gọi là đang ở trạng thái hiện tại (<span class="term">current state</span>). Kết quả mong muốn của sự thay đổi do dự án thúc đẩy được mô tả là trạng thái tương lai (<span class="term">future state</span>). Đối với một số dự án, điều này có thể liên quan đến việc tạo ra một trạng thái chuyển tiếp (<span class="term">transition state</span>) nơi nhiều bước được thực hiện dọc theo một chuỗi liên tục để đạt được trạng thái tương lai. Việc hoàn thành thành công một dự án dẫn đến việc tổ chức di chuyển sang trạng thái tương lai và đạt được mục tiêu cụ thể. </li>
+  </ul>
+
+  <div class="figure-wrap">
+    <img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//aa42fce2-faa2-48c0-9083-920ff8f272a1/markdown_4/imgs/img_in_image_box_269_435_953_896.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A00Z%2F-1%2F%2F785c131488834dbaae7543ce7e700182a0b7f3efc4d16be117724c09313b32c3" alt="Hình 1-1" width="55%">
+    <div class="figure-caption"><strong>Hình 1-1.</strong> Chuyển đổi Trạng thái Tổ chức thông qua một Dự án <span class="term-en">(Organizational State Transition via a Project)</span></div>
+  </div>
+
+  <ul class="pmbok">
+    <li><strong>Dự án cho phép tạo ra giá trị kinh doanh.</strong> PMI định nghĩa giá trị kinh doanh (<span class="term">business value</span>) là lợi ích ròng có thể định lượng được thu được từ một nỗ lực kinh doanh. Lợi ích đó có thể là hữu hình, vô hình, hoặc cả hai. Trong phân tích kinh doanh, giá trị kinh doanh được coi là phần lợi nhuận thu về, dưới dạng các yếu tố như thời gian, tiền bạc, hàng hóa, hoặc tài sản vô hình để đổi lấy một thứ gì đó đã được trao đổi. Giá trị kinh doanh trong các dự án đề cập đến lợi ích mà kết quả của một dự án cụ thể mang lại cho các bên liên quan của nó. Lợi ích từ các dự án có thể là hữu hình, vô hình, hoặc cả hai.</li>
+  </ul>
+
+  <p>Các ví dụ về yếu tố hữu hình bao gồm:</p>
+  <ul class="pmbok check">
+    <li>Tài sản tiền tệ.</li>
+    <li>Vốn chủ sở hữu của cổ đông.</li>
+    <li>Tiện ích.</li>
+    <li class="dash">Đồ đạc (Fixtures).</li>
+    <li>Công cụ.</li>
+    <li>Thị phần.</li>
+  </ul>
+
+  <p>Các ví dụ về yếu tố vô hình bao gồm:</p>
+  <ul class="pmbok check">
+    <li>Uy tín/Thiện chí (Goodwill).</li>
+    <li class="dash">Nhận diện thương hiệu.</li>
+    <li class="dash">Lợi ích công cộng.</li>
+    <li class="dash">Nhãn hiệu thương mại (Trademarks).</li>
+    <li class="dash">Sự phù hợp với chiến lược.</li>
+    <li>Danh tiếng.</li>
+  </ul>
+
+  <p><strong>Bối cảnh Khởi tạo Dự án.</strong> Các nhà lãnh đạo tổ chức khởi tạo các dự án nhằm đáp ứng các yếu tố tác động lên tổ chức của họ. Có bốn danh mục cơ bản cho các yếu tố này, minh họa cho bối cảnh của một dự án (xem Hình 1-2):</p>
+  <ul class="pmbok check">
+    <li>Đáp ứng các yêu cầu về quy định, pháp lý hoặc xã hội;</li>
+    <li class="dash">Thỏa mãn các yêu cầu hoặc nhu cầu của các bên liên quan;</li>
+    <li class="dash">Thực hiện hoặc thay đổi các chiến lược kinh doanh hoặc công nghệ; và</li>
+    <li>Tạo ra, cải thiện, hoặc sửa chữa các sản phẩm, quy trình, hoặc dịch vụ.</li>
+  </ul>
+
+  <div class="figure-wrap">
+    <img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//898cd5f6-3120-4999-9517-63a8a4f72a6a/markdown_1/imgs/img_in_image_box_269_154_951_635.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A23%3A53Z%2F-1%2F%2F89c3229478c4cf68f1c200849df6839372aeb4c0a947608bec3d603779907e7d" alt="Hình 1-2" width="55%">
+    <div class="figure-caption"><strong>Hình 1-2.</strong> Bối cảnh Khởi tạo Dự án <span class="term-en">(Project Initiation Context)</span></div>
+  </div>
+
+  <p>Những yếu tố này ảnh hưởng đến các hoạt động vận hành liên tục và chiến lược kinh doanh của một tổ chức. Các nhà lãnh đạo phản hồi với những yếu tố này để giữ cho tổ chức tồn tại và phát triển. Các dự án cung cấp phương tiện để các tổ chức thực hiện thành công những thay đổi cần thiết nhằm đối phó với những yếu tố này. Cuối cùng, các yếu tố này nên liên kết với các mục tiêu chiến lược của tổ chức và giá trị kinh doanh của mỗi dự án.</p>
+
+  <p>Bảng 1-1 minh họa cách các yếu tố ví dụ có thể phù hợp với một hoặc nhiều danh mục yếu tố cơ bản.</p>
+
+  <div class="table-wrap">
+    <div class="table-caption">Bảng 1-1. Ví dụ về các yếu tố dẫn đến việc tạo ra một Dự án <span class="term-en">(Examples of Factors that Lead to the Creation of a Project)</span></div>
+    <table>
+      <tr>
+        <th>Yếu tố Cụ thể</th>
+        <th>Ví dụ về Yếu tố Cụ thể</th>
+        <th>Đáp ứng Yêu cầu Quy định, Pháp lý, hoặc Xã hội</th>
+        <th>Thỏa mãn Yêu cầu hoặc Nhu cầu của Bên liên quan</th>
+        <th>Tạo ra, Cải thiện, hoặc Sửa chữa Sản phẩm, Quy trình, Dịch vụ</th>
+        <th>Thực hiện hoặc Thay đổi Chiến lược Kinh doanh hoặc Công nghệ</th>
+      </tr>
+      <tr>
+        <td>Công nghệ mới</td>
+        <td>Một công ty điện tử phê duyệt dự án mới để phát triển một máy tính xách tay nhanh hơn, rẻ hơn, và nhỏ hơn dựa trên những tiến bộ trong bộ nhớ máy tính và công nghệ điện tử</td>
+        <td></td><td></td><td>✗</td><td>✗</td>
+      </tr>
+      <tr>
+        <td>Áp lực cạnh tranh</td>
+        <td>Giá bán sản phẩm thấp hơn từ đối thủ cạnh tranh dẫn đến nhu cầu phải giảm chi phí sản xuất để duy trì tính cạnh tranh</td>
+        <td></td><td></td><td></td><td>✗</td>
+      </tr>
+      <tr>
+        <td>Các vấn đề vật chất</td>
+        <td>Một cây cầu của thành phố phát triển các vết nứt ở một số bộ phận hỗ trợ dẫn đến một dự án để khắc phục sự cố</td>
+        <td>✗</td><td></td><td>✗</td><td></td>
+      </tr>
+      <tr>
+        <td>Những thay đổi chính trị</td>
+        <td>Một quan chức mới đắc cử xúi giục những thay đổi về ngân sách cho một dự án hiện tại</td>
+        <td></td><td></td><td></td><td>✗</td>
+      </tr>
+      <tr>
+        <td>Nhu cầu thị trường</td>
+        <td>Một công ty ô tô phê duyệt dự án chế tạo ô tô tiết kiệm nhiên liệu hơn nhằm đối phó với tình trạng thiếu hụt xăng dầu</td>
+        <td></td><td>✗</td><td>✗</td><td>✗</td>
+      </tr>
+      <tr>
+        <td>Những thay đổi kinh tế</td>
+        <td>Sự suy thoái kinh tế dẫn đến sự thay đổi trong các ưu tiên cho một dự án hiện tại</td>
+        <td></td><td></td><td></td><td>✗</td>
+      </tr>
+      <tr>
+        <td>Yêu cầu của khách hàng</td>
+        <td>Một công ty điện lực phê duyệt dự án xây dựng trạm biến áp để phục vụ cho một khu công nghiệp mới</td>
+        <td></td><td>✗</td><td>✗</td><td></td>
+      </tr>
+      <tr>
+        <td>Yêu cầu của bên liên quan</td>
+        <td>Một bên liên quan yêu cầu tổ chức phải tạo ra một kết quả đầu ra mới</td>
+        <td></td><td>✗</td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>Yêu cầu pháp lý</td>
+        <td>Một nhà sản xuất hóa chất phê duyệt dự án thiết lập các hướng dẫn để xử lý đúng cách một vật liệu độc hại mới</td>
+        <td>✗</td><td></td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>Cải thiện quy trình kinh doanh</td>
+        <td>Một tổ chức thực hiện một dự án xuất phát từ một bài tập lập bản đồ dòng giá trị Lean Six Sigma</td>
+        <td></td><td></td><td>✗</td><td></td>
+      </tr>
+      <tr>
+        <td>Cơ hội chiến lược hoặc nhu cầu kinh doanh</td>
+        <td>Một công ty đào tạo phê duyệt dự án tạo một khóa học mới để tăng doanh thu</td>
+        <td></td><td></td><td>✗</td><td>✗</td>
+      </tr>
+      <tr>
+        <td>Nhu cầu xã hội</td>
+        <td>Một tổ chức phi chính phủ ở một quốc gia đang phát triển phê duyệt dự án cung cấp hệ thống nước sạch, nhà tiêu, và giáo dục vệ sinh cho các cộng đồng đang chịu tỷ lệ mắc bệnh truyền nhiễm cao</td>
+        <td></td><td>✗</td><td></td><td></td>
+      </tr>
+      <tr>
+        <td>Các cân nhắc về môi trường</td>
+        <td>Một công ty đại chúng phê duyệt dự án tạo ra dịch vụ chia sẻ xe ô tô điện mới để giảm thiểu ô nhiễm</td>
+        <td></td><td></td><td>✗</td><td>✗</td>
+      </tr>
+    </table>
+  </div>
+
+  <h3 id="s1-2-2">1.2.2 TẦM QUAN TRỌNG CỦA QUẢN LÝ DỰ ÁN <span class="term-en">(THE IMPORTANCE OF PROJECT MANAGEMENT)</span></h3>
+  <p>Quản lý dự án là việc áp dụng kiến thức, kỹ năng, công cụ, và kỹ thuật vào các hoạt động của dự án nhằm đáp ứng các yêu cầu của dự án. Quản lý dự án được thực hiện thông qua việc áp dụng và tích hợp một cách thích hợp các quy trình quản lý dự án đã được xác định cho dự án. Quản lý dự án cho phép các tổ chức thực thi các dự án một cách hiệu quả và năng suất.</p>
+  
+  <p>Quản lý dự án hiệu quả giúp các cá nhân, các nhóm, và các tổ chức công cũng như tư nhân:</p>
+  <ul class="pmbok check">
+    <li>Đáp ứng các mục tiêu kinh doanh;</li>
+    <li class="pmbok">Thỏa mãn kỳ vọng của các bên liên quan;</li>
+    <li>Dễ dự đoán hơn;</li>
+    <li>Tăng cơ hội thành công;</li>
+    <li>Cung cấp đúng sản phẩm vào đúng thời điểm;</li>
+    <li class="pmbok">Giải quyết các vấn đề và vướng mắc;</li>
+    <li>Phản hồi các rủi ro một cách kịp thời;</li>
+    <li class="pmbok">Tối ưu hóa việc sử dụng các nguồn lực của tổ chức;</li>
+    <li class="pmbok">Xác định, khôi phục hoặc chấm dứt các dự án đang thất bại;</li>
+    <li class="dash">Quản lý các ràng buộc (ví dụ: phạm vi, chất lượng, tiến độ, chi phí, nguồn lực);</li>
+    <li class="pmbok">Cân bằng ảnh hưởng của các ràng buộc lên dự án (ví dụ: việc tăng phạm vi có thể làm tăng chi phí hoặc tiến độ); và</li>
+    <li>Quản lý sự thay đổi theo cách tốt hơn.</li>
+  </ul>
+
+  <p>Những dự án được quản lý kém hoặc thiếu sự quản lý dự án có thể dẫn đến:</p>
+  <ul class="pmbok check">
+    <li>Bị lỡ thời hạn.</li>
+    <li>Vượt chi phí.</li>
+    <li>Chất lượng kém.</li>
+    <li>Làm lại (Rework).</li>
+    <li>Mở rộng dự án không kiểm soát.</li>
+    <li class="dash">Mất danh tiếng đối với tổ chức.</li>
+    <li class="pmbok">Các bên liên quan không hài lòng, và</li>
+    <li class="dash">Thất bại trong việc đạt được các mục tiêu mà vì đó dự án được thực hiện.</li>
+  </ul>
+
+  <p>Các dự án là cách thức chính để tạo ra giá trị và lợi ích trong các tổ chức. Trong môi trường kinh doanh ngày nay, các nhà lãnh đạo tổ chức cần có khả năng quản lý với ngân sách eo hẹp hơn, khung thời gian ngắn hơn, sự khan hiếm nguồn lực, và công nghệ thay đổi nhanh chóng. Môi trường kinh doanh rất năng động với tốc độ thay đổi ngày càng tăng. Để duy trì tính cạnh tranh trong nền kinh tế thế giới, các công ty đang áp dụng quản lý dự án để liên tục mang lại giá trị kinh doanh.</p>
+
+  <p>Quản lý dự án hiệu quả và năng suất nên được coi là một năng lực chiến lược trong các tổ chức. Nó cho phép các tổ chức:</p>
+  <ul class="pmbok check">
+    <li>Gắn kết các kết quả của dự án với các mục tiêu kinh doanh.</li>
+    <li class="pmbok">Cạnh tranh hiệu quả hơn trong thị trường của họ.</li>
+    <li>Duy trì sự bền vững của tổ chức, và</li>
+    <li class="pmbok">Phản hồi lại những tác động từ sự thay đổi của môi trường kinh doanh lên các dự án bằng cách điều chỉnh thích hợp các kế hoạch quản lý dự án (xem Mục 4.2).</li>
+  </ul>
+
+  <h3 id="s1-2-3">1.2.3 MỐI QUAN HỆ GIỮA QUẢN LÝ DỰ ÁN, CHƯƠNG TRÌNH, DANH MỤC VÀ VẬN HÀNH <span class="term-en">(RELATIONSHIP OF PROJECT, PROGRAM, PORTFOLIO, AND OPERATIONS MANAGEMENT)</span></h3>
+  
+  <h4>1.2.3.1 TỔNG QUAN <span class="term-en">(OVERVIEW)</span></h4>
+  <p>Sử dụng các quy trình, công cụ, và kỹ thuật quản lý dự án tạo ra một nền tảng vững chắc để các tổ chức đạt được các mục tiêu và đích đến của họ. Một dự án có thể được quản lý trong ba kịch bản riêng biệt: như một dự án độc lập (nằm ngoài danh mục đầu tư hoặc chương trình), nằm trong một chương trình, hoặc nằm trong một danh mục đầu tư. Các nhà quản lý dự án tương tác với các nhà quản lý danh mục đầu tư và chương trình khi một dự án nằm trong một chương trình hoặc danh mục đầu tư. Ví dụ, nhiều dự án có thể cần thiết để hoàn thành một tập hợp các mục tiêu và đích đến cho một tổ chức. Trong những tình huống đó, các dự án có thể được nhóm lại với nhau thành một chương trình. Một chương trình (<span class="term">program</span>) được định nghĩa là một nhóm các dự án, chương trình con, và các hoạt động chương trình có liên quan được quản lý theo cách phối hợp với nhau để thu được các lợi ích không có được nếu quản lý chúng riêng lẻ. Chương trình không phải là những dự án lớn. Một dự án rất lớn có thể được gọi là một siêu dự án (<span class="term">megaproject</span>). Về cơ bản, siêu dự án tiêu tốn từ 1 tỷ USD trở lên, ảnh hưởng đến 1 triệu người trở lên, và kéo dài trong nhiều năm.</p>
+
+  <p>Một số tổ chức có thể sử dụng một danh mục dự án (<span class="term">project portfolio</span>) để quản lý hiệu quả nhiều chương trình và dự án đang diễn ra tại bất kỳ thời điểm nào. Một danh mục đầu tư (<span class="term">portfolio</span>) được định nghĩa là các dự án, chương trình, danh mục đầu tư con, và các hoạt động vận hành được quản lý như một nhóm để đạt được các mục tiêu chiến lược. Hình 1-3 minh họa một ví dụ về cách các danh mục đầu tư, chương trình, dự án, và các hoạt động vận hành có liên quan với nhau trong một tình huống cụ thể.</p>
+
+  <p>Quản lý chương trình và quản lý danh mục đầu tư khác với quản lý dự án về vòng đời, các hoạt động, mục tiêu, trọng tâm, và lợi ích của chúng. Tuy nhiên, các danh mục đầu tư, chương trình, dự án, và hoạt động vận hành thường tương tác với cùng một nhóm các bên liên quan và có thể cần sử dụng cùng một nguồn lực (xem Hình 1-3), điều này có thể dẫn đến xung đột trong tổ chức. Loại tình huống này làm tăng nhu cầu phối hợp trong tổ chức thông qua việc sử dụng quản lý danh mục đầu tư, chương trình, và dự án để đạt được sự cân bằng khả thi trong tổ chức.</p>
+
+  <p>Hình 1-3 minh họa cấu trúc danh mục đầu tư mẫu chỉ ra các mối quan hệ giữa các chương trình, dự án, nguồn lực dùng chung, và các bên liên quan. Các thành phần của danh mục đầu tư được nhóm lại với nhau nhằm tạo điều kiện quản trị và quản lý công việc hiệu quả để giúp đạt được các chiến lược và ưu tiên của tổ chức. Lập kế hoạch tổ chức và danh mục đầu tư tác động đến các thành phần thông qua việc ưu tiên dựa trên rủi ro, nguồn tài trợ, và các cân nhắc khác. Chế độ xem danh mục đầu tư cho phép các tổ chức thấy cách các mục tiêu chiến lược được phản ánh trong danh mục đầu tư. Chế độ xem danh mục đầu tư này cũng cho phép việc thực hiện và phối hợp các chính sách quản trị danh mục đầu tư, chương trình và dự án phù hợp. Sự quản trị có phối hợp này cho phép phân bổ được ủy quyền đối với các nguồn nhân lực, tài chính, và vật chất dựa trên hiệu suất và lợi ích dự kiến.</p>
+
+  <div class="figure-wrap">
+    <img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//94ac55dd-32c2-434b-87f2-64daf500a8d0/markdown_0/imgs/img_in_image_box_247_405_980_936.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A23%3A53Z%2F-1%2F%2Fdc2b1c510568f38c1f59fd56d70f970696e7a5829e23491ded367f1a2f04f171" alt="Hình 1-3" width="59%">
+    <div class="figure-caption"><strong>Hình 1-3.</strong> Danh mục đầu tư, Chương trình, Dự án, và Hoạt động Vận hành <span class="term-en">(Portfolio, Programs, Projects, and Operations)</span></div>
+  </div>
+
+  <p>Nhìn vào quản lý dự án, chương trình, và danh mục đầu tư từ góc độ tổ chức:</p>
+  <ul class="pmbok dash">
+    <li>Quản lý chương trình và dự án tập trung vào việc thực hiện các chương trình và dự án theo đúng cách ("right" way); và</li>
+    <li class="check">Quản lý danh mục đầu tư tập trung vào việc thực hiện đúng các chương trình và dự án ("right" programs and projects).</li>
+  </ul>
+
+  <div class="table-wrap">
+    <div class="table-caption">Bảng 1-2. So sánh Tổng quan về Danh mục, Chương trình, và Dự án <span class="term-en">(Comparative Overview of Portfolios, Programs, and Projects)</span></div>
+    <table>
+      <tr>
+        <th colspan="4">Quản lý Dự án Tổ chức (Organizational Project Management)</th>
+      </tr>
+      <tr>
+        <th></th>
+        <th>Dự án (Projects)</th>
+        <th>Chương trình (Programs)</th>
+        <th>Danh mục (Portfolios)</th>
+      </tr>
+      <tr>
+        <td><strong>Định nghĩa</strong></td>
+        <td>Một dự án là một nỗ lực tạm thời được thực hiện để tạo ra một sản phẩm, dịch vụ, hoặc kết quả duy nhất.</td>
+        <td>Một chương trình là một nhóm các dự án, chương trình con, và các hoạt động chương trình có liên quan được quản lý theo cách phối hợp để đạt được những lợi ích không thể có được nếu quản lý chúng riêng lẻ.</td>
+        <td>Một danh mục đầu tư là một tập hợp các dự án, chương trình, danh mục con, và các hoạt động vận hành được quản lý như một nhóm để đạt được các mục tiêu chiến lược.</td>
+      </tr>
+      <tr>
+        <td><strong>Phạm vi</strong></td>
+        <td>Các dự án có mục tiêu được xác định rõ ràng. Phạm vi được xây dựng dần trong suốt vòng đời dự án.</td>
+        <td>Các chương trình có một phạm vi bao trùm các phạm vi của các thành phần chương trình của nó. Các chương trình tạo ra lợi ích cho tổ chức bằng cách đảm bảo rằng các sản phẩm và kết quả đầu ra của các thành phần chương trình được bàn giao một cách có phối hợp và bổ sung cho nhau.</td>
+        <td>Các danh mục đầu tư có phạm vi cấp tổ chức thay đổi theo các mục tiêu chiến lược của tổ chức.</td>
+      </tr>
+      <tr>
+        <td><strong>Sự thay đổi</strong></td>
+        <td>Các nhà quản lý dự án dự tính trước sự thay đổi và thực hiện các quy trình để giữ cho sự thay đổi được quản lý và kiểm soát.</td>
+        <td>Các chương trình được quản lý theo cách chấp nhận và thích nghi với sự thay đổi khi cần thiết để tối ưu hóa việc cung cấp các lợi ích khi các thành phần của chương trình tạo ra kết quả và/hoặc sản phẩm đầu ra.</td>
+        <td>Các nhà quản lý danh mục đầu tư liên tục giám sát các thay đổi trong môi trường nội bộ và bên ngoài rộng lớn hơn.</td>
+      </tr>
+      <tr>
+        <td><strong>Lập kế hoạch</strong></td>
+        <td>Các nhà quản lý dự án phát triển dần các thông tin cấp cao thành các kế hoạch chi tiết trong suốt vòng đời của dự án.</td>
+        <td>Các chương trình được quản lý bằng cách sử dụng các kế hoạch cấp cao theo dõi sự phụ thuộc lẫn nhau và tiến độ của các thành phần chương trình. Kế hoạch chương trình cũng được sử dụng để hướng dẫn lập kế hoạch ở cấp độ thành phần.</td>
+        <td>Các nhà quản lý danh mục đầu tư tạo và duy trì các quy trình và giao tiếp cần thiết liên quan đến toàn bộ danh mục đầu tư.</td>
+      </tr>
+      <tr>
+        <td><strong>Quản lý</strong></td>
+        <td>Các nhà quản lý dự án quản lý nhóm dự án để đáp ứng các mục tiêu của dự án.</td>
+        <td>Các chương trình được quản lý bởi các nhà quản lý chương trình, những người đảm bảo rằng các lợi ích của chương trình được cung cấp như mong đợi, bằng cách điều phối các hoạt động của các thành phần trong chương trình.</td>
+        <td>Các nhà quản lý danh mục đầu tư có thể quản lý hoặc điều phối nhân viên quản lý danh mục đầu tư, hoặc nhân viên chương trình và dự án có thể có trách nhiệm báo cáo vào danh mục đầu tư tổng thể.</td>
+      </tr>
+      <tr>
+        <td><strong>Giám sát</strong></td>
+        <td>Các nhà quản lý dự án giám sát và kiểm soát công việc tạo ra các sản phẩm, dịch vụ, hoặc kết quả mà dự án được thực hiện để tạo ra.</td>
+        <td>Các nhà quản lý chương trình theo dõi tiến độ của các thành phần chương trình để đảm bảo các mục tiêu, tiến độ, ngân sách và lợi ích tổng thể của chương trình sẽ được đáp ứng.</td>
+        <td>Các nhà quản lý danh mục đầu tư theo dõi các thay đổi chiến lược, phân bổ nguồn lực tổng hợp, kết quả thực hiện, và rủi ro của danh mục đầu tư.</td>
+      </tr>
+      <tr>
+        <td><strong>Thành công</strong></td>
+        <td>Thành công được đo lường bằng chất lượng sản phẩm và dự án, tính kịp thời, tuân thủ ngân sách và mức độ hài lòng của khách hàng.</td>
+        <td>Sự thành công của một chương trình được đo lường bằng khả năng cung cấp các lợi ích dự kiến cho một tổ chức, và bằng sự hiệu quả và năng suất của chương trình trong việc mang lại những lợi ích đó.</td>
+        <td>Thành công được đo lường về mặt hiệu suất đầu tư tổng thể và việc hiện thực hóa lợi ích của danh mục.</td>
+      </tr>
+    </table>
+  </div>
+
+  <h4>1.2.3.2 QUẢN LÝ CHƯƠNG TRÌNH <span class="term-en">(PROGRAM MANAGEMENT)</span></h4>
+  <p>Quản lý chương trình được định nghĩa là việc áp dụng kiến thức, kỹ năng, và các nguyên tắc vào một chương trình để đạt được các mục tiêu của chương trình cũng như để thu được các lợi ích và khả năng kiểm soát mà không thể có được bằng cách quản lý các thành phần của chương trình một cách riêng lẻ. Một thành phần của chương trình (<span class="term">program component</span>) đề cập đến các dự án và các chương trình khác bên trong một chương trình. Quản lý dự án tập trung vào sự phụ thuộc lẫn nhau trong một dự án để xác định cách tiếp cận tối ưu cho việc quản lý dự án đó. Quản lý chương trình tập trung vào sự phụ thuộc lẫn nhau giữa các dự án và giữa các dự án với cấp độ chương trình để xác định cách tiếp cận tối ưu cho việc quản lý chúng. Các hành động liên quan đến sự phụ thuộc lẫn nhau ở cấp độ chương trình và dự án này có thể bao gồm:</p>
+  <ul class="pmbok dash">
+    <li>Căn chỉnh với định hướng chiến lược hoặc tổ chức có ảnh hưởng đến các mục tiêu và đích đến của dự án và chương trình;</li>
+    <li class="check">Phân bổ phạm vi chương trình vào các thành phần của chương trình;</li>
+    <li class="pmbok">Quản lý sự phụ thuộc lẫn nhau giữa các thành phần của chương trình để phục vụ chương trình tốt nhất;</li>
+    <li class="check">Giải quyết các ràng buộc và xung đột ảnh hưởng đến nhiều dự án trong chương trình;</li>
+    <li class="pmbok">Quản lý rủi ro chương trình có thể tác động đến nhiều dự án trong chương trình;</li>
+    <li class="check">Giải quyết các vấn đề giữa các dự án thành phần và cấp độ chương trình;</li>
+    <li class="pmbok">Quản lý các yêu cầu thay đổi trong khuôn khổ quản trị chung;</li>
+    <li class="check">Phân bổ ngân sách trên nhiều dự án trong chương trình; và</li>
+    <li class="pmbok">Đảm bảo việc hiện thực hóa lợi ích từ chương trình và các dự án thành phần.</li>
+  </ul>
+  <p>Một ví dụ về một chương trình là một hệ thống vệ tinh thông tin liên lạc mới bao gồm các dự án về thiết kế và chế tạo vệ tinh cùng các trạm mặt đất, việc phóng vệ tinh, và tích hợp hệ thống.</p>
+
+  <h4>1.2.3.3 QUẢN LÝ DANH MỤC ĐẦU TƯ <span class="term-en">(PORTFOLIO MANAGEMENT)</span></h4>
+  <p>Một danh mục đầu tư được định nghĩa là các dự án, chương trình, danh mục con, và hoạt động vận hành được quản lý như một nhóm để đạt được các mục tiêu chiến lược.</p>
+  <p>Quản lý danh mục đầu tư được định nghĩa là sự quản lý tập trung một hoặc nhiều danh mục đầu tư để đạt được các mục tiêu chiến lược. Các chương trình hoặc dự án của danh mục đầu tư có thể không nhất thiết phải phụ thuộc lẫn nhau hoặc liên quan trực tiếp đến nhau.</p>
+  <p>Mục đích của quản lý danh mục đầu tư là:</p>
+  <ul class="pmbok check">
+    <li>Hướng dẫn các quyết định đầu tư của tổ chức.</li>
+    <li class="pmbok">Lựa chọn hỗn hợp tối ưu của các chương trình và dự án để đáp ứng các mục tiêu chiến lược.</li>
+    <li>Cung cấp sự minh bạch trong việc ra quyết định.</li>
+    <li>Ưu tiên phân bổ nguồn lực vật chất và nhóm.</li>
+    <li class="pmbok">Tăng khả năng nhận được lợi tức đầu tư mong muốn.</li>
+    <li class="pmbok">Quản lý tập trung hồ sơ rủi ro tổng hợp của tất cả các thành phần.</li>
+  </ul>
+  <p>Quản lý danh mục đầu tư cũng xác nhận rằng danh mục đầu tư nhất quán và phù hợp với các chiến lược của tổ chức.</p>
+  <p>Việc tối đa hóa giá trị của danh mục đầu tư đòi hỏi sự kiểm tra cẩn thận đối với các thành phần cấu thành nên danh mục đầu tư đó. Các thành phần được ưu tiên sao cho những thành phần đóng góp nhiều nhất vào các mục tiêu chiến lược của tổ chức sẽ có được các nguồn tài chính, nhóm, và vật chất cần thiết.</p>
+
+  <h4>1.2.3.4 QUẢN LÝ HOẠT ĐỘNG VẬN HÀNH <span class="term-en">(OPERATIONS MANAGEMENT)</span></h4>
+  <p>Quản lý hoạt động vận hành là một lĩnh vực nằm ngoài phạm vi của quản lý dự án chính thức như được mô tả trong hướng dẫn này.</p>
+  <p>Quản lý hoạt động vận hành liên quan đến việc sản xuất liên tục hàng hóa và/hoặc dịch vụ. Nó đảm bảo rằng các hoạt động kinh doanh tiếp tục một cách hiệu quả bằng cách sử dụng các nguồn lực tối ưu cần thiết để đáp ứng nhu cầu của khách hàng. Nó liên quan đến việc quản lý các quy trình biến đổi các đầu vào (ví dụ: nguyên vật liệu, linh kiện, năng lượng, và lao động) thành các đầu ra (ví dụ: sản phẩm, hàng hóa, và/hoặc dịch vụ).</p>
+
+  <h4>1.2.3.5 HOẠT ĐỘNG VẬN HÀNH VÀ QUẢN LÝ DỰ ÁN <span class="term-en">(OPERATIONS AND PROJECT MANAGEMENT)</span></h4>
+  <p>Những thay đổi trong hoạt động vận hành của doanh nghiệp hoặc tổ chức có thể là trọng tâm của một dự án—đặc biệt là khi có những thay đổi đáng kể đối với hoạt động kinh doanh do kết quả của việc cung cấp một sản phẩm hoặc dịch vụ mới. Các hoạt động vận hành liên tục nằm ngoài phạm vi của một dự án; tuy nhiên, có những điểm giao cắt nơi hai lĩnh vực này gặp nhau.</p>
+  <p>Các dự án có thể giao cắt với hoạt động vận hành ở nhiều điểm khác nhau trong vòng đời sản phẩm, chẳng hạn như:</p>
+  <ul class="pmbok check">
+    <li>Khi phát triển một sản phẩm mới, nâng cấp một sản phẩm, hoặc mở rộng kết quả đầu ra;</li>
+    <li class="dash">Trong khi cải tiến hoạt động vận hành hoặc quy trình phát triển sản phẩm;</li>
+    <li class="pmbok">Vào cuối vòng đời sản phẩm; và</li>
+    <li>Tại mỗi giai đoạn kết thúc (closeout phase).</li>
+  </ul>
+  <p>Tại mỗi điểm, các sản phẩm giao nộp và kiến thức được chuyển giao giữa dự án và hoạt động vận hành để thực hiện công việc được bàn giao. Sự thực hiện này diễn ra thông qua việc chuyển giao các nguồn lực hoặc kiến thức dự án sang hoạt động vận hành hoặc thông qua việc chuyển giao các nguồn lực vận hành vào dự án.</p>
+
+  <h4>1.2.3.6 QUẢN LÝ DỰ ÁN TỔ CHỨC (OPM) VÀ CHIẾN LƯỢC <span class="term-en">(ORGANIZATIONAL PROJECT MANAGEMENT (OPM) AND STRATEGIES)</span></h4>
+  <p>Các danh mục đầu tư, chương trình, và dự án được căn chỉnh với hoặc được thúc đẩy bởi các chiến lược tổ chức và khác nhau ở cách thức mỗi cái đóng góp vào việc đạt được các mục tiêu chiến lược:</p>
+  <ul class="pmbok dash">
+    <li>Quản lý danh mục đầu tư gắn kết các danh mục đầu tư với các chiến lược của tổ chức bằng cách lựa chọn đúng các chương trình hoặc dự án, ưu tiên công việc, và cung cấp các nguồn lực cần thiết.</li>
+    <li>Quản lý chương trình hài hòa các thành phần chương trình của nó và kiểm soát sự phụ thuộc lẫn nhau nhằm hiện thực hóa các lợi ích đã được chỉ định.</li>
+    <li>Quản lý dự án cho phép đạt được các mục tiêu và đích đến của tổ chức.</li>
+  </ul>
+  <p>Bên trong các danh mục đầu tư hoặc chương trình, các dự án là một phương tiện để đạt được các mục tiêu và đích đến của tổ chức. Điều này thường được hoàn thành trong bối cảnh của một kế hoạch chiến lược vốn là yếu tố chính hướng dẫn các khoản đầu tư vào các dự án. Sự liên kết với các mục tiêu kinh doanh chiến lược của tổ chức có thể đạt được thông qua việc quản lý có hệ thống đối với các danh mục đầu tư, chương trình, và dự án nhờ việc áp dụng Quản lý dự án tổ chức (<span class="term">Organizational Project Management - OPM</span>). OPM được định nghĩa là một khuôn khổ trong đó quản lý danh mục đầu tư, chương trình, và dự án được tích hợp với các yếu tố hỗ trợ của tổ chức nhằm đạt được các mục tiêu chiến lược.</p>
+  
+  <div class="figure-wrap">
+    <img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//603727ee-0658-406c-9235-9fbfefca5e19/markdown_0/imgs/img_in_image_box_243_531_979_1033.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A23%3A49Z%2F-1%2F%2Ff39a633c0c64f524eec8f081b2bc19aa18897edfc72d4e34fbd3c779ccbc794e" alt="Hình 1-4" width="60%">
+    <div class="figure-caption"><strong>Hình 1-4.</strong> Quản lý Dự án Tổ chức <span class="term-en">(Organizational Project Management)</span></div>
+  </div>
+
+  <h3 id="s1-2-4">1.2.4 CÁC THÀNH PHẦN CỦA HƯỚNG DẪN <span class="term-en">(COMPONENTS OF THE GUIDE)</span></h3>
+  <p>Các dự án bao gồm một số thành phần chính yếu mà, khi được quản lý hiệu quả, sẽ dẫn đến sự hoàn thành thành công của dự án. Hướng dẫn này xác định và giải thích các thành phần này. Các thành phần khác nhau tương tác với nhau trong quá trình quản lý dự án.</p>
+
+  <div class="table-wrap">
+    <div class="table-caption">Bảng 1-3. Mô tả các Thành phần Chính của PMBOK® Guide <span class="term-en">(Description of PMBOK® Guide Key Components)</span></div>
+    <table>
+      <tr>
+        <th>Thành phần Chính PMBOK Guide</th>
+        <th>Mô tả Ngắn gọn</th>
+      </tr>
+      <tr>
+        <td>Vòng đời dự án (Mục 1.2.4.1)</td>
+        <td>Chuỗi các giai đoạn mà một dự án đi qua từ khi bắt đầu cho đến khi hoàn thành.</td>
+      </tr>
+      <tr>
+        <td>Giai đoạn dự án (Mục 1.2.4.2)</td>
+        <td>Một tập hợp các hoạt động dự án có liên quan về mặt logic dẫn đến việc hoàn thành một hoặc nhiều sản phẩm giao nộp.</td>
+      </tr>
+      <tr>
+        <td>Cổng giai đoạn (Mục 1.2.4.3)</td>
+        <td>Một cuộc đánh giá vào cuối một giai đoạn trong đó một quyết định được đưa ra để tiếp tục sang giai đoạn tiếp theo, tiếp tục với sửa đổi, hoặc để kết thúc một chương trình hoặc dự án.</td>
+      </tr>
+      <tr>
+        <td>Các quy trình quản lý dự án (Mục 1.2.4.4)</td>
+        <td>Một chuỗi các hoạt động có hệ thống hướng tới việc tạo ra một kết quả cuối cùng trong đó một hoặc nhiều đầu vào sẽ được xử lý để tạo ra một hoặc nhiều đầu ra.</td>
+      </tr>
+      <tr>
+        <td>Nhóm quy trình quản lý dự án (Mục 1.2.4.5)</td>
+        <td>Một nhóm hợp lý các đầu vào, công cụ và kỹ thuật, cùng đầu ra của quản lý dự án. Các Nhóm Quy trình Quản lý Dự án bao gồm Khởi tạo, Lập kế hoạch, Thực hiện, Giám sát và Kiểm soát, và Đóng dự án. Nhóm Quy trình không phải là các giai đoạn dự án.</td>
+      </tr>
+      <tr>
+        <td>Lĩnh vực kiến thức quản lý dự án (Mục 1.2.4.6)</td>
+        <td>Một lĩnh vực quản lý dự án được xác định bởi các yêu cầu về kiến thức của nó và được mô tả thông qua các quy trình, thực hành, đầu vào, đầu ra, công cụ, và kỹ thuật thành phần.</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="figure-wrap">
+    <img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//603727ee-0658-406c-9235-9fbfefca5e19/markdown_1/imgs/img_in_image_box_241_637_979_1405.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A23%3A50Z%2F-1%2F%2F90bafc9da337ab5c62be2496213e1287b39da7ceb5e5d288b93f12b1a35617d4" alt="Hình 1-5" width="60%">
+    <div class="figure-caption"><strong>Hình 1-5.</strong> Mối quan hệ qua lại giữa các Thành phần Chính của PMBOK® Guide trong các Dự án <span class="term-en">(Interrelationship of PMBOK® Guide Key Components in Projects)</span></div>
+  </div>
+
+  <h4>1.2.4.1 VÒNG ĐỜI DỰ ÁN VÀ PHÁT TRIỂN <span class="term-en">(PROJECT AND DEVELOPMENT LIFE CYCLES)</span></h4>
+  <p>Vòng đời dự án (<span class="term">project life cycle</span>) là chuỗi các giai đoạn mà dự án trải qua từ khi bắt đầu đến khi hoàn thành. Vòng đời dự án có thể là dự đoán (<span class="term">predictive</span>) hoặc thích nghi (<span class="term">adaptive</span>). Trong một vòng đời dự án, thường có một hoặc nhiều giai đoạn liên quan đến việc phát triển sản phẩm, dịch vụ hoặc kết quả, gọi là vòng đời phát triển (<span class="term">development life cycle</span>). Vòng đời phát triển có thể bao gồm:</p>
+  <ul class="pmbok dash">
+    <li>Vòng đời dự đoán (Predictive): Phạm vi, thời gian, và chi phí dự án được xác định trong các giai đoạn đầu. Bất kỳ thay đổi phạm vi nào cũng được quản lý cẩn thận. Còn được gọi là vòng đời thác nước.</li>
+    <li class="pmbok">Vòng đời lặp lại (Iterative): Phạm vi dự án thường được xác định sớm, nhưng các ước tính thời gian và chi phí được sửa đổi thường xuyên khi hiểu biết của nhóm về sản phẩm tăng lên.</li>
+    <li>Vòng đời tăng dần (Incremental): Sản phẩm giao nộp được sản xuất thông qua một loạt các lần lặp giúp liên tiếp thêm chức năng trong một khung thời gian xác định trước.</li>
+    <li class="pmbok">Vòng đời thích nghi (Adaptive): Thích nghi có tính linh hoạt (agile), lặp lại hoặc tăng dần. Phạm vi chi tiết được xác định và phê duyệt trước khi bắt đầu một lần lặp (iteration).</li>
+    <li class="pmbok">Vòng đời kết hợp (Hybrid): Là sự kết hợp của vòng đời dự đoán và thích nghi.</li>
+  </ul>
+
+  <h4>1.2.4.2 GIAI ĐOẠN DỰ ÁN <span class="term-en">(PROJECT PHASE)</span></h4>
+  <p>Một giai đoạn dự án (<span class="term">project phase</span>) là một tập hợp các hoạt động dự án liên quan logic lên đến đỉnh điểm ở sự hoàn thành một hoặc nhiều sản phẩm giao nộp. Các thuộc tính của giai đoạn có thể đo lường và duy nhất, bao gồm: tên, số lượng, khoảng thời gian, yêu cầu nguồn lực, tiêu chí đầu vào, và tiêu chí đầu ra.</p>
+  <p>Ví dụ về các tên giai đoạn:</p>
+  <ul class="pmbok check">
+    <li>Phát triển khái niệm.</li>
+    <li>Nghiên cứu khả thi.</li>
+    <li>Yêu cầu của khách hàng.</li>
+    <li>Phát triển giải pháp.</li>
+    <li>Thiết kế.</li>
+    <li>Nguyên mẫu (Prototype).</li>
+    <li>Xây dựng (Build).</li>
+    <li class="dash">Kiểm thử (Test).</li>
+    <li>Chuyển đổi (Transition).</li>
+    <li>Đưa vào hoạt động (Commissioning).</li>
+  </ul>
+
+  <h4>1.2.4.3 CỔNG GIAI ĐOẠN <span class="term-en">(PHASE GATE)</span></h4>
+  <p>Một cổng giai đoạn (<span class="term">phase gate</span>), được tổ chức vào cuối một giai đoạn. Hiệu suất và tiến độ của dự án được so sánh với các tài liệu dự án và kinh doanh. Một quyết định (ví dụ: go/no-go) được đưa ra là kết quả của sự so sánh này để:</p>
+  <ul class="pmbok check">
+    <li>Tiếp tục sang giai đoạn tiếp theo.</li>
+    <li>Tiếp tục sang giai đoạn tiếp theo với sửa đổi.</li>
+    <li>Kết thúc dự án.</li>
+    <li>Vẫn ở trong giai đoạn hiện tại.</li>
+    <li>Lặp lại giai đoạn hoặc các yếu tố của nó.</li>
+  </ul>
+
+  <div class="figure-wrap">
+    <img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//c3b8ed17-cbb3-4e0e-96d1-43b999095193/markdown_0/imgs/img_in_image_box_266_542_957_670.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A23%3A50Z%2F-1%2F%2F04de2e8dff01fe4280a4dfb09efc1185040d38484cbf7be2ed64702f4c59b3b2" alt="Hình 1-6" width="56%">
+    <div class="figure-caption"><strong>Hình 1-6.</strong> Ví dụ Quy trình: Đầu vào, Công cụ & Kỹ thuật, và Đầu ra <span class="term-en">(Example Process: Inputs, Tools & Techniques, and Outputs)</span></div>
+  </div>
+
+  <h3 id="s1-2-5">1.2.5 ĐIỀU CHỈNH <span class="term-en">(TAILORING)</span></h3>
+  <p>Các nhà quản lý dự án thường áp dụng một phương pháp luận quản lý dự án vào công việc của họ. Các phương pháp luận quản lý dự án có thể:</p>
+  <ul class="pmbok check">
+    <li>Được phát triển bởi các chuyên gia trong tổ chức.</li>
+    <li>Được mua từ các nhà cung cấp.</li>
+    <li>Thu được từ các hiệp hội chuyên nghiệp, hoặc</li>
+    <li>Có được từ các cơ quan chính phủ.</li>
+  </ul>
+  <p>Sự điều chỉnh là cần thiết vì mỗi dự án là duy nhất; không phải mọi quy trình, công cụ, kỹ thuật, đầu vào hoặc đầu ra được xác định trong Hướng dẫn PMBOK® đều bắt buộc trên mỗi dự án. Sự điều chỉnh nên giải quyết các ràng buộc cạnh tranh của phạm vi, tiến độ, chi phí, nguồn lực, chất lượng và rủi ro.</p>
+
+  <h3 id="s1-2-6">1.2.6 TÀI LIỆU KINH DOANH QUẢN LÝ DỰ ÁN <span class="term-en">(PROJECT MANAGEMENT BUSINESS DOCUMENTS)</span></h3>
+  <p>Người quản lý dự án cần đảm bảo rằng cách tiếp cận quản lý dự án nắm bắt được ý định của các tài liệu kinh doanh. Các tài liệu này được xác định trong Bảng 1-5.</p>
+
+  <div class="table-wrap">
+    <div class="table-caption">Bảng 1-5. Tài liệu Kinh doanh Dự án <span class="term-en">(Project Business Documents)</span></div>
+    <table>
+      <tr>
+        <th>Tài liệu Kinh doanh Dự án</th>
+        <th>Định nghĩa</th>
+      </tr>
+      <tr>
+        <td>Luận cứ kinh doanh dự án (Project business case)</td>
+        <td>Một nghiên cứu khả thi kinh tế được lập thành tài liệu dùng để thiết lập tính hợp lệ của các lợi ích của một thành phần được chọn thiếu sự định nghĩa đầy đủ và được dùng làm cơ sở cho việc cho phép các hoạt động quản lý dự án tiếp theo.</td>
+      </tr>
+      <tr>
+        <td>Kế hoạch quản lý lợi ích dự án (Project benefits management plan)</td>
+        <td>Giải thích được lập thành văn bản xác định các quy trình tạo ra, tối đa hóa, và duy trì những lợi ích do một dự án cung cấp.</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="figure-wrap">
+    <img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//40957590-71fa-4cf6-8af4-1c86704423bc/markdown_3/imgs/img_in_image_box_246_146_978_750.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A23%3A47Z%2F-1%2F%2Fb9ccf6953e57864af7838cd3954f0ca4abdfc1595c175011a1728cefd5bf531b" alt="Hình 1-8" width="59%">
+    <div class="figure-caption"><strong>Hình 1-8.</strong> Mối quan hệ qua lại giữa Đánh giá Nhu cầu và Tài liệu Kinh doanh/Dự án Quan trọng <span class="term-en">(Interrelationship of Needs Assessment and Critical Business/Project Documents)</span></div>
+  </div>
+
+  <h4>1.2.6.4 CÁC THƯỚC ĐO THÀNH CÔNG CỦA DỰ ÁN <span class="term-en">(PROJECT SUCCESS MEASURES)</span></h4>
+  <p>Ba câu hỏi mà các bên liên quan chính và người quản lý dự án nên trả lời là:</p>
+  <ul class="pmbok check">
+    <li>Thành công trông như thế nào đối với dự án này?</li>
+    <li>Thành công sẽ được đo lường như thế nào?</li>
+    <li>Những yếu tố nào có thể tác động đến thành công?</li>
+  </ul>
+  
+  <p>Câu trả lời cho những câu hỏi này nên được lập thành văn bản và được đồng thuận bởi các bên liên quan chính và người quản lý dự án. Sự thành công của dự án có thể bao gồm các tiêu chí bổ sung liên kết với chiến lược tổ chức và việc mang lại kết quả kinh doanh. Các mục tiêu dự án này có thể bao gồm nhưng không giới hạn ở:</p>
+  
+  <ul class="pmbok check">
+    <li>Hoàn thành kế hoạch quản lý lợi ích dự án;</li>
+    <li class="pmbok">Đáp ứng các thước đo tài chính đã thỏa thuận được lập trong luận cứ kinh doanh. Các thước đo này bao gồm nhưng không giới hạn ở:
+      <ul class="pmbok check">
+        <li>Giá trị hiện tại ròng (NPV),</li>
+        <li>Tỷ suất hoàn vốn đầu tư (ROI),</li>
+        <li>Tỷ suất hoàn vốn nội bộ (IRR),</li>
+        <li class="dash">Thời gian hoàn vốn (PBP), và</li>
+        <li class="dash">Tỷ lệ Lợi ích-Chi phí (BCR).</li>
+      </ul>
+    </li>
+    <li>Đáp ứng các mục tiêu phi tài chính của luận cứ kinh doanh;</li>
+    <li class="pmbok">Hoàn thành việc dịch chuyển của một tổ chức từ trạng thái hiện tại sang trạng thái tương lai mong muốn;</li>
+    <li>Đạt được sự hài lòng của các bên liên quan;</li>
+    <li class="dash">Sự áp dụng chấp nhận được của khách hàng/người dùng cuối;</li>
+    <li>Đáp ứng các tiêu chí quản trị; và</li>
+    <li class="dash">Đạt được các thước đo hoặc tiêu chí thành công đã thỏa thuận khác.</li>
+  </ul>
+
+</main>
+</body>
+</html>

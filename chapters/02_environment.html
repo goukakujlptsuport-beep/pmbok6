@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chương 2 – Môi Trường Dự Án | PMBOK® Guide Lần 6</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a3;
+    --cream: #fdf8f0;
+    --text: #2c2c2c;
+    --text-light: #5a5a5a;
+    --border: #d4c89a;
+    --accent: #8b1a1a;
+    --sidebar-w: 260px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Merriweather', Georgia, serif;
+    background: var(--cream);
+    color: var(--text);
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* SIDEBAR */
+  #sidebar {
+    width: var(--sidebar-w);
+    background: var(--navy);
+    color: #ccd4e8;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    overflow-y: auto;
+    z-index: 100;
+    padding: 0 0 2rem;
+    border-right: 3px solid var(--gold);
+  }
+  #sidebar-header {
+    background: linear-gradient(135deg, #0f1d3a 0%, #1a2744 100%);
+    padding: 1.5rem 1.2rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  #sidebar-header .book-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  #sidebar-header h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+  }
+  #sidebar-header .edition {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    color: var(--gold-light);
+    font-style: italic;
+  }
+  #sidebar nav { padding: 0.8rem 0; }
+  #sidebar nav a {
+    display: block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    color: #aab8d0;
+    text-decoration: none;
+    padding: 0.45rem 1.2rem;
+    line-height: 1.4;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+  }
+  #sidebar nav a:hover, #sidebar nav a.active {
+    color: #fff;
+    background: rgba(201,168,76,0.12);
+    border-left-color: var(--gold);
+  }
+  #sidebar nav .section-group { margin-top: 0.4rem; }
+  #sidebar nav .group-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 0.8rem 1.2rem 0.3rem;
+    opacity: 0.85;
+  }
+  #sidebar nav a.sub {
+    padding-left: 2rem;
+    font-size: 0.75rem;
+    color: #8896b0;
+  }
+  #sidebar nav a.sub:hover { color: #ccd4e8; }
+
+  /* MAIN */
+  #main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    max-width: 900px;
+    padding: 0 3rem 5rem;
+  }
+
+  /* CHAPTER HEADER */
+  .chapter-hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #2a3a6a 100%);
+    color: white;
+    padding: 3rem 3rem 2.5rem;
+    margin: 0 -3rem 3rem;
+    border-bottom: 4px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-hero::before {
+    content: '2';
+    position: absolute;
+    right: 2rem; top: 50%;
+    transform: translateY(-50%);
+    font-size: 12rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.05);
+    font-family: 'Merriweather', serif;
+    line-height: 1;
+  }
+  .chapter-hero .ch-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .chapter-hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+  }
+  .chapter-hero .ch-en {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+    font-style: italic;
+  }
+
+  /* CONTENT STYLES */
+  h2 {
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  h3 {
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin: 2rem 0 0.7rem;
+    padding-left: 0.8rem;
+    border-left: 4px solid var(--gold);
+  }
+  h4 {
+    font-size: 1rem;
+    color: var(--accent);
+    margin: 1.5rem 0 0.5rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  p {
+    font-size: 0.97rem;
+    line-height: 1.85;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  /* BILINGUAL TERM */
+  .term {
+    display: inline;
+    font-weight: 600;
+    color: var(--navy);
+  }
+  .term-en {
+    font-style: italic;
+    color: var(--text-light);
+    font-size: 0.88em;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  /* BULLET LISTS */
+  ul.pmbok {
+    list-style: none;
+    margin: 0.5rem 0 1rem 0;
+    padding: 0;
+  }
+  ul.pmbok li {
+    position: relative;
+    padding: 0.3rem 0 0.3rem 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--text);
+  }
+  ul.pmbok li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.7rem;
+    top: 0.5rem;
+  }
+  ul.pmbok.check li::before { content: '☑'; color: #2d7a2d; font-size: 0.9rem; top: 0.35rem; }
+  ul.pmbok.dash li::before { content: '■'; color: var(--navy); font-size: 0.6rem; top: 0.5rem; }
+  ul.pmbok.circle li::before { content: '○'; color: var(--navy); font-size: 0.7rem; top: 0.45rem; }
+
+  /* DEFINITION BOX */
+  .def-box {
+    background: linear-gradient(135deg, #f5f0e8 0%, #ede8d8 100%);
+    border: 1px solid var(--border);
+    border-left: 5px solid var(--gold);
+    border-radius: 0 6px 6px 0;
+    padding: 1rem 1.2rem;
+    margin: 1.2rem 0;
+    font-size: 0.93rem;
+    line-height: 1.7;
+  }
+  .def-box .def-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+
+  /* FIGURE */
+  .figure-wrap {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1.2rem;
+    background: #f8f5ee;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .figure-wrap img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  }
+  .figure-caption {
+    margin-top: 0.75rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.83rem;
+    color: var(--text-light);
+    font-style: italic;
+  }
+  .figure-caption strong {
+    color: var(--navy);
+    font-style: normal;
+  }
+
+  /* TABLES */
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+  .table-wrap > .table-caption {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.82rem;
+    font-style: italic;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.84rem;
+  }
+  table th {
+    background: var(--navy);
+    color: white;
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+  table td {
+    padding: 0.55rem 0.8rem;
+    border: 1px solid #ddd;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  table tr:nth-child(even) td { background: #f9f6ef; }
+
+  @media(max-width:900px){
+    #sidebar { display: none; }
+    #main { margin-left: 0; padding: 0 1.2rem 4rem; }
+    .chapter-hero { margin: 0 -1.2rem 2rem; padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<aside id="sidebar">
+  <div id="sidebar-header">
+    <div class="book-label">PMBOK® Guide</div>
+    <h2>Hướng Dẫn Quản Lý Dự Án</h2>
+    <div class="edition">Lần xuất bản thứ 6 · Tiếng Việt</div>
+  </div>
+  <nav>
+    <div class="section-group">
+      <div class="group-label">Chương 2 · Môi Trường Dự Án</div>
+      <a href="#s2-1">2.1 Tổng Quan</a>
+      <a href="#s2-2">2.2 Yếu Tố Môi Trường Doanh Nghiệp (EEFs)</a>
+      <a href="#s2-2-1" class="sub">2.2.1 EEFs Nội Bộ</a>
+      <a href="#s2-2-2" class="sub">2.2.2 EEFs Bên Ngoài</a>
+      <a href="#s2-3">2.3 Tài Sản Quy Trình Tổ Chức (OPAs)</a>
+      <a href="#s2-3-1" class="sub">2.3.1 Quy Trình & Chính Sách</a>
+      <a href="#s2-3-2" class="sub">2.3.2 Kho Kiến Thức</a>
+      <a href="#s2-4">2.4 Hệ Thống Tổ Chức</a>
+      <a href="#s2-4-1" class="sub">2.4.1 Tổng Quan Hệ Thống</a>
+      <a href="#s2-4-2" class="sub">2.4.2 Khung Quản Trị</a>
+      <a href="#s2-4-3" class="sub">2.4.3 Các Yếu Tố Quản Lý</a>
+      <a href="#s2-4-4" class="sub">2.4.4 Cấu Trúc Tổ Chức</a>
+    </div>
+  </nav>
+</aside>
+
+<main id="main">
+
+  <div class="chapter-hero">
+    <div class="ch-label">Chương 2</div>
+    <h1>MÔI TRƯỜNG HOẠT ĐỘNG CỦA DỰ ÁN</h1>
+    <div class="ch-en">The Environment in which Projects Operate</div>
+  </div>
+
+  <h2 id="s2-1">2.1 TỔNG QUAN <span class="term-en">(OVERVIEW)</span></h2>
+
+  <p>Các dự án tồn tại và hoạt động trong những môi trường có thể có ảnh hưởng đến chúng. Những ảnh hưởng này có thể tác động thuận lợi hoặc không thuận lợi đến dự án. Hai hạng mục ảnh hưởng chính là các yếu tố môi trường doanh nghiệp (<span class="term">enterprise environmental factors - EEFs</span>) và tài sản quy trình tổ chức (<span class="term">organizational process assets - OPAs</span>).</p>
+
+  <p>EEFs bắt nguồn từ môi trường bên ngoài dự án và thường ở bên ngoài doanh nghiệp. EEFs có thể tác động ở cấp độ tổ chức, danh mục đầu tư, chương trình, hoặc dự án. Xem Phần 2.2 để biết thêm thông tin về EEFs.</p>
+
+  <p>OPAs là yếu tố nội bộ của tổ chức. Chúng có thể phát sinh từ chính tổ chức, một danh mục đầu tư, một chương trình, một dự án khác, hoặc sự kết hợp của những yếu tố này. Hình 2-1 cho thấy sự phân chia các ảnh hưởng đối với dự án thành EEFs và OPAs. Xem Phần 2.3 để biết thêm thông tin về OPAs.</p>
+
+  <div class="figure-wrap">
+    <img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//facf15b2-bec8-4742-b9f2-c414b56f1e9b/markdown_0/imgs/img_in_image_box_242_810_980_1239.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A23%3A48Z%2F-1%2F%2F9ef2da1e4b67a12f78f9dc600fb5c77e823385841c23ed6941f07b318316f6e2" alt="Hình 2-1" width="60%">
+    <div class="figure-caption"><strong>Hình 2-1.</strong> Các Ảnh Hưởng Tác Động Lên Dự Án <span class="term-en">(Project Influences)</span></div>
+  </div>
+
+  <p>Ngoài EEFs và OPAs, các hệ thống tổ chức (<span class="term">organizational systems</span>) cũng đóng vai trò quan trọng trong vòng đời dự án. Các yếu tố hệ thống tác động đến quyền lực, sự ảnh hưởng, lợi ích, năng lực, và khả năng chính trị của những người hành động trong hệ thống tổ chức sẽ được thảo luận sâu hơn trong phần về hệ thống tổ chức (xem Phần 2.4).</p>
+
+  <h2 id="s2-2">2.2 YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP <span class="term-en">(ENTERPRISE ENVIRONMENTAL FACTORS - EEFS)</span></h2>
+
+  <p>Các yếu tố môi trường doanh nghiệp (<span class="term">EEFs</span>) đề cập đến những điều kiện không nằm dưới sự kiểm soát của nhóm dự án, nhưng lại ảnh hưởng, cản trở, hoặc định hướng dự án. Những điều kiện này có thể nằm ở bên trong và/hoặc bên ngoài tổ chức. EEFs được coi là đầu vào cho nhiều quy trình quản lý dự án, đặc biệt là đối với hầu hết các quy trình lập kế hoạch. Những yếu tố này có thể nâng cao hoặc hạn chế các lựa chọn quản lý dự án. Ngoài ra, những yếu tố này có thể có ảnh hưởng tích cực hoặc tiêu cực đến kết quả.</p>
+
+  <p>EEFs thay đổi rất nhiều về loại hình hoặc bản chất. Những yếu tố này cần được xem xét nếu muốn dự án đạt được hiệu quả. EEFs bao gồm nhưng không giới hạn ở các yếu tố được mô tả trong các Phần 2.2.1 và 2.2.2.</p>
+
+  <h3 id="s2-2-1">2.2.1 EEFS NỘI BỘ TỔ CHỨC <span class="term-en">(EEFS INTERNAL TO THE ORGANIZATION)</span></h3>
+  <p>Các yếu tố môi trường doanh nghiệp (EEFs) sau đây là yếu tố nội bộ của tổ chức:</p>
+  <ul class="pmbok">
+    <li><strong>Văn hóa, cấu trúc, và quản trị tổ chức.</strong> Các ví dụ bao gồm tầm nhìn, sứ mệnh, giá trị, niềm tin, chuẩn mực văn hóa, phong cách lãnh đạo, hệ thống cấp bậc và các mối quan hệ thẩm quyền, phong cách tổ chức, đạo đức, và quy tắc ứng xử.</li>
+    <li><strong>Sự phân bổ địa lý của các cơ sở vật chất và nguồn lực.</strong> Các ví dụ bao gồm vị trí nhà máy, các nhóm làm việc ảo (virtual teams), hệ thống dùng chung, và điện toán đám mây.</li>
+    <li><strong>Cơ sở hạ tầng.</strong> Các ví dụ bao gồm cơ sở vật chất hiện có, thiết bị, các kênh viễn thông của tổ chức, phần cứng công nghệ thông tin, tính sẵn có, và năng lực.</li>
+    <li><strong>Phần mềm công nghệ thông tin.</strong> Các ví dụ bao gồm các công cụ phần mềm lập tiến độ, hệ thống quản lý cấu hình, giao diện web kết nối với các hệ thống tự động trực tuyến khác, và hệ thống ủy quyền công việc.</li>
+    <li class="pmbok"><strong>Tính sẵn có của nguồn lực.</strong> Các ví dụ bao gồm những ràng buộc về hợp đồng và mua sắm, các nhà cung cấp và nhà thầu phụ đã được phê duyệt, và các thỏa thuận hợp tác.</li>
+    <li><strong>Năng lực nhân viên.</strong> Các ví dụ bao gồm chuyên môn của nguồn nhân lực hiện tại, kỹ năng, năng lực, và kiến thức chuyên ngành.</li>
+  </ul>
+
+  <h3 id="s2-2-2">2.2.2 EEFS BÊN NGOÀI TỔ CHỨC <span class="term-en">(EEFS EXTERNAL TO THE ORGANIZATION)</span></h3>
+  <p>Các yếu tố môi trường doanh nghiệp (EEFs) sau đây là yếu tố bên ngoài tổ chức:</p>
+  <ul class="pmbok">
+    <li><strong>Điều kiện thị trường.</strong> Các ví dụ bao gồm các đối thủ cạnh tranh, thị phần nhận diện thương hiệu, và nhãn hiệu thương mại.</li>
+    <li><strong>Các ảnh hưởng và vấn đề xã hội, văn hóa.</strong> Các ví dụ bao gồm bối cảnh chính trị, quy tắc ứng xử, đạo đức, và nhận thức.</li>
+    <li><strong>Các hạn chế về pháp lý.</strong> Các ví dụ bao gồm luật pháp và quy định của quốc gia hoặc địa phương liên quan đến an ninh, bảo vệ dữ liệu, hành vi kinh doanh, việc làm, và mua sắm.</li>
+    <li class="pmbok"><strong>Cơ sở dữ liệu thương mại.</strong> Các ví dụ bao gồm kết quả đối chuẩn (benchmarking), dữ liệu ước tính chi phí chuẩn hóa, thông tin nghiên cứu rủi ro ngành, và cơ sở dữ liệu rủi ro.</li>
+    <li class="pmbok"><strong>Nghiên cứu học thuật.</strong> Các ví dụ bao gồm các nghiên cứu ngành, ấn phẩm, và kết quả đối chuẩn.</li>
+    <li><strong>Các tiêu chuẩn của chính phủ hoặc ngành.</strong> Các ví dụ bao gồm các quy định của cơ quan quản lý và các tiêu chuẩn liên quan đến sản phẩm, sản xuất, môi trường, chất lượng, và tay nghề.</li>
+    <li><strong>Các cân nhắc về tài chính.</strong> Các ví dụ bao gồm tỷ giá hối đoái, lãi suất, tỷ lệ lạm phát, thuế quan, và vị trí địa lý.</li>
+    <li class="pmbok"><strong>Các yếu tố môi trường vật lý.</strong> Các ví dụ bao gồm điều kiện làm việc, thời tiết, và các hạn chế liên quan.</li>
+  </ul>
+
+  <h2 id="s2-3">2.3 TÀI SẢN QUY TRÌNH TỔ CHỨC <span class="term-en">(ORGANIZATIONAL PROCESS ASSETS)</span></h2>
+  
+  <p>Tài sản quy trình tổ chức (<span class="term">Organizational process assets - OPAs</span>) là các kế hoạch, quy trình, chính sách, thủ tục, và cơ sở kiến thức mang tính đặc thù và được sử dụng bởi tổ chức thực hiện. Những tài sản này ảnh hưởng đến việc quản lý dự án.</p>
+  
+  <p>OPAs bao gồm bất kỳ tạo tác, thực hành, hoặc kiến thức nào từ bất kỳ hoặc tất cả các tổ chức tham gia vào dự án mà có thể được sử dụng để thực hiện hoặc quản trị dự án. OPAs cũng bao gồm các bài học kinh nghiệm từ các dự án trước đó của tổ chức và thông tin lịch sử. OPAs có thể bao gồm các tiến độ đã hoàn thành, dữ liệu rủi ro, và dữ liệu giá trị thu được (earned value). OPAs là đầu vào cho nhiều quy trình quản lý dự án. Vì OPAs là tài sản nội bộ của tổ chức, các thành viên trong nhóm dự án có thể cập nhật và bổ sung vào tài sản quy trình tổ chức khi cần thiết trong suốt dự án. Chúng có thể được nhóm thành hai hạng mục:</p>
+  
+  <ul class="pmbok check">
+    <li>Các quy trình, chính sách, và thủ tục; và</li>
+    <li>Các cơ sở kiến thức của tổ chức.</li>
+  </ul>
+  
+  <p>Nhìn chung, các tài sản trong hạng mục đầu tiên không được cập nhật như một phần của công việc dự án. Các quy trình, chính sách, và thủ tục thường được thiết lập bởi văn phòng quản lý dự án (<span class="term">PMO</span>) hoặc một chức năng khác bên ngoài dự án. Chúng chỉ có thể được cập nhật bằng cách tuân theo các chính sách thích hợp của tổ chức liên quan đến việc cập nhật các quy trình, chính sách, hoặc thủ tục. Một số tổ chức khuyến khích nhóm dự án điều chỉnh các mẫu, vòng đời, và danh sách kiểm tra cho phù hợp với dự án. Trong những trường hợp này, nhóm quản lý dự án nên điều chỉnh những tài sản đó để đáp ứng nhu cầu của dự án.</p>
+  
+  <p>Các tài sản trong hạng mục thứ hai được cập nhật xuyên suốt dự án bằng thông tin của dự án. Ví dụ: thông tin về hiệu suất tài chính, bài học kinh nghiệm, các chỉ số hiệu suất, cũng như các vấn đề và lỗi (defects) được cập nhật liên tục trong suốt dự án.</p>
+
+  <h3 id="s2-3-1">2.3.1 QUY TRÌNH, CHÍNH SÁCH VÀ THỦ TỤC <span class="term-en">(PROCESSES, POLICIES, AND PROCEDURES)</span></h3>
+  <p>Các quy trình và thủ tục của tổ chức để tiến hành công việc dự án bao gồm nhưng không giới hạn ở:</p>
+  
+  <h4>Khởi tạo và Lập kế hoạch (Initiating and Planning):</h4>
+  <ul class="pmbok dash">
+    <li>Hướng dẫn và tiêu chí để điều chỉnh bộ quy trình và thủ tục tiêu chuẩn của tổ chức nhằm đáp ứng các nhu cầu cụ thể của dự án;</li>
+    <li>Các tiêu chuẩn cụ thể của tổ chức như các chính sách (ví dụ: chính sách nhân sự, chính sách sức khỏe và an toàn, chính sách bảo mật và tính bảo mật, chính sách chất lượng, chính sách mua sắm, và chính sách môi trường);</li>
+    <li>Các vòng đời của sản phẩm và dự án, cùng các phương pháp và thủ tục (ví dụ: phương pháp quản lý dự án, số liệu ước tính, kiểm toán quy trình, mục tiêu cải tiến, danh sách kiểm tra, và các định nghĩa quy trình chuẩn hóa để sử dụng trong tổ chức);</li>
+    <li>Các biểu mẫu (ví dụ: kế hoạch quản lý dự án, tài liệu dự án, sổ đăng ký dự án, định dạng báo cáo, biểu mẫu hợp đồng, danh mục rủi ro, mẫu phát biểu rủi ro, định nghĩa xác suất và tác động, ma trận xác suất và tác động, và mẫu sổ đăng ký các bên liên quan); và</li>
+    <li>Danh sách các nhà cung cấp đã được phê duyệt trước và các loại thỏa thuận hợp đồng khác nhau (ví dụ: hợp đồng giá cố định, hợp đồng hoàn trả chi phí, và hợp đồng thời gian và vật liệu).</li>
+  </ul>
+
+  <h4>Thực thi, Giám sát và Kiểm soát (Executing, Monitoring, and Controlling):</h4>
+  <ul class="pmbok dash">
+    <li>Thủ tục kiểm soát thay đổi, bao gồm các bước theo đó các tiêu chuẩn, chính sách, kế hoạch và thủ tục của tổ chức thực hiện hoặc bất kỳ tài liệu dự án nào sẽ được sửa đổi, và cách thức mà mọi thay đổi sẽ được phê duyệt và xác nhận;</li>
+    <li>Ma trận truy xuất nguồn gốc (Traceability matrices);</li>
+    <li>Các thủ tục kiểm soát tài chính (ví dụ: báo cáo thời gian, xem xét các khoản chi tiêu và giải ngân bắt buộc, mã kế toán, và các điều khoản hợp đồng tiêu chuẩn);</li>
+    <li>Thủ tục quản lý vấn đề và lỗi (ví dụ: xác định kiểm soát đối với vấn đề và lỗi, nhận diện và giải quyết vấn đề và lỗi, và theo dõi các mục hành động);</li>
+    <li>Kiểm soát tính sẵn có của nguồn lực và quản lý phân công;</li>
+    <li>Yêu cầu về giao tiếp của tổ chức (ví dụ: công nghệ giao tiếp cụ thể có sẵn, phương tiện giao tiếp được ủy quyền, chính sách lưu giữ hồ sơ, hội nghị truyền hình, công cụ cộng tác, và yêu cầu bảo mật);</li>
+    <li>Thủ tục ưu tiên, phê duyệt, và ban hành giấy ủy quyền công việc;</li>
+    <li>Các biểu mẫu (ví dụ: sổ đăng ký rủi ro, nhật ký vấn đề, và nhật ký thay đổi);</li>
+    <li>Hướng dẫn tiêu chuẩn hóa, hướng dẫn công việc, tiêu chí đánh giá đề xuất, và tiêu chí đo lường hiệu suất; và</li>
+    <li>Thủ tục xác minh và xác nhận sản phẩm, dịch vụ, hoặc kết quả.</li>
+  </ul>
+
+  <ul class="pmbok">
+    <li class="pmbok"><strong>Đóng dự án (Closing).</strong> Hướng dẫn hoặc yêu cầu đóng dự án (ví dụ: kiểm toán dự án cuối cùng, đánh giá dự án, chấp nhận sản phẩm giao nộp, đóng hợp đồng, phân công lại nguồn lực, và chuyển giao kiến thức cho bộ phận sản xuất và/hoặc vận hành).</li>
+  </ul>
+
+  <h3 id="s2-3-2">2.3.2 KHO LƯU TRỮ KIẾN THỨC TỔ CHỨC <span class="term-en">(ORGANIZATIONAL KNOWLEDGE REPOSITORIES)</span></h3>
+  <p>Các kho lưu trữ kiến thức của tổ chức để lưu trữ và truy xuất thông tin bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li>Các kho kiến thức quản lý cấu hình chứa các phiên bản của các thành phần phần mềm và phần cứng cũng như đường cơ sở (baselines) của tất cả các tiêu chuẩn, chính sách, thủ tục của tổ chức thực hiện, và bất kỳ tài liệu dự án nào;</li>
+    <li>Các kho dữ liệu tài chính chứa thông tin như số giờ lao động, chi phí phát sinh, ngân sách, và mọi khoản vượt chi phí dự án;</li>
+    <li class="pmbok">Kho kiến thức về thông tin lịch sử và bài học kinh nghiệm (ví dụ: hồ sơ và tài liệu dự án, tất cả thông tin và tài liệu đóng dự án, thông tin liên quan đến kết quả của các quyết định lựa chọn dự án trước đó và thông tin hiệu suất dự án trước đó, và thông tin từ các hoạt động quản lý rủi ro);</li>
+    <li>Các kho dữ liệu quản lý vấn đề và lỗi chứa trạng thái vấn đề và lỗi, thông tin kiểm soát, cách giải quyết vấn đề và lỗi, và kết quả của các mục hành động;</li>
+    <li>Các kho dữ liệu cho các chỉ số đo lường (metrics) được sử dụng để thu thập và cung cấp sẵn dữ liệu đo lường về quy trình và sản phẩm; và</li>
+    <li>Các tệp dự án từ các dự án trước đây (ví dụ: phạm vi, chi phí, tiến độ, và đường cơ sở đo lường hiệu suất, lịch dự án, sơ đồ mạng lưới tiến độ dự án, sổ đăng ký rủi ro, báo cáo rủi ro, và sổ đăng ký các bên liên quan).</li>
+  </ul>
+
+  <h2 id="s2-4">2.4 HỆ THỐNG TỔ CHỨC <span class="term-en">(ORGANIZATIONAL SYSTEMS)</span></h2>
+
+  <h3 id="s2-4-1">2.4.1 TỔNG QUAN <span class="term-en">(OVERVIEW)</span></h3>
+  <p>Các dự án hoạt động trong những giới hạn bị áp đặt bởi tổ chức thông qua cấu trúc và khuôn khổ quản trị của họ. Để hoạt động hiệu quả và năng suất, người quản lý dự án cần hiểu rõ trách nhiệm, bổn phận giải trình, và thẩm quyền nằm ở đâu trong tổ chức. Sự thấu hiểu này sẽ giúp người quản lý dự án sử dụng quyền lực, tầm ảnh hưởng, năng lực, khả năng lãnh đạo, và khả năng chính trị của bản thân một cách hiệu quả để hoàn thành dự án thành công.</p>
+
+  <p>Sự tương tác của nhiều yếu tố bên trong một tổ chức cá thể tạo ra một hệ thống duy nhất tác động đến dự án hoạt động trong hệ thống đó. Hệ thống tổ chức dẫn xuất sẽ xác định quyền lực, tầm ảnh hưởng, lợi ích, năng lực, và khả năng chính trị của những người có thể hành động trong hệ thống. Các yếu tố hệ thống bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok check">
+    <li>Các yếu tố quản lý.</li>
+    <li>Các khung quản trị, và</li>
+    <li>Các loại cấu trúc tổ chức.</li>
+  </ul>
+
+  <p>Thông tin đầy đủ và sự giải thích về các yếu tố của hệ thống tổ chức cũng như cách thức kết hợp các yếu tố này tác động đến một dự án nằm ngoài phạm vi của hướng dẫn này. Có những chuyên ngành với các tài liệu, phương pháp luận, và thực hành liên quan đề cập đến các yếu tố này chuyên sâu hơn những gì có thể có trong hướng dẫn này. Phần này cung cấp một cái nhìn tổng quan về các yếu tố này và mối quan hệ qua lại giữa chúng.</p>
+
+  <p>Tổng quan này bắt đầu bằng việc thảo luận chung về các hệ thống. Hệ thống là một tập hợp các thành phần khác nhau cùng nhau có thể tạo ra các kết quả không thể đạt được nếu chỉ dựa vào từng thành phần riêng lẻ. Thành phần là một phần tử có thể nhận dạng được trong dự án hoặc tổ chức, cung cấp một chức năng cụ thể hoặc một nhóm các chức năng liên quan. Sự tương tác của các thành phần hệ thống khác nhau tạo ra văn hóa và năng lực của tổ chức. Có một số nguyên tắc liên quan đến hệ thống:</p>
+  <ul class="pmbok check">
+    <li>Các hệ thống có tính năng động (dynamic).</li>
+    <li>Các hệ thống có thể được tối ưu hóa.</li>
+    <li>Các thành phần của hệ thống có thể được tối ưu hóa.</li>
+    <li>Hệ thống và các thành phần của nó không thể được tối ưu hóa cùng một lúc, và</li>
+    <li class="pmbok">Các hệ thống có tính phi tuyến trong khả năng phản hồi (một sự thay đổi ở đầu vào không tạo ra một sự thay đổi có thể dự đoán được ở đầu ra).</li>
+  </ul>
+
+  <p>Nhiều thay đổi có thể xảy ra bên trong hệ thống và giữa hệ thống với môi trường của nó. Khi những thay đổi này diễn ra, hành vi thích nghi xảy ra trong các thành phần, từ đó lại làm tăng thêm tính năng động của hệ thống. Tính năng động của hệ thống được xác định bởi sự tương tác giữa các thành phần dựa trên các mối quan hệ và sự phụ thuộc tồn tại giữa các thành phần đó.</p>
+
+  <p>Các hệ thống thường là trách nhiệm của ban quản lý tổ chức. Ban quản lý tổ chức xem xét các đánh đổi tối ưu hóa giữa các thành phần và hệ thống để có hành động phù hợp nhằm đạt được kết quả tốt nhất cho tổ chức. Kết quả của sự xem xét này sẽ tác động đến dự án đang được thực hiện. Do đó, điều quan trọng là người quản lý dự án phải tính đến những kết quả này khi xác định cách thức thực hiện các mục tiêu của dự án. Ngoài ra, người quản lý dự án cũng nên xem xét đến khung quản trị của tổ chức.</p>
+
+  <h3 id="s2-4-2">2.4.2 CÁC KHUNG QUẢN TRỊ TỔ CHỨC <span class="term-en">(ORGANIZATIONAL GOVERNANCE FRAMEWORKS)</span></h3>
+  <p>Nghiên cứu gần đây của PMI tiết lộ rằng quản trị (<span class="term">governance</span>) đề cập đến các sắp xếp về mặt tổ chức hoặc cấu trúc ở mọi cấp độ của một tổ chức được thiết kế để xác định và ảnh hưởng đến hành vi của các thành viên trong tổ chức [9]. Nghiên cứu này gợi ý rằng khái niệm về quản trị là đa chiều và:</p>
+  <ul class="pmbok">
+    <li class="pmbok">Bao gồm việc xem xét con người, vai trò, cấu trúc, và các chính sách; và</li>
+    <li>Đòi hỏi phải cung cấp sự định hướng và giám sát thông qua dữ liệu và phản hồi.</li>
+  </ul>
+
+  <h4>2.4.2.1 KHUNG QUẢN TRỊ <span class="term-en">(GOVERNANCE FRAMEWORK)</span></h4>
+  <p>Quản trị là khuôn khổ trong đó thẩm quyền được thực thi trong các tổ chức. Khung này bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok check">
+    <li>Các quy tắc.</li>
+    <li>Chính sách.</li>
+    <li>Thủ tục.</li>
+    <li>Chuẩn mực (Norms).</li>
+    <li>Các mối quan hệ.</li>
+    <li>Hệ thống, và</li>
+    <li>Quy trình.</li>
+  </ul>
+  <p>Khuôn khổ này ảnh hưởng đến cách thức:</p>
+  <ul class="pmbok check">
+    <li>Các mục tiêu của tổ chức được thiết lập và hoàn thành.</li>
+    <li>Rủi ro được theo dõi và đánh giá, và</li>
+    <li>Hiệu suất được tối ưu hóa.</li>
+  </ul>
+
+  <h4>2.4.2.2 QUẢN TRỊ DANH MỤC, CHƯƠNG TRÌNH VÀ DỰ ÁN <span class="term-en">(GOVERNANCE OF PORTFOLIOS, PROGRAMS, AND PROJECTS)</span></h4>
+  <p>Cuốn Hướng dẫn Thực hành: Quản trị Danh mục, Chương trình, và Dự án (<span class="term">The Governance of Portfolios, Programs, and Projects: A Practice Guide</span>) [10] mô tả một khung quản trị chung giúp gắn kết quản lý dự án tổ chức (OPM) với quản lý danh mục, chương trình và dự án. Hướng dẫn thực hành mô tả bốn miền quản trị là sự liên kết, rủi ro, hiệu suất, và truyền thông. Mỗi miền có các chức năng sau: giám sát, kiểm soát, tích hợp, và ra quyết định. Mỗi chức năng có các quy trình và hoạt động hỗ trợ quản trị cho các dự án độc lập, hoặc các dự án hoạt động trong môi trường danh mục hoặc chương trình.</p>
+  
+  <p>Quản trị dự án đề cập đến khung, chức năng, và các quy trình định hướng cho các hoạt động quản lý dự án nhằm tạo ra một sản phẩm, dịch vụ, hoặc kết quả duy nhất để đáp ứng các mục tiêu về tổ chức, chiến lược, và vận hành. Không có một khung quản trị duy nhất nào đạt hiệu quả trong tất cả các tổ chức. Một khung quản trị cần được điều chỉnh phù hợp với văn hóa tổ chức, các loại dự án, và nhu cầu của tổ chức để có thể mang lại hiệu quả.</p>
+
+  <p>Để biết thêm thông tin về quản trị dự án, bao gồm cả việc triển khai nó, xem Hướng dẫn Thực hành: Quản trị Danh mục, Chương trình, và Dự án [10].</p>
+
+  <h3 id="s2-4-3">2.4.3 CÁC YẾU TỐ QUẢN LÝ <span class="term-en">(MANAGEMENT ELEMENTS)</span></h3>
+  <p>Các yếu tố quản lý là những thành phần cấu thành nên các chức năng hoặc nguyên tắc chính của quản lý chung trong tổ chức. Các yếu tố quản lý chung được phân bổ trong tổ chức theo khung quản trị của nó và loại cấu trúc tổ chức được lựa chọn.</p>
+
+  <p>Các chức năng hoặc nguyên tắc chính của quản lý bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok check">
+    <li>Phân công công việc sử dụng các kỹ năng chuyên môn và tính sẵn sàng để thực hiện công việc;</li>
+    <li>Quyền hạn được giao để thực hiện công việc;</li>
+    <li class="pmbok">Trách nhiệm thực hiện công việc được phân công phù hợp dựa trên các thuộc tính như kỹ năng và kinh nghiệm;</li>
+    <li>Kỷ luật hành động (ví dụ: tôn trọng chính quyền, con người, và luật lệ);</li>
+    <li class="pmbok">Thống nhất chỉ huy (ví dụ: đối với bất kỳ hành động hoặc hoạt động nào, chỉ có một người ra lệnh cho một cá nhân);</li>
+    <li class="pmbok">Thống nhất chỉ đạo (ví dụ: một kế hoạch và một người đứng đầu cho một nhóm các hoạt động có cùng mục tiêu);</li>
+    <li>Mục tiêu chung của tổ chức được ưu tiên hơn so với mục tiêu cá nhân;</li>
+    <li>Được trả công công bằng cho công việc đã thực hiện;</li>
+    <li>Sử dụng nguồn lực tối ưu;</li>
+    <li>Kênh liên lạc rõ ràng;</li>
+    <li class="pmbok">Đúng vật liệu giao cho đúng người làm đúng việc vào đúng thời điểm;</li>
+    <li class="pmbok">Đối xử công bằng và bình đẳng với mọi người tại nơi làm việc;</li>
+    <li>Sự an toàn rõ ràng về các vị trí công việc;</li>
+    <li>Sự an toàn của mọi người tại nơi làm việc;</li>
+    <li class="pmbok">Sự đóng góp cởi mở vào việc lập kế hoạch và thực hiện bởi mỗi người; và</li>
+    <li>Tinh thần (morale) tối ưu.</li>
+  </ul>
+
+  <p>Việc thực hiện các yếu tố quản lý này được giao cho các cá nhân được chọn lựa trong tổ chức. Những cá nhân này có thể thực hiện các chức năng được ghi nhận bên trong nhiều cấu trúc tổ chức khác nhau. Ví dụ, trong một cấu trúc phân cấp, có các cấp độ ngang và dọc bên trong tổ chức. Các cấp bậc này trải dài từ cấp quản lý trực tuyến (line management) cho đến cấp quản lý điều hành (executive management). Trách nhiệm, bổn phận giải trình, và quyền hạn được gán cho cấp bậc sẽ chỉ ra cách cá nhân đó có thể thực hiện chức năng được ghi nhận trong cấu trúc tổ chức đó.</p>
+
+  <h3 id="s2-4-4">2.4.4 CÁC LOẠI CẤU TRÚC TỔ CHỨC <span class="term-en">(ORGANIZATIONAL STRUCTURE TYPES)</span></h3>
+  <p>Việc xác định loại hình cấu trúc tổ chức phù hợp là kết quả của việc nghiên cứu những đánh đổi giữa hai biến số chính. Các biến số đó là các loại cấu trúc tổ chức có sẵn để sử dụng và cách tối ưu hóa chúng cho một tổ chức nhất định. Không có một cấu trúc "một cỡ vừa cho tất cả" (one-size-fits-all) nào cho bất kỳ tổ chức nào. Cấu trúc cuối cùng cho một tổ chức nhất định là duy nhất do có vô số các biến số cần được xem xét. Các phần 2.4.4.1 và 2.4.4.2 đưa ra các ví dụ về một số yếu tố cần được đưa vào khi xem xét hai biến số đã nêu. Phần 2.4.4.3 thảo luận về một cấu trúc tổ chức phổ biến trong quản lý dự án.</p>
+
+  <h4>2.4.4.1 CÁC LOẠI CẤU TRÚC TỔ CHỨC <span class="term-en">(ORGANIZATIONAL STRUCTURE TYPES)</span></h4>
+  <p>Các cấu trúc tổ chức có nhiều hình thức hoặc loại hình khác nhau. Bảng 2-1 so sánh một số loại cấu trúc tổ chức và tầm ảnh hưởng của chúng lên các dự án.</p>
+
+  <h4>2.4.4.2 CÁC YẾU TỐ TRONG VIỆC LỰA CHỌN CẤU TRÚC TỔ CHỨC <span class="term-en">(FACTORS IN ORGANIZATION STRUCTURE SELECTION)</span></h4>
+  <p>Mỗi tổ chức đều cân nhắc vô số các yếu tố để đưa vào cấu trúc tổ chức của mình. Mỗi yếu tố có thể mang một mức độ quan trọng khác nhau trong phân tích cuối cùng. Sự kết hợp giữa yếu tố, giá trị của nó, và mức độ quan trọng tương đối cung cấp cho những người ra quyết định của tổ chức thông tin phù hợp để đưa vào phân tích.</p>
+
+  <p>Các yếu tố cần xem xét trong việc lựa chọn một cấu trúc tổ chức bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok check">
+    <li>Mức độ phù hợp với các mục tiêu của tổ chức.</li>
+    <li>Khả năng chuyên môn hóa.</li>
+    <li>Phạm vi kiểm soát (Span of control), hiệu suất, và tính hiệu quả.</li>
+    <li>Lộ trình rõ ràng cho việc leo thang (escalation) các quyết định.</li>
+    <li>Đường lối và phạm vi quyền hạn rõ ràng.</li>
+    <li>Khả năng ủy quyền.</li>
+    <li class="pmbok">Phân công bổn phận giải trình (Accountability assignment).</li>
+    <li>Phân công trách nhiệm.</li>
+    <li>Khả năng thích ứng của thiết kế.</li>
+    <li>Sự đơn giản của thiết kế.</li>
+    <li>Hiệu quả thực hiện.</li>
+    <li>Các cân nhắc về chi phí.</li>
+    <li>Vị trí thực tế (ví dụ: cùng địa điểm, theo khu vực, và không gian ảo), và</li>
+    <li>Giao tiếp rõ ràng (ví dụ: chính sách, trạng thái công việc, và tầm nhìn của tổ chức).</li>
+  </ul>
+
+  <div class="table-wrap">
+    <div class="table-caption">Bảng 2-1. Ảnh hưởng của Cấu trúc Tổ chức lên Dự án <span class="term-en">(Influences of Organizational Structures on Projects)</span></div>
+    <table>
+      <tr>
+        <th rowspan="2">Loại Cấu trúc Tổ chức</th>
+        <th colspan="6">Đặc điểm Dự án</th>
+      </tr>
+      <tr>
+        <th>Nhóm Công việc được Sắp xếp theo:</th>
+        <th>Thẩm quyền của Người Quản lý Dự án</th>
+        <th>Vai trò của Người Quản lý Dự án</th>
+        <th>Sự sẵn có của Nguồn lực</th>
+        <th>Ai Quản lý Ngân sách Dự án?</th>
+        <th>Nhân sự Hành chính Quản lý Dự án</th>
+      </tr>
+      <tr>
+        <td>Hữu cơ hoặc Đơn giản (Organic or Simple)</td>
+        <td>Linh hoạt; mọi người làm việc sát cánh bên nhau</td>
+        <td>Ít hoặc không có</td>
+        <td>Bán thời gian; có thể hoặc không thể là một vai trò công việc được chỉ định như điều phối viên</td>
+        <td>Ít hoặc không có</td>
+        <td>Chủ sở hữu hoặc người vận hành</td>
+        <td>Ít hoặc không có</td>
+      </tr>
+      <tr>
+        <td>Chức năng (tập trung) (Functional)</td>
+        <td>Công việc đang được thực hiện (ví dụ: kỹ thuật, sản xuất)</td>
+        <td>Ít hoặc không có</td>
+        <td>Bán thời gian; có thể hoặc không thể là một vai trò công việc được chỉ định như điều phối viên</td>
+        <td>Ít hoặc không có</td>
+        <td>Người quản lý chức năng</td>
+        <td>Bán thời gian</td>
+      </tr>
+      <tr>
+        <td>Đa bộ phận (có thể sao chép các chức năng cho mỗi bộ phận với rất ít sự tập trung)</td>
+        <td>Một trong các yếu tố: sản phẩm; quy trình sản xuất; danh mục; chương trình; khu vực địa lý; loại khách hàng</td>
+        <td>Ít hoặc không có</td>
+        <td>Bán thời gian; có thể hoặc không thể là một vai trò công việc được chỉ định như điều phối viên</td>
+        <td>Ít hoặc không có</td>
+        <td>Người quản lý chức năng</td>
+        <td>Bán thời gian</td>
+      </tr>
+      <tr>
+        <td>Ma trận - mạnh (Matrix - strong)</td>
+        <td>Theo chức năng công việc, với người quản lý dự án là một chức năng</td>
+        <td>Trung bình đến cao</td>
+        <td>Vai trò công việc được chỉ định toàn thời gian</td>
+        <td>Trung bình đến cao</td>
+        <td>Người quản lý dự án</td>
+        <td>Toàn thời gian</td>
+      </tr>
+      <tr>
+        <td>Ma trận - yếu (Matrix - weak)</td>
+        <td>Chức năng công việc</td>
+        <td>Thấp</td>
+        <td>Bán thời gian; được thực hiện như một phần của công việc khác và không phải là một vai trò được chỉ định như điều phối viên</td>
+        <td>Thấp</td>
+        <td>Người quản lý chức năng</td>
+        <td>Bán thời gian</td>
+      </tr>
+      <tr>
+        <td>Ma trận - cân bằng (Matrix - balanced)</td>
+        <td>Chức năng công việc</td>
+        <td>Thấp đến trung bình</td>
+        <td>Bán thời gian; được nhúng vào các chức năng như một kỹ năng và có thể không phải là một vai trò được chỉ định như điều phối viên</td>
+        <td>Thấp đến trung bình</td>
+        <td>Hỗn hợp</td>
+        <td>Bán thời gian</td>
+      </tr>
+      <tr>
+        <td>Định hướng dự án (hỗn hợp, lai) (Project-oriented)</td>
+        <td>Dự án</td>
+        <td>Cao đến gần như tuyệt đối</td>
+        <td>Vai trò công việc được chỉ định toàn thời gian</td>
+        <td>Cao đến gần như tuyệt đối</td>
+        <td>Người quản lý dự án</td>
+        <td>Toàn thời gian</td>
+      </tr>
+      <tr>
+        <td>Ảo (Virtual)</td>
+        <td>Cấu trúc mạng lưới với các nút (nodes) tại các điểm tiếp xúc với những người khác</td>
+        <td>Thấp đến trung bình</td>
+        <td>Toàn thời gian hoặc bán thời gian</td>
+        <td>Thấp đến trung bình</td>
+        <td>Hỗn hợp</td>
+        <td>Có thể là toàn thời gian hoặc bán thời gian</td>
+      </tr>
+      <tr>
+        <td>Lai ghép (Hybrid)</td>
+        <td>Pha trộn giữa các loại hình khác</td>
+        <td>Hỗn hợp</td>
+        <td>Hỗn hợp</td>
+        <td>Hỗn hợp</td>
+        <td>Hỗn hợp</td>
+        <td>Hỗn hợp</td>
+      </tr>
+      <tr>
+        <td>PMO*</td>
+        <td>Pha trộn giữa các loại hình khác</td>
+        <td>Cao đến gần như tuyệt đối</td>
+        <td>Vai trò công việc được chỉ định toàn thời gian</td>
+        <td>Cao đến gần như tuyệt đối</td>
+        <td>Người quản lý dự án</td>
+        <td>Toàn thời gian</td>
+      </tr>
+    </table>
+  </div>
+  <p>*PMO đề cập đến một tổ chức hoặc văn phòng quản lý danh mục, chương trình, hoặc dự án.</p>
+
+  <h4>2.4.4.3 VĂN PHÒNG QUẢN LÝ DỰ ÁN <span class="term-en">(PROJECT MANAGEMENT OFFICE)</span></h4>
+  <p>Văn phòng quản lý dự án (<span class="term">Project Management Office - PMO</span>) là một cấu trúc tổ chức nhằm chuẩn hóa các quy trình quản trị liên quan đến dự án và tạo điều kiện thuận lợi cho việc chia sẻ nguồn lực, phương pháp luận, công cụ, và kỹ thuật. Trách nhiệm của một PMO có thể dao động từ việc cung cấp các chức năng hỗ trợ quản lý dự án cho đến việc quản lý trực tiếp một hoặc nhiều dự án.</p>
+
+  <p>Có một số loại PMO trong các tổ chức. Mỗi loại thay đổi tùy theo mức độ kiểm soát và ảnh hưởng mà nó có đối với các dự án trong tổ chức, chẳng hạn như:</p>
+  <ul class="pmbok">
+    <li class="pmbok"><strong>Hỗ trợ (Supportive).</strong> Các PMO hỗ trợ cung cấp vai trò tư vấn cho các dự án bằng cách cung cấp các biểu mẫu, thực hành tốt nhất, đào tạo, quyền truy cập thông tin, và các bài học kinh nghiệm từ những dự án khác. Loại PMO này đóng vai trò như một kho lưu trữ dự án. Mức độ kiểm soát do PMO cung cấp là thấp.</li>
+    <li class="pmbok"><strong>Kiểm soát (Controlling).</strong> Các PMO kiểm soát cung cấp sự hỗ trợ và yêu cầu sự tuân thủ thông qua nhiều phương tiện khác nhau. Mức độ kiểm soát do PMO cung cấp ở mức độ trung bình. Sự tuân thủ có thể bao gồm:
+      <ul class="pmbok dash">
+        <li>Việc áp dụng các khung hoặc phương pháp luận quản lý dự án;</li>
+        <li>Việc sử dụng các biểu mẫu, mẫu, và công cụ cụ thể; và</li>
+        <li>Sự tuân thủ với các khung quản trị.</li>
+      </ul>
+    </li>
+    <li class="pmbok"><strong>Chỉ đạo (Directive).</strong> Các PMO chỉ đạo nắm quyền kiểm soát các dự án bằng cách quản lý trực tiếp các dự án. Các nhà quản lý dự án được PMO phân công và báo cáo cho PMO. Mức độ kiểm soát do PMO cung cấp là cao.</li>
+  </ul>
+
+  <p>Văn phòng quản lý dự án có thể có trách nhiệm trên toàn tổ chức. Nó có thể đóng một vai trò trong việc hỗ trợ sự liên kết chiến lược và mang lại giá trị cho tổ chức. PMO tích hợp dữ liệu và thông tin từ các dự án chiến lược của tổ chức và đánh giá cách thức hoàn thành các mục tiêu chiến lược ở cấp độ cao hơn. PMO là cầu nối tự nhiên giữa các danh mục đầu tư, chương trình, dự án của tổ chức, và các hệ thống đo lường của tổ chức (ví dụ: thẻ điểm cân bằng - balanced scorecard).</p>
+
+  <p>Các dự án do PMO hỗ trợ hoặc quản lý có thể không có liên quan đến nhau ngoài việc được quản lý cùng với nhau. Hình thức, chức năng, và cấu trúc cụ thể của một PMO phụ thuộc vào nhu cầu của tổ chức mà nó hỗ trợ.</p>
+
+  <p>Một PMO có thể có quyền hành động như một bên liên quan không thể thiếu và một người ra quyết định chính trong suốt vòng đời của mỗi dự án nhằm giữ cho nó phù hợp với các mục tiêu kinh doanh. PMO có thể:</p>
+  <ul class="pmbok check">
+    <li>Đưa ra các khuyến nghị.</li>
+    <li>Dẫn dắt việc chuyển giao kiến thức.</li>
+    <li>Chấm dứt các dự án, và</li>
+    <li>Thực hiện các hành động khác, khi cần thiết.</li>
+  </ul>
+
+  <p>Chức năng chính của PMO là hỗ trợ các nhà quản lý dự án theo nhiều cách, có thể bao gồm nhưng không giới hạn ở:</p>
+  <ul class="pmbok">
+    <li class="pmbok">Quản lý các nguồn lực dùng chung trên tất cả các dự án do PMO điều hành;</li>
+    <li>Xác định và phát triển phương pháp luận, các thực hành tốt nhất, và các tiêu chuẩn quản lý dự án;</li>
+    <li class="pmbok">Huấn luyện, cố vấn, đào tạo, và giám sát;</li>
+    <li class="pmbok">Giám sát việc tuân thủ các tiêu chuẩn, chính sách, thủ tục, và biểu mẫu quản lý dự án thông qua việc kiểm toán dự án;</li>
+    <li>Phát triển và quản lý các chính sách, thủ tục, biểu mẫu dự án, và tài liệu dùng chung khác (tài sản quy trình tổ chức); và</li>
+    <li class="check">Điều phối sự giao tiếp trên các dự án.</li>
+  </ul>
+
+</main>
+</body>
+</html>
