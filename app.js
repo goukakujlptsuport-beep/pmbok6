@@ -148,6 +148,7 @@ async function loadChapter(id) {
   content.innerHTML = '<p style="padding:2rem;color:#888">Đang tải...</p>';
 
   if (!TRANSLATED_IDS.has(id)) {
+    document.getElementById('chapter-scoped-style')?.remove();
     content.innerHTML = `
       <div class="chapter-placeholder">
         <div class="placeholder-icon">🔄</div>
@@ -164,6 +165,27 @@ async function loadChapter(id) {
     const doc = parser.parseFromString(html, 'text/html');
 
     doc.querySelector('#sidebar')?.remove();
+
+    doc.querySelectorAll('#sidebar, script').forEach(el => el.remove());
+
+    // Remove previous chapter's scoped styles
+    document.getElementById('chapter-scoped-style')?.remove();
+
+    // Inject chapter's own styles scoped to #content
+    const chapterCSS = Array.from(doc.querySelectorAll('style'))
+      .map(s => s.textContent).join('\n');
+    if (chapterCSS) {
+      const styleEl = document.createElement('style');
+      styleEl.id = 'chapter-scoped-style';
+      // Replace bare selectors that would affect the shell:
+      // body → #content, #main → #content, #sidebar → suppressed already
+      const scoped = chapterCSS
+        .replace(/\bbody\b/g, '#content')
+        .replace(/#main\b/g, '#content')
+        .replace(/#sidebar\b[^{]*/g, '#content-never-match');
+      styleEl.textContent = scoped;
+      document.head.appendChild(styleEl);
+    }
 
     const main = doc.querySelector('#main') || doc.body;
     content.innerHTML = main.innerHTML;
@@ -252,7 +274,10 @@ document.addEventListener('mouseup', handleSelectionEnd);
 // touchend: delay to let browser finish synthetic mouse events before showing popup
 document.addEventListener('touchend', () => setTimeout(handleSelectionEnd, 50));
 
-function handleSelectionEnd() {
+function handleSelectionEnd(e) {
+  // Ignore mouseup/touchend that originated on the popup itself
+  if (popup.contains(e && e.target ? e.target : null)) return;
+
   const sel = window.getSelection();
   if (!sel || sel.isCollapsed || !sel.rangeCount) {
     hidePopup();
