@@ -46,13 +46,16 @@
 </div>
 
 <!-- HIGHLIGHT POPUP (in parent page, positioned over iframe) -->
-<div id="highlight-popup" hidden>
-  <button class="hl-color" data-color="yellow" title="Vàng" aria-label="Gạch vàng">🟡</button>
-  <button class="hl-color" data-color="green" title="Xanh" aria-label="Gạch xanh">🟢</button>
-  <button class="hl-color" data-color="red" title="Đỏ" aria-label="Gạch đỏ">🔴</button>
-  <button id="hl-note-btn" title="Ghi chú">✏️</button>
-  <button id="hl-delete-btn" hidden title="Xóa">🗑</button>
-  <button id="hl-close-btn" title="Đóng" aria-label="Đóng">✕</button>
+<div id="highlight-popup" hidden role="toolbar" aria-label="Tô màu văn bản">
+  <span class="popup-label">Tô màu:</span>
+  <button class="hl-color" data-color="yellow" title="Màu vàng" aria-label="Tô vàng">🟡</button>
+  <button class="hl-color" data-color="green"  title="Màu xanh" aria-label="Tô xanh">🟢</button>
+  <button class="hl-color" data-color="red"    title="Màu đỏ"   aria-label="Tô đỏ">🔴</button>
+  <div class="popup-sep"></div>
+  <button id="hl-note-btn"   title="Thêm ghi chú">✏️ <span>Ghi chú</span></button>
+  <button id="hl-delete-btn" title="Xóa highlight" hidden>🗑 <span>Xóa</span></button>
+  <div class="popup-sep"></div>
+  <button id="hl-close-btn"  title="Đóng" aria-label="Đóng">✕</button>
 </div>
 
 <!-- NOTE MODAL -->

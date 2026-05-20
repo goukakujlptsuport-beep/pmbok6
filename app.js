@@ -141,7 +141,6 @@ async function saveData() {
 
 // ── IFRAME BRIDGE SCRIPT ──
 // Injected into each chapter iframe after load.
-// It handles: scroll tracking, text selection → postMessage, highlight render, note tooltip.
 const BRIDGE_SCRIPT = `
 (function() {
   if (window.__pmbok_bridge) return;
@@ -149,7 +148,7 @@ const BRIDGE_SCRIPT = `
 
   const ORIGIN = window.parent.location.origin;
 
-  // Remove chapter's own sidebar nav (keep only the reading content)
+  // Hide chapter's own sidebar
   document.querySelector('#sidebar')?.remove();
 
   // ── SCROLL TRACKING ──
@@ -187,98 +186,119 @@ const BRIDGE_SCRIPT = `
     while (node) {
       const len = node.textContent.length;
       if (pos + len > offset) return { node, localOffset: offset - pos };
-      pos += len;
-      node = walker.nextNode();
+      pos += len; node = walker.nextNode();
     }
     return null;
   }
 
   // ── HIGHLIGHT STYLES ──
   const style = document.createElement('style');
-  style.textContent = \`
-    mark.hl { border-radius:2px; cursor:pointer; padding:1px 0; }
-    mark.hl[data-color="yellow"] { background:rgba(255,241,118,0.7); }
-    mark.hl[data-color="green"]  { background:rgba(165,214,167,0.7); }
-    mark.hl[data-color="red"]    { background:rgba(239,154,154,0.7); }
-    mark.hl[data-note]:not([data-note=""]):after {
-      content:'✏'; font-size:0.65rem; vertical-align:super; margin-left:2px; opacity:0.7;
-    }
-  \`;
+  style.textContent =
+    'mark.hl{border-radius:2px;cursor:pointer;padding:1px 0;}' +
+    'mark.hl[data-color="yellow"]{background:rgba(255,241,118,0.75);}' +
+    'mark.hl[data-color="green"]{background:rgba(165,214,167,0.75);}' +
+    'mark.hl[data-color="red"]{background:rgba(239,154,154,0.75);}' +
+    'mark.hl[data-note]:not([data-note=""]):after{content:"✏";font-size:.65rem;vertical-align:super;margin-left:2px;opacity:.7;}';
   document.head.appendChild(style);
 
-  // ── APPLY HIGHLIGHTS ──
+  // ── CREATE MARK FROM HL DATA ──
+  function createMark(hl) {
+    try {
+      const node = resolveXPath(hl.xpath);
+      if (!node) return;
+      let range;
+      if (node.nodeType === 3) {
+        range = document.createRange();
+        range.setStart(node, hl.startOffset);
+        range.setEnd(node, hl.endOffset);
+      } else {
+        const s = findTextNodeAt(node, hl.startOffset);
+        const en = findTextNodeAt(node, hl.endOffset);
+        if (!s || !en) return;
+        range = document.createRange();
+        range.setStart(s.node, s.localOffset);
+        range.setEnd(en.node, en.localOffset);
+      }
+      const mark = document.createElement('mark');
+      mark.className = 'hl';
+      mark.setAttribute('data-color', hl.color);
+      mark.setAttribute('data-note', hl.note || '');
+      mark.setAttribute('data-hl-id', hl.id);
+      range.surroundContents(mark);
+    } catch (_) {}
+  }
+
+  // ── MESSAGES FROM PARENT ──
   window.addEventListener('message', e => {
     if (e.origin !== ORIGIN) return;
     const msg = e.data;
-
     if (msg.type === 'applyHighlights') {
-      (msg.highlights || []).forEach(hl => {
-        try {
-          const node = resolveXPath(hl.xpath);
-          if (!node) return;
-          let range;
-          if (node.nodeType === 3) {
-            range = document.createRange();
-            range.setStart(node, hl.startOffset);
-            range.setEnd(node, hl.endOffset);
-          } else {
-            const s = findTextNodeAt(node, hl.startOffset);
-            const en = findTextNodeAt(node, hl.endOffset);
-            if (!s || !en) return;
-            range = document.createRange();
-            range.setStart(s.node, s.localOffset);
-            range.setEnd(en.node, en.localOffset);
-          }
-          const mark = document.createElement('mark');
-          mark.className = 'hl';
-          mark.dataset.color = hl.color;
-          mark.dataset.note = hl.note || '';
-          mark.dataset.hlId = hl.id;
-          range.surroundContents(mark);
-        } catch (_) {}
-      });
+      (msg.highlights || []).forEach(createMark);
     }
-
     if (msg.type === 'scrollTo') {
       window.scrollTo(0, msg.pos);
     }
-
     if (msg.type === 'deleteHighlight') {
       const mark = document.querySelector('mark.hl[data-hl-id="' + msg.id + '"]');
       if (!mark) return;
-      const parent = mark.parentNode;
-      while (mark.firstChild) parent.insertBefore(mark.firstChild, mark);
-      parent.removeChild(mark);
-      parent.normalize();
+      const p = mark.parentNode;
+      while (mark.firstChild) p.insertBefore(mark.firstChild, mark);
+      p.removeChild(mark); p.normalize();
     }
-
     if (msg.type === 'updateHighlight') {
       const mark = document.querySelector('mark.hl[data-hl-id="' + msg.id + '"]');
       if (!mark) return;
-      mark.dataset.color = msg.color;
-      mark.dataset.note = msg.note || '';
+      mark.setAttribute('data-color', msg.color);
+      mark.setAttribute('data-note', msg.note || '');
     }
   });
 
-  // ── SELECTION → POPUP ──
+  // ── HELPER: rect in parent viewport coords ──
+  function toParentCoords(rect) {
+    const fr = window.frameElement.getBoundingClientRect();
+    return {
+      top:    fr.top  + rect.top,
+      bottom: fr.top  + rect.bottom,
+      left:   fr.left + rect.left,
+      width:  rect.width,
+    };
+  }
+
+  // ── CLICK: dismiss popup or open highlight popup ──
+  document.addEventListener('mousedown', () => {
+    // Clicking anywhere in iframe should dismiss parent popup
+    window.parent.postMessage({ type: 'iframeClick' }, ORIGIN);
+  });
+
+  document.addEventListener('click', e => {
+    const mark = e.target.closest('mark.hl');
+    if (!mark) return;
+    e.stopPropagation();
+    window.getSelection()?.removeAllRanges();
+    window.parent.postMessage({
+      type:  'highlightClicked',
+      id:    mark.getAttribute('data-hl-id'),
+      color: mark.getAttribute('data-color'),
+      note:  mark.getAttribute('data-note') || '',
+      ...toParentCoords(mark.getBoundingClientRect()),
+    }, ORIGIN);
+  });
+
+  // ── SELECTION → SHOW POPUP ──
   function handleSelection() {
     const sel = window.getSelection();
-    if (!sel || sel.isCollapsed || !sel.rangeCount) {
-      window.parent.postMessage({ type: 'selectionCleared' }, ORIGIN);
-      return;
-    }
+    if (!sel || sel.isCollapsed || !sel.rangeCount) return;
     const range = sel.getRangeAt(0);
-    const rect = range.getBoundingClientRect();
-    const frameRect = window.frameElement.getBoundingClientRect();
+    if (!range || range.collapsed) return;
 
-    // Compute element-relative character offsets
+    const xpath = getXPath(range.startContainer);
     let startOffset = range.startOffset;
     let endOffset   = range.endOffset;
-    const xpath     = getXPath(range.startContainer);
 
+    // Convert to element-relative offsets
     if (range.startContainer.nodeType === 3) {
       const parent = range.startContainer.parentNode;
-      if (parent !== document.body) {
+      if (parent && parent !== document.body) {
         let pos = 0;
         const w1 = document.createTreeWalker(parent, NodeFilter.SHOW_TEXT);
         let n = w1.nextNode();
@@ -299,35 +319,15 @@ const BRIDGE_SCRIPT = `
     window.parent.postMessage({
       type: 'textSelected',
       xpath, startOffset, endOffset,
-      // position of selection in viewport coordinates of parent page
-      top:    frameRect.top + rect.top,
-      bottom: frameRect.top + rect.bottom,
-      left:   frameRect.left + rect.left,
-      width:  rect.width,
+      ...toParentCoords(range.getBoundingClientRect()),
     }, ORIGIN);
   }
 
-  document.addEventListener('mouseup', handleSelection);
-  document.addEventListener('touchend', () => setTimeout(handleSelection, 50));
-
-  // ── CLICK ON EXISTING HIGHLIGHT ──
-  document.addEventListener('click', e => {
-    const mark = e.target.closest('mark.hl');
-    if (!mark) return;
-    window.getSelection()?.removeAllRanges();
-    const rect = mark.getBoundingClientRect();
-    const frameRect = window.frameElement.getBoundingClientRect();
-    window.parent.postMessage({
-      type: 'highlightClicked',
-      id:    mark.dataset.hlId,
-      color: mark.dataset.color,
-      note:  mark.dataset.note || '',
-      top:    frameRect.top + rect.top,
-      bottom: frameRect.top + rect.bottom,
-      left:   frameRect.left + rect.left,
-      width:  rect.width,
-    }, ORIGIN);
+  document.addEventListener('mouseup', e => {
+    // Small delay so iframeClick fires first (mousedown), then we show popup
+    setTimeout(handleSelection, 10);
   });
+  document.addEventListener('touchend', () => setTimeout(handleSelection, 50));
 
 })();
 `;
@@ -429,8 +429,10 @@ window.addEventListener('message', e => {
     positionPopupAt(msg);
   }
 
-  if (msg.type === 'selectionCleared') {
-    // Don't hide popup immediately — user might be clicking a popup button
+  if (msg.type === 'iframeClick') {
+    // Mousedown inside iframe — dismiss popup unless user is mid-selection
+    // We hide it here; textSelected message (from mouseup) will re-show if text selected
+    hidePopup();
   }
 
   if (msg.type === 'highlightClicked') {
