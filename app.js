@@ -113,8 +113,12 @@ function loadFromLocalStorage() {
 }
 
 async function saveData() {
-  localStorage.setItem(LS_KEY, JSON.stringify(state));
-  setSyncIndicator('saved');
+  try {
+    localStorage.setItem(LS_KEY, JSON.stringify(state));
+    setSyncIndicator('saved');
+  } catch (_) {
+    setSyncIndicator('error');
+  }
 }
 
 // ── CHAPTER LOADING ──
@@ -126,7 +130,7 @@ async function loadChapter(id) {
     a.classList.toggle('active', a.dataset.id === id);
   });
 
-  const ch = CHAPTERS.find(c => c.id === id);
+  const ch = CHAPTERS.find(c => c.id === id) || CHAPTERS[0];
   document.getElementById('toolbar-chapter-title').textContent =
     `Chương ${ch.num} – ${ch.title}`;
 
@@ -171,7 +175,11 @@ async function loadChapter(id) {
     applyHighlights(id);
 
   } catch (err) {
-    content.innerHTML = `<p style="padding:2rem;color:#d32f2f">Lỗi tải chương: ${err.message}</p>`;
+    const errMsg = document.createElement('p');
+    errMsg.style.cssText = 'padding:2rem;color:#d32f2f';
+    errMsg.textContent = `Lỗi tải chương: ${err.message}`;
+    content.innerHTML = '';
+    content.appendChild(errMsg);
   }
 }
 
