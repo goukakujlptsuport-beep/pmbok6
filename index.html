@@ -36,6 +36,7 @@
     <button id="btn-hamburger" aria-label="Mở menu">☰</button>
     <span id="toolbar-chapter-title"></span>
     <div id="toolbar-right">
+      <button id="btn-highlights" title="Danh sách highlight & ghi chú">📑 Highlights</button>
       <button id="btn-mark-done" title="Đánh dấu đã đọc xong">✓ Xong</button>
       <span id="sync-indicator" class="sync-saved">☁ Đã lưu</span>
     </div>
@@ -44,6 +45,15 @@
   <!-- Chapter content rendered in iframe to preserve original HTML/CSS -->
   <iframe id="chapter-frame" title="Nội dung chương"></iframe>
 </div>
+
+<!-- HIGHLIGHTS LIST PANEL -->
+<aside id="highlights-panel" hidden>
+  <div id="highlights-panel-header">
+    <h3>📑 Highlights & Ghi chú</h3>
+    <button id="highlights-panel-close" aria-label="Đóng">✕</button>
+  </div>
+  <div id="highlights-list"></div>
+</aside>
 
 <!-- HIGHLIGHT POPUP (in parent page, positioned over iframe) -->
 <div id="highlight-popup" hidden role="toolbar" aria-label="Tô màu văn bản">

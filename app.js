@@ -200,12 +200,107 @@ const BRIDGE_SCRIPT = `
     'mark.hl[data-color="yellow"]{background:rgba(255,241,118,0.75);}' +
     'mark.hl[data-color="green"]{background:rgba(165,214,167,0.75);}' +
     'mark.hl[data-color="red"]{background:rgba(239,154,154,0.75);}' +
-    'mark.hl[data-note]:not([data-note=""]):after{content:"✏";font-size:.65rem;vertical-align:super;margin-left:2px;opacity:.7;}';
+    'mark.hl[data-note]:not([data-note=""]):after{content:"✏";font-size:.65rem;vertical-align:super;margin-left:2px;opacity:.7;}' +
+    '#chapter-toc{background:linear-gradient(135deg,#f8f5ed 0%,#fdf8f0 100%);border:1px solid #d4c89a;border-radius:8px;padding:1rem 1.2rem;margin:1.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.06);}' +
+    '#chapter-toc .toc-title{font-weight:600;color:#1a2744;margin-bottom:0.8rem;font-size:0.95rem;}' +
+    '#chapter-toc ul{list-style:none;margin:0;padding:0;}' +
+    '#chapter-toc li{margin:0.3rem 0;}' +
+    '#chapter-toc li.toc-h1{font-weight:600;}' +
+    '#chapter-toc li.toc-h2{padding-left:1rem;}' +
+    '#chapter-toc li.toc-h3{padding-left:2rem;font-size:0.9rem;}' +
+    '#chapter-toc li.toc-h4{padding-left:3rem;font-size:0.85rem;color:#666;}' +
+    '#chapter-toc a{color:#1a2744;text-decoration:none;transition:color 0.15s;}' +
+    '#chapter-toc a:hover{color:#c9a84c;text-decoration:underline;}';
   document.head.appendChild(style);
+
+  // ── GET TEXT NODES IN RANGE ──
+  function getTextNodesInRange(range) {
+    const nodes = [];
+    const walker = document.createTreeWalker(
+      range.commonAncestorContainer.nodeType === 3 
+        ? range.commonAncestorContainer.parentNode 
+        : range.commonAncestorContainer,
+      NodeFilter.SHOW_TEXT
+    );
+    let node;
+    while ((node = walker.nextNode())) {
+      if (range.intersectsNode(node)) {
+        nodes.push(node);
+      }
+    }
+    return nodes;
+  }
+
+  // ── HIGHLIGHT RANGE WITH MULTIPLE MARKS ──
+  function highlightRange(range, hlId, color, note) {
+    const textNodes = getTextNodesInRange(range);
+    textNodes.forEach(textNode => {
+      let start = 0;
+      let end = textNode.textContent.length;
+      
+      if (textNode === range.startContainer) {
+        start = range.startOffset;
+      }
+      if (textNode === range.endContainer) {
+        end = range.endOffset;
+      }
+      
+      if (start >= end || start >= textNode.textContent.length) return;
+      
+      const nodeRange = document.createRange();
+      nodeRange.setStart(textNode, start);
+      nodeRange.setEnd(textNode, Math.min(end, textNode.textContent.length));
+      
+      try {
+        const mark = document.createElement('mark');
+        mark.className = 'hl';
+        mark.setAttribute('data-hl-id', hlId);
+        mark.setAttribute('data-color', color);
+        mark.setAttribute('data-note', note || '');
+        nodeRange.surroundContents(mark);
+      } catch (e) {
+        // If surroundContents fails, try extractContents approach
+        try {
+          const contents = nodeRange.extractContents();
+          const mark = document.createElement('mark');
+          mark.className = 'hl';
+          mark.setAttribute('data-hl-id', hlId);
+          mark.setAttribute('data-color', color);
+          mark.setAttribute('data-note', note || '');
+          mark.appendChild(contents);
+          nodeRange.insertNode(mark);
+        } catch (_) {}
+      }
+    });
+  }
 
   // ── CREATE MARK FROM HL DATA ──
   function createMark(hl) {
     try {
+      // New format with startXPath and endXPath
+      if (hl.startXPath && hl.endXPath) {
+        const startEl = resolveXPath(hl.startXPath);
+        const endEl = resolveXPath(hl.endXPath);
+        if (!startEl || !endEl) return;
+        
+        const startInfo = startEl.nodeType === 3 
+          ? { node: startEl, localOffset: hl.startOffset }
+          : findTextNodeAt(startEl, hl.startOffset);
+        const endInfo = endEl.nodeType === 3
+          ? { node: endEl, localOffset: hl.endOffset }
+          : findTextNodeAt(endEl, hl.endOffset);
+        
+        if (!startInfo || !endInfo) return;
+        
+        const range = document.createRange();
+        range.setStart(startInfo.node, startInfo.localOffset);
+        range.setEnd(endInfo.node, endInfo.localOffset);
+        
+        highlightRange(range, hl.id, hl.color, hl.note);
+        return;
+      }
+      
+      // Legacy format with single xpath
       const node = resolveXPath(hl.xpath);
       if (!node) return;
       let range;
@@ -221,12 +316,7 @@ const BRIDGE_SCRIPT = `
         range.setStart(s.node, s.localOffset);
         range.setEnd(en.node, en.localOffset);
       }
-      const mark = document.createElement('mark');
-      mark.className = 'hl';
-      mark.setAttribute('data-color', hl.color);
-      mark.setAttribute('data-note', hl.note || '');
-      mark.setAttribute('data-hl-id', hl.id);
-      range.surroundContents(mark);
+      highlightRange(range, hl.id, hl.color, hl.note);
     } catch (_) {}
   }
 
@@ -240,20 +330,102 @@ const BRIDGE_SCRIPT = `
     if (msg.type === 'scrollTo') {
       window.scrollTo(0, msg.pos);
     }
-    if (msg.type === 'deleteHighlight') {
+    if (msg.type === 'scrollToHighlight') {
       const mark = document.querySelector('mark.hl[data-hl-id="' + msg.id + '"]');
       if (!mark) return;
-      const p = mark.parentNode;
-      while (mark.firstChild) p.insertBefore(mark.firstChild, mark);
-      p.removeChild(mark); p.normalize();
+      mark.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Flash effect
+      mark.style.transition = 'outline 0.2s';
+      mark.style.outline = '3px solid #c9a84c';
+      setTimeout(() => { mark.style.outline = 'none'; }, 1500);
+    }
+    if (msg.type === 'deleteHighlight') {
+      // Handle multiple marks with same id (multi-line highlights)
+      const marks = document.querySelectorAll('mark.hl[data-hl-id="' + msg.id + '"]');
+      marks.forEach(mark => {
+        const p = mark.parentNode;
+        while (mark.firstChild) p.insertBefore(mark.firstChild, mark);
+        p.removeChild(mark); 
+        p.normalize();
+      });
     }
     if (msg.type === 'updateHighlight') {
-      const mark = document.querySelector('mark.hl[data-hl-id="' + msg.id + '"]');
-      if (!mark) return;
-      mark.setAttribute('data-color', msg.color);
-      mark.setAttribute('data-note', msg.note || '');
+      // Handle multiple marks with same id (multi-line highlights)
+      const marks = document.querySelectorAll('mark.hl[data-hl-id="' + msg.id + '"]');
+      marks.forEach(mark => {
+        mark.setAttribute('data-color', msg.color);
+        mark.setAttribute('data-note', msg.note || '');
+      });
+    }
+    if (msg.type === 'createHighlightFromSelection') {
+      // Apply highlight directly from current selection - more reliable
+      const sel = window.getSelection();
+      if (!sel || sel.isCollapsed || !sel.rangeCount) {
+        window.parent.postMessage({ type: 'highlightFailed' }, ORIGIN);
+        return;
+      }
+      const range = sel.getRangeAt(0);
+      const selectedText = range.toString().trim();
+      if (!selectedText) {
+        window.parent.postMessage({ type: 'highlightFailed' }, ORIGIN);
+        return;
+      }
+      
+      // Apply highlight directly
+      highlightRange(range, msg.id, msg.color, msg.note || '');
+      sel.removeAllRanges();
+      
+      // Send back the data for storage
+      window.parent.postMessage({
+        type: 'highlightCreated',
+        id: msg.id,
+        color: msg.color,
+        note: msg.note || '',
+        text: selectedText.substring(0, 500),
+      }, ORIGIN);
     }
   });
+
+  // ── BUILD TABLE OF CONTENTS ──
+  function buildTOC() {
+    const headings = document.querySelectorAll('h1, h2, h3, h4');
+    if (headings.length < 3) return; // Not enough headings for TOC
+    
+    const toc = document.createElement('nav');
+    toc.id = 'chapter-toc';
+    toc.innerHTML = '<div class="toc-title">📑 Mục lục chương</div>';
+    
+    const list = document.createElement('ul');
+    headings.forEach((h, idx) => {
+      // Add id if missing
+      if (!h.id) h.id = 'heading-' + idx;
+      
+      const li = document.createElement('li');
+      li.className = 'toc-' + h.tagName.toLowerCase();
+      const a = document.createElement('a');
+      a.href = '#' + h.id;
+      a.textContent = h.textContent.trim();
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        h.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+    
+    toc.appendChild(list);
+    
+    // Insert after first h1 or at beginning
+    const firstH1 = document.querySelector('h1');
+    if (firstH1 && firstH1.nextSibling) {
+      firstH1.parentNode.insertBefore(toc, firstH1.nextSibling);
+    } else {
+      document.body.insertBefore(toc, document.body.firstChild);
+    }
+  }
+  
+  // Build TOC on load
+  setTimeout(buildTOC, 100);
 
   // ── HELPER: rect in parent viewport coords ──
   function toParentCoords(rect) {
@@ -293,34 +465,51 @@ const BRIDGE_SCRIPT = `
     const range = sel.getRangeAt(0);
     if (!range || range.collapsed) return;
 
-    const xpath = getXPath(range.startContainer);
-    let startOffset = range.startOffset;
-    let endOffset   = range.endOffset;
+    // Get selected text for display in highlights list
+    const selectedText = range.toString().trim();
+    if (!selectedText) return;
 
-    // Convert to element-relative offsets
+    // Get XPath for both start and end containers
+    const startXPath = getXPath(range.startContainer);
+    const endXPath = getXPath(range.endContainer);
+    
+    // Calculate offsets relative to parent elements
+    let startOffset = range.startOffset;
+    let endOffset = range.endOffset;
+
+    // Convert to element-relative offsets for start
     if (range.startContainer.nodeType === 3) {
       const parent = range.startContainer.parentNode;
       if (parent && parent !== document.body) {
         let pos = 0;
-        const w1 = document.createTreeWalker(parent, NodeFilter.SHOW_TEXT);
-        let n = w1.nextNode();
+        const walker = document.createTreeWalker(parent, NodeFilter.SHOW_TEXT);
+        let n = walker.nextNode();
         while (n) {
           if (n === range.startContainer) { startOffset = pos + range.startOffset; break; }
-          pos += n.textContent.length; n = w1.nextNode();
+          pos += n.textContent.length; n = walker.nextNode();
         }
-        pos = 0;
-        const w2 = document.createTreeWalker(parent, NodeFilter.SHOW_TEXT);
-        n = w2.nextNode();
+      }
+    }
+    
+    // Convert to element-relative offsets for end
+    if (range.endContainer.nodeType === 3) {
+      const parent = range.endContainer.parentNode;
+      if (parent && parent !== document.body) {
+        let pos = 0;
+        const walker = document.createTreeWalker(parent, NodeFilter.SHOW_TEXT);
+        let n = walker.nextNode();
         while (n) {
           if (n === range.endContainer) { endOffset = pos + range.endOffset; break; }
-          pos += n.textContent.length; n = w2.nextNode();
+          pos += n.textContent.length; n = walker.nextNode();
         }
       }
     }
 
     window.parent.postMessage({
       type: 'textSelected',
-      xpath, startOffset, endOffset,
+      startXPath, startOffset, 
+      endXPath, endOffset,
+      text: selectedText.substring(0, 500), // Limit text length
       ...toParentCoords(range.getBoundingClientRect()),
     }, ORIGIN);
   }
@@ -432,7 +621,13 @@ window.addEventListener('message', e => {
   }
 
   if (msg.type === 'textSelected') {
-    pendingHighlight = { xpath: msg.xpath, startOffset: msg.startOffset, endOffset: msg.endOffset };
+    pendingHighlight = { 
+      startXPath: msg.startXPath, 
+      startOffset: msg.startOffset, 
+      endXPath: msg.endXPath,
+      endOffset: msg.endOffset,
+      text: msg.text
+    };
     activeHighlightId = null;
     document.getElementById('hl-delete-btn').hidden = true;
     positionPopupAt(msg);
@@ -449,6 +644,19 @@ window.addEventListener('message', e => {
     pendingHighlight = null;
     document.getElementById('hl-delete-btn').hidden = false;
     positionPopupAt(msg);
+  }
+
+  if (msg.type === 'highlightCreated') {
+    // Save highlight data from iframe
+    const hlData = { id: msg.id, color: msg.color, note: msg.note, text: msg.text };
+    if (!state.highlights[currentChapterId]) state.highlights[currentChapterId] = [];
+    state.highlights[currentChapterId].push(hlData);
+    scheduleSave();
+    renderHighlightsList();
+  }
+
+  if (msg.type === 'highlightFailed') {
+    console.warn('Highlight creation failed - selection may have been lost');
   }
 });
 
@@ -498,16 +706,14 @@ document.querySelectorAll('.hl-color').forEach(btn => {
         document.getElementById('chapter-frame').contentWindow
           .postMessage({ type: 'updateHighlight', id: activeHighlightId, color, note: hl.note || '' }, '*');
         scheduleSave();
+        renderHighlightsList();
       }
       hidePopup();
     } else if (pendingHighlight) {
+      // Use new reliable approach: let iframe apply highlight from current selection
       const id = generateId();
-      const hlData = { id, ...pendingHighlight, color, note: '' };
-      if (!state.highlights[currentChapterId]) state.highlights[currentChapterId] = [];
-      state.highlights[currentChapterId].push(hlData);
       document.getElementById('chapter-frame').contentWindow
-        .postMessage({ type: 'applyHighlights', highlights: [hlData] }, '*');
-      scheduleSave();
+        .postMessage({ type: 'createHighlightFromSelection', id, color, note: '' }, '*');
       hidePopup();
     }
   });
@@ -520,6 +726,7 @@ document.getElementById('hl-delete-btn').addEventListener('click', () => {
   document.getElementById('chapter-frame').contentWindow
     .postMessage({ type: 'deleteHighlight', id: activeHighlightId }, '*');
   scheduleSave();
+  renderHighlightsList();
   hidePopup();
 });
 
@@ -535,13 +742,19 @@ document.getElementById('hl-note-btn').addEventListener('click', () => {
     noteTargetId = activeHighlightId;
     noteTargetPending = null;
     document.getElementById('note-textarea').value = hl?.note || '';
+    document.getElementById('note-modal').hidden = false;
+    hidePopup();
   } else if (pendingHighlight) {
-    noteTargetId = null;
-    noteTargetPending = { ...pendingHighlight };
+    // Create highlight first (yellow), then open note modal
+    const id = generateId();
+    noteTargetId = id; // Will be used when note is saved
+    noteTargetPending = null;
     document.getElementById('note-textarea').value = '';
+    document.getElementById('chapter-frame').contentWindow
+      .postMessage({ type: 'createHighlightFromSelection', id, color: 'yellow', note: '' }, '*');
+    document.getElementById('note-modal').hidden = false;
+    hidePopup();
   } else { return; }
-  document.getElementById('note-modal').hidden = false;
-  hidePopup();
 });
 
 document.getElementById('note-cancel').addEventListener('click', () => {
@@ -560,14 +773,8 @@ document.getElementById('note-save').addEventListener('click', () => {
       hl.note = note;
       iwin.postMessage({ type: 'updateHighlight', id: noteTargetId, color: hl.color, note }, '*');
       scheduleSave();
+      renderHighlightsList();
     }
-  } else if (noteTargetPending) {
-    const id = generateId();
-    const hlData = { id, ...noteTargetPending, color: 'yellow', note };
-    if (!state.highlights[currentChapterId]) state.highlights[currentChapterId] = [];
-    state.highlights[currentChapterId].push(hlData);
-    iwin.postMessage({ type: 'applyHighlights', highlights: [hlData] }, '*');
-    scheduleSave();
   }
 
   noteTargetId = null;
@@ -586,6 +793,112 @@ document.getElementById('btn-mark-done').addEventListener('click', () => {
   btn.classList.toggle('is-done', newStatus === 'done');
   renderSidebar();
   scheduleSave();
+});
+
+// ── HIGHLIGHTS PANEL ──
+function formatHighlightText(text) {
+  if (!text) return 'Đoạn văn đã highlight';
+  // Get first meaningful line and clean up
+  const lines = text.split(/[\n\r]+/).filter(l => l.trim());
+  const firstLine = lines[0] || text;
+  // Truncate if too long
+  const maxLen = 120;
+  if (firstLine.length > maxLen) {
+    return firstLine.substring(0, maxLen).trim() + '...';
+  }
+  return firstLine.trim() + (lines.length > 1 ? '...' : '');
+}
+
+function renderHighlightsList() {
+  const list = document.getElementById('highlights-list');
+  const highlights = state.highlights[currentChapterId] || [];
+  
+  if (highlights.length === 0) {
+    list.innerHTML = '';
+    return;
+  }
+  
+  list.innerHTML = highlights.map(hl => `
+    <div class="hl-item" data-id="${hl.id}" data-color="${hl.color}">
+      <div class="hl-item-text">"${escapeHtml(formatHighlightText(hl.text))}"</div>
+      ${hl.note ? `<div class="hl-item-note">📝 ${escapeHtml(hl.note)}</div>` : ''}
+      <div class="hl-item-actions">
+        <button class="hl-goto" data-id="${hl.id}">📍 Đi đến</button>
+        <button class="hl-edit" data-id="${hl.id}">✏️ Ghi chú</button>
+        <button class="hl-remove" data-id="${hl.id}">🗑</button>
+      </div>
+    </div>
+  `).join('');
+  
+  // Event listeners for actions
+  list.querySelectorAll('.hl-goto').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      scrollToHighlight(btn.dataset.id);
+    });
+  });
+  
+  list.querySelectorAll('.hl-edit').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      editHighlightNote(btn.dataset.id);
+    });
+  });
+  
+  list.querySelectorAll('.hl-remove').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      deleteHighlight(btn.dataset.id);
+    });
+  });
+  
+  // Click on item to go to highlight
+  list.querySelectorAll('.hl-item').forEach(item => {
+    item.addEventListener('click', () => {
+      scrollToHighlight(item.dataset.id);
+    });
+  });
+}
+
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+function scrollToHighlight(hlId) {
+  const iwin = document.getElementById('chapter-frame').contentWindow;
+  iwin.postMessage({ type: 'scrollToHighlight', id: hlId }, '*');
+}
+
+function editHighlightNote(hlId) {
+  const hl = (state.highlights[currentChapterId] || []).find(h => h.id === hlId);
+  if (!hl) return;
+  noteTargetId = hlId;
+  noteTargetPending = null;
+  document.getElementById('note-textarea').value = hl.note || '';
+  document.getElementById('note-modal').hidden = false;
+}
+
+function deleteHighlight(hlId) {
+  state.highlights[currentChapterId] = (state.highlights[currentChapterId] || [])
+    .filter(h => h.id !== hlId);
+  document.getElementById('chapter-frame').contentWindow
+    .postMessage({ type: 'deleteHighlight', id: hlId }, '*');
+  scheduleSave();
+  renderHighlightsList();
+}
+
+document.getElementById('btn-highlights').addEventListener('click', () => {
+  const panel = document.getElementById('highlights-panel');
+  panel.hidden = !panel.hidden;
+  if (!panel.hidden) {
+    renderHighlightsList();
+  }
+});
+
+document.getElementById('highlights-panel-close').addEventListener('click', () => {
+  document.getElementById('highlights-panel').hidden = true;
 });
 
 // ── GIST SYNC ──
