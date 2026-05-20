@@ -37,10 +37,30 @@
     <span id="toolbar-chapter-title"></span>
     <div id="toolbar-right">
       <button id="btn-highlights" title="Danh sách highlight & ghi chú">📑 Highlights</button>
+      <button id="btn-audio" title="Đọc to chương này">🔊 Nghe</button>
       <button id="btn-mark-done" title="Đánh dấu đã đọc xong">✓ Xong</button>
       <span id="sync-indicator" class="sync-saved">☁ Đã lưu</span>
     </div>
   </header>
+
+  <!-- Audio player bar -->
+  <div id="audio-bar" hidden>
+    <button id="audio-play"  title="Phát / Tạm dừng" aria-label="Phát">▶</button>
+    <button id="audio-stop"  title="Dừng" aria-label="Dừng">■</button>
+    <div id="audio-info">
+      <span id="audio-status">Sẵn sàng</span>
+    </div>
+    <label id="audio-speed-label">Tốc độ:
+      <select id="audio-speed">
+        <option value="0.75">0.75×</option>
+        <option value="1" selected>1×</option>
+        <option value="1.25">1.25×</option>
+        <option value="1.5">1.5×</option>
+        <option value="2">2×</option>
+      </select>
+    </label>
+    <button id="audio-close" title="Đóng" aria-label="Đóng audio">✕</button>
+  </div>
 
   <!-- Chapter content rendered in iframe to preserve original HTML/CSS -->
   <iframe id="chapter-frame" title="Nội dung chương"></iframe>
