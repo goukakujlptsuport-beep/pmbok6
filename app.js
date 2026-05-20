@@ -235,6 +235,8 @@ function resolveXPath(xpath) {
 // ── HIGHLIGHT POPUP ──
 const popup = document.getElementById('highlight-popup');
 let activeHighlightEl = null;
+let noteTargetHighlight = null;   // existing mark being edited
+let noteTargetPending = null;     // pending range for new highlight
 
 document.addEventListener('mouseup', handleSelectionEnd);
 document.addEventListener('touchend', handleSelectionEnd);
@@ -271,7 +273,9 @@ document.querySelectorAll('.hl-color').forEach(btn => {
 });
 
 document.getElementById('hl-note-btn').addEventListener('click', () => {
-  const existing = activeHighlightEl ? (activeHighlightEl.dataset.note || '') : '';
+  noteTargetHighlight = activeHighlightEl;
+  noteTargetPending = pendingHighlight;
+  const existing = noteTargetHighlight ? (noteTargetHighlight.dataset.note || '') : '';
   document.getElementById('note-textarea').value = existing;
   document.getElementById('note-modal').hidden = false;
   hidePopup();
@@ -336,8 +340,32 @@ function applyNewHighlight(range, color, note) {
   if (!currentChapterId) return;
   const id = generateId();
   const xpath = getXPath(range.startContainer);
-  const startOffset = range.startOffset;
-  const endOffset = range.endOffset;
+
+  // Compute element-relative character offsets for restoring across reloads
+  let startOffset = range.startOffset;
+  let endOffset = range.endOffset;
+  if (range.startContainer.nodeType === Node.TEXT_NODE) {
+    const parent = range.startContainer.parentNode;
+    const root = document.getElementById('content');
+    if (parent !== root) {
+      const walker = document.createTreeWalker(parent, NodeFilter.SHOW_TEXT);
+      let pos = 0;
+      let node = walker.nextNode();
+      while (node) {
+        if (node === range.startContainer) { startOffset = pos + range.startOffset; break; }
+        pos += node.textContent.length;
+        node = walker.nextNode();
+      }
+      pos = 0;
+      const walker2 = document.createTreeWalker(parent, NodeFilter.SHOW_TEXT);
+      node = walker2.nextNode();
+      while (node) {
+        if (node === range.endContainer) { endOffset = pos + range.endOffset; break; }
+        pos += node.textContent.length;
+        node = walker2.nextNode();
+      }
+    }
+  }
 
   const mark = document.createElement('mark');
   mark.className = 'hl';
@@ -367,6 +395,19 @@ function saveHighlightFromEl(el) {
   }
 }
 
+function findTextNodeAt(root, offset) {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  let pos = 0;
+  let node = walker.nextNode();
+  while (node) {
+    const len = node.textContent.length;
+    if (pos + len > offset) return { node, localOffset: offset - pos };
+    pos += len;
+    node = walker.nextNode();
+  }
+  return null;
+}
+
 function applyHighlights(chapterId) {
   const list = state.highlights[chapterId];
   if (!list || list.length === 0) return;
@@ -374,17 +415,30 @@ function applyHighlights(chapterId) {
     try {
       const node = resolveXPath(hl.xpath);
       if (!node) return;
-      const textNode = node.nodeType === Node.TEXT_NODE ? node : node.firstChild;
-      if (!textNode || textNode.nodeType !== Node.TEXT_NODE) return;
-      const range = document.createRange();
-      range.setStart(textNode, hl.startOffset);
-      range.setEnd(textNode, hl.endOffset);
-      const mark = document.createElement('mark');
-      mark.className = 'hl';
-      mark.dataset.color = hl.color;
-      mark.dataset.note = hl.note || '';
-      mark.dataset.hlId = hl.id;
-      range.surroundContents(mark);
+      if (node.nodeType === Node.TEXT_NODE) {
+        const range = document.createRange();
+        range.setStart(node, hl.startOffset);
+        range.setEnd(node, hl.endOffset);
+        const mark = document.createElement('mark');
+        mark.className = 'hl';
+        mark.dataset.color = hl.color;
+        mark.dataset.note = hl.note || '';
+        mark.dataset.hlId = hl.id;
+        range.surroundContents(mark);
+      } else {
+        const start = findTextNodeAt(node, hl.startOffset);
+        const end = findTextNodeAt(node, hl.endOffset);
+        if (!start || !end) return;
+        const range = document.createRange();
+        range.setStart(start.node, start.localOffset);
+        range.setEnd(end.node, end.localOffset);
+        const mark = document.createElement('mark');
+        mark.className = 'hl';
+        mark.dataset.color = hl.color;
+        mark.dataset.note = hl.note || '';
+        mark.dataset.hlId = hl.id;
+        range.surroundContents(mark);
+      }
     } catch (_) {
       // skip broken highlights silently
     }
@@ -393,17 +447,21 @@ function applyHighlights(chapterId) {
 
 // ── NOTE MODAL ──
 document.getElementById('note-cancel').addEventListener('click', () => {
+  noteTargetHighlight = null;
+  noteTargetPending = null;
   document.getElementById('note-modal').hidden = true;
 });
 
 document.getElementById('note-save').addEventListener('click', () => {
   const note = document.getElementById('note-textarea').value.trim();
-  if (activeHighlightEl) {
-    activeHighlightEl.dataset.note = note;
-    saveHighlightFromEl(activeHighlightEl);
-  } else if (pendingHighlight && pendingHighlight.range) {
-    applyNewHighlight(pendingHighlight.range, 'yellow', note);
+  if (noteTargetHighlight) {
+    noteTargetHighlight.dataset.note = note;
+    saveHighlightFromEl(noteTargetHighlight);
+  } else if (noteTargetPending && noteTargetPending.range) {
+    applyNewHighlight(noteTargetPending.range, 'yellow', note);
   }
+  noteTargetHighlight = null;
+  noteTargetPending = null;
   document.getElementById('note-modal').hidden = true;
 });
 
