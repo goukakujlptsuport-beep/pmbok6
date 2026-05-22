@@ -389,6 +389,8 @@ document.addEventListener('DOMContentLoaded', () => {
           status.textContent = '✓ Kết nối thành công!';
           setTimeout(() => { atlasModal.hidden = true; }, 1000);
         } catch (err) {
+          localStorage.removeItem(LMS_CONFIG_KEY);
+          Atlas._cfg = null;
           status.textContent = '❌ Lỗi: ' + err.message;
         }
       });

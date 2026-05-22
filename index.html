@@ -145,11 +145,11 @@
 </div>
 
 <!-- ATLAS CONFIG MODAL -->
-<div id="atlas-modal" hidden role="dialog" aria-modal="true">
-  <div id="atlas-modal-box" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
-       background:white;padding:24px;border-radius:8px;width:320px;max-width:90vw;
-       box-shadow:0 8px 32px rgba(0,0,0,0.2);z-index:200;font-family:'Source Sans 3',sans-serif;">
-    <h3 style="margin:0 0 12px;color:#1a2744">⚙ Kết nối MongoDB Atlas</h3>
+<div id="atlas-modal" hidden role="dialog" aria-modal="true" aria-labelledby="atlas-modal-title"
+     style="position:fixed;inset:0;z-index:150;background:rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;">
+  <div id="atlas-modal-box" style="background:white;padding:24px;border-radius:8px;width:320px;max-width:90vw;
+       box-shadow:0 8px 32px rgba(0,0,0,0.2);font-family:'Source Sans 3',sans-serif;">
+    <h3 id="atlas-modal-title" style="margin:0 0 12px;color:#1a2744">⚙ Kết nối MongoDB Atlas</h3>
     <p style="font-size:12px;color:#666;margin:0 0 12px">
       Để đồng bộ tiến độ học lên cloud, nhập thông tin Atlas Data API của bạn.
       Bỏ qua để chỉ lưu cục bộ (localStorage).
