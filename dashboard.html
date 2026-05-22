@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thống kê học tập – PMBOK LMS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="lms.css">
+  <style>
+    body { background: #fdf8f0; margin: 0; font-family: 'Source Sans 3', sans-serif; }
+    .dash-wrap { max-width: 900px; margin: 0 auto; padding: 30px 20px; }
+    .dash-back { display: inline-block; margin-bottom: 20px; color: #1a2744; text-decoration: none; font-weight: 600; }
+    .dash-back:hover { color: #c9a84c; }
+    .dash-title { font-family: 'Merriweather', serif; color: #1a2744; font-size: 1.8rem; margin-bottom: 6px; }
+    .dash-sub { color: #888; font-size: 0.9rem; margin-bottom: 30px; }
+
+    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-bottom: 36px; }
+    .stat-card { background: white; border: 2px solid #1a2744; border-radius: 8px; padding: 20px; text-align: center; }
+    .stat-card .val { font-size: 2.2rem; font-weight: 700; color: #c9a84c; line-height: 1; margin-bottom: 8px; }
+    .stat-card .label { font-size: 0.8rem; color: #666; text-transform: uppercase; letter-spacing: 0.04em; }
+
+    .ch-section h3 { color: #1a2744; margin-bottom: 12px; font-family: 'Merriweather', serif; }
+    .ch-row { display: flex; align-items: center; gap: 10px; margin: 8px 0; font-size: 13px; }
+    .ch-name { width: 220px; flex-shrink: 0; color: #333; }
+    .ch-bar-wrap { flex: 1; height: 12px; background: #f0ead6; border-radius: 6px; overflow: hidden; }
+    .ch-bar-fill { height: 100%; background: linear-gradient(90deg, #c9a84c, #1a2744); border-radius: 6px; }
+    .ch-pct { width: 42px; text-align: right; font-weight: 600; color: #1a2744; font-size: 12px; }
+
+    .review-section { margin-top: 30px; padding: 20px; background: white; border-radius: 8px; border: 1px solid #d4c89a; }
+    .review-section h3 { margin: 0 0 10px; color: #1a2744; }
+    .review-summary { display: flex; gap: 30px; font-size: 14px; }
+    .review-summary .big { font-size: 2rem; font-weight: 700; color: #c9a84c; }
+
+    #lms-progress-panel, #lms-review-badge, #lms-dashboard-btn { display: none !important; }
+  </style>
+</head>
+<body>
+<div class="dash-wrap">
+  <a href="index.html" class="dash-back">← Quay lại đọc sách</a>
+  <h1 class="dash-title">📊 Thống kê học tập</h1>
+  <p class="dash-sub">Tiến độ học PMBOK® Guide Lần 6 của bạn</p>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="val" id="d-pct">0%</div><div class="label">Hoàn thành</div></div>
+    <div class="stat-card"><div class="val" id="d-learned">0</div><div class="label">Mục đã học</div></div>
+    <div class="stat-card"><div class="val" id="d-due">0</div><div class="label">Cần ôn tập</div></div>
+    <div class="stat-card"><div class="val" id="d-scheduled">0</div><div class="label">Đã lên lịch ôn</div></div>
+  </div>
+
+  <div class="ch-section">
+    <h3>Tiến độ từng chương</h3>
+    <div id="d-chapters"></div>
+  </div>
+
+  <div class="review-section">
+    <h3>🔄 Ôn tập hôm nay</h3>
+    <div class="review-summary">
+      <div><div class="big" id="d-due2">0</div><div>mục cần ôn hôm nay</div></div>
+      <div><div class="big" id="d-scheduled2">0</div><div>mục đang được theo dõi</div></div>
+    </div>
+  </div>
+</div>
+
+<script src="lms.js"></script>
+<script>
+  const chapterNames = {
+    '01_instruction': '1. Giới Thiệu',
+    '02_environment': '2. Môi Trường Dự Án',
+    '03_pm_role': '3. Vai Trò PM',
+    '04_integration_management': '4. Quản Lý Tích Hợp',
+    '05_scope_management': '5. Quản Lý Phạm Vi',
+    '06_schedule_management': '6. Quản Lý Tiến Độ',
+    '07_cost_management': '7. Quản Lý Chi Phí',
+    '08_quality_management': '8. Quản Lý Chất Lượng',
+    '09_resource_management': '9. Quản Lý Nguồn Lực',
+    '10_communications_management': '10. Truyền Thông',
+    '11_risk_management': '11. Quản Lý Rủi Ro',
+    '12_procurement_management': '12. Quản Lý Mua Sắm',
+    '13_stakeholder_management': '13. Các Bên Liên Quan',
+    '14_standard_for_pm': '14. Tiêu Chuẩn PM',
+    '15_appendices_glossary': '15. Phụ Lục & Từ Điển',
+    '16_agile_practice_guide': '16. Hướng Dẫn Agile',
+  };
+
+  const stats = Analytics.compute();
+
+  document.getElementById('d-pct').textContent = stats.completionPct + '%';
+  document.getElementById('d-learned').textContent = stats.totalLearned;
+  document.getElementById('d-due').textContent = stats.dueToday;
+  document.getElementById('d-due2').textContent = stats.dueToday;
+  document.getElementById('d-scheduled').textContent = stats.totalScheduled;
+  document.getElementById('d-scheduled2').textContent = stats.totalScheduled;
+
+  const chEl = document.getElementById('d-chapters');
+  if (stats.byChapter.length === 0) {
+    chEl.innerHTML = '<p style="color:#999">Chưa có dữ liệu. Hãy đánh dấu một số mục là đã học.</p>';
+  } else {
+    chEl.innerHTML = stats.byChapter.map(ch => `
+      <div class="ch-row">
+        <div class="ch-name">${chapterNames[ch.id] || ch.id}</div>
+        <div class="ch-bar-wrap"><div class="ch-bar-fill" style="width:${ch.pct}%"></div></div>
+        <div class="ch-pct">${ch.pct}%</div>
+      </div>
+    `).join('');
+  }
+</script>
+</body>
+</html>

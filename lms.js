@@ -323,6 +323,45 @@ const ReviewSystem = {
   },
 };
 
+// ── ANALYTICS ──
+const Analytics = {
+  compute() {
+    const progressCache = cacheGet(LMS_CACHE_KEY);
+    const reviewCache = cacheGet(REVIEW_CACHE_KEY);
+
+    const chapterIds = [
+      '01_instruction','02_environment','03_pm_role','04_integration_management',
+      '05_scope_management','06_schedule_management','07_cost_management',
+      '08_quality_management','09_resource_management','10_communications_management',
+      '11_risk_management','12_procurement_management','13_stakeholder_management',
+      '14_standard_for_pm','15_appendices_glossary','16_agile_practice_guide',
+    ];
+
+    let totalSections = 0;
+    let totalLearned  = 0;
+    const byChapter   = [];
+
+    chapterIds.forEach(id => {
+      const sections = progressCache[id] || {};
+      const learnedIds = Object.keys(sections).filter(sid => sections[sid]);
+      const total = Object.keys(sections).length;
+      totalSections += total;
+      totalLearned  += learnedIds.length;
+      if (total > 0) {
+        byChapter.push({ id, learned: learnedIds.length, total, pct: Math.round(learnedIds.length / total * 100) });
+      }
+    });
+
+    const reviews = Object.values(reviewCache);
+    const now = new Date();
+    const dueToday = reviews.filter(r => new Date(r.nextReview) <= now).length;
+    const totalScheduled = reviews.length;
+    const completionPct = totalSections > 0 ? Math.round(totalLearned / totalSections * 100) : 0;
+
+    return { totalLearned, totalSections, completionPct, byChapter, dueToday, totalScheduled };
+  },
+};
+
 // ── BOOT ──
 document.addEventListener('DOMContentLoaded', () => {
   ReviewSystem.init();
