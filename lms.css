@@ -1,0 +1,131 @@
+/* ── LMS PROGRESS PANEL ── */
+#lms-progress-panel {
+  position: fixed;
+  right: 0;
+  top: 120px;
+  width: 220px;
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #d4c89a;
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  padding: 12px;
+  box-shadow: -2px 2px 12px rgba(0,0,0,0.10);
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 12px;
+  z-index: 45;
+  transition: transform 0.2s;
+}
+
+#lms-progress-panel:empty { display: none; }
+
+.lms-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.lms-panel-title { font-weight: 600; color: #1a2744; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+.lms-pct { font-weight: 700; color: #c9a84c; font-size: 14px; }
+
+.lms-bar { height: 6px; background: #f0ead6; border-radius: 3px; margin-bottom: 10px; overflow: hidden; }
+.lms-bar-fill { height: 100%; background: linear-gradient(90deg, #c9a84c, #1a2744); border-radius: 3px; transition: width 0.3s; }
+
+.lms-section-list { display: flex; flex-direction: column; gap: 3px; }
+
+.lms-sec-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  width: 100%;
+  padding: 5px 6px;
+  background: #fdf8f0;
+  border: 1px solid #e8dfc8;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: left;
+  font-size: 11px;
+  color: #333;
+  line-height: 1.3;
+  transition: background 0.15s, border-color 0.15s;
+}
+.lms-sec-btn:hover { background: #f5edd8; border-color: #c9a84c; }
+.lms-sec-btn.learned { background: #eaf4ea; border-color: #5a9e5a; }
+.lms-sec-btn.learned .lms-sec-title { color: #2d6b2d; }
+
+.lms-sec-check { flex-shrink: 0; color: #999; }
+.lms-sec-btn.learned .lms-sec-check { color: #5a9e5a; }
+
+/* ── REVIEW BADGE ── */
+#lms-review-badge {
+  display: none;
+  position: fixed;
+  bottom: 24px;
+  right: 240px;
+  background: #c9a84c;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 46;
+  animation: lms-pulse 2s infinite;
+}
+@keyframes lms-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* ── REVIEW PANEL ── */
+#lms-review-panel {
+  display: none;
+  position: fixed;
+  bottom: 70px;
+  right: 240px;
+  width: 280px;
+  background: white;
+  border: 1px solid #d4c89a;
+  border-radius: 8px;
+  padding: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  z-index: 47;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 12px;
+}
+#lms-review-panel h4 { margin: 0 0 10px; color: #1a2744; font-size: 13px; }
+.lms-review-item { margin: 6px 0; padding: 6px; background: #fdf8f0; border-radius: 4px; }
+.lms-review-item-title { margin-bottom: 5px; color: #333; }
+.lms-review-btns { display: flex; gap: 4px; }
+.lms-review-btns button {
+  flex: 1; padding: 4px; font-size: 11px; border: 1px solid #ddd;
+  border-radius: 3px; cursor: pointer; background: white;
+}
+.lms-review-btns .easy  { border-color: #5a9e5a; color: #2d6b2d; }
+.lms-review-btns .hard  { border-color: #c0392b; color: #c0392b; }
+.lms-review-btns .ok    { border-color: #c9a84c; color: #8b6914; }
+
+/* ── DASHBOARD LINK ── */
+#lms-dashboard-btn {
+  position: fixed;
+  bottom: 24px;
+  left: 280px;
+  background: #1a2744;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 46;
+}
+#lms-dashboard-btn:hover { background: #c9a84c; }
+
+@media (max-width: 900px) {
+  #lms-progress-panel { width: 180px; font-size: 11px; top: 100px; }
+  #lms-review-badge, #lms-review-panel { right: 200px; }
+  #lms-dashboard-btn { left: 10px; }
+}

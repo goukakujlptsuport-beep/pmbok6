@@ -6,6 +6,7 @@
   <title>PMBOK® Guide 6 – Tiếng Việt</title>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="lms.css">
 </head>
 <body>
 
@@ -74,6 +75,23 @@
   </div>
   <div id="highlights-list"></div>
 </aside>
+
+<!-- LMS PROGRESS PANEL -->
+<div id="lms-progress-panel"></div>
+
+<!-- LMS REVIEW BADGE -->
+<div id="lms-review-badge" onclick="ReviewSystem.togglePanel()">🔄 Ôn tập: <span id="lms-review-count">0</span></div>
+
+<!-- LMS REVIEW PANEL -->
+<div id="lms-review-panel">
+  <h4>🔄 Các phần cần ôn tập hôm nay</h4>
+  <div id="lms-review-list"></div>
+  <button onclick="document.getElementById('lms-review-panel').style.display='none'"
+          style="margin-top:8px;width:100%;padding:6px;cursor:pointer;">Đóng</button>
+</div>
+
+<!-- LMS DASHBOARD LINK -->
+<a id="lms-dashboard-btn" href="dashboard.html">📊 Thống kê</a>
 
 <!-- HIGHLIGHT POPUP (in parent page, positioned over iframe) -->
 <div id="highlight-popup" hidden role="toolbar" aria-label="Tô màu văn bản">
