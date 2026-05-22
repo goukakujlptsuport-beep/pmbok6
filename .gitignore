@@ -16,3 +16,10 @@ test-gtts.mp3
 # IDE
 .vscode/
 .DS_Store
+
+# Swap files
+*.swp
+
+# Python
+__pycache__/
+*.py[cod]
