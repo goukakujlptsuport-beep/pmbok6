@@ -25,6 +25,7 @@
   <nav id="chapter-nav"></nav>
   <div id="sidebar-footer">
     <button id="btn-gist-settings">⚙ Cài đặt Gist</button>
+    <button id="btn-atlas-settings" onclick="document.getElementById('atlas-modal').hidden=false">☁ Cài đặt Atlas</button>
   </div>
 </aside>
 
@@ -140,6 +141,30 @@
       <button id="btn-export">⬇ Xuất JSON</button>
       <label id="btn-import-label">⬆ Nhập JSON<input type="file" id="import-file" accept=".json" hidden></label>
     </div>
+  </div>
+</div>
+
+<!-- ATLAS CONFIG MODAL -->
+<div id="atlas-modal" hidden role="dialog" aria-modal="true">
+  <div id="atlas-modal-box" style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+       background:white;padding:24px;border-radius:8px;width:320px;max-width:90vw;
+       box-shadow:0 8px 32px rgba(0,0,0,0.2);z-index:200;font-family:'Source Sans 3',sans-serif;">
+    <h3 style="margin:0 0 12px;color:#1a2744">⚙ Kết nối MongoDB Atlas</h3>
+    <p style="font-size:12px;color:#666;margin:0 0 12px">
+      Để đồng bộ tiến độ học lên cloud, nhập thông tin Atlas Data API của bạn.
+      Bỏ qua để chỉ lưu cục bộ (localStorage).
+    </p>
+    <label style="font-size:12px;font-weight:600;color:#333">App ID</label>
+    <input id="atlas-app-id" type="text" placeholder="data-xxxxx"
+           style="display:block;width:100%;box-sizing:border-box;padding:7px;margin:4px 0 10px;border:1px solid #ccc;border-radius:4px;font-size:13px">
+    <label style="font-size:12px;font-weight:600;color:#333">API Key</label>
+    <input id="atlas-api-key" type="password" placeholder="xxxxxxxxxxxx"
+           style="display:block;width:100%;box-sizing:border-box;padding:7px;margin:4px 0 14px;border:1px solid #ccc;border-radius:4px;font-size:13px">
+    <div style="display:flex;gap:8px">
+      <button id="atlas-save" style="flex:1;padding:9px;background:#1a2744;color:white;border:none;border-radius:4px;cursor:pointer;font-weight:600">Lưu & Kết nối</button>
+      <button id="atlas-skip" style="flex:1;padding:9px;background:#f0f0f0;border:none;border-radius:4px;cursor:pointer">Bỏ qua</button>
+    </div>
+    <p id="atlas-status" style="font-size:12px;margin:8px 0 0;min-height:16px"></p>
   </div>
 </div>
 

@@ -365,4 +365,39 @@ const Analytics = {
 // ── BOOT ──
 document.addEventListener('DOMContentLoaded', () => {
   ReviewSystem.init();
+
+  // Atlas config modal
+  const atlasModal = document.getElementById('atlas-modal');
+  const atlasSave  = document.getElementById('atlas-save');
+  const atlasSkip  = document.getElementById('atlas-skip');
+
+  if (atlasModal) {
+    if (!Atlas.isConfigured()) {
+      atlasModal.hidden = false;
+    }
+
+    if (atlasSave) {
+      atlasSave.addEventListener('click', async () => {
+        const appId  = document.getElementById('atlas-app-id').value.trim();
+        const apiKey = document.getElementById('atlas-api-key').value.trim();
+        const status = document.getElementById('atlas-status');
+        if (!appId || !apiKey) { status.textContent = 'Vui lòng nhập đủ thông tin.'; return; }
+        status.textContent = 'Đang kiểm tra...';
+        try {
+          Atlas.saveConfig({ appId, apiKey });
+          await Atlas.find('test', {});
+          status.textContent = '✓ Kết nối thành công!';
+          setTimeout(() => { atlasModal.hidden = true; }, 1000);
+        } catch (err) {
+          status.textContent = '❌ Lỗi: ' + err.message;
+        }
+      });
+    }
+
+    if (atlasSkip) {
+      atlasSkip.addEventListener('click', () => {
+        atlasModal.hidden = true;
+      });
+    }
+  }
 });

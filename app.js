@@ -23,6 +23,11 @@ const TRANSLATED_IDS = new Set([
   '01_instruction', '02_environment', '03_pm_role',
   '04_integration_management', '05_scope_management',
   '06_schedule_management', '07_cost_management',
+  '08_quality_management', '09_resource_management',
+  '10_communications_management', '11_risk_management',
+  '12_procurement_management', '13_stakeholder_management',
+  '14_standard_for_pm', '15_appendices_glossary',
+  '16_agile_practice_guide',
 ]);
 
 // ── STATE ──
