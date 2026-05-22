@@ -13,6 +13,7 @@ const Atlas = {
   },
 
   saveConfig(cfg) {
+    if (!cfg || !cfg.appId || !cfg.apiKey) throw new Error('Invalid Atlas config: appId and apiKey required');
     this._cfg = cfg;
     localStorage.setItem(LMS_CONFIG_KEY, JSON.stringify(cfg));
   },
@@ -39,7 +40,10 @@ const Atlas = {
         ...body,
       }),
     });
-    if (!res.ok) throw new Error(`Atlas ${action} failed: ${res.status}`);
+    if (!res.ok) {
+      const errBody = await res.json().catch(() => ({}));
+      throw new Error(`Atlas ${action} failed: ${res.status} – ${errBody.error || 'unknown'}`);
+    }
     return res.json();
   },
 
