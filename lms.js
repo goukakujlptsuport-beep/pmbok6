@@ -78,6 +78,9 @@ function cacheGet(key) {
 function cacheSet(key, val) {
   try { localStorage.setItem(key, JSON.stringify(val)); } catch {}
 }
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
 
 // ── PROGRESS TRACKER ──
 const ProgressTracker = {
@@ -116,13 +119,14 @@ const ProgressTracker = {
     this._renderPanel(chapterId);
 
     if (Atlas.isConfigured()) {
+      const uid = this._userId();
       Atlas.upsert('user_progress',
-        { userId: this._userId(), chapterId, sectionId },
-        { userId: this._userId(), chapterId, sectionId, isLearned: nowLearned, updatedAt: new Date().toISOString() }
+        { userId: uid, chapterId, sectionId },
+        { userId: uid, chapterId, sectionId, isLearned: nowLearned, updatedAt: new Date().toISOString() }
       ).catch(err => console.warn('Atlas sync failed:', err));
     }
 
-    if (nowLearned) {
+    if (nowLearned && typeof ReviewSystem !== 'undefined') {
       await ReviewSystem.scheduleReview(chapterId, sectionId);
     }
     return nowLearned;
@@ -157,9 +161,9 @@ const ProgressTracker = {
           const learned = this.isLearned(chapterId, sid);
           return `<button class="lms-sec-btn ${learned ? 'learned' : ''}"
                           onclick="ProgressTracker.toggle('${chapterId}', '${sid}')"
-                          title="${h.textContent.trim()}">
+                          title="${escHtml(h.textContent.trim())}">
                     <span class="lms-sec-check">${learned ? '☑' : '☐'}</span>
-                    <span class="lms-sec-title">${h.textContent.trim().slice(0, 50)}</span>
+                    <span class="lms-sec-title">${escHtml(h.textContent.trim().slice(0, 50))}</span>
                   </button>`;
         }).join('')}
       </div>
@@ -167,17 +171,10 @@ const ProgressTracker = {
   },
 
   initPanel(chapterId) {
-    // Wait for iframe to load then render
     const frame = document.getElementById('chapter-frame');
     if (!frame) return;
-    const orig = frame.onload;
-    frame.onload = (e) => {
-      if (orig) orig.call(frame, e);
+    frame.addEventListener('load', () => {
       setTimeout(() => this._renderPanel(chapterId), 300);
-    };
-    // If already loaded
-    if (frame.contentDocument && frame.contentDocument.readyState === 'complete') {
-      setTimeout(() => this._renderPanel(chapterId), 300);
-    }
+    }, { once: true });
   },
 };
