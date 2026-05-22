@@ -80,7 +80,7 @@ function cacheSet(key, val) {
   try { localStorage.setItem(key, JSON.stringify(val)); } catch {}
 }
 function escHtml(s) {
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 }
 
 // ── PROGRESS TRACKER ──
@@ -301,13 +301,18 @@ const ReviewSystem = {
         const el = frame.contentDocument.getElementById(item.sectionId);
         if (el) title = el.textContent.trim().slice(0, 60);
       }
+      const intervals = { easy: [7, 14, 30, 60], ok: [3, 7, 14, 30], hard: [1, 1, 3, 7] };
+      const idx = Math.min(item.reviewCount || 0, 3);
+      const dEasy = intervals.easy[idx];
+      const dOk   = intervals.ok[idx];
+      const dHard = intervals.hard[idx];
       return `
         <div class="lms-review-item">
           <div class="lms-review-item-title">${escHtml(title)}</div>
           <div class="lms-review-btns">
-            <button class="easy"  onclick="ReviewSystem.markReviewed('${escHtml(item.chapterId)}','${escHtml(item.sectionId)}','easy')">Dễ (7d)</button>
-            <button class="ok"    onclick="ReviewSystem.markReviewed('${escHtml(item.chapterId)}','${escHtml(item.sectionId)}','ok')">OK (3d)</button>
-            <button class="hard"  onclick="ReviewSystem.markReviewed('${escHtml(item.chapterId)}','${escHtml(item.sectionId)}','hard')">Khó (1d)</button>
+            <button class="easy"  onclick="ReviewSystem.markReviewed('${escHtml(item.chapterId)}','${escHtml(item.sectionId)}','easy')">Dễ (${dEasy}d)</button>
+            <button class="ok"    onclick="ReviewSystem.markReviewed('${escHtml(item.chapterId)}','${escHtml(item.sectionId)}','ok')">OK (${dOk}d)</button>
+            <button class="hard"  onclick="ReviewSystem.markReviewed('${escHtml(item.chapterId)}','${escHtml(item.sectionId)}','hard')">Khó (${dHard}d)</button>
           </div>
         </div>`;
     }).join('');
