@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chương 11 – QUẢN LÝ RỦI RO DỰ ÁN | PMBOK® Guide Lần 6</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a3;
+    --cream: #fdf8f0;
+    --text: #2c2c2c;
+    --text-light: #5a5a5a;
+    --border: #d4c89a;
+    --accent: #8b1a1a;
+    --sidebar-w: 260px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Merriweather', Georgia, serif;
+    background: var(--cream);
+    color: var(--text);
+    display: flex;
+    min-height: 100vh;
+  }
+
+  #sidebar {
+    width: var(--sidebar-w);
+    background: var(--navy);
+    color: #ccd4e8;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    overflow-y: auto;
+    z-index: 100;
+    padding: 0 0 2rem;
+    border-right: 3px solid var(--gold);
+  }
+  #sidebar-header {
+    background: linear-gradient(135deg, #0f1d3a 0%, #1a2744 100%);
+    padding: 1.5rem 1.2rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  #sidebar-header .book-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  #sidebar-header h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+  }
+  #sidebar-header .edition {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    color: var(--gold-light);
+    font-style: italic;
+  }
+  #sidebar nav { padding: 0.8rem 0; }
+  #sidebar nav a {
+    display: block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    color: #aab8d0;
+    text-decoration: none;
+    padding: 0.45rem 1.2rem;
+    line-height: 1.4;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+  }
+  #sidebar nav a:hover, #sidebar nav a.active {
+    color: #fff;
+    background: rgba(201,168,76,0.12);
+    border-left-color: var(--gold);
+  }
+  #sidebar nav .section-group { margin-top: 0.4rem; }
+  #sidebar nav .group-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 0.8rem 1.2rem 0.3rem;
+    opacity: 0.85;
+  }
+
+  #main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    max-width: 900px;
+    padding: 0 3rem 5rem;
+  }
+
+  .chapter-hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #2a3a6a 100%);
+    color: white;
+    padding: 3rem 3rem 2.5rem;
+    margin: 0 -3rem 3rem;
+    border-bottom: 4px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-hero::before {
+    content: attr(data-chnum);
+    position: absolute;
+    right: 2rem; top: 50%;
+    transform: translateY(-50%);
+    font-size: 10rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.05);
+    font-family: 'Merriweather', serif;
+    line-height: 1;
+  }
+  .chapter-hero .ch-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .chapter-hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+  }
+  .chapter-hero .ch-en {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+    font-style: italic;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  h3 {
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin: 2rem 0 0.7rem;
+    padding-left: 0.8rem;
+    border-left: 4px solid var(--gold);
+  }
+  h4 {
+    font-size: 1rem;
+    color: var(--accent);
+    margin: 1.5rem 0 0.5rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  h5 {
+    font-size: 0.95rem;
+    color: var(--navy);
+    margin: 1.2rem 0 0.5rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+  }
+  p {
+    font-size: 0.97rem;
+    line-height: 1.85;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  ul.pmbok {
+    list-style: none;
+    margin: 0.5rem 0 1rem 0;
+    padding: 0;
+  }
+  ul.pmbok li {
+    position: relative;
+    padding: 0.3rem 0 0.3rem 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--text);
+  }
+  ul.pmbok li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.7rem;
+    top: 0.5rem;
+  }
+  ul.pmbok.check li::before { content: '☑'; color: #2d7a2d; font-size: 0.9rem; top: 0.35rem; }
+  ul.pmbok.dash li::before  { content: '■'; color: var(--navy); font-size: 0.6rem; top: 0.5rem; }
+
+  .figure-wrap {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1.2rem;
+    background: #f8f5ee;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .figure-wrap img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  }
+  .figure-caption {
+    margin-top: 0.75rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.83rem;
+    color: var(--text-light);
+    font-style: italic;
+    text-align: center;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.84rem;
+  }
+  table th {
+    background: var(--navy);
+    color: white;
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+  table td {
+    padding: 0.55rem 0.8rem;
+    border: 1px solid #ddd;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  table tr:nth-child(even) td { background: #f9f6ef; }
+
+  @media(max-width:900px){
+    #sidebar { display: none; }
+    #main { margin-left: 0; padding: 0 1.2rem 4rem; }
+    .chapter-hero { margin: 0 -1.2rem 2rem; padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<aside id="sidebar">
+  <div id="sidebar-header">
+    <div class="book-label">PMBOK® Guide</div>
+    <h2>Hướng Dẫn Quản Lý Dự Án</h2>
+    <div class="edition">Lần xuất bản thứ 6 · Tiếng Việt</div>
+  </div>
+  <nav>
+    <div class="section-group">
+    <div class="group-label">Chương 11 · Risk Management</div>
+    <a href="#s11-1">11.1 Lập KH Quản Lý Rủi Ro</a>
+    <a href="#s11-2">11.2 Nhận Diện Rủi Ro</a>
+    <a href="#s11-3">11.3 Phân Tích RR Định Tính</a>
+    <a href="#s11-4">11.4 Phân Tích RR Định Lượng</a>
+    <a href="#s11-5">11.5 Lập KH Phản Hồi Rủi Ro</a>
+    <a href="#s11-6">11.6 Thực Thi Phản Hồi RR</a>
+    <a href="#s11-7">11.7 Giám Sát Rủi Ro</a>
+    </div>
+  </nav>
+</aside>
+
+<main id="main">
+
+  <div class="chapter-hero" data-chnum="11">
+    <div class="ch-label">Chương 11</div>
+    <h1>QUẢN LÝ RỦI RO DỰ ÁN</h1>
+    <div class="ch-en">Project Risk Management</div>
+  </div>
+
+<h2>PROJECT RISK MANAGEMENT (QUẢN LÝ RỦI RO DỰ ÁN)</h2>
+<p>Quản lý Rủi ro Dự án bao gồm các quy trình tiến hành lập kế hoạch quản lý rủi ro, nhận diện, phân tích, lập kế hoạch phản hồi, thực thi phản hồi và giám sát rủi ro trên một dự án. Mục tiêu của quản lý rủi ro dự án là làm tăng xác suất và/hoặc tác động của các rủi ro tích cực, đồng thời làm giảm xác suất và/hoặc tác động của các rủi ro tiêu cực, nhằm tối ưu hóa cơ hội thành công của dự án.</p>
+
+<p>Các quy trình Quản lý Rủi ro Dự án bao gồm:</p>
+<ul class="pmbok">
+<li><strong>11.1 Lập kế hoạch Quản lý Rủi ro (Plan Risk Management)</strong>—Quy trình định nghĩa cách thức tiến hành các hoạt động quản lý rủi ro cho một dự án.</li>
+<li><strong>11.2 Nhận diện Rủi ro (Identify Risks)</strong>—Quy trình nhận diện các rủi ro dự án riêng lẻ cũng như các nguồn gốc rủi ro tổng thể của dự án, và ghi chép lại các đặc điểm của chúng.</li>
+<li><strong>11.3 Thực hiện Phân tích Rủi ro Định tính (Perform Qualitative Risk Analysis)</strong>—Quy trình ưu tiên các rủi ro dự án riêng lẻ để phân tích hoặc hành động thêm bằng cách đánh giá xác suất xảy ra và tác động của chúng, cũng như các đặc điểm khác.</li>
+<li><strong>11.4 Thực hiện Phân tích Rủi ro Định lượng (Perform Quantitative Risk Analysis)</strong>—Quy trình phân tích bằng số liệu về tác động kết hợp của các rủi ro dự án riêng lẻ đã được nhận diện và các nguồn không chắc chắn khác lên các mục tiêu tổng thể của dự án.</li>
+<li><strong>11.5 Lập kế hoạch Phản hồi Rủi ro (Plan Risk Responses)</strong>—Quy trình phát triển các lựa chọn, lựa chọn chiến lược và thống nhất các hành động để giải quyết mức độ rủi ro tổng thể của dự án, cũng như để xử lý các rủi ro dự án riêng lẻ.</li>
+<li><strong>11.6 Thực thi Phản hồi Rủi ro (Implement Risk Responses)</strong>—Quy trình thực thi các kế hoạch phản hồi rủi ro đã được thống nhất.</li>
+<li><strong>11.7 Giám sát Rủi ro (Monitor Risks)</strong>—Quy trình giám sát việc thực thi các kế hoạch phản hồi rủi ro đã thống nhất, theo dõi các rủi ro đã nhận diện, nhận diện và phân tích các rủi ro mới, và đánh giá hiệu quả của quy trình rủi ro trong suốt dự án.</li>
+</ul>
+
+<p>Hình 11-1 cung cấp cái nhìn tổng quan về các quy trình Quản lý Rủi ro Dự án. Các quy trình Quản lý Rủi ro Dự án được trình bày như các quy trình rời rạc với các giao diện được xác định, tuy nhiên trong thực tế, chúng đan xen và tương tác theo những cách không thể trình bày chi tiết hoàn toàn trong tài liệu PMBOK® Guide này.</p>
+
+<div class="table-wrap">
+<table>
+  <tr><th colspan="3">11.1 Plan Risk Management (Lập kế hoạch Quản lý Rủi ro)</th></tr>
+  <tr>
+    <td>
+      <strong>.1 Đầu vào (Inputs)</strong><br>
+      1. Hiến chương dự án (Project charter)<br>
+      2. Kế hoạch quản lý dự án (Project management plan)<br>
+      3. Tài liệu dự án (Project documents)<br>
+      4. Yếu tố môi trường doanh nghiệp (Enterprise environmental factors)<br>
+      5. Tài sản quy trình tổ chức (Organizational process assets)
+    </td>
+    <td>
+      <strong>.2 Công cụ & Kỹ thuật (Tools & Techniques)</strong><br>
+      1. Đánh giá của chuyên gia (Expert judgment)<br>
+      2. Phân tích dữ liệu (Data analysis)<br>
+      3. Các cuộc họp (Meetings)
+    </td>
+    <td>
+      <strong>.3 Đầu ra (Outputs)</strong><br>
+      1. Kế hoạch quản lý rủi ro (Risk management plan)
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr><th colspan="3">11.2 Identify Risks (Nhận diện Rủi ro)</th></tr>
+  <tr>
+    <td>
+      <strong>.1 Đầu vào (Inputs)</strong><br>
+      1. Kế hoạch quản lý dự án (Project management plan)<br>
+      2. Tài liệu dự án (Project documents)<br>
+      3. Thỏa thuận (Agreements)<br>
+      4. Tài liệu mua sắm (Procurement documentation)<br>
+      5. Yếu tố môi trường doanh nghiệp (Enterprise environmental factors)<br>
+      6. Tài sản quy trình tổ chức (Organizational process assets)
+    </td>
+    <td>
+      <strong>.2 Công cụ & Kỹ thuật (Tools & Techniques)</strong><br>
+      1. Đánh giá của chuyên gia (Expert judgment)<br>
+      2. Thu thập dữ liệu (Data gathering)<br>
+      3. Phân tích dữ liệu (Data analysis)<br>
+      4. Kỹ năng liên cá nhân và nhóm (Interpersonal and team skills)<br>
+      5. Danh sách gợi ý (Prompt lists)<br>
+      6. Các cuộc họp (Meetings)
+    </td>
+    <td>
+      <strong>.3 Đầu ra (Outputs)</strong><br>
+      1. Sổ đăng ký rủi ro (Risk register)<br>
+      2. Báo cáo rủi ro (Risk report)<br>
+      3. Cập nhật tài liệu dự án (Project documents updates)
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr><th colspan="3">11.3 Perform Qualitative Risk Analysis (Thực hiện Phân tích Rủi ro Định tính)</th></tr>
+  <tr>
+    <td>
+      <strong>.1 Đầu vào (Inputs)</strong><br>
+      1. Kế hoạch quản lý dự án (Project management plan)<br>
+      2. Tài liệu dự án (Project documents)<br>
+      3. Yếu tố môi trường doanh nghiệp (Enterprise environmental factors)<br>
+      4. Tài sản quy trình tổ chức (Organizational process assets)
+    </td>
+    <td>
+      <strong>.2 Công cụ & Kỹ thuật (Tools & Techniques)</strong><br>
+      1. Đánh giá của chuyên gia (Expert judgment)<br>
+      2. Thu thập dữ liệu (Data gathering)<br>
+      3. Phân tích dữ liệu (Data analysis)<br>
+      4. Kỹ năng liên cá nhân và nhóm (Interpersonal and team skills)<br>
+      5. Phân loại rủi ro (Risk categorization)<br>
+      6. Biểu diễn dữ liệu (Data representation)<br>
+      7. Các cuộc họp (Meetings)
+    </td>
+    <td>
+      <strong>.3 Đầu ra (Outputs)</strong><br>
+      1. Cập nhật tài liệu dự án (Project documents updates)
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr><th colspan="3">11.4 Perform Quantitative Risk Analysis (Thực hiện Phân tích Rủi ro Định lượng)</th></tr>
+  <tr>
+    <td>
+      <strong>.1 Đầu vào (Inputs)</strong><br>
+      1. Kế hoạch quản lý dự án (Project management plan)<br>
+      2. Tài liệu dự án (Project documents)<br>
+      3. Yếu tố môi trường doanh nghiệp (Enterprise environmental factors)<br>
+      4. Tài sản quy trình tổ chức (Organizational process assets)
+    </td>
+    <td>
+      <strong>.2 Công cụ & Kỹ thuật (Tools & Techniques)</strong><br>
+      1. Đánh giá của chuyên gia (Expert judgment)<br>
+      2. Thu thập dữ liệu (Data gathering)<br>
+      3. Kỹ năng liên cá nhân và nhóm (Interpersonal and team skills)<br>
+      4. Biểu diễn sự không chắc chắn (Representations of uncertainty)<br>
+      5. Phân tích dữ liệu (Data analysis)
+    </td>
+    <td>
+      <strong>.3 Đầu ra (Outputs)</strong><br>
+      1. Cập nhật tài liệu dự án (Project documents updates)
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr><th colspan="3">11.5 Plan Risk Responses (Lập kế hoạch Phản hồi Rủi ro)</th></tr>
+  <tr>
+    <td>
+      <strong>.1 Đầu vào (Inputs)</strong><br>
+      1. Kế hoạch quản lý dự án (Project management plan)<br>
+      2. Tài liệu dự án (Project documents)<br>
+      3. Yếu tố môi trường doanh nghiệp (EEFs)<br>
+      4. Tài sản quy trình tổ chức (OPAs)
+    </td>
+    <td>
+      <strong>.2 Công cụ & Kỹ thuật (Tools & Techniques)</strong><br>
+      1. Đánh giá của chuyên gia (Expert judgment)<br>
+      2. Thu thập dữ liệu (Data gathering)<br>
+      3. Kỹ năng liên cá nhân và nhóm (Interpersonal and team skills)<br>
+      4. Các chiến lược cho mối đe dọa (Strategies for threats)<br>
+      5. Các chiến lược cho cơ hội (Strategies for opportunities)<br>
+      6. Các chiến lược phản hồi dự phòng (Contingent response strategies)<br>
+      7. Các chiến lược cho rủi ro tổng thể (Strategies for overall project risk)<br>
+      8. Phân tích dữ liệu (Data analysis)<br>
+      9. Ra quyết định (Decision making)
+    </td>
+    <td>
+      <strong>.3 Đầu ra (Outputs)</strong><br>
+      1. Yêu cầu thay đổi (Change requests)<br>
+      2. Cập nhật kế hoạch quản lý dự án (Project management plan updates)<br>
+      3. Cập nhật tài liệu dự án (Project documents updates)
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr><th colspan="3">11.6 Implement Risk Responses (Thực thi Phản hồi Rủi ro)</th></tr>
+  <tr>
+    <td>
+      <strong>.1 Đầu vào (Inputs)</strong><br>
+      1. Kế hoạch quản lý dự án (Project management plan)<br>
+      2. Tài liệu dự án (Project documents)<br>
+      3. Tài sản quy trình tổ chức (OPAs)
+    </td>
+    <td>
+      <strong>.2 Công cụ & Kỹ thuật (Tools & Techniques)</strong><br>
+      1. Đánh giá của chuyên gia (Expert judgment)<br>
+      2. Kỹ năng liên cá nhân và nhóm (Interpersonal and team skills)<br>
+      3. Hệ thống PMIS (Project management information system)
+    </td>
+    <td>
+      <strong>.3 Đầu ra (Outputs)</strong><br>
+      1. Yêu cầu thay đổi (Change requests)<br>
+      2. Cập nhật tài liệu dự án (Project documents updates)
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr><th colspan="3">11.7 Monitor Risks (Giám sát Rủi ro)</th></tr>
+  <tr>
+    <td>
+      <strong>.1 Đầu vào (Inputs)</strong><br>
+      1. Kế hoạch quản lý dự án (Project management plan)<br>
+      2. Tài liệu dự án (Project documents)<br>
+      3. Dữ liệu hiệu suất công việc (Work performance data)<br>
+      4. Báo cáo hiệu suất công việc (Work performance reports)
+    </td>
+    <td>
+      <strong>.2 Công cụ & Kỹ thuật (Tools & Techniques)</strong><br>
+      1. Phân tích dữ liệu (Data analysis)<br>
+      2. Kiểm toán (Audits)<br>
+      3. Các cuộc họp (Meetings)
+    </td>
+    <td>
+      <strong>.3 Đầu ra (Outputs)</strong><br>
+      1. Thông tin hiệu suất công việc (Work performance info)<br>
+      2. Yêu cầu thay đổi (Change requests)<br>
+      3. Cập nhật kế hoạch quản lý dự án (Project management plan updates)<br>
+      4. Cập nhật tài liệu dự án (Project documents updates)<br>
+      5. Cập nhật tài sản quy trình tổ chức (OPAs updates)
+    </td>
+  </tr>
+</table>
+</div>
+<p class="figure-caption">Hình 11-1. Tổng quan Quản lý Rủi ro Dự án</p>
+
+
+<h5>CÁC KHÁI NIỆM TRỌNG TÂM TRONG QUẢN LÝ RỦI RO DỰ ÁN (KEY CONCEPTS FOR PROJECT RISK MANAGEMENT)</h5>
+<p>Tất cả các dự án đều có rủi ro vì chúng là những nỗ lực độc nhất với các mức độ phức tạp khác nhau nhằm mục đích mang lại các lợi ích. Chúng thực hiện điều này trong một bối cảnh có nhiều ràng buộc và giả định, đồng thời phải đáp ứng các kỳ vọng của các bên liên quan, những người có thể có những kỳ vọng xung đột và luôn thay đổi. Các tổ chức nên chọn cách chấp nhận rủi ro dự án một cách có kiểm soát và có chủ ý để tạo ra giá trị trong khi vẫn cân bằng được giữa rủi ro và phần thưởng.</p>
+
+<p>Quản lý Rủi ro Dự án nhằm mục đích nhận diện và quản lý các rủi ro không được giải quyết bởi các quy trình quản lý dự án khác. Khi không được quản lý, các rủi ro này có khả năng khiến dự án đi chệch khỏi kế hoạch và thất bại trong việc đạt được các mục tiêu đã xác định của dự án. Do đó, tính hiệu quả của Quản lý Rủi ro Dự án có liên quan trực tiếp đến sự thành công của dự án.</p>
+
+<p>Rủi ro tồn tại ở hai cấp độ trong mỗi dự án. Mỗi dự án chứa các rủi ro cá nhân (individual risks) có thể ảnh hưởng đến việc đạt được các mục tiêu của dự án. Ngoài ra, điều quan trọng là phải xem xét rủi ro tổng thể của dự án (overall project risk), phát sinh từ sự kết hợp của các rủi ro dự án riêng lẻ và các nguồn không chắc chắn khác. Các quy trình Quản lý Rủi ro Dự án giải quyết cả hai cấp độ rủi ro này trong các dự án, và chúng được định nghĩa như sau:</p>
+<ul class="pmbok">
+<li><strong>Rủi ro dự án riêng lẻ (Individual project risk)</strong> là một sự kiện hoặc điều kiện không chắc chắn mà, nếu nó xảy ra, sẽ có tác động tích cực hoặc tiêu cực đến một hoặc nhiều mục tiêu của dự án.</li>
+<li><strong>Rủi ro tổng thể dự án (Overall project risk)</strong> là tác động của sự không chắc chắn lên toàn bộ dự án, phát sinh từ mọi nguồn không chắc chắn bao gồm cả các rủi ro riêng lẻ, đại diện cho mức độ phơi nhiễm (exposure) của các bên liên quan trước những tác động của các biến động trong kết quả dự án, cả tích cực lẫn tiêu cực.</li>
+</ul>
+
+<p>Các rủi ro dự án riêng lẻ có thể có tác động tích cực hoặc tiêu cực đến các mục tiêu của dự án nếu chúng xảy ra. Quản lý Rủi ro Dự án nhằm mục đích khai thác hoặc tăng cường các rủi ro tích cực (cơ hội) trong khi né tránh hoặc giảm thiểu các rủi ro tiêu cực (mối đe dọa). Các mối đe dọa không được quản lý có thể dẫn đến các vấn đề hoặc sự cố như chậm trễ, vượt chi phí, hiệu suất kém, hoặc mất uy tín. Các cơ hội nếu được nắm bắt có thể dẫn đến các lợi ích như giảm thời gian và chi phí, cải thiện hiệu suất, hoặc nâng cao danh tiếng.</p>
+
+<p>Rủi ro tổng thể dự án cũng có thể là tích cực hoặc tiêu cực. Việc quản lý rủi ro tổng thể của dự án nhằm mục đích giữ mức độ phơi nhiễm rủi ro của dự án nằm trong một phạm vi có thể chấp nhận được bằng cách giảm bớt các yếu tố thúc đẩy sự biến động tiêu cực, thúc đẩy các yếu tố tạo ra biến động tích cực, và tối đa hóa xác suất đạt được các mục tiêu tổng thể của dự án.</p>
+
+<p>Rủi ro sẽ tiếp tục xuất hiện trong suốt vòng đời của dự án, vì vậy các quy trình Quản lý Rủi ro Dự án nên được tiến hành lặp đi lặp lại. Rủi ro bước đầu được giải quyết trong giai đoạn lập kế hoạch dự án bằng cách định hình chiến lược dự án. Rủi ro cũng nên được giám sát và quản lý khi dự án tiến triển để đảm bảo rằng dự án luôn đi đúng hướng và các rủi ro mới phát sinh được giải quyết kịp thời.</p>
+
+<p>Để quản lý rủi ro một cách hiệu quả trên một dự án cụ thể, nhóm dự án cần biết mức độ phơi nhiễm rủi ro nào là có thể chấp nhận được để theo đuổi các mục tiêu của dự án. Điều này được định nghĩa bởi các ngưỡng rủi ro (risk thresholds) có thể đo lường được phản ánh khẩu vị rủi ro (risk appetite) của tổ chức và các bên liên quan của dự án. Các ngưỡng rủi ro thể hiện mức độ biến động có thể chấp nhận được xung quanh một mục tiêu dự án. Chúng được tuyên bố rõ ràng, được truyền đạt tới nhóm dự án và được phản ánh trong các định nghĩa về mức độ tác động của rủi ro đối với dự án.</p>
+
+<h5>CÁC XU HƯỚNG VÀ THỰC TIỄN MỚI NỔI TRONG QUẢN LÝ RỦI RO DỰ ÁN (TRENDS AND EMERGING PRACTICES IN PROJECT RISK MANAGEMENT)</h5>
+<p>Trọng tâm của việc quản lý rủi ro dự án đang được mở rộng để đảm bảo rằng tất cả các loại rủi ro đều được xem xét, và các rủi ro dự án được hiểu trong một bối cảnh rộng lớn hơn. Các xu hướng và thực tiễn mới nổi đối với Quản lý Rủi ro Dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Rủi ro không phải là sự kiện (Non-event risks).</strong> Hầu hết các dự án chỉ tập trung vào các rủi ro là các sự kiện không chắc chắn trong tương lai có thể xảy ra hoặc không. Các ví dụ về rủi ro dựa trên sự kiện bao gồm: một nhà cung cấp chính có thể phá sản trong quá trình dự án, khách hàng có thể thay đổi yêu cầu sau khi thiết kế đã hoàn tất, hoặc một nhà thầu phụ có thể đề xuất các cải tiến đối với các quy trình vận hành tiêu chuẩn.</li>
+</ul>
+<p>Ngày càng có sự thừa nhận rằng các rủi ro không phải là sự kiện cũng cần được nhận diện và quản lý. Có hai loại rủi ro không phải sự kiện chính:</p>
+<ul class="pmbok dash">
+<li><strong>Rủi ro biến động (Variability risk).</strong> Sự không chắc chắn tồn tại về một số đặc điểm chính của một sự kiện, hoạt động, hoặc quyết định đã được lên kế hoạch. Các ví dụ về rủi ro biến động bao gồm: năng suất có thể cao hơn hoặc thấp hơn mục tiêu, số lượng lỗi phát hiện trong quá trình kiểm thử có thể cao hơn hoặc thấp hơn dự kiến, hoặc các điều kiện thời tiết trái mùa có thể xảy ra trong giai đoạn thi công.</li>
+<li><strong>Rủi ro mơ hồ (Ambiguity risk).</strong> Sự không chắc chắn tồn tại về những gì có thể xảy ra trong tương lai. Các lĩnh vực của dự án nơi kiến thức không hoàn hảo có thể ảnh hưởng đến khả năng đạt được mục tiêu của dự án bao gồm: các yếu tố về yêu cầu hoặc giải pháp kỹ thuật, các bước phát triển trong tương lai của khuôn khổ pháp lý, hoặc tính phức tạp hệ thống vốn có trong dự án.</li>
+</ul>
+<p>Rủi ro biến động có thể được giải quyết bằng cách sử dụng phân tích Monte Carlo, với phạm vi biến thiên được phản ánh trong các phân phối xác suất, sau đó là các hành động nhằm giảm thiểu sự lan rộng của các kết quả có thể xảy ra. Rủi ro mơ hồ được quản lý bằng cách định nghĩa những khu vực có sự thiếu hụt về kiến thức hoặc hiểu biết, sau đó lấp đầy khoảng trống đó bằng cách thu thập ý kiến chuyên gia bên ngoài hoặc so sánh chuẩn (benchmarking) với các thực tiễn tốt nhất. Sự mơ hồ cũng được giải quyết thông qua phát triển tăng dần, tạo nguyên mẫu, hoặc mô phỏng.</p>
+<ul class="pmbok">
+<li><strong>Khả năng phục hồi của dự án (Project resilience).</strong> Sự tồn tại của các rủi ro phát sinh (emergent risk) đang trở nên rõ ràng, cùng với nhận thức ngày càng tăng về cái gọi là "những điều chưa biết mà không thể biết" (unknowable-unknowns). Đây là những rủi ro chỉ có thể được nhận ra sau khi chúng đã xảy ra. Rủi ro phát sinh có thể được giải quyết thông qua việc phát triển khả năng phục hồi của dự án. Điều này yêu cầu mỗi dự án phải có:
+  <ul class="pmbok dash">
+    <li>Mức độ dự phòng ngân sách và tiến độ hợp lý dành cho các rủi ro phát sinh, bổ sung thêm vào một ngân sách rủi ro cụ thể dành cho các rủi ro đã biết;</li>
+    <li>Các quy trình dự án linh hoạt có thể đối phó với rủi ro phát sinh trong khi vẫn duy trì định hướng tổng thể hướng tới các mục tiêu của dự án, bao gồm cả công tác quản lý thay đổi vững chắc;</li>
+    <li>Nhóm dự án được trao quyền có các mục tiêu rõ ràng và được tin tưởng để hoàn thành công việc trong giới hạn đã được thống nhất;</li>
+    <li>Đánh giá thường xuyên các dấu hiệu cảnh báo sớm để nhận diện rủi ro phát sinh càng sớm càng tốt; và</li>
+    <li>Đầu vào rõ ràng từ các bên liên quan để làm rõ các lĩnh vực mà phạm vi hoặc chiến lược dự án có thể được điều chỉnh để phản hồi lại rủi ro phát sinh.</li>
+  </ul>
+</li>
+<li><strong>Quản lý rủi ro tích hợp (Integrated risk management).</strong> Các dự án tồn tại trong bối cảnh của một tổ chức, và chúng có thể là một phần của một chương trình hoặc một danh mục đầu tư. Rủi ro tồn tại ở mỗi cấp độ này, và các rủi ro nên được sở hữu và quản lý ở cấp độ phù hợp. Một số rủi ro được nhận diện ở các cấp cao hơn sẽ được giao phó cho nhóm dự án quản lý, và một số rủi ro dự án có thể được leo thang lên các cấp cao hơn nếu chúng được quản lý tốt nhất ở bên ngoài dự án. Một cách tiếp cận phối hợp đối với việc quản lý rủi ro trên toàn doanh nghiệp (enterprise-wide risk management) sẽ đảm bảo sự liên kết và tính nhất quán trong cách rủi ro được quản lý trên mọi cấp độ. Điều này xây dựng hiệu quả rủi ro vào trong cấu trúc của các chương trình và danh mục đầu tư, mang lại giá trị tổng thể lớn nhất cho một mức độ phơi nhiễm rủi ro nhất định.</li>
+</ul>
+
+<h5>CÁC CÂN NHẮC VỀ MAY ĐO (TAILORING CONSIDERATIONS)</h5>
+<p>Bởi vì mỗi dự án là duy nhất, cần thiết phải điều chỉnh (may đo) cách thức áp dụng các quy trình Quản lý Rủi ro Dự án. Cân nhắc điều chỉnh bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li><strong>Quy mô dự án (Project size).</strong> Quy mô của dự án xét về mặt ngân sách, thời lượng, phạm vi, hoặc quy mô nhóm có đòi hỏi một phương pháp tiếp cận chi tiết hơn đối với việc quản lý rủi ro hay không? Hay nó đủ nhỏ để có thể biện minh cho một quy trình rủi ro đơn giản hóa?</li>
+<li><strong>Độ phức tạp của dự án (Project complexity).</strong> Có phải một phương pháp rủi ro mạnh mẽ đang bị đòi hỏi bởi mức độ đổi mới cao, công nghệ mới, các thỏa thuận thương mại, các giao diện, hoặc các phụ thuộc bên ngoài làm tăng độ phức tạp của dự án hay không? Hay dự án đủ đơn giản để một quy trình rủi ro được rút gọn là đủ?</li>
+<li><strong>Tầm quan trọng của dự án (Project importance).</strong> Dự án quan trọng như thế nào về mặt chiến lược? Có phải mức độ rủi ro tăng lên đối với dự án này vì nó nhằm mục đích tạo ra các cơ hội đột phá, giải quyết các rào cản đáng kể đối với hiệu suất của tổ chức, hoặc liên quan đến đổi mới sản phẩm lớn?</li>
+<li><strong>Phương pháp phát triển (Development approach).</strong> Đây có phải là một dự án theo mô hình thác nước (waterfall), nơi các quy trình rủi ro có thể được tuân theo một cách tuần tự và lặp lại, hay dự án theo phương pháp agile nơi rủi ro được giải quyết ở giai đoạn đầu của mỗi vòng lặp (iteration) cũng như trong suốt quá trình thực thi nó?</li>
+</ul>
+<p>Việc điều chỉnh các quy trình Quản lý Rủi ro Dự án để đáp ứng các cân nhắc này là một phần của quy trình Lập Kế hoạch Quản lý Rủi ro, và kết quả của các quyết định may đo này được ghi lại trong kế hoạch quản lý rủi ro.</p>
+
+<h5>CÁC YẾU TỐ XEM XÉT CHO MÔI TRƯỜNG AGILE/THÍCH ỨNG (CONSIDERATIONS FOR AGILE/ADAPTIVE ENVIRONMENTS)</h5>
+<p>Theo định nghĩa, các môi trường có tính biến động cao sẽ phải chịu nhiều rủi ro và sự không chắc chắn hơn. Để giải quyết vấn đề này, các dự án được quản lý bằng phương pháp thích ứng (adaptive approaches) sẽ tận dụng các đánh giá thường xuyên đối với các sản phẩm công việc tăng dần (incremental work products) và các nhóm dự án đa chức năng để tăng tốc độ chia sẻ kiến thức và đảm bảo rằng rủi ro được hiểu rõ và quản lý. Rủi ro được xem xét khi chọn nội dung của mỗi vòng lặp (iteration), và các rủi ro cũng sẽ được nhận diện, phân tích, và quản lý trong suốt mỗi vòng lặp.</p>
+<p>Ngoài ra, các yêu cầu được lưu giữ dưới dạng một tài liệu sống (living document) được cập nhật thường xuyên, và công việc có thể được ưu tiên lại khi dự án tiến triển, dựa trên sự hiểu biết được cải thiện về mức độ phơi nhiễm rủi ro hiện tại.</p>
+
+<hr>
+
+<h3 id="s11-1">11.1 LẬP KẾ HOẠCH QUẢN LÝ RỦI RO (PLAN RISK MANAGEMENT)</h3>
+<p>Lập Kế hoạch Quản lý Rủi ro là quy trình định nghĩa cách thức tiến hành các hoạt động quản lý rủi ro cho một dự án. Lợi ích chính của quá trình này là nó đảm bảo rằng mức độ, loại hình, và sự hiện diện của việc quản lý rủi ro tương xứng với cả các rủi ro lẫn tầm quan trọng của dự án đối với tổ chức và các bên liên quan khác. Quá trình này được thực hiện một lần hoặc ở các điểm xác định trước trong dự án. Đầu vào, công cụ và kỹ thuật, và đầu ra của quá trình này được miêu tả trong Hình 11-2. Hình 11-3 phác họa sơ đồ luồng dữ liệu cho quy trình này.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//4f239a1a-4437-426b-911d-5594f2307f67/markdown_4/imgs/img_in_image_box_202_363_1027_637.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A00Z%2F-1%2F%2F0a4b9ece1dd7595d683ec1097f32feb310015bbd62cf81f04dcadcad38b3b579" alt="Image" width="67%" /></div></div>
+<p class="figure-caption">Hình 11-2. Lập kế hoạch Quản lý Rủi ro: Đầu vào, Công cụ & Kỹ thuật, và Đầu ra</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//ea5334f8-2b73-4b78-b9ba-e41e2469637d/markdown_0/imgs/img_in_image_box_197_147_1027_794.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A23%3A58Z%2F-1%2F%2F4e9054a976d41e95ecb19371d5bad47440e7c5803cdfd71c865b9c6398a4d3ad" alt="Image" width="67%" /></div></div>
+<p class="figure-caption">Hình 11-3. Lập kế hoạch Quản lý Rủi ro: Sơ đồ luồng dữ liệu</p>
+
+<p>Quy trình Lập kế hoạch Quản lý Rủi ro nên bắt đầu khi một dự án được hình thành và nên được hoàn thành từ sớm trong dự án. Có thể cần phải xem xét lại quy trình này ở giai đoạn sau của vòng đời dự án, ví dụ như tại thời điểm chuyển đổi giai đoạn lớn, hoặc nếu phạm vi dự án thay đổi đáng kể, hoặc nếu một đánh giá sau đó về tính hiệu quả của quản lý rủi ro xác định rằng quy trình Quản lý Rủi ro Dự án cần được sửa đổi.</p>
+
+<h4>11.1.1 LẬP KẾ HOẠCH QUẢN LÝ RỦI RO: ĐẦU VÀO (INPUTS)</h4>
+
+<h5>11.1.1.1 HIẾN CHƯƠNG DỰ ÁN (PROJECT CHARTER)</h5>
+<p>Mô tả trong Phần 4.1.3.1. Hiến chương dự án ghi chép lại các mô tả và ranh giới dự án cấp cao, các yêu cầu cấp cao, và các rủi ro.</p>
+
+<h5>11.1.1.2 KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN)</h5>
+<p>Mô tả trong Phần 4.2.3.1. Khi lập kế hoạch Quản lý Rủi ro Dự án, tất cả các kế hoạch quản lý phụ đã được phê duyệt cần được đưa vào xem xét để làm cho kế hoạch quản lý rủi ro nhất quán với chúng. Phương pháp luận (methodology) được phác thảo trong các thành phần khác của kế hoạch quản lý dự án có thể ảnh hưởng đến quá trình Lập Kế hoạch Quản lý Rủi ro.</p>
+
+<h5>11.1.1.3 TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS)</h5>
+<p>Tài liệu dự án có thể được coi là đầu vào cho quy trình này bao gồm nhưng không giới hạn ở sổ đăng ký các bên liên quan (stakeholder register) như được mô tả trong Phần 13.1.3.1. Sổ đăng ký các bên liên quan chứa thông tin chi tiết về các bên liên quan của dự án và cung cấp cái nhìn tổng quan về vai trò dự án của họ cũng như thái độ của họ đối với rủi ro trên dự án này. Điều này hữu ích trong việc xác định vai trò và trách nhiệm trong việc quản lý rủi ro trên dự án, cũng như trong việc thiết lập các ngưỡng rủi ro cho dự án.</p>
+
+<h5>11.1.1.4 YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP (ENTERPRISE ENVIRONMENTAL FACTORS)</h5>
+<p>Các yếu tố môi trường doanh nghiệp có thể ảnh hưởng đến quá trình Lập kế hoạch Quản lý Rủi ro bao gồm nhưng không giới hạn ở các ngưỡng rủi ro tổng thể do tổ chức hoặc các bên liên quan then chốt thiết lập.</p>
+
+<h5>11.1.1.5 TÀI SẢN QUY TRÌNH TỔ CHỨC (ORGANIZATIONAL PROCESS ASSETS)</h5>
+<p>Các tài sản quy trình tổ chức có thể ảnh hưởng đến quá trình Lập Kế hoạch Quản lý Rủi ro bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Chính sách rủi ro của tổ chức (Organizational risk policy);</li>
+<li>Các danh mục rủi ro, có thể được tổ chức thành một cấu trúc phân chia rủi ro (RBS);</li>
+<li>Các định dạng tuyên bố rủi ro (Risk statement formats);</li>
+<li>Các định nghĩa chung về các khái niệm và thuật ngữ rủi ro;</li>
+<li>Biểu mẫu (Templates) cho kế hoạch quản lý rủi ro, sổ đăng ký rủi ro, và báo cáo rủi ro;</li>
+<li>Vai trò và trách nhiệm;</li>
+<li>Các mức thẩm quyền trong việc ra quyết định; và</li>
+<li>Kho tàng bài học kinh nghiệm từ các dự án tương tự trước đây.</li>
+</ul>
+
+<h4>11.1.2 LẬP KẾ HOẠCH QUẢN LÝ RỦI RO: CÔNG CỤ VÀ KỸ THUẬT (TOOLS AND TECHNIQUES)</h4>
+
+<h5>11.1.2.1 ĐÁNH GIÁ CỦA CHUYÊN GIA (EXPERT JUDGMENT)</h5>
+<p>Mô tả trong Phần 4.1.2.1. Chuyên môn nên được xem xét từ các cá nhân hoặc nhóm có kiến thức chuyên ngành hoặc được đào tạo trong các chủ đề sau:</p>
+<ul class="pmbok">
+<li>Sự quen thuộc với phương pháp tiếp cận của tổ chức trong việc quản lý rủi ro, bao gồm cả quản lý rủi ro doanh nghiệp ở những nơi có thực hiện điều này;</li>
+<li>Điều chỉnh (may đo) quản lý rủi ro cho phù hợp với các nhu cầu cụ thể của một dự án; và</li>
+<li>Các loại rủi ro có khả năng gặp phải trong các dự án ở cùng một lĩnh vực.</li>
+</ul>
+
+<h5>11.1.2.2 PHÂN TÍCH DỮ LIỆU (DATA ANALYSIS)</h5>
+<p>Kỹ thuật phân tích dữ liệu có thể được sử dụng cho quy trình này bao gồm nhưng không giới hạn ở việc phân tích các bên liên quan (Phần 13.1.2.3) để xác định khẩu vị rủi ro của các bên liên quan dự án.</p>
+
+<h5>11.1.2.3 CÁC CUỘC HỌP (MEETINGS)</h5>
+<p>Kế hoạch quản lý rủi ro có thể được phát triển như một phần của cuộc họp khởi động (kick-off meeting) dự án hoặc một cuộc họp lập kế hoạch cụ thể có thể được tổ chức. Thành phần tham dự có thể bao gồm giám đốc dự án, các thành viên được chọn của nhóm dự án, các bên liên quan then chốt, hoặc các thành viên nhóm chịu trách nhiệm quản lý quy trình rủi ro trên dự án. Những người khác bên ngoài tổ chức cũng có thể được mời, khi cần thiết, bao gồm khách hàng, người bán (nhà cung cấp), và cơ quan quản lý. Một người điều phối (facilitator) có kỹ năng có thể giúp người tham gia duy trì sự tập trung vào nhiệm vụ, thống nhất về các khía cạnh chính của phương pháp tiếp cận rủi ro, nhận diện và vượt qua các nguồn định kiến (bias), và giải quyết mọi bất đồng có thể nảy sinh.</p>
+<p>Các kế hoạch tiến hành hoạt động quản lý rủi ro được xác định trong các cuộc họp này và được ghi lại trong kế hoạch quản lý rủi ro (xem Phần 11.1.3.1).</p>
+
+<h4>11.1.3 LẬP KẾ HOẠCH QUẢN LÝ RỦI RO: ĐẦU RA (OUTPUTS)</h4>
+
+<h5>11.1.3.1 KẾ HOẠCH QUẢN LÝ RỦI RO (RISK MANAGEMENT PLAN)</h5>
+<p>Kế hoạch quản lý rủi ro là một thành phần của kế hoạch quản lý dự án nhằm mô tả cách thức các hoạt động quản lý rủi ro sẽ được cấu trúc và thực hiện. Kế hoạch quản lý rủi ro có thể bao gồm một số hoặc tất cả các yếu tố sau:</p>
+<ul class="pmbok">
+<li><strong>Chiến lược rủi ro (Risk strategy).</strong> Mô tả phương pháp tiếp cận chung đối với việc quản lý rủi ro trên dự án này.</li>
+<li><strong>Phương pháp luận (Methodology).</strong> Định nghĩa các phương pháp tiếp cận cụ thể, công cụ, và nguồn dữ liệu sẽ được sử dụng để thực hiện quản lý rủi ro trên dự án.</li>
+<li><strong>Vai trò và trách nhiệm (Roles and responsibilities).</strong> Xác định người dẫn dắt (lead), người hỗ trợ, và thành viên nhóm quản lý rủi ro đối với mỗi loại hoạt động được mô tả trong kế hoạch quản lý rủi ro, và làm rõ trách nhiệm của họ.</li>
+<li><strong>Tài trợ (Funding).</strong> Xác định các nguồn quỹ cần thiết để thực hiện các hoạt động liên quan đến Quản lý Rủi ro Dự án. Thiết lập các giao thức/quy tắc đối với việc áp dụng các khoản dự phòng rủi ro và quỹ dự phòng quản lý (contingency and management reserves).</li>
+<li><strong>Lịch trình (Timing).</strong> Định nghĩa thời điểm và mức độ thường xuyên thực hiện các quy trình Quản lý Rủi ro Dự án trong suốt vòng đời dự án, và thiết lập các hoạt động quản lý rủi ro để đưa vào tiến độ dự án.</li>
+<li><strong>Danh mục rủi ro (Risk categories).</strong> Cung cấp một phương tiện để nhóm các rủi ro dự án riêng lẻ lại với nhau. Một cách phổ biến để cấu trúc các danh mục rủi ro là bằng cấu trúc phân chia rủi ro (Risk Breakdown Structure - RBS), nó là biểu diễn phân cấp các nguồn rủi ro tiềm ẩn (xem ví dụ ở Hình 11-4). RBS giúp nhóm dự án xem xét toàn bộ các nguồn mà từ đó rủi ro dự án riêng lẻ có thể phát sinh. Điều này có thể hữu ích khi nhận diện rủi ro hoặc khi phân loại các rủi ro đã được nhận diện. Tổ chức có thể có một RBS chung (generic RBS) để sử dụng cho tất cả dự án, hoặc có thể có một vài khung RBS cho các loại dự án khác nhau, hoặc dự án có thể phát triển một RBS được may đo riêng. Ở những nơi không sử dụng RBS, tổ chức có thể sử dụng một khung phân loại rủi ro tùy chỉnh, nó có thể mang hình thức một danh sách đơn giản các danh mục hoặc một cấu trúc dựa trên các mục tiêu dự án.</li>
+</ul>
+
+<div class="table-wrap">
+<table>
+  <tr><th colspan="3">Hình 11-4. Trích xuất từ Mẫu Cấu trúc Phân chia Rủi ro (RBS)</th></tr>
+  <tr>
+    <td style='text-align: center; font-weight: bold;'>RBS LEVEL 0</td>
+    <td style='text-align: center; font-weight: bold;'>RBS LEVEL 1</td>
+    <td style='text-align: center; font-weight: bold;'>RBS LEVEL 2</td>
+  </tr>
+  <tr>
+    <td rowspan="28" style='vertical-align: middle; text-align: center;'>0. ALL SOURCES OF PROJECT RISK (TẤT CẢ NGUỒN GỐC RỦI RO DỰ ÁN)</td>
+    <td rowspan="7" style='vertical-align: middle; text-align: center;'>1. TECHNICAL RISK (RỦI RO KỸ THUẬT)</td>
+    <td>1.1 Scope definition (Định nghĩa phạm vi)</td>
+  </tr>
+  <tr><td>1.2 Requirements definition (Định nghĩa yêu cầu)</td></tr>
+  <tr><td>1.3 Estimates, assumptions, and constraints (Ước lượng, giả định, ràng buộc)</td></tr>
+  <tr><td>1.4 Technical processes (Quy trình kỹ thuật)</td></tr>
+  <tr><td>1.5 Technology (Công nghệ)</td></tr>
+  <tr><td>1.6 Technical interfaces (Giao diện kỹ thuật)</td></tr>
+  <tr><td>Etc. (V.v...)</td></tr>
+  <tr>
+    <td rowspan="7" style='vertical-align: middle; text-align: center;'>2. MANAGEMENT RISK (RỦI RO QUẢN LÝ)</td>
+    <td>2.1 Project management (Quản lý dự án)</td>
+  </tr>
+  <tr><td>2.2 Program/portfolio management (Quản lý chương trình/danh mục)</td></tr>
+  <tr><td>2.3 Operations management (Quản lý vận hành)</td></tr>
+  <tr><td>2.4 Organization (Tổ chức)</td></tr>
+  <tr><td>2.5 Resourcing (Nguồn lực)</td></tr>
+  <tr><td>2.6 Communication (Truyền thông)</td></tr>
+  <tr><td>Etc. (V.v...)</td></tr>
+  <tr>
+    <td rowspan="7" style='vertical-align: middle; text-align: center;'>3. COMMERCIAL RISK (RỦI RO THƯƠNG MẠI)</td>
+    <td>3.1 Contractual terms and conditions (Điều khoản hợp đồng)</td>
+  </tr>
+  <tr><td>3.2 Internal procurement (Mua sắm nội bộ)</td></tr>
+  <tr><td>3.3 Suppliers and vendors (Nhà cung cấp và người bán)</td></tr>
+  <tr><td>3.4 Subcontracts (Hợp đồng phụ)</td></tr>
+  <tr><td>3.5 Client/customer stability (Sự ổn định của khách hàng)</td></tr>
+  <tr><td>3.6 Partnerships and joint ventures (Đối tác và liên doanh)</td></tr>
+  <tr><td>Etc. (V.v...)</td></tr>
+  <tr>
+    <td rowspan="7" style='vertical-align: middle; text-align: center;'>4. EXTERNAL RISK (RỦI RO BÊN NGOÀI)</td>
+    <td>4.1 Legislation (Pháp luật)</td>
+  </tr>
+  <tr><td>4.2 Exchange rates (Tỷ giá hối đoái)</td></tr>
+  <tr><td>4.3 Site/facilities (Địa điểm/cơ sở vật chất)</td></tr>
+  <tr><td>4.4 Environmental/weather (Môi trường/thời tiết)</td></tr>
+  <tr><td>4.5 Competition (Cạnh tranh)</td></tr>
+  <tr><td>4.6 Regulatory (Quy định/Quy chuẩn)</td></tr>
+  <tr><td>Etc. (V.v...)</td></tr>
+</table>
+</div>
+
+<ul class="pmbok">
+<li><strong>Khẩu vị rủi ro của các bên liên quan (Stakeholder risk appetite).</strong> Khẩu vị rủi ro của các bên liên quan then chốt trong dự án được ghi lại vào trong kế hoạch quản lý rủi ro, vì chúng cung cấp thông tin cho các chi tiết của quy trình Lập Kế hoạch Quản lý Rủi ro. Đặc biệt, khẩu vị rủi ro của các bên liên quan nên được diễn đạt dưới dạng các ngưỡng rủi ro (risk thresholds) có thể đo lường được xoay quanh mỗi mục tiêu dự án. Các ngưỡng này sẽ xác định mức độ phơi nhiễm rủi ro tổng thể của dự án có thể chấp nhận được, và chúng cũng được sử dụng để định hình các định nghĩa về xác suất và tác động sẽ được sử dụng khi đánh giá và ưu tiên các rủi ro dự án riêng lẻ.</li>
+<li><strong>Định nghĩa về xác suất và tác động rủi ro (Definitions of risk probability and impacts).</strong> Định nghĩa về xác suất rủi ro và các mức độ tác động mang tính đặc thù cho từng bối cảnh dự án và phản ánh khẩu vị rủi ro cũng như ngưỡng của tổ chức và các bên liên quan then chốt. Dự án có thể tạo ra các định nghĩa cụ thể về các mức xác suất và tác động hoặc có thể bắt đầu với các định nghĩa chung do tổ chức cung cấp. Số lượng các cấp độ phản ánh mức độ chi tiết cần thiết cho quy trình Quản lý Rủi ro Dự án, với nhiều cấp độ hơn (thường là 5 cấp độ) được sử dụng cho cách tiếp cận rủi ro chi tiết hơn, và ít hơn đối với một quy trình đơn giản (thường là 3). Bảng 11-1 cung cấp một ví dụ về các định nghĩa đối với xác suất và tác động tác động lên 3 mục tiêu của dự án. Các thang đo này có thể được sử dụng để đánh giá cả rủi ro tiêu cực (threats) lẫn cơ hội (opportunities) bằng cách diễn giải định nghĩa tác động là tiêu cực đối với các mối đe dọa (trễ hạn, phát sinh chi phí, và giảm hiệu suất) và tích cực đối với các cơ hội (giảm thời gian hoặc chi phí, và nâng cao hiệu suất).</li>
+</ul>
+
+<div class="table-wrap">
+<table>
+  <tr><th colspan="5">Bảng 11-1. Ví dụ về Định nghĩa đối với Xác suất và Tác động</th></tr>
+  <tr>
+    <td rowspan="2" style='text-align: center; font-weight: bold;'>THANG ĐO (SCALE)</td>
+    <td rowspan="2" style='text-align: center; font-weight: bold;'>XÁC SUẤT (PROBABILITY)</td>
+    <td colspan="3" style='text-align: center; font-weight: bold;'>+/- TÁC ĐỘNG LÊN MỤC TIÊU DỰ ÁN (IMPACT ON PROJECT OBJECTIVES)</td>
+  </tr>
+  <tr>
+    <td style='text-align: center; font-weight: bold;'>THỜI GIAN (TIME)</td>
+    <td style='text-align: center; font-weight: bold;'>CHI PHÍ (COST)</td>
+    <td style='text-align: center; font-weight: bold;'>CHẤT LƯỢNG (QUALITY)</td>
+  </tr>
+  <tr>
+    <td style='text-align: center;'>Very High (Rất Cao)</td>
+    <td style='text-align: center;'>&gt;70%</td>
+    <td style='text-align: center;'>&gt;6 tháng</td>
+    <td style='text-align: center;'>&gt;$5M</td>
+    <td>Tác động rất đáng kể lên chức năng tổng thể</td>
+  </tr>
+  <tr>
+    <td style='text-align: center;'>High (Cao)</td>
+    <td style='text-align: center;'>51-70%</td>
+    <td style='text-align: center;'>3-6 tháng</td>
+    <td style='text-align: center;'>$1M-$5M</td>
+    <td>Tác động đáng kể lên chức năng tổng thể</td>
+  </tr>
+  <tr>
+    <td style='text-align: center;'>Medium (Trung Bình)</td>
+    <td style='text-align: center;'>31-50%</td>
+    <td style='text-align: center;'>1-3 tháng</td>
+    <td style='text-align: center;'>$501K-$1M</td>
+    <td>Vài tác động trong các khu vực chức năng chính</td>
+  </tr>
+  <tr>
+    <td style='text-align: center;'>Low (Thấp)</td>
+    <td style='text-align: center;'>11-30%</td>
+    <td style='text-align: center;'>1-4 tuần</td>
+    <td style='text-align: center;'>$100K-$500K</td>
+    <td>Tác động nhỏ lên chức năng tổng thể</td>
+  </tr>
+  <tr>
+    <td style='text-align: center;'>Very Low (Rất Thấp)</td>
+    <td style='text-align: center;'>1-10%</td>
+    <td style='text-align: center;'>1 tuần</td>
+    <td style='text-align: center;'>&lt;$100K</td>
+    <td>Tác động nhỏ lên các chức năng phụ</td>
+  </tr>
+  <tr>
+    <td style='text-align: center;'>Nil (Không có)</td>
+    <td style='text-align: center;'>&lt;1%</td>
+    <td style='text-align: center;'>Không thay đổi</td>
+    <td style='text-align: center;'>Không thay đổi</td>
+    <td>Không thay đổi về chức năng</td>
+  </tr>
+</table>
+</div>
+
+<ul class="pmbok">
+<li><strong>Ma trận Xác suất và Tác động (Probability and impact matrix).</strong> Được mô tả trong Phần 11.3.2.6. Các quy tắc ưu tiên có thể được tổ chức chỉ định cụ thể trước khi thực hiện dự án và được đưa vào kho tài sản quy trình tổ chức, hoặc chúng có thể được điều chỉnh (may đo) để phù hợp với dự án cụ thể. Mối đe dọa và cơ hội được thể hiện trong một ma trận xác suất và tác động chung, sử dụng định nghĩa tác động tích cực đối với cơ hội và định nghĩa tác động tiêu cực đối với các mối đe dọa. Các thuật ngữ mô tả (như rất cao, cao, trung bình, thấp, và rất thấp) hoặc các giá trị số có thể được sử dụng cho xác suất và tác động. Khi sử dụng các giá trị số, chúng có thể được nhân với nhau để cho ra điểm số xác suất-tác động đối với mỗi rủi ro, cho phép đánh giá mức độ ưu tiên tương đối của các rủi ro cá nhân trong mỗi cấp độ ưu tiên. Một ví dụ về ma trận xác suất và tác động được trình bày ở Hình 11-5, trong đó cũng hiển thị sơ đồ chấm điểm rủi ro bằng số.</li>
+</ul>
+
+<div class="table-wrap">
+<table>
+  <tr><th colspan="12">Hình 11-5. Ví dụ Ma Trận Xác Suất và Tác Động cùng Sơ Đồ Chấm Điểm</th></tr>
+  <tr>
+    <td></td>
+    <td colspan="5" style='text-align: center; font-weight: bold;'>Mối đe dọa (Threats)</td>
+    <td colspan="5" style='text-align: center; font-weight: bold;'>Cơ hội (Opportunities)</td>
+    <td rowspan="2" style='text-align: center; font-weight: bold; background: #e0e0e0;'>Very High<br>0.90</td>
+  </tr>
+  <tr>
+    <td style='text-align: center; font-weight: bold; background: #e0e0e0;'>Very High<br>0.90</td>
+    <td style='text-align: center; background: #ccebc5;'>0.05</td>
+    <td style='text-align: center; background: #fed9a6;'>0.09</td>
+    <td style='text-align: center; background: #fbb4ae;'>0.18</td>
+    <td style='text-align: center; background: #fbb4ae;'>0.36</td>
+    <td style='text-align: center; background: #fbb4ae;'>0.72</td>
+    <td style='text-align: center; background: #fbb4ae;'>0.72</td>
+    <td style='text-align: center; background: #fbb4ae;'>0.36</td>
+    <td style='text-align: center; background: #fbb4ae;'>0.18</td>
+    <td style='text-align: center; background: #fed9a6;'>0.09</td>
+    <td style='text-align: center; background: #ccebc5;'>0.05</td>
+  </tr>
+  <tr>
+    <td style='text-align: center; font-weight: bold; background: #e0e0e0;'>High<br>0.70</td>
+    <td style='text-align: center; background: #ccebc5;'>0.04</td>
+    <td style='text-align: center; background: #fed9a6;'>0.07</td>
+    <td style='text-align: center; background: #fed9a6;'>0.14</td>
+    <td style='text-align: center; background: #fbb4ae;'>0.28</td>
+    <td style='text-align: center; background: #fbb4ae;'>0.56</td>
+    <td style='text-align: center; background: #fbb4ae;'>0.56</td>
+    <td style='text-align: center; background: #fbb4ae;'>0.28</td>
+    <td style='text-align: center; background: #fed9a6;'>0.14</td>
+    <td style='text-align: center; background: #fed9a6;'>0.07</td>
+    <td style='text-align: center; background: #ccebc5;'>0.04</td>
+    <td style='text-align: center; font-weight: bold; background: #e0e0e0;'>High<br>0.70</td>
+  </tr>
+  <tr>
+    <td style='text-align: center; font-weight: bold; background: #e0e0e0;'>Medium<br>0.50</td>
+    <td style='text-align: center; background: #ccebc5;'>0.03</td>
+    <td style='text-align: center; background: #ccebc5;'>0.05</td>
+    <td style='text-align: center; background: #fed9a6;'>0.10</td>
+    <td style='text-align: center; background: #fed9a6;'>0.20</td>
+    <td style='text-align: center; background: #fbb4ae;'>0.40</td>
+    <td style='text-align: center; background: #fbb4ae;'>0.40</td>
+    <td style='text-align: center; background: #fed9a6;'>0.20</td>
+    <td style='text-align: center; background: #fed9a6;'>0.10</td>
+    <td style='text-align: center; background: #ccebc5;'>0.05</td>
+    <td style='text-align: center; background: #ccebc5;'>0.03</td>
+    <td style='text-align: center; font-weight: bold; background: #e0e0e0;'>Medium<br>0.50</td>
+  </tr>
+  <tr>
+    <td style='text-align: center; font-weight: bold; background: #e0e0e0;'>Low<br>0.30</td>
+    <td style='text-align: center; background: #ccebc5;'>0.02</td>
+    <td style='text-align: center; background: #ccebc5;'>0.03</td>
+    <td style='text-align: center; background: #ccebc5;'>0.06</td>
+    <td style='text-align: center; background: #fed9a6;'>0.12</td>
+    <td style='text-align: center; background: #fed9a6;'>0.24</td>
+    <td style='text-align: center; background: #fed9a6;'>0.24</td>
+    <td style='text-align: center; background: #fed9a6;'>0.12</td>
+    <td style='text-align: center; background: #ccebc5;'>0.06</td>
+    <td style='text-align: center; background: #ccebc5;'>0.03</td>
+    <td style='text-align: center; background: #ccebc5;'>0.02</td>
+    <td style='text-align: center; font-weight: bold; background: #e0e0e0;'>Low<br>0.30</td>
+  </tr>
+  <tr>
+    <td style='text-align: center; font-weight: bold; background: #e0e0e0;'>Very Low<br>0.10</td>
+    <td style='text-align: center; background: #ccebc5;'>0.01</td>
+    <td style='text-align: center; background: #ccebc5;'>0.01</td>
+    <td style='text-align: center; background: #ccebc5;'>0.02</td>
+    <td style='text-align: center; background: #ccebc5;'>0.04</td>
+    <td style='text-align: center; background: #fed9a6;'>0.08</td>
+    <td style='text-align: center; background: #fed9a6;'>0.08</td>
+    <td style='text-align: center; background: #ccebc5;'>0.04</td>
+    <td style='text-align: center; background: #ccebc5;'>0.02</td>
+    <td style='text-align: center; background: #ccebc5;'>0.01</td>
+    <td style='text-align: center; background: #ccebc5;'>0.01</td>
+    <td style='text-align: center; font-weight: bold; background: #e0e0e0;'>Very Low<br>0.10</td>
+  </tr>
+  <tr>
+    <td></td>
+    <td style='text-align: center; font-weight: bold; background: #e0e0e0;'>Very Low<br>0.05</td>
+    <td style='text-align: center; font-weight: bold; background: #e0e0e0;'>Low<br>0.10</td>
+    <td style='text-align: center; font-weight: bold; background: #e0e0e0;'>Moderate<br>0.20</td>
+    <td style='text-align: center; font-weight: bold; background: #e0e0e0;'>High<br>0.40</td>
+    <td style='text-align: center; font-weight: bold; background: #e0e0e0;'>Very High<br>0.80</td>
+    <td style='text-align: center; font-weight: bold; background: #e0e0e0;'>Very High<br>0.80</td>
+    <td style='text-align: center; font-weight: bold; background: #e0e0e0;'>High<br>0.40</td>
+    <td style='text-align: center; font-weight: bold; background: #e0e0e0;'>Moderate<br>0.20</td>
+    <td style='text-align: center; font-weight: bold; background: #e0e0e0;'>Low<br>0.10</td>
+    <td style='text-align: center; font-weight: bold; background: #e0e0e0;'>Very Low<br>0.05</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td colspan="5" style='text-align: center; font-weight: bold;'>Tác động Tiêu cực (Negative Impact)</td>
+    <td colspan="5" style='text-align: center; font-weight: bold;'>Tác động Tích cực (Positive Impact)</td>
+    <td></td>
+  </tr>
+</table>
+</div>
+
+<ul class="pmbok">
+<li><strong>Định dạng báo cáo (Reporting formats).</strong> Định dạng báo cáo định nghĩa cách thức kết quả của các quy trình Quản lý Rủi ro Dự án sẽ được ghi nhận, phân tích, và truyền đạt. Phần này của kế hoạch quản lý rủi ro sẽ mô tả nội dung và định dạng của sổ đăng ký rủi ro (risk register) và báo cáo rủi ro (risk report), cũng như mọi đầu ra bắt buộc nào khác từ các quy trình Quản lý Rủi ro Dự án.</li>
+<li><strong>Theo dõi (Tracking).</strong> Lập tài liệu về cách thức các hoạt động rủi ro sẽ được ghi chép và các quy trình quản lý rủi ro sẽ được kiểm toán (audit) ra sao.</li>
+</ul>
+
+<hr>
+
+<h3 id="s11-2">11.2 NHẬN DIỆN RỦI RO (IDENTIFY RISKS)</h3>
+<p>Nhận diện Rủi ro là quy trình nhận diện các rủi ro dự án riêng lẻ cũng như các nguồn rủi ro tổng thể dự án, và ghi lại các đặc điểm của chúng. Lợi ích chính của quá trình này là việc tạo ra tài liệu lưu trữ về các rủi ro dự án riêng lẻ hiện có và các nguồn rủi ro tổng thể của dự án. Nó cũng tập hợp lại thông tin để nhóm dự án có thể phản hồi một cách thích hợp đối với các rủi ro đã được nhận diện. Quá trình này được thực hiện trong suốt dự án. Đầu vào, công cụ và kỹ thuật, cũng như đầu ra của quá trình này được phác họa trong Hình 11-6. Hình 11-7 miêu tả sơ đồ luồng dữ liệu cho quy trình này.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//4d574cc5-b0dd-405a-b9d4-bb21057c4c3c/markdown_3/imgs/img_in_image_box_192_146_1029_1104.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A02Z%2F-1%2F%2Fc716167e59bc0809cb2765fb6f79d301656392535a84a994db2920e2878a027a" alt="Image" width="68%" /></div></div>
+<p class="figure-caption">Hình 11-6 / Hình 11-7. Nhận diện Rủi ro: Sơ đồ luồng dữ liệu & Đầu vào, Công cụ, Đầu ra</p>
+
+<p>Nhận diện Rủi ro xem xét đến cả các rủi ro dự án riêng lẻ và các nguồn rủi ro tổng thể của dự án. Những người tham gia vào các hoạt động nhận diện rủi ro có thể bao gồm những người sau: giám đốc dự án, các thành viên nhóm dự án, chuyên gia rủi ro dự án (nếu được phân công), khách hàng, chuyên gia môn học (subject matter experts) từ bên ngoài nhóm dự án, người dùng cuối (end users), các giám đốc dự án khác, người quản lý vận hành, các bên liên quan, và các chuyên gia quản lý rủi ro trong tổ chức. Mặc dù những nhân sự này thường là những người tham gia chính trong việc nhận diện rủi ro, nhưng tất cả các bên liên quan của dự án nên được khuyến khích tham gia nhận diện các rủi ro của dự án. Đặc biệt quan trọng là phải thu hút nhóm dự án tham gia để họ có thể phát triển và duy trì ý thức sở hữu, cũng như có trách nhiệm đối với các rủi ro đã nhận diện, mức độ rủi ro tổng thể của dự án, và các hành động phản hồi rủi ro liên quan.</p>
+
+<p>Khi mô tả và ghi chép các rủi ro dự án riêng lẻ, cần phải sử dụng một định dạng nhất quán cho các tuyên bố rủi ro (risk statements) để đảm bảo rằng mỗi rủi ro được hiểu một cách rõ ràng và không mơ hồ, nhằm mục đích hỗ trợ quá trình phân tích và phát triển chiến lược phản hồi hiệu quả. Các chủ sở hữu rủi ro (risk owners) đối với các rủi ro dự án riêng lẻ có thể được đề cử như một phần của quá trình Nhận diện Rủi ro, và sẽ được xác nhận chính thức trong quy trình Thực hiện Phân tích Rủi ro Định tính (Perform Qualitative Risk Analysis). Các phản hồi rủi ro sơ bộ (Preliminary risk responses) cũng có thể được nhận diện, ghi lại, và sẽ được xem xét xác nhận như một phần của quy trình Lập Kế hoạch Phản hồi Rủi ro (Plan Risk Responses).</p>
+
+<p>Nhận diện Rủi ro là một quy trình lặp đi lặp lại (iterative process), bởi vì những rủi ro dự án riêng lẻ mới có thể xuất hiện khi dự án tiến triển qua các vòng đời của nó, và mức độ rủi ro tổng thể của dự án cũng sẽ thay đổi. Tần suất lặp lại và sự tham gia vào mỗi chu kỳ nhận diện rủi ro sẽ thay đổi tùy theo tình huống, và điều này sẽ được xác định trong kế hoạch quản lý rủi ro.</p>
+
+<h4>11.2.1 NHẬN DIỆN RỦI RO: ĐẦU VÀO (INPUTS)</h4>
+
+<h5>11.2.1.1 KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN)</h5>
+<p>Mô tả trong Phần 4.2.3.1. Các thành phần của kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Kế hoạch quản lý yêu cầu (Requirements management plan).</strong> Mô tả trong Phần 5.1.3.2. Kế hoạch quản lý yêu cầu có thể chỉ ra các mục tiêu dự án đặc biệt có khả năng gặp rủi ro.</li>
+<li><strong>Kế hoạch quản lý tiến độ (Schedule management plan).</strong> Mô tả trong Phần 6.1.3.1. Kế hoạch này có thể nhận diện các khu vực chịu sự không chắc chắn hoặc mơ hồ.</li>
+<li><strong>Kế hoạch quản lý chi phí (Cost management plan).</strong> Mô tả trong Phần 7.1.3.1. Kế hoạch này có thể nhận diện các khu vực chịu sự không chắc chắn hoặc mơ hồ.</li>
+<li><strong>Kế hoạch quản lý chất lượng (Quality management plan).</strong> Mô tả trong Phần 8.1.3.1. Kế hoạch quản lý chất lượng có thể nhận diện các khu vực chịu sự không chắc chắn hoặc mơ hồ, hoặc các khu vực mà ở đó những giả định then chốt đã được đưa ra có thể làm phát sinh rủi ro.</li>
+<li><strong>Kế hoạch quản lý nguồn lực (Resource management plan).</strong> Mô tả trong Phần 9.1.3.1. Kế hoạch này có thể nhận diện các khu vực chịu sự không chắc chắn hoặc mơ hồ, hoặc nơi mà các giả định then chốt có thể phát sinh rủi ro.</li>
+<li><strong>Kế hoạch quản lý rủi ro (Risk management plan).</strong> Mô tả trong Phần 11.1.3.1. Cung cấp thông tin về các vai trò và trách nhiệm liên quan đến rủi ro, chỉ ra cách mà các hoạt động quản lý rủi ro được tính vào ngân sách và tiến độ, đồng thời mô tả các danh mục rủi ro, thường được biểu diễn dưới dạng Cấu trúc phân chia rủi ro (Hình 11-4).</li>
+<li><strong>Đường cơ sở phạm vi (Scope baseline).</strong> Mô tả trong Phần 5.4.3.1. Bao gồm các sản phẩm bàn giao (deliverables) và các tiêu chí nghiệm thu của chúng, một số trong đó có thể làm phát sinh rủi ro. Nó cũng chứa bảng WBS (Work Breakdown Structure), có thể được sử dụng như một khuôn khổ để cấu trúc các kỹ thuật nhận diện rủi ro.</li>
+<li><strong>Đường cơ sở tiến độ (Schedule baseline).</strong> Mô tả trong Phần 6.5.3.1. Có thể được xem xét để nhận diện các cột mốc (milestones) và ngày đến hạn của các sản phẩm bàn giao đang chịu sự không chắc chắn, hoặc nơi có các giả định có thể gây ra rủi ro.</li>
+<li><strong>Đường cơ sở chi phí (Cost baseline).</strong> Mô tả trong Phần 7.3.3.1. Xem xét để nhận diện các chi phí hoặc các yêu cầu về ngân quỹ đang phải đối mặt với sự không chắc chắn, hoặc nơi có các giả định có thể gây rủi ro.</li>
+</ul>
+
+<h5>11.2.1.2 TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS)</h5>
+<p>Tài liệu dự án có thể được coi là đầu vào cho quy trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Sổ ghi nhận giả định (Assumption log).</strong> Mô tả ở Phần 4.1.3.2. Những giả định và ràng buộc ghi trong sổ này có thể làm phát sinh các rủi ro dự án riêng lẻ và tác động đến rủi ro tổng thể.</li>
+<li><strong>Ước lượng chi phí (Cost estimates).</strong> Mô tả ở Phần 7.2.3.1. Các ước tính cung cấp các đánh giá định lượng về chi phí dự án, lý tưởng nhất là thể hiện dưới dạng một phạm vi (range) để chỉ ra mức độ rủi ro, khi mà sự đánh giá tài liệu cho thấy những ước tính hiện tại có thể không đủ và tạo ra rủi ro.</li>
+<li><strong>Ước lượng thời lượng (Duration estimates).</strong> Mô tả ở Phần 6.4.3.1. Tương tự như ước lượng chi phí, ước tính thời lượng đưa ra bức tranh về rủi ro thời gian.</li>
+<li><strong>Sổ ghi nhận vấn đề (Issue log).</strong> Mô tả ở Phần 4.3.3.3. Các vấn đề trong sổ này có thể làm phát sinh thêm các rủi ro.</li>
+<li><strong>Sổ đăng ký bài học kinh nghiệm (Lessons learned register).</strong> Mô tả ở Phần 4.4.3.1. Những bài học học được về rủi ro ở những giai đoạn trước được mang ra xem xét.</li>
+<li><strong>Tài liệu yêu cầu (Requirements documentation).</strong> Mô tả ở Phần 5.2.3.1. Cho phép nhóm nhận diện các yêu cầu nào có thể gặp rủi ro.</li>
+<li><strong>Yêu cầu nguồn lực (Resource requirements).</strong> Mô tả ở Phần 9.2.3.1.</li>
+<li><strong>Sổ đăng ký các bên liên quan (Stakeholder register).</strong> Mô tả ở Phần 13.1.3.1. Cho biết những cá nhân hoặc nhóm nào có thể tham gia vào quá trình nhận diện rủi ro và ai có thể được giao làm chủ sở hữu rủi ro.</li>
+</ul>
+
+<h5>11.2.1.3 THỎA THUẬN (AGREEMENTS)</h5>
+<p>Mô tả trong Phần 12.2.3.2. Nếu dự án đòi hỏi việc mua sắm nguồn lực bên ngoài, các thỏa thuận có thể chứa những thông tin như mốc thời gian, loại hợp đồng, tiêu chí nghiệm thu, phần thưởng và hình phạt có thể mang lại các mối đe dọa hoặc cơ hội.</p>
+
+<h5>11.2.1.4 TÀI LIỆU MUA SẮM (PROCUREMENT DOCUMENTATION)</h5>
+<p>Mô tả trong Phần 12.3.1.4. Việc mua sắm hàng hóa hoặc dịch vụ từ bên ngoài tổ chức có thể làm tăng hoặc giảm rủi ro tổng thể và có thể đem theo các rủi ro mới. Cần đánh giá tài liệu mua sắm ban đầu cũng như các tài liệu cập nhật (báo cáo hiệu suất nhà thầu, thay đổi được duyệt...) để phát hiện rủi ro.</p>
+
+<h5>11.2.1.5 YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP (ENTERPRISE ENVIRONMENTAL FACTORS)</h5>
+<p>Bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Tài liệu xuất bản, bao gồm cơ sở dữ liệu rủi ro thương mại (commercial risk databases) hoặc các danh sách kiểm tra rủi ro;</li>
+<li>Các nghiên cứu học thuật;</li>
+<li>Kết quả so sánh chuẩn (Benchmarking results); và</li>
+<li>Các nghiên cứu ngành về các dự án tương tự.</li>
+</ul>
+
+<h5>11.2.1.6 TÀI SẢN QUY TRÌNH TỔ CHỨC (ORGANIZATIONAL PROCESS ASSETS)</h5>
+<p>Bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Các tệp tài liệu dự án, bao gồm dữ liệu thực tế;</li>
+<li>Cơ chế kiểm soát quá trình của tổ chức và dự án;</li>
+<li>Các định dạng của tuyên bố rủi ro (Risk statement formats); và</li>
+<li>Các danh sách kiểm tra (checklists) từ các dự án tương tự trước đây.</li>
+</ul>
+
+<h4>11.2.2 NHẬN DIỆN RỦI RO: CÔNG CỤ VÀ KỸ THUẬT (TOOLS AND TECHNIQUES)</h4>
+
+<h5>11.2.2.1 ĐÁNH GIÁ CỦA CHUYÊN GIA (EXPERT JUDGMENT)</h5>
+<p>Mô tả trong Phần 4.1.2.1. Chuyên môn nên được tham khảo từ các cá nhân hoặc nhóm có kiến thức về các dự án tương tự. Chuyên gia sẽ được mời để cân nhắc tất cả các khía cạnh của rủi ro cá nhân và tổng thể dựa trên kinh nghiệm của họ. Tuy nhiên, định kiến (bias) của các chuyên gia cần phải được tính đến.</p>
+
+<h5>11.2.2.2 THU THẬP DỮ LIỆU (DATA GATHERING)</h5>
+<p>Các kỹ thuật bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Động não (Brainstorming).</strong> (Mô tả ở Phần 4.1.2.2). Mục tiêu là đạt được một danh sách toàn diện về các rủi ro. Nhóm dự án thường thực hiện động não cùng với tập hợp các chuyên gia đa ngành. Ý tưởng được tạo ra dưới sự hướng dẫn của người điều phối (facilitator). Các danh mục rủi ro từ RBS có thể được dùng làm khung tham chiếu. Cần đặc biệt chú ý mô tả rủi ro rõ ràng.</li>
+<li><strong>Danh sách kiểm tra (Checklists).</strong> Danh sách các mục cần xem xét được phát triển dựa trên dữ liệu lịch sử và các dự án tương tự. Đây là cách hiệu quả để rút ra bài học quá khứ, ghi lại những rủi ro đã từng xảy ra. Mặc dù nhanh và đơn giản, nhưng không thể có một checklist nào liệt kê được mọi rủi ro có thể có. Do đó, nhóm dự án phải khám phá cả những mục không nằm trong checklist.</li>
+<li><strong>Phỏng vấn (Interviews).</strong> (Phần 5.2.2.2). Nhận diện rủi ro bằng cách phỏng vấn các người tham gia dự án giàu kinh nghiệm, bên liên quan và chuyên gia, trong một môi trường cởi mở và bảo mật để có được ý kiến trung thực.</li>
+</ul>
+
+<h5>11.2.2.3 PHÂN TÍCH DỮ LIỆU (DATA ANALYSIS)</h5>
+<p>Các kỹ thuật bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Phân tích nguyên nhân gốc rễ (Root cause analysis).</strong> (Phần 8.2.2.2). Dùng để khám phá nguyên nhân cơ bản dẫn đến một vấn đề và phát triển hành động phòng ngừa. Nó giúp nhận diện các mối đe dọa bằng cách bắt đầu từ một phát biểu vấn đề (ví dụ: dự án bị trễ) và khám phá những đe dọa nào có thể gây ra điều đó. Hoặc dùng để nhận diện cơ hội từ một lợi ích (ví dụ: giao hàng sớm).</li>
+<li><strong>Phân tích giả định và ràng buộc (Assumption and constraint analysis).</strong> Khám phá tính hợp lệ của các giả định và các ràng buộc để xác định yếu tố nào mang lại rủi ro cho dự án. Sự không chính xác, thiếu ổn định, hay không đầy đủ của giả định có thể trở thành đe dọa. Ràng buộc có thể mang lại cơ hội nếu loại bỏ hoặc nới lỏng được chúng.</li>
+<li><strong>Phân tích SWOT (SWOT analysis).</strong> Đánh giá dự án dưới các góc độ Điểm mạnh (Strengths), Điểm yếu (Weaknesses), Cơ hội (Opportunities) và Thách thức/Đe dọa (Threats). Giúp gia tăng chiều rộng của các rủi ro được nhận diện bằng cách bao gồm các rủi ro phát sinh từ nội bộ.</li>
+<li><strong>Phân tích tài liệu (Document analysis).</strong> (Phần 5.2.2.3). Nhận diện rủi ro thông qua việc đánh giá cấu trúc của các tài liệu dự án, hợp đồng, tài liệu kỹ thuật... Sự không nhất quán hay mập mờ có thể là dấu hiệu cho thấy rủi ro đang tồn tại.</li>
+</ul>
+
+<h5>11.2.2.4 KỸ NĂNG LIÊN CÁ NHÂN VÀ NHÓM (INTERPERSONAL AND TEAM SKILLS)</h5>
+<p>Bao gồm sự điều phối (facilitation). Người điều phối (facilitator) có kỹ năng giúp duy trì sự tập trung vào nhiệm vụ, đảm bảo việc mô tả rủi ro được thực hiện rõ ràng, khắc phục các định kiến và giải quyết các bất đồng.</p>
+
+<h5>11.2.2.5 DANH SÁCH GỢI Ý (PROMPT LISTS)</h5>
+<p>Là một danh sách định trước các hạng mục rủi ro có thể phát sinh rủi ro cá nhân hoặc đóng vai trò như nguồn rủi ro tổng thể. Cấp độ thấp nhất của một RBS có thể được dùng như một prompt list. Có thể dùng các khung chiến lược như PESTLE (chính trị, kinh tế, xã hội, công nghệ, pháp lý, môi trường), TECOP (kỹ thuật, môi trường, thương mại, vận hành, chính trị) hoặc VUCA (biến động, không chắc chắn, phức tạp, mơ hồ) để làm gợi ý.</p>
+
+<h5>11.2.2.6 CÁC CUỘC HỌP (MEETINGS)</h5>
+<p>Nhóm dự án có thể tiến hành một cuộc họp chuyên đề gọi là "Risk workshop" (Hội thảo về rủi ro). Hội thảo này bao gồm các hoạt động động não, cần mời đúng người tham dự. Đối với dự án lớn, có thể mời nhà tài trợ, chuyên gia, bên bán, khách hàng...</p>
+
+<h4>11.2.3 NHẬN DIỆN RỦI RO: ĐẦU RA (OUTPUTS)</h4>
+
+<h5>11.2.3.1 SỔ ĐĂNG KÝ RỦI RO (RISK REGISTER)</h5>
+<p>Sổ đăng ký rủi ro ghi lại chi tiết về các rủi ro dự án cá nhân đã được nhận diện. Kết quả của quy trình Phân tích Định tính, Phân tích Định lượng, Lập kế hoạch Phản hồi, Thực thi, và Giám sát rủi ro đều sẽ được ghi lại vào sổ này. Tùy theo độ phức tạp của dự án, sổ có thể chứa nhiều hoặc ít thông tin.</p>
+<p>Khi hoàn thành quy trình Nhận diện Rủi ro, nội dung của Sổ đăng ký rủi ro bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Danh sách rủi ro đã nhận diện (List of identified risks).</strong> Mỗi rủi ro có một định danh duy nhất, được mô tả chi tiết và không mơ hồ (phân biệt rõ rủi ro với nguyên nhân và hậu quả).</li>
+<li><strong>Chủ sở hữu rủi ro tiềm năng (Potential risk owners).</strong> Nếu xác định được ở giai đoạn này, chủ sở hữu tiềm năng sẽ được điền vào và sẽ xác nhận lại ở giai đoạn Phân tích rủi ro định tính.</li>
+<li><strong>Danh sách phản hồi rủi ro sơ bộ (List of potential risk responses).</strong> Nếu có phản hồi sơ bộ, nó cũng được lưu lại và xem xét xác nhận trong quy trình Plan Risk Responses.</li>
+</ul>
+<p>Dữ liệu bổ sung có thể bao gồm tiêu đề rủi ro ngắn gọn, phân loại, tình trạng hiện tại, nguyên nhân, trigger (dấu hiệu kích hoạt rủi ro), mốc thời gian...</p>
+
+<h5>11.2.3.2 BÁO CÁO RỦI RO (RISK REPORT)</h5>
+<p>Báo cáo rủi ro trình bày thông tin về các nguồn rủi ro tổng thể và tóm tắt thông tin về các rủi ro riêng lẻ. Báo cáo được phát triển tăng dần qua các quá trình. Khi kết thúc quy trình Nhận diện rủi ro, báo cáo sẽ chứa:</p>
+<ul class="pmbok check">
+<li>Nguồn rủi ro tổng thể, chỉ ra đâu là tác nhân quan trọng nhất làm tăng mức độ phơi nhiễm rủi ro; và</li>
+<li>Tóm tắt các rủi ro riêng lẻ (số lượng đe dọa, cơ hội, sự phân bổ theo các hạng mục rủi ro, các xu hướng...).</li>
+</ul>
+
+<h5>11.2.3.3 CẬP NHẬT TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS UPDATES)</h5>
+<p>Bao gồm Sổ ghi nhận giả định (Assumption log), Sổ ghi nhận vấn đề (Issue log), Sổ đăng ký bài học kinh nghiệm (Lessons learned register).</p>
+
+<hr>
+
+<h3 id="s11-3">11.3 THỰC HIỆN PHÂN TÍCH RỦI RO ĐỊNH TÍNH (PERFORM QUALITATIVE RISK ANALYSIS)</h3>
+<p>Là quy trình ưu tiên các rủi ro dự án riêng lẻ để phân tích hoặc hành động thêm bằng cách đánh giá xác suất xảy ra và tác động của chúng, cùng các đặc điểm khác. Lợi ích là tập trung nỗ lực vào rủi ro ưu tiên cao. Thực hiện trong suốt dự án.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//a5440994-d6c3-4d14-9876-2b066bb9491d/markdown_2/imgs/img_in_image_box_206_370_1018_816.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A23%3A59Z%2F-1%2F%2Fe09f13961ad2f6104056f1aafc438038ba07e13b241517301404b034794b89ac" alt="Image" width="66%" /></div></div>
+<p class="figure-caption">Hình 11-8 / Hình 11-9. Thực hiện Phân tích Rủi ro Định tính</p>
+
+<p>Việc đánh giá này mang tính chủ quan vì nó dựa trên nhận thức về rủi ro của nhóm dự án. Cần quản lý sự định kiến (bias) một cách kỹ lưỡng. Phân tích định tính thiết lập mức độ ưu tiên tương đối của rủi ro, nhận diện ra risk owner, và xây nền tảng cho Phân tích rủi ro định lượng nếu cần thiết. Trong môi trường Agile, quy trình này thường làm trước mỗi iteration.</p>
+
+<h4>11.3.1 ĐẦU VÀO (INPUTS)</h4>
+<p>Kế hoạch quản lý dự án (Kế hoạch quản lý rủi ro), Tài liệu dự án (Assumption log, Risk register, Stakeholder register), Yếu tố môi trường (EEFs) và Tài sản quy trình (OPAs).</p>
+
+<h4>11.3.2 CÔNG CỤ VÀ KỸ THUẬT (TOOLS AND TECHNIQUES)</h4>
+<ul class="pmbok">
+<li><strong>Đánh giá của chuyên gia.</strong></li>
+<li><strong>Thu thập dữ liệu (Phỏng vấn).</strong></li>
+<li><strong>Phân tích dữ liệu (Data analysis):</strong> Đánh giá chất lượng dữ liệu rủi ro (Risk data quality assessment), Đánh giá Xác suất và Tác động (Risk probability and impact assessment). Đánh giá các thông số rủi ro khác như:
+  <ul class="pmbok dash">
+    <li>Tính cấp bách (Urgency), Tính kề cận (Proximity), Tính tiềm ẩn (Dormancy), Khả năng quản lý (Manageability), Khả năng kiểm soát (Controllability), Khả năng phát hiện (Detectability), Tính kết nối (Connectivity), Tác động chiến lược (Strategic impact), Mức độ quan tâm (Propinquity).</li>
+  </ul>
+</li>
+<li><strong>Kỹ năng cá nhân và nhóm.</strong> Sự điều phối (Facilitation).</li>
+<li><strong>Phân loại rủi ro (Risk categorization).</strong> Phân loại theo nguồn (RBS), theo WBS, theo dự án...</li>
+<li><strong>Biểu diễn dữ liệu:</strong>
+  <ul class="pmbok check">
+    <li><strong>Ma trận Xác suất và Tác động (Probability and impact matrix).</strong> Xem Hình 11-5.</li>
+    <li><strong>Biểu đồ phân cấp (Hierarchical charts).</strong> Ví dụ biểu đồ bong bóng (Bubble chart) thể hiện 3 chiều dữ liệu.</li>
+  </ul>
+</li>
+</ul>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//2fb59a4a-8ffb-491e-aae6-866d9e5edf36/markdown_4/imgs/img_in_image_box_261_146_963_794.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A04Z%2F-1%2F%2F4f72a6c217e41f333b55ecad17d9080dd43a2c466b2e1d3f265d372bfdd08bd0" alt="Image" width="57%" /></div></div>
+<p class="figure-caption">Hình 11-10. Ví dụ biểu đồ bong bóng (Bubble Chart)</p>
+
+<h4>11.3.3 ĐẦU RA (OUTPUTS)</h4>
+<p><strong>Cập nhật tài liệu dự án:</strong> Sổ ghi nhận giả định, Sổ ghi nhận vấn đề, Sổ đăng ký rủi ro (cập nhật điểm số xác suất và tác động, điểm rủi ro, owner...), Báo cáo rủi ro.</p>
+
+<hr>
+
+<h3 id="s11-4">11.4 THỰC HIỆN PHÂN TÍCH RỦI RO ĐỊNH LƯỢNG (PERFORM QUANTITATIVE RISK ANALYSIS)</h3>
+<p>Quy trình nhằm phân tích bằng con số tác động kết hợp của các rủi ro lên toàn bộ dự án. Lợi ích là định lượng mức độ rủi ro tổng thể. Thường chỉ áp dụng cho dự án lớn, phức tạp, quan trọng.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//4f4e5345-c1ec-46d2-b152-81ed6019621b/markdown_1/imgs/img_in_image_box_197_408_1034_867.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A00Z%2F-1%2F%2Feaa31ea1fb297bb039f1e76fa59a3688c3f7f4f6d4bf1a0934b5a5ec8facbbe6" alt="Image" width="68%" /></div></div>
+<p class="figure-caption">Hình 11-11 / Hình 11-12. Phân tích Rủi ro Định lượng</p>
+
+<h4>11.4.1 ĐẦU VÀO (INPUTS)</h4>
+<p>Kế hoạch quản lý dự án (Kế hoạch rủi ro, đường cơ sở phạm vi, tiến độ, chi phí), Tài liệu dự án (dự báo chi phí/tiến độ, ước lượng), EEFs và OPAs.</p>
+
+<h4>11.4.2 CÔNG CỤ VÀ KỸ THUẬT (TOOLS AND TECHNIQUES)</h4>
+<ul class="pmbok">
+<li><strong>Biểu diễn sự không chắc chắn (Representations of uncertainty).</strong> Thể hiện bằng các phân phối xác suất (probability distribution) như tam giác, phân phối chuẩn, log-normal, beta...</li>
+<li><strong>Phân tích dữ liệu:</strong>
+  <ul class="pmbok dash">
+    <li><strong>Mô phỏng (Simulation).</strong> Điển hình là phân tích Monte Carlo để lặp lại mô hình rủi ro hàng ngàn lần. Đầu ra thường là đường cong S-curve (Hình 11-13).</li>
+    <li><strong>Phân tích độ nhạy (Sensitivity analysis).</strong> Tìm ra rủi ro nào có ảnh hưởng lớn nhất. Hiển thị thông qua Biểu đồ Tornado (Tornado diagram - Hình 11-14).</li>
+    <li><strong>Phân tích cây quyết định (Decision tree analysis).</strong> Đánh giá các nhánh quyết định và giá trị tiền tệ kỳ vọng (Expected monetary value - Hình 11-15).</li>
+    <li><strong>Biểu đồ ảnh hưởng (Influence diagrams).</strong> Công cụ hỗ trợ ra quyết định dưới sự không chắc chắn.</li>
+  </ul>
+</li>
+</ul>
+
+<h4>11.4.3 ĐẦU RA (OUTPUTS)</h4>
+<p>Cập nhật Báo cáo Rủi ro (Risk report) với kết quả định lượng: Đánh giá phơi nhiễm rủi ro tổng thể, Cây S-curve, Biểu đồ Tornado, và danh sách rủi ro ưu tiên bằng số học.</p>
+
+<hr>
+
+<h3 id="s11-5">11.5 LẬP KẾ HOẠCH PHẢN HỒI RỦI RO (PLAN RISK RESPONSES)</h3>
+<p>Phát triển các lựa chọn, chọn chiến lược và thống nhất các hành động để giải quyết rủi ro tổng thể và riêng lẻ.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//15b93d44-296f-4a47-a762-19a67afe7bd3/markdown_0/imgs/img_in_image_box_220_459_955_870.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A01Z%2F-1%2F%2Feca129de5f207f215b26894e373d62eef2d4818e75753a07b1ec3df9732803e0" alt="Image" width="60%" /></div></div>
+<p class="figure-caption">Hình 11-16 / 11-17. Lập Kế hoạch Phản hồi Rủi ro</p>
+
+<h4>11.5.2 CÔNG CỤ VÀ KỸ THUẬT (TOOLS AND TECHNIQUES)</h4>
+<ul class="pmbok">
+<li><strong>Các chiến lược đối với mối đe dọa (Strategies for threats):</strong>
+  <ul class="pmbok dash">
+    <li><strong>Leo thang (Escalate):</strong> Gửi rủi ro lên cấp quản lý cao hơn (cấp program/portfolio) vì vượt quá thẩm quyền.</li>
+    <li><strong>Tránh (Avoid):</strong> Loại bỏ đe dọa hoặc bảo vệ dự án khỏi nó bằng cách đổi kế hoạch.</li>
+    <li><strong>Chuyển giao (Transfer):</strong> Đẩy rủi ro cho bên thứ 3 (ví dụ mua bảo hiểm, thuê ngoài).</li>
+    <li><strong>Giảm thiểu (Mitigate):</strong> Hành động để làm giảm xác suất hoặc tác động của đe dọa.</li>
+    <li><strong>Chấp nhận (Accept):</strong> Chấp nhận đe dọa và không làm gì (chủ động thì lập quỹ dự phòng, bị động thì kệ).</li>
+  </ul>
+</li>
+<li><strong>Các chiến lược đối với cơ hội (Strategies for opportunities):</strong>
+  <ul class="pmbok dash">
+    <li><strong>Leo thang (Escalate):</strong> Đẩy lên cấp cao nếu nằm ngoài thẩm quyền dự án.</li>
+    <li><strong>Khai thác (Exploit):</strong> Hành động chắc chắn 100% nắm bắt được cơ hội này.</li>
+    <li><strong>Chia sẻ (Share):</strong> Chuyển giao một phần cơ hội cho bên thứ 3 (liên doanh, hợp tác) để cùng ăn chia lợi ích.</li>
+    <li><strong>Tăng cường (Enhance):</strong> Tăng xác suất hoặc tác động để dễ đạt được cơ hội.</li>
+    <li><strong>Chấp nhận (Accept):</strong> Để mặc nó tự đến, nếu có thì tốt (với quỹ dự phòng thời gian/chi phí).</li>
+  </ul>
+</li>
+<li><strong>Chiến lược đối phó rủi ro dự phòng (Contingent response strategies).</strong> Hay còn gọi là Kế hoạch dự phòng (Fallback/Contingency plan) được kích hoạt bởi các dấu hiệu cảnh báo (trigger/warning signs).</li>
+<li><strong>Chiến lược đối với rủi ro tổng thể (Strategies for overall project risk).</strong> Áp dụng các kỹ thuật Avoid, Exploit, Transfer/Share, Mitigate/Enhance, Accept lên toàn cục dự án.</li>
+</ul>
+
+<h4>11.5.3 ĐẦU RA (OUTPUTS)</h4>
+<p>Yêu cầu thay đổi (Change requests), Cập nhật các đường cơ sở và kế hoạch, và Cập nhật Sổ đăng ký rủi ro / Báo cáo rủi ro (Ghi lại kế hoạch đối phó, rủi ro tồn dư (residual risks) và rủi ro thứ cấp (secondary risks) sinh ra do hành động đối phó).</p>
+
+<hr>
+
+<h3 id="s11-6">11.6 THỰC THI PHẢN HỒI RỦI RO (IMPLEMENT RISK RESPONSES)</h3>
+<p>Quy trình để đảm bảo rằng các hành động ứng phó rủi ro đã được thống nhất thực sự được thực hiện để tránh tình trạng "lập kế hoạch xong để đấy".</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//b5d462b6-5851-4a42-870d-064a2f6dce5a/markdown_2/imgs/img_in_image_box_211_358_985_611.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A01Z%2F-1%2F%2F1613d68f8603e447a9ea90f55b3ef9dbcecc4a8c2f4b0a9cb9f3ef882746068d" alt="Image" width="63%" /></div></div>
+<p class="figure-caption">Hình 11-18 / Hình 11-19. Thực thi Phản hồi Rủi ro</p>
+
+<h4>11.6.1 ĐẦU VÀO, CÔNG CỤ VÀ ĐẦU RA</h4>
+<p>Sử dụng các kỹ năng gây ảnh hưởng (Influencing) để thôi thúc các "Risk owners" (Chủ sở hữu rủi ro) thực thi đúng những gì họ chịu trách nhiệm. Kết quả là Yêu cầu thay đổi và cập nhật lại Sổ ghi nhận vấn đề, Sổ đăng ký rủi ro.</p>
+
+<hr>
+
+<h3 id="s11-7">11.7 GIÁM SÁT RỦI RO (MONITOR RISKS)</h3>
+<p>Quy trình giám sát việc thực thi kế hoạch ứng phó, theo dõi các rủi ro đã xác định, nhận diện và phân tích rủi ro mới, và đánh giá tính hiệu quả của toàn bộ quá trình quản lý rủi ro dự án.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//085c7481-c8df-4c33-b7fa-f7f16f51087c/markdown_1/imgs/img_in_image_box_220_389_966_751.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A02Z%2F-1%2F%2Fed5c28ba9bdc9403fdcf940ead2b697d9ffed392132b54279146ff42f8252577" alt="Image" width="60%" /></div></div>
+<p class="figure-caption">Hình 11-20 / Hình 11-21. Giám sát Rủi ro</p>
+
+<p>Nhóm dự án cần giám sát công việc liên tục để xác định xem liệu:</p>
+<ul class="pmbok check">
+<li>Phản hồi rủi ro có hiệu quả hay không.</li>
+<li>Rủi ro tổng thể có thay đổi hay không.</li>
+<li>Tình trạng của rủi ro có thay đổi không, hoặc có rủi ro mới nào xuất hiện.</li>
+<li>Quỹ dự phòng có cần sửa đổi hay không, v.v...</li>
+</ul>
+
+<h4>11.7.2 CÔNG CỤ VÀ KỸ THUẬT (TOOLS AND TECHNIQUES)</h4>
+<ul class="pmbok">
+<li><strong>Phân tích dữ liệu:</strong>
+  <ul class="pmbok dash">
+    <li><strong>Phân tích hiệu suất kỹ thuật (Technical performance analysis):</strong> So sánh các thành tựu kỹ thuật với kế hoạch (trọng lượng, thời gian giao dịch, số lỗi...).</li>
+    <li><strong>Phân tích quỹ dự phòng (Reserve analysis):</strong> So sánh lượng quỹ dự phòng còn lại với lượng rủi ro còn lại để xem quỹ còn đủ đáp ứng không (có thể dùng biểu đồ burndown chart).</li>
+  </ul>
+</li>
+<li><strong>Kiểm toán (Audits).</strong> Kiểm toán rủi ro dùng để xem xét tính hiệu quả của quy trình quản lý rủi ro.</li>
+<li><strong>Các cuộc họp (Meetings).</strong> Các cuộc họp đánh giá rủi ro định kỳ.</li>
+</ul>
+
+<h4>11.7.3 ĐẦU RA (OUTPUTS)</h4>
+<p>Thông tin hiệu suất công việc (Work performance information), Yêu cầu thay đổi (Change requests), và các bản cập nhật cho kế hoạch, tài liệu và quy trình tổ chức.</p>
+
+</main>
+</body>
+</html>

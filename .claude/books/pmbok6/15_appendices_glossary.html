@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phụ lục & Thuật ngữ | PMBOK® Guide Lần 6</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a3;
+    --cream: #fdf8f0;
+    --text: #2c2c2c;
+    --text-light: #5a5a5a;
+    --border: #d4c89a;
+    --accent: #8b1a1a;
+    --sidebar-w: 260px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Merriweather', Georgia, serif;
+    background: var(--cream);
+    color: var(--text);
+    display: flex;
+    min-height: 100vh;
+  }
+  #sidebar {
+    width: var(--sidebar-w);
+    background: var(--navy);
+    color: #ccd4e8;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    overflow-y: auto;
+    z-index: 100;
+    padding: 0 0 2rem;
+    border-right: 3px solid var(--gold);
+  }
+  #sidebar-header {
+    background: linear-gradient(135deg, #0f1d3a 0%, #1a2744 100%);
+    padding: 1.5rem 1.2rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  #sidebar-header .book-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  #sidebar-header h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+  }
+  #sidebar-header .edition {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    color: var(--gold-light);
+    font-style: italic;
+  }
+  #sidebar nav { padding: 0.8rem 0; }
+  #sidebar nav a {
+    display: block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    color: #aab8d0;
+    text-decoration: none;
+    padding: 0.45rem 1.2rem;
+    line-height: 1.4;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+  }
+  #sidebar nav a:hover, #sidebar nav a.active {
+    color: #fff;
+    background: rgba(201,168,76,0.12);
+    border-left-color: var(--gold);
+  }
+  #sidebar nav .section-group { margin-top: 0.4rem; }
+  #sidebar nav .group-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 0.8rem 1.2rem 0.3rem;
+    opacity: 0.85;
+  }
+  #main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    max-width: 900px;
+    padding: 0 3rem 5rem;
+  }
+  .chapter-hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #2a3a6a 100%);
+    color: white;
+    padding: 3rem 3rem 2.5rem;
+    margin: 0 -3rem 3rem;
+    border-bottom: 4px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-hero::before {
+    content: attr(data-chnum);
+    position: absolute;
+    right: 2rem; top: 50%;
+    transform: translateY(-50%);
+    font-size: 10rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.05);
+    font-family: 'Merriweather', serif;
+    line-height: 1;
+  }
+  .chapter-hero .ch-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .chapter-hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+  }
+  .chapter-hero .ch-en {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+    font-style: italic;
+  }
+  h2 {
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  h3 {
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin: 2rem 0 0.7rem;
+    padding-left: 0.8rem;
+    border-left: 4px solid var(--gold);
+  }
+  h4 {
+    font-size: 1rem;
+    color: var(--accent);
+    margin: 1.5rem 0 0.5rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  h5 {
+    font-size: 0.95rem;
+    color: var(--navy);
+    margin: 1.2rem 0 0.5rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+  }
+  p {
+    font-size: 0.97rem;
+    line-height: 1.85;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+  ul.pmbok {
+    list-style: none;
+    margin: 0.5rem 0 1rem 0;
+    padding: 0;
+  }
+  ul.pmbok li {
+    position: relative;
+    padding: 0.3rem 0 0.3rem 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--text);
+  }
+  ul.pmbok li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.7rem;
+    top: 0.5rem;
+  }
+  ul.pmbok.check li::before { content: '☑'; color: #2d7a2d; font-size: 0.9rem; top: 0.35rem; }
+  ul.pmbok.dash li::before  { content: '■'; color: var(--navy); font-size: 0.6rem; top: 0.5rem; }
+  .figure-wrap {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1.2rem;
+    background: #f8f5ee;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .figure-wrap img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  }
+  .figure-caption {
+    margin-top: 0.75rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.83rem;
+    color: var(--text-light);
+    font-style: italic;
+    text-align: center;
+  }
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.84rem;
+  }
+  table th {
+    background: var(--navy);
+    color: white;
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+  table td {
+    padding: 0.55rem 0.8rem;
+    border: 1px solid #ddd;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  table tr:nth-child(even) td { background: #f9f6ef; }
+  .names-list { font-size: 0.85rem; line-height: 1.4; color: var(--text-light); column-count: 2; column-gap: 2rem; margin-bottom: 1.5rem; }
+  @media(max-width:900px){
+    #sidebar { display: none; }
+    #main { margin-left: 0; padding: 0 1.2rem 4rem; }
+    .chapter-hero { margin: 0 -1.2rem 2rem; padding: 2rem 1.5rem; }
+    .names-list { column-count: 1; }
+  }
+</style>
+</head>
+<body>
+
+<aside id="sidebar">
+  <div id="sidebar-header">
+    <div class="book-label">PMBOK® Guide</div>
+    <h2>Phụ Lục & Thuật Ngữ</h2>
+    <div class="edition">Lần xuất bản thứ 6 · Tiếng Việt</div>
+  </div>
+  <nav>
+    <div class="section-group">
+    <div class="group-label">Nội dung</div>
+    <a href="#x2">Phụ lục X2 - Đóng góp & Đánh giá</a>
+    <a href="#x3">Phụ lục X3 - Môi trường Agile/Thích ứng</a>
+    <a href="#x4">Phụ lục X4 - Khái niệm Trọng tâm</a>
+    <a href="#x5">Phụ lục X5 - Yếu tố May đo</a>
+    <a href="#x6">Phụ lục X6 - Công cụ & Kỹ thuật</a>
+    <a href="#glossary">Thuật ngữ (Glossary)</a>
+    <a href="#index">Chỉ mục (Index)</a>
+    </div>
+  </nav>
+</aside>
+
+<main id="main">
+
+  <div class="chapter-hero" data-chnum="15">
+    <div class="ch-label">Phần 15</div>
+    <h1>PHỤ LỤC, THUẬT NGỮ VÀ CHỈ MỤC</h1>
+    <div class="ch-en">Appendices, Glossary, and Index</div>
+  </div>
+
+<h2 id="x2">PHỤ LỤC X2 NHỮNG NGƯỜI ĐÓNG GÓP VÀ ĐÁNH GIÁ PMBOK® GUIDE — LẦN XUẤT BẢN THỨ 6</h2>
+<p>Các tình nguyện viên của PMI lần đầu tiên đã nỗ lực hệ thống hóa Khối Kiến thức Quản lý Dự án trong Báo cáo Đặc biệt về Đạo đức, Tiêu chuẩn và Kiểm định, xuất bản năm 1983. Kể từ thời điểm đó, các tình nguyện viên khác đã bước ra để cập nhật và cải thiện tài liệu gốc đó và đóng góp vào tiêu chuẩn quản lý dự án được công nhận trên toàn cầu này, Hướng dẫn về Khối Kiến thức Quản lý Dự án của PMI (PMBOK® Guide). Phụ lục này liệt kê những cá nhân đã đóng góp vào quá trình phát triển và sản xuất PMBOK® Guide – Lần xuất bản thứ 6. Không một danh sách nào có thể lột tả đầy đủ tất cả những đóng góp của những người đã tình nguyện phát triển PMBOK® Guide – Lần xuất bản thứ 6.</p>
+<p>Viện Quản lý Dự án (Project Management Institute) rất biết ơn tất cả những cá nhân này vì sự hỗ trợ của họ và ghi nhận những đóng góp của họ cho nghề quản lý dự án.</p>
+
+<h5>X2.1 ỦY BAN NÒNG CỐT PMBOK® GUIDE — LẦN XUẤT BẢN THỨ 6</h5>
+<p>Những cá nhân sau đây đã phục vụ với tư cách là thành viên, là những người đóng góp văn bản hoặc khái niệm, và phục vụ với tư cách là những nhà lãnh đạo trong Ủy ban Nòng cốt Dự án:</p>
+<div class="names-list">
+Cyndi Snyder Dionisio, MBA, PMP, Chủ tịch<br>
+David A. Hillson, PhD, PMI Fellow, HonFAPM, Phó Chủ tịch (Trưởng nhóm Gắn kết Tình nguyện viên & Trưởng Phần 11)<br>
+Lynda Bourne, DPM, FACS (Trưởng Phần 10 & 13)<br>
+Larkland A. Brown, PMP, PMI-ACP (Trưởng Phần 6)<br>
+Pan C.P. Kao, PhD, PMP, (Trưởng Phần 7 & 12)<br>
+Mercedes Martinez Sanz, PMP (Trưởng Phần 4)<br>
+Alejandro Romero-Torres, PhD, PMP, (Trưởng nhóm Quản lý & Chất lượng Tài liệu & Trưởng Phần 5)<br>
+Guy Schleffer, PfMP, PMP, (Trưởng Phần 8 & 9)<br>
+Michael J. Stratton, PhD, PMP (Trưởng Phần 1, 2, & 3) †<br>
+Kristin L. Vitello, Chuyên gia Dự án Tiêu chuẩn<br>
+Gwen Whitman, EMBA, PfMP (Trưởng nhóm Truyền thông Dự án)
+</div>
+<p>† Đã mất. Ủy ban nòng cốt và PMI ghi nhận Michael J. Stratton vì công việc của ông trong PMBOK Guide - Lần xuất bản thứ 6. Mike đã cống hiến hết mình cho nghề nghiệp và tác phẩm này là minh chứng cho những đóng góp của ông đối với lĩnh vực quản lý dự án.</p>
+
+<h5>X2.2 NHỮNG NGƯỜI ĐÓNG GÓP QUAN TRỌNG</h5>
+<p>Ngoài các thành viên của Ủy ban Nòng cốt Dự án, những cá nhân sau đây đã cung cấp các thông tin đầu vào hoặc khái niệm quan trọng:</p>
+<div class="names-list">
+Ernest Baker, PMP, PRINCE2® Practitioner<br>Cheryl Burcham, PMP<br>Guido Caciagli, B., PMP<br>Jimmy I. Char, PMP, SDI<br>Cătălin-Teodor Dogaru, PhD, MBA<br>Andrés Falcón, PMP<br>Anna Maria Felici, PMP<br>Eren Gokce, MBA, PMP<br>Pamela S. Goodhue, MBA, PMP<br>Franco R. Graziano, MPA, PMP<br>Joy Gumz, CPA, PMP<br>Salah M. Haswah, PMP, PgMP<br>Puja Kasariya, PMP<br>Srikanth Krishnamoorthy, PMP, PGDSA<br>Tom Magee, MBA, PMP<br>David A. Maynard, MBA, PMP<br>Bob Mahler, PMP, PMI-RMP<br>Frank R. Parth, MBA, PMP<br>Dattatraya Y. Pathak, PMP, PfMP<br>Judy Payne, PhD, MBA<br>Nagy Attalla Saad, PMP, ITIL<br>Davidov Shai<br>Kavita Sharma, PMP, RMP<br>Jurgen T. Sturany, PMP<br>Dirk Withake, PgMP, PMP
+</div>
+
+<h5>X2.3 ỦY BAN NỘI DUNG PMBOK® GUIDE — LẦN XUẤT BẢN THỨ 6</h5>
+<p>Những cá nhân sau đây là những người đóng góp văn bản hoặc khái niệm và đã cung cấp các khuyến nghị về các bản nháp của PMBOK® Guide — Lần xuất bản thứ 6:</p>
+<div class="names-list">
+Vahid Azadmanesh, MBA, PMP<br>Brad Bigelow, PMP, MSP<br>Wayne R. Brantley, MSEd, PMP<br>Marcelo A. Briola PhD, PMP<br>Michael C. Broadway, PMP<br>Mariana Nella Caffarena Bolivar<br>Steven Flannes<br>Sandra Fonseca, PhD, CISA, CRISC<br>Theofanis C. Giotis, PMP, PMI-ACP<br>Piyush Govil, BE, PMP<br>Éamonn V. Kelly, DBA, PMP<br>Rex M. Holmlin, PE, PMP<br>Srikanth Krishnamoorthy<br>Fabiano de Alcântara de Lima, PhD, PMP<br>Shashank Neppalli<br>Andrea Pantano<br>Kristine Persun, PMP<br>Piyush Prakash PMP, Prince 2<br>Raju N. Rao, PMP, SCPM<br>Krupakar Reddy, PMP, PRINCE2 Practitioner<br>Emaeldin Seddik, PhD, PMP<br>Tejas V. Sura, PMP, PfMP<br>Nicholas Tovar<br>Fede Varchavsky, MBA, PMP<br>Angelo Valle, PhD, CRK<br>Ronald H. Verheijden, PMP
+</div>
+
+<h5>X2.4 NGƯỜI ĐÁNH GIÁ (REVIEWERS)</h5>
+<h5>X2.4.1 ĐÁNH GIÁ CỦA SME (CHUYÊN GIA)</h5>
+<p>Ngoài các thành viên của Ủy ban, những cá nhân sau đây đã cung cấp các đánh giá và khuyến nghị của họ về các bản nháp của tiêu chuẩn:</p>
+<div class="names-list">
+David P. Bieg, PMI-PBA<br>James F. Carilli, PMP, PgMP<br>Shika Carter, PMP, PgMP<br>Dan Deakin, PMP, CISSP<br>Theofanis C. Giotis, PMP, PMI-ACP<br>Dave Gunner, MSc, PMP<br>George Jucan, PMP<br>Ginger Levin, PhD, PMP, PgMP<br>Vanina Mangano, PMP, PMI-RMP<br>Juan Carlos Moreno, MBA, PMP<br>Marvin R. Nelson, MBA, SCPM<br>Klaus Nielsen, MBA, PMP<br>Chris Richards, PMP<br>Ivan Rincon, MBA, PMP<br>Shaligram Pokharel, REng (Nepal), PhD<br>Paul E. Shaltry, MA, PMP<br>Carolina Gabriela Spindola, PMP, SSBB<br>Langeswaran Supramaniam, C Build E FCABE, PM<br>Michael A Yinger
+</div>
+
+<h5>X2.4.2 ĐÁNH GIÁ BẢN NHÁP CÔNG KHAI CUỐI CÙNG (PHẦN TIÊU CHUẨN)</h5>
+<p>Ngoài các thành viên của Ủy ban, hàng trăm cá nhân (không liệt kê chi tiết toàn bộ tên tại đây do độ dài) đã cung cấp các khuyến nghị nhằm cải thiện Bản Nháp Công Khai của PMBOK® Guide — Lần xuất bản thứ 6 (phần tiêu chuẩn).</p>
+
+<h5>X2.4.3 ĐÁNH GIÁ BẢN NHÁP CÔNG KHAI CUỐI CÙNG (PHẦN HƯỚNG DẪN)</h5>
+<p>Ngoài các thành viên của Ủy ban, hàng trăm cá nhân khác đã cung cấp các khuyến nghị nhằm cải thiện Bản Nháp Công Khai của PMBOK® Guide — Lần xuất bản thứ 6 (phần hướng dẫn).</p>
+
+<h5>X2.5 NHÓM TƯ VẤN THÀNH VIÊN CHƯƠNG TRÌNH TIÊU CHUẨN CỦA PMI (MAG)</h5>
+<p>Những cá nhân sau đây đã phục vụ với tư cách là thành viên của Nhóm Tư vấn Thành viên Chương trình Tiêu chuẩn của PMI trong quá trình phát triển PMBOK® Guide — Lần xuất bản thứ 6:</p>
+<div class="names-list">
+Maria Cristina Barbero, PMP, PMI-ACP<br>Brian Grafsgaard, PMP, PgMP<br>Hagit Landman, PMP, PMI-SP<br>Yvan Petit, PhD, PMP<br>Chris Stevens, PhD<br>Dave Violette, MPM, PMP<br>John Zlockie, MBA, PMP, PMI Standards
+</div>
+
+<h5>X2.6 ĐÁNH GIÁ CỦA CƠ QUAN ĐỒNG THUẬN</h5>
+<p>Những cá nhân sau đây đã phục vụ với tư cách là thành viên của Cơ quan Đồng thuận Chương trình Tiêu chuẩn của PMI:</p>
+<div class="names-list">
+Nigel Blamped, PE, PMP<br>Dennis L. Bolles, PMP<br>Chris Cartwright, MPM, PMP<br>Sergio Coronado, PhD<br>Andrea Demaria, PMP<br>John L. Dettbarn, Jr., DSc, PE<br>Charles T. Follin, PMP<br>Laurence Goldsmith, MBA, PMP<br>Dana J Goulston, PMP<br>Brian Grafsgaard, PMP, PgMP<br>David Gunner, PMP<br>Dorothy L. Kangas, PMP<br>Thomas Kurihara<br>Hagit Landman, PMP, PMI-SP<br>Timothy MacFadyen<br>Harold “Mike” Mosley, Jr., PE, PMP<br>Eric S Norman, PMP, PgMP<br>Nanette Patton, MSBA, PMP<br>Yvan Petit, PhD, PMP<br>Crispin (“Kik”) Piney, BSc, PgMP<br>Michael Reed, PMP, PfMP<br>David W. Ross, PMP, PgMP<br>Paul E. Shaltry, PMP<br>Chris Stevens, PhD<br>Adam D. Sykes, MS, PMP<br>Matthew D. Tomlinson, PMP, PgMP<br>Dave Violette, MPM, PMP
+</div>
+
+<h5>X2.7 NHÂN VIÊN SẢN XUẤT</h5>
+<p>Đặc biệt vinh danh những nhân viên sau đây của PMI:</p>
+<ul class="pmbok">
+<li>Donn Greenberg, Quản lý, Xuất bản</li>
+<li>Roberta Storer, Biên tập viên Sản phẩm</li>
+<li>Barbara Walsh, Giám sát Sản xuất Xuất bản</li>
+</ul>
+
+<hr>
+
+<h2 id="x3">PHỤ LỤC X3 MÔI TRƯỜNG DỰ ÁN AGILE, LẶP, THÍCH ỨNG, VÀ LAI</h2>
+<p>Phụ lục này khám phá các sắc thái của việc làm thế nào mà Các Nhóm Quy trình Quản lý Dự án được thực hiện liên quan đến môi trường và vòng đời dự án.</p>
+<p>Bản chất của các dự án là phải tiến hóa khi có thêm thông tin chi tiết và cụ thể. Khả năng tiến hóa và thích ứng này càng phù hợp hơn trong các môi trường có mức độ thay đổi và độ không chắc chắn cao hoặc có sự khác biệt lớn về cách giải thích và kỳ vọng của các bên liên quan.</p>
+
+<h5>X3.1 SỰ LIÊN TỤC CỦA CÁC VÒNG ĐỜI DỰ ÁN</h5>
+<p>Để hiểu việc áp dụng quy trình trong các dự án thích ứng, sự liên tục của các vòng đời dự án cần được xác định. Thuật ngữ PMBOK® Guide định nghĩa vòng đời dự án là “chuỗi các giai đoạn mà một dự án trải qua từ lúc bắt đầu cho đến khi hoàn thành.” Bên trong một vòng đời dự án, thường có một hoặc nhiều giai đoạn gắn liền với việc phát triển sản phẩm, dịch vụ hoặc kết quả. Chúng được gọi là vòng đời phát triển. Các vòng đời phát triển có thể là dự đoán (predictive - dựa trên kế hoạch), thích ứng (adaptive - agile), lặp lại (iterative), tăng trưởng (incremental), hoặc lai (hybrid).</p>
+<p>Hình X3-1 cho thấy các cách thức khác nhau trong đó các yêu cầu và kế hoạch được xử lý, cách thức rủi ro và chi phí được quản lý, các cân nhắc về tiến độ, và cách thức xử lý sự tham gia của các bên liên quan chính tùy thuộc vào loại vòng đời đang được sử dụng.</p>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <th style='text-align: center;'>Dự đoán (Predictive)</th>
+    <th style='text-align: center;'>Lặp (Iterative)</th>
+    <th style='text-align: center;'>Tăng trưởng (Incremental)</th>
+    <th style='text-align: center;'>Linh hoạt (Agile)</th>
+  </tr>
+  <tr>
+    <td>Yêu cầu được xác định trước khi việc phát triển bắt đầu</td>
+    <td>Yêu cầu có thể được chi tiết hóa vào các khoảng thời gian định kỳ trong quá trình bàn giao</td>
+    <td>Yêu cầu được chi tiết hóa thường xuyên trong quá trình bàn giao</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Bàn giao các kế hoạch cho sản phẩm cuối cùng. Sau đó chỉ bàn giao một sản phẩm cuối cùng duy nhất vào cuối dòng thời gian dự án</td>
+    <td>Việc bàn giao có thể được chia thành các tập con của sản phẩm tổng thể</td>
+    <td>Việc bàn giao diễn ra thường xuyên với các tập con có giá trị với khách hàng của sản phẩm tổng thể</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Sự thay đổi bị hạn chế nhiều nhất có thể</td>
+    <td>Sự thay đổi được hợp nhất vào các khoảng thời gian định kỳ</td>
+    <td>Sự thay đổi được hợp nhất theo thời gian thực trong quá trình bàn giao</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Các bên liên quan chính tham gia vào các cột mốc cụ thể</td>
+    <td>Các bên liên quan chính tham gia thường xuyên</td>
+    <td>Các bên liên quan chính tham gia liên tục</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>Rủi ro và chi phí được kiểm soát bằng việc lập kế hoạch chi tiết của hầu hết các yếu tố có thể biết trước</td>
+    <td>Rủi ro và chi phí được kiểm soát bằng cách chi tiết hóa dần các kế hoạch với thông tin mới</td>
+    <td>Rủi ro và chi phí được kiểm soát khi các yêu cầu và ràng buộc xuất hiện</td>
+    <td></td>
+  </tr>
+</table>
+</div>
+<p class="figure-caption">Hình X3-1. Sự Liên tục của Các Vòng đời Dự án</p>
+
+<p>Các vòng đời dự án dự đoán được đặc trưng bởi sự nhấn mạnh vào đặc tả các yêu cầu và lập kế hoạch chi tiết trong các giai đoạn đầu của dự án. Các kế hoạch chi tiết dựa trên các yêu cầu và ràng buộc đã biết có thể giảm thiểu rủi ro và chi phí. Các cột mốc cho sự tham gia của các bên liên quan chính cũng được lên kế hoạch. Khi việc thực thi kế hoạch chi tiết tiến triển, các quy trình giám sát và kiểm soát tập trung vào việc hạn chế các thay đổi có thể tác động đến phạm vi, tiến độ hoặc ngân sách.</p>
+<p>Các vòng đời thích ứng cao hoặc agile đối với các dự án được đặc trưng bởi sự chi tiết hóa dần các yêu cầu dựa trên các chu kỳ lập kế hoạch và thực thi lặp đi lặp lại ngắn. Rủi ro và chi phí được giảm bớt bằng sự tiến hóa dần dần của các kế hoạch ban đầu. Các bên liên quan chính tham gia liên tục và cung cấp phản hồi thường xuyên, cho phép phản hồi với những thay đổi một cách nhanh chóng hơn và cũng dẫn đến chất lượng tốt hơn.</p>
+<p>Các vòng đời dự án ở trung tâm của sự liên tục vòng đời có xu hướng nghiêng chặt chẽ hơn về phía dự đoán hoặc phía agile của sự liên tục tùy thuộc vào cách thức các yêu cầu được đặc tả, cách thức xử lý rủi ro và chi phí, và bản chất của sự tham gia của các bên liên quan chính. Các dự án trong phần này của sự liên tục có thể sử dụng các phương pháp dự án lai.</p>
+
+<h5>X3.2 CÁC GIAI ĐOẠN DỰ ÁN</h5>
+<p>Các giai đoạn là "một tập hợp các hoạt động dự án có liên quan logic với nhau, đạt đến đỉnh điểm là sự hoàn thành của một hoặc nhiều sản phẩm bàn giao." Các quy trình trong mỗi Nhóm Quy trình được lặp lại khi cần thiết trong mỗi giai đoạn cho đến khi các tiêu chí hoàn thành của giai đoạn đó được đáp ứng.</p>
+<p>Các dự án ở phía thích ứng hơn của sự liên tục sử dụng hai mẫu lặp lại của các mối quan hệ giai đoạn dự án như được mô tả trong các Phần X3.2.1 và X3.2.2.</p>
+
+<h5>X3.2.1 CÁC GIAI ĐOẠN DỰA TRÊN VÒNG LẶP TUẦN TỰ</h5>
+<p>Các dự án thích ứng thường được chia thành một chuỗi các giai đoạn gọi là Các Vòng lặp (Iterations). Mỗi vòng lặp sử dụng các quy trình quản lý dự án có liên quan. Các vòng lặp này tạo ra một nhịp độ dự đoán được, có thời gian cố định được thỏa thuận trước, thời lượng nhất quán giúp ích cho việc lên tiến độ.</p>
+<p>Việc thực hiện các nhóm quy trình lặp đi lặp lại làm phát sinh thêm chi phí chung (overhead). Chi phí chung này được coi là cần thiết để quản lý hiệu quả các dự án có mức độ phức tạp, độ không chắc chắn và sự thay đổi cao. Mức độ nỗ lực cho các giai đoạn dựa trên vòng lặp được minh họa trong Hình X3-2.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//8498fc75-80ca-44dc-9794-13da197ffd0a/markdown_0/imgs/img_in_image_box_142_678_1080_1062.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A06Z%2F-1%2F%2F716196f36e090086eb9c20364a5e0f5d702e372aa6ba26312128a348464a21ec" alt="Image" width="76%" /></div></div>
+<p class="figure-caption">Hình X3-2. Mức độ Nỗ lực cho Các Nhóm Quy trình qua Các Chu kỳ Lặp</p>
+
+<h5>X3.2.2 CÁC GIAI ĐOẠN CHỒNG CHÉO LIÊN TỤC</h5>
+<p>Các dự án có tính thích ứng cao thường sẽ thực hiện tất cả các nhóm quy trình quản lý dự án một cách liên tục trong suốt vòng đời dự án. Lấy cảm hứng từ các kỹ thuật tư duy tinh gọn (lean thinking), phương pháp này thường được gọi là "lập kế hoạch liên tục và thích ứng", thừa nhận rằng một khi công việc bắt đầu, kế hoạch sẽ thay đổi, và kế hoạch cần phản ánh kiến thức mới này. Ý định là tinh chỉnh và cải thiện mạnh mẽ tất cả các yếu tố của kế hoạch quản lý dự án, vượt ra ngoài các điểm kiểm tra được lên lịch trước gắn liền với Các Vòng lặp. Sự tương tác của Các Nhóm Quy trình trong phương pháp này được minh họa trong Hình X3-3.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//8498fc75-80ca-44dc-9794-13da197ffd0a/markdown_1/imgs/img_in_image_box_142_389_1079_970.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A07Z%2F-1%2F%2F4a780dda78ef5ec92b7634d976d508096364e6581f6f32d4fc9fcb5d1b9a34c4" alt="Image" width="76%" /></div></div>
+<p class="figure-caption">Hình X3-3. Mối quan hệ của Các Nhóm Quy trình trong Các Giai đoạn Liên tục</p>
+
+<p>Các phương pháp thích ứng cao này liên tục kéo các nhiệm vụ từ một danh sách công việc được ưu tiên. Điều này nhằm mục đích giảm thiểu chi phí chung của việc quản lý Các Nhóm Quy trình lặp đi lặp lại, bằng cách loại bỏ các hoạt động bắt đầu và kết thúc vòng lặp. Các hệ thống kéo (pull systems) liên tục có thể được xem như các vi vòng lặp (microiterations) với sự nhấn mạnh vào việc tối đa hóa thời gian có sẵn cho việc thực thi thay vì quản lý. Tuy nhiên, chúng cần có các cơ chế lập kế hoạch, theo dõi và điều chỉnh riêng để giữ cho chúng đi đúng hướng và thích ứng với những thay đổi.</p>
+
+<h5>X3.3 CÁC NHÓM QUY TRÌNH TRONG MÔI TRƯỜNG THÍCH ỨNG</h5>
+<p>Như đã thấy ở phần trước, mỗi Nhóm Quy trình Quản lý Dự án đều diễn ra trong các dự án trên toàn bộ sự liên tục của vòng đời dự án. Có một số biến thể trong cách Các Nhóm Quy trình tương tác bên trong các vòng đời thích ứng và thích ứng cao.</p>
+
+<h5>X3.3.1 NHÓM QUY TRÌNH KHỞI TẠO</h5>
+<p>Các quy trình Khởi tạo là các quy trình được thực hiện để xác định một dự án mới hoặc một giai đoạn mới của một dự án hiện tại bằng cách xin phép để bắt đầu dự án hoặc giai đoạn đó. Các dự án thích ứng thường xuyên xem xét lại và xác nhận lại hiến chương dự án. Khi dự án tiến triển, các ưu tiên cạnh tranh và sự thay đổi động có thể làm cho các ràng buộc và tiêu chí thành công của dự án trở nên lỗi thời. Vì lý do này, Các quy trình Khởi tạo được thực hiện thường xuyên trên các dự án thích ứng để đảm bảo dự án đang di chuyển trong các ràng buộc và hướng tới các mục tiêu phản ánh thông tin mới nhất.</p>
+
+<h5>X3.3.2 NHÓM QUY TRÌNH LẬP KẾ HOẠCH</h5>
+<p>Các quy trình Lập kế hoạch là các quy trình cần thiết để thiết lập phạm vi dự án, tinh chỉnh các mục tiêu, và xác định hướng hành động cần thiết để đạt được các mục tiêu mà dự án được thực hiện để hoàn thành.</p>
+<p>Các vòng đời dự án dự đoán cao thường được đặc trưng bởi rất ít thay đổi đối với phạm vi dự án và sự liên kết cao của các bên liên quan. Những dự án này hưởng lợi từ việc lập kế hoạch chi tiết ngay từ đầu. Ngược lại, các vòng đời thích ứng phát triển một tập hợp các kế hoạch cấp cao cho các yêu cầu ban đầu và chi tiết hóa dần các yêu cầu đến mức độ chi tiết thích hợp cho chu kỳ lập kế hoạch.</p>
+
+<h5>X3.3.3 NHÓM QUY TRÌNH THỰC THI</h5>
+<p>Các quy trình Thực thi là các quy trình được thực hiện để hoàn thành công việc được xác định trong kế hoạch quản lý dự án nhằm đáp ứng các yêu cầu của dự án.</p>
+<p>Công việc trong các vòng đời dự án agile, lặp và thích ứng được chỉ đạo và quản lý thông qua các vòng lặp. Mỗi vòng lặp là một khoảng thời gian ngắn, cố định để thực hiện công việc, sau đó là sự trình diễn (demonstration) về chức năng hoặc thiết kế. Dựa trên sự trình diễn này, các bên liên quan có liên quan và nhóm sẽ tiến hành đánh giá hồi cứu (retrospective review). Sự trình diễn và đánh giá này giúp kiểm tra tiến độ so với kế hoạch và xác định xem có bất kỳ thay đổi nào đối với phạm vi, tiến độ hoặc các quy trình thực thi dự án là cần thiết hay không.</p>
+
+<h5>X3.3.4 NHÓM QUY TRÌNH GIÁM SÁT VÀ KIỂM SOÁT</h5>
+<p>Các quy trình Giám sát và Kiểm soát là các quy trình cần thiết để theo dõi, xem xét và điều tiết tiến độ cũng như hiệu suất của dự án; xác định bất kỳ lĩnh vực nào cần thay đổi đối với kế hoạch; và khởi xướng các thay đổi tương ứng.</p>
+<p>Các phương pháp lặp, agile và thích ứng theo dõi, xem xét và điều tiết tiến độ và hiệu suất bằng cách duy trì một backlog. Backlog được ưu tiên bởi một đại diện kinh doanh (business representative) với sự giúp đỡ từ nhóm dự án, những người ước tính và cung cấp thông tin về các phụ thuộc kỹ thuật. Công việc được kéo từ đầu của backlog cho vòng lặp tiếp theo dựa trên mức độ ưu tiên kinh doanh và năng lực của nhóm.</p>
+
+<h5>X3.3.5 NHÓM QUY TRÌNH ĐÓNG</h5>
+<p>Các quy trình Đóng là các quy trình được thực hiện để chính thức hoàn thành hoặc đóng một dự án, giai đoạn, hoặc hợp đồng. Công việc trên các dự án lặp, thích ứng và agile được ưu tiên để thực hiện các hạng mục có giá trị kinh doanh cao nhất trước tiên. Vì vậy, nếu Nhóm Quy trình Đóng đóng một dự án hoặc giai đoạn sớm hơn dự kiến, có khả năng cao là một số giá trị kinh doanh hữu ích đã được tạo ra.</p>
+
+<hr>
+
+<h2 id="x4">PHỤ LỤC X4 TÓM TẮT CÁC KHÁI NIỆM TRỌNG TÂM CHO CÁC LĨNH VỰC KIẾN THỨC</h2>
+<p>Mục đích của phụ lục này là cung cấp một bản tóm tắt các phần về Các Khái niệm Trọng tâm cho từng Lĩnh vực Kiến thức trong các Phần 4-13. Nó có thể được sử dụng làm tài liệu hỗ trợ cho các nhà thực hành dự án, danh sách kiểm tra các mục tiêu học tập cho các nhà cung cấp dịch vụ đào tạo quản lý dự án, hoặc như một công cụ hỗ trợ học tập cho những người chuẩn bị lấy chứng chỉ.</p>
+
+<h5>X4.1 KHÁI NIỆM TRỌNG TÂM CHO QUẢN LÝ TÍCH HỢP DỰ ÁN</h5>
+<p>Các khái niệm trọng tâm bao gồm:</p>
+<p>Quản lý Tích hợp Dự án là trách nhiệm cụ thể của giám đốc dự án và nó không thể được ủy quyền hoặc chuyển giao. Giám đốc dự án là người kết hợp các kết quả từ tất cả các Lĩnh vực Kiến thức khác để cung cấp cái nhìn tổng thể về dự án. Giám đốc dự án chịu trách nhiệm cuối cùng đối với toàn bộ dự án.</p>
+<ul class="pmbok">
+<li>Các dự án và quản lý dự án có bản chất tích hợp, với hầu hết các nhiệm vụ liên quan đến nhiều hơn một Lĩnh vực Kiến thức.</li>
+<li>Mối quan hệ của các quy trình trong Các Nhóm Quy trình Quản lý Dự án và giữa Các Nhóm Quy trình.</li>
+</ul>
+<p>Quản lý Tích hợp Dự án xoay quanh:</p>
+<ul class="pmbok dash">
+<li>Đảm bảo rằng ngày đến hạn của các sản phẩm bàn giao dự án, vòng đời dự án và kế hoạch hiện thực hóa lợi ích được liên kết với nhau;</li>
+<li>Cung cấp kế hoạch quản lý dự án để đạt được các mục tiêu của dự án;</li>
+<li>Đảm bảo việc tạo ra và sử dụng kiến thức phù hợp vào và từ dự án;</li>
+<li>Quản lý hiệu suất dự án và các thay đổi đối với các hoạt động dự án;</li>
+<li>Đưa ra các quyết định tích hợp liên quan đến các thay đổi chính tác động đến dự án;</li>
+<li>Đo lường và giám sát tiến độ và thực hiện hành động thích hợp;</li>
+<li>Thu thập, phân tích và truyền đạt thông tin dự án cho các bên liên quan có liên quan;</li>
+<li>Hoàn thành tất cả công việc của dự án và chính thức đóng từng giai đoạn, hợp đồng và dự án nói chung; và</li>
+<li>Quản lý các chuyển đổi giai đoạn khi cần thiết.</li>
+</ul>
+
+<h5>X4.2 KHÁI NIỆM TRỌNG TÂM CHO QUẢN LÝ PHẠM VI DỰ ÁN</h5>
+<p>Các khái niệm trọng tâm bao gồm:</p>
+<ul class="pmbok">
+<li>Phạm vi có thể đề cập đến phạm vi sản phẩm (các tính năng và chức năng đặc trưng cho sản phẩm, dịch vụ hoặc kết quả) hoặc phạm vi dự án (công việc được thực hiện để bàn giao sản phẩm, dịch vụ hoặc kết quả với các tính năng và chức năng đã chỉ định).</li>
+<li>Các vòng đời dự án trải dài trên một sự liên tục từ dự đoán đến thích ứng hoặc agile. Trong một vòng đời sử dụng phương pháp dự đoán, các sản phẩm bàn giao của dự án được xác định ngay từ đầu dự án và bất kỳ thay đổi nào đối với phạm vi đều được quản lý dần dần. Trong phương pháp thích ứng hoặc agile, các sản phẩm bàn giao được phát triển qua nhiều vòng lặp, trong đó phạm vi chi tiết được xác định và phê duyệt cho từng vòng lặp khi nó bắt đầu.</li>
+<li>Việc hoàn thành phạm vi dự án được đo lường dựa trên kế hoạch quản lý dự án. Việc hoàn thành phạm vi sản phẩm được đo lường dựa trên các yêu cầu của sản phẩm.</li>
+</ul>
+
+<h5>X4.3 KHÁI NIỆM TRỌNG TÂM CHO QUẢN LÝ TIẾN ĐỘ DỰ ÁN</h5>
+<p>Các khái niệm trọng tâm bao gồm:</p>
+<p>Việc lập tiến độ dự án cung cấp một kế hoạch chi tiết đại diện cho cách thức và thời điểm dự án sẽ bàn giao các sản phẩm, dịch vụ và kết quả được định nghĩa trong phạm vi dự án.</p>
+<p>Tiến độ dự án được sử dụng như một công cụ giao tiếp, quản lý kỳ vọng của các bên liên quan và là cơ sở để báo cáo hiệu suất.</p>
+<p>Khi có thể, tiến độ dự án chi tiết nên duy trì tính linh hoạt trong suốt dự án để điều chỉnh theo kiến thức thu được, sự hiểu biết ngày càng tăng về rủi ro và các hoạt động gia tăng giá trị.</p>
+
+<h5>X4.4 KHÁI NIỆM TRỌNG TÂM CHO QUẢN LÝ CHI PHÍ DỰ ÁN</h5>
+<p>Các khái niệm trọng tâm bao gồm:</p>
+<p>Quản lý Chi phí Dự án chủ yếu liên quan đến chi phí của các nguồn lực cần thiết để hoàn thành các hoạt động dự án, nhưng nó cũng nên xem xét tác động của các quyết định dự án đối với chi phí định kỳ tiếp theo của việc sử dụng, bảo trì và hỗ trợ các sản phẩm bàn giao của dự án.</p>
+<p>Các bên liên quan khác nhau sẽ đo lường chi phí dự án theo các cách khác nhau và ở các thời điểm khác nhau. Yêu cầu của các bên liên quan về quản lý chi phí nên được xem xét rõ ràng.</p>
+<p>Việc dự đoán và phân tích hiệu suất tài chính trong tương lai của sản phẩm dự án có thể được thực hiện bên ngoài dự án, hoặc nó có thể là một phần của Quản lý Chi phí Dự án.</p>
+
+<h5>X4.5 KHÁI NIỆM TRỌNG TÂM CHO QUẢN LÝ CHẤT LƯỢNG DỰ ÁN</h5>
+<p>Các khái niệm trọng tâm bao gồm:</p>
+<p>Quản lý Chất lượng Dự án giải quyết việc quản lý dự án và các sản phẩm bàn giao của dự án. Nó áp dụng cho tất cả các dự án, bất kể bản chất của các sản phẩm bàn giao của chúng. Các thước đo và kỹ thuật chất lượng mang tính đặc thù cho loại sản phẩm bàn giao đang được tạo ra bởi dự án.</p>
+<p>Chất lượng và cấp độ/hạng (grade) là các khái niệm khác nhau. Chất lượng là “mức độ mà một tập hợp các đặc tính vốn có đáp ứng các yêu cầu” (ISO 9000). Cấp độ là một danh mục được gán cho các sản phẩm bàn giao có cùng chức năng sử dụng nhưng khác nhau về đặc điểm kỹ thuật. Giám đốc dự án và nhóm chịu trách nhiệm quản lý các sự đánh đổi (trade-offs) gắn liền với việc bàn giao các mức chất lượng và cấp độ cần thiết.</p>
+<ul class="pmbok">
+<li>Phòng ngừa được ưu tiên hơn so với kiểm tra. Việc thiết kế chất lượng vào ngay trong các sản phẩm bàn giao sẽ tốt hơn là tìm ra các vấn đề chất lượng trong quá trình kiểm tra. Chi phí để ngăn ngừa sai sót thường thấp hơn nhiều so với chi phí sửa chữa sai sót khi chúng được phát hiện bằng kiểm tra hoặc trong quá trình sử dụng.</li>
+<li>Giám đốc dự án có thể cần phải làm quen với việc lấy mẫu. Lấy mẫu thuộc tính (kết quả có phù hợp hoặc không phù hợp) và lấy mẫu biến số (kết quả được đánh giá trên thang đo liên tục đo lường mức độ phù hợp).</li>
+<li>Nhiều dự án thiết lập các dung sai và giới hạn kiểm soát cho các phép đo lường dự án và sản phẩm. Dung sai (phạm vi quy định của kết quả có thể chấp nhận được) và giới hạn kiểm soát (ranh giới của biến thiên chung trong một quy trình ổn định về mặt thống kê hoặc hiệu suất quy trình).</li>
+<li>Chi phí chất lượng (COQ) bao gồm tất cả các chi phí phát sinh trong vòng đời của sản phẩm do đầu tư vào việc ngăn ngừa sự không tuân thủ các yêu cầu, đánh giá sản phẩm hoặc dịch vụ về sự tuân thủ các yêu cầu, và thất bại trong việc đáp ứng các yêu cầu (làm lại). Chi phí chất lượng thường là mối quan tâm của quản lý chương trình, quản lý danh mục đầu tư, PMO, hoặc bộ phận vận hành.</li>
+</ul>
+<p>Việc quản lý chất lượng hiệu quả nhất đạt được khi chất lượng được đưa vào ngay trong quá trình lập kế hoạch và thiết kế của dự án và sản phẩm, và khi văn hóa tổ chức nhận thức và cam kết về chất lượng.</p>
+
+<h5>X4.6 KHÁI NIỆM TRỌNG TÂM CHO QUẢN LÝ NGUỒN LỰC DỰ ÁN</h5>
+<p>Các khái niệm trọng tâm bao gồm:</p>
+<p>Nguồn lực dự án bao gồm cả nguồn lực vật chất (thiết bị, vật liệu, cơ sở vật chất và hạ tầng) và nguồn lực nhóm (các cá nhân có vai trò và trách nhiệm dự án được giao).</p>
+<ul class="pmbok">
+<li>Cần có các kỹ năng và năng lực khác nhau để quản lý nguồn lực nhóm so với nguồn lực vật chất.</li>
+</ul>
+<p>Giám đốc dự án phải vừa là nhà lãnh đạo vừa là người quản lý của nhóm dự án, và nên đầu tư nỗ lực phù hợp vào việc thu thập, quản lý, tạo động lực và trao quyền cho các thành viên nhóm.</p>
+<p>Giám đốc dự án nên nhận thức được những sự tác động đến nhóm như môi trường nhóm, vị trí địa lý của các thành viên nhóm, giao tiếp giữa các bên liên quan, quản lý thay đổi tổ chức, chính trị nội bộ và bên ngoài, các vấn đề văn hóa, và sự độc đáo của tổ chức.</p>
+<p>Giám đốc dự án chịu trách nhiệm chủ động phát triển các kỹ năng và năng lực của nhóm trong khi vẫn duy trì và cải thiện sự hài lòng và động lực của nhóm.</p>
+<ul class="pmbok">
+<li>Quản lý nguồn lực vật chất tập trung vào việc phân bổ và sử dụng các nguồn lực vật chất cần thiết để hoàn thành thành công dự án một cách hiệu quả và năng suất. Thất bại trong việc quản lý và kiểm soát các nguồn lực một cách hiệu quả có thể làm giảm cơ hội hoàn thành dự án thành công.</li>
+</ul>
+
+<h5>X4.7 KHÁI NIỆM TRỌNG TÂM CHO QUẢN LÝ TRUYỀN THÔNG DỰ ÁN</h5>
+<p>Các khái niệm trọng tâm bao gồm:</p>
+<ul class="pmbok">
+<li>Truyền thông là quá trình trao đổi thông tin, dù có chủ ý hay không tự nguyện, giữa các cá nhân và/hoặc các nhóm. Truyền thông mô tả các phương tiện mà qua đó thông tin có thể được gửi hoặc nhận, thông qua các hoạt động như cuộc họp và thuyết trình, hoặc các tạo tác như email, mạng xã hội, báo cáo dự án, hoặc tài liệu dự án. Quản lý Truyền thông Dự án giải quyết cả quá trình giao tiếp cũng như việc quản lý các hoạt động và tạo tác truyền thông.</li>
+<li>Giao tiếp hiệu quả tạo ra một cầu nối giữa các bên liên quan đa dạng, những người có sự khác biệt thường sẽ có tác động hoặc ảnh hưởng đến việc thực thi hoặc kết quả của dự án, vì vậy điều sống còn là mọi giao tiếp truyền thông phải rõ ràng và súc tích.</li>
+<li>Các hoạt động truyền thông bao gồm nội bộ và bên ngoài, chính thức và không chính thức, bằng văn bản và bằng lời nói.</li>
+<li>Truyền thông có thể được hướng lên tới các bên liên quan thuộc quản lý cấp cao, hướng xuống cho các thành viên nhóm, hoặc theo chiều ngang cho các đồng cấp. Điều này sẽ ảnh hưởng đến định dạng và nội dung của thông điệp.</li>
+<li>Truyền thông diễn ra một cách có ý thức hoặc vô thức thông qua lời nói, nét mặt, cử chỉ và các hành động khác. Nó bao gồm việc phát triển các chiến lược và kế hoạch cho các tạo tác truyền thông phù hợp, và ứng dụng các kỹ năng để nâng cao tính hiệu quả.</li>
+<li>Cần nỗ lực để ngăn chặn những sự hiểu lầm và truyền thông sai lệch, và các phương pháp, người đưa tin, cùng thông điệp nên được lựa chọn cẩn thận.</li>
+<li>Giao tiếp hiệu quả phụ thuộc vào việc xác định mục đích của giao tiếp, thấu hiểu người nhận của thông tin, và giám sát tính hiệu quả.</li>
+</ul>
+
+<h5>X4.8 KHÁI NIỆM TRỌNG TÂM CHO QUẢN LÝ RỦI RO DỰ ÁN</h5>
+<p>Các khái niệm trọng tâm bao gồm:</p>
+<p>Tất cả các dự án đều rủi ro. Các tổ chức chọn việc chấp nhận rủi ro dự án để tạo ra giá trị, đồng thời cân bằng giữa rủi ro và phần thưởng.</p>
+<p>Quản lý Rủi ro Dự án nhằm mục đích nhận diện và quản lý các rủi ro không được bao gồm bởi các quy trình quản lý dự án khác.</p>
+<p>Rủi ro tồn tại ở hai cấp độ trong mỗi dự án: Rủi ro dự án riêng lẻ là một sự kiện hoặc điều kiện không chắc chắn mà, nếu nó xảy ra, sẽ có tác động tích cực hoặc tiêu cực đến một hoặc nhiều mục tiêu của dự án. Rủi ro tổng thể dự án là hiệu ứng của sự không chắc chắn đối với toàn bộ dự án, phát sinh từ mọi nguồn không chắc chắn bao gồm cả các rủi ro riêng lẻ, đại diện cho sự phơi nhiễm của các bên liên quan đối với những hệ quả của các biến đổi trong kết quả dự án, cả tích cực lẫn tiêu cực. Các quy trình Quản lý Rủi ro Dự án giải quyết cả hai cấp độ rủi ro này trong các dự án.</p>
+<ul class="pmbok">
+<li>Các rủi ro dự án riêng lẻ có thể có tác động tích cực hoặc tiêu cực đến các mục tiêu của dự án nếu chúng xảy ra. Rủi ro tổng thể dự án cũng có thể là tích cực hoặc tiêu cực.</li>
+</ul>
+<p>Rủi ro sẽ tiếp tục xuất hiện trong suốt thời gian tồn tại của dự án, vì vậy các quy trình Quản lý Rủi ro Dự án nên được tiến hành một cách lặp đi lặp lại.</p>
+<p>Để quản lý rủi ro hiệu quả trên một dự án cụ thể, nhóm dự án cần biết mức độ phơi nhiễm rủi ro nào là có thể chấp nhận được để theo đuổi các mục tiêu của dự án. Điều này được xác định bởi các ngưỡng rủi ro có thể đo lường được phản ánh khẩu vị rủi ro của tổ chức và các bên liên quan của dự án.</p>
+
+<h5>X4.9 KHÁI NIỆM TRỌNG TÂM CHO QUẢN LÝ MUA SẮM DỰ ÁN</h5>
+<p>Các khái niệm trọng tâm bao gồm:</p>
+<p>Giám đốc dự án nên đủ quen thuộc với quy trình mua sắm để đưa ra các quyết định thông minh liên quan đến các hợp đồng và các mối quan hệ hợp đồng.</p>
+<ul class="pmbok">
+<li>Mua sắm liên quan đến các thỏa thuận mô tả mối quan hệ giữa một người mua và một người bán. Các thỏa thuận có thể đơn giản hoặc phức tạp, và phương pháp tiếp cận mua sắm nên phản ánh mức độ phức tạp đó. Một thỏa thuận có thể là một hợp đồng, một thỏa thuận cấp độ dịch vụ, một sự thấu hiểu, một biên bản ghi nhớ, hoặc một đơn đặt hàng.</li>
+<li>Các thỏa thuận phải tuân thủ luật pháp địa phương, quốc gia, và quốc tế về hợp đồng.</li>
+</ul>
+<p>Giám đốc dự án nên đảm bảo rằng mọi khoản mua sắm đều đáp ứng các nhu cầu cụ thể của dự án, đồng thời làm việc với các chuyên gia mua sắm để đảm bảo các chính sách của tổ chức được tuân thủ.</p>
+<p>Bản chất ràng buộc pháp lý của một thỏa thuận có nghĩa là nó sẽ phải trải qua một quy trình phê duyệt rộng rãi hơn, thường liên quan đến bộ phận pháp lý, nhằm đảm bảo rằng nó mô tả đầy đủ các sản phẩm, dịch vụ hoặc kết quả mà người bán đồng ý cung cấp, trong khi tuân thủ luật pháp và các quy định về mua sắm.</p>
+<ul class="pmbok">
+<li>Một dự án phức tạp có thể liên quan đến nhiều hợp đồng cùng lúc hoặc theo trình tự. Mối quan hệ người mua-người bán có thể tồn tại ở nhiều cấp độ trên bất kỳ một dự án nào, và giữa các tổ chức bên trong và bên ngoài tổ chức mua sắm.</li>
+</ul>
+
+<h5>X4.10 KHÁI NIỆM TRỌNG TÂM CHO QUẢN LÝ CÁC BÊN LIÊN QUAN CỦA DỰ ÁN</h5>
+<p>Các khái niệm trọng tâm bao gồm:</p>
+<ul class="pmbok">
+<li>Mỗi dự án đều có các bên liên quan, những người bị tác động bởi hoặc có thể tác động đến dự án một cách tích cực hoặc tiêu cực. Một số bên liên quan sẽ có khả năng hạn chế trong việc gây ảnh hưởng đến công việc hoặc kết quả của dự án; những người khác sẽ có sức ảnh hưởng đáng kể đến dự án và các kết quả mong đợi của nó.</li>
+</ul>
+<p>Khả năng của giám đốc dự án và nhóm dự án trong việc nhận diện và gắn kết chính xác tất cả các bên liên quan một cách thích hợp có thể tạo nên sự khác biệt giữa sự thành công và sự thất bại của dự án.</p>
+<p>Để tăng cơ hội thành công, quy trình nhận diện và gắn kết các bên liên quan nên bắt đầu càng sớm càng tốt sau khi hiến chương dự án đã được phê duyệt, giám đốc dự án đã được bổ nhiệm, và nhóm dự án bắt đầu hình thành.</p>
+<p>Chìa khóa để gắn kết các bên liên quan một cách hiệu quả là tập trung vào việc giao tiếp liên tục với tất cả các bên liên quan. Sự hài lòng của các bên liên quan nên được nhận diện và quản lý như một mục tiêu chính của dự án.</p>
+<p>Quá trình nhận diện và gắn kết các bên liên quan vì lợi ích của dự án là một quá trình lặp đi lặp lại, và nên được xem xét và cập nhật định kỳ, đặc biệt là khi dự án chuyển sang một giai đoạn mới, hoặc nếu có những thay đổi đáng kể trong tổ chức hoặc cộng đồng rộng lớn hơn của các bên liên quan.</p>
+
+<hr>
+
+<h2 id="x5">PHỤ LỤC X5 TÓM TẮT CÁC CÂN NHẮC ĐIỀU CHỈNH CHO CÁC LĨNH VỰC KIẾN THỨC</h2>
+<p>Mục đích của phụ lục này là cung cấp một bản tóm tắt các phần Các Cân nhắc Điều chỉnh (Tailoring Concepts) cho mỗi một Lĩnh vực Kiến thức từ Phần 4 đến 13. Bởi vì mỗi dự án là duy nhất, thông tin này có thể được sử dụng để hỗ trợ các nhà thực hành trong việc xác định làm thế nào để điều chỉnh các quy trình, đầu vào, công cụ và kỹ thuật, và đầu ra cho một dự án. Thông tin này cũng có thể giúp xác định mức độ nghiêm ngặt (rigor) cần được áp dụng cho các quy trình khác nhau trong một Lĩnh vực Kiến thức.</p>
+
+<h5>X5.1 QUẢN LÝ TÍCH HỢP DỰ ÁN</h5>
+<p>Cân nhắc để điều chỉnh quản lý tích hợp dự án bao gồm nhưng không giới hạn ở:</p>
+<p>Vòng đời dự án. Vòng đời dự án thích hợp là gì? Những giai đoạn nào nên cấu thành nên vòng đời dự án?</p>
+<ul class="pmbok">
+<li>Vòng đời phát triển. Vòng đời phát triển và phương pháp tiếp cận nào là phù hợp cho sản phẩm, dịch vụ hoặc kết quả? Phương pháp dự đoán hay thích ứng là phù hợp? Nếu là thích ứng, sản phẩm nên được phát triển tăng trưởng (incrementally) hay lặp lại (iteratively)? Một phương pháp lai có phải là tốt nhất không?</li>
+<li>Các phương pháp quản lý. Các quy trình quản lý nào là hiệu quả nhất dựa trên văn hóa tổ chức và độ phức tạp của dự án?</li>
+<li>Quản lý kiến thức. Kiến thức sẽ được quản lý trong dự án như thế nào để thúc đẩy một môi trường làm việc cộng tác?</li>
+</ul>
+<p>Thay đổi. Sự thay đổi sẽ được quản lý trong dự án như thế nào?</p>
+<p>Quản trị. Những ban kiểm soát, ủy ban, và các bên liên quan nào khác là một phần của dự án? Yêu cầu báo cáo tình trạng dự án là gì?</p>
+<p>Bài học kinh nghiệm. Thông tin nào nên được thu thập xuyên suốt và vào cuối dự án? Thông tin lịch sử và bài học kinh nghiệm sẽ được cung cấp cho các dự án tương lai như thế nào?</p>
+<p>Lợi ích. Khi nào và bằng cách nào các lợi ích nên được báo cáo: vào cuối dự án hay vào cuối của mỗi vòng lặp hoặc mỗi giai đoạn?</p>
+
+<h5>X5.2 QUẢN LÝ PHẠM VI DỰ ÁN</h5>
+<p>Cân nhắc để điều chỉnh quản lý phạm vi dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li>Quản lý kiến thức và yêu cầu. Tổ chức có hệ thống quản lý kiến thức và yêu cầu chính thức hay không chính thức không? Giám đốc dự án nên thiết lập những hướng dẫn nào để các yêu cầu có thể được tái sử dụng trong tương lai?</li>
+</ul>
+<p>Xác nhận và kiểm soát. Tổ chức có các chính sách, quy trình và hướng dẫn liên quan đến xác nhận và kiểm soát mang tính chính thức hoặc không chính thức hiện có không?</p>
+<p>Sử dụng phương pháp agile. Tổ chức có sử dụng các phương pháp agile trong việc quản lý dự án không? Phương pháp phát triển là lặp lại hay tăng trưởng? Có sử dụng phương pháp dự đoán không? Phương pháp lai có hiệu quả không?</p>
+<p>Quản trị. Tổ chức có các chính sách, quy trình và hướng dẫn kiểm toán và quản trị chính thức hoặc không chính thức không?</p>
+
+<h5>X5.3 QUẢN LÝ TIẾN ĐỘ DỰ ÁN</h5>
+<p>Cân nhắc để điều chỉnh quản lý tiến độ dự án bao gồm nhưng không giới hạn ở:</p>
+<p>Phương pháp vòng đời. Phương pháp vòng đời thích hợp nhất cho phép lập tiến độ chi tiết là gì?</p>
+<ul class="pmbok">
+<li>Thời lượng và nguồn lực. Những yếu tố nào ảnh hưởng đến thời lượng, chẳng hạn như mối tương quan giữa sự sẵn có của nguồn lực và năng suất?</li>
+</ul>
+<p>Kích thước dự án. Sự hiện diện của độ phức tạp của dự án, tính không chắc chắn của công nghệ, tính mới của sản phẩm, nhịp độ hoặc việc theo dõi tiến trình, (chẳng hạn như quản lý giá trị thu được, phần trăm hoàn thành, các chỉ số đèn đỏ-vàng-xanh) sẽ tác động như thế nào đến mức độ kiểm soát mong muốn?</p>
+<p>Hỗ trợ công nghệ. Có công nghệ nào được sử dụng để phát triển, ghi lại, truyền tải, nhận và lưu trữ thông tin mô hình tiến độ dự án không và nó có dễ dàng truy cập không?</p>
+
+<h5>X5.4 QUẢN LÝ CHI PHÍ DỰ ÁN</h5>
+<p>Cân nhắc để điều chỉnh quản lý chi phí dự án bao gồm nhưng không giới hạn ở:</p>
+<p>Quản lý kiến thức. Tổ chức có một kho lưu trữ chính thức về quản lý kiến thức và cơ sở dữ liệu tài chính mà giám đốc dự án bắt buộc phải sử dụng và có dễ dàng truy cập không?</p>
+<ul class="pmbok">
+<li>Ước lượng và lập ngân sách. Tổ chức có các chính sách, quy trình và hướng dẫn chính thức hoặc không chính thức liên quan đến ước lượng chi phí và lập ngân sách hiện có không?</li>
+</ul>
+<p>Quản lý giá trị thu được. Tổ chức có sử dụng quản lý giá trị thu được trong việc quản lý các dự án không?</p>
+<p>Sử dụng phương pháp agile. Tổ chức có sử dụng các phương pháp agile trong việc quản lý các dự án không? Điều này ảnh hưởng đến việc ước lượng chi phí như thế nào?</p>
+<p>Quản trị. Tổ chức có các chính sách, quy trình và hướng dẫn kiểm toán và quản trị chính thức hoặc không chính thức không?</p>
+
+<h5>X5.5 QUẢN LÝ CHẤT LƯỢNG DỰ ÁN</h5>
+<p>Cân nhắc để điều chỉnh quản lý chất lượng dự án bao gồm nhưng không giới hạn ở:</p>
+<p>Tuân thủ chính sách và kiểm toán. Các chính sách và thủ tục chất lượng nào tồn tại trong tổ chức? Các công cụ, kỹ thuật, và biểu mẫu chất lượng nào được sử dụng trong tổ chức?</p>
+<p>Tiêu chuẩn và tuân thủ quy định. Có bất kỳ tiêu chuẩn chất lượng cụ thể nào trong ngành cần được áp dụng không? Có bất kỳ ràng buộc cụ thể nào của chính phủ, pháp luật, hoặc quy định cần được xem xét không?</p>
+<p>Cải tiến liên tục. Cải tiến chất lượng sẽ được quản lý trong dự án như thế nào? Nó được quản lý ở cấp độ tổ chức hay ở cấp độ của từng dự án?</p>
+<p>Gắn kết các bên liên quan. Có một môi trường cộng tác với các bên liên quan và các nhà cung cấp không?</p>
+
+<h5>X5.6 QUẢN LÝ NGUỒN LỰC DỰ ÁN</h5>
+<p>Cân nhắc để điều chỉnh quản lý nguồn lực dự án bao gồm nhưng không giới hạn ở:</p>
+<p>Sự đa dạng. Nền tảng đa dạng của nhóm là gì?</p>
+<p>Vị trí vật lý. Vị trí vật lý của các thành viên trong nhóm và nguồn lực vật chất là ở đâu?</p>
+<p>Nguồn lực cụ thể của ngành. Những nguồn lực đặc biệt nào là cần thiết trong ngành công nghiệp này?</p>
+<p>Thu thập thành viên nhóm. Các thành viên nhóm sẽ được thu thập cho dự án như thế nào? Các nguồn lực nhóm làm việc toàn thời gian hay bán thời gian trên dự án?</p>
+<ul class="pmbok">
+<li>Phát triển và quản lý nhóm. Quá trình phát triển nhóm được quản lý như thế nào cho dự án? Có các công cụ của tổ chức để quản lý phát triển nhóm hay sẽ cần thiết lập những công cụ mới? Nhóm có cần đào tạo đặc biệt để quản lý sự đa dạng không?</li>
+</ul>
+
+<h5>X5.7 QUẢN LÝ TRUYỀN THÔNG DỰ ÁN</h5>
+<p>Cân nhắc để điều chỉnh quản lý truyền thông dự án bao gồm nhưng không giới hạn ở:</p>
+<p>Các bên liên quan. Các bên liên quan thuộc nội bộ hay bên ngoài tổ chức, hay cả hai?</p>
+<ul class="pmbok">
+<li>Vị trí vật lý. Vị trí vật lý của các thành viên nhóm ở đâu? Nhóm có làm việc ở cùng một địa điểm không? Nhóm có ở trong cùng một khu vực địa lý không? Nhóm có phân tán qua nhiều múi giờ không?</li>
+<li>Công nghệ truyền thông. Công nghệ nào có sẵn để phát triển, ghi lại, truyền tải, truy xuất, theo dõi, và lưu trữ các tạo tác truyền thông? Các công nghệ nào là phù hợp nhất và hiệu quả về mặt chi phí nhất để giao tiếp với các bên liên quan?</li>
+</ul>
+<p>Ngôn ngữ. Ngôn ngữ là một yếu tố chính cần xem xét trong các hoạt động truyền thông. Chỉ sử dụng một ngôn ngữ? Hay sử dụng nhiều ngôn ngữ? Liệu có những sự điều chỉnh đã được đưa ra để thích ứng với sự phức tạp của các thành viên nhóm đến từ các nhóm ngôn ngữ đa dạng không?</p>
+<ul class="pmbok">
+<li>Quản lý kiến thức. Tổ chức có một kho lưu trữ quản lý kiến thức chính thức không? Kho lưu trữ này có được sử dụng không?</li>
+</ul>
+
+<h5>X5.8 QUẢN LÝ RỦI RO DỰ ÁN</h5>
+<p>Cân nhắc để điều chỉnh quản lý rủi ro dự án bao gồm nhưng không giới hạn ở:</p>
+<p>Quy mô dự án. Quy mô của dự án về mặt ngân sách, thời lượng, phạm vi, hoặc kích thước nhóm có yêu cầu một phương pháp tiếp cận chi tiết hơn đối với quản lý rủi ro không? Hay nó đủ nhỏ để hợp lý hóa một quy trình rủi ro đơn giản hóa?</p>
+<p>Độ phức tạp của dự án. Có phải một phương pháp rủi ro mạnh mẽ là bắt buộc do mức độ đổi mới cao, công nghệ mới, các thỏa thuận thương mại, các giao diện, hoặc các phụ thuộc bên ngoài làm tăng độ phức tạp của dự án? Hay dự án đủ đơn giản để một quy trình rủi ro rút gọn là đủ?</p>
+<p>Tầm quan trọng của dự án. Dự án quan trọng như thế nào về mặt chiến lược? Mức độ rủi ro có tăng lên đối với dự án này vì nó nhằm mục đích tạo ra các cơ hội đột phá, giải quyết các rào cản đáng kể đối với hiệu suất của tổ chức, hoặc liên quan đến đổi mới sản phẩm lớn?</p>
+<ul class="pmbok">
+<li>Phương pháp phát triển. Đây là một dự án theo mô hình thác nước nơi các quy trình rủi ro có thể được thực hiện theo tuần tự và lặp đi lặp lại, hay dự án tuân theo một phương pháp agile nơi rủi ro được giải quyết khi bắt đầu mỗi vòng lặp cũng như trong quá trình thực thi?</li>
+</ul>
+
+<h5>X5.9 QUẢN LÝ MUA SẮM DỰ ÁN</h5>
+<p>Cân nhắc để điều chỉnh quản lý mua sắm dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li>Độ phức tạp của mua sắm. Có phải chỉ có một cuộc mua sắm chính hay có nhiều cuộc mua sắm diễn ra ở các thời điểm khác nhau với các người bán khác nhau làm tăng thêm độ phức tạp cho các hoạt động mua sắm?</li>
+<li>Vị trí vật lý. Người mua và người bán có ở cùng một địa điểm hoặc gần nhau một cách tương đối hay ở các múi giờ, quốc gia, hoặc châu lục khác nhau?</li>
+</ul>
+<p>Môi trường quản trị và quy định. Có phải luật pháp và quy định địa phương về các hoạt động mua sắm được tích hợp với các chính sách mua sắm của tổ chức không? Điều này ảnh hưởng như thế nào đến các yêu cầu kiểm toán hợp đồng?</p>
+<p>Sự sẵn có của các nhà thầu. Có sẵn các nhà thầu có khả năng thực hiện công việc không?</p>
+
+<h5>X5.10 QUẢN LÝ CÁC BÊN LIÊN QUAN CỦA DỰ ÁN</h5>
+<p>Cân nhắc để điều chỉnh quản lý các bên liên quan của dự án bao gồm nhưng không giới hạn ở:</p>
+<p>Sự đa dạng của các bên liên quan. Có bao nhiêu bên liên quan? Văn hóa bên trong cộng đồng các bên liên quan đa dạng như thế nào?</p>
+<ul class="pmbok">
+<li>Độ phức tạp của các mối quan hệ các bên liên quan. Các mối quan hệ bên trong cộng đồng các bên liên quan phức tạp đến mức nào? Một bên liên quan hoặc một nhóm các bên liên quan càng tham gia vào nhiều mạng lưới quan hệ, thì mạng lưới thông tin và thông tin sai lệch mà bên liên quan đó có thể nhận được càng trở nên phức tạp.</li>
+<li>Công nghệ truyền thông. Công nghệ truyền thông nào có sẵn? Có các cơ chế hỗ trợ nào được áp dụng để đảm bảo rằng giá trị tốt nhất đạt được từ công nghệ đó?</li>
+</ul>
+
+<hr>
+
+<h2 id="x6">PHỤ LỤC X6 CÔNG CỤ VÀ KỸ THUẬT</h2>
+
+<h5>X6.1 GIỚI THIỆU</h5>
+<p>PMBOK® Guide - Lần xuất bản thứ 6 trình bày các công cụ và kỹ thuật theo một cách khác biệt so với các lần xuất bản trước. Khi phù hợp, lần xuất bản này phân nhóm các công cụ và kỹ thuật dựa theo mục đích sử dụng của chúng. Tên của nhóm sẽ mô tả ý định về những gì cần phải được thực hiện và các công cụ và kỹ thuật nằm trong nhóm đó sẽ đại diện cho các phương pháp khác nhau để đạt được ý định đó. Ví dụ, thu thập dữ liệu (data gathering) là một nhóm mang mục đích đi thu thập dữ liệu và thông tin. Động não (brainstorming), phỏng vấn, và nghiên cứu thị trường nằm trong số những kỹ thuật có thể được sử dụng để thu thập dữ liệu và thông tin.</p>
+<p>Phương pháp tiếp cận này phản ánh sự chú trọng ở trong Lần xuất bản thứ 6 về tầm quan trọng của việc phải đi điều chỉnh (tailoring) những thông tin được trình bày trong PMBOK® Guide sao cho thật phù hợp với những nhu cầu của môi trường, tình huống, tổ chức, hoặc dự án.</p>
+<p>Có 132 công cụ và kỹ thuật riêng lẻ bên trong PMBOK® Guide – Lần xuất bản thứ 6. Đây không phải là toàn bộ những công cụ và kỹ thuật duy nhất có thể được sử dụng để quản lý một dự án. Chúng đại diện cho những công cụ và kỹ thuật được coi là những thực tiễn tốt (good practice) ở trên hầu hết các dự án trong hầu hết thời gian. Có một vài thứ được nhắc đến duy nhất một lần và có vài thứ lại xuất hiện rất nhiều lần trong PMBOK® Guide.</p>
+<p>Để giúp đỡ các nhà thực hành có thể nhận diện ra được nơi mà các công cụ và kỹ thuật cụ thể được mang ra sử dụng, phụ lục này tiến hành nhận diện mỗi một công cụ và kỹ thuật, nhóm mà nó trực thuộc (nếu có), và (các) quy trình nơi mà nó được liệt kê ở trong PMBOK® Guide.</p>
+
+<h5>X6.2 CÁC NHÓM CÔNG CỤ VÀ KỸ THUẬT</h5>
+<p>Các nhóm công cụ và kỹ thuật sau đây được sử dụng xuyên suốt PMBOK® Guide:</p>
+<p><strong>Kỹ thuật thu thập dữ liệu (Data gathering techniques).</strong> Được sử dụng để thu thập dữ liệu và thông tin từ nhiều nguồn khác nhau. Có 9 công cụ và kỹ thuật thu thập dữ liệu.</p>
+<p><strong>Kỹ thuật phân tích dữ liệu (Data analysis techniques).</strong> Được sử dụng để tổ chức, đánh giá, và thẩm định dữ liệu và thông tin. Có 27 công cụ và kỹ thuật phân tích dữ liệu.</p>
+<p><strong>Kỹ thuật biểu diễn dữ liệu (Data representation techniques).</strong> Được sử dụng để hiển thị các biểu diễn đồ họa hoặc các phương pháp khác dùng để truyền tải dữ liệu và thông tin. Có 15 công cụ và kỹ thuật biểu diễn dữ liệu.</p>
+<p><strong>Kỹ thuật ra quyết định (Decision-making techniques).</strong> Được sử dụng để lựa chọn một hướng hành động từ các phương án khác nhau. Có 2 công cụ và kỹ thuật ra quyết định.</p>
+<ul class="pmbok">
+<li><strong>Kỹ năng truyền thông (Communication skills).</strong> Được sử dụng để chuyển giao thông tin giữa các bên liên quan. Có 2 công cụ và kỹ thuật kỹ năng truyền thông.</li>
+<li><strong>Kỹ năng liên cá nhân và nhóm (Interpersonal and team skills).</strong> Được sử dụng để dẫn dắt và tương tác hiệu quả với các thành viên trong nhóm và các bên liên quan khác. Có 17 công cụ và kỹ thuật kỹ năng liên cá nhân và nhóm.</li>
+</ul>
+<p>Có 60 công cụ và kỹ thuật không được phân nhóm.</p>
+
+<div class="table-wrap">
+<table>
+  <tr><th colspan="11">Bảng X6-1. Phân loại và Chỉ mục của Công cụ và Kỹ thuật</th></tr>
+  <tr>
+    <td rowspan="2" style='text-align: center; font-weight: bold;'>Công cụ và Kỹ thuật (Tool and Technique)</td>
+    <td colspan="10" style='text-align: center; font-weight: bold;'>Lĩnh vực Kiến thức (Knowledge Area)</td>
+  </tr>
+  <tr>
+    <td style='text-align: center; font-weight: bold;'>Tích hợp</td><td style='text-align: center; font-weight: bold;'>Phạm vi</td><td style='text-align: center; font-weight: bold;'>Tiến độ</td><td style='text-align: center; font-weight: bold;'>Chi phí</td><td style='text-align: center; font-weight: bold;'>Chất lượng</td><td style='text-align: center; font-weight: bold;'>Nguồn lực</td><td style='text-align: center; font-weight: bold;'>Truyền thông</td><td style='text-align: center; font-weight: bold;'>Rủi ro</td><td style='text-align: center; font-weight: bold;'>Mua sắm</td><td style='text-align: center; font-weight: bold;'>Bên liên quan</td>
+  </tr>
+  <tr><td colspan="11" style='font-weight: bold; background: #e0e0e0;'>Công cụ và Kỹ thuật Thu thập Dữ liệu (Data Gathering)</td></tr>
+  <tr><td>Đối chuẩn (Benchmarking)</td><td></td><td>5.2</td><td></td><td></td><td>8.1</td><td></td><td></td><td></td><td></td><td>13.2</td></tr>
+  <tr><td>Động não (Brainstorming)</td><td>4.1, 4.2</td><td>5.2</td><td></td><td></td><td>8.1</td><td></td><td></td><td>11.2</td><td></td><td>13.1</td></tr>
+  <tr><td>Bảng kiểm (Check sheets)</td><td></td><td></td><td></td><td></td><td>8.3</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Danh sách kiểm tra (Checklists)</td><td>4.2</td><td></td><td></td><td></td><td>8.2, 8.3</td><td></td><td></td><td>11.2</td><td></td><td></td></tr>
+  <tr><td>Nhóm tập trung (Focus groups)</td><td>4.1, 4.2</td><td>5.2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Phỏng vấn (Interviews)</td><td>4.1, 4.2</td><td>5.2</td><td></td><td></td><td>8.1</td><td></td><td></td><td>11.2, 11.3, 11.4, 11.5</td><td></td><td></td></tr>
+  <tr><td>Nghiên cứu thị trường (Market research)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>12.1</td><td></td></tr>
+  <tr><td>Bảng câu hỏi và khảo sát (Questionnaires and surveys)</td><td></td><td>5.2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>13.1</td></tr>
+  <tr><td>Lấy mẫu thống kê (Statistical sampling)</td><td></td><td></td><td></td><td></td><td>8.3</td><td></td><td></td><td></td><td></td><td></td></tr>
+
+  <tr><td colspan="11" style='font-weight: bold; background: #e0e0e0;'>Công cụ và Kỹ thuật Phân tích Dữ liệu (Data Analysis)</td></tr>
+  <tr><td>Phân tích lựa chọn thay thế (Alternatives analysis)</td><td>4.5, 4.6</td><td>5.1, 5.4</td><td>6.1, 6.4</td><td>7.1, 7.2</td><td>8.2</td><td>9.2, 9.6</td><td></td><td>11.5</td><td></td><td>13.4</td></tr>
+  <tr><td>Đánh giá các thông số rủi ro khác</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>11.3</td><td></td><td></td></tr>
+  <tr><td>Phân tích giả định và ràng buộc</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>11.2</td><td></td><td></td></tr>
+  <tr><td>Chi phí chất lượng (Cost of quality)</td><td></td><td></td><td></td><td>7.2</td><td>8.1</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Phân tích chi phí - lợi ích</td><td>4.5, 4.6</td><td></td><td></td><td></td><td>8.1</td><td>9.6</td><td></td><td>11.5</td><td></td><td></td></tr>
+  <tr><td>Phân tích cây quyết định (Decision tree analysis)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>11.4</td><td></td><td></td></tr>
+  <tr><td>Phân tích tài liệu (Document analysis)</td><td>4.7</td><td>5.2</td><td></td><td></td><td>8.2</td><td></td><td></td><td>11.2</td><td></td><td>13.1</td></tr>
+  <tr><td>Phân tích giá trị thu được (Earned value analysis)</td><td>4.5</td><td></td><td>6.6</td><td>7.4</td><td></td><td></td><td></td><td></td><td>12.3</td><td></td></tr>
+  <tr><td>Biểu đồ ảnh hưởng (Influence diagrams)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>11.4</td><td></td><td></td></tr>
+  <tr><td>Biểu đồ burndown vòng lặp</td><td></td><td></td><td>6.6</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Phân tích tự làm hay mua (Make-or-buy analysis)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>12.1</td><td></td></tr>
+  <tr><td>Đánh giá hiệu suất (Performance reviews)</td><td></td><td></td><td>6.6</td><td></td><td>8.3</td><td>9.6</td><td></td><td></td><td>12.3</td><td></td></tr>
+  <tr><td>Phân tích quy trình (Process analysis)</td><td></td><td></td><td></td><td></td><td>8.2</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Đánh giá đề xuất (Proposal evaluation)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>12.2</td><td></td></tr>
+  <tr><td>Phân tích hồi quy (Regression analysis)</td><td></td><td>4.7</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Phân tích dự phòng (Reserve analysis)</td><td></td><td></td><td>6.4</td><td>7.2, 7.3, 7.4</td><td></td><td></td><td></td><td>11.6</td><td></td><td></td></tr>
+  <tr><td>Đánh giá chất lượng dữ liệu rủi ro</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>11.3</td><td></td><td></td></tr>
+  <tr><td>Đánh giá xác suất và tác động của rủi ro</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>11.3</td><td></td><td></td></tr>
+  <tr><td>Phân tích nguyên nhân gốc rễ (Root cause analysis)</td><td>4.5</td><td></td><td></td><td></td><td>8.2, 8.3</td><td></td><td></td><td>11.2</td><td></td><td>13.2, 13.4</td></tr>
+  <tr><td>Phân tích độ nhạy (Sensitivity analysis)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>11.4</td><td></td><td></td></tr>
+  <tr><td>Mô phỏng (Simulation)</td><td></td><td></td><td>6.5</td><td></td><td></td><td></td><td></td><td>11.4</td><td></td><td></td></tr>
+  <tr><td>Phân tích các bên liên quan (Stakeholder analysis)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>11.1</td><td></td><td>13.1, 13.4</td></tr>
+  <tr><td>Phân tích SWOT</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>11.2</td><td></td><td>13.2</td></tr>
+  <tr><td>Phân tích hiệu suất kỹ thuật</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>11.7</td><td></td><td></td></tr>
+  <tr><td>Phân tích xu hướng (Trend analysis)</td><td>4.5, 4.7</td><td>5.6</td><td>6.6</td><td>7.4</td><td></td><td>9.6</td><td></td><td></td><td>12.3</td><td></td></tr>
+  <tr><td>Phân tích phương sai (Variance analysis)</td><td>4.5, 4.7</td><td>5.6</td><td>6.6</td><td>7.4</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Phân tích kịch bản What-if</td><td></td><td></td><td>6.5, 6.6</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+
+  <tr><td colspan="11" style='font-weight: bold; background: #e0e0e0;'>Công cụ và Kỹ thuật Biểu diễn Dữ liệu (Data Representation)</td></tr>
+  <tr><td>Biểu đồ tương đồng (Affinity diagrams)</td><td></td><td>5.2</td><td></td><td></td><td>8.2</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Biểu đồ nguyên nhân và kết quả (Cause-and-effect)</td><td></td><td></td><td></td><td></td><td>8.2, 8.3</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Biểu đồ kiểm soát (Control charts)</td><td></td><td></td><td></td><td></td><td>8.3</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Lưu đồ (Flowcharts)</td><td></td><td></td><td></td><td></td><td>8.1, 8.2</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Biểu đồ phân cấp (Hierarchical charts)</td><td></td><td></td><td></td><td></td><td></td><td>9.1</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Biểu đồ tần suất (Histograms)</td><td></td><td></td><td></td><td></td><td>8.2, 8.3</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Mô hình dữ liệu logic (Logical data model)</td><td></td><td></td><td></td><td></td><td>8.1</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Biểu đồ ma trận (Matrix diagrams)</td><td></td><td></td><td></td><td></td><td>8.1, 8.2</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Biểu đồ dựa trên ma trận</td><td></td><td></td><td></td><td></td><td></td><td>9.1</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Sơ đồ tư duy (Mind mapping)</td><td></td><td>5.2</td><td></td><td></td><td>8.1</td><td></td><td></td><td></td><td></td><td>13.2</td></tr>
+  <tr><td>Ma trận xác suất và tác động</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>11.3</td><td></td><td></td></tr>
+  <tr><td>Biểu đồ phân tán (Scatter diagrams)</td><td></td><td></td><td></td><td></td><td>8.2, 8.3</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Ma trận đánh giá sự gắn kết của bên liên quan</td><td></td><td></td><td></td><td></td><td></td><td></td><td>10.1, 10.3</td><td></td><td></td><td>13.2, 13.4</td></tr>
+  <tr><td>Lập bản đồ/Biểu diễn các bên liên quan</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>13.1</td></tr>
+  <tr><td>Định dạng hướng văn bản</td><td></td><td></td><td></td><td></td><td></td><td>9.1</td><td></td><td></td><td></td><td></td></tr>
+
+  <tr><td colspan="11" style='font-weight: bold; background: #e0e0e0;'>Công cụ và Kỹ thuật Ra Quyết định (Decision-Making)</td></tr>
+  <tr><td>Phân tích quyết định đa tiêu chí</td><td>4.6</td><td>5.2, 5.3</td><td></td><td></td><td>8.1, 8.2</td><td>9.3</td><td></td><td>11.5</td><td></td><td>13.4</td></tr>
+  <tr><td>Bỏ phiếu (Voting)</td><td>4.5, 4.6</td><td>5.2, 5.5</td><td>6.4</td><td>7.2</td><td></td><td></td><td></td><td></td><td></td><td>13.4</td></tr>
+
+  <tr><td colspan="11" style='font-weight: bold; background: #e0e0e0;'>Công cụ và Kỹ thuật Kỹ năng Truyền thông (Communication Skills)</td></tr>
+  <tr><td>Phản hồi (Feedback)</td><td></td><td></td><td></td><td></td><td></td><td></td><td>10.2</td><td></td><td></td><td>13.4</td></tr>
+  <tr><td>Thuyết trình (Presentations)</td><td></td><td></td><td></td><td></td><td></td><td></td><td>10.2</td><td></td><td></td><td>13.4</td></tr>
+
+  <tr><td colspan="11" style='font-weight: bold; background: #e0e0e0;'>Công cụ và Kỹ thuật Kỹ năng Liên cá nhân và Nhóm (Interpersonal and Team Skills)</td></tr>
+  <tr><td>Lắng nghe chủ động (Active listening)</td><td>4.4</td><td></td><td></td><td></td><td></td><td></td><td>10.2</td><td></td><td></td><td>13.4</td></tr>
+  <tr><td>Đánh giá phong cách giao tiếp</td><td></td><td></td><td></td><td></td><td></td><td></td><td>10.1</td><td></td><td></td><td></td></tr>
+  <tr><td>Quản lý xung đột (Conflict management)</td><td>4.1, 4.2</td><td></td><td></td><td></td><td></td><td>9.4, 9.5</td><td>10.2</td><td></td><td></td><td>13.3</td></tr>
+  <tr><td>Nhận thức văn hóa (Cultural awareness)</td><td></td><td></td><td></td><td></td><td></td><td></td><td>10.1, 10.2</td><td></td><td></td><td>13.3, 13.4</td></tr>
+  <tr><td>Ra quyết định (Decision making)</td><td></td><td></td><td></td><td></td><td></td><td>9.5</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Trí tuệ cảm xúc (Emotional intelligence)</td><td></td><td></td><td></td><td></td><td></td><td>9.5</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Sự điều phối (Facilitation)</td><td>4.1, 4.2, 4.4</td><td>5.2, 5.3</td><td></td><td></td><td></td><td></td><td></td><td>11.2, 11.3, 11.4, 11.5</td><td></td><td></td></tr>
+  <tr><td>Gây ảnh hưởng (Influencing)</td><td></td><td></td><td></td><td></td><td></td><td>9.4, 9.5, 9.6</td><td></td><td>11.6</td><td></td><td></td></tr>
+  <tr><td>Lãnh đạo (Leadership)</td><td>4.4</td><td></td><td></td><td></td><td></td><td>9.5</td><td></td><td></td><td></td><td>13.4</td></tr>
+  <tr><td>Quản lý cuộc họp (Meeting management)</td><td>4.1, 4.2</td><td></td><td></td><td></td><td></td><td></td><td>10.2</td><td></td><td></td><td></td></tr>
+  <tr><td>Tạo động lực (Motivation)</td><td></td><td></td><td></td><td></td><td></td><td>9.4</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Đàm phán (Negotiation)</td><td></td><td></td><td></td><td></td><td></td><td>9.3, 9.4, 9.6</td><td></td><td></td><td>12.2</td><td>13.3</td></tr>
+  <tr><td>Mạng lưới quan hệ (Networking)</td><td>4.4</td><td></td><td></td><td></td><td></td><td></td><td>10.2</td><td></td><td></td><td>13.4</td></tr>
+  <tr><td>Kỹ thuật nhóm danh nghĩa</td><td></td><td>5.2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Quan sát/trò chuyện</td><td></td><td>5.2</td><td></td><td></td><td></td><td></td><td>10.3</td><td></td><td></td><td>13.3</td></tr>
+  <tr><td>Nhận thức chính trị (Political awareness)</td><td>4.4</td><td></td><td></td><td></td><td></td><td></td><td>10.1, 10.2</td><td></td><td></td><td>13.3, 13.4</td></tr>
+  <tr><td>Xây dựng nhóm (Team building)</td><td></td><td></td><td></td><td></td><td></td><td>9.4</td><td></td><td></td><td></td><td></td></tr>
+
+  <tr><td colspan="11" style='font-weight: bold; background: #e0e0e0;'>Công cụ và Kỹ thuật Không phân nhóm (Ungrouped Tools and Techniques)</td></tr>
+  <tr><td>Quảng cáo (Advertising)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>12.2</td><td></td></tr>
+  <tr><td>Lên kế hoạch phát hành Agile</td><td></td><td></td><td>6.5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Ước lượng tương tự (Analogous estimating)</td><td></td><td></td><td>6.4</td><td>7.2</td><td></td><td>9.2</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Kiểm toán (Audits)</td><td></td><td></td><td></td><td></td><td>8.2</td><td></td><td></td><td>11.7</td><td>12.3</td><td></td></tr>
+  <tr><td>Hội nghị nhà thầu dự thầu (Bidder conferences)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>12.2</td><td></td></tr>
+  <tr><td>Ước lượng từ dưới lên (Bottom-up estimating)</td><td></td><td></td><td>6.4</td><td>7.2</td><td></td><td>9.2</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Các công cụ kiểm soát thay đổi</td><td>4.6</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Quản trị khiếu nại (Claims administration)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>12.3</td><td></td></tr>
+  <tr><td>Làm việc cùng địa điểm (Colocation)</td><td></td><td></td><td></td><td></td><td></td><td>9.4</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Phương pháp truyền thông (Communication methods)</td><td></td><td></td><td></td><td></td><td></td><td></td><td>10.1, 10.2</td><td></td><td></td><td></td></tr>
+  <tr><td>Mô hình truyền thông (Communication models)</td><td></td><td></td><td></td><td></td><td></td><td></td><td>10.1</td><td></td><td></td><td></td></tr>
+  <tr><td>Phân tích yêu cầu truyền thông</td><td></td><td></td><td></td><td></td><td></td><td></td><td>10.1</td><td></td><td></td><td></td></tr>
+  <tr><td>Công nghệ truyền thông (Communication technology)</td><td></td><td></td><td></td><td></td><td></td><td>9.4</td><td>10.1, 10.2</td><td></td><td></td><td></td></tr>
+  <tr><td>Biểu đồ bối cảnh (Context diagram)</td><td></td><td>5.2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Chiến lược phản hồi dự phòng</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>11.5</td><td></td><td></td></tr>
+  <tr><td>Tổng hợp chi phí (Cost aggregation)</td><td></td><td></td><td></td><td>7.3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Phương pháp đường găng (Critical path method)</td><td></td><td></td><td>6.5, 6.6</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Phân rã (Decomposition)</td><td></td><td>5.4</td><td>6.3</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Xác định sự phụ thuộc và tích hợp</td><td></td><td></td><td>6.3</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Thiết kế cho X (Design for X)</td><td></td><td></td><td></td><td></td><td>8.2</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Đánh giá của chuyên gia (Expert judgment)</td><td>4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7</td><td>5.1, 5.2, 5.3, 5.4</td><td>6.1, 6.2, 6.4</td><td>7.1, 7.2, 7.3, 7.4</td><td>8.1</td><td>9.1, 9.2</td><td>10.1, 10.3</td><td>11.1, 11.2, 11.3, 11.4, 11.5, 11.6</td><td>12.1, 12.2, 12.3</td><td>13.1, 13.2, 13.3</td></tr>
+  <tr><td>Tài trợ tài chính (Financing)</td><td></td><td></td><td></td><td>7.3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Đối chiếu giới hạn tài trợ</td><td></td><td></td><td></td><td>7.3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Nguyên tắc cơ bản (Ground rules)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>13.3</td></tr>
+  <tr><td>Xem xét thông tin lịch sử</td><td></td><td></td><td></td><td>7.3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Đánh giá cá nhân và nhóm</td><td></td><td></td><td></td><td></td><td></td><td>9.4</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Quản lý thông tin (Information management)</td><td>4.4</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Kiểm tra (Inspections)</td><td></td><td>5.5</td><td></td><td></td><td>8.3</td><td></td><td></td><td></td><td>12.3</td><td>13.3</td></tr>
+  <tr><td>Quản lý kiến thức (Knowledge management)</td><td>4.4</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Lead và lag (Leads and lags)</td><td></td><td></td><td>6.3, 6.5, 6.6</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Các cuộc họp (Meetings)</td><td>4.1, 4.2, 4.3, 4.5, 4.6, 4.7</td><td>5.1</td><td>6.1, 6.2, 6.4</td><td>7.1</td><td>8.1, 8.3</td><td>9.1, 9.2, 9.4</td><td>10.1, 10.2, 10.3</td><td>11.1, 11.2, 11.3, 11.6</td><td>12.1</td><td>13.1, 13.2, 13.3, 13.4</td></tr>
+  <tr><td>Lý thuyết tổ chức (Organizational theory)</td><td></td><td></td><td></td><td></td><td></td><td>9.1</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Ước lượng tham số (Parametric estimating)</td><td></td><td></td><td>6.4</td><td>7.2</td><td></td><td>9.2</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Chỉ định trước (Pre-assignment)</td><td></td><td></td><td></td><td></td><td></td><td>9.3</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Phương pháp sơ đồ tiền nhiệm (PDM)</td><td></td><td></td><td>6.3</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Giải quyết vấn đề (Problem solving)</td><td></td><td></td><td></td><td></td><td>8.2</td><td>9.6</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Phân tích sản phẩm (Product analysis)</td><td></td><td>5.3</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Hệ thống thông tin QLDA (PMIS)</td><td>4.3</td><td></td><td>6.3, 6.5, 6.6</td><td>7.2, 7.4</td><td></td><td>9.2, 9.5, 9.6</td><td>10.2, 10.3</td><td>11.6</td><td></td><td></td></tr>
+  <tr><td>Báo cáo dự án (Project reporting)</td><td></td><td></td><td></td><td></td><td>8.2</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Danh sách gợi ý (Prompt lists)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>11.2</td><td></td><td></td></tr>
+  <tr><td>Nguyên mẫu (Prototypes)</td><td></td><td>5.2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Phương pháp cải tiến chất lượng</td><td></td><td></td><td></td><td></td><td>8.2</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Ghi nhận và phần thưởng</td><td></td><td></td><td></td><td></td><td></td><td>9.4</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Đại diện cho sự không chắc chắn</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>11.4</td><td></td><td></td></tr>
+  <tr><td>Tối ưu hóa nguồn lực</td><td></td><td></td><td>6.5, 6.6</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Phân loại rủi ro (Risk categorization)</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>11.3</td><td></td><td></td></tr>
+  <tr><td>Lập KH cuốn chiếu (Rolling wave planning)</td><td></td><td></td><td>6.2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Nén tiến độ (Schedule compression)</td><td></td><td></td><td>6.5, 6.6</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Phân tích mạng lưới tiến độ</td><td></td><td></td><td>6.5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Phân tích lựa chọn nguồn</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>12.1</td><td></td></tr>
+  <tr><td>Chiến lược đối phó với cơ hội</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>11.5</td><td></td><td></td></tr>
+  <tr><td>Chiến lược cho rủi ro dự án tổng thể</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>11.5</td><td></td><td></td></tr>
+  <tr><td>Chiến lược đối phó với các mối đe dọa</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td>11.5</td><td></td><td></td></tr>
+  <tr><td>Lập kế hoạch kiểm tra và thanh tra</td><td></td><td></td><td></td><td></td><td>8.1</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Kiểm thử/Đánh giá sản phẩm</td><td></td><td></td><td></td><td></td><td>8.3</td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Ước lượng 3 điểm (Three-point estimating)</td><td></td><td></td><td>6.4</td><td>7.2</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Chỉ số hiệu suất cần đạt (TCPI)</td><td></td><td></td><td></td><td>7.4</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Đào tạo (Training)</td><td></td><td></td><td></td><td></td><td></td><td>9.4</td><td></td><td></td><td></td><td></td></tr>
+  <tr><td>Nhóm ảo (Virtual teams)</td><td></td><td></td><td></td><td></td><td></td><td>9.3, 9.4</td><td></td><td></td><td></td><td></td></tr>
+</table>
+</div>
+
+<hr>
+
+<h2 id="glossary">THUẬT NGỮ (GLOSSARY)</h2>
+
+<h5>1. BAO GỒM VÀ LOẠI TRỪ (INCLUSIONS AND EXCLUSIONS)</h5>
+<p>Bảng chú giải thuật ngữ này bao gồm các thuật ngữ:</p>
+<ul class="pmbok">
+<li>Độc nhất hoặc gần như độc nhất với quản lý dự án (ví dụ: tuyên bố phạm vi dự án, gói công việc, cấu trúc phân chia công việc, phương pháp đường găng).</li>
+<li>Không độc nhất đối với quản lý dự án, nhưng được sử dụng theo cách khác hoặc mang một ý nghĩa hẹp hơn trong quản lý dự án so với cách sử dụng hàng ngày (ví dụ: ngày bắt đầu sớm).</li>
+</ul>
+<p>Bảng chú giải thuật ngữ này thường không bao gồm:</p>
+<ul class="pmbok check">
+<li>Các thuật ngữ mang tính chuyên ngành ứng dụng.</li>
+<li>Các thuật ngữ được sử dụng trong quản lý dự án nhưng không khác biệt theo bất kỳ ý nghĩa vật chất nào so với việc sử dụng hàng ngày (ví dụ: ngày dương lịch, sự chậm trễ).</li>
+<li>Các thuật ngữ ghép có ý nghĩa rõ ràng từ ý nghĩa của các phần cấu thành nó.</li>
+<li>Các biến thể khi ý nghĩa của biến thể là rõ ràng dựa trên thuật ngữ gốc.</li>
+<li>Các thuật ngữ chỉ được sử dụng một lần và không quan trọng để hiểu được trọng tâm của câu. Nó có thể bao gồm một danh sách các ví dụ không cần định nghĩa từng thuật ngữ trong bảng thuật ngữ.</li>
+</ul>
+
+<h5>2. CÁC TỪ VIẾT TẮT PHỔ BIẾN (COMMON ACRONYMS)</h5>
+<div class="names-list">
+AC chi phí thực tế (actual cost)<br>BAC ngân sách khi hoàn thành (budget at completion)<br>CCB ban kiểm soát thay đổi (change control board)<br>COQ chi phí chất lượng (cost of quality)<br>CPAF chi phí cộng phí thưởng (cost plus award fee)<br>CPFF chi phí cộng phí cố định (cost plus fixed fee)<br>CPI chỉ số hiệu suất chi phí (cost performance index)<br>CPIF chi phí cộng phí khuyến khích (cost plus incentive fee)<br>CPM phương pháp đường găng (critical path method)<br>CV phương sai chi phí (cost variance)<br>EAC ước tính khi hoàn thành (estimate at completion)<br>EF ngày kết thúc sớm (early finish date)<br>ES ngày bắt đầu sớm (early start date)<br>ETC ước tính để hoàn thành (estimate to complete)<br>EV giá trị thu được (earned value)<br>EVM quản lý giá trị thu được (earned value management)<br>FF kết thúc-đến-kết thúc (finish-to-finish)<br>FFP giá cố định chắc chắn (firm fixed price)<br>FPEPA giá cố định có điều chỉnh giá kinh tế (fixed price with economic price adjustment)<br>FPIF giá cố định có phí khuyến khích (fixed price incentive fee)<br>FS kết thúc-đến-bắt đầu (finish to start)<br>IFB thư mời thầu (invitation for bid)<br>LF ngày kết thúc muộn (late finish date)<br>LOE mức độ nỗ lực (level of effort)<br>LS ngày bắt đầu muộn (late start date)<br>OBS cấu trúc phân chia tổ chức (organizational breakdown structure)<br>PDM phương pháp sơ đồ tiền nhiệm (precedence diagramming method)<br>PMBOK Khối kiến thức quản lý dự án (Project Management Body of Knowledge)<br>PV giá trị theo kế hoạch (planned value)<br>QFD triển khai chức năng chất lượng (quality function deployment)<br>RACI chịu trách nhiệm, giải trình, tham vấn và thông báo (responsible, accountable, consult, and inform)<br>RAM ma trận phân công trách nhiệm (responsibility assignment matrix)<br>RBS cấu trúc phân chia rủi ro (risk breakdown structure)<br>RFI yêu cầu cung cấp thông tin (request for information)<br>RFP yêu cầu đề xuất (request for proposal)<br>RFQ yêu cầu báo giá (request for quotation)<br>SF bắt đầu-đến-kết thúc (start-to-finish)<br>SOW tuyên bố công việc (statement of work)<br>SPI chỉ số hiệu suất tiến độ (schedule performance index)<br>SS bắt đầu-đến-bắt đầu (start-to-start)<br>SV phương sai tiến độ (schedule variance)<br>SWOT điểm mạnh, điểm yếu, cơ hội và mối đe dọa (strengths, weaknesses, opportunities, and threats)<br>T&M hợp đồng thời gian và vật liệu (time and material contract)<br>WBS cấu trúc phân chia công việc (work breakdown structure)<br>VAC phương sai khi hoàn thành (variance at completion)
+</div>
+
+<h5>3. ĐỊNH NGHĨA (DEFINITIONS)</h5>
+<p>Nhiều từ được định nghĩa ở đây có định nghĩa từ điển rộng hơn, và trong một số trường hợp là khác biệt. Trong một số trường hợp, một thuật ngữ duy nhất có thể bao gồm nhiều từ (ví dụ: phân tích nguyên nhân gốc rễ - root cause analysis).</p>
+<p><strong>Tiêu chí Nghiệm thu (Acceptance Criteria).</strong> Một tập hợp các điều kiện cần phải được đáp ứng trước khi các sản phẩm bàn giao được chấp nhận.</p>
+<p><strong>Sản phẩm Bàn giao Được chấp nhận (Accepted Deliverables).</strong> Các sản phẩm, kết quả, hoặc khả năng được sản xuất bởi một dự án và được xác nhận bởi khách hàng hoặc nhà tài trợ dự án là đáp ứng được các tiêu chí nghiệm thu đã chỉ định.</p>
+<p><strong>Độ chính xác (Accuracy).</strong> Trong hệ thống quản lý chất lượng, độ chính xác là một sự đánh giá về tính đúng đắn.</p>
+<p><strong>Thu thập Nguồn lực (Acquire Resources).</strong> Quy trình lấy các thành viên nhóm, cơ sở vật chất, thiết bị, vật liệu, nguồn cung cấp, và các nguồn lực khác cần thiết để hoàn thành công việc dự án.</p>
+<p><strong>Mua lại/Thu nhận (Acquisition).</strong> Việc lấy các nguồn lực nhân lực và vật chất cần thiết để thực hiện các hoạt động của dự án. Thu nhận ngụ ý đến một khoản chi phí cho các nguồn lực, và không nhất thiết phải là về mặt tài chính.</p>
+<p><strong>Hoạt động (Activity).</strong> Một phần công việc riêng biệt, được lên tiến độ được thực hiện trong quá trình của một dự án.</p>
+<p><strong>Thuộc tính Hoạt động (Activity Attributes).</strong> Nhiều thuộc tính gắn liền với mỗi hoạt động trên tiến độ có thể được đưa vào trong danh sách hoạt động. Các thuộc tính hoạt động bao gồm mã hoạt động, các hoạt động tiền nhiệm, các hoạt động kế nhiệm, các mối quan hệ logic, thời gian chờ và vượt, yêu cầu nguồn lực, các ngày áp đặt, các ràng buộc và các giả định.</p>
+<p><strong>Thời lượng Hoạt động (Activity Duration).</strong> Thời gian tính bằng đơn vị lịch giữa lúc bắt đầu và kết thúc của một hoạt động trong tiến độ. Xem thêm thời lượng (duration).</p>
+<p><strong>Ước lượng Thời lượng Hoạt động (Activity Duration Estimates).</strong> Các đánh giá định lượng về số lượng khoảng thời gian có khả năng cần thiết để hoàn thành một hoạt động.</p>
+<p><strong>Danh sách Hoạt động (Activity List).</strong> Một bảng liệt kê dạng tài liệu các hoạt động của tiến độ hiển thị mô tả hoạt động, mã định danh hoạt động, và một mô tả phạm vi công việc đủ chi tiết để các thành viên nhóm dự án hiểu được công việc nào sẽ được thực hiện.</p>
+<p><strong>Hoạt động trên Nút (Activity-on-Node - AON).</strong> Xem phương pháp sơ đồ tiền nhiệm (PDM).</p>
+<p><strong>Chi phí Thực tế (Actual Cost - AC).</strong> Chi phí đã được hiện thực hóa phát sinh cho công việc được thực hiện đối với một hoạt động trong một khoảng thời gian cụ thể.</p>
+<p><strong>Thời lượng Thực tế (Actual Duration).</strong> Khoảng thời gian tính bằng đơn vị lịch giữa ngày bắt đầu thực tế của hoạt động trong tiến độ và hoặc là ngày dữ liệu của tiến độ dự án nếu hoạt động đó đang diễn ra hoặc là ngày kết thúc thực tế nếu hoạt động đó đã hoàn thành.</p>
+<p><strong>Vòng đời Thích ứng (Adaptive Life Cycle).</strong> Một vòng đời dự án có tính chất lặp lại hoặc tăng trưởng.</p>
+<p><strong>Biểu đồ Tương đồng (Affinity Diagrams).</strong> Một kỹ thuật cho phép một số lượng lớn các ý tưởng được phân loại thành các nhóm để xem xét và phân tích.</p>
+<p><strong>Thỏa thuận (Agreements).</strong> Bất kỳ tài liệu hoặc truyền thông nào định nghĩa các ý định ban đầu của một dự án. Điều này có thể mang hình thức một hợp đồng, bản ghi nhớ (MOU), thư thỏa thuận, thỏa thuận bằng lời nói, email, v.v.</p>
+<p><strong>Phân tích Lựa chọn Thay thế (Alternative Analysis).</strong> Một kỹ thuật được sử dụng để đánh giá các phương án đã được nhận diện nhằm lựa chọn ra các phương án hoặc phương pháp tiếp cận để sử dụng trong việc thi hành và thực hiện công việc của dự án.</p>
+<p><strong>Ước lượng Tương tự (Analogous Estimating).</strong> Một kỹ thuật dùng để ước tính thời lượng hoặc chi phí của một hoạt động hoặc một dự án bằng cách sử dụng dữ liệu lịch sử từ một hoạt động hoặc dự án tương tự.</p>
+<p><strong>Kỹ thuật Phân tích (Analytical Techniques).</strong> Các kỹ thuật đa dạng được sử dụng để đánh giá, phân tích, hoặc dự báo các kết quả tiềm năng dựa trên những sự thay đổi có thể xảy ra của các biến số dự án hoặc môi trường và mối quan hệ của chúng với các biến số khác.</p>
+<p><strong>Giả định (Assumption).</strong> Một yếu tố trong quá trình lập kế hoạch được coi là đúng, có thật, hoặc chắc chắn, mà không cần chứng minh hay minh họa.</p>
+<p><strong>Sổ ghi nhận Giả định (Assumption Log).</strong> Một tài liệu dự án được sử dụng để ghi lại tất cả các giả định và ràng buộc xuyên suốt vòng đời dự án.</p>
+<p><strong>Lấy mẫu Thuộc tính (Attribute Sampling).</strong> Phương pháp đo lường chất lượng bao gồm việc ghi nhận sự hiện diện (hoặc vắng mặt) của một đặc tính (thuộc tính) nào đó trong mỗi một đơn vị đang được xem xét.</p>
+<p><strong>Thẩm quyền (Authority).</strong> Quyền được phép sử dụng các nguồn lực dự án, chi tiêu ngân quỹ, ra quyết định, hoặc đưa ra các phê duyệt.</p>
+<p><strong>Đường lùi (Backward Pass).</strong> Một kỹ thuật phương pháp đường găng dùng để tính toán các ngày bắt đầu muộn và kết thúc muộn bằng cách làm việc ngược lại thông qua mô hình tiến độ tính từ ngày kết thúc dự án.</p>
+<p><strong>Biểu đồ Thanh (Bar Chart).</strong> Một dạng hiển thị đồ họa của các thông tin liên quan đến tiến độ. Trong biểu đồ thanh điển hình, các hoạt động tiến độ hoặc các thành phần của cấu trúc phân chia công việc được liệt kê dọc theo phía bên trái của biểu đồ, các ngày được hiển thị cắt ngang trên đỉnh, và thời lượng của các hoạt động được hiển thị dưới dạng các thanh nằm ngang được đặt theo ngày. Xem thêm biểu đồ Gantt.</p>
+<p><strong>Đường cơ sở (Baseline).</strong> Phiên bản đã được phê duyệt của một sản phẩm công việc mà chỉ có thể thay

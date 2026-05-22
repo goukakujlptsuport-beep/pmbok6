@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chương 9 – QUẢN LÝ NGUỒN LỰC DỰ ÁN | PMBOK® Guide Lần 6</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a3;
+    --cream: #fdf8f0;
+    --text: #2c2c2c;
+    --text-light: #5a5a5a;
+    --border: #d4c89a;
+    --accent: #8b1a1a;
+    --sidebar-w: 260px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Merriweather', Georgia, serif;
+    background: var(--cream);
+    color: var(--text);
+    display: flex;
+    min-height: 100vh;
+  }
+
+  #sidebar {
+    width: var(--sidebar-w);
+    background: var(--navy);
+    color: #ccd4e8;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    overflow-y: auto;
+    z-index: 100;
+    padding: 0 0 2rem;
+    border-right: 3px solid var(--gold);
+  }
+  #sidebar-header {
+    background: linear-gradient(135deg, #0f1d3a 0%, #1a2744 100%);
+    padding: 1.5rem 1.2rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  #sidebar-header .book-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  #sidebar-header h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+  }
+  #sidebar-header .edition {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    color: var(--gold-light);
+    font-style: italic;
+  }
+  #sidebar nav { padding: 0.8rem 0; }
+  #sidebar nav a {
+    display: block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    color: #aab8d0;
+    text-decoration: none;
+    padding: 0.45rem 1.2rem;
+    line-height: 1.4;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+  }
+  #sidebar nav a:hover, #sidebar nav a.active {
+    color: #fff;
+    background: rgba(201,168,76,0.12);
+    border-left-color: var(--gold);
+  }
+  #sidebar nav .section-group { margin-top: 0.4rem; }
+  #sidebar nav .group-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 0.8rem 1.2rem 0.3rem;
+    opacity: 0.85;
+  }
+
+  #main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    max-width: 900px;
+    padding: 0 3rem 5rem;
+  }
+
+  .chapter-hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #2a3a6a 100%);
+    color: white;
+    padding: 3rem 3rem 2.5rem;
+    margin: 0 -3rem 3rem;
+    border-bottom: 4px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-hero::before {
+    content: attr(data-chnum);
+    position: absolute;
+    right: 2rem; top: 50%;
+    transform: translateY(-50%);
+    font-size: 10rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.05);
+    font-family: 'Merriweather', serif;
+    line-height: 1;
+  }
+  .chapter-hero .ch-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .chapter-hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+  }
+  .chapter-hero .ch-en {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+    font-style: italic;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  h3 {
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin: 2rem 0 0.7rem;
+    padding-left: 0.8rem;
+    border-left: 4px solid var(--gold);
+  }
+  h4 {
+    font-size: 1rem;
+    color: var(--accent);
+    margin: 1.5rem 0 0.5rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  h5 {
+    font-size: 0.95rem;
+    color: var(--navy);
+    margin: 1.2rem 0 0.5rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+  }
+  p {
+    font-size: 0.97rem;
+    line-height: 1.85;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  ul.pmbok {
+    list-style: none;
+    margin: 0.5rem 0 1rem 0;
+    padding: 0;
+  }
+  ul.pmbok li {
+    position: relative;
+    padding: 0.3rem 0 0.3rem 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--text);
+  }
+  ul.pmbok li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.7rem;
+    top: 0.5rem;
+  }
+  ul.pmbok.check li::before { content: '☑'; color: #2d7a2d; font-size: 0.9rem; top: 0.35rem; }
+  ul.pmbok.dash li::before  { content: '■'; color: var(--navy); font-size: 0.6rem; top: 0.5rem; }
+
+  .figure-wrap {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1.2rem;
+    background: #f8f5ee;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .figure-wrap img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  }
+  .figure-caption {
+    margin-top: 0.75rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.83rem;
+    color: var(--text-light);
+    font-style: italic;
+    text-align: center;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.84rem;
+  }
+  table th {
+    background: var(--navy);
+    color: white;
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+  table td {
+    padding: 0.55rem 0.8rem;
+    border: 1px solid #ddd;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  table tr:nth-child(even) td { background: #f9f6ef; }
+
+  @media(max-width:900px){
+    #sidebar { display: none; }
+    #main { margin-left: 0; padding: 0 1.2rem 4rem; }
+    .chapter-hero { margin: 0 -1.2rem 2rem; padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<aside id="sidebar">
+  <div id="sidebar-header">
+    <div class="book-label">PMBOK® Guide</div>
+    <h2>Hướng Dẫn Quản Lý Dự Án</h2>
+    <div class="edition">Lần xuất bản thứ 6 · Tiếng Việt</div>
+  </div>
+  <nav>
+    <div class="section-group">
+    <div class="group-label">Chương 9 · Resource Management</div>
+    <a href="#s9-1">9.1 Lập Kế Hoạch Quản Lý NL</a>
+    <a href="#s9-2">9.2 Ước Lượng NL Hoạt Động</a>
+    <a href="#s9-3">9.3 Thu Thập Nguồn Lực</a>
+    <a href="#s9-4">9.4 Phát Triển Nhóm</a>
+    <a href="#s9-5">9.5 Quản Lý Nhóm</a>
+    <a href="#s9-6">9.6 Kiểm Soát Nguồn Lực</a>
+    </div>
+  </nav>
+</aside>
+
+<main id="main">
+
+  <div class="chapter-hero" data-chnum="9">
+    <div class="ch-label">Chương 9</div>
+    <h1>QUẢN LÝ NGUỒN LỰC DỰ ÁN</h1>
+    <div class="ch-en">Project Resource Management</div>
+  </div>
+
+<h2>PROJECT RESOURCE MANAGEMENT (QUẢN LÝ NGUỒN LỰC DỰ ÁN)</h2>
+<p>Quản lý Nguồn lực Dự án bao gồm các quy trình để xác định, thu thập và quản lý các nguồn lực cần thiết cho sự hoàn thành thành công của dự án. Các quy trình này giúp đảm bảo rằng các nguồn lực phù hợp sẽ có sẵn cho giám đốc dự án và nhóm dự án đúng lúc và đúng chỗ.</p>
+
+<p>Các quy trình Quản lý Nguồn lực Dự án bao gồm:</p>
+<ul class="pmbok">
+<li><strong>9.1 Lập Kế hoạch Quản lý Nguồn lực (Plan Resource Management)</strong>—Quy trình định nghĩa cách thức ước lượng, thu thập, quản lý và sử dụng các nguồn lực nhóm và nguồn lực vật chất.</li>
+<li><strong>9.2 Ước lượng Nguồn lực Hoạt động (Estimate Activity Resources)</strong>—Quy trình ước lượng các nguồn lực nhóm và loại, số lượng vật liệu, thiết bị, và nguồn cung ứng cần thiết để thực hiện công việc dự án.</li>
+<li><strong>9.3 Thu thập Nguồn lực (Acquire Resources)</strong>—Quy trình lấy các thành viên nhóm, cơ sở vật chất, thiết bị, vật liệu, nguồn cung cấp và các nguồn lực khác cần thiết để hoàn thành công việc dự án.</li>
+<li><strong>9.4 Phát triển Nhóm (Develop Team)</strong>—Quy trình cải thiện năng lực, tương tác giữa các thành viên và môi trường chung của nhóm để nâng cao hiệu suất dự án.</li>
+<li><strong>9.5 Quản lý Nhóm (Manage Team)</strong>—Quy trình theo dõi hiệu suất của thành viên nhóm, cung cấp phản hồi, giải quyết các vấn đề và quản lý những thay đổi của nhóm để tối ưu hóa hiệu suất dự án.</li>
+<li><strong>9.6 Kiểm soát Nguồn lực (Control Resources)</strong>—Quy trình đảm bảo rằng các nguồn lực vật chất được giao và phân bổ cho dự án có sẵn như kế hoạch, cũng như giám sát việc sử dụng nguồn lực thực tế so với kế hoạch, và thực hiện hành động khắc phục khi cần.</li>
+</ul>
+
+<p>Hình 9-1 cung cấp cái nhìn tổng quan về các quy trình Quản lý Nguồn lực Dự án. Các quy trình Quản lý Nguồn lực Dự án được trình bày như các quy trình rời rạc với giao diện xác định, tuy nhiên trong thực tế, chúng đan xen và tương tác theo những cách không thể trình bày chi tiết hoàn toàn trong PMBOK® Guide.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06dfd96a-7fba-4dbb-9313-47ea5dd1212d/markdown_1/imgs/img_in_image_box_196_166_1019_1214.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A23%3A55Z%2F-1%2F%2F570a26402bd1c2de0b0b7769df9f93c4118774f70eb1a9d0c3f3748979dd1e12" alt="Image" width="67%" /></div></div>
+<p class="figure-caption">Hình 9-1. Tổng quan Quản lý Nguồn lực Dự án</p>
+
+<p>Có sự phân biệt giữa các kỹ năng và năng lực cần thiết để giám đốc dự án quản lý nguồn lực nhóm so với nguồn lực vật chất. Nguồn lực vật chất bao gồm thiết bị, vật liệu, cơ sở vật chất và cơ sở hạ tầng. Nguồn lực nhóm hoặc nhân sự đề cập đến nguồn nhân lực. Nhân sự có thể có bộ kỹ năng khác nhau, có thể được giao toàn thời gian hoặc bán thời gian, và có thể được thêm hoặc rút khỏi nhóm dự án khi dự án tiến triển. Có một số phần giao thoa giữa Quản lý Nguồn lực Dự án và Quản lý Các bên liên quan (Phần 13). Phần này (Phần 9) tập trung vào tập hợp các bên liên quan tạo nên nhóm dự án.</p>
+
+<h5>CÁC KHÁI NIỆM TRỌNG TÂM TRONG QUẢN LÝ NGUỒN LỰC DỰ ÁN (KEY CONCEPTS FOR PROJECT RESOURCE MANAGEMENT)</h5>
+<p>Nhóm dự án bao gồm các cá nhân với vai trò và trách nhiệm được phân công, cùng làm việc tập thể để đạt được một mục tiêu chung của dự án. Giám đốc dự án nên đầu tư nỗ lực phù hợp vào việc thu thập, quản lý, tạo động lực và trao quyền cho nhóm dự án. Mặc dù các vai trò và trách nhiệm cụ thể của các thành viên nhóm được phân công rõ ràng, việc thu hút mọi thành viên tham gia vào lập kế hoạch và ra quyết định là rất có lợi. Sự tham gia của các thành viên trong giai đoạn lập kế hoạch giúp bổ sung chuyên môn của họ vào quy trình và củng cố cam kết của họ đối với dự án.</p>
+
+<p>Giám đốc dự án nên đóng vai trò là cả người lãnh đạo và người quản lý của nhóm dự án. Ngoài các hoạt động quản lý dự án như khởi tạo, lập kế hoạch, thực thi, giám sát và kiểm soát, và đóng các giai đoạn dự án, giám đốc dự án chịu trách nhiệm hình thành nhóm thành một tập thể hoạt động hiệu quả. Giám đốc dự án cần nhận thức được các khía cạnh khác nhau ảnh hưởng đến nhóm, chẳng hạn như:</p>
+<ul class="pmbok check">
+<li>Môi trường nhóm.</li>
+<li>Vị trí địa lý của các thành viên nhóm.</li>
+<li>Truyền thông giữa các bên liên quan.</li>
+<li>Quản lý thay đổi trong tổ chức.</li>
+<li>Chính trị nội bộ và bên ngoài.</li>
+<li>Các vấn đề về văn hóa và sự độc đáo của tổ chức, và</li>
+<li>Các yếu tố khác có thể làm thay đổi hiệu suất dự án.</li>
+</ul>
+
+<p>Với tư cách là một nhà lãnh đạo, giám đốc dự án cũng chịu trách nhiệm chủ động phát triển các kỹ năng và năng lực của nhóm trong khi vẫn duy trì và cải thiện sự hài lòng và động lực của nhóm. Giám đốc dự án nên nhận thức và tuân thủ các hành vi đạo đức và chuyên nghiệp, đồng thời đảm bảo rằng tất cả thành viên trong nhóm cũng tuân thủ theo các hành vi này.</p>
+
+<p>Quản lý nguồn lực vật chất tập trung vào việc phân bổ và sử dụng các tài nguyên vật lý (ví dụ: vật liệu, thiết bị, và nguồn cung ứng) cần thiết cho sự hoàn thành thành công của dự án một cách hiệu quả và tiết kiệm. Để làm được điều đó, các tổ chức nên có dữ liệu về nhu cầu tài nguyên (hiện tại và trong tương lai hợp lý), các cấu hình tài nguyên cần thiết để đáp ứng nhu cầu đó, và nguồn cung cấp tài nguyên. Việc không quản lý và kiểm soát tài nguyên một cách hiệu quả là nguồn gốc của rủi ro đối với sự thành công của dự án. Ví dụ:</p>
+<ul class="pmbok">
+<li>Không đảm bảo được các thiết bị hoặc cơ sở hạ tầng quan trọng đúng hạn có thể dẫn đến việc làm trễ tiến độ sản xuất sản phẩm cuối cùng.</li>
+<li>Đặt mua vật liệu chất lượng thấp có thể làm hỏng chất lượng của sản phẩm gây ra tỷ lệ thu hồi hoặc làm lại cao, và</li>
+<li>Giữ quá nhiều hàng tồn kho có thể dẫn đến chi phí hoạt động cao và làm giảm lợi nhuận của tổ chức. Ngược lại, mức tồn kho thấp không thể chấp nhận được có thể dẫn đến việc không thỏa mãn nhu cầu khách hàng và, một lần nữa, làm giảm lợi nhuận của tổ chức.</li>
+</ul>
+
+<h5>CÁC XU HƯỚNG VÀ THỰC TIỄN MỚI NỔI TRONG QUẢN LÝ NGUỒN LỰC DỰ ÁN (TRENDS AND EMERGING PRACTICES IN PROJECT RESOURCE MANAGEMENT)</h5>
+<p>Các phong cách quản lý dự án đang chuyển dịch khỏi cấu trúc chỉ huy và kiểm soát (command and control) đối với việc quản lý dự án, hướng tới một phương pháp tiếp cận mang tính cộng tác và hỗ trợ hơn, trao quyền cho các nhóm bằng cách giao quyền ra quyết định cho các thành viên. Ngoài ra, các cách tiếp cận quản lý nguồn lực dự án hiện đại đang tìm cách tối ưu hóa việc sử dụng tài nguyên. Các xu hướng và thực tiễn mới nổi cho Quản lý Nguồn lực Dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Phương pháp quản lý nguồn lực.</strong> Do tính chất khan hiếm của các tài nguyên quan trọng, ở một số ngành công nghiệp, một vài xu hướng đã trở nên phổ biến trong những năm qua. Có rất nhiều tài liệu về quản lý tinh gọn (lean management), sản xuất tức thời (just-in-time - JIT), Kaizen, bảo trì năng suất toàn diện (TPM), lý thuyết các điểm hạn chế (TOC), và các phương pháp khác. Giám đốc dự án nên xác định xem tổ chức thực hiện dự án có đang áp dụng một hay nhiều công cụ quản lý tài nguyên nào không và điều chỉnh dự án cho phù hợp.</li>
+<li><strong>Trí tuệ cảm xúc (EI).</strong> Giám đốc dự án nên đầu tư vào EI cá nhân bằng cách cải thiện các năng lực hướng nội (ví dụ: tự quản lý và tự nhận thức) và hướng ngoại (ví dụ: quản lý mối quan hệ). Nghiên cứu cho thấy rằng các nhóm dự án thành công trong việc phát triển EI của nhóm hoặc trở thành một nhóm có năng lực cảm xúc thường hoạt động hiệu quả hơn. Hơn nữa, điều này cũng làm giảm tỷ lệ nhân viên nghỉ việc.</li>
+<li><strong>Nhóm tự quản (Self-organizing teams).</strong> Sự gia tăng trong việc sử dụng các phương pháp tiếp cận linh hoạt (agile), chủ yếu trong việc thực thi các dự án CNTT, đã làm nảy sinh nhóm tự quản, nơi nhóm hoạt động trong tình trạng không có sự kiểm soát tập trung. Trong các dự án có nhóm tự quản, vai trò của giám đốc dự án (người có thể không được gọi là giám đốc dự án) là cung cấp cho nhóm một môi trường, sự hỗ trợ cần thiết và tin tưởng để nhóm hoàn thành công việc. Những nhóm tự quản thành công thường bao gồm các chuyên gia tổng quát hóa (generalized specialists), thay vì các chuyên gia về một lĩnh vực chuyên môn nhất định, những người liên tục thích ứng với môi trường đang thay đổi và luôn cởi mở với các phản hồi mang tính xây dựng.</li>
+<li><strong>Nhóm ảo/Nhóm phân tán (Virtual teams/distributed teams).</strong> Sự toàn cầu hóa của các dự án đã thúc đẩy nhu cầu về các nhóm ảo cùng làm việc trên một dự án, nhưng không ở cùng một địa điểm. Sự sẵn có của công nghệ truyền thông như email, hội nghị âm thanh, mạng xã hội, các cuộc họp trên web và hội nghị truyền hình đã khiến cho các nhóm ảo trở nên khả thi. Quản lý nhóm ảo mang lại những lợi thế độc đáo, chẳng hạn như có thể sử dụng các chuyên môn đặc biệt cho dự án ngay cả khi chuyên gia không ở cùng khu vực địa lý, kết hợp những nhân viên làm việc tại nhà, và bao gồm cả những người bị hạn chế về khả năng di chuyển hoặc khuyết tật. Những thách thức của việc quản lý nhóm ảo chủ yếu nằm trong lĩnh vực truyền thông, bao gồm cảm giác bị cô lập, những khoảng trống trong việc chia sẻ kiến thức và kinh nghiệm giữa các thành viên, cũng như những khó khăn trong việc theo dõi tiến độ và năng suất, sự khác biệt về múi giờ và sự khác biệt về văn hóa.</li>
+</ul>
+
+<h5>CÁC YẾU TỐ XEM XÉT KHI ĐIỀU CHỈNH (TAILORING CONSIDERATIONS)</h5>
+<p>Vì mỗi dự án là duy nhất, giám đốc dự án sẽ cần phải điều chỉnh cách thức áp dụng các quy trình Quản lý Nguồn lực Dự án. Cân nhắc điều chỉnh (may đo) bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li><strong>Sự đa dạng.</strong> Bối cảnh đa dạng của nhóm là gì?</li>
+<li><strong>Vị trí vật lý.</strong> Vị trí vật lý của các thành viên nhóm và tài nguyên vật chất ở đâu?</li>
+<li><strong>Tài nguyên cụ thể của ngành.</strong> Có những tài nguyên đặc biệt nào cần thiết trong ngành này?</li>
+<li><strong>Thu thập thành viên nhóm.</strong> Các thành viên nhóm sẽ được thu thập cho dự án như thế nào? Các tài nguyên nhóm làm việc toàn thời gian hay bán thời gian cho dự án?</li>
+<li><strong>Quản lý nhóm.</strong> Việc phát triển nhóm được quản lý cho dự án như thế nào? Có các công cụ của tổ chức để quản lý việc phát triển nhóm hay sẽ cần thiết lập những công cụ mới? Có thành viên nhóm nào có nhu cầu đặc biệt không? Nhóm có cần đào tạo đặc biệt để quản lý sự đa dạng không?</li>
+<li><strong>Cách tiếp cận vòng đời.</strong> Phương pháp tiếp cận vòng đời nào sẽ được sử dụng cho dự án?</li>
+</ul>
+
+<h5>CÁC YẾU TỐ XEM XÉT CHO MÔI TRƯỜNG AGILE/THÍCH ỨNG (CONSIDERATIONS FOR AGILE/ADAPTIVE ENVIRONMENTS)</h5>
+<p>Các dự án có độ biến động cao sẽ được hưởng lợi từ các cấu trúc nhóm tối đa hóa sự tập trung và hợp tác, chẳng hạn như các nhóm tự quản lý với các chuyên gia tổng quát hóa.</p>
+<p>Sự cộng tác nhằm mục đích thúc đẩy năng suất và tạo điều kiện cho việc giải quyết vấn đề một cách đổi mới. Các nhóm cộng tác có thể tạo điều kiện cho sự tích hợp tăng tốc của các hoạt động công việc khác nhau, cải thiện truyền thông, tăng cường chia sẻ kiến thức, và mang lại tính linh hoạt trong phân công công việc bên cạnh các lợi thế khác.</p>
+<p>Mặc dù những lợi ích của sự hợp tác cũng áp dụng cho các môi trường dự án khác, nhưng các nhóm làm việc cộng tác thường rất quan trọng đối với sự thành công của các dự án có mức độ biến động cao và thay đổi nhanh chóng, bởi vì có ít thời gian hơn cho việc phân công nhiệm vụ và ra quyết định một cách tập trung.</p>
+<p>Lập kế hoạch cho nguồn lực vật chất và con người sẽ ít có khả năng dự đoán hơn nhiều ở trong các dự án có độ biến đổi cao. Trong các môi trường này, các thỏa thuận cung cấp nhanh chóng và các phương pháp tinh gọn là rất quan trọng để kiểm soát chi phí và đạt được tiến độ.</p>
+
+<h3 id="s9-1">9.1 LẬP KẾ HOẠCH QUẢN LÝ NGUỒN LỰC (PLAN RESOURCE MANAGEMENT)</h3>
+<p>Lập kế hoạch Quản lý Nguồn lực là quy trình định nghĩa cách thức ước lượng, thu thập, quản lý, và sử dụng các nguồn lực vật chất cũng như nhóm. Lợi ích chính của quy trình này là nó thiết lập phương pháp và mức độ nỗ lực quản lý cần thiết để quản lý các nguồn lực dự án dựa trên loại hình và độ phức tạp của dự án. Quy trình này được thực hiện một lần hoặc tại những thời điểm xác định trước trong dự án. Các đầu vào, công cụ & kỹ thuật, và đầu ra của quy trình được mô tả trong Hình 9-2. Hình 9-3 mô tả sơ đồ luồng dữ liệu cho quy trình.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//de62eabb-389b-4e39-95ba-90205c3200f3/markdown_1/imgs/img_in_image_box_200_152_1028_819.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A23%3A56Z%2F-1%2F%2Fe1a61048356b1df704c6949a2542558dc1356b0fe7f77c5d5e07215afd87d864" alt="Image" width="67%" /></div></div>
+<p class="figure-caption">Hình 9-2 / Hình 9-3. Lập kế hoạch Quản lý Nguồn lực: Sơ đồ luồng dữ liệu & Đầu vào, Công cụ & Đầu ra</p>
+
+<p>Lập kế hoạch nguồn lực được sử dụng để xác định và nhận diện phương pháp tiếp cận nhằm đảm bảo rằng có đủ tài nguyên để hoàn thành dự án thành công. Tài nguyên dự án có thể bao gồm thành viên nhóm, nguồn cung ứng, vật liệu, thiết bị, dịch vụ và cơ sở vật chất. Lập kế hoạch nguồn lực hiệu quả cần phải xem xét và lên kế hoạch cho khả năng sẵn có của tài nguyên, hoặc sự cạnh tranh đối với các tài nguyên khan hiếm.</p>
+<p>Những nguồn lực đó có thể được lấy từ tài sản nội bộ của tổ chức hoặc từ bên ngoài tổ chức thông qua quá trình mua sắm (procurement). Các dự án khác cũng có thể đang cạnh tranh để có cùng một nguồn lực yêu cầu cho dự án của bạn tại cùng một thời điểm và địa điểm. Điều này có thể ảnh hưởng đáng kể đến chi phí dự án, tiến độ, rủi ro, chất lượng, và các lĩnh vực dự án khác.</p>
+
+<h4>9.1.1 LẬP KẾ HOẠCH QUẢN LÝ NGUỒN LỰC: ĐẦU VÀO (INPUTS)</h4>
+
+<h5>9.1.1.1 HIẾN CHƯƠNG DỰ ÁN (PROJECT CHARTER)</h5>
+<p>Mô tả trong Phần 4.1.3.1. Hiến chương dự án cung cấp các mô tả dự án và yêu cầu ở mức cấp cao. Nó cũng chứa danh sách các bên liên quan chính, tóm tắt các mốc thời gian (milestones) và các nguồn lực tài chính được phê duyệt trước có thể ảnh hưởng đến việc quản lý nguồn lực của dự án.</p>
+
+<h5>9.1.1.2 KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN)</h5>
+<p>Mô tả trong Phần 4.2.3.1. Các thành phần của kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Kế hoạch quản lý chất lượng.</strong> Mô tả trong Phần 8.1.3.1. Kế hoạch quản lý chất lượng giúp xác định mức độ tài nguyên sẽ được yêu cầu để đạt được và duy trì mức chất lượng đã xác định cũng như đạt được các số liệu/chỉ số cho dự án.</li>
+<li><strong>Đường cơ sở phạm vi (Scope baseline).</strong> Mô tả trong Phần 5.4.3.1. Đường cơ sở phạm vi xác định các sản phẩm bàn giao (deliverables) từ đó thúc đẩy loại hình và số lượng nguồn lực sẽ cần được quản lý.</li>
+</ul>
+
+<h5>9.1.1.3 TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS)</h5>
+<p>Các tài liệu dự án có thể được coi là đầu vào cho quy trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Tiến độ dự án (Project schedule).</strong> Mô tả trong Phần 6.5.3.2. Tiến độ dự án hiển thị dòng thời gian đối với các nguồn lực cần thiết.</li>
+<li><strong>Tài liệu yêu cầu (Requirements documentation).</strong> Mô tả trong Phần 5.2.3.1. Các yêu cầu sẽ quyết định loại hình và lượng tài nguyên cần thiết cho dự án và có thể ảnh hưởng đến cách chúng được quản lý.</li>
+<li><strong>Sổ đăng ký rủi ro (Risk register).</strong> Mô tả trong Phần 11.2.3.1. Sổ đăng ký rủi ro chứa thông tin về các mối đe dọa và cơ hội có thể tác động đến việc lập kế hoạch nguồn lực.</li>
+<li><strong>Sổ đăng ký các bên liên quan (Stakeholder register).</strong> Mô tả trong Phần 13.1.3.1. Sổ đăng ký các bên liên quan hỗ trợ trong việc xác định những bên liên quan có lợi ích đặc biệt hoặc có tác động đến các tài nguyên cần thiết cho dự án. Nó cũng giúp xác định các bên liên quan có thể ảnh hưởng đến việc sử dụng một loại tài nguyên thay vì một loại tài nguyên khác.</li>
+</ul>
+
+<h5>9.1.1.4 YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP (ENTERPRISE ENVIRONMENTAL FACTORS)</h5>
+<p>Các yếu tố môi trường doanh nghiệp có thể ảnh hưởng đến Lập kế hoạch Quản lý Nguồn lực bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Văn hóa và cấu trúc tổ chức.</li>
+<li>Sự phân bổ địa lý của các cơ sở và tài nguyên.</li>
+<li>Năng lực và sự sẵn có của các nguồn lực hiện có, và</li>
+<li>Điều kiện thị trường.</li>
+</ul>
+
+<h5>9.1.1.5 TÀI SẢN QUY TRÌNH TỔ CHỨC (ORGANIZATIONAL PROCESS ASSETS)</h5>
+<p>Các tài sản quy trình tổ chức có thể ảnh hưởng đến Lập kế hoạch Quản lý Nguồn lực bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Chính sách và thủ tục nhân sự (Human resource policies and procedures).</li>
+<li>Chính sách và thủ tục quản lý nguồn lực vật chất.</li>
+<li>Chính sách an toàn.</li>
+<li>Chính sách an ninh.</li>
+<li>Biểu mẫu (Templates) cho kế hoạch quản lý nguồn lực, và</li>
+<li>Thông tin lịch sử (Historical information) của các dự án tương tự.</li>
+</ul>
+
+<h4>9.1.2 LẬP KẾ HOẠCH QUẢN LÝ NGUỒN LỰC: CÔNG CỤ VÀ KỸ THUẬT (TOOLS AND TECHNIQUES)</h4>
+
+<h5>9.1.2.1 ĐÁNH GIÁ CỦA CHUYÊN GIA (EXPERT JUDGMENT)</h5>
+<p>Mô tả trong Phần 4.1.2.1. Nên xem xét chuyên môn từ các cá nhân hoặc nhóm có kiến thức chuyên ngành hoặc được đào tạo trong các chủ đề sau:</p>
+<ul class="pmbok check">
+<li>Đàm phán để có được các tài nguyên tốt nhất trong tổ chức;</li>
+<li>Quản lý nhân tài và phát triển nhân sự;</li>
+<li>Xác định mức độ nỗ lực sơ bộ cần thiết để đạt được các mục tiêu dự án;</li>
+<li>Xác định các yêu cầu báo cáo dựa trên văn hóa tổ chức;</li>
+<li>Ước lượng thời gian chuẩn bị (lead times) cần thiết để thu thập nguồn lực, dựa trên các bài học kinh nghiệm và điều kiện thị trường;</li>
+<li>Xác định các rủi ro liên quan đến các kế hoạch thu thập, giữ chân, và giải phóng nguồn lực;</li>
+<li>Tuân thủ các quy định hiện hành của chính phủ và công đoàn; và</li>
+<li>Quản lý người bán và nỗ lực hậu cần để đảm bảo vật liệu và nguồn cung ứng luôn có sẵn khi cần thiết.</li>
+</ul>
+
+<h5>9.1.2.2 BIỂU DIỄN DỮ LIỆU (DATA REPRESENTATION)</h5>
+<p>Các kỹ thuật biểu diễn dữ liệu có thể được sử dụng cho quy trình này bao gồm nhưng không giới hạn ở các biểu đồ. Nhiều định dạng khác nhau tồn tại để ghi lại và truyền đạt vai trò và trách nhiệm của các thành viên nhóm. Hầu hết rơi vào định dạng phân cấp (hierarchical), ma trận (matrix), hoặc văn bản (text-oriented). Một số nhiệm vụ dự án được liệt kê trong các kế hoạch phụ (subsidiary plans), chẳng hạn như kế hoạch rủi ro, chất lượng, hoặc truyền thông. Dù sử dụng phương pháp nào để ghi lại vai trò của thành viên nhóm, mục tiêu là đảm bảo mỗi gói công việc có một người phụ trách rõ ràng, không mơ hồ và tất cả thành viên trong nhóm có sự hiểu biết rõ ràng về vai trò và trách nhiệm của họ. Một định dạng phân cấp có thể được sử dụng để thể hiện các vai trò cấp cao, trong khi định dạng dựa trên văn bản có thể phù hợp hơn để ghi lại chi tiết các trách nhiệm.</p>
+<ul class="pmbok">
+<li><strong>Biểu đồ phân cấp (Hierarchical charts).</strong> Cấu trúc biểu đồ tổ chức truyền thống có thể được sử dụng để hiển thị các vị trí và mối quan hệ theo định dạng đồ họa, từ trên xuống.</li>
+<li><strong>Cấu trúc Phân chia Công việc (WBS).</strong> WBS được thiết kế để chỉ ra cách các sản phẩm bàn giao (deliverables) của dự án được chia nhỏ thành các gói công việc và cung cấp cách thể hiện các khu vực trách nhiệm cấp cao.</li>
+<li><strong>Cấu trúc Phân chia Tổ chức (OBS).</strong> Trong khi WBS hiển thị cấu trúc phân chia của các sản phẩm dự án, OBS được sắp xếp theo các phòng ban, đơn vị hoặc đội nhóm hiện có của một tổ chức, với các hoạt động dự án hoặc các gói công việc được liệt kê dưới mỗi phòng ban. Một phòng ban hoạt động, chẳng hạn như công nghệ thông tin hoặc mua sắm, có thể xem tất cả trách nhiệm dự án của họ bằng cách nhìn vào phần OBS của mình.</li>
+<li><strong>Cấu trúc Phân chia Nguồn lực (RBS).</strong> Cấu trúc phân chia tài nguyên là danh sách phân cấp của các nguồn lực nhóm và vật chất liên quan theo danh mục và loại tài nguyên, được sử dụng để lập kế hoạch, quản lý và kiểm soát công việc dự án. Mỗi cấp độ thấp dần đại diện cho một mô tả ngày càng chi tiết về tài nguyên cho đến khi thông tin đủ nhỏ để có thể sử dụng kết hợp với cấu trúc phân chia công việc (WBS) cho phép công việc được lên kế hoạch, giám sát và kiểm soát.</li>
+<li><strong>Ma trận phân công (Assignment Matrix - RAM).</strong> Một RAM hiển thị các nguồn lực dự án được gán cho mỗi gói công việc. Nó được sử dụng để minh họa sự kết nối giữa các gói công việc, hoặc các hoạt động, và các thành viên của nhóm dự án. Trên các dự án lớn hơn, RAM có thể được phát triển ở nhiều cấp độ khác nhau. Ví dụ: một RAM cấp cao có thể định nghĩa trách nhiệm của nhóm dự án, tổ, hoặc đơn vị trong từng thành phần của WBS. RAM cấp thấp hơn được sử dụng trong nội bộ nhóm để chỉ định các vai trò, trách nhiệm, và mức độ thẩm quyền cho các hoạt động cụ thể. Định dạng ma trận hiển thị tất cả các hoạt động liên kết với một người và tất cả những người liên kết với một hoạt động. Điều này cũng đảm bảo rằng chỉ có một người duy nhất chịu trách nhiệm (accountable) cho bất kỳ một nhiệm vụ nào để tránh nhầm lẫn về việc ai là người cuối cùng phụ trách hoặc có thẩm quyền đối với công việc. Một ví dụ về RAM là biểu đồ RACI (chịu trách nhiệm, giải trình, tham vấn và thông báo), được trình bày ở Hình 9-4. Biểu đồ mẫu hiển thị công việc cần hoàn thành ở cột ngoài cùng bên trái với tư cách là các hoạt động. Các nguồn lực được gán có thể được thể hiện là các cá nhân hoặc nhóm. Giám đốc dự án có thể chọn các tùy chọn khác, chẳng hạn như chỉ định "người dẫn đầu" (lead) và "nguồn lực" (resource), khi phù hợp cho dự án. Biểu đồ RACI là một công cụ hữu ích để sử dụng nhằm đảm bảo phân công rõ ràng các vai trò và trách nhiệm khi nhóm bao gồm các nguồn lực nội bộ và bên ngoài.</li>
+<li><strong>Định dạng hướng văn bản (Text-oriented formats).</strong> Các trách nhiệm của thành viên nhóm yêu cầu mô tả chi tiết có thể được chỉ định ở các định dạng dạng văn bản. Thông thường dưới hình thức dàn ý, các tài liệu này cung cấp thông tin như trách nhiệm, thẩm quyền, năng lực và trình độ. Những tài liệu này được biết đến dưới nhiều tên gọi khác nhau bao gồm mô tả vị trí (position descriptions) và biểu mẫu vai trò-trách nhiệm-thẩm quyền (role-responsibility-authority forms). Các tài liệu này có thể được sử dụng làm mẫu (templates) cho các dự án tương lai, đặc biệt là khi thông tin được cập nhật trong suốt dự án hiện tại bằng cách áp dụng các bài học kinh nghiệm.</li>
+</ul>
+
+<div class="table-wrap">
+<table>
+  <tr><th colspan="6">RACI Chart (Biểu Đồ RACI)</th></tr>
+  <tr>
+    <td style='text-align: center; font-weight: bold;'>Hoạt động (Activity)</td>
+    <td style='text-align: center; font-weight: bold;'>Ann</td>
+    <td style='text-align: center; font-weight: bold;'>Ben</td>
+    <td style='text-align: center; font-weight: bold;'>Carlos</td>
+    <td style='text-align: center; font-weight: bold;'>Dina</td>
+    <td style='text-align: center; font-weight: bold;'>Ed</td>
+  </tr>
+  <tr><td>Tạo hiến chương (Create charter)</td><td style='text-align: center;'>A</td><td style='text-align: center;'>R</td><td style='text-align: center;'>I</td><td style='text-align: center;'>I</td><td style='text-align: center;'>I</td></tr>
+  <tr><td>Thu thập yêu cầu (Collect requirements)</td><td style='text-align: center;'>I</td><td style='text-align: center;'>A</td><td style='text-align: center;'>R</td><td style='text-align: center;'>C</td><td style='text-align: center;'>C</td></tr>
+  <tr><td>Gửi yêu cầu thay đổi (Submit change request)</td><td style='text-align: center;'>I</td><td style='text-align: center;'>A</td><td style='text-align: center;'>R</td><td style='text-align: center;'>R</td><td style='text-align: center;'>C</td></tr>
+  <tr><td>Phát triển kế hoạch kiểm thử (Develop test plan)</td><td style='text-align: center;'>A</td><td style='text-align: center;'>C</td><td style='text-align: center;'>I</td><td style='text-align: center;'>I</td><td style='text-align: center;'>R</td></tr>
+  <tr><td colspan="6" style="text-align:center; font-style: italic;">R = Responsible (Thực hiện), A = Accountable (Giải trình/Trách nhiệm chính), C = Consult (Tham vấn), I = Inform (Thông báo)</td></tr>
+</table>
+</div>
+<p class="figure-caption">Hình 9-4. Mẫu biểu đồ RACI</p>
+
+<h5>9.1.2.3 LÝ THUYẾT TỔ CHỨC (ORGANIZATIONAL THEORY)</h5>
+<p>Lý thuyết tổ chức cung cấp thông tin liên quan đến cách mà con người, các đội nhóm và các đơn vị tổ chức hành xử. Việc sử dụng hiệu quả các kỹ thuật phổ biến được xác định trong lý thuyết tổ chức có thể rút ngắn lượng thời gian, chi phí và nỗ lực cần thiết để tạo ra các đầu ra của quá trình Lập kế hoạch Quản lý Nguồn lực và cải thiện hiệu quả lập kế hoạch. Các lý thuyết tổ chức có thể áp dụng, khuyến nghị sử dụng phong cách lãnh đạo linh hoạt thích ứng với các thay đổi về mức độ trưởng thành của nhóm trong suốt vòng đời dự án. Điều quan trọng cần nhận ra là cấu trúc và văn hóa của tổ chức có tác động đến cấu trúc tổ chức dự án.</p>
+
+<h5>9.1.2.4 CÁC CUỘC HỌP (MEETINGS)</h5>
+<p>Nhóm dự án có thể tổ chức các cuộc họp để lập kế hoạch quản lý nguồn lực cho dự án.</p>
+
+<h4>9.1.3 LẬP KẾ HOẠCH QUẢN LÝ NGUỒN LỰC: ĐẦU RA (OUTPUTS)</h4>
+
+<h5>9.1.3.1 KẾ HOẠCH QUẢN LÝ NGUỒN LỰC (RESOURCE MANAGEMENT PLAN)</h5>
+<p>Kế hoạch quản lý nguồn lực là một phần (component) của kế hoạch quản lý dự án cung cấp hướng dẫn về cách thức phân loại, phân bổ, quản lý và giải phóng nguồn lực dự án. Nó có thể được chia nhỏ thành kế hoạch quản lý nhóm (team management plan) và kế hoạch quản lý tài nguyên vật chất (physical resource management plan) tùy theo chi tiết cụ thể của dự án. Kế hoạch quản lý tài nguyên có thể bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Xác định nguồn lực.</strong> Phương pháp để xác định và định lượng các nguồn lực nhóm và tài nguyên vật chất cần thiết.</li>
+<li><strong>Thu thập nguồn lực.</strong> Hướng dẫn về cách thức lấy các nguồn lực nhóm và vật chất cho dự án.</li>
+<li><strong>Vai trò và trách nhiệm:</strong>
+  <ul class="pmbok dash">
+    <li><strong>Vai trò (Role).</strong> Chức năng được đảm nhận bởi, hoặc được phân công cho, một người trong dự án. Ví dụ về các vai trò dự án là kỹ sư xây dựng, chuyên viên phân tích kinh doanh (business analyst), và điều phối viên kiểm thử.</li>
+    <li><strong>Thẩm quyền (Authority).</strong> Quyền hạn trong việc áp dụng tài nguyên dự án, ra quyết định, ký duyệt, chấp nhận các sản phẩm bàn giao, và ảnh hưởng đến người khác để thực hiện công việc của dự án. Ví dụ về các quyết định cần có thẩm quyền rõ ràng bao gồm việc lựa chọn một phương pháp để hoàn thành một hoạt động, tiêu chí nghiệm thu chất lượng, và cách phản hồi với những phương sai của dự án. Các thành viên nhóm hoạt động hiệu quả nhất khi mức độ thẩm quyền cá nhân của họ tương xứng với trách nhiệm của mỗi cá nhân.</li>
+    <li><strong>Trách nhiệm (Responsibility).</strong> Các nhiệm vụ được giao và công việc mà một thành viên nhóm dự án dự kiến phải thực hiện để hoàn thành các hoạt động của dự án.</li>
+    <li><strong>Năng lực (Competence).</strong> Kỹ năng và năng lực bắt buộc để hoàn thành các hoạt động được giao trong phạm vi các ràng buộc của dự án. Nếu thành viên nhóm dự án không sở hữu các năng lực bắt buộc, hiệu suất có thể bị đe dọa. Khi những sự không phù hợp như vậy được nhận diện, các phản ứng chủ động như đào tạo, thuê mới, thay đổi lịch trình hoặc thay đổi phạm vi sẽ được bắt đầu.</li>
+  </ul>
+</li>
+<li><strong>Sơ đồ tổ chức dự án (Project organization charts).</strong> Sơ đồ tổ chức dự án là cách hiển thị bằng đồ họa về các thành viên nhóm dự án và mối quan hệ báo cáo của họ. Sơ đồ này có thể mang tính chính thức hoặc không chính thức, cực kỳ chi tiết hoặc được phác thảo rộng, dựa trên nhu cầu của dự án. Ví dụ, sơ đồ tổ chức dự án cho một nhóm ứng phó thảm họa gồm 3.000 người sẽ có độ chi tiết lớn hơn so với một sơ đồ tổ chức dự án cho dự án nội bộ 20 người.</li>
+<li><strong>Quản lý nguồn lực nhóm dự án (Project team resource management).</strong> Hướng dẫn về cách thức các nguồn lực nhóm dự án cần được định nghĩa, biên chế nhân sự, quản lý và cuối cùng là giải phóng.</li>
+<li><strong>Đào tạo (Training).</strong> Chiến lược đào tạo dành cho các thành viên nhóm.</li>
+<li><strong>Phát triển nhóm (Team development).</strong> Các phương pháp để phát triển nhóm dự án.</li>
+<li><strong>Kiểm soát tài nguyên (Resource control).</strong> Các phương pháp để đảm bảo rằng các tài nguyên vật chất đầy đủ sẽ có sẵn khi cần và việc mua sắm các tài nguyên vật chất được tối ưu hóa theo nhu cầu của dự án. Bao gồm thông tin về quản lý hàng tồn kho, thiết bị, và vật tư trong suốt toàn bộ vòng đời của dự án.</li>
+<li><strong>Kế hoạch ghi nhận (Recognition plan).</strong> Những phần thưởng và sự ghi nhận nào sẽ được trao cho thành viên nhóm, và thời điểm chúng sẽ được trao.</li>
+</ul>
+
+<h5>9.1.3.2 ĐIỀU LỆ NHÓM (TEAM CHARTER)</h5>
+<p>Điều lệ nhóm là một tài liệu thiết lập các giá trị cốt lõi của nhóm, các thỏa thuận và nguyên tắc hướng dẫn hoạt động cho nhóm. Điều lệ nhóm có thể bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Các giá trị của nhóm (Team values).</li>
+<li>Hướng dẫn về truyền thông (Communication guidelines).</li>
+<li>Quá trình và tiêu chí ra quyết định (Decision-making criteria and process).</li>
+<li>Quá trình giải quyết xung đột (Conflict resolution process).</li>
+<li>Hướng dẫn họp (Meeting guidelines), và</li>
+<li>Thỏa thuận nhóm (Team agreements).</li>
+</ul>
+<p>Điều lệ nhóm thiết lập kỳ vọng rõ ràng về các hành vi có thể chấp nhận được bởi các thành viên nhóm dự án. Sự cam kết sớm đối với các nguyên tắc rõ ràng sẽ làm giảm sự hiểu lầm và tăng năng suất. Việc thảo luận về các lĩnh vực như bộ quy tắc ứng xử, giao tiếp, ra quyết định, và nghi thức họp hành cho phép các thành viên trong nhóm khám phá những giá trị quan trọng đối với nhau. Điều lệ nhóm hoạt động tốt nhất khi chính nhóm đó phát triển nó, hoặc ít nhất là có cơ hội đóng góp vào đó. Tất cả các thành viên trong nhóm dự án cùng chia sẻ trách nhiệm trong việc đảm bảo các quy tắc được ghi trong điều lệ nhóm phải được tuân thủ. Điều lệ nhóm có thể được xem xét lại và cập nhật định kỳ để đảm bảo sự hiểu biết liên tục về các nguyên tắc cơ bản (ground rules) của nhóm và để định hướng cũng như hòa nhập các thành viên mới của nhóm.</p>
+
+<h5>9.1.3.3 CẬP NHẬT TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS UPDATES)</h5>
+<p>Tài liệu dự án có thể được cập nhật như một kết quả của việc thực hiện quá trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Sổ ghi nhận giả định (Assumption log).</strong> Mô tả trong Phần 4.1.3.2. Sổ ghi nhận giả định được cập nhật bằng các giả định liên quan đến mức độ sẵn có, các yêu cầu hậu cần, và địa điểm của tài nguyên vật chất cũng như bộ kỹ năng và mức độ sẵn có của các nguồn lực nhóm.</li>
+<li><strong>Sổ đăng ký rủi ro (Risk register).</strong> Mô tả trong Phần 11.2.3.1. Sổ đăng ký rủi ro được cập nhật với các rủi ro liên quan đến sự sẵn có của nhóm và tài nguyên vật chất hoặc các rủi ro khác đã biết có liên quan đến nguồn lực.</li>
+</ul>
+
+<hr>
+
+<h3 id="s9-2">9.2 ƯỚC LƯỢNG NGUỒN LỰC HOẠT ĐỘNG (ESTIMATE ACTIVITY RESOURCES)</h3>
+<p>Ước lượng Nguồn lực Hoạt động là quy trình của việc ước lượng các nguồn lực nhóm và loại, số lượng của vật liệu, thiết bị, và vật tư cần thiết để thực hiện công việc dự án. Lợi ích chính của quy trình này là nó xác định loại hình, số lượng và các đặc điểm của tài nguyên bắt buộc cần có để hoàn thành dự án. Quy trình này được thực hiện theo định kỳ trong suốt dự án khi cần thiết. Đầu vào, công cụ và kỹ thuật, và đầu ra của quá trình này được phác họa ở Hình 9-5. Hình 9-6 miêu tả sơ đồ dòng dữ liệu của quá trình này.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//4a05cbfe-1775-4068-b7e1-08a6e0cf3ebb/markdown_4/imgs/img_in_image_box_195_634_1027_1192.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A03Z%2F-1%2F%2F802d1ce73f49b9506f403f94366ce9da90b6931bb8dfd9aded9b4162ef4303a4" alt="Image" width="67%" /></div></div>
+<p class="figure-caption">Hình 9-5 / Hình 9-6. Ước lượng Nguồn lực Hoạt động</p>
+
+<p>Quá trình Ước lượng Nguồn lực Hoạt động được phối hợp chặt chẽ với các quá trình khác, chẳng hạn như quá trình Ước lượng Chi phí (Estimate Costs). Ví dụ:</p>
+<ul class="pmbok">
+<li>Một nhóm dự án xây dựng sẽ cần phải quen thuộc với các quy chuẩn xây dựng của địa phương. Kiến thức như vậy thường sẵn có từ các nhà cung cấp địa phương. Nếu nguồn lao động nội bộ thiếu kinh nghiệm đối với các kỹ thuật xây dựng khác thường hoặc chuyên biệt, chi phí bổ sung cho một chuyên gia tư vấn có thể là cách hiệu quả nhất để đảm bảo kiến thức về quy chuẩn xây dựng của địa phương.</li>
+<li>Một nhóm thiết kế ô tô sẽ cần phải quen thuộc với những kỹ thuật lắp ráp tự động mới nhất. Kiến thức cần thiết này có thể thu được bằng cách thuê chuyên gia tư vấn, bằng cách cử một nhà thiết kế đi tham dự một hội thảo về robot, hoặc bằng cách đưa một người từ bộ phận sản xuất vào làm thành viên của nhóm dự án.</li>
+</ul>
+
+<h4>9.2.1 ƯỚC LƯỢNG NGUỒN LỰC HOẠT ĐỘNG: ĐẦU VÀO (INPUTS)</h4>
+
+<h5>9.2.1.1 KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN)</h5>
+<p>Mô tả trong Phần 4.2.3.1. Các thành phần kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Kế hoạch quản lý nguồn lực.</strong> Mô tả trong Phần 9.1.3.1. Kế hoạch quản lý nguồn lực xác định phương pháp tiếp cận để xác định các tài nguyên khác nhau cần thiết cho dự án. Nó cũng định nghĩa các phương pháp để định lượng tài nguyên cần thiết cho từng hoạt động và tập hợp/tổng hợp thông tin này.</li>
+<li><strong>Đường cơ sở phạm vi (Scope baseline).</strong> Mô tả trong Phần 5.4.3.1. Đường cơ sở phạm vi xác định phạm vi dự án và sản phẩm cần thiết để đáp ứng các mục tiêu dự án. Phạm vi sẽ định hướng các nhu cầu đối với cả nguồn lực nhóm và tài nguyên vật chất.</li>
+</ul>
+
+<h5>9.2.1.2 TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS)</h5>
+<p>Tài liệu dự án có thể được coi là đầu vào cho quy trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Thuộc tính hoạt động (Activity attributes).</strong> Mô tả trong Phần 6.2.3.2. Thuộc tính hoạt động cung cấp nguồn dữ liệu chính để sử dụng trong việc ước lượng nhóm và tài nguyên vật chất yêu cầu cho từng hoạt động trên danh sách hoạt động. Ví dụ về các thuộc tính bao gồm các yêu cầu về nguồn lực, các ngày bị áp đặt (imposed dates), địa điểm hoạt động, giả định và các ràng buộc.</li>
+<li><strong>Danh sách hoạt động (Activity list).</strong> Mô tả trong Phần 6.2.3.1. Danh sách hoạt động xác định các hoạt động nào sẽ cần đến nguồn lực.</li>
+<li><strong>Sổ ghi nhận giả định (Assumption log).</strong> Mô tả trong Phần 4.1.3.2. Sổ ghi nhận giả định có thể chứa các thông tin về những yếu tố năng suất, tính sẵn có, ước lượng chi phí, và các phương pháp tiếp cận công việc sẽ ảnh hưởng đến bản chất và số lượng của tài nguyên nhóm và vật chất.</li>
+<li><strong>Ước lượng chi phí (Cost estimates).</strong> Mô tả trong Phần 7.2.3.1. Chi phí của các nguồn lực có thể tác động đến việc lựa chọn tài nguyên từ góc độ số lượng và cấp độ kỹ năng.</li>
+<li><strong>Lịch nguồn lực (Resource calendars).</strong> Lịch nguồn lực xác định các ngày làm việc, ca làm việc, thời điểm bắt đầu và kết thúc giờ làm việc bình thường, các ngày cuối tuần và các ngày nghỉ lễ khi mỗi nguồn lực cụ thể có sẵn. Thông tin về việc những tài nguyên nào (như nguồn lực nhóm, thiết bị và vật liệu) có khả năng sẵn sàng trong một khoảng thời gian hoạt động theo kế hoạch được dùng để ước lượng sự sử dụng tài nguyên. Lịch nguồn lực cũng chỉ rõ thời điểm khi nào, và trong bao lâu, nguồn lực nhóm và vật chất đã xác định sẽ có sẵn trong suốt quá trình thực hiện dự án. Thông tin này có thể ở cấp độ hoạt động hoặc cấp độ dự án. Điều này bao gồm việc xem xét các thuộc tính như kinh nghiệm của nguồn lực và/hoặc mức độ kỹ năng, cũng như các vị trí địa lý khác nhau.</li>
+<li><strong>Sổ đăng ký rủi ro (Risk register).</strong> Mô tả trong Phần 11.2.3.1. Sổ đăng ký rủi ro mô tả những rủi ro cá nhân có thể tác động đến việc lựa chọn và tính sẵn có của tài nguyên.</li>
+</ul>
+
+<h5>9.2.1.3 YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP (ENTERPRISE ENVIRONMENTAL FACTORS)</h5>
+<p>Các yếu tố môi trường doanh nghiệp có thể ảnh hưởng đến quá trình Ước lượng Nguồn lực Hoạt động bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Vị trí tài nguyên.</li>
+<li>Mức độ sẵn có của tài nguyên.</li>
+<li>Kỹ năng của tài nguyên nhóm.</li>
+<li>Văn hóa tổ chức.</li>
+<li>Dữ liệu ước lượng được xuất bản, và</li>
+<li>Điều kiện thị trường.</li>
+</ul>
+
+<h5>9.2.1.4 TÀI SẢN QUY TRÌNH TỔ CHỨC (ORGANIZATIONAL PROCESS ASSETS)</h5>
+<p>Tài sản quy trình tổ chức có thể ảnh hưởng đến quy trình Ước lượng Nguồn lực Hoạt động bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Các chính sách và thủ tục về biên chế nhân sự (staffing).</li>
+<li>Các chính sách và thủ tục liên quan đến vật tư và thiết bị, và</li>
+<li>Thông tin lịch sử liên quan đến các loại tài nguyên đã sử dụng cho các công việc tương tự ở các dự án trước đây.</li>
+</ul>
+
+<h4>9.2.2 ƯỚC LƯỢNG NGUỒN LỰC HOẠT ĐỘNG: CÔNG CỤ VÀ KỸ THUẬT (TOOLS AND TECHNIQUES)</h4>
+
+<h5>9.2.2.1 ĐÁNH GIÁ CỦA CHUYÊN GIA (EXPERT JUDGMENT)</h5>
+<p>Mô tả trong Phần 4.1.2.1. Chuyên môn nên được tham khảo từ các cá nhân hoặc nhóm có kiến thức chuyên môn hoặc được đào tạo trong việc lập kế hoạch và ước lượng các tài nguyên vật chất và tài nguyên nhóm.</p>
+
+<h5>9.2.2.2 ƯỚC LƯỢNG TỪ DƯỚI LÊN (BOTTOM-UP ESTIMATING)</h5>
+<p>Mô tả trong Phần 6.4.2.5. Các nguồn lực nhóm và vật chất được ước lượng ở cấp độ hoạt động (activity level) và sau đó được tập hợp lại để phát triển các ước tính cho các gói công việc (work packages), tài khoản kiểm soát (control accounts), và cấp độ tổng hợp của dự án (summary project levels).</p>
+
+<h5>9.2.2.3 ƯỚC LƯỢNG TƯƠNG TỰ (ANALOGOUS ESTIMATING)</h5>
+<p>Mô tả trong Phần 6.4.2.2. Ước lượng tương tự sử dụng thông tin liên quan đến các tài nguyên từ một dự án tương tự trước đó làm cơ sở để ước lượng cho dự án tương lai. Nó được dùng như một phương pháp ước lượng nhanh chóng và có thể được sử dụng khi giám đốc dự án chỉ có thể xác định một vài cấp cao nhất của WBS.</p>
+
+<h5>9.2.2.4 ƯỚC LƯỢNG THAM SỐ (PARAMETRIC ESTIMATING)</h5>
+<p>Mô tả trong Phần 6.4.2.3. Ước lượng tham số sử dụng một thuật toán hoặc một mối quan hệ thống kê giữa dữ liệu lịch sử và các biến số khác để tính toán lượng tài nguyên cần thiết cho một hoạt động, dựa trên dữ liệu lịch sử và thông số dự án. Ví dụ, nếu một hoạt động cần 4.000 giờ code và cần phải kết thúc trong vòng 1 năm, nó sẽ cần hai người để code (mỗi người làm 2.000 giờ một năm). Kỹ thuật này có thể đem lại mức độ chính xác cao hơn tùy thuộc vào sự tinh vi và dữ liệu cơ bản được xây dựng bên trong mô hình (model).</p>
+
+<h5>9.2.2.5 PHÂN TÍCH DỮ LIỆU (DATA ANALYSIS)</h5>
+<p>Một kỹ thuật phân tích dữ liệu được sử dụng trong quá trình này bao gồm nhưng không giới hạn ở <strong>phân tích các lựa chọn thay thế (alternatives analysis)</strong>. Phân tích các lựa chọn thay thế được sử dụng để đánh giá các phương án đã được xác định nhằm lựa chọn ra các phương án hoặc phương pháp tiếp cận dùng để thi hành và thực hiện các công việc của dự án. Nhiều hoạt động có nhiều lựa chọn để hoàn thành. Chúng bao gồm việc sử dụng các mức độ khả năng hoặc kỹ năng nguồn lực khác nhau, các kích thước hoặc loại máy móc khác nhau, công cụ khác nhau (thủ công so với tự động), và đưa ra quyết định tự làm, đi thuê hoặc đi mua đối với các tài nguyên. Phân tích lựa chọn thay thế hỗ trợ trong việc cung cấp giải pháp tốt nhất để thực hiện các hoạt động của dự án, trong phạm vi các ràng buộc đã định nghĩa.</p>
+
+<h5>9.2.2.6 HỆ THỐNG THÔNG TIN QUẢN LÝ DỰ ÁN (PMIS)</h5>
+<p>Mô tả trong Phần 4.3.2.2. Các hệ thống thông tin quản lý dự án có thể bao gồm phần mềm quản lý tài nguyên (resource management software) giúp lập kế hoạch, tổ chức, và quản lý các nguồn dự trữ (resource pools) và phát triển các ước tính nguồn lực. Tùy thuộc vào mức độ phức tạp của phần mềm, các cấu trúc phân chia tài nguyên, mức độ sẵn có của tài nguyên, tỷ lệ (rates) tài nguyên và các lịch nguồn lực khác nhau có thể được xác định để hỗ trợ tối ưu hóa việc sử dụng tài nguyên.</p>
+
+<h5>9.2.2.7 CÁC CUỘC HỌP (MEETINGS)</h5>
+<p>Giám đốc dự án có thể tổ chức các cuộc họp lập kế hoạch với những quản lý chức năng (functional managers) để ước lượng tài nguyên cần thiết cho mỗi hoạt động, mức độ nỗ lực (LoE), cấp độ kỹ năng của tài nguyên nhóm, và số lượng vật liệu cần thiết. Những người tham gia vào các cuộc họp này có thể bao gồm giám đốc dự án, nhà tài trợ dự án, một số thành viên được lựa chọn của nhóm dự án, một số bên liên quan được chọn lọc, và những người khác khi cần thiết.</p>
+
+<h4>9.2.3 ƯỚC LƯỢNG NGUỒN LỰC HOẠT ĐỘNG: ĐẦU RA (OUTPUTS)</h4>
+
+<h5>9.2.3.1 YÊU CẦU NGUỒN LỰC (RESOURCE REQUIREMENTS)</h5>
+<p>Yêu cầu nguồn lực nhận diện các loại và số lượng tài nguyên cần thiết cho từng gói công việc hoặc hoạt động bên trong một gói công việc và có thể được tổng hợp lại để xác định ước lượng nguồn lực cho mỗi gói công việc, mỗi nhánh của WBS, và toàn bộ dự án nói chung. Mức độ chi tiết và sự cụ thể của những mô tả yêu cầu nguồn lực có thể khác nhau theo từng lĩnh vực ứng dụng (application area). Tài liệu về yêu cầu nguồn lực có thể bao gồm những giả định đã được đưa ra trong việc xác định loại tài nguyên nào được áp dụng, mức độ khả dụng của chúng, và số lượng bao nhiêu là cần thiết.</p>
+
+<h5>9.2.3.2 CƠ SỞ CỦA ƯỚC LƯỢNG (BASIS OF ESTIMATES)</h5>
+<p>Mô tả trong Phần 6.4.3.2. Lượng và loại chi tiết bổ sung làm nền tảng hỗ trợ cho ước tính nguồn lực rất khác nhau theo từng lĩnh vực ứng dụng. Bất kể mức độ chi tiết như thế nào, tài liệu hỗ trợ cần cung cấp sự hiểu biết đầy đủ và rõ ràng về cách thức lấy được con số ước tính nguồn lực đó.</p>
+<p>Chi tiết hỗ trợ cho các ước tính nguồn lực có thể bao gồm:</p>
+<ul class="pmbok check">
+<li>Phương pháp được sử dụng để xây dựng ước tính.</li>
+<li>Nguồn lực được sử dụng để xây dựng ước tính (chẳng hạn như thông tin từ các dự án tương tự trước đây).</li>
+<li>Giả định liên quan đến ước tính.</li>
+<li>Các ràng buộc (constraints) đã biết.</li>
+<li>Khoảng phạm vi của ước lượng (Range of estimates).</li>
+<li>Mức độ tự tin (Confidence level) của ước lượng, và</li>
+<li>Tài liệu về các rủi ro đã nhận diện có ảnh hưởng đến ước tính.</li>
+</ul>
+
+<h5>9.2.3.3 CẤU TRÚC PHÂN CHIA NGUỒN LỰC (RESOURCE BREAKDOWN STRUCTURE)</h5>
+<p>Cấu trúc phân chia nguồn lực là biểu diễn phân cấp các nguồn lực theo danh mục và chủng loại (xem Hình 9-7 để làm ví dụ). Các ví dụ về các hạng mục tài nguyên bao gồm nhưng không giới hạn ở lao động (nhân sự), vật liệu, thiết bị, và vật tư. Loại nguồn lực có thể bao gồm cấp độ kỹ năng, cấp bậc/ngạch, các chứng chỉ bắt buộc, hoặc các thông tin khác cho phù hợp với dự án. Ở quá trình Lập kế hoạch Quản lý Nguồn lực, cấu trúc phân chia tài nguyên đã được sử dụng để dẫn dắt việc phân loại cho dự án. Ở quy trình này, nó là một tài liệu hoàn chỉnh sẽ được sử dụng để thu thập (acquire) và giám sát (monitor) tài nguyên.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//b696ba61-31b4-49f0-b717-0dbf1434d51e/markdown_0/imgs/img_in_image_box_145_147_1080_636.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A23%3A56Z%2F-1%2F%2Fbe9aa273d80f79a645b6afbe64d4f6c33c067700afe08f8c912b4bb63bac0b18" alt="Image" width="76%" /></div></div>
+<p class="figure-caption">Hình 9-7. Mẫu Cấu trúc Phân chia Nguồn lực</p>
+
+<h5>9.2.3.4 CẬP NHẬT TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS UPDATES)</h5>
+<p>Tài liệu dự án có thể được cập nhật như kết quả của việc thực hiện quá trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Thuộc tính hoạt động.</strong> Mô tả trong Phần 6.2.3.2. Thuộc tính hoạt động được cập nhật cùng với các yêu cầu về nguồn lực.</li>
+<li><strong>Sổ ghi nhận giả định.</strong> Mô tả trong Phần 4.1.3.2. Sổ ghi nhận giả định được cập nhật bằng các giả định về loại hình và số lượng nguồn lực yêu cầu. Ngoài ra, bất kỳ ràng buộc nào về tài nguyên (resource constraints) đều được điền vào bao gồm các thỏa thuận thương lượng tập thể (công đoàn), thời gian hoạt động liên tục (continuous hours of operation), các khoản nghỉ phép đã lên kế hoạch, v.v.</li>
+<li><strong>Sổ đăng ký bài học kinh nghiệm (Lessons learned register).</strong> Mô tả trong Phần 11.2.3.1. Sổ đăng ký bài học kinh nghiệm có thể được cập nhật với các kỹ thuật đã làm việc hiệu quả và năng suất trong việc xây dựng các ước lượng nguồn lực, và cả thông tin về các kỹ thuật đã không hiệu quả hoặc không năng suất.</li>
+</ul>
+
+<hr>
+
+<h3 id="s9-3">9.3 THU THẬP NGUỒN LỰC (ACQUIRE RESOURCES)</h3>
+<p>Thu thập Nguồn lực là quy trình để lấy (obtain) được các thành viên nhóm, cơ sở vật chất, thiết bị, vật liệu, nguồn cung cấp, và các nguồn lực khác cần thiết để hoàn thành công việc của dự án. Lợi ích chính của quy trình này là phác thảo và hướng dẫn việc lựa chọn tài nguyên và phân công chúng cho các hoạt động tương ứng của chúng. Quá trình này được thực hiện theo định kỳ trong suốt quá trình dự án khi cần. Đầu vào, công cụ và kỹ thuật, và đầu ra của quá trình này được phác họa trong Hình 9-8. Hình 9-9 miêu tả sơ đồ dòng dữ liệu cho quy trình này.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//b696ba61-31b4-49f0-b717-0dbf1434d51e/markdown_2/imgs/img_in_image_box_197_163_1026_787.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A23%3A58Z%2F-1%2F%2Fe68cfeed3ffaf03ae3a543f19d19d9b91e794ea05d2e1097fc54e62a724b9d17" alt="Image" width="67%" /></div></div>
+<p class="figure-caption">Hình 9-8 / Hình 9-9. Thu thập Nguồn lực: Sơ đồ luồng dữ liệu & Đầu vào, Công cụ, Đầu ra</p>
+
+<p>Các nguồn lực cần thiết cho dự án có thể nằm trong nội bộ hoặc từ bên ngoài tổ chức thực hiện dự án. Nguồn lực nội bộ được thu thập (phân công) từ các người quản lý chức năng (functional managers) hoặc quản lý tài nguyên. Nguồn lực bên ngoài được thu thập thông qua các quá trình mua sắm (procurement processes).</p>
+<p>Nhóm quản lý dự án có thể có hoặc không có quyền kiểm soát trực tiếp đối với việc lựa chọn nguồn lực do thỏa thuận thương lượng tập thể (collective bargaining agreements), việc sử dụng nhân sự của nhà thầu phụ (subcontractor), môi trường dự án ma trận (matrix project environment), mối quan hệ báo cáo nội bộ hoặc bên ngoài, hoặc các lý do khác. Điều quan trọng là các yếu tố sau đây cần được xem xét trong quá trình thu thập các nguồn lực dự án:</p>
+<ul class="pmbok">
+<li>Giám đốc dự án hoặc nhóm dự án cần phải đàm phán và gây ảnh hưởng một cách hiệu quả lên những người đang ở vị thế có thể cung cấp các nguồn lực nhóm và vật chất yêu cầu cho dự án.</li>
+<li>Việc không thu thập đủ các nguồn lực cần thiết cho dự án có thể gây ảnh hưởng đến tiến độ dự án, ngân sách, sự hài lòng của khách hàng, chất lượng, và các rủi ro. Thiếu hụt tài nguyên hoặc khả năng sẽ làm giảm xác suất thành công, và trong kịch bản tồi tệ nhất, có thể dẫn đến việc dự án bị hủy bỏ.</li>
+<li>Nếu các nguồn lực nhóm không có sẵn do các hạn chế như yếu tố kinh tế hoặc vì đã bị gán cho các dự án khác, giám đốc dự án hoặc nhóm dự án có thể được yêu cầu phải gán các nguồn lực thay thế (alternative resources), có thể với các mức chi phí hoặc năng lực khác nhau. Những tài nguyên thay thế được cho phép miễn là không vi phạm pháp lý, quy định, bắt buộc (mandatory), hoặc các tiêu chí cụ thể khác.</li>
+</ul>
+<p>Những yếu tố này nên được cân nhắc và giải trình ở trong giai đoạn lập kế hoạch của dự án. Giám đốc dự án hoặc nhóm quản lý dự án sẽ được yêu cầu lập văn bản về các ảnh hưởng của việc không có sẵn các tài nguyên được yêu cầu vào trong tiến độ dự án, ngân sách dự án, rủi ro dự án, chất lượng dự án, kế hoạch đào tạo, và các kế hoạch quản lý dự án khác.</p>
+
+<h4>9.3.1 THU THẬP NGUỒN LỰC: ĐẦU VÀO (INPUTS)</h4>
+
+<h5>9.3.1.1 KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN)</h5>
+<p>Mô tả ở Phần 4.2.3.1. Kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Kế hoạch quản lý nguồn lực.</strong> Mô tả trong Phần 9.1.3.1. Cung cấp hướng dẫn về cách thức thu thập tài nguyên cho dự án.</li>
+<li><strong>Kế hoạch quản lý mua sắm (Procurement management plan).</strong> Mô tả trong Phần 12.1.3.1. Cung cấp thông tin liên quan đến các tài nguyên sẽ được thu thập từ bên ngoài dự án. Bao gồm thông tin về cách các hoạt động mua sắm sẽ được tích hợp với các công việc dự án khác và những bên liên quan tham gia vào quá trình mua sắm.</li>
+<li><strong>Đường cơ sở chi phí (Cost baseline).</strong> Mô tả trong Phần 7.3.3.1. Cung cấp ngân sách tổng thể cho các hoạt động của dự án.</li>
+</ul>
+
+<h5>9.3.1.2 TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS)</h5>
+<p>Tài liệu dự án được coi là đầu vào cho quá trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Tiến độ dự án (Project schedule).</strong> Mô tả ở Phần 6.5.3.2. Cho thấy các hoạt động và thời gian bắt đầu và kết thúc dự kiến nhằm xác định thời điểm tài nguyên cần phải sẵn sàng và được thu thập.</li>
+<li><strong>Lịch nguồn lực (Resource calendars).</strong> Mô tả ở Phần 9.3.3.3. Ghi lại các khoảng thời gian mà mỗi nguồn lực cần thiết luôn sẵn sàng cho dự án. Việc tạo ra một tiến độ đáng tin cậy phụ thuộc vào việc có được hiểu biết sâu sắc về tính khả dụng và các ràng buộc về thời gian của từng nguồn lực (ví dụ như múi giờ, giờ làm việc, kỳ nghỉ, ngày lễ địa phương, lịch bảo trì máy móc và cam kết đối với dự án khác). Lịch nguồn lực liên tục được tinh chỉnh chi tiết hơn và cập nhật. Khi đã được tạo làm đầu ra của quá trình này, nó được dùng khi cần bất cứ lúc nào quá trình này được lặp lại.</li>
+<li><strong>Yêu cầu nguồn lực (Resource requirements).</strong> Mô tả ở Phần 9.2.3.1. Nhận diện các tài nguyên nào cần phải thu thập.</li>
+<li><strong>Sổ đăng ký các bên liên quan (Stakeholder register).</strong> Mô tả ở Phần 13.1.3.1. Sổ đăng ký này có thể hé lộ nhu cầu hoặc kỳ vọng của các bên liên quan đối với các tài nguyên cụ thể sẽ dùng trong dự án mà cần phải xem xét trong quá trình Thu thập Nguồn lực.</li>
+</ul>
+
+<h5>9.3.1.3 YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP (ENTERPRISE ENVIRONMENTAL FACTORS)</h5>
+<p>Bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Thông tin hiện có về nguồn lực của tổ chức bao gồm tính khả dụng, cấp độ năng lực, kinh nghiệm trước đây (cho nguồn lực nhóm) và chi phí tài nguyên;</li>
+<li>Điều kiện thị trường;</li>
+<li>Cấu trúc tổ chức; và</li>
+<li>Vị trí địa lý.</li>
+</ul>
+
+<h5>9.3.1.4 TÀI SẢN QUY TRÌNH TỔ CHỨC (ORGANIZATIONAL PROCESS ASSETS)</h5>
+<p>Bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Chính sách và thủ tục thu thập, phân bổ và chỉ định nguồn lực; và</li>
+<li>Thông tin lịch sử và kho tàng bài học kinh nghiệm.</li>
+</ul>
+
+<h4>9.3.2 THU THẬP NGUỒN LỰC: CÔNG CỤ VÀ KỸ THUẬT (TOOLS AND TECHNIQUES)</h4>
+
+<h5>9.3.2.1 RA QUYẾT ĐỊNH (DECISION MAKING)</h5>
+<p>Mô tả ở Phần 5.2.2.4. Kỹ thuật ra quyết định bao gồm nhưng không giới hạn ở phân tích quyết định đa tiêu chí (multicriteria decision analysis), mô tả ở Phần 8.1.2.4. Tiêu chí lựa chọn thường được dùng để chọn tài nguyên vật chất, hoặc nhóm dự án. Bằng cách sử dụng công cụ phân tích quyết định đa tiêu chí, các tiêu chí được phát triển và sử dụng để xếp hạng hoặc chấm điểm các nguồn lực tiềm năng (ví dụ, chọn giữa tài nguyên nội bộ hay nhóm bên ngoài). Các tiêu chí này được tính trọng số theo tầm quan trọng tương đối và các giá trị có thể được thay đổi cho các loại tài nguyên khác nhau. Một số tiêu chí bao gồm:</p>
+<ul class="pmbok">
+<li><strong>Tính sẵn sàng (Availability).</strong> Xác minh xem tài nguyên có sẵn để làm việc trên dự án trong khoảng thời gian cần thiết không.</li>
+<li><strong>Chi phí (Cost).</strong> Xác minh xem chi phí bổ sung thêm tài nguyên có nằm trong ngân sách đã định không.</li>
+<li><strong>Khả năng (Ability).</strong> Xác minh rằng thành viên nhóm sẽ cung cấp đúng những khả năng mà dự án cần.</li>
+</ul>
+<p>Một số tiêu chí lựa chọn chỉ dành riêng cho nguồn lực nhóm:</p>
+<ul class="pmbok">
+<li><strong>Kinh nghiệm (Experience).</strong> Xác minh xem thành viên nhóm có kinh nghiệm liên quan đóng góp vào thành công của dự án hay không.</li>
+<li><strong>Kiến thức (Knowledge).</strong> Cân nhắc xem liệu thành viên nhóm có kiến thức liên quan về khách hàng, về các dự án tương tự, và các sắc thái (nuances) của môi trường dự án.</li>
+<li><strong>Kỹ năng (Skills).</strong> Xác định xem thành viên nhóm có kỹ năng thích hợp để dùng một công cụ dự án không.</li>
+<li><strong>Thái độ (Attitude).</strong> Đánh giá xem thành viên đó có khả năng làm việc gắn kết với người khác như một đội ngũ (cohesive team) không.</li>
+<li><strong>Yếu tố quốc tế (International factors).</strong> Xem xét vị trí thành viên nhóm, múi giờ, và năng lực giao tiếp truyền thông.</li>
+</ul>
+
+<h5>9.3.2.2 KỸ NĂNG LIÊN CÁ NHÂN VÀ NHÓM (INTERPERSONAL AND TEAM SKILLS)</h5>
+<p>Một kỹ năng giao tiếp và làm việc nhóm có thể sử dụng ở đây là Đàm phán (Negotiation) - Mô tả ở phần 12.2.2.5. Nhiều dự án cần đàm phán cho các tài nguyên bắt buộc. Nhóm quản lý có thể phải đàm phán với:</p>
+<ul class="pmbok">
+<li><strong>Các quản lý chức năng (Functional managers).</strong> Đảm bảo dự án nhận được những tài nguyên tốt nhất có thể ở đúng khung thời gian và làm tới khi trách nhiệm của họ kết thúc.</li>
+<li><strong>Nhóm quản lý dự án khác trong cùng tổ chức.</strong> Cùng chia sẻ hoặc phân công các tài nguyên khan hiếm, chuyên biệt.</li>
+<li><strong>Tổ chức bên ngoài và nhà cung cấp.</strong> Cung cấp các nguồn lực vật chất hoặc nhóm chuyên biệt, đạt tiêu chuẩn. Cần xem xét đặc biệt các chính sách và nguyên tắc khi đàm phán bên ngoài, các tiêu chí pháp lý.</li>
+</ul>
+<p>Khả năng ảnh hưởng (influence) của nhóm quản lý dự án lên người khác đóng vai trò rất quan trọng trong đàm phán phân bổ tài nguyên, cũng như các yếu tố chính trị của những tổ chức liên quan.</p>
+
+<h5>9.3.2.3 CHỈ ĐỊNH TRƯỚC (PRE-ASSIGNMENT)</h5>
+<p>Khi nhân sự hoặc tài nguyên vật chất được quyết định (determined) từ trước, chúng được coi là pre-assigned. Trường hợp này xảy ra nếu dự án là kết quả của việc các nguồn lực cụ thể đã được xác định ở trong một đề xuất cạnh tranh (competitive proposal) hoặc nếu dự án phụ thuộc vào chuyên môn của những cá nhân nhất định. Nó cũng có thể là những thành viên nhóm đã được chỉ định ngay từ quy trình Develop Project Charter.</p>
+
+<h5>9.3.2.4 NHÓM ẢO (VIRTUAL TEAMS)</h5>
+<p>Việc sử dụng nhóm ảo tạo ra những khả năng mới khi thu thập thành viên. Có thể định nghĩa nhóm ảo (Virtual teams) là nhóm người có chung một mục tiêu để thực hiện vai trò của mình mà mất rất ít (hoặc không có) thời gian phải gặp mặt trực tiếp (face to face). Nhờ email, mạng xã hội, họp web và video... nhóm ảo đã rất khả thi. Mô hình này giúp:</p>
+<ul class="pmbok check">
+<li>Tạo lập các nhóm có những người cùng tổ chức nhưng sống xa nhau về mặt địa lý;</li>
+<li>Thêm chuyên môn đặc biệt cho dự án ngay cả khi chuyên gia đó ở chỗ khác;</li>
+<li>Kết hợp nhân viên làm tại nhà (home offices);</li>
+<li>Lập nhóm ở các ca làm việc, giờ, ngày làm việc khác nhau;</li>
+<li>Đưa vào nhóm những người gặp hạn chế về việc di chuyển, khuyết tật;</li>
+<li>Triển khai được các dự án mà đáng lẽ bị hủy do vấn đề chi phí đi lại; và</li>
+<li>Tiết kiệm chi phí về không gian văn phòng và các vật dụng phục vụ nhân viên.</li>
+</ul>
+<p>Lập kế hoạch truyền thông trở nên tối quan trọng. Sẽ cần nhiều thời gian hơn để thiết lập các mong đợi rõ ràng, thúc đẩy tương tác, xử lý xung đột, tìm hiểu sự khác biệt văn hóa, chia sẻ thành quả, v.v.</p>
+
+<h4>9.3.3 THU THẬP NGUỒN LỰC: ĐẦU RA (OUTPUTS)</h4>
+
+<h5>9.3.3.1 PHÂN CÔNG NGUỒN LỰC VẬT CHẤT (PHYSICAL RESOURCE ASSIGNMENTS)</h5>
+<p>Tài liệu hóa các phân công tài nguyên vật chất ghi lại vật liệu, thiết bị, nguồn cung ứng, địa điểm, và các nguồn vật lý khác sẽ dùng xuyên suốt dự án.</p>
+
+<h5>9.3.3.2 PHÂN CÔNG NHÓM DỰ ÁN (PROJECT TEAM ASSIGNMENTS)</h5>
+<p>Ghi lại thành viên nhóm, vai trò và trách nhiệm của họ với dự án. Bao gồm danh bạ nhóm dự án (project team directory) và tên các cá nhân được chèn vào các kế hoạch như sơ đồ tổ chức, tiến độ.</p>
+
+<h5>9.3.3.3 LỊCH NGUỒN LỰC (RESOURCE CALENDARS)</h5>
+<p>Xác định ngày làm việc, ca, giờ bắt đầu và kết thúc chuẩn, cuối tuần, và nghỉ lễ quốc gia mà mỗi nguồn lực khả dụng.</p>
+
+<h5>9.3.3.4 YÊU CẦU THAY ĐỔI (CHANGE REQUESTS)</h5>
+<p>Mô tả ở 4.3.3.4. Bất kì thay đổi nào cũng cần phải xử lý qua quy trình Thực hiện Kiểm soát Thay đổi Tích hợp (Perform Integrated Change Control) ở 4.6.</p>
+
+<h5>9.3.3.5 CẬP NHẬT KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN UPDATES)</h5>
+<ul class="pmbok">
+<li><strong>Kế hoạch quản lý nguồn lực.</strong> Cập nhật phản ánh kinh nghiệm thực tế khi thu thập tài nguyên, kể cả các bài học học được ở giai đoạn đầu.</li>
+<li><strong>Đường cơ sở chi phí.</strong> Có thể thay đổi là kết quả của việc thu thập nguồn lực.</li>
+</ul>
+
+<h5>9.3.3.6 CẬP NHẬT TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS UPDATES)</h5>
+<ul class="pmbok">
+<li><strong>Sổ đăng ký bài học kinh nghiệm.</strong> Ghi lại các thách thức và phương pháp tốt đã làm.</li>
+<li><strong>Tiến độ dự án.</strong> Có thể cập nhật dựa trên khả năng có sẵn của nguồn lực.</li>
+<li><strong>Cấu trúc phân chia nguồn lực (RBS).</strong> Tài nguyên có được ghi lại vào đây.</li>
+<li><strong>Yêu cầu nguồn lực.</strong></li>
+<li><strong>Sổ đăng ký rủi ro.</strong></li>
+<li><strong>Sổ đăng ký các bên liên quan.</strong></li>
+</ul>
+
+<h5>9.3.3.7 CẬP NHẬT YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP (EEF UPDATES)</h5>
+<ul class="pmbok">
+<li>Mức độ khả dụng của tài nguyên nội bộ;</li>
+<li>Số lượng tiêu hao tài nguyên (consumable resources) đã được sử dụng.</li>
+</ul>
+
+<h5>9.3.3.8 CẬP NHẬT TÀI SẢN QUY TRÌNH TỔ CHỨC (OPA UPDATES)</h5>
+<p>Tài liệu liên quan tới phân công, cấp phát tài nguyên...</p>
+
+<hr>
+
+<h3 id="s9-4">9.4 PHÁT TRIỂN NHÓM (DEVELOP TEAM)</h3>
+<p>Phát triển nhóm (Develop Team) là quá trình cải thiện năng lực (competencies), tương tác giữa các thành viên, và toàn bộ môi trường nhóm để nâng cao hiệu suất dự án. Lợi ích chính của quá trình này là tạo ra kỹ năng làm việc nhóm tốt hơn, năng lực tăng lên, nhân viên có động lực, giảm sự tiêu hao nhân lực (attrition), và tăng cường hiệu suất dự án tổng thể. Nó được thực hiện xuyên suốt dự án.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//5d7cdd45-ad8b-4ade-9c0a-edb97afe1569/markdown_4/imgs/img_in_image_box_214_429_989_811.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A02Z%2F-1%2F%2F49b176191ff314e747a1b16816c0e60738b2bbf730ecac0be64cc8489a13b837" alt="Image" width="63%" /></div></div>
+<p class="figure-caption">Hình 9-10 / Hình 9-11. Phát triển nhóm</p>
+
+<p>Giám đốc dự án đòi hỏi các kĩ năng nhận diện, xây dựng, duy trì, tạo động lực, dẫn dắt, và truyền cảm hứng để đạt mục tiêu. Nhóm làm việc (Teamwork) là yếu tố tối quan trọng. Giám đốc dự án cần tạo ra môi trường làm việc tốt qua các hành vi:</p>
+<ul class="pmbok check">
+<li>Giao tiếp cởi mở và hiệu quả;</li>
+<li>Tạo các cơ hội team-building;</li>
+<li>Xây dựng lòng tin;</li>
+<li>Giải quyết xung đột mang tính xây dựng;</li>
+<li>Khuyến khích hợp tác giải quyết vấn đề;</li>
+<li>Khuyến khích hợp tác ra quyết định.</li>
+</ul>
+
+<p>Mục tiêu của Phát triển Nhóm (Develop Team) bao gồm:</p>
+<ul class="pmbok">
+<li>Cải thiện kiến thức và kỹ năng để tăng khả năng hoàn thành sản phẩm bàn giao, giảm chi phí/thời gian.</li>
+<li>Nâng cao lòng tin, giảm xung đột.</li>
+<li>Tạo văn hóa năng động (dynamic, cohesive, collaborative). Cho phép hướng dẫn chéo (cross-training) và cố vấn (mentoring).</li>
+<li>Trao quyền (Empowering) nhóm để tham gia quyết định, tăng hiệu suất.</li>
+</ul>
+
+<p>Một trong những mô hình được dùng để miêu tả phát triển nhóm là **Tuckman ladder** [19,20] bao gồm 5 giai đoạn:</p>
+<ul class="pmbok dash">
+<li><strong>Forming (Hình thành).</strong> Lần đầu gặp nhau, tìm hiểu về dự án, vai trò chức trách. Họ khá độc lập và chưa quá cởi mở.</li>
+<li><strong>Storming (Xung đột).</strong> Bắt tay xử lí kĩ thuật, công việc, hướng tiếp cận. Dễ phản tác dụng (counterproductive) nếu không chịu khó lắng nghe ý tưởng.</li>
+<li><strong>Norming (Tiêu chuẩn hóa/ Bình thường hóa).</strong> Bắt đầu điều chỉnh thói quen vì cả nhóm. Học cách tin tưởng lẫn nhau.</li>
+<li><strong>Performing (Thực thi).</strong> Hoạt động như một cỗ máy trơn tru. Giải quyết vấn đề rất êm mượt.</li>
+<li><strong>Adjourning (Giải tán/Kết thúc).</strong> Xong việc, chia tay, hay xảy ra lúc xong các sản phẩm hoặc trong tiến trình Close Project.</li>
+</ul>
+
+<h4>9.4.1 PHÁT TRIỂN NHÓM: ĐẦU VÀO (INPUTS)</h4>
+<ul class="pmbok">
+<li><strong>9.4.1.1 Kế hoạch quản lý dự án (Project management plan).</strong> (Kế hoạch quản lý nguồn lực).</li>
+<li><strong>9.4.1.2 Tài liệu dự án.</strong> (Sổ đăng ký bài học, tiến độ, phân công nhóm, lịch tài nguyên, điều lệ nhóm).</li>
+<li><strong>9.4.1.3 EEF.</strong> (Chính sách thuê mướn/đuổi việc, đánh giá nhân sự).</li>
+<li><strong>9.4.1.4 OPA.</strong> (Thông tin lịch sử và bài học).</li>
+</ul>
+
+<h4>9.4.2 PHÁT TRIỂN NHÓM: CÔNG CỤ VÀ KỸ THUẬT (TOOLS AND TECHNIQUES)</h4>
+<ul class="pmbok">
+<li><strong>9.4.2.1 Làm việc cùng địa điểm (Colocation).</strong> Đưa nhiều hoặc tất cả các thành viên vào cùng 1 địa điểm vật lý (phòng họp, bảng tin chung) để tăng cường truyền thông, ý thức cộng đồng.</li>
+<li><strong>9.4.2.2 Nhóm ảo (Virtual teams).</strong> Giảm chi phí di chuyển, dùng chuyên gia từ xa. Cần công nghệ (luồng trò chuyện, lịch online...).</li>
+<li><strong>9.4.2.3 Công nghệ truyền thông (Communication technology).</strong> (Cổng chia sẻ - shared portal, họp video, họp âm thanh, Email/Chat).</li>
+<li><strong>9.4.2.4 Kỹ năng liên cá nhân và nhóm.</strong> (Quản lý xung đột, Tạo ảnh hưởng/Influencing, Tạo động lực/Motivation, Đàm phán, Xây dựng nhóm/Team building). Team building giúp các cá nhân làm việc hiệu quả, xây dựng niềm tin. Nên làm liên tục chứ không chỉ riêng lúc đầu.</li>
+<li><strong>9.4.2.5 Ghi nhận và khen thưởng (Recognition and rewards).</strong> Việc thưởng chỉ hiệu quả nếu nó thỏa mãn nhu cầu đang được xem trọng của mỗi cá nhân. Thưởng phi tài chính (intangible rewards) đôi khi còn hiệu quả hơn.</li>
+<li><strong>9.4.2.6 Đào tạo (Training).</strong> Lớp học, online, cố vấn, coaching... Có thể lên lịch (scheduled) hoặc tự phát sinh (unplanned) dựa trên quan sát và đánh giá năng lực của nhân sự.</li>
+<li><strong>9.4.2.7 Đánh giá cá nhân và nhóm (Individual and team assessments).</strong> Các khảo sát thái độ, đánh giá, phỏng vấn nhóm tập trung (focus groups) để hiểu điểm mạnh điểm yếu, phong cách làm việc.</li>
+<li><strong>9.4.2.8 Các cuộc họp (Meetings).</strong> Định hướng, họp phát triển, họp team-building...</li>
+</ul>
+
+<h4>9.4.3 PHÁT TRIỂN NHÓM: ĐẦU RA (OUTPUTS)</h4>
+<ul class="pmbok">
+<li><strong>9.4.3.1 Đánh giá hiệu suất nhóm (Team performance assessments).</strong> Bao gồm cải thiện các kĩ năng, giảm tỉ lệ nhân sự nghỉ, tăng cường sự gắn kết (cohesiveness) và chia sẻ kinh nghiệm.</li>
+<li><strong>9.4.3.2 Yêu cầu thay đổi (Change requests).</strong></li>
+<li><strong>9.4.3.3 Cập nhật kế hoạch quản lý dự án.</strong></li>
+<li><strong>9.4.3.4 Cập nhật tài liệu dự án.</strong> (Bài học kinh nghiệm, tiến độ, phân công nhóm, lịch).</li>
+<li><strong>9.4.3.5 Cập nhật EEF.</strong> (Hồ sơ phát triển cá nhân nhân viên, đánh giá kĩ năng).</li>
+<li><strong>9.4.3.6 Cập nhật OPA.</strong> (Yêu cầu đào tạo, Đánh giá nhân sự).</li>
+</ul>
+
+<hr>
+
+<h3 id="s9-5">9.5 QUẢN LÝ NHÓM (MANAGE TEAM)</h3>
+<p>Quản lý Nhóm là quá trình theo dõi (tracking) hiệu suất của thành viên, cung cấp các feedback (phản hồi), giải quyết vấn đề, và quản lý các sự thay đổi của nhóm (team changes) để tối ưu hiệu suất dự án. Quá trình này giúp gây ảnh hưởng lên hành vi của nhóm, giải quyết xung đột, vấn đề. Thực hiện xuyên suốt vòng đời dự án.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//28029d1d-4b59-4159-93ec-81f7bc0a30b4/markdown_3/imgs/img_in_image_box_209_391_1014_736.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A05Z%2F-1%2F%2F237954d2db9f02d871256d9b702156a8a80128b3be1fbba9192136a93602a29b" alt="Image" width="65%" /></div></div>
+<p class="figure-caption">Hình 9-12 / Hình 9-13. Quản lý Nhóm</p>
+
+<p>Người giám đốc dự án cần phải nhạy cảm (sensitive) về cả "sự sẵn lòng" (willingness) lẫn "khả năng" (ability) của mỗi thành viên nhằm điều chỉnh phong cách lãnh đạo/quản lý sao cho phù hợp. Với nhân sự ít kinh nghiệm thì giám sát kĩ càng, với người lành nghề thì có phong cách khác.</p>
+
+<h4>9.5.1 QUẢN LÝ NHÓM: ĐẦU VÀO (INPUTS)</h4>
+<ul class="pmbok">
+<li><strong>9.5.1.1 Kế hoạch quản lý dự án.</strong> (Kế hoạch quản lý nguồn lực).</li>
+<li><strong>9.5.1.2 Tài liệu dự án.</strong> (Nhật ký vấn đề/Issue log, Sổ ghi nhận bài học kinh nghiệm, Phân công thành viên nhóm, Điều lệ nhóm).</li>
+<li><strong>9.5.1.3 Báo cáo hiệu suất công việc (Work performance reports).</strong> Kết quả từ báo cáo chi phí, tiến độ, chất lượng.. để biết cần thay thế nhân sự hay thưởng/phạt ra sao.</li>
+<li><strong>9.5.1.4 Đánh giá hiệu suất nhóm.</strong></li>
+<li><strong>9.5.1.5 EEF.</strong></li>
+<li><strong>9.5.1.6 OPA.</strong> (Bằng khen/chứng nhận, đồng phục, bổng lộc/perquisites tổ chức).</li>
+</ul>
+
+<h4>9.5.2 QUẢN LÝ NHÓM: CÔNG CỤ VÀ KỸ THUẬT (TOOLS AND TECHNIQUES)</h4>
+
+<h5>9.5.2.1 KỸ NĂNG LIÊN CÁ NHÂN VÀ NHÓM (INTERPERSONAL AND TEAM SKILLS)</h5>
+<ul class="pmbok">
+<li><strong>Quản lý xung đột (Conflict management).</strong> Xung đột là không thể tránh khỏi. Các nguồn gốc gồm tài nguyên khan hiếm, độ ưu tiên tiến độ khác nhau, cách làm việc cá nhân khác nhau. Nếu xử lý tốt, nó dẫn đến sáng tạo (creativity). Có 5 kỹ thuật giải quyết xung đột chung:
+  <ul class="pmbok dash">
+    <li><strong>Rút lui/Né tránh (Withdraw/avoid).</strong> Lảng tránh vấn đề hiện tại, đẩy sang sau.</li>
+    <li><strong>Xoa dịu/Thỏa hiệp (Smooth/accommodate).</strong> Nhấn mạnh vùng đồng thuận, nhượng bộ nhu cầu của bên kia để duy trì hòa khí.</li>
+    <li><strong>Thỏa hiệp/Dàn xếp (Compromise/reconcile).</strong> Tìm giải pháp mang lại một chút thỏa mãn (some degree of satisfaction) cho tất cả các bên. Thường dẫn tới một tình huống hai bên cùng thua (lose-lose).</li>
+    <li><strong>Ép buộc/Chỉ đạo (Force/direct).</strong> Áp đặt quan điểm bằng cái giá của người khác, thường để giải quyết tình trạng khẩn cấp. Win-lose situation (Thắng-thua).</li>
+    <li><strong>Cộng tác/Giải quyết vấn đề (Collaborate/problem solve).</strong> Kết hợp các góc nhìn, thái độ hợp tác (cooperative attitude), thảo luận cởi mở. Thường mang lại kết quả cùng thắng (win-win).</li>
+  </ul>
+</li>
+<li><strong>Ra quyết định (Decision making).</strong> Khả năng thương lượng và ảnh hưởng (influence) thay vì chỉ dùng bộ công cụ tính toán khô khan (focus on goals, process, data).</li>
+<li><strong>Trí tuệ cảm xúc (Emotional intelligence).</strong> Khả năng nhận diện, đánh giá, kiểm soát cảm xúc cá nhân bản thân và nhóm. Giảm bớt sức ép.</li>
+<li><strong>Tạo ảnh hưởng (Influencing).</strong> Vô cùng quan trọng ở mô hình tổ chức ma trận nơi quản lý dự án có rất ít "thẩm quyền". Gồm sức thuyết phục, kỹ năng lắng nghe chủ động, quan tâm nhận thức người khác.</li>
+<li><strong>Lãnh đạo (Leadership).</strong> Khả năng truyền cảm hứng. Truyền đạt tầm nhìn chung để nâng cao năng suất.</li>
+</ul>
+
+<h5>9.5.2.2 HỆ THỐNG THÔNG TIN QUẢN LÝ DỰ ÁN (PMIS)</h5>
+<p>Bao gồm các ứng dụng quản lý hoặc xếp lịch (scheduling) hỗ trợ theo dõi nhân sự trên nhiều hoạt động.</p>
+
+<h4>9.5.3 QUẢN LÝ NHÓM: ĐẦU RA (OUTPUTS)</h4>
+<ul class="pmbok">
+<li><strong>9.5.3.1 Yêu cầu thay đổi (Change requests).</strong> Nếu thay đổi nhân sự không kiểm soát được, nó sẽ phá hỏng ngân sách, tiến độ (thuê ngoài outsourcing, thay thế người đã nghỉ). Đòi hỏi change request đi qua IC Control (4.6).</li>
+<li><strong>9.5.3.2 Cập nhật kế hoạch quản lý dự án.</strong> (Kế hoạch nguồn lực, baseline lịch, baseline chi phí).</li>
+<li><strong>9.5.3.3 Cập nhật tài liệu dự án.</strong> (Issue log, Lessons learned register, Project team assignments).</li>
+<li><strong>9.5.3.4 Cập nhật EEF.</strong> (Đầu vào cho đánh giá tổ chức, kỹ năng nhân sự).</li>
+</ul>
+
+<hr>
+
+<h3 id="s9-6">9.6 KIỂM SOÁT NGUỒN LỰC (CONTROL RESOURCES)</h3>
+<p>Kiểm soát nguồn lực là quá trình đảm bảo rằng những tài nguyên vật chất đã phân công và phân bổ cho dự án sẽ có mặt đúng như kế hoạch, cũng như tiến hành giám sát đối chiếu giữa lượng sử dụng dự kiến và thực tế, sau đó đưa ra các hành động điều chỉnh nếu cần thiết. Lợi ích là chắc chắn mọi thứ ở đúng nơi đúng chỗ, đúng thời điểm và được giải phóng/thanh lý ngay khi không còn cần tới nữa. Quá trình này được tiến hành trong suốt vòng đời của dự án.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//587fd94d-1bc5-4aa9-9ffe-e362a2d3b219/markdown_0/imgs/img_in_image_box_208_420_1004_835.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A03Z%2F-1%2F%2Fe6af0f9c1821d63bdaae6f45bcb211e5bc65634480c4696c528cbc41a1197743" alt="Image" width="65%" /></div></div>
+<p class="figure-caption">Hình 9-14 / Hình 9-15. Kiểm soát Nguồn lực: Đầu vào, Công cụ & Đầu ra</p>
+
+<p>Việc kiểm soát nguồn lực vật chất liên quan tới cơ sở hạ tầng, nguyên vật liệu (chứ không phải nguồn lực nhóm con người, con người đã thuộc về "Quản lý nhóm"). Kiểm soát bao gồm:</p>
+<ul class="pmbok check">
+<li>Theo dõi tình trạng chi tiêu tài nguyên.</li>
+<li>Xử lý sự thiếu hụt / dư thừa tài nguyên kịp thời.</li>
+<li>Thông báo cho stakeholder khi có vấn đề.</li>
+<li>Tạo ảnh hưởng đến các tác nhân dẫn đến sự thay đổi lượng tài nguyên.</li>
+<li>Quản lý những thay đổi thực tế đó khi nó diễn ra.</li>
+</ul>
+
+<h4>9.6.1 KIỂM SOÁT NGUỒN LỰC: ĐẦU VÀO (INPUTS)</h4>
+<ul class="pmbok">
+<li><strong>9.6.1.1 Kế hoạch quản lý dự án.</strong> (Kế hoạch quản lý nguồn lực).</li>
+<li><strong>9.6.1.2 Tài liệu dự án.</strong> (Sổ ghi nhận vấn đề/Issue log, Sổ ghi nhận bài học kinh nghiệm, Phân công nguồn lực vật chất, Tiến độ dự án, Cấu trúc phân chia nguồn lực - RBS, Yêu cầu nguồn lực, Sổ đăng ký rủi ro).</li>
+<li><strong>9.6.1.3 Dữ liệu hiệu suất công việc (Work performance data).</strong> Tình trạng số lượng và loại tài nguyên đang được tiêu thụ.</li>
+<li><strong>9.6.1.4 Thỏa thuận (Agreements).</strong> Mô tả ở 12.2.3.2. Cơ sở cho các tài nguyên ở bên ngoài.</li>
+<li><strong>9.6.1.5 OPA.</strong> (Chính sách, thủ tục leo thang/escalation, bài học quá khứ).</li>
+</ul>
+
+<h4>9.6.2 KIỂM SOÁT NGUỒN LỰC: CÔNG CỤ VÀ KỸ THUẬT (TOOLS AND TECHNIQUES)</h4>
+<ul class="pmbok">
+<li><strong>9.6.2.1 Phân tích dữ liệu (Data analysis).</strong> Phân tích lựa chọn thay thế (Alternatives analysis), Phân tích chi phí - lợi ích (Cost-benefit analysis), Đánh giá hiệu suất (Performance reviews - đối chiếu hoạch định vs thực tế), Phân tích xu hướng (Trend analysis - xem liệu nó đang tốt lên hay xấu đi).</li>
+<li><strong>9.6.2.2 Giải quyết vấn đề (Problem solving).</strong> Phương pháp gồm: Xác định (Identify), Định nghĩa (Define), Điều tra (Investigate), Phân tích (Analyze), Giải quyết (Solve), Kiểm tra lại giải pháp (Check the solution).</li>
+<li><strong>9.6.2.3 Kỹ năng cá nhân và nhóm.</strong> (Đàm phán (Negotiation) cho chi phí bổ sung, Gây ảnh hưởng (Influencing)).</li>
+<li><strong>9.6.2.4 PMIS.</strong> Hệ thống phần mềm quản lý kiểm soát tài nguyên.</li>
+</ul>
+
+<h4>9.6.3 KIỂM SOÁT NGUỒN LỰC: ĐẦU RA (OUTPUTS)</h4>
+<ul class="pmbok">
+<li><strong>9.6.3.1 Thông tin hiệu suất công việc (Work performance information).</strong> Làm rõ các lỗ hổng/khoảng trống (gaps) trong sự sẵn có của tài nguyên bằng cách so sách (so sánh việc phân bổ với lượng sử dụng thực).</li>
+<li><strong>9.6.3.2 Yêu cầu thay đổi (Change requests).</strong> Qua quá trình 4.6.</li>
+<li><strong>9.6.3.3 Cập nhật kế hoạch quản lý dự án.</strong> (Kế hoạch nguồn lực, baseline tiến độ, baseline chi phí).</li>
+<li><strong>9.6.3.4 Cập nhật tài liệu dự án.</strong> (Sổ ghi nhận giả định, Sổ ghi nhận vấn đề, Sổ ghi nhận bài học kinh nghiệm, Phân công nguồn lực vật chất, RBS, Sổ đăng ký rủi ro).</li>
+</ul>
+
+</main>
+</body>
+</html>

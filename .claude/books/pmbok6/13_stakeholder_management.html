@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chương 13 – QUẢN LÝ CÁC BÊN LIÊN QUAN CỦA DỰ ÁN | PMBOK® Guide Lần 6</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a3;
+    --cream: #fdf8f0;
+    --text: #2c2c2c;
+    --text-light: #5a5a5a;
+    --border: #d4c89a;
+    --accent: #8b1a1a;
+    --sidebar-w: 260px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Merriweather', Georgia, serif;
+    background: var(--cream);
+    color: var(--text);
+    display: flex;
+    min-height: 100vh;
+  }
+
+  #sidebar {
+    width: var(--sidebar-w);
+    background: var(--navy);
+    color: #ccd4e8;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    overflow-y: auto;
+    z-index: 100;
+    padding: 0 0 2rem;
+    border-right: 3px solid var(--gold);
+  }
+  #sidebar-header {
+    background: linear-gradient(135deg, #0f1d3a 0%, #1a2744 100%);
+    padding: 1.5rem 1.2rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  #sidebar-header .book-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  #sidebar-header h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+  }
+  #sidebar-header .edition {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    color: var(--gold-light);
+    font-style: italic;
+  }
+  #sidebar nav { padding: 0.8rem 0; }
+  #sidebar nav a {
+    display: block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    color: #aab8d0;
+    text-decoration: none;
+    padding: 0.45rem 1.2rem;
+    line-height: 1.4;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+  }
+  #sidebar nav a:hover, #sidebar nav a.active {
+    color: #fff;
+    background: rgba(201,168,76,0.12);
+    border-left-color: var(--gold);
+  }
+  #sidebar nav .section-group { margin-top: 0.4rem; }
+  #sidebar nav .group-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 0.8rem 1.2rem 0.3rem;
+    opacity: 0.85;
+  }
+
+  #main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    max-width: 900px;
+    padding: 0 3rem 5rem;
+  }
+
+  .chapter-hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #2a3a6a 100%);
+    color: white;
+    padding: 3rem 3rem 2.5rem;
+    margin: 0 -3rem 3rem;
+    border-bottom: 4px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-hero::before {
+    content: attr(data-chnum);
+    position: absolute;
+    right: 2rem; top: 50%;
+    transform: translateY(-50%);
+    font-size: 10rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.05);
+    font-family: 'Merriweather', serif;
+    line-height: 1;
+  }
+  .chapter-hero .ch-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .chapter-hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+  }
+  .chapter-hero .ch-en {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+    font-style: italic;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  h3 {
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin: 2rem 0 0.7rem;
+    padding-left: 0.8rem;
+    border-left: 4px solid var(--gold);
+  }
+  h4 {
+    font-size: 1rem;
+    color: var(--accent);
+    margin: 1.5rem 0 0.5rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  h5 {
+    font-size: 0.95rem;
+    color: var(--navy);
+    margin: 1.2rem 0 0.5rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+  }
+  p {
+    font-size: 0.97rem;
+    line-height: 1.85;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  ul.pmbok {
+    list-style: none;
+    margin: 0.5rem 0 1rem 0;
+    padding: 0;
+  }
+  ul.pmbok li {
+    position: relative;
+    padding: 0.3rem 0 0.3rem 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--text);
+  }
+  ul.pmbok li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.7rem;
+    top: 0.5rem;
+  }
+  ul.pmbok.check li::before { content: '☑'; color: #2d7a2d; font-size: 0.9rem; top: 0.35rem; }
+  ul.pmbok.dash li::before  { content: '■'; color: var(--navy); font-size: 0.6rem; top: 0.5rem; }
+
+  .figure-wrap {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1.2rem;
+    background: #f8f5ee;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .figure-wrap img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  }
+  .figure-caption {
+    margin-top: 0.75rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.83rem;
+    color: var(--text-light);
+    font-style: italic;
+    text-align: center;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.84rem;
+  }
+  table th {
+    background: var(--navy);
+    color: white;
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+  table td {
+    padding: 0.55rem 0.8rem;
+    border: 1px solid #ddd;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  table tr:nth-child(even) td { background: #f9f6ef; }
+
+  @media(max-width:900px){
+    #sidebar { display: none; }
+    #main { margin-left: 0; padding: 0 1.2rem 4rem; }
+    .chapter-hero { margin: 0 -1.2rem 2rem; padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<aside id="sidebar">
+  <div id="sidebar-header">
+    <div class="book-label">PMBOK® Guide</div>
+    <h2>Hướng Dẫn Quản Lý Dự Án</h2>
+    <div class="edition">Lần xuất bản thứ 6 · Tiếng Việt</div>
+  </div>
+  <nav>
+    <div class="section-group">
+    <div class="group-label">Chương 13 · Stakeholder Mgt</div>
+    <a href="#s13-1">13.1 Nhận Diện Các Bên Liên Quan</a>
+    <a href="#s13-2">13.2 Lập KH Gắn Kết CBLQ</a>
+    <a href="#s13-3">13.3 Quản Lý Sự Gắn Kết</a>
+    <a href="#s13-4">13.4 Giám Sát Sự Gắn Kết</a>
+    </div>
+  </nav>
+</aside>
+
+<main id="main">
+
+  <div class="chapter-hero" data-chnum="13">
+    <div class="ch-label">Chương 13</div>
+    <h1>QUẢN LÝ CÁC BÊN LIÊN QUAN CỦA DỰ ÁN</h1>
+    <div class="ch-en">Project Stakeholder Management</div>
+  </div>
+
+<h2>PROJECT STAKEHOLDER MANAGEMENT (QUẢN LÝ CÁC BÊN LIÊN QUAN CỦA DỰ ÁN)</h2>
+<p>Quản lý Các bên liên quan của Dự án bao gồm các quy trình cần thiết để nhận diện những người, những nhóm, hoặc các tổ chức có thể gây tác động hoặc bị tác động bởi dự án, nhằm phân tích các kỳ vọng của các bên liên quan và tác động của họ lên dự án, và để phát triển các chiến lược quản lý phù hợp giúp gắn kết một cách hiệu quả các bên liên quan vào các quyết định cũng như quá trình thực thi của dự án. Các quy trình này hỗ trợ công việc của nhóm dự án trong việc phân tích các kỳ vọng của bên liên quan, đánh giá mức độ mà họ tác động đến hoặc bị tác động bởi dự án, và phát triển các chiến lược để gắn kết các bên liên quan một cách hiệu quả nhằm hỗ trợ các quyết định dự án cũng như quá trình lập kế hoạch và thực thi công việc của dự án.</p>
+
+<p>Các quy trình Quản lý Các bên liên quan của Dự án bao gồm:</p>
+<ul class="pmbok">
+<li><strong>13.1 Nhận diện Các bên liên quan (Identify Stakeholders)</strong>—Quy trình thường xuyên nhận diện các bên liên quan của dự án và phân tích cũng như lập hồ sơ các thông tin có liên quan về các lợi ích, sự tham gia, sự phụ thuộc lẫn nhau, sức ảnh hưởng, và tác động tiềm tàng của họ đối với sự thành công của dự án.</li>
+<li><strong>13.2 Lập kế hoạch Gắn kết Các bên liên quan (Plan Stakeholder Engagement)</strong>—Quy trình phát triển các phương pháp tiếp cận để lôi kéo sự tham gia của các bên liên quan dự án dựa trên nhu cầu, kỳ vọng, lợi ích, và tác động tiềm tàng của họ lên dự án.</li>
+<li><strong>13.3 Quản lý Sự gắn kết Các bên liên quan (Manage Stakeholder Engagement)</strong>—Quy trình giao tiếp và làm việc với các bên liên quan để đáp ứng các nhu cầu và kỳ vọng của họ, giải quyết các vấn đề, và thúc đẩy sự gắn kết tham gia phù hợp của bên liên quan.</li>
+<li><strong>13.4 Giám sát Sự gắn kết Các bên liên quan (Monitor Stakeholder Engagement)</strong>—Quy trình giám sát các mối quan hệ của các bên liên quan dự án và điều chỉnh các chiến lược để gắn kết các bên liên quan thông qua việc sửa đổi các chiến lược và kế hoạch gắn kết.</li>
+</ul>
+
+<p>Hình 13-1 cung cấp cái nhìn tổng quan về các quy trình Quản lý Các bên liên quan của Dự án. Các quy trình Quản lý Các bên liên quan của Dự án được trình bày như các quy trình rời rạc với các giao diện được xác định, tuy nhiên trong thực tế, chúng đan xen và tương tác theo những cách không thể trình bày chi tiết hoàn toàn trong PMBOK® Guide.</p>
+
+<div class="table-wrap">
+<table>
+  <tr><th colspan="3">13.1 Identify Stakeholders (Nhận diện Các bên liên quan)</th></tr>
+  <tr>
+    <td>
+      <strong>.1 Đầu vào (Inputs)</strong><br>
+      1. Hiến chương dự án<br>
+      2. Tài liệu kinh doanh<br>
+      3. Kế hoạch quản lý dự án<br>
+      4. Tài liệu dự án<br>
+      5. Thỏa thuận<br>
+      6. Yếu tố môi trường doanh nghiệp<br>
+      7. Tài sản quy trình tổ chức
+    </td>
+    <td>
+      <strong>.2 Công cụ & Kỹ thuật (Tools & Techniques)</strong><br>
+      1. Đánh giá của chuyên gia<br>
+      2. Thu thập dữ liệu<br>
+      3. Phân tích dữ liệu<br>
+      4. Biểu diễn dữ liệu<br>
+      5. Các cuộc họp
+    </td>
+    <td>
+      <strong>.3 Đầu ra (Outputs)</strong><br>
+      1. Sổ đăng ký các bên liên quan<br>
+      2. Yêu cầu thay đổi<br>
+      3. Cập nhật kế hoạch quản lý dự án<br>
+      4. Cập nhật tài liệu dự án
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr><th colspan="3">13.2 Plan Stakeholder Engagement (Lập KH Gắn kết Các bên liên quan)</th></tr>
+  <tr>
+    <td>
+      <strong>.1 Đầu vào (Inputs)</strong><br>
+      1. Hiến chương dự án<br>
+      2. Kế hoạch quản lý dự án<br>
+      3. Tài liệu dự án<br>
+      4. Thỏa thuận<br>
+      5. Yếu tố môi trường doanh nghiệp<br>
+      6. Tài sản quy trình tổ chức
+    </td>
+    <td>
+      <strong>.2 Công cụ & Kỹ thuật (Tools & Techniques)</strong><br>
+      1. Đánh giá của chuyên gia<br>
+      2. Thu thập dữ liệu<br>
+      3. Phân tích dữ liệu<br>
+      4. Ra quyết định<br>
+      5. Biểu diễn dữ liệu<br>
+      6. Các cuộc họp
+    </td>
+    <td>
+      <strong>.3 Đầu ra (Outputs)</strong><br>
+      1. Kế hoạch gắn kết các bên liên quan
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr><th colspan="3">13.3 Manage Stakeholder Engagement (Quản lý Sự gắn kết Các bên liên quan)</th></tr>
+  <tr>
+    <td>
+      <strong>.1 Đầu vào (Inputs)</strong><br>
+      1. Kế hoạch quản lý dự án<br>
+      2. Tài liệu dự án<br>
+      3. Yếu tố môi trường doanh nghiệp<br>
+      4. Tài sản quy trình tổ chức
+    </td>
+    <td>
+      <strong>.2 Công cụ & Kỹ thuật (Tools & Techniques)</strong><br>
+      1. Đánh giá của chuyên gia<br>
+      2. Kỹ năng giao tiếp<br>
+      3. Kỹ năng liên cá nhân và nhóm<br>
+      4. Nguyên tắc cơ bản của nhóm (Ground rules)<br>
+      5. Các cuộc họp
+    </td>
+    <td>
+      <strong>.3 Đầu ra (Outputs)</strong><br>
+      1. Yêu cầu thay đổi<br>
+      2. Cập nhật kế hoạch quản lý dự án<br>
+      3. Cập nhật tài liệu dự án
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr><th colspan="3">13.4 Monitor Stakeholder Engagement (Giám sát Sự gắn kết Các bên liên quan)</th></tr>
+  <tr>
+    <td>
+      <strong>.1 Đầu vào (Inputs)</strong><br>
+      1. Kế hoạch quản lý dự án<br>
+      2. Tài liệu dự án<br>
+      3. Dữ liệu hiệu suất công việc<br>
+      4. Yếu tố môi trường doanh nghiệp<br>
+      5. Tài sản quy trình tổ chức
+    </td>
+    <td>
+      <strong>.2 Công cụ & Kỹ thuật (Tools & Techniques)</strong><br>
+      1. Phân tích dữ liệu<br>
+      2. Ra quyết định<br>
+      3. Biểu diễn dữ liệu<br>
+      4. Kỹ năng giao tiếp<br>
+      5. Kỹ năng liên cá nhân và nhóm<br>
+      6. Các cuộc họp
+    </td>
+    <td>
+      <strong>.3 Đầu ra (Outputs)</strong><br>
+      1. Thông tin hiệu suất công việc<br>
+      2. Yêu cầu thay đổi<br>
+      3. Cập nhật kế hoạch quản lý dự án<br>
+      4. Cập nhật tài liệu dự án
+    </td>
+  </tr>
+</table>
+</div>
+<p class="figure-caption">Hình 13-1. Tổng quan Quản lý Các bên liên quan của Dự án</p>
+
+
+<h5>CÁC KHÁI NIỆM TRỌNG TÂM TRONG QUẢN LÝ CÁC BÊN LIÊN QUAN CỦA DỰ ÁN (KEY CONCEPTS FOR PROJECT STAKEHOLDER MANAGEMENT)</h5>
+<p>Mỗi dự án đều có các bên liên quan, những người bị tác động bởi dự án hoặc có thể tác động đến dự án theo cách tích cực hoặc tiêu cực. Một số bên liên quan có thể có khả năng hạn chế trong việc gây ảnh hưởng đến công việc hoặc kết quả của dự án; trong khi những người khác lại có sức ảnh hưởng đáng kể lên dự án và các kết quả mong đợi của nó. Các nghiên cứu học thuật và các bài phân tích về những thảm họa dự án lớn (high-profile project disasters) đều làm nổi bật tầm quan trọng của một phương pháp tiếp cận có cấu trúc đối với việc nhận diện, ưu tiên hóa, và gắn kết tất cả các bên liên quan. Khả năng của giám đốc dự án và nhóm dự án trong việc nhận diện và gắn kết chính xác tất cả các bên liên quan một cách thích hợp có thể tạo nên sự khác biệt giữa thành công và thất bại của dự án. Để tăng cơ hội thành công, quy trình nhận diện và gắn kết các bên liên quan nên bắt đầu càng sớm càng tốt sau khi hiến chương dự án được phê duyệt, giám đốc dự án được chỉ định và nhóm dự án bắt đầu được hình thành.</p>
+
+<p>Sự hài lòng của các bên liên quan nên được nhận diện và được quản lý như một mục tiêu của dự án. Chìa khóa để gắn kết các bên liên quan hiệu quả chính là sự tập trung vào việc giao tiếp liên tục với tất cả các bên liên quan, bao gồm cả các thành viên trong nhóm, để hiểu được nhu cầu và kỳ vọng của họ, giải quyết các vấn đề ngay khi chúng xảy ra, quản lý các xung đột lợi ích, và thúc đẩy sự tham gia gắn kết phù hợp của các bên liên quan vào các quyết định và các hoạt động của dự án.</p>
+
+<p>Quy trình nhận diện và gắn kết các bên liên quan vì lợi ích của dự án là một quy trình lặp đi lặp lại. Mặc dù các quy trình trong Quản lý Các bên liên quan của Dự án chỉ được mô tả một lần, nhưng các hoạt động nhận diện, ưu tiên, và gắn kết nên được xem xét và cập nhật một cách thường xuyên, và ít nhất là tại các thời điểm sau khi:</p>
+<ul class="pmbok check">
+<li>Dự án chuyển qua các giai đoạn khác nhau trong vòng đời của nó.</li>
+<li>Các bên liên quan hiện tại không còn tham gia vào công việc của dự án nữa hoặc những bên liên quan mới trở thành thành viên của cộng đồng các bên liên quan của dự án, hoặc</li>
+<li>Có những thay đổi đáng kể trong tổ chức hoặc trong cộng đồng rộng lớn hơn của các bên liên quan.</li>
+</ul>
+
+<h5>CÁC XU HƯỚNG VÀ THỰC TIỄN MỚI NỔI TRONG GẮN KẾT CÁC BÊN LIÊN QUAN DỰ ÁN (TRENDS AND EMERGING PRACTICES IN PROJECT STAKEHOLDER ENGAGEMENT)</h5>
+<p>Các định nghĩa rộng hơn về các bên liên quan đang được phát triển nhằm mở rộng các danh mục truyền thống như nhân viên, nhà cung cấp, và cổ đông (shareholders) để bao gồm thêm cả các nhóm như cơ quan quản lý (regulators), các nhóm vận động hành lang (lobby groups), các nhà bảo vệ môi trường, các tổ chức tài chính, giới truyền thông, và những người đơn giản chỉ tin rằng họ là các bên liên quan—họ nhận thức/cho rằng họ sẽ bị ảnh hưởng bởi công việc hoặc kết quả của dự án.</p>
+
+<p>Các xu hướng và thực tiễn mới nổi đối với Quản lý Các bên liên quan của Dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Nhận diện tất cả các bên liên quan</strong>, không chỉ là một tập hợp giới hạn;</li>
+<li><strong>Đảm bảo rằng tất cả các thành viên trong nhóm đều tham gia</strong> vào các hoạt động gắn kết các bên liên quan;</li>
+<li><strong>Thường xuyên đánh giá cộng đồng các bên liên quan</strong>, thường được thực hiện song song với việc đánh giá các rủi ro dự án riêng lẻ;</li>
+<li><strong>Tham vấn với các bên liên quan</strong> chịu ảnh hưởng lớn nhất bởi công việc hoặc kết quả của dự án thông qua khái niệm đồng sáng tạo (co-creation). Việc đồng sáng tạo đặt trọng tâm lớn hơn vào việc đưa các bên liên quan bị ảnh hưởng vào nhóm với tư cách là các đối tác (partners); và</li>
+<li><strong>Ghi nhận giá trị của sự gắn kết các bên liên quan một cách hiệu quả</strong>, cả tích cực lẫn tiêu cực. Giá trị tích cực có thể dựa trên việc xem xét các lợi ích thu được từ mức độ hỗ trợ tích cực cao hơn từ phía các bên liên quan, đặc biệt là các bên liên quan có quyền lực. Giá trị tiêu cực có thể được suy ra bằng cách đo lường những chi phí thực sự của việc không gắn kết hiệu quả các bên liên quan, dẫn đến việc thu hồi sản phẩm (product recalls) hoặc mất đi uy tín của tổ chức hoặc của dự án.</li>
+</ul>
+
+<h5>CÁC CÂN NHẮC VỀ ĐIỀU CHỈNH - MAY ĐO (TAILORING CONSIDERATIONS)</h5>
+<p>Bởi vì mỗi dự án là duy nhất, giám đốc dự án có thể cần phải điều chỉnh (may đo) cách thức áp dụng các quy trình Quản lý Các bên liên quan của Dự án. Cân nhắc điều chỉnh bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Sự đa dạng của các bên liên quan.</strong> Có bao nhiêu bên liên quan? Văn hóa bên trong cộng đồng các bên liên quan đa dạng đến mức nào?</li>
+<li><strong>Độ phức tạp của các mối quan hệ các bên liên quan.</strong> Các mối quan hệ trong cộng đồng các bên liên quan phức tạp đến mức nào? Một bên liên quan hoặc một nhóm các bên liên quan càng tham gia vào nhiều mạng lưới quan hệ (networks) thì các mạng lưới thông tin và thông tin sai lệch (misinformation) mà bên liên quan đó có thể nhận được càng trở nên phức tạp hơn.</li>
+<li><strong>Công nghệ truyền thông.</strong> Công nghệ truyền thông nào có sẵn? Có những cơ chế hỗ trợ (support mechanisms) nào để đảm bảo rằng giá trị tốt nhất sẽ đạt được từ công nghệ đó?</li>
+</ul>
+
+<h5>CÁC YẾU TỐ XEM XÉT CHO MÔI TRƯỜNG AGILE/THÍCH ỨNG (CONSIDERATIONS FOR AGILE/ADAPTIVE ENVIRONMENTS)</h5>
+<p>Các dự án trải qua mức độ thay đổi cao yêu cầu sự gắn kết và tham gia tích cực với các bên liên quan của dự án. Để tạo điều kiện cho việc thảo luận và ra quyết định kịp thời và năng suất, các nhóm thích ứng (adaptive teams) sẽ gắn kết trực tiếp với các bên liên quan thay vì thông qua các tầng lớp quản lý (layers of management). Thường thì khách hàng, người dùng, và nhà phát triển (developer) sẽ trao đổi thông tin trong một quá trình đồng sáng tạo năng động (dynamic co-creative process) nhằm mang lại sự tham gia nhiều hơn của các bên liên quan và mức độ hài lòng cao hơn. Các tương tác thường xuyên với cộng đồng các bên liên quan xuyên suốt dự án sẽ giúp giảm thiểu rủi ro, xây dựng lòng tin, và hỗ trợ các sự điều chỉnh sớm hơn trong chu kỳ dự án, do đó giúp giảm chi phí và tăng khả năng thành công cho dự án.</p>
+
+<p>Để đẩy nhanh việc chia sẻ thông tin trong nội bộ và xuyên suốt tổ chức, các phương pháp agile khuyến khích sự minh bạch mạnh mẽ (aggressive transparency). Mục đích của việc mời bất kỳ bên liên quan nào đến các cuộc họp và buổi đánh giá dự án hoặc đăng tải các tạo tác (artifacts) của dự án ở những không gian công cộng là để bộc lộ (surface) ra càng nhanh càng tốt bất kỳ sự lệch pha (misalignment), sự phụ thuộc (dependency), hoặc các vấn đề nào khác liên quan đến sự thay đổi của dự án.</p>
+
+<h3 id="s13-1">13.1 NHẬN DIỆN CÁC BÊN LIÊN QUAN (IDENTIFY STAKEHOLDERS)</h3>
+<p>Nhận diện Các bên liên quan là quy trình nhận diện thường xuyên các bên liên quan của dự án và phân tích cũng như lập hồ sơ các thông tin có liên quan về các lợi ích, sự tham gia, sự phụ thuộc lẫn nhau, sức ảnh hưởng, và tác động tiềm tàng của họ đối với sự thành công của dự án. Lợi ích chính của quá trình này là nó cho phép nhóm dự án xác định được trọng tâm (focus) phù hợp đối với việc gắn kết mỗi một bên liên quan hoặc một nhóm các bên liên quan. Quá trình này được thực hiện theo định kỳ trong suốt dự án khi cần. Đầu vào, công cụ và kỹ thuật, và đầu ra của quá trình này được phác họa trong Hình 13-2. Hình 13-3 miêu tả sơ đồ dòng dữ liệu cho quy trình này.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//cb15f101-9151-4f6e-94d7-25f92465920d/markdown_0/imgs/img_in_image_box_216_402_964_832.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A10Z%2F-1%2F%2F58da6f23e75a6c38260a9509df65fbc9a80dcceb709536eb8e56ca9c222ff47c" alt="Image" width="60%" /></div></div>
+<p class="figure-caption">Hình 13-2. Nhận diện Các bên liên quan: Đầu vào, Công cụ & Kỹ thuật, và Đầu ra</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//cb15f101-9151-4f6e-94d7-25f92465920d/markdown_1/imgs/img_in_image_box_200_159_1027_1100.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A11Z%2F-1%2F%2F7a8972f0428713f8a544206ff6060eccf5efe04e1526917b04072a01e82c16b6" alt="Image" width="67%" /></div></div>
+<p class="figure-caption">Hình 13-3. Nhận diện Các bên liên quan: Sơ đồ luồng dữ liệu</p>
+
+<p>Quy trình này thường xuyên xảy ra lần đầu tiên trong một dự án ở trước hoặc cùng thời điểm mà hiến chương dự án được phát triển và phê duyệt. Nó được lặp lại khi cần thiết, nhưng nên được thực hiện tại thời điểm bắt đầu của mỗi giai đoạn và khi có một sự thay đổi đáng kể trong dự án hoặc sự thay đổi tổ chức xảy ra. Mỗi lần quá trình nhận diện được lặp lại, các thành phần của kế hoạch quản lý dự án và các tài liệu dự án nên được tham khảo để nhận diện ra các bên liên quan có liên quan đến dự án.</p>
+
+<h4>13.1.1 NHẬN DIỆN CÁC BÊN LIÊN QUAN: ĐẦU VÀO (INPUTS)</h4>
+
+<h5>13.1.1.1 HIẾN CHƯƠNG DỰ ÁN (PROJECT CHARTER)</h5>
+<p>Mô tả trong Phần 4.1.3.1. Hiến chương dự án nhận diện danh sách các bên liên quan chính. Nó cũng có thể chứa thông tin về trách nhiệm của các bên liên quan.</p>
+
+<h5>13.1.1.2 TÀI LIỆU KINH DOANH (BUSINESS DOCUMENTS)</h5>
+<p>Trong lần lặp đầu tiên của quá trình Nhận diện Các bên liên quan, nghiên cứu kinh doanh (business case) và kế hoạch quản lý lợi ích (benefits management plan) là những nguồn thông tin về các bên liên quan của dự án.</p>
+<ul class="pmbok">
+<li><strong>Nghiên cứu kinh doanh (Business case).</strong> Mô tả trong Phần 1.2.6.1. Nghiên cứu kinh doanh xác định các mục tiêu của dự án và nhận diện ra danh sách ban đầu của các bên liên quan bị tác động bởi dự án.</li>
+<li><strong>Kế hoạch quản lý lợi ích (Benefits management plan).</strong> Mô tả trong Phần 1.2.6.2. Kế hoạch quản lý lợi ích mô tả kế hoạch dự kiến cho việc hiện thực hóa các lợi ích đã được tuyên bố trong nghiên cứu kinh doanh. Nó có thể nhận diện ra các cá nhân và các nhóm sẽ hưởng lợi từ việc bàn giao các kết quả của dự án và do đó họ được coi là các bên liên quan.</li>
+</ul>
+
+<h5>13.1.1.3 KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN)</h5>
+<p>Mô tả ở Phần 4.2.3.1. Kế hoạch quản lý dự án sẽ không có sẵn khi tiến hành nhận diện các bên liên quan ở giai đoạn đầu; tuy nhiên, một khi nó đã được phát triển, các thành phần của kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Kế hoạch quản lý truyền thông (Communications management plan).</strong> Mô tả ở Phần 10.1.3.1. Truyền thông và sự gắn kết các bên liên quan có mối liên kết mạnh mẽ với nhau. Thông tin được đưa vào trong kế hoạch quản lý truyền thông là một nguồn kiến thức về các bên liên quan của dự án.</li>
+<li><strong>Kế hoạch gắn kết các bên liên quan (Stakeholder engagement plan).</strong> Mô tả ở Phần 13.2.3.1. Kế hoạch gắn kết các bên liên quan nhận diện các chiến lược và hành động quản lý cần thiết để gắn kết các bên liên quan một cách hiệu quả.</li>
+</ul>
+
+<h5>13.1.1.4 TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS)</h5>
+<p>Rất khó có khả năng rằng bất kỳ một tài liệu dự án nào sẽ trở thành đầu vào cho việc nhận diện bên liên quan ban đầu (initial stakeholder identification). Tuy nhiên, việc nhận diện bên liên quan diễn ra xuyên suốt toàn bộ dự án. Một khi dự án đã vượt qua giai đoạn khởi động, sẽ có nhiều tài liệu hơn trở nên sẵn có và được sử dụng trong suốt dự án. Tài liệu dự án có thể được xem xét như đầu vào cho quy trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Sổ ghi nhận thay đổi (Change log).</strong> Mô tả ở Phần 4.6.3.3. Sổ ghi nhận thay đổi có thể giới thiệu/đưa vào một bên liên quan mới hoặc làm thay đổi bản chất của một mối quan hệ của một bên liên quan hiện tại với dự án.</li>
+<li><strong>Sổ ghi nhận vấn đề (Issue log).</strong> Mô tả ở Phần 4.3.3.3. Sổ ghi nhận vấn đề lưu lại các vấn đề mà chúng có thể sẽ giới thiệu thêm các bên liên quan mới cho dự án hoặc làm thay đổi loại hình tham gia của các bên liên quan hiện tại.</li>
+<li><strong>Tài liệu yêu cầu (Requirements documentation).</strong> Mô tả ở Phần 5.2.3.1. Các yêu cầu có thể cung cấp thông tin về các bên liên quan tiềm năng.</li>
+</ul>
+
+<h5>13.1.1.5 THỎA THUẬN (AGREEMENTS)</h5>
+<p>Mô tả trong Phần 12.2.3.2. Các bên tham gia vào một bản thỏa thuận chính là các bên liên quan của dự án. Bản thỏa thuận có thể chứa các tham chiếu (references) đến các bên liên quan bổ sung khác.</p>
+
+<h5>13.1.1.6 YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP (ENTERPRISE ENVIRONMENTAL FACTORS)</h5>
+<p>Các yếu tố môi trường doanh nghiệp có thể ảnh hưởng đến quá trình Nhận diện Các bên liên quan bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Văn hóa tổ chức, môi trường chính trị, và khuôn khổ quản trị;</li>
+<li>Các tiêu chuẩn của chính phủ hoặc của ngành (các quy định, tiêu chuẩn sản phẩm, và bộ quy tắc ứng xử);</li>
+<li>Các xu hướng, thực tiễn, hoặc thói quen toàn cầu, khu vực, hoặc địa phương; và</li>
+<li>Sự phân bổ địa lý của các cơ sở vật chất và tài nguyên.</li>
+</ul>
+
+<h5>13.1.1.7 TÀI SẢN QUY TRÌNH TỔ CHỨC (ORGANIZATIONAL PROCESS ASSETS)</h5>
+<p>Các tài sản quy trình tổ chức có thể ảnh hưởng đến quá trình Nhận diện Các bên liên quan bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Các biểu mẫu (templates) và hướng dẫn của sổ đăng ký các bên liên quan.</li>
+<li>Sổ đăng ký các bên liên quan từ các dự án trước đó, và</li>
+<li>Kho lưu trữ bài học kinh nghiệm chứa thông tin về các sở thích, hành động, và sự tham gia của các bên liên quan.</li>
+</ul>
+
+<h4>13.1.2 NHẬN DIỆN CÁC BÊN LIÊN QUAN: CÔNG CỤ VÀ KỸ THUẬT (TOOLS AND TECHNIQUES)</h4>
+
+<h5>13.1.2.1 ĐÁNH GIÁ CỦA CHUYÊN GIA (EXPERT JUDGMENT)</h5>
+<p>Mô tả trong Phần 4.1.2.1. Chuyên môn nên được tham khảo từ các cá nhân hoặc nhóm có kiến thức chuyên môn hoặc được đào tạo về các chủ đề sau:</p>
+<ul class="pmbok">
+<li>Sự am hiểu về các cấu trúc quyền lực và chính trị bên trong tổ chức,</li>
+<li>Kiến thức về môi trường và văn hóa của tổ chức và của các tổ chức bị ảnh hưởng khác, bao gồm khách hàng và môi trường rộng lớn hơn,</li>
+<li>Kiến thức về ngành công nghiệp hoặc loại hình sản phẩm bàn giao của dự án, và</li>
+<li>Kiến thức về các đóng góp và chuyên môn của từng thành viên trong nhóm dự án.</li>
+</ul>
+
+<h5>13.1.2.2 THU THẬP DỮ LIỆU (DATA GATHERING)</h5>
+<p>Các kỹ thuật thu thập dữ liệu có thể được sử dụng cho quy trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Bảng câu hỏi và khảo sát (Questionnaires and surveys).</strong> Mô tả ở Phần 5.2.2.2. Bảng câu hỏi và khảo sát có thể bao gồm các cuộc đánh giá một-kèm-một (one-on-one reviews), các phiên họp nhóm tập trung (focus group sessions), hoặc các kỹ thuật thu thập thông tin đại chúng khác.</li>
+<li><strong>Động não (Brainstorming).</strong> Mô tả ở Phần 4.1.2.2. Hoạt động động não khi được sử dụng để nhận diện các bên liên quan có thể bao gồm cả động não nói (brainstorming) và động não viết (brain writing).
+  <ul class="pmbok dash">
+    <li><strong>Động não (Brainstorming).</strong> Một kỹ thuật sáng tạo và thu thập dữ liệu chung (general data-gathering and creativity technique) nhằm gợi mở đầu vào từ các nhóm chẳng hạn như các thành viên trong nhóm dự án hoặc các chuyên gia môn học (SMEs).</li>
+    <li><strong>Động não viết (Brain writing).</strong> Một biến thể nâng cao của brainstorming cho phép những người tham gia cá nhân có thời gian để xem xét (các) câu hỏi một cách độc lập trước khi phiên sáng tạo nhóm được tổ chức. Thông tin có thể được thu thập trong các nhóm gặp mặt trực tiếp hoặc thông qua các môi trường trực tuyến ảo được hỗ trợ bởi công nghệ.</li>
+  </ul>
+</li>
+</ul>
+
+<h5>13.1.2.3 PHÂN TÍCH DỮ LIỆU (DATA ANALYSIS)</h5>
+<p>Các kỹ thuật phân tích dữ liệu có thể được sử dụng cho quy trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Phân tích bên liên quan (Stakeholder analysis).</strong> Việc phân tích bên liên quan mang lại một danh sách các bên liên quan và các thông tin liên quan như vị trí của họ trong tổ chức, vai trò đối với dự án, “tiền cược/lợi ích” (stakes), kỳ vọng, thái độ (mức độ hỗ trợ của họ đối với dự án), và sự quan tâm của họ đối với thông tin về dự án. Lợi ích/mối quan tâm (Stakes) của các bên liên quan có thể bao gồm nhưng không giới hạn ở sự kết hợp của:
+  <ul class="pmbok dash">
+    <li><strong>Sự quan tâm (Interest).</strong> Một người hoặc nhóm có thể bị ảnh hưởng bởi một quyết định liên quan đến dự án hoặc kết quả của nó.</li>
+    <li><strong>Quyền lợi (Rights) (quyền pháp lý hoặc quyền đạo đức).</strong> Các quyền hợp pháp, chẳng hạn như sức khỏe và an toàn nghề nghiệp, có thể được quy định trong khuôn khổ pháp lý của một quốc gia. Các quyền đạo đức có thể bao gồm các khái niệm về bảo vệ di tích lịch sử hoặc sự bền vững của môi trường.</li>
+    <li><strong>Quyền sở hữu (Ownership).</strong> Một người hoặc một nhóm có quyền sở hữu hợp pháp đối với một tài sản hoặc một bất động sản.</li>
+    <li><strong>Kiến thức (Knowledge).</strong> Kiến thức chuyên môn, có thể mang lại lợi ích cho dự án thông qua việc cung cấp các mục tiêu dự án hiệu quả hơn, các kết quả của tổ chức, hoặc kiến thức về các cấu trúc quyền lực của tổ chức.</li>
+    <li><strong>Sự đóng góp (Contribution).</strong> Sự cung cấp các nguồn quỹ tài trợ hoặc các nguồn lực khác, bao gồm nguồn nhân lực, hoặc cung cấp sự hỗ trợ cho dự án theo những cách phi vật thể hơn, ví dụ như vai trò biện hộ/ủng hộ (advocacy) dưới hình thức quảng bá các mục tiêu của dự án hoặc đóng vai trò như một vùng đệm (buffer) giữa dự án và các cấu trúc quyền lực của tổ chức cùng các vấn đề chính trị của nó.</li>
+  </ul>
+</li>
+<li><strong>Phân tích tài liệu (Document analysis).</strong> Mô tả ở Phần 5.2.2.3. Đánh giá các tài liệu dự án sẵn có và các bài học kinh nghiệm từ các dự án trước đây để nhận diện các bên liên quan và các thông tin hỗ trợ khác.</li>
+</ul>
+
+<h5>13.1.2.4 BIỂU DIỄN DỮ LIỆU (DATA REPRESENTATION)</h5>
+<p>Một kỹ thuật biểu diễn dữ liệu có thể được sử dụng trong quy trình này bao gồm nhưng không giới hạn ở việc lập bản đồ/biểu diễn các bên liên quan (stakeholder mapping/representation). Việc lập bản đồ và biểu diễn các bên liên quan là một phương pháp dùng để phân loại các bên liên quan bằng cách sử dụng các phương pháp khác nhau. Việc phân loại các bên liên quan sẽ hỗ trợ nhóm dự án trong việc xây dựng các mối quan hệ với các bên liên quan đã được nhận diện. Các phương pháp phổ biến bao gồm:</p>
+<ul class="pmbok">
+<li><strong>Lưới quyền lực/sự quan tâm (Power/interest grid), Lưới quyền lực/sức ảnh hưởng (power/influence grid), hoặc Lưới tác động/sức ảnh hưởng (impact/influence grid).</strong> Mỗi kỹ thuật trong số này hỗ trợ việc nhóm các bên liên quan lại với nhau dựa trên mức độ thẩm quyền (quyền lực) của họ, mức độ quan tâm về các kết quả của dự án (sự quan tâm), khả năng gây ảnh hưởng đến các kết quả của dự án (sức ảnh hưởng), hoặc khả năng gây ra các sự thay đổi đối với việc lập kế hoạch hoặc quá trình thực thi dự án. Các mô hình phân loại (classification models) này hữu ích đối với các dự án nhỏ hoặc đối với các dự án có mối quan hệ đơn giản giữa các bên liên quan với dự án, hoặc ngay trong bản thân cộng đồng các bên liên quan.</li>
+<li><strong>Khối lập phương các bên liên quan (Stakeholder cube).</strong> Đây là một sự tinh chỉnh lại của các mô hình dạng lưới (grid models) đã đề cập trước đó. Mô hình này kết hợp các yếu tố của lưới lại thành một mô hình ba chiều có thể cực kỳ hữu ích cho các giám đốc dự án và nhóm dự án trong việc nhận diện và gắn kết cộng đồng các bên liên quan của họ. Nó cung cấp một mô hình có nhiều chiều hướng giúp cải thiện việc phác họa cộng đồng các bên liên quan như là một thực thể đa chiều (multidimensional entity) và hỗ trợ cho việc phát triển các chiến lược truyền thông.</li>
+<li><strong>Mô hình nổi bật (Salience model).</strong> Mô tả các lớp/nhóm (classes) các bên liên quan dựa trên các bài đánh giá về quyền lực (power - mức độ thẩm quyền hoặc khả năng gây ảnh hưởng đến kết quả của dự án), tính cấp bách (urgency - nhu cầu cần phải được chú ý ngay lập tức, có thể do bị ràng buộc về thời gian hoặc liên quan đến một lợi ích cao của các bên liên quan đối với kết quả dự án), và tính hợp pháp (legitimacy - sự tham gia của họ là phù hợp). Có một phiên bản chuyển thể/biến thể của mô hình salience nhằm thay thế tính hợp pháp bằng tính tiệm cận (proximity) (áp dụng cho nhóm dự án và đo lường mức độ tham gia của họ đối với công việc của dự án). Mô hình nổi bật này hữu ích cho các cộng đồng bên liên quan lớn và phức tạp hoặc khi có các mạng lưới quan hệ phức tạp bên trong cộng đồng đó. Nó cũng hữu ích trong việc xác định tầm quan trọng tương đối (relative importance) của các bên liên quan đã được nhận diện.</li>
+<li><strong>Các hướng ảnh hưởng (Directions of influence).</strong> Phân loại các bên liên quan theo mức độ ảnh hưởng của họ đối với công việc của dự án hoặc chính bản thân nhóm dự án. Các bên liên quan có thể được phân loại theo những cách sau:
+  <ul class="pmbok dash">
+    <li><strong>Hướng lên (Upward)</strong> (quản lý cấp cao của tổ chức thực hiện dự án hoặc tổ chức khách hàng, nhà tài trợ, và ban chỉ đạo),</li>
+    <li><strong>Hướng xuống (Downward)</strong> (nhóm dự án hoặc các chuyên gia đóng góp kiến thức hoặc kỹ năng với tư cách tạm thời),</li>
+    <li><strong>Hướng ra ngoài (Outward)</strong> (các nhóm bên liên quan và các đại diện của họ ở bên ngoài nhóm dự án, chẳng hạn như nhà cung cấp, cơ quan chính phủ, công chúng, người dùng cuối, và các cơ quan quản lý), hoặc</li>
+    <li><strong>Theo chiều ngang (Sideward)</strong> (những người đồng cấp của giám đốc dự án, chẳng hạn như các giám đốc dự án khác hoặc các nhà quản lý cấp trung, những người đang cạnh tranh cho các nguồn lực dự án khan hiếm hoặc những người cộng tác với giám đốc dự án trong việc chia sẻ nguồn lực hoặc thông tin).</li>
+  </ul>
+</li>
+<li><strong>Sự ưu tiên hóa (Prioritization).</strong> Việc ưu tiên hóa các bên liên quan có thể là cần thiết đối với các dự án có số lượng lớn các bên liên quan, nơi mà các thành viên của cộng đồng các bên liên quan thay đổi thường xuyên, hoặc khi các mối quan hệ giữa các bên liên quan và nhóm dự án hoặc trong nội bộ cộng đồng các bên liên quan trở nên phức tạp.</li>
+</ul>
+
+<h5>13.1.2.5 CÁC CUỘC HỌP (MEETINGS)</h5>
+<p>Các cuộc họp được sử dụng để phát triển một sự hiểu biết về các bên liên quan quan trọng của dự án. Chúng có thể mang hình thức của các buổi hội thảo dưới sự điều phối (facilitation workshops), các cuộc thảo luận theo nhóm nhỏ được hướng dẫn, và các nhóm ảo (virtual groups) có sử dụng các công nghệ điện tử hoặc phương tiện truyền thông xã hội để cùng chia sẻ ý tưởng và phân tích dữ liệu.</p>
+
+<h4>13.1.3 NHẬN DIỆN CÁC BÊN LIÊN QUAN: ĐẦU RA (OUTPUTS)</h4>
+
+<h5>13.1.3.1 SỔ ĐĂNG KÝ CÁC BÊN LIÊN QUAN (STAKEHOLDER REGISTER)</h5>
+<p>Đầu ra chính của quy trình Nhận diện Các bên liên quan chính là sổ đăng ký các bên liên quan. Tài liệu này chứa các thông tin về các bên liên quan đã được xác định, bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Thông tin nhận diện (Identification information).</strong> Tên, vị trí trong tổ chức, vị trí địa lý và các chi tiết liên lạc, và vai trò của họ trên dự án.</li>
+<li><strong>Thông tin đánh giá (Assessment information).</strong> Những yêu cầu, kỳ vọng chính yếu, tiềm năng tác động đến các kết quả của dự án, và giai đoạn nào của vòng đời dự án nơi mà bên liên quan đó có nhiều ảnh hưởng hoặc tác động nhất.</li>
+<li><strong>Phân loại các bên liên quan (Stakeholder classification).</strong> Nội bộ/bên ngoài, tác động/sức ảnh hưởng/quyền lực/sự quan tâm, hướng lên/hướng xuống/hướng ra ngoài/chiều ngang, hoặc bất kỳ một mô hình phân loại nào khác được lựa chọn bởi giám đốc dự án.</li>
+</ul>
+
+<h5>13.1.3.2 YÊU CẦU THAY ĐỔI (CHANGE REQUESTS)</h5>
+<p>Mô tả ở Phần 4.3.3.4. Trong suốt vòng lặp đầu tiên của việc nhận diện các bên liên quan, sẽ không có bất kỳ yêu cầu thay đổi nào. Khi việc nhận diện các bên liên quan tiếp diễn trong suốt dự án, các bên liên quan mới, hoặc những thông tin mới về các bên liên quan, có thể sẽ dẫn đến một yêu cầu thay đổi đối với sản phẩm, kế hoạch quản lý dự án, hoặc tài liệu dự án.</p>
+<p>Yêu cầu thay đổi được xử lý để được xem xét và quyết định thông qua quy trình Thực hiện Kiểm soát Thay đổi Tích hợp (Perform Integrated Change Control) (Phần 4.6).</p>
+
+<h5>13.1.3.3 CẬP NHẬT KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN UPDATES)</h5>
+<p>Khi các bên liên quan được nhận diện tại ngay thời điểm bắt đầu của một dự án, sẽ không có bất kỳ sự cập nhật nào cho kế hoạch quản lý dự án. Khi dự án bắt đầu phát triển lên, bất kỳ thay đổi nào đối với kế hoạch quản lý dự án đều phải đi qua quy trình kiểm soát thay đổi của tổ chức thông qua một yêu cầu thay đổi (change request). Các thành phần có thể yêu cầu một yêu cầu thay đổi đối với kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Kế hoạch quản lý yêu cầu (Requirements management plan).</strong> Mô tả ở Phần 5.1.1.2. Các bên liên quan mới được nhận diện có thể sẽ gây tác động đến cách thức mà các hoạt động thu thập yêu cầu sẽ được lập kế hoạch, theo dõi, và báo cáo.</li>
+<li><strong>Kế hoạch quản lý truyền thông (Communications management plan).</strong> Mô tả ở Phần 10.1.3.1. Các yêu cầu về truyền thông của các bên liên quan và các chiến lược truyền thông đã được nhất trí sẽ được ghi lại trong kế hoạch quản lý truyền thông.</li>
+<li><strong>Kế hoạch quản lý rủi ro (Risk management plan).</strong> Mô tả ở Phần 11.1.3.1. Nơi mà các yêu cầu truyền thông của các bên liên quan và các chiến lược truyền thông đã nhất trí có ảnh hưởng lên phương pháp tiếp cận quản lý rủi ro của dự án, điều này sẽ được phản ánh bên trong kế hoạch quản lý rủi ro.</li>
+<li><strong>Kế hoạch gắn kết các bên liên quan (Stakeholder engagement plan).</strong> Mô tả ở Phần 13.2.3.1. Các chiến lược giao tiếp/truyền thông đã được đồng ý cho các bên liên quan được nhận diện sẽ được ghi lại bên trong kế hoạch gắn kết các bên liên quan.</li>
+</ul>
+
+<h5>13.1.3.4 CẬP NHẬT TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS UPDATES)</h5>
+<p>Tài liệu dự án có thể được cập nhật như một kết quả của quá trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Sổ ghi nhận giả định (Assumption log).</strong> Mô tả ở Phần 4.1.3.2. Rất nhiều các thông tin về quyền lực tương đối, sự quan tâm, và mức độ tham gia của các bên liên quan dựa trên các giả định. Các thông tin này được nhập vào sổ ghi nhận giả định. Thêm vào đó, bất kỳ sự ràng buộc nào liên quan đến việc tương tác với các bên liên quan cụ thể cũng sẽ được nhập vào sổ.</li>
+<li><strong>Sổ ghi nhận vấn đề (Issue log).</strong> Mô tả ở Phần 4.3.3.3. Các vấn đề mới được nảy sinh ra như một kết quả của quá trình này sẽ được lưu lại trong sổ ghi nhận vấn đề.</li>
+<li><strong>Sổ đăng ký rủi ro (Risk register).</strong> Mô tả ở Phần 11.2.3.1. Các rủi ro mới được phát hiện trong suốt quá trình này sẽ được ghi lại vào sổ đăng ký rủi ro và sẽ được quản lý bằng cách sử dụng các quy trình quản lý rủi ro.</li>
+</ul>
+
+<hr>
+
+<h3 id="s13-2">13.2 LẬP KẾ HOẠCH GẮN KẾT CÁC BÊN LIÊN QUAN (PLAN STAKEHOLDER ENGAGEMENT)</h3>
+<p>Lập kế hoạch Gắn kết Các bên liên quan là quy trình phát triển các phương pháp tiếp cận nhằm lôi kéo sự tham gia của các bên liên quan của dự án dựa trên các nhu cầu, kỳ vọng, lợi ích, và tác động tiềm tàng của họ đối với dự án. Lợi ích chính là nó mang lại một kế hoạch khả thi (actionable plan) để có thể tương tác hiệu quả với các bên liên quan. Quá trình này được thực hiện theo định kỳ trong suốt dự án khi cần thiết.</p>
+
+<p>Các đầu vào, công cụ và kỹ thuật, và đầu ra của quá trình này được phác họa ở Hình 13-4. Hình 13-5 miêu tả sơ đồ dòng dữ liệu cho quy trình này.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//28bd7300-a8eb-44b2-9ac7-d8e01832b08d/markdown_4/imgs/img_in_image_box_203_406_1028_801.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A07Z%2F-1%2F%2F967c6555f58f54a3341c15d54fc7e23f3e8535b151ce12e2d20ed950b421d677" alt="Image" width="67%" /></div></div>
+<p class="figure-caption">Hình 13-4. Lập kế hoạch Gắn kết Các bên liên quan: Đầu vào, Công cụ & Kỹ thuật, và Đầu ra</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//c1018bab-9f79-40a2-af27-dbf6d2b16470/markdown_0/imgs/img_in_image_box_195_148_1028_992.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A04Z%2F-1%2F%2F96c2fec64dd1132c7cc8c00204fc1e67f898b6549c4510f7ec25ea38dec817b4" alt="Image" width="68%" /></div></div>
+<p class="figure-caption">Hình 13-5. Lập kế hoạch Gắn kết Các bên liên quan: Sơ đồ luồng dữ liệu</p>
+
+<p>Một kế hoạch hiệu quả có khả năng nhận biết được các nhu cầu thông tin đa dạng của các bên liên quan của dự án sẽ được phát triển ngay từ giai đoạn đầu của vòng đời dự án và sẽ được xem xét, cập nhật thường xuyên khi cộng đồng các bên liên quan thay đổi. Phiên bản đầu tiên của kế hoạch gắn kết các bên liên quan sẽ được phát triển sau khi cộng đồng các bên liên quan ban đầu đã được nhận diện ra thông qua quy trình Nhận diện Các bên liên quan (Identify Stakeholders). Kế hoạch gắn kết các bên liên quan được cập nhật thường xuyên để phản ánh các sự thay đổi của cộng đồng các bên liên quan. Các tình huống kích hoạt (trigger) điển hình đòi hỏi phải có những sự cập nhật cho kế hoạch này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Khi đó là sự bắt đầu của một giai đoạn mới của dự án;</li>
+<li>Khi có những sự thay đổi đối với cấu trúc của tổ chức hoặc bên trong hệ thống ngành;</li>
+<li>Khi những cá nhân hoặc nhóm mới trở thành các bên liên quan, khi các bên liên quan hiện tại không còn là thành viên của cộng đồng các bên liên quan, hoặc khi tầm quan trọng của một bên liên quan cụ thể đối với sự thành công của dự án bị thay đổi; và</li>
+<li>Khi các đầu ra của các khu vực quy trình khác của dự án, chẳng hạn như quản lý thay đổi, quản lý rủi ro, hoặc quản lý vấn đề, đòi hỏi phải có một sự xem xét lại đối với các chiến lược gắn kết các bên liên quan.</li>
+</ul>
+<p>Kết quả của các sự điều chỉnh này có thể là các thay đổi đối với tầm quan trọng tương đối (relative importance) của các bên liên quan đã được xác định.</p>
+
+<h4>13.2.1 LẬP KẾ HOẠCH GẮN KẾT CÁC BÊN LIÊN QUAN: ĐẦU VÀO (INPUTS)</h4>
+
+<h5>13.2.1.1 HIẾN CHƯƠNG DỰ ÁN (PROJECT CHARTER)</h5>
+<p>Mô tả trong Phần 4.1.3.1. Hiến chương dự án chứa các thông tin về mục đích, các mục tiêu, và các tiêu chí thành công của dự án, những thứ này có thể được xem xét khi lập kế hoạch cho việc làm thế nào để gắn kết các bên liên quan.</p>
+
+<h5>13.2.1.2 KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN)</h5>
+<p>Mô tả trong Phần 4.2.3.1. Các thành phần của kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Kế hoạch quản lý nguồn lực (Resource management plan).</strong> Mô tả ở Phần 9.1.3.1. Kế hoạch quản lý nguồn lực có thể chứa các thông tin liên quan đến các vai trò và trách nhiệm của nhóm dự án và các bên liên quan khác được liệt kê ở trong sổ đăng ký các bên liên quan.</li>
+<li><strong>Kế hoạch quản lý truyền thông (Communications management plan).</strong> Mô tả ở Phần 10.1.3.1. Các chiến lược truyền thông dùng để quản lý các bên liên quan và các kế hoạch triển khai của chúng vừa là đầu vào, đồng thời cũng vừa là người tiếp nhận thông tin từ các quy trình nằm trong Quản lý Các bên liên quan của Dự án.</li>
+<li><strong>Kế hoạch quản lý rủi ro (Risk management plan).</strong> Mô tả ở Phần 11.1.3.1. Kế hoạch quản lý rủi ro có thể chứa các thông tin về ngưỡng rủi ro hoặc thái độ đối với rủi ro có thể hỗ trợ cho quá trình lựa chọn các phương án kết hợp tối ưu dành cho chiến lược gắn kết các bên liên quan.</li>
+</ul>
+
+<h5>13.2.1.3 TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS)</h5>
+<p>Tài liệu dự án có thể được xem xét như là đầu vào cho quy trình này, đặc biệt là sau khi quá trình lập kế hoạch ban đầu (initial planning) đã được diễn ra, bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Sổ ghi nhận giả định (Assumption log).</strong> Mô tả ở Phần 4.1.3.2. Sổ ghi nhận giả định chứa thông tin về các giả định và ràng buộc, và nó có thể được liên kết đến từng bên liên quan cụ thể.</li>
+<li><strong>Sổ ghi nhận thay đổi (Change log).</strong> Mô tả ở Phần 4.6.3.3. Sổ ghi nhận thay đổi chứa các thông tin về những thay đổi so với phạm vi ban đầu của dự án. Nó thường liên kết đến các bên liên quan cụ thể bởi vì họ có thể rơi vào nhóm người đã yêu cầu các thay đổi nhất định, nhóm người đưa ra các quyết định về yêu cầu thay đổi, hoặc nhóm người bị ảnh hưởng bởi việc thực thi của các thay đổi đã được phê duyệt.</li>
+<li><strong>Sổ ghi nhận vấn đề (Issue log).</strong> Mô tả ở Phần 4.3.3.3. Quản lý và giải quyết các vấn đề được nêu trong sổ ghi nhận vấn đề sẽ đòi hỏi các giao tiếp truyền thông bổ sung đối với các bên liên quan bị ảnh hưởng.</li>
+<li><strong>Tiến độ dự án (Project schedule).</strong> Mô tả ở Phần 6.5.3.2. Lịch trình dự án chứa các hoạt động có thể được liên kết đến các bên liên quan cụ thể dưới danh nghĩa là người làm chủ (owners) hoặc là người thực thi (executors) nhiệm vụ.</li>
+<li><strong>Sổ đăng ký rủi ro (Risk register).</strong> Mô tả ở Phần 11.2.3.1. Sổ đăng ký rủi ro bao gồm các rủi ro đã được nhận diện của dự án và thường liên kết chúng với các bên liên quan cụ thể dưới vai trò là các người chủ sở hữu rủi ro hoặc những người chịu tác động của rủi ro.</li>
+<li><strong>Sổ đăng ký các bên liên quan (Stakeholder register).</strong> Mô tả ở Phần 13.1.3.1. Sổ đăng ký các bên liên quan cung cấp một danh sách các bên liên quan của dự án, bao gồm cả các dữ liệu phân loại bổ sung và các thông tin khác.</li>
+</ul>
+
+<h5>13.2.1.4 THỎA THUẬN (AGREEMENTS)</h5>
+<p>Mô tả trong Phần 12.2.3.2. Khi lên kế hoạch cho sự tham gia/gắn kết của các nhà thầu và các nhà cung cấp, việc phối hợp thường liên quan đến việc phải làm việc với nhóm mua sắm/hợp đồng bên trong tổ chức để đảm bảo rằng các nhà thầu và nhà cung cấp sẽ được quản lý một cách hiệu quả.</p>
+
+<h5>13.2.1.5 YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP (ENTERPRISE ENVIRONMENTAL FACTORS)</h5>
+<p>Các yếu tố môi trường doanh nghiệp có thể ảnh hưởng đến quy trình Lập kế hoạch Gắn kết Các bên liên quan bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li>Văn hóa tổ chức, môi trường chính trị, và khuôn khổ quản trị của tổ chức;</li>
+</ul>
+<ul class="pmbok check">
+<li>Các chính sách quản lý hành chính nhân sự;</li>
+<li>Khẩu vị rủi ro của các bên liên quan;</li>
+<li>Các kênh truyền thông đã được thiết lập;</li>
+<li>Các xu hướng, thực tiễn, hoặc các thói quen mang tính toàn cầu, khu vực hoặc địa phương; và</li>
+<li>Sự phân bổ địa lý của các cơ sở vật chất và tài nguyên.</li>
+</ul>
+
+<h5>13.2.1.6 TÀI SẢN QUY TRÌNH TỔ CHỨC (ORGANIZATIONAL PROCESS ASSETS)</h5>
+<p>Các tài sản quy trình tổ chức có thể ảnh hưởng đến quá trình Lập Kế hoạch Gắn kết Các bên liên quan bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Các chính sách và thủ tục của công ty về phương tiện truyền thông xã hội, đạo đức, và bảo mật;</li>
+<li>Các chính sách và thủ tục của công ty cho việc quản lý vấn đề, rủi ro, thay đổi, và quản lý dữ liệu;</li>
+<li>Các yêu cầu truyền thông của tổ chức;</li>
+<li>Các hướng dẫn tiêu chuẩn hóa về việc phát triển, trao đổi, lưu trữ, và truy xuất thông tin;</li>
+<li>Kho lưu trữ các bài học kinh nghiệm chứa thông tin về các sở thích, các hành động, và sự tham gia của các bên liên quan; và</li>
+<li>Các công cụ phần mềm cần thiết nhằm hỗ trợ cho quá trình gắn kết các bên liên quan một cách hiệu quả.</li>
+</ul>
+
+<h4>13.2.2 LẬP KẾ HOẠCH GẮN KẾT CÁC BÊN LIÊN QUAN: CÔNG CỤ VÀ KỸ THUẬT (TOOLS AND TECHNIQUES)</h4>
+
+<h5>13.2.2.1 ĐÁNH GIÁ CỦA CHUYÊN GIA (EXPERT JUDGMENT)</h5>
+<p>Mô tả ở Phần 4.1.2.1. Chuyên môn nên được tham khảo từ các cá nhân hoặc các nhóm có kiến thức chuyên môn hoặc được đào tạo trong các chủ đề sau:</p>
+<ul class="pmbok check">
+<li>Hiểu biết về chính trị và các cấu trúc quyền lực bên trong và bên ngoài tổ chức,</li>
+</ul>
+<ul class="pmbok">
+<li>Môi trường và văn hóa của tổ chức và bên ngoài tổ chức,</li>
+<li>Các phương tiện và chiến lược giao tiếp truyền thông, và</li>
+<li>Các kỹ thuật phân tích và đánh giá sẽ được sử dụng đối với các quy trình gắn kết bên liên quan.</li>
+</ul>
+<ul class="pmbok">
+<li>Những hiểu biết từ các dự án trước đây về các đặc điểm của các bên liên quan và các nhóm bên liên quan cũng như các tổ chức có tham gia vào dự án hiện tại mà có thể đã từng tham gia vào các dự án tương tự trước đó.</li>
+</ul>
+
+<h5>13.2.2.2 THU THẬP DỮ LIỆU (DATA GATHERING)</h5>
+<p>Một kỹ thuật thu thập dữ liệu có thể được sử dụng trong quá trình này bao gồm nhưng không giới hạn ở việc so sánh chuẩn (benchmarking). Mô tả trong Phần 8.1.2.2. Kết quả của quy trình phân tích các bên liên quan sẽ được đem so sánh với thông tin từ các tổ chức khác hoặc các dự án khác được coi là đạt đẳng cấp thế giới (world class).</p>
+
+<h5>13.2.2.3 PHÂN TÍCH DỮ LIỆU (DATA ANALYSIS)</h5>
+<p>Các kỹ thuật phân tích dữ liệu có thể được sử dụng trong quá trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Phân tích giả định và ràng buộc (Assumption and constraint analysis).</strong> Mô tả ở Phần 11.2.2.3. Việc phân tích các giả định và các ràng buộc ở thời điểm hiện tại có thể được tiến hành nhằm mục đích định hình (tailor) nên các chiến lược gắn kết phù hợp.</li>
+<li><strong>Phân tích nguyên nhân gốc rễ (Root cause analysis).</strong> Mô tả ở Phần 8.2.2.2. Phân tích nguyên nhân gốc rễ nhận diện ra các lý do cơ bản (underlying reasons) cho mức độ hỗ trợ (level of support) của các bên liên quan của dự án, nhằm mục đích chọn lựa được một chiến lược phù hợp nhất để gia tăng sự gắn kết/mức độ tham gia của họ.</li>
+</ul>
+
+<h5>13.2.2.4 RA QUYẾT ĐỊNH (DECISION MAKING)</h5>
+<p>Các kỹ thuật ra quyết định có thể được sử dụng cho quy trình này bao gồm nhưng không giới hạn ở việc ưu tiên/xếp hạng (prioritization/ranking). Các yêu cầu của các bên liên quan cần phải được ưu tiên và xếp hạng, cũng giống như đối với chính bản thân các bên liên quan đó vậy. Các bên liên quan mang lại sự quan tâm (interest) lớn nhất cùng với sức ảnh hưởng (influence) cao nhất thường sẽ được ưu tiên xếp vào vị trí cao nhất trên danh sách.</p>
+
+<h5>13.2.2.5 BIỂU DIỄN DỮ LIỆU (DATA REPRESENTATION)</h5>
+<p>Các kỹ thuật biểu diễn dữ liệu có thể được sử dụng trong quá trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Sơ đồ tư duy (Mind mapping).</strong> Mô tả ở Phần 5.2.2.3. Sơ đồ tư duy được sử dụng để tổ chức về mặt hình ảnh (visually) những thông tin liên quan đến các bên liên quan cũng như các mối quan hệ của họ với nhau và với tổ chức.</li>
+<li><strong>Ma trận đánh giá sự gắn kết của bên liên quan (Stakeholder engagement assessment matrix).</strong> Một ma trận đánh giá mức độ tham gia/gắn kết của các bên liên quan dùng để hỗ trợ so sánh giữa các cấp độ tham gia hiện tại của các bên liên quan so với các cấp độ tham gia mong muốn cần phải đạt được để phân phối/thành công dự án. Một cách để phân loại mức độ tham gia của các bên liên quan được trình bày ở Hình 13-6. Mức độ gắn kết của các bên liên quan có thể được phân loại như sau:
+  <ul class="pmbok check">
+    <li><strong>Không nhận thức (Unaware).</strong> Không nhận thức được về sự tồn tại của dự án và các tác động tiềm tàng của nó.</li>
+  </ul>
+  <ul class="pmbok dash">
+    <li><strong>Chống đối (Resistant).</strong> Nhận thức được về dự án và các tác động tiềm tàng của nó nhưng đang cưỡng lại/chống đối bất kỳ một sự thay đổi nào có thể xảy ra từ kết quả hoặc công việc của dự án. Những bên liên quan này sẽ có thái độ không ủng hộ đối với kết quả và công việc của dự án.</li>
+    <li><strong>Trung lập (Neutral).</strong> Nhận thức được dự án, nhưng không ủng hộ cũng không chống đối.</li>
+    <li><strong>Ủng hộ (Supportive).</strong> Nhận thức được dự án và các tác động tiềm tàng của nó, đồng thời ủng hộ công việc và kết quả của dự án.</li>
+    <li><strong>Dẫn dắt (Leading).</strong> Nhận thức được dự án và các tác động tiềm tàng của nó, và đang chủ động tham gia/gắn kết để đảm bảo rằng dự án sẽ thành công.</li>
+  </ul>
+</li>
+</ul>
+<p>Trong Hình 13-6, chữ C đại diện cho cấp độ gắn kết hiện tại (current) của mỗi một bên liên quan và D dùng để chỉ ra cấp độ mà nhóm dự án đã đánh giá là cực kỳ thiết yếu đối với việc đảm bảo sự thành công cho dự án (desired - mong muốn). Khoảng cách (gap) giữa cấp độ hiện tại (current) và cấp độ mong muốn (desired) đối với mỗi một bên liên quan sẽ là yếu tố dùng để định hướng các mức độ giao tiếp truyền thông cần thiết để gắn kết các bên liên quan một cách hiệu quả. Việc thu hẹp được khoảng cách giữa hiện tại và mong đợi này chính là một yếu tố thiết yếu của quy trình giám sát sự gắn kết của bên liên quan.</p>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <td style='text-align: center; font-weight: bold;'>Bên liên quan (Stakeholder)</td>
+    <td style='text-align: center; font-weight: bold;'>Không nhận thức (Unaware)</td>
+    <td style='text-align: center; font-weight: bold;'>Chống đối (Resistant)</td>
+    <td style='text-align: center; font-weight: bold;'>Trung lập (Neutral)</td>
+    <td style='text-align: center; font-weight: bold;'>Ủng hộ (Supportive)</td>
+    <td style='text-align: center; font-weight: bold;'>Dẫn dắt (Leading)</td>
+  </tr>
+  <tr>
+    <td style='text-align: center;'>Bên liên quan 1</td>
+    <td style='text-align: center;'>C</td>
+    <td style='text-align: center;'></td>
+    <td style='text-align: center;'></td>
+    <td style='text-align: center;'>D</td>
+    <td style='text-align: center;'></td>
+  </tr>
+  <tr>
+    <td style='text-align: center;'>Bên liên quan 2</td>
+    <td style='text-align: center;'></td>
+    <td style='text-align: center;'></td>
+    <td style='text-align: center;'>C</td>
+    <td style='text-align: center;'>D</td>
+    <td style='text-align: center;'></td>
+  </tr>
+  <tr>
+    <td style='text-align: center;'>Bên liên quan 3</td>
+    <td style='text-align: center;'></td>
+    <td style='text-align: center;'></td>
+    <td style='text-align: center;'></td>
+    <td style='text-align: center;'>D C</td>
+    <td style='text-align: center;'></td>
+  </tr>
+</table>
+</div>
+<p class="figure-caption">Hình 13-6. Ma trận Đánh giá Sự gắn kết Các bên liên quan</p>
+
+<h5>13.2.2.6 CÁC CUỘC HỌP (MEETINGS)</h5>
+<p>Các cuộc họp được sử dụng để thảo luận và phân tích các dữ liệu đầu vào của quy trình lập kế hoạch gắn kết bên liên quan, và để phát triển một bản kế hoạch gắn kết bên liên quan mạnh mẽ, hợp lý.</p>
+
+<h4>13.2.3 LẬP KẾ HOẠCH GẮN KẾT CÁC BÊN LIÊN QUAN: ĐẦU RA (OUTPUTS)</h4>
+
+<h5>13.2.3.1 KẾ HOẠCH GẮN KẾT CÁC BÊN LIÊN QUAN (STAKEHOLDER ENGAGEMENT PLAN)</h5>
+<p>Kế hoạch gắn kết các bên liên quan là một bộ phận (component) cấu thành của kế hoạch quản lý dự án giúp nhận diện các chiến lược và hành động cần thiết để thúc đẩy sự gắn kết làm việc hiệu quả của các bên liên quan vào trong quá trình ra quyết định và quá trình thực thi. Kế hoạch này có thể mang hình thức chính thức hoặc phi chính thức, và có thể rất chi tiết hoặc được đóng khung mang tính bao quát rộng, tùy thuộc vào các nhu cầu của dự án và các kỳ vọng của những bên liên quan.</p>
+
+<p>Kế hoạch gắn kết các bên liên quan có thể bao gồm nhưng không giới hạn ở các chiến lược cụ thể hoặc các phương pháp tiếp cận chuyên biệt dùng để làm việc với các cá nhân hoặc các nhóm các bên liên quan.</p>
+
+<hr>
+
+<h3 id="s13-3">13.3 QUẢN LÝ SỰ GẮN KẾT CÁC BÊN LIÊN QUAN (MANAGE STAKEHOLDER ENGAGEMENT)</h3>
+<p>Quản lý Sự gắn kết Các bên liên quan là quy trình giao tiếp và làm việc với các bên liên quan để đáp ứng các nhu cầu và kỳ vọng của họ, giải quyết các vấn đề, và thúc đẩy sự tham gia gắn kết phù hợp của bên liên quan. Lợi ích chính của quá trình này là nó cho phép giám đốc dự án có thể gia tăng sự ủng hộ và giảm thiểu tối đa các sự chống đối từ phía các bên liên quan. Quá trình này được thực hiện trong suốt dự án. Đầu vào, công cụ và kỹ thuật, và đầu ra của quá trình này được phác họa trong Hình 13-7. Hình 13-8 miêu tả sơ đồ dòng dữ liệu cho quy trình này.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//a00f76ef-e8c7-45d0-84c5-f987dd602025/markdown_1/imgs/img_in_image_box_216_402_964_832.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A10Z%2F-1%2F%2F58da6f23e75a6c38260a9509df65fbc9a80dcceb709536eb8e56ca9c222ff47c" alt="Image" width="60%" /></div></div>
+<p class="figure-caption">Hình 13-7. Quản lý Sự gắn kết Các bên liên quan: Đầu vào, Công cụ & Kỹ thuật, và Đầu ra</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//a00f76ef-e8c7-45d0-84c5-f987dd602025/markdown_2/imgs/img_in_image_box_199_156_1027_707.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A07Z%2F-1%2F%2F5bed505c0b71fd74faaa541664bcc9a4a00421c42bfbf20e7b16ddee4e46f9b5" alt="Image" width="67%" /></div></div>
+<p class="figure-caption">Hình 13-8. Quản lý Sự gắn kết Các bên liên quan: Sơ đồ luồng dữ liệu</p>
+
+<p>Quản lý Sự gắn kết Các bên liên quan liên quan đến các hoạt động như:</p>
+<ul class="pmbok">
+<li>Gắn kết với các bên liên quan ở các giai đoạn thích hợp của dự án nhằm thu được, xác nhận, hoặc duy trì (maintain) cam kết không ngừng (continued commitment) của họ đối với sự thành công của dự án;</li>
+<li>Quản lý các kỳ vọng của bên liên quan thông qua việc đàm phán và giao tiếp truyền thông;</li>
+<li>Xử lý bất kỳ các rủi ro hoặc các mối lo ngại tiềm ẩn nào có liên quan đến việc quản lý bên liên quan và dự đoán được các vấn đề có thể sẽ bị dấy lên trong tương lai bởi các bên liên quan; và</li>
+<li>Làm rõ và giải quyết các vấn đề đã được nhận diện ra.</li>
+</ul>
+
+<p>Việc quản lý sự tham gia của bên liên quan giúp đảm bảo rằng các bên liên quan sẽ hiểu rõ về các mục tiêu, mục đích, lợi ích của dự án, và cả những rủi ro đối với dự án, cũng như việc sự đóng góp của họ sẽ nâng cao thành công của dự án như thế nào.</p>
+
+<h4>13.3.1 QUẢN LÝ SỰ GẮN KẾT CÁC BÊN LIÊN QUAN: ĐẦU VÀO (INPUTS)</h4>
+
+<h5>13.3.1.1 KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN)</h5>
+<p>Mô tả trong Phần 4.2.3.1. Các thành phần của kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Kế hoạch quản lý truyền thông (Communications management plan).</strong> Mô tả ở Phần 10.1.3.1. Kế hoạch quản lý truyền thông mô tả các phương pháp, các định dạng, và các công nghệ sẽ được sử dụng để giao tiếp truyền thông với các bên liên quan.</li>
+<li><strong>Kế hoạch quản lý rủi ro (Risk management plan).</strong> Mô tả ở Phần 11.1.3.1. Kế hoạch quản lý rủi ro mô tả các danh mục rủi ro, khẩu vị rủi ro, và các định dạng báo cáo có thể được sử dụng để quản lý sự tham gia của bên liên quan.</li>
+<li><strong>Kế hoạch gắn kết các bên liên quan (Stakeholder engagement plan).</strong> Mô tả ở Phần 13.2.3.1. Kế hoạch gắn kết các bên liên quan đưa ra hướng dẫn và cung cấp thông tin về việc làm thế nào để quản lý các kỳ vọng của bên liên quan.</li>
+<li><strong>Kế hoạch quản lý thay đổi (Change management plan).</strong> Mô tả ở Phần 4.2.3.1. Kế hoạch quản lý thay đổi mô tả quy trình để nộp, đánh giá và triển khai các thay đổi đối với dự án.</li>
+</ul>
+
+<h5>13.3.1.2 TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS)</h5>
+<p>Tài liệu dự án có thể được coi là đầu vào cho quy trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Sổ ghi nhận thay đổi (Change log).</strong> Mô tả ở Phần 4.6.3.3. Các yêu cầu thay đổi và tình trạng của chúng sẽ được lập tài liệu vào bên trong sổ ghi nhận thay đổi và sẽ được truyền đạt tới các bên liên quan phù hợp.</li>
+<li><strong>Sổ ghi nhận vấn đề (Issue log).</strong> Mô tả ở Phần 4.3.3.3. Bất kỳ mối quan tâm nào của dự án hoặc của bên liên quan sẽ được ghi lại trong sổ ghi nhận vấn đề, cùng với đó là bất kỳ một công việc hành động (action items) nào được chỉ định để xử lý vấn đề đó.</li>
+<li><strong>Sổ đăng ký bài học kinh nghiệm (Lessons learned register).</strong> Mô tả ở Phần 4.4.3.1. Những bài học đã học được từ sớm trong dự án có liên quan đến việc quản lý sự gắn kết các bên liên quan có thể được áp dụng ở các giai đoạn sau trong dự án nhằm cải thiện tính hiệu quả và năng suất của quy trình này.</li>
+<li><strong>Sổ đăng ký các bên liên quan (Stakeholder register).</strong> Mô tả ở Phần 13.1.3.1. Sổ đăng ký các bên liên quan cung cấp danh sách các bên liên quan của dự án và mọi thông tin cần thiết để có thể thực thi bản kế hoạch gắn kết các bên liên quan.</li>
+</ul>
+
+<h5>13.3.1.3 YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP (ENTERPRISE ENVIRONMENTAL FACTORS)</h5>
+<p>Các yếu tố môi trường doanh nghiệp có thể ảnh hưởng đến quá trình Quản lý Sự gắn kết Các bên liên quan bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li>Văn hóa tổ chức, môi trường chính trị, và cấu trúc quản trị của tổ chức;</li>
+</ul>
+<ul class="pmbok check">
+<li>Các chính sách quản lý hành chính nhân sự;</li>
+<li>Ngưỡng rủi ro của các bên liên quan;</li>
+<li>Các kênh truyền thông đã được thiết lập;</li>
+<li>Các xu hướng, thực tiễn, hoặc thói quen toàn cầu, khu vực, hoặc địa phương; và</li>
+<li>Sự phân bổ địa lý của cơ sở hạ tầng và nguồn lực.</li>
+</ul>
+
+<h5>13.3.1.4 TÀI SẢN QUY TRÌNH TỔ CHỨC (ORGANIZATIONAL PROCESS ASSETS)</h5>
+<p>Tài sản quy trình tổ chức có thể ảnh hưởng đến quá trình Quản lý Sự gắn kết Các bên liên quan bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Các chính sách và thủ tục của công ty cho phương tiện truyền thông xã hội, đạo đức, và bảo mật;</li>
+<li>Các chính sách và thủ tục của công ty cho việc quản lý vấn đề, rủi ro, thay đổi, và quản lý dữ liệu;</li>
+<li>Các yêu cầu truyền thông của tổ chức;</li>
+<li>Các hướng dẫn tiêu chuẩn hóa về việc phát triển, trao đổi, lưu trữ, và truy xuất thông tin; và</li>
+<li>Thông tin lịch sử từ các dự án tương tự trước đó.</li>
+</ul>
+
+<h4>13.3.2 QUẢN LÝ SỰ GẮN KẾT CÁC BÊN LIÊN QUAN: CÔNG CỤ VÀ KỸ THUẬT (TOOLS AND TECHNIQUES)</h4>
+
+<h5>13.3.2.1 ĐÁNH GIÁ CỦA CHUYÊN GIA (EXPERT JUDGMENT)</h5>
+<p>Mô tả trong Phần 4.1.2.1. Chuyên môn nên được lấy ý kiến từ các cá nhân hoặc các nhóm có kiến thức chuyên môn hoặc được đào tạo trong các chủ đề sau:</p>
+<ul class="pmbok check">
+<li>Hiểu biết về chính trị và các cấu trúc quyền lực bên trong và bên ngoài tổ chức;</li>
+</ul>
+<ul class="pmbok">
+<li>Môi trường và văn hóa của tổ chức và bên ngoài tổ chức;</li>
+<li>Các kỹ thuật phân tích và đánh giá sẽ được sử dụng đối với các quá trình gắn kết bên liên quan;</li>
+</ul>
+<ul class="pmbok">
+<li>Các chiến lược và phương pháp giao tiếp truyền thông;</li>
+<li>Đặc điểm của các bên liên quan, của các nhóm bên liên quan, và của các tổ chức có tham gia vào dự án hiện tại mà có thể đã từng tham gia vào các dự án trước đó; và</li>
+</ul>
+<ul class="pmbok">
+<li>Quản lý yêu cầu, quản lý nhà cung cấp, và quản lý thay đổi.</li>
+</ul>
+
+<h5>13.3.2.2 KỸ NĂNG TRUYỀN THÔNG (COMMUNICATION SKILLS)</h5>
+<p>Các phương pháp truyền thông/giao tiếp đã được xác định cho mỗi bên liên quan nằm trong bản kế hoạch quản lý truyền thông sẽ được mang ra áp dụng trong suốt quá trình quản lý gắn kết bên liên quan. Nhóm quản lý dự án sử dụng các phản hồi (feedback) để hỗ trợ quá trình thấu hiểu về những phản ứng của bên liên quan đối với các hoạt động quản lý dự án khác nhau và những quyết định then chốt. Phản hồi có thể được thu thập theo những cách sau, nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Các cuộc đối thoại/trò chuyện; cả chính thức và phi chính thức.</li>
+</ul>
+<ul class="pmbok">
+<li>Việc nhận diện và quá trình thảo luận vấn đề.</li>
+</ul>
+<ul class="pmbok check">
+<li>Các cuộc họp.</li>
+<li>Báo cáo tiến độ, và</li>
+<li>Khảo sát.</li>
+</ul>
+
+<h5>13.3.2.3 KỸ NĂNG LIÊN CÁ NHÂN VÀ NHÓM (INTERPERSONAL AND TEAM SKILLS)</h5>
+<p>Kỹ năng liên cá nhân và nhóm có thể được sử dụng trong quy trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Quản lý xung đột (Conflict management).</strong> Mô tả ở Phần 9.5.2.1. Giám đốc dự án cần đảm bảo rằng các xung đột được giải quyết một cách kịp thời.</li>
+<li><strong>Nhận thức về văn hóa (Cultural awareness).</strong> Mô tả ở Phần 10.1.2.6. Nhận thức văn hóa được dùng để giúp giám đốc dự án và nhóm dự án có thể giao tiếp hiệu quả thông qua việc xem xét cẩn trọng đến các khác biệt về văn hóa cũng như yêu cầu của các bên liên quan.</li>
+<li><strong>Đàm phán (Negotiation).</strong> Mô tả ở Phần 12.2.2.5. Đàm phán được sử dụng để đạt được sự ủng hộ hoặc thỏa thuận nhằm hỗ trợ công việc dự án hay kết quả của nó và để giải quyết các xung đột bên trong nhóm dự án hoặc với các bên liên quan khác.</li>
+<li><strong>Quan sát/trò chuyện (Observation/conversation).</strong> Mô tả ở Phần 5.2.2.6. Việc quan sát/trò chuyện được sử dụng nhằm giữ liên lạc với công việc và duy trì sự nhận biết về thái độ của các thành viên trong nhóm dự án và các bên liên quan khác.</li>
+<li><strong>Nhận thức chính trị (Political awareness).</strong> Mô tả ở Phần 10.1.2.6. Nhận thức chính trị đạt được nhờ vào việc thấu hiểu các mối quan hệ quyền lực ở bên trong và xung quanh dự án.</li>
+</ul>
+
+<h5>13.3.2.4 NGUYÊN TẮC CƠ BẢN CỦA NHÓM (GROUND RULES)</h5>
+<p>Các nguyên tắc cơ bản (ground rules), được định nghĩa trong điều lệ nhóm (team charter) sẽ thiết lập các hành vi dự kiến dành cho các thành viên nhóm dự án, cũng như cho các bên liên quan khác, liên quan đến vấn đề gắn kết bên liên quan.</p>
+
+<h5>13.3.2.5 CÁC CUỘC HỌP (MEETINGS)</h5>
+<p>Mô tả ở Phần 10.1.2.8. Các cuộc họp được sử dụng để thảo luận và giải quyết bất kỳ một vấn đề (issue) hay một mối quan tâm nào liên quan đến sự gắn kết các bên liên quan. Các loại hình cuộc họp mang lại lợi ích trong quá trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Ra quyết định (Decision making).</li>
+</ul>
+<ul class="pmbok">
+<li>Giải quyết vấn đề (Issue resolution).</li>
+</ul>
+<ul class="pmbok check">
+<li>Họp tổng kết bài học kinh nghiệm và họp cải tiến (Lessons learned and retrospectives).</li>
+<li>Họp khởi động dự án (Project kick-off).</li>
+<li>Lập kế hoạch Sprint (Sprint planning), và</li>
+<li>Họp cập nhật trạng thái (Status updates).</li>
+</ul>
+
+<h4>13.3.3 QUẢN LÝ SỰ GẮN KẾT CÁC BÊN LIÊN QUAN: ĐẦU RA (OUTPUTS)</h4>
+
+<h5>13.3.3.1 YÊU CẦU THAY ĐỔI (CHANGE REQUESTS)</h5>
+<p>Mô tả ở Phần 4.3.3.4. Như một kết quả của quá trình quản lý sự gắn kết của bên liên quan, các sự thay đổi đối với phạm vi dự án hoặc phạm vi sản phẩm có thể sẽ nảy sinh. Tất cả các yêu cầu thay đổi đều được xử lý để mang ra xem xét và quyết định thông qua quy trình Thực hiện Kiểm soát Thay đổi Tích hợp (Perform Integrated Change Control) (Phần 4.6).</p>
+
+<h5>13.3.3.2 CẬP NHẬT KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN UPDATES)</h5>
+<p>Bất kỳ thay đổi nào đối với kế hoạch quản lý dự án đều phải đi qua quá trình kiểm soát thay đổi của tổ chức thông qua một yêu cầu thay đổi (change request). Các thành phần của kế hoạch quản lý dự án có thể cần phải có một yêu cầu thay đổi để cập nhật kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Kế hoạch quản lý truyền thông (Communications management plan).</strong> Mô tả trong Phần 10.1.3.1. Kế hoạch quản lý truyền thông được cập nhật để phản ánh những yêu cầu về truyền thông mới hoặc đã bị thay đổi của các bên liên quan.</li>
+<li><strong>Kế hoạch gắn kết các bên liên quan (Stakeholder engagement plan).</strong> Mô tả trong Phần 13.2.3.1. Kế hoạch gắn kết các bên liên quan sẽ được cập nhật để phản ánh các chiến lược quản lý mới hoặc đã được thay đổi nhằm mục đích gắn kết các bên liên quan một cách hiệu quả.</li>
+</ul>
+
+<h5>13.3.3.3 CẬP NHẬT TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS UPDATES)</h5>
+<p>Tài liệu dự án có thể được cập nhật như một kết quả của quá trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Sổ ghi nhận thay đổi (Change log).</strong> Mô tả ở Phần 4.6.3.3. Sổ ghi nhận thay đổi có thể được cập nhật dựa trên bất kỳ yêu cầu thay đổi nào.</li>
+<li><strong>Sổ ghi nhận vấn đề (Issue log).</strong> Mô tả ở Phần 4.3.3.3. Sổ ghi nhận vấn đề có thể được cập nhật nhằm phản ánh một sự cập nhật đối với, hoặc sự phát triển của một mục thông tin/bản ghi mới (entry) trong sổ.</li>
+<li><strong>Sổ đăng ký bài học kinh nghiệm (Lessons learned register).</strong> Mô tả ở Phần 4.4.3.1. Sổ đăng ký bài học kinh nghiệm được cập nhật với các phương pháp tiếp cận hiệu quả hoặc không hiệu quả trong việc quản lý sự tham gia của bên liên quan để thông tin đó có thể được sử dụng ở trong dự án hiện tại hoặc tại các dự án trong tương lai.</li>
+<li><strong>Sổ đăng ký các bên liên quan (Stakeholder register).</strong> Mô tả ở Phần 13.1.3.1. Sổ đăng ký các bên liên quan có thể được cập nhật dựa trên thông tin mới được cung cấp đến cho các bên liên quan về các vấn đề đã được giải quyết, các thay đổi đã được phê duyệt, và trạng thái chung của dự án.</li>
+</ul>
+
+<hr>
+
+<h3 id="s13-4">13.4 GIÁM SÁT SỰ GẮN KẾT CÁC BÊN LIÊN QUAN (MONITOR STAKEHOLDER ENGAGEMENT)</h3>
+<p>Giám sát Sự gắn kết Các bên liên quan là quá trình giám sát các mối quan hệ của các bên liên quan dự án và điều chỉnh các chiến lược để gắn kết các bên liên quan thông qua việc sửa đổi các chiến lược và các kế hoạch gắn kết. Lợi ích chính của quá trình này là nó duy trì hoặc gia tăng mức độ hiệu quả và năng suất của các hoạt động gắn kết các bên liên quan trong bối cảnh khi dự án phát triển và môi trường của dự án dần có sự thay đổi. Quá trình này được thực hiện trong suốt dự án. Đầu vào, công cụ và kỹ thuật, và đầu ra của quá trình này được phác họa ở Hình 13-9. Hình 13-10 miêu tả sơ đồ dòng dữ liệu của quy trình này.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//db287c86-7aeb-49bc-9140-3fe448032265/markdown_3/imgs/img_in_image_box_216_401_964_850.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A04Z%2F-1%2F%2Ff93697616d7024c5853ce0393b42e2c62ec59af0a610dda84ef0b3cdb75e4df4" alt="Image" width="61%" /></div></div>
+<p class="figure-caption">Hình 13-9. Giám sát Sự gắn kết Các bên liên quan: Đầu vào, Công cụ & Kỹ thuật, và Đầu ra</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//db287c86-7aeb-49bc-9140-3fe448032265/markdown_4/imgs/img_in_image_box_205_161_1028_857.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A05Z%2F-1%2F%2Ff0e83b67089f420b1f7f7016cc2b5ea45cc0c6105e33b43b9fae5807484deeb9" alt="Image" width="67%" /></div></div>
+<p class="figure-caption">Hình 13-10. Giám sát Sự gắn kết Các bên liên quan: Sơ đồ luồng dữ liệu</p>
+
+<h5>13.4.1 GIÁM SÁT SỰ GẮN KẾT CÁC BÊN LIÊN QUAN: ĐẦU VÀO (INPUTS)</h5>
+
+<h5>13.4.1.1 KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN)</h5>
+<p>Mô tả trong Phần 4.2.3.1. Các thành phần của kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Kế hoạch quản lý nguồn lực (Resource management plan).</strong> Mô tả ở Phần 9.1.3.1. Kế hoạch quản lý nguồn lực nhận diện các phương pháp quản lý các thành viên trong nhóm.</li>
+<li><strong>Kế hoạch quản lý truyền thông (Communications management plan).</strong> Mô tả ở Phần 10.1.3.1. Kế hoạch quản lý truyền thông mô tả các bản kế hoạch và chiến lược giao tiếp/truyền thông với các bên liên quan của dự án.</li>
+<li><strong>Kế hoạch gắn kết các bên liên quan (Stakeholder engagement plan).</strong> Mô tả ở Phần 13.2.3.1. Xác định bản kế hoạch để quản lý các nhu cầu và các kỳ vọng của bên liên quan.</li>
+</ul>
+
+<h5>13.4.1.2 TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS)</h5>
+<p>Tài liệu dự án có thể được coi là đầu vào cho quy trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Sổ ghi nhận vấn đề (Issue log).</strong> Mô tả ở Phần 4.3.3.3. Sổ ghi nhận vấn đề ghi lại tất cả các vấn đề đã biết liên quan đến dự án và các bên liên quan.</li>
+<li><strong>Sổ đăng ký bài học kinh nghiệm (Lessons learned register).</strong> Mô tả ở Phần 4.4.3.1. Những bài học đã rút ra từ sớm ở trong dự án có thể được áp dụng trong các giai đoạn sau của dự án để cải thiện tính hiệu quả và năng suất của việc gắn kết bên liên quan.</li>
+<li><strong>Các truyền thông dự án (Project communications).</strong> Mô tả ở Phần 10.2.3.1. Những tài liệu này bao gồm các văn bản truyền thông dự án đã được phân phối/phát cho các bên liên quan giống như những gì đã được định nghĩa trong kế hoạch quản lý truyền thông và kế hoạch gắn kết các bên liên quan.</li>
+<li><strong>Sổ đăng ký rủi ro (Risk register).</strong> Mô tả ở Phần 11.2.3.1. Sổ đăng ký rủi ro chứa các rủi ro đã được nhận diện đối với dự án, bao gồm cả những rủi ro liên quan đến sự tham gia và sự tương tác (interactions) của các bên liên quan, cách phân loại chúng, và một danh sách các sự phản hồi rủi ro (responses) tiềm năng.</li>
+<li><strong>Sổ đăng ký các bên liên quan (Stakeholder register).</strong> Mô tả ở Phần 13.1.3.1. Sổ đăng ký các bên liên quan chứa thông tin về các bên liên quan, bao gồm nhưng không giới hạn ở việc nhận diện bên liên quan, đánh giá, và phân loại họ.</li>
+</ul>
+
+<h5>13.4.1.3 DỮ LIỆU HIỆU SUẤT CÔNG VIỆC (WORK PERFORMANCE DATA)</h5>
+<p>Mô tả trong Phần 4.3.3.2. Dữ liệu hiệu suất công việc chứa dữ liệu về tình trạng của dự án chẳng hạn như các bên liên quan nào đang có thái độ ủng hộ đối với dự án, cũng như cấp độ (level) và loại hình tham gia (type of engagement) của họ.</p>
+
+<h5>13.4.1.4 YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP (ENTERPRISE ENVIRONMENTAL FACTORS)</h5>
+<p>Các yếu tố môi trường doanh nghiệp có thể ảnh hưởng đến quy trình Giám sát Sự gắn kết Các bên liên quan bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li>Văn hóa tổ chức, môi trường chính trị, và khuôn khổ quản trị của tổ chức;</li>
+</ul>
+<ul class="pmbok check">
+<li>Các chính sách quản lý hành chính nhân sự;</li>
+<li>Ngưỡng rủi ro của các bên liên quan;</li>
+<li>Các kênh truyền thông đã được thiết lập;</li>
+<li>Các xu hướng, thực tiễn, hoặc thói quen mang tính toàn cầu, khu vực, hoặc địa phương; và</li>
+</ul>
+<ul class="pmbok">
+<li>Sự phân bổ địa lý của các cơ sở vật chất và tài nguyên.</li>
+</ul>
+
+<h5>13.4.1.5 TÀI SẢN QUY TRÌNH TỔ CHỨC (ORGANIZATIONAL PROCESS ASSETS)</h5>
+<p>Các tài sản quy trình tổ chức có thể ảnh hưởng đến quá trình Giám sát Sự gắn kết Các bên liên quan bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Các chính sách và thủ tục của công ty cho phương tiện truyền thông xã hội, đạo đức, và bảo mật;</li>
+<li>Các chính sách và thủ tục của công ty cho việc quản lý vấn đề, rủi ro, thay đổi, và dữ liệu;</li>
+<li>Yêu cầu truyền thông của tổ chức;</li>
+<li>Các hướng dẫn tiêu chuẩn hóa về việc phát triển, trao đổi, lưu trữ, và truy xuất thông tin; và</li>
+<li>Thông tin lịch sử từ các dự án trước đây.</li>
+</ul>
+
+<h5>13.4.2 GIÁM SÁT SỰ GẮN KẾT CÁC BÊN LIÊN QUAN: CÔNG CỤ VÀ KỸ THUẬT (TOOLS AND TECHNIQUES)</h5>
+
+<h5>13.4.2.1 PHÂN TÍCH DỮ LIỆU (DATA ANALYSIS)</h5>
+<p>Các kỹ thuật phân tích dữ liệu có thể được sử dụng cho quy trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Phân tích các lựa chọn thay thế (Alternatives analysis).</strong> Mô tả ở Phần 9.2.2.5. Phân tích lựa chọn thay thế có thể được sử dụng để đánh giá các lựa chọn/phương án dùng để phản hồi lại các phương sai (variances) so với kết quả mong muốn của quá trình gắn kết các bên liên quan.</li>
+<li><strong>Phân tích nguyên nhân gốc rễ (Root cause analysis).</strong> Mô tả ở Phần 8.2.2.2. Một bài phân tích nguyên nhân gốc rễ có thể được sử dụng để xác định nguyên nhân cơ bản (underlying reason) tại sao mà sự gắn kết các bên liên quan lại đang không mang lại những hiệu ứng/tác dụng như dự kiến.</li>
+<li><strong>Phân tích các bên liên quan (Stakeholder analysis).</strong> Mô tả ở Phần 13.1.2.3. Phân tích các bên liên quan giúp xác định quan điểm/vị thế (position) của các nhóm và các cá nhân bên liên quan tại bất kỳ thời điểm cụ thể nào ở trong dự án.</li>
+</ul>
+
+<h5>13.4.2.2 RA QUYẾT ĐỊNH (DECISION MAKING)</h5>
+<p>Kỹ thuật ra quyết định có thể được sử dụng cho quá trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Phân tích quyết định đa tiêu chí (Multicriteria decision analysis).</strong> Mô tả ở Phần 8.1.2.4. Các tiêu chí cho sự gắn kết các bên liên quan thành công sẽ được ưu tiên và đánh trọng số để xác định được sự lựa chọn phù hợp nhất.</li>
+<li><strong>Bỏ phiếu (Voting).</strong> Mô tả ở Phần 5.2.2.4. Việc bỏ phiếu có thể được sử dụng để lựa chọn cách phản hồi (response) tốt nhất đối với một phương sai (variance) trong sự gắn kết các bên liên quan.</li>
+</ul>
+
+<h5>13.4.2.3 BIỂU DIỄN DỮ LIỆU (DATA REPRESENTATION)</h5>
+<p>Một kỹ thuật biểu diễn dữ liệu được sử dụng trong quy trình này bao gồm nhưng không giới hạn ở <strong>ma trận đánh giá sự gắn kết của bên liên quan (stakeholder engagement assessment matrix)</strong>. Mô tả trong Phần 13.2.2.3. Ma trận đánh giá sự gắn kết của các bên liên quan sẽ giám sát quá trình gắn kết các bên liên quan thông qua việc theo dõi các sự thay đổi ở trong cấp độ gắn kết đối với mỗi một bên liên quan.</p>
+
+<h5>13.4.2.4 KỸ NĂNG TRUYỀN THÔNG (COMMUNICATION SKILLS)</h5>
+<p>Các kỹ thuật truyền thông có thể được sử dụng cho quy trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Phản hồi (Feedback).</strong> Mô tả ở Phần 10.2.2.3. Các thông tin phản hồi được sử dụng để đảm bảo rằng các thông tin gửi cho các bên liên quan sẽ được đón nhận (received) và thấu hiểu (understood).</li>
+<li><strong>Bài thuyết trình (Presentations).</strong> Mô tả ở Phần 10.2.2.3. Các bài thuyết trình cung cấp thông tin một cách rõ ràng đến các bên liên quan.</li>
+</ul>
+
+<h5>13.4.2.5 KỸ NĂNG LIÊN CÁ NHÂN VÀ NHÓM (INTERPERSONAL AND TEAM SKILLS)</h5>
+<p>Kỹ năng liên cá nhân dùng cho quy trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Lắng nghe chủ động (Active listening).</strong> Mô tả ở Phần 10.2.2.6. Việc lắng nghe chủ động được dùng để giảm thiểu những hiểu lầm và các lỗi trao đổi thông tin lệch lạc (miscommunication) khác.</li>
+<li><strong>Nhận thức về văn hóa (Cultural awareness).</strong> Mô tả ở Phần 10.1.2.6. Nhận thức văn hóa và tính nhạy cảm về văn hóa sẽ giúp giám đốc dự án lên kế hoạch giao tiếp/truyền thông dựa trên những sự khác biệt văn hóa và các yêu cầu của cả các bên liên quan và các thành viên trong nhóm.</li>
+<li><strong>Lãnh đạo (Leadership).</strong> Mô tả ở Phần 3.4.4. Sự gắn kết thành công của các bên liên quan đòi hỏi những kỹ năng lãnh đạo vững mạnh nhằm truyền đạt tầm nhìn và truyền cảm hứng để các bên liên quan ủng hộ công việc và các kết quả của dự án.</li>
+<li><strong>Mạng lưới quan hệ (Networking).</strong> Mô tả ở Phần 10.2.2.6. Xây dựng mạng lưới quan hệ đảm bảo sự tiếp cận đến với các thông tin về các mức độ tham gia (levels of engagement) của các bên liên quan.</li>
+<li><strong>Nhận thức chính trị (Political awareness).</strong> Mô tả ở Phần 10.1.2.6. Sự nhận thức chính trị được sử dụng để thấu hiểu các chiến lược của tổ chức, hiểu được ai là người đang nắm giữ quyền lực và sự ảnh hưởng ở trên đấu trường/sân chơi này, và để phát triển một khả năng giao tiếp (ability to communicate) với những bên liên quan đó.</li>
+</ul>
+
+<h5>13.4.2.6 CÁC CUỘC HỌP (MEETINGS)</h5>
+<p>Các loại hình cuộc họp bao gồm các cuộc họp đánh giá tình trạng (status meetings), cuộc họp đứng (standup meetings), họp tổng kết (retrospectives), và bất kỳ một cuộc họp nào khác như đã được hai bên đồng thuận quy định ở trong bản kế hoạch gắn kết các bên liên quan nhằm mục đích để theo dõi giám sát và đánh giá (assess) các cấp độ tham gia của bên liên quan. Các cuộc họp ngày nay không còn bị giới hạn bởi các hình thức tương tác mặt-đối-mặt hoặc bằng giọng-nói-đáp-giọng-nói. Mặc dù các tương tác mặt đối mặt là vô cùng lý tưởng, nhưng chúng có thể khá là đắt đỏ. Việc tổ chức hội nghị từ xa (Teleconferencing) và công nghệ đã thu hẹp khoảng cách này và cung cấp ra vô số cách thức khác nhau để kết nối và tiến hành các cuộc họp.</p>
+
+<h4>13.4.3 GIÁM SÁT SỰ GẮN KẾT CÁC BÊN LIÊN QUAN: ĐẦU RA (OUTPUTS)</h4>
+
+<h5>13.4.3.1 THÔNG TIN HIỆU SUẤT CÔNG VIỆC (WORK PERFORMANCE INFORMATION)</h5>
+<p>Mô tả trong Phần 4.5.1.3. Thông tin hiệu suất công việc bao gồm thông tin về tình trạng gắn kết của các bên liên quan, chẳng hạn như là đánh giá mức độ hỗ trợ đối với dự án ở thời điểm hiện tại và đem đối chiếu so sánh cùng với các mức độ gắn kết mong muốn (desired levels of engagement) như đã được định nghĩa ở bên trong ma trận đánh giá sự gắn kết của bên liên quan (stakeholder engagement assessment matrix), bên trong khối lập phương các bên liên quan (stakeholder cube), hoặc là các công cụ khác.</p>
+
+<h5>13.4.3.2 YÊU CẦU THAY ĐỔI (CHANGE REQUESTS)</h5>
+<p>Mô tả ở Phần 4.3.3.4. Một yêu cầu thay đổi có thể bao gồm các hành động khắc phục (corrective actions) và hành động phòng ngừa (preventive actions) nhằm mục đích cải thiện cấp độ gắn kết các bên liên quan ở thời điểm hiện tại. Các yêu cầu thay đổi đều được xử lý để mang ra xem xét và quyết định thông qua quy trình Thực hiện Kiểm soát Thay đổi Tích hợp (Perform Integrated Change Control) (Phần 4.6).</p>
+
+<h5>13.4.3.3 CẬP NHẬT KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN UPDATES)</h5>
+<p>Bất kỳ thay đổi nào đối với kế hoạch quản lý dự án đều phải đi qua quá trình kiểm soát thay đổi của tổ chức thông qua một yêu cầu thay đổi (change request). Các thành phần của kế hoạch quản lý dự án có thể cần một yêu cầu thay đổi bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Kế hoạch quản lý nguồn lực (Resource management plan).</strong> Mô tả ở Phần 9.1.3.1. Các trách nhiệm của nhóm dự án (Team responsibilities) dành cho các hoạt động quản lý các bên liên quan có thể cần phải được cập nhật lại.</li>
+<li><strong>Kế hoạch quản lý truyền thông (Communications management plan).</strong> Mô tả ở Phần 10.1.3.1. Các chiến lược truyền thông của dự án có thể cần phải được cập nhật lại.</li>
+<li><strong>Kế hoạch gắn kết các bên liên quan (Stakeholder engagement plan).</strong> Mô tả ở Phần 13.2.3.1. Các thông tin về cộng đồng các bên liên quan của dự án có thể cần phải được cập nhật lại.</li>
+</ul>
+
+<h5>13.4.3.4 CẬP NHẬT TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS UPDATES)</h5>
+<p>Tài liệu dự án có thể được cập nhật như một kết quả của quá trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Sổ ghi nhận vấn đề (Issue log).</strong> Mô tả ở Phần 4.3.3.3. Thông tin nằm trong sổ ghi nhận vấn đề sẽ chỉ ra các thái độ/quan điểm của các bên liên quan và có thể sẽ cần thiết phải được cập nhật.</li>
+<li><strong>Sổ đăng ký bài học kinh nghiệm (Lessons learned register).</strong> Mô tả ở Phần 4.3.3.1. Sổ đăng ký bài học kinh nghiệm được cập nhật với các thông tin về các thách thức và cách để tránh được chúng. Nó cũng được cập nhật cùng với những phương pháp/cách thức nào đã mang lại hiệu quả tốt cho việc gắn kết các bên liên quan một cách tối ưu, và những phương pháp nào không hiệu quả.</li>
+<li><strong>Sổ đăng ký rủi ro (Risk register).</strong> Mô tả ở Phần 11.2.3.1. Sổ đăng ký rủi ro có thể cần phải được cập nhật với những sự phản hồi (responses) đối với các rủi ro của các bên liên quan.</li>
+<li><strong>Sổ đăng ký các bên liên quan (Stakeholder register).</strong> Mô tả ở Phần 13.1.12-13.1. Sổ đăng ký các bên liên quan được cập nhật thêm với các thông tin mới, vốn là kết quả từ việc giám sát sự gắn kết của các bên liên quan.</li>
+</ul>
+
+<h2>TÀI LIỆU THAM KHẢO (REFERENCES)</h2>
+<p>[1] Project Management Institute. 2017. The Standard for Project Management. Newtown Square, PA: Author.</p>
+<p>[2] Project Management Institute. 2013. The Standard for Portfolio Management – Third Edition. Newtown Square, PA: Author.</p>
+<p>[3] Project Management Institute. 2017. The Standard for Program Management – Fourth Edition. Newtown Square, PA: Author.</p>
+<p>[4] Project Management Institute. 2016. The PMI Lexicon of Project Management Terms. Available from http://www.pmi.org/lexiconterms</p>
+<p>[5] Project Management Institute. Code of Ethics and Professional Conduct. Available from http://www.pmi.org/codeofethics</p>
+<p>[6] Project Management Institute. 2013. Managing Change in Organizations: A Practice Guide. Newtown Square, PA: Author.</p>
+<p>[7] Project Management Institute. 2015. Business Analysis for Practitioners: A Practice Guide. Newtown Square, PA: Author.</p>
+<p>[8] Project Management Institute. 2014. Implementing Organizational Project Management: A Practice Guide. Newtown Square, PA: Author.</p>
+<p>[9] Project Management Institute. 2014. Project Management Institute Excellence in Practice-Research Collaboration, PMI-RI Standards Program: Making Sense of PPP Governance, December 19, 2014. Newtown Square, PA: Author</p>
+<p>[10] Project Management Institute. 2016. Governance of Portfolios, Programs, and Projects: A Practice Guide. Newtown Square, PA: Author.</p>
+<p>[11] Project Management Institute. (2013). PMI's Pulse of the Profession $ ^{\circledR} $ In-Depth Report: The Competitive Advantage of Effective Talent Management. Available from http://www.pmi.org</p>
+<p>[12] Project Management Institute. 2015. White Paper, Complexity Management for Projects, Programmes, and Portfolios: An Engineering Systems Perspective, March 2015. Newtown Square, PA: Author.</p>
+<p>[13] Project Management Institute. 2014. Navigating Complexity: A Practice Guide. Newtown Square, PA: Author.</p>
+<p>[14] Project Management Institute. 2016. Requirements Management: A Practice Guide. Newtown Square, PA: Author.</p>
+<p>[15] Project Management Institute. 2006. Practice Standard for Work Breakdown Structures (WBS). Newtown Square, PA: Author.</p>
+<p>[16] Project Management Institute. 2011. Practice Standard for Scheduling – Second Edition. Newtown Square, PA: Author.</p>
+<p>[17] Project Management Institute. 2011. Practice Standard for Earned Value Management – Second Edition</p>
+<p>[18] International Standards Organization. 2015. ISO 9000:2015 Quality Management Systems—Fundamentals and Vocabulary. Geneva: Author.</p>
+
+</main>
+</body>
+</html>

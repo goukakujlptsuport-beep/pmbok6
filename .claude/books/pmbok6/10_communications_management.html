@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>10_communications_management</title>
+</head>
+<body>
+    
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chương 10 – QUẢN LÝ TRUYỀN THÔNG DỰ ÁN | PMBOK® Guide Lần 6</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a3;
+    --cream: #fdf8f0;
+    --text: #2c2c2c;
+    --text-light: #5a5a5a;
+    --border: #d4c89a;
+    --accent: #8b1a1a;
+    --sidebar-w: 260px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Merriweather', Georgia, serif;
+    background: var(--cream);
+    color: var(--text);
+    display: flex;
+    min-height: 100vh;
+  }
+
+  #sidebar {
+    width: var(--sidebar-w);
+    background: var(--navy);
+    color: #ccd4e8;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    overflow-y: auto;
+    z-index: 100;
+    padding: 0 0 2rem;
+    border-right: 3px solid var(--gold);
+  }
+  #sidebar-header {
+    background: linear-gradient(135deg, #0f1d3a 0%, #1a2744 100%);
+    padding: 1.5rem 1.2rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  #sidebar-header .book-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  #sidebar-header h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+  }
+  #sidebar-header .edition {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    color: var(--gold-light);
+    font-style: italic;
+  }
+  #sidebar nav { padding: 0.8rem 0; }
+  #sidebar nav a {
+    display: block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    color: #aab8d0;
+    text-decoration: none;
+    padding: 0.45rem 1.2rem;
+    line-height: 1.4;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+  }
+  #sidebar nav a:hover, #sidebar nav a.active {
+    color: #fff;
+    background: rgba(201,168,76,0.12);
+    border-left-color: var(--gold);
+  }
+  #sidebar nav .section-group { margin-top: 0.4rem; }
+  #sidebar nav .group-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 0.8rem 1.2rem 0.3rem;
+    opacity: 0.85;
+  }
+  #sidebar nav a.sub {
+    padding-left: 2rem;
+    font-size: 0.75rem;
+    color: #8896b0;
+  }
+  #sidebar nav a.sub:hover { color: #ccd4e8; }
+
+  #main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    max-width: 900px;
+    padding: 0 3rem 5rem;
+  }
+
+  .chapter-hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #2a3a6a 100%);
+    color: white;
+    padding: 3rem 3rem 2.5rem;
+    margin: 0 -3rem 3rem;
+    border-bottom: 4px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-hero::before {
+    content: attr(data-chnum);
+    position: absolute;
+    right: 2rem; top: 50%;
+    transform: translateY(-50%);
+    font-size: 10rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.05);
+    font-family: 'Merriweather', serif;
+    line-height: 1;
+  }
+  .chapter-hero .ch-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .chapter-hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+  }
+  .chapter-hero .ch-en {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+    font-style: italic;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  h3 {
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin: 2rem 0 0.7rem;
+    padding-left: 0.8rem;
+    border-left: 4px solid var(--gold);
+  }
+  h4 {
+    font-size: 1rem;
+    color: var(--accent);
+    margin: 1.5rem 0 0.5rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  h5 {
+    font-size: 0.95rem;
+    color: var(--navy);
+    margin: 1.2rem 0 0.5rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+  }
+  p {
+    font-size: 0.97rem;
+    line-height: 1.85;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  ul.pmbok {
+    list-style: none;
+    margin: 0.5rem 0 1rem 0;
+    padding: 0;
+  }
+  ul.pmbok li {
+    position: relative;
+    padding: 0.3rem 0 0.3rem 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--text);
+  }
+  ul.pmbok li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.7rem;
+    top: 0.5rem;
+  }
+  ul.pmbok.check li::before { content: '☑'; color: #2d7a2d; font-size: 0.9rem; top: 0.35rem; }
+  ul.pmbok.dash li::before  { content: '■'; color: var(--navy); font-size: 0.6rem; top: 0.5rem; }
+
+  .figure-wrap {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1.2rem;
+    background: #f8f5ee;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .figure-wrap img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  }
+  .figure-caption {
+    margin-top: 0.75rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.83rem;
+    color: var(--text-light);
+    font-style: italic;
+    text-align: center;
+  }
+
+  @media(max-width:900px){
+    #sidebar { display: none; }
+    #main { margin-left: 0; padding: 0 1.2rem 4rem; }
+    .chapter-hero { margin: 0 -1.2rem 2rem; padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<aside id="sidebar">
+  <div id="sidebar-header">
+    <div class="book-label">PMBOK® Guide</div>
+    <h2>Hướng Dẫn Quản Lý Dự Án</h2>
+    <div class="edition">Lần xuất bản thứ 6 · Tiếng Việt</div>
+  </div>
+  <nav>
+    <div class="section-group">
+    <div class="group-label">Chương 10 · Communications</div>
+    <a href="#s10-1">10.1 Lập KH Quản Lý Truyền Thông</a>
+    <a href="#s10-2">10.2 Quản Lý Truyền Thông</a>
+    <a href="#s10-3">10.3 Giám Sát Truyền Thông</a>
+    </div>
+  </nav>
+</aside>
+
+<main id="main">
+
+  <div class="chapter-hero" data-chnum="10">
+    <div class="ch-label">Chương 10</div>
+    <h1>QUẢN LÝ TRUYỀN THÔNG DỰ ÁN</h1>
+    <div class="ch-en">Project Communications Management</div>
+  </div>
+
+<h2>PROJECT COMMUNICATIONS MANAGEMENT (QUẢN LÝ TRUYỀN THÔNG DỰ ÁN)</h2>
+<p>Quản lý Truyền thông Dự án bao gồm các quy trình cần thiết để đảm bảo rằng nhu cầu thông tin của dự án và các bên liên quan được đáp ứng thông qua việc phát triển các tạo tác (artifacts) và thực hiện các hoạt động được thiết kế để đạt được sự trao đổi thông tin hiệu quả. Quản lý Truyền thông Dự án bao gồm hai phần. Phần đầu tiên là phát triển một chiến lược để đảm bảo truyền thông có hiệu quả đối với các bên liên quan. Phần thứ hai là thực hiện các hoạt động cần thiết để triển khai chiến lược truyền thông đó.</p>
+
+<p>Các quy trình Quản lý Truyền thông Dự án bao gồm:</p>
+<ul class="pmbok">
+<li><strong>10.1 Lập kế hoạch Quản lý Truyền thông (Plan Communications Management)</strong>—Quy trình phát triển một phương pháp tiếp cận và kế hoạch phù hợp cho các hoạt động truyền thông của dự án dựa trên nhu cầu thông tin của từng bên liên quan hoặc nhóm, tài sản sẵn có của tổ chức và nhu cầu của dự án.</li>
+<li><strong>10.2 Quản lý Truyền thông (Manage Communications)</strong>—Quy trình đảm bảo việc thu thập, tạo lập, phân phối, lưu trữ, truy xuất, quản lý, giám sát kịp thời và phù hợp, cũng như việc định đoạt (disposition) cuối cùng đối với thông tin dự án.</li>
+<li><strong>10.3 Giám sát Truyền thông (Monitor Communications)</strong>—Quy trình đảm bảo nhu cầu thông tin của dự án và các bên liên quan được đáp ứng.</li>
+</ul>
+
+<p>Hình 10-1 cung cấp cái nhìn tổng quan về các quy trình Quản lý Truyền thông Dự án. Các quy trình Quản lý Truyền thông Dự án được trình bày như các quy trình rời rạc với các giao diện được xác định, tuy nhiên trong thực tế, chúng đan xen và tương tác theo những cách không thể trình bày chi tiết hoàn toàn trong PMBOK® Guide.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//7182ecdf-1573-44d3-8a24-6b65ecaf42c9/markdown_3/imgs/img_in_image_box_211_174_1015_721.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A23%3A59Z%2F-1%2F%2Fdb9606364746aec65faebb8249795d8c335b20c63a731a20e21b4407a109a053" alt="Image" width="65%" /></div></div>
+<p class="figure-caption">Hình 10-1. Tổng quan về Truyền thông Dự án</p>
+
+<h5>CÁC KHÁI NIỆM TRỌNG TÂM TRONG QUẢN LÝ TRUYỀN THÔNG DỰ ÁN (KEY CONCEPTS FOR PROJECT COMMUNICATIONS MANAGEMENT)</h5>
+<p>Truyền thông là sự trao đổi thông tin, dù có chủ đích hay không tự nguyện. Thông tin được trao đổi có thể ở dạng ý tưởng, hướng dẫn hoặc cảm xúc. Các cơ chế dùng để trao đổi thông tin có thể ở dạng:</p>
+<ul class="pmbok check">
+<li>Dạng văn bản. Bản cứng vật lý hoặc điện tử.</li>
+<li>Dạng lời nói. Trực tiếp mặt đối mặt hoặc từ xa.</li>
+<li>Chính thức hoặc không chính thức (như trong các giấy tờ chính thức hoặc mạng xã hội).</li>
+</ul>
+<ul class="pmbok">
+<li>Thông qua cử chỉ. Giọng điệu và nét mặt.</li>
+<li>Thông qua phương tiện truyền thông. Hình ảnh, hành động, hoặc thậm chí chỉ là sự lựa chọn từ ngữ.</li>
+<li>Lựa chọn từ ngữ. Thường có nhiều hơn một từ để diễn đạt một ý tưởng; có thể có những khác biệt tinh tế trong ý nghĩa của mỗi từ và cụm từ này.</li>
+</ul>
+
+<p>Truyền thông mô tả các phương tiện khả thi mà thông tin có thể được gửi hoặc nhận, có thể thông qua các hoạt động truyền thông (như các cuộc họp và bài thuyết trình), hoặc các tạo tác (artifacts) như email, mạng xã hội, báo cáo dự án, hoặc tài liệu dự án.</p>
+
+<p>Giám đốc dự án dành phần lớn thời gian của họ để giao tiếp với các thành viên trong nhóm và các bên liên quan khác của dự án, cả ở nội bộ (ở mọi cấp độ tổ chức) và bên ngoài tổ chức. Truyền thông hiệu quả xây dựng một cầu nối giữa các bên liên quan đa dạng, những người có thể có nền tảng văn hóa và tổ chức khác nhau, cũng như có trình độ chuyên môn, góc nhìn và lợi ích khác nhau.</p>
+
+<p>Các hoạt động truyền thông có nhiều chiều hướng, bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li><strong>Nội bộ (Internal).</strong> Tập trung vào các bên liên quan trong dự án và trong tổ chức.</li>
+</ul>
+<ul class="pmbok">
+<li><strong>Bên ngoài (External).</strong> Tập trung vào các bên liên quan bên ngoài như khách hàng, nhà cung cấp, các dự án khác, các tổ chức, chính phủ, công chúng và những người ủng hộ môi trường.</li>
+<li><strong>Chính thức (Formal).</strong> Các báo cáo, các cuộc họp chính thức (cả định kỳ và đột xuất), chương trình và biên bản cuộc họp, các buổi họp giao ban với các bên liên quan và các bài thuyết trình.</li>
+<li><strong>Không chính thức (Informal).</strong> Các hoạt động truyền thông chung sử dụng email, mạng xã hội, trang web và các cuộc thảo luận đột xuất không chính thức.</li>
+<li><strong>Trọng tâm phân cấp (Hierarchical focus).</strong> Vị trí của bên liên quan hoặc nhóm liên quan đối với nhóm dự án sẽ ảnh hưởng đến định dạng và nội dung của thông điệp, theo các cách sau:
+  <ul class="pmbok dash">
+    <li><strong>Hướng lên (Upward).</strong> Các bên liên quan ở cấp quản lý cấp cao.</li>
+    <li><strong>Hướng xuống (Downward).</strong> Nhóm và những người khác sẽ đóng góp vào công việc của dự án.</li>
+    <li><strong>Ngang hàng (Horizontal).</strong> Các đồng cấp của giám đốc dự án hoặc nhóm.</li>
+  </ul>
+</li>
+<li><strong>Chính ngạch (Official).</strong> Báo cáo thường niên; báo cáo cho các cơ quan quản lý hoặc chính phủ.</li>
+<li><strong>Không chính ngạch (Unofficial).</strong> Truyền thông tập trung vào việc thiết lập và duy trì hồ sơ và sự công nhận của dự án cũng như xây dựng mối quan hệ bền chặt giữa nhóm dự án và các bên liên quan bằng cách sử dụng các phương tiện linh hoạt và thường là không chính thức.</li>
+<li><strong>Viết và nói (Written and oral).</strong> Bằng lời nói (từ ngữ và sự biến đổi giọng nói) và phi ngôn ngữ (ngôn ngữ cơ thể và hành động), mạng xã hội và trang web, thông cáo báo chí.</li>
+</ul>
+
+<p>Truyền thông phát triển các mối quan hệ cần thiết để dự án và chương trình đạt được những kết quả thành công. Các hoạt động truyền thông và các tạo tác hỗ trợ truyền thông rất đa dạng, từ email và các cuộc trò chuyện không chính thức đến các cuộc họp chính thức và báo cáo dự án định kỳ. Hành động gửi và nhận thông tin diễn ra một cách có ý thức hoặc vô thức thông qua lời nói, nét mặt, cử chỉ và các hành động khác. Trong bối cảnh quản lý thành công các mối quan hệ của dự án với các bên liên quan, truyền thông bao gồm việc phát triển các chiến lược và kế hoạch cho các tạo tác và hoạt động truyền thông phù hợp với cộng đồng các bên liên quan, và việc áp dụng các kỹ năng để nâng cao hiệu quả của các hoạt động truyền thông đã được lên kế hoạch và các hoạt động truyền thông đột xuất khác.</p>
+
+<p>Có hai phần để tạo nên một quá trình truyền thông thành công. Phần thứ nhất liên quan đến việc phát triển một chiến lược truyền thông thích hợp dựa trên cả nhu cầu của dự án và của các bên liên quan của dự án. Từ chiến lược đó, một kế hoạch quản lý truyền thông được phát triển để đảm bảo rằng các thông điệp thích hợp được truyền đạt tới các bên liên quan dưới nhiều định dạng và phương tiện khác nhau như đã được định nghĩa bởi chiến lược truyền thông. Những thông điệp này cấu thành nên truyền thông của dự án—phần thứ hai của quá trình truyền thông thành công. Các truyền thông dự án là sản phẩm của quy trình lập kế hoạch, được giải quyết bởi kế hoạch quản lý truyền thông định nghĩa cách thu thập, tạo lập, phổ biến, lưu trữ, truy xuất, quản lý, theo dõi và định đoạt các tạo tác truyền thông này. Cuối cùng, chiến lược truyền thông và kế hoạch quản lý truyền thông sẽ hình thành nên nền tảng để giám sát hiệu ứng của hoạt động truyền thông.</p>
+
+<p>Các truyền thông của dự án được hỗ trợ bởi những nỗ lực nhằm ngăn ngừa sự hiểu lầm và thông tin sai lệch, và thông qua việc lựa chọn cẩn thận các phương pháp, người đưa tin và thông điệp được phát triển từ quy trình lập kế hoạch.</p>
+
+<p>Những hiểu lầm có thể được giảm bớt nhưng không thể loại bỏ hoàn toàn bằng cách sử dụng nguyên tắc 5C của truyền thông bằng văn bản khi soạn thảo một thông điệp viết tay truyền thống (không phải mạng xã hội) hoặc thông điệp bằng lời nói:</p>
+<ul class="pmbok">
+<li><strong>Ngữ pháp và chính tả chính xác (Correct grammar and spelling).</strong> Việc sử dụng ngữ pháp kém hoặc chính tả không chính xác có thể gây mất tập trung và cũng có thể đưa ra những biến dạng trong thông điệp, làm giảm độ tin cậy.</li>
+<li><strong>Diễn đạt súc tích và loại bỏ từ thừa (Concise expression and elimination of excess words).</strong> Một thông điệp súc tích, được trau chuốt kỹ lưỡng làm giảm cơ hội gây ra hiểu lầm về mục đích của thông điệp.</li>
+<li><strong>Mục đích và diễn đạt rõ ràng hướng tới nhu cầu người đọc (Clear purpose and expression directed to the needs of the reader).</strong> Đảm bảo rằng nhu cầu và lợi ích của khán giả được đưa vào tính toán trong thông điệp.</li>
+<li><strong>Luồng ý tưởng logic mạch lạc (Coherent logical flow of ideas).</strong> Một luồng ý tưởng hợp lý, nhất quán và việc sử dụng các "dấu hiệu nhận biết" như phần mở đầu và tóm tắt ý tưởng xuyên suốt bài viết.</li>
+<li><strong>Kiểm soát luồng từ ngữ và ý tưởng (Controlling flow of words and ideas).</strong> Việc kiểm soát luồng từ ngữ và ý tưởng có thể liên quan đến đồ họa hoặc chỉ là các bản tóm tắt.</li>
+</ul>
+
+<p>Nguyên tắc 5C của truyền thông bằng văn bản được hỗ trợ bởi các kỹ năng giao tiếp, chẳng hạn như:</p>
+<ul class="pmbok">
+<li><strong>Lắng nghe chủ động (Listening actively).</strong> Luôn gắn kết với người nói và tóm tắt lại các cuộc trò chuyện để đảm bảo trao đổi thông tin hiệu quả.</li>
+<li><strong>Nhận thức về sự khác biệt văn hóa và cá nhân.</strong> Phát triển nhận thức của nhóm về những khác biệt văn hóa và cá nhân để giảm bớt sự hiểu lầm và nâng cao năng lực giao tiếp.</li>
+<li><strong>Xác định, thiết lập và quản lý kỳ vọng của các bên liên quan.</strong> Đàm phán với các bên liên quan sẽ làm giảm sự tồn tại của những kỳ vọng xung đột trong cộng đồng các bên liên quan.</li>
+<li><strong>Nâng cao kỹ năng.</strong> Nâng cao kỹ năng của tất cả các thành viên trong nhóm trong các hoạt động sau:
+  <ul class="pmbok dash">
+    <li>Thuyết phục một cá nhân, một nhóm hoặc một tổ chức thực hiện một hành động;</li>
+    <li>Tạo động lực cho mọi người và cung cấp sự khuyến khích hoặc trấn an;</li>
+    <li>Huấn luyện (Coaching) để cải thiện hiệu suất và đạt được kết quả mong muốn;</li>
+    <li>Đàm phán để đạt được các thỏa thuận có thể chấp nhận được giữa các bên và giảm sự chậm trễ trong phê duyệt hoặc ra quyết định; và</li>
+  </ul>
+</li>
+</ul>
+<ul class="pmbok check">
+<li>
+  <ul class="pmbok dash">
+    <li>Giải quyết xung đột để ngăn chặn các tác động gây rối.</li>
+  </ul>
+</li>
+</ul>
+
+<p>Các thuộc tính cơ bản của các hoạt động truyền thông hiệu quả và việc phát triển các tạo tác truyền thông hiệu quả là:</p>
+<ul class="pmbok">
+<li>Sự rõ ràng về mục đích của truyền thông—xác định mục đích của nó;
+  <ul class="pmbok dash">
+    <li>Hiểu càng nhiều càng tốt về người nhận truyền thông, đáp ứng nhu cầu và sở thích; và</li>
+  </ul>
+</li>
+</ul>
+<ul class="pmbok check">
+<li>
+  <ul class="pmbok dash">
+    <li>Giám sát và đo lường tính hiệu quả của các hoạt động truyền thông.</li>
+  </ul>
+</li>
+</ul>
+
+<h5>CÁC XU HƯỚNG VÀ THỰC TIỄN MỚI NỔI TRONG QUẢN LÝ TRUYỀN THÔNG DỰ ÁN (TRENDS AND EMERGING PRACTICES IN PROJECT COMMUNICATIONS MANAGEMENT)</h5>
+<p>Cùng với sự tập trung vào các bên liên quan và sự nhận thức về giá trị đối với các dự án và tổ chức trong việc gắn kết hiệu quả các bên liên quan, là sự nhận thức rằng việc phát triển và thực hiện các chiến lược truyền thông phù hợp đóng vai trò quan trọng sống còn để duy trì mối quan hệ hiệu quả với các bên liên quan. Các xu hướng và thực tiễn mới nổi cho Quản lý Truyền thông Dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Sự tham gia của các bên liên quan trong các đợt đánh giá dự án (Inclusion of stakeholders in project reviews).</strong> Cộng đồng các bên liên quan của mỗi dự án bao gồm các cá nhân, nhóm, và các tổ chức mà nhóm dự án đã xác định là thiết yếu đối với việc chuyển giao thành công các mục tiêu dự án và kết quả của tổ chức. Một chiến lược truyền thông hiệu quả đòi hỏi các đợt đánh giá thường xuyên và kịp thời đối với cộng đồng các bên liên quan và các bản cập nhật để quản lý những thay đổi trong thành viên cũng như thái độ của nó.</li>
+<li><strong>Sự tham gia của các bên liên quan trong các cuộc họp dự án (Inclusion of stakeholders in project meetings).</strong> Các cuộc họp dự án nên bao gồm các bên liên quan từ bên ngoài dự án và thậm chí bên ngoài tổ chức, ở những nơi thích hợp. Các thực tiễn vốn có trong các phương pháp tiếp cận linh hoạt (agile) có thể được áp dụng cho mọi loại dự án. Các thực tiễn thường bao gồm các cuộc họp giao ban đứng (standup meetings) ngắn, diễn ra hàng ngày, nơi những thành tựu và vấn đề của ngày hôm trước, và các kế hoạch cho công việc ngày hiện tại, được thảo luận với nhóm dự án và các bên liên quan then chốt.</li>
+<li><strong>Sự gia tăng sử dụng mạng xã hội máy tính (Increased use of social computing).</strong> Mạng xã hội máy tính (Social computing) dưới hình thức cơ sở hạ tầng, dịch vụ truyền thông mạng xã hội, và các thiết bị cá nhân đã thay đổi cách các tổ chức và nhân viên của họ giao tiếp và làm kinh doanh. Mạng xã hội máy tính kết hợp các phương pháp cộng tác khác nhau được hỗ trợ bởi cơ sở hạ tầng CNTT công cộng. Mạng xã hội (Social networking) đề cập đến cách người dùng xây dựng các mạng lưới quan hệ để khám phá sở thích và hoạt động của họ với những người khác. Các công cụ mạng truyền thông xã hội (Social media tools) không chỉ có thể hỗ trợ trao đổi thông tin, mà còn xây dựng các mối quan hệ đi kèm với các mức độ tin cậy và tính cộng đồng sâu sắc hơn.</li>
+<li><strong>Các phương pháp tiếp cận truyền thông đa diện (Multifaceted approaches to communication).</strong> Chiến lược truyền thông tiêu chuẩn dành cho truyền thông với các bên liên quan của dự án bao hàm và chọn lọc từ tất cả các công nghệ và tôn trọng các sở thích về văn hóa, thực tiễn và cá nhân về ngôn ngữ, phương tiện, nội dung, và phương thức phân phối. Khi thích hợp, mạng xã hội và các công nghệ máy tính tiên tiến khác có thể được đưa vào. Các cách tiếp cận đa khía cạnh như thế này mang lại hiệu quả cao hơn cho việc giao tiếp với các bên liên quan đến từ các thế hệ và nền văn hóa khác nhau.</li>
+</ul>
+
+<h5>CÁC CÂN NHẮC VỀ ĐIỀU CHỈNH - MAY ĐO (TAILORING CONSIDERATIONS)</h5>
+<p>Bởi vì mỗi dự án là duy nhất, nhóm dự án sẽ cần phải điều chỉnh (may đo) cách áp dụng các quy trình Quản lý Truyền thông Dự án. Các yếu tố cần xem xét khi điều chỉnh bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li><strong>Các bên liên quan (Stakeholders).</strong> Các bên liên quan là người ở trong hay ngoài tổ chức, hoặc cả hai?</li>
+</ul>
+<ul class="pmbok">
+<li><strong>Vị trí vật lý (Physical location).</strong> Vị trí vật lý của các thành viên trong nhóm ở đâu? Nhóm có làm việc cùng một địa điểm (colocated) không? Nhóm có ở trong cùng một khu vực địa lý không? Nhóm có phân tán qua nhiều múi giờ khác nhau không?</li>
+<li><strong>Công nghệ truyền thông (Communications technology).</strong> Công nghệ nào có sẵn để phát triển, ghi chép, truyền tải, truy xuất, theo dõi và lưu trữ các tạo tác truyền thông? Các công nghệ nào là phù hợp nhất và hiệu quả về mặt chi phí nhất để giao tiếp với các bên liên quan?</li>
+<li><strong>Ngôn ngữ (Language).</strong> Ngôn ngữ là một yếu tố chính cần xem xét trong các hoạt động truyền thông. Dự án có sử dụng một ngôn ngữ không? Hay có nhiều ngôn ngữ được sử dụng? Liệu đã có các khoản trợ cấp/sự linh động được lập ra để điều chỉnh cho sự phức tạp của các thành viên trong nhóm đến từ các nhóm ngôn ngữ đa dạng chưa?</li>
+<li><strong>Quản lý kiến thức (Knowledge management).</strong> Tổ chức có kho lưu trữ quản lý kiến thức chính thức nào không? Kho lưu trữ đó có được sử dụng không?</li>
+</ul>
+
+<h5>CÁC CÂN NHẮC CHO MÔI TRƯỜNG AGILE/THÍCH ỨNG (CONSIDERATIONS FOR AGILE/ADAPTIVE ENVIRONMENTS)</h5>
+<p>Các môi trường dự án phải chịu các yếu tố mơ hồ và thay đổi khác nhau có một nhu cầu vốn có là phải truyền đạt các chi tiết đang tiến triển và mới phát sinh một cách thường xuyên và nhanh chóng hơn. Điều này thúc đẩy việc đơn giản hóa quyền truy cập thông tin của các thành viên trong nhóm, thực hiện các điểm kiểm tra nhóm thường xuyên (frequent team checkpoints), và đặt các thành viên trong nhóm làm việc cùng một địa điểm nhiều nhất có thể.</p>
+<p>Hơn nữa, việc đăng tải các tạo tác dự án một cách minh bạch, và tổ chức các buổi đánh giá thường xuyên của các bên liên quan nhằm mục đích thúc đẩy truyền thông với ban quản lý và các bên liên quan.</p>
+
+<h3 id="s10-1">10.1 LẬP KẾ HOẠCH QUẢN LÝ TRUYỀN THÔNG (PLAN COMMUNICATIONS MANAGEMENT)</h3>
+<p>Lập Kế hoạch Quản lý Truyền thông là quy trình của việc phát triển một phương pháp tiếp cận và kế hoạch phù hợp cho các hoạt động truyền thông dự án dựa trên các nhu cầu thông tin của từng bên liên quan hoặc nhóm, tài sản sẵn có của tổ chức, và các nhu cầu của dự án. Lợi ích chính của quá trình này là một phương pháp tiếp cận được ghi chép thành tài liệu để gắn kết các bên liên quan một cách hiệu quả và năng suất bằng cách trình bày thông tin có liên quan một cách kịp thời. Quá trình này được thực hiện theo định kỳ trong suốt quá trình dự án khi cần. Đầu vào, công cụ và kỹ thuật, và đầu ra của quá trình này được phác họa trong Hình 10-2. Hình 10-3 miêu tả sơ đồ dòng dữ liệu cho quy trình này.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//2d8b0c80-b6f5-45c7-bd7b-d94aadb82bdf/markdown_4/imgs/img_in_image_box_210_416_967_805.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A00Z%2F-1%2F%2F07a2c6c7906cdfafaa968de78a3dd58a7a79651057723a5755a319fca937edac" alt="Image" width="61%" /></div></div>
+<p class="figure-caption">Hình 10-2. Lập kế hoạch Quản lý Truyền thông: Đầu vào, Công cụ & Kỹ thuật, và Đầu ra</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//df34bfff-abe3-4693-ab0e-66d6b7d83565/markdown_0/imgs/img_in_image_box_202_156_1026_795.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A01Z%2F-1%2F%2F2aca17c15ca6a620744a83ffa8aa0f7a1289b418d6da4eeb6e682dc8e2f3141c" alt="Image" width="67%" /></div></div>
+<p class="figure-caption">Hình 10-3. Lập kế hoạch Quản lý Truyền thông: Sơ đồ dòng dữ liệu</p>
+
+<p>Một kế hoạch quản lý truyền thông hiệu quả ghi nhận các nhu cầu thông tin đa dạng của các bên liên quan của dự án được phát triển sớm trong vòng đời dự án. Nó cần được xem xét lại thường xuyên và sửa đổi khi cần thiết, khi cộng đồng các bên liên quan thay đổi hoặc khi bắt đầu mỗi giai đoạn dự án mới.</p>
+<p>Trên hầu hết các dự án, việc lập kế hoạch truyền thông được thực hiện từ rất sớm, trong giai đoạn nhận diện các bên liên quan và phát triển kế hoạch quản lý dự án.</p>
+<p>Mặc dù tất cả các dự án đều chia sẻ chung một nhu cầu truyền đạt thông tin dự án, các nhu cầu thông tin và các phương pháp phân phối có thể khác nhau rất nhiều. Hơn nữa, các phương pháp lưu trữ, truy xuất, và việc định đoạt cuối cùng đối với thông tin dự án cần được cân nhắc và ghi chép trong suốt quá trình này. Các kết quả của quá trình Lập Kế hoạch Quản lý Truyền thông nên được đánh giá lại thường xuyên xuyên suốt dự án và được sửa đổi khi cần để đảm bảo tính ứng dụng liên tục.</p>
+
+<h4>10.1.1 LẬP KẾ HOẠCH QUẢN LÝ TRUYỀN THÔNG: ĐẦU VÀO (INPUTS)</h4>
+
+<h5>10.1.1.1 HIẾN CHƯƠNG DỰ ÁN (PROJECT CHARTER)</h5>
+<p>Mô tả trong Phần 4.1.3.1. Hiến chương dự án xác định danh sách các bên liên quan chính. Nó cũng có thể chứa thông tin về vai trò và trách nhiệm của các bên liên quan.</p>
+
+<h5>10.1.1.2 KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN)</h5>
+<p>Mô tả trong Phần 4.2.3.1. Các thành phần của kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Kế hoạch quản lý nguồn lực.</strong> Mô tả trong Phần 9.1.3.1. Cung cấp hướng dẫn về cách các nguồn lực nhóm sẽ được phân loại, phân bổ, quản lý, và giải phóng. Các thành viên và nhóm có thể có các yêu cầu về truyền thông mà cần được xác định trong kế hoạch quản lý truyền thông.</li>
+<li><strong>Kế hoạch gắn kết các bên liên quan (Stakeholder engagement plan).</strong> Mô tả trong Phần 13.2.3.1. Kế hoạch gắn kết các bên liên quan nhận diện các chiến lược quản lý cần thiết để gắn kết các bên liên quan một cách hiệu quả. Các chiến lược này thường được hoàn thành thông qua truyền thông.</li>
+</ul>
+
+<h5>10.1.1.3 TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS)</h5>
+<p>Tài liệu dự án có thể được coi là đầu vào cho quy trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Tài liệu yêu cầu.</strong> Mô tả trong Phần 5.2.3.1. Tài liệu yêu cầu có thể bao gồm những truyền thông của các bên liên quan dự án.</li>
+<li><strong>Sổ đăng ký các bên liên quan.</strong> Mô tả trong Phần 13.1.3.1. Sổ đăng ký các bên liên quan được sử dụng để lập kế hoạch cho các hoạt động truyền thông với các bên liên quan.</li>
+</ul>
+
+<h5>10.1.1.4 YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP (ENTERPRISE ENVIRONMENTAL FACTORS)</h5>
+<p>Các yếu tố môi trường doanh nghiệp có thể ảnh hưởng đến quá trình Lập kế hoạch Quản lý Truyền thông bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li>Văn hóa tổ chức, môi trường chính trị, và khuôn khổ quản trị;</li>
+</ul>
+<ul class="pmbok check">
+<li>Các chính sách quản lý hành chính nhân sự;</li>
+<li>Các ngưỡng rủi ro của bên liên quan;</li>
+<li>Các kênh truyền thông, công cụ, và hệ thống đã được thiết lập;</li>
+</ul>
+<ul class="pmbok">
+<li>Các xu hướng, thực tiễn, hoặc thói quen toàn cầu, khu vực hoặc địa phương; và</li>
+<li>Sự phân bổ địa lý của các cơ sở và tài nguyên.</li>
+</ul>
+
+<h5>10.1.1.5 TÀI SẢN QUY TRÌNH TỔ CHỨC (ORGANIZATIONAL PROCESS ASSETS)</h5>
+<p>Tài sản quy trình tổ chức có thể ảnh hưởng đến quá trình Lập kế hoạch Quản lý Truyền thông bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Chính sách và thủ tục của tổ chức liên quan đến mạng xã hội, đạo đức và bảo mật;</li>
+</ul>
+<ul class="pmbok">
+<li>Chính sách và thủ tục của tổ chức về quản lý vấn đề, rủi ro, thay đổi, và dữ liệu;</li>
+</ul>
+<ul class="pmbok check">
+<li>Các yêu cầu về truyền thông của tổ chức;</li>
+</ul>
+<ul class="pmbok">
+<li>Các hướng dẫn tiêu chuẩn hóa về phát triển, trao đổi, lưu trữ, và truy xuất thông tin;</li>
+<li>Thông tin lịch sử và kho tàng bài học kinh nghiệm; và</li>
+</ul>
+<ul class="pmbok check">
+<li>Dữ liệu và thông tin về các bên liên quan cũng như về truyền thông từ các dự án trước đây.</li>
+</ul>
+
+<h4>10.1.2 LẬP KẾ HOẠCH QUẢN LÝ TRUYỀN THÔNG: CÔNG CỤ VÀ KỸ THUẬT (TOOLS AND TECHNIQUES)</h4>
+
+<h5>10.1.2.1 ĐÁNH GIÁ CỦA CHUYÊN GIA (EXPERT JUDGMENT)</h5>
+<p>Mô tả trong Phần 4.1.2.1. Nên tham khảo chuyên môn từ các cá nhân hoặc nhóm có kiến thức chuyên ngành hoặc được đào tạo trong các chủ đề sau:</p>
+<ul class="pmbok check">
+<li>Chính trị và cấu trúc quyền lực trong tổ chức;</li>
+</ul>
+<ul class="pmbok">
+<li>Môi trường và văn hóa của tổ chức và của các tổ chức khách hàng khác;</li>
+</ul>
+<ul class="pmbok check">
+<li>Cách tiếp cận và thực tiễn về quản lý thay đổi của tổ chức;</li>
+<li>Ngành nghề hoặc loại hình của các sản phẩm dự án bàn giao;</li>
+<li>Các công nghệ truyền thông của tổ chức;</li>
+<li>Chính sách và thủ tục của tổ chức liên quan đến các yêu cầu pháp lý về truyền thông doanh nghiệp;</li>
+<li>Chính sách và thủ tục của tổ chức liên quan đến bảo mật; và</li>
+<li>Các bên liên quan, bao gồm khách hàng hoặc nhà tài trợ.</li>
+</ul>
+
+<h5>10.1.2.2 PHÂN TÍCH YÊU CẦU TRUYỀN THÔNG (COMMUNICATION REQUIREMENTS ANALYSIS)</h5>
+<p>Phân tích yêu cầu truyền thông xác định nhu cầu thông tin của các bên liên quan của dự án. Những yêu cầu này được định nghĩa bằng cách kết hợp loại và định dạng của thông tin cần thiết cùng với một phân tích về giá trị của thông tin đó.</p>
+<p>Các nguồn thông tin thường được sử dụng để nhận diện và xác định các yêu cầu truyền thông của dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li>Thông tin của các bên liên quan và các yêu cầu truyền thông nằm bên trong sổ đăng ký các bên liên quan và kế hoạch gắn kết các bên liên quan;</li>
+<li>Số lượng các kênh truyền thông hoặc lộ trình giao tiếp tiềm năng, bao gồm các liên lạc một-đối-một (one-to-one), một-đến-nhiều (one-to-many), và nhiều-đến-nhiều (many-to-many);</li>
+</ul>
+<ul class="pmbok check">
+<li>Sơ đồ tổ chức (Organizational charts);</li>
+<li>Phương pháp tiếp cận phát triển (Development approach);</li>
+<li>Tổ chức dự án và trách nhiệm của các bên liên quan, các mối quan hệ, và những sự phụ thuộc lẫn nhau;</li>
+<li>Các ngành, phòng ban, và chuyên môn có liên quan đến dự án;</li>
+<li>Yếu tố hậu cần về việc có bao nhiêu người sẽ tham gia vào dự án và tại những địa điểm nào;</li>
+</ul>
+<ul class="pmbok">
+<li>Nhu cầu thông tin nội bộ (ví dụ: khi giao tiếp trong nội bộ tổ chức);</li>
+<li>Nhu cầu thông tin bên ngoài (ví dụ: khi giao tiếp với giới truyền thông, công chúng, hoặc các nhà thầu); và</li>
+</ul>
+<ul class="pmbok check">
+<li>Các yêu cầu về mặt pháp lý (Legal requirements).</li>
+</ul>
+
+<h5>10.1.2.3 CÔNG NGHỆ TRUYỀN THÔNG (COMMUNICATION TECHNOLOGY)</h5>
+<p>Các phương pháp được sử dụng để chuyển giao thông tin giữa các bên liên quan của dự án có thể thay đổi rất lớn. Các phương pháp phổ biến được dùng để trao đổi thông tin và cộng tác bao gồm các cuộc trò chuyện, các cuộc họp, văn bản viết tay, cơ sở dữ liệu, phương tiện truyền thông xã hội, và các trang web.</p>
+<p>Các yếu tố có thể ảnh hưởng đến sự lựa chọn công nghệ truyền thông bao gồm:</p>
+<ul class="pmbok">
+<li><strong>Sự cấp bách của nhu cầu thông tin (Urgency of the need for information).</strong> Tính cấp bách, tần suất, và định dạng của thông tin cần được truyền đạt có thể khác nhau tùy theo từng dự án và cũng khác nhau ở trong các giai đoạn khác nhau của một dự án.</li>
+<li><strong>Khả năng sẵn có và độ tin cậy của công nghệ (Availability and reliability of technology).</strong> Công nghệ được yêu cầu để phân phối các tạo tác truyền thông của dự án phải tương thích, sẵn có và có thể truy cập được cho tất cả các bên liên quan trong suốt quá trình dự án.</li>
+<li><strong>Sự dễ dàng khi sử dụng (Ease of use).</strong> Việc lựa chọn các công nghệ truyền thông cần phải phù hợp với những người tham gia dự án và cần lên kế hoạch cho các sự kiện đào tạo phù hợp, khi thích hợp.</li>
+<li><strong>Môi trường dự án (Project environment).</strong> Liệu nhóm sẽ gặp gỡ và hoạt động trên cơ sở mặt-đối-mặt (face-to-face) hay trong một môi trường ảo; liệu họ sẽ làm việc trong cùng một múi giờ hay nhiều múi giờ; liệu họ có sử dụng nhiều ngôn ngữ để giao tiếp hay không; và cuối cùng, liệu có bất kỳ yếu tố môi trường dự án nào khác, chẳng hạn như các khía cạnh khác nhau về văn hóa, có thể cản trở hoặc kìm hãm tính hiệu quả của quá trình truyền thông hay không.</li>
+<li><strong>Tính nhạy cảm và bảo mật của thông tin (Sensitivity and confidentiality of the information).</strong> Một số khía cạnh cần xem xét là:
+  <ul class="pmbok dash">
+    <li>Liệu thông tin cần được truyền đạt có tính nhạy cảm hay bí mật hay không. Nếu có, có thể cần đến các biện pháp an ninh bổ sung.</li>
+    <li>Các chính sách về mạng truyền thông xã hội dành cho nhân viên nhằm đảm bảo hành vi phù hợp, sự an toàn, và sự bảo vệ đối với thông tin độc quyền (proprietary information).</li>
+  </ul>
+</li>
+</ul>
+
+<h5>10.1.2.4 CÁC MÔ HÌNH TRUYỀN THÔNG (COMMUNICATION MODELS)</h5>
+<p>Các mô hình truyền thông có thể thể hiện quá trình giao tiếp ở hình thức cơ bản tuyến tính nhất (người gửi và người nhận), trong một hình thức tương tác hơn bao gồm thêm yếu tố phản hồi (người gửi, người nhận, và phản hồi), hoặc trong một mô hình phức tạp hơn kết hợp các yếu tố con người của người gửi hoặc người nhận và nỗ lực để cho thấy sự phức tạp của bất kỳ hoạt động giao tiếp nào liên quan đến con người.</p>
+<ul class="pmbok">
+<li><strong>Mẫu mô hình truyền thông cơ bản người gửi/người nhận (Sample basic sender/receiver communication model).</strong> Mô hình này mô tả truyền thông như một quá trình và bao gồm hai bên, được định nghĩa là người gửi và người nhận. Mô hình này quan tâm đến việc đảm bảo rằng thông điệp được chuyển đi, thay vì phải đảm bảo nó được thấu hiểu. Chuỗi các bước trong một mô hình truyền thông cơ bản là:
+  <ul class="pmbok dash">
+    <li><strong>Mã hóa (Encode).</strong> Thông điệp được mã hóa thành các ký hiệu, chẳng hạn như văn bản, âm thanh hoặc một vài phương tiện khác để truyền tải (gửi đi).</li>
+    <li><strong>Truyền tải thông điệp (Transmit message).</strong> Thông điệp được gửi đi thông qua một kênh giao tiếp. Sự truyền tải thông điệp này có thể bị xâm phạm (compromised) bởi nhiều yếu tố vật lý khác nhau như công nghệ lạ lẫm hoặc cơ sở hạ tầng không đầy đủ. Tiếng ồn (Noise) và các yếu tố khác có thể xuất hiện và góp phần gây ra việc thất thoát thông tin trong quá trình truyền và/hoặc nhận thông điệp.</li>
+  </ul>
+</li>
+</ul>
+<ul class="pmbok check">
+<li>
+  <ul class="pmbok dash">
+    <li><strong>Giải mã (Decode).</strong> Dữ liệu nhận được được dịch lại bởi người nhận thành một dạng hữu ích đối với người nhận.</li>
+  </ul>
+</li>
+</ul>
+<ul class="pmbok">
+<li><strong>Mẫu mô hình truyền thông tương tác (Sample interactive communication model).</strong> Mô hình này cũng miêu tả truyền thông như một quá trình bao gồm hai bên, người gửi và người nhận, nhưng thừa nhận nhu cầu phải đảm bảo rằng thông điệp đã được hiểu. Trong mô hình này, tiếng ồn (noise) bao gồm bất kỳ sự can thiệp hoặc rào cản nào có thể xâm phạm (làm ảnh hưởng) đến sự thấu hiểu thông điệp, chẳng hạn như sự xao nhãng của người nhận, những khác biệt trong nhận thức của những người nhận, hoặc việc thiếu vắng những kiến thức hoặc sự quan tâm phù hợp. Các bước bổ sung trong một mô hình truyền thông tương tác là:
+  <ul class="pmbok dash">
+    <li><strong>Xác nhận (Acknowledge).</strong> Khi nhận được thông điệp, người nhận có thể phát tín hiệu (xác nhận) là đã nhận được thông điệp, nhưng điều này không nhất thiết có nghĩa là sự đồng ý hay sự thấu hiểu thấu đáo (comprehension) đối với thông điệp—nó đơn thuần chỉ là thông báo rằng thông điệp đã đến nơi.</li>
+    <li><strong>Phản hồi/đáp lại (Feedback/response).</strong> Khi thông điệp nhận được đã được giải mã và thấu hiểu, người nhận sẽ mã hóa các suy nghĩ và ý tưởng thành một thông điệp và sau đó truyền tải thông điệp này trở lại cho người gửi ban đầu. Nếu người gửi nhận thức được rằng phần phản hồi khớp với thông điệp ban đầu, quá trình giao tiếp đã thành công. Trong giao tiếp giữa con người với nhau, sự phản hồi có thể đạt được thông qua việc lắng nghe chủ động (active listening), được mô tả ở Phần 10.2.2.6.</li>
+  </ul>
+</li>
+</ul>
+<p>Là một phần của quá trình giao tiếp, người gửi chịu trách nhiệm về việc truyền tải thông điệp, đảm bảo rằng thông tin được truyền đạt là rõ ràng và đầy đủ, đồng thời xác nhận rằng thông điệp được diễn giải đúng cách. Người nhận có trách nhiệm đảm bảo rằng thông tin được nhận toàn vẹn, được giải thích một cách chính xác, và được xác nhận hoặc phản hồi lại một cách thích hợp. Những thành phần này diễn ra trong một môi trường nơi có khả năng sẽ xuất hiện nhiễu (tiếng ồn) và những rào cản khác đối với quá trình giao tiếp hiệu quả.</p>
+<p>Giao tiếp liên văn hóa (Cross-cultural communication) đặt ra các thách thức trong việc đảm bảo rằng ý nghĩa của thông điệp đã được thấu hiểu. Các sự khác biệt trong phong cách giao tiếp có thể phát sinh từ những sự khác biệt trong phương pháp làm việc, tuổi tác, quốc tịch, chuyên môn nghề nghiệp, sắc tộc, chủng tộc hoặc giới tính. Những người từ các nền văn hóa khác nhau giao tiếp bằng các ngôn ngữ khác nhau (ví dụ: các tài liệu thiết kế kỹ thuật, các văn phong khác nhau) và kỳ vọng các quy trình và nghi thức khác nhau.</p>
+<p>Mô hình giao tiếp được hiển thị trong Hình 10-4 kết hợp một ý tưởng rằng bản thân thông điệp và cách thức nó được truyền tải chịu ảnh hưởng bởi trạng thái cảm xúc hiện tại, kiến thức, nền tảng xuất thân, tính cách, văn hóa, và những thành kiến của người gửi. Tương tự như vậy, trạng thái cảm xúc, kiến thức, nền tảng, tính cách, văn hóa và thành kiến của người nhận cũng sẽ ảnh hưởng đến cách thông điệp được nhận và được diễn giải, và sẽ góp phần tạo ra các rào cản hoặc sự nhiễu loạn (tiếng ồn).</p>
+<p>Mô hình truyền thông này và các phần được nâng cao của nó có thể hỗ trợ trong việc phát triển các chiến lược truyền thông và lên kế hoạch cho các hoạt động giao tiếp từ-người-tới-người hoặc thậm chí là giữa các nhóm nhỏ với nhau. Nó không thực sự hữu ích đối với các tạo tác truyền thông khác như email, các thông báo quảng bá rộng rãi, hoặc phương tiện truyền thông xã hội.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//26ee9673-09fa-4336-927d-993e271eaa27/markdown_1/imgs/img_in_image_box_196_530_1027_945.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A23%3A59Z%2F-1%2F%2Fd002b9674bf33f2fca1ea7e50953218d2fa5ad4e3982ebbd9aa03e0b7b9177e8" alt="Image" width="67%" /></div></div>
+<p class="figure-caption">Hình 10-4. Mô hình Truyền thông cho Giao tiếp Liên Văn hóa</p>
+
+<h5>10.1.2.5 CÁC PHƯƠNG PHÁP TRUYỀN THÔNG (COMMUNICATION METHODS)</h5>
+<p>Có một vài phương pháp truyền thông được sử dụng để chia sẻ thông tin giữa các bên liên quan của dự án. Các phương pháp này được phân loại rộng rãi như sau:</p>
+<ul class="pmbok">
+<li><strong>Truyền thông tương tác (Interactive communication).</strong> Giữa hai hoặc nhiều bên thực hiện việc trao đổi thông tin đa chiều theo thời gian thực (real time). Nó sử dụng các tạo tác truyền thông chẳng hạn như các cuộc họp, các cuộc gọi điện thoại, tin nhắn tức thời (instant messaging), một vài hình thức mạng xã hội, và các hội nghị truyền hình (videoconferencing).</li>
+</ul>
+<ul class="pmbok check">
+<li><strong>Truyền thông đẩy (Push communication).</strong> Gửi hoặc phân phối trực tiếp đến các người nhận cụ thể, những người cần nhận thông tin. Phương pháp này đảm bảo rằng thông tin đã được phân phối nhưng lại không đảm bảo rằng nó thực sự đã tiếp cận thành công hoặc được hiểu bởi đối tượng dự kiến (intended audience). Các tạo tác truyền thông đẩy bao gồm thư từ, bản ghi nhớ (memos), báo cáo, email, faxes, tin nhắn thoại, blog, và các thông cáo báo chí.</li>
+</ul>
+<ul class="pmbok">
+<li><strong>Truyền thông kéo (Pull communication).</strong> Được sử dụng cho các tập thông tin lớn phức tạp, hoặc cho các đối tượng lớn, và yêu cầu những người nhận phải tự truy cập vào nội dung theo quyền hạn của riêng họ, tuân theo các thủ tục về bảo mật. Các phương pháp này bao gồm các cổng thông tin điện tử (web portals), trang web nội bộ (intranet), e-learning, cơ sở dữ liệu về bài học kinh nghiệm, hoặc các kho lưu trữ kiến thức.</li>
+</ul>
+
+<p>Các phương pháp tiếp cận khác nhau nên được áp dụng để đáp ứng nhu cầu của các hình thức giao tiếp chính đã được xác định trong kế hoạch quản lý truyền thông:</p>
+<ul class="pmbok">
+<li><strong>Giao tiếp liên cá nhân (Interpersonal communication).</strong> Thông tin được trao đổi giữa các cá nhân, điển hình là mặt đối mặt.</li>
+<li><strong>Giao tiếp nhóm nhỏ (Small group communication).</strong> Xảy ra trong các nhóm có khoảng từ ba đến sáu người.</li>
+</ul>
+<ul class="pmbok">
+<li><strong>Giao tiếp công chúng (Public communication).</strong> Một người nói duy nhất đang thuyết trình trước một nhóm người.</li>
+<li><strong>Truyền thông đại chúng (Mass communication).</strong> Có một kết nối rất nhỏ giọt giữa người hoặc nhóm gửi thông điệp với những nhóm khán giả lớn, đôi khi là ẩn danh, những người là đối tượng dự kiến của thông tin.</li>
+<li><strong>Truyền thông Mạng lưới và điện toán xã hội (Networks and social computing communication).</strong> Hỗ trợ các xu hướng truyền thông đang nổi lên theo hình thức nhiều-đến-nhiều (many-to-many) được củng cố bởi công nghệ điện toán xã hội và truyền thông.</li>
+</ul>
+
+<p>Các tạo tác truyền thông và các phương pháp khả thi có thể bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li>Bảng thông báo (Notice boards).</li>
+</ul>
+<ul class="pmbok">
+<li>Bản tin/Tạp chí nội bộ/Tạp chí điện tử (Newsletters/in-house magazines/e-magazines).</li>
+</ul>
+<ul class="pmbok check">
+<li>Thư gửi nhân viên/tình nguyện viên.</li>
+<li>Thông cáo báo chí (Press releases).</li>
+<li>Báo cáo thường niên (Annual reports).</li>
+<li>Email và mạng intranet.</li>
+<li>Các cổng thông tin (Web portals) và các kho lưu trữ thông tin khác (dành cho truyền thông kéo).</li>
+<li>Các cuộc trò chuyện trên điện thoại.</li>
+<li>Các bài thuyết trình.</li>
+<li>Họp giao ban nhóm/các cuộc họp nhóm.</li>
+<li>Các nhóm tập trung (Focus groups).</li>
+</ul>
+<ul class="pmbok">
+<li>Các cuộc họp trực tiếp chính thức hoặc không chính thức giữa các bên liên quan khác nhau,</li>
+<li>Các nhóm tư vấn hoặc diễn đàn nhân viên, và</li>
+<li>Truyền thông và công nghệ điện toán xã hội (Social computing technology and media).</li>
+</ul>
+
+<h5>10.1.2.6 KỸ NĂNG LIÊN CÁ NHÂN VÀ NHÓM (INTERPERSONAL AND TEAM SKILLS)</h5>
+<p>Kỹ năng cá nhân và nhóm có thể được sử dụng trong quá trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Đánh giá phong cách giao tiếp (Communication styles assessment).</strong> Một kỹ thuật được sử dụng để đánh giá các phong cách giao tiếp và xác định phương pháp, định dạng và nội dung truyền thông ưa thích cho các hoạt động truyền thông đã được lên kế hoạch. Thường được sử dụng đối với các bên liên quan không mang tính hỗ trợ (unsupportive stakeholders), việc đánh giá này có thể đi theo sau một hoạt động đánh giá mức độ gắn kết của các bên liên quan (được mô tả ở Phần 13.2.2.5) để xác định những lỗ hổng trong việc gắn kết các bên liên quan, qua đó yêu cầu các hoạt động và tạo tác truyền thông được thiết kế riêng/may đo (tailored) bổ sung.</li>
+</ul>
+<ul class="pmbok">
+<li><strong>Nhận thức về chính trị (Political awareness).</strong> Nhận thức về chính trị giúp giám đốc dự án có thể lập kế hoạch truyền thông dựa trên môi trường của dự án cũng như môi trường chính trị của tổ chức. Nhận thức chính trị liên quan đến sự thừa nhận các mối quan hệ quyền lực, cả chính thức lẫn không chính thức, và cả mức độ sẵn lòng để hoạt động bên trong những cấu trúc này. Một sự hiểu biết về các chiến lược của tổ chức, biết ai là người nắm giữ quyền lực và sức ảnh hưởng trong khu vực này, và phát triển khả năng để giao tiếp với những bên liên quan đó, tất cả đều là những khía cạnh của nhận thức chính trị.</li>
+</ul>
+<ul class="pmbok">
+<li><strong>Nhận thức về văn hóa (Cultural awareness).</strong> Nhận thức về văn hóa là sự hiểu biết về những sự khác biệt giữa các cá nhân, các nhóm, và các tổ chức, rồi sau đó điều chỉnh (adapt) chiến lược truyền thông của dự án trong bối cảnh của những khác biệt này. Sự nhận thức này cùng với bất kỳ hành động hệ quả nào (consequent actions) sẽ giảm thiểu tối đa các sự hiểu lầm và thông tin sai lệch có thể là kết quả từ những khác biệt về văn hóa trong cộng đồng các bên liên quan của dự án. Nhận thức về văn hóa và sự nhạy cảm về văn hóa sẽ giúp cho giám đốc dự án lên kế hoạch truyền thông dựa trên các khác biệt văn hóa và những yêu cầu của các bên liên quan cũng như của các thành viên trong nhóm.</li>
+</ul>
+
+<h5>10.1.2.7 BIỂU DIỄN DỮ LIỆU (DATA REPRESENTATION)</h5>
+<p>Một kỹ thuật biểu diễn dữ liệu có thể được sử dụng cho quy trình này bao gồm nhưng không giới hạn ở <strong>ma trận đánh giá mức độ gắn kết của các bên liên quan (stakeholder engagement assessment matrix)</strong>. Được mô tả trong Phần 13.2.2.5. Ma trận đánh giá sự gắn kết của các bên liên quan, thể hiện trong Hình 13-6, hiển thị những khoảng trống (gaps) giữa mức độ gắn kết hiện tại và mức độ mong muốn của các bên liên quan cá nhân, nó có thể được phân tích sâu hơn nữa trong quá trình này để xác định các yêu cầu truyền thông bổ sung (nằm ngoài các báo cáo thông thường) như một phương pháp dùng để san lấp mọi khoảng trống về mức độ gắn kết.</p>
+
+<h5>10.1.2.8 CÁC CUỘC HỌP (MEETINGS)</h5>
+<p>Các cuộc họp dự án có thể bao gồm các cuộc họp ảo (e-meetings) hoặc các cuộc họp trực tiếp, và có thể được hỗ trợ bằng các công nghệ làm việc chung trên tài liệu (document collaboration technologies), bao gồm các thông điệp email và các trang web dự án. Quy trình Lập Kế hoạch Quản lý Truyền thông yêu cầu việc thảo luận với nhóm dự án để xác định cách thức phù hợp nhất để cập nhật và truyền đạt các thông tin của dự án, đồng thời phản hồi lại các yêu cầu muốn lấy thông tin từ các bên liên quan khác nhau.</p>
+
+<h4>10.1.3 LẬP KẾ HOẠCH QUẢN LÝ TRUYỀN THÔNG: ĐẦU RA (OUTPUTS)</h4>
+
+<h5>10.1.3.1 KẾ HOẠCH QUẢN LÝ TRUYỀN THÔNG (COMMUNICATIONS MANAGEMENT PLAN)</h5>
+<p>Kế hoạch quản lý truyền thông là một phần của kế hoạch quản lý dự án nhằm mô tả cách thức các hoạt động truyền thông dự án sẽ được lập kế hoạch, có cấu trúc như thế nào, được triển khai và giám sát tính hiệu quả ra sao. Kế hoạch này chứa các thông tin sau:</p>
+<ul class="pmbok check">
+<li>Các yêu cầu về truyền thông của các bên liên quan;</li>
+</ul>
+<ul class="pmbok">
+<li>Thông tin cần truyền đạt, bao gồm ngôn ngữ, định dạng, nội dung, và mức độ chi tiết;</li>
+</ul>
+<ul class="pmbok check">
+<li>Quy trình leo thang (Escalation processes);</li>
+<li>Lý do của việc phân phối thông tin đó:</li>
+<li>Khung thời gian và tần suất cho việc phân phối các thông tin được yêu cầu và việc nhận xác nhận hoặc sự phản hồi, nếu có thể áp dụng;</li>
+</ul>
+<ul class="pmbok check">
+<li>Người chịu trách nhiệm việc truyền đạt thông tin;</li>
+<li>Người chịu trách nhiệm cho phép phát hành/công bố các thông tin bảo mật;</li>
+</ul>
+<ul class="pmbok">
+<li>Người hoặc các nhóm sẽ nhận thông tin, bao gồm các thông tin về nhu cầu, yêu cầu, và kỳ vọng của họ;</li>
+<li>Các phương pháp hoặc các công nghệ được sử dụng để truyền tải thông tin, chẳng hạn như bản ghi nhớ, email, thông cáo báo chí, hoặc phương tiện truyền thông xã hội;</li>
+<li>Các tài nguyên được phân bổ cho các hoạt động truyền thông, bao gồm thời gian và ngân sách;</li>
+</ul>
+<ul class="pmbok check">
+<li>Bảng chú giải thuật ngữ chung (Glossary of common terminology);</li>
+</ul>
+<ul class="pmbok">
+<li>Phương pháp dùng để cập nhật và tinh chỉnh kế hoạch quản lý truyền thông khi dự án tiến triển và phát triển thêm, chẳng hạn như khi cộng đồng các bên liên quan có sự thay đổi do dự án di chuyển qua các giai đoạn khác nhau;</li>
+<li>Biểu đồ luồng dữ liệu của dòng thông tin trong dự án, các luồng công việc (workflows) với các trình tự phê duyệt (authorization) khả thi, danh sách các báo cáo, các kế hoạch tổ chức cuộc họp, v.v.; và</li>
+<li>Các ràng buộc xuất phát từ pháp luật hoặc quy định cụ thể, công nghệ, chính sách của tổ chức, v.v.</li>
+</ul>
+
+<p>Kế hoạch quản lý truyền thông có thể bao gồm các nguyên tắc hướng dẫn và các biểu mẫu (templates) dành cho các cuộc họp báo cáo tình trạng dự án, các cuộc họp nhóm dự án, họp trực tuyến, và các thông điệp email. Việc sử dụng một trang web dự án và phần mềm quản lý dự án cũng có thể được đưa vào nếu chúng sẽ được sử dụng trong dự án.</p>
+
+<h5>10.1.3.2 CẬP NHẬT KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN UPDATES)</h5>
+<p>Bất kỳ thay đổi nào đối với kế hoạch quản lý dự án đều phải đi qua quá trình kiểm soát thay đổi của tổ chức thông qua một yêu cầu thay đổi (change request). Các thành phần có thể yêu cầu một yêu cầu thay đổi đối với kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở <strong>kế hoạch gắn kết các bên liên quan (stakeholder engagement plan)</strong>, được mô tả trong Phần 13.2.3.1. Kế hoạch gắn kết các bên liên quan được cập nhật để phản ánh bất kỳ quy trình, thủ tục, công cụ, hoặc kỹ thuật nào có ảnh hưởng đến sự tham gia của các bên liên quan trong các quyết định và quá trình thực thi của dự án.</p>
+
+<h5>10.1.3.3 CẬP NHẬT TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS UPDATES)</h5>
+<p>Tài liệu dự án có thể được cập nhật như một kết quả của việc thực hiện quá trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Tiến độ dự án.</strong> Mô tả ở Phần 6.5.3.2. Tiến độ dự án có thể được cập nhật để phản ánh các hoạt động truyền thông.</li>
+<li><strong>Sổ đăng ký các bên liên quan.</strong> Mô tả ở Phần 13.1.3.1. Sổ đăng ký các bên liên quan có thể được cập nhật để phản ánh các phương án truyền thông đã lên kế hoạch.</li>
+</ul>
+
+<hr>
+
+<h3 id="s10-2">10.2 QUẢN LÝ TRUYỀN THÔNG (MANAGE COMMUNICATIONS)</h3>
+<p>Quản lý Truyền thông là quá trình đảm bảo việc thu thập, tạo lập, phân phối, lưu trữ, truy xuất, quản lý, giám sát diễn ra kịp thời và phù hợp, và việc định đoạt cuối cùng đối với thông tin dự án. Lợi ích chính của quá trình này là nó cho phép một luồng thông tin hiệu quả và năng suất đi lại giữa nhóm dự án và các bên liên quan. Quá trình này được thực hiện trong suốt dự án.</p>
+
+<p>Quy trình Quản lý Truyền thông nhận diện mọi khía cạnh của quá trình truyền thông hiệu quả, bao gồm việc lựa chọn các công nghệ, phương pháp, và kỹ thuật thích hợp. Hơn nữa, nó cần cung cấp tính linh hoạt trong các hoạt động truyền thông, cho phép những điều chỉnh trong các phương pháp và kỹ thuật nhằm đáp ứng nhu cầu luôn thay đổi của các bên liên quan và của dự án. Đầu vào, công cụ, kỹ thuật, và đầu ra của quá trình này được phác họa trong Hình 10-5. Hình 10-6 miêu tả sơ đồ dòng dữ liệu của quy trình Quản lý Truyền thông.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//ec56da82-477d-490b-80dd-c59c931909d4/markdown_3/imgs/img_in_image_box_197_154_1028_850.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A02Z%2F-1%2F%2F63e55ed822275d1d7171e7e7ea8c481d32279d4cc44ae3e7fe5ee3ebcd98b751" alt="Image" width="67%" /></div></div>
+<p class="figure-caption">Hình 10-5 / Hình 10-6. Quản lý Truyền thông: Sơ đồ luồng dữ liệu & Đầu vào, Công cụ, Đầu ra</p>
+
+<p>Quá trình này vượt ra ngoài khuôn khổ của việc phân phối các thông tin có liên quan và tìm cách đảm bảo rằng những thông tin đang được truyền đạt tới các bên liên quan của dự án đã được tạo ra và định dạng một cách hợp lý, cũng như được nhận bởi các đối tượng được dự định. Nó cũng mang đến các cơ hội để các bên liên quan có thể đưa ra các yêu cầu bổ sung thông tin, yêu cầu làm rõ và thảo luận. Các kỹ thuật và những cân nhắc đối với việc quản lý truyền thông hiệu quả bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Các mô hình người gửi-người nhận (Sender-receiver models).</strong> Kết hợp các vòng lặp phản hồi (feedback loops) để cung cấp cơ hội cho sự tương tác/tham gia và gỡ bỏ những rào cản cản trở truyền thông hiệu quả.</li>
+<li><strong>Sự lựa chọn phương tiện truyền thông (Choice of media).</strong> Các quyết định về việc áp dụng các tạo tác truyền thông để đáp ứng nhu cầu cụ thể của dự án, chẳng hạn như khi nào thì giao tiếp bằng văn bản so với giao tiếp bằng lời nói, khi nào nên soạn thảo một bản ghi nhớ không chính thức so với một báo cáo chính thức, và khi nào nên sử dụng các tùy chọn đẩy/kéo (push/pull options) cùng với việc lựa chọn công nghệ phù hợp.</li>
+<li><strong>Phong cách viết (Writing style).</strong> Sử dụng thích hợp câu chủ động (active voice) so với câu bị động (passive voice), cấu trúc câu, và lựa chọn từ ngữ.</li>
+<li><strong>Quản lý cuộc họp (Meeting management).</strong> Mô tả trong Phần 10.2.2.6. Chuẩn bị chương trình nghị sự (agenda), mời những người tham gia thiết yếu, và đảm bảo họ tham dự. Xử lý các xung đột trong suốt cuộc họp hoặc các xung đột bắt nguồn từ việc không theo dõi đầy đủ biên bản và các hành động, hoặc sự tham dự của những người không phù hợp.</li>
+<li><strong>Các bài thuyết trình (Presentations).</strong> Nhận thức về sự ảnh hưởng của ngôn ngữ cơ thể và cách thiết kế các công cụ hỗ trợ trực quan.</li>
+<li><strong>Sự điều phối/Tạo điều kiện (Facilitation).</strong> Mô tả trong Phần 4.1.2.3. Xây dựng sự đồng thuận và vượt qua các trở ngại như động lực học nhóm khó khăn (difficult group dynamics), và duy trì sự quan tâm cũng như sự nhiệt tình giữa các thành viên trong nhóm.</li>
+<li><strong>Lắng nghe chủ động (Active listening).</strong> Mô tả trong Phần 10.2.2.6. Việc lắng nghe chủ động bao gồm sự ghi nhận, làm rõ và xác nhận, thấu hiểu, và loại bỏ các rào cản gây ảnh hưởng tiêu cực đến sự thông hiểu.</li>
+</ul>
+
+<h4>10.2.1 QUẢN LÝ TRUYỀN THÔNG: ĐẦU VÀO (INPUTS)</h4>
+
+<h5>10.2.1.1 KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN)</h5>
+<p>Mô tả trong Phần 4.2.3.1. Các thành phần của kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Kế hoạch quản lý nguồn lực.</strong> Mô tả trong Phần 9.1.3.1. Kế hoạch quản lý nguồn lực mô tả các hoạt động truyền thông cần thiết để quản lý nhóm hoặc các tài nguyên vật chất.</li>
+<li><strong>Kế hoạch quản lý truyền thông.</strong> Mô tả trong Phần 10.1.3.1. Kế hoạch quản lý truyền thông miêu tả cách các truyền thông của dự án sẽ được lập kế hoạch, có cấu trúc ra sao, cũng như cách giám sát và kiểm soát chúng.</li>
+<li><strong>Kế hoạch gắn kết các bên liên quan.</strong> Mô tả chi tiết trong Phần 13.2.3.1. Kế hoạch gắn kết các bên liên quan mô tả cách các bên liên quan sẽ được tham gia/gắn kết thông qua các chiến lược truyền thông phù hợp.</li>
+</ul>
+
+<h5>10.2.1.2 TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS)</h5>
+<p>Tài liệu dự án có thể được coi là đầu vào cho quy trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Sổ ghi nhận thay đổi (Change log).</strong> Mô tả ở Phần 4.6.3.3. Sổ ghi nhận thay đổi được sử dụng để thông báo các thay đổi và các yêu cầu thay đổi đã được duyệt, bị hoãn lại, hoặc bị từ chối đến các bên liên quan chịu tác động.</li>
+<li><strong>Sổ ghi nhận vấn đề (Issue log).</strong> Mô tả ở Phần 4.6.3.3. Thông tin về các vấn đề được truyền đạt tới các bên liên quan bị tác động.</li>
+<li><strong>Sổ đăng ký bài học kinh nghiệm (Lessons learned register).</strong> Mô tả trong Phần 4.4.3.1. Các bài học kinh nghiệm ở đầu dự án liên quan đến quản lý truyền thông có thể được áp dụng cho các giai đoạn sau của dự án để cải thiện tính hiệu quả và năng suất của các hoạt động truyền thông và quá trình giao tiếp.</li>
+<li><strong>Báo cáo chất lượng (Quality report).</strong> Mô tả trong Phần 8.2.3.1. Thông tin trong báo cáo chất lượng bao gồm các vấn đề về chất lượng, sự cải tiến của dự án và sản phẩm, và các sự cải tiến quy trình. Thông tin này được chuyển tiếp đến những người có thể thực hiện các hành động khắc phục để đạt được các kỳ vọng về chất lượng dự án.</li>
+<li><strong>Báo cáo rủi ro (Risk report).</strong> Mô tả trong Phần 11.2.3.2. Báo cáo rủi ro trình bày thông tin về các nguồn phát sinh rủi ro chung của dự án, cùng với thông tin tóm tắt về các rủi ro dự án riêng lẻ đã được nhận diện. Thông tin này được thông báo cho các chủ sở hữu rủi ro (risk owners) và các bên liên quan chịu tác động khác.</li>
+<li><strong>Sổ đăng ký các bên liên quan (Stakeholder register).</strong> Mô tả trong Phần 13.1.3.1. Sổ đăng ký các bên liên quan nhận diện các cá nhân, nhóm, hoặc tổ chức sẽ cần đến nhiều loại thông tin khác nhau.</li>
+</ul>
+
+<h5>10.2.1.3 BÁO CÁO HIỆU SUẤT CÔNG VIỆC (WORK PERFORMANCE REPORTS)</h5>
+<p>Mô tả trong Phần 4.5.3.1. Báo cáo hiệu suất công việc được lưu hành đến các bên liên quan của dự án thông qua quy trình này như đã được định nghĩa trong kế hoạch quản lý truyền thông. Các ví dụ về báo cáo hiệu suất công việc bao gồm báo cáo trạng thái và báo cáo tiến độ. Các báo cáo hiệu suất công việc có thể chứa các biểu đồ và thông tin về giá trị thu được (earned value), đường xu hướng và dự báo, biểu đồ burn-down cho ngân sách dự phòng, biểu đồ tần suất khiếm khuyết (defect histograms), thông tin hiệu suất của hợp đồng, và tóm tắt rủi ro. Chúng có thể được trình bày dưới dạng dashboard (bảng điều khiển), báo cáo biểu đồ nhiệt (heat reports), biểu đồ đèn giao thông (stop light charts), hoặc các đại diện khác hữu ích cho việc tạo ra sự nhận thức và kích thích các quyết định và hành động.</p>
+
+<h5>10.2.1.4 YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP (ENTERPRISE ENVIRONMENTAL FACTORS)</h5>
+<p>Các yếu tố môi trường doanh nghiệp có thể ảnh hưởng đến quá trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Văn hóa tổ chức, môi trường chính trị, và khuôn khổ quản trị;</li>
+<li>Chính sách quản lý hành chính nhân sự;</li>
+<li>Ngưỡng rủi ro của các bên liên quan;</li>
+<li>Các kênh truyền thông, công cụ, và hệ thống đã được thiết lập;</li>
+<li>Các xu hướng, thực tiễn hoặc thói quen toàn cầu, khu vực, hoặc địa phương; và</li>
+<li>Sự phân bổ địa lý của cơ sở hạ tầng và nguồn lực.</li>
+</ul>
+
+<h5>10.2.1.5 TÀI SẢN QUY TRÌNH TỔ CHỨC (ORGANIZATIONAL PROCESS ASSETS)</h5>
+<p>Các tài sản quy trình tổ chức có thể ảnh hưởng đến quá trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Chính sách và thủ tục của công ty về phương tiện truyền thông xã hội, đạo đức, và bảo mật;</li>
+</ul>
+<ul class="pmbok">
+<li>Chính sách và thủ tục của công ty cho việc quản lý vấn đề, rủi ro, thay đổi, và quản lý dữ liệu;</li>
+</ul>
+<ul class="pmbok check">
+<li>Các yêu cầu về truyền thông của tổ chức;</li>
+</ul>
+<ul class="pmbok">
+<li>Các hướng dẫn tiêu chuẩn hóa cho việc phát triển, trao đổi, lưu trữ, và truy xuất thông tin; và</li>
+<li>Thông tin lịch sử từ các dự án trước đó, bao gồm cả kho tàng bài học kinh nghiệm.</li>
+</ul>
+
+<h4>10.2.2 QUẢN LÝ TRUYỀN THÔNG: CÔNG CỤ VÀ KỸ THUẬT (TOOLS AND TECHNIQUES)</h4>
+
+<h5>10.2.2.1 CÔNG NGHỆ TRUYỀN THÔNG (COMMUNICATION TECHNOLOGY)</h5>
+<p>Mô tả ở Phần 10.1.2.3. Các yếu tố ảnh hưởng đến công nghệ bao gồm việc nhóm có làm việc cùng địa điểm hay không, tính bảo mật của bất kỳ thông tin nào cần được chia sẻ, tài nguyên có sẵn đối với các thành viên trong nhóm, và cách mà văn hóa tổ chức tác động đến phương thức mà các cuộc họp và thảo luận thường được tiến hành.</p>
+
+<h5>10.2.2.2 CÁC PHƯƠNG PHÁP TRUYỀN THÔNG (COMMUNICATION METHODS)</h5>
+<p>Mô tả ở Phần 10.1.2.5. Sự lựa chọn các phương pháp truyền thông nên cho phép tính linh hoạt trong trường hợp các thành viên của cộng đồng các bên liên quan thay đổi hoặc nhu cầu và kỳ vọng của họ có sự thay đổi.</p>
+
+<h5>10.2.2.3 CÁC KỸ NĂNG TRUYỀN THÔNG (COMMUNICATION SKILLS)</h5>
+<p>Các kỹ thuật truyền thông có thể được sử dụng cho quá trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Năng lực giao tiếp (Communication competence).</strong> Sự kết hợp của các kỹ năng giao tiếp được tinh chỉnh sao cho cân nhắc đến các yếu tố như sự rõ ràng về mục đích của các thông điệp chính, chia sẻ thông tin và mối quan hệ hiệu quả, và các hành vi lãnh đạo.</li>
+<li><strong>Phản hồi (Feedback).</strong> Phản hồi là những thông tin về những sự phản ứng đối với các hoạt động giao tiếp, một sản phẩm bàn giao, hoặc một tình huống. Phản hồi hỗ trợ quá trình giao tiếp mang tính tương tác giữa giám đốc dự án, nhóm, và tất cả các bên liên quan khác của dự án. Ví dụ như công tác huấn luyện (coaching), định hướng/cố vấn (mentoring), và đàm phán.</li>
+<li><strong>Phi ngôn ngữ (Nonverbal).</strong> Ví dụ về giao tiếp phi ngôn ngữ bao gồm ngôn ngữ cơ thể phù hợp để truyền đạt ý nghĩa thông qua cử chỉ, giọng điệu, và nét mặt. Kỹ thuật bắt chước/bắt nhịp theo (Mirroring) và giao tiếp bằng mắt cũng là những kỹ thuật quan trọng. Các thành viên trong nhóm nên nhận thức được cách họ đang thể hiện bản thân không chỉ thông qua những gì họ nói mà còn qua cả những gì họ không nói ra.</li>
+<li><strong>Các bài thuyết trình (Presentations).</strong> Bài thuyết trình là việc chuyển giao thông tin và/hoặc tài liệu một cách trang trọng. Các bài thuyết trình rõ ràng và hiệu quả về thông tin dự án tới các bên liên quan có liên quan có thể bao gồm nhưng không giới hạn ở:
+  <ul class="pmbok check">
+    <li>Báo cáo tiến độ và cập nhật thông tin tới các bên liên quan;</li>
+  </ul>
+  <ul class="pmbok dash">
+    <li>Thông tin cơ sở/nền tảng để hỗ trợ ra quyết định;</li>
+    <li>Thông tin chung về dự án và các mục tiêu của nó, nhằm mục đích nâng cao hồ sơ/tiếng tăm về công việc của dự án và của nhóm; và</li>
+    <li>Thông tin cụ thể nhằm gia tăng sự hiểu biết và ủng hộ đối với các công việc và mục tiêu của dự án.</li>
+  </ul>
+</li>
+</ul>
+<p>Các bài thuyết trình sẽ thành công khi nội dung và việc chuyển giao cân nhắc đến các yếu tố sau:</p>
+<ul class="pmbok dash">
+<li>Khán giả, những kỳ vọng của họ, và các nhu cầu của họ; và</li>
+<li>Những nhu cầu và mục tiêu của dự án cũng như của nhóm dự án.</li>
+</ul>
+
+<h5>10.2.2.4 HỆ THỐNG THÔNG TIN QUẢN LÝ DỰ ÁN (PMIS)</h5>
+<p>Mô tả trong Phần 4.3.2.2. Các hệ thống thông tin quản lý dự án có thể đảm bảo rằng các bên liên quan có thể dễ dàng truy xuất thông tin mà họ cần một cách kịp thời. Thông tin dự án được quản lý và phân phối bằng nhiều công cụ khác nhau, bao gồm:</p>
+<ul class="pmbok">
+<li><strong>Công cụ quản lý dự án điện tử (Electronic project management tools).</strong> Phần mềm quản lý dự án, phần mềm hỗ trợ họp và văn phòng ảo, giao diện web, cổng thông tin dự án chuyên biệt và dashboard (bảng điều khiển), và các công cụ quản lý công việc cộng tác.</li>
+<li><strong>Quản lý truyền thông điện tử (Electronic communications management).</strong> Email, fax, và hộp thư thoại; hội nghị âm thanh, video và web; và các trang web cùng với xuất bản trên web (web publishing).</li>
+<li><strong>Quản lý truyền thông xã hội (Social media management).</strong> Trang web và xuất bản web; các blog và ứng dụng, cung cấp cơ hội để gắn kết với các bên liên quan và hình thành nên các cộng đồng trực tuyến.</li>
+</ul>
+
+<h5>10.2.2.5 BÁO CÁO DỰ ÁN (PROJECT REPORTING)</h5>
+<p>Báo cáo dự án là hành động thu thập và phân phối thông tin của dự án. Thông tin dự án được phân phối cho nhiều nhóm các bên liên quan và nên được điều chỉnh để cung cấp thông tin ở mức độ, định dạng và chi tiết thích hợp đối với từng loại bên liên quan. Định dạng có thể bao gồm từ một dòng truyền thông đơn giản cho đến các báo cáo và các bài thuyết trình tùy chỉnh công phu hơn. Thông tin có thể được chuẩn bị một cách thường xuyên/định kỳ hoặc dựa trên cơ sở ngoại lệ (exception basis). Trong khi các báo cáo hiệu suất công việc (work performance reports) là đầu ra của quá trình Giám sát và Kiểm soát Công việc Dự án (Monitor and Control Project Work), thì quá trình này (Manage Communications) phát triển các báo cáo đột xuất (ad hoc reports), các bài thuyết trình về dự án, blog, và các loại hình truyền thông khác về dự án.</p>
+
+<h5>10.2.2.6 KỸ NĂNG LIÊN CÁ NHÂN VÀ NHÓM (INTERPERSONAL AND TEAM SKILLS)</h5>
+<p>Kỹ năng cá nhân và nhóm có thể được sử dụng trong quá trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Lắng nghe chủ động (Active listening).</strong> Các kỹ thuật lắng nghe chủ động liên quan đến việc ghi nhận, làm rõ và xác nhận, thấu hiểu, và loại bỏ đi những rào cản cản trở khả năng lĩnh hội.</li>
+<li><strong>Quản lý xung đột (Conflict management).</strong> Mô tả trong Phần 9.5.2.1.</li>
+<li><strong>Nhận thức về văn hóa (Cultural awareness).</strong> Mô tả trong Phần 10.1.2.6.</li>
+<li><strong>Quản lý cuộc họp (Meeting management).</strong> Quản lý cuộc họp là việc thực hiện các bước để đảm bảo các cuộc họp đáp ứng được mục tiêu dự định của chúng một cách hiệu quả và năng suất. Các bước sau nên được sử dụng để lập kế hoạch cho cuộc họp:
+  <ul class="pmbok dash">
+    <li>Chuẩn bị và phân phát chương trình nghị sự (agenda) trong đó nêu rõ mục tiêu của cuộc họp.</li>
+    <li>Đảm bảo rằng các cuộc họp bắt đầu và kết thúc vào đúng thời gian đã công bố.</li>
+    <li>Đảm bảo những người tham gia thích hợp được mời và tham dự đầy đủ.</li>
+    <li>Bám sát chủ đề.</li>
+    <li>Quản lý kỳ vọng, các vấn đề, và những xung đột xảy ra trong suốt cuộc họp.</li>
+    <li>Ghi chép lại tất cả các hành động và ghi nhận những ai đã được phân công trách nhiệm hoàn thành các hành động đó.</li>
+  </ul>
+</li>
+<li><strong>Mạng lưới quan hệ (Networking).</strong> Xây dựng mạng lưới quan hệ là tương tác với những người khác để trao đổi thông tin và phát triển các đầu mối liên lạc (contacts). Mạng lưới quan hệ cung cấp cho các giám đốc dự án và nhóm của họ quyền truy cập vào các tổ chức phi chính thức nhằm mục đích giải quyết vấn đề, tác động đến các hành động của các bên liên quan của họ, và gia tăng sự ủng hộ của các bên liên quan đối với công việc và kết quả của dự án, qua đó cải thiện hiệu suất.</li>
+<li><strong>Nhận thức về chính trị (Political awareness).</strong> Mô tả ở Phần 10.1.2.6. Nhận thức chính trị hỗ trợ cho giám đốc dự án trong việc gắn kết các bên liên quan một cách hợp lý để duy trì sự hỗ trợ của họ trong suốt dự án.</li>
+</ul>
+
+<h5>10.2.2.7 CÁC CUỘC HỌP (MEETINGS)</h5>
+<p>Các cuộc họp hỗ trợ các hành động đã được xác định trong chiến lược truyền thông và kế hoạch truyền thông.</p>
+
+<h4>10.2.3 QUẢN LÝ TRUYỀN THÔNG: ĐẦU RA (OUTPUTS)</h4>
+
+<h5>10.2.3.1 CÁC TRUYỀN THÔNG DỰ ÁN (PROJECT COMMUNICATIONS)</h5>
+<p>Các tạo tác truyền thông của dự án có thể bao gồm nhưng không giới hạn ở: báo cáo hiệu suất, tình trạng của sản phẩm bàn giao, tiến độ lịch trình, chi phí đã phát sinh, các bài thuyết trình, và những thông tin khác mà các bên liên quan yêu cầu.</p>
+
+<h5>10.2.3.2 CẬP NHẬT KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN UPDATES)</h5>
+<p>Bất kỳ thay đổi nào đối với kế hoạch quản lý dự án đều phải đi qua quy trình kiểm soát thay đổi của tổ chức thông qua một yêu cầu thay đổi (change request). Các thành phần của kế hoạch quản lý dự án có thể được cập nhật như một kết quả của việc thực hiện quá trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Kế hoạch quản lý truyền thông.</strong> Mô tả trong Phần 10.1.3.1. Khi có bất kỳ thay đổi nào được thực hiện đối với phương pháp tiếp cận truyền thông của dự án dưới dạng kết quả của quy trình này, những thay đổi này sẽ được phản ánh trong kế hoạch truyền thông của dự án.</li>
+<li><strong>Kế hoạch gắn kết các bên liên quan.</strong> Mô tả ở Phần 13.2.3.1. Các yêu cầu truyền thông của các bên liên quan và các chiến lược truyền thông đã được nhất trí sẽ được cập nhật do kết quả của quy trình này.</li>
+</ul>
+
+<h5>10.2.3.3 CẬP NHẬT TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS UPDATES)</h5>
+<p>Tài liệu dự án có thể được cập nhật như một kết quả của quá trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Sổ ghi nhận vấn đề (Issue log).</strong> Mô tả trong Phần 4.3.3.3. Sổ ghi nhận vấn đề được cập nhật để phản ánh bất kỳ vấn đề nào về truyền thông trên dự án, hoặc cách mà các công cụ giao tiếp được sử dụng để gây tác động đến những vấn đề đang diễn ra (active issues).</li>
+<li><strong>Sổ đăng ký bài học kinh nghiệm (Lessons learned register).</strong> Mô tả trong Phần 4.3.3.1. Sổ đăng ký bài học kinh nghiệm được cập nhật thông tin về các thách thức đã gặp phải và cách chúng có thể tránh được cũng như những phương pháp tiếp cận nào đã hoạt động tốt và cái nào thì không hiệu quả trong việc quản lý truyền thông.</li>
+<li><strong>Tiến độ dự án (Project schedule).</strong> Mô tả trong Phần 6.5.3.2. Lịch trình dự án có thể được cập nhật để phản ánh trạng thái của các hoạt động truyền thông.</li>
+<li><strong>Sổ đăng ký rủi ro (Risk register).</strong> Mô tả trong Phần 11.2.3.1. Sổ đăng ký rủi ro được cập nhật để nắm bắt các rủi ro liên quan đến việc quản lý truyền thông.</li>
+<li><strong>Sổ đăng ký các bên liên quan (Stakeholder register).</strong> Mô tả ở Phần 13.1.3.1. Sổ đăng ký các bên liên quan có thể được cập nhật để bao gồm các thông tin liên quan đến những hoạt động truyền thông với các bên liên quan của dự án.</li>
+</ul>
+
+<h5>10.2.3.4 CẬP NHẬT TÀI SẢN QUY TRÌNH TỔ CHỨC (ORGANIZATIONAL PROCESS ASSETS UPDATES)</h5>
+<p>Tài sản quy trình tổ chức có thể được cập nhật như là kết quả của quá trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li>Các hồ sơ dự án (Project records) như thư từ, bản ghi nhớ, biên bản cuộc họp và các tài liệu khác được sử dụng trong dự án; và</li>
+</ul>
+<ul class="pmbok check">
+<li>Các báo cáo và các bài thuyết trình về dự án theo kế hoạch và đột xuất (ad hoc).</li>
+</ul>
+
+<hr>
+
+<h3 id="s10-3">10.3 GIÁM SÁT TRUYỀN THÔNG (MONITOR COMMUNICATIONS)</h3>
+<p>Giám sát Truyền thông là quá trình đảm bảo rằng các nhu cầu thông tin của dự án và các bên liên quan của nó được đáp ứng. Lợi ích chính của quá trình này là duy trì được một luồng thông tin tối ưu như đã được xác định ở trong kế hoạch quản lý truyền thông và kế hoạch gắn kết các bên liên quan. Quá trình này được thực hiện xuyên suốt dự án. Các đầu vào, công cụ và kỹ thuật, và đầu ra của quá trình này được phác họa trong Hình 10-7. Hình 10-8 miêu tả sơ đồ dòng dữ liệu cho quy trình này.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//20b9ddcf-4f6d-461e-8912-4760ee88104b/markdown_2/imgs/img_in_image_box_200_164_1027_814.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A02Z%2F-1%2F%2Ffe2c5a987825a2bccb97babd2ff069a5e61f71cd671e15e987ce6a29433b88c3" alt="Image" width="67%" /></div></div>
+<p class="figure-caption">Hình 10-7 / Hình 10-8. Giám sát Truyền thông: Sơ đồ luồng dữ liệu & Đầu vào, Công cụ, Đầu ra</p>
+
+<p>Giám sát Truyền thông sẽ quyết định xem liệu các tạo tác truyền thông và các hoạt động đã được lên kế hoạch có mang lại tác dụng như mong muốn (tăng cường hoặc duy trì sự hỗ trợ của các bên liên quan đối với các sản phẩm bàn giao của dự án và các kết quả mong đợi) hay không. Mức độ tác động và hậu quả của các hoạt động truyền thông dự án nên được đánh giá và giám sát cẩn thận để đảm bảo rằng một thông điệp đúng với một nội dung chính xác (mang lại cùng một ý nghĩa cho cả người gửi và người nhận) được chuyển đến cho đúng đối tượng khán giả, thông qua đúng kênh, và vào đúng thời điểm. Quá trình Giám sát Truyền thông có thể đòi hỏi nhiều phương pháp khác nhau, ví dụ như các khảo sát về sự hài lòng của khách hàng, thu thập các bài học kinh nghiệm, các quan sát nhóm, đánh giá dữ liệu từ sổ ghi nhận vấn đề (issue log), hoặc đánh giá sự thay đổi ở trong ma trận đánh giá mức độ gắn kết của các bên liên quan như đã miêu tả tại Phần 13.2.2.5.</p>
+
+<p>Quá trình Giám sát Truyền thông có thể kích hoạt một vòng lặp (iteration) quay về lại với quá trình Lập kế hoạch Quản lý Truyền thông và/hoặc quá trình Quản lý Truyền thông nhằm mục đích cải thiện tính hiệu quả của quá trình truyền thông thông qua các kế hoạch và hoạt động truyền thông bổ sung hoặc sửa đổi. Những vòng lặp lặp lại (iterations) như vậy minh họa cho bản chất liên tục (continuous nature) của các quy trình Quản lý Truyền thông Dự án. Các vấn đề (issues) hoặc các chỉ số đánh giá hiệu suất chính (KPIs), rủi ro, hoặc các xung đột đều có thể đóng vai trò như một tác nhân kích hoạt (trigger) gây ra một sự sửa đổi/xem xét lại ngay lập tức.</p>
+
+<h4>10.3.1 GIÁM SÁT TRUYỀN THÔNG: ĐẦU VÀO (INPUTS)</h4>
+
+<h5>10.3.1.1 KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN)</h5>
+<p>Mô tả trong Phần 4.2.3.1. Các thành phần của kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Kế hoạch quản lý nguồn lực.</strong> Mô tả trong Phần 9.1.3.1. Kế hoạch quản lý nguồn lực có thể được sử dụng để tìm hiểu về sơ đồ tổ chức thực tế của dự án và bất kỳ sự thay đổi nào, thông qua việc hiểu được các vai trò và trách nhiệm cũng như các biểu đồ sơ đồ tổ chức của dự án.</li>
+<li><strong>Kế hoạch quản lý truyền thông.</strong> Mô tả trong Phần 10.1.3.1. Kế hoạch quản lý truyền thông chứa kế hoạch hiện hành cho việc thu thập, tạo lập, và phân phối thông tin một cách kịp thời. Nó nhận diện các thành viên nhóm, các bên liên quan, và các công việc liên quan trong quá trình giao tiếp.</li>
+<li><strong>Kế hoạch gắn kết các bên liên quan.</strong> Mô tả trong Phần 13.2.3.1. Kế hoạch gắn kết các bên liên quan xác định những chiến lược truyền thông nào đã được dự định sử dụng để gắn kết các bên liên quan.</li>
+</ul>
+
+<h5>10.3.1.2 TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS)</h5>
+<p>Tài liệu dự án có thể được coi là đầu vào cho quy trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Sổ ghi nhận vấn đề (Issue log).</strong> Mô tả trong Phần 4.3.3.3. Sổ ghi nhận vấn đề cung cấp toàn bộ lịch sử của dự án, một bản ghi chép về các vấn đề gắn kết của các bên liên quan, và cách mà chúng đã được giải quyết.</li>
+<li><strong>Sổ đăng ký bài học kinh nghiệm (Lessons learned register).</strong> Mô tả trong Phần 4.4.3.1. Những bài học kinh nghiệm học được từ sớm trong dự án có thể được áp dụng vào các giai đoạn sau trong dự án nhằm cải thiện tính hiệu quả của truyền thông.</li>
+<li><strong>Các truyền thông dự án (Project communications).</strong> Mô tả ở Phần 10.2.3.1. Cung cấp thông tin về các tài liệu và hoạt động giao tiếp đã được phân phối đi.</li>
+</ul>
+
+<h5>10.3.1.3 DỮ LIỆU HIỆU SUẤT CÔNG VIỆC (WORK PERFORMANCE DATA)</h5>
+<p>Mô tả ở Phần 4.3.3.2. Dữ liệu hiệu suất công việc chứa dữ liệu về các loại và số lượng truyền thông (communications) đã được phân phối trên thực tế.</p>
+
+<h5>10.3.1.4 YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP (ENTERPRISE ENVIRONMENTAL FACTORS)</h5>
+<p>Các yếu tố môi trường doanh nghiệp có thể ảnh hưởng đến quá trình Giám sát Truyền thông bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Văn hóa tổ chức, môi trường chính trị, và khuôn khổ quản trị;</li>
+<li>Các kênh truyền thông, công cụ, và hệ thống đã được thiết lập;</li>
+</ul>
+<ul class="pmbok">
+<li>Các xu hướng, thực tiễn, hoặc thói quen toàn cầu, khu vực, hoặc địa phương; và</li>
+</ul>
+<ul class="pmbok check">
+<li>Sự phân bổ địa lý của các cơ sở vật chất và tài nguyên.</li>
+</ul>
+
+<h5>10.3.1.5 TÀI SẢN QUY TRÌNH TỔ CHỨC (ORGANIZATIONAL PROCESS ASSETS)</h5>
+<p>Các tài sản quy trình tổ chức có thể ảnh hưởng đến quy trình Giám sát Truyền thông bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Chính sách và thủ tục của công ty cho phương tiện truyền thông xã hội, đạo đức, và bảo mật;</li>
+<li>Các yêu cầu truyền thông của tổ chức;</li>
+</ul>
+<ul class="pmbok">
+<li>Các hướng dẫn tiêu chuẩn hóa về việc phát triển, trao đổi, lưu trữ, và truy xuất thông tin;</li>
+<li>Thông tin lịch sử và kho lưu trữ các bài học kinh nghiệm từ những dự án trước đó; và</li>
+</ul>
+<ul class="pmbok check">
+<li>Dữ liệu và thông tin về các bên liên quan và thông tin liên lạc từ các dự án trước đây.</li>
+</ul>
+
+<h4>10.3.2 GIÁM SÁT TRUYỀN THÔNG: CÔNG CỤ VÀ KỸ THUẬT (TOOLS AND TECHNIQUES)</h4>
+
+<h5>10.3.2.1 ĐÁNH GIÁ CỦA CHUYÊN GIA (EXPERT JUDGMENT)</h5>
+<p>Mô tả trong Phần 4.1.2.1. Chuyên môn nên được lấy ý kiến từ các cá nhân hoặc nhóm có kiến thức chuyên môn hoặc được đào tạo trong các chủ đề sau:</p>
+<ul class="pmbok">
+<li>Truyền thông với công chúng, cộng đồng, và phương tiện truyền thông, và, trong một môi trường quốc tế, giao tiếp giữa các nhóm ảo; và</li>
+<li>Các hệ thống truyền thông và quản lý dự án.</li>
+</ul>
+
+<h5>10.3.2.2 HỆ THỐNG THÔNG TIN QUẢN LÝ DỰ ÁN (PMIS)</h5>
+<p>Mô tả ở Phần 4.3.2.2. Hệ thống thông tin quản lý dự án cung cấp một bộ các công cụ tiêu chuẩn cho phép giám đốc dự án ghi nhận, lưu trữ, và phân phối thông tin đến cho các bên liên quan bên trong và bên ngoài với những thông tin mà họ cần theo đúng kế hoạch truyền thông. Các thông tin có trong hệ thống được giám sát để đánh giá tính hợp lệ và hiệu quả của chúng.</p>
+
+<h5>10.3.2.3 BIỂU DIỄN DỮ LIỆU (DATA REPRESENTATION)</h5>
+<p>Một kỹ thuật biểu diễn dữ liệu có thể được sử dụng bao gồm nhưng không giới hạn ở <strong>ma trận đánh giá sự gắn kết của các bên liên quan (stakeholder engagement assessment matrix)</strong> (Phần 13.2.2.5), nó có thể cung cấp các thông tin liên quan đến tính hiệu quả của các hoạt động giao tiếp. Điều này đạt được thông qua việc kiểm tra những sự thay đổi giữa mức độ tham gia/gắn kết mong muốn so với mức độ gắn kết hiện tại và đi đến điều chỉnh các hoạt động giao tiếp khi cần thiết.</p>
+
+<h5>10.3.2.4 KỸ NĂNG LIÊN CÁ NHÂN VÀ NHÓM (INTERPERSONAL AND TEAM SKILLS)</h5>
+<p>Các kỹ năng cá nhân và nhóm có thể được sử dụng cho quy trình này bao gồm nhưng không giới hạn ở <strong>kỹ năng quan sát/trò chuyện (observation/conversation)</strong> như được mô tả trong Phần 5.2.2.6. Thảo luận và đối thoại với các nhóm dự án sẽ giúp xác định cách phù hợp nhất để cập nhật và truyền đạt các hiệu suất của dự án, đồng thời phản hồi trước các yêu cầu từ các bên liên quan về việc muốn lấy thông tin. Kỹ năng quan sát và đối thoại cho phép giám đốc dự án xác định được các vấn đề (issues) trong nội bộ nhóm, các xung đột giữa mọi người với nhau, hoặc các vấn đề liên quan đến năng suất cá nhân.</p>
+
+<h5>10.3.2.5 CÁC CUỘC HỌP (MEETINGS)</h5>
+<p>Các cuộc họp trực tiếp hoặc trực tuyến ảo được sử dụng để ra quyết định; phản hồi lại các yêu cầu của các bên liên quan; và để tổ chức các cuộc thảo luận với các nhà cung cấp, người bán, và những bên liên quan khác của dự án.</p>
+
+<h4>10.3.3 GIÁM SÁT TRUYỀN THÔNG: ĐẦU RA (OUTPUTS)</h4>
+
+<h5>10.3.3.1 THÔNG TIN HIỆU SUẤT CÔNG VIỆC (WORK PERFORMANCE INFORMATION)</h5>
+<p>Mô tả trong Phần 4.5.1.3. Thông tin hiệu suất công việc bao gồm thông tin về tình hình hoạt động của hoạt động truyền thông của dự án bằng cách so sánh các giao tiếp đã được triển khai trên thực tế với những giao tiếp đã được lên kế hoạch. Nó cũng xem xét các phản hồi về hoạt động truyền thông, chẳng hạn như kết quả của các cuộc khảo sát đánh giá về tính hiệu quả của truyền thông.</p>
+
+<h5>10.3.3.2 YÊU CẦU THAY ĐỔI (CHANGE REQUESTS)</h5>
+<p>Mô tả trong Phần 4.3.3.4. Quá trình Giám sát Truyền thông thường dẫn đến sự cần thiết phải có các sự điều chỉnh, hành động, và can thiệp đối với các hoạt động truyền thông đã được xác định trong kế hoạch quản lý truyền thông. Các yêu cầu thay đổi (Change requests) được xử lý thông qua quy trình Thực hiện Kiểm soát Thay đổi Tích hợp (Perform Integrated Change Control) (Phần 4.6).</p>
+<p>Các yêu cầu thay đổi này có thể dẫn đến:</p>
+<ul class="pmbok">
+<li>Sự sửa đổi/xem xét lại đối với các yêu cầu truyền thông của các bên liên quan, bao gồm sự phân phối thông tin cho các bên liên quan, nội dung hoặc định dạng, và phương thức phân phối thông tin; và</li>
+</ul>
+<ul class="pmbok check">
+<li>Các thủ tục mới được đề ra để loại bỏ các nút thắt cổ chai (bottlenecks).</li>
+</ul>
+
+<h5>10.3.3.3 CẬP NHẬT KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN UPDATES)</h5>
+<p>Bất kỳ thay đổi nào đối với kế hoạch quản lý dự án đều phải đi qua quy trình kiểm soát thay đổi của tổ chức thông qua một yêu cầu thay đổi (change request). Các thành phần có thể yêu cầu một yêu cầu thay đổi đối với kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Kế hoạch quản lý truyền thông.</strong> Mô tả ở Phần 10.1.3.1. Kế hoạch quản lý truyền thông được cập nhật với các thông tin mới nhằm giúp cho quá trình giao tiếp trở nên hiệu quả hơn.</li>
+<li><strong>Kế hoạch gắn kết các bên liên quan.</strong> Mô tả ở Phần 13.2.3.1. Kế hoạch gắn kết các bên liên quan được cập nhật để phản ánh tình trạng thực tế của các bên liên quan, các nhu cầu giao tiếp, và tầm quan trọng của họ.</li>
+</ul>
+
+<h5>10.3.3.4 CẬP NHẬT TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS UPDATES)</h5>
+<p>Tài liệu dự án có thể được cập nhật như một kết quả của quá trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Sổ ghi nhận vấn đề (Issue log).</strong> Mô tả ở Phần 4.3.3.3. Sổ ghi nhận vấn đề có thể được cập nhật cùng với các thông tin mới về các vấn đề đã được nêu ra (raised issues), tiến trình xử lý, và các giải pháp giải quyết cho chúng.</li>
+<li><strong>Sổ đăng ký bài học kinh nghiệm (Lessons learned register).</strong> Mô tả ở Phần 4.4.3.1. Sổ đăng ký bài học kinh nghiệm có thể được cập nhật cùng với các nguyên nhân gây ra vấn đề, những lý do đằng sau các hành động khắc phục đã được chọn lựa, và các bài học giao tiếp khác đã học được cho phù hợp.</li>
+<li><strong>Sổ đăng ký các bên liên quan (Stakeholder register).</strong> Mô tả ở Phần 13.1.3.1. Sổ đăng ký các bên liên quan có thể được cập nhật cùng với các yêu cầu truyền thông của các bên liên quan đã được chỉnh sửa (revised).</li>
+</ul>
+
+</main>
+</body>
+</html>

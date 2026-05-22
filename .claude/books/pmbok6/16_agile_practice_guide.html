@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>16_agile_practice_guide</title>
+</head>
+<body>
+    
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hướng dẫn Thực hành Agile | Agile Practice Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a3;
+    --cream: #fdf8f0;
+    --text: #2c2c2c;
+    --text-light: #5a5a5a;
+    --border: #d4c89a;
+    --accent: #8b1a1a;
+    --sidebar-w: 260px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Merriweather', Georgia, serif;
+    background: var(--cream);
+    color: var(--text);
+    display: flex;
+    min-height: 100vh;
+  }
+
+  #sidebar {
+    width: var(--sidebar-w);
+    background: var(--navy);
+    color: #ccd4e8;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    overflow-y: auto;
+    z-index: 100;
+    padding: 0 0 2rem;
+    border-right: 3px solid var(--gold);
+  }
+  #sidebar-header {
+    background: linear-gradient(135deg, #0f1d3a 0%, #1a2744 100%);
+    padding: 1.5rem 1.2rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  #sidebar-header .book-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  #sidebar-header h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+  }
+  #sidebar-header .edition {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    color: var(--gold-light);
+    font-style: italic;
+  }
+  #sidebar nav { padding: 0.8rem 0; }
+  #sidebar nav a {
+    display: block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    color: #aab8d0;
+    text-decoration: none;
+    padding: 0.45rem 1.2rem;
+    line-height: 1.4;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+  }
+  #sidebar nav a:hover, #sidebar nav a.active {
+    color: #fff;
+    background: rgba(201,168,76,0.12);
+    border-left-color: var(--gold);
+  }
+  #sidebar nav .section-group { margin-top: 0.4rem; }
+  #sidebar nav .group-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 0.8rem 1.2rem 0.3rem;
+    opacity: 0.85;
+  }
+
+  #main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    max-width: 900px;
+    padding: 0 3rem 5rem;
+  }
+
+  .chapter-hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #2a3a6a 100%);
+    color: white;
+    padding: 3rem 3rem 2.5rem;
+    margin: 0 -3rem 3rem;
+    border-bottom: 4px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-hero::before {
+    content: attr(data-chnum);
+    position: absolute;
+    right: 2rem; top: 50%;
+    transform: translateY(-50%);
+    font-size: 10rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.05);
+    font-family: 'Merriweather', serif;
+    line-height: 1;
+  }
+  .chapter-hero .ch-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .chapter-hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+  }
+  .chapter-hero .ch-en {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+    font-style: italic;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  h3 {
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin: 2rem 0 0.7rem;
+    padding-left: 0.8rem;
+    border-left: 4px solid var(--gold);
+  }
+  h4 {
+    font-size: 1rem;
+    color: var(--accent);
+    margin: 1.5rem 0 0.5rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  h5 {
+    font-size: 0.95rem;
+    color: var(--navy);
+    margin: 1.2rem 0 0.5rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+  }
+  p {
+    font-size: 0.97rem;
+    line-height: 1.85;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  ul.pmbok {
+    list-style: none;
+    margin: 0.5rem 0 1rem 0;
+    padding: 0;
+  }
+  ul.pmbok li {
+    position: relative;
+    padding: 0.3rem 0 0.3rem 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--text);
+  }
+  ul.pmbok li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.7rem;
+    top: 0.5rem;
+  }
+  ul.pmbok.check li::before { content: '☑'; color: #2d7a2d; font-size: 0.9rem; top: 0.35rem; }
+  ul.pmbok.dash li::before  { content: '■'; color: var(--navy); font-size: 0.6rem; top: 0.5rem; }
+
+  .figure-wrap {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1.2rem;
+    background: #f8f5ee;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .figure-wrap img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  }
+  .figure-caption {
+    margin-top: 0.75rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.83rem;
+    color: var(--text-light);
+    font-style: italic;
+    text-align: center;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.84rem;
+  }
+  table th {
+    background: var(--navy);
+    color: white;
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+  table td {
+    padding: 0.55rem 0.8rem;
+    border: 1px solid #ddd;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  table tr:nth-child(even) td { background: #f9f6ef; }
+
+  @media(max-width:900px){
+    #sidebar { display: none; }
+    #main { margin-left: 0; padding: 0 1.2rem 4rem; }
+    .chapter-hero { margin: 0 -1.2rem 2rem; padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<aside id="sidebar">
+  <div id="sidebar-header">
+    <div class="book-label">Agile Alliance & PMI</div>
+    <h2>Hướng Dẫn Thực Hành Agile</h2>
+    <div class="edition">Agile Practice Guide</div>
+  </div>
+  <nav>
+    <div class="section-group">
+    <div class="group-label">Nội dung</div>
+    <a href="#s1">1. Giới thiệu</a>
+    <a href="#s2">2. Giới thiệu về Agile</a>
+    <a href="#s3">3. Lựa chọn Vòng đời</a>
+    </div>
+  </nav>
+</aside>
+
+<main id="main">
+
+  <div class="chapter-hero" data-chnum="AGILE">
+    <div class="ch-label">Agile Practice Guide</div>
+    <h1>HƯỚNG DẪN THỰC HÀNH AGILE</h1>
+    <div class="ch-en">Project Management Institute & Agile Alliance</div>
+  </div>
+
+<div class="figure-wrap">
+  <div style="text-align: center;">
+    <img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//0f6ac813-3ef3-40d5-9797-624fa412c419/markdown_0/imgs/img_in_image_box_331_1028_413_1107.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A11Z%2F-1%2F%2Fe22cba5fc57e86cc405e0ea7997f4770e71ff914d817ca594cc4e5184cb89445" alt="Image" width="6%" />
+    <img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//0f6ac813-3ef3-40d5-9797-624fa412c419/markdown_0/imgs/img_in_image_box_547_1020_652_1117.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A11Z%2F-1%2F%2F6eaab220fbf692c41b0f4d3e4e20bc8f03ef83c6d3d7927066de2c95be7f7916" alt="Image" width="8%" />
+  </div>
+</div>
+
+<p>GLOBAL STANDARD</p>
+
+<p>Quyền lợi thành viên PMI được cấp phép cho: Wanpeng Cui - 2150818. Không được phân phối, bán hoặc sao chép.</p>
+
+<h4>HƯỚNG DẪN THỰC HÀNH AGILE</h4>
+
+<p>Dữ liệu biên mục của Thư viện Quốc hội (Library of Congress) đã được đăng ký.</p>
+
+<p>Xuất bản bởi:<br>
+Project Management Institute, Inc.<br>
+14 Campus Boulevard<br>
+Newtown Square, Pennsylvania 19073-3299 USA<br>
+Điện thoại: +1 610-356-4600<br>
+Fax: +1 610-356-4647<br>
+Email: customercare@pmi.org<br>
+Internet: www.PMI.org</p>
+
+<h5>©2017 Project Management Institute, Inc. Bảo lưu mọi quyền.</h5>
+
+<p>Nội dung của Project Management Institute, Inc. được bảo vệ bản quyền bởi luật sở hữu trí tuệ của Hoa Kỳ, được công nhận bởi hầu hết các quốc gia. Để tái bản hoặc sao chép nội dung của PMI, bạn phải có sự cho phép của chúng tôi. Vui lòng truy cập http://www.pmi.org/permissions để biết thêm chi tiết.</p>
+
+<p>Để đặt hàng thương mại hoặc biết thông tin về giá, vui lòng liên hệ Independent Publishers Group:<br>
+Independent Publishers Group<br>
+Bộ phận Đặt hàng<br>
+814 North Franklin Street<br>
+Chicago, IL 60610 USA<br>
+Điện thoại: +1 800-888-4741<br>
+Fax: +1 312-337-5985<br>
+Email: orders@ipgbook.com (Chỉ dành cho đặt hàng)</p>
+
+<p>Đối với tất cả các thắc mắc khác, vui lòng liên hệ Trung tâm Dịch vụ Sách PMI.<br>
+Trung tâm Dịch vụ Sách PMI<br>
+P.O. Box 932683, Atlanta, GA 31193-2683 USA<br>
+Điện thoại: 1-866-276-4764 (trong phạm vi Hoa Kỳ hoặc Canada) hoặc +1-770-280-4129 (toàn cầu)<br>
+Fax: +1-770-280-4113<br>
+Email: info@bookorders.pmi.org</p>
+
+<p>In tại Hợp chủng quốc Hoa Kỳ. Không phần nào của tác phẩm này được phép sao chép hoặc truyền tải dưới bất kỳ hình thức hoặc phương tiện nào, dù là điện tử, thủ công, photocopy, ghi âm, hoặc bằng bất kỳ hệ thống lưu trữ và truy xuất thông tin nào, mà không có sự cho phép trước bằng văn bản của nhà xuất bản.</p>
+
+<p>Giấy được sử dụng trong cuốn sách này tuân thủ Tiêu chuẩn Giấy Vĩnh viễn (Permanent Paper Standard) do Tổ chức Tiêu chuẩn Thông tin Quốc gia (NISO Z39.48—1984) ban hành.</p>
+
+<p>PMI, logo PMI, PMBOK, OPM3, PMP, CAPM, PgMP, PfMP, PMI-RMP, PMI-SP, PMI-ACP, PMI-PBA, PROJECT MANAGEMENT JOURNAL, PM NETWORK, PMI TODAY, PULSE OF THE PROFESSION và khẩu hiệu MAKING PROJECT MANAGEMENT INDISPENSABLE FOR BUSINESS RESULTS là tất cả các nhãn hiệu của Project Management Institute, Inc. Để có danh sách đầy đủ các nhãn hiệu của PMI, hãy liên hệ Bộ phận Pháp lý PMI. Tất cả các nhãn hiệu, nhãn hiệu dịch vụ, tên thương mại, bao bì thương mại, tên sản phẩm và logo khác xuất hiện ở đây đều là tài sản của chủ sở hữu tương ứng của chúng. Bất kỳ quyền nào không được cấp rõ ràng ở đây đều được bảo lưu.</p>
+
+<p>SAFe là nhãn hiệu đã đăng ký của Scaled Agile, Inc.</p>
+
+<p>Agile Alliance và logo Agile Alliance là các nhãn hiệu của Agile Alliance.</p>
+
+<p>Hướng dẫn Thực hành này được đồng tài trợ bởi Agile Alliance® và được phát triển với sự cộng tác của các thành viên thuộc Agile Alliance®. Agile Alliance® không xác nhận bất kỳ phương pháp luận hay chứng nhận agile cụ thể nào.</p>
+
+<p>10 9 8 7 6 5 4 3 2 1</p>
+
+<h5>THÔNG BÁO CHÚ Ý (NOTICE)</h5>
+
+<p>Các ấn phẩm tiêu chuẩn và hướng dẫn của Project Management Institute, Inc. (PMI), trong đó có tài liệu này, được phát triển thông qua một quy trình phát triển tiêu chuẩn đồng thuận tự nguyện. Quy trình này tập hợp các tình nguyện viên và/hoặc tìm kiếm quan điểm của những người có quan tâm đến chủ đề được đề cập trong ấn phẩm này. Mặc dù PMI quản lý quy trình và thiết lập các quy tắc nhằm thúc đẩy sự công bằng trong việc phát triển sự đồng thuận, PMI không viết ra tài liệu và cũng không kiểm tra, đánh giá một cách độc lập, hay xác minh tính chính xác hoặc tính đầy đủ của bất kỳ thông tin nào hoặc tính đúng đắn của bất kỳ đánh giá nào có trong các ấn phẩm tiêu chuẩn và hướng dẫn của mình.</p>
+
+<p>PMI từ chối trách nhiệm đối với bất kỳ thương tích cá nhân, thiệt hại tài sản hoặc các thiệt hại khác dưới bất kỳ hình thức nào, dù là đặc biệt, gián tiếp, mang tính hậu quả hay bồi thường, trực tiếp hoặc gián tiếp phát sinh từ việc xuất bản, sử dụng ứng dụng, hoặc phụ thuộc vào tài liệu này. PMI từ chối và không đưa ra bất kỳ bảo đảm hay bảo hành nào, dù rõ ràng hay ngụ ý, về tính chính xác hoặc tính đầy đủ của bất kỳ thông tin nào được xuất bản ở đây, và từ chối cũng như không bảo hành rằng thông tin trong tài liệu này sẽ đáp ứng bất kỳ mục đích hoặc nhu cầu cụ thể nào của bạn. PMI không cam kết bảo đảm hiệu suất của bất kỳ nhà sản xuất hoặc sản phẩm hay dịch vụ nào của người bán thông qua tiêu chuẩn hoặc hướng dẫn này.</p>
+
+<p>Trong việc xuất bản và cung cấp tài liệu này, PMI không đảm nhận việc cung cấp các dịch vụ chuyên môn hoặc dịch vụ khác cho hoặc thay mặt cho bất kỳ cá nhân hay tổ chức nào, và PMI cũng không đảm nhận thực hiện bất kỳ nghĩa vụ nào mà bất kỳ cá nhân hay tổ chức nào nợ một người nào khác. Bất kỳ ai sử dụng tài liệu này nên dựa vào đánh giá độc lập của chính mình hoặc, khi thích hợp, tìm kiếm lời khuyên từ một chuyên gia có thẩm quyền trong việc xác định việc thực hiện sự cẩn trọng hợp lý trong bất kỳ hoàn cảnh nhất định nào. Thông tin và các tiêu chuẩn khác về chủ đề được đề cập trong ấn phẩm này có thể có sẵn từ các nguồn khác, mà người dùng có thể muốn tham khảo để có thêm quan điểm hoặc thông tin không được đề cập trong ấn phẩm này.</p>
+
+<p>PMI không có quyền hạn, và cũng không đảm nhận việc kiểm soát hoặc thực thi sự tuân thủ với các nội dung của tài liệu này. PMI không chứng nhận, kiểm tra, hoặc kiểm định các sản phẩm, thiết kế, hoặc cài đặt cho các mục đích an toàn hoặc sức khỏe. Bất kỳ chứng nhận hoặc tuyên bố tuân thủ nào khác đối với bất kỳ thông tin liên quan đến sức khỏe hoặc an toàn trong tài liệu này sẽ không được quy cho PMI và hoàn toàn là trách nhiệm của người chứng nhận hoặc người đưa ra tuyên bố.</p>
+
+<h5>LỜI NÓI ĐẦU (PREFACE)</h5>
+
+<p>Viện Quản lý Dự án (Project Management Institute) và Liên minh Agile (Agile Alliance $ ^{\circledR} $) đã lập hiến chương cho hướng dẫn thực hành này nhằm tạo ra một sự hiểu biết sâu sắc hơn về các phương pháp tiếp cận agile trong cộng đồng của họ. Tầm nhìn của hướng dẫn thực hành này là trang bị cho các nhóm dự án các công cụ, hướng dẫn tình huống, và sự hiểu biết về các kỹ thuật cũng như phương pháp tiếp cận agile hiện có để cho phép đạt được các kết quả tốt hơn.</p>
+
+<p>Các nhóm dự án đang sử dụng các phương pháp tiếp cận agile trong nhiều ngành công nghiệp đa dạng, vượt ra ngoài khuôn khổ phát triển phần mềm. Cả hai tổ chức đều nhận ra rằng sự mở rộng này đã tạo ra nhu cầu về một ngôn ngữ chung, sự cởi mở, và sự sẵn sàng linh hoạt trong cách các sản phẩm và các sản phẩm bàn giao (deliverables) được đưa ra thị trường. Ngoài ra, cả hai tổ chức đều nhận ra rằng có nhiều cách để đạt được sự chuyển giao thành công. Có một phạm vi rộng lớn các công cụ, kỹ thuật, và khuôn khổ (frameworks); các nhóm có các lựa chọn cho các phương pháp tiếp cận và thực tiễn phù hợp với dự án của họ và văn hóa tổ chức nhằm đạt được kết quả mong muốn.</p>
+
+<p>Các thành viên ủy ban nòng lõi của Hướng dẫn Thực hành Agile có các nền tảng xuất thân đa dạng và sử dụng các phương pháp tiếp cận khác nhau. Một số thành viên ủy ban là các nhà tư vấn và một số làm việc bên trong các tổ chức. Tất cả đều đã làm việc theo phương thức agile trong nhiều năm.</p>
+
+<h5>MỤC LỤC (TABLE OF CONTENTS)</h5>
+
+<p>
+1. GIỚI THIỆU.....1<br>
+2. GIỚI THIỆU VỀ AGILE.....7<br>
+    2.1 Công việc Có thể Định nghĩa (Definable Work) so với Công việc Có Độ Không Chắc Chắn Cao (High-Uncertainty Work).....7<br>
+    2.2 Tuyên ngôn Agile và Tư duy Agile.....8<br>
+    2.3 Lean và Phương pháp Kanban.....12<br>
+    2.4 Sự Không chắc chắn, Rủi ro, và Lựa chọn Vòng đời.....13<br>
+3. LỰA CHỌN VÒNG ĐỜI.....17<br>
+    3.1 Đặc điểm của Các Vòng đời Dự án.....18<br>
+        3.1.1 Đặc điểm của Vòng đời Dự báo (Predictive Life Cycles).....20<br>
+        3.1.2 Đặc điểm của Vòng đời Lặp (Iterative Life Cycles).....21<br>
+        3.1.3 Đặc điểm của Vòng đời Tăng dần (Incremental Life Cycles).....22<br>
+        3.1.4 Đặc điểm của Vòng đời Agile (Agile Life Cycles).....24<br>
+        3.1.5 Các Bộ lọc Phù hợp Agile (Agile Suitability Filters).....25<br>
+        3.1.6 Đặc điểm của Vòng đời Lai (Hybrid Life Cycles).....26<br>
+        3.1.7 Phương pháp Tiếp cận Kết hợp Agile và Dự báo.....27<br>
+        3.1.8 Phương pháp Tiếp cận Chủ yếu là Dự báo với Một số Thành phần Agile.....28<br>
+        3.1.9 Phương pháp Tiếp cận Phần lớn là Agile với Một Thành phần Dự báo.....28<br>
+        3.1.10 Vòng đời Lai Như là Sự Phù hợp với Mục đích (Fit-For-Purpose).....29<br>
+        3.1.11 Vòng đời Lai Như là Chiến lược Chuyển đổi (Transition Strategy).....30<br>
+    3.2 Trộn lẫn Các Phương pháp Tiếp cận Agile.....31<br>
+    3.3 Các Yếu tố Dự án Ảnh hưởng đến Sự Điều chỉnh (Tailoring).....32
+</p>
+<p>
+4. TRIỂN KHAI AGILE: TẠO MỘT MÔI TRƯỜNG AGILE ..... 33<br>
+4.1 Bắt đầu với một Tư duy Agile ..... 33<br>
+4.2 Lãnh đạo Phục vụ (Servant Leadership) Trao quyền cho Nhóm ..... 33<br>
+4.2.1 Trách nhiệm của Nhà lãnh đạo Phục vụ ..... 34<br>
+4.2.2 Vai trò của Giám đốc Dự án trong một Môi trường Agile ..... 37<br>
+4.2.3 Giám đốc Dự án Sử dụng Lãnh đạo Phục vụ ..... 38<br>
+4.3 Thành phần Nhóm ..... 38<br>
+4.3.1 Các Nhóm Agile ..... 39<br>
+4.3.2 Các Vai trò Agile ..... 40<br>
+4.3.3 Chuyên gia Tổng quát hóa (Generalizing Specialists) ..... 42<br>
+4.3.4 Cấu trúc Nhóm ..... 43<br>
+4.3.5 Các Thành viên Nhóm Chuyên trách (Dedicated Team Members) ..... 44<br>
+4.3.6 Không gian Làm việc của Nhóm ..... 46<br>
+4.3.7 Vượt qua Các "Silo" Tổ chức ..... 47
+</p>
+<p>
+5. TRIỂN KHAI AGILE: CHUYỂN GIAO TRONG MỘT MÔI TRƯỜNG AGILE ..... 49<br>
+5.1 Lập Hiến chương cho Dự án và Nhóm ..... 49<br>
+5.2 Các Thực tiễn Agile Phổ biến ..... 50<br>
+5.2.1 Cải tiến Nhìn lại (Retrospectives) ..... 50<br>
+5.2.2 Chuẩn bị Backlog ..... 52<br>
+5.2.3 Tinh chỉnh Backlog (Backlog Refinement) ..... 52<br>
+5.2.4 Họp Đứng Hàng ngày (Daily Standups) ..... 53<br>
+5.2.5 Trình diễn/Đánh giá (Demonstrations/Reviews) ..... 55<br>
+5.2.6 Lập kế hoạch cho Agile Dựa trên Vòng lặp (Iteration-Based Agile) ..... 55<br>
+5.2.7 Các Thực tiễn Thực thi Giúp Nhóm Chuyển giao Giá trị ..... 56<br>
+5.2.8 Cách Các Vòng lặp và Phần tăng dần Giúp Chuyển giao Sản phẩm Hoạt động ..... 57<br>
+5.3 Khắc phục Sự cố (Troubleshooting) Các Thách thức của Dự án Agile ..... 57<br>
+5.4 Các Đo lường trong Các Dự án Agile ..... 60<br>
+5.4.1 Các Nhóm Agile Đo lường Kết quả ..... 61
+</p>
+<p>
+6. CÁC YẾU TỐ TỔ CHỨC CẦN XEM XÉT CHO SỰ LINH HOẠT (AGILITY) CỦA DỰ ÁN ..... 71<br>
+6.1 Quản lý Sự thay đổi Tổ chức ..... 71<br>
+6.1.1 Các Động lực cho Quản lý Sự thay đổi ..... 73<br>
+6.1.2 Mức độ Sẵn sàng cho Sự thay đổi ..... 73<br>
+6.2 Văn hóa Tổ chức ..... 75<br>
+6.2.1 Tạo Một Môi trường An toàn ..... 75<br>
+6.2.2 Đánh giá Văn hóa ..... 75<br>
+6.3 Mua sắm và Hợp đồng ..... 77<br>
+6.4 Các Thực tiễn Kinh doanh ..... 79<br>
+6.5 Phối hợp Đa nhóm và Các Sự phụ thuộc (Quy mô hóa - Scaling) ..... 80<br>
+6.5.1 Các Khuôn khổ (Frameworks) ..... 80<br>
+6.5.2 Các Yếu tố Cân nhắc ..... 80<br>
+6.6 Agile và Văn phòng Quản lý Dự án (PMO) ..... 81<br>
+6.6.1 Một PMO Agile Dựa trên Định hướng Giá trị ..... 81<br>
+6.6.2 Một PMO Agile Định hướng Lời mời (Invitation-Oriented) ..... 81<br>
+6.6.3 Một PMO Agile Đa ngành ..... 82<br>
+6.7 Cấu trúc Tổ chức ..... 83<br>
+6.8 Phát triển Tổ chức ..... 84
+</p>
+<p>
+7. LỜI KÊU GỌI HÀNH ĐỘNG (A CALL TO ACTION) ..... 87<br>
+PHỤ CHƯƠNG A1<br>
+SƠ ĐỒ ÁNH XẠ PMBOK® GUIDE ..... 89<br>
+PHỤ CHƯƠNG A2<br>
+SƠ ĐỒ ÁNH XẠ TUYÊN NGÔN AGILE ..... 97<br>
+PHỤ CHƯƠNG A3<br>
+TỔNG QUAN VỀ CÁC KHUÔN KHỔ AGILE VÀ LEAN ..... 99<br>
+PHỤ LỤC X1<br>
+CÁC NGƯỜI ĐÓNG GÓP VÀ ĐÁNH GIÁ ..... 115<br>
+PHỤ LỤC X2<br>
+CÁC THUỘC TÍNH ẢNH HƯỞNG ĐẾN SỰ ĐIỀU CHỈNH (TAILORING).....119<br>
+PHỤ LỤC X3<br>
+CÁC CÔNG CỤ LỌC SỰ PHÙ HỢP AGILE.....125<br>
+TÀI LIỆU THAM KHẢO.....139<br>
+THƯ MỤC.....141<br>
+THUẬT NGỮ.....149<br>
+CHỈ MỤC.....157
+</p>
+
+<h5>DANH SÁCH BẢNG VÀ HÌNH (LIST OF TABLES AND FIGURES)</h5>
+
+<p>Hình 2-1. Bốn Giá trị của Tuyên ngôn Agile.....8<br>
+Hình 2-2. Mười hai Nguyên tắc Phía sau Tuyên ngôn Agile.....9<br>
+Hình 2-3. Mối quan hệ Giữa Các Giá trị Tuyên ngôn Agile, Các Nguyên tắc, và Các Thực tiễn Phổ biến.....10<br>
+Hình 2-4. Agile Là Một Thuật ngữ Bao trùm Dành cho Nhiều Phương pháp Tiếp cận.....11<br>
+Hình 2-5. Mô hình Không chắc chắn và Phức tạp Lấy Cảm hứng Từ Mô hình Phức tạp Stacey.....14<br>
+Hình 3-1. Chuỗi (Continuum) Của Các Vòng đời.....19<br>
+Hình 3-2. Vòng đời Dự báo.....21<br>
+Hình 3-3. Vòng đời Lặp.....21<br>
+Hình 3-4. Một Vòng đời của Các Phần tăng dần Kích thước Biến đổi.....22<br>
+Hình 3-5. Các Vòng đời Agile Dựa trên Dòng chảy (Flow) và Dựa trên Vòng lặp.....24<br>
+Hình 3-6. Phát triển Agile Theo Sau Bởi Một Đợt Triển khai Dự báo.....27<br>
+Hình 3-7. Một Phương pháp Tiếp cận Kết hợp Agile và Dự báo Được Sử dụng Đồng thời.....27<br>
+Hình 3-8. Một Phương pháp Tiếp cận Phần lớn Là Dự báo với Các Thành phần Agile.....28<br>
+Hình 3-9. Một Phương pháp Tiếp cận Phần lớn Là Agile với Một Thành phần Dự báo.....28<br>
+Hình 5-1. Biểu đồ Burndown Đối với Điểm Câu chuyện (Story Points) Còn lại.....62<br>
+Hình 5-2. Biểu đồ Burnup Dùng Để Hiển thị Điểm Câu chuyện Đã Hoàn thành.....63<br>
+Hình 5-3. Ví dụ Về Một Bảng Kanban.....65<br>
+Hình 5-4. Biểu đồ Tính năng (Feature Chart).....67<br>
+Hình 5-5. Biểu đồ Burnup Backlog Sản phẩm.....68<br>
+Hình 5-6. Giá trị Thu được Trong Một Bối cảnh Agile.....69<br>
+Hình 5-7. Biểu đồ Dòng chảy Tích lũy (Cumulative Flow Diagram) Của Các Tính năng Hoàn thành.....70<br>
+Hình 6-1. Mối quan hệ Giữa Quản lý Sự thay đổi Và Các Phương pháp Tiếp cận Agile.....72<br>
+Hình 6-2. Ví dụ Về Đánh giá Văn hóa Tổ chức.....76<br>
+Hình 6-3. Backlog Đã Được Xếp hạng Ban đầu Cho Các Sự thay đổi.....85<br>
+Hình 6-4. Sử dụng Backlogs Và Bảng Kanban Để Tổ chức Và Theo dõi Công việc Thay đổi.....86<br>
+Hình A3-1. Các Phương pháp Tiếp cận Agile Được Sắp xếp Bằng Bề rộng Và Sự chi tiết.....100<br>
+Hình A3-2. Bảng Kanban Minh họa Các Giới hạn Công việc Đang Tiến hành, Và Một Hệ thống Kéo Để Tối ưu hóa Dòng chảy Công việc.....105<br>
+Hình A3-3. Dòng Các Phương pháp Crystal.....106<br>
+Hình A3-4. Vòng đời Dự án Phát triển Thúc đẩy Bằng Tính năng (Feature-Driven Development).....109<br>
+Hình A3-5. Phương pháp Tiếp cận DSDM Đối với Sự linh hoạt Được Thúc đẩy Bằng Ràng buộc.....110<br>
+Hình A3-6. Đại diện Của Các Nhóm Scrum Tham gia Vào Các Nhóm SoS.....112<br>
+Hình X3-1. Mô hình Cho Sự phù hợp Của Phương pháp Tiếp cận Agile.....127<br>
+Hình X3-2. Đánh giá Mức độ Chấp thuận Phương pháp Tiếp cận.....129<br>
+Hình X3-3. Đánh giá Sự tin tưởng Vào Nhóm.....130<br>
+Hình X3-4. Đánh giá Đối với Quyền Ra quyết định Của Nhóm.....130<br>
+Hình X3-5. Đánh giá Quy mô Nhóm.....131<br>
+Hình X3-6. Đánh giá Mức độ Kinh nghiệm.....131<br>
+Hình X3-7. Đánh giá Đối với Việc Tiếp cận Khách hàng/Doanh nghiệp.....132<br>
+Hình X3-8. Đánh giá Khả năng Thay đổi.....132<br>
+Hình X3-9. Đánh giá Đối với Tính quan trọng Yếu yếu Của Sản phẩm Hoặc Dịch vụ.....133<br>
+Hình X3-10. Đánh giá Phân phối Tăng dần.....133<br>
+Hình X3-11. Biểu đồ Radar Đánh giá Sự phù hợp.....134<br>
+Hình X3-12. Dự án Cửa hàng Thuốc.....135<br>
+Hình X3-13. Ví dụ Hệ thống Nhắn tin Quân sự.....137</p>
+
+<p>Bảng 1-1. Các Hạng mục Nằm trong Phạm vi Và Nằm ngoài Phạm vi ..... 4<br>
+Bảng 3-1. Đặc điểm Của Bốn Danh mục Của Vòng đời ..... 18<br>
+Bảng 3-2. Các Tùy chọn Điều chỉnh (Tailoring Options) Để Cải thiện Sự Phù hợp ..... 32<br>
+Bảng 4-1. Các Thuộc tính Của Các Nhóm Agile Thành công ..... 40<br>
+Bảng 4-2. Các Vai trò Trong Nhóm Agile ..... 41<br>
+Bảng 5-1. Các Điểm Khó Khăn Của Agile Và Các Khả năng Khắc phục Sự cố ..... 58<br>
+Bảng A1-1. Sơ đồ Ánh xạ Nhóm Quy trình Quản lý Dự án Và Lĩnh vực Kiến thức ..... 90<br>
+Bảng A1-2. Việc Áp dụng Của Agile Trong Các Lĩnh vực Kiến thức Của PMBOK® Guide ..... 91<br>
+Bảng A2-1. Các Giá trị Tuyên ngôn Agile Được Bao phủ Trong Hướng dẫn Thực hành Agile ..... 97<br>
+Bảng A2-2. Sơ đồ Ánh xạ Hướng dẫn Thực hành Agile Của Các Nguyên tắc Phía sau Tuyên ngôn Agile ..... 98<br>
+Bảng A3-1. Các Sự kiện Và Các Tạo tác (Artifacts) Của Scrum ..... 101<br>
+Bảng A3-2. Các Thực tiễn Của eXtreme Programming ..... 102<br>
+Bảng A3-3. Việc Định nghĩa Các Nguyên tắc Và Đặc tính Cốt lõi Của Phương pháp Kanban ..... 104<br>
+Bảng A3-4. Các Giá trị Cốt lõi Và Đặc tính Phổ biến Của Crystal ..... 107<br>
+Bảng A3-5. Các Yếu tố Chính Của Quy trình Unified Agile ..... 111<br>
+Bảng A3-6. Sự so sánh Của LeSS Và Scrum ..... 113<br>
+Bảng X2-1. Các Hướng dẫn Điều chỉnh ..... 121</p>
+
+<hr>
+
+<h3 id="s1">1. GIỚI THIỆU (INTRODUCTION)</h3>
+
+<p>Chào mừng bạn đến với Hướng dẫn Thực hành Agile (Agile Practice Guide)! Hướng dẫn này được phát triển như một nỗ lực hợp tác của Viện Quản lý Dự án (Project Management Institute - PMI) và Liên minh Agile (Agile Alliance $ ^{®} $). Các thành viên của nhóm viết nòng cốt (core writing team) đã phát triển hướng dẫn thực hành này bao gồm các tình nguyện viên đến từ cả hai tổ chức, đúc kết chuyên môn của đối tượng từ một loạt các nhà thực hành và các nhà lãnh đạo hiện tại đến từ một sự đa dạng của nhiều nguồn gốc, nền tảng xuất thân, niềm tin, và các nền văn hóa.</p>
+
+<p>Hướng dẫn thực hành này cung cấp một sự chỉ dẫn thực tiễn/hướng dẫn thực hành (practical guidance) nhắm đến các nhà lãnh đạo dự án (project leaders) và các thành viên nhóm (team members) để điều chỉnh/thích nghi (adapting) hướng tới một phương pháp tiếp cận agile ở trong việc lập kế hoạch và thực thi dự án. Mặc dù nhóm viết nòng cốt của chúng tôi nhận ra rằng hiện đang có một sự ủng hộ trung thành kiên định (staunch support) để sử dụng các phương pháp tiếp cận dự báo (predictive approaches) và ngược lại, cũng có sự đam mê bao quanh việc dịch chuyển hướng tới một tư duy agile (agile mindset), các giá trị, và các nguyên tắc, hướng dẫn thực hành này vẫn bao quát một phương pháp tiếp cận thực tiễn đối với sự linh hoạt của dự án (project agility). Hướng dẫn thực hành này đóng vai trò đại diện cho một cây cầu để đi thấu hiểu con đường từ một phương pháp tiếp cận dự báo chuyển sang một phương pháp tiếp cận agile. Trên thực tế, luôn có những hoạt động tương đồng nhau (similar activities) giữa hai hệ phương pháp này, chẳng hạn như công việc lập kế hoạch, vốn dĩ được xử lý theo cách khác nhau nhưng đều cùng xuất hiện trong cả hai môi trường.</p>
+
+<p>Nhóm viết nòng cốt của chúng tôi đã sử dụng một tư duy agile để cộng tác và quản lý sự phát triển của phiên bản đầu tiên của hướng dẫn thực hành này. Cùng với những thay đổi của công nghệ và văn hóa, những sự cập nhật và tinh chỉnh (refinements) trong tương lai đối với hướng dẫn thực hành này sẽ phản ánh các phương pháp tiếp cận hiện tại.</p>
+
+<p>Nhóm nòng cốt của chúng tôi đã áp dụng một phong cách viết mang tính thư giãn, không trịnh trọng (informal) hơn đối với hướng dẫn thực hành này so với những gì thường thấy đối với các tiêu chuẩn PMI. Bản hướng dẫn kết hợp các yếu tố mới, chẳng hạn như các mẹo nhỏ (tips), các thanh phụ bên cạnh (sidebars), và các nghiên cứu điển hình (case studies) để có thể minh họa tốt hơn các điểm yếu điểm và các khái niệm then chốt. Nhóm của chúng tôi có dự định những sự thay đổi này là để giúp cho hướng dẫn thực hành này trở nên dễ đọc và thân thiện với người dùng hơn.</p>
+
+<p>Hướng dẫn thực hành này đi vượt ra khỏi việc chỉ giải quyết/nhắm tới việc sử dụng agile trong khuôn khổ ngành công nghiệp phát triển phần mềm máy tính, bởi vì agile đã được mở rộng ra tiến vào trong các môi trường không phải là phát triển phần mềm (non-software development environments). Lĩnh vực sản xuất, giáo dục, y tế/chăm sóc sức khỏe và các ngành công nghiệp khác đang trở nên agile ở nhiều mức độ khác nhau và việc sử dụng agile vượt ra ngoài phạm vi phần mềm này chính là nằm trong phạm vi (within the scope) của hướng dẫn thực hành này.</p>
+
+<h5>HỌC TẬP DỰA TRÊN AGILE (AGILE-BASED LEARNING)</h5>
+
+<p>Giáo dục chính là một mảnh đất màu mỡ và là bước khởi điểm để mở rộng các thực tiễn agile ra xa khỏi khuôn khổ của ngành phát triển phần mềm. Các giáo viên ở các trường trung học cơ sở, trung học phổ thông, và các trường đại học trên toàn thế giới hiện đang bắt đầu sử dụng agile để tạo ra một văn hóa học tập (culture of learning). Các kỹ thuật agile được sử dụng để cung cấp một sự tập trung vào việc đi ưu tiên hóa (prioritizing) cho những ưu tiên mang tính cạnh tranh (competing priorities). Sự tương tác mặt-đối-mặt (Face-to-face interaction), việc học tập mang tính ý nghĩa, các nhóm tự quản (self-organizing teams), và việc học tập theo dạng tăng dần (incremental) và/hoặc lặp đi lặp lại (iterative) có chức năng khai thác sự trí tưởng tượng đều chính là những nguyên tắc agile vốn có thể làm thay đổi tư duy ở trong lớp học và thăng tiến/nâng tầm (advance) cho các mục tiêu giáo dục (Briggs, 2014).*</p>
+
+<p><em>*Briggs, Sara. "Học Tập Dựa Trên Agile: Nó Là Gì Và Nó Có Thể Làm Thay Đổi Giáo Dục Như Thế Nào?" Opencolleges.edu.au 22 tháng 2 năm 2014, truy xuất từ http://www.opencolleges.edu.au/informed/features/agile-based-learning-what-is-it-and-how-can-it-change-education/</em></p>
+
+<p>Vậy tại sao lại là một Hướng dẫn Thực hành Agile (Agile Practice Guide) và tại sao lại là lúc này? Các nhóm dự án đã sử dụng các kỹ thuật và các phương pháp tiếp cận agile dưới nhiều hình thức đa dạng trong ít nhất là trong vài thập kỷ qua. Tuyên ngôn Agile (The Agile Manifesto) [1] $ ^{1} $ đã diễn đạt/đưa ra các giá trị và nguyên tắc mang tính định nghĩa dứt khoát của agile khi mà việc sử dụng agile đã giành được một động lực (momentum) gia tăng cực kỳ đáng kể. Ngày nay, các nhà lãnh đạo dự án (project leaders) và các nhóm đang nhận thấy bản thân họ kẹt ở trong một môi trường bị phá vỡ (disrupted) bởi các sự tiến bộ/nhảy vọt theo cấp số nhân trong công nghệ và các nhu cầu (demands) từ phía những khách hàng muốn có sự chuyển giao giá trị tức thời (immediate delivery of value) hơn. Các kỹ thuật và các phương pháp tiếp cận agile quản lý một cách rất hiệu quả các công nghệ đột phá (disruptive technologies). Ngoài ra, nguyên tắc đầu tiên của agile chính là đặt sự hài lòng của khách hàng lên làm vị trí ưu tiên cao nhất (highest priority) và là chìa khóa then chốt trong việc phân phối/chuyển giao các sản phẩm và các dịch vụ làm hài lòng khách hàng. Các vòng lặp phản hồi (feedback loops) của khách hàng một cách nhanh chóng và minh bạch có thể được dễ dàng thu thập được cùng với sự sử dụng một cách lan truyền rộng rãi (widespread use) của các phương tiện truyền thông xã hội (social media). Vì thế, để có thể giữ vững tính cạnh tranh và tính thực tế/liên quan (stay competitive and relevant), các tổ chức sẽ không thể tiếp tục chỉ hướng sự tập trung đi vào bên trong (internally focused) mà thay vào đó cần thiết phải hướng sự tập trung ra phía bên ngoài (outwardly) vào chính trải nghiệm của khách hàng.</p>
+
+<p>Các công nghệ đột phá (Disruptive technologies) đang nhanh chóng thay đổi sân chơi bằng cách làm suy giảm đi các rào cản xâm nhập (barriers to entry). Những tổ chức đã trưởng thành (mature organizations) hơn thì đang ngày càng có xu hướng trở nên mang tính phức tạp cao và do đó lại ẩn chứa khả năng chậm chạp trong việc tiến hành đổi mới (slow to innovate), và có khuynh hướng tụt lại phía sau/chậm chân (lag behind) trong việc cung cấp/chuyển giao các giải pháp mới cho chính các khách hàng của họ. Những tổ chức này nhận thấy bản thân họ đang phải cạnh tranh với các tổ chức quy mô nhỏ hơn và các startup vốn dĩ có khả năng tung ra thị trường nhanh chóng các sản phẩm vừa khít với các nhu cầu của khách hàng. Tốc độ thay đổi này sẽ tiếp tục đóng vai trò thúc đẩy (drive) các tổ chức quy mô lớn tiến tới phải đi tiếp nhận/áp dụng (adopt) một tư duy agile để có thể tiếp tục trụ lại cạnh tranh (stay competitive) và nhằm giữ lại được thị phần (market share) hiện tại của họ.</p>
+
+<p>Hướng dẫn Thực hành Agile này chú trọng/tập trung vào dự án (project-focused) và giải quyết việc lựa chọn vòng đời dự án (project life cycle selection), việc triển khai agile (implementing agile), và các khía cạnh liên quan tổ chức đối với các dự án agile (organizational considerations for agile projects). Quản lý Sự Thay Đổi Tổ Chức (Organizational change management - OCM) là điều vô cùng thiết yếu cho việc triển khai hoặc cho việc biến đổi/chuyển đổi (transforming) các thực tiễn nhưng, vì bản thân OCM đã tự thân nó là một kỷ luật/lĩnh vực bộ môn (discipline) rồi, do đó nó nằm ở phía bên ngoài phạm vi của hướng dẫn thực hành này. Những ai đang đi tìm kiếm một sự hướng dẫn chuyên về mặt OCM có thể đem mang ra tham khảo tài liệu Quản Lý Sự Thay Đổi Ở Trong Các Tổ Chức—Một Hướng dẫn Thực hành (Managing Change in Organizations—A Practice Guide) [2].</p>
+
+<p>Các hạng mục bổ sung nằm trong phạm vi và nằm ngoài phạm vi (in scope and out of scope) đối với hướng dẫn thực hành này được liệt kê ở trong Bảng 1-1.</p>
+
+<h5>CÔNG NGHỆ ĐỘT PHÁ (DISRUPTIVE TECHNOLOGY)</h5>
+
+<p>Công nghệ đột phá đặc biệt được kích hoạt (enabled) nhờ vào sự dịch chuyển sang phương thức điện toán đám mây (cloud computing). Các công ty ở trên phạm vi toàn cầu đang tận dụng (leveraging) loại mô hình này nhằm mục đích truy cập nhanh chóng và rẻ tiền đi vào bên trong các nguồn tài nguyên tính toán/điện toán (computing resources) và để có thể chen chân (gain entry) tiến vào các thị trường mang tính truyền thống. Điện toán đám mây yêu cầu phải có một khoản tiền thanh toán trả trước (upfront payment) đã bị làm cho thuyên giảm đi, thay vào đó nó sẽ được thanh toán trả đều dọc theo mốc thời gian (paid over time) dưới hình thức của một dịch vụ dùng kiểu gói trả phí đăng ký thuê bao (subscription service), căn cứ dựa trên nguyên tắc của mô hình dùng bao nhiêu trả bấy nhiêu (pay-as-you-go) hoặc là thanh toán những gì bạn đang tiêu dùng (pay-what-you-use). Các ứng dụng, hạ tầng, và nền tảng đã qua các đợt nâng cấp (Updated applications) sẽ được đem phát hành tung ra/tung lên đám mây (released into the cloud) theo cái thể thức được làm lặp đi lặp lại và theo hướng tăng dần nhích tới (iterative and incremental fashion), giữ nhịp bước/đuổi bắt theo chân bắt kịp với sự nâng cấp hoàn thiện cải tiến của các mảng miếng công nghệ (improvements to technology) và sự tiến hóa của nhu cầu khách hàng (evolving customer demand).</p>
+
+<div class="table-wrap">
+<table>
+  <tr><th colspan="2">Bảng 1-1. Các Hạng mục Nằm trong Phạm vi Và Nằm ngoài Phạm vi</th></tr>
+  <tr>
+    <td style='text-align: center; font-weight: bold;'>Nằm Trong Phạm vi (In Scope)</td>
+    <td style='text-align: center; font-weight: bold;'>Nằm Ngoài Phạm vi (Out of Scope)</td>
+  </tr>
+  <tr>
+    <td>Triển khai các phương pháp tiếp cận agile ở cấp độ dự án hoặc nhóm</td>
+    <td>Triển khai agile trên toàn bộ tổ chức hoặc tạo ra các chương trình agile</td>
+  </tr>
+  <tr>
+    <td>Bao phủ (Coverage) các phương pháp tiếp cận agile phổ biến nhất, như đã được liệt kê trong các bản khảo sát ngành</td>
+    <td>Bao phủ các phương pháp tiếp cận nhánh ngách hẹp (niche approaches), các phương pháp chuyên biệt dành riêng cho một công ty cụ thể, hoặc là các kỹ thuật mà không có sự hoàn thiện về vòng đời</td>
+  </tr>
+  <tr>
+    <td>Các yếu tố sự phù hợp (Suitability factors) cần xem xét khi chọn một phương pháp tiếp cận agile và/hoặc thực tiễn</td>
+    <td>Đề xuất hoặc chứng thực (endorsing) một phương pháp tiếp cận/thực tiễn cụ thể</td>
+  </tr>
+  <tr>
+    <td>Ánh xạ/đối chiếu (Mapping) agile với các quy trình và Các Lĩnh vực Kiến thức của PMBOK $ ^{\circledR} $ Guide</td>
+    <td>Thay đổi hoặc sửa đổi (modification) các quy trình và/hoặc Các Lĩnh vực Kiến thức của PMBOK $ ^{\circledR} $ Guide</td>
+  </tr>
+  <tr>
+    <td>Sự thảo luận về việc sử dụng agile vượt ra bên ngoài ranh giới ngành phát triển phần mềm</td>
+    <td>Sự gạt bỏ (Removal) sự ảnh hưởng (influence) của ngành công nghiệp phần mềm lên trên các phương pháp tiếp cận agile. (Lưu ý rằng mảng phần mềm được bao gồm vào trong hướng dẫn thực hành này mặc dù sự sử dụng của agile đang ngày càng lớn dần lên ở trong nhiều ngành nghề khác bên ngoài ngành phần mềm.)</td>
+  </tr>
+  <tr>
+    <td>Các hướng dẫn, kỹ thuật, và các phương pháp tiếp cận cần phải đem ra cân nhắc (consider) vào cái lúc đem đi triển khai (implementing) ứng dụng agile vô trong các dự án hoặc bên trong các tổ chức</td>
+    <td>Các lời chỉ dẫn kiểu cầm tay chỉ việc hướng dẫn theo kiểu bắt buộc (Prescriptive step-by-step instructions) về cái cách là phải làm sao để đem đi mang vào đem trồng/triển khai agile đi vô bên trong tổ chức hay dự án</td>
+  </tr>
+  <tr>
+    <td>Định nghĩa của các thuật ngữ được chấp nhận một cách chung nhất (generally accepted)</td>
+    <td>Thuật ngữ mới và/hoặc các định nghĩa mới</td>
+  </tr>
+</table>
+</div>
+
+<p>Hướng dẫn thực hành này được dành cho các nhóm dự án vốn dĩ đang nhận thấy/tìm thấy bản thân họ đang bị rơi vào vũng lầy nằm kẹt ngay khúc giữa (messy middle-ground) trộn lẫn giữa các phương pháp tiếp cận dự báo (predictive) với lại các phương pháp agile, những người mà hiện đang đi cố gắng tìm kiếm cách để đi nhắm tới giải quyết những cuộc cải tiến đột phá cách tân ở tốc độ nhanh mờ mắt (rapid innovation) với độ phức tạp cao, và nó cũng là thứ tài liệu dành riêng cho những ai có tấm lòng tận tâm cống hiến muốn mang tới sự cải thiện phát triển thăng tiến dành cho cái đội nhóm của họ (team's improvement). Hướng dẫn thực hành này sẽ mang lại ban phát ra các lời gợi ý khuyên bảo dặn dò hữu dụng ngõ hầu nhắm tới giúp các dự án đỗ đạt gặt hái kết quả thành công mà có khả năng sản xuất phun ra rọi phân phát được các khối giá trị kinh doanh hòng thỏa mãn đáp ứng (meet) được các thể loại nguyện vọng mơ ước ngóng trông (expectations) cũng như những đòi hỏi nhu cầu bức thiết của người khách hàng.</p>
+
+<p>Hướng dẫn thực hành này được tổ chức như sau:</p>
+
+<p><strong>Phần 2 Giới thiệu về Agile (An Introduction to Agile)</strong>—Phần này bao gồm tư duy, các giá trị, và các nguyên tắc của Tuyên ngôn Agile. Nó cũng bao quát cả các khái niệm về công việc có thể định nghĩa được (definable work) và công việc có độ không chắc chắn cao (high-uncertainty work), và sự tương quan (correlation) giữa lean, Phương pháp Kanban, và các phương pháp tiếp cận agile.</p>
+
+<p><strong>Phần 3 Lựa chọn Vòng đời (Life Cycle Selection)</strong>—Phần này giới thiệu về các vòng đời khác nhau được thảo luận trong hướng dẫn thực hành này. Phần này cũng giải quyết các bộ lọc phù hợp (suitability filters), các hướng dẫn điều chỉnh (tailoring guidelines), và các sự kết hợp phổ biến (common combinations) của các phương pháp tiếp cận.</p>
+
+<p><strong>Phần 4 Triển khai Agile: Tạo Một Môi trường Agile (Implementing Agile: Creating an Agile Environment)</strong>—Phần này thảo luận về các yếu tố mang tính quyết định/then chốt (critical factors) cần cân nhắc khi tạo ra một môi trường agile chẳng hạn như tinh thần lãnh đạo phục vụ (servant leadership) và thành phần nhóm (team composition).</p>
+
+<p><strong>Phần 5 Triển khai Agile: Chuyển giao Trong một Môi trường Agile (Implementing Agile: Delivering in an Agile Environment)</strong>—Phần này bao gồm thông tin về cách tổ chức nhóm và các thực tiễn phổ biến mà các nhóm có thể sử dụng để cung cấp/chuyển giao giá trị một cách đều đặn (regular basis). Nó cung cấp các ví dụ về các sự đo lường theo kinh nghiệm thực nghiệm (empirical measurements) cho các nhóm và phục vụ cho việc báo cáo tình trạng.</p>
+
+<p><strong>Phần 6 Các Yếu tố Tổ chức Cần xem xét Cho Sự linh hoạt Của Dự án (Organizational Considerations for Project Agility)</strong>—Phần này khám phá các yếu tố thuộc về tổ chức có tác động lên việc sử dụng các phương pháp tiếp cận agile, chẳng hạn như văn hóa, sự sẵn sàng (readiness), các thực tiễn kinh doanh, và vai trò của một PMO.</p>
+
+<p><strong>Phần 7 Lời Kêu gọi Hành động (A Call to Action)</strong>—Lời kêu gọi hành động này nhằm kêu gọi yêu cầu cần có những sự góp ý đầu vào/nhận định (input) để nhằm mục đích cải tiến/cải thiện liên tục cho hướng dẫn thực hành này.</p>
+
+<p>Các phụ chương, phụ lục, tài liệu tham khảo, thư mục, và thuật ngữ sẽ cung cấp thêm thông tin hữu ích và các định nghĩa bổ sung:</p>
+
+<p>♦ <strong>Phụ chương (Annexes).</strong> Chứa đựng các thông tin bắt buộc mà do quá dài dòng nên không thể chèn/đưa vào bên trong phần thân chính (main body) của hướng dẫn thực hành.</p>
+
+<p>♦ <strong>Phụ lục (Appendixes).</strong> Chứa thông tin không mang tính bắt buộc (nonmandatory information) dùng để bổ sung cho phần thân chính của hướng dẫn thực hành này.</p>
+
+<p>♦ <strong>Tài liệu tham khảo (References).</strong> Nêu ra địa chỉ vị trí nơi mà bạn có thể tìm thấy (locate) các tiêu chuẩn và các ấn phẩm (publications) khác được mang ra làm trích dẫn (cited) trong hướng dẫn thực hành này.</p>
+
+<p><strong>Thư mục (Bibliography).</strong> Liệt kê danh sách các ấn phẩm bổ sung được chia theo các phần nhằm mang đến các thông tin một cách chi tiết về các chủ đề được bao hàm bên trong hướng dẫn thực hành này.</p>
+
+<p>♦ <strong>Thuật ngữ (Glossary).</strong> Trình bày một danh sách các thuật ngữ và các định nghĩa của chúng, vốn được dùng xuyên suốt ở trong hướng dẫn thực hành này.</p>
+
+<hr>
+
+<h3 id="s2">2. GIỚI THIỆU VỀ AGILE (AN INTRODUCTION TO AGILE)</h3>
+
+<h4>2.1 CÔNG VIỆC CÓ THỂ ĐỊNH NGHĨA (DEFINABLE WORK) SO VỚI CÔNG VIỆC CÓ ĐỘ KHÔNG CHẮC CHẮN CAO (HIGH-UNCERTAINTY WORK)</h4>
+<p>Công việc của dự án có dải/phạm vi (ranges) kéo dài trải từ các công việc có thể định nghĩa được rõ ràng (definable work) cho đến các loại công việc có mức độ không chắc chắn cao (high-uncertainty work). Các dự án chứa công việc có thể định nghĩa được (Definable work projects) thường được đặc trưng/nhận diện bởi các thủ tục (procedures) vô cùng rõ ràng, vốn dĩ đã được chứng minh (proved) là có thể đem lại sự thành công ở trên các dự án tương tự ở trong quá khứ. Việc làm ra/sản xuất ra (production) một chiếc ô tô, một thiết bị điện (electrical appliance), hoặc là một căn nhà, diễn ra vào cái lúc mà phần thiết kế (design) đã được làm xong (complete), chính là các ví dụ cho thể loại công việc có thể được định nghĩa được này. Các lĩnh vực (domain) cũng như các quy trình sản xuất (processes) có dính líu (involved) trong các công việc loại đó thường hay được người ta thấu hiểu rất tốt và thường thường (typically) sẽ hay đính kèm những rủi ro cộng với cái độ bất an/mơ hồ (uncertainty) về mặt thi hành/thực thi (execution) nằm ở mấy mức/cấp độ thấp tè (low levels).</p>
+
+<p>Việc làm thiết kế mới mẻ (New design), giải quyết các bài toán hóc búa (problem solving), và cái thể loại công việc kiểu dáng chưa-từng-được-làm-qua-bao-giờ (not-done-before work) đều là các dạng mang tính thăm dò mạo hiểm khai phá (exploratory). Dạng này nó yêu cầu những tay chuyên gia kỳ cựu dày dặn về chuyên môn trong ngành (subject matter experts) sẽ phải rủ nhau xúm lại chung tay góp sức chụm đầu (collaborate) cũng như hợp lực đi phá giải bài toán/giải quyết các vấn đề nhằm mục đích dựng (create) sáng tạo ra một dạng lời giải (solution). Các ví dụ về nhóm người mà toàn ngày ngày đi đụng mặt chạm trán với mớ công việc rủi ro/độ bất trắc sặc mùi cao sờ sờ ra đó (high-uncertainty work) có thể nói đến bao gồm mấy ông kỹ sư phát triển thiết kế hệ thống phần mềm (software systems engineers), nhà thiết kế sản phẩm (product designers), bác sĩ, giáo viên, giới luật sư, cũng như cả đống các thành phần kỹ sư chuyên lo gỡ lỗi giải quyết ba chuyện vướng mắc/sự cố (problem-solving engineers). Bởi lẽ vào lúc mà ngày càng có nhiều các công việc vốn dĩ có thể định nghĩa được đem gán nhét vào cho làm tự động hóa/công nghệ tự động đảm đương thay mặt thay tay xử lý (automated), cho nên các nhóm làm dự án đang có khuynh hướng sẽ ngày càng nhận lãnh và đâm đầu vào ôm vô người số lượng nhiều lên các dạng dự án chứa đầy đủ thứ công việc vô cùng mù mịt khó đoán (high-uncertainty work projects) những cái dự án mà lại đặc thù chuyên đâm ra yêu cầu cần người ta phải tung vào sử dụng tới các món đòn chiêu thức ngón nghề kỹ thuật vốn được đang miêu tả (described) vạch trong cuốn sách hướng dẫn thực hành ở ngay đây đây.</p>
+
+<p>Các dự án có độ không chắc chắn cao sẽ hay dính phải/đi liền với những tỷ lệ phần trăm tốc độ biến chuyển/đổi thay nằm ở mức rất cao (high rates of change), và độ phức tạp cao, cùng với mức rủi ro (risk) cao. Đám đặc tính dở dở ương ương kiểu (characteristics) này rất có thể sẽ đem phơi tr bày biện ra những bài toán hóc búa thách thức chướng ngại (present problems) nhắm thẳng vô cho những thể thức phương án giải quyết bài bản lề lối truyền thống (traditional predictive approaches), những phương pháp này mà theo lẽ thường hay mang tham vọng nhắm tới (aim to) đi dập chốt/định đoạt ấn định bắt chặt đống bự nhét nguyên mảng cho trọn phần yêu cầu to bự (determine the bulk of the requirements) gom vào làm một đợt nằm rành rành ra đó ngay từ dạo mới mớm mào đầu (upfront) đồng thời đâm đầu dồn tâm dồn lực lấy quyền đè đầu để đi kiểm soát trói buộc khống chế đống đổi trác kia/bọn thay đổi (control changes) thông qua mốc quy trình mang tên gọi làm giấy nộp đơn xin phê duyệt thay đổi (change request process). Lẽ ra, đi thay/Đổi lại vì rứa (Instead), các phương pháp tiếp cận kiểu dạng xài tới agile (agile approaches) vốn được người ta đẻ sinh nặn chế tạo tạo ra (were created) cốt là rải cho người ta một con đường đặng mang ra mà thử đi dò thám xem chừng tìm ngắm độ mượt mà sự khả thi (explore feasibility) với việc chia chẻ cắt vụn ra làm các đợt/chu trình nhát nhát có thời lượng cộc cỡn/chớp nhoáng ngắn ngủn (in short cycles) sau đó là tức thời giật gót thoắt cái nhanh gọn liền thích nghi đáp trả bẻ lái ứng biến uyển chuyển đổi thay (quickly adapt) bám dựa nền tảng chiếu căn cứ (based on) trên các bước coi ngó lại đánh giá dò xét định giá (evaluation) cộng theo đó chính là mớ nhận xét góp ý lời qua tiếng lại/những luồng phản hồi đóng góp (feedback).</p>
+
+<h4>2.2 TUYÊN NGÔN AGILE VÀ TƯ DUY AGILE (THE AGILE MANIFESTO AND MINDSET)</h4>
+<p>Những nhà lãnh đạo tư tưởng trong ngành công nghiệp phần mềm đã chính thức hóa (formalized) phong trào agile vào năm 2001 với việc công bố Tuyên ngôn về Phát triển Phần mềm Agile (Manifesto for Agile Software Development) (xem Hình 2-1).</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e1b9240b-f851-41ce-9d0d-0a05a92fc05a/markdown_2/imgs/img_in_image_box_289_297_939_605.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A12Z%2F-1%2F%2F5d21f1c582caedd25ae575ad250015684550239e3c1842ead83fc81e228c3580" alt="Image" width="53%" /></div></div>
+
+<p class="figure-caption">Hình 2-1. Bốn Giá trị của Tuyên ngôn Agile</p>
+
+<div class="table-wrap">
+<table>
+  <tr><td>1. Ưu tiên cao nhất của chúng tôi là thỏa mãn khách hàng thông qua việc chuyển giao sớm và liên tục phần mềm có giá trị.</td></tr>
+  <tr><td>2. Chào đón các yêu cầu thay đổi, ngay cả khi đang ở giai đoạn muộn của quá trình phát triển. Các quy trình Agile tận dụng sự thay đổi vì lợi thế cạnh tranh của khách hàng.</td></tr>
+  <tr><td>3. Chuyển giao phần mềm chạy được (working software) một cách thường xuyên, từ một vài tuần đến một vài tháng, với sự ưu tiên đối với khoảng thời gian/thang đo thời gian ngắn hơn.</td></tr>
+  <tr><td>4. Những người làm kinh doanh và những nhà phát triển phải làm việc cùng nhau hằng ngày trong suốt dự án.</td></tr>
+  <tr><td>5. Xây dựng các dự án xung quanh những cá nhân có động lực. Cho họ môi trường và sự hỗ trợ mà họ cần, và tin tưởng giao cho họ hoàn thành công việc.</td></tr>
+  <tr><td>6. Phương pháp hiệu quả và năng suất nhất để truyền đạt thông tin tới và bên trong một nhóm phát triển chính là cuộc trò chuyện mặt-đối-mặt (face-to-face conversation).</td></tr>
+  <tr><td>7. Phần mềm chạy được chính là thước đo chính/tiêu chí chính của sự tiến bộ (progress).</td></tr>
+  <tr><td>8. Các quy trình Agile thúc đẩy sự phát triển bền vững. Các nhà tài trợ, những nhà phát triển, và người dùng cần phải có khả năng duy trì một nhịp độ không đổi một cách vô hạn.</td></tr>
+  <tr><td>9. Sự chú ý liên tục đến sự xuất sắc về kỹ thuật (technical excellence) và thiết kế tốt sẽ nâng cao sự linh hoạt (agility).</td></tr>
+  <tr><td>10. Sự đơn giản (Simplicity)—nghệ thuật của việc tối đa hóa lượng công việc không cần phải làm—là điều thiết yếu.</td></tr>
+  <tr><td>11. Các kiến trúc, yêu cầu, và thiết kế tốt nhất sẽ xuất hiện/nổi lên (emerge) từ các nhóm tự quản (self-organizing teams).</td></tr>
+  <tr><td>12. Tại các khoảng thời gian đều đặn/định kỳ, nhóm sẽ nhìn nhận/ngẫm lại (reflects) về cách làm thế nào để trở nên hiệu quả hơn, sau đó họ sẽ điều chỉnh và thay đổi (tunes and adjusts) hành vi của bản thân cho phù hợp.</td></tr>
+</table>
+</div>
+
+<p class="figure-caption">Hình 2-2. Mười hai Nguyên tắc Phía sau Tuyên ngôn Agile</p>
+
+<p>Mặc dù có nguồn gốc (originating) xuất thân từ bên trong ngành công nghiệp phần mềm, thế nhưng những nguyên tắc/khuôn phép này kể từ thời điểm đó cho tới nay nay đã kịp đem ra phát tán lan rộng phình bung lây rải vươn mình đâm nhánh (spread) sang tới dính vào thảy vô số tá hàng bạt ngàn các khối bộ ngành công nghiệp khác nữa (many other industries).</p>
+
+<p>Chính cái hiện thân sống/hiện thân (embodiment) được đúc kết của cái khối luồng tinh thần làm tư duy (mindset), khối giá trị (values), cùng mớ nguyên tắc (principles) rành rành này nó mới nhào nặn ra định đoạt luôn xem chừng cái thứ gì/nhân tố gì sẽ gộp lại để tạo dựng hình thành lên được làm nên cái chất gọi là một thể phương pháp tiếp cận agile (constitutes an agile approach). Các loại/Các mô hình phương pháp tiếp cận agile đa thể loại đa dạng (various agile approaches) hiện đương có mặt rải rác đem ra đem xài đưa vô trong ứng dụng tung chiêu nhan nhản vào cái thời ngày hôm nay thảy cũng đều cùng mang chung một mớ cội rễ (share common roots) có sự dây dưa với khối tư duy agile, giá trị, và đống nguyên tắc của agile đó. Mối liên hệ có qua có lại (relationship) đó được biểu lộ phô bày sờ sờ ngay ở trên cái Hình 2-3 đây.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e1b9240b-f851-41ce-9d0d-0a05a92fc05a/markdown_4/imgs/img_in_image_box_127_299_1092_780.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A13Z%2F-1%2F%2Feafa878dd80d2252990c289215a7fcce74317d9b2548f692501c1292ce28dcbf" alt="Image" width="78%" /></div></div>
+
+<p class="figure-caption">Hình 2-3. Mối quan hệ Giữa Các Giá trị Tuyên ngôn Agile, Các Nguyên tắc, và Các Thực tiễn Phổ biến</p>
+
+<p>Như được trình bày trong Hình 2-3, mô hình này, vốn được lấy cảm hứng từ Ahmed Sidky, đã trình bày/diễn đạt (articulates) agile như là một tư duy (mindset) được định nghĩa bởi các giá trị của Tuyên ngôn Agile, được dẫn dắt bởi các nguyên tắc của Tuyên ngôn Agile, và được kích hoạt/hiện thực hóa (enabled) bởi các thực tiễn khác nhau. Có một điểm đáng lưu ý (worth noting) là, trong khi cái thuật ngữ “agile” mới bắt đầu trở nên phổ biến (popularized) từ thời kỳ sau khi có Tuyên ngôn, thì những phương pháp tiếp cận và những kỹ thuật đang được đem ra ứng dụng sử dụng bởi các nhóm làm dự án vào ngày hôm nay vốn dĩ đã tồn tại sẵn có từ trước cái thuở có Tuyên ngôn Agile cả rất nhiều năm rồi và, trong một số trường hợp, là kéo từ cả vài thập kỷ trước.</p>
+
+<p>Các phương pháp tiếp cận agile và các phương pháp agile là những thuật ngữ bao trùm (umbrella terms) mà bên dưới nó bao bọc cả một rổ hàng tá sự đa dạng (a variety of) của các loại khuôn khổ (frameworks) và các phương pháp (methods). Hình 2-4 tiến hành đặt cái cụm từ agile vào trong một bối cảnh (context) và minh họa (visualizes) nó dưới hình ảnh một cái mền thuật ngữ mang hàm ý trùm phủ/thuật ngữ chung bao hàm (blanket term), ngầm ý dùng nhằm nhắc để ám chỉ tới cho mọi/bất kỳ cái kiểu dạng phương pháp tiếp cận, dạng đòn kỹ thuật (technique), mẫu khung sườn làm việc (framework), phương pháp (method), hay là thủ thuật hành động thực tiễn (practice) mà ở đó nó đáp ứng làm tròn vai thỏa mạn trọn vẹn (fulfills) mớ những dòng giá trị với lại khối nguyên tắc thuộc Tuyên ngôn Agile. Hình 2-4 cũng đồng thời chường mặt trình diện cho ra thấy luôn cả cái agile cộng chung cái tên của Phương pháp Kanban (Kanban Method) như là thuộc vào một mảng những nhóm tiểu phần/tập con (subsets) được đặt nằm ở bên trong ruột cái thằng lean. Điều này là bởi vì do chúng nó (they) chính thị bản chất là đại diện cho những cái tên hình dạng nhân bản/ví dụ (named instances) được nhào ra từ trong ruột khối bộ não triết lý tư duy làm tinh gọn (lean thinking) của phe thằng lean vốn chia sẻ (share) chung luôn các góc ý niệm thuộc khái niệm làm lean ví dụ y như: “tập trung sát vô khối phần làm giá trị (focus on value),” “giữ định lượng kích cỡ mớ lô chùm đồ hàng/batch (batch sizes) đè về kích thước bé (small),” và cái chiêu là “bài xích tuyệt diệt bỏ cấm lãng phí/đồ dư thừa (elimination of waste).”</p>
+
+<p>Vậy liệu rốt cuộc agile có phải là một cái thuật/phương pháp tiếp cận (approach), một cái phương pháp (method), một loại thủ thuật dạng thực tiễn thực hành (practice), một ngón kỹ thuật (technique), hay nó mang thân phận là một cái bộ khuôn khổ (framework)? Bất kỳ từ nào (Any) hay thảy mọi (all) cái thứ mớ thuật ngữ kể liệt kê ở đây nó đều có cửa khả năng (could apply) để đem áp dụng bốc đi kêu réo vào dẫu tùy thuộc đâm dựa rịt vào từng thế tình huống cớ sự trường hợp cụ thể (depending on the situation). Ở trong cái cuốn hướng dẫn thực hành này, thuật ngữ "phương pháp tiếp cận" (approach) sẽ được đi xưng danh để mang ra sử dụng thay vì kêu lên xài mấy cái từ kia (unless) ngoại trừ cái khi mà xui khiến đụng nhầm lấy một từ nào khác trong số mấy cái mớ thuật ngữ kia tỏ vẻ xem chừng ngó rành rành cho ra thấy rõ (obviously) là nó bám sát nghĩa với ngữ cảnh xài chuẩn mang tính đúng đắn/hợp phép phù hợp chính xác hơn (more correct).</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//3e12976c-8daa-41e1-99f2-a7e1b72b6a5d/markdown_0/imgs/img_in_image_box_228_415_992_1026.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A13Z%2F-1%2F%2F03fc3566f2b1c7006377ae2f5dcb0060ad367ee6677324db507950a195639d2f" alt="Image" width="62%" /></div></div>
+
+<p class="figure-caption">Hình 2-4. Agile Là Một Thuật ngữ Bao trùm Dành cho Nhiều Phương pháp Tiếp cận</p>
+
+<p>Nhìn chung/nói chung (In general), có tận hai cái mảng chiến lược có thể mang đi đáp trả xài đến nhằm đi hòng đáp ứng bóp cho trọn vẹn (fulfill) cái khối lượng đống giá trị và nguyên tắc thuộc hàng agile. Mảng chiến thuật số một (first) đầu tiên tức là tiến hành bắt tay nhảy dô nhận/áp dụng thi hành xài luôn trọn gói cho bằng một thứ

@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chương 12 – QUẢN LÝ MUA SẮM DỰ ÁN | PMBOK® Guide Lần 6</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --gold: #c9a84c;
+    --gold-light: #e8d5a3;
+    --cream: #fdf8f0;
+    --text: #2c2c2c;
+    --text-light: #5a5a5a;
+    --border: #d4c89a;
+    --accent: #8b1a1a;
+    --sidebar-w: 260px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Merriweather', Georgia, serif;
+    background: var(--cream);
+    color: var(--text);
+    display: flex;
+    min-height: 100vh;
+  }
+
+  #sidebar {
+    width: var(--sidebar-w);
+    background: var(--navy);
+    color: #ccd4e8;
+    position: fixed;
+    top: 0; left: 0; bottom: 0;
+    overflow-y: auto;
+    z-index: 100;
+    padding: 0 0 2rem;
+    border-right: 3px solid var(--gold);
+  }
+  #sidebar-header {
+    background: linear-gradient(135deg, #0f1d3a 0%, #1a2744 100%);
+    padding: 1.5rem 1.2rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  #sidebar-header .book-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  #sidebar-header h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+  }
+  #sidebar-header .edition {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    color: var(--gold-light);
+    font-style: italic;
+  }
+  #sidebar nav { padding: 0.8rem 0; }
+  #sidebar nav a {
+    display: block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    color: #aab8d0;
+    text-decoration: none;
+    padding: 0.45rem 1.2rem;
+    line-height: 1.4;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+  }
+  #sidebar nav a:hover, #sidebar nav a.active {
+    color: #fff;
+    background: rgba(201,168,76,0.12);
+    border-left-color: var(--gold);
+  }
+  #sidebar nav .section-group { margin-top: 0.4rem; }
+  #sidebar nav .group-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 0.8rem 1.2rem 0.3rem;
+    opacity: 0.85;
+  }
+
+  #main {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    max-width: 900px;
+    padding: 0 3rem 5rem;
+  }
+
+  .chapter-hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #2a3a6a 100%);
+    color: white;
+    padding: 3rem 3rem 2.5rem;
+    margin: 0 -3rem 3rem;
+    border-bottom: 4px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+  }
+  .chapter-hero::before {
+    content: attr(data-chnum);
+    position: absolute;
+    right: 2rem; top: 50%;
+    transform: translateY(-50%);
+    font-size: 10rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.05);
+    font-family: 'Merriweather', serif;
+    line-height: 1;
+  }
+  .chapter-hero .ch-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+  .chapter-hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+  }
+  .chapter-hero .ch-en {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+    font-style: italic;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--gold);
+  }
+  h3 {
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin: 2rem 0 0.7rem;
+    padding-left: 0.8rem;
+    border-left: 4px solid var(--gold);
+  }
+  h4 {
+    font-size: 1rem;
+    color: var(--accent);
+    margin: 1.5rem 0 0.5rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  h5 {
+    font-size: 0.95rem;
+    color: var(--navy);
+    margin: 1.2rem 0 0.5rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 700;
+  }
+  p {
+    font-size: 0.97rem;
+    line-height: 1.85;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+
+  ul.pmbok {
+    list-style: none;
+    margin: 0.5rem 0 1rem 0;
+    padding: 0;
+  }
+  ul.pmbok li {
+    position: relative;
+    padding: 0.3rem 0 0.3rem 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--text);
+  }
+  ul.pmbok li::before {
+    content: '◆';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-size: 0.7rem;
+    top: 0.5rem;
+  }
+  ul.pmbok.check li::before { content: '☑'; color: #2d7a2d; font-size: 0.9rem; top: 0.35rem; }
+  ul.pmbok.dash li::before  { content: '■'; color: var(--navy); font-size: 0.6rem; top: 0.5rem; }
+
+  .figure-wrap {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1.2rem;
+    background: #f8f5ee;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .figure-wrap img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  }
+  .figure-caption {
+    margin-top: 0.75rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.83rem;
+    color: var(--text-light);
+    font-style: italic;
+    text-align: center;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.84rem;
+  }
+  table th {
+    background: var(--navy);
+    color: white;
+    padding: 0.6rem 0.8rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.8rem;
+  }
+  table td {
+    padding: 0.55rem 0.8rem;
+    border: 1px solid #ddd;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  table tr:nth-child(even) td { background: #f9f6ef; }
+
+  @media(max-width:900px){
+    #sidebar { display: none; }
+    #main { margin-left: 0; padding: 0 1.2rem 4rem; }
+    .chapter-hero { margin: 0 -1.2rem 2rem; padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<aside id="sidebar">
+  <div id="sidebar-header">
+    <div class="book-label">PMBOK® Guide</div>
+    <h2>Hướng Dẫn Quản Lý Dự Án</h2>
+    <div class="edition">Lần xuất bản thứ 6 · Tiếng Việt</div>
+  </div>
+  <nav>
+    <div class="section-group">
+    <div class="group-label">Chương 12 · Procurement Mgt</div>
+    <a href="#s12-1">12.1 Lập KH Quản Lý Mua Sắm</a>
+    <a href="#s12-2">12.2 Tiến Hành Mua Sắm</a>
+    <a href="#s12-3">12.3 Kiểm Soát Mua Sắm</a>
+    </div>
+  </nav>
+</aside>
+
+<main id="main">
+
+  <div class="chapter-hero" data-chnum="12">
+    <div class="ch-label">Chương 12</div>
+    <h1>QUẢN LÝ MUA SẮM DỰ ÁN</h1>
+    <div class="ch-en">Project Procurement Management</div>
+  </div>
+
+<h2>PROJECT PROCUREMENT MANAGEMENT (QUẢN LÝ MUA SẮM DỰ ÁN)</h2>
+<p>Quản lý Mua sắm Dự án bao gồm các quy trình cần thiết để mua hoặc có được các sản phẩm, dịch vụ, hoặc kết quả cần thiết từ bên ngoài nhóm dự án. Quản lý Mua sắm Dự án bao gồm các quy trình quản lý và kiểm soát cần thiết để phát triển và quản trị các thỏa thuận như hợp đồng (contracts), đơn đặt hàng (purchase orders), biên bản ghi nhớ thỏa thuận (memoranda of agreements - MOAs), hoặc các thỏa thuận cấp độ dịch vụ nội bộ (internal service level agreements - SLAs). Nhân sự được ủy quyền mua sắm hàng hóa và/hoặc dịch vụ cần thiết cho dự án có thể là thành viên của nhóm dự án, ban quản lý, hoặc thuộc bộ phận mua hàng của tổ chức nếu có.</p>
+
+<p>Các quy trình Quản lý Mua sắm Dự án bao gồm những quy trình sau đây:</p>
+<ul class="pmbok">
+<li><strong>12.1 Lập kế hoạch Quản lý Mua sắm (Plan Procurement Management)</strong>—Quy trình ghi lại các quyết định mua sắm của dự án, xác định phương pháp tiếp cận, và nhận diện các người bán (sellers) tiềm năng.</li>
+<li><strong>12.2 Tiến hành Mua sắm (Conduct Procurements)</strong>—Quy trình lấy các phản hồi từ người bán, lựa chọn một người bán, và trao hợp đồng.</li>
+<li><strong>12.3 Kiểm soát Mua sắm (Control Procurements)</strong>—Quy trình quản lý các mối quan hệ mua sắm, giám sát hiệu suất hợp đồng, thực hiện các thay đổi và điều chỉnh khi cần thiết, và đóng các hợp đồng.</li>
+</ul>
+
+<p>Các quy trình mua sắm được trình bày như các quy trình rời rạc với các giao diện được xác định. Trên thực tế, các quy trình mua sắm có thể phức tạp và có thể tương tác với nhau cũng như với các quy trình trong các Lĩnh vực Kiến thức (Knowledge Areas) khác theo những cách không thể trình bày chi tiết hoàn toàn trong PMBOK® Guide. Các quy trình được mô tả trong phần này được viết từ góc nhìn trong đó hàng hóa hoặc dịch vụ được lấy từ bên ngoài dự án.</p>
+
+<p>Hình 12-1 cung cấp cái nhìn tổng quan về các quy trình Quản lý Mua sắm Dự án. Các quy trình Quản lý Mua sắm Dự án được trình bày như các quy trình rời rạc với các giao diện được xác định, tuy nhiên trong thực tế, chúng đan xen và tương tác theo những cách không thể trình bày chi tiết hoàn toàn trong PMBOK® Guide.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//dfe7a629-91e4-465c-822a-640f29a92172/markdown_3/imgs/img_in_image_box_210_188_1018_802.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A07Z%2F-1%2F%2F136a91df341028451563dca5c55984eda1a7686789caaeb03dac3ec39cf138ea" alt="Image" width="66%" /></div></div>
+<p class="figure-caption">Hình 12-1 Tổng quan Quản lý Mua sắm Dự án</p>
+
+<h5>CÁC KHÁI NIỆM TRỌNG TÂM TRONG QUẢN LÝ MUA SẮM DỰ ÁN (KEY CONCEPTS FOR PROJECT PROCUREMENT MANAGEMENT)</h5>
+<p>Hơn hầu hết các quy trình quản lý dự án khác, có thể có những nghĩa vụ pháp lý và hình phạt đáng kể gắn liền với quy trình mua sắm. Giám đốc dự án không nhất thiết phải là một chuyên gia được đào tạo về luật pháp và quy định quản lý mua sắm nhưng cần phải đủ quen thuộc với quy trình mua sắm để đưa ra các quyết định thông minh liên quan đến hợp đồng và các mối quan hệ hợp đồng. Giám đốc dự án thường không được ủy quyền ký các thỏa thuận pháp lý ràng buộc tổ chức; điều này được dành riêng cho những người có thẩm quyền thực hiện việc đó.</p>
+
+<p>Các quy trình Quản lý Mua sắm Dự án liên quan đến các thỏa thuận mô tả mối quan hệ giữa hai bên—một người mua (buyer) và một người bán (seller). Các thỏa thuận có thể đơn giản như việc mua một số lượng giờ lao động xác định với một mức giá lao động cụ thể, hoặc chúng có thể phức tạp như các hợp đồng xây dựng quốc tế kéo dài nhiều năm. Phương pháp tiếp cận hợp đồng và bản thân hợp đồng nên phản ánh tính đơn giản hay phức tạp của các sản phẩm bàn giao hoặc nỗ lực được yêu cầu và nên được viết theo cách tuân thủ luật pháp địa phương, quốc gia, và quốc tế liên quan đến hợp đồng.</p>
+
+<p>Một hợp đồng nên nêu rõ các sản phẩm bàn giao và kết quả mong đợi, bao gồm bất kỳ sự chuyển giao kiến thức nào từ người bán sang người mua. Bất cứ điều gì không có trong hợp đồng đều không thể được thực thi về mặt pháp lý. Khi làm việc trên phạm vi quốc tế, các giám đốc dự án nên ghi nhớ tác động của văn hóa và luật pháp địa phương lên hợp đồng và khả năng thực thi của chúng, bất kể hợp đồng được viết rõ ràng đến đâu.</p>
+
+<p>Một hợp đồng mua hàng bao gồm các điều khoản và điều kiện, và có thể kết hợp các chi tiết cụ thể khác của người mua về những gì người bán phải thực hiện hoặc cung cấp. Trách nhiệm của nhóm quản lý dự án là đảm bảo rằng mọi hoạt động mua sắm đều đáp ứng các nhu cầu cụ thể của dự án trong khi làm việc với văn phòng mua sắm để đảm bảo các chính sách mua sắm của tổ chức được tuân thủ. Tùy thuộc vào lĩnh vực ứng dụng, một thỏa thuận có thể là một hợp đồng, một SLA (thỏa thuận cấp độ dịch vụ), một sự thấu hiểu, một MOA (biên bản ghi nhớ), hoặc một đơn đặt hàng (purchase order).</p>
+
+<p>Hầu hết các tổ chức ghi chép lại các chính sách và thủ tục định nghĩa cụ thể các quy tắc mua sắm và xác định ai có thẩm quyền ký kết và quản trị các thỏa thuận đó thay mặt cho tổ chức. Trên toàn thế giới, các tổ chức sử dụng các tên gọi khác nhau cho các phòng ban hoặc bộ phận xử lý việc mua sắm, chẳng hạn như phòng mua hàng (purchasing), phòng hợp đồng (contracting), phòng mua sắm (procurement), hoặc phòng thu nhận (acquisitions); tuy nhiên, các trách nhiệm có khả năng là tương tự nhau.</p>
+
+<p>Mặc dù tất cả các tài liệu dự án có thể phải trải qua một số hình thức xem xét và phê duyệt, bản chất ràng buộc về mặt pháp lý của một hợp đồng có nghĩa là nó sẽ phải trải qua một quy trình phê duyệt sâu rộng hơn, thường liên quan đến bộ phận pháp lý. Trong mọi trường hợp, trọng tâm chính của quy trình xem xét và phê duyệt là để đảm bảo rằng hợp đồng mô tả đầy đủ các sản phẩm, dịch vụ, hoặc kết quả mà người bán đồng ý cung cấp, đồng thời tuân thủ các luật pháp và quy định liên quan đến mua sắm. Các phần này thường là các phụ lục (appendices) hoặc phụ chương (annexes) riêng biệt, cho phép sử dụng ngôn ngữ hợp đồng pháp lý đã được tiêu chuẩn hóa.</p>
+
+<p>Một dự án phức tạp có thể liên quan đến việc quản lý nhiều hợp đồng đồng thời hoặc theo trình tự. Trong những trường hợp như vậy, vòng đời của mỗi hợp đồng có thể bắt đầu và kết thúc trong bất kỳ giai đoạn nào của vòng đời dự án. Mối quan hệ giữa người mua-người bán có thể tồn tại ở nhiều cấp độ trên bất kỳ một dự án nào, và giữa các tổ chức trong nội bộ cũng như bên ngoài tổ chức mua sắm (acquiring organization).</p>
+
+<p>Tùy thuộc vào lĩnh vực ứng dụng, người bán có thể được nhận diện là nhà thầu (contractor), nhà cung cấp (vendor), nhà cung cấp dịch vụ (service provider), hoặc nhà cung ứng (supplier). Người mua có thể là chủ sở hữu (owner) của sản phẩm cuối cùng, một nhà thầu phụ (subcontractor), tổ chức mua sắm (acquiring organization), người yêu cầu dịch vụ (service requestor), hoặc người mua hàng (purchaser). Người bán có thể được xem xét trong suốt vòng đời hợp đồng ban đầu là người dự thầu (bidder), sau đó là nguồn được chọn (selected source), và cuối cùng là nhà cung cấp hoặc người bán theo hợp đồng (contracted supplier/vendor).</p>
+
+<p>Người dự thầu trúng thầu có thể quản lý công việc như một dự án. Trong những trường hợp như vậy:</p>
+<ul class="pmbok check">
+<li>Người mua trở thành khách hàng (customer) đối với các nhà thầu phụ, nhà cung cấp, và nhà cung cấp dịch vụ và do đó là một bên liên quan trọng yếu của dự án từ góc nhìn của người bán.</li>
+<li>Nhóm quản lý dự án của người bán có thể quan tâm đến tất cả các quy trình liên quan đến việc thực hiện công việc hoặc cung cấp dịch vụ.</li>
+<li>Các điều khoản và điều kiện của hợp đồng cũng như tuyên bố công việc mua sắm (SOW) trở thành các đầu vào then chốt cho nhiều quy trình quản lý của người bán. Hợp đồng có thể thực sự chứa đựng các đầu vào (ví dụ: các sản phẩm bàn giao chính, các cột mốc quan trọng, các mục tiêu chi phí) hoặc nó có thể giới hạn các lựa chọn của nhóm dự án (ví dụ: sự phê duyệt của người mua đối với các quyết định nhân sự thường được yêu cầu trong các dự án tích hợp CNTT). SOW mua sắm có thể có những tên gọi khác, chẳng hạn như bản tuyên bố công việc kỹ thuật (technical statement of work).</li>
+<li>Bản thân người bán có thể trở thành người mua các sản phẩm, dịch vụ, và vật liệu ở cấp độ thấp hơn từ các nhà thầu phụ và nhà cung cấp.</li>
+</ul>
+
+<p>Trong phần này, giả định rằng người mua một mặt hàng cho dự án được phân công vào nhóm dự án và/hoặc là một phần của tổ chức lớn hơn. Người bán được giả định là người cung cấp dịch vụ và/hoặc vật liệu cho dự án và thường ở bên ngoài tổ chức thực hiện dự án (performing organization). Đối với một số dự án, vai trò người bán có thể được đảm nhận bởi một nhóm hoặc chức năng thuộc tổ chức thực hiện nhưng nằm ngoài dự án. Đối với các dự án lớn hơn, phức tạp hơn, người bán có thể trở thành một phần của một nhóm dự án tích hợp (integrated project team) sau khi hợp đồng được trao.</p>
+
+<p>Đối với các tổ chức nhỏ hơn hoặc các công ty khởi nghiệp (startup companies) và những tổ chức không có phòng mua hàng, hợp đồng, hoặc mua sắm, giám đốc dự án có thể đảm nhận vai trò thẩm quyền mua hàng để đàm phán và ký kết hợp đồng trực tiếp (mua sắm phi tập trung - decentralized purchasing). Đối với các tổ chức trưởng thành hơn, các chức năng mua sắm và ký kết hợp đồng thực tế sẽ được thực hiện bởi một phòng ban riêng biệt với vai trò cụ thể là mua hàng, đàm phán, và ký kết hợp đồng (mua sắm tập trung - centralized purchasing).</p>
+
+<p>Trong hoạt động ký kết hợp đồng quốc tế, các cơ quan tài phán pháp lý (legal jurisdictions) mà theo đó các hợp đồng sẽ được quản lý được nêu rõ ràng trong hợp đồng. Trong hầu hết các trường hợp, người bán là một nhà thầu bên ngoài chịu sự ràng buộc bởi một mối quan hệ hợp đồng chính thức.</p>
+
+<h5>CÁC XU HƯỚNG VÀ THỰC TIỄN MỚI NỔI TRONG QUẢN LÝ MUA SẮM (TRENDS AND EMERGING PRACTICES IN PROCUREMENT MANAGEMENT)</h5>
+<p>Có một số xu hướng chính trong các công cụ phần mềm, rủi ro, quy trình, hậu cần, và công nghệ trong các ngành công nghiệp khác nhau có thể ảnh hưởng đến tỷ lệ thành công của các dự án. Các xu hướng và thực tiễn mới nổi đối với Quản lý Mua sắm Dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Những tiến bộ trong công cụ (Advances in tools).</strong> Đã có sự cải thiện đáng kể trong việc phát triển các công cụ để quản lý các giai đoạn mua sắm và triển khai của một dự án. Các công cụ trực tuyến cho việc mua sắm giờ đây cung cấp cho người mua một điểm duy nhất nơi các cơ hội mua sắm có thể được quảng cáo và cung cấp cho người bán một nguồn duy nhất để tìm các tài liệu mua sắm và hoàn thành chúng trực tiếp trực tuyến. Trong lĩnh vực xây dựng/kỹ thuật/cơ sở hạ tầng, việc gia tăng sử dụng mô hình thông tin xây dựng (BIM) trong các công cụ phần mềm đã được chứng minh là tiết kiệm được một lượng đáng kể thời gian và tiền bạc cho các dự án sử dụng nó. Cách tiếp cận này có thể giảm thiểu đáng kể các khiếu nại xây dựng (construction claims), do đó giảm cả chi phí và tiến độ. Các công ty và chính phủ lớn trên toàn thế giới đang bắt đầu bắt buộc phải sử dụng BIM trên các dự án lớn.</li>
+<li><strong>Quản lý rủi ro tiên tiến hơn (More advanced risk management).</strong> Một xu hướng ngày càng tăng trong quản lý rủi ro là viết các hợp đồng phân bổ chính xác những rủi ro cụ thể cho các thực thể có khả năng quản lý chúng tốt nhất. Không một nhà thầu nào có khả năng quản lý tất cả các rủi ro lớn có thể xảy ra trên một dự án. Người mua sẽ được yêu cầu phải chấp nhận những rủi ro mà các nhà thầu không có quyền kiểm soát, chẳng hạn như thay đổi các chính sách doanh nghiệp trong tổ chức mua, thay đổi các yêu cầu quy định pháp lý, và các rủi ro khác từ bên ngoài dự án. Hợp đồng có thể quy định rõ rằng việc quản lý rủi ro phải được thực hiện như một phần của hợp đồng.</li>
+<li><strong>Thay đổi quy trình hợp đồng (Changing contracting processes).</strong> Đã có sự gia tăng đáng kể các siêu dự án (megaprojects) trong vài năm qua, đặc biệt là trong các lĩnh vực phát triển cơ sở hạ tầng và các dự án kỹ thuật. Các dự án trị giá hàng tỷ đô la giờ đây đã trở nên phổ biến. Một tỷ lệ lớn trong số này liên quan đến các hợp đồng quốc tế với nhiều nhà thầu từ nhiều quốc gia và vốn dĩ chứa đựng nhiều rủi ro hơn so với các dự án chỉ sử dụng các nhà thầu địa phương. Ngày càng có nhiều nhà thầu hợp tác chặt chẽ với khách hàng trong quy trình mua sắm để tận dụng các chiết khấu thông qua việc mua hàng số lượng lớn hoặc các sự cân nhắc đặc biệt khác. Đối với các dự án này, việc sử dụng các mẫu hợp đồng tiêu chuẩn được quốc tế công nhận đang ngày càng gia tăng nhằm mục đích giảm thiểu các vấn đề và khiếu nại trong quá trình thực thi.</li>
+<li><strong>Hậu cần và quản lý chuỗi cung ứng (Logistics and supply chain management).</strong> Bởi vì rất nhiều dự án cơ sở hạ tầng kỹ thuật và xây dựng lớn được thực hiện thông qua nhiều nhà thầu quốc tế, việc quản lý dòng chảy vật liệu trở nên quan trọng đối với sự hoàn thành thành công. Đối với các mặt hàng có thời gian chờ lâu (long-lead items), cả việc sản xuất các mặt hàng đó và việc vận chuyển chúng đến địa điểm dự án đều trở thành những yếu tố chi phối tiến độ. Trong lĩnh vực CNTT, một mặt hàng có thời gian chờ lâu có thể yêu cầu đặt hàng trước từ 2 đến 3 tháng. Trong các dự án xây dựng phức tạp, các mặt hàng có thời gian chờ lâu có thể yêu cầu đặt hàng trước 1 đến 2 năm hoặc lâu hơn. Đối với các dự án này, các mặt hàng có thời gian chờ lâu có thể được mua trước các hợp đồng mua sắm khác để đáp ứng ngày hoàn thành dự án đã lên kế hoạch. Có thể bắt đầu ký kết hợp đồng cho những vật liệu, nguồn cung cấp, hoặc thiết bị có thời gian chờ lâu này trước khi bản thiết kế cuối cùng của chính sản phẩm cuối cùng được hoàn thành, dựa trên các yêu cầu đã biết được xác định trong bản thiết kế cấp cao nhất. Việc quản lý chuỗi cung ứng là một lĩnh vực ngày càng được nhóm dự án của nhà thầu chú trọng. Không chỉ các nguồn cung cấp vật tư chính được xác định sớm trong dự án, mà các nguồn thứ cấp, nguồn dự phòng nói chung cũng được xác định. Nhiều quốc gia trên thế giới yêu cầu các nhà thầu quốc tế phải mua một tỷ lệ phần trăm tối thiểu nhất định về vật liệu và nguồn cung ứng từ các nhà cung cấp địa phương.</li>
+<li><strong>Công nghệ và quan hệ với các bên liên quan (Technology and stakeholder relations).</strong> Các dự án được tài trợ bằng ngân sách nhà nước đang chịu sự giám sát ngày càng chặt chẽ. Một xu hướng trong các dự án cơ sở hạ tầng và xây dựng thương mại là việc sử dụng công nghệ bao gồm các camera web (webcams) để cải thiện giao tiếp và quan hệ với các bên liên quan. Trong quá trình xây dựng, một hoặc nhiều webcam được lắp đặt trên công trường, với các bản cập nhật định kỳ lên một trang web có thể truy cập công khai. Tiến độ của dự án có thể được xem trên Internet bởi tất cả các bên liên quan. Dữ liệu video cũng có thể được lưu trữ, cho phép phân tích nếu có khiếu nại (claim) phát sinh. Một số dự án đã phát hiện ra rằng việc sử dụng webcam giảm thiểu các tranh chấp liên quan đến công việc xây dựng trên công trường, vì webcam đã ghi lại các sự kiện, do đó sẽ không có sự bất đồng về các sự thật của vấn đề.</li>
+<li><strong>Các cam kết thử nghiệm (Trial engagements).</strong> Không phải mọi người bán đều phù hợp tốt với môi trường của một tổ chức. Do đó, một số dự án sẽ thuê/cam kết với một vài người bán ứng viên cho các sản phẩm bàn giao và sản phẩm công việc ban đầu trên cơ sở có trả phí trước khi đưa ra cam kết đầy đủ đối với một phần lớn hơn của phạm vi dự án. Điều này giúp tăng tốc động lượng (momentum) bằng cách cho phép người mua đánh giá các đối tác tiềm năng, đồng thời tạo ra tiến độ thực tế đối với công việc của dự án.</li>
+</ul>
+
+<h5>CÁC YẾU TỐ XEM XÉT KHI ĐIỀU CHỈNH - MAY ĐO (TAILORING CONSIDERATIONS)</h5>
+<p>Bởi vì mỗi dự án là duy nhất, giám đốc dự án có thể cần phải điều chỉnh (may đo) cách thức áp dụng các quy trình Quản lý Mua sắm Dự án. Cân nhắc điều chỉnh bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Độ phức tạp của mua sắm (Complexity of procurement).</strong> Có phải chỉ có một cuộc mua sắm chính hay có nhiều cuộc mua sắm ở các thời điểm khác nhau với những người bán khác nhau làm tăng thêm độ phức tạp cho các hoạt động mua sắm?</li>
+<li><strong>Vị trí vật lý (Physical location).</strong> Người mua và người bán có ở cùng một địa điểm, hay tương đối gần nhau, hay ở các múi giờ, quốc gia, hoặc châu lục khác nhau?</li>
+<li><strong>Môi trường quản trị và quy định (Governance and regulatory environment).</strong> Các luật và quy định địa phương liên quan đến các hoạt động mua sắm có được tích hợp với các chính sách mua sắm của tổ chức không? Điều này ảnh hưởng như thế nào đến các yêu cầu kiểm toán hợp đồng?</li>
+<li><strong>Tính sẵn có của các nhà thầu (Availability of contractors).</strong> Có sẵn các nhà thầu có khả năng thực hiện công việc không?</li>
+</ul>
+
+<h5>CÁC CÂN NHẮC CHO MÔI TRƯỜNG AGILE/THÍCH ỨNG (CONSIDERATIONS FOR AGILE/ADAPTIVE ENVIRONMENTS)</h5>
+<p>Trong các môi trường agile, những người bán cụ thể có thể được sử dụng để mở rộng nhóm dự án. Mối quan hệ làm việc mang tính cộng tác này có thể dẫn đến một mô hình mua sắm chia sẻ rủi ro (shared risk procurement model) nơi mà cả người mua và người bán cùng chia sẻ rủi ro và phần thưởng liên quan đến một dự án.</p>
+<p>Các dự án lớn hơn có thể sử dụng một phương pháp tiếp cận thích ứng (adaptive approach) cho một số sản phẩm bàn giao và một phương pháp tiếp cận ổn định hơn cho các phần khác. Trong những trường hợp này, một thỏa thuận quản trị (governing agreement) như một thỏa thuận dịch vụ tổng thể (master services agreement - MSA) có thể được sử dụng cho toàn bộ quá trình hợp tác, với công việc thích ứng (adaptive work) được đặt vào trong một phụ lục hoặc bản bổ sung. Điều này cho phép những thay đổi xảy ra trên phạm vi công việc thích ứng mà không gây tác động đến hợp đồng tổng thể.</p>
+
+<h3 id="s12-1">12.1 LẬP KẾ HOẠCH QUẢN LÝ MUA SẮM (PLAN PROCUREMENT MANAGEMENT)</h3>
+<p>Lập kế hoạch Quản lý Mua sắm là quy trình ghi lại các quyết định mua sắm của dự án, xác định phương pháp tiếp cận và nhận diện các người bán tiềm năng. Lợi ích chính của quy trình này là nó xác định xem có nên mua sắm hàng hóa và dịch vụ từ bên ngoài dự án hay không và, nếu có, thì sẽ mua những gì cũng như cách thức và thời điểm để mua nó. Hàng hóa và dịch vụ có thể được mua từ các bộ phận khác của tổ chức thực hiện (performing organization) hoặc từ các nguồn bên ngoài. Quá trình này được thực hiện một lần hoặc ở các điểm xác định trước trong dự án. Đầu vào, công cụ và kỹ thuật, và đầu ra của quá trình này được miêu tả trong Hình 12-2. Hình 12-3 phác họa sơ đồ luồng dữ liệu của quy trình này.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//3e09b553-c9d6-424c-a573-92a2d5673e98/markdown_4/imgs/img_in_image_box_205_471_1024_923.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A11Z%2F-1%2F%2F05d06988db42adf38364af54f87f73fe28db1f098d301f4b733208a74ab43767" alt="Image" width="66%" /></div></div>
+<p class="figure-caption">Hình 12-2. Lập kế hoạch Quản lý Mua sắm: Đầu vào, Công cụ & Kỹ thuật, và Đầu ra</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//2a13d013-75a2-46c3-9a89-638c861382ad/markdown_0/imgs/img_in_image_box_205_169_1029_1042.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A02Z%2F-1%2F%2Ff31189a5ae6a4243deb7c543630898480f54a2345a8c7b1a74e685b02d925e89" alt="Image" width="67%" /></div></div>
+<p class="figure-caption">Hình 12-3. Lập kế hoạch Quản lý Mua sắm: Sơ đồ luồng dữ liệu</p>
+
+<p>Việc xác định vai trò và trách nhiệm liên quan đến mua sắm nên được thực hiện sớm trong quá trình Lập kế hoạch Quản lý Mua sắm. Giám đốc dự án nên đảm bảo rằng nhóm dự án được biên chế với đủ chuyên môn mua sắm ở mức độ yêu cầu của dự án. Những người tham gia vào quy trình mua sắm có thể bao gồm nhân sự từ phòng mua sắm hoặc mua hàng cũng như nhân sự từ bộ phận pháp lý của tổ chức mua hàng. Các trách nhiệm này cần được ghi lại trong kế hoạch quản lý mua sắm.</p>
+
+<p>Các bước điển hình có thể là:</p>
+<ul class="pmbok check">
+<li>Chuẩn bị bản tuyên bố công việc mua sắm (SOW) hoặc điều khoản tham chiếu (TOR).</li>
+<li>Chuẩn bị một ước tính chi phí cấp cao (high-level cost estimate) để xác định ngân sách.</li>
+<li>Quảng cáo cơ hội (Advertise the opportunity).</li>
+<li>Xác định một danh sách rút gọn các người bán đủ điều kiện.</li>
+<li>Chuẩn bị và phát hành hồ sơ mời thầu (bid documents).</li>
+<li>Chuẩn bị và nộp đề xuất (proposals) bởi người bán.</li>
+<li>Tiến hành đánh giá kỹ thuật đối với các đề xuất bao gồm cả chất lượng.</li>
+<li>Thực hiện đánh giá chi phí đối với các đề xuất.</li>
+<li>Chuẩn bị bảng đánh giá tổng hợp chất lượng và chi phí cuối cùng để lựa chọn đề xuất trúng thầu.</li>
+<li>Hoàn tất đàm phán và ký kết hợp đồng giữa người mua và người bán.</li>
+</ul>
+
+<p>Các yêu cầu của tiến độ dự án có thể ảnh hưởng đáng kể đến chiến lược trong quá trình Lập kế hoạch Quản lý Mua sắm. Các quyết định được đưa ra trong việc phát triển kế hoạch quản lý mua sắm cũng có thể ảnh hưởng đến tiến độ dự án và được tích hợp với quá trình Xây dựng Tiến độ (Develop Schedule), quá trình Ước lượng Nguồn lực Hoạt động (Estimate Activity Resources), và các quyết định tự-làm-hay-mua (make-or-buy decisions).</p>
+
+<h4>12.1.1 LẬP KẾ HOẠCH QUẢN LÝ MUA SẮM: ĐẦU VÀO (INPUTS)</h4>
+
+<h5>12.1.1.1 HIẾN CHƯƠNG DỰ ÁN (PROJECT CHARTER)</h5>
+<p>Mô tả trong Phần 4.1.3.1. Hiến chương dự án chứa các mục tiêu, mô tả dự án, các cột mốc tóm tắt, và các nguồn tài chính đã được phê duyệt trước.</p>
+
+<h5>12.1.1.2 TÀI LIỆU KINH DOANH (BUSINESS DOCUMENTS)</h5>
+<p>Mô tả trong Phần 1.2.6. Các tài liệu kinh doanh bao gồm những nội dung sau:</p>
+<ul class="pmbok">
+<li><strong>Nghiên cứu kinh doanh (Business case).</strong> Chiến lược mua sắm và nghiên cứu kinh doanh cần phải được căn chỉnh (aligned) để đảm bảo nghiên cứu kinh doanh vẫn còn hiệu lực.</li>
+<li><strong>Kế hoạch quản lý lợi ích (Benefits management plan).</strong> Kế hoạch quản lý lợi ích mô tả thời điểm các lợi ích cụ thể của dự án dự kiến sẽ có sẵn, điều này sẽ chi phối các mốc thời gian mua sắm và ngôn ngữ hợp đồng.</li>
+</ul>
+
+<h5>12.1.1.3 KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN)</h5>
+<p>Mô tả trong Phần 4.2.3.1. Các thành phần của kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Kế hoạch quản lý phạm vi (Scope management plan).</strong> Mô tả trong Phần 5.1.3.1. Kế hoạch quản lý phạm vi mô tả cách thức phạm vi công việc do các nhà thầu thực hiện sẽ được quản lý xuyên suốt giai đoạn thực thi của dự án.</li>
+<li><strong>Kế hoạch quản lý chất lượng (Quality management plan).</strong> Mô tả trong Phần 8.1.3.1. Kế hoạch quản lý chất lượng chứa các tiêu chuẩn và quy chuẩn của ngành được áp dụng mà dự án bắt buộc phải tuân theo. Thông tin này được sử dụng trong các tài liệu mời thầu như RFP (Yêu cầu đề xuất) và cuối cùng sẽ được tham chiếu trong hợp đồng. Thông tin này có thể được sử dụng trong việc sơ tuyển nhà cung cấp hoặc như một phần của các tiêu chí lựa chọn.</li>
+<li><strong>Kế hoạch quản lý nguồn lực (Resource management plan).</strong> Mô tả trong Phần 9.1.3.1. Kế hoạch quản lý nguồn lực có thông tin về những tài nguyên nào sẽ được mua hoặc thuê, cùng với mọi giả định hoặc ràng buộc nào có thể ảnh hưởng đến quá trình mua sắm.</li>
+<li><strong>Đường cơ sở phạm vi (Scope baseline).</strong> Mô tả trong Phần 5.4.3.1. Đường cơ sở phạm vi chứa tuyên bố phạm vi, WBS (Cấu trúc phân chia công việc), và từ điển WBS. Ở giai đoạn đầu của dự án, phạm vi dự án vẫn có thể đang tiến triển. Các yếu tố của phạm vi đã được biết đến được sử dụng để phát triển bản tuyên bố công việc (SOW) và điều khoản tham chiếu (TOR).</li>
+</ul>
+
+<h5>12.1.1.4 TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS)</h5>
+<p>Tài liệu dự án có thể được coi là đầu vào cho quy trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Danh sách các mốc quan trọng (Milestone list).</strong> Mô tả trong Phần 6.2.3.3. Danh sách các mốc quan trọng (milestones) cho biết khi nào những người bán bắt buộc phải giao nộp kết quả của họ.</li>
+<li><strong>Phân công nhóm dự án (Project team assignments).</strong> Mô tả trong Phần 9.3.3.2. Việc phân công nhóm dự án chứa thông tin về các kỹ năng và khả năng của nhóm dự án và sự sẵn có của họ để hỗ trợ các hoạt động mua sắm. Nếu nhóm dự án không có các kỹ năng để thực hiện các hoạt động mua sắm mà họ chịu trách nhiệm, các nguồn lực bổ sung sẽ cần được thu thập hoặc sẽ cần phải cung cấp các chương trình đào tạo, hoặc cả hai.</li>
+<li><strong>Tài liệu yêu cầu (Requirements documentation).</strong> Mô tả trong Phần 5.2.3.1. Tài liệu yêu cầu có thể bao gồm:
+  <ul class="pmbok dash">
+    <li>Các yêu cầu kỹ thuật mà người bán được yêu cầu phải thỏa mãn, và</li>
+    <li>Các yêu cầu có các hàm ý hợp đồng và pháp lý có thể bao gồm sức khỏe, an toàn, an ninh, hiệu suất, môi trường, bảo hiểm, quyền sở hữu trí tuệ, cơ hội việc làm bình đẳng, giấy phép, giấy phép xây dựng, và các yêu cầu phi kỹ thuật khác.</li>
+  </ul>
+</li>
+<li><strong>Ma trận truy xuất yêu cầu (Requirements traceability matrix).</strong> Mô tả trong Phần 5.2.3.2. Ma trận truy xuất yêu cầu liên kết các yêu cầu của sản phẩm từ nguồn gốc của chúng đến các sản phẩm bàn giao nhằm thỏa mãn chúng.</li>
+<li><strong>Yêu cầu nguồn lực (Resource requirements).</strong> Mô tả trong Phần 9.2.3.1. Các yêu cầu về nguồn lực chứa thông tin về các nhu cầu cụ thể như tài nguyên nhóm và vật chất có thể cần được mua sắm.</li>
+<li><strong>Sổ đăng ký rủi ro (Risk register).</strong> Mô tả trong Phần 11.2.3.1. Sổ đăng ký rủi ro cung cấp danh sách các rủi ro, cùng với các kết quả của quá trình phân tích rủi ro và lập kế hoạch phản hồi rủi ro. Một số rủi ro được chuyển giao thông qua một thỏa thuận mua sắm.</li>
+<li><strong>Sổ đăng ký các bên liên quan (Stakeholder register).</strong> Mô tả ở Phần 13.1.3.1. Sổ đăng ký các bên liên quan cung cấp các chi tiết về những người tham gia dự án và các lợi ích của họ trong dự án, bao gồm các cơ quan quản lý, nhân sự làm hợp đồng, và nhân sự pháp lý.</li>
+</ul>
+
+<h5>12.1.1.5 YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP (ENTERPRISE ENVIRONMENTAL FACTORS)</h5>
+<p>Các yếu tố môi trường doanh nghiệp có thể ảnh hưởng đến quá trình Lập kế hoạch Quản lý Mua sắm bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Điều kiện thị trường (Marketplace conditions);</li>
+<li>Sản phẩm, dịch vụ, và kết quả hiện có trên thị trường;</li>
+<li>Người bán, bao gồm hiệu suất hoặc danh tiếng trong quá khứ của họ;</li>
+<li>Các điều khoản và điều kiện điển hình cho các sản phẩm, dịch vụ, và kết quả hoặc cho một ngành công nghiệp cụ thể;</li>
+<li>Các yêu cầu địa phương duy nhất, chẳng hạn như yêu cầu pháp lý đối với lao động hoặc người bán địa phương;</li>
+<li>Lời khuyên pháp lý liên quan đến mua sắm;</li>
+<li>Hệ thống quản lý hợp đồng, bao gồm các thủ tục để kiểm soát thay đổi hợp đồng;</li>
+<li>Hệ thống nhà cung cấp nhiều tầng đã được thiết lập gồm các người bán đã được sơ tuyển (prequalified sellers) dựa trên kinh nghiệm trước đó; và</li>
+<li>Hệ thống thanh toán hợp đồng và kế toán tài chính.</li>
+</ul>
+
+<h5>12.1.1.6 TÀI SẢN QUY TRÌNH TỔ CHỨC (ORGANIZATIONAL PROCESS ASSETS)</h5>
+<p>Các loại thỏa thuận hợp đồng khác nhau được tổ chức sử dụng cũng ảnh hưởng đến các quyết định cho quy trình Lập kế hoạch Quản lý Mua sắm. Các tài sản quy trình tổ chức có thể ảnh hưởng đến quy trình Lập kế hoạch Quản lý Mua sắm bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Danh sách các người bán được phê duyệt trước (Preapproved seller lists).</strong> Danh sách các người bán đã được kiểm tra (vetted) đúng cách có thể tinh giản các bước cần thiết để quảng cáo cơ hội và rút ngắn khung thời gian cho quá trình lựa chọn người bán.</li>
+<li><strong>Các chính sách, quy trình, và hướng dẫn mua sắm chính thức.</strong> Hầu hết các tổ chức đều có các chính sách mua sắm chính thức và tổ chức mua hàng. Khi sự hỗ trợ mua sắm như vậy không có sẵn, nhóm dự án nên cung cấp cả nguồn lực và chuyên môn để thực hiện các hoạt động mua sắm đó.</li>
+<li><strong>Các loại hợp đồng (Contract types).</strong> Tất cả các mối quan hệ hợp đồng hợp pháp nói chung đều thuộc vào một trong hai họ (nhóm) rộng lớn: hoặc là giá cố định (fixed-price) hoặc bồi hoàn chi phí (cost-reimbursable). Ngoài ra, còn có một loại lai thứ ba thường được sử dụng gọi là hợp đồng thời gian và vật liệu (time and materials contract). Các loại hợp đồng phổ biến hơn đang được sử dụng sẽ được thảo luận dưới đây như là các loại rời rạc, nhưng, trong thực tế, việc kết hợp một hoặc nhiều loại vào một hợp đồng mua sắm duy nhất là chuyện không hiếm gặp.
+  <ul class="pmbok dash">
+    <li><strong>Hợp đồng giá cố định (Fixed-price contracts).</strong> Danh mục hợp đồng này liên quan đến việc thiết lập một tổng giá cố định cho một sản phẩm, dịch vụ, hoặc kết quả được định nghĩa cần cung cấp. Các hợp đồng này nên được sử dụng khi các yêu cầu được xác định rõ ràng và không mong đợi có những sự thay đổi đáng kể nào về phạm vi. Các loại hợp đồng giá cố định bao gồm:
+      <br>○ <em>Giá cố định chắc chắn (Firm fixed price - FFP).</em> Loại hợp đồng được sử dụng phổ biến nhất là FFP. Nó được hầu hết các tổ chức mua ưa chuộng vì giá cả hàng hóa được ấn định ngay từ đầu và không có sự thay đổi trừ khi phạm vi công việc thay đổi.
+      <br>○ <em>Giá cố định có phí khuyến khích (Fixed price incentive fee - FPIF).</em> Thỏa thuận giá cố định này mang lại cho người mua và người bán một chút linh hoạt bằng cách cho phép sự sai lệch khỏi hiệu suất (performance), với các ưu đãi tài chính gắn liền với việc đạt được các số liệu đã thống nhất. Thông thường, các ưu đãi tài chính đó liên quan đến chi phí, tiến độ, hoặc hiệu suất kỹ thuật của người bán. Theo hợp đồng FPIF, một mức trần giá (price ceiling) được thiết lập, và tất cả các chi phí vượt qua mức trần giá này đều thuộc trách nhiệm của người bán.
+      <br>○ <em>Giá cố định có điều chỉnh giá kinh tế (Fixed price with economic price adjustments - FPEPA).</em> Loại này được sử dụng bất cứ khi nào thời gian thực hiện của người bán kéo dài trong một khoảng thời gian nhiều năm, hoặc nếu các khoản thanh toán được thực hiện bằng một loại tiền tệ khác. Đây là hợp đồng giá cố định, nhưng có một điều khoản đặc biệt cho phép các điều chỉnh cuối cùng được xác định trước đối với giá hợp đồng do các điều kiện thay đổi, chẳng hạn như thay đổi do lạm phát hoặc sự gia tăng (hay giảm) chi phí đối với các loại hàng hóa cụ thể.</li>
+    <li><strong>Hợp đồng bồi hoàn chi phí (Cost-reimbursable contracts).</strong> Danh mục hợp đồng này liên quan đến các khoản thanh toán (bồi hoàn chi phí) cho người bán đối với tất cả các chi phí thực tế hợp pháp đã phát sinh cho các công việc đã hoàn thành, cộng thêm một khoản phí đại diện cho lợi nhuận của người bán. Loại này nên được sử dụng nếu phạm vi công việc dự kiến sẽ có thay đổi đáng kể trong quá trình thực thi hợp đồng. Các biến thể có thể bao gồm:
+      <br>○ <em>Chi phí cộng phí cố định (Cost plus fixed fee - CPFF).</em> Người bán được bồi hoàn cho tất cả các chi phí được phép (allowable costs) khi thực hiện công việc hợp đồng và nhận một khoản phí cố định được tính bằng một tỷ lệ phần trăm của chi phí dự án ước tính ban đầu. Số tiền phí không thay đổi trừ khi phạm vi dự án thay đổi.
+      <br>○ <em>Chi phí cộng phí khuyến khích (Cost plus incentive fee - CPIF).</em> Người bán được bồi hoàn cho tất cả các chi phí được phép khi thực hiện công việc hợp đồng và nhận một khoản phí khuyến khích đã được xác định trước dựa trên việc đạt được các mục tiêu hiệu suất nhất định như đã quy định trong hợp đồng. Trong hợp đồng CPIF, nếu chi phí cuối cùng thấp hơn hoặc lớn hơn chi phí ước tính ban đầu, thì cả người mua và người bán cùng chia sẻ các khoản chi phí do sự chênh lệch dựa trên một công thức chia sẻ chi phí đã được đàm phán trước, ví dụ: tỷ lệ chia 80/20 trên/dưới chi phí mục tiêu dựa trên hiệu suất thực tế của người bán.
+      <br>○ <em>Chi phí cộng phí thưởng (Cost plus award fee - CPAF).</em> Người bán được bồi hoàn cho tất cả các chi phí hợp pháp, nhưng phần lớn khoản phí kiếm được sẽ dựa trên sự thỏa mãn các tiêu chí hiệu suất chủ quan rộng lớn được định nghĩa và kết hợp vào hợp đồng. Việc xác định khoản phí chỉ dựa trên quyết định chủ quan về hiệu suất của người bán bởi người mua và nhìn chung không chịu sự kháng cáo.</li>
+    <li><strong>Hợp đồng thời gian và vật liệu (Time and material contracts - T&M).</strong> Hợp đồng thời gian và vật liệu (còn được gọi là thời gian và phương tiện) là loại thỏa thuận hợp đồng lai với các khía cạnh của cả hợp đồng bồi hoàn chi phí lẫn hợp đồng giá cố định. Chúng thường được sử dụng cho việc bổ sung nhân sự, thuê chuyên gia, và bất kỳ hỗ trợ bên ngoài nào khi một bản tuyên bố công việc (SOW) chính xác không thể được quy định nhanh chóng.</li>
+  </ul>
+</li>
+</ul>
+
+<h4>12.1.2 LẬP KẾ HOẠCH QUẢN LÝ MUA SẮM: CÔNG CỤ VÀ KỸ THUẬT (TOOLS AND TECHNIQUES)</h4>
+
+<h5>12.1.2.1 ĐÁNH GIÁ CỦA CHUYÊN GIA (EXPERT JUDGMENT)</h5>
+<p>Mô tả trong Phần 4.1.2.1. Chuyên môn nên được xem xét từ các cá nhân hoặc nhóm có kiến thức chuyên ngành hoặc được đào tạo trong các chủ đề sau:</p>
+<ul class="pmbok check">
+<li>Mua sắm và mua hàng (Procurement and purchasing).</li>
+<li>Các loại hợp đồng và tài liệu hợp đồng, và</li>
+<li>Các chủ đề về quy định và tuân thủ.</li>
+</ul>
+
+<h5>12.1.2.2 THU THẬP DỮ LIỆU (DATA GATHERING)</h5>
+<p>Một kỹ thuật thu thập dữ liệu có thể được sử dụng cho quy trình này bao gồm nhưng không giới hạn ở việc nghiên cứu thị trường (market research). Nghiên cứu thị trường bao gồm việc kiểm tra năng lực của ngành và của các người bán cụ thể. Các nhóm mua sắm có thể tận dụng thông tin thu được tại các hội nghị, các bài đánh giá trực tuyến (online reviews), và nhiều nguồn khác nhau để nhận diện năng lực của thị trường. Nhóm cũng có thể tinh chỉnh (refine) các mục tiêu mua sắm cụ thể để tận dụng những công nghệ đang trưởng thành đồng thời cân bằng các rủi ro liên quan đến mạng lưới rộng lớn các người bán có thể cung cấp các vật liệu hoặc dịch vụ mong muốn.</p>
+
+<h5>12.1.2.3 PHÂN TÍCH DỮ LIỆU (DATA ANALYSIS)</h5>
+<p>Các kỹ thuật phân tích dữ liệu có thể được sử dụng cho quy trình này bao gồm nhưng không giới hạn ở phân tích tự-làm-hay-mua (make-or-buy analysis). Một phân tích tự-làm-hay-mua được sử dụng để xác định xem liệu công việc hoặc các sản phẩm bàn giao có thể được hoàn thành tốt nhất bởi nhóm dự án hay nên được mua từ các nguồn bên ngoài. Các yếu tố cần xem xét trong quyết định tự-làm-hay-mua bao gồm việc phân bổ nguồn lực hiện tại của tổ chức và các kỹ năng, khả năng của họ, nhu cầu về chuyên môn chuyên sâu, mong muốn không muốn mở rộng các nghĩa vụ tuyển dụng nhân viên cố định (permanent employment obligations), và nhu cầu về kiến thức chuyên môn độc lập. Nó cũng bao gồm việc đánh giá các rủi ro liên quan đến từng quyết định tự-làm-hay-mua.</p>
+<p>Phân tích tự-làm-hay-mua có thể sử dụng thời gian hoàn vốn (payback period), lợi tức đầu tư (ROI), tỷ suất hoàn vốn nội bộ (IRR), dòng tiền chiết khấu (discounted cash flow), giá trị hiện tại ròng (NPV), phân tích lợi ích/chi phí (BCA), hoặc các kỹ thuật khác để quyết định xem có nên đưa một thứ gì đó vào như một phần của dự án hay là mua nó từ bên ngoài.</p>
+
+<h5>12.1.2.4 PHÂN TÍCH LỰA CHỌN NGUỒN (SOURCE SELECTION ANALYSIS)</h5>
+<p>Cần thiết phải xem xét việc ưu tiên (prioritization) các nhu cầu cạnh tranh đối với dự án trước khi quyết định phương pháp lựa chọn. Vì các phương pháp lựa chọn cạnh tranh có thể yêu cầu những người bán đầu tư một lượng lớn thời gian và nguồn lực trả trước, đây là một thực tiễn tốt nếu đưa phương pháp đánh giá vào các tài liệu mua sắm để các nhà thầu biết họ sẽ được đánh giá như thế nào. Các phương pháp lựa chọn thường được sử dụng bao gồm:</p>
+<ul class="pmbok">
+<li><strong>Chi phí thấp nhất (Least cost).</strong> Phương pháp chi phí thấp nhất có thể phù hợp đối với các hoạt động mua sắm mang tính chất tiêu chuẩn hoặc thường lệ, nơi các thực tiễn và tiêu chuẩn được thiết lập rõ ràng đã tồn tại và từ đó một kết quả cụ thể và được xác định rõ có thể được mong đợi, điều này có thể được thực hiện với các mức chi phí khác nhau.</li>
+<li><strong>Chỉ dựa trên năng lực (Qualifications only).</strong> Phương pháp lựa chọn chỉ dựa trên năng lực áp dụng khi thời gian và chi phí cho một quy trình lựa chọn đầy đủ sẽ không mang ý nghĩa thực tế do giá trị của cuộc mua sắm là tương đối nhỏ. Người mua thiết lập một danh sách rút gọn và chọn nhà thầu có uy tín, năng lực, kinh nghiệm, chuyên môn, lĩnh vực chuyên môn (areas of specialization), và có các tài liệu tham khảo (references) tốt nhất.</li>
+<li><strong>Dựa trên chất lượng/Điểm đề xuất kỹ thuật cao nhất (Quality-based/highest technical proposal score).</strong> Công ty được chọn sẽ được yêu cầu đệ trình một bản đề xuất với cả các chi tiết về kỹ thuật và chi phí và sau đó được mời để đàm phán hợp đồng nếu bản đề xuất kỹ thuật được chứng minh là có thể chấp nhận được. Bằng cách sử dụng phương pháp này, các đề xuất kỹ thuật sẽ được đánh giá đầu tiên dựa trên chất lượng của giải pháp kỹ thuật được đưa ra. Người bán nộp đề xuất kỹ thuật có thứ hạng cao nhất sẽ được chọn nếu đề xuất tài chính của họ có thể được đàm phán và chấp nhận.</li>
+<li><strong>Dựa trên chất lượng và chi phí (Quality and cost-based).</strong> Phương pháp dựa trên chất lượng và chi phí cho phép chi phí được tính đến như một yếu tố trong quy trình lựa chọn người bán. Nhìn chung, khi rủi ro và/hoặc sự không chắc chắn đối với dự án lớn hơn, chất lượng nên là một yếu tố then chốt (key element) khi được mang ra so sánh với chi phí.</li>
+<li><strong>Nguồn duy nhất (Sole source).</strong> Người mua yêu cầu một người bán cụ thể chuẩn bị các bản đề xuất kỹ thuật và tài chính, sau đó chúng sẽ được đưa ra đàm phán. Vì không có sự cạnh tranh, phương pháp này chỉ được chấp nhận khi có sự biện minh/chứng minh (justified) thỏa đáng và nên được xem như một ngoại lệ.</li>
+<li><strong>Ngân sách cố định (Fixed budget).</strong> Phương pháp ngân sách cố định yêu cầu tiết lộ ngân sách hiện có cho các người bán được mời trong thư RFP và lựa chọn bản đề xuất kỹ thuật có thứ hạng cao nhất nằm trong giới hạn ngân sách. Bởi vì người bán chịu sự ràng buộc về giới hạn chi phí, họ sẽ điều chỉnh phạm vi và chất lượng của đề nghị (offer) của họ để phù hợp với ngân sách đó. Do vậy người mua nên đảm bảo rằng ngân sách tương thích với bản SOW và người bán sẽ có thể thực hiện các nhiệm vụ nằm trong phạm vi ngân sách. Phương pháp này chỉ phù hợp khi bản SOW được định nghĩa một cách chính xác, không có bất kỳ thay đổi nào được dự đoán trước, và ngân sách là cố định và không thể vượt qua.</li>
+</ul>
+
+<h5>12.1.2.5 CÁC CUỘC HỌP (MEETINGS)</h5>
+<p>Nghiên cứu một mình có thể không cung cấp các thông tin cụ thể để thiết lập nên một chiến lược mua sắm nếu không có thêm các cuộc họp trao đổi thông tin với các nhà thầu dự thầu (bidders) tiềm năng. Bằng cách hợp tác với các nhà thầu dự thầu tiềm năng, tổ chức mua nguyên vật liệu hoặc dịch vụ có thể hưởng lợi trong khi người bán có thể ảnh hưởng đến một phương pháp tiếp cận hoặc sản phẩm mang lại lợi ích chung cho cả hai. Các cuộc họp có thể được sử dụng để xác định chiến lược cho việc quản lý và giám sát hoạt động mua sắm.</p>
+
+<h4>12.1.3 LẬP KẾ HOẠCH QUẢN LÝ MUA SẮM: ĐẦU RA (OUTPUTS)</h4>
+
+<h5>12.1.3.1 KẾ HOẠCH QUẢN LÝ MUA SẮM (PROCUREMENT MANAGEMENT PLAN)</h5>
+<p>Kế hoạch quản lý mua sắm chứa các hoạt động sẽ được thực hiện trong suốt quy trình mua sắm. Nó nên lập tài liệu về việc đấu thầu cạnh tranh quốc tế, đấu thầu cạnh tranh quốc gia, đấu thầu địa phương, v.v., có nên được thực hiện hay không. Nếu dự án được tài trợ từ bên ngoài, các nguồn và sự sẵn có của các quỹ (funding) nên được điều chỉnh để phù hợp với kế hoạch quản lý mua sắm và tiến độ dự án.</p>
+
+<p>Kế hoạch quản lý mua sắm có thể bao gồm các hướng dẫn cho:</p>
+<ul class="pmbok">
+<li>Cách thức mua sắm sẽ được điều phối cùng với các khía cạnh khác của dự án, chẳng hạn như quy trình phát triển và kiểm soát tiến độ dự án;</li>
+<li>Thời gian biểu của các hoạt động mua sắm chính yếu;</li>
+<li>Các số liệu/chỉ số (metrics) mua sắm sẽ được sử dụng để quản lý hợp đồng;</li>
+<li>Vai trò và trách nhiệm của các bên liên quan đối với việc mua sắm, bao gồm thẩm quyền và ràng buộc của nhóm dự án khi tổ chức thực hiện có một phòng mua sắm;</li>
+<li>Các ràng buộc và giả định có thể ảnh hưởng đến các hoạt động mua sắm đã lên kế hoạch;</li>
+<li>Quyền hạn tài phán hợp pháp (legal jurisdiction) và loại tiền tệ mà theo đó các khoản thanh toán sẽ được thực hiện;</li>
+<li>Quyết định về việc có nên sử dụng các ước lượng độc lập (independent estimates) hay không và liệu chúng có cần thiết như một phần của tiêu chí đánh giá hay không;</li>
+<li>Danh sách các người bán đã qua vòng sơ tuyển (prequalified sellers), nếu có, để sử dụng.</li>
+<li>Các vấn đề quản lý rủi ro bao gồm việc xác định các yêu cầu đối với bảo lãnh thực hiện hợp đồng (performance bonds) hoặc các hợp đồng bảo hiểm nhằm giảm thiểu một số hình thức rủi ro dự án; và</li>
+</ul>
+<p>Một kế hoạch quản lý mua sắm có thể là chính thức hoặc không chính thức, có thể chi tiết cao hoặc được đóng khung rộng rãi, và dựa trên các nhu cầu của mỗi dự án.</p>
+
+<h5>12.1.3.2 CHIẾN LƯỢC MUA SẮM (PROCUREMENT STRATEGY)</h5>
+<p>Một khi phân tích tự-làm-hay-mua hoàn tất và quyết định mua hàng từ bên ngoài dự án được đưa ra, một chiến lược mua sắm cần được xác định. Mục tiêu của chiến lược mua sắm là xác định phương pháp phân phối/bàn giao dự án (project delivery method), loại hình của (các) thỏa thuận ràng buộc pháp lý, và cách mà quá trình mua sắm sẽ tiến triển qua các giai đoạn mua sắm.</p>
+<ul class="pmbok">
+<li><strong>Các phương pháp phân phối (Delivery methods).</strong> Các phương pháp phân phối có sự khác biệt đối với các dịch vụ chuyên nghiệp so với các dự án xây dựng.
+  <ul class="pmbok dash">
+    <li>Đối với các dịch vụ chuyên nghiệp, các phương pháp phân phối bao gồm: người mua/nhà cung cấp dịch vụ không có sự tham gia của nhà thầu phụ, người mua/nhà cung cấp dịch vụ có cho phép nhà thầu phụ tham gia, liên doanh (joint venture) giữa người mua và nhà cung cấp dịch vụ, và người mua/nhà cung cấp dịch vụ đóng vai trò là người đại diện (representative).</li>
+    <li>Đối với xây dựng công nghiệp hoặc thương mại, các phương pháp phân phối dự án bao gồm nhưng không giới hạn ở: chìa khóa trao tay (turnkey), thiết kế-xây dựng (design build - DB), thiết kế-đấu thầu-xây dựng (design bid build - DBB), thiết kế-xây dựng-vận hành (design build operate - DBO), xây dựng-sở hữu-vận hành-chuyển giao (build own operate transfer - BOOT), và các phương pháp khác.</li>
+  </ul>
+</li>
+<li><strong>Các loại hình thanh toán hợp đồng (Contract payment types).</strong> Các loại hình thanh toán hợp đồng tách biệt khỏi phương pháp phân phối dự án và được phối hợp cùng với các hệ thống tài chính nội bộ của tổ chức mua hàng. Chúng bao gồm nhưng không giới hạn ở các loại hợp đồng này cộng thêm các biến thể: trọn gói (lump sum), giá cố định chắc chắn (firm fixed price), chi phí cộng phí thưởng, chi phí cộng phí khuyến khích, thời gian và vật liệu, chi phí mục tiêu (target cost), và các loại khác.
+  <ul class="pmbok dash">
+    <li>Các hợp đồng giá cố định (Fixed-price contracts) phù hợp khi loại hình công việc có thể dự đoán được và các yêu cầu được định nghĩa tốt và ít có khả năng thay đổi.</li>
+    <li>Các hợp đồng chi phí cộng thêm (Cost plus contracts) phù hợp khi công việc đang tiến triển, có khả năng thay đổi, hoặc không được định nghĩa rõ ràng.</li>
+    <li>Các khuyến khích và phần thưởng (Incentives and awards) có thể được sử dụng để căn chỉnh (align) các mục tiêu của cả người mua và người bán.</li>
+  </ul>
+</li>
+<li><strong>Các giai đoạn mua sắm (Procurement phases).</strong> Chiến lược mua sắm cũng có thể bao gồm thông tin về các giai đoạn mua sắm. Thông tin có thể bao gồm:
+  <ul class="pmbok dash">
+    <li>Sự sắp xếp trình tự (Sequencing) hoặc việc phân kỳ (phasing) của hoạt động mua sắm, mô tả về từng giai đoạn và các mục tiêu cụ thể của mỗi giai đoạn;</li>
+    <li>Các chỉ số hiệu suất mua sắm (Procurement performance indicators) và các cột mốc sẽ được sử dụng trong việc giám sát;</li>
+    <li>Các tiêu chí để chuyển từ giai đoạn này sang giai đoạn khác;</li>
+    <li>Kế hoạch giám sát và đánh giá nhằm theo dõi tiến độ; và</li>
+    <li>Quy trình chuyển giao kiến thức (knowledge transfer) để sử dụng trong các giai đoạn tiếp theo.</li>
+  </ul>
+</li>
+</ul>
+
+<h5>12.1.3.3 HỒ SƠ MỜI THẦU (BID DOCUMENTS)</h5>
+<p>Hồ sơ mời thầu (Bid documents) được sử dụng để thu hút (solicit) các đề xuất từ những người bán tiềm năng. Các thuật ngữ như đấu thầu (bid), dự thầu (tender), hoặc báo giá (quotation) thường được sử dụng khi quyết định lựa chọn người bán dựa trên giá cả (chẳng hạn như khi mua các mặt hàng thương mại hoặc tiêu chuẩn), trong khi một thuật ngữ như đề xuất (proposal) thường được sử dụng khi các cân nhắc khác chẳng hạn như khả năng kỹ thuật hoặc phương pháp tiếp cận kỹ thuật là yếu tố quan trọng nhất. Các thuật ngữ mua sắm cụ thể được sử dụng có thể khác nhau tùy theo ngành và địa điểm diễn ra hoạt động mua sắm.</p>
+<p>Tùy thuộc vào hàng hóa hoặc dịch vụ cần thiết, các tài liệu đấu thầu có thể bao gồm một yêu cầu cung cấp thông tin (request for information - RFI), yêu cầu báo giá (request for quotation - RFQ), yêu cầu đề xuất (request for proposal - RFP), hoặc các tài liệu mua sắm phù hợp khác. Các điều kiện liên quan đến việc sử dụng chúng được trình bày bên dưới:</p>
+<ul class="pmbok">
+<li><strong>Yêu cầu cung cấp thông tin (RFI).</strong> Một RFI được sử dụng khi cần có thêm thông tin về hàng hóa và dịch vụ sẽ được mua từ những người bán. Nó thường sẽ được theo sau bởi một RFQ hoặc RFP.</li>
+<li><strong>Yêu cầu báo giá (RFQ).</strong> Một RFQ thường được sử dụng khi cần có thêm thông tin về việc làm thế nào mà các nhà cung cấp sẽ thỏa mãn các yêu cầu và/hoặc chi phí sẽ là bao nhiêu.</li>
+<li><strong>Yêu cầu đề xuất (RFP).</strong> Một RFP được sử dụng khi có một bài toán trong dự án và giải pháp không dễ dàng để xác định. Đây là tài liệu "yêu cầu" (request for) trang trọng nhất và có các quy định mua sắm nghiêm ngặt về nội dung, thời gian biểu (timeline), và các phản hồi từ người bán.</li>
+</ul>
+<p>Người mua cấu trúc các tài liệu mua sắm nhằm tạo điều kiện cho các phản hồi chính xác và đầy đủ từ mỗi người bán tiềm năng, và để hỗ trợ việc đánh giá dễ dàng các phản hồi này. Các tài liệu này bao gồm mô tả về hình thức mong muốn đối với nội dung phản hồi, bản SOW mua sắm có liên quan, và mọi điều khoản hợp đồng bắt buộc.</p>
+<p>Độ phức tạp và mức độ chi tiết của các tài liệu mua sắm cần phải nhất quán với giá trị và các rủi ro đi kèm với cuộc mua sắm theo kế hoạch. Tài liệu mua sắm bắt buộc phải đủ chi tiết để đảm bảo các phản hồi nhất quán, phù hợp, nhưng cũng đủ linh hoạt để cho phép xem xét bất kỳ gợi ý nào của người bán về những cách thức tốt hơn để đáp ứng cùng một yêu cầu.</p>
+
+<h5>12.1.3.4 BẢN TUYÊN BỐ CÔNG VIỆC MUA SẮM (PROCUREMENT STATEMENT OF WORK)</h5>
+<p>Bản tuyên bố công việc (SOW) đối với mỗi hoạt động mua sắm được phát triển từ đường cơ sở phạm vi (scope baseline) của dự án và định nghĩa chỉ một phần của phạm vi dự án sẽ được bao gồm bên trong hợp đồng có liên quan. SOW mô tả hạng mục mua sắm đủ chi tiết để cho phép các người bán tiềm năng có thể xác định xem liệu họ có khả năng cung cấp các sản phẩm, dịch vụ, hoặc kết quả hay không. Mức độ chi tiết đủ có thể thay đổi dựa trên bản chất của mặt hàng, các nhu cầu của người mua, hoặc hình thức hợp đồng mong đợi. Các thông tin được bao gồm trong một SOW có thể bao gồm các thông số kỹ thuật (specifications), số lượng mong muốn, các mức chất lượng, dữ liệu hiệu suất, thời gian thực hiện, địa điểm làm việc, và các yêu cầu khác.</p>
+<p>SOW mua sắm phải rõ ràng, đầy đủ, và súc tích. Nó bao gồm một mô tả về bất kỳ dịch vụ phụ trợ (collateral services) nào được yêu cầu, chẳng hạn như việc báo cáo hiệu suất hoặc sự hỗ trợ vận hành (operational support) sau dự án cho mặt hàng được mua sắm. Bản SOW có thể được sửa đổi khi được yêu cầu khi nó tiến trình qua quy trình mua sắm cho đến khi nó được hợp nhất vào trong một thỏa thuận đã được ký kết.</p>
+<p>Cụm từ <strong>điều khoản tham chiếu (terms of reference - TOR)</strong> đôi khi được sử dụng khi ký kết hợp đồng cho các dịch vụ. Tương tự như SOW mua sắm, một TOR thường bao gồm các yếu tố sau đây:</p>
+<ul class="pmbok">
+<li>Các nhiệm vụ (Tasks) mà nhà thầu được yêu cầu thực hiện cũng như các yêu cầu điều phối (coordination) cụ thể;</li>
+<li>Các tiêu chuẩn (Standards) mà nhà thầu sẽ phải thực hiện để có thể áp dụng cho dự án;</li>
+<li>Dữ liệu cần phải được đệ trình để phê duyệt;</li>
+<li>Danh sách chi tiết của tất cả dữ liệu và các dịch vụ sẽ được cung cấp cho nhà thầu bởi người mua để sử dụng trong quá trình thực hiện hợp đồng, nếu có thể áp dụng; và</li>
+<li>Định nghĩa về tiến độ (schedule) cho việc đệ trình lần đầu (initial submission) và lượng thời gian cần thiết để xem xét/phê duyệt.</li>
+</ul>
+
+<h5>12.1.3.5 TIÊU CHÍ LỰA CHỌN NGUỒN (SOURCE SELECTION CRITERIA)</h5>
+<p>Trong việc lựa chọn các tiêu chí đánh giá, người mua tìm cách đảm bảo rằng đề xuất được chọn sẽ cung cấp chất lượng tốt nhất cho các dịch vụ được yêu cầu. Tiêu chí lựa chọn nguồn có thể bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Năng lực và sức chứa (Capability and capacity);</li>
+<li>Chi phí sản phẩm và chi phí vòng đời (life cycle cost);</li>
+<li>Ngày giao hàng (Delivery dates);</li>
+<li>Các kinh nghiệm liên quan cụ thể;</li>
+<li>Chuyên môn và cách tiếp cận kỹ thuật;</li>
+<li>Sự phù hợp của phương pháp tiếp cận (approach) đã đề xuất và kế hoạch làm việc trong việc đáp ứng với SOW;</li>
+<li>Bằng cấp, sự sẵn sàng, và năng lực của các nhân sự then chốt (key staff);</li>
+<li>Sự ổn định tài chính của công ty;</li>
+<li>Kinh nghiệm quản lý; và</li>
+<li>Sự phù hợp của chương trình chuyển giao kiến thức, bao gồm việc đào tạo.</li>
+</ul>
+<p>Đối với các dự án quốc tế, tiêu chí đánh giá có thể bao gồm các yêu cầu về "nội dung địa phương" ("local content"), ví dụ, sự tham gia của các công dân địa phương trong nhóm nhân sự then chốt được đề xuất.</p>
+<p>Các tiêu chí cụ thể có thể là một số điểm, đánh mã màu (color-code), hoặc một văn bản mô tả về mức độ người bán đáp ứng tốt như thế nào các nhu cầu của tổ chức mua hàng. Các tiêu chí này sẽ là một phần của hệ thống tính trọng số (weighting system) có thể được sử dụng để chọn ra một người bán duy nhất sẽ được mời để ký hợp đồng và thiết lập nên một trình tự đàm phán bằng cách xếp hạng tất cả các bản đề xuất theo số điểm đánh giá được gán cho mỗi bản đề xuất.</p>
+
+<h5>12.1.3.6 CÁC QUYẾT ĐỊNH TỰ-LÀM-HAY-MUA (MAKE-OR-BUY DECISIONS)</h5>
+<p>Một phân tích tự-làm-hay-mua sẽ đưa ra một quyết định về việc một công việc cụ thể có thể được hoàn thành tốt nhất bởi nhóm dự án hay cần phải được mua từ các nguồn lực bên ngoài.</p>
+
+<h5>12.1.3.7 ƯỚC LƯỢNG CHI PHÍ ĐỘC LẬP (INDEPENDENT COST ESTIMATES)</h5>
+<p>Đối với các hoạt động mua sắm lớn, tổ chức mua sắm có thể chọn việc tự chuẩn bị ước tính độc lập của riêng mình hoặc nhờ một chuyên gia ước tính chuyên nghiệp bên ngoài chuẩn bị một bản ước tính chi phí để làm chuẩn mực (benchmark) dùng để so sánh với các phản hồi dự thầu. Các sự khác biệt đáng kể ở trong các ước tính chi phí có thể là một dấu hiệu cho thấy bản SOW mua sắm đã bị thiếu hụt hoặc mơ hồ, hoặc là những người bán tiềm năng đã có thể hiểu lầm hoặc thất bại trong việc phản hồi một cách trọn vẹn đối với bản SOW mua sắm đó.</p>
+
+<h5>12.1.3.8 YÊU CẦU THAY ĐỔI (CHANGE REQUESTS)</h5>
+<p>Mô tả trong Phần 4.3.3.4. Một quyết định liên quan đến việc mua sắm hàng hóa, dịch vụ, hoặc tài nguyên có thể yêu cầu một yêu cầu thay đổi (change request). Các quyết định khác trong suốt quy trình lập kế hoạch mua sắm cũng có thể tạo ra nhu cầu có thêm các yêu cầu thay đổi bổ sung. Các thay đổi đối với kế hoạch quản lý dự án, các kế hoạch phụ (subsidiary plans), và các thành phần khác có thể dẫn đến các yêu cầu thay đổi gây tác động tới các hoạt động mua sắm. Các yêu cầu thay đổi sẽ được xử lý để xem xét và đưa ra quyết định thông qua quy trình Thực hiện Kiểm soát Thay đổi Tích hợp (Perform Integrated Change Control) (Phần 4.6).</p>
+
+<h5>12.1.3.9 CẬP NHẬT TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS UPDATES)</h5>
+<p>Tài liệu dự án có thể được cập nhật như kết quả của việc thực hiện quá trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Sổ đăng ký bài học kinh nghiệm.</strong> Mô tả ở Phần 4.4.3.1. Sổ đăng ký bài học kinh nghiệm được cập nhật với mọi bài học (lessons) liên quan đến các quy định và sự tuân thủ, thu thập dữ liệu, phân tích dữ liệu, và phân tích lựa chọn nguồn.</li>
+<li><strong>Danh sách các mốc quan trọng.</strong> Mô tả ở Phần 6.2.3.3. Danh sách các mốc quan trọng này cho thấy thời điểm mà những người bán được kỳ vọng sẽ chuyển giao các kết quả của họ.</li>
+<li><strong>Tài liệu yêu cầu.</strong> Mô tả ở Phần 5.2.3.1. Tài liệu yêu cầu có thể bao gồm:
+  <ul class="pmbok dash">
+    <li>Các yêu cầu kỹ thuật mà người bán được yêu cầu phải thỏa mãn, và</li>
+    <li>Các yêu cầu có các hàm ý hợp đồng và pháp lý có thể bao gồm sức khỏe, an toàn, an ninh, hiệu suất, môi trường, bảo hiểm, quyền sở hữu trí tuệ, cơ hội việc làm bình đẳng, giấy phép, giấy phép xây dựng, và các yêu cầu phi kỹ thuật khác.</li>
+  </ul>
+</li>
+<li><strong>Ma trận truy xuất yêu cầu.</strong> Mô tả ở Phần 5.2.3.2. Ma trận truy xuất yêu cầu liên kết các yêu cầu sản phẩm từ nguồn gốc của chúng cho đến các sản phẩm bàn giao thỏa mãn chúng.</li>
+<li><strong>Sổ đăng ký rủi ro.</strong> Mô tả ở Phần 11.2.3.1. Mỗi người bán đã được phê duyệt đi kèm với một tập hợp rủi ro riêng biệt của riêng họ, phụ thuộc vào tổ chức của người bán, thời hạn của hợp đồng, môi trường bên ngoài, phương pháp phân phối dự án, loại phương tiện (vehicle) hợp đồng được lựa chọn, và mức giá thống nhất cuối cùng.</li>
+<li><strong>Sổ đăng ký các bên liên quan.</strong> Mô tả ở Phần 13.1.3.1. Sổ đăng ký các bên liên quan được cập nhật với mọi thông tin bổ sung nào về các bên liên quan, đặc biệt là các cơ quan quản lý (regulatory agencies), nhân sự hợp đồng, và nhân sự pháp lý.</li>
+</ul>
+
+<h5>12.1.3.10 CẬP NHẬT TÀI SẢN QUY TRÌNH TỔ CHỨC (ORGANIZATIONAL PROCESS ASSETS UPDATES)</h5>
+<p>Các tài sản quy trình tổ chức được cập nhật dưới dạng kết quả của quy trình Lập kế hoạch Quản lý Mua sắm có thể bao gồm nhưng không giới hạn ở các thông tin về các người bán đủ điều kiện (qualified sellers).</p>
+
+<p>Đối với các dự án có ít hoạt động mua sắm và các mua sắm tương đối đơn giản, một số các đầu ra này có thể được gộp lại (combined). Tuy nhiên, đối với các dự án có số lượng mua sắm lớn, phức tạp và nơi mà nhiều công việc được thực hiện bởi các nhà thầu, sẽ có một vài loại tài liệu khác nhau. Bảng 12-1 là một danh sách đại diện (representative list) của các loại tài liệu phổ biến được sử dụng trong các hoạt động mua sắm và một số nội dung bên trong chúng. Xét đến bản chất pháp lý của hoạt động mua sắm, danh sách này không nên được coi là mang tính quy định (prescriptive), mà thay vào đó nó nên được sử dụng như là một dàn ý chung/khái quát của các loại tài liệu và các thông tin cần thiết để tiến hành mua sắm. Tổ chức, môi trường, và các ràng buộc pháp lý sẽ quyết định (dictate) các tài liệu mua sắm được yêu cầu và thông tin cần thiết đối với dự án.</p>
+
+<div class="table-wrap">
+<table>
+  <tr><th colspan="4">Bảng 12-1. So sánh Tài liệu Mua sắm</th></tr>
+  <tr>
+    <td style='text-align: center; font-weight: bold;'>Kế hoạch quản lý mua sắm (Procurement Management Plan)</td>
+    <td style='text-align: center; font-weight: bold;'>Chiến lược mua sắm (Procurement Strategy)</td>
+    <td style='text-align: center; font-weight: bold;'>Tuyên bố công việc (Statement of Work)</td>
+    <td style='text-align: center; font-weight: bold;'>Hồ sơ mời thầu (Bid Documents)</td>
+  </tr>
+  <tr>
+    <td style='text-align: center;'>Cách thức công việc mua sắm sẽ được điều phối và tích hợp với công việc dự án khác, đặc biệt là với các tài nguyên, tiến độ, và ngân sách</td>
+    <td style='text-align: center;'>Các phương pháp phân phối (Delivery methods) của mua sắm</td>
+    <td style='text-align: center;'>Mô tả về mặt hàng cần mua sắm</td>
+    <td style='text-align: center;'>Yêu cầu cung cấp thông tin (RFI), Yêu cầu báo giá (RFQ), Yêu cầu đề xuất (RFP)</td>
+  </tr>
+  <tr>
+    <td style='text-align: center;'>Thời gian biểu cho các hoạt động mua sắm then chốt</td>
+    <td style='text-align: center;'>Loại hợp đồng / thỏa thuận</td>
+    <td style='text-align: center;'>Các thông số kỹ thuật (Specifications), yêu cầu chất lượng và các chỉ số hiệu suất</td>
+    <td style='text-align: center;'></td>
+  </tr>
+  <tr>
+    <td style='text-align: center;'>Các chỉ số (Metrics) mua sắm để quản lý hợp đồng</td>
+    <td style='text-align: center;'>Các giai đoạn (Phases) mua sắm</td>
+    <td style='text-align: center;'>Mô tả về các dịch vụ phụ trợ (collateral services) được yêu cầu</td>
+    <td style='text-align: center;'></td>
+  </tr>
+  <tr>
+    <td style='text-align: center;'>Trách nhiệm của tất cả các bên liên quan</td>
+    <td style='text-align: center;'></td>
+    <td style='text-align: center;'>Các phương pháp và tiêu chí nghiệm thu (Acceptance criteria)</td>
+    <td style='text-align: center;'></td>
+  </tr>
+  <tr>
+    <td style='text-align: center;'>Các giả định và ràng buộc mua sắm</td>
+    <td style='text-align: center;'></td>
+    <td style='text-align: center;'>Dữ liệu hiệu suất và các báo cáo khác được yêu cầu</td>
+    <td style='text-align: center;'></td>
+  </tr>
+  <tr>
+    <td style='text-align: center;'>Quyền tài phán pháp lý (Legal jurisdiction) và loại tiền tệ sử dụng để thanh toán</td>
+    <td style='text-align: center;'></td>
+    <td style='text-align: center;'>Chất lượng</td>
+    <td style='text-align: center;'></td>
+  </tr>
+  <tr>
+    <td style='text-align: center;'>Thông tin về các ước tính độc lập (independent estimates)</td>
+    <td style='text-align: center;'></td>
+    <td style='text-align: center;'>Thời hạn và địa điểm thực hiện (Period and place of performance)</td>
+    <td style='text-align: center;'></td>
+  </tr>
+  <tr>
+    <td style='text-align: center;'>Các vấn đề quản lý rủi ro</td>
+    <td style='text-align: center;'></td>
+    <td style='text-align: center;'>Đơn vị tiền tệ (Currency); tiến độ thanh toán</td>
+    <td style='text-align: center;'></td>
+  </tr>
+  <tr>
+    <td style='text-align: center;'>Người bán sơ tuyển (Prequalified sellers), nếu có</td>
+    <td style='text-align: center;'></td>
+    <td style='text-align: center;'>Bảo hành (Warranty)</td>
+    <td style='text-align: center;'></td>
+  </tr>
+</table>
+</div>
+
+<hr>
+
+<h3 id="s12-2">12.2 TIẾN HÀNH MUA SẮM (CONDUCT PROCUREMENTS)</h3>
+<p>Tiến hành Mua sắm là quy trình thu thập các phản hồi từ người bán, lựa chọn một người bán, và trao hợp đồng (awarding a contract). Lợi ích chính của quá trình này là nó lựa chọn ra một người bán đủ tiêu chuẩn và triển khai thỏa thuận pháp lý (legal agreement) cho việc phân phối/chuyển giao hàng hóa (delivery). Kết quả cuối cùng của quy trình là các thỏa thuận được thiết lập bao gồm các hợp đồng chính thức (formal contracts). Quá trình này được thực hiện theo định kỳ trong suốt dự án khi cần. Đầu vào, công cụ và kỹ thuật, và đầu ra của quá trình Tiến hành Mua sắm được phác họa ở Hình 12-4. Hình 12-5 miêu tả sơ đồ dòng dữ liệu cho quy trình này.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//382fa7ac-3e31-4890-ba7c-b1934dd9ebe9/markdown_0/imgs/img_in_image_box_205_457_1035_993.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A06Z%2F-1%2F%2F25204194b24942a563b7babe1f2dfe23cdfe4a9e493dc95c5ddd9162fbaa493e" alt="Image" width="67%" /></div></div>
+<p class="figure-caption">Hình 12-4. Tiến hành Mua sắm: Đầu vào, Công cụ & Kỹ thuật, và Đầu ra</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//382fa7ac-3e31-4890-ba7c-b1934dd9ebe9/markdown_1/imgs/img_in_image_box_199_97_1025_1396.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A06Z%2F-1%2F%2Fe90fef5d0e90ee7ed0de6178819e2643b63ff5fcd65e3f45ac16fc314b5ed858" alt="Image" width="67%" /></div></div>
+<p class="figure-caption">Hình 12-5. Tiến hành Mua sắm: Sơ đồ luồng dữ liệu</p>
+
+<h4>12.2.1 TIẾN HÀNH MUA SẮM: ĐẦU VÀO (INPUTS)</h4>
+
+<h5>12.2.1.1 KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN)</h5>
+<p>Mô tả trong Phần 4.2.3.1. Các thành phần của kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Kế hoạch quản lý phạm vi (Scope management plan).</strong> Mô tả trong Phần 5.1.3.1. Kế hoạch quản lý phạm vi mô tả cách thức tổng thể phạm vi công việc sẽ được quản lý, bao gồm cả phạm vi do người bán thực hiện.</li>
+<li><strong>Kế hoạch quản lý yêu cầu (Requirements management plan).</strong> Mô tả trong Phần 5.1.3.2. Kế hoạch quản lý yêu cầu mô tả cách thức các yêu cầu sẽ được phân tích, ghi chép lại (documented), và được quản lý. Kế hoạch quản lý yêu cầu có thể bao gồm cách thức người bán sẽ quản lý các yêu cầu mà họ đang chịu sự ràng buộc trong thỏa thuận để thỏa mãn.</li>
+<li><strong>Kế hoạch quản lý truyền thông (Communications management plan).</strong> Mô tả trong Phần 10.1.3.1. Kế hoạch quản lý truyền thông mô tả cách thức truyền thông/giao tiếp giữa người mua và người bán sẽ được thực hiện.</li>
+<li><strong>Kế hoạch quản lý rủi ro (Risk management plan).</strong> Mô tả trong Phần 11.1.3.1. Kế hoạch quản lý rủi ro là một thành phần của kế hoạch quản lý dự án và mô tả cách thức các hoạt động quản lý rủi ro sẽ được cấu trúc và được thực hiện cho dự án.</li>
+<li><strong>Kế hoạch quản lý mua sắm (Procurement management plan).</strong> Mô tả trong Phần 12.1.3.1. Kế hoạch quản lý mua sắm chứa các hoạt động cần thực hiện trong quá trình Tiến hành Mua sắm.</li>
+<li><strong>Kế hoạch quản lý cấu hình (Configuration management plan).</strong> Mô tả trong Phần 5.6.1.1. Kế hoạch quản lý cấu hình xác định các hạng mục có thể cấu hình được, các mặt hàng yêu cầu kiểm soát thay đổi (change control) một cách chính thức, và quy trình để kiểm soát những sự thay đổi cho các hạng mục đó. Nó bao gồm các định dạng và quy trình cho việc làm thế nào mà người bán sẽ cung cấp công tác quản lý cấu hình theo cách nhất quán với phương pháp tiếp cận của người mua.</li>
+<li><strong>Đường cơ sở chi phí (Cost baseline).</strong> Mô tả trong Phần 7.3.3.1. Đường cơ sở chi phí bao gồm ngân sách dành cho việc mua sắm cũng như các chi phí liên quan đến việc quản lý quy trình mua sắm và những người bán.</li>
+</ul>
+
+<h5>12.2.1.2 TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS)</h5>
+<p>Tài liệu dự án có thể được coi là đầu vào cho quy trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Sổ đăng ký bài học kinh nghiệm (Lessons learned register).</strong> Mô tả trong Phần 4.4.3.1. Các bài học đã học được từ sớm trong dự án liên quan đến tiến hành mua sắm có thể được áp dụng cho các giai đoạn tiếp theo của dự án để cải thiện tính hiệu quả của quá trình này.</li>
+<li><strong>Tiến độ dự án (Project schedule).</strong> Mô tả trong Phần 6.5.3.2. Tiến độ dự án xác định ngày bắt đầu và kết thúc của các hoạt động dự án, bao gồm các hoạt động mua sắm. Nó cũng định nghĩa khi nào các sản phẩm bàn giao của nhà thầu sẽ đến hạn (due).</li>
+<li><strong>Tài liệu yêu cầu (Requirements documentation).</strong> Mô tả trong Phần 5.2.3.1. Tài liệu yêu cầu có thể bao gồm:
+  <ul class="pmbok dash">
+    <li>Các yêu cầu kỹ thuật mà người bán được yêu cầu phải thỏa mãn, và</li>
+    <li>Các yêu cầu có các hàm ý hợp đồng và pháp lý có thể bao gồm sức khỏe, an toàn, an ninh, hiệu suất, môi trường, bảo hiểm, quyền sở hữu trí tuệ, cơ hội việc làm bình đẳng, giấy phép, giấy phép xây dựng, và các yêu cầu phi kỹ thuật khác.</li>
+  </ul>
+</li>
+<li><strong>Sổ đăng ký rủi ro (Risk register).</strong> Mô tả trong Phần 11.2.3.1. Mỗi người bán được phê duyệt đều mang đến một tập hợp rủi ro duy nhất của riêng họ, phụ thuộc vào tổ chức của người bán, thời hạn hợp đồng, môi trường bên ngoài, phương pháp phân phối dự án, loại phương tiện hợp đồng được chọn, và mức giá thống nhất cuối cùng.</li>
+<li><strong>Sổ đăng ký các bên liên quan (Stakeholder register).</strong> Mô tả trong Phần 13.1.3.1. Tài liệu này chứa tất cả các chi tiết về các bên liên quan đã được xác định.</li>
+</ul>
+
+<h5>12.2.1.3 TÀI LIỆU MUA SẮM (PROCUREMENT DOCUMENTATION)</h5>
+<p>Tài liệu mua sắm cung cấp một hồ sơ bằng văn bản được sử dụng để tiến tới một thỏa thuận hợp pháp (legal agreement), và có thể bao gồm các tài liệu cũ hơn được lập trước dự án hiện tại. Tài liệu mua sắm có thể bao gồm:</p>
+<ul class="pmbok check">
+<li><strong>Hồ sơ mời thầu (Bid documents).</strong> Mô tả ở Phần 12.1.3.3. Các tài liệu mua sắm bao gồm RFI, RFP, RFQ, hoặc các tài liệu khác được gửi cho những người bán để họ có thể phát triển ra các bản đề xuất dự thầu.</li>
+<li><strong>Tuyên bố công việc mua sắm (Procurement statement of work).</strong> Mô tả ở Phần 12.1.3.4. Bản tuyên bố công việc (SOW) mua sắm cung cấp cho các người bán tập hợp các mục tiêu, yêu cầu, và kết quả mong muốn đã được tuyên bố rõ ràng mà từ đó họ có thể đưa ra một phản hồi có thể định lượng được.</li>
+<li><strong>Ước lượng chi phí độc lập (Independent cost estimates).</strong> Mô tả ở Phần 12.1.3.7. Các ước lượng chi phí độc lập được phát triển ở nội bộ tổ chức hoặc bằng cách sử dụng các tài nguyên bên ngoài để cung cấp một sự kiểm tra về mức độ hợp lý đối với các bản đề xuất được gửi bởi các nhà thầu dự thầu.</li>
+<li><strong>Tiêu chí lựa chọn nguồn (Source selection criteria).</strong> Mô tả ở Phần 12.1.3.5. Các tiêu chí này mô tả cách thức đề xuất (proposals) của nhà thầu sẽ được đánh giá, bao gồm các tiêu chí đánh giá và các trọng số (weights). Để giảm thiểu rủi ro, người mua có thể quyết định ký kết các thỏa thuận với nhiều hơn một người bán để giảm thiểu các thiệt hại gây ra bởi việc một người bán đơn lẻ gặp sự cố và làm ảnh hưởng đến toàn bộ dự án.</li>
+</ul>
+
+<h5>12.2.1.4 ĐỀ XUẤT CỦA NGƯỜI BÁN (SELLER PROPOSALS)</h5>
+<p>Đề xuất của người bán, được chuẩn bị nhằm phản hồi đối với một gói tài liệu mua sắm, hình thành nên thông tin cơ bản sẽ được cơ quan đánh giá (evaluation body) sử dụng để chọn ra một hoặc nhiều nhà thầu dự thầu trúng thầu (người bán). Nếu người bán định nộp bản đề xuất về giá (price proposal), thực tiễn tốt là yêu cầu bản này phải được tách biệt khỏi bản đề xuất kỹ thuật. Đơn vị đánh giá sẽ xem xét từng bản đề xuất được gửi theo các tiêu chí lựa chọn nguồn (source selection criteria) và chọn ra người bán nào có thể thỏa mãn tốt nhất các yêu cầu của tổ chức mua hàng.</p>
+
+<h5>12.2.1.5 YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP (ENTERPRISE ENVIRONMENTAL FACTORS)</h5>
+<p>Các yếu tố môi trường doanh nghiệp có thể ảnh hưởng đến Quy trình Tiến hành Mua sắm bao gồm:</p>
+<ul class="pmbok check">
+<li>Luật pháp và quy định địa phương liên quan đến mua sắm;</li>
+<li>Luật pháp và quy định địa phương nhằm đảm bảo rằng các cuộc mua sắm chính có sự tham gia của các người bán địa phương;</li>
+<li>Môi trường kinh tế bên ngoài gây hạn chế đối với quy trình mua sắm;</li>
+<li>Các điều kiện của thị trường;</li>
+<li>Thông tin về các kinh nghiệm đã qua (past experience) liên quan đến các người bán, cả tốt lẫn xấu;</li>
+<li>Các thỏa thuận có từ trước (prior agreements) đã có sẵn; và</li>
+<li>Các hệ thống quản lý hợp đồng.</li>
+</ul>
+
+<h5>12.2.1.6 TÀI SẢN QUY TRÌNH TỔ CHỨC (ORGANIZATIONAL PROCESS ASSETS)</h5>
+<p>Tài sản quy trình tổ chức có thể ảnh hưởng đến quá trình Tiến hành Mua sắm bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Danh sách các người bán ưu tiên (preferred sellers) đã được sơ tuyển (prequalified).</li>
+<li>Các chính sách của tổ chức làm ảnh hưởng đến sự lựa chọn của người bán.</li>
+<li>Các biểu mẫu (templates) hoặc hướng dẫn cụ thể của tổ chức dùng để xác định cách các thỏa thuận (agreements) được dự thảo và xây dựng, và</li>
+<li>Các chính sách và thủ tục tài chính liên quan đến các quy trình xuất hóa đơn (invoicing) và thanh toán (payment).</li>
+</ul>
+
+<h4>12.2.2 TIẾN HÀNH MUA SẮM: CÔNG CỤ VÀ KỸ THUẬT (TOOLS AND TECHNIQUES)</h4>
+
+<h5>12.2.2.1 ĐÁNH GIÁ CỦA CHUYÊN GIA (EXPERT JUDGMENT)</h5>
+<p>Mô tả trong Phần 4.1.2.1 Chuyên môn nên được tham khảo từ các cá nhân hoặc nhóm có kiến thức chuyên ngành hoặc được đào tạo về các chủ đề sau:</p>
+<ul class="pmbok check">
+<li>Đánh giá đề xuất (Proposal evaluation);</li>
+<li>Chủ đề kỹ thuật hoặc chuyên môn (Technical or subject matter);</li>
+<li>Các lĩnh vực chức năng (functional areas) có liên quan như tài chính, kỹ thuật, thiết kế, phát triển, quản lý chuỗi cung ứng, v.v.;</li>
+<li>Môi trường quy định của ngành (Industry regulatory environment);</li>
+<li>Luật pháp, quy định, và yêu cầu tuân thủ; và</li>
+<li>Đàm phán (Negotiation).</li>
+</ul>
+
+<h5>12.2.2.2 QUẢNG CÁO (ADVERTISING)</h5>
+<p>Quảng cáo là việc truyền thông đến những người dùng hoặc người dùng tiềm năng của một sản phẩm, dịch vụ, hoặc kết quả. Danh sách hiện tại của những người bán tiềm năng thường có thể được mở rộng bằng cách đặt quảng cáo trên các ấn phẩm (publications) phát hành rộng rãi như một số tờ báo đã chọn hoặc trong các ấn phẩm chuyên ngành thương mại (specialty trade publications). Hầu hết các khu vực tài phán của chính phủ (government jurisdictions) đều yêu cầu việc quảng cáo công khai (public advertising) hoặc đăng tải trực tuyến về các hợp đồng chính phủ đang chờ xử lý.</p>
+
+<h5>12.2.2.3 HỘI NGHỊ NHÀ THẦU DỰ THẦU (BIDDER CONFERENCES)</h5>
+<p>Hội nghị nhà thầu (còn được gọi là hội nghị nhà thầu/contractor conferences, hội nghị nhà cung cấp/vendor conferences, và hội nghị tiền đấu thầu/pre-bid conferences) là các cuộc họp giữa người mua và những người bán tiềm năng diễn ra trước thời điểm nộp đề xuất. Chúng được sử dụng để đảm bảo rằng tất cả các nhà thầu dự thầu tương lai có được một sự hiểu biết chung và rõ ràng về hoạt động mua sắm, đồng thời không có bất kỳ nhà thầu nào nhận được sự đối xử ưu ái.</p>
+
+<h5>12.2.2.4 PHÂN TÍCH DỮ LIỆU (DATA ANALYSIS)</h5>
+<p>Kỹ thuật phân tích dữ liệu có thể được sử dụng cho quy trình này bao gồm nhưng không giới hạn ở việc đánh giá đề xuất (proposal evaluation). Các bản đề xuất được đánh giá để đảm bảo rằng chúng đã hoàn thiện và đáp ứng đầy đủ đối với các tài liệu dự thầu, bản tuyên bố công việc mua sắm (SOW), tiêu chí lựa chọn nguồn, và bất kỳ tài liệu nào khác nằm trong gói hồ sơ mời thầu (bid package).</p>
+
+<h5>12.2.2.5 KỸ NĂNG LIÊN CÁ NHÂN VÀ NHÓM (INTERPERSONAL AND TEAM SKILLS)</h5>
+<p>Kỹ năng liên cá nhân và nhóm có thể được sử dụng trong quy trình này bao gồm sự đàm phán (negotiation). Đàm phán là một cuộc thảo luận nhằm mục đích đạt được một thỏa thuận. Việc đàm phán mua sắm (procurement negotiation) sẽ làm rõ cơ cấu, quyền lợi, và nghĩa vụ của các bên cũng như các điều khoản khác của việc mua hàng sao cho một thỏa thuận chung (mutual agreement) có thể đạt được trước khi đặt bút ký hợp đồng. Ngôn ngữ của tài liệu cuối cùng phản ánh tất cả các sự thỏa thuận đã đạt được. Cuộc đàm phán kết thúc bằng một văn bản hợp đồng (contract document) đã được ký kết hoặc một thỏa thuận chính thức khác có thể được thực thi (executed) bởi cả người mua và người bán.</p>
+<p>Cuộc đàm phán cần được dẫn dắt bởi một thành viên của nhóm mua sắm có thẩm quyền ký kết hợp đồng. Giám đốc dự án và các thành viên khác của nhóm quản lý dự án có thể tham gia vào trong quá trình đàm phán để cung cấp sự hỗ trợ khi cần thiết.</p>
+
+<h4>12.2.3 TIẾN HÀNH MUA SẮM: ĐẦU RA (OUTPUTS)</h4>
+
+<h5>12.2.3.1 CÁC NGƯỜI BÁN ĐƯỢC CHỌN (SELECTED SELLERS)</h5>
+<p>Các người bán được chọn là những người đã được đánh giá là nằm trong một phạm vi có tính cạnh tranh (competitive range) dựa trên kết quả của quá trình đánh giá đề xuất hoặc dự thầu. Việc phê duyệt cuối cùng (Final approval) đối với các khoản mua sắm phức tạp, có giá trị cao, và rủi ro cao nói chung sẽ đòi hỏi sự chấp thuận của quản lý cấp cao tổ chức (senior management approval) trước khi trao giải (phát hợp đồng).</p>
+
+<h5>12.2.3.2 CÁC THỎA THUẬN (AGREEMENTS)</h5>
+<p>Hợp đồng là một thỏa thuận có tính ràng buộc qua lại (mutually binding agreement) có chức năng bắt buộc người bán phải cung cấp các sản phẩm, dịch vụ, hoặc kết quả đã quy định; bắt buộc người mua phải đền bù (compensate) cho người bán; và đại diện cho một mối quan hệ pháp lý (legal relationship) có thể phải chịu chế tài (remedy) tại tòa án. Các thành phần chính (major components) bên trong tài liệu thỏa thuận sẽ có sự thay đổi, và có thể bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Tuyên bố công việc (SOW) mua sắm hoặc các sản phẩm bàn giao (deliverables) chính;</li>
+<li>Tiến độ, cột mốc (milestones), hoặc thời hạn mà một bản tiến độ là bắt buộc (required);</li>
+<li>Báo cáo hiệu suất (Performance reporting);</li>
+<li>Điều khoản định giá (Pricing) và thanh toán (payment terms);</li>
+<li>Tiêu chí nghiệm thu (acceptance criteria), chất lượng, và kiểm tra (Inspection);</li>
+<li>Bảo hành và hỗ trợ sản phẩm sau này (future product support);</li>
+<li>Khuyến khích (Incentives) và hình phạt (penalties);</li>
+<li>Bảo hiểm (Insurance) và bảo lãnh thực hiện hợp đồng (performance bonds);</li>
+<li>Sự chấp thuận (approvals) đối với nhà thầu phụ (subcontractor) cấp dưới;</li>
+<li>Các điều khoản và điều kiện chung (General terms and conditions);</li>
+<li>Cách xử lý yêu cầu thay đổi (Change request handling); và</li>
+<li>Điều khoản chấm dứt hợp đồng (Termination clause) và các cơ chế giải quyết tranh chấp thay thế (alternative dispute resolution mechanisms).</li>
+</ul>
+
+<h5>12.2.3.3 YÊU CẦU THAY ĐỔI (CHANGE REQUESTS)</h5>
+<p>Mô tả ở Phần 4.3.3.4. Các yêu cầu thay đổi đối với kế hoạch quản lý dự án, các kế hoạch phụ trợ, và các thành phần khác được xử lý thông qua quy trình Thực hiện Kiểm soát Thay đổi Tích hợp (Perform Integrated Change Control) (Phần 4.6) để được xem xét và quyết định.</p>
+
+<h5>12.2.3.4 CẬP NHẬT KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN UPDATES)</h5>
+<p>Bất kỳ thay đổi nào đối với kế hoạch quản lý dự án đều phải đi qua quy trình kiểm soát thay đổi của tổ chức thông qua một yêu cầu thay đổi (change request). Các thành phần của kế hoạch quản lý dự án có thể yêu cầu một yêu cầu thay đổi đối với kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Kế hoạch quản lý yêu cầu (Requirements management plan).</strong> Mô tả ở Phần 5.1.3.2. Có thể có các thay đổi đối với các yêu cầu dự án do các thay đổi được người bán (sellers) nhận diện ra.</li>
+<li><strong>Kế hoạch quản lý chất lượng (Quality management plan).</strong> Mô tả ở Phần 8.1.3.1. Người bán có thể cung cấp các tiêu chuẩn chất lượng thay thế hoặc các giải pháp thay thế gây tác động đến các cách tiếp cận chất lượng (quality approaches) được xác định trong kế hoạch quản lý chất lượng.</li>
+<li><strong>Kế hoạch quản lý truyền thông (Communications management plan).</strong> Mô tả ở Phần 10.1.3.1. Khi người bán được thuê, kế hoạch quản lý truyền thông sẽ được cập nhật để hợp nhất (incorporate) các nhu cầu truyền thông cũng như các cách tiếp cận truyền thông của họ vào trong dự án.</li>
+<li><strong>Kế hoạch quản lý rủi ro (Risk management plan).</strong> Mô tả ở Phần 11.1.3.1. Mỗi thỏa thuận (agreement) và mỗi người bán đều có một tập hợp các rủi ro riêng của họ mà có thể sẽ yêu cầu cập nhật lại kế hoạch quản lý rủi ro. Các rủi ro cụ thể được đưa vào trong sổ đăng ký rủi ro.</li>
+<li><strong>Kế hoạch quản lý mua sắm (Procurement management plan).</strong> Mô tả ở Phần 12.1.3.1. Các bản cập nhật có thể được yêu cầu tùy thuộc vào kết quả của các quá trình lập hợp đồng (contracting) và đàm phán (negotiations).</li>
+<li><strong>Đường cơ sở phạm vi (Scope baseline).</strong> Mô tả ở Phần 5.4.3.1. Bản WBS của dự án và các sản phẩm bàn giao (deliverables) được ghi lại ở trong đường cơ sở phạm vi sẽ được xem xét (considered) khi tiến hành thực hiện các hoạt động mua sắm. Bất kỳ thành phần nào hoặc tất cả các thành phần này đều có thể thay đổi trong quy trình mua sắm.</li>
+<li><strong>Đường cơ sở tiến độ (Schedule baseline).</strong> Mô tả ở Phần 6.5.3.1. Nếu có những thay đổi liên quan đến việc giao hàng (delivery changes) do người bán tạo ra mà có tác động lên hiệu suất tiến độ tổng thể của dự án (overall project schedule performance), thì tiến độ cơ sở có thể sẽ cần phải được cập nhật và phê duyệt để phản ánh (reflect) kỳ vọng hiện tại.</li>
+<li><strong>Đường cơ sở chi phí (Cost baseline).</strong> Mô tả ở Phần 7.3.3.1. Giá của nhà thầu và nguyên vật liệu có thể thay đổi thường xuyên (frequently) trong quá trình cung cấp một dự án. Các thay đổi này có thể xảy ra vì sự biến động (fluctuating) về giá cả vật liệu và lao động gây ra bởi môi trường kinh tế bên ngoài và cần phải được hợp nhất (incorporated) vào bên trong đường cơ sở chi phí.</li>
+</ul>
+
+<h5>12.2.3.5 CẬP NHẬT TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS UPDATES)</h5>
+<p>Tài liệu dự án có thể được cập nhật như một kết quả của quá trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Sổ đăng ký bài học kinh nghiệm (Lessons learned register).</strong> Mô tả ở Phần 4.4.3.1. Sổ đăng ký bài học kinh nghiệm được cập nhật với các thông tin về các thách thức (challenges) đã gặp phải trong khi tiến hành mua sắm và làm thế nào mà chúng có thể đã được tránh đi (avoided) cũng như các phương pháp (approaches) đã hoạt động tốt.</li>
+<li><strong>Tài liệu yêu cầu (Requirements documentation).</strong> Mô tả ở Phần 5.2.3.1. Tài liệu yêu cầu có thể bao gồm:
+  <ul class="pmbok dash">
+    <li>Các yêu cầu kỹ thuật mà người bán được yêu cầu phải thỏa mãn, và</li>
+    <li>Các yêu cầu có các hàm ý hợp đồng và pháp lý có thể bao gồm sức khỏe, an toàn, an ninh, hiệu suất, môi trường, bảo hiểm, quyền sở hữu trí tuệ, cơ hội việc làm bình đẳng, giấy phép, giấy phép xây dựng, và các yêu cầu phi kỹ thuật khác.</li>
+  </ul>
+</li>
+<li><strong>Ma trận truy xuất yêu cầu (Requirements traceability matrix).</strong> Mô tả ở Phần 5.2.3.2. Khi người bán được hợp nhất vào trong kế hoạch của dự án, sổ đăng ký yêu cầu và ma trận truy xuất (traceability matrix) có thể thay đổi tùy theo năng lực (capabilities) của các người bán cụ thể.</li>
+<li><strong>Lịch nguồn lực (Resource calendars).</strong> Mô tả ở Phần 9.2.1.2. Lịch nguồn lực tiến độ (Schedule resource calendars) có thể cần phải được cập nhật tùy thuộc vào mức độ sẵn có (availabilities) của người bán.</li>
+<li><strong>Sổ đăng ký rủi ro (Risk register).</strong> Mô tả ở Phần 11.2.3.1. Mỗi người bán đã được phê duyệt đều mang đến một tập hợp rủi ro duy nhất của riêng họ, phụ thuộc vào tổ chức của người bán, thời hạn hợp đồng, môi trường bên ngoài, phương pháp phân phối dự án, loại phương tiện hợp đồng được chọn, và mức giá thống nhất cuối cùng. Những sự thay đổi sẽ được thực hiện vào sổ đăng ký rủi ro trong suốt quá trình ký kết hợp đồng, phản ánh những rủi ro cụ thể của mỗi người bán.</li>
+<li><strong>Sổ đăng ký các bên liên quan (Stakeholder register).</strong> Mô tả ở Phần 13.1.3.1. Tài liệu này chứa tất cả các chi tiết về các bên liên quan đã được xác định. Sổ đăng ký các bên liên quan sẽ được cập nhật khi các thỏa thuận được lập ra với những người bán cụ thể.</li>
+</ul>
+
+<h5>12.2.3.6 CẬP NHẬT TÀI SẢN QUY TRÌNH TỔ CHỨC (ORGANIZATIONAL PROCESS ASSETS UPDATES)</h5>
+<p>Các yếu tố thuộc tài sản quy trình tổ chức có thể được cập nhật như một kết quả của quá trình Tiến hành Mua sắm có thể bao gồm:</p>
+<ul class="pmbok check">
+<li>Danh sách các người bán tương lai (prospective sellers) và người bán đã qua sơ tuyển (prequalified sellers); và</li>
+<li>Thông tin về các kinh nghiệm có liên quan đến các người bán, cả kinh nghiệm tốt lẫn xấu.</li>
+</ul>
+
+<hr>
+
+<h3 id="s12-3">12.3 KIỂM SOÁT MUA SẮM (CONTROL PROCUREMENTS)</h3>
+<p>Kiểm soát Mua sắm là quy trình quản lý các mối quan hệ mua sắm; giám sát hiệu suất hợp đồng, và thực hiện các sự thay đổi (changes) cùng các sự điều chỉnh (corrections) khi thích hợp; và đóng các hợp đồng (closing out contracts). Lợi ích chính của quá trình này là đảm bảo rằng hiệu suất của cả người bán lẫn người mua đều đáp ứng được các yêu cầu của dự án dựa theo các điều khoản của thỏa thuận pháp lý (legal agreement). Quá trình này được thực hiện trong suốt vòng đời dự án khi cần thiết. Các đầu vào, công cụ và kỹ thuật, và đầu ra của quá trình này được phác họa trong Hình 12-6. Hình 12-7 miêu tả sơ đồ dòng dữ liệu của quy trình này.</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//d27c2e9f-a580-437a-8721-3f820f21617d/markdown_0/imgs/img_in_image_box_202_468_1028_1021.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A01Z%2F-1%2F%2Fb02181f47f89cc41bcd2254c721606c5a22299c219d9c6179fb9f10c6aefdd84" alt="Image" width="67%" /></div></div>
+<p class="figure-caption">Hình 12-6. Kiểm soát Mua sắm: Đầu vào, Công cụ & Kỹ thuật, và Đầu ra</p>
+
+<div class="figure-wrap"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//d27c2e9f-a580-437a-8721-3f820f21617d/markdown_1/imgs/img_in_image_box_198_152_1029_1279.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T02%3A24%3A02Z%2F-1%2F%2F95ab60a5e084fd2c81240028de63ac4414e76c2e9a8e12f59e740a5840f80748" alt="Image" width="67%" /></div></div>
+<p class="figure-caption">Hình 12-7. Kiểm soát Mua sắm: Sơ đồ luồng dữ liệu</p>
+
+<p>Cả người mua và người bán đều quản lý (administer) hợp đồng mua sắm với các mục đích tương tự nhau. Mỗi bên đều bị yêu cầu phải đảm bảo rằng cả hai bên đều đáp ứng (meet) được những nghĩa vụ theo hợp đồng (contractual obligations) của họ và những quyền lợi pháp lý (legal rights) của bản thân họ sẽ được bảo vệ. Bản chất pháp lý của mối quan hệ này khiến cho một điều bắt buộc là nhóm quản lý dự án phải nhận thức được (aware of) các hệ quả (implications) của các hành động (actions) được đưa ra khi kiểm soát bất kỳ một hoạt động mua sắm nào. Tại các dự án quy mô lớn hơn cùng với nhiều các nhà cung cấp đa dạng, một khía cạnh mang tính cốt lõi (key aspect) của công việc quản trị hợp đồng (contract administration) là quản lý truyền thông giữa các nhà cung cấp khác nhau.</p>
+
+<p>Do khía cạnh pháp lý (legal aspect), nhiều tổ chức đối xử với hoạt động quản trị hợp đồng như là một chức năng thuộc tổ chức (organizational function) tách biệt khỏi dự án. Mặc dù một quản trị viên mua sắm (procurement administrator) có thể nằm ở trong nhóm dự án, cá nhân này thường sẽ báo cáo cho một người giám sát (supervisor) từ một phòng ban khác.</p>
+
+<p>Kiểm soát Mua sắm (Control Procurements) bao gồm việc áp dụng các quy trình quản lý dự án thích hợp lên (các) mối quan hệ hợp đồng và việc tích hợp các đầu ra (outputs) từ các quá trình này vào trong sự quản lý tổng thể (overall management) của dự án. Việc tích hợp này thường diễn ra ở nhiều cấp độ (multiple levels) khi có nhiều người bán (multiple sellers) và nhiều sản phẩm, dịch vụ, hay kết quả có liên quan (involved).</p>
+
+<p>Các hoạt động hành chính (Administrative activities) có thể bao gồm:</p>
+<ul class="pmbok">
+<li>Thu thập dữ liệu và quản lý các hồ sơ dự án, bao gồm việc bảo trì các bản lưu trữ chi tiết (detailed records) về hiệu suất vật lý (physical) cũng như hiệu suất tài chính (financial performance) và thiết lập nên các chỉ số đo lường hiệu suất mua sắm (measurable procurement performance indicators);</li>
+<li>Sàng lọc/Tinh chỉnh (Refinement) các kế hoạch (plans) và tiến độ mua sắm (schedules);</li>
+<li>Thiết lập/Chuẩn bị để thu thập, phân tích, và báo cáo các dữ liệu của dự án có liên quan đến mua sắm và việc chuẩn bị báo cáo định kỳ nộp cho tổ chức;</li>
+<li>Giám sát môi trường mua sắm để việc triển khai (implementation) có thể được tạo điều kiện (facilitated) dễ dàng hoặc để các sự điều chỉnh (adjustments) có thể được tiến hành; và</li>
+<li>Thanh toán các hóa đơn (Payment of invoices).</li>
+</ul>
+
+<p>Chất lượng của các công cụ kiểm soát, bao gồm tính độc lập (independence) và độ tin cậy (credibility) đối với các đợt kiểm toán (audits) mua sắm, là điều đặc biệt quan trọng đối với tính đáng tin cậy của hệ thống mua sắm (procurement system). Bộ quy tắc đạo đức (code of ethics) của tổ chức, đội ngũ tư vấn pháp lý (legal counsel), và các sự dàn xếp (arrangements) tư vấn pháp lý từ bên ngoài bao gồm bất kỳ một sáng kiến/nỗ lực chống tham nhũng (anti-corruption initiatives) đang diễn ra nào đều có thể đóng góp vào các biện pháp kiểm soát mua sắm phù hợp.</p>
+
+<p>Kiểm soát Mua sắm có một thành phần về quản lý tài chính liên quan đến việc giám sát các khoản thanh toán (payments) đưa cho người bán. Việc này đảm bảo rằng các điều khoản (terms) thanh toán (payment) được định nghĩa bên trong hợp đồng sẽ được đáp ứng và mức thù lao (compensation) sẽ được liên kết trực tiếp với tiến trình công việc của người bán (seller’s progress) đúng như những gì được định nghĩa ở trong hợp đồng. Một mối quan tâm hàng đầu (principal concern) khi thực hiện các khoản thanh toán là phải đảm bảo luôn có một mối liên hệ chặt chẽ giữa các khoản tiền đã trả (payments made) so với khối lượng công việc (work) đã được hoàn thành (accomplished). Một hợp đồng yêu cầu rằng các khoản thanh toán được gắn liền (linked to) với sản phẩm đầu ra (project output) và các sản phẩm bàn giao (deliverables) thay vì là các yếu tố đầu vào (inputs) ví dụ như giờ công lao động (labor hours) sẽ có sự kiểm soát (controls) tốt hơn.</p>
+
+<p>Các thỏa thuận (Agreements) có thể được sửa đổi (amended) tại bất kỳ thời điểm nào trước thời điểm đóng hợp đồng (contract closure) nếu được cả hai bên đồng thuận (mutual consent), dựa theo các điều khoản kiểm soát thay đổi (change control terms) của bản thỏa thuận đó. Các bản sửa đổi/tu chính (amendments) đó thông thường sẽ được ghi lại bằng văn bản.</p>
+
+<h4>12.3.1 KIỂM SOÁT MUA SẮM: ĐẦU VÀO (INPUTS)</h4>
+
+<h5>12.3.1.1 KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN)</h5>
+<p>Mô tả trong Phần 4.2.3.1. Các thành phần của kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Kế hoạch quản lý yêu cầu (Requirements management plan).</strong> Mô tả trong Phần 5.1.3.2. Kế hoạch quản lý yêu cầu mô tả cách thức các yêu cầu của nhà thầu sẽ được phân tích, ghi chép (documented), và được quản lý.</li>
+<li><strong>Kế hoạch quản lý rủi ro (Risk management plan).</strong> Mô tả trong Phần 11.1.3.1. Kế hoạch quản lý rủi ro mô tả về làm thế nào mà các hoạt động (activities) xử lý rủi ro được sinh ra do (created by) người bán sẽ được cấu trúc và được thực hiện đối với dự án.</li>
+<li><strong>Kế hoạch quản lý mua sắm (Procurement management plan).</strong> Mô tả trong Phần 12.1.3.2. Kế hoạch quản lý mua sắm chứa các hoạt động sẽ được thực hiện trong quá trình của quy trình Kiểm soát Mua sắm.</li>
+<li><strong>Kế hoạch quản lý thay đổi (Change management plan).</strong> Mô tả trong Phần 4.2.3.1. Kế hoạch quản lý thay đổi chứa thông tin về cách mà các thay đổi do người bán (seller-created) tạo ra sẽ được xử lý ra sao.</li>
+<li><strong>Đường cơ sở tiến độ (Schedule baseline).</strong> Mô tả trong Phần 6.5.3.1. Nếu có những sự trượt trễ (slippages) do người bán (sellers) gây ra có ảnh hưởng lên hiệu suất của dự án tổng thể (overall project performance), thì bản tiến độ (schedule) có thể sẽ cần phải được cập nhật lại và phê duyệt (approved) để có thể phản ánh được các kỳ vọng (expectations) hiện hành.</li>
+</ul>
+
+<h5>12.3.1.2 TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS)</h5>
+<p>Tài liệu dự án có thể được coi là đầu vào cho quy trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Sổ ghi nhận giả định (Assumption log).</strong> Mô tả trong Phần 4.1.3.2. Sổ ghi nhận giả định lập tài liệu cho các giả định đã được đặt ra (made) trong suốt quy trình mua sắm.</li>
+<li><strong>Sổ đăng ký bài học kinh nghiệm (Lessons learned register).</strong> Mô tả trong Phần 4.4.3.1. Các bài học đã học được từ những lúc sớm hơn ở trong dự án (earlier in the project) có thể được áp dụng ở phần sâu hơn trong dự án (further along in the project) để cải thiện (improve) hiệu suất (performance) của nhà thầu và để cải thiện quy trình mua sắm.</li>
+<li><strong>Danh sách các mốc quan trọng (Milestone list).</strong> Mô tả trong Phần 6.2.3.3. Danh sách các cột mốc chính này cho thấy thời điểm (when) người bán được kỳ vọng sẽ phân phối/bàn giao (deliver) các kết quả của họ.</li>
+<li><strong>Báo cáo chất lượng (Quality reports).</strong> Mô tả ở Phần 8.2.3.1. Các báo cáo chất lượng có thể nhận diện ra (identify) các quy trình, thủ tục (procedures), hoặc các sản phẩm (products) của người bán nằm ngoài vùng tuân thủ (out of compliance).</li>
+<li><strong>Tài liệu yêu cầu (Requirements documentation).</strong> Mô tả trong Phần 5.2.3.1. Tài liệu yêu cầu có thể bao gồm:
+  <ul class="pmbok dash">
+    <li>Các yêu cầu kỹ thuật mà người bán được yêu cầu phải thỏa mãn, và</li>
+    <li>Các yêu cầu có các hàm ý hợp đồng và pháp lý có thể bao gồm sức khỏe, an toàn, an ninh, hiệu suất, môi trường, bảo hiểm, quyền sở hữu trí tuệ, cơ hội việc làm bình đẳng, giấy phép, giấy phép xây dựng, và các yêu cầu phi kỹ thuật khác.</li>
+  </ul>
+</li>
+<li><strong>Ma trận truy xuất yêu cầu (Requirements traceability matrix).</strong> Mô tả trong Phần 5.2.3.2. Ma trận truy xuất yêu cầu sẽ liên kết các yêu cầu về mặt sản phẩm (product requirements) từ nguồn gốc (origin) của chúng đến tận các sản phẩm bàn giao sẽ đáp ứng được các yêu cầu đó.</li>
+<li><strong>Sổ đăng ký rủi ro (Risk register).</strong> Mô tả trong Phần 11.2.3.1. Mỗi người bán đã được duyệt sẽ đi kèm với một tập hợp rủi ro duy nhất (unique set of risks) của riêng họ, phụ thuộc vào bản thân tổ chức của người bán (seller's organization), thời hạn của hợp đồng, môi trường bên ngoài, phương pháp phân phối dự án (project delivery method), loại phương tiện hợp đồng (type of contracting vehicle) được chọn, và cả mức giá thỏa thuận cuối cùng (final agreed-upon price).</li>
+<li><strong>Sổ đăng ký các bên liên quan (Stakeholder register).</strong> Mô tả trong Phần 13.1.3.1. Sổ đăng ký các bên liên quan bao gồm các thông tin (information) về những bên liên quan (stakeholders) đã được định danh, bao gồm cả các thành viên đã được ký hợp đồng cho nhóm dự án (contracted team members), các người bán đã được lựa chọn (selected sellers), các nhân viên phụ trách hợp đồng (contracting officers), và các bên liên quan khác có dính dáng (involved) đến các hoạt động mua sắm.</li>
+</ul>
+
+<h5>12.3.1.3 CÁC THỎA THUẬN (AGREEMENTS)</h5>
+<p>Mô tả trong Phần 12.2.3.2. Thỏa thuận (Agreements) là những sự thấu hiểu/đồng thuận (understandings) giữa các bên, bao gồm cả sự thấu hiểu về các nghĩa vụ (duties) của mỗi bên. Các bản thỏa thuận (agreements) có liên quan (relevant) sẽ được xem xét (reviewed) để xác minh xem các điều khoản (terms) và điều kiện (conditions) đã được đáp ứng hay chưa.</p>
+
+<h5>12.3.1.4 TÀI LIỆU MUA SẮM (PROCUREMENT DOCUMENTATION)</h5>
+<p>Tài liệu mua sắm chứa đầy đủ các hồ sơ hỗ trợ (supporting records) cho việc quản trị (administration) các quy trình mua sắm. Tài liệu mua sắm (Procurement documentation) bao gồm bản tuyên bố công việc (SOW), thông tin về thanh toán (payment information), thông tin hiệu suất làm việc của nhà thầu, bản vẽ (drawings), bản kế hoạch (plans), và các thư từ/thư tín qua lại (other correspondence) khác.</p>
+
+<h5>12.3.1.5 CÁC YÊU CẦU THAY ĐỔI ĐƯỢC PHÊ DUYỆT (APPROVED CHANGE REQUESTS)</h5>
+<p>Mô tả ở Phần 4.6.3.1. Yêu cầu thay đổi được phê duyệt (Approved change requests) có thể bao gồm cả các sự sửa đổi (modifications) đối với các điều khoản (terms) và điều kiện của hợp đồng, bao gồm cả bản tuyên bố công việc (SOW) của mua sắm, giá cả, và các mô tả về những sản phẩm, dịch vụ, hoặc kết quả dự kiến (to be provided). Tất cả các thay đổi có liên quan đến việc mua sắm đều được lập tài liệu (documented) chính thức bằng văn bản và được chấp thuận (approved) trước khi được đem ra thực thi (implemented) thông qua quy trình Kiểm soát Mua sắm (Control Procurements). Ở các dự án và chương trình mang tính phức tạp, các yêu cầu thay đổi có thể đến từ những người bán có dính dáng vào (involved with) trong dự án, vốn dĩ những thay đổi này có thể tác động đến các người bán khác cùng dính dáng (other involved sellers). Dự án cần phải có năng lực (capability) để nhận diện (identifying), truyền đạt (communicating), và giải quyết các sự thay đổi có tác động đến công việc của nhiều người bán cùng lúc.</p>
+
+<h5>12.3.1.6 DỮ LIỆU HIỆU SUẤT CÔNG VIỆC (WORK PERFORMANCE DATA)</h5>
+<p>Mô tả ở Phần 4.3.3.2. Dữ liệu hiệu suất công việc chứa những dữ liệu của người bán về tình trạng của dự án (project status) như là các thành tựu (performance) về kỹ thuật; các hoạt động đã được bắt đầu, đang trong tiến trình tiến hành, hoặc là đã hoàn thành; và các chi phí nào đã bị phát sinh (incurred) hoặc đã được cam kết (committed). Dữ liệu hiệu suất công việc cũng có thể bao gồm cả thông tin về các hóa đơn do người bán (seller invoices) lập ra mà dự án đã thanh toán (paid).</p>
+
+<h5>12.3.1.7 YẾU TỐ MÔI TRƯỜNG DOANH NGHIỆP (ENTERPRISE ENVIRONMENTAL FACTORS)</h5>
+<p>Các yếu tố môi trường doanh nghiệp có thể ảnh hưởng đến quá trình Kiểm soát Mua sắm bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok check">
+<li>Hệ thống kiểm soát thay đổi hợp đồng (Contract change control system).</li>
+<li>Điều kiện thị trường (Marketplace conditions).</li>
+<li>Hệ thống quản lý tài chính và các khoản phải trả (Financial management and accounts payable system), và</li>
+<li>Quy tắc đạo đức (code of ethics) của tổ chức mua hàng.</li>
+</ul>
+
+<h5>12.3.1.8 TÀI SẢN QUY TRÌNH TỔ CHỨC (ORGANIZATIONAL PROCESS ASSETS)</h5>
+<p>Các tài sản quy trình tổ chức có thể ảnh hưởng đến quy trình Kiểm soát Mua sắm bao gồm nhưng không giới hạn ở, các chính sách mua sắm (procurement policies).</p>
+
+<h4>12.3.2 KIỂM SOÁT MUA SẮM: CÔNG CỤ VÀ KỸ THUẬT (TOOLS AND TECHNIQUES)</h4>
+
+<h5>12.3.2.1 ĐÁNH GIÁ CỦA CHUYÊN GIA (EXPERT JUDGMENT)</h5>
+<p>Mô tả trong Phần 4.1.2.1. Chuyên môn nên được tham khảo từ các cá nhân hoặc nhóm có kiến thức chuyên ngành hoặc được đào tạo trong các chủ đề sau:</p>
+<ul class="pmbok">
+<li>Các khu vực chức năng (functional areas) có liên quan như là tài chính, kỹ thuật, thiết kế, công tác phát triển, quản lý hệ thống chuỗi cung ứng, v.v.;</li>
+</ul>
+<ul class="pmbok check">
+<li>Luật pháp, các quy định, và yêu cầu tuân thủ; và</li>
+<li>Quản lý/xử lý khiếu nại (Claims administration).</li>
+</ul>
+
+<h5>12.3.2.2 QUẢN LÝ/XỬ LÝ KHIẾU NẠI (CLAIMS ADMINISTRATION)</h5>
+<p>Những sự thay đổi có sự tranh cãi (Contested changes) và những sự thay đổi mang tính xây dựng tiềm ẩn (potential constructive changes) là các yêu cầu thay đổi khi mà người mua và người bán không thể đạt được sự thống nhất về mức bồi thường cho yêu cầu thay đổi đó hoặc khi mà cả hai bên không thể đồng tình rằng đã từng có một sự thay đổi (change) thực sự đã diễn ra. Các thay đổi có sự tranh cãi này được gọi là khiếu nại (claims). Khi chúng không thể được tháo gỡ (resolved), chúng sẽ biến thành các tranh chấp (disputes) và cuối cùng trở thành các kháng cáo (appeals). Khiếu nại được lập tài liệu, xử lý (processed), theo dõi (monitored), và được quản lý (managed) xuyên suốt vòng đời của hợp đồng, thường tuân theo các điều khoản bên trong của hợp đồng (terms of the contract). Nếu như bản thân các bên tham gia tự mình không thể giải quyết được (do not resolve) một khiếu nại, nó có thể sẽ phải được đưa ra xử lý phù hợp với cơ chế giải quyết tranh chấp thay thế (alternative dispute resolution - ADR), thông thường việc đó sẽ bám theo các thủ tục (procedures) được thiết lập (established) ở trong hợp đồng. Việc dàn xếp (Settlement) mọi khiếu nại (claims) và tranh chấp thông qua đàm phán (negotiation) luôn luôn là một phương pháp (method) được ưu tiên hàng đầu.</p>
+
+<h5>12.3.2.3 PHÂN TÍCH DỮ LIỆU (DATA ANALYSIS)</h5>
+<p>Kỹ thuật phân tích dữ liệu có thể được sử dụng để theo dõi và kiểm soát (monitor and control) các hoạt động mua sắm bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Đánh giá hiệu suất (Performance Reviews).</strong> Việc đánh giá hiệu suất đối với các bản hợp đồng sẽ đo lường (measure), tiến hành so sánh, và phân tích hiệu suất về chất lượng, về nguồn lực, về tiến độ, cũng như về mặt chi phí dựa trên cơ sở bản thỏa thuận (agreement) ban đầu. Quá trình này bao gồm việc định danh/nhận diện ra các gói công việc (work packages) nào đang nhanh hơn hay bị chậm tiến độ hơn (ahead or behind schedule), đang vượt hay thấp hơn mức ngân sách, hay là đang dính vào các vấn đề (issues) rắc rối về chất lượng hay rắc rối về nguồn lực.</li>
+<li><strong>Phân tích giá trị thu được (Earned Value Analysis - EVA).</strong> Mô tả ở Phần 7.4.2.2. Phương sai (variances) của tiến độ và phương sai chi phí cộng với chỉ số (indexes) đo hiệu suất tiến độ/chi phí sẽ được tính toán nhằm quyết định mức độ (degree) sai lệch (variance) khỏi cột mốc mục tiêu.</li>
+<li><strong>Phân tích xu hướng (Trend Analysis).</strong> Mô tả trong Phần 4.5.2.2. Việc phân tích xu hướng có thể hình thành/phát triển được (develop) ước tính khi hoàn thành (estimate at completion - EAC) mang tính chất dự báo cho thành tích chi phí (cost performance) nhằm nhận ra xem thành tích (hiệu suất) đó đang có tiến triển tốt lên (improving) hay đang xấu đi (deteriorating). Xem phần 7.4.2.2 để biết thêm các chi tiết bổ sung về cách dùng các phương thức thuộc EAC.</li>
+</ul>
+
+<h5>12.3.2.4 KIỂM TRA (INSPECTION)</h5>
+<p>Một đợt kiểm tra (inspection) là một bài đánh giá được cấu trúc trật tự (structured review) đối với các công việc đang được nhà thầu thực hiện. Điều này có thể liên đới tới một hoạt động kiểm tra sản phẩm bàn giao (review of the deliverables) khá là đơn giản hoặc thậm chí là tiến hành bước kiểm tra mặt vật lý (physical review) đối với bản thân chính công việc đó trên thực tế. Ở trên một dự án xây dựng/hạ tầng/kỹ thuật, việc kiểm tra sẽ liên đới (involve) tới những việc đi rà soát (walkthroughs) toàn bộ khu vực thực địa/công trường (site) bởi cả phía đại diện người mua (buyer) lẫn đại diện nhà thầu (contractor) nhằm đảm bảo duy trì một sự hiểu biết qua lại chung nhất (mutual understanding) của hai bên về các công việc đang nằm ở trong quá trình tiến hành (in progress).</p>
+
+<h5>12.3.2.5 KIỂM TOÁN (AUDITS)</h5>
+<p>Kiểm toán (Audits) đã được mô tả ở trong Phần 8.2.2.5. Kiểm toán là một cuộc rà soát (review) có hệ thống, cấu trúc rõ ràng đối với bản thân quy trình mua sắm. Các quyền (rights) và những nghĩa vụ (obligations) có sự liên đới tới các buổi kiểm toán này cần nên được mô tả thẳng vào bên trong bản hợp đồng mua sắm (procurement contract). Nếu có bất kỳ những sự quan sát kiểm toán (audit observations) mang tính hệ quả nào (resulting) bị phát hiện ra, chúng nên ngay lập tức được thông báo cho sự chú ý (brought to the attention) của cả giám đốc dự án đại diện cho phía người mua lẫn người đồng cấp ở đại diện phía bên người bán (seller's project manager) với mục đích để hai bên đưa ra các quyết định điều chỉnh/chỉnh sửa (adjustments) lên trên dự án, vào khi cần thiết nhất.</p>
+
+<h4>12.3.3 KIỂM SOÁT MUA SẮM: ĐẦU RA (OUTPUTS)</h4>
+
+<h5>12.3.3.1 ĐÓNG CÁC KHOẢN MUA SẮM (CLOSED PROCUREMENTS)</h5>
+<p>Người mua, thường là sẽ qua quản trị viên có quyền hạn đối với việc mua sắm của nó (authorized procurement administrator), sẽ phát ra thông báo (written notice) cung cấp tới người bán, đây phải là dạng văn bản một cách trang trọng, qua đó cho biết phía người bán là thỏa thuận hợp đồng nay đã được kết thúc (completed). Những tiêu chuẩn/yêu cầu (requirements) cho công việc đóng hợp đồng mua sắm một cách chính thức (formal) này nói chung đều đã được thiết lập rõ ràng/định nghĩa ở trong các điều khoản và điều kiện chung (terms and conditions) của hợp đồng và tất nhiên là được nhúng (included) sẵn ở trong bản kế hoạch (plan) quản lý mua sắm. Thông thường, tất cả các thành phần sản phẩm (deliverables) đáng lẽ nên được giao cho đầy đủ chuẩn chỉ đúng theo mốc thời gian quy định (on time) và tuân thủ đạt (meet) mọi yêu cầu tiêu chuẩn kỹ thuật (technical) và mức chất lượng (quality), đồng thời cũng không nên để vướng lại tồn đọng bất kỳ dạng đòi hỏi, yêu cầu (outstanding claims) hoặc hóa đơn, biên nhận nào, và cũng có nghĩa là mọi khoản chuyển khoản thanh toán hoàn thiện (final payments) cuối cùng đều nên đã được xử lý (made) cho đàng hoàng. Theo lệ, nhóm quản lý điều hành dự án lẽ ra nên đã duyệt (approved) xong tất tần tật toàn bộ các hạng mục chuyển giao (deliverables) này trước cả khâu chốt/đóng (closure) hồ sơ dự án này.</p>
+
+<h5>12.3.3.2 THÔNG TIN HIỆU SUẤT CÔNG VIỆC (WORK PERFORMANCE INFORMATION)</h5>
+<p>Mô tả trong Phần 4.5.1.3. Thông tin hiệu suất làm việc bao hàm bên trong đó phần tin tức dữ kiện để xác định xem rốt cục hiện tại thì người bán đang làm ăn hiệu quả (performing) ra làm sao bằng cách so sánh (comparing) giữa khối lượng những sản phẩm mà phía đó phân phối/bàn giao lại được cho người mua được mang ra so chiếu với những mục tiêu hiệu suất kỹ thuật (technical performance) đã đạt, kể cả là rà lại luôn các khoản chi đã phát sinh/tốn kém (costs incurred) có được người mua nghiệm thu (accepted) hay không rồi sau đó ướm đọ đối chiếu vào với cái mốc ngân sách chốt chặn được liệt ở trên bảng tuyên bố dự toán SOW đối với phần công sức họ đã đổ vào tiến hành (work performed).</p>
+
+<h5>12.3.3.3 CẬP NHẬT TÀI LIỆU MUA SẮM (PROCUREMENT DOCUMENTATION UPDATES)</h5>
+<p>Tài liệu liên quan của hoạt động mua sắm có thể bị được phép/tiến hành mang đi cập nhật, bản thân chúng bao hàm bên trong có cả văn bản hợp đồng với thảy toàn bộ các hạng mục lịch trình đính kèm/nằm hỗ trợ (supporting schedules), các đòi hỏi (requested) thay đổi hợp đồng nhưng (hiện tại) chưa được bên nào duyệt (unapproved contract changes), cùng cả rổ các bản yêu cầu thay đổi (change requests) vốn đã được xác nhận đóng mộc/được duyệt. Các tài liệu mua sắm cũng chứa bao hàm ở trỏng cả thảy bất kể dạng tài liệu hồ sơ thông số/hỗ trợ kỹ thuật nào đó được xây dựng hoặc nảy sinh do chính người bán (seller-developed) và thêm nữa là muôn dạng tin tức/tài liệu ghi nhận (information) tính hiệu suất hiệu năng (work performance) ví như là các cấu kiện bản lề/thứ bàn giao (deliverables), các báo cáo thống kê tình trạng hiệu suất ghi công cho phía người bán (seller performance reports), và thêm vào những lời văn tự cam đoan/bảo hành/bảo lãnh (warranties), những nhóm văn kiện giấy tờ mang tính tài chính chứng từ (financial documents) hiển nhiên phải trói buộc vô chung với hóa đơn chứng từ giao dịch (invoices) lẫn hồ sơ bằng chứng có thanh toán (payment records), lại gộp thêm kết quả của những lần đi xét rà/kiểm tra chéo rắc rối nào đó có dính líu (contract-related inspections) về mặt hợp đồng với nhau.</p>
+
+<h5>12.3.3.4 YÊU CẦU THAY ĐỔI (CHANGE REQUESTS)</h5>
+<p>Mô tả trong Phần 4.3.3.4. Các yêu cầu thay đổi (Change requests) đối với (nhắm thẳng tới) bản kế hoạch quản lý tổng cho dự án (project management plan), thêm nữa là các phần dự kiến kế hoạch dạng nhánh con đính phụ theo sau (subsidiary plans), cùng một mớ những nhân tố cấu thành (components) có liên hệ vướng víu khác nữa cho lấy ví dụ như đường cơ sở đối chuẩn chi phí (cost baseline), hoặc bản nền gốc về mốc tiến độ định ra ban đầu (schedule baseline), thêm nữa lại có bản kế hoạch quản lý mua sắm (procurement management plan) nữa, đa phần thảy các thứ nêu trên đều rất có khả năng (may) được sản sinh ra theo dưới dạng những kết quả trả về từ cái quá trình mang tên là Kiểm soát Mua sắm (Control Procurements) này đây. Kế tiếp đó thì, những lời đề nghị xin phép được sửa, được đổi (change requests) kiểu vậy sẽ lần lượt được đùn đẩy mang lên nhét qua cái dây chuyền để lôi ra xét duyệt, ngắm nghía (review), cũng như sau đó phải chịu định đoạt xử lý (disposition) bằng cách sử dụng luôn qua cái khâu công tác gọi là Thực hiện Kiểm soát Thay đổi Tích hợp (Perform Integrated Change Control) ở (Phần 4.6).</p>
+
+<p>Các lời yêu cầu xin sửa/đổi (requested changes) đã trình nhưng tạm chưa thể được gỡ nút/chưa thông qua giải quyết dứt điểm (unresolved changes) đôi khi lại có thể mang hàm ý (include) theo một kiểu dạng định hướng (direction) mà bên người mua gián tiếp đưa ra (provided by the buyer) hoặc từ bên người bán cũng vậy (actions taken by the seller) vốn sẽ có tình trạng bị đối phương/nửa kia còn lại (the other party) nhìn nhận, coi chừng nó (considers) tựa một lời đề xuất sửa/thay hợp đồng (constructive change) kiểu giấu mặt. Thường thì bởi chính vì (Since) hầu như dạng kiểu sửa đổi, thêm thắt nào trong hàng tá mấy lời đổi trác kia cũng rành rành rất hay dính cảnh sẽ bị dấy lên những lấn cấn (disputed) bất đồng từ bên phe (one party) nào đó rốt cục rồi thì mọi thứ sẽ kéo nhau thành cớ để vác đơn kiện/khiếu nại (claim) nhắm sang cái phe bên đối nghịch với mình (other party) thế nên buộc người ta phải đưa hết chúng nó (such changes) vô danh sách những thứ đáng mặt lưu tâm cá biệt rạch ròi, bóc trần độc nhất (uniquely identified) đồng thời buộc (documented) cho lập cả biên bản ghi sổ với lý do trao đổi đôi co/phản biện giao tiếp đôi bên lại (project correspondence).</p>
+
+<h5>12.3.3.5 CẬP NHẬT KẾ HOẠCH QUẢN LÝ DỰ ÁN (PROJECT MANAGEMENT PLAN UPDATES)</h5>
+<p>Bất kỳ thay đổi nào đối với kế hoạch quản lý dự án đều phải đi qua quy trình kiểm soát thay đổi của tổ chức thông qua một yêu cầu thay đổi (change request). Các thành phần có thể yêu cầu một yêu cầu thay đổi đối với kế hoạch quản lý dự án bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Kế hoạch quản lý rủi ro (Risk management plan).</strong> Mô tả ở Phần 11.1.3.1. Mỗi thỏa thuận (agreement) và người bán đều có tập hợp rủi ro riêng của họ mà có thể yêu cầu cập nhật đối với kế hoạch quản lý rủi ro. Nếu có các rủi ro đáng kể, bất ngờ xảy ra trong quá trình thực hiện hợp đồng, kế hoạch quản lý rủi ro có thể cần được cập nhật. Các rủi ro cụ thể được đưa vào trong sổ đăng ký rủi ro.</li>
+<li><strong>Kế hoạch quản lý mua sắm (Procurement management plan).</strong> Mô tả ở Phần 12.1.3.1. Kế hoạch quản lý mua sắm chứa đựng những hoạt động sẽ được đảm nhiệm/thực hiện trong quy trình mua sắm. Các bản cập nhật có thể được yêu cầu tùy thuộc vào kết quả hiệu suất của những người bán trong quá trình thực hiện công việc.</li>
+<li><strong>Đường cơ sở tiến độ (Schedule baseline).</strong> Mô tả ở Phần 6.5.3.1. Nếu có những thay đổi đáng kể về tiến độ gây ra bởi các người bán (sellers) mà làm ảnh hưởng/tác động (impact) đến hiệu suất tiến độ dự án tổng thể (overall project schedule performance), đường cơ sở tiến độ có thể cần phải được cập nhật và phê duyệt để phản ánh những kỳ vọng (expectations) ở thời điểm hiện tại. Người mua cần phải nhận thức được bất kỳ những tác động dây chuyền (cascading impacts) nào của sự chậm trễ (delays) tiến độ do một người bán tạo ra mà nó lại đi tác động sang/ảnh hưởng tới các người bán khác.</li>
+<li><strong>Đường cơ sở chi phí (Cost baseline).</strong> Mô tả ở Phần 7.3.3.1. Chi phí nhà thầu (Contractor) và vật liệu có thể thay đổi thường xuyên (frequently) trong thời gian cung cấp của một dự án. Các sự thay đổi này có thể xảy ra vì sự biến động/dao động (fluctuating) của giá cả nhân công cũng như nguyên vật liệu được gây ra bởi môi trường kinh tế tác động từ phía bên ngoài và nó cần thiết phải được tích hợp/gộp (incorporated) vào bên trong hệ thống đường cơ sở về chi phí.</li>
+</ul>
+
+<h5>12.3.3.6 CẬP NHẬT TÀI LIỆU DỰ ÁN (PROJECT DOCUMENTS UPDATES)</h5>
+<p>Tài liệu dự án có thể được cập nhật như một kết quả của quá trình này bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Sổ đăng ký bài học kinh nghiệm (Lessons learned register).</strong> Mô tả ở Phần 4.4.3.1. Sổ đăng ký bài học kinh nghiệm có thể được cập nhật cùng với các kỹ thuật (techniques) đã đem lại hiệu quả để giúp duy trì/bảo vệ được cả phần phạm vi (scope), khâu tiến độ thời gian (schedule), cho tới chốt chặn chi phí đối với mấy cái mặt hàng/sản phẩm đang đặt mua. Ở bất kỳ chỗ nào xảy ra sự chênh lệch/độ vênh (variances), sổ đăng ký rốt cục cũng nên chỉ điểm ra những giải pháp và thao tác làm động tác khắc phục uốn nắn (corrective actions) vốn dĩ đã được tung ra dùng hòng chữa cháy ứng phó với đám phương sai vạch lá tìm sâu nọ cộng thêm xem thử rốt cuộc tính hiệu quả thực tế (how effective) đám phương án gỡ lỗi đó đáng giá thế nào (those actions were). Ví bằng trong trường hợp vướng có bất cứ thể loại rắc rối kiện cáo đòi hỏi nào (any claims), thông tin nên được dập làm giấy trắng mực đen (documented) hòng mà né bớt/phòng tránh không để đám sự cố như trên lộn nhào quay về phát nổ tiếp thêm tập nữa (avoid recurrences). Mọi dạng thông tin mở rộng mang tính chất bổ sung thêm (Additional information) hướng cho con người ta đường nét giải quyết câu chuyện làm thế quái nào (how) nâng chất/nâng cấp (improve) thêm được dây chuyền quy trình mua bán này nay cũng có thể được phép lôi ra ấn vào bộ bản ghi này tuốt (also be recorded).</li>
+<li><strong>Yêu cầu nguồn lực (Resource requirements).</strong> Mô tả ở Phần 9.2.3.1. Khi công việc đang được xúc tiến bởi các nhà thầu, có thể có những sự thay đổi đối với các yêu cầu nguồn lực phát sinh từ việc công việc được thực hiện nhưng lại không đúng với (not in accordance with) bản tiến độ công việc đã định/lập kế hoạch (planned work schedule).</li>
+<li><strong>Ma trận truy xuất yêu cầu (Requirements traceability matrix).</strong> Mô tả ở Phần 5.2.3.2. Ma trận truy xuất yêu cầu được cập nhật bằng thông tin về các yêu cầu đã được thỏa mãn (satisfied).</li>
+<li><strong>Sổ đăng ký rủi ro (Risk register).</strong> Mô tả ở Phần 11.2.3.1. Mỗi người bán đã được phê duyệt đều mang đến một tập hợp rủi ro duy nhất của riêng họ, phụ thuộc vào tổ chức của người bán, thời hạn hợp đồng, môi trường bên ngoài, phương pháp phân phối dự án, loại phương tiện hợp đồng được chọn, và mức giá thống nhất cuối cùng. Những sự thay đổi sẽ được thực hiện vào sổ đăng ký rủi ro trong suốt quá trình thực hiện dự án, khi mà những rủi ro giai đoạn đầu có thể không còn phù hợp (applicable) nữa và những rủi ro mới lại xuất hiện (occur).</li>
+<li><strong>Sổ đăng ký các bên liên quan (Stakeholder register).</strong> Mô tả ở Phần 13.1.3.1. Khi công việc tiến triển/tiến trình (progresses) thông qua giai đoạn triển khai (execution phase), các nhà thầu và các đơn vị cung cấp (suppliers) có thể thay đổi. Những sự thay đổi này cần phải được phản ánh (reflected) vào sổ đăng ký các bên liên quan.</li>
+</ul>
+
+<h5>12.3.3.7 CẬP NHẬT TÀI SẢN QUY TRÌNH TỔ CHỨC (ORGANIZATIONAL PROCESS ASSETS UPDATES)</h5>
+<p>Các tài sản quy trình tổ chức có thể được cập nhật như kết quả của quy trình Kiểm soát Mua sắm bao gồm nhưng không giới hạn ở:</p>
+<ul class="pmbok">
+<li><strong>Lịch trình thanh toán và yêu cầu (Payment schedules and requests).</strong> Tất cả các khoản thanh toán nên được thực hiện theo đúng các điều khoản và điều kiện của hợp đồng mua sắm.</li>
+<li><strong>Tài liệu đánh giá hiệu suất của người bán (Seller performance evaluation documentation).</strong> Tài liệu đánh giá hiệu suất của người bán được phía người mua lập/chuẩn bị và lập văn bản về khả năng của người bán để có thể tiếp tục thực hiện công việc trên bản hợp đồng hiện tại, chỉ ra liệu người bán đó có thể được cho phép làm việc ở những dự án tương lai (future projects) hay không, hoặc chấm điểm/đánh giá (rates) người bán đang thực hiện công việc của dự án tốt đến mức độ nào hoặc là họ đã có hiệu suất (performed) như thế nào trong quá khứ.</li>
+<li><strong>Cập nhật danh sách các người bán đã qua vòng sơ tuyển (Prequalified seller lists updates).</strong> Danh sách các người bán đã qua sơ tuyển là danh sách các nhà cung cấp/người bán tiềm năng đã từng được thẩm định trước (qualified) hay được duyệt (approved). Những bản danh sách này sẽ được cập nhật dựa trên kết quả của quy trình Kiểm soát Mua sắm (Procurement Control process outcomes) bởi vì các người bán có thể sẽ bị tước/đánh trượt quyền lợi tư cách (disqualified) và bị đá văng/gạch tên ra khỏi (removed) những cuốn sổ list như thế dựa trên cái tội thành tích yếu kém (poor performance).</li>
+<li><strong>Kho lưu trữ bài học kinh nghiệm (Lessons learned repository).</strong> Bài học kinh nghiệm nên được lưu trữ vào kho lưu trữ bài học kinh nghiệm (lessons learned repository) để có thể củng cố/nâng tầm (improve) các khâu đi mua hàng sắm đồ dùng cho các siêu công trình/các dự án sẽ nảy ra kế theo trong thì tương lai. Tại thời điểm khép lại một bản giao kèo/hợp đồng (end of a contract), thành tích thật sự (actual results) đạt được của một lượt ký giấy đánh hàng như thế này rồi sẽ bị mang lên bàn cân soi đọ đong đếm đem đo (compared) chung với những thành tích theo mốc mường tượng ban đầu chốt cứng ở dự kiến bản lề từ đầu (projected results) lấy ngay theo trong bản gốc kế hoạch (original procurement management plan). Một vài mớ kinh nghiệm rút máu như thế này thông thường sẽ khai nhận/viết làm rõ ra rằng liệu rằng mấy thứ thành tích công danh/mục tiêu nhắm cho cái dự án đó hồi trước đã thực sự gặt được về tay rồi hay chưa (achieved) và đi cùng với đó (if not), nếu như quả tình trật lất xôi hỏng bỏng không, nó sẽ giãi bày cung cấp các cớ nguyên/lý do làm giải thích về sao lại chẳng thể đạt/vớ lấy/thực hiện nên chuyện (reasons they were not).</li>
+<li><strong>Hồ sơ mua sắm (Procurement file).</strong> Một bộ tài liệu hợp đồng hoàn chỉnh có đánh chỉ mục (indexed), bao gồm cả hợp đồng đã kết thúc (closed contract), sẽ được chuẩn bị để đưa vào cùng chung với bộ hồ sơ cuối cùng của dự án (final project files).</li>
+</ul>
+
+</main>
+</body>
+</html>
