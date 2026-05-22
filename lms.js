@@ -148,6 +148,10 @@ const ProgressTracker = {
     const headings = Array.from(frame.contentDocument.querySelectorAll('h2, h3'));
 
     const sectionIds = headings.map((h, i) => h.id || `s${i}`);
+    // Save section count so Analytics can compute correct denominator
+    const counts = cacheGet('pmbok_lms_counts');
+    counts[chapterId] = sectionIds.length;
+    cacheSet('pmbok_lms_counts', counts);
     const stats = this.getStats(chapterId, sectionIds);
 
     panel.innerHTML = `
@@ -341,14 +345,17 @@ const Analytics = {
     let totalLearned  = 0;
     const byChapter   = [];
 
+    const sectionCounts = cacheGet('pmbok_lms_counts');
+
     chapterIds.forEach(id => {
       const sections = progressCache[id] || {};
       const learnedIds = Object.keys(sections).filter(sid => sections[sid]);
-      const total = Object.keys(sections).length;
+      const learned = learnedIds.length;
+      const total = sectionCounts[id] || 0;
       totalSections += total;
-      totalLearned  += learnedIds.length;
+      totalLearned  += learned;
       if (total > 0) {
-        byChapter.push({ id, learned: learnedIds.length, total, pct: Math.round(learnedIds.length / total * 100) });
+        byChapter.push({ id, learned, total, pct: Math.round(learned / total * 100) });
       }
     });
 
@@ -372,7 +379,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const atlasSkip  = document.getElementById('atlas-skip');
 
   if (atlasModal) {
-    if (!Atlas.isConfigured()) {
+    if (!Atlas.isConfigured() && !localStorage.getItem('pmbok_lms_skip_atlas')) {
       atlasModal.hidden = false;
     }
 
@@ -398,6 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (atlasSkip) {
       atlasSkip.addEventListener('click', () => {
+        localStorage.setItem('pmbok_lms_skip_atlas', '1');
         atlasModal.hidden = true;
       });
     }

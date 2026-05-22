@@ -28,7 +28,7 @@ jobs:
         run: |
           mkdir _site
           cp index.html dashboard.html lms.css lms.js style.css app.js _site/
-          cp -r chapters _site/
+          if [ -d chapters ]; then cp -r chapters _site/; fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

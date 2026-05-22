@@ -129,3 +129,7 @@
   #lms-review-badge, #lms-review-panel { right: 200px; }
   #lms-dashboard-btn { left: 10px; }
 }
+
+/* ── ATLAS MODAL ── */
+#atlas-modal { display: none; }
+#atlas-modal:not([hidden]) { display: flex; }
