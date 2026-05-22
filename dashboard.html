@@ -27,12 +27,7 @@
     .ch-bar-fill { height: 100%; background: linear-gradient(90deg, #c9a84c, #1a2744); border-radius: 6px; }
     .ch-pct { width: 42px; text-align: right; font-weight: 600; color: #1a2744; font-size: 12px; }
 
-    .review-section { margin-top: 30px; padding: 20px; background: white; border-radius: 8px; border: 1px solid #d4c89a; }
-    .review-section h3 { margin: 0 0 10px; color: #1a2744; }
-    .review-summary { display: flex; gap: 30px; font-size: 14px; }
-    .review-summary .big { font-size: 2rem; font-weight: 700; color: #c9a84c; }
-
-    #lms-progress-panel, #lms-review-badge, #lms-dashboard-btn { display: none !important; }
+#lms-progress-panel, #lms-review-badge, #lms-dashboard-btn { display: none !important; }
   </style>
 </head>
 <body>
@@ -53,13 +48,7 @@
     <div id="d-chapters"></div>
   </div>
 
-  <div class="review-section">
-    <h3>🔄 Ôn tập hôm nay</h3>
-    <div class="review-summary">
-      <div><div class="big" id="d-due2">0</div><div>mục cần ôn hôm nay</div></div>
-      <div><div class="big" id="d-scheduled2">0</div><div>mục đang được theo dõi</div></div>
-    </div>
-  </div>
+
 </div>
 
 <script src="lms.js"></script>
@@ -88,9 +77,7 @@
   document.getElementById('d-pct').textContent = stats.completionPct + '%';
   document.getElementById('d-learned').textContent = stats.totalLearned;
   document.getElementById('d-due').textContent = stats.dueToday;
-  document.getElementById('d-due2').textContent = stats.dueToday;
   document.getElementById('d-scheduled').textContent = stats.totalScheduled;
-  document.getElementById('d-scheduled2').textContent = stats.totalScheduled;
 
   const chEl = document.getElementById('d-chapters');
   if (stats.byChapter.length === 0) {
@@ -98,7 +85,7 @@
   } else {
     chEl.innerHTML = stats.byChapter.map(ch => `
       <div class="ch-row">
-        <div class="ch-name">${chapterNames[ch.id] || ch.id}</div>
+        <div class="ch-name">${escHtml(chapterNames[ch.id] || ch.id)}</div>
         <div class="ch-bar-wrap"><div class="ch-bar-fill" style="width:${ch.pct}%"></div></div>
         <div class="ch-pct">${ch.pct}%</div>
       </div>
