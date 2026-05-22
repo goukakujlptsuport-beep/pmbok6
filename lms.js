@@ -1,7 +1,8 @@
 /* PMBOK LMS — MongoDB Atlas Data API client + learning logic */
 
-const LMS_CONFIG_KEY = 'pmbok_lms_config';
-const LMS_CACHE_KEY  = 'pmbok_lms_cache';
+const LMS_CONFIG_KEY  = 'pmbok_lms_config';
+const LMS_CACHE_KEY   = 'pmbok_lms_cache';
+const REVIEW_CACHE_KEY = 'pmbok_lms_reviews';
 
 // ── ATLAS CLIENT ──
 const Atlas = {
@@ -178,3 +179,146 @@ const ProgressTracker = {
     }, { once: true });
   },
 };
+
+// ── REVIEW SYSTEM (SM-2) ──
+
+const ReviewSystem = {
+  _cache: null,
+
+  _load() {
+    if (!this._cache) this._cache = cacheGet(REVIEW_CACHE_KEY);
+    return this._cache;
+  },
+
+  _save() {
+    cacheSet(REVIEW_CACHE_KEY, this._cache);
+  },
+
+  _key(chapterId, sectionId) {
+    return `${chapterId}::${sectionId}`;
+  },
+
+  async scheduleReview(chapterId, sectionId) {
+    const cache = this._load();
+    const key = this._key(chapterId, sectionId);
+    if (!cache[key]) {
+      const nextReview = new Date();
+      nextReview.setDate(nextReview.getDate() + 1);
+      cache[key] = {
+        chapterId,
+        sectionId,
+        nextReview: nextReview.toISOString(),
+        interval: 1,
+        reviewCount: 0,
+      };
+      this._save();
+    }
+
+    if (Atlas.isConfigured()) {
+      Atlas.upsert('review_schedule',
+        { userId: ProgressTracker._userId(), chapterId, sectionId },
+        { ...cache[key], userId: ProgressTracker._userId() }
+      ).catch(err => console.warn('Atlas review sync failed:', err));
+    }
+
+    this.updateBadge();
+  },
+
+  async markReviewed(chapterId, sectionId, difficulty) {
+    const cache = this._load();
+    const key = this._key(chapterId, sectionId);
+    const item = cache[key];
+    if (!item) return;
+
+    const intervals = { easy: [7, 14, 30, 60], ok: [3, 7, 14, 30], hard: [1, 1, 3, 7] };
+    const idx = Math.min(item.reviewCount, 3);
+    const days = intervals[difficulty][idx];
+
+    const nextReview = new Date();
+    nextReview.setDate(nextReview.getDate() + days);
+
+    cache[key] = {
+      ...item,
+      nextReview: nextReview.toISOString(),
+      interval: days,
+      reviewCount: item.reviewCount + 1,
+      lastDifficulty: difficulty,
+    };
+    this._save();
+
+    if (Atlas.isConfigured()) {
+      Atlas.upsert('review_schedule',
+        { userId: ProgressTracker._userId(), chapterId, sectionId },
+        { ...cache[key], userId: ProgressTracker._userId() }
+      ).catch(err => console.warn('Atlas review sync failed:', err));
+    }
+
+    this.renderPanel();
+    this.updateBadge();
+  },
+
+  getDueToday() {
+    const cache = this._load();
+    const now = new Date();
+    return Object.values(cache).filter(item => new Date(item.nextReview) <= now);
+  },
+
+  updateBadge() {
+    const due = this.getDueToday();
+    const badge = document.getElementById('lms-review-badge');
+    const countEl = document.getElementById('lms-review-count');
+    if (!badge) return;
+    if (due.length > 0) {
+      badge.style.display = 'block';
+      if (countEl) countEl.textContent = due.length;
+    } else {
+      badge.style.display = 'none';
+    }
+  },
+
+  togglePanel() {
+    const panel = document.getElementById('lms-review-panel');
+    if (!panel) return;
+    const isVisible = panel.style.display === 'block';
+    if (!isVisible) this.renderPanel();
+    panel.style.display = isVisible ? 'none' : 'block';
+  },
+
+  renderPanel() {
+    const list = document.getElementById('lms-review-list');
+    if (!list) return;
+    const due = this.getDueToday();
+
+    if (due.length === 0) {
+      list.innerHTML = '<p style="color:#5a9e5a;text-align:center">✓ Không có phần nào cần ôn tập hôm nay!</p>';
+      return;
+    }
+
+    list.innerHTML = due.map(item => {
+      const frame = document.getElementById('chapter-frame');
+      let title = `${item.chapterId} — ${item.sectionId}`;
+      if (frame && frame.contentDocument) {
+        const el = frame.contentDocument.getElementById(item.sectionId);
+        if (el) title = el.textContent.trim().slice(0, 60);
+      }
+      return `
+        <div class="lms-review-item">
+          <div class="lms-review-item-title">${escHtml(title)}</div>
+          <div class="lms-review-btns">
+            <button class="easy"  onclick="ReviewSystem.markReviewed('${escHtml(item.chapterId)}','${escHtml(item.sectionId)}','easy')">Dễ (7d)</button>
+            <button class="ok"    onclick="ReviewSystem.markReviewed('${escHtml(item.chapterId)}','${escHtml(item.sectionId)}','ok')">OK (3d)</button>
+            <button class="hard"  onclick="ReviewSystem.markReviewed('${escHtml(item.chapterId)}','${escHtml(item.sectionId)}','hard')">Khó (1d)</button>
+          </div>
+        </div>`;
+    }).join('');
+  },
+
+  init() {
+    this.updateBadge();
+  },
+};
+
+// ── BOOT ──
+document.addEventListener('DOMContentLoaded', () => {
+  ReviewSystem.init();
+});
