@@ -30,10 +30,7 @@ jobs:
           touch _site/.nojekyll
           cp index.html dashboard.html lms.css lms.js style.css app.js _site/
           if [ -d audio ]; then cp -r audio _site/; fi
-          if [ -d .claude/books ]; then
-            mkdir -p _site/books
-            cp -r .claude/books/pmbok6 _site/books/
-          fi
+          if [ -d books ]; then cp -r books _site/; fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
