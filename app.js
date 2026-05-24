@@ -654,10 +654,6 @@ function loadChapter(id) {
 
   // Set src AFTER onload handler is assigned
   frame.src = `books/pmbok6/${id}.html`;
-  // LMS: init progress panel for this chapter
-  if (typeof ProgressTracker !== 'undefined') {
-    ProgressTracker.initPanel(id);
-  }
 }
 
 // ── MESSAGES FROM IFRAME ──
