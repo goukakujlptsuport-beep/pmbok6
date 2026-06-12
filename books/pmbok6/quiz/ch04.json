@@ -1,0 +1,247 @@
+{
+  "chapterId": "04_integration_management",
+  "chapterNum": 4,
+  "chapterTitle": "Quản Lý Tích Hợp Dự Án",
+  "questions": [
+    {
+      "id": "ch04_q01",
+      "q": "Bạn vừa được bổ nhiệm làm PM cho một dự án xây dựng hệ thống ERP mới. Sponsor yêu cầu bạn bắt đầu ngay lập tức, nhưng bạn nhận thấy chưa có tài liệu nào chính thức ủy quyền cho dự án. Nhà tài trợ lập luận rằng mọi người đều đã đồng ý về dự án trong cuộc họp tháng trước. Bạn nên làm gì trước tiên?",
+      "opts": {
+        "A": "Bắt đầu lập Project Management Plan ngay vì sponsor đã cho phép bằng lời nói",
+        "B": "Yêu cầu tạo Project Charter chính thức trước khi bắt đầu bất kỳ công việc nào",
+        "C": "Bắt đầu thu thập requirements vì dự án đã được phê duyệt về mặt chiến lược",
+        "D": "Liên hệ PMO để xin waiver cho việc bỏ qua Project Charter"
+      },
+      "ans": "B",
+      "exp": "Project Charter là tài liệu chính thức ủy quyền cho dự án và trao quyền cho PM. Không có Charter, PM không có thẩm quyền chính thức để phân bổ nguồn lực hay đưa ra quyết định. Bắt đầu công việc mà không có Charter sẽ tạo ra rủi ro về phạm vi, ngân sách và trách nhiệm giải trình."
+    },
+    {
+      "id": "ch04_q02",
+      "q": "Trong quá trình Develop Project Charter, PM đang xem xét tài liệu mô tả sản phẩm, dịch vụ hoặc kết quả mà dự án cần tạo ra, bao gồm mô tả đặc điểm kỹ thuật và các yêu cầu chiến lược. Tài liệu này được gọi là gì và được cung cấp bởi ai?",
+      "opts": {
+        "A": "Business Case, được tạo ra bởi Project Manager",
+        "B": "Project Statement of Work (SOW), được cung cấp bởi khách hàng hoặc sponsor",
+        "C": "Project Management Plan, được tạo ra bởi PM và nhóm dự án",
+        "D": "Scope Statement, được phê duyệt bởi Change Control Board"
+      },
+      "ans": "B",
+      "exp": "Statement of Work (SOW) là mô tả bằng văn bản về sản phẩm, dịch vụ hoặc kết quả của dự án. Đây là một input quan trọng để Develop Project Charter và được cung cấp bởi khách hàng nội bộ (sponsor) hoặc khách hàng bên ngoài. SOW khác với Business Case ở chỗ Business Case giải thích lý do kinh doanh để thực hiện dự án."
+    },
+    {
+      "id": "ch04_q03",
+      "q": "Một tổ chức đang cân nhắc đầu tư 2 triệu USD vào dự án phát triển ứng dụng di động. Ban lãnh đạo cần đánh giá xem dự án có đáng để thực hiện không dựa trên phân tích chi phí-lợi ích, NPV và các rủi ro tài chính. Sponsor yêu cầu PM chuẩn bị tài liệu để hỗ trợ quyết định này. Tài liệu nào là phù hợp nhất?",
+      "opts": {
+        "A": "Project Charter, vì đây là tài liệu ủy quyền chính thức",
+        "B": "Risk Register, vì nó liệt kê tất cả các rủi ro tài chính",
+        "C": "Business Case, vì nó phân tích sự khả thi và lý do kinh doanh để thực hiện dự án",
+        "D": "Project Management Plan, vì nó mô tả cách dự án sẽ được thực hiện"
+      },
+      "ans": "C",
+      "exp": "Business Case là tài liệu đánh giá sự khả thi kinh tế của dự án, bao gồm phân tích chi phí-lợi ích, NPV, ROI và các yếu tố kinh doanh khác. Đây là input chính để phát triển Project Charter. Business Case giúp các decision-maker quyết định có nên đầu tư vào dự án hay không."
+    },
+    {
+      "id": "ch04_q04",
+      "q": "PM đang xây dựng Project Management Plan cho dự án xây dựng cầu. Trong quá trình này, PM nhận ra cần xác định rõ cách thức quản lý các thay đổi về phạm vi, lịch trình và chi phí, cũng như quy trình phê duyệt thay đổi. Thông tin này nên được ghi lại ở đâu trong Project Management Plan?",
+      "opts": {
+        "A": "Trong Scope Baseline vì nó liên quan đến phạm vi dự án",
+        "B": "Trong Change Management Plan như một thành phần của Project Management Plan",
+        "C": "Trong Risk Management Plan vì thay đổi là một rủi ro",
+        "D": "Trong Communications Management Plan vì thay đổi cần được thông báo"
+      },
+      "ans": "B",
+      "exp": "Change Management Plan là một trong các subsidiary plans của Project Management Plan. Nó xác định cách các thay đổi sẽ được xác định, ghi lại, phê duyệt và kiểm soát trong suốt vòng đời dự án. Đây là thành phần thiết yếu để quản lý phạm vi, lịch trình và chi phí một cách nhất quán."
+    },
+    {
+      "id": "ch04_q05",
+      "q": "Nhóm dự án đang thực hiện giai đoạn phát triển phần mềm. PM nhận được báo cáo hàng ngày từ các thành viên nhóm về tiến độ công việc, số lượng defects tìm thấy, thời gian hoàn thành từng task và các vấn đề phát sinh. Đây là loại thông tin gì theo quy trình PMBOK?",
+      "opts": {
+        "A": "Work Performance Reports - báo cáo hiệu suất công việc đã được phân tích",
+        "B": "Work Performance Data - dữ liệu thô về trạng thái các hoạt động",
+        "C": "Work Performance Information - dữ liệu đã được phân tích trong bối cảnh",
+        "D": "Project Communications - thông tin liên lạc dự án thông thường"
+      },
+      "ans": "B",
+      "exp": "Work Performance Data là dữ liệu thô, chưa qua phân tích về trạng thái các deliverables và công việc đang thực hiện. Đây là output của process Direct and Manage Project Work. Sau khi được phân tích trong bối cảnh project plan, nó trở thành Work Performance Information (output của monitoring processes), và sau khi tổng hợp thành báo cáo thì gọi là Work Performance Reports."
+    },
+    {
+      "id": "ch04_q06",
+      "q": "Trong quá trình thực thi dự án, một kỹ sư phát hiện ra cách tối ưu hóa quy trình có thể tiết kiệm 3 tuần thời gian. Tuy nhiên, việc này sẽ thay đổi một số deliverables đã được phê duyệt. Kỹ sư muốn thực hiện ngay để tận dụng cơ hội. Với tư cách PM, bạn nên xử lý tình huống này như thế nào?",
+      "opts": {
+        "A": "Cho phép kỹ sư thực hiện ngay vì đây là thay đổi có lợi cho dự án",
+        "B": "Từ chối thay đổi vì dự án phải tuân thủ kế hoạch đã được phê duyệt",
+        "C": "Yêu cầu kỹ sư gửi Change Request chính thức và xử lý qua Perform Integrated Change Control",
+        "D": "Thảo luận với sponsor trước khi quyết định có nên thay đổi hay không"
+      },
+      "ans": "C",
+      "exp": "Mọi thay đổi đối với baselines đã được phê duyệt, dù có lợi hay không, đều phải đi qua quy trình Perform Integrated Change Control. PM phải yêu cầu Change Request chính thức, đánh giá tác động toàn diện đến phạm vi, lịch trình, chi phí và chất lượng, rồi trình lên CCB để phê duyệt. Việc tự ý thay đổi mà không qua quy trình sẽ tạo ra 'scope creep'."
+    },
+    {
+      "id": "ch04_q07",
+      "q": "PM đang giám sát dự án và nhận thấy CPI = 0.85 và SPI = 0.92. Sau khi phân tích nguyên nhân, PM chuẩn bị một tài liệu tóm tắt tình trạng dự án, dự báo hoàn thành và các khuyến nghị hành động để gửi cho các stakeholders. Tài liệu này là gì?",
+      "opts": {
+        "A": "Work Performance Data vì nó chứa các con số CPI và SPI",
+        "B": "Work Performance Information vì nó là kết quả phân tích",
+        "C": "Work Performance Reports vì nó là tài liệu tổng hợp để truyền thông với stakeholders",
+        "D": "Status Report vì đây là báo cáo tiến độ định kỳ"
+      },
+      "ans": "C",
+      "exp": "Work Performance Reports là output của process Monitor and Control Project Work. Đây là tài liệu tổng hợp, phân tích Work Performance Information và được sử dụng để truyền thông với stakeholders về tình trạng dự án, bao gồm trạng thái hiện tại, dự báo và các vấn đề cần quyết định. Chúng có thể ở dạng dashboard, báo cáo ngoại lệ hoặc báo cáo đầy đủ."
+    },
+    {
+      "id": "ch04_q08",
+      "q": "Trong cuộc họp với nhóm dự án, PM tổng kết những gì đã học được trong suốt dự án: quy trình nào hiệu quả, sai lầm nào đã mắc phải và cách cải thiện trong tương lai. Thông tin này được ghi lại và lưu trữ để các dự án tương lai tham khảo. Quy trình nào của PMBOK 6 trực tiếp tạo ra output này?",
+      "opts": {
+        "A": "Close Project or Phase - vì lessons learned được tạo ra khi đóng dự án",
+        "B": "Manage Project Knowledge - vì đây là quản lý kiến thức và tạo Lessons Learned Register",
+        "C": "Monitor and Control Project Work - vì đây là thông tin từ quá trình giám sát",
+        "D": "Direct and Manage Project Work - vì đây là kết quả từ việc thực thi công việc"
+      },
+      "ans": "B",
+      "exp": "Manage Project Knowledge là quy trình thuộc Integration Management trong PMBOK 6 (mới được thêm vào). Quy trình này sử dụng kiến thức hiện có và tạo ra kiến thức mới để đạt mục tiêu dự án và đóng góp cho học hỏi tổ chức. Output chính bao gồm Lessons Learned Register và cập nhật vào Project Management Plan. Close Project or Phase chỉ cập nhật OPA với lessons learned đã được tổng hợp."
+    },
+    {
+      "id": "ch04_q09",
+      "q": "Một stakeholder quan trọng yêu cầu thêm tính năng mới vào phần mềm sau khi WBS đã được phê duyệt. Tính năng này không có trong scope ban đầu nhưng stakeholder khẳng định nó quan trọng cho business. PM cần thực hiện các bước nào theo đúng quy trình?",
+      "opts": {
+        "A": "Từ chối yêu cầu vì WBS đã được phê duyệt và không thể thay đổi",
+        "B": "Thêm tính năng vào backlog để xem xét trong sprint tiếp theo",
+        "C": "Ghi lại yêu cầu, đánh giá tác động, tạo Change Request và trình lên CCB để quyết định",
+        "D": "Đàm phán với stakeholder để giảm bớt yêu cầu xuống mức có thể chấp nhận được"
+      },
+      "ans": "C",
+      "exp": "Theo quy trình Perform Integrated Change Control, PM phải: (1) ghi lại Change Request chính thức, (2) đánh giá tác động đến phạm vi, lịch trình, chi phí, chất lượng và rủi ro, (3) trình lên CCB để phê duyệt hoặc từ chối, (4) cập nhật Change Log. Việc tự ý thêm hoặc từ chối mà không qua CCB đều vi phạm quy trình quản lý thay đổi."
+    },
+    {
+      "id": "ch04_q10",
+      "q": "PM nhận thấy rằng nhiều thành viên nhóm đang làm việc với các phiên bản tài liệu kỹ thuật khác nhau, dẫn đến việc tích hợp sản phẩm bị lỗi. Một số người dùng version 2.1 trong khi người khác dùng version 3.0. Để ngăn chặn vấn đề này tái diễn, PM nên triển khai cái gì?",
+      "opts": {
+        "A": "Một hệ thống phân quyền để kiểm soát ai được phép chỉnh sửa tài liệu",
+        "B": "Configuration Management System để kiểm soát và theo dõi các phiên bản tài liệu và deliverables",
+        "C": "Một quy trình họp hàng tuần để đồng bộ thông tin giữa các thành viên",
+        "D": "Risk Register để ghi lại rủi ro của việc dùng sai phiên bản"
+      },
+      "ans": "B",
+      "exp": "Configuration Management System là một phần của Project Management Information System (PMIS) và được sử dụng trong Perform Integrated Change Control. Hệ thống này đảm bảo tất cả thành viên nhóm làm việc với đúng phiên bản của tài liệu và deliverables, kiểm soát các thay đổi về cấu hình sản phẩm và duy trì tính toàn vẹn của sản phẩm."
+    },
+    {
+      "id": "ch04_q11",
+      "q": "Dự án của bạn đang trong giai đoạn thực thi và một vendor thông báo họ không thể giao hàng đúng hạn do vấn đề chuỗi cung ứng. Điều này sẽ ảnh hưởng trực tiếp đến critical path và có thể trễ 6 tuần. PM cần làm gì ngay lập tức?",
+      "opts": {
+        "A": "Cập nhật lịch trình và thông báo cho tất cả stakeholders về việc dự án bị trễ",
+        "B": "Tạo Change Request, phân tích tác động toàn diện và trình lên CCB, đồng thời tìm giải pháp thay thế",
+        "C": "Yêu cầu vendor tìm nhà cung cấp thay thế ngay lập tức mà không cần phê duyệt",
+        "D": "Điều chỉnh phạm vi dự án để loại bỏ phần phụ thuộc vào vendor này"
+      },
+      "ans": "B",
+      "exp": "Khi xảy ra tình huống ảnh hưởng đến baselines, PM phải: đánh giá tác động đầy đủ (schedule, cost, scope, quality, risk), tạo Change Request chính thức nếu cần thay đổi baseline, và đồng thời tích cực tìm giải pháp thay thế (vendor khác, fast-tracking, crashing). Mọi thay đổi về baseline phải qua CCB. PM không được tự ý điều chỉnh lịch trình hoặc phạm vi mà không có phê duyệt."
+    },
+    {
+      "id": "ch04_q12",
+      "q": "Sau khi dự án hoàn thành và sản phẩm đã được bàn giao cho bộ phận vận hành, PM đang thực hiện quy trình đóng dự án. PM cần hoàn thành một số hành động chính. Hành động nào KHÔNG phải là một phần của quy trình Close Project or Phase?",
+      "opts": {
+        "A": "Cập nhật Organizational Process Assets với lessons learned và tài liệu dự án",
+        "B": "Nhận formal acceptance từ khách hàng hoặc sponsor về sản phẩm cuối cùng",
+        "C": "Tạo Change Request cuối cùng để đóng tất cả open issues",
+        "D": "Giải phóng nguồn lực và thông báo cho các bên liên quan về việc hoàn thành dự án"
+      },
+      "ans": "C",
+      "exp": "Quy trình Close Project or Phase bao gồm: xác nhận deliverables được chấp nhận, chuyển giao sản phẩm, cập nhật OPA (lessons learned, historical data), giải phóng nguồn lực và thông báo chính thức về việc đóng dự án. Việc tạo Change Request không phải là hoạt động của giai đoạn đóng dự án - thay đổi chỉ được thực hiện trong giai đoạn thực thi và giám sát."
+    },
+    {
+      "id": "ch04_q13",
+      "q": "PM đang thực hiện dự án phát triển phần mềm cho khách hàng bên ngoài. Sau khi hoàn thành giai đoạn 1, khách hàng thay đổi yêu cầu đáng kể cho giai đoạn 2. Khách hàng cho rằng những thay đổi này nằm trong phạm vi hợp đồng ban đầu. PM không đồng ý. Tài liệu nào sẽ là nền tảng quan trọng nhất để giải quyết tranh chấp này?",
+      "opts": {
+        "A": "Project Management Plan vì nó mô tả cách dự án được thực hiện",
+        "B": "Hợp đồng (Agreement/Contract) và Scope Statement đã được phê duyệt",
+        "C": "Change Log vì nó ghi lại tất cả các thay đổi đã được phê duyệt",
+        "D": "Risk Register vì đây là một rủi ro đã được xác định"
+      },
+      "ans": "B",
+      "exp": "Agreements (contracts) là input quan trọng trong Develop Project Charter và là cơ sở pháp lý của mối quan hệ với khách hàng bên ngoài. Cùng với Scope Baseline (Project Scope Statement, WBS, WBS Dictionary), đây là tài liệu nền tảng để xác định những gì đã được thỏa thuận. Trong tranh chấp về phạm vi với external customer, hợp đồng và tài liệu phạm vi là bằng chứng pháp lý quan trọng nhất."
+    },
+    {
+      "id": "ch04_q14",
+      "q": "Nhóm dự án đang sử dụng một phần mềm tích hợp cho phép theo dõi lịch trình, quản lý tài liệu, giao tiếp nhóm và báo cáo tiến độ trong một nền tảng duy nhất. Khi một thành viên cập nhật trạng thái task, hệ thống tự động cập nhật báo cáo tiến độ cho tất cả stakeholders. Đây là ví dụ về công cụ gì trong PMBOK?",
+      "opts": {
+        "A": "Expert Judgment - vì đây là hệ thống chuyên gia hỗ trợ PM",
+        "B": "Project Management Information System (PMIS) - hệ thống thông tin quản lý dự án",
+        "C": "Configuration Management System - hệ thống quản lý cấu hình",
+        "D": "Change Control System - hệ thống kiểm soát thay đổi"
+      },
+      "ans": "B",
+      "exp": "Project Management Information System (PMIS) là một công cụ kỹ thuật quan trọng trong nhiều quy trình Integration Management. PMIS là hệ thống tích hợp cung cấp truy cập vào các công cụ như scheduling software, work authorization systems, configuration management systems và thông tin thu thập và phân phối. Ví dụ bao gồm Microsoft Project, Primavera, Jira với các tích hợp đầy đủ."
+    },
+    {
+      "id": "ch04_q15",
+      "q": "PM vừa nhận được Change Request từ stakeholder yêu cầu tăng thêm ngân sách 15% và gia hạn lịch trình 4 tuần. Sponsor nói 'OK, hãy làm đi' qua email. PM có nên bắt đầu thực thi thay đổi ngay không? Tại sao?",
+      "opts": {
+        "A": "Có, email từ sponsor là đủ thẩm quyền để phê duyệt thay đổi",
+        "B": "Không, thay đổi phải được xử lý chính thức qua CCB và cập nhật vào baselines trước khi thực thi",
+        "C": "Không, PM phải chờ đến cuộc họp CCB tiếp theo dù mất bao lâu",
+        "D": "Có, nhưng PM phải cập nhật Risk Register trước khi thực thi thay đổi"
+      },
+      "ans": "B",
+      "exp": "Mặc dù sponsor có email phê duyệt, quy trình Perform Integrated Change Control yêu cầu thay đổi phải được xử lý chính thức: CCB phải đánh giá và phê duyệt, Change Log phải được cập nhật, và các baselines (scope, schedule, cost) phải được cập nhật theo đúng quy trình. Chỉ sau khi có Approved Change Requests chính thức mới thực thi thay đổi. Điều này đảm bảo tính toàn vẹn của project records."
+    },
+    {
+      "id": "ch04_q16",
+      "q": "Trong quá trình thực thi dự án, PM nhận thấy một senior developer rất giỏi về kiến trúc microservices nhưng không chia sẻ kiến thức này với nhóm. PM lo ngại rằng nếu developer này nghỉ việc, dự án sẽ gặp khó khăn nghiêm trọng. PM nên thực hiện biện pháp nào trong quy trình Manage Project Knowledge?",
+      "opts": {
+        "A": "Ghi nhận rủi ro này vào Risk Register và chuẩn bị contingency plan",
+        "B": "Tạo môi trường chia sẻ kiến thức: pair programming, knowledge transfer sessions, documentation requirements",
+        "C": "Yêu cầu HR ký hợp đồng ràng buộc developer không được nghỉ việc",
+        "D": "Thuê thêm một developer khác có cùng kỹ năng để giảm phụ thuộc"
+      },
+      "ans": "B",
+      "exp": "Manage Project Knowledge bao gồm cả explicit knowledge (có thể ghi lại) và tacit knowledge (kinh nghiệm, insight). Để quản lý tacit knowledge, PM cần tạo môi trường tin tưởng và khuyến khích chia sẻ: pair programming, knowledge transfer sessions, code reviews, documentation. Các công cụ và kỹ thuật bao gồm networking, communities of practice, meetings, và storytelling. Đây là trách nhiệm của PM trong Manage Project Knowledge."
+    },
+    {
+      "id": "ch04_q17",
+      "q": "Dự án đang trong giai đoạn giám sát. PM so sánh actual performance với project baselines và phát hiện có sự sai lệch đáng kể. PM cũng phân tích xu hướng, dự báo completion date và cost-at-completion, đồng thời đánh giá xem có cần escalate vấn đề không. Đây là quy trình gì?",
+      "opts": {
+        "A": "Perform Integrated Change Control - vì PM đang đánh giá thay đổi",
+        "B": "Monitor and Control Project Work - vì PM đang so sánh actual với baseline và dự báo",
+        "C": "Direct and Manage Project Work - vì PM đang quản lý công việc thực thi",
+        "D": "Manage Project Knowledge - vì PM đang phân tích thông tin dự án"
+      },
+      "ans": "B",
+      "exp": "Monitor and Control Project Work là quy trình theo dõi, xem xét và báo cáo tiến độ tổng thể của dự án. Các hoạt động bao gồm: so sánh actual performance với Project Management Plan, phân tích sai lệch, đánh giá performance trends, dự báo (forecasting), đánh giá rủi ro hiện tại và xem xét thông tin liên quan. Output chính là Work Performance Reports và Change Requests khi cần thiết."
+    },
+    {
+      "id": "ch04_q18",
+      "q": "Một dự án đã hoàn thành thành công và khách hàng đã ký biên bản nghiệm thu. Tuy nhiên, sponsor yêu cầu PM đóng dự án ngay mà không cần cập nhật lessons learned vì 'mọi người đều bận với dự án mới'. PM nên phản hồi như thế nào?",
+      "opts": {
+        "A": "Đồng ý với sponsor vì customer acceptance là đủ để đóng dự án",
+        "B": "Nhấn mạnh tầm quan trọng của việc cập nhật Lessons Learned và OPA trước khi đóng dự án chính thức",
+        "C": "Tự mình viết lessons learned mà không cần họp với nhóm để tiết kiệm thời gian",
+        "D": "Đóng dự án và hẹn sẽ cập nhật lessons learned sau khi nhóm rảnh hơn"
+      },
+      "ans": "B",
+      "exp": "Close Project or Phase yêu cầu cập nhật Organizational Process Assets (OPAs) bao gồm Lessons Learned Register, historical records và project documents. Đây là trách nhiệm quan trọng của PM vì lessons learned là nguồn tri thức quý giá cho các dự án tương lai. PM phải thuyết phục sponsor về giá trị lâu dài của việc này và không được bỏ qua bước quan trọng này trong quy trình đóng dự án."
+    },
+    {
+      "id": "ch04_q19",
+      "q": "PM đang phát triển Project Management Plan. Nhóm nhận thấy cần điều phối giữa nhiều subsidiary plans: schedule phụ thuộc vào resource availability, budget phụ thuộc vào schedule, và risk responses có thể ảnh hưởng đến cả hai. PM đang gặp khó khăn trong việc đảm bảo tính nhất quán. Kỹ thuật nào hiệu quả nhất cho tình huống này?",
+      "opts": {
+        "A": "Phát triển từng subsidiary plan độc lập rồi tổng hợp lại cuối cùng",
+        "B": "Sử dụng Expert Judgment và tổ chức các buổi facilitated workshops với các subject matter experts từ nhiều lĩnh vực",
+        "C": "Yêu cầu PMO phê duyệt từng subsidiary plan trước khi tiến hành",
+        "D": "Áp dụng template có sẵn từ dự án trước để tiết kiệm thời gian"
+      },
+      "ans": "B",
+      "exp": "Khi phát triển Project Management Plan, sự tích hợp giữa các subsidiary plans là thách thức lớn nhất. Expert Judgment kết hợp với Facilitated Workshops (Data Gathering techniques) cho phép các chuyên gia từ nhiều lĩnh vực (scheduling, cost, risk, resource) làm việc cùng nhau để đảm bảo tính nhất quán và tích hợp. Đây hiệu quả hơn nhiều so với việc phát triển riêng lẻ từng plan."
+    },
+    {
+      "id": "ch04_q20",
+      "q": "Dự án phần mềm của bạn đang tiến hành tốt khi bạn nhận được tin tức rằng một đối thủ cạnh tranh vừa ra mắt sản phẩm tương tự. Sponsor đề xuất thay đổi đáng kể về tính năng để cạnh tranh, nhưng điều này sẽ làm tăng chi phí 40% và trễ hạn 3 tháng. Sau khi CCB phê duyệt thay đổi này, PM cần cập nhật tài liệu nào?",
+      "opts": {
+        "A": "Chỉ cập nhật Project Schedule vì lịch trình bị ảnh hưởng nhiều nhất",
+        "B": "Cập nhật tất cả các baselines bị ảnh hưởng (scope, schedule, cost), Project Management Plan và các project documents liên quan",
+        "C": "Cập nhật Business Case vì lý do kinh doanh đã thay đổi",
+        "D": "Cập nhật Risk Register và Issue Log vì đây là rủi ro đã xảy ra"
+      },
+      "ans": "B",
+      "exp": "Sau khi CCB phê duyệt Approved Change Requests, PM phải cập nhật toàn diện: (1) Scope Baseline (nếu phạm vi thay đổi), (2) Schedule Baseline (+3 tháng), (3) Cost Baseline (+40%), (4) Project Management Plan và tất cả subsidiary plans bị ảnh hưởng, (5) Project Documents liên quan (Requirements Documentation, Risk Register, v.v.). Đây là nguyên tắc tích hợp: một thay đổi ảnh hưởng đến nhiều khía cạnh và tất cả phải được cập nhật đồng bộ."
+    }
+  ]
+}

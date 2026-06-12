@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PMLibrary — Thư Viện Học Tập PMP</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:        #0d1420;
+  --bg2:       #111926;
+  --surface:   #1a2436;
+  --surface2:  #1f2d42;
+  --navy:      #1a2744;
+  --gold:      #c9a84c;
+  --gold-lt:   #e8d5a3;
+  --gold-dim:  rgba(201,168,76,0.15);
+  --text:      #dde4f0;
+  --text-dim:  #7a8baa;
+  --green:     #4caf50;
+  --amber:     #ffa000;
+  --r:         10px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Source Sans 3', sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── HEADER ─────────────────────────── */
+header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(13,20,32,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+  padding: 0 2rem;
+  height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo {
+  display: flex; align-items: center; gap: 0.75rem;
+  text-decoration: none; color: inherit;
+}
+.logo-icon {
+  width: 34px; height: 34px;
+  background: linear-gradient(135deg, #1a2744, #2a4070);
+  border: 1.5px solid rgba(201,168,76,0.5);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem;
+}
+.logo-text { font-family: 'Merriweather', serif; font-size: 1.05rem; font-weight: 700; color: var(--gold); }
+.logo-sub  { font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0.04em; margin-top: 0.05rem; }
+
+.header-stats { display: flex; gap: 1.5rem; }
+.stat { text-align: right; }
+.stat-num { font-size: 1rem; font-weight: 700; color: var(--gold); }
+.stat-lbl { font-size: 0.65rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* ── HERO ────────────────────────────── */
+.hero {
+  padding: 3.5rem 2rem 0;
+  max-width: 1200px; margin: 0 auto;
+  display: flex; flex-wrap: wrap; gap: 2rem; align-items: flex-end;
+}
+.hero-text h1 {
+  font-family: 'Merriweather', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700; line-height: 1.25;
+  color: #fff; margin-bottom: 0.6rem;
+}
+.hero-text p { font-size: 0.95rem; color: var(--text-dim); max-width: 420px; line-height: 1.6; }
+
+/* Last-read banner */
+#last-read-banner {
+  margin-left: auto;
+  background: var(--surface2);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: var(--r);
+  padding: 1rem 1.3rem;
+  display: flex; align-items: center; gap: 1.1rem;
+  min-width: 260px; max-width: 340px;
+  text-decoration: none; color: var(--text);
+  transition: border-color 0.18s, background 0.18s;
+}
+#last-read-banner:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+#last-read-banner[hidden] { display: none; }
+.lr-icon { font-size: 2rem; flex-shrink: 0; }
+.lr-label { font-size: 0.65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 0.2rem; }
+.lr-title { font-size: 0.88rem; font-weight: 600; color: #fff; }
+.lr-sub   { font-size: 0.72rem; color: var(--text-dim); margin-top: 0.15rem; }
+.lr-arrow { margin-left: auto; color: var(--gold); font-size: 1.1rem; flex-shrink: 0; }
+
+/* ── SECTION ─────────────────────────── */
+.section {
+  padding: 2.5rem 2rem 1rem;
+  max-width: 1200px; margin: 0 auto;
+}
+.section-header {
+  display: flex; align-items: center; gap: 0.7rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.section-header h2 {
+  font-family: 'Merriweather', serif;
+  font-size: 1.05rem; font-weight: 700; color: var(--gold-lt);
+}
+.section-header .s-count {
+  background: var(--gold-dim);
+  color: var(--gold);
+  font-size: 0.7rem; font-weight: 700;
+  padding: 0.2rem 0.55rem; border-radius: 20px;
+}
+
+/* ── BOOK GRID ───────────────────────── */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(188px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ── BOOK CARD ───────────────────────── */
+.book-card {
+  background: var(--surface);
+  border-radius: var(--r);
+  border: 1px solid rgba(255,255,255,0.07);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  cursor: pointer;
+  text-decoration: none; color: var(--text);
+}
+.book-card:not(.disabled):hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,168,76,0.3);
+  border-color: rgba(201,168,76,0.3);
+}
+.book-card.disabled { opacity: 0.55; cursor: not-allowed; }
+
+/* Cover image area */
+.book-cover {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  background: #0a0f1a;
+  flex-shrink: 0;
+}
+.book-cover img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.3s ease;
+}
+.book-card:not(.disabled):hover .book-cover img { transform: scale(1.04); }
+.book-cover .fallback {
+  display: none; position: absolute; inset: 0;
+  flex-direction: column; align-items: center; justify-content: center;
+  padding: 1.4rem; text-align: center;
+}
+.fallback .f-title {
+  font-family: 'Merriweather', serif;
+  font-size: 1rem; font-weight: 700;
+  color: rgba(255,255,255,0.95); line-height: 1.3; margin-bottom: 0.5rem;
+}
+.fallback .f-ed {
+  font-size: 0.7rem; color: rgba(255,255,255,0.55);
+}
+/* Badge */
+.badge {
+  position: absolute; top: 0.6rem; right: 0.6rem;
+  font-size: 0.6rem; font-weight: 800; letter-spacing: 0.07em;
+  text-transform: uppercase; padding: 0.22rem 0.55rem;
+  border-radius: 20px; backdrop-filter: blur(6px);
+}
+.badge-ok     { background: rgba(34,197,94,0.85);  color: #fff; }
+.badge-part   { background: rgba(234,179,8,0.85);   color: #0a0f1a; }
+.badge-soon   { background: rgba(100,116,139,0.75); color: #fff; }
+
+/* Book info */
+.book-info {
+  padding: 0.95rem 1rem;
+  flex: 1; display: flex; flex-direction: column; gap: 0.3rem;
+}
+.bi-title {
+  font-family: 'Merriweather', serif;
+  font-size: 0.88rem; font-weight: 700;
+  color: #fff; line-height: 1.3;
+}
+.bi-ed   { font-size: 0.72rem; color: var(--text-dim); }
+.bi-lang { font-size: 0.72rem; color: var(--gold); font-weight: 600; margin-bottom: 0.1rem; }
+.bi-desc { font-size: 0.73rem; color: var(--text-dim); line-height: 1.5; margin-bottom: 0.2rem; }
+
+/* Progress */
+.bi-progress { margin-top: auto; padding-top: 0.7rem; }
+.prog-row {
+  display: flex; justify-content: space-between;
+  font-size: 0.65rem; color: var(--text-dim); margin-bottom: 0.3rem;
+}
+.prog-bar { height: 3px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
+.prog-fill { height: 100%; background: linear-gradient(90deg, var(--gold), #e8c46a); border-radius: 2px; transition: width 0.6s ease; }
+
+/* CTA */
+.bi-cta {
+  display: block; margin-top: 0.75rem;
+  background: var(--gold); color: #0a0f1a;
+  font-weight: 700; font-size: 0.77rem; letter-spacing: 0.03em;
+  text-align: center; padding: 0.45rem 0.5rem;
+  border-radius: 6px; text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+  border: none; cursor: pointer; font-family: inherit;
+}
+.bi-cta:hover:not(:disabled) { background: var(--gold-lt); }
+.bi-cta.soon {
+  background: rgba(255,255,255,0.08); color: var(--text-dim);
+  cursor: default; pointer-events: none;
+}
+
+/* ── TOOLS GRID ──────────────────────── */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+}
+.tool-card {
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: var(--r);
+  padding: 1.1rem 1.3rem;
+  display: flex; align-items: center; gap: 1rem;
+  text-decoration: none; color: var(--text);
+  transition: all 0.2s ease;
+}
+.tool-card:hover {
+  border-color: rgba(201,168,76,0.35);
+  background: rgba(201,168,76,0.07);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+.tc-icon { font-size: 1.8rem; flex-shrink: 0; }
+.tc-title { font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 0.2rem; }
+.tc-desc  { font-size: 0.72rem; color: var(--text-dim); line-height: 1.4; }
+
+/* ── FOOTER ──────────────────────────── */
+footer {
+  text-align: center; padding: 2rem;
+  font-size: 0.72rem; color: var(--text-dim);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  margin-top: 3rem;
+}
+
+/* ── RESPONSIVE ──────────────────────── */
+@media (max-width: 640px) {
+  header { padding: 0 1rem; }
+  .header-stats { gap: 1rem; }
+  .hero { padding: 2rem 1rem 0; }
+  .section { padding: 2rem 1rem 0.5rem; }
+  #last-read-banner { min-width: unset; width: 100%; }
+  .book-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .tools-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="home.html" class="logo">
+    <div class="logo-icon">📚</div>
+    <div>
+      <div class="logo-text">PMLibrary</div>
+      <div class="logo-sub">Thư Viện Học Tập</div>
+    </div>
+  </a>
+  <div class="header-stats" id="header-stats"></div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <h1>Chào mừng trở lại 👋</h1>
+    <p>Thư viện tài liệu luyện thi PMP — đọc, highlight &amp; ghi chú mọi lúc, mọi nơi.</p>
+  </div>
+  <a href="#" id="last-read-banner" hidden>
+    <div class="lr-icon">📖</div>
+    <div>
+      <div class="lr-label">Tiếp tục đọc</div>
+      <div class="lr-title" id="lr-title">–</div>
+      <div class="lr-sub"  id="lr-sub">–</div>
+    </div>
+    <div class="lr-arrow">›</div>
+  </a>
+</div>
+
+<!-- BOOKS -->
+<section class="section">
+  <div class="section-header">
+    <h2>📚 Sách Giáo Trình</h2>
+    <span class="s-count" id="avail-count">0 sẵn sàng</span>
+  </div>
+  <div class="book-grid" id="book-grid"></div>
+</section>
+
+<!-- TOOLS -->
+<section class="section">
+  <div class="section-header">
+    <h2>🛠 Công Cụ Học Tập</h2>
+  </div>
+  <div class="tools-grid">
+    <a href="books/PMPExamPrep/Rita_Process_Chart_v2.html" class="tool-card">
+      <div class="tc-icon">📊</div>
+      <div>
+        <div class="tc-title">Rita's Process Chart</div>
+        <div class="tc-desc">Sơ đồ 49 quy trình PMP tương tác — đầy đủ đầu vào, công cụ, đầu ra</div>
+      </div>
+    </a>
+    <a href="books/PMPExamPrep/Rita_Agile_Process_Chart.html" class="tool-card">
+      <div class="tc-icon">🔄</div>
+      <div>
+        <div class="tc-title">Agile Process Chart</div>
+        <div class="tc-desc">Sơ đồ quy trình Agile của Rita Mulcahy — hybrid &amp; adaptive lifecycle</div>
+      </div>
+    </a>
+    <a href="pmp-exam/index.html" class="tool-card">
+      <div class="tc-icon">🎓</div>
+      <div>
+        <div class="tc-title">PMP Exam Simulator</div>
+        <div class="tc-desc">Luyện thi PMP thông minh — ưu tiên câu yếu, 3 domain ECO, có giải thích Việt/Anh</div>
+      </div>
+    </a>
+    <a href="rita-quiz.html" class="tool-card">
+      <div class="tc-icon">📕</div>
+      <div>
+        <div class="tc-title">Rita Quiz — Luyện Thi PMP</div>
+        <div class="tc-desc">20 câu tình huống/chương từ Rita Mulcahy 11th Ed — 17 chương, bao gồm Agile &amp; PMBOK7</div>
+      </div>
+    </a>
+    <a href="chapters/chap12.html" class="tool-card">
+      <div class="tc-icon">📝</div>
+      <div>
+        <div class="tc-title">PMP Exam Prep — Chương 1–2</div>
+        <div class="tc-desc">Rita Mulcahy tiếng Việt — Framework & Quy trình quản lý dự án</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<footer>PMLibrary · Tài liệu chỉ dành cho mục đích học tập cá nhân.</footer>
+
+<script>
+// ── BOOKS CATALOG ────────────────────────────────────────────
+const BOOKS = [
+  {
+    id:       'pmbok6',
+    title:    'PMBOK® Guide',
+    edition:  'Lần xuất bản thứ 6',
+    lang:     '🇻🇳 Tiếng Việt',
+    desc:     'Hướng dẫn kiến thức quản lý dự án chuẩn quốc tế của PMI — 16 chương đã dịch đầy đủ.',
+    status:   'available',
+    url:      'index.html',
+    isbn:     '9781628251845',
+    gradient: 'linear-gradient(160deg,#0f1d3a 0%,#1a3060 100%)',
+    lsKey:    'pmbok6_progress',
+    total:    16,
+  },
+  {
+    id:       'pmbok7',
+    title:    'PMBOK® Guide',
+    edition:  '7th Edition',
+    lang:     '🌐 Đang chuẩn bị',
+    desc:     'Phiên bản mới nhất — tiếp cận dựa trên nguyên tắc (principle-based), không theo quy trình.',
+    status:   'coming-soon',
+    url:      null,
+    isbn:     '9781628256659',
+    gradient: 'linear-gradient(160deg,#0c2340 0%,#1565c0 100%)',
+  },
+  {
+    id:       'rita',
+    title:    'PMP® Exam Prep',
+    edition:  'Rita Mulcahy · 11th Ed. 2023',
+    lang:     '🇻🇳 Tiếng Việt (đang dịch)',
+    desc:     "Bộ giáo trình luyện thi PMP nổi tiếng nhất thế giới của Rita Mulcahy — đang được dịch sang tiếng Việt.",
+    status:   'partial',
+    url:      'chapters/chap12.html',
+    isbn:     '9781932735680',
+    gradient: 'linear-gradient(160deg,#4a1505 0%,#c0390a 100%)',
+  },
+  {
+    id:       'agile',
+    title:    'Agile Practice Guide',
+    edition:  'PMI & Agile Alliance · 2017',
+    lang:     '🌐 Đang chuẩn bị',
+    desc:     'Hướng dẫn thực hành Agile chính thức của PMI — Agile, Scrum, Kanban và hybrid lifecycle.',
+    status:   'coming-soon',
+    url:      null,
+    isbn:     '9781628253993',
+    gradient: 'linear-gradient(160deg,#0a2e14 0%,#1a7a2e 100%)',
+  },
+];
+
+// ── READ PROGRESS FROM localStorage ──────────────────────────
+function getProgress(book) {
+  if (!book.lsKey) return null;
+  try {
+    const raw = localStorage.getItem(book.lsKey);
+    if (!raw) return { done: 0, total: book.total };
+    const data = JSON.parse(raw);
+    const done = Object.values(data.progress || {}).filter(p => p.status === 'done').length;
+    return { done, total: book.total };
+  } catch { return { done: 0, total: book.total }; }
+}
+
+function getLastChapter(book) {
+  if (!book.lsKey) return null;
+  try {
+    const raw = localStorage.getItem(book.lsKey);
+    if (!raw) return null;
+    return JSON.parse(raw).lastChapter || null;
+  } catch { return null; }
+}
+
+// ── BADGE ─────────────────────────────────────────────────────
+const BADGE = {
+  'available':   ['badge-ok',   'Sẵn sàng'],
+  'partial':     ['badge-part', 'Đang dịch'],
+  'coming-soon': ['badge-soon', 'Sắp ra mắt'],
+};
+const CTA = {
+  'available':   'Đọc ngay →',
+  'partial':     'Xem ngay →',
+  'coming-soon': 'Sắp ra mắt',
+};
+
+// ── RENDER CARD ───────────────────────────────────────────────
+function renderCard(b) {
+  const [bc, bl] = BADGE[b.status];
+  const prog     = getProgress(b);
+  const pct      = prog ? Math.round(prog.done / prog.total * 100) : 0;
+  const disabled = b.status === 'coming-soon';
+  const imgUrl   = `https://covers.openlibrary.org/b/isbn/${b.isbn}-L.jpg`;
+
+  const progressHtml = prog ? `
+    <div class="bi-progress">
+      <div class="prog-row">
+        <span>Tiến độ đọc</span>
+        <span>${prog.done}/${prog.total} chương</span>
+      </div>
+      <div class="prog-bar"><div class="prog-fill" style="width:${pct}%"></div></div>
+    </div>` : '';
+
+  const ctaClass = disabled ? 'bi-cta soon' : 'bi-cta';
+  const ctaHtml  = disabled
+    ? `<button class="${ctaClass}">${CTA[b.status]}</button>`
+    : `<a class="${ctaClass}" href="${b.url}">${CTA[b.status]}</a>`;
+
+  return `
+  <div class="book-card${disabled ? ' disabled' : ''}" ${!disabled ? `onclick="location.href='${b.url}'"` : ''}>
+    <div class="book-cover">
+      <img src="${imgUrl}" alt="${b.title} cover"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="fallback" style="background:${b.gradient}">
+        <div class="f-title">${b.title}</div>
+        <div class="f-ed">${b.edition}</div>
+      </div>
+      <span class="badge ${bc}">${bl}</span>
+    </div>
+    <div class="book-info">
+      <div class="bi-title">${b.title}</div>
+      <div class="bi-ed">${b.edition}</div>
+      <div class="bi-lang">${b.lang}</div>
+      <div class="bi-desc">${b.desc}</div>
+      ${progressHtml}
+      ${ctaHtml}
+    </div>
+  </div>`;
+}
+
+// ── RENDER ALL ────────────────────────────────────────────────
+document.getElementById('book-grid').innerHTML = BOOKS.map(renderCard).join('');
+
+// ── HEADER STATS ──────────────────────────────────────────────
+const available = BOOKS.filter(b => b.status !== 'coming-soon').length;
+const totalChaps = BOOKS.reduce((s, b) => s + (b.total || 0), 0);
+const readChaps  = BOOKS.reduce((s, b) => {
+  const p = getProgress(b);
+  return s + (p ? p.done : 0);
+}, 0);
+
+document.getElementById('avail-count').textContent =
+  available + ' sẵn sàng';
+
+document.getElementById('header-stats').innerHTML = `
+  <div class="stat">
+    <div class="stat-num">${BOOKS.length}</div>
+    <div class="stat-lbl">Đầu sách</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">${readChaps}</div>
+    <div class="stat-lbl">Chương đã đọc</div>
+  </div>`;
+
+// ── LAST READ BANNER ──────────────────────────────────────────
+(function() {
+  // Find the most recently active book
+  const pmbok6 = BOOKS.find(b => b.id === 'pmbok6');
+  const lastCh  = getLastChapter(pmbok6);
+  const prog    = getProgress(pmbok6);
+
+  if (!lastCh || !prog) return;
+
+  const CHAPTER_TITLES = {
+    '01_instruction': 'Chương 1 – Giới Thiệu',
+    '02_environment': 'Chương 2 – Môi Trường Dự Án',
+    '03_pm_role': 'Chương 3 – Vai Trò Quản Lý Dự Án',
+    '04_integration_management': 'Chương 4 – Quản Lý Tích Hợp',
+    '05_scope_management': 'Chương 5 – Quản Lý Phạm Vi',
+    '06_schedule_management': 'Chương 6 – Quản Lý Tiến Độ',
+    '07_cost_management': 'Chương 7 – Quản Lý Chi Phí',
+    '08_quality_management': 'Chương 8 – Quản Lý Chất Lượng',
+    '09_resource_management': 'Chương 9 – Quản Lý Nguồn Lực',
+    '10_communications_management': 'Chương 10 – Quản Lý Truyền Thông',
+    '11_risk_management': 'Chương 11 – Quản Lý Rủi Ro',
+    '12_procurement_management': 'Chương 12 – Quản Lý Mua Sắm',
+    '13_stakeholder_management': 'Chương 13 – Quản Lý Các Bên Liên Quan',
+    '14_standard_for_pm': 'Chương 14 – Tiêu Chuẩn QLDA',
+    '15_appendices_glossary': 'Chương 15 – Phụ Lục & Từ Điển',
+    '16_agile_practice_guide': 'Chương 16 – Hướng Dẫn Agile',
+  };
+
+  const chTitle = CHAPTER_TITLES[lastCh] || lastCh;
+  const pct     = Math.round(prog.done / prog.total * 100);
+
+  const banner = document.getElementById('last-read-banner');
+  banner.href = `index.html`;
+  document.getElementById('lr-title').textContent = 'PMBOK® Guide 6th – Tiếng Việt';
+  document.getElementById('lr-sub').textContent   = `${chTitle} · ${pct}% hoàn thành`;
+  banner.hidden = false;
+})();
+</script>
+</body>
+</html>

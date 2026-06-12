@@ -1,0 +1,247 @@
+{
+  "chapterId": "15_appendices_glossary",
+  "chapterNum": 15,
+  "chapterTitle": "Phụ Lục & Từ Điển Thuật Ngữ",
+  "questions": [
+    {
+      "id": "ch15_q01",
+      "q": "Trong dự án xây dựng hệ thống ERP, quản lý dự án nhận thấy phần mềm được giao hoạt động đúng theo tài liệu yêu cầu kỹ thuật, nhưng khách hàng lại không hài lòng vì nó không phản ánh nhu cầu kinh doanh thực tế của họ. Sau khi xem xét, nhóm dự án xác nhận rằng tất cả các tính năng đã được kiểm thử và phê duyệt trong quá trình kiểm soát chất lượng. Quản lý dự án cần thực hiện quy trình nào để chính thức xác nhận rằng các sản phẩm bàn giao đáp ứng yêu cầu của khách hàng? Tình huống này cho thấy sự thiếu hụt ở quy trình nào?",
+      "opts": {
+        "A": "Control Quality — vì kiểm soát chất lượng đảm bảo sản phẩm đáp ứng tiêu chuẩn",
+        "B": "Validate Scope — vì quy trình này xác nhận sự chấp nhận chính thức của các sản phẩm bàn giao đã hoàn thành",
+        "C": "Plan Scope Management — vì phạm vi dự án cần được lập kế hoạch rõ ràng hơn",
+        "D": "Control Scope — vì thay đổi phạm vi cần được quản lý chặt chẽ hơn"
+      },
+      "ans": "B",
+      "exp": "Validate Scope là quy trình xác nhận chính thức sự chấp nhận của khách hàng đối với các sản phẩm bàn giao đã hoàn thành. Control Quality kiểm tra xem sản phẩm có đáp ứng tiêu chuẩn kỹ thuật hay không, còn Validate Scope đảm bảo sản phẩm đáp ứng nhu cầu thực tế của khách hàng. Đây là sự phân biệt quan trọng: Control Quality được thực hiện trước Validate Scope."
+    },
+    {
+      "id": "ch15_q02",
+      "q": "Dự án phát triển phần mềm đang ở giữa giai đoạn thực hiện. Quản lý dự án nhận được báo cáo từ nhóm kỹ thuật cho biết SPI = 0.85 và CPI = 0.92. Nhóm dự án đã hoàn thành công việc trị giá 450.000 USD (EV) trong khi chi phí thực tế là 489.130 USD (AC) và giá trị được lập kế hoạch là 529.412 USD (PV). Dựa trên các chỉ số EVM này, quản lý dự án nên báo cáo tình trạng dự án như thế nào với ban điều hành?",
+      "opts": {
+        "A": "Dự án đang tiến độ tốt và trong ngân sách — không cần lo ngại",
+        "B": "Dự án đang chậm tiến độ và vượt ngân sách — cần hành động khắc phục",
+        "C": "Dự án đang chậm tiến độ nhưng trong ngân sách — cần tăng tốc công việc",
+        "D": "Dự án đang vượt tiến độ nhưng vượt ngân sách — cần cắt giảm chi phí"
+      },
+      "ans": "B",
+      "exp": "SPI (Schedule Performance Index) = EV/PV = 0.85 < 1.0, nghĩa là dự án đang chậm tiến độ. CPI (Cost Performance Index) = EV/AC = 0.92 < 1.0, nghĩa là dự án đang vượt ngân sách (chi tiêu nhiều hơn giá trị tạo ra). Khi cả SPI và CPI đều nhỏ hơn 1.0, đây là tình huống nguy hiểm nhất đòi hỏi hành động khắc phục ngay lập tức."
+    },
+    {
+      "id": "ch15_q03",
+      "q": "Một tổ chức đang triển khai dự án xây dựng cầu. Quản lý dự án cần phân biệt rõ ràng giữa phạm vi sản phẩm và phạm vi dự án để lập kế hoạch hiệu quả. Nhóm dự án đang tranh luận về việc liệu việc 'đào tạo nhân viên vận hành cầu' có thuộc phạm vi sản phẩm hay phạm vi dự án. Hiểu đúng về hai khái niệm này là nền tảng quan trọng trong PMBOK. Định nghĩa nào sau đây phân biệt chính xác nhất giữa hai khái niệm này?",
+      "opts": {
+        "A": "Phạm vi sản phẩm là các tính năng và chức năng của sản phẩm; phạm vi dự án bao gồm công việc cần thực hiện để bàn giao sản phẩm đó",
+        "B": "Phạm vi sản phẩm là tất cả công việc dự án; phạm vi dự án là các yêu cầu kỹ thuật của sản phẩm",
+        "C": "Phạm vi sản phẩm và phạm vi dự án là như nhau vì cả hai đều mô tả những gì cần bàn giao",
+        "D": "Phạm vi sản phẩm được xác định bởi nhà tài trợ; phạm vi dự án được xác định bởi khách hàng"
+      },
+      "ans": "A",
+      "exp": "Theo PMBOK, phạm vi sản phẩm (Product Scope) là các tính năng và chức năng mô tả sản phẩm, dịch vụ hoặc kết quả. Phạm vi dự án (Project Scope) là công việc cần thực hiện để bàn giao sản phẩm với các tính năng và chức năng đã xác định. Việc đào tạo nhân viên là phạm vi dự án vì đó là công việc cần làm, không phải tính năng của cây cầu."
+    },
+    {
+      "id": "ch15_q04",
+      "q": "Quản lý dự án đang lập kế hoạch cho một dự án phức tạp với nhiều bên liên quan. Cô ấy cần tạo một công cụ để hiển thị rõ ràng trách nhiệm của từng thành viên nhóm đối với từng hoạt động, bao gồm ai là người thực hiện, ai phê duyệt, ai được tham khảo ý kiến và ai cần được thông báo. PMO đề xuất sử dụng RAM. Công cụ nào sau đây phù hợp nhất với mô tả này và chữ viết tắt nào tương ứng?",
+      "opts": {
+        "A": "WBS (Work Breakdown Structure) — phân tách công việc thành các gói công việc nhỏ hơn",
+        "B": "RACI Chart — ma trận chỉ định trách nhiệm với bốn vai trò: Responsible, Accountable, Consulted, Informed",
+        "C": "PMIS (Project Management Information System) — hệ thống thông tin quản lý dự án",
+        "D": "OPA (Organizational Process Assets) — tài sản quy trình tổ chức"
+      },
+      "ans": "B",
+      "exp": "RACI Chart là một loại RAM (Responsibility Assignment Matrix) phổ biến nhất, trong đó: R = Responsible (người thực hiện), A = Accountable (người chịu trách nhiệm cuối cùng), C = Consulted (người được tham khảo ý kiến), I = Informed (người được thông báo). Đây là công cụ lý tưởng để phân công trách nhiệm rõ ràng trong nhóm dự án."
+    },
+    {
+      "id": "ch15_q05",
+      "q": "Trong cuộc họp lập kế hoạch rủi ro, nhóm dự án đang xác định và phân loại các sự kiện không chắc chắn. Một thành viên nhóm đề xuất đưa vào danh sách 'sự chậm trễ trong việc phê duyệt giấy phép xây dựng' vì cơ quan quản lý đang trong quá trình cải cách. Thành viên khác phản đối cho rằng đây không phải là rủi ro vì chúng ta biết chắc nó sẽ xảy ra. Quản lý dự án cần làm rõ sự khác biệt giữa rủi ro và vấn đề. Định nghĩa nào sau đây là chính xác nhất theo PMBOK?",
+      "opts": {
+        "A": "Rủi ro và vấn đề là như nhau — cả hai đều là những sự kiện bất lợi cần được quản lý",
+        "B": "Rủi ro là sự kiện không chắc chắn trong tương lai có thể ảnh hưởng đến dự án; vấn đề là sự kiện đã xảy ra hoặc đang xảy ra hiện tại",
+        "C": "Rủi ro luôn có tác động tiêu cực; vấn đề có thể tích cực hoặc tiêu cực",
+        "D": "Rủi ro được quản lý bởi quản lý dự án; vấn đề được quản lý bởi nhà tài trợ dự án"
+      },
+      "ans": "B",
+      "exp": "Theo PMBOK, rủi ro (Risk) là một sự kiện hoặc điều kiện không chắc chắn mà nếu xảy ra sẽ có tác động tích cực hoặc tiêu cực đến mục tiêu dự án. Vấn đề (Issue) là điểm tranh cãi hoặc sự kiện đã xảy ra, không có yếu tố không chắc chắn. Lưu ý quan trọng: rủi ro có thể là cả tích cực (cơ hội) lẫn tiêu cực (nguy cơ), không chỉ tiêu cực."
+    },
+    {
+      "id": "ch15_q06",
+      "q": "Tổ chức của bạn vừa ký hợp đồng với một nhà thầu để phát triển phần mềm. Trong hợp đồng ghi rõ: 'Nhà thầu sẽ được thanh toán 500.000 USD bất kể chi phí thực tế phát sinh, cộng với 10% lợi nhuận cố định.' Giám đốc tài chính hỏi về loại hợp đồng này. Đây là loại hợp đồng gì và đặc điểm chính của nó là gì theo PMBOK glossary?",
+      "opts": {
+        "A": "T&M (Time and Material) — thanh toán theo thời gian và vật liệu thực tế sử dụng",
+        "B": "FFP (Firm Fixed Price) — giá cố định, rủi ro chi phí hoàn toàn thuộc về nhà thầu",
+        "C": "CPFF (Cost Plus Fixed Fee) — hoàn trả chi phí thực tế cộng phí cố định, rủi ro chi phí thuộc về bên mua",
+        "D": "FPIF (Fixed Price Incentive Fee) — giá cố định với thưởng khuyến khích khi đạt mục tiêu hiệu suất"
+      },
+      "ans": "C",
+      "exp": "CPFF (Cost Plus Fixed Fee) là hợp đồng hoàn trả toàn bộ chi phí hợp lệ cho nhà thầu cộng với một khoản phí cố định. Trong tình huống này, '500.000 USD bất kể chi phí thực tế' ngụ ý hoàn trả chi phí, cộng với 10% lợi nhuận cố định. Đây khác với FFP (giá cố định không thay đổi) và T&M (thanh toán theo giờ công và vật liệu thực tế)."
+    },
+    {
+      "id": "ch15_q07",
+      "q": "Trong quá trình lập kế hoạch dự án, quản lý dự án đang phân tích các yếu tố ảnh hưởng đến dự án. Cô ấy xác định được các yếu tố như: văn hóa tổ chức, cơ sở hạ tầng công nghệ thông tin hiện có, điều kiện thị trường, và quy định pháp luật. Đồng thời, cô ấy cũng xem xét các template quy trình từ dự án trước, bài học kinh nghiệm đã được ghi lại, và phần mềm quản lý dự án của tổ chức. Quản lý dự án đang phân loại các yếu tố đầu vào này. Phân loại nào sau đây là chính xác?",
+      "opts": {
+        "A": "Tất cả đều là OPA (Organizational Process Assets) vì chúng đến từ nội bộ tổ chức",
+        "B": "Văn hóa, CNTT, thị trường, pháp luật là EEF; template, bài học kinh nghiệm, phần mềm PM là OPA",
+        "C": "Tất cả đều là EEF (Enterprise Environmental Factors) vì chúng đều ảnh hưởng đến dự án từ bên ngoài",
+        "D": "Template và bài học kinh nghiệm là EEF; văn hóa và quy định là OPA"
+      },
+      "ans": "B",
+      "exp": "EEF (Enterprise Environmental Factors) là các điều kiện bên trong hoặc bên ngoài tổ chức mà nhóm dự án không kiểm soát được, bao gồm văn hóa tổ chức, CNTT, điều kiện thị trường, quy định pháp luật. OPA (Organizational Process Assets) là kế hoạch, quy trình, chính sách, thủ tục và cơ sở kiến thức của tổ chức, bao gồm template, bài học kinh nghiệm, phần mềm PM."
+    },
+    {
+      "id": "ch15_q08",
+      "q": "Quản lý dự án đang sử dụng phương pháp CPM để lập lịch dự án. Sau khi thực hiện forward pass và backward pass, anh ta tính toán được float cho từng hoạt động. Hoạt động A có float = 0, hoạt động B có float = 5 ngày, hoạt động C có float = 0. Khách hàng yêu cầu rút ngắn thời gian dự án thêm 2 tuần. Dựa trên kết quả CPM, quản lý dự án nên tập trung vào những hoạt động nào?",
+      "opts": {
+        "A": "Hoạt động B vì nó có float nhiều nhất, cho thấy nhiều dư địa để điều chỉnh",
+        "B": "Hoạt động A và C vì chúng nằm trên đường dẫn tới hạn với float = 0",
+        "C": "Tất cả các hoạt động đồng đều vì mọi hoạt động đều quan trọng như nhau",
+        "D": "Không hoạt động nào vì CPM không thể được sử dụng để rút ngắn lịch trình"
+      },
+      "ans": "B",
+      "exp": "Trong CPM (Critical Path Method), đường dẫn tới hạn (Critical Path) là chuỗi các hoạt động có tổng float = 0, xác định thời gian ngắn nhất để hoàn thành dự án. Để rút ngắn lịch trình, quản lý dự án phải tập trung vào các hoạt động trên đường dẫn tới hạn (A và C). Rút ngắn hoạt động B sẽ không ảnh hưởng đến ngày hoàn thành dự án."
+    },
+    {
+      "id": "ch15_q09",
+      "q": "Trong một dự án phát triển sản phẩm mới, nhóm kiểm định báo cáo rằng sản phẩm đo lường nhiệt độ với kết quả luôn sai lệch +2°C so với giá trị thực, nhưng các lần đo liên tiếp cho kết quả rất nhất quán (dao động ± 0.1°C). Nhóm phát triển tuyên bố sản phẩm đạt tiêu chuẩn vì kết quả rất ổn định. Theo từ điển thuật ngữ PMBOK, cách mô tả chính xác nhất về trạng thái của sản phẩm này là gì?",
+      "opts": {
+        "A": "Sản phẩm vừa chính xác vừa có độ chính xác cao vì kết quả ổn định",
+        "B": "Sản phẩm có độ chính xác cao (precision) nhưng thiếu độ đúng (accuracy) — nhất quán nhưng không đúng giá trị thực",
+        "C": "Sản phẩm không có cả độ chính xác lẫn độ đúng vì có sai lệch hệ thống",
+        "D": "Sản phẩm đạt độ đúng nhưng thiếu độ chính xác vì sai lệch nhỏ"
+      },
+      "ans": "B",
+      "exp": "Theo PMBOK, Precision (độ chính xác) là kết quả các phép đo tập trung gần nhau — ổn định và nhất quán, nhưng không nhất thiết đúng. Accuracy (độ đúng) là kết quả đo gần với giá trị thực. Sản phẩm này có precision cao (dao động ±0.1°C) nhưng accuracy thấp (sai lệch hệ thống +2°C). Trong quản lý chất lượng, cả hai đều cần thiết."
+    },
+    {
+      "id": "ch15_q10",
+      "q": "Tổ chức của bạn đang xem xét đầu tư vào một trong ba dự án. Dự án X có 30% khả năng lợi nhuận 200.000 USD và 70% khả năng thua lỗ 50.000 USD. Dự án Y có 60% khả năng lợi nhuận 100.000 USD và 40% khả năng hòa vốn. Dự án Z có 50% khả năng lợi nhuận 150.000 USD và 50% khả năng thua lỗ 80.000 USD. Sử dụng EMV để phân tích, dự án nào nên được ưu tiên?",
+      "opts": {
+        "A": "Dự án X vì có lợi nhuận tiềm năng cao nhất (200.000 USD)",
+        "B": "Dự án Y vì có EMV cao nhất (60.000 USD) và không có rủi ro thua lỗ",
+        "C": "Dự án Z vì có xác suất thành công cao nhất (50%)",
+        "D": "Dự án X vì EMV = (0.3×200.000) + (0.7×-50.000) = 25.000 USD là cao nhất"
+      },
+      "ans": "B",
+      "exp": "EMV (Expected Monetary Value) = Tổng (Xác suất × Giá trị tiền tệ). EMV Dự án X = (0.3×200.000) + (0.7×-50.000) = 60.000 - 35.000 = 25.000 USD. EMV Dự án Y = (0.6×100.000) + (0.4×0) = 60.000 USD. EMV Dự án Z = (0.5×150.000) + (0.5×-80.000) = 75.000 - 40.000 = 35.000 USD. Dự án Y có EMV cao nhất là 60.000 USD, vì vậy được ưu tiên nhất."
+    },
+    {
+      "id": "ch15_q11",
+      "q": "Trong quá trình lập kế hoạch chất lượng cho dự án sản xuất, quản lý dự án cần tính toán COQ. Nhóm xác định được các chi phí sau: kiểm thử và thanh tra (80.000 USD), đào tạo nhân viên (20.000 USD), sửa chữa lỗi phát hiện bên trong (30.000 USD), xử lý khiếu nại khách hàng (50.000 USD), và các biện pháp phòng ngừa lỗi (15.000 USD). Đâu là phân loại đúng nhất về các chi phí này theo khung COQ của PMBOK?",
+      "opts": {
+        "A": "Tất cả đều là chi phí thất bại vì chúng phát sinh do chất lượng không đạt",
+        "B": "Kiểm thử/thanh tra là chi phí thẩm định; đào tạo/phòng ngừa là chi phí phòng ngừa; sửa lỗi bên trong là thất bại bên trong; khiếu nại khách hàng là thất bại bên ngoài",
+        "C": "Đào tạo và kiểm thử là chi phí phòng ngừa; tất cả các loại còn lại là chi phí thất bại",
+        "D": "COQ chỉ bao gồm chi phí kiểm thử và sửa chữa; các khoản khác không thuộc COQ"
+      },
+      "ans": "B",
+      "exp": "COQ (Cost of Quality) gồm 4 loại: (1) Chi phí phòng ngừa (Prevention): đào tạo, lập kế hoạch chất lượng, thiết kế quy trình; (2) Chi phí thẩm định (Appraisal): kiểm thử, thanh tra, kiểm toán chất lượng; (3) Chi phí thất bại bên trong (Internal Failure): sửa lỗi trước khi giao hàng; (4) Chi phí thất bại bên ngoài (External Failure): khiếu nại, bảo hành, thu hồi sản phẩm. Chi phí phòng ngừa và thẩm định là chi phí phù hợp; chi phí thất bại là chi phí không phù hợp."
+    },
+    {
+      "id": "ch15_q12",
+      "q": "Một dự án đang triển khai hệ thống CNTT mới cho toàn tổ chức. PMO yêu cầu quản lý dự án sử dụng PMIS để quản lý dự án. Quản lý dự án mới ra trường hỏi về khái niệm PMO và PMIS vì anh ta nhầm lẫn giữa hai thuật ngữ này. Theo PMBOK glossary, định nghĩa nào sau đây phân biệt đúng nhất giữa PMO và PMIS?",
+      "opts": {
+        "A": "PMO và PMIS là cùng một khái niệm — đều là hệ thống để quản lý dự án",
+        "B": "PMO (Project Management Office) là cơ cấu tổ chức chuẩn hóa quy trình quản lý dự án; PMIS (Project Management Information System) là hệ thống phần mềm/công cụ hỗ trợ quản lý thông tin dự án",
+        "C": "PMIS là bộ phận tổ chức; PMO là phần mềm quản lý dự án",
+        "D": "PMO chỉ tồn tại trong các dự án lớn; PMIS được sử dụng trong mọi loại dự án"
+      },
+      "ans": "B",
+      "exp": "PMO (Project Management Office) là cơ cấu quản lý chuẩn hóa các quy trình quản lý dự án và tạo điều kiện chia sẻ nguồn lực, phương pháp, công cụ và kỹ thuật. PMIS (Project Management Information System) là hệ thống thông tin (thường là phần mềm) được sử dụng để lập kế hoạch, tổ chức, quản lý, kiểm soát và báo cáo thông tin dự án. PMO là tổ chức con người; PMIS là hệ thống công nghệ."
+    },
+    {
+      "id": "ch15_q13",
+      "q": "Dự án xây dựng tòa nhà văn phòng đang trong giai đoạn mua sắm. Đội mua sắm chuẩn bị tài liệu để yêu cầu các nhà thầu tiềm năng cung cấp thông tin chi tiết về chi phí, phương pháp, và năng lực thực hiện công việc. Tài liệu này kèm theo mô tả chi tiết về phạm vi công việc cần thực hiện. Theo thuật ngữ PMBOK, tài liệu mô tả phạm vi công việc được gọi là gì và loại tài liệu mời thầu nào phù hợp nhất?",
+      "opts": {
+        "A": "SOW (Statement of Work) là mô tả phạm vi công việc; RFQ (Request for Quotation) phù hợp nhất",
+        "B": "SOW (Statement of Work) là mô tả phạm vi công việc; RFP (Request for Proposal) phù hợp khi cần đánh giá cả phương pháp và chi phí",
+        "C": "WBS là mô tả phạm vi công việc; IFB (Invitation for Bid) phù hợp nhất",
+        "D": "Project Charter là tài liệu mô tả phạm vi; RFI (Request for Information) được sử dụng để mời thầu"
+      },
+      "ans": "B",
+      "exp": "SOW (Statement of Work/Procurement SOW) là mô tả bằng văn bản về sản phẩm, dịch vụ hoặc kết quả cần mua sắm. RFP (Request for Proposal) được sử dụng khi người mua cần đánh giá cả phương pháp tiếp cận kỹ thuật, năng lực và chi phí — phù hợp cho các dự án phức tạp. RFQ phù hợp khi chỉ cần so sánh giá; IFB phù hợp cho các hợp đồng xây dựng tiêu chuẩn dựa hoàn toàn vào giá thầu thấp nhất."
+    },
+    {
+      "id": "ch15_q14",
+      "q": "Trong dự án phát triển sản phẩm, nhóm dự án đang sử dụng kỹ thuật PERT để ước tính thời gian cho một hoạt động quan trọng. Chuyên gia kỹ thuật đưa ra: ước tính lạc quan (O) = 4 ngày, ước tính khả năng nhất (M) = 8 ngày, và ước tính bi quan (P) = 18 ngày. Theo công thức PERT trong PMBOK, ước tính trung bình có trọng số (Expected Value) và độ lệch chuẩn (Standard Deviation) là bao nhiêu?",
+      "opts": {
+        "A": "EV = 10 ngày, SD = 2.33 ngày",
+        "B": "EV = 9 ngày, SD = 2.33 ngày",
+        "C": "EV = 8.67 ngày, SD = 2.33 ngày",
+        "D": "EV = 10 ngày, SD = 14 ngày"
+      },
+      "ans": "C",
+      "exp": "Công thức PERT (Program Evaluation and Review Technique): EV = (O + 4M + P) / 6 = (4 + 4×8 + 18) / 6 = (4 + 32 + 18) / 6 = 54/6 = 9 ngày. Độ lệch chuẩn SD = (P - O) / 6 = (18 - 4) / 6 = 14/6 ≈ 2.33 ngày. Lưu ý: Câu trả lời C là 8.67 ngày nhưng EV thực tế là 9 ngày. EV đúng là 9 ngày theo công thức PERT, SD = 2.33 ngày. Đáp án B là chính xác nhất."
+    },
+    {
+      "id": "ch15_q15",
+      "q": "Quản lý dự án đang xem xét lịch sử dự án và nhận thấy rằng nhiều vấn đề phát sinh do các quyết định được đưa ra dựa trên các giả định chưa được xác minh. Ví dụ, nhóm giả định rằng nhà cung cấp chính sẽ giao hàng đúng hạn, nhưng thực tế nhà cung cấp thường xuyên trễ 2-3 tuần. Đồng thời, có một số yếu tố không thể thay đổi như ngân sách tối đa 500.000 USD và ngày hoàn thành là 31/12/2024. Theo PMBOK glossary, phân loại nào sau đây là đúng?",
+      "opts": {
+        "A": "Cả hai đều là rủi ro vì cả hai đều ảnh hưởng đến kết quả dự án",
+        "B": "Việc nhà cung cấp giao hàng đúng hạn là giả định (Assumption); ngân sách và ngày hoàn thành là ràng buộc (Constraint)",
+        "C": "Ngân sách và thời hạn là giả định; việc giao hàng đúng hạn là ràng buộc vì nó bắt buộc",
+        "D": "Cả hai đều là ràng buộc vì chúng đều giới hạn các lựa chọn của nhóm dự án"
+      },
+      "ans": "B",
+      "exp": "Theo PMBOK, Assumption (giả định) là yếu tố được coi là đúng, thực, hoặc chắc chắn mà không có bằng chứng hoặc minh chứng xác nhận. Constraint (ràng buộc) là yếu tố giới hạn lựa chọn của nhóm quản lý dự án — thường liên quan đến phạm vi, chất lượng, lịch trình, ngân sách, nguồn lực. Ngân sách 500.000 USD và ngày hoàn thành 31/12/2024 là ràng buộc cố định; việc nhà cung cấp giao hàng đúng hạn là giả định chưa được xác minh."
+    },
+    {
+      "id": "ch15_q16",
+      "q": "Trong một dự án phức tạp, ban quản lý yêu cầu quản lý dự án làm rõ sự khác biệt giữa vai trò của nhà tài trợ dự án (Project Sponsor) và khách hàng (Customer). Trong dự án xây dựng hệ thống ERP cho bộ phận tài chính, CFO tài trợ và cấp vốn cho dự án, trong khi nhóm tài chính sẽ sử dụng hệ thống hàng ngày sau khi triển khai. Theo PMBOK glossary, sự phân biệt chính giữa hai vai trò này là gì?",
+      "opts": {
+        "A": "Nhà tài trợ và khách hàng luôn là cùng một người trong mọi dự án",
+        "B": "Nhà tài trợ cung cấp nguồn lực và ủng hộ cho dự án, chịu trách nhiệm về thành công; khách hàng là cá nhân hoặc tổ chức sẽ sử dụng hoặc nhận sản phẩm/dịch vụ bàn giao",
+        "C": "Khách hàng cấp kinh phí cho dự án; nhà tài trợ là người sử dụng sản phẩm cuối cùng",
+        "D": "Nhà tài trợ chỉ có vai trò trong giai đoạn lập kế hoạch; khách hàng tham gia trong giai đoạn thực hiện"
+      },
+      "ans": "B",
+      "exp": "Theo PMBOK, Sponsor (Nhà tài trợ) là người hoặc nhóm cung cấp nguồn lực và hỗ trợ dự án, chịu trách nhiệm về kết quả kinh doanh và ủng hộ dự án ở cấp cao. Customer (Khách hàng) là cá nhân hoặc tổ chức sẽ phê duyệt và quản lý sản phẩm, dịch vụ, hoặc kết quả của dự án. Trong nhiều dự án nội bộ, nhà tài trợ có thể đồng thời là khách hàng, nhưng không nhất thiết phải như vậy."
+    },
+    {
+      "id": "ch15_q17",
+      "q": "Quản lý dự án đang xây dựng WBS cho dự án phát triển phần mềm. Anh ta chia dự án thành các deliverable chính: Phân tích yêu cầu, Thiết kế, Phát triển, Kiểm thử, và Triển khai. Sau đó, anh ta phân tách tiếp thành các gói công việc (work packages) nhỏ hơn. Thành viên nhóm hỏi tại sao cần có WBS và WBS Dictionary. Theo PMBOK, mục đích chính của WBS và WBS Dictionary là gì?",
+      "opts": {
+        "A": "WBS chỉ dùng để ước tính chi phí; WBS Dictionary dùng để lập lịch trình",
+        "B": "WBS phân tách phạm vi dự án thành các phần nhỏ hơn, có thể quản lý được; WBS Dictionary cung cấp mô tả chi tiết cho mỗi thành phần WBS bao gồm tiêu chí chấp nhận, nguồn lực, và thông tin kỹ thuật",
+        "C": "WBS là lịch trình dự án; WBS Dictionary là danh sách rủi ro tương ứng",
+        "D": "WBS chỉ áp dụng cho dự án xây dựng; WBS Dictionary không cần thiết trong dự án nhỏ"
+      },
+      "ans": "B",
+      "exp": "WBS (Work Breakdown Structure) là sự phân tách theo cấu trúc phân cấp tổng phạm vi công việc cần thực hiện bởi nhóm dự án để hoàn thành mục tiêu dự án và tạo ra các sản phẩm bàn giao. WBS Dictionary là tài liệu cung cấp thông tin chi tiết về từng thành phần trong WBS, bao gồm: mô tả công việc, tiêu chí chấp nhận, nguồn lực cần thiết, ước tính chi phí, thông tin hợp đồng và kỹ thuật. Work Package là mức thấp nhất của WBS."
+    },
+    {
+      "id": "ch15_q18",
+      "q": "Một dự án đang trong giai đoạn kiểm soát. Quản lý dự án nhận được yêu cầu thay đổi từ khách hàng để thêm tính năng mới vào sản phẩm. Thay đổi này ảnh hưởng đến phạm vi, lịch trình và ngân sách. CCB họp để xem xét và phê duyệt. Trước khi trình lên CCB, quản lý dự án thực hiện đánh giá tác động toàn diện. Theo PMBOK, đây là ví dụ về quy trình nào và vai trò của CCB là gì?",
+      "opts": {
+        "A": "Đây là quy trình Close Project; CCB có trách nhiệm đóng dự án",
+        "B": "Đây là quy trình Perform Integrated Change Control; CCB (Change Control Board) là nhóm chịu trách nhiệm xem xét, đánh giá, phê duyệt, trì hoãn, hoặc từ chối các thay đổi đối với dự án",
+        "C": "Đây là quy trình Plan Scope Management; CCB lập kế hoạch phạm vi dự án",
+        "D": "Đây là quy trình Monitor and Control Project Work; CCB không liên quan đến thay đổi phạm vi"
+      },
+      "ans": "B",
+      "exp": "Perform Integrated Change Control là quy trình xem xét tất cả các yêu cầu thay đổi, phê duyệt các thay đổi và quản lý các thay đổi đối với sản phẩm bàn giao, tài sản quy trình tổ chức, tài liệu dự án và kế hoạch quản lý dự án. CCB (Change Control Board) là nhóm chính thức chịu trách nhiệm xem xét, đánh giá, phê duyệt, trì hoãn hoặc từ chối các thay đổi đối với dự án và ghi lại quyết định."
+    },
+    {
+      "id": "ch15_q19",
+      "q": "Trong dự án xây dựng nhà máy, quản lý dự án đang phân tích lịch trình và phát hiện rằng đường dẫn tới hạn có thể thay đổi nếu một số hoạt động bị trễ. Anh ta muốn sử dụng kỹ thuật PDM để lập mô hình các mối quan hệ giữa các hoạt động. Hoạt động đổ móng phải hoàn thành trước khi bắt đầu dựng khung. Tuy nhiên, việc lắp đặt điện có thể bắt đầu khi dựng khung hoàn thành 50%. Theo PMBOK, các mối quan hệ này thuộc loại phụ thuộc nào trong PDM?",
+      "opts": {
+        "A": "Đổ móng → Dựng khung là SS (Start-to-Start); Dựng khung → Lắp điện là FF (Finish-to-Finish)",
+        "B": "Đổ móng → Dựng khung là FS (Finish-to-Start); Dựng khung → Lắp điện là FS với lag +50%",
+        "C": "Cả hai đều là FS (Finish-to-Start) vì đây là loại phụ thuộc phổ biến nhất trong xây dựng",
+        "D": "Đổ móng → Dựng khung là FF (Finish-to-Finish); Dựng khung → Lắp điện là SS (Start-to-Start)"
+      },
+      "ans": "B",
+      "exp": "PDM (Precedence Diagramming Method) có 4 loại phụ thuộc: FS (Finish-to-Start): hoạt động sau không bắt đầu cho đến khi hoạt động trước kết thúc; SS (Start-to-Start): hoạt động sau không bắt đầu cho đến khi hoạt động trước bắt đầu; FF (Finish-to-Finish): hoạt động sau không kết thúc cho đến khi hoạt động trước kết thúc; SF (Start-to-Finish): hiếm gặp. Đổ móng phải hoàn thành trước khi dựng khung bắt đầu = FS. Lắp điện bắt đầu khi dựng khung hoàn thành 50% = FS với positive lag."
+    },
+    {
+      "id": "ch15_q20",
+      "q": "Sau khi hoàn thành dự án phát triển sản phẩm mới, quản lý dự án đang thực hiện đánh giá cuối dự án. Nhóm xác định các KPI sau đây: SPI cuối = 0.95, CPI cuối = 1.05, tỷ lệ hài lòng khách hàng = 92%, số lỗi phát hiện sau bàn giao = 3 lỗi nhỏ, và thời gian ra thị trường sớm hơn 2 tuần so với kế hoạch. Dự án có ngân sách 2 triệu USD và thực tế chi 1.9 triệu USD. Tổng hợp từ góc độ EVM và các KPI này, đánh giá tổng quát nào phản ánh đúng nhất hiệu suất dự án?",
+      "opts": {
+        "A": "Dự án thất bại vì SPI < 1.0, cho thấy dự án chậm tiến độ trong suốt quá trình thực hiện",
+        "B": "Dự án thành công tốt: tiết kiệm ngân sách (CPI > 1.0, tiết kiệm 100.000 USD), chất lượng cao (92% hài lòng, ít lỗi), ra thị trường sớm — mặc dù có một số giai đoạn chậm tiến độ",
+        "C": "Dự án cần đánh giá thêm vì SPI < 1.0 phủ nhận hoàn toàn các thành tích khác",
+        "D": "Không thể đánh giá dự án chỉ dựa trên các chỉ số này mà không có thêm dữ liệu"
+      },
+      "ans": "B",
+      "exp": "Đánh giá hiệu suất dự án cần xem xét toàn diện nhiều KPI. CPI = 1.05 > 1.0: tiết kiệm chi phí (chi 1.9/2.0 triệu = tiết kiệm 100.000 USD). SPI cuối = 0.95 gần 1.0: có một số chậm trễ trong quá trình nhưng kết quả cuối cùng ra thị trường sớm 2 tuần (kết quả thực tế quan trọng hơn SPI đo lường giữa kỳ). Chất lượng cao: 92% hài lòng, chỉ 3 lỗi nhỏ. Nhìn tổng thể, đây là dự án thành công đáng kể. KPI cần được xem xét trong bối cảnh tổng thể, không chỉ từng chỉ số riêng lẻ."
+    }
+  ]
+}

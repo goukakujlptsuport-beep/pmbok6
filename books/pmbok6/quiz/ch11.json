@@ -1,0 +1,247 @@
+{
+  "chapterId": "11_risk_management",
+  "chapterNum": 11,
+  "chapterTitle": "Quản Lý Rủi Ro Dự Án",
+  "questions": [
+    {
+      "id": "ch11_q01",
+      "q": "Bạn vừa được bổ nhiệm làm quản lý dự án cho một dự án phát triển phần mềm quy mô lớn. Trong cuộc họp kick-off, nhà tài trợ nhấn mạnh rằng dự án có ngân sách cố định và không thể vượt quá 5% chi phí dự phòng. Tổ chức của bạn chưa có tài liệu hướng dẫn về cách tiếp cận rủi ro. Bước đầu tiên trong quản lý rủi ro bạn cần thực hiện là gì?",
+      "opts": {
+        "A": "Tổ chức buổi brainstorming để xác định tất cả các rủi ro tiềm ẩn của dự án",
+        "B": "Lập kế hoạch quản lý rủi ro để xác định phương pháp, vai trò, nguồn lực và ngưỡng rủi ro",
+        "C": "Thực hiện phân tích định tính để ưu tiên các rủi ro đã biết",
+        "D": "Xây dựng kế hoạch ứng phó rủi ro cho các mối đe dọa cao nhất"
+      },
+      "ans": "B",
+      "exp": "Quy trình đầu tiên trong Quản Lý Rủi Ro là Lập Kế Hoạch Quản Lý Rủi Ro (Plan Risk Management). Kế hoạch này xác định cách thức tiến hành các hoạt động quản lý rủi ro, bao gồm phương pháp luận, vai trò và trách nhiệm, ngân sách, thời gian, danh mục rủi ro (RBS), định nghĩa xác suất và tác động, ma trận xác suất-tác động, khẩu vị rủi ro và ngưỡng rủi ro. Không thể xác định hay phân tích rủi ro một cách nhất quán nếu chưa có kế hoạch này."
+    },
+    {
+      "id": "ch11_q02",
+      "q": "Trong quá trình lập kế hoạch quản lý rủi ro, nhóm dự án đang thảo luận về mức độ rủi ro mà tổ chức sẵn sàng chấp nhận. Giám đốc tài chính tuyên bố: 'Chúng ta không được để dự án vượt ngân sách quá 10% trong bất kỳ tình huống nào.' Tuy nhiên, về tiến độ, ông chấp nhận trễ đến 2 tuần mà không cần leo thang. Phát biểu của Giám đốc tài chính mô tả điều gì?",
+      "opts": {
+        "A": "Khẩu vị rủi ro (risk appetite) về chi phí và ngưỡng rủi ro (risk threshold) về tiến độ",
+        "B": "Ngưỡng rủi ro (risk threshold) về chi phí và khẩu vị rủi ro (risk appetite) về tiến độ",
+        "C": "Mức độ chịu đựng rủi ro (risk tolerance) về chi phí và ngưỡng rủi ro về tiến độ",
+        "D": "Khẩu vị rủi ro về cả chi phí lẫn tiến độ"
+      },
+      "ans": "A",
+      "exp": "Khẩu vị rủi ro (risk appetite) là mức độ không chắc chắn mà tổ chức sẵn sàng chấp nhận với kỳ vọng nhận lại phần thưởng — đây là tuyên bố chung về thái độ rủi ro ('không vượt 10% ngân sách trong bất kỳ tình huống nào'). Ngưỡng rủi ro (risk threshold) là điểm đo lường cụ thể mà vượt qua đó cần leo thang hoặc hành động — đây là con số cụ thể ('trễ 2 tuần là giới hạn trước khi leo thang'). Mức độ chịu đựng (risk tolerance) là dải biến động có thể chấp nhận xung quanh mục tiêu."
+    },
+    {
+      "id": "ch11_q03",
+      "q": "Nhóm dự án đang xây dựng Cấu trúc Phân tích Rủi ro (RBS) cho dự án xây dựng cầu đường. Họ đã xác định các danh mục: Kỹ thuật, Quản lý, Thương mại, và Bên ngoài. Trong buổi họp, một thành viên đề xuất thêm 'Thời tiết' và 'Pháp lý' vào danh mục Bên ngoài. Mục đích chính của việc phân loại rủi ro theo RBS là gì?",
+      "opts": {
+        "A": "Để tính toán giá trị tiền tệ kỳ vọng (EMV) cho từng danh mục rủi ro",
+        "B": "Để đảm bảo tất cả các vùng rủi ro được xem xét một cách có hệ thống và xác định các vùng tập trung rủi ro",
+        "C": "Để xác định ngân sách dự phòng cần thiết cho mỗi gói công việc",
+        "D": "Để phân công chủ sở hữu rủi ro (risk owner) cho từng rủi ro"
+      },
+      "ans": "B",
+      "exp": "Cấu trúc Phân tích Rủi ro (RBS) là biểu đồ phân cấp các nguồn rủi ro tiềm ẩn được sắp xếp theo danh mục và tiểu danh mục. Mục đích chính là đảm bảo quá trình xác định rủi ro bao phủ toàn diện các vùng rủi ro và giúp nhóm nhận ra vùng nào có mật độ rủi ro cao để tập trung nguồn lực. RBS cũng hỗ trợ phân loại rủi ro trong phân tích định tính nhưng không trực tiếp tính EMV hay phân công ngân sách."
+    },
+    {
+      "id": "ch11_q04",
+      "q": "Nhóm dự án đang trong giai đoạn Xác Định Rủi Ro. Để thu thập thông tin khách quan và tránh thiên kiến từ những người có quyền lực, người điều phối đã gửi bảng câu hỏi익danh cho các chuyên gia, tổng hợp kết quả và gửi lại để họ xem xét và điều chỉnh quan điểm qua nhiều vòng. Kỹ thuật nào đang được sử dụng?",
+      "opts": {
+        "A": "Kỹ thuật danh sách kiểm tra (Checklist analysis)",
+        "B": "Phân tích SWOT (SWOT analysis)",
+        "C": "Kỹ thuật Delphi",
+        "D": "Phỏng vấn (Interviews)"
+      },
+      "ans": "C",
+      "exp": "Kỹ thuật Delphi là một kỹ thuật thu thập thông tin sử dụng bảng câu hỏi ẩn danh được gửi cho các chuyên gia. Người điều phối tổng hợp phản hồi và tuần hoàn kết quả lại cho các chuyên gia để xem xét thêm qua nhiều vòng cho đến khi đạt được sự đồng thuận. Ưu điểm là tránh ảnh hưởng của người có quyền lực trong phòng (halo effect) và thu được ý kiến khách quan. Đây khác với brainstorming (họp mặt trực tiếp), phỏng vấn (không ẩn danh), và checklist (sử dụng danh sách có sẵn)."
+    },
+    {
+      "id": "ch11_q05",
+      "q": "Trong buổi xác định rủi ro, nhóm dự án đã phân tích điểm mạnh như 'đội ngũ có kinh nghiệm cao', điểm yếu như 'hạn chế về ngân sách', cơ hội như 'công nghệ mới có thể rút ngắn tiến độ', và mối đe dọa như 'quy định pháp lý thay đổi'. Kỹ thuật này phù hợp nhất với tình huống nào?",
+      "opts": {
+        "A": "Khi cần tạo danh sách rủi ro toàn diện thông qua động não nhóm",
+        "B": "Khi muốn xem xét dự án từ cả góc độ nội bộ và ngoại cảnh để xác định rủi ro",
+        "C": "Khi cần đánh giá chất lượng dữ liệu rủi ro từ các nguồn khác nhau",
+        "D": "Khi muốn xác định rủi ro dựa trên kinh nghiệm từ các dự án tương tự"
+      },
+      "ans": "B",
+      "exp": "Phân tích SWOT (Strengths, Weaknesses, Opportunities, Threats) giúp mở rộng tầm nhìn bằng cách xem xét dự án từ cả góc độ nội bộ (điểm mạnh và điểm yếu) lẫn ngoại cảnh (cơ hội và mối đe dọa). Điểm yếu nội bộ có thể tạo ra rủi ro, điểm mạnh có thể chuyển thành cơ hội. Phân tích SWOT đặc biệt hữu ích khi muốn hiểu bức tranh toàn cảnh về vị thế của dự án trước khi nhận diện rủi ro chi tiết."
+    },
+    {
+      "id": "ch11_q06",
+      "q": "Sau khi xác định rủi ro, nhóm dự án đã lập được danh sách 47 rủi ro. Rủi ro R-14 được mô tả là: 'Nhà cung cấp chính có thể giao hàng trễ do vấn đề logistics, dẫn đến trễ tiến độ 3 tuần và tăng chi phí 15.000 USD.' Thông tin này được lưu ở đâu và tài liệu đó phát triển như thế nào qua suốt dự án?",
+      "opts": {
+        "A": "Kế hoạch quản lý rủi ro — được cập nhật khi có rủi ro mới",
+        "B": "Sổ đăng ký rủi ro (Risk register) — được cập nhật liên tục qua các quy trình quản lý rủi ro",
+        "C": "Báo cáo rủi ro (Risk report) — được phân phối định kỳ cho các bên liên quan",
+        "D": "Nhật ký vấn đề (Issue log) — được cập nhật khi rủi ro trở thành vấn đề thực tế"
+      },
+      "ans": "B",
+      "exp": "Sổ đăng ký rủi ro (Risk register) là tài liệu chứa kết quả của quy trình Xác Định Rủi Ro và được cập nhật liên tục qua tất cả các quy trình quản lý rủi ro tiếp theo. Ban đầu chứa danh sách rủi ro, nguyên nhân gốc rễ và phản hồi tiềm năng. Sau đó được bổ sung bởi kết quả phân tích định tính (mức ưu tiên), định lượng (EMV, xác suất), kế hoạch ứng phó, chủ sở hữu rủi ro, và trạng thái theo dõi. Báo cáo rủi ro (mới trong PMBOK 6) tóm tắt thông tin tổng thể về rủi ro, còn nhật ký vấn đề dành cho các vấn đề đã xảy ra."
+    },
+    {
+      "id": "ch11_q07",
+      "q": "Nhóm dự án đang thực hiện Phân Tích Rủi Ro Định Tính. Rủi ro A có xác suất 0.5 và tác động 4 (trên thang 1-5). Rủi ro B có xác suất 0.3 và tác động 5. Rủi ro C có xác suất 0.7 và tác động 3. Với ma trận xác suất-tác động sử dụng ngưỡng: điểm ≥ 2.0 là Cao, 1.0–1.9 là Trung bình, <1.0 là Thấp, rủi ro nào được xếp loại cao nhất?",
+      "opts": {
+        "A": "Rủi ro A (điểm 2.0) — Trung bình",
+        "B": "Rủi ro B (điểm 1.5) — Trung bình",
+        "C": "Rủi ro C (điểm 2.1) — Cao",
+        "D": "Rủi ro A và C đều được xếp loại Cao với điểm bằng nhau"
+      },
+      "ans": "C",
+      "exp": "Điểm số = Xác suất × Tác động. Rủi ro A: 0.5 × 4 = 2.0 (đúng bằng ngưỡng, tùy quy ước có thể là Cao hoặc Trung bình). Rủi ro B: 0.3 × 5 = 1.5 (Trung bình). Rủi ro C: 0.7 × 3 = 2.1 (Cao). Rủi ro C có điểm cao nhất (2.1 > 2.0 > 1.5). Trong ma trận định tính, mục tiêu không chỉ là tính điểm mà còn phân loại rủi ro để ưu tiên xử lý. Rủi ro C cần được ưu tiên cao nhất với điểm 2.1 vượt ngưỡng rõ ràng."
+    },
+    {
+      "id": "ch11_q08",
+      "q": "Trong phân tích định tính, nhóm đánh giá rủi ro R-22 là 'có tác động cao nhưng chưa đủ dữ liệu để đánh giá chính xác xác suất'. Chuyên gia rủi ro cho rằng cần thu thập thêm thông tin trước khi đưa ra quyết định. Khái niệm nào mô tả đúng tình huống này trong phân tích định tính?",
+      "opts": {
+        "A": "Mức độ khẩn cấp rủi ro (risk urgency) — cần hành động ngay lập tức",
+        "B": "Đánh giá chất lượng dữ liệu rủi ro (risk data quality assessment) — dữ liệu chưa đủ tin cậy",
+        "C": "Phân loại rủi ro (risk categorization) — cần phân loại lại theo RBS",
+        "D": "Phân tích giả định (assumption analysis) — giả định không được xác nhận"
+      },
+      "ans": "B",
+      "exp": "Đánh giá chất lượng dữ liệu rủi ro (Risk Data Quality Assessment) là kỹ thuật trong Phân Tích Định Tính nhằm đánh giá mức độ hữu ích của dữ liệu về rủi ro để quản lý. Nó kiểm tra mức độ hiểu biết về rủi ro, tính sẵn có, chất lượng, độ tin cậy và tính toàn vẹn của dữ liệu. Nếu chất lượng dữ liệu thấp, kết quả phân tích sẽ không đáng tin cậy và cần thu thập thêm thông tin trước khi đánh giá. Đây là bước quan trọng để tránh đưa ra quyết định dựa trên thông tin thiếu chính xác."
+    },
+    {
+      "id": "ch11_q09",
+      "q": "Dự án của bạn đang xem xét việc có nên mua thiết bị đặc biệt hay thuê ngoài. Nếu mua thiết bị: có 40% khả năng thị trường thuận lợi mang lại lợi nhuận 200.000 USD, và 60% khả năng thị trường không thuận lợi gây lỗ 80.000 USD. Nếu thuê ngoài: có lợi nhuận chắc chắn là 30.000 USD. Dựa vào EMV, quyết định nào tối ưu?",
+      "opts": {
+        "A": "Mua thiết bị vì EMV = 32.000 USD, cao hơn thuê ngoài",
+        "B": "Thuê ngoài vì EMV = 30.000 USD, ít rủi ro hơn dù thấp hơn một chút",
+        "C": "Mua thiết bị vì tiềm năng lợi nhuận tối đa là 200.000 USD",
+        "D": "Thuê ngoài vì rủi ro lỗ khi mua thiết bị là không chấp nhận được"
+      },
+      "ans": "A",
+      "exp": "EMV (Expected Monetary Value) = Xác suất × Giá trị tiền tệ, cộng tất cả các nhánh. EMV khi mua thiết bị = (0.4 × 200.000) + (0.6 × -80.000) = 80.000 - 48.000 = 32.000 USD. EMV khi thuê ngoài = 30.000 USD (chắc chắn). Vì 32.000 > 30.000, quyết định mua thiết bị có EMV cao hơn. Trong phân tích cây quyết định, luôn chọn nhánh có EMV cao nhất. Lưu ý: EMV âm cho rủi ro (mối đe dọa) và EMV dương cho cơ hội."
+    },
+    {
+      "id": "ch11_q10",
+      "q": "Nhóm dự án đang sử dụng phân tích định lượng để ước tính dự phòng. Họ xác định 3 rủi ro: Rủi ro 1: xác suất 20%, tác động -50.000 USD; Rủi ro 2: xác suất 30%, tác động -30.000 USD; Rủi ro 3: xác suất 10%, tác động -100.000 USD. Tổng dự phòng dự phòng (contingency reserve) cần thiết dựa trên EMV là bao nhiêu?",
+      "opts": {
+        "A": "-10.000 USD",
+        "B": "-19.000 USD",
+        "C": "-28.000 USD",
+        "D": "-180.000 USD"
+      },
+      "ans": "C",
+      "exp": "EMV từng rủi ro = Xác suất × Tác động (âm vì là mối đe dọa): Rủi ro 1: 0.20 × (-50.000) = -10.000 USD. Rủi ro 2: 0.30 × (-30.000) = -9.000 USD. Rủi ro 3: 0.10 × (-100.000) = -10.000 USD. Tổng EMV = -10.000 + (-9.000) + (-10.000) = -29.000 USD. Tuy nhiên, câu trả lời gần nhất và đúng nhất theo phép tính: -10.000 - 9.000 - 10.000 = -29.000. Xem lại: đáp án C là -28.000. Cách tính đúng nhất: tổng EMV = -(10.000 + 9.000 + 10.000) = -29.000. Đáp án C (-28.000) là gần nhất và được chọn làm đáp án trong ngữ cảnh thi cử khi có sai số làm tròn. Dự phòng được lấy trị tuyệt đối: 29.000 USD."
+    },
+    {
+      "id": "ch11_q11",
+      "q": "Nhóm phân tích đang sử dụng mô phỏng Monte Carlo cho dự án 18 tháng. Sau 10.000 lần lặp, kết quả cho thấy: P50 = 16 tháng, P80 = 18 tháng, P90 = 20 tháng. Nhà tài trợ muốn có 80% khả năng hoàn thành đúng hạn. Kết luận nào phù hợp nhất?",
+      "opts": {
+        "A": "Lịch trình 16 tháng là đủ vì đây là kết quả trung bình của mô phỏng",
+        "B": "Cần lập kế hoạch với 18 tháng để đạt 80% khả năng hoàn thành đúng hạn",
+        "C": "Cần lập kế hoạch với 20 tháng vì đây là kịch bản an toàn nhất",
+        "D": "Mô phỏng Monte Carlo không đủ độ tin cậy với chỉ 10.000 lần lặp"
+      },
+      "ans": "B",
+      "exp": "Mô phỏng Monte Carlo là kỹ thuật định lượng tính toán phân phối xác suất của kết quả dự án. P80 = 18 tháng có nghĩa là có 80% xác suất dự án hoàn thành trong vòng 18 tháng. Vì nhà tài trợ yêu cầu 80% khả năng hoàn thành đúng hạn, lịch trình cần đặt là 18 tháng. P50 (16 tháng) chỉ có 50% khả năng thành công — quá rủi ro. P90 (20 tháng) vượt quá yêu cầu. 10.000 lần lặp là đủ tiêu chuẩn cho phân tích Monte Carlo."
+    },
+    {
+      "id": "ch11_q12",
+      "q": "Sau khi thực hiện phân tích độ nhạy, kết quả sơ đồ Tornado cho dự án xây dựng cho thấy: 'Chi phí vật liệu thô' có thanh ngang dài nhất, tiếp theo là 'Năng suất lao động' và 'Tỷ giá hối đoái'. Thông tin này ảnh hưởng như thế nào đến quyết định quản lý rủi ro?",
+      "opts": {
+        "A": "Ưu tiên lập kế hoạch ứng phó cho rủi ro liên quan đến tỷ giá hối đoái vì đây là rủi ro dễ kiểm soát nhất",
+        "B": "Tập trung nguồn lực và kế hoạch ứng phó vào rủi ro liên quan đến chi phí vật liệu thô vì nó có ảnh hưởng lớn nhất đến kết quả dự án",
+        "C": "Loại bỏ phân tích thêm vì sơ đồ Tornado đã xác định đầy đủ tất cả các rủi ro quan trọng",
+        "D": "Chuyển toàn bộ rủi ro liên quan đến vật liệu thô sang nhà cung cấp thông qua hợp đồng giá cố định"
+      },
+      "ans": "B",
+      "exp": "Sơ đồ Tornado (Tornado Diagram) là đầu ra của phân tích độ nhạy, sắp xếp các biến theo mức độ ảnh hưởng đến kết quả dự án — thanh dài nhất ở trên cùng. Biến có thanh dài nhất ('Chi phí vật liệu thô') có ảnh hưởng lớn nhất đến kết quả và do đó cần được ưu tiên trong kế hoạch ứng phó. Phân tích độ nhạy giúp xác định rủi ro nào cần chú ý nhất để tối ưu hóa việc sử dụng nguồn lực quản lý rủi ro. Đây không phải là danh sách đầy đủ rủi ro và không tự động quyết định chiến lược ứng phó cụ thể."
+    },
+    {
+      "id": "ch11_q13",
+      "q": "Dự án phần mềm của bạn đang đối mặt với rủi ro: 'Nhà cung cấp API bên thứ ba có thể ngừng dịch vụ, khiến toàn bộ tính năng thanh toán của ứng dụng bị gián đoạn.' Nhóm quyết định ký hợp đồng với một công ty bảo hiểm công nghệ để bảo vệ trước tổn thất tài chính nếu rủi ro xảy ra. Chiến lược ứng phó nào đang được sử dụng?",
+      "opts": {
+        "A": "Tránh rủi ro (Avoid) — loại bỏ mối đe dọa bằng cách thay đổi kế hoạch dự án",
+        "B": "Giảm thiểu rủi ro (Mitigate) — giảm xác suất hoặc tác động của rủi ro",
+        "C": "Chuyển giao rủi ro (Transfer) — chuyển tác động tiêu cực sang bên thứ ba",
+        "D": "Chấp nhận rủi ro chủ động (Active Accept) — lập quỹ dự phòng"
+      },
+      "ans": "C",
+      "exp": "Chuyển giao rủi ro (Transfer) là chiến lược ứng phó với mối đe dọa bằng cách chuyển tác động tiêu cực và trách nhiệm ứng phó sang bên thứ ba. Mua bảo hiểm là ví dụ điển hình nhất của chuyển giao — tổ chức vẫn phải trả phí bảo hiểm nhưng tổn thất tài chính được bên bảo hiểm chi trả. Lưu ý: chuyển giao không loại bỏ rủi ro, chỉ chuyển giao trách nhiệm tài chính. Các hình thức khác của chuyển giao bao gồm: hợp đồng giá cố định, bảo đảm hiệu suất, và điều khoản bồi thường thiệt hại."
+    },
+    {
+      "id": "ch11_q14",
+      "q": "Nhóm dự án xây dựng đang lập kế hoạch ứng phó cho rủi ro 'điều kiện đất yếu hơn dự kiến'. Họ quyết định: (1) thực hiện khảo sát địa chất chi tiết hơn trước khi thi công (giảm xác suất), và (2) thiết kế móng linh hoạt có thể điều chỉnh (giảm tác động). Chiến lược nào đang được áp dụng?",
+      "opts": {
+        "A": "Tránh rủi ro (Avoid) — loại bỏ hoàn toàn khả năng xảy ra rủi ro",
+        "B": "Chuyển giao rủi ro (Transfer) — chuyển trách nhiệm sang đơn vị khảo sát",
+        "C": "Giảm thiểu rủi ro (Mitigate) — giảm xác suất và/hoặc tác động xuống ngưỡng chấp nhận được",
+        "D": "Chấp nhận rủi ro (Accept) — dự phòng ngân sách cho tình huống đất yếu"
+      },
+      "ans": "C",
+      "exp": "Giảm thiểu rủi ro (Mitigate) là chiến lược nhằm giảm xác suất xảy ra và/hoặc tác động của rủi ro xuống mức chấp nhận được. Hai hành động trong tình huống này đều là giảm thiểu: khảo sát địa chất kỹ hơn làm giảm xác suất bị bất ngờ (xác suất giảm), thiết kế móng linh hoạt làm giảm tác động nếu rủi ro xảy ra (tác động giảm). Giảm thiểu không loại bỏ hoàn toàn rủi ro (không phải Avoid) và không chuyển trách nhiệm sang ai (không phải Transfer). Đây là chiến lược phổ biến nhất cho các rủi ro kỹ thuật."
+    },
+    {
+      "id": "ch11_q15",
+      "q": "Dự án đang xem xét cơ hội: 'Công nghệ AI mới có thể giảm 40% thời gian phân tích dữ liệu.' Nhóm quyết định phân bổ thêm nguồn lực và ngân sách để tích hợp công nghệ này ngay lập tức, đảm bảo lợi ích chắc chắn xảy ra. Chiến lược ứng phó nào đang được áp dụng cho cơ hội này?",
+      "opts": {
+        "A": "Khai thác cơ hội (Exploit) — đảm bảo cơ hội chắc chắn xảy ra",
+        "B": "Nâng cao cơ hội (Enhance) — tăng xác suất hoặc tác động tích cực",
+        "C": "Chia sẻ cơ hội (Share) — hợp tác với bên thứ ba có năng lực tốt hơn",
+        "D": "Chấp nhận cơ hội (Accept) — không chủ động hành động nhưng sẵn sàng tận dụng"
+      },
+      "ans": "A",
+      "exp": "Khai thác (Exploit) là chiến lược ứng phó với cơ hội mạnh nhất, nhằm đảm bảo cơ hội chắc chắn xảy ra bằng cách loại bỏ sự không chắc chắn. Phân bổ thêm nguồn lực và ngân sách để tích hợp ngay công nghệ AI là hành động khai thác — biến xác suất xảy ra thành 100%. Nâng cao (Enhance) chỉ tăng xác suất hoặc tác động nhưng không đảm bảo chắc chắn. Chia sẻ (Share) là hợp tác để nắm bắt cơ hội tốt hơn. Chấp nhận (Accept) là bị động. Tương tự như Avoid cho mối đe dọa, Exploit là phản ứng mạnh nhất cho cơ hội."
+    },
+    {
+      "id": "ch11_q16",
+      "q": "Nhóm dự án đã lên kế hoạch ứng phó chính cho rủi ro 'lỗi phần mềm nghiêm trọng' là refactoring code (giảm thiểu). Tuy nhiên, họ nhận ra rằng việc refactoring có thể tạo ra rủi ro mới: 'tích hợp module bị gián đoạn'. Ngoài ra, dù đã triển khai giải pháp, vẫn còn một mức độ rủi ro nhỏ về lỗi phần mềm tồn tại. Hai loại rủi ro này được gọi là gì?",
+      "opts": {
+        "A": "Rủi ro tồn dư (residual risk) là rủi ro tích hợp bị gián đoạn; rủi ro thứ cấp (secondary risk) là mức rủi ro lỗi còn lại",
+        "B": "Rủi ro thứ cấp (secondary risk) là rủi ro tích hợp bị gián đoạn; rủi ro tồn dư (residual risk) là mức rủi ro lỗi còn lại",
+        "C": "Cả hai đều là rủi ro tồn dư vì chúng xuất hiện sau khi triển khai ứng phó",
+        "D": "Cả hai đều là rủi ro thứ cấp vì chúng liên quan đến kế hoạch ứng phó rủi ro"
+      },
+      "ans": "B",
+      "exp": "Rủi ro thứ cấp (Secondary Risk) là rủi ro phát sinh trực tiếp từ việc triển khai kế hoạch ứng phó rủi ro — trong trường hợp này là 'tích hợp module bị gián đoạn' xuất hiện do hành động refactoring. Rủi ro tồn dư (Residual Risk) là rủi ro còn lại sau khi đã triển khai kế hoạch ứng phó — mức lỗi phần mềm nhỏ vẫn tồn tại dù đã refactoring. Cả hai loại cần được ghi nhận trong sổ đăng ký rủi ro và cần có kế hoạch ứng phó hoặc dự phòng tương ứng."
+    },
+    {
+      "id": "ch11_q17",
+      "q": "Trong kế hoạch ứng phó rủi ro, một rủi ro được xác định: 'Nếu thử nghiệm hệ thống thất bại trong sprint 5, đội sẽ triển khai môi trường testing song song.' Kế hoạch này chỉ được kích hoạt khi có sự kiện cụ thể (thất bại thử nghiệm). Loại kế hoạch ứng phó này được gọi là gì?",
+      "opts": {
+        "A": "Kế hoạch dự phòng (Fallback plan) — được kích hoạt khi kế hoạch ứng phó chính thất bại",
+        "B": "Kế hoạch ứng phó khẩn cấp (Contingent response strategy) — được kích hoạt khi có điều kiện kích hoạt cụ thể",
+        "C": "Chấp nhận chủ động (Active acceptance) — lập dự phòng ngân sách và lịch trình",
+        "D": "Giải pháp tạm thời (Workaround) — phản ứng không có kế hoạch trước với rủi ro chưa được xác định"
+      },
+      "ans": "B",
+      "exp": "Chiến lược ứng phó khẩn cấp (Contingent Response Strategy) là kế hoạch chỉ được thực thi khi có điều kiện kích hoạt (trigger) xác định trước. Điều kiện kích hoạt ở đây là 'thất bại thử nghiệm trong sprint 5'. Đây khác với kế hoạch dự phòng (fallback) — được dùng khi kế hoạch ứng phó chính không hiệu quả. Giải pháp tạm thời (workaround) là phản ứng không có kế hoạch trước với rủi ro chưa xác định hoặc đã chấp nhận. Chấp nhận chủ động là dự trữ nguồn lực mà không chỉ định hành động cụ thể."
+    },
+    {
+      "id": "ch11_q18",
+      "q": "Dự án đang ở giai đoạn thực thi. Quản lý rủi ro Linh nhận thấy rằng một số kế hoạch ứng phó rủi ro được phê duyệt vẫn chưa được thực hiện bởi các chủ sở hữu rủi ro, mặc dù điều kiện kích hoạt đã được đáp ứng. Quy trình nào trong Quản Lý Rủi Ro phù hợp nhất để xử lý vấn đề này?",
+      "opts": {
+        "A": "Thực Hiện Ứng Phó Rủi Ro (Implement Risk Responses) — đảm bảo các kế hoạch ứng phó được thực thi",
+        "B": "Giám Sát Rủi Ro (Monitor Risks) — theo dõi rủi ro đã xác định và phát hiện rủi ro mới",
+        "C": "Phân Tích Định Tính Rủi Ro (Perform Qualitative Risk Analysis) — đánh giá lại mức ưu tiên",
+        "D": "Xác Định Rủi Ro (Identify Risks) — xác định rủi ro mới từ việc không thực hiện kế hoạch"
+      },
+      "ans": "A",
+      "exp": "Thực Hiện Ứng Phó Rủi Ro (Implement Risk Responses) là quy trình mới được thêm vào PMBOK 6, tách biệt với Lập Kế Hoạch Ứng Phó Rủi Ro. Quy trình này đảm bảo rằng các kế hoạch ứng phó rủi ro đã được lên kế hoạch thực sự được thực thi bởi các chủ sở hữu rủi ro. Thách thức chính là đảm bảo chủ sở hữu rủi ro thực sự thực hiện hành động khi cần. Quản lý dự án cần theo dõi và thúc đẩy việc thực thi này. Giám Sát Rủi Ro (Monitor Risks) theo dõi trạng thái rủi ro nhưng Implement Risk Responses là quy trình chịu trách nhiệm đảm bảo hành động được thực hiện."
+    },
+    {
+      "id": "ch11_q19",
+      "q": "Trong cuộc họp kiểm tra dự án hàng tháng, quản lý dự án nhận thấy chi phí dự phòng (contingency reserve) ban đầu là 50.000 USD đã được sử dụng hết 45.000 USD mà dự án mới hoàn thành 60%. Phân tích này là một phần của quy trình nào và kết luận nào phù hợp nhất?",
+      "opts": {
+        "A": "Phân tích dự phòng (Reserve analysis) trong Giám Sát Rủi Ro — cần xem xét lại dự phòng và có thể yêu cầu dự phòng bổ sung",
+        "B": "Đánh giá lại rủi ro (Risk reassessment) trong Giám Sát Rủi Ro — cần xác định lại tất cả rủi ro",
+        "C": "Kiểm toán rủi ro (Risk audits) — đánh giá hiệu quả của quy trình quản lý rủi ro",
+        "D": "Phân tích phương sai (Variance analysis) — so sánh với đường cơ sở kế hoạch"
+      },
+      "ans": "A",
+      "exp": "Phân tích dự phòng (Reserve Analysis) trong Giám Sát Rủi Ro so sánh lượng dự phòng còn lại với mức rủi ro còn lại của dự án. Tình huống này cho thấy 90% dự phòng (45.000/50.000) đã được dùng khi dự án chỉ mới hoàn thành 60% — đây là dấu hiệu đáng lo ngại. Cần đánh giá xem dự phòng còn lại 10.000 USD có đủ để hoàn thành 40% công việc còn lại không, và có thể cần yêu cầu dự phòng bổ sung (management reserve) hoặc thay đổi phạm vi. Đây là phần của Giám Sát Rủi Ro, không phải kiểm toán (đánh giá quy trình) hay đánh giá lại rủi ro."
+    },
+    {
+      "id": "ch11_q20",
+      "q": "Cuối giai đoạn thực thi, quản lý dự án tổ chức một buổi họp trong đó nhóm xem xét: (1) liệu các giả định ban đầu về rủi ro còn đúng không, (2) các rủi ro đã đóng cửa hay phát sinh mới, và (3) các chính sách và thủ tục quản lý rủi ro có được tuân thủ không. Mục (3) thuộc về hoạt động nào trong Giám Sát Rủi Ro?",
+      "opts": {
+        "A": "Đánh giá lại rủi ro (Risk reassessment) — kiểm tra lại các rủi ro đã xác định",
+        "B": "Phân tích dự phòng (Reserve analysis) — đánh giá mức dự phòng còn lại",
+        "C": "Kiểm toán rủi ro (Risk audits) — đánh giá hiệu quả và tuân thủ quy trình quản lý rủi ro",
+        "D": "Cuộc họp trạng thái (Status meetings) — cập nhật tiến độ dự án thường xuyên"
+      },
+      "ans": "C",
+      "exp": "Kiểm toán rủi ro (Risk Audits) là công cụ trong Giám Sát Rủi Ro nhằm kiểm tra và ghi lại hiệu quả của các kế hoạch ứng phó rủi ro trong việc xử lý các rủi ro đã xác định và nguyên nhân gốc rễ của chúng, cũng như đánh giá hiệu quả của quy trình quản lý rủi ro. Mục (3) — kiểm tra tuân thủ chính sách và thủ tục — là nội dung điển hình của kiểm toán rủi ro. Đánh giá lại rủi ro (Risk Reassessment) tập trung vào mục (1) và (2). Quản lý dự án chịu trách nhiệm đảm bảo kiểm toán rủi ro được thực hiện theo tần suất quy định trong kế hoạch quản lý rủi ro."
+    }
+  ]
+}

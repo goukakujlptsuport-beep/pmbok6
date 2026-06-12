@@ -1,0 +1,248 @@
+{
+  "chapterId": "rita_15",
+  "chapterNum": 15,
+  "chapterTitle": "Compliance and Delivering Value",
+  "source": "rita",
+  "questions": [
+    {
+      "id": "r15_q01",
+      "q": "A project manager is asked why the project was initiated. The BEST document to reference is:",
+      "opts": {
+        "A": "The project management plan",
+        "B": "The business case",
+        "C": "The scope statement",
+        "D": "The risk register"
+      },
+      "ans": "B",
+      "exp": "Business Case (Luận cứ kinh doanh) là tài liệu lý giải tại sao dự án được khởi xướng, bao gồm phân tích chi phí-lợi ích và lý do kinh doanh. PM nên tham chiếu business case xuyên suốt dự án để đảm bảo dự án vẫn còn giá trị kinh doanh."
+    },
+    {
+      "id": "r15_q02",
+      "q": "A project has been completed and the new software system is deployed. The financial benefits (cost savings) from using the system are expected to materialize over the next three years. Who is typically responsible for realizing these benefits?",
+      "opts": {
+        "A": "The project manager",
+        "B": "The project team",
+        "C": "The operations team or business owners",
+        "D": "The project sponsor"
+      },
+      "ans": "C",
+      "exp": "Benefits realization (Hiện thực hóa lợi ích) thường xảy ra SAU khi dự án đóng lại và thường do nhóm vận hành (operations team) hoặc chủ sở hữu doanh nghiệp chịu trách nhiệm. PM quản lý việc tạo ra deliverables, nhưng lợi ích từ việc sử dụng chúng thuộc về tổ chức vận hành."
+    },
+    {
+      "id": "r15_q03",
+      "q": "A benefits management plan has been created for a new product launch project. What is the PRIMARY purpose of this document?",
+      "opts": {
+        "A": "To define the project scope and work breakdown structure",
+        "B": "To define expected benefits, how they will be measured, and when they will be realized",
+        "C": "To document risks associated with delivering project benefits",
+        "D": "To replace the project charter"
+      },
+      "ans": "B",
+      "exp": "Benefits Management Plan (Kế hoạch quản lý lợi ích) xác định các lợi ích kỳ vọng, phương pháp đo lường và thời điểm hiện thực hóa lợi ích. Đây là tài liệu quan trọng giúp tổ chức theo dõi liệu dự án có đang mang lại giá trị kinh doanh như kỳ vọng hay không."
+    },
+    {
+      "id": "r15_q04",
+      "q": "Mid-project, a new government regulation is enacted that directly affects the project's technical approach. What framework is MOST useful for analyzing this type of external change?",
+      "opts": {
+        "A": "SWOT analysis",
+        "B": "PESTLE analysis",
+        "C": "Monte Carlo simulation",
+        "D": "Earned value management"
+      },
+      "ans": "B",
+      "exp": "PESTLE analysis (Phân tích PESTLE) là công cụ phân tích môi trường kinh doanh bên ngoài gồm: Political (Chính trị), Economic (Kinh tế), Social (Xã hội), Technological (Công nghệ), Legal (Pháp lý), Environmental (Môi trường). Thay đổi quy định pháp lý là yếu tố Legal trong PESTLE."
+    },
+    {
+      "id": "r15_q05",
+      "q": "A project manager is informed that the project's expected ROI has dropped significantly due to market changes, making the original business case no longer valid. What should she do?",
+      "opts": {
+        "A": "Continue the project since it has already started",
+        "B": "Immediately close the project without notifying anyone",
+        "C": "Inform the sponsor and appropriate management for a go/no-go decision",
+        "D": "Reduce the project scope to lower costs and maintain ROI"
+      },
+      "ans": "C",
+      "exp": "Khi business case không còn giá trị, PM phải thông báo cho nhà tài trợ và ban lãnh đạo để có quyết định tiếp tục hay dừng dự án (go/no-go). PM không có thẩm quyền tự ý tiếp tục hay hủy dự án — đây là quyết định của quản lý cấp cao dựa trên giá trị kinh doanh."
+    },
+    {
+      "id": "r15_q06",
+      "q": "An organization is implementing a new ERP system. Employees are resistant to change. The project manager is applying the ADKAR model. What does the 'D' in ADKAR stand for?",
+      "opts": {
+        "A": "Delivery",
+        "B": "Desire",
+        "C": "Documentation",
+        "D": "Direction"
+      },
+      "ans": "B",
+      "exp": "ADKAR là mô hình quản lý thay đổi gồm: Awareness (Nhận thức), Desire (Mong muốn thay đổi), Knowledge (Kiến thức về cách thay đổi), Ability (Khả năng thực hiện thay đổi), và Reinforcement (Củng cố để duy trì thay đổi). 'D' là Desire — mong muốn tham gia và hỗ trợ sự thay đổi."
+    },
+    {
+      "id": "r15_q07",
+      "q": "A pharmaceutical company must comply with FDA regulations when developing a new drug. This represents which type of compliance requirement?",
+      "opts": {
+        "A": "Internal compliance",
+        "B": "External compliance",
+        "C": "Optional compliance",
+        "D": "Process compliance"
+      },
+      "ans": "B",
+      "exp": "External compliance (Tuân thủ bên ngoài) bao gồm các yêu cầu từ luật pháp, quy định chính phủ, tiêu chuẩn ngành. Quy định FDA là ví dụ điển hình của external compliance. Internal compliance liên quan đến chính sách và quy trình nội bộ của tổ chức."
+    },
+    {
+      "id": "r15_q08",
+      "q": "What is the DIFFERENCE between project deliverables and project benefits?",
+      "opts": {
+        "A": "Deliverables and benefits are the same thing",
+        "B": "Deliverables are outputs (what is produced); benefits are outcomes (the value from using outputs)",
+        "C": "Benefits are created during the project; deliverables are created after",
+        "D": "Deliverables are intangible; benefits are tangible"
+      },
+      "ans": "B",
+      "exp": "Deliverables (Sản phẩm bàn giao) là đầu ra cụ thể mà dự án tạo ra (phần mềm, cầu đường, báo cáo). Benefits (Lợi ích) là kết quả/giá trị thu được từ việc sử dụng deliverables (tiết kiệm chi phí, tăng doanh thu, cải thiện quy trình). Dự án tạo deliverables; tổ chức thu hoạch benefits."
+    },
+    {
+      "id": "r15_q09",
+      "q": "Which statement BEST describes when the business case should be referenced during a project?",
+      "opts": {
+        "A": "Only during project initiation",
+        "B": "Only when changes are requested",
+        "C": "Throughout the project to ensure continued alignment with business objectives",
+        "D": "Only during the closing phase"
+      },
+      "ans": "C",
+      "exp": "Business case nên được tham chiếu xuyên suốt vòng đời dự án, không chỉ ở giai đoạn khởi đầu. Mỗi khi có quyết định quan trọng, thay đổi scope, hoặc rủi ro mới, PM cần kiểm tra xem dự án vẫn còn phù hợp với mục tiêu kinh doanh ban đầu hay không."
+    },
+    {
+      "id": "r15_q10",
+      "q": "An organization has a new strategic goal to reduce carbon emissions by 30%. A current project's deliverables now conflict with this goal. What should the project manager do?",
+      "opts": {
+        "A": "Continue the project unchanged since strategy changes are not the PM's concern",
+        "B": "Update the risk register to reflect this as a new risk",
+        "C": "Perform an impact assessment and escalate to management for strategic alignment review",
+        "D": "Immediately close the project"
+      },
+      "ans": "C",
+      "exp": "Khi có thay đổi môi trường bên ngoài ảnh hưởng đến sự liên kết chiến lược, PM phải đánh giá tác động (impact assessment) và trình lên ban lãnh đạo để xem xét. PM không tự quyết định tiếp tục hay hủy dự án — đây thuộc thẩm quyền quản lý cấp cao."
+    },
+    {
+      "id": "r15_q11",
+      "q": "A project is cancelled before completion. What is the MOST important action for the project manager to take at this point?",
+      "opts": {
+        "A": "Reassign team members immediately and move on",
+        "B": "Close the project responsibly: document lessons learned, archive records, and release resources formally",
+        "C": "Leave all documentation incomplete since the project was cancelled",
+        "D": "Blame external factors and file a report with the PMO"
+      },
+      "ans": "B",
+      "exp": "Khi dự án bị hủy, PM vẫn phải thực hiện đầy đủ quy trình đóng dự án (Close Project): lưu trữ bài học kinh nghiệm, lưu hồ sơ dự án, giải phóng nguồn lực một cách chính thức và bàn giao sản phẩm dở dang nếu có. Đây là trách nhiệm chuyên nghiệp của PM."
+    },
+    {
+      "id": "r15_q12",
+      "q": "An organization uses portfolios, programs, and projects to create value. This concept is BEST described as:",
+      "opts": {
+        "A": "Organizational process assets",
+        "B": "Enterprise environmental factors",
+        "C": "Value delivery system",
+        "D": "Governance framework"
+      },
+      "ans": "C",
+      "exp": "Value Delivery System (Hệ thống phân phối giá trị) mô tả cách tổ chức tạo ra giá trị thông qua danh mục đầu tư (portfolios), chương trình (programs), và dự án (projects). Các thành phần này hoạt động theo thứ bậc để đảm bảo tổ chức đạt được mục tiêu chiến lược."
+    },
+    {
+      "id": "r15_q13",
+      "q": "A company's HR department requires all projects involving contractors to use a specific vendor onboarding process. This is an example of:",
+      "opts": {
+        "A": "External legal compliance",
+        "B": "Industry standard",
+        "C": "Internal compliance requirement",
+        "D": "Government regulation"
+      },
+      "ans": "C",
+      "exp": "Quy trình onboarding nhà cung cấp do phòng HR quy định là ví dụ về Internal compliance (Tuân thủ nội bộ) — các chính sách và quy trình của tổ chức mà dự án phải tuân theo. Internal compliance khác với external compliance (luật pháp, quy định nhà nước)."
+    },
+    {
+      "id": "r15_q14",
+      "q": "When managing organizational change during a project, the project manager's PRIMARY role is to:",
+      "opts": {
+        "A": "Make all change decisions unilaterally",
+        "B": "Help stakeholders understand, accept, and adapt to changes resulting from the project",
+        "C": "Prevent changes from occurring",
+        "D": "Document changes and file them for audit purposes"
+      },
+      "ans": "B",
+      "exp": "Vai trò của PM trong quản lý thay đổi tổ chức (Organizational Change Management) là giúp các stakeholder nhận thức, chấp nhận và thích nghi với những thay đổi mà dự án mang lại. PM là cầu nối giữa dự án và tổ chức, hỗ trợ khía cạnh con người của sự thay đổi."
+    },
+    {
+      "id": "r15_q15",
+      "q": "Early in project planning, a project manager identifies several compliance requirements from multiple government agencies. What is the BEST approach?",
+      "opts": {
+        "A": "Address compliance requirements only when a violation is detected",
+        "B": "Document compliance requirements and incorporate them into the project plan from the start",
+        "C": "Delegate all compliance tasks to the legal department",
+        "D": "Wait until the execution phase to identify compliance requirements"
+      },
+      "ans": "B",
+      "exp": "Yêu cầu tuân thủ (compliance requirements) phải được xác định sớm và tích hợp vào kế hoạch dự án ngay từ đầu (planning phase). Xử lý muộn sẽ dẫn đến chi phí cao hơn, rủi ro pháp lý và khả năng phải làm lại (rework)."
+    },
+    {
+      "id": "r15_q16",
+      "q": "A project is consistently delivering on time and within budget, but the end users are not adopting the new system. This MOST likely indicates a failure in:",
+      "opts": {
+        "A": "Risk management",
+        "B": "Schedule management",
+        "C": "Organizational change management and benefits realization",
+        "D": "Procurement management"
+      },
+      "ans": "C",
+      "exp": "Khi dự án hoàn thành đúng schedule và budget nhưng người dùng không áp dụng hệ thống mới, đây là dấu hiệu thất bại trong Organizational Change Management (quản lý thay đổi tổ chức) và Benefits Realization (hiện thực hóa lợi ích). Deliverable được tạo ra nhưng lợi ích không được thu hoạch."
+    },
+    {
+      "id": "r15_q17",
+      "q": "Which of the following BEST describes the relationship between project governance and compliance?",
+      "opts": {
+        "A": "Governance and compliance are identical concepts",
+        "B": "Governance provides the oversight framework and decision-making structure that helps ensure compliance",
+        "C": "Compliance is only required for external regulatory matters",
+        "D": "Governance replaces the need for a project management plan"
+      },
+      "ans": "B",
+      "exp": "Governance (Quản trị) cung cấp khung giám sát và cơ cấu ra quyết định, giúp đảm bảo dự án tuân thủ (compliance) các yêu cầu bên trong và bên ngoài. Governance xác định ai có thẩm quyền ra quyết định và quy trình nào cần được tuân theo để đảm bảo trách nhiệm giải trình."
+    },
+    {
+      "id": "r15_q18",
+      "q": "A project manager learns that inflation has significantly increased material costs, threatening the project's financial viability. This is an example of which PESTLE factor affecting the project?",
+      "opts": {
+        "A": "Political",
+        "B": "Legal",
+        "C": "Economic",
+        "D": "Technological"
+      },
+      "ans": "C",
+      "exp": "Lạm phát và biến động giá cả là yếu tố Economic (Kinh tế) trong phân tích PESTLE. PM cần thực hiện impact assessment để xác định mức độ ảnh hưởng đến scope, schedule, cost và trình lên ban lãnh đạo các phương án xử lý."
+    },
+    {
+      "id": "r15_q19",
+      "q": "Which statement about strategic alignment throughout the project lifecycle is MOST accurate?",
+      "opts": {
+        "A": "Strategic alignment is only verified at project initiation",
+        "B": "The PM should regularly validate that the project continues to support organizational strategy",
+        "C": "Strategic alignment is the responsibility of the portfolio manager only",
+        "D": "Once a project is approved, strategic alignment is no longer relevant"
+      },
+      "ans": "B",
+      "exp": "PM phải liên tục xác nhận rằng dự án vẫn hỗ trợ chiến lược tổ chức trong suốt vòng đời dự án. Khi môi trường kinh doanh thay đổi, chiến lược tổ chức có thể thay đổi, và PM cần đảm bảo dự án vẫn phù hợp hoặc đề xuất thay đổi/kết thúc dự án nếu không còn phù hợp."
+    },
+    {
+      "id": "r15_q20",
+      "q": "An organization is transitioning from a functional structure to a project-based matrix. Employees are anxious about new reporting relationships. According to the ADKAR model, the organization should FIRST focus on:",
+      "opts": {
+        "A": "Reinforcement — rewarding early adopters",
+        "B": "Ability — training employees on new skills",
+        "C": "Awareness — helping employees understand WHY the change is happening",
+        "D": "Knowledge — documenting new processes and procedures"
+      },
+      "ans": "C",
+      "exp": "Theo mô hình ADKAR, bước đầu tiên là Awareness (Nhận thức) — giúp mọi người hiểu TẠI SAO thay đổi xảy ra và tại sao nó cần thiết. Trước khi người ta mong muốn (Desire) hoặc học cách (Knowledge) thực hiện thay đổi, họ cần hiểu lý do đằng sau nó. Bỏ qua Awareness dẫn đến kháng cự và thất bại trong thay đổi."
+    }
+  ]
+}

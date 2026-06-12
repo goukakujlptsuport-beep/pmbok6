@@ -1,0 +1,247 @@
+{
+  "chapterId": "08_quality_management",
+  "chapterNum": 8,
+  "chapterTitle": "Quản Lý Chất Lượng Dự Án",
+  "questions": [
+    {
+      "id": "ch08_q01",
+      "q": "Bạn là quản lý dự án cho một hệ thống phần mềm y tế. Nhóm của bạn đã dành 2 tuần viết các ca kiểm thử chi tiết và xem xét thiết kế trước khi bắt đầu lập trình. Khách hàng hỏi tại sao chi phí lại cao hơn dự kiến trong giai đoạn đầu. Loại chi phí chất lượng nào đang được áp dụng ở đây?",
+      "opts": {
+        "A": "Chi phí thất bại bên trong (Internal failure cost)",
+        "B": "Chi phí phòng ngừa (Prevention cost)",
+        "C": "Chi phí thẩm định (Appraisal cost)",
+        "D": "Chi phí thất bại bên ngoài (External failure cost)"
+      },
+      "ans": "B",
+      "exp": "Chi phí phòng ngừa (Prevention cost) là chi phí phát sinh để ngăn chặn lỗi xảy ra, bao gồm lập kế hoạch chất lượng, xem xét thiết kế, và viết ca kiểm thử trước khi sản xuất. Đây là khoản đầu tư nhằm tránh phát sinh lỗi về sau, tốn kém hơn nhiều. Chi phí thẩm định liên quan đến kiểm tra sản phẩm đã được tạo ra."
+    },
+    {
+      "id": "ch08_q02",
+      "q": "Trong quá trình kiểm soát chất lượng, nhóm của bạn phát hiện 150 lỗi phần mềm. Sau khi phân tích, 30 loại lỗi khác nhau được xác định. Bạn muốn tập trung nguồn lực vào những lỗi gây ra 80% tổng số vấn đề. Công cụ nào phù hợp nhất để sử dụng trong tình huống này?",
+      "opts": {
+        "A": "Biểu đồ kiểm soát (Control chart)",
+        "B": "Biểu đồ phân tán (Scatter diagram)",
+        "C": "Biểu đồ Pareto (Pareto chart)",
+        "D": "Biểu đồ xương cá (Fishbone diagram)"
+      },
+      "ans": "C",
+      "exp": "Biểu đồ Pareto dựa trên nguyên tắc 80/20: 80% vấn đề thường đến từ 20% nguyên nhân. Biểu đồ này sắp xếp các loại lỗi theo tần suất giảm dần, giúp nhóm dự án xác định và ưu tiên xử lý những nguyên nhân gốc rễ quan trọng nhất trước. Đây là công cụ kiểm soát chất lượng lý tưởng để phân bổ nguồn lực có hạn một cách hiệu quả."
+    },
+    {
+      "id": "ch08_q03",
+      "q": "Nhóm QA của bạn đang theo dõi thời gian phản hồi của hệ thống web. Giới hạn kiểm soát trên (UCL) là 3 giây, giới hạn kiểm soát dưới (LCL) là 0.5 giây, và đường trung bình là 1.75 giây. Trong 7 phép đo liên tiếp gần đây nhất, tất cả các giá trị đều nằm trên đường trung bình nhưng dưới UCL. Bạn nên làm gì?",
+      "opts": {
+        "A": "Không cần hành động vì tất cả các điểm đều trong giới hạn kiểm soát",
+        "B": "Điều tra nguyên nhân vì quy tắc 7 điểm liên tiếp cho thấy quá trình không ngẫu nhiên",
+        "C": "Tăng UCL để phù hợp với xu hướng mới",
+        "D": "Giảm LCL để mở rộng vùng kiểm soát"
+      },
+      "ans": "B",
+      "exp": "Quy tắc 7 điểm liên tiếp (Seven-run rule) trong biểu đồ kiểm soát: nếu 7 điểm liên tiếp đều nằm về một phía của đường trung bình (dù vẫn trong giới hạn UCL/LCL), quá trình được coi là 'ngoài tầm kiểm soát' thống kê. Điều này cho thấy có một nguyên nhân có hệ thống (assignable cause) đang tác động, không phải biến động ngẫu nhiên thông thường, và cần điều tra."
+    },
+    {
+      "id": "ch08_q04",
+      "q": "Khách hàng vừa chấp nhận (sign off) một module phần mềm sau khi nhóm thực hiện kiểm thử nghiệm thu. Một tuần sau, khách hàng báo cáo rằng họ muốn thêm tính năng mới không có trong phạm vi ban đầu. Quản lý dự án nên xử lý yêu cầu này thông qua quy trình nào?",
+      "opts": {
+        "A": "Kiểm soát chất lượng (Control Quality)",
+        "B": "Xác nhận phạm vi (Validate Scope)",
+        "C": "Kiểm soát thay đổi tích hợp (Perform Integrated Change Control)",
+        "D": "Quản lý chất lượng (Manage Quality)"
+      },
+      "ans": "C",
+      "exp": "Yêu cầu thêm tính năng mới không có trong phạm vi là một yêu cầu thay đổi phạm vi, phải đi qua quy trình Kiểm soát thay đổi tích hợp. Xác nhận phạm vi là quy trình khách hàng chính thức chấp nhận các sản phẩm hoàn thành theo phạm vi đã thống nhất. Kiểm soát chất lượng liên quan đến việc kiểm tra sản phẩm đáp ứng tiêu chuẩn, không phải thêm tính năng mới."
+    },
+    {
+      "id": "ch08_q05",
+      "q": "Trong một cuộc họp nhóm, kỹ sư trưởng đề xuất thêm tính năng mã hóa dữ liệu bổ sung vào sản phẩm với lý do 'khách hàng sẽ thích điều này, dù họ không yêu cầu'. Phạm vi dự án không bao gồm tính năng này. Là quản lý dự án, bạn nên làm gì?",
+      "opts": {
+        "A": "Cho phép vì đây là cải tiến chất lượng tốt cho khách hàng",
+        "B": "Từ chối vì đây là 'gold plating' - thêm tính năng ngoài phạm vi",
+        "C": "Hỏi ý kiến khách hàng trước khi quyết định",
+        "D": "Chuyển vấn đề lên nhà tài trợ dự án"
+      },
+      "ans": "B",
+      "exp": "'Gold plating' (mạ vàng) là việc cố ý thêm tính năng hoặc chức năng ngoài phạm vi đã thống nhất mà không có sự chấp thuận. Đây là hành vi không được khuyến khích trong quản lý dự án vì nó tiêu tốn nguồn lực, có thể gây ra lỗi mới, tăng rủi ro, và không nhất thiết mang lại giá trị. Mọi thay đổi phạm vi phải đi qua quy trình kiểm soát thay đổi chính thức."
+    },
+    {
+      "id": "ch08_q06",
+      "q": "Nhóm dự án đang sản xuất ốc vít theo đặc tả kỹ thuật yêu cầu đường kính 10mm ± 0.1mm. Lô sản phẩm A có đường kính dao động từ 9.95mm đến 10.05mm, phân bố đều xung quanh 10mm. Lô sản phẩm B có đường kính dao động từ 9.80mm đến 10.20mm nhưng trung bình chính xác là 10mm. Phát biểu nào đúng về hai lô sản phẩm?",
+      "opts": {
+        "A": "Lô A chính xác (accurate) nhưng không đúng (precise); Lô B đúng nhưng không chính xác",
+        "B": "Lô A đúng (precise) và chính xác (accurate); Lô B chính xác nhưng không đúng",
+        "C": "Lô A đúng (precise) và chính xác (accurate); Lô B không đúng và không chính xác",
+        "D": "Cả hai lô đều đạt yêu cầu chất lượng như nhau"
+      },
+      "ans": "B",
+      "exp": "Precision (độ đúng/chính xác về sự nhất quán) nghĩa là các kết quả đo lường rất gần nhau, ít biến động. Accuracy (độ chính xác về mục tiêu) nghĩa là kết quả gần với giá trị mục tiêu. Lô A: dao động nhỏ (±0.05mm) và trung bình đúng 10mm → vừa precise vừa accurate, đạt yêu cầu. Lô B: trung bình đúng 10mm (accurate) nhưng dao động ±0.20mm vượt yêu cầu ±0.1mm → không precise và không đạt yêu cầu."
+    },
+    {
+      "id": "ch08_q07",
+      "q": "Tổ chức của bạn đang triển khai một chiến lược cải tiến chất lượng dài hạn tập trung vào việc giảm thiểu lãng phí, loại bỏ các hoạt động không tạo ra giá trị, và tối ưu hóa luồng công việc trong toàn bộ quy trình sản xuất phần mềm. Phương pháp cải tiến chất lượng nào phù hợp nhất với mô tả này?",
+      "opts": {
+        "A": "Six Sigma - tập trung vào giảm biến động đến 3.4 lỗi trên một triệu cơ hội",
+        "B": "Lean - tập trung vào loại bỏ lãng phí và tối ưu hóa luồng giá trị",
+        "C": "Kaizen - cải tiến liên tục từng bước nhỏ mỗi ngày",
+        "D": "TQM - quản lý chất lượng toàn diện từ trên xuống dưới"
+      },
+      "ans": "B",
+      "exp": "Lean (Sản xuất tinh gọn) là phương pháp tập trung vào việc nhận diện và loại bỏ 7 loại lãng phí (muda): sản xuất thừa, chờ đợi, vận chuyển, xử lý thừa, tồn kho, di chuyển, lỗi. Mục tiêu là tối ưu hóa luồng giá trị (value stream) cho khách hàng. Six Sigma tập trung vào giảm biến động. Kaizen là cải tiến nhỏ hàng ngày. TQM là triết lý quản lý chất lượng toàn tổ chức."
+    },
+    {
+      "id": "ch08_q08",
+      "q": "Trong buổi kiểm toán chất lượng (quality audit), nhóm kiểm toán phát hiện nhóm dự án không tuân thủ quy trình xem xét mã nguồn bắt buộc theo tiêu chuẩn ISO của công ty. Nhóm dự án cho biết họ bỏ qua bước này vì 'áp lực về thời gian'. Mục đích chính của kiểm toán chất lượng trong quy trình Quản lý Chất lượng (Manage Quality) là gì?",
+      "opts": {
+        "A": "Kiểm tra sản phẩm cuối có đáp ứng tiêu chuẩn khách hàng không",
+        "B": "Xác nhận rằng các quy trình đang được tuân thủ và xác định cơ hội cải tiến",
+        "C": "Đo lường hiệu suất của từng thành viên nhóm",
+        "D": "Cập nhật kế hoạch quản lý chất lượng cho phù hợp thực tế"
+      },
+      "ans": "B",
+      "exp": "Kiểm toán chất lượng (Quality audit) là một đánh giá có cấu trúc và độc lập nhằm xác định liệu các hoạt động dự án có tuân thủ chính sách, quy trình, và tiêu chuẩn của tổ chức hay không, đồng thời xác định các thực hành tốt và cơ hội cải tiến. Đây là một đầu ra quan trọng của Manage Quality (không phải Control Quality). Kiểm tra sản phẩm là hoạt động của Control Quality."
+    },
+    {
+      "id": "ch08_q09",
+      "q": "Một khách hàng phàn nàn rằng phần mềm quản lý kho mà nhóm của bạn cung cấp không thể xử lý đơn hàng lớn hơn 1.000 mặt hàng, dù phần mềm hoạt động hoàn toàn theo đặc tả kỹ thuật đã ký kết. Khách hàng nói họ cần xử lý tới 5.000 mặt hàng mỗi đơn. Tình huống này mô tả vấn đề gì?",
+      "opts": {
+        "A": "Lỗi chất lượng - sản phẩm không đáp ứng tiêu chuẩn",
+        "B": "Sự không phù hợp về cấp độ (Grade issue) - đặc tả không phản ánh đúng nhu cầu",
+        "C": "Gold plating - nhóm không thêm đủ tính năng",
+        "D": "Thất bại trong kiểm soát thay đổi"
+      },
+      "ans": "B",
+      "exp": "Đây là vấn đề về cấp độ (grade), không phải chất lượng. Chất lượng (quality) là mức độ đáp ứng các yêu cầu đã thống nhất - sản phẩm đạt chất lượng vì đáp ứng đặc tả. Cấp độ (grade) là đặc điểm của sản phẩm phản ánh các tính năng và chức năng theo thiết kế. Đặc tả đã ký không phản ánh đúng nhu cầu thực tế của khách hàng - đây là vấn đề cần được giải quyết trong giai đoạn thu thập yêu cầu."
+    },
+    {
+      "id": "ch08_q10",
+      "q": "Nhóm dự án đang kiểm tra 500 bộ vi xử lý nhập khẩu. Kiểm tra toàn bộ sẽ mất 3 tuần và chi phí 50 triệu đồng. Quản lý dự án quyết định kiểm tra ngẫu nhiên 50 mẫu từ lô hàng để đánh giá chất lượng toàn bộ lô. Kỹ thuật kiểm soát chất lượng nào đang được áp dụng?",
+      "opts": {
+        "A": "Kiểm tra toàn diện (100% inspection)",
+        "B": "Lấy mẫu thống kê (Statistical sampling)",
+        "C": "Kiểm tra thuộc tính (Attribute inspection)",
+        "D": "Kiểm tra biến số (Variable inspection)"
+      },
+      "ans": "B",
+      "exp": "Lấy mẫu thống kê (Statistical sampling) là kỹ thuật chọn một phần của dân số để kiểm tra thay vì kiểm tra toàn bộ. Phương pháp này tiết kiệm chi phí và thời gian, đặc biệt hữu ích khi kiểm tra toàn bộ là phá hủy sản phẩm, quá tốn kém hoặc mất nhiều thời gian. Kết quả mẫu được dùng để suy luận về chất lượng toàn bộ lô hàng theo nguyên lý thống kê."
+    },
+    {
+      "id": "ch08_q11",
+      "q": "Trong quá trình lập Kế hoạch Quản lý Chất lượng, nhóm dự án cần xác định các chỉ số đo lường cụ thể sẽ được sử dụng để đánh giá chất lượng sản phẩm và hiệu quả quy trình. Ví dụ: 'Tỷ lệ lỗi tối đa 2 lỗi trên 1.000 dòng code' hoặc 'Thời gian phản hồi không quá 2 giây trong 95% trường hợp'. Những chỉ số này được gọi là gì?",
+      "opts": {
+        "A": "Tiêu chuẩn chất lượng (Quality standards)",
+        "B": "Chỉ số chất lượng (Quality metrics)",
+        "C": "Danh sách kiểm tra chất lượng (Quality checklists)",
+        "D": "Ngưỡng kiểm soát chất lượng (Quality control thresholds)"
+      },
+      "ans": "B",
+      "exp": "Chỉ số chất lượng (Quality metrics) là một đặc tính cụ thể và cách đo lường nó, được định nghĩa trong quá trình Lập kế hoạch Quản lý Chất lượng. Chỉ số chất lượng cung cấp các tiêu chí đo lường định lượng và rõ ràng cho cả sản phẩm lẫn quy trình. Chúng là đầu vào quan trọng cho cả Manage Quality lẫn Control Quality để đánh giá mức độ tuân thủ."
+    },
+    {
+      "id": "ch08_q12",
+      "q": "Nhóm dự án đang phân tích nguyên nhân tại sao hệ thống thanh toán thường xuyên bị lỗi vào giờ cao điểm. Họ tổ chức một buổi họp brainstorm và phân loại các nguyên nhân tiềm năng theo 6 nhóm: Con người, Máy móc, Vật liệu, Phương pháp, Môi trường, và Đo lường. Công cụ nào đang được sử dụng?",
+      "opts": {
+        "A": "Biểu đồ Pareto (Pareto chart)",
+        "B": "Biểu đồ kiểm soát (Control chart)",
+        "C": "Biểu đồ xương cá / Ishikawa (Fishbone/Cause-and-effect diagram)",
+        "D": "Biểu đồ phân tán (Scatter diagram)"
+      },
+      "ans": "C",
+      "exp": "Biểu đồ xương cá (Fishbone diagram), còn gọi là biểu đồ Ishikawa hoặc cause-and-effect diagram, là công cụ phân tích nguyên nhân gốc rễ (root cause analysis). Cấu trúc của nó giống xương cá với 'đầu cá' là vấn đề cần phân tích và các 'xương' là nhóm nguyên nhân (thường dùng 6M: Man, Machine, Material, Method, Measurement, Mother Nature/Environment). Đây là công cụ quan trọng trong cả Manage Quality và Control Quality."
+    },
+    {
+      "id": "ch08_q13",
+      "q": "Tổ chức của bạn đang áp dụng triết lý cải tiến liên tục, trong đó mỗi nhân viên được khuyến khích đề xuất các cải tiến nhỏ hàng ngày trong công việc của họ. Các cải tiến nhỏ này tích lũy dần theo thời gian tạo ra sự thay đổi lớn. Phương pháp cải tiến chất lượng nào được mô tả?",
+      "opts": {
+        "A": "Six Sigma DMAIC",
+        "B": "Lean Manufacturing",
+        "C": "Kaizen (cải tiến liên tục)",
+        "D": "Total Quality Management (TQM)"
+      },
+      "ans": "C",
+      "exp": "Kaizen (改善 - tiếng Nhật: thay đổi tốt hơn) là triết lý cải tiến liên tục, tập trung vào những thay đổi nhỏ, gia tăng mỗi ngày từ tất cả mọi người trong tổ chức. Kaizen tin rằng không có quy trình nào là hoàn hảo và luôn có thể cải thiện. Ngược lại, Six Sigma DMAIC là phương pháp có cấu trúc chặt chẽ để giải quyết vấn đề lớn; TQM là triết lý quản lý toàn diện; Lean tập trung vào loại bỏ lãng phí."
+    },
+    {
+      "id": "ch08_q14",
+      "q": "Trong giai đoạn Kiểm soát Chất lượng, nhóm của bạn đang kiểm tra các sản phẩm đã hoàn thành và tách chúng thành hai nhóm: 'đạt' (pass) và 'không đạt' (fail) dựa trên việc chúng có đáp ứng tiêu chuẩn chất lượng hay không. Loại kiểm tra này được gọi là gì?",
+      "opts": {
+        "A": "Kiểm tra biến số (Variable inspection) - đo lường giá trị liên tục",
+        "B": "Kiểm tra thuộc tính (Attribute inspection) - phân loại nhị phân đạt/không đạt",
+        "C": "Lấy mẫu thống kê (Statistical sampling)",
+        "D": "Kiểm tra chấp nhận (Acceptance testing)"
+      },
+      "ans": "B",
+      "exp": "Kiểm tra thuộc tính (Attribute inspection/sampling) là kỹ thuật phân loại kết quả kiểm tra theo nhị phân: đạt hoặc không đạt, có hoặc không có lỗi. Không có giá trị đo lường liên tục. Ngược lại, kiểm tra biến số (variable inspection) đo lường các giá trị liên tục như chiều dài, trọng lượng, nhiệt độ. Trong ví dụ này, việc phân loại 'pass/fail' là kiểm tra thuộc tính điển hình."
+    },
+    {
+      "id": "ch08_q15",
+      "q": "Nhóm của bạn đang phân tích mối quan hệ giữa số giờ làm thêm (overtime) của lập trình viên và số lỗi phát sinh trong code. Dữ liệu của 20 tuần qua được vẽ trên một đồ thị với trục X là số giờ làm thêm và trục Y là số lỗi. Nhóm muốn xác định liệu có mối tương quan nào không. Công cụ nào phù hợp?",
+      "opts": {
+        "A": "Biểu đồ Pareto để xếp hạng nguyên nhân lỗi",
+        "B": "Biểu đồ kiểm soát để theo dõi xu hướng theo thời gian",
+        "C": "Biểu đồ phân tán (Scatter diagram) để phân tích tương quan",
+        "D": "Histogram để phân phối tần suất lỗi"
+      },
+      "ans": "C",
+      "exp": "Biểu đồ phân tán (Scatter diagram) là công cụ được dùng để kiểm tra và xác định mối quan hệ (tương quan) giữa hai biến số. Trục X và Y đại diện cho hai biến, mỗi điểm trên đồ thị là một quan sát. Nếu các điểm tạo thành đường đi lên (positive correlation), xuống (negative correlation), hoặc không có mẫu (no correlation), ta có thể kết luận về mối quan hệ giữa giờ làm thêm và số lỗi."
+    },
+    {
+      "id": "ch08_q16",
+      "q": "Khách hàng yêu cầu nhóm dự án cung cấp báo cáo kiểm thử cho module thanh toán trước khi chấp nhận sản phẩm. Nhóm đã hoàn thành kiểm thử và đang chuẩn bị báo cáo. Sau khi khách hàng xem xét và chấp nhận module, quy trình nào đã được thực hiện?",
+      "opts": {
+        "A": "Kiểm soát chất lượng (Control Quality) - kiểm tra sản phẩm đáp ứng tiêu chuẩn",
+        "B": "Xác nhận phạm vi (Validate Scope) - khách hàng chính thức chấp nhận sản phẩm",
+        "C": "Quản lý chất lượng (Manage Quality) - đảm bảo quy trình đúng",
+        "D": "Kiểm soát tích hợp thay đổi (Perform Integrated Change Control)"
+      },
+      "ans": "B",
+      "exp": "Validate Scope (Xác nhận phạm vi) là quy trình khách hàng hoặc nhà tài trợ chính thức chấp nhận (accept) các sản phẩm bàn giao đã hoàn thành. Đây là hoạt động thuộc nhóm quy trình Monitoring & Controlling. Cần phân biệt: Control Quality (do nhóm nội bộ kiểm tra đáp ứng tiêu chuẩn kỹ thuật) thường diễn ra TRƯỚC Validate Scope. Sản phẩm được kiểm soát chất lượng xong mới được đưa cho khách hàng xác nhận."
+    },
+    {
+      "id": "ch08_q17",
+      "q": "Một dự án sản xuất đã áp dụng quy trình kiểm soát chất lượng trong 6 tháng. Biểu đồ kiểm soát cho thấy dữ liệu ngẫu nhiên trong giới hạn ±3 sigma. Nhưng tháng trước, chi phí sửa lỗi tăng 40% do khách hàng trả về sản phẩm lỗi. Loại chi phí chất lượng nào chiếm tỷ trọng lớn nhất?",
+      "opts": {
+        "A": "Chi phí phòng ngừa (Prevention cost)",
+        "B": "Chi phí thẩm định (Appraisal cost)",
+        "C": "Chi phí thất bại bên trong (Internal failure cost)",
+        "D": "Chi phí thất bại bên ngoài (External failure cost)"
+      },
+      "ans": "D",
+      "exp": "Chi phí thất bại bên ngoài (External failure cost) phát sinh khi lỗi được phát hiện SAU KHI sản phẩm đến tay khách hàng. Ví dụ: xử lý khiếu nại, bảo hành, thu hồi sản phẩm, sửa chữa tại khách hàng, mất uy tín. Đây là loại chi phí đắt nhất trong 4 loại chi phí chất lượng. Chi phí thất bại bên trong xảy ra khi lỗi được phát hiện TRƯỚC khi giao cho khách hàng (ví dụ: rework, scrap)."
+    },
+    {
+      "id": "ch08_q18",
+      "q": "Nhóm dự án phần mềm của bạn đang áp dụng phương pháp Design for X (DfX) trong giai đoạn thiết kế. Mục tiêu là thiết kế hệ thống sao cho dễ bảo trì, dễ kiểm tra, và dễ mở rộng. Phương pháp DfX được thực hiện trong quy trình nào của Quản lý Chất lượng Dự án?",
+      "opts": {
+        "A": "Lập kế hoạch Quản lý Chất lượng (Plan Quality Management)",
+        "B": "Quản lý Chất lượng (Manage Quality)",
+        "C": "Kiểm soát Chất lượng (Control Quality)",
+        "D": "Đảm bảo Chất lượng (Quality Assurance) - tên cũ của Manage Quality"
+      },
+      "ans": "B",
+      "exp": "Design for X (DfX) là một công cụ/kỹ thuật được sử dụng trong quy trình Manage Quality (Quản lý Chất lượng). DfX đề cập đến một tập hợp các hướng dẫn kỹ thuật giúp tối ưu hóa thiết kế theo một khía cạnh cụ thể (X): DfM - Design for Manufacturability, DfT - Design for Testability, DfM - Design for Maintainability, v.v. Mục đích là xây dựng chất lượng vào trong thiết kế từ đầu thay vì kiểm tra sau."
+    },
+    {
+      "id": "ch08_q19",
+      "q": "Sau khi phân tích dữ liệu từ biểu đồ kiểm soát trong 3 tháng, nhóm của bạn nhận thấy quy trình sản xuất ổn định nhưng tỷ lệ sản phẩm lỗi vẫn ở mức 8%, cao hơn mục tiêu 2%. Quy trình nằm trong kiểm soát thống kê (in statistical control) nhưng không đáp ứng yêu cầu. Hành động nào là phù hợp nhất?",
+      "opts": {
+        "A": "Điều chỉnh giới hạn kiểm soát UCL và LCL để chấp nhận tỷ lệ lỗi 8%",
+        "B": "Cải tiến quy trình căn bản vì đây là biến động nguyên nhân thông thường (common cause)",
+        "C": "Tăng tần suất kiểm tra để phát hiện thêm lỗi",
+        "D": "Chấp nhận hiện trạng vì quy trình đang trong kiểm soát thống kê"
+      },
+      "ans": "B",
+      "exp": "Khi quy trình 'in control' (ổn định, chỉ có common cause variation) nhưng không đáp ứng yêu cầu, đây không phải là vấn đề về sự kiện bất thường mà là vấn đề căn bản của quy trình. Cần cải tiến quy trình toàn diện (process improvement) chứ không chỉ điều chỉnh biểu đồ kiểm soát hay tăng kiểm tra. Tăng kiểm tra chỉ phát hiện thêm lỗi mà không loại bỏ nguyên nhân gốc rễ - đây là triết lý 'prevention over inspection'."
+    },
+    {
+      "id": "ch08_q20",
+      "q": "Một dự án xây dựng có nhà tài trợ yêu cầu báo cáo hàng tuần về tình trạng chất lượng. Quản lý dự án muốn trình bày một biểu đồ thể hiện sự phân phối của các kích thước cột bê tông đã đúc trong tuần, cho thấy tần suất xuất hiện của các giá trị khác nhau và so sánh với giá trị tiêu chuẩn. Biểu đồ nào phù hợp nhất?",
+      "opts": {
+        "A": "Biểu đồ Pareto (Pareto chart) - xếp hạng theo tần suất giảm dần",
+        "B": "Biểu đồ kiểm soát (Control chart) - theo dõi xu hướng theo thời gian",
+        "C": "Biểu đồ tần suất (Histogram) - phân phối tần suất của dữ liệu",
+        "D": "Biểu đồ phân tán (Scatter diagram) - mối tương quan giữa hai biến"
+      },
+      "ans": "C",
+      "exp": "Histogram (Biểu đồ tần suất/tần số) là biểu đồ cột hiển thị phân phối tần suất của dữ liệu liên tục trong các khoảng (bins). Trục X là các khoảng giá trị, trục Y là tần suất xuất hiện. Histogram giúp nhìn thấy hình dạng phân phối (chuẩn, lệch, v.v.), xác định giá trị trung tâm và độ phân tán, và so sánh với giới hạn kỹ thuật. Đây là công cụ lý tưởng để trình bày phân phối kích thước cột bê tông so với tiêu chuẩn."
+    }
+  ]
+}

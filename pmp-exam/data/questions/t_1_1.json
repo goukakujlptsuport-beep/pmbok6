@@ -1,0 +1,289 @@
+[
+  {
+    "id": "PPL-9001",
+    "domain": "people",
+    "task": "1.1",
+    "approach": "predictive",
+    "type": "single",
+    "question": "Two senior engineers on your project are arguing about the technical approach for a critical module, causing meeting disruptions and affecting team morale. The conflict has been ongoing for a week with no resolution. What should you do first as the project manager?",
+    "options": [
+      "Escalate the issue to the project sponsor and ask them to make the final technical decision.",
+      "Meet privately with each engineer to understand their perspectives, then facilitate a joint session to work toward a mutually acceptable solution.",
+      "Ask the technical lead to evaluate both approaches and mandate which one to use immediately.",
+      "Ignore the conflict and allow the engineers to resolve it on their own since it is a technical matter."
+    ],
+    "correct": [1],
+    "explanation": "Option B is correct because PMI's collaborative approach requires the project manager to first understand each party's perspective through private conversations, then bring them together to find a mutually acceptable solution. This addresses the root cause by exploring interests rather than positions. Option A (escalation) is premature when direct facilitation has not been attempted. Option C bypasses collaboration and imposes a decision, which may breed resentment. Option D ignores the conflict entirely, allowing it to fester and harm team morale further.",
+    "explanation_vi": "Đáp án B đúng vì theo PMI, người quản lý dự án cần áp dụng cách tiếp cận hợp tác: trước tiên gặp riêng từng người để hiểu quan điểm, sau đó tổ chức buổi làm việc chung để tìm giải pháp đôi bên chấp nhận được. Cách này giải quyết nguyên nhân gốc rễ. Đáp án A (leo thang) là quá sớm khi chưa thử giải quyết trực tiếp. Đáp án C bỏ qua sự hợp tác và áp đặt quyết định, có thể gây bất mãn. Đáp án D hoàn toàn bỏ qua xung đột, để nó tiếp tục ảnh hưởng tiêu cực đến tinh thần nhóm.",
+    "difficulty": 2,
+    "tags": ["conflict", "collaboration", "facilitation", "team-management"]
+  },
+  {
+    "id": "PPL-9002",
+    "domain": "people",
+    "task": "1.1",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A functional manager is repeatedly reassigning one of your key team members to other projects mid-sprint, causing schedule delays and frustration within your team. You have spoken to the team member, who says they feel caught between two authorities. What is the most appropriate next step?",
+    "options": [
+      "Document the resource conflicts and immediately escalate to the PMO director without talking to the functional manager.",
+      "Tell the team member to prioritize your project and refuse the functional manager's requests.",
+      "Schedule a meeting with the functional manager to discuss resource allocation priorities, present the project impact, and seek a mutually agreed-upon resource commitment.",
+      "Accept the situation and re-baseline the project schedule to account for reduced resource availability."
+    ],
+    "correct": [2],
+    "explanation": "Option C is correct because the project manager should address the conflict directly with the functional manager first, presenting objective data on schedule impact and seeking a collaborative agreement on resource priorities. This respects the authority of both managers and looks for a win-win solution. Option A skips the direct attempt and escalates prematurely. Option B puts the team member in an untenable position and disrespects the functional manager's authority. Option D avoids the conflict entirely and accepts an unacceptable situation without attempting resolution.",
+    "explanation_vi": "Đáp án C đúng vì người quản lý dự án cần trực tiếp giải quyết với người quản lý chức năng trước, trình bày dữ liệu khách quan về tác động đến tiến độ và tìm kiếm thỏa thuận hợp tác về ưu tiên nguồn lực. Đáp án A leo thang sớm khi chưa thử giải quyết trực tiếp. Đáp án B đặt thành viên nhóm vào tình huống khó xử và không tôn trọng quyền hạn của quản lý chức năng. Đáp án D né tránh xung đột và chấp nhận tình trạng không thể chấp nhận được.",
+    "difficulty": 2,
+    "tags": ["conflict", "resource-management", "stakeholder", "negotiation"]
+  },
+  {
+    "id": "PPL-9003",
+    "domain": "people",
+    "task": "1.1",
+    "approach": "agile",
+    "type": "single",
+    "question": "During a sprint retrospective, two developers openly blame each other for a testing bottleneck that caused the sprint goal to be missed. The rest of the team is visibly uncomfortable and disengaged. As the Scrum Master, what should you do first?",
+    "options": [
+      "Stop the retrospective immediately and reschedule it for another day when emotions have cooled.",
+      "Allow the blame exchange to continue until both parties have fully expressed themselves, then move on.",
+      "Redirect the discussion by acknowledging both perspectives, refocusing on systemic process issues rather than personal blame, and guiding the team toward actionable improvements.",
+      "Privately reprimand both developers after the retrospective and remind them of professional conduct expectations."
+    ],
+    "correct": [2],
+    "explanation": "Option C is correct because the Scrum Master's responsibility is to facilitate a productive retrospective focused on process improvement, not personal blame. Redirecting to systemic causes maintains psychological safety and produces actionable outcomes. Option A prematurely ends a valuable ceremony and doesn't resolve the underlying issue. Option B allows destructive behavior to continue, damaging team cohesion. Option D addresses behavior after the fact but misses the opportunity to model healthy conflict resolution in the moment.",
+    "explanation_vi": "Đáp án C đúng vì trách nhiệm của Scrum Master là tạo điều kiện cho buổi hồi cứu hiệu quả, tập trung vào cải tiến quy trình chứ không phải đổ lỗi cá nhân. Chuyển hướng thảo luận sang nguyên nhân hệ thống duy trì an toàn tâm lý và tạo ra kết quả hành động. Đáp án A kết thúc sớm một buổi lễ có giá trị. Đáp án B cho phép hành vi phá hoại tiếp tục. Đáp án D giải quyết hành vi sau sự kiện nhưng bỏ lỡ cơ hội mô hình hóa giải quyết xung đột lành mạnh ngay lúc đó.",
+    "difficulty": 3,
+    "tags": ["conflict", "agile", "retrospective", "psychological-safety", "scrum-master"]
+  },
+  {
+    "id": "PPL-9004",
+    "domain": "people",
+    "task": "1.1",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A stakeholder is consistently undermining your project by sending critical emails to your team members bypassing you, creating confusion about priorities and scope. You have already spoken to the stakeholder once about communication protocols, but the behavior continues. What should you do next?",
+    "options": [
+      "Instruct your team members to ignore any communications from this stakeholder that do not go through you.",
+      "Schedule a formal meeting with the stakeholder and their manager to address the communication issue, present documented instances, and agree on a formal communication plan.",
+      "Escalate directly to the project sponsor without speaking to the stakeholder again.",
+      "Send a strongly worded email to the stakeholder copying all team members to publicly document the behavior."
+    ],
+    "correct": [1],
+    "explanation": "Option B is correct because the PM already attempted a direct resolution and the behavior continues. The next appropriate step is to escalate within the stakeholder relationship, involving their manager, while presenting objective documentation and seeking a formal resolution. This follows the principle of escalating only after direct attempts fail. Option A creates a communication breakdown and could damage the stakeholder relationship further. Option C skips the intermediate escalation step of involving the stakeholder's manager. Option D publicly embarrasses the stakeholder and will severely damage the working relationship.",
+    "explanation_vi": "Đáp án B đúng vì PM đã thử giải quyết trực tiếp nhưng không hiệu quả. Bước tiếp theo là leo thang trong mối quan hệ với bên liên quan, mời quản lý của họ tham gia, trình bày tài liệu khách quan và tìm kiếm giải pháp chính thức. Đáp án A tạo ra sự gián đoạn giao tiếp. Đáp án C bỏ qua bước leo thang trung gian. Đáp án D làm xấu hổ bên liên quan công khai và gây hại nghiêm trọng cho mối quan hệ.",
+    "difficulty": 3,
+    "tags": ["conflict", "stakeholder-management", "communication", "escalation"]
+  },
+  {
+    "id": "PPL-9005",
+    "domain": "people",
+    "task": "1.1",
+    "approach": "hybrid",
+    "type": "single",
+    "question": "Your hybrid project team is divided: the agile-trained developers want to use two-week sprints with evolving requirements, while the traditional project managers insist on a fixed scope with detailed upfront planning for a regulatory compliance deliverable. The disagreement is delaying the project kickoff. What is the best approach?",
+    "options": [
+      "Override the developers and mandate the traditional approach since compliance work requires documentation and audit trails.",
+      "Use the agile approach for all work since it is more modern and flexible.",
+      "Facilitate a workshop to identify which project components benefit from iterative delivery versus those requiring fixed planning, then design a hybrid approach that accommodates both concerns.",
+      "Defer the decision to senior leadership since the team cannot agree."
+    ],
+    "correct": [2],
+    "explanation": "Option C is correct because a hybrid approach to methodology disagreements involves facilitating a collaborative analysis of which project components are best suited for which method. Regulatory deliverables with compliance requirements often benefit from predictive planning, while development work may benefit from agile iteration. This resolves the conflict by honoring both perspectives and tailoring the approach to fit actual project needs. Option A dismisses the developers' concerns without analysis. Option B ignores legitimate compliance documentation requirements. Option D unnecessarily escalates a decision the team is capable of making with proper facilitation.",
+    "explanation_vi": "Đáp án C đúng vì trong mâu thuẫn về phương pháp luận, cách tiếp cận hybrid là tổ chức workshop hợp tác để phân tích thành phần nào phù hợp với phương pháp nào. Các hạng mục tuân thủ quy định thường cần lập kế hoạch dự đoán, còn công việc phát triển có thể hưởng lợi từ agile. Đáp án A bác bỏ mối lo ngại của developers. Đáp án B bỏ qua yêu cầu tài liệu tuân thủ hợp lệ. Đáp án D leo thang không cần thiết một quyết định nhóm có thể tự giải quyết.",
+    "difficulty": 3,
+    "tags": ["conflict", "hybrid", "methodology", "collaboration", "tailoring"]
+  },
+  {
+    "id": "PPL-9006",
+    "domain": "people",
+    "task": "1.1",
+    "approach": "predictive",
+    "type": "single",
+    "question": "Two team members have a personality clash that has been creating tension at team meetings for several weeks. Other team members have started avoiding them both, and team collaboration has noticeably declined. You have not yet addressed the issue directly. What should you do?",
+    "options": [
+      "Separate the two team members by assigning them to different work packages so they never have to interact.",
+      "Address the issue publicly at the next team meeting to demonstrate that you will not tolerate disruptive behavior.",
+      "Meet privately with each person to understand their concerns, then facilitate a confidential conversation between them to surface and address the root cause of their tension.",
+      "Wait to see if the issue resolves itself, since interpersonal conflicts often fade over time."
+    ],
+    "correct": [2],
+    "explanation": "Option C is correct because the project manager must proactively address interpersonal conflicts that affect team performance. Private meetings with each party allow the PM to understand root causes without putting either person on the spot, and a facilitated conversation provides a safe space for resolution. Option A avoids the root cause and may not be feasible given team interdependencies. Option B publicly confronting team members violates psychological safety and can make the situation worse. Option D allows the conflict to continue damaging team collaboration, which is negligent given the observable performance impact.",
+    "explanation_vi": "Đáp án C đúng vì người quản lý dự án cần chủ động giải quyết xung đột cá nhân ảnh hưởng đến hiệu suất nhóm. Gặp riêng từng người cho phép PM hiểu nguyên nhân gốc rễ mà không đặt ai vào thế khó, và buổi đối thoại có người hỗ trợ tạo không gian an toàn để giải quyết. Đáp án A né tránh nguyên nhân gốc rễ. Đáp án B đối đầu công khai vi phạm an toàn tâm lý. Đáp án D cho phép xung đột tiếp tục gây hại cho sự hợp tác.",
+    "difficulty": 3,
+    "tags": ["conflict", "interpersonal", "team-performance", "facilitation"]
+  },
+  {
+    "id": "PPL-9007",
+    "domain": "people",
+    "task": "1.1",
+    "approach": "agile",
+    "type": "single",
+    "question": "During sprint planning, the Product Owner insists on adding three high-priority features to an already full sprint backlog, while the development team argues that the current sprint capacity is already committed. The disagreement threatens to delay the sprint start. As the Scrum Master, what is your best action?",
+    "options": [
+      "Side with the Product Owner since product priorities must always take precedence over team capacity estimates.",
+      "Tell the development team to find a way to accommodate the additional features since business needs drive the sprint.",
+      "Facilitate a capacity-based discussion where the team clearly presents their velocity and capacity constraints, and work with the Product Owner to prioritize the most critical items within the actual capacity.",
+      "Escalate the conflict to the project manager or senior leadership to make a final decision on sprint scope."
+    ],
+    "correct": [2],
+    "explanation": "Option C is correct because the Scrum Master facilitates productive sprint planning by helping the Product Owner and team reach a shared understanding of capacity versus priority. The team's capacity is a factual constraint, and the Product Owner needs data to make informed prioritization decisions. This respects both the Product Owner's authority over the backlog and the team's authority over their capacity. Option A violates the agile principle that teams commit to work within their sustainable capacity. Option B overloads the team and risks sprint failure. Option D unnecessarily escalates a conflict that is within the Scrum team's authority to resolve.",
+    "explanation_vi": "Đáp án C đúng vì Scrum Master tạo điều kiện cho việc lập kế hoạch sprint hiệu quả bằng cách giúp Product Owner và nhóm đạt được hiểu biết chung về năng lực so với ưu tiên. Năng lực nhóm là ràng buộc thực tế. Đáp án A vi phạm nguyên tắc agile về năng lực bền vững. Đáp án B làm quá tải nhóm và có nguy cơ thất bại sprint. Đáp án D leo thang không cần thiết một xung đột trong phạm vi quyền hạn của Scrum team.",
+    "difficulty": 3,
+    "tags": ["conflict", "agile", "sprint-planning", "scrum-master", "product-owner"]
+  },
+  {
+    "id": "PPL-9008",
+    "domain": "people",
+    "task": "1.1",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A senior team member is openly dismissive of a junior developer's ideas in technical discussions, causing the junior developer to stop contributing and become withdrawn. Other junior team members have also become hesitant to speak up. What is the most appropriate action for the project manager?",
+    "options": [
+      "Remove the senior team member from technical discussions to protect the junior team members.",
+      "Speak privately with the senior team member about the impact of their behavior on team dynamics and psychological safety, and set clear behavioral expectations.",
+      "Tell the junior developer to be more assertive and not take the senior developer's comments personally.",
+      "Allow the dynamic to continue since senior team members naturally have more authority in technical discussions."
+    ],
+    "correct": [1],
+    "explanation": "Option B is correct because the project manager must address behaviors that undermine psychological safety and team participation. A private conversation with the senior team member is respectful, focuses on observable impact rather than personal judgment, and sets clear expectations going forward. This addresses the root cause directly. Option A is an extreme action that doesn't give the senior team member an opportunity to change their behavior. Option C blames the victim and ignores the actual problem. Option D normalizes toxic behavior and will increasingly damage team performance and innovation.",
+    "explanation_vi": "Đáp án B đúng vì người quản lý dự án phải giải quyết các hành vi làm suy yếu an toàn tâm lý và sự tham gia của nhóm. Nói chuyện riêng với thành viên cấp cao là tôn trọng, tập trung vào tác động quan sát được và đặt kỳ vọng rõ ràng. Đáp án A là biện pháp cực đoan không cho cơ hội thay đổi. Đáp án C đổ lỗi cho nạn nhân. Đáp án D bình thường hóa hành vi độc hại.",
+    "difficulty": 3,
+    "tags": ["conflict", "psychological-safety", "team-dynamics", "behavior"]
+  },
+  {
+    "id": "PPL-9009",
+    "domain": "people",
+    "task": "1.1",
+    "approach": "hybrid",
+    "type": "single",
+    "question": "Your project team includes members from three different cultural backgrounds. During project meetings, misunderstandings frequently arise due to different communication styles and assumptions about directness and hierarchy. Two team members had a significant misunderstanding last week that is still unresolved and affecting their collaboration. What is the best approach to resolve this specific conflict and prevent future occurrences?",
+    "options": [
+      "Establish a rule that all team communication must follow the communication norms of the project manager's culture to ensure consistency.",
+      "Meet with the two team members involved, help them understand the cultural context behind the misunderstanding, and facilitate a mutual understanding. Then establish team norms that acknowledge and respect cultural differences.",
+      "Separate tasks so that team members from different cultures work independently to minimize interaction and misunderstandings.",
+      "Hire a professional mediator since cultural conflicts are too complex for a project manager to address."
+    ],
+    "correct": [1],
+    "explanation": "Option B is correct because the project manager must address the specific conflict directly by facilitating cultural awareness between the two team members, helping them understand the root cause (cultural communication differences) rather than assuming bad intent. Establishing team norms collaboratively prevents future occurrences. Option A imposes one cultural standard and shows cultural insensitivity. Option C avoids the root cause and reduces team collaboration unnecessarily. Option D is an overreaction that presumes the PM lacks the ability to facilitate cross-cultural conversations.",
+    "explanation_vi": "Đáp án B đúng vì người quản lý dự án phải giải quyết xung đột cụ thể bằng cách tạo điều kiện nhận thức văn hóa giữa hai thành viên, giúp họ hiểu nguyên nhân gốc rễ. Thiết lập chuẩn mực nhóm hợp tác ngăn ngừa tái phát. Đáp án A áp đặt một tiêu chuẩn văn hóa duy nhất. Đáp án C né tránh nguyên nhân gốc rễ. Đáp án D là phản ứng thái quá.",
+    "difficulty": 3,
+    "tags": ["conflict", "cultural-diversity", "communication", "team-norms"]
+  },
+  {
+    "id": "PPL-9010",
+    "domain": "people",
+    "task": "1.1",
+    "approach": "predictive",
+    "type": "single",
+    "question": "During a project status meeting, a stakeholder publicly challenges your project's timeline in front of the executive sponsor, claiming your estimates are unrealistic and that your team is not working efficiently. You believe the stakeholder's claims are based on incomplete information. How should you respond in the moment?",
+    "options": [
+      "Firmly refute the stakeholder's claims point by point immediately to defend your team's reputation.",
+      "Remain calm, acknowledge the concern, and offer to schedule a separate meeting with the stakeholder to review the schedule details and supporting data together.",
+      "Ask the executive sponsor to intervene and tell the stakeholder that such accusations are inappropriate.",
+      "Agree with the stakeholder to avoid conflict in the meeting and revise the schedule estimates afterward."
+    ],
+    "correct": [1],
+    "explanation": "Option B is correct because responding calmly and professionally in a public setting de-escalates the tension without being defensive or dismissive. Offering a private follow-up meeting to review supporting data addresses the concern substantively while preventing an unproductive public debate. This demonstrates composure and a problem-solving orientation. Option A engages in a public argument that risks damaging relationships and escalating emotions. Option C avoids personal responsibility and puts the sponsor in an awkward mediating role. Option D capitulates without evidence and undermines your team's work.",
+    "explanation_vi": "Đáp án B đúng vì phản ứng bình tĩnh và chuyên nghiệp trong môi trường công khai giảm leo thang căng thẳng mà không phòng thủ hay bác bỏ. Đề xuất cuộc họp riêng để xem xét dữ liệu giải quyết mối lo ngại một cách thực chất. Đáp án A tham gia tranh luận công khai gây nguy hiểm cho các mối quan hệ. Đáp án C tránh trách nhiệm cá nhân. Đáp án D nhượng bộ mà không có bằng chứng.",
+    "difficulty": 3,
+    "tags": ["conflict", "stakeholder", "communication", "executive", "composure"]
+  },
+  {
+    "id": "PPL-9011",
+    "domain": "people",
+    "task": "1.1",
+    "approach": "agile",
+    "type": "single",
+    "question": "A team member repeatedly raises the same unresolved impediment about infrastructure access at every daily standup for two weeks. Other team members are visibly frustrated by the repetition, and the impediment is now causing blocked work items. You have not yet taken action to resolve the impediment. What should you do?",
+    "options": [
+      "Ask the team member to stop raising the impediment in standups until they have attempted to resolve it themselves.",
+      "Log the impediment in the backlog and address it in the next sprint planning session.",
+      "Take ownership of removing the impediment immediately by engaging the appropriate parties outside the team, communicate your action plan to the team at the next standup, and track resolution.",
+      "Assign another team member to resolve the impediment since the original reporter has been unsuccessful."
+    ],
+    "correct": [2],
+    "explanation": "Option C is correct because in agile environments, the Scrum Master or project manager is explicitly responsible for removing impediments that the team cannot resolve themselves. A two-week-old unresolved impediment with blocked work is a clear PM failure to act. Taking ownership, communicating the action plan, and tracking resolution fulfills the PM's core responsibility. Option A silences a valid concern and ignores the PM's impediment-removal responsibility. Option B defers action unnecessarily when the impediment is already causing blocked work. Option D delegates the PM's own responsibility without addressing the immediate situation.",
+    "explanation_vi": "Đáp án C đúng vì trong môi trường agile, Scrum Master hoặc người quản lý dự án có trách nhiệm rõ ràng trong việc loại bỏ các trở ngại mà nhóm không thể tự giải quyết. Trở ngại chưa được giải quyết sau hai tuần với công việc bị chặn là thất bại hành động rõ ràng của PM. Đáp án A im lặng mối lo ngại hợp lệ. Đáp án B trì hoãn hành động không cần thiết. Đáp án D ủy thác trách nhiệm của PM mà không giải quyết tình huống trực tiếp.",
+    "difficulty": 3,
+    "tags": ["conflict", "agile", "impediment-removal", "scrum-master", "accountability"]
+  },
+  {
+    "id": "PPL-9012",
+    "domain": "people",
+    "task": "1.1",
+    "approach": "hybrid",
+    "type": "single",
+    "question": "Your project has a steering committee that has been deadlocked for three weeks on a key architectural decision, with equal votes supporting two incompatible technical directions. This deadlock is blocking ten downstream tasks and threatening the project schedule. You have already facilitated two steering committee meetings without resolution. What is the most appropriate next step?",
+    "options": [
+      "Make the architectural decision yourself as project manager to unblock the project and inform the steering committee afterward.",
+      "Continue facilitating additional steering committee meetings until consensus is reached, regardless of the schedule impact.",
+      "Formally escalate to the project sponsor with a documented summary of both options, their trade-offs, the schedule impact of continued delay, and a request for a final decision within a defined timeframe.",
+      "Flip a coin between the two options and implement the result to demonstrate that decisiveness is more valuable than process."
+    ],
+    "correct": [2],
+    "explanation": "Option C is correct because after two facilitated attempts without resolution, escalation to the sponsor with a structured decision request is the appropriate and necessary next step. The PM's role is to present the issue clearly with documented trade-offs and urgency, enabling the sponsor to exercise their authority. This follows the principle that escalation is appropriate after direct attempts fail. Option A exceeds the PM's authority on a strategic architectural decision. Option B allows the schedule to be further damaged without a clear path to resolution. Option D is frivolous and undermines organizational governance.",
+    "explanation_vi": "Đáp án C đúng vì sau hai lần tạo điều kiện không thành công, leo thang lên nhà tài trợ với yêu cầu quyết định có cấu trúc là bước tiếp theo phù hợp và cần thiết. Vai trò của PM là trình bày vấn đề rõ ràng với sự đánh đổi được ghi lại và tính cấp bách. Đáp án A vượt quá thẩm quyền của PM. Đáp án B cho phép tiến độ tiếp tục bị ảnh hưởng. Đáp án D là phù phiếm và làm suy yếu quản trị.",
+    "difficulty": 4,
+    "tags": ["conflict", "escalation", "steering-committee", "governance", "decision-making"]
+  },
+  {
+    "id": "PPL-9013",
+    "domain": "people",
+    "task": "1.1",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A highly valued senior developer threatens to leave the project unless their preferred technical stack is used, even though the project team voted for a different stack after a thorough technical evaluation. The developer's departure would create a significant skill gap. What is the most appropriate response?",
+    "options": [
+      "Immediately switch to the developer's preferred stack to retain the resource since their skills are critical.",
+      "Meet with the developer to understand their underlying concerns about the chosen stack, explore whether those concerns can be addressed within the chosen stack, and explain the rationale for the team's decision. If the developer still refuses to accept the team's decision, escalate to the resource manager.",
+      "Let the developer leave since accommodating ultimatums sets a dangerous precedent for team governance.",
+      "Ask the team to revote on the technical stack, framing the question differently to steer the outcome toward the developer's preference."
+    ],
+    "correct": [1],
+    "explanation": "Option B is correct because the PM must first attempt to understand the root cause of the developer's concerns, which may reveal legitimate technical issues not fully explored. Explaining the team decision's rationale shows respect. If the concerns cannot be reconciled, escalation to the resource manager is the appropriate next step rather than either capitulating or forcing departure. Option A capitulates to an ultimatum and undermines team decision-making authority. Option C is unnecessarily rigid and ignores the real skill gap risk. Option D manipulates the team process to achieve a predetermined outcome, which is dishonest and damages trust.",
+    "explanation_vi": "Đáp án B đúng vì PM phải trước tiên tìm hiểu nguyên nhân gốc rễ của mối lo ngại, có thể tiết lộ vấn đề kỹ thuật hợp lệ. Giải thích lý do quyết định của nhóm thể hiện sự tôn trọng. Nếu không thể hòa giải, leo thang lên quản lý nguồn lực là bước tiếp theo phù hợp. Đáp án A nhượng bộ trước tối hậu thư và làm suy yếu quyền ra quyết định của nhóm. Đáp án C quá cứng nhắc. Đáp án D thao túng quy trình nhóm, gây tổn hại niềm tin.",
+    "difficulty": 4,
+    "tags": ["conflict", "team-dynamics", "escalation", "negotiation", "governance"]
+  },
+  {
+    "id": "PPL-9014",
+    "domain": "people",
+    "task": "1.1",
+    "approach": "predictive",
+    "type": "multiple",
+    "question": "You are managing a large infrastructure project when two department heads begin competing for control over a shared resource pool, each claiming priority access for their respective project phases. The conflict has caused team members to receive conflicting instructions and has stalled two critical path activities. You need to resolve this conflict while maintaining positive relationships with both department heads. Which TWO actions should you take?",
+    "options": [
+      "Facilitate a joint meeting with both department heads to transparently present the resource contention data, critical path impacts, and work toward a formal resource allocation agreement.",
+      "Consult the project charter and resource management plan to identify the agreed-upon authority and prioritization process for shared resources, and apply it.",
+      "Let the two department heads resolve the conflict between themselves since it is a management issue above the project manager's authority.",
+      "Allocate all contested resources to the critical path activities immediately without consulting either department head to protect the project schedule.",
+      "Document the impact of the resource conflict and present it to the project sponsor if the department heads are unable to reach agreement after a facilitated discussion."
+    ],
+    "correct": [1, 4],
+    "explanation": "Options B and E are correct. Option B is correct because the project manager should first consult governing documents (charter, resource management plan) to understand the pre-agreed authority structure and prioritization process. This grounds the resolution in established agreements rather than personalities. Option E is correct because after attempting direct facilitation, if agreement cannot be reached, escalating to the sponsor with documented impact is the appropriate next step. Together, these two actions follow a structured, evidence-based approach. Option A (facilitated joint meeting) is also reasonable but the question asks for the most correct pair. Option C abdicates PM responsibility. Option D unilaterally overrides both department heads without authority or consultation.",
+    "explanation_vi": "Đáp án B và E đúng. Đáp án B: PM nên trước tiên tham khảo tài liệu quản trị (điều lệ dự án, kế hoạch quản lý nguồn lực) để hiểu cấu trúc thẩm quyền và quy trình ưu tiên đã thỏa thuận. Điều này căn cứ việc giải quyết vào các thỏa thuận đã thiết lập. Đáp án E: Sau khi thử tạo điều kiện trực tiếp, nếu không đạt được thỏa thuận, leo thang lên nhà tài trợ với tác động được ghi lại là bước tiếp theo phù hợp. Đáp án C từ bỏ trách nhiệm PM. Đáp án D ghi đè một chiều cả hai trưởng bộ phận mà không có thẩm quyền.",
+    "difficulty": 4,
+    "tags": ["conflict", "resource-management", "escalation", "governance", "multiple-correct"]
+  },
+  {
+    "id": "PPL-9015",
+    "domain": "people",
+    "task": "1.1",
+    "approach": "predictive",
+    "type": "multiple",
+    "question": "You are leading a complex, high-visibility transformation project. Two of your most experienced leads have fundamentally different visions for the target operating model, and their conflict has created two opposing factions within the team. Team members feel forced to choose sides, productivity has dropped by 30%, and a key milestone is at risk. You have met with each lead individually twice and held one joint session, all without resolution. The conflict has persisted for six weeks. Which TWO actions are most appropriate at this stage?",
+    "options": [
+      "Formally escalate the unresolved conflict to the project sponsor and steering committee with a documented impact assessment, proposed resolution options, and a request for an authorized decision.",
+      "Engage a professional organizational mediator or conflict resolution specialist to facilitate the resolution, given the depth and duration of the conflict.",
+      "Replace both leads immediately since their inability to resolve the conflict demonstrates poor professional conduct.",
+      "Ask each lead to write a detailed memo justifying their position, then select the option with the stronger written argument.",
+      "Hold a team vote on which vision to adopt and implement the majority decision."
+    ],
+    "correct": [0, 1],
+    "explanation": "Options A and B are correct. Option A is correct because after six weeks of failed resolution attempts including individual meetings and a joint session, formal escalation to the sponsor and steering committee is warranted and necessary. The PM has fulfilled their direct resolution obligation, and the issue now requires higher authority. Option B is correct because the depth, duration, and organizational impact of this conflict justifies engaging a professional mediator—this is a legitimate and responsible use of expert resources when the PM's facilitation has been exhausted. Option C is a destructive overreaction that destroys institutional knowledge. Option D reduces a complex strategic conflict to a writing exercise and concentrates inappropriate authority in the PM. Option E oversimplifies a strategic decision by applying a popularity vote to a complex professional judgment.",
+    "explanation_vi": "Đáp án A và B đúng. Đáp án A: Sau sáu tuần thất bại trong các nỗ lực giải quyết bao gồm các cuộc họp riêng và chung, leo thang chính thức lên nhà tài trợ và ban chỉ đạo là có căn cứ và cần thiết. PM đã hoàn thành nghĩa vụ giải quyết trực tiếp. Đáp án B: Độ sâu, thời gian và tác động tổ chức của xung đột này biện minh cho việc mời chuyên gia hòa giải - đây là sử dụng nguồn lực chuyên gia hợp lý khi tạo điều kiện của PM đã cạn kiệt. Đáp án C là phản ứng thái quá phá hoại. Đáp án D thu nhỏ xung đột chiến lược phức tạp thành bài viết. Đáp án E áp dụng bỏ phiếu phổ thông cho quyết định chuyên môn phức tạp.",
+    "difficulty": 5,
+    "tags": ["conflict", "escalation", "mediation", "complex-conflict", "transformation", "multiple-correct"]
+  }
+]

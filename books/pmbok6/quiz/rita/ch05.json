@@ -1,0 +1,248 @@
+{
+  "chapterId": "rita_05",
+  "chapterNum": 5,
+  "chapterTitle": "Leadership Skills",
+  "source": "rita",
+  "questions": [
+    {
+      "id": "r05_q01",
+      "q": "A project is behind schedule and the project manager calls a team meeting, creates a recovery plan, and assigns specific tasks to team members with new deadlines. Which role is the project manager primarily performing?",
+      "opts": {
+        "A": "Leader",
+        "B": "Manager",
+        "C": "Sponsor",
+        "D": "Facilitator"
+      },
+      "ans": "B",
+      "exp": "Đây là vai trò Manager (quản lý): lập kế hoạch, tổ chức, phân công nhiệm vụ và kiểm soát. Leadership (lãnh đạo) tập trung vào việc truyền cảm hứng, tạo động lực và dẫn dắt con người hướng tới tầm nhìn. Management tập trung vào các quy trình, hệ thống và kết quả. PM giỏi cần cả hai kỹ năng — lãnh đạo người và quản lý công việc — nhưng trong tình huống này, các hành động rõ ràng là hành vi quản lý."
+    },
+    {
+      "id": "r05_q02",
+      "q": "A project manager notices that a key team member seems disengaged during meetings. Instead of ignoring the situation, the project manager has a private conversation to understand the team member's concerns and adjusts their work assignments accordingly. This behavior best demonstrates which concept?",
+      "opts": {
+        "A": "Theory X management",
+        "B": "Autocratic leadership",
+        "C": "Emotional intelligence",
+        "D": "Transactional leadership"
+      },
+      "ans": "C",
+      "exp": "Emotional Intelligence (EQ) gồm 5 yếu tố: Self-awareness (tự nhận thức), Self-regulation (tự kiểm soát), Motivation (động lực nội tại), Empathy (đồng cảm), và Social skills (kỹ năng xã hội). PM trong tình huống này thể hiện empathy (nhận ra và hiểu cảm xúc của người khác) và social skills (xử lý tình huống một cách khéo léo). Đây là đặc trưng của lãnh đạo có EQ cao."
+    },
+    {
+      "id": "r05_q03",
+      "q": "A project manager believes their primary role is to remove obstacles that prevent the team from doing their best work, support team members' growth, and ensure the team has everything they need to succeed. This project manager is demonstrating which leadership style?",
+      "opts": {
+        "A": "Autocratic leadership",
+        "B": "Laissez-faire leadership",
+        "C": "Servant leadership",
+        "D": "Transactional leadership"
+      },
+      "ans": "C",
+      "exp": "Servant leadership (lãnh đạo phục vụ) là phong cách ưu tiên trong môi trường Agile và được Rita Mulcahy nhấn mạnh là phong cách PM hiện đại. Servant leader tập trung vào: dỡ bỏ rào cản, hỗ trợ sự phát triển của team, tạo môi trường làm việc tích cực. Khác với command-and-control (ra lệnh và kiểm soát), servant leader phục vụ team thay vì được team phục vụ. Đây là đặc điểm nhận dạng quan trọng cho đề thi PMP."
+    },
+    {
+      "id": "r05_q04",
+      "q": "A project manager at a large corporation manages a team where all major decisions must be approved by senior management, and team members have little autonomy. This is an example of which management structure?",
+      "opts": {
+        "A": "Decentralized management",
+        "B": "Servant leadership",
+        "C": "Centralized management",
+        "D": "Matrix management"
+      },
+      "ans": "C",
+      "exp": "Centralized management (quản lý tập trung) là khi quyền ra quyết định tập trung ở cấp trên, nhân viên cấp dưới có ít quyền tự chủ. Decentralized/distributed management phân tán quyền ra quyết định xuống các cấp thấp hơn, khuyến khích tự chủ. Môi trường Agile thường ưa chuộng quản lý phân quyền vì nó thúc đẩy tốc độ và sự đổi mới. Câu hỏi thi thường hỏi cái nào tốt hơn trong bối cảnh cụ thể."
+    },
+    {
+      "id": "r05_q05",
+      "q": "A project manager sends a status report to stakeholders but receives complaints that the report was confusing, contained errors, and was too long. Which of the Five Cs of Communication was violated?",
+      "opts": {
+        "A": "Only Correct was violated",
+        "B": "Only Clear was violated",
+        "C": "Correct, Clear, and Concise were all violated",
+        "D": "Only Concise was violated"
+      },
+      "ans": "C",
+      "exp": "Năm C trong truyền thông hiệu quả: Correct (chính xác — không có lỗi), Complete (đầy đủ thông tin cần thiết), Clear (rõ ràng — dễ hiểu), Concise (súc tích — không rườm rà), Courteous (lịch sự — tôn trọng người nhận). Báo cáo 'confusing' vi phạm Clear, 'errors' vi phạm Correct, 'too long' vi phạm Concise. Khi giao tiếp thất bại, PM cần xem xét tất cả 5 yếu tố này."
+    },
+    {
+      "id": "r05_q06",
+      "q": "During a project meeting, a team member is explaining a technical problem. The project manager maintains eye contact, nods, and says 'So if I understand correctly, you're saying the database migration is taking longer than expected because of data quality issues — is that right?' This is an example of which communication technique?",
+      "opts": {
+        "A": "Formal communication",
+        "B": "Active listening",
+        "C": "Push communication",
+        "D": "Non-verbal communication"
+      },
+      "ans": "B",
+      "exp": "Active listening (lắng nghe chủ động) bao gồm: duy trì giao tiếp bằng mắt, gật đầu, paraphrasing (diễn giải lại bằng lời của mình), tóm tắt những gì đã nghe và đặt câu hỏi làm rõ. Câu 'So if I understand correctly...' là kỹ thuật paraphrasing điển hình của active listening. Đây là kỹ năng giao tiếp quan trọng PM cần có để đảm bảo thông điệp được hiểu đúng."
+    },
+    {
+      "id": "r05_q07",
+      "q": "A project has 8 stakeholders. Due to organizational restructuring, 2 more stakeholders are added to the project. How many additional communication channels were created?",
+      "opts": {
+        "A": "2",
+        "B": "9",
+        "C": "17",
+        "D": "45"
+      },
+      "ans": "C",
+      "exp": "Công thức kênh truyền thông: n(n-1)/2. Với 8 người: 8×7/2 = 28 kênh. Với 10 người: 10×9/2 = 45 kênh. Số kênh tăng thêm: 45 - 28 = 17 kênh mới. Lưu ý: thêm 2 người nhưng tạo ra 17 kênh mới — điều này minh họa tại sao việc tăng thành viên team làm tăng complexity giao tiếp theo cấp số nhân. PM cần hiểu điều này khi quản lý quy mô team."
+    },
+    {
+      "id": "r05_q08",
+      "q": "A project manager implements a bonus program to reward team members who complete tasks ahead of schedule. A senior developer, however, says he doesn't care about bonuses and just wants to work on challenging technical problems. Which motivation theory best explains this difference?",
+      "opts": {
+        "A": "Maslow's hierarchy: the developer is at the physiological level",
+        "B": "Intrinsic vs extrinsic motivation: the developer is intrinsically motivated",
+        "C": "Theory X: the developer needs more external control",
+        "D": "Herzberg: the bonus is a hygiene factor causing dissatisfaction"
+      },
+      "ans": "B",
+      "exp": "Intrinsic motivation (động lực nội tại) đến từ bên trong — sự thỏa mãn từ bản thân công việc, như thử thách, học hỏi, thành tựu. Extrinsic motivation (động lực bên ngoài) đến từ phần thưởng bên ngoài như tiền thưởng, thăng tiến, khen ngợi. Developer trong ví dụ này có intrinsic motivation mạnh — thích thử thách kỹ thuật hơn tiền thưởng. PM nên nhận biết loại động lực của từng thành viên và điều chỉnh cách tiếp cận phù hợp."
+    },
+    {
+      "id": "r05_q09",
+      "q": "A team member has recently joined a company and is concerned primarily about job security and a stable paycheck. According to Maslow's Hierarchy of Needs, which level is this team member at, and what should the project manager focus on?",
+      "opts": {
+        "A": "Physiological level; provide food and shelter",
+        "B": "Safety level; provide job security and a stable work environment",
+        "C": "Esteem level; provide recognition and praise",
+        "D": "Self-actualization level; provide challenging work"
+      },
+      "ans": "B",
+      "exp": "Maslow's Hierarchy: (1) Physiological — nhu cầu sinh lý cơ bản (thức ăn, nước uống), (2) Safety — an toàn và an ninh (việc làm ổn định, thu nhập), (3) Social/Belonging — nhu cầu xã hội (tình bạn, nhóm), (4) Esteem — tự trọng (công nhận, thành tựu), (5) Self-actualization — tự hoàn thiện (phát triển tối đa tiềm năng). Người lo lắng về bảo đảm công việc đang ở level Safety. PM cần đáp ứng nhu cầu thấp hơn trước khi người đó có thể tập trung vào cấp cao hơn."
+    },
+    {
+      "id": "r05_q10",
+      "q": "A project manager believes that team members are lazy, avoid responsibility, and need constant supervision to get work done. This project manager's approach is based on which management theory?",
+      "opts": {
+        "A": "Theory Y",
+        "B": "Theory Z",
+        "C": "Theory X",
+        "D": "Servant leadership theory"
+      },
+      "ans": "C",
+      "exp": "McGregor's Theory X: Người quản lý tin rằng nhân viên không thích làm việc, trốn tránh trách nhiệm, cần được kiểm soát chặt chẽ và chỉ đạo rõ ràng. Theory Y (đối lập): nhân viên tự thúc đẩy, tìm kiếm trách nhiệm, sáng tạo. Theory Z (Ouchi): nhấn mạnh lòng trung thành, ra quyết định theo đồng thuận (đặc trưng văn hóa Nhật). PMP exam thường hỏi về Theory Y và servant leadership như phong cách quản lý 'tốt nhất' cho PM hiện đại."
+    },
+    {
+      "id": "r05_q11",
+      "q": "According to Herzberg's Two-Factor Theory, a project manager increases team members' salaries significantly. However, team motivation remains low. What is the best explanation?",
+      "opts": {
+        "A": "Salary is a motivator that should have increased satisfaction",
+        "B": "Salary is a hygiene factor; its presence prevents dissatisfaction but does not create motivation",
+        "C": "The team needs more extrinsic rewards beyond salary",
+        "D": "Herzberg's theory does not apply to project environments"
+      },
+      "ans": "B",
+      "exp": "Herzberg's Two-Factor Theory: (1) Hygiene factors (yếu tố duy trì) — lương, điều kiện làm việc, bảo đảm công việc, chính sách công ty. Khi đủ, chúng ngăn không hài lòng nhưng KHÔNG tạo động lực. (2) Motivators (yếu tố thúc đẩy) — công nhận thành tích, trách nhiệm, cơ hội phát triển, ý nghĩa công việc. Chỉ motivators mới thực sự tạo ra sự hài lòng và động lực. Để tăng motivation, PM cần tập trung vào motivators, không chỉ cải thiện hygiene factors."
+    },
+    {
+      "id": "r05_q12",
+      "q": "A high-performing team member is given ownership of a critical project module and is allowed to make key technical decisions. According to McClelland's Theory of Needs, this team member is primarily driven by which need?",
+      "opts": {
+        "A": "Need for affiliation",
+        "B": "Need for achievement",
+        "C": "Need for power",
+        "D": "Need for security"
+      },
+      "ans": "C",
+      "exp": "McClelland's Three Needs Theory: (1) Need for Achievement (nACH) — muốn hoàn thành mục tiêu thử thách, cải thiện hiệu suất. (2) Need for Affiliation (nAFF) — muốn có mối quan hệ tốt, được chấp nhận. (3) Need for Power (nPOW) — muốn có ảnh hưởng, kiểm soát, tác động đến người khác. Việc giao quyền sở hữu và quyền ra quyết định đáp ứng need for power. Người có nPOW cao thường trở thành lãnh đạo hiệu quả khi hướng về institutional power (quyền lực vì tổ chức) thay vì personal power."
+    },
+    {
+      "id": "r05_q13",
+      "q": "A newly formed project team is getting to know each other, establishing ground rules, and beginning to understand the project goals. Team members are polite but uncertain about their roles. According to Tuckman's model, which stage is this team in?",
+      "opts": {
+        "A": "Storming",
+        "B": "Norming",
+        "C": "Forming",
+        "D": "Performing"
+      },
+      "ans": "C",
+      "exp": "Tuckman's Team Development Stages: (1) Forming — team mới, lịch sự, chưa rõ vai trò, đang tìm hiểu nhau. (2) Storming — xung đột nảy sinh khi quan điểm khác nhau va chạm, cạnh tranh vai trò. (3) Norming — team thiết lập quy tắc, quy trình và bắt đầu hợp tác hiệu quả. (4) Performing — team hoạt động hiệu quả cao, tự quản. (5) Adjourning — team giải tán khi dự án kết thúc. Dấu hiệu 'lịch sự nhưng không chắc về vai trò' là đặc trưng của Forming."
+    },
+    {
+      "id": "r05_q14",
+      "q": "Two senior engineers on the project team are in a heated disagreement about the technical approach for a critical deliverable. The project manager facilitates a meeting where both engineers present their positions fully, analyze the pros and cons together, and agree on a combined approach. What conflict resolution technique was used?",
+      "opts": {
+        "A": "Forcing",
+        "B": "Smoothing/Accommodating",
+        "C": "Compromising",
+        "D": "Problem-solving/Collaborating"
+      },
+      "ans": "D",
+      "exp": "Problem-solving/Collaborating (còn gọi là Confronting) là kỹ thuật giải quyết xung đột TỐT NHẤT — cả hai bên cùng phân tích vấn đề, chia sẻ quan điểm và tìm ra giải pháp đôi bên cùng có lợi (win-win). Forcing = áp đặt quan điểm của một bên (win-lose, tệ nhất cho quan hệ). Smoothing = giảm nhẹ xung đột bằng cách nhấn mạnh điểm chung (giải pháp tạm thời). Compromising = mỗi bên nhượng bộ một phần (lose-lose một chút). Withdrawing = tránh né (tệ nhất, không giải quyết gì)."
+    },
+    {
+      "id": "r05_q15",
+      "q": "During a critical negotiation with a vendor, the project manager knows that if an agreement cannot be reached, the organization has already identified an alternative vendor that can deliver the same service. This alternative is known as:",
+      "opts": {
+        "A": "Fallback plan",
+        "B": "BATNA (Best Alternative to a Negotiated Agreement)",
+        "C": "Risk response strategy",
+        "D": "Contingency reserve"
+      },
+      "ans": "B",
+      "exp": "BATNA (Best Alternative to a Negotiated Agreement) là phương án tốt nhất mà một bên có thể thực hiện nếu đàm phán thất bại. Biết BATNA của mình giúp PM đàm phán từ vị thế mạnh hơn — nếu đề xuất của đối phương tệ hơn BATNA, nên từ bỏ đàm phán. Trong đàm phán win-win, mục tiêu là đạt được thỏa thuận tốt hơn BATNA cho cả hai bên. BATNA là khái niệm quan trọng trong negotiation skills của PM."
+    },
+    {
+      "id": "r05_q16",
+      "q": "A project team conflict has escalated to the point where two team members refuse to work together. The project manager, under pressure to meet a deadline, simply tells them 'I don't have time for this — just do your jobs.' What conflict resolution technique is being used, and what is the likely outcome?",
+      "opts": {
+        "A": "Compromising; both parties will be partially satisfied",
+        "B": "Smoothing; the conflict will be temporarily resolved",
+        "C": "Forcing; the conflict is suppressed but not resolved, likely to resurface",
+        "D": "Problem-solving; the root cause is being addressed"
+      },
+      "ans": "C",
+      "exp": "Forcing (hay còn gọi là Directing) là khi PM áp đặt quyết định mà không xem xét quan điểm của các bên. Đây KHÔNG phải là phong cách tốt nhất — nó tạo ra tình huống win-lose và không giải quyết nguyên nhân gốc rễ. Kết quả: một bên cảm thấy không được lắng nghe, xung đột có thể bùng phát lại sau này. Forcing chỉ phù hợp trong tình huống khẩn cấp cần quyết định ngay. PM nên ưu tiên problem-solving để tạo giải pháp bền vững."
+    },
+    {
+      "id": "r05_q17",
+      "q": "A project manager is hiring a new team member for a digital transformation project. The ideal candidate should have deep expertise in cloud architecture AND broad knowledge across business analysis, project management, and UX design. This describes which type of skill profile?",
+      "opts": {
+        "A": "I-shaped skills",
+        "B": "T-shaped skills",
+        "C": "Generalist skills",
+        "D": "Specialist skills"
+      },
+      "ans": "B",
+      "exp": "T-shaped skills mô tả người có: (1) Chiều ngang của chữ T — kiến thức rộng qua nhiều lĩnh vực (broad generalist knowledge), (2) Chiều dọc của chữ T — chuyên môn sâu trong một lĩnh vực cụ thể (deep specialist expertise). Đây là profil lý tưởng cho thành viên team Agile hiện đại vì họ có thể đóng góp ở nhiều mảng nhưng vẫn mang giá trị chuyên môn cao. I-shaped = chỉ có chuyên môn sâu, không có kiến thức rộng."
+    },
+    {
+      "id": "r05_q18",
+      "q": "A project manager is working with a junior developer who is highly motivated but lacks technical skills for the task. According to situational leadership theory, what leadership style should the project manager use?",
+      "opts": {
+        "A": "Delegating — give the developer full autonomy",
+        "B": "Participating — share ideas and facilitate decision-making",
+        "C": "Selling/Coaching — explain decisions and provide guidance while being supportive",
+        "D": "Telling/Directing — give specific instructions and closely supervise"
+      },
+      "ans": "D",
+      "exp": "Situational Leadership (Hersey & Blanchard) điều chỉnh phong cách lãnh đạo theo mức độ sẵn sàng (readiness) của thành viên: (S1) Telling/Directing — low competence, high commitment → chỉ đạo cụ thể, giám sát chặt. (S2) Selling/Coaching — some competence, variable commitment → giải thích và hướng dẫn. (S3) Participating — high competence, variable confidence → chia sẻ quyết định. (S4) Delegating — high competence, high commitment → trao quyền tự chủ. Người mới có động lực cao nhưng thiếu kỹ năng = S1: Telling."
+    },
+    {
+      "id": "r05_q19",
+      "q": "A project team has been working together for several months and is now highly productive, making decisions autonomously, resolving conflicts effectively, and consistently delivering high-quality results. Which stage of Tuckman's model is this team in, and what should the project manager do?",
+      "opts": {
+        "A": "Norming; provide more structure and guidance",
+        "B": "Performing; step back and support rather than micromanage",
+        "C": "Storming; intervene to resolve conflicts",
+        "D": "Forming; define roles and responsibilities"
+      },
+      "ans": "B",
+      "exp": "Performing là giai đoạn team hoạt động với hiệu suất cao nhất — tự quản, giải quyết xung đột nội bộ, liên tục cải tiến. PM nên áp dụng delegating style: trao quyền tự chủ, tránh micromanage. Micromanaging một Performing team sẽ gây hại — làm giảm động lực và hiệu suất. PM ở đây đóng vai trò facilitator và người dỡ bỏ rào cản (servant leader) thay vì người chỉ đạo. Đây là trạng thái team lý tưởng mà PM nên hướng tới."
+    },
+    {
+      "id": "r05_q20",
+      "q": "During a team retrospective, a project manager discovers that a significant portion of the team feels their ideas are never heard and decisions are always made top-down without their input. This suggests a problem with which aspect of leadership?",
+      "opts": {
+        "A": "The project manager is correctly using Theory X management",
+        "B": "The team needs better technical skills training",
+        "C": "The project manager lacks emotional intelligence and servant leadership behaviors",
+        "D": "The project schedule is too aggressive causing stress"
+      },
+      "ans": "C",
+      "exp": "Khi team cảm thấy ý kiến không được lắng nghe và quyết định luôn từ trên xuống, đây là dấu hiệu PM thiếu: (1) Emotional intelligence — không nhận ra và phản hồi cảm xúc của team, (2) Servant leadership — không phục vụ team mà chỉ kiểm soát họ. PM hiệu quả cần tạo môi trường an toàn về tâm lý (psychological safety) nơi mọi người dám chia sẻ ý kiến. Retrospective là cơ hội quý giá để phát hiện và cải thiện những vấn đề văn hóa nhóm như thế này."
+    }
+  ]
+}

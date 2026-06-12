@@ -1,0 +1,248 @@
+{
+  "chapterId": "rita_16",
+  "chapterNum": 16,
+  "chapterTitle": "Tips for Passing the PMP Exam",
+  "source": "rita",
+  "questions": [
+    {
+      "id": "r16_q01",
+      "q": "During project execution, a team member reports that a key deliverable does not meet the quality standard. What should the project manager do FIRST?",
+      "opts": {
+        "A": "Immediately escalate the issue to the project sponsor",
+        "B": "Analyze the impact of the non-conformance on the project",
+        "C": "Submit a change request to reduce quality standards",
+        "D": "Remove the team member responsible for the defect"
+      },
+      "ans": "B",
+      "exp": "Theo Rita, khi phát sinh vấn đề, PM phải PHÂN TÍCH TÁC ĐỘNG trước tiên trước khi leo thang hoặc ra quyết định. Đây là nguyên tắc 'Integration First' — hiểu rõ vấn đề trước khi hành động."
+    },
+    {
+      "id": "r16_q02",
+      "q": "A project has a CPI of 0.82 and an SPI of 0.91. What does this tell the project manager?",
+      "opts": {
+        "A": "The project is over budget and ahead of schedule",
+        "B": "The project is under budget and behind schedule",
+        "C": "The project is over budget and behind schedule",
+        "D": "The project is under budget and ahead of schedule"
+      },
+      "ans": "C",
+      "exp": "CPI = 0.82 nghĩa là mỗi $1 chi ra chỉ thu được $0.82 giá trị — dự án ĐỘI CHI PHÍ. SPI = 0.91 nghĩa là tiến độ chỉ đạt 91% kế hoạch — dự án CHẬM TIẾN ĐỘ. Cả hai chỉ số đều nhỏ hơn 1 nên dự án vừa vượt ngân sách vừa chậm tiến độ."
+    },
+    {
+      "id": "r16_q03",
+      "q": "A stakeholder calls a team member directly and requests that extra features be added to the product. The team member starts working on these features. What should the project manager do?",
+      "opts": {
+        "A": "Allow the team member to continue since the stakeholder has authority",
+        "B": "Report the stakeholder to senior management for bypassing the PM",
+        "C": "Address the situation directly with both the stakeholder and team member, and explain the change control process",
+        "D": "Submit a change request immediately to include the extra features"
+      },
+      "ans": "C",
+      "exp": "Khi stakeholder bỏ qua PM, PM phải giải quyết trực tiếp với cả hai bên, nhắc nhở về quy trình kiểm soát thay đổi. Không nên báo cáo lên cấp trên ngay — đó là leo thang không cần thiết. PM phải bảo vệ phạm vi dự án thông qua kênh chính thức."
+    },
+    {
+      "id": "r16_q04",
+      "q": "The project manager calculates an EAC of $850,000 against a BAC of $750,000. The project is 60% complete with an AC of $510,000. What is the most likely scenario?",
+      "opts": {
+        "A": "The project will finish under budget",
+        "B": "The project will finish over budget by $100,000",
+        "C": "The project team needs to work harder to recover costs",
+        "D": "The project should be cancelled immediately"
+      },
+      "ans": "B",
+      "exp": "EAC = $850,000 trong khi BAC = $750,000, nên dự án dự kiến vượt ngân sách $100,000. PM cần báo cáo thực tế này cho sponsor và thảo luận về các lựa chọn khôi phục hoặc điều chỉnh ngân sách. Trả lời C không đúng vì 'làm việc chăm hơn' không phải giải pháp kỹ thuật."
+    },
+    {
+      "id": "r16_q05",
+      "q": "During project execution, a key team member suddenly resigns. What should the project manager do FIRST?",
+      "opts": {
+        "A": "Immediately recruit a replacement",
+        "B": "Assess the impact on the project schedule, cost, and scope",
+        "C": "Inform the sponsor that the project will be delayed",
+        "D": "Redistribute the workload to other team members"
+      },
+      "ans": "B",
+      "exp": "Khi tài nguyên quan trọng rời dự án, bước ĐẦU TIÊN là đánh giá tác động lên lịch trình, chi phí và phạm vi. Sau đó PM mới có thể đưa ra quyết định có cơ sở. Tuyển dụng ngay hoặc phân công lại công việc mà chưa đánh giá tác động là hành động thiếu kế hoạch."
+    },
+    {
+      "id": "r16_q06",
+      "q": "A project manager discovers that a scope change was implemented without going through the change control board. What is the BEST course of action?",
+      "opts": {
+        "A": "Accept the change since it has already been implemented",
+        "B": "Reverse the change immediately regardless of impact",
+        "C": "Submit a retroactive change request and update the baseline if approved",
+        "D": "Document the change in the lessons learned register and move on"
+      },
+      "ans": "C",
+      "exp": "Khi thay đổi phạm vi được thực hiện mà không qua CCB, PM phải nộp yêu cầu thay đổi hồi tố và cập nhật baseline nếu được phê duyệt. Điều này duy trì tính toàn vẹn của quy trình kiểm soát thay đổi. Bỏ qua hoặc chỉ ghi vào bài học kinh nghiệm là không đủ."
+    },
+    {
+      "id": "r16_q07",
+      "q": "A project is significantly behind schedule and over budget. The sponsor asks the project manager for options. What should the PM present?",
+      "opts": {
+        "A": "A single recovery plan with the PM's preferred solution",
+        "B": "A recommendation to cancel the project",
+        "C": "An honest assessment of the situation with multiple options and their trade-offs",
+        "D": "A revised schedule that compresses the timeline to meet the original deadline"
+      },
+      "ans": "C",
+      "exp": "Khi dự án gặp khó khăn, PM phải trình bày đánh giá trung thực và cung cấp NHIỀU LỰA CHỌN với ưu nhược điểm. Chỉ đề xuất một phương án hoặc chỉ đề xuất hủy bỏ là thiếu chuyên nghiệp. PM không đưa ra quyết định thay cho sponsor — đó là quyền của nhà tài trợ."
+    },
+    {
+      "id": "r16_q08",
+      "q": "A project manager discovers that a team member has been falsifying progress reports to hide that a deliverable is late. What should the PM do?",
+      "opts": {
+        "A": "Cover up the issue to protect the team member",
+        "B": "Confront the team member privately and correct the reports",
+        "C": "Report the issue to senior management immediately without speaking to the team member",
+        "D": "Ignore it since the deliverable will eventually be completed"
+      },
+      "ans": "B",
+      "exp": "Đây là tình huống đạo đức. PM phải đối mặt trực tiếp với thành viên nhóm, sửa báo cáo và đảm bảo báo cáo chính xác trong tương lai. Che giấu vi phạm PMI Code of Ethics. Leo thang ngay không cần thiết nếu có thể giải quyết trực tiếp trước. Minh bạch và trung thực là nguyên tắc hàng đầu."
+    },
+    {
+      "id": "r16_q09",
+      "q": "Two team members are having a persistent conflict that is affecting team morale. What should the project manager do FIRST?",
+      "opts": {
+        "A": "Remove one of the team members from the project",
+        "B": "Ignore it and hope they resolve it themselves",
+        "C": "Facilitate a problem-solving meeting between the two parties",
+        "D": "Escalate to HR immediately"
+      },
+      "ans": "C",
+      "exp": "Khi xung đột trong nhóm, PM nên thúc đẩy giải quyết bằng phương pháp problem-solving (confronting/collaborating) trước — đây là cách hiệu quả nhất. Loại bỏ thành viên hoặc leo thang HR là các biện pháp cuối cùng. Bỏ qua xung đột sẽ làm vấn đề tệ hơn."
+    },
+    {
+      "id": "r16_q10",
+      "q": "During project closing, what activities MUST the project manager complete?",
+      "opts": {
+        "A": "Obtain formal acceptance, document lessons learned, release resources, and archive project documents",
+        "B": "Celebrate with the team and submit the final invoice",
+        "C": "Transfer the product to operations and immediately start the next project",
+        "D": "Conduct a final risk assessment and close all change requests"
+      },
+      "ans": "A",
+      "exp": "Đóng dự án đúng cách bao gồm: chấp thuận chính thức từ sponsor/khách hàng, ghi lại bài học kinh nghiệm, giải phóng tài nguyên và lưu trữ tài liệu. Những bước này đảm bảo tổ chức học hỏi từ dự án và tuân thủ quy trình. Ăn mừng không phải hoạt động chính thức."
+    },
+    {
+      "id": "r16_q11",
+      "q": "A project manager is starting execution before the project plan is fully approved. What is the MAIN risk of this approach?",
+      "opts": {
+        "A": "The team will work faster without being constrained by a plan",
+        "B": "Work may need to be redone if the plan changes after execution starts",
+        "C": "Stakeholders will be more engaged with early deliverables",
+        "D": "The project will finish ahead of schedule"
+      },
+      "ans": "B",
+      "exp": "Bắt đầu thực thi trước khi kế hoạch được phê duyệt là lỗi phổ biến. Nếu kế hoạch thay đổi sau khi đã thực thi, công việc có thể phải làm lại, gây lãng phí thời gian và chi phí. Đây là sai lầm điển hình mà Rita nhấn mạnh: 'Plan before you execute'."
+    },
+    {
+      "id": "r16_q12",
+      "q": "A conflict arises between project needs and organizational policy. What should the project manager prioritize?",
+      "opts": {
+        "A": "Project needs, since meeting project objectives is the PM's primary responsibility",
+        "B": "Organizational policy, since the PM must operate within organizational constraints",
+        "C": "Safety first, then legal/regulatory requirements, then organizational policy, then project needs",
+        "D": "The stakeholder with the most influence"
+      },
+      "ans": "C",
+      "exp": "Thứ tự ưu tiên khi xung đột: (1) An toàn, (2) Luật pháp/quy định, (3) Chính sách tổ chức, (4) Nhu cầu dự án. Đây là nguyên tắc quan trọng trong thi PMP. Nhu cầu dự án luôn đứng cuối khi xung đột với các yêu cầu cấp cao hơn."
+    },
+    {
+      "id": "r16_q13",
+      "q": "The project manager failed to conduct risk identification at project initiation. During execution, an unforeseen risk materializes. What is the MAIN lesson learned?",
+      "opts": {
+        "A": "Risk management is optional on small projects",
+        "B": "Risks should be identified and planned for proactively, not reactively",
+        "C": "The team should have identified the risk themselves",
+        "D": "Contingency reserves should be increased to cover all unknowns"
+      },
+      "ans": "B",
+      "exp": "Quản lý rủi ro phải mang tính CHỦ ĐỘNG (proactive), không phản ứng (reactive). Bỏ qua nhận diện rủi ro từ đầu là sai lầm căn bản. PM giỏi dành thời gian lập kế hoạch rủi ro ngay từ đầu để giảm thiểu tác động khi rủi ro xảy ra. Đây là điểm Rita nhấn mạnh nhiều lần."
+    },
+    {
+      "id": "r16_q14",
+      "q": "The project is nearing completion and the team has not yet documented lessons learned. When should lessons learned IDEALLY be documented?",
+      "opts": {
+        "A": "Only during the closing process",
+        "B": "Throughout the entire project lifecycle, not just at the end",
+        "C": "After the product is delivered and accepted by the customer",
+        "D": "Only when something goes wrong"
+      },
+      "ans": "B",
+      "exp": "Bài học kinh nghiệm phải được ghi lại XUYÊN SUỐT dự án, không chỉ ở giai đoạn kết thúc. Chờ đến cuối dự án thì nhiều chi tiết đã bị quên. Rita nhấn mạnh đây là sai lầm phổ biến — PM phải liên tục cập nhật lessons learned register trong suốt vòng đời dự án."
+    },
+    {
+      "id": "r16_q15",
+      "q": "A PMP exam question asks: 'What would you do?' vs 'What SHOULD you do?' How should the candidate approach PMP exam questions?",
+      "opts": {
+        "A": "Answer based on personal experience from past projects",
+        "B": "Answer based on what the PMI/Rita framework says a PM SHOULD do, not what would happen in real life",
+        "C": "Choose the answer that seems most practical and cost-effective",
+        "D": "Select the answer that favors the project sponsor's interests"
+      },
+      "ans": "B",
+      "exp": "Rita's key insight: PMP questions test 'what SHOULD the PM do' theo khung PMI, không phải 'what would they do' trong thực tế. Nhiều thí sinh thất bại vì chọn đáp án thực tế thay vì đáp án 'đúng theo sách'. PM lý tưởng theo PMI luôn lập kế hoạch, chủ động, và tuân theo quy trình."
+    },
+    {
+      "id": "r16_q16",
+      "q": "A project has EV = $400,000, PV = $450,000, and AC = $380,000. What is the Schedule Variance (SV) and what does it mean?",
+      "opts": {
+        "A": "SV = +$50,000; project is ahead of schedule",
+        "B": "SV = -$50,000; project is behind schedule",
+        "C": "SV = +$20,000; project is under budget",
+        "D": "SV = -$20,000; project is over budget"
+      },
+      "ans": "B",
+      "exp": "SV = EV - PV = $400,000 - $450,000 = -$50,000. Giá trị âm nghĩa dự án CHẬM TIẾN ĐỘ (behind schedule). CV = EV - AC = $400,000 - $380,000 = +$20,000 (dưới ngân sách). SV liên quan đến tiến độ, CV liên quan đến chi phí. Đây là câu hỏi kiếm điểm nếu nhớ công thức."
+    },
+    {
+      "id": "r16_q17",
+      "q": "A project manager spends most of their time putting out fires and solving immediate problems rather than planning ahead. According to Rita, what is the PM's biggest problem?",
+      "opts": {
+        "A": "The team is not performing well enough",
+        "B": "The PM is being reactive instead of proactive — insufficient upfront planning",
+        "C": "The project has too many stakeholders",
+        "D": "The organization does not support the project"
+      },
+      "ans": "B",
+      "exp": "Theo Rita, PM 'firefighting' (dập tắt đám cháy liên tục) là dấu hiệu của lập kế hoạch không đầy đủ. PM giỏi lập kế hoạch chủ động để ngăn ngừa vấn đề, không chỉ phản ứng sau khi vấn đề xảy ra. Đây là concept cốt lõi Rita nhấn mạnh: 'Prevention over correction'."
+    },
+    {
+      "id": "r16_q18",
+      "q": "During a project status meeting, a team member asks the PM: 'Why do we need all this documentation? It just slows us down.' What is the BEST response?",
+      "opts": {
+        "A": "Agree and reduce documentation to speed up the project",
+        "B": "Explain that documentation creates organizational knowledge, supports accountability, and enables future project success",
+        "C": "Tell the team member that documentation is required and non-negotiable",
+        "D": "Ask the team member to skip documentation for low-priority tasks"
+      },
+      "ans": "B",
+      "exp": "PM nên giải thích GIÁ TRỊ của tài liệu: tạo kiến thức tổ chức, hỗ trợ trách nhiệm giải trình và tạo điều kiện cho thành công các dự án tương lai. Đây không phải là luật lệ cứng nhắc — đây là công cụ quản lý dự án hiệu quả. Trả lời C đúng về mặt kết quả nhưng thiếu giải thích."
+    },
+    {
+      "id": "r16_q19",
+      "q": "A project manager is offered a gift by a vendor who is competing for a contract on the project. What should the PM do?",
+      "opts": {
+        "A": "Accept the gift if it is below the company's gift threshold",
+        "B": "Decline the gift and report the situation to avoid any appearance of conflict of interest",
+        "C": "Accept the gift but disclose it to the sponsor",
+        "D": "Accept the gift only if the vendor wins the contract"
+      },
+      "ans": "B",
+      "exp": "Theo PMI Code of Ethics, PM phải tránh mọi xung đột lợi ích THỰC SỰ hoặc CHỈ CÓ VẺ NGOÀI. Từ chối quà và báo cáo tình huống là cách đúng đắn. Chấp nhận quà — dù dưới ngưỡng — có thể tạo ra ấn tượng thiên vị trong quy trình lựa chọn nhà thầu."
+    },
+    {
+      "id": "r16_q20",
+      "q": "As project manager, you are under pressure to deliver a project on time. You realize that skipping the formal testing phase would allow you to meet the deadline. What should you do?",
+      "opts": {
+        "A": "Skip testing to meet the deadline since schedule is the top priority",
+        "B": "Conduct a partial test to save time",
+        "C": "Inform stakeholders of the quality risk and obtain a formal decision through change control",
+        "D": "Ask the team to work overtime to complete testing within the original timeline"
+      },
+      "ans": "C",
+      "exp": "PM không được tự ý bỏ qua kiểm thử — đây là quyết định ảnh hưởng đến chất lượng và rủi ro. PM phải thông báo cho stakeholders về rủi ro chất lượng và để họ đưa ra quyết định có thông tin qua quy trình kiểm soát thay đổi. Che giấu sự đánh đổi chất lượng là vi phạm đạo đức PM."
+    }
+  ]
+}

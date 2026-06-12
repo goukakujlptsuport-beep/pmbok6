@@ -36,15 +36,15 @@ let state = {
   highlights:  {},  // { chapterId: [{ id, xpath, startOffset, endOffset, color, note }] }
   lastChapter: CHAPTERS[0].id,
 };
-let gistConfig        = null;
 let currentChapterId  = null;
 let saveTimer         = null;
 let pendingHighlight  = null;  // { xpath, startOffset, endOffset } from iframe
-let activeHighlightId = null;  // hlId of mark being edited
+let activeHighlightId   = null;   // hlId of mark being edited
+let hlPanelTab          = 'chapter'; // 'chapter' | 'all'
+let hlPanelFilter       = 'all';     // 'all' | 'yellow' | 'green' | 'red'
+let pendingScrollHlId   = null;      // scroll to this highlight after chapter loads
 
 const LS_KEY      = 'pmbok6_progress';
-const LS_GIST_KEY = 'pmbok6_gist';
-const GIST_FILE   = 'pmbok6-progress.json';
 
 // ── HELPERS ──
 function getProgress(id) {
@@ -128,19 +128,9 @@ function loadFromLocalStorage() {
 async function saveData() {
   try {
     localStorage.setItem(LS_KEY, JSON.stringify(state));
+    setSyncIndicator('saved');
   } catch (_) {
     setSyncIndicator('error');
-    return;
-  }
-  if (gistConfig?.token && gistConfig?.gistId) {
-    try {
-      await saveToGist();
-      setSyncIndicator('saved');
-    } catch (_) {
-      setSyncIndicator('error');
-    }
-  } else {
-    setSyncIndicator('saved');
   }
 }
 
@@ -153,10 +143,20 @@ const BRIDGE_SCRIPT = `
 
   const ORIGIN = window.parent.location.origin;
 
-  // Hide chapter's own sidebar and fix main layout
+  // Hide chapter's own sidebar and fix main layout for reading
   document.querySelector('#sidebar')?.remove();
   const mainEl = document.querySelector('#main');
-  if (mainEl) { mainEl.style.marginLeft = '0'; mainEl.style.maxWidth = '100%'; }
+  if (mainEl) {
+    // Switch body out of flex so margin:auto centering works
+    document.body.style.display = 'block';
+    // Center the reading column
+    mainEl.style.marginLeft  = 'auto';
+    mainEl.style.marginRight = 'auto';
+    mainEl.style.maxWidth    = '780px';
+    mainEl.style.width       = '100%';
+    mainEl.style.padding     = '0 2.5rem 5rem';
+    mainEl.style.boxSizing   = 'border-box';
+  }
 
   // ── SCROLL TRACKING ──
   let scrollTimer;
@@ -198,24 +198,35 @@ const BRIDGE_SCRIPT = `
     return null;
   }
 
-  // ── HIGHLIGHT STYLES ──
+  // ── HIGHLIGHT + READING STYLES ──
   const style = document.createElement('style');
   style.textContent =
+    /* font smoothing & scroll */
+    'html{scroll-behavior:smooth;}' +
+    'body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}' +
+    /* chapter hero: full-bleed within the 780px centered column */
+    '.chapter-hero{margin-left:-2.5rem;margin-right:-2.5rem;padding-left:3rem;padding-right:3rem;}' +
+    /* better paragraph spacing */
+    'p{line-height:1.9;letter-spacing:0.01em;}' +
+    /* term badges */
+    '.term{background:rgba(201,168,76,0.1);padding:0 0.2em;border-radius:3px;}' +
+    /* highlight marks */
     'mark.hl{border-radius:2px;cursor:pointer;padding:1px 0;}' +
     'mark.hl[data-color="yellow"]{background:rgba(255,241,118,0.75);}' +
     'mark.hl[data-color="green"]{background:rgba(165,214,167,0.75);}' +
     'mark.hl[data-color="red"]{background:rgba(239,154,154,0.75);}' +
     'mark.hl[data-note]:not([data-note=""]):after{content:"✏";font-size:.65rem;vertical-align:super;margin-left:2px;opacity:.7;}' +
-    '#chapter-toc{background:linear-gradient(135deg,#f8f5ed 0%,#fdf8f0 100%);border:1px solid #d4c89a;border-radius:8px;padding:1rem 1.2rem;margin:1.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.06);}' +
-    '#chapter-toc .toc-title{font-weight:600;color:#1a2744;margin-bottom:0.8rem;font-size:0.95rem;}' +
+    /* table of contents box */
+    '#chapter-toc{background:linear-gradient(135deg,#f8f5ed 0%,#fdf8f0 100%);border:1px solid #d4c89a;border-radius:8px;padding:1rem 1.4rem;margin:1.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.06);}' +
+    '#chapter-toc .toc-title{font-weight:700;color:#1a2744;margin-bottom:0.8rem;font-size:0.9rem;letter-spacing:0.04em;text-transform:uppercase;}' +
     '#chapter-toc ul{list-style:none;margin:0;padding:0;}' +
-    '#chapter-toc li{margin:0.3rem 0;}' +
+    '#chapter-toc li{margin:0.25rem 0;line-height:1.4;}' +
     '#chapter-toc li.toc-h1{font-weight:600;}' +
     '#chapter-toc li.toc-h2{padding-left:1rem;}' +
-    '#chapter-toc li.toc-h3{padding-left:2rem;font-size:0.9rem;}' +
-    '#chapter-toc li.toc-h4{padding-left:3rem;font-size:0.85rem;color:#666;}' +
+    '#chapter-toc li.toc-h3{padding-left:2rem;font-size:0.88rem;}' +
+    '#chapter-toc li.toc-h4{padding-left:3rem;font-size:0.83rem;color:#777;}' +
     '#chapter-toc a{color:#1a2744;text-decoration:none;transition:color 0.15s;}' +
-    '#chapter-toc a:hover{color:#c9a84c;text-decoration:underline;}';
+    '#chapter-toc a:hover{color:#c9a84c;}';
   document.head.appendChild(style);
 
   // ── GET TEXT NODES IN RANGE ──
@@ -380,54 +391,22 @@ const BRIDGE_SCRIPT = `
       highlightRange(range, msg.id, msg.color, msg.note || '');
       sel.removeAllRanges();
       
-      // Send back the data for storage
+      // Send back the data for storage (echo XPath so parent can persist positions)
       window.parent.postMessage({
         type: 'highlightCreated',
         id: msg.id,
         color: msg.color,
         note: msg.note || '',
         text: selectedText.substring(0, 500),
+        startXPath: msg.startXPath,
+        startOffset: msg.startOffset,
+        endXPath: msg.endXPath,
+        endOffset: msg.endOffset,
       }, ORIGIN);
     }
 
-    // ── AUDIO: get readable text from chapter ──
-    if (msg.type === 'getText') {
-      // Collect text from paragraphs, headings, list items — skip nav/toc
-      const skip = new Set(['SCRIPT','STYLE','NAV','#chapter-toc']);
-      const blocks = [];
-      document.querySelectorAll('h1,h2,h3,h4,p,li,td').forEach(el => {
-        if (el.closest('#sidebar') || el.closest('#chapter-toc') || el.closest('nav')) return;
-        const t = el.textContent.trim();
-        if (t.length > 10) blocks.push(t);
-      });
-      window.parent.postMessage({ type: 'chapterText', blocks }, ORIGIN);
-    }
-
-    // ── AUDIO: highlight current sentence being read ──
-    if (msg.type === 'highlightSentence') {
-      // Remove previous audio highlight
-      document.querySelectorAll('.audio-reading').forEach(el => el.classList.remove('audio-reading'));
-      if (!msg.text) return;
-      // Find element containing this text and highlight it
-      const els = document.querySelectorAll('p,h1,h2,h3,h4,li,td');
-      for (const el of els) {
-        if (el.textContent.includes(msg.text.slice(0, 30))) {
-          el.classList.add('audio-reading');
-          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          break;
-        }
-      }
-    }
-
-    if (msg.type === 'clearAudioHighlight') {
-      document.querySelectorAll('.audio-reading').forEach(el => el.classList.remove('audio-reading'));
-    }
   });
 
-  // ── AUDIO HIGHLIGHT STYLE ──
-  const audioStyle = document.createElement('style');
-  audioStyle.textContent = '.audio-reading{background:rgba(201,168,76,0.2);border-left:3px solid #c9a84c;padding-left:6px;transition:background 0.3s;}';
-  document.head.appendChild(audioStyle);
 
   // ── BUILD TABLE OF CONTENTS ──
   function buildTOC() {
@@ -571,13 +550,6 @@ function loadChapter(id) {
   currentChapterId = id;
   state.lastChapter = id;
   hidePopup();
-  // Reset audio when switching chapter
-  if (audioPlayer) {
-    audioPlayer.pause();
-    audioPlayer.currentTime = 0;
-    clearAudioHighlight();
-  }
-  currentAudioPath = null;
 
   document.querySelectorAll('#chapter-nav a').forEach(a => {
     a.classList.toggle('active', a.dataset.id === id);
@@ -616,8 +588,7 @@ function loadChapter(id) {
     try {
       const iwin = frame.contentWindow;
 
-      // Fix chapter layout: chapter HTML has margin-left:260px for its own sidebar.
-      // We removed the sidebar, so reset the margin so content fills the iframe.
+      // Pre-reset sidebar margin; bridge script will set full reading-column layout
       const mainEl = iwin.document.querySelector('#main');
       if (mainEl) mainEl.style.marginLeft = '0';
 
@@ -630,9 +601,13 @@ function loadChapter(id) {
       const highlights = state.highlights[id] || [];
       iwin.postMessage({ type: 'applyHighlights', highlights }, '*');
 
-      // Restore scroll position
+      // Restore scroll position (skip if navigating to a specific highlight)
       const prog = getProgress(id);
-      if (prog.scrollPos > 0) {
+      if (pendingScrollHlId) {
+        const scrollId = pendingScrollHlId;
+        pendingScrollHlId = null;
+        setTimeout(() => iwin.postMessage({ type: 'scrollToHighlight', id: scrollId }, '*'), 250);
+      } else if (prog.scrollPos > 0) {
         iwin.postMessage({ type: 'scrollTo', pos: prog.scrollPos }, '*');
       }
 
@@ -697,21 +672,23 @@ window.addEventListener('message', e => {
   }
 
   if (msg.type === 'highlightCreated') {
-    // Save highlight data from iframe
-    const hlData = { id: msg.id, color: msg.color, note: msg.note, text: msg.text };
+    const hlData = {
+      id: msg.id, color: msg.color, note: msg.note, text: msg.text,
+      startXPath: msg.startXPath, startOffset: msg.startOffset,
+      endXPath: msg.endXPath, endOffset: msg.endOffset,
+      createdAt: Date.now(),
+    };
     if (!state.highlights[currentChapterId]) state.highlights[currentChapterId] = [];
     state.highlights[currentChapterId].push(hlData);
     scheduleSave();
     renderHighlightsList();
+    updateHlAllBadge();
   }
 
   if (msg.type === 'highlightFailed') {
     console.warn('Highlight creation failed - selection may have been lost');
   }
 
-  if (msg.type === 'chapterText') {
-    onChapterText(msg.blocks || []);
-  }
 });
 
 // ── POPUP POSITIONING ──
@@ -767,7 +744,13 @@ document.querySelectorAll('.hl-color').forEach(btn => {
       // Use new reliable approach: let iframe apply highlight from current selection
       const id = generateId();
       document.getElementById('chapter-frame').contentWindow
-        .postMessage({ type: 'createHighlightFromSelection', id, color, note: '' }, '*');
+        .postMessage({
+          type: 'createHighlightFromSelection', id, color, note: '',
+          startXPath: pendingHighlight.startXPath,
+          startOffset: pendingHighlight.startOffset,
+          endXPath: pendingHighlight.endXPath,
+          endOffset: pendingHighlight.endOffset,
+        }, '*');
       hidePopup();
     }
   });
@@ -781,6 +764,7 @@ document.getElementById('hl-delete-btn').addEventListener('click', () => {
     .postMessage({ type: 'deleteHighlight', id: activeHighlightId }, '*');
   scheduleSave();
   renderHighlightsList();
+  updateHlAllBadge();
   hidePopup();
 });
 
@@ -805,7 +789,13 @@ document.getElementById('hl-note-btn').addEventListener('click', () => {
     noteTargetPending = null;
     document.getElementById('note-textarea').value = '';
     document.getElementById('chapter-frame').contentWindow
-      .postMessage({ type: 'createHighlightFromSelection', id, color: 'yellow', note: '' }, '*');
+      .postMessage({
+        type: 'createHighlightFromSelection', id, color: 'yellow', note: '',
+        startXPath: pendingHighlight.startXPath,
+        startOffset: pendingHighlight.startOffset,
+        endXPath: pendingHighlight.endXPath,
+        endOffset: pendingHighlight.endOffset,
+      }, '*');
     document.getElementById('note-modal').hidden = false;
     hidePopup();
   } else { return; }
@@ -850,30 +840,47 @@ document.getElementById('btn-mark-done').addEventListener('click', () => {
 });
 
 // ── HIGHLIGHTS PANEL ──
+const HIGHLIGHT_COLORS = {
+  yellow: { label: 'Định nghĩa', bg: 'rgba(255,241,118,0.85)', fg: '#5a4000' },
+  green:  { label: 'Quan trọng', bg: 'rgba(165,214,167,0.85)', fg: '#1b5e20' },
+  red:    { label: 'Ghi nhớ',    bg: 'rgba(239,154,154,0.85)', fg: '#7f0000' },
+};
+
+function colorLabel(color) {
+  const c = HIGHLIGHT_COLORS[color] || { label: color, bg: '#eee', fg: '#333' };
+  return `<span class="hl-color-label ${color}">${c.label}</span>`;
+}
+
 function formatHighlightText(text) {
   if (!text) return 'Đoạn văn đã highlight';
-  // Get first meaningful line and clean up
   const lines = text.split(/[\n\r]+/).filter(l => l.trim());
   const firstLine = lines[0] || text;
-  // Truncate if too long
-  const maxLen = 120;
-  if (firstLine.length > maxLen) {
-    return firstLine.substring(0, maxLen).trim() + '...';
-  }
+  if (firstLine.length > 120) return firstLine.substring(0, 120).trim() + '...';
   return firstLine.trim() + (lines.length > 1 ? '...' : '');
 }
 
+function updateHlAllBadge() {
+  const total = Object.values(state.highlights).reduce((s, arr) => s + arr.length, 0);
+  const badge = document.getElementById('hl-all-badge');
+  if (badge) badge.textContent = total > 0 ? total : '';
+}
+
 function renderHighlightsList() {
+  if (hlPanelTab === 'all') { renderAllHighlights(); return; }
   const list = document.getElementById('highlights-list');
-  const highlights = state.highlights[currentChapterId] || [];
-  
+  let highlights = state.highlights[currentChapterId] || [];
+  if (hlPanelFilter !== 'all') highlights = highlights.filter(h => h.color === hlPanelFilter);
+
   if (highlights.length === 0) {
-    list.innerHTML = '';
+    list.innerHTML = `<div class="hl-empty">${hlPanelFilter !== 'all'
+      ? 'Không có highlight nào trong mục này.'
+      : 'Chưa có highlight nào trong chương này.'}</div>`;
     return;
   }
-  
+
   list.innerHTML = highlights.map(hl => `
     <div class="hl-item" data-id="${hl.id}" data-color="${hl.color}">
+      ${colorLabel(hl.color)}
       <div class="hl-item-text">"${escapeHtml(formatHighlightText(hl.text))}"</div>
       ${hl.note ? `<div class="hl-item-note">📝 ${escapeHtml(hl.note)}</div>` : ''}
       <div class="hl-item-actions">
@@ -883,33 +890,81 @@ function renderHighlightsList() {
       </div>
     </div>
   `).join('');
-  
-  // Event listeners for actions
+
+  attachHlItemListeners(list);
+}
+
+function renderAllHighlights() {
+  const list = document.getElementById('highlights-list');
+  const groups = [];
+  CHAPTERS.forEach(ch => {
+    let hls = state.highlights[ch.id] || [];
+    if (hlPanelFilter !== 'all') hls = hls.filter(h => h.color === hlPanelFilter);
+    if (hls.length > 0) groups.push({ ch, hls });
+  });
+
+  if (groups.length === 0) {
+    list.innerHTML = `<div class="hl-empty">Chưa có highlight nào${hlPanelFilter !== 'all' ? ' trong mục này' : ''}.</div>`;
+    return;
+  }
+
+  list.innerHTML = groups.map(({ ch, hls }) => `
+    <div class="hl-chapter-group">
+      <div class="hl-chapter-group-title">Chương ${ch.num} – ${ch.title}</div>
+      ${hls.map(hl => `
+        <div class="hl-item" data-id="${hl.id}" data-color="${hl.color}" data-chapter="${ch.id}">
+          ${colorLabel(hl.color)}
+          <div class="hl-item-text">"${escapeHtml(formatHighlightText(hl.text))}"</div>
+          ${hl.note ? `<div class="hl-item-note">📝 ${escapeHtml(hl.note)}</div>` : ''}
+          <div class="hl-item-actions">
+            <button class="hl-goto" data-id="${hl.id}" data-chapter="${ch.id}">📍 Đi đến</button>
+            <button class="hl-remove" data-id="${hl.id}" data-chapter="${ch.id}">🗑</button>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `).join('');
+
+  attachHlItemListeners(list);
+}
+
+function attachHlItemListeners(list) {
   list.querySelectorAll('.hl-goto').forEach(btn => {
     btn.addEventListener('click', e => {
       e.stopPropagation();
-      scrollToHighlight(btn.dataset.id);
+      const chId = btn.dataset.chapter;
+      if (chId && chId !== currentChapterId) {
+        pendingScrollHlId = btn.dataset.id;
+        loadChapter(chId);
+      } else {
+        scrollToHighlight(btn.dataset.id);
+      }
     });
   });
-  
+
   list.querySelectorAll('.hl-edit').forEach(btn => {
     btn.addEventListener('click', e => {
       e.stopPropagation();
       editHighlightNote(btn.dataset.id);
     });
   });
-  
+
   list.querySelectorAll('.hl-remove').forEach(btn => {
     btn.addEventListener('click', e => {
       e.stopPropagation();
-      deleteHighlight(btn.dataset.id);
+      deleteHighlightFromChapter(btn.dataset.chapter || currentChapterId, btn.dataset.id);
     });
   });
-  
-  // Click on item to go to highlight
+
   list.querySelectorAll('.hl-item').forEach(item => {
     item.addEventListener('click', () => {
-      scrollToHighlight(item.dataset.id);
+      const chId = item.dataset.chapter;
+      if (chId && chId !== currentChapterId) {
+        pendingScrollHlId = item.dataset.id;
+        loadChapter(chId);
+      } else {
+        scrollToHighlight(item.dataset.id);
+      }
     });
   });
 }
@@ -935,18 +990,25 @@ function editHighlightNote(hlId) {
 }
 
 function deleteHighlight(hlId) {
-  state.highlights[currentChapterId] = (state.highlights[currentChapterId] || [])
-    .filter(h => h.id !== hlId);
-  document.getElementById('chapter-frame').contentWindow
-    .postMessage({ type: 'deleteHighlight', id: hlId }, '*');
+  deleteHighlightFromChapter(currentChapterId, hlId);
+}
+
+function deleteHighlightFromChapter(chId, hlId) {
+  state.highlights[chId] = (state.highlights[chId] || []).filter(h => h.id !== hlId);
+  if (chId === currentChapterId) {
+    document.getElementById('chapter-frame').contentWindow
+      .postMessage({ type: 'deleteHighlight', id: hlId }, '*');
+  }
   scheduleSave();
   renderHighlightsList();
+  updateHlAllBadge();
 }
 
 document.getElementById('btn-highlights').addEventListener('click', () => {
   const panel = document.getElementById('highlights-panel');
   panel.hidden = !panel.hidden;
   if (!panel.hidden) {
+    updateHlAllBadge();
     renderHighlightsList();
   }
 });
@@ -955,288 +1017,270 @@ document.getElementById('highlights-panel-close').addEventListener('click', () =
   document.getElementById('highlights-panel').hidden = true;
 });
 
-// ── GIST SYNC ──
-function loadGistConfig() {
-  try {
-    const raw = localStorage.getItem(LS_GIST_KEY);
-    if (raw) gistConfig = JSON.parse(raw);
-  } catch (_) {}
-}
-
-function saveGistConfig(cfg) {
-  gistConfig = cfg;
-  localStorage.setItem(LS_GIST_KEY, JSON.stringify(cfg));
-}
-
-async function gistRequest(method, path, body) {
-  const res = await fetch('https://api.github.com' + path, {
-    method,
-    headers: {
-      'Authorization': 'Bearer ' + gistConfig.token,
-      'Accept': 'application/vnd.github+json',
-      'Content-Type': 'application/json',
-    },
-    body: body ? JSON.stringify(body) : undefined,
+document.querySelectorAll('.hl-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    hlPanelTab = btn.dataset.tab;
+    document.querySelectorAll('.hl-tab').forEach(b => b.classList.toggle('active', b === btn));
+    renderHighlightsList();
   });
-  if (!res.ok) throw new Error(`GitHub API ${res.status}`);
-  return res.json();
-}
-
-async function findOrCreateGist() {
-  const gists = await gistRequest('GET', '/gists');
-  const found = gists.find(g => g.files?.[GIST_FILE]);
-  if (found) { saveGistConfig({ ...gistConfig, gistId: found.id }); return found.id; }
-  const created = await gistRequest('POST', '/gists', {
-    description: 'PMBOK 6 learning progress',
-    public: false,
-    files: { [GIST_FILE]: { content: JSON.stringify(state, null, 2) } },
-  });
-  saveGistConfig({ ...gistConfig, gistId: created.id });
-  return created.id;
-}
-
-async function loadFromGist() {
-  if (!gistConfig?.token || !gistConfig?.gistId) return;
-  try {
-    const data = await gistRequest('GET', `/gists/${gistConfig.gistId}`);
-    const content = data.files?.[GIST_FILE]?.content;
-    if (content) Object.assign(state, JSON.parse(content));
-  } catch (err) {
-    console.warn('loadFromGist failed:', err.message);
-    setSyncIndicator('error');
-  }
-}
-
-async function saveToGist() {
-  if (!gistConfig?.token || !gistConfig?.gistId) return;
-  await gistRequest('PATCH', `/gists/${gistConfig.gistId}`, {
-    files: { [GIST_FILE]: { content: JSON.stringify(state, null, 2) } },
-  });
-}
-
-// ── GIST MODAL ──
-document.getElementById('btn-gist-settings').addEventListener('click', () => {
-  document.getElementById('gist-modal').hidden = false;
-});
-document.getElementById('gist-offline').addEventListener('click', () => {
-  document.getElementById('gist-modal').hidden = true;
-});
-document.getElementById('gist-connect').addEventListener('click', async () => {
-  const token = document.getElementById('gist-token-input').value.trim();
-  if (!token) return;
-  const statusEl = document.getElementById('gist-status');
-  statusEl.textContent = 'Đang kiểm tra token...';
-  statusEl.className = '';
-  try {
-    gistConfig = { token, gistId: null };
-    await findOrCreateGist();
-    await loadFromGist();
-    saveGistConfig(gistConfig);
-    statusEl.textContent = '✓ Kết nối thành công!';
-    statusEl.className = 'ok';
-    renderSidebar();
-    loadChapter(state.lastChapter);
-    setTimeout(() => { document.getElementById('gist-modal').hidden = true; }, 1200);
-  } catch (err) {
-    statusEl.textContent = 'Lỗi: ' + err.message;
-    statusEl.className = 'error';
-    gistConfig = null;
-  }
 });
 
-// ── AUDIO / TTS ──
-const audioBar    = document.getElementById('audio-bar');
-const audioPlay   = document.getElementById('audio-play');
-const audioStop   = document.getElementById('audio-stop');
-const audioStatus = document.getElementById('audio-status');
-const audioSpeed  = document.getElementById('audio-speed');
-const audioClose  = document.getElementById('audio-close');
-const btnAudio    = document.getElementById('btn-audio');
+document.querySelectorAll('.hl-filter').forEach(btn => {
+  btn.addEventListener('click', () => {
+    hlPanelFilter = btn.dataset.color;
+    document.querySelectorAll('.hl-filter').forEach(b => b.classList.toggle('active', b === btn));
+    renderHighlightsList();
+  });
+});
 
-// Pre-generated audio player state
-let audioPlayer = null;
-let currentAudioPath = null;
-let audioHighlightedElement = null;
-let audioMetadata = {};
-
-function initAudioPlayer() {
-  if (!audioPlayer) {
-    audioPlayer = new Audio();
-    audioPlayer.addEventListener('play', onAudioPlay);
-    audioPlayer.addEventListener('pause', onAudioPause);
-    audioPlayer.addEventListener('ended', onAudioEnded);
-    audioPlayer.addEventListener('timeupdate', onAudioTimeUpdate);
-  }
-}
-
-function toggleAudioPlayback() {
-  if (!audioPlayer) initAudioPlayer();
-
-  if (!currentAudioPath) {
-    currentAudioPath = 'audio/' + currentChapterId + '.mp3';
-    audioPlayer.src = currentAudioPath;
-    loadAudioMetadata();
-  }
-
-  if (audioPlayer.paused) {
-    audioPlayer.play().catch(err => {
-      audioStatus.textContent = 'Lỗi: không thể phát âm thanh';
-      console.error('Playback failed:', err);
-    });
-  } else {
-    audioPlayer.pause();
-  }
-}
-
-function stopAudio() {
-  if (!audioPlayer) return;
-  audioPlayer.pause();
-  audioPlayer.currentTime = 0;
-  clearAudioHighlight();
-}
-
-function changeAudioSpeed(e) {
-  if (!audioPlayer) return;
-  audioPlayer.playbackRate = parseFloat(e.target.value);
-}
-
-function closeAudioBar() {
-  stopAudio();
-  audioBar.hidden = true;
-  btnAudio.classList.remove('active');
-}
-
-function onAudioPlay() {
-  audioPlay.classList.add('playing');
-  audioPlay.textContent = '⏸';
-}
-
-function onAudioPause() {
-  audioPlay.classList.remove('playing');
-  audioPlay.textContent = '▶';
-}
-
-function onAudioEnded() {
-  audioPlay.classList.remove('playing');
-  audioPlay.textContent = '▶';
-  clearAudioHighlight();
-  audioStatus.textContent = 'Đã đọc xong ✓';
-}
-
-function onAudioTimeUpdate() {
-  updateAudioStatus();
-  syncAudioHighlight();
-}
-
-function updateAudioStatus() {
-  if (!audioPlayer) return;
-  const current = formatTime(audioPlayer.currentTime);
-  const duration = formatTime(audioPlayer.duration || 0);
-  audioStatus.textContent = `${current} / ${duration}`;
-}
-
-function formatTime(seconds) {
-  if (!isFinite(seconds)) return '0:00';
-  const mins = Math.floor(seconds / 60);
-  const secs = Math.floor(seconds % 60);
-  return `${mins}:${secs.toString().padStart(2, '0')}`;
-}
-
-function syncAudioHighlight() {
-  if (!audioPlayer || !audioMetadata[currentChapterId]) return;
-
-  const metadata = audioMetadata[currentChapterId];
-  const estimatedDuration = metadata.estimated_duration_sec;
-  const progress = audioPlayer.currentTime / (audioPlayer.duration || estimatedDuration);
-
+// ── PRINT BUTTON ──
+document.getElementById('btn-print').addEventListener('click', () => {
+  if (!currentChapterId) return;
   const frame = document.getElementById('chapter-frame');
   if (!frame || !frame.contentDocument) return;
 
-  const paragraphs = frame.contentDocument.querySelectorAll('p');
-  const targetIdx = Math.floor(progress * paragraphs.length);
+  const iframeDoc = frame.contentDocument;
+  const printWindow = window.open('', '', 'width=1000,height=800');
+  const printDoc = printWindow.document;
 
-  if (targetIdx >= 0 && targetIdx < paragraphs.length) {
-    const para = paragraphs[targetIdx];
-    if (audioHighlightedElement) {
-      audioHighlightedElement.style.backgroundColor = '';
-    }
-    para.style.backgroundColor = 'rgba(201, 168, 76, 0.2)';
-    audioHighlightedElement = para;
-  }
+  const clonedBody = iframeDoc.body.cloneNode(true);
+
+  clonedBody.querySelector('#sidebar')?.remove();
+  clonedBody.querySelector('#chapter-toc')?.remove();
+  clonedBody.querySelectorAll('nav').forEach(nav => nav.remove());
+
+  const styles = iframeDoc.querySelectorAll('style, link[rel="stylesheet"]');
+  const styleHtml = Array.from(styles).map(s => s.outerHTML).join('');
+
+  const ch = CHAPTERS.find(c => c.id === currentChapterId) || {};
+  const title = `Chương ${ch.num} – ${ch.title}`;
+
+  printDoc.write(`
+    <!DOCTYPE html>
+    <html lang="vi">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>${title}</title>
+      ${styleHtml}
+      <style>
+        body { margin: 0; padding: 20px; }
+        #main { margin-left: 0 !important; max-width: 100% !important; }
+        mark { background: yellow; }
+        @media print {
+          body { margin: 0; padding: 10mm; }
+        }
+      </style>
+    </head>
+    <body>
+      ${clonedBody.innerHTML}
+    </body>
+    </html>
+  `);
+  printDoc.close();
+
+  setTimeout(() => {
+    printWindow.print();
+  }, 300);
+});
+
+// ── GIST SYNC (DISABLED - using localStorage only) ──
+
+// ── AUDIO / TTS (DISABLED) ──
+
+
+// ── QUIZ ENGINE ──
+let quizState = null;
+// quizState = { chapterId, questions, current, answers, startTime }
+
+function chapterNumStr(id) {
+  const n = String(CHAPTERS.find(c => c.id === id)?.num || '').padStart(2, '0');
+  return n;
 }
 
-function clearAudioHighlight() {
-  if (audioHighlightedElement) {
-    audioHighlightedElement.style.backgroundColor = '';
-    audioHighlightedElement = null;
-  }
-}
+document.getElementById('btn-quiz').addEventListener('click', () => {
+  if (!currentChapterId) return;
+  startQuiz(currentChapterId);
+});
 
-async function loadAudioMetadata() {
+async function startQuiz(chapterId) {
+  const ch = CHAPTERS.find(c => c.id === chapterId);
+  if (!ch) return;
+  const num = chapterNumStr(chapterId);
+  let data;
   try {
-    const response = await fetch('audio-metadata/' + currentChapterId + '.json');
-    if (response.ok) {
-      audioMetadata[currentChapterId] = await response.json();
+    const res = await fetch(`books/pmbok6/quiz/ch${num}.json`);
+    if (!res.ok) throw new Error('not found');
+    data = await res.json();
+  } catch (_) {
+    alert(`Câu hỏi cho Chương ${ch.num} chưa sẵn sàng. Vui lòng thử lại sau.`);
+    return;
+  }
+
+  const questions = (data.questions || []).sort(() => Math.random() - 0.5).slice(0, 25);
+  if (!questions.length) { alert('Không có câu hỏi cho chương này.'); return; }
+
+  quizState = { chapterId, questions, current: 0, answers: [], startTime: Date.now() };
+
+  document.getElementById('quiz-head-title').textContent = `📝 Quiz — Ch.${ch.num} ${ch.title}`;
+  document.getElementById('quiz-head-sub').textContent = `${questions.length} câu hỏi · PMP Exam Style`;
+  document.getElementById('quiz-q-screen').hidden = false;
+  document.getElementById('quiz-r-screen').hidden = true;
+  document.getElementById('quiz-overlay').hidden = false;
+  document.body.style.overflow = 'hidden';
+
+  showQuizQuestion(0);
+}
+
+function showQuizQuestion(idx) {
+  const { questions } = quizState;
+  const q = questions[idx];
+  quizState.current = idx;
+
+  const total = questions.length;
+  const pct = (idx / total * 100).toFixed(0);
+  document.getElementById('quiz-bar').style.width = pct + '%';
+  document.getElementById('quiz-q-num-badge').textContent = `Câu ${idx + 1} / ${total}`;
+
+  const correct = quizState.answers.filter(a => a.correct).length;
+  const answered = quizState.answers.length;
+  document.getElementById('quiz-score-live').textContent = answered > 0
+    ? `${correct}/${answered} đúng`
+    : '';
+
+  document.getElementById('quiz-q-body').textContent = q.q;
+  document.getElementById('quiz-exp').hidden = true;
+  document.getElementById('quiz-btn-next').hidden = true;
+  document.getElementById('quiz-btn-end').hidden = true;
+
+  const opts = document.getElementById('quiz-opts');
+  opts.innerHTML = ['A','B','C','D'].map(letter => `
+    <button class="opt-card" data-letter="${letter}">
+      <span class="opt-letter">${letter}</span>
+      <span class="opt-text">${escapeHtml(q.opts[letter] || '')}</span>
+    </button>
+  `).join('');
+
+  opts.querySelectorAll('.opt-card').forEach(btn => {
+    btn.addEventListener('click', () => selectQuizAnswer(btn.dataset.letter));
+  });
+}
+
+function selectQuizAnswer(selected) {
+  const { questions, current } = quizState;
+  const q = questions[current];
+  const correct = selected === q.ans;
+
+  quizState.answers[current] = { selected, correct, qId: q.id };
+
+  // Style all option cards
+  document.querySelectorAll('.opt-card').forEach(btn => {
+    btn.disabled = true;
+    const letter = btn.dataset.letter;
+    if (letter === q.ans) {
+      btn.classList.add(correct && letter === selected ? 'opt-correct' : 'opt-reveal');
+    } else if (letter === selected && !correct) {
+      btn.classList.add('opt-wrong');
     }
-  } catch (err) {
-    console.warn('Audio metadata not found for ' + currentChapterId);
+  });
+
+  // Show explanation
+  if (q.exp) {
+    const expEl = document.getElementById('quiz-exp');
+    expEl.textContent = q.exp;
+    expEl.hidden = false;
+  }
+
+  // Show next/end button
+  const isLast = current === questions.length - 1;
+  document.getElementById('quiz-btn-next').hidden = isLast;
+  document.getElementById('quiz-btn-end').hidden = !isLast;
+
+  // Update live score
+  const correctCount = quizState.answers.filter(a => a.correct).length;
+  document.getElementById('quiz-score-live').textContent = `${correctCount}/${quizState.answers.length} đúng`;
+}
+
+document.getElementById('quiz-btn-next').addEventListener('click', () => {
+  showQuizQuestion(quizState.current + 1);
+});
+
+document.getElementById('quiz-btn-end').addEventListener('click', showQuizResults);
+
+function showQuizResults() {
+  const { questions, answers, chapterId } = quizState;
+  const total = questions.length;
+  const correct = answers.filter(a => a.correct).length;
+  const pct = Math.round(correct / total * 100);
+
+  // Save to history
+  if (!state.quizHistory) state.quizHistory = {};
+  if (!state.quizHistory[chapterId]) state.quizHistory[chapterId] = [];
+  state.quizHistory[chapterId].push({ correct, total, pct, date: Date.now() });
+  scheduleSave();
+
+  document.getElementById('quiz-bar').style.width = '100%';
+  document.getElementById('quiz-q-screen').hidden = true;
+  document.getElementById('quiz-r-screen').hidden = false;
+
+  document.getElementById('quiz-r-score').textContent = `${correct}/${total}`;
+  document.getElementById('quiz-r-pct').textContent = `${pct}%`;
+
+  let band, bandClass;
+  if (pct >= 71)      { band = '✅ Đạt chuẩn PMP'; bandClass = 'grade-pass'; }
+  else if (pct >= 55) { band = '⚠️ Cần ôn thêm';  bandClass = 'grade-ok'; }
+  else                { band = '❌ Cần học lại';   bandClass = 'grade-fail'; }
+
+  document.getElementById('quiz-r-band').innerHTML =
+    `<span class="${bandClass}">${band}</span>`;
+  document.getElementById('quiz-r-stats').innerHTML =
+    `<span class="rs-correct">✓ ${correct} đúng</span>
+     <span class="rs-wrong">✗ ${total - correct} sai</span>`;
+
+  // Wrong answers review
+  const wrong = answers.map((a, i) => ({ ...a, q: questions[i] })).filter(a => !a.correct);
+  const reviewEl = document.getElementById('quiz-r-review');
+  if (!wrong.length) {
+    reviewEl.innerHTML = '<div class="rw-perfect">🎉 Hoàn hảo! Bạn trả lời đúng tất cả!</div>';
+  } else {
+    reviewEl.innerHTML = `
+      <div class="rw-title">Câu trả lời sai (${wrong.length})</div>
+      ${wrong.map(w => `
+        <div class="rw-item">
+          <div class="rw-q">${escapeHtml(w.q.q)}</div>
+          <div class="rw-ans">
+            <span class="rw-wrong-ans">Bạn chọn: ${w.selected} – ${escapeHtml(w.q.opts[w.selected] || '')}</span>
+          </div>
+          <div class="rw-ans">
+            <span class="rw-right-ans">Đáp án: ${w.q.ans} – ${escapeHtml(w.q.opts[w.q.ans] || '')}</span>
+          </div>
+          ${w.q.exp ? `<div class="rw-exp">${escapeHtml(w.q.exp)}</div>` : ''}
+        </div>
+      `).join('')}
+    `;
   }
 }
 
-// Audio bar event listeners
-audioPlay.addEventListener('click', toggleAudioPlayback);
-audioStop.addEventListener('click', () => {
-  stopAudio();
-  audioStatus.textContent = 'Đã dừng';
-});
-audioClose.addEventListener('click', closeAudioBar);
-audioSpeed.addEventListener('change', changeAudioSpeed);
+function closeQuiz() {
+  document.getElementById('quiz-overlay').hidden = true;
+  document.body.style.overflow = '';
+  quizState = null;
+}
 
-// Open audio bar button
-btnAudio.addEventListener('click', () => {
-  audioBar.hidden = false;
-  btnAudio.classList.add('active');
-  if (!audioPlayer) initAudioPlayer();
+document.getElementById('quiz-x').addEventListener('click', closeQuiz);
+document.getElementById('quiz-btn-close2').addEventListener('click', closeQuiz);
+document.getElementById('quiz-btn-retry').addEventListener('click', () => {
+  const chId = quizState?.chapterId;
+  closeQuiz();
+  if (chId) startQuiz(chId);
 });
-
-// ── EXPORT / IMPORT ──
-document.getElementById('btn-export').addEventListener('click', () => {
-  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = 'pmbok6-progress.json'; a.click();
-  URL.revokeObjectURL(url);
-});
-
-document.getElementById('import-file').addEventListener('change', e => {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = ev => {
-    try {
-      Object.assign(state, JSON.parse(ev.target.result));
-      localStorage.setItem(LS_KEY, JSON.stringify(state));
-      renderSidebar();
-      loadChapter(state.lastChapter);
-      document.getElementById('gist-modal').hidden = true;
-    } catch (_) {
-      alert('File JSON không hợp lệ.');
-    }
-  };
-  reader.readAsText(file);
+document.getElementById('quiz-overlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('quiz-overlay')) closeQuiz();
 });
 
 // ── BOOT ──
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
   loadFromLocalStorage();
-  loadGistConfig();
-  if (gistConfig?.token && gistConfig?.gistId) {
-    setSyncIndicator('saving');
-    await loadFromGist();
-    setSyncIndicator('saved');
-  } else if (!gistConfig) {
-    document.getElementById('gist-modal').hidden = false;
-  }
   renderSidebar();
   loadChapter(state.lastChapter);
 });

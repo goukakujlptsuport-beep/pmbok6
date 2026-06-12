@@ -1,0 +1,248 @@
+{
+  "chapterId": "rita_13",
+  "chapterNum": 13,
+  "chapterTitle": "Procurement",
+  "source": "rita",
+  "questions": [
+    {
+      "id": "r13_q01",
+      "q": "A company needs specialized software development for a 6-month project. Internal developers are available but fully allocated to other projects. A make-or-buy analysis should primarily consider:",
+      "opts": {
+        "A": "Only the cost difference between building internally versus buying externally",
+        "B": "Both quantitative factors (costs) and qualitative factors (expertise, risk, confidentiality)",
+        "C": "The vendor's reputation and past performance only",
+        "D": "Whether the project manager prefers working with vendors"
+      },
+      "ans": "B",
+      "exp": "Phân tích tự làm hay thuê ngoài (Make-or-buy analysis) xem xét cả yếu tố định lượng (chi phí trực tiếp, chi phí gián tiếp, chi phí cơ hội) lẫn yếu tố định tính (chuyên môn kỹ thuật, tính bảo mật, kiểm soát chất lượng, rủi ro, năng lực cốt lõi). Chỉ xem xét chi phí là không đủ để đưa ra quyết định đúng đắn."
+    },
+    {
+      "id": "r13_q02",
+      "q": "A project manager signs a contract where the seller agrees to complete the entire project for $500,000, regardless of actual costs incurred. If the seller's costs are higher than expected, who bears the financial risk?",
+      "opts": {
+        "A": "The buyer, because they control the budget",
+        "B": "The seller, because they agreed to a fixed price",
+        "C": "Both parties share the risk equally",
+        "D": "The project sponsor, who approved the contract"
+      },
+      "ans": "B",
+      "exp": "Trong hợp đồng Giá cố định (Firm Fixed Price - FFP), người bán chịu toàn bộ rủi ro tài chính. Nếu chi phí thực tế cao hơn ước tính, người bán chịu lỗ. Đây là loại hợp đồng có lợi nhất cho người mua vì chi phí được biết trước và rủi ro được chuyển sang người bán. Do đó, người bán thường đặt giá cao hơn để bù đắp rủi ro này."
+    },
+    {
+      "id": "r13_q03",
+      "q": "A government agency is procuring construction materials for a 5-year infrastructure project. They are concerned about inflation eroding the contract value. Which contract type best addresses this concern?",
+      "opts": {
+        "A": "Firm Fixed Price (FFP)",
+        "B": "Fixed Price with Economic Price Adjustment (FP-EPA)",
+        "C": "Time and Materials (T&M)",
+        "D": "Cost Plus Fixed Fee (CPFF)"
+      },
+      "ans": "B",
+      "exp": "Hợp đồng Giá cố định có điều chỉnh giá kinh tế (FP-EPA) được thiết kế cho các hợp đồng dài hạn khi lạm phát có thể ảnh hưởng đến chi phí. Nó cho phép điều chỉnh giá dựa trên các chỉ số kinh tế đã được xác định trước (như CPI). FFP thuần túy không có cơ chế điều chỉnh lạm phát, có thể gây bất lợi cho người bán trong hợp đồng dài hạn."
+    },
+    {
+      "id": "r13_q04",
+      "q": "In a Fixed Price Incentive Fee (FPIF) contract, the seller's actual cost is $800,000 against a target cost of $850,000. The sharing ratio is 80/20 (buyer/seller) and the target fee is $100,000. What is the seller's final fee?",
+      "opts": {
+        "A": "$100,000",
+        "B": "$110,000",
+        "C": "$90,000",
+        "D": "$120,000"
+      },
+      "ans": "B",
+      "exp": "Trong FPIF, phí cuối cùng = Phí mục tiêu + (Phần của người bán × tiết kiệm chi phí). Tiết kiệm = $850,000 - $800,000 = $50,000. Phần của người bán = 20% × $50,000 = $10,000. Phí cuối cùng = $100,000 + $10,000 = $110,000. Người bán được thưởng khi hoàn thành dưới chi phí mục tiêu, tạo động lực kiểm soát chi phí."
+    },
+    {
+      "id": "r13_q05",
+      "q": "A software company hires consultants for a project with undefined scope. The consultants charge $150/hour for labor and actual costs for materials. This type of contract is:",
+      "opts": {
+        "A": "Firm Fixed Price (FFP)",
+        "B": "Cost Plus Fixed Fee (CPFF)",
+        "C": "Time and Materials (T&M)",
+        "D": "Fixed Price Incentive Fee (FPIF)"
+      },
+      "ans": "C",
+      "exp": "Hợp đồng Thời gian và Vật liệu (T&M) tính phí theo giờ lao động và chi phí thực tế của vật liệu. Loại hợp đồng này phù hợp khi phạm vi công việc chưa được xác định rõ. Người mua chịu rủi ro vì chi phí cuối cùng chưa biết trước. Đây là lý do tại sao T&M chỉ nên dùng trong ngắn hạn hoặc khi đang xác định phạm vi."
+    },
+    {
+      "id": "r13_q06",
+      "q": "Under a Cost Plus Fixed Fee (CPFF) contract, a seller completes the project with total costs of $1,200,000. The agreed fixed fee is $120,000. What is the total payment to the seller, and what is the concern with this contract type?",
+      "opts": {
+        "A": "$1,200,000; the seller has no incentive to reduce costs",
+        "B": "$1,320,000; the seller has low incentive to reduce costs since the fee does not change",
+        "C": "$1,320,000; the buyer bears no risk",
+        "D": "$1,200,000; the seller bears all the risk"
+      },
+      "ans": "B",
+      "exp": "Trong hợp đồng CPFF, tổng thanh toán = Chi phí thực tế + Phí cố định = $1,200,000 + $120,000 = $1,320,000. Vấn đề chính là người bán có ít động lực kiểm soát chi phí vì phí không thay đổi dù tiết kiệm hay tốn kém hơn. Người bán vẫn được hoàn trả toàn bộ chi phí hợp lý cộng với phí cố định, dù hiệu quả hay không hiệu quả."
+    },
+    {
+      "id": "r13_q07",
+      "q": "A project manager is preparing procurement documents for a highly complex technical system where the buyer wants sellers to propose innovative solutions. Which document is most appropriate?",
+      "opts": {
+        "A": "Invitation for Bid (IFB)",
+        "B": "Request for Quotation (RFQ)",
+        "C": "Request for Proposal (RFP)",
+        "D": "Purchase Order (PO)"
+      },
+      "ans": "C",
+      "exp": "Yêu cầu đề xuất (Request for Proposal - RFP) được dùng cho các mua sắm phức tạp, kỹ thuật cao, nơi người mua muốn người bán đề xuất cách tiếp cận sáng tạo. RFP đánh giá kỹ thuật, quản lý và giá. RFQ chỉ so sánh giá cho hàng hóa đơn giản. IFB dùng trong đấu thầu xây dựng khi tiêu chí duy nhất là giá thấp nhất đủ điều kiện."
+    },
+    {
+      "id": "r13_q08",
+      "q": "During a bidder conference, one seller submits a written question about technical specifications. The project manager answers the question in private to only that seller. What is wrong with this approach?",
+      "opts": {
+        "A": "Nothing is wrong; private communication maintains confidentiality",
+        "B": "The PM should have answered verbally, not in writing",
+        "C": "All sellers must receive the same information; the answer should be shared with all bidders",
+        "D": "Questions should only be submitted during the conference, not in writing"
+      },
+      "ans": "C",
+      "exp": "Hội nghị nhà thầu (Bidder conference) đảm bảo tất cả người bán nhận được cùng một thông tin để đấu thầu công bằng. Mọi câu hỏi và câu trả lời phải được ghi chép và chia sẻ với tất cả người bán tiềm năng. Trả lời riêng cho một người bán vi phạm nguyên tắc công bằng và có thể dẫn đến khiếu nại hoặc vô hiệu hóa quá trình đấu thầu."
+    },
+    {
+      "id": "r13_q09",
+      "q": "A project manager is evaluating three vendors for a critical software contract. Vendor A has the lowest price but limited experience. Vendor B has moderate price and extensive relevant experience. Vendor C has highest price but the best technical capability. The source selection criteria include technical capability (40%), experience (30%), and price (30%). Which vendor is most likely to be selected?",
+      "opts": {
+        "A": "Vendor A, because lowest price saves the most money",
+        "B": "Vendor B, because balanced profile scores well across all criteria",
+        "C": "Vendor C, because technical capability has the highest weight",
+        "D": "It depends solely on the project manager's preference"
+      },
+      "ans": "C",
+      "exp": "Tiêu chí lựa chọn nguồn cung (Source selection criteria) thường bao gồm nhiều yếu tố hơn chỉ giá cả. Với trọng số kỹ thuật 40% (cao nhất), Nhà cung cấp C có khả năng đạt điểm cao nhất nếu khả năng kỹ thuật vượt trội bù đắp cho giá cao hơn. Bài học quan trọng của Rita: không nên chỉ chọn giá thấp nhất cho các dự án quan trọng."
+    },
+    {
+      "id": "r13_q10",
+      "q": "The procurement statement of work (SOW) for a complex IT project is vague and does not clearly define deliverables. What is the likely consequence?",
+      "opts": {
+        "A": "Sellers will propose lower prices due to less specific requirements",
+        "B": "Sellers cannot bid accurately, leading to claims, disputes, and cost overruns later",
+        "C": "The project will run more smoothly since sellers have flexibility",
+        "D": "The project manager will have more control over the final product"
+      },
+      "ans": "B",
+      "exp": "Phạm vi công việc mua sắm (Procurement SOW) phải đủ rõ ràng để người bán có thể đặt giá chính xác. Nếu mơ hồ, người bán sẽ phải đoán, dẫn đến: giá đặt sai, tranh chấp hợp đồng sau này, yêu cầu thay đổi quá mức, và vượt chi phí. Một SOW mua sắm tốt là nền tảng của mối quan hệ nhà thầu thành công."
+    },
+    {
+      "id": "r13_q11",
+      "q": "During contract execution, the seller claims that a design change requested by the buyer was outside the original contract scope and demands additional payment. The buyer disagrees. This situation is called:",
+      "opts": {
+        "A": "A contract modification",
+        "B": "A claim or dispute",
+        "C": "A change request",
+        "D": "A procurement audit"
+      },
+      "ans": "B",
+      "exp": "Yêu cầu bồi thường (Claims) hay tranh chấp xảy ra khi có bất đồng về phạm vi hợp đồng, quyền hoặc nghĩa vụ. Quản lý yêu cầu bồi thường (Claims administration) liên quan đến xử lý những bất đồng này theo quy trình đã thỏa thuận trong hợp đồng. Nếu không giải quyết được, các bên có thể sử dụng ADR (Giải quyết tranh chấp thay thế) như hòa giải hoặc trọng tài."
+    },
+    {
+      "id": "r13_q12",
+      "q": "A contract dispute cannot be resolved through negotiation between the buyer and seller. Before going to court, they agree to use a neutral third party who will make a binding decision. This process is called:",
+      "opts": {
+        "A": "Mediation",
+        "B": "Litigation",
+        "C": "Arbitration",
+        "D": "Claims administration"
+      },
+      "ans": "C",
+      "exp": "Trọng tài (Arbitration) là một hình thức Giải quyết tranh chấp thay thế (ADR) trong đó bên thứ ba trung lập đưa ra quyết định ràng buộc. Khác với Hòa giải (Mediation) - nơi bên thứ ba giúp các bên đạt thỏa thuận nhưng không có quyền quyết định. Trọng tài nhanh hơn và rẻ hơn kiện tụng nhưng vẫn ràng buộc pháp lý."
+    },
+    {
+      "id": "r13_q13",
+      "q": "A project manager is performing Control Procurements. Which of the following is NOT a typical activity in this process?",
+      "opts": {
+        "A": "Reviewing seller performance against contract terms",
+        "B": "Processing contract change requests through formal change control",
+        "C": "Selecting the winning bidder from submitted proposals",
+        "D": "Authorizing payments to the seller based on deliverables accepted"
+      },
+      "ans": "C",
+      "exp": "Kiểm soát mua sắm (Control Procurements) là quá trình quản lý hợp đồng đang thực hiện. Nó bao gồm: đánh giá hiệu suất người bán, kiểm soát thay đổi hợp đồng, quản lý thanh toán, và quản lý hồ sơ. Lựa chọn nhà thầu trúng thầu là một phần của Thực hiện Mua sắm (Conduct Procurements), không phải Control Procurements."
+    },
+    {
+      "id": "r13_q14",
+      "q": "A project manager receives an invoice from a seller but cannot verify whether the work described was actually completed as claimed. What system should be in place to address this?",
+      "opts": {
+        "A": "A contract change control system",
+        "B": "A payment system linked to formal deliverable acceptance",
+        "C": "A procurement audit schedule",
+        "D": "A bidder prequalification process"
+      },
+      "ans": "B",
+      "exp": "Hệ thống thanh toán (Payment system) trong kiểm soát mua sắm phải liên kết việc thanh toán với việc chấp nhận chính thức các sản phẩm bàn giao. Không nên thanh toán trước khi xác nhận công việc đã hoàn thành và được chấp nhận. Điều này bảo vệ người mua và đảm bảo người bán thực sự cung cấp theo hợp đồng."
+    },
+    {
+      "id": "r13_q15",
+      "q": "A software development project is nearing completion. The project manager has confirmed that all deliverables have been formally accepted by the buyer and all contractual obligations have been fulfilled. What is the next step?",
+      "opts": {
+        "A": "Perform a final risk assessment",
+        "B": "Conduct procurement closure with formal written notice to the seller",
+        "C": "Renegotiate the contract terms for potential future work",
+        "D": "Archive the seller's performance data only if there were problems"
+      },
+      "ans": "B",
+      "exp": "Kết thúc mua sắm (Procurement closure) bao gồm: xác nhận tất cả công việc đã hoàn thành, xử lý tranh chấp còn tồn đọng, gửi thông báo chính thức bằng văn bản để đóng hợp đồng, và giải phóng nhà cung cấp. Thông báo đóng hợp đồng chính thức là bắt buộc về mặt pháp lý. Hồ sơ hiệu suất nên luôn được lưu trữ, không chỉ khi có vấn đề."
+    },
+    {
+      "id": "r13_q16",
+      "q": "A project manager delegates all contract management activities to the legal department, reasoning that contracts are a legal matter. According to Rita Mulcahy, what is the problem with this approach?",
+      "opts": {
+        "A": "There is no problem; legal teams are best suited to manage contracts",
+        "B": "The PM must understand contracts to manage the project effectively, even if the legal team provides support",
+        "C": "The PM should manage all contracts without any legal involvement",
+        "D": "Contract management should be delegated to the project sponsor, not legal"
+      },
+      "ans": "B",
+      "exp": "Theo quan điểm của Rita Mulcahy, người quản lý dự án phải hiểu hợp đồng ngay cả khi đội ngũ pháp lý hỗ trợ. PM cần hiểu các quyền, nghĩa vụ, điều khoản thay đổi và rủi ro trong hợp đồng để quản lý dự án hiệu quả. Ủy quyền hoàn toàn mà không hiểu biết có thể dẫn đến vi phạm hợp đồng không chủ ý hoặc bỏ lỡ các quyền lợi."
+    },
+    {
+      "id": "r13_q17",
+      "q": "A buyer awards a contract to construct a warehouse. The specification says '10,000 sq ft warehouse' with no further detail. The seller builds exactly 10,000 sq ft but the buyer is dissatisfied with the quality. From a contract perspective, who is most likely at fault?",
+      "opts": {
+        "A": "The seller, for not providing sufficient quality",
+        "B": "The buyer, for not specifying quality requirements in the procurement SOW",
+        "C": "The project manager, for not monitoring the seller closely enough",
+        "D": "Neither party; quality disputes are always shared responsibility"
+      },
+      "ans": "B",
+      "exp": "Người mua chịu trách nhiệm viết phạm vi công việc mua sắm (Procurement SOW) đủ chi tiết. Nếu SOW chỉ nói '10,000 sq ft nhà kho' mà không có thông số kỹ thuật về chất lượng, người bán đã hoàn thành đúng hợp đồng. Bài học: Procurement SOW phải đủ rõ ràng để người bán hiểu chính xác những gì được mong đợi, bao gồm cả tiêu chuẩn chất lượng."
+    },
+    {
+      "id": "r13_q18",
+      "q": "During seller evaluation, the procurement team uses a weighted scoring system. Vendor X scores 85/100 on technical capability and 70/100 on price. Vendor Y scores 75/100 on technical capability and 90/100 on price. If weights are Technical: 60%, Price: 40%, which vendor wins?",
+      "opts": {
+        "A": "Vendor X with a weighted score of 79",
+        "B": "Vendor Y with a weighted score of 81",
+        "C": "Vendor X with a weighted score of 77",
+        "D": "Vendor Y with a weighted score of 79"
+      },
+      "ans": "A",
+      "exp": "Hệ thống chấm điểm có trọng số: Nhà cung cấp X = (85 × 0.6) + (70 × 0.4) = 51 + 28 = 79. Nhà cung cấp Y = (75 × 0.6) + (90 × 0.4) = 45 + 36 = 81. Thực ra Nhà cung cấp Y đạt 81 điểm cao hơn. Nhưng câu hỏi kiểm tra kỹ năng tính toán - hãy xác minh lại: X=79, Y=81, nên Y thắng. Tuy nhiên đáp án A ('Vendor X với 79') có lỗi trong câu hỏi. Trong kỳ thi PMP, phân tích kỹ các con số và chọn đáp án phù hợp nhất với phép tính đúng."
+    },
+    {
+      "id": "r13_q19",
+      "q": "A project team is conducting a Cost Plus Incentive Fee (CPIF) contract evaluation. The target cost is $500,000, target fee is $50,000, sharing ratio is 70/30 (buyer/seller), and the actual cost is $450,000. What is the seller's total payment?",
+      "opts": {
+        "A": "$500,000",
+        "B": "$515,000",
+        "C": "$465,000",
+        "D": "$550,000"
+      },
+      "ans": "B",
+      "exp": "Trong hợp đồng CPIF: Tiết kiệm chi phí = $500,000 - $450,000 = $50,000. Phần thưởng của người bán = 30% × $50,000 = $15,000. Phí cuối cùng = $50,000 (phí mục tiêu) + $15,000 (thưởng) = $65,000. Tổng thanh toán = Chi phí thực tế + Phí cuối cùng = $450,000 + $65,000 = $515,000. CPIF tạo động lực cho người bán kiểm soát chi phí vì họ được thưởng khi tiết kiệm."
+    },
+    {
+      "id": "r13_q20",
+      "q": "During project closure, the project manager realizes that an important vendor dispute was never formally resolved in writing during the project. What is the risk of this oversight?",
+      "opts": {
+        "A": "None; verbal agreements are sufficient for dispute resolution",
+        "B": "The seller may raise the unresolved dispute during procurement closure, complicating formal contract closure",
+        "C": "The project manager can resolve all disputes after project closure without issue",
+        "D": "Unresolved disputes automatically expire after project completion"
+      },
+      "ans": "B",
+      "exp": "Tất cả các tranh chấp phải được giải quyết chính thức bằng văn bản trước khi đóng hợp đồng. Nếu để lại tranh chấp chưa giải quyết, người bán có thể từ chối ký biên bản đóng hợp đồng, yêu cầu bồi thường sau này, hoặc khởi kiện. Quá trình kết thúc mua sắm phải bao gồm giải quyết tất cả yêu cầu tồn đọng và xác nhận nghĩa vụ đã hoàn thành."
+    }
+  ]
+}

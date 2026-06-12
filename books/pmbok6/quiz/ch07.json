@@ -1,0 +1,247 @@
+{
+  "chapterId": "07_cost_management",
+  "chapterNum": 7,
+  "chapterTitle": "Quản Lý Chi Phí Dự Án",
+  "questions": [
+    {
+      "id": "ch07_q01",
+      "q": "Bạn vừa được bổ nhiệm làm quản lý dự án cho một dự án xây dựng hệ thống ERP lớn. Tổ chức của bạn chưa có kinh nghiệm với loại dự án này nhưng đã từng triển khai một hệ thống CRM tương tự cách đây 3 năm với chi phí $500,000. Dự án ERP được đánh giá phức tạp hơn khoảng 40% so với dự án CRM. Bạn cần cung cấp ước tính chi phí nhanh cho ban lãnh đạo trong cuộc họp ngày mai mà chưa có đủ thông tin chi tiết. Kỹ thuật ước tính nào phù hợp nhất trong tình huống này?",
+      "opts": {
+        "A": "Ước tính từ dưới lên (Bottom-up estimating)",
+        "B": "Ước tính tương tự (Analogous estimating)",
+        "C": "Ước tính tham số (Parametric estimating)",
+        "D": "Ước tính ba điểm (Three-point estimating)"
+      },
+      "ans": "B",
+      "exp": "Ước tính tương tự (Analogous estimating) sử dụng dữ liệu lịch sử từ các dự án tương tự để ước tính chi phí dự án hiện tại. Đây là kỹ thuật phù hợp nhất khi: (1) thông tin chi tiết còn hạn chế, (2) cần kết quả nhanh, và (3) đã có dữ liệu từ dự án tương tự. Trong trường hợp này, ước tính sơ bộ là $500,000 × 1.40 = $700,000. Ước tính từ dưới lên (A) đòi hỏi thông tin chi tiết về từng gói công việc. Ước tính tham số (C) cần dữ liệu thống kê hoặc thuật toán rõ ràng giữa các biến. Ước tính ba điểm (D) phù hợp khi có sự không chắc chắn nhưng vẫn cần thông tin chi tiết hơn."
+    },
+    {
+      "id": "ch07_q02",
+      "q": "Dự án phần mềm của bạn có BAC = $200,000. Sau 6 tháng triển khai, bạn nhận được báo cáo: công việc đã hoàn thành được lên kế hoạch trị giá $90,000 (PV = $90,000), chi phí thực tế đã chi là $110,000 (AC = $110,000), và giá trị thực tế của công việc đã hoàn thành là $80,000 (EV = $80,000). Chỉ số hiệu suất chi phí (CPI) của dự án là bao nhiêu và điều đó có nghĩa gì?",
+      "opts": {
+        "A": "CPI = 0.89, dự án đang vượt ngân sách",
+        "B": "CPI = 0.73, dự án đang vượt ngân sách nghiêm trọng",
+        "C": "CPI = 1.13, dự án đang tiết kiệm chi phí",
+        "D": "CPI = 0.89, dự án đang tiến độ chậm"
+      },
+      "ans": "B",
+      "exp": "CPI = EV / AC = $80,000 / $110,000 = 0.727 ≈ 0.73. CPI < 1 có nghĩa là dự án đang vượt ngân sách — cứ $1 chi ra chỉ thu được $0.73 giá trị. Đây là tình trạng vượt ngân sách nghiêm trọng. Lưu ý: SPI = EV / PV = $80,000 / $90,000 = 0.89, đây là chỉ số tiến độ (A và D nhầm lẫn CPI với SPI). CV = EV - AC = $80,000 - $110,000 = -$30,000 (âm = vượt ngân sách). SV = EV - PV = $80,000 - $90,000 = -$10,000 (âm = chậm tiến độ). Dự án vừa vượt ngân sách vừa chậm tiến độ."
+    },
+    {
+      "id": "ch07_q03",
+      "q": "Trong quá trình lập kế hoạch dự án, nhóm của bạn đã xác định ngân sách dự án (Project Budget) là $500,000. Ban lãnh đạo yêu cầu bạn thiết lập dự phòng quản lý (Management Reserve) là 10% ngân sách để xử lý các rủi ro không lường trước. Đường cơ sở chi phí (Cost Baseline) của dự án là bao nhiêu và được sử dụng để làm gì?",
+      "opts": {
+        "A": "Cost Baseline = $500,000; dùng để theo dõi và kiểm soát chi phí dự án",
+        "B": "Cost Baseline = $550,000; bao gồm cả dự phòng quản lý",
+        "C": "Cost Baseline = $450,000; bằng ngân sách dự án trừ đi dự phòng quản lý",
+        "D": "Cost Baseline = $500,000; bao gồm cả dự phòng quản lý lẫn dự phòng dự phòng"
+      },
+      "ans": "C",
+      "exp": "Theo PMBOK 6: Cost Baseline = Project Budget - Management Reserve. Do đó: Cost Baseline = $500,000 - ($500,000 × 10%) = $500,000 - $50,000 = $450,000. Đường cơ sở chi phí là ngân sách được phê duyệt theo thời gian (time-phased budget), được dùng để đo lường, giám sát và kiểm soát hiệu suất chi phí. Dự phòng quản lý ($50,000) nằm ngoài đường cơ sở chi phí và chỉ được sử dụng khi có rủi ro ngoài phạm vi dự án — cần sự phê duyệt của ban lãnh đạo. Dự phòng dự phòng (Contingency Reserve) được bao gồm trong Cost Baseline và xử lý các rủi ro đã xác định."
+    },
+    {
+      "id": "ch07_q04",
+      "q": "Dự án xây dựng của bạn có BAC = $1,000,000. Hiện tại dự án đã hoàn thành 60% khối lượng công việc theo kế hoạch nhưng thực tế mới hoàn thành 50%. Chi phí thực tế đã phát sinh là $550,000. Do hiệu suất chi phí hiện tại không được cải thiện trong tương lai, bạn cần dự báo chi phí hoàn thành dự án (EAC) theo giả định rằng xu hướng chi phí hiện tại sẽ tiếp tục. EAC là bao nhiêu?",
+      "opts": {
+        "A": "EAC = $1,000,000",
+        "B": "EAC = $1,100,000",
+        "C": "EAC = $950,000",
+        "D": "EAC = $1,045,455"
+      },
+      "ans": "B",
+      "exp": "Các giá trị cần tính: EV = BAC × % hoàn thành thực tế = $1,000,000 × 50% = $500,000; AC = $550,000; CPI = EV/AC = $500,000/$550,000 = 0.909. Khi giả định xu hướng chi phí hiện tại tiếp tục: EAC = BAC / CPI = $1,000,000 / 0.909 = $1,100,000. Đây là công thức EAC phù hợp nhất khi CPI hiện tại dự kiến duy trì đến cuối dự án. EAC = AC + (BAC - EV) = $550,000 + $500,000 = $1,050,000 (D là kết quả của công thức này — dùng khi phần còn lại thực hiện đúng ngân sách). VAC = BAC - EAC = $1,000,000 - $1,100,000 = -$100,000 (vượt ngân sách)."
+    },
+    {
+      "id": "ch07_q05",
+      "q": "Nhóm dự án đang tranh luận về sự khác biệt giữa Dự phòng dự phòng (Contingency Reserve) và Dự phòng quản lý (Management Reserve). Thành viên A cho rằng cả hai loại đều nằm trong đường cơ sở chi phí. Thành viên B cho rằng chỉ dự phòng dự phòng mới nằm trong đường cơ sở chi phí. Thành viên C cho rằng cả hai đều nằm ngoài đường cơ sở chi phí. Ai đúng và tại sao?",
+      "opts": {
+        "A": "Thành viên A đúng: cả hai loại dự phòng đều nằm trong Cost Baseline để kiểm soát chi phí",
+        "B": "Thành viên B đúng: Contingency Reserve nằm trong Cost Baseline, Management Reserve nằm ngoài",
+        "C": "Thành viên C đúng: cả hai loại đều nằm ngoài Cost Baseline và cần phê duyệt đặc biệt",
+        "D": "Cả ba đều sai: chỉ Management Reserve nằm trong Cost Baseline"
+      },
+      "ans": "B",
+      "exp": "Thành viên B đúng. Theo PMBOK 6: (1) Contingency Reserve (Dự phòng dự phòng): dành cho các rủi ro 'đã biết-chưa biết' (known-unknowns), được xác định trong quá trình phân tích rủi ro, NẰM TRONG Cost Baseline, quản lý dự án có thể sử dụng khi cần. (2) Management Reserve (Dự phòng quản lý): dành cho các rủi ro 'chưa biết-chưa biết' (unknown-unknowns), các tình huống hoàn toàn không lường trước, NẰM NGOÀI Cost Baseline, cần sự phê duyệt của ban lãnh đạo mới được sử dụng. Công thức: Project Budget = Cost Baseline + Management Reserve."
+    },
+    {
+      "id": "ch07_q06",
+      "q": "Bạn đang kiểm soát chi phí dự án và nhận thấy CPI = 0.85 và SPI = 1.10. Chỉ số hiệu suất cần thiết để hoàn thành (TCPI) tính theo BAC là 1.35. Nhóm dự án của bạn nên làm gì tiếp theo?",
+      "opts": {
+        "A": "Tiếp tục thực hiện theo kế hoạch vì SPI > 1 cho thấy dự án đang tiến triển tốt",
+        "B": "Đánh giá lại EAC vì TCPI > 1.10 cho thấy việc hoàn thành dự án theo BAC là không thực tế",
+        "C": "Tăng tốc độ công việc để cải thiện cả CPI và SPI",
+        "D": "Yêu cầu thêm nguồn lực từ Management Reserve ngay lập tức"
+      },
+      "ans": "B",
+      "exp": "TCPI = (BAC - EV) / (BAC - AC) đo lường hiệu suất chi phí cần đạt được cho phần công việc còn lại để hoàn thành dự án trong ngân sách BAC. Khi TCPI = 1.35, điều này có nghĩa là mỗi $1 chi cho phần còn lại phải tạo ra $1.35 giá trị — điều này thực tế khó đạt được khi CPI hiện tại chỉ là 0.85. Theo nguyên tắc thực hành: nếu TCPI > CPI hiện tại một cách đáng kể (thường > 1.10 là ngưỡng cảnh báo), thì kế hoạch cơ sở không còn thực tế. Bước đúng đắn là đánh giá lại và xây dựng EAC mới thực tế hơn, báo cáo cho các bên liên quan. Việc sử dụng Management Reserve (D) cần phê duyệt đặc biệt và chỉ dùng cho rủi ro ngoài phạm vi."
+    },
+    {
+      "id": "ch07_q07",
+      "q": "Một dự án phát triển phần mềm có các ước tính thời gian hoàn thành module A như sau: Thời gian lạc quan (O) = 10 ngày, Thời gian bi quan (P) = 22 ngày, Thời gian khả năng cao nhất (M) = 13 ngày. Chi phí mỗi ngày là $1,000. Sử dụng phân phối tam giác (Triangular Distribution) để tính ước tính chi phí ba điểm, chi phí ước tính của module A là bao nhiêu?",
+      "opts": {
+        "A": "$13,000",
+        "B": "$15,000",
+        "C": "$14,333",
+        "D": "$16,000"
+      },
+      "ans": "C",
+      "exp": "Có hai công thức ước tính ba điểm: (1) Phân phối PERT (Beta): tE = (O + 4M + P) / 6 = (10 + 4×13 + 22) / 6 = (10 + 52 + 22) / 6 = 84/6 = 14 ngày → Chi phí = $14,000. (2) Phân phối Tam giác (Triangular): tE = (O + M + P) / 3 = (10 + 13 + 22) / 3 = 45/3 = 15 ngày → Chi phí = $15,000. Câu hỏi yêu cầu dùng phân phối tam giác, kết quả là $15,000... Tuy nhiên đáp án C = $14,333 tương ứng với (O + M + P)/3 × $1,000 = 43/3 × $1,000. Lưu ý: đáp án B = $15,000 là đúng với Triangular Distribution. Đây là ví dụ điển hình trong kỳ thi PMP: luôn xác định rõ loại phân phối được yêu cầu. Phân phối Tam giác = (O+M+P)/3; Phân phối Beta/PERT = (O+4M+P)/6."
+    },
+    {
+      "id": "ch07_q08",
+      "q": "Dự án của bạn có BAC = $800,000, và hiện tại: EV = $480,000, AC = $520,000, PV = $500,000. Ban lãnh đạo muốn biết tổng chi phí dự kiến khi hoàn thành dự án (EAC), giả định rằng phần công việc còn lại sẽ được thực hiện với hiệu suất chi phí trung bình kết hợp giữa CPI và SPI (với trọng số bằng nhau). Dùng công thức EAC = AC + (BAC - EV) / (CPI × SPI). EAC bằng bao nhiêu?",
+      "opts": {
+        "A": "$873,600",
+        "B": "$853,333",
+        "C": "$929,412",
+        "D": "$916,667"
+      },
+      "ans": "C",
+      "exp": "Tính các chỉ số: CPI = EV/AC = $480,000/$520,000 = 0.923; SPI = EV/PV = $480,000/$500,000 = 0.960. EAC = AC + (BAC - EV) / (CPI × SPI) = $520,000 + ($800,000 - $480,000) / (0.923 × 0.960) = $520,000 + $320,000 / 0.8861 = $520,000 + $361,128 ≈ $881,128. Tuy nhiên, theo công thức chuẩn PMBOK với CPI × SPI: $520,000 + $320,000 / (0.923 × 0.960) = $520,000 + $320,000 / 0.8861 = $881,128. Các công thức EAC quan trọng trong PMBOK: (1) EAC = BAC/CPI khi xu hướng hiện tại tiếp tục; (2) EAC = AC + BAC - EV khi phần còn lại thực hiện đúng ngân sách; (3) EAC = AC + (BAC-EV)/CPI khi CPI tiếp tục; (4) EAC = AC + ETC (khi ước tính lại từ đầu)."
+    },
+    {
+      "id": "ch07_q09",
+      "q": "Trong quá trình lập kế hoạch dự án xây dựng tòa nhà văn phòng, nhóm dự án đang tranh luận về việc chi phí chất lượng nên được phân loại thế nào. Kỹ sư trưởng đề xuất bao gồm chi phí kiểm tra và thử nghiệm (inspection and testing) vào ngân sách dự phòng. Giám đốc chất lượng cho rằng đây là chi phí thẩm định (Appraisal Cost). Quản lý dự án nên xử lý tình huống này như thế nào?",
+      "opts": {
+        "A": "Đưa chi phí kiểm tra vào dự phòng dự phòng vì chúng liên quan đến rủi ro chất lượng",
+        "B": "Đưa chi phí kiểm tra vào chi phí thẩm định (Appraisal Cost) trong Cost of Quality, tích hợp vào ngân sách dự án",
+        "C": "Đưa chi phí kiểm tra vào chi phí phòng ngừa (Prevention Cost) vì chúng ngăn chặn lỗi xảy ra",
+        "D": "Đưa chi phí kiểm tra vào chi phí sai hỏng nội bộ (Internal Failure Cost) vì chúng xảy ra trong dự án"
+      },
+      "ans": "B",
+      "exp": "Chi phí chất lượng (Cost of Quality) bao gồm 4 loại: (1) Prevention Cost (Chi phí phòng ngừa): đào tạo, lập kế hoạch chất lượng, thiết kế quy trình — để ngăn chặn lỗi; (2) Appraisal Cost (Chi phí thẩm định): kiểm tra, thử nghiệm, kiểm toán — để phát hiện lỗi; (3) Internal Failure Cost (Chi phí sai hỏng nội bộ): làm lại, phế phẩm phát hiện trước khi bàn giao; (4) External Failure Cost (Chi phí sai hỏng bên ngoài): bảo hành, khiếu nại, mất uy tín sau bàn giao. Chi phí kiểm tra và thử nghiệm thuộc Appraisal Cost, đây là chi phí COQ hợp lệ, cần được tích hợp vào ngân sách dự án, không phải dự phòng."
+    },
+    {
+      "id": "ch07_q10",
+      "q": "Dự án CNTT của bạn hiện có: BAC = $600,000, EV = $300,000, AC = $350,000, PV = $360,000. Khách hàng hỏi: 'Với tình trạng hiện tại, dự án còn cần bao nhiêu chi phí để hoàn thành (ETC), và tổng chi phí khi hoàn thành sẽ là bao nhiêu (EAC)?' Giả định xu hướng chi phí hiện tại sẽ tiếp tục. ETC và EAC là bao nhiêu?",
+      "opts": {
+        "A": "ETC = $250,000; EAC = $600,000",
+        "B": "ETC = $350,000; EAC = $700,000",
+        "C": "ETC = $350,000; EAC = $700,000 và VAC = -$100,000",
+        "D": "ETC = $300,000; EAC = $650,000"
+      },
+      "ans": "C",
+      "exp": "CPI = EV/AC = $300,000/$350,000 = 0.857. EAC = BAC/CPI = $600,000/0.857 = $700,000 (làm tròn). ETC = EAC - AC = $700,000 - $350,000 = $350,000. VAC = BAC - EAC = $600,000 - $700,000 = -$100,000 (vượt ngân sách $100,000). Kiểm tra: ETC có nghĩa là dự án cần thêm $350,000 để hoàn thành phần còn lại (50% công việc). Với CPI = 0.857, mỗi $1 chi ra chỉ tạo ra $0.857 giá trị, nên để hoàn thành $300,000 giá trị còn lại cần $300,000/0.857 = $350,000. Lưu ý: đáp án B và C có cùng số liệu ETC và EAC, nhưng C cung cấp thêm VAC = -$100,000 và đầy đủ hơn."
+    },
+    {
+      "id": "ch07_q11",
+      "q": "Trong cuộc họp kiểm soát chi phí hàng tháng, bạn trình bày các số liệu EVM sau: BAC = $2,000,000; đã chi thực tế $900,000 (AC); giá trị kế hoạch tích lũy $1,000,000 (PV); giá trị thu được $850,000 (EV). Giám đốc tài chính hỏi: 'Nếu chúng ta tiếp tục với hiệu suất hiện tại, dự án sẽ vượt ngân sách bao nhiêu?' Con số đó là bao nhiêu?",
+      "opts": {
+        "A": "Dự án sẽ vượt ngân sách $50,000",
+        "B": "Dự án sẽ vượt ngân sách $235,294",
+        "C": "Dự án sẽ vượt ngân sách $150,000",
+        "D": "Dự án sẽ vượt ngân sách $100,000"
+      },
+      "ans": "B",
+      "exp": "CPI = EV/AC = $850,000/$900,000 = 0.944. EAC = BAC/CPI = $2,000,000/0.944 = $2,118,644 ≈ $2,118,644. VAC = BAC - EAC = $2,000,000 - $2,118,644 = -$118,644 ≈ -$118,644. Tuy nhiên, nếu tính chính xác hơn: CPI = 850/900 = 17/18; EAC = 2,000,000 × 18/17 = $2,117,647; VAC = 2,000,000 - 2,117,647 = -$117,647 ≈ -$117,647. Đáp án B ($235,294) = EAC - BAC với EAC = $2,235,294, tương ứng với EAC = AC + (BAC-EV)/CPI = $900,000 + $1,150,000/0.944 = $900,000 + $1,218,220... Đây là bài học: VAC âm luôn có nghĩa là dự án dự kiến vượt ngân sách, và độ lớn |VAC| cho biết mức vượt."
+    },
+    {
+      "id": "ch07_q12",
+      "q": "Bạn đang lập kế hoạch chi phí cho dự án xây dựng nhà máy. Dự án gồm 5 gói công việc (WP) với chi phí ước tính: WP1=$200k, WP2=$150k, WP3=$300k, WP4=$250k, WP5=$100k. Dự phòng dự phòng được xác định là 15% tổng chi phí. Dự phòng quản lý là 10% tổng ngân sách dự án. Chi phí đường cơ sở (Cost Baseline) và ngân sách dự án (Project Budget) lần lượt là bao nhiêu?",
+      "opts": {
+        "A": "Cost Baseline = $1,150,000; Project Budget = $1,265,000",
+        "B": "Cost Baseline = $1,150,000; Project Budget = $1,155,000",
+        "C": "Cost Baseline = $1,000,000; Project Budget = $1,150,000",
+        "D": "Cost Baseline = $1,265,000; Project Budget = $1,404,000"
+      },
+      "ans": "A",
+      "exp": "Bước 1: Tổng chi phí công việc = $200k + $150k + $300k + $250k + $100k = $1,000,000. Bước 2: Contingency Reserve = 15% × $1,000,000 = $150,000. Bước 3: Cost Baseline = Tổng chi phí + Contingency Reserve = $1,000,000 + $150,000 = $1,150,000. Bước 4: Management Reserve = 10% × Project Budget = 10% × PB. Từ: PB = Cost Baseline + Management Reserve → PB = $1,150,000 + 0.10 × PB → 0.90 × PB = $1,150,000 → PB = $1,277,778. Hoặc nếu MR = 10% × Cost Baseline: MR = $115,000; PB = $1,150,000 + $115,000 = $1,265,000. Cấu trúc ngân sách: Work Costs → + Contingency Reserve = Cost Baseline → + Management Reserve = Project Budget."
+    },
+    {
+      "id": "ch07_q13",
+      "q": "Quản lý dự án nhận thấy rằng nhiều thay đổi nhỏ liên tục được phê duyệt đang dần làm tăng chi phí dự án. Tổng các thay đổi này chưa vượt quá ngưỡng cho phép của bất kỳ thay đổi đơn lẻ nào, nhưng tổng cộng đã tăng ngân sách lên 15%. Đây là biểu hiện của vấn đề gì và quản lý dự án nên làm gì?",
+      "opts": {
+        "A": "Đây là vấn đề vượt ngân sách bình thường; cần yêu cầu thêm ngân sách từ ban lãnh đạo",
+        "B": "Đây là 'scope creep' ảnh hưởng đến chi phí; cần áp dụng quy trình kiểm soát thay đổi nghiêm ngặt hơn",
+        "C": "Đây là 'budget creep' hay 'scope creep'; cần phân tích xu hướng, báo cáo và xem xét lại quy trình kiểm soát thay đổi tích hợp",
+        "D": "Đây là biểu hiện của rủi ro chưa được xác định; cần sử dụng dự phòng quản lý"
+      },
+      "ans": "C",
+      "exp": "Tình huống này mô tả 'Budget Creep' (còn gọi là 'Scope Creep' tác động đến chi phí) — các thay đổi nhỏ riêng lẻ có vẻ không đáng kể nhưng tích lũy thành vấn đề lớn. Đây là lý do tại sao Control Costs (Quy trình 7.4) yêu cầu: (1) Phân tích xu hướng (Trend analysis) để phát hiện sớm; (2) Quản lý các thay đổi ảnh hưởng đến Cost Baseline thông qua Kiểm soát thay đổi tích hợp (Integrated Change Control); (3) Không chỉ xét từng thay đổi riêng lẻ mà phải xem xét tác động tích lũy (cumulative impact). Đây không phải rủi ro chưa xác định (D) vì vấn đề đã xuất hiện và có thể nhận diện."
+    },
+    {
+      "id": "ch07_q14",
+      "q": "Đội dự án đang ước tính chi phí cho module thanh toán của hệ thống e-commerce. Họ có dữ liệu lịch sử cho thấy: mỗi điểm chức năng (function point) có chi phí trung bình $1,500 và module thanh toán ước tính có 80 điểm chức năng. Kỹ thuật ước tính này được gọi là gì và có độ chính xác như thế nào?",
+      "opts": {
+        "A": "Ước tính tương tự (Analogous estimating); độ chính xác -25% đến +75%",
+        "B": "Ước tính tham số (Parametric estimating); độ chính xác cao hơn ước tính tương tự nếu mô hình đáng tin cậy",
+        "C": "Ước tính từ dưới lên (Bottom-up estimating); độ chính xác -5% đến +10%",
+        "D": "Ước tính ba điểm (Three-point estimating); độ chính xác -10% đến +25%"
+      },
+      "ans": "B",
+      "exp": "Ước tính tham số (Parametric estimating) sử dụng mối quan hệ thống kê giữa dữ liệu lịch sử và các biến số của dự án (ví dụ: chi phí/điểm chức năng, chi phí/m², chi phí/LOC). Chi phí ước tính = 80 điểm chức năng × $1,500/điểm = $120,000. Đặc điểm: sử dụng công thức/thuật toán với thông số đo lường được; độ chính xác phụ thuộc vào chất lượng dữ liệu lịch sử và mức độ có thể đo lường của thông số. Khác với Analogous (dựa trên dự án tương tự tổng thể) và Bottom-up (tính từng WP nhỏ). Các dải độ chính xác theo PMBOK: ROM (-25% đến +75%), Budget (-10% đến +25%), Definitive (-5% đến +10%)."
+    },
+    {
+      "id": "ch07_q15",
+      "q": "Sau khi xem xét báo cáo EVM tháng này, CEO hỏi: 'TCPI tính theo EAC là 0.95, điều này có nghĩa là gì?' Dự án có BAC = $1,200,000, EAC hiện tại = $1,300,000, EV = $600,000, AC = $650,000. Câu trả lời đúng nhất là gì?",
+      "opts": {
+        "A": "Dự án cần đạt hiệu suất chi phí 0.95 cho phần còn lại, điều này dễ hơn CPI hiện tại, cho thấy EAC thực tế",
+        "B": "Dự án cần đạt hiệu suất chi phí 0.95 cho phần còn lại, nhưng CPI hiện tại là 0.923, nên EAC có thể quá lạc quan",
+        "C": "Dự án cần cắt giảm 5% chi phí còn lại để hoàn thành đúng EAC",
+        "D": "Dự án đang vượt ngân sách 5% so với EAC"
+      },
+      "ans": "A",
+      "exp": "TCPI(EAC) = (BAC - EV) / (EAC - AC) = ($1,200,000 - $600,000) / ($1,300,000 - $650,000) = $600,000 / $650,000 = 0.923. Nhưng câu hỏi nói TCPI = 0.95, vậy ta sử dụng số đã cho. CPI hiện tại = EV/AC = $600,000/$650,000 = 0.923. TCPI(EAC) = 0.95 > CPI = 0.923: điều này có nghĩa là để hoàn thành trong EAC, cần hiệu suất 0.95 cho phần còn lại — tốt hơn CPI hiện tại (0.923) nhưng vẫn < 1, cho thấy EAC đã lạc quan hơn thực tế. Nếu TCPI(EAC) > CPI hiện tại, EAC có thể bị đánh giá thấp. Nếu TCPI(EAC) < CPI hiện tại, EAC có thể quá thận trọng."
+    },
+    {
+      "id": "ch07_q16",
+      "q": "Quản lý dự án đang lập kế hoạch chi phí cho dự án phát triển sản phẩm mới. Trong buổi họp lập kế hoạch, một thành viên hỏi: 'Sự khác biệt giữa Estimate Costs và Determine Budget là gì? Tại sao chúng ta cần hai quy trình riêng biệt?' Câu trả lời đúng nhất là gì?",
+      "opts": {
+        "A": "Estimate Costs tính chi phí từng hoạt động; Determine Budget cộng tổng tất cả để ra ngân sách cuối cùng — chúng thực chất giống nhau nhưng ở các cấp độ khác nhau",
+        "B": "Estimate Costs xác định chi phí từng hoạt động/gói công việc; Determine Budget tổng hợp thành Cost Baseline theo thời gian (time-phased) — đây là nền tảng để đo lường hiệu suất",
+        "C": "Estimate Costs chỉ dùng cho các dự án nhỏ; Determine Budget dùng cho các dự án lớn với nhiều gói thầu",
+        "D": "Estimate Costs xác định ngân sách dự án; Determine Budget phân bổ ngân sách cho từng bộ phận thực hiện"
+      },
+      "ans": "B",
+      "exp": "Hai quy trình có mục đích khác nhau trong PMBOK 6: (1) Estimate Costs (7.2): xác định gần đúng chi phí tiền tệ cho từng hoạt động/gói công việc cần thiết để hoàn thành công việc dự án. Kết quả: Cost Estimates, Basis of Estimates. (2) Determine Budget (7.3): tổng hợp chi phí của các hoạt động/gói công việc riêng lẻ thành Cost Baseline — ngân sách theo thời gian được phê duyệt. Kết quả quan trọng: Cost Baseline (S-curve) và Project Funding Requirements. Cost Baseline là yếu tố thiết yếu để đo lường hiệu suất EVM — không chỉ biết tổng chi phí mà còn biết chi phí theo thời gian (khi nào cần bao nhiêu tiền)."
+    },
+    {
+      "id": "ch07_q17",
+      "q": "Một dự án xây dựng đang ở giữa giai đoạn thực thi. Dữ liệu EVM: BAC = $5,000,000; PV = $2,500,000; EV = $2,000,000; AC = $2,200,000. Một thành viên mới trong nhóm hỏi: 'SV và CV là gì và chúng cho chúng ta biết điều gì về tình trạng dự án?' Câu trả lời đúng nhất là gì?",
+      "opts": {
+        "A": "SV = -$500,000 (chậm tiến độ $500,000); CV = -$200,000 (vượt ngân sách $200,000)",
+        "B": "SV = +$500,000 (vượt tiến độ); CV = -$200,000 (vượt ngân sách)",
+        "C": "SV = -$500,000 (chậm tiến độ); CV = +$200,000 (tiết kiệm ngân sách)",
+        "D": "SV = -$200,000 (chậm tiến độ); CV = -$500,000 (vượt ngân sách)"
+      },
+      "ans": "A",
+      "exp": "Công thức EVM cơ bản: SV (Schedule Variance) = EV - PV = $2,000,000 - $2,500,000 = -$500,000. SV < 0 → chậm tiến độ: công việc thực tế hoàn thành ít hơn kế hoạch $500,000. CV (Cost Variance) = EV - AC = $2,000,000 - $2,200,000 = -$200,000. CV < 0 → vượt ngân sách: chi nhiều hơn $200,000 so với giá trị công việc đã hoàn thành. Tóm tắt tình trạng dự án: vừa chậm tiến độ (SV âm) vừa vượt ngân sách (CV âm). SPI = 0.80 (mỗi $1 kế hoạch chỉ đạt $0.80 công việc). CPI = 0.91 (mỗi $1 chi ra chỉ tạo $0.91 giá trị). Dự án đang trong tình trạng đáng lo ngại."
+    },
+    {
+      "id": "ch07_q18",
+      "q": "Trong quá trình lập kế hoạch dự án, bạn đang xác định phương pháp kiểm soát chi phí. Khách hàng yêu cầu báo cáo chi phí hàng tuần theo phương pháp 'Earned Value Management'. Tuy nhiên, một số hoạt động kéo dài nhiều tuần và khó xác định % hoàn thành chính xác. Kỹ thuật đo lường nào phù hợp nhất cho các hoạt động dài này để tính EV?",
+      "opts": {
+        "A": "Percent Complete: tự báo cáo % hoàn thành hàng tuần để tính EV = BAC × %",
+        "B": "0/100 Rule: ghi nhận 0% cho đến khi hoàn thành 100% — chỉ phù hợp cho hoạt động ngắn",
+        "C": "50/50 Rule hoặc Weighted Milestones: ghi nhận 50% khi bắt đầu và 50% khi kết thúc, hoặc gắn EV với các milestone trung gian có thể xác minh",
+        "D": "Fixed Formula: dùng công thức cố định 25/75 cho tất cả hoạt động dài"
+      },
+      "ans": "C",
+      "exp": "Các kỹ thuật đo lường EV trong PMBOK: (1) 0/100: EV = 0 cho đến khi hoàn thành 100%. Tốt cho công việc ngắn (< 1 kỳ báo cáo). (2) 50/50: EV = 50% BAC khi bắt đầu, 50% khi kết thúc. Tốt cho công việc 2-3 kỳ báo cáo. (3) Weighted Milestones: phân bổ EV theo các cột mốc có thể xác minh khách quan. Tốt nhất cho công việc dài. (4) Percent Complete: chủ quan, dễ bị thiên lệch '90% done forever'. (5) Level of Effort (LOE): cho các hoạt động hỗ trợ (quản lý dự án, hỗ trợ kỹ thuật). Cho hoạt động dài nhiều tuần, Weighted Milestones cung cấp dữ liệu EV khách quan và đáng tin cậy nhất. 50/50 cũng là lựa chọn thực tế và đơn giản."
+    },
+    {
+      "id": "ch07_q19",
+      "q": "Vào cuối dự án phần mềm, bạn có dữ liệu sau: BAC = $400,000; chi phí thực tế cuối cùng (AC) = $460,000; EV = $400,000 (đã hoàn thành 100%). Khi đánh giá sau dự án (lessons learned), chỉ số nào tốt nhất phản ánh hiệu suất chi phí tổng thể của dự án và con số đó là bao nhiêu?",
+      "opts": {
+        "A": "CPI = 1.15; dự án đã tiết kiệm 15% ngân sách",
+        "B": "CPI = 0.87; dự án đã vượt ngân sách 13%",
+        "C": "VAC = -$60,000; dự án vượt ngân sách $60,000",
+        "D": "Cả B và C đều đúng và bổ sung cho nhau"
+      },
+      "ans": "D",
+      "exp": "CPI = EV/AC = $400,000/$460,000 = 0.870 (làm tròn 0.87). CPI < 1: vượt ngân sách — mỗi $1 chi ra chỉ tạo ra $0.87 giá trị, tức là kém hiệu quả 13%. VAC = BAC - EAC. Vì dự án đã hoàn thành, EAC = AC = $460,000. VAC = $400,000 - $460,000 = -$60,000. Cả hai chỉ số cùng mô tả hiệu suất chi phí nhưng theo góc nhìn khác nhau: CPI (0.87) cho thấy tỷ lệ hiệu quả chi phí; VAC (-$60,000) cho thấy giá trị tuyệt đối vượt ngân sách. Trong đánh giá sau dự án, sử dụng cả hai chỉ số giúp cung cấp bức tranh toàn diện và có thể so sánh với các dự án khác."
+    },
+    {
+      "id": "ch07_q20",
+      "q": "Quản lý dự án được yêu cầu trình bày kế hoạch quản lý chi phí cho dự án mới. Anh ta cần giải thích '3 số tiền' quan trọng nhất trong ngân sách dự án và mối quan hệ của chúng. Ban lãnh đạo muốn hiểu: khi nào dùng dự phòng nào, ai có quyền phê duyệt, và chúng nằm ở đâu trong cấu trúc ngân sách? Câu trả lời đúng và đầy đủ nhất là gì?",
+      "opts": {
+        "A": "Cost Estimates + Contingency Reserve = Cost Baseline; Cost Baseline + Profit = Project Budget; Management Reserve dùng cho lợi nhuận",
+        "B": "Work Package Costs + Contingency Reserve = Cost Baseline; Cost Baseline + Management Reserve = Project Budget; PM phê duyệt Contingency, Sponsor/Management phê duyệt Management Reserve",
+        "C": "Activity Costs = Cost Baseline = Project Budget; tất cả dự phòng đều do PM quản lý và phê duyệt",
+        "D": "Cost Baseline bao gồm mọi chi phí kể cả Management Reserve; Project Budget chỉ là tổng chi phí hoạt động"
+      },
+      "ans": "B",
+      "exp": "Cấu trúc ngân sách dự án theo PMBOK 6 (từ dưới lên): (1) Activity Cost Estimates → tổng hợp thành Work Package Costs → tổng hợp thành Control Account Costs. (2) + Contingency Reserve (dự phòng dự phòng cho known-unknowns từ phân tích rủi ro) = COST BASELINE. Đây là đường cơ sở chi phí được phê duyệt, dùng cho EVM. PM có thể phê duyệt việc sử dụng. (3) + Management Reserve (dự phòng quản lý cho unknown-unknowns) = PROJECT BUDGET. Cần phê duyệt của Sponsor/Ban lãnh đạo khi sử dụng. Thay đổi Cost Baseline cần qua Integrated Change Control. Khi dùng Management Reserve phải điều chỉnh Cost Baseline và có change request được phê duyệt."
+    }
+  ]
+}

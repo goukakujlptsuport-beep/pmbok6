@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PMP Exam Simulator</title>
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    html, body { margin: 0; padding: 0; min-height: 100vh; background: var(--color-bg, #f5f7fa); }
+  </style>
+</head>
+<body class="pmp-app theme-light">
+
+<!-- ── Sidebar ─────────────────────────────────────────────── -->
+<nav id="app-sidebar">
+  <div class="sidebar-logo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M2 12C2 6.48 6.48 2 12 2s10 4.48 10 10-4.48 10-10 10S2 17.52 2 12z"/>
+      <path d="M9 12l2 2 4-4"/>
+    </svg>
+    PMP Simulator
+  </div>
+  <ul class="sidebar-nav">
+    <li><a class="nav-link active" href="#/home" data-screen="home"><span class="nav-icon">🏠</span> Home</a></li>
+    <li><a class="nav-link" href="#/practice-setup" data-screen="practice-setup"><span class="nav-icon">✏️</span> Practice</a></li>
+    <li><a class="nav-link" href="#/bank" data-screen="bank"><span class="nav-icon">📚</span> Question Bank</a></li>
+    <li><a class="nav-link" href="#/settings" data-screen="settings"><span class="nav-icon">⚙️</span> Settings</a></li>
+  </ul>
+  <div class="sidebar-footer">Phase 1 &bull; PMP ECO 2023</div>
+</nav>
+<div id="sidebar-overlay"></div>
+
+<!-- ── Main ─────────────────────────────────────────────────── -->
+<div id="app-main">
+  <header class="app-topbar">
+    <button id="menu-toggle" class="btn btn-ghost btn-sm" aria-label="Menu">☰</button>
+    <h1 id="topbar-title">PMP Exam Simulator</h1>
+    <div class="topbar-right">
+      <span id="ps-live-score" style="font-size:.825rem;color:var(--color-text-muted)"></span>
+    </div>
+  </header>
+
+  <main id="app-content">
+
+    <!-- ════════ HOME ════════ -->
+    <div id="screen-home" class="screen active">
+      <h2 style="margin-bottom:1rem">Dashboard</h2>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-val" id="stat-total">–</div>
+          <div class="stat-label">Total Questions</div>
+        </div>
+        <div class="stat-card dom-people">
+          <div class="stat-val" id="stat-people">–</div>
+          <div class="stat-label">People</div>
+        </div>
+        <div class="stat-card dom-process">
+          <div class="stat-val" id="stat-process">–</div>
+          <div class="stat-label">Process</div>
+        </div>
+        <div class="stat-card dom-business">
+          <div class="stat-val" id="stat-business">–</div>
+          <div class="stat-label">Business Env.</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val" id="stat-attempts">–</div>
+          <div class="stat-label">Attempts</div>
+        </div>
+      </div>
+
+      <div class="home-actions">
+        <a href="#/practice-setup" class="btn btn-primary" data-screen="practice-setup">✏️ Start Practice</a>
+        <button id="btn-start-exam" class="btn btn-secondary" disabled title="Need 180 questions">🎓 Full Exam (180Q)</button>
+      </div>
+      <p class="exam-notice">Full exam simulation requires ≥ 180 questions in the bank (76 People · 90 Process · 14 Business).</p>
+
+      <div id="task-coverage" style="margin-top:1rem"></div>
+    </div><!-- /home -->
+
+    <!-- ════════ PRACTICE SETUP ════════ -->
+    <div id="screen-practice-setup" class="screen">
+      <h2 style="margin-bottom:1rem">Practice Setup</h2>
+
+      <div class="card" style="margin-bottom:.875rem">
+        <div class="card-title">Number of Questions</div>
+        <div class="ps-num-pills">
+          <button class="ps-num-btn active" data-n="10">10</button>
+          <button class="ps-num-btn" data-n="20">20</button>
+          <button class="ps-num-btn" data-n="50">50</button>
+          <button class="ps-num-btn" data-n="custom">Custom</button>
+        </div>
+        <div class="ps-custom-wrap" id="ps-custom-wrap" style="margin-top:.625rem">
+          <label for="ps-custom" style="font-size:.875rem">Questions:</label>
+          <input id="ps-custom" type="number" min="1" max="200" value="30" style="width:80px">
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:.875rem">
+        <div class="card-title">Filters</div>
+        <div class="ps-row">
+          <label>Domain</label>
+          <select id="ps-domain">
+            <option value="all">All Domains</option>
+            <option value="people">People</option>
+            <option value="process">Process</option>
+            <option value="business">Business Environment</option>
+          </select>
+        </div>
+        <div class="ps-row">
+          <label>Task</label>
+          <select id="ps-task"><option value="all">All Tasks</option></select>
+        </div>
+        <div class="ps-row">
+          <label>Approach</label>
+          <select id="ps-approach">
+            <option value="all">All Approaches</option>
+            <option value="predictive">Predictive</option>
+            <option value="agile">Agile / Hybrid</option>
+          </select>
+        </div>
+        <div class="ps-row">
+          <label>Pool</label>
+          <select id="ps-pool">
+            <option value="all">All Questions</option>
+            <option value="unseen">Unseen only</option>
+            <option value="wrong">Wrong answers only</option>
+          </select>
+        </div>
+        <p class="ps-available" id="ps-available"></p>
+      </div>
+
+      <div class="ps-actions">
+        <button id="btn-start-practice" class="btn btn-primary">▶ Start Practice</button>
+        <a href="#/home" class="btn btn-ghost" data-screen="home">Cancel</a>
+      </div>
+    </div><!-- /practice-setup -->
+
+    <!-- ════════ PRACTICE SESSION ════════ -->
+    <div id="screen-practice-session" class="screen">
+      <div class="session-header">
+        <div class="session-progress">
+          <div id="ps-q-num" style="font-size:.85rem;font-weight:600;margin-bottom:.25rem">Question 1 / –</div>
+          <div class="session-progress-bar"><div id="ps-progress-fill" style="width:0%"></div></div>
+        </div>
+        <div class="session-meta">
+          <span id="ps-q-id" style="font-size:.8rem;color:var(--color-text-muted)"></span>
+        </div>
+        <button id="ps-quit" class="btn btn-ghost btn-sm">⏹ End</button>
+      </div>
+
+      <div id="ps-q-container"></div>
+
+      <div class="session-actions">
+        <button id="ps-check"  class="btn btn-primary"   disabled>✓ Check Answer</button>
+        <button id="ps-next"   class="btn btn-secondary" style="display:none">Next →</button>
+        <button id="ps-finish" class="btn btn-primary"   style="display:none">Finish Session</button>
+        <button id="ps-boost"  class="btn btn-ghost btn-sm" style="display:none">⭐ More like this</button>
+      </div>
+
+      <div class="kbd-hints" style="margin-top:.75rem">
+        <span><kbd class="kbd">1–4</kbd> Select option</span>
+        <span><kbd class="kbd">Enter</kbd> Check / Next</span>
+        <span><kbd class="kbd">→</kbd> Next</span>
+        <span><kbd class="kbd">F</kbd> Boost task</span>
+      </div>
+    </div><!-- /practice-session -->
+
+    <!-- ════════ PRACTICE SUMMARY ════════ -->
+    <div id="screen-practice-summary" class="screen">
+      <h2 style="margin-bottom:1.25rem">Session Summary</h2>
+
+      <div class="card" style="margin-bottom:1rem">
+        <div class="summary-top">
+          <div class="sum-circle" id="sum-circle">
+            <span id="sum-pct">–%</span>
+            <span style="font-size:.75rem;font-weight:400" id="sum-score">–/–</span>
+          </div>
+          <div class="sum-meta">
+            <div class="sum-verdict" id="sum-verdict"></div>
+            <div class="sum-time-row">⏱ Time: <strong id="sum-time">–</strong></div>
+            <p style="font-size:.775rem;color:var(--color-text-muted);margin-top:.25rem">
+              ≥ 65% corresponds to a likely passing performance (PMI heuristic).
+            </p>
+          </div>
+        </div>
+        <div id="sum-domains"></div>
+      </div>
+
+      <div class="card" style="margin-bottom:1rem">
+        <div class="card-title">Wrong Answers</div>
+        <div id="sum-wrong"></div>
+      </div>
+
+      <div class="sum-actions">
+        <button id="sum-practice-again" class="btn btn-primary">Practice Again</button>
+        <button id="sum-home" class="btn btn-ghost">Back to Home</button>
+      </div>
+    </div><!-- /practice-summary -->
+
+    <!-- ════════ QUESTION BANK ════════ -->
+    <div id="screen-bank" class="screen">
+      <h2 style="margin-bottom:1rem">Question Bank</h2>
+      <div class="bank-toolbar">
+        <input id="bank-search" class="bank-search" type="search" placeholder="Search questions…" autocomplete="off">
+        <select id="bank-filter-dom">
+          <option value="all">All Domains</option>
+          <option value="people">People</option>
+          <option value="process">Process</option>
+          <option value="business">Business</option>
+        </select>
+        <span id="bank-count" style="font-size:.825rem;color:var(--color-text-muted);white-space:nowrap"></span>
+      </div>
+      <div id="bank-list"></div>
+    </div><!-- /bank -->
+
+    <!-- ════════ SETTINGS ════════ -->
+    <div id="screen-settings" class="screen">
+      <h2 style="margin-bottom:1.25rem">Settings</h2>
+
+      <!-- Import / Export -->
+      <div class="card settings-section">
+        <div class="card-title">Data</div>
+        <div class="setting-row">
+          <div class="setting-label">
+            Import Questions
+            <div class="setting-desc">JSON array of question objects (validated on import)</div>
+          </div>
+          <button id="btn-import-qs" class="btn btn-secondary btn-sm">Import…</button>
+          <input id="file-import-qs" type="file" accept=".json" style="display:none">
+        </div>
+        <div id="import-result" class="import-result"></div>
+        <div class="setting-row">
+          <div class="setting-label">
+            Export Backup
+            <div class="setting-desc">Download all questions, history, and settings as JSON</div>
+          </div>
+          <button id="btn-export" class="btn btn-secondary btn-sm">Export…</button>
+        </div>
+        <div class="setting-row">
+          <div class="setting-label">
+            Restore Backup
+            <div class="setting-desc">Replace everything with a previous export (irreversible)</div>
+          </div>
+          <button id="btn-import-bk" class="btn btn-secondary btn-sm">Restore…</button>
+          <input id="file-import-bk" type="file" accept=".json" style="display:none">
+        </div>
+        <div class="setting-row">
+          <div class="setting-label">
+            Reset All Data
+            <div class="setting-desc">Delete all questions, history and settings (double-confirmed)</div>
+          </div>
+          <button id="btn-reset" class="btn btn-danger btn-sm">Reset…</button>
+        </div>
+      </div>
+
+      <!-- Appearance -->
+      <div class="card settings-section">
+        <div class="card-title">Appearance</div>
+        <div class="setting-row">
+          <div class="setting-label">Dark Mode</div>
+          <label class="toggle">
+            <input type="checkbox" id="setting-theme">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="setting-row">
+          <div class="setting-label">
+            Explanation Language
+            <div class="setting-desc">Shown after each answer</div>
+          </div>
+          <select id="setting-lang" style="min-width:120px">
+            <option value="en">English</option>
+            <option value="vi">Tiếng Việt</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Domain boosts -->
+      <div class="card settings-section">
+        <div class="card-title">Domain Priority Weights</div>
+        <p style="font-size:.8rem;color:var(--color-text-muted);margin-bottom:.75rem">
+          Multiply the base sampling priority for each domain. Higher = appears more often.
+        </p>
+        <div id="boost-domains"></div>
+      </div>
+
+      <!-- Task boosts -->
+      <div class="card settings-section">
+        <div class="card-title">Task Priority Weights</div>
+        <p style="font-size:.8rem;color:var(--color-text-muted);margin-bottom:.75rem">
+          Use "⭐ More like this" during practice, or add a task below.
+        </p>
+        <div id="boost-tasks"></div>
+        <div class="boost-add-row">
+          <select id="boost-task-picker" style="flex:1"></select>
+          <button id="boost-task-add" class="btn btn-secondary btn-sm">+ Add task boost</button>
+        </div>
+      </div>
+
+      <!-- Copy generation prompt -->
+      <div class="card settings-section">
+        <div class="card-title">AI Question Generation</div>
+        <p style="font-size:.8rem;color:var(--color-text-muted);margin-bottom:.75rem">
+          Copy this prompt and paste into Claude / ChatGPT to generate more questions, then import the JSON.
+        </p>
+        <button id="btn-copy-prompt" class="btn btn-secondary">📋 Copy Generation Prompt</button>
+      </div>
+    </div><!-- /settings -->
+
+  </main><!-- /app-content -->
+</div><!-- /app-main -->
+
+<!-- ── Question modal ─────────────────────────────────────── -->
+<div id="q-modal" class="modal-overlay hidden">
+  <div class="modal-box">
+    <div class="modal-header">
+      <span>Question Detail</span>
+      <button id="q-modal-close" class="modal-close" aria-label="Close">✕</button>
+    </div>
+    <div id="q-modal-body" class="modal-body"></div>
+  </div>
+</div>
+
+<!-- ── Scripts — order matters ────────────────────────────── -->
+<script>window.PMP = {};</script>
+<script src="js/storage.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/ui/question-renderer.js"></script>
+<script src="js/practice.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>

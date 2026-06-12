@@ -1,0 +1,670 @@
+[
+  {
+    "id": "PPL-9001",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager notices that her team members frequently pause work and wait for her approval before proceeding with routine technical decisions. The team has the necessary expertise, and these delays are impacting the schedule. What should the project manager do?",
+    "options": [
+      "Continue reviewing all decisions to maintain quality control and accountability",
+      "Define a clear decision-making authority matrix and delegate routine technical decisions to team members",
+      "Assign a senior developer to make all technical decisions on behalf of the team",
+      "Escalate the schedule impact to the sponsor and request additional resources"
+    ],
+    "correct": [1],
+    "explanation": "A project manager practicing servant leadership should delegate routine technical decisions to the team, establishing clear authority boundaries so team members can work without unnecessary bottlenecks. Delegating with accountability—not abdicating—empowers the team and maintains schedule momentum.",
+    "explanation_vi": "Người quản lý dự án theo phong cách lãnh đạo phục vụ nên ủy quyền quyết định kỹ thuật thông thường cho nhóm, thiết lập ranh giới quyền hạn rõ ràng để thành viên làm việc không bị tắc nghẽn không cần thiết. Ủy quyền kèm trách nhiệm giải trình—không phải bỏ mặc—giúp trao quyền cho nhóm và duy trì tiến độ.",
+    "difficulty": 2,
+    "tags": ["empowerment", "delegation", "decision-making"]
+  },
+  {
+    "id": "PPL-9002",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "agile",
+    "type": "single",
+    "question": "During sprint planning, the Scrum Master observes that the project manager is assigning specific tasks to individual developers and telling them exactly how to complete each story. The development team appears disengaged and rarely speaks during ceremonies. What is the most appropriate action?",
+    "options": [
+      "Ask the project manager to assign tasks based on each developer's certified skill set",
+      "Step back and allow the self-organizing team to pull work and determine their own approach during sprint planning",
+      "Document the project manager's behavior and escalate to the PMO",
+      "Divide the sprint backlog equally among team members before the planning meeting"
+    ],
+    "correct": [1],
+    "explanation": "Agile principles emphasize self-organizing teams. The project manager should step back and let the team pull work and decide how to accomplish it. Micromanaging task assignments removes autonomy, disengages the team, and undermines the self-organization fundamental to agile effectiveness.",
+    "explanation_vi": "Các nguyên tắc agile nhấn mạnh nhóm tự tổ chức. Người quản lý dự án nên lùi lại và để nhóm tự nhận công việc và quyết định cách thực hiện. Việc kiểm soát vi mô phân công nhiệm vụ làm mất quyền tự chủ, khiến nhóm thiếu gắn kết và phá hoại sự tự tổ chức—nền tảng của hiệu quả agile.",
+    "difficulty": 2,
+    "tags": ["agile", "self-organizing", "micromanagement", "empowerment"]
+  },
+  {
+    "id": "PPL-9003",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager is leading a large infrastructure project. A key stakeholder, who has deep technical expertise, has expressed frustration that her knowledge is never utilized and she feels sidelined. The project is in the execution phase. What should the project manager do?",
+    "options": [
+      "Reassign the stakeholder to a different project where her skills are more relevant",
+      "Acknowledge her frustration and add her to the weekly status report distribution list",
+      "Identify meaningful roles or review responsibilities that leverage her expertise and involve her in relevant decisions",
+      "Inform the sponsor that the stakeholder is causing disruptions and request her removal"
+    ],
+    "correct": [2],
+    "explanation": "Empowering stakeholders means helping them contribute meaningfully. The project manager should identify how the stakeholder's expertise adds value—such as reviewing technical deliverables or advising on decisions—rather than keeping her passive. Meaningful involvement increases engagement and project outcomes.",
+    "explanation_vi": "Trao quyền cho các bên liên quan nghĩa là giúp họ đóng góp có ý nghĩa. Người quản lý dự án nên xác định cách chuyên môn của bên liên quan tạo ra giá trị—như xem xét sản phẩm kỹ thuật hoặc tư vấn quyết định—thay vì giữ họ ở thế bị động. Sự tham gia có ý nghĩa làm tăng mức độ gắn kết và kết quả dự án.",
+    "difficulty": 3,
+    "tags": ["stakeholder-empowerment", "engagement", "involvement"]
+  },
+  {
+    "id": "PPL-9004",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "agile",
+    "type": "single",
+    "question": "A newly formed agile team is struggling with velocity because they cannot access a critical test environment. The project manager has been aware of this blocker for two weeks but has not acted. The team raises the issue again in the daily standup. What is the most important action for the project manager?",
+    "options": [
+      "Ask the team to document the blocker formally and submit a change request",
+      "Remind the team that environment access issues are an IT responsibility, not a project concern",
+      "Immediately escalate and remove the blocker so the team can resume productive work",
+      "Adjust the sprint velocity targets downward to reflect the constraint"
+    ],
+    "correct": [2],
+    "explanation": "A core servant leadership responsibility is removing impediments. When a blocker persists for two weeks, the project manager has failed in this duty. The correct action is immediate escalation and resolution, enabling the team to deliver value. Adjusting targets or deflecting responsibility does not empower the team.",
+    "explanation_vi": "Trách nhiệm cốt lõi của lãnh đạo phục vụ là loại bỏ trở ngại. Khi một trở ngại kéo dài hai tuần, người quản lý dự án đã không thực hiện được nghĩa vụ này. Hành động đúng là leo thang và giải quyết ngay, giúp nhóm có thể tạo ra giá trị. Điều chỉnh mục tiêu hoặc đùn đẩy trách nhiệm không trao quyền cho nhóm.",
+    "difficulty": 2,
+    "tags": ["blocker-removal", "servant-leadership", "agile", "empowerment"]
+  },
+  {
+    "id": "PPL-9005",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager delegates the design of a new module to the lead engineer, telling him to complete it within two weeks. Mid-week, the project manager realizes she has not set any checkpoints and is concerned the work may deviate. What should she do?",
+    "options": [
+      "Take back the assignment and complete the design herself to ensure quality",
+      "Send daily emails asking the engineer for detailed progress updates",
+      "Schedule a single mid-point check-in to review progress and offer support, respecting the engineer's autonomy",
+      "Reassign the task to a more senior engineer to reduce risk"
+    ],
+    "correct": [2],
+    "explanation": "Delegation does not mean abdicating responsibility. A single well-timed check-in maintains oversight without micromanaging. This approach balances trust in the team member's autonomy with the project manager's accountability for deliverables—the essence of delegating without abdicating.",
+    "explanation_vi": "Ủy quyền không có nghĩa là bỏ mặc trách nhiệm. Một buổi kiểm tra định kỳ được lên lịch hợp lý duy trì sự giám sát mà không kiểm soát vi mô. Cách tiếp cận này cân bằng giữa tin tưởng vào quyền tự chủ của thành viên và trách nhiệm giải trình của người quản lý dự án đối với sản phẩm bàn giao—bản chất của ủy quyền mà không bỏ mặc.",
+    "difficulty": 3,
+    "tags": ["delegation", "accountability", "autonomy"]
+  },
+  {
+    "id": "PPL-9006",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "hybrid",
+    "type": "single",
+    "question": "A hybrid project team uses agile sprints for development but predictive milestones for governance reporting. Team members complain that they must get the project manager's approval before responding to any stakeholder question, causing long delays. What should the project manager do?",
+    "options": [
+      "Implement a formal approval workflow so all stakeholder communications are logged",
+      "Empower team members to communicate directly with stakeholders on matters within their scope, while maintaining escalation guidelines for strategic issues",
+      "Require all stakeholder communications to be routed through a designated communications manager",
+      "Reduce stakeholder access to the team to prevent scope creep"
+    ],
+    "correct": [1],
+    "explanation": "Empowering the team includes allowing direct stakeholder communication within defined boundaries. The project manager should establish clear guidelines for what team members can handle independently versus what needs escalation, enabling faster response without losing oversight on strategic matters.",
+    "explanation_vi": "Trao quyền cho nhóm bao gồm cho phép giao tiếp trực tiếp với các bên liên quan trong phạm vi ranh giới xác định. Người quản lý dự án nên thiết lập hướng dẫn rõ ràng về những gì thành viên có thể tự xử lý so với những gì cần leo thang, cho phép phản hồi nhanh hơn mà không mất giám sát đối với các vấn đề chiến lược.",
+    "difficulty": 3,
+    "tags": ["empowerment", "communication", "hybrid", "autonomy"]
+  },
+  {
+    "id": "PPL-9007",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "agile",
+    "type": "single",
+    "question": "The product owner of an agile team wants to micromanage which specific developer implements each user story, believing this will ensure quality. The Scrum Master brings this concern to the project manager. What advice should the project manager provide?",
+    "options": [
+      "Support the product owner's right to control implementation details as the primary customer representative",
+      "Allow the development team to self-organize and pull stories based on their skills and capacity, with the product owner focusing on backlog prioritization",
+      "Create a skills matrix that the product owner can use to make better assignment decisions",
+      "Escalate the issue to the steering committee to clarify the product owner's authority"
+    ],
+    "correct": [1],
+    "explanation": "In agile frameworks, the product owner's authority covers backlog priority and product decisions—not how the development team organizes its work. The team should self-organize and pull stories. The project manager should coach the product owner to focus on value and priority, not task assignments.",
+    "explanation_vi": "Trong các khung agile, quyền hạn của chủ sản phẩm bao gồm ưu tiên backlog và quyết định sản phẩm—không phải cách nhóm phát triển tổ chức công việc của mình. Nhóm nên tự tổ chức và nhận câu chuyện. Người quản lý dự án nên hướng dẫn chủ sản phẩm tập trung vào giá trị và ưu tiên, không phải phân công nhiệm vụ.",
+    "difficulty": 3,
+    "tags": ["agile", "self-organizing", "product-owner", "empowerment"]
+  },
+  {
+    "id": "PPL-9008",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager is working on a software project with an experienced team. During planning, he prepares the entire WBS and schedule himself before presenting it to the team for execution. Team members later complain they do not understand the rationale behind certain estimates. What should the project manager have done differently?",
+    "options": [
+      "Present the WBS to the team for formal sign-off before baseline",
+      "Invite the team to participate in developing the WBS and estimates collaboratively",
+      "Provide a detailed written explanation for each schedule activity",
+      "Hire an external scheduling consultant to validate the WBS"
+    ],
+    "correct": [1],
+    "explanation": "Involving the team in planning, including WBS development and estimating, increases ownership, accuracy, and buy-in. Team members who help build the plan understand its rationale and are more committed to executing it. This is a key empowerment practice in predictive environments.",
+    "explanation_vi": "Việc đưa nhóm tham gia vào lập kế hoạch, bao gồm phát triển WBS và ước tính, làm tăng quyền sở hữu, độ chính xác và sự đồng thuận. Các thành viên giúp xây dựng kế hoạch hiểu lý do đằng sau và cam kết thực hiện hơn. Đây là một thực hành trao quyền quan trọng trong môi trường dự đoán.",
+    "difficulty": 3,
+    "tags": ["team-involvement", "planning", "empowerment", "predictive"]
+  },
+  {
+    "id": "PPL-9009",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "agile",
+    "type": "multiple",
+    "question": "An agile team has been working well for six months and is now considered high-performing. The project manager wants to further empower the team. Which TWO actions best demonstrate appropriate empowerment for a mature agile team?",
+    "options": [
+      "Allow the team to select their own tools and development practices",
+      "Increase the frequency of status reports to provide better oversight",
+      "Invite the team to participate in product roadmap discussions with the client",
+      "Require manager approval for all architectural decisions before implementation",
+      "Assign a dedicated quality reviewer to approve all pull requests"
+    ],
+    "correct": [0, 2],
+    "explanation": "For a mature, high-performing agile team, empowerment means greater autonomy over working practices (tool and method selection) and inclusion in higher-level decisions (roadmap discussions). Both actions increase ownership and leverage the team's experience. Increasing oversight, requiring approvals, or adding gatekeepers are disempowering.",
+    "explanation_vi": "Đối với nhóm agile trưởng thành, hiệu suất cao, trao quyền có nghĩa là tự chủ hơn trong thực hành làm việc (lựa chọn công cụ và phương pháp) và tham gia vào các quyết định cấp cao hơn (thảo luận lộ trình sản phẩm). Cả hai hành động đều tăng quyền sở hữu và tận dụng kinh nghiệm của nhóm. Tăng giám sát, yêu cầu phê duyệt hoặc thêm người kiểm soát là những hành động hạn chế quyền tự chủ.",
+    "difficulty": 4,
+    "tags": ["agile", "empowerment", "high-performing-team", "autonomy"]
+  },
+  {
+    "id": "PPL-9010",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A functional manager tells the project manager that all technical decisions on the project must be approved by the functional manager's department before implementation. This is causing significant delays. What should the project manager do first?",
+    "options": [
+      "Accept the requirement and build the approval delays into the schedule",
+      "Have team members implement decisions without informing the functional manager",
+      "Clarify the decision-making authority in the project charter or governance framework and negotiate appropriate boundaries with the functional manager",
+      "Escalate immediately to the sponsor to remove the functional manager from the project"
+    ],
+    "correct": [2],
+    "explanation": "The project manager should first address the authority gap through proper governance channels. Clarifying decision-making boundaries in the project charter and negotiating with the functional manager protects the team's ability to work effectively without bypassing organizational structures. Immediate escalation should only follow if negotiation fails.",
+    "explanation_vi": "Người quản lý dự án nên giải quyết khoảng cách quyền hạn thông qua các kênh quản trị phù hợp trước tiên. Làm rõ ranh giới quyết định trong điều lệ dự án và đàm phán với quản lý chức năng bảo vệ khả năng làm việc hiệu quả của nhóm mà không bỏ qua cấu trúc tổ chức. Chỉ nên leo thang ngay lập tức nếu đàm phán thất bại.",
+    "difficulty": 3,
+    "tags": ["delegation", "authority", "governance", "predictive"]
+  },
+  {
+    "id": "PPL-9011",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "agile",
+    "type": "single",
+    "question": "A team member proposes a novel approach to solving a recurring integration problem that has not been tried before. The project manager is uncertain whether it will work. The approach is low-risk and can be tested within the current sprint. What should the project manager do?",
+    "options": [
+      "Reject the idea until it can be validated by an external consultant",
+      "Approve a standard, proven solution to avoid any risk of failure",
+      "Encourage the team member to test the approach and share learnings with the team",
+      "Add the idea to the backlog for a future sprint after further analysis"
+    ],
+    "correct": [2],
+    "explanation": "Empowering teams includes encouraging innovation and experimentation, especially when the risk is low. The project manager should support the team member's initiative. If the experiment fails, it becomes a learning opportunity. Blocking low-risk innovation stifles creativity and undermines psychological safety.",
+    "explanation_vi": "Trao quyền cho nhóm bao gồm khuyến khích đổi mới và thử nghiệm, đặc biệt khi rủi ro thấp. Người quản lý dự án nên ủng hộ sáng kiến của thành viên nhóm. Nếu thử nghiệm thất bại, nó trở thành cơ hội học hỏi. Chặn đổi mới rủi ro thấp làm cản trở sự sáng tạo và phá hoại sự an toàn tâm lý.",
+    "difficulty": 2,
+    "tags": ["innovation", "experimentation", "empowerment", "agile"]
+  },
+  {
+    "id": "PPL-9012",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "predictive",
+    "type": "single",
+    "question": "The project manager requires every team member to copy him on all emails related to the project, including routine internal communications between developers. The team finds this practice intrusive and distracting. Which principle does this behavior violate?",
+    "options": [
+      "Risk management, because undocumented decisions increase project risk",
+      "Scope management, because team communications may introduce scope changes",
+      "Team autonomy, because excessive monitoring undermines trust and empowerment",
+      "Quality management, because peer reviews should be formally documented"
+    ],
+    "correct": [2],
+    "explanation": "Requiring CC on all communications is a micromanagement behavior that signals distrust and erodes team autonomy. Empowered teams need space to collaborate freely. The project manager should focus on outcomes and milestone communications rather than monitoring every interaction, which undermines trust and engagement.",
+    "explanation_vi": "Yêu cầu CC trên tất cả các liên lạc là hành vi kiểm soát vi mô biểu hiện sự thiếu tin tưởng và làm xói mòn quyền tự chủ của nhóm. Các nhóm được trao quyền cần không gian để cộng tác tự do. Người quản lý dự án nên tập trung vào kết quả và truyền thông cột mốc thay vì giám sát từng tương tác, điều này làm suy yếu sự tin tưởng và gắn kết.",
+    "difficulty": 3,
+    "tags": ["micromanagement", "trust", "autonomy", "empowerment"]
+  },
+  {
+    "id": "PPL-9013",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "hybrid",
+    "type": "single",
+    "question": "In a hybrid project, agile teams are co-located with vendors who follow a predictive contract structure. The project manager wants to empower both groups equally but faces governance constraints requiring formal approvals for vendor deliverables. What is the best approach?",
+    "options": [
+      "Apply the same agile practices to vendor teams and waive formal approval requirements",
+      "Restrict the internal agile team to the same predictive constraints as the vendor to maintain consistency",
+      "Empower the internal team with agile autonomy while maintaining required governance for vendor deliverables, and help vendors contribute within their contractual boundaries",
+      "Separate all work between internal and vendor teams to avoid confusion"
+    ],
+    "correct": [2],
+    "explanation": "In hybrid environments, empowerment must be context-sensitive. Internal agile teams can have self-organizing autonomy, while vendor relationships must respect contractual governance. The project manager enables each group to contribute meaningfully within their appropriate constraints—applying tailored empowerment rather than one-size-fits-all rules.",
+    "explanation_vi": "Trong môi trường lai, việc trao quyền phải phù hợp với từng bối cảnh. Các nhóm agile nội bộ có thể có quyền tự tổ chức, trong khi các mối quan hệ với nhà cung cấp phải tôn trọng quản trị hợp đồng. Người quản lý dự án giúp mỗi nhóm đóng góp có ý nghĩa trong phạm vi ràng buộc phù hợp—áp dụng trao quyền linh hoạt thay vì quy tắc một cỡ cho tất cả.",
+    "difficulty": 4,
+    "tags": ["hybrid", "empowerment", "governance", "vendor-management"]
+  },
+  {
+    "id": "PPL-9014",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A junior team member has been given ownership of a work package for the first time. After one week, her work is progressing well, but she begins asking the project manager for approval on every small decision within her package. What should the project manager do?",
+    "options": [
+      "Take back responsibility for the work package to maintain efficiency",
+      "Approve each decision promptly to keep her on track",
+      "Clarify the boundaries of her authority and coach her to make independent decisions within those boundaries",
+      "Assign a senior mentor to approve all her decisions before she acts"
+    ],
+    "correct": [2],
+    "explanation": "The project manager should clarify the scope of delegated authority and build the team member's confidence to exercise that authority independently. Approving every decision perpetuates dependency; taking back the work undermines development. Coaching toward independence is the empowerment approach.",
+    "explanation_vi": "Người quản lý dự án nên làm rõ phạm vi quyền hạn được ủy quyền và xây dựng sự tự tin của thành viên nhóm để thực hiện quyền hạn đó một cách độc lập. Phê duyệt mọi quyết định duy trì sự phụ thuộc; thu hồi công việc làm suy yếu sự phát triển. Huấn luyện để đạt sự độc lập là cách tiếp cận trao quyền.",
+    "difficulty": 3,
+    "tags": ["delegation", "coaching", "empowerment", "autonomy"]
+  },
+  {
+    "id": "PPL-9015",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "agile",
+    "type": "single",
+    "question": "An agile team completes their retrospective and identifies three process improvements they want to implement in the next sprint. The project manager tells them they cannot change any process without his approval. How does this response affect the team?",
+    "options": [
+      "It ensures process improvements are aligned with organizational standards",
+      "It demonstrates appropriate governance oversight of agile practices",
+      "It undermines team ownership and self-improvement, reducing the effectiveness of retrospectives",
+      "It protects the team from implementing improvements that may reduce velocity"
+    ],
+    "correct": [2],
+    "explanation": "Retrospectives are designed to give the team ownership over their own process. Requiring manager approval for team-internal process changes strips away this ownership and signals that the team is not trusted to manage their work. This disempowers the team and reduces the value of the retrospective practice.",
+    "explanation_vi": "Các buổi hồi cố được thiết kế để trao cho nhóm quyền sở hữu quy trình của chính họ. Yêu cầu phê duyệt quản lý cho các thay đổi quy trình nội bộ nhóm tước đoạt quyền sở hữu này và báo hiệu rằng nhóm không được tin tưởng để quản lý công việc của mình. Điều này tước quyền của nhóm và làm giảm giá trị của thực hành hồi cố.",
+    "difficulty": 3,
+    "tags": ["agile", "retrospective", "self-organization", "empowerment"]
+  },
+  {
+    "id": "PPL-9016",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager is preparing for a key decision on technology architecture. He has an expert architect on the team with direct experience on similar systems. The PM decides to make the architectural decision himself without consulting the architect. What is the likely consequence of this approach?",
+    "options": [
+      "The decision will be faster and less subject to bias from personal preferences",
+      "The project manager demonstrates strong technical leadership and sponsor confidence",
+      "The team's expertise is underutilized, and the architect may become disengaged and feel disempowered",
+      "The project benefits from a single point of accountability for technical decisions"
+    ],
+    "correct": [2],
+    "explanation": "Bypassing a subject matter expert when making decisions within their domain wastes expertise and sends a signal of distrust. The architect is likely to disengage if her knowledge is consistently ignored. Empowering team members means involving them in decisions where they have relevant expertise.",
+    "explanation_vi": "Bỏ qua chuyên gia khi đưa ra quyết định trong lĩnh vực của họ lãng phí chuyên môn và gửi tín hiệu thiếu tin tưởng. Kiến trúc sư có thể mất gắn kết nếu kiến thức của cô ấy liên tục bị bỏ qua. Trao quyền cho thành viên nhóm có nghĩa là đưa họ tham gia vào các quyết định mà họ có chuyên môn liên quan.",
+    "difficulty": 3,
+    "tags": ["empowerment", "expertise", "decision-making", "engagement"]
+  },
+  {
+    "id": "PPL-9017",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "agile",
+    "type": "single",
+    "question": "A cross-functional agile team is trying to resolve a critical production bug. The project manager insists that any solution must first be reviewed and approved by three separate departments before deployment. The team's proposed fix is straightforward and within their technical competence. What should the project manager do?",
+    "options": [
+      "Enforce the three-department review to protect the organization from liability",
+      "Ask the team to document why the review is unnecessary and submit a waiver",
+      "Work to streamline or expedite approvals for clearly routine fixes, empowering the team to deploy within agreed parameters",
+      "Delay the fix until the next sprint to allow time for proper review"
+    ],
+    "correct": [2],
+    "explanation": "A servant leader removes bureaucratic blockers that prevent the team from delivering value. When approval layers are disproportionate to the risk of a fix, the project manager should work to reduce friction—not entrench bureaucracy. Empowering the team means ensuring governance is proportionate and does not prevent effective work.",
+    "explanation_vi": "Lãnh đạo phục vụ loại bỏ các rào cản quan liêu ngăn nhóm cung cấp giá trị. Khi các lớp phê duyệt không tương xứng với rủi ro của bản vá, người quản lý dự án nên làm giảm ma sát—không củng cố thêm quan liêu. Trao quyền cho nhóm có nghĩa là đảm bảo quản trị tương xứng và không ngăn cản công việc hiệu quả.",
+    "difficulty": 4,
+    "tags": ["blocker-removal", "servant-leadership", "agile", "empowerment"]
+  },
+  {
+    "id": "PPL-9018",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "hybrid",
+    "type": "single",
+    "question": "A stakeholder who is a senior executive insists on being included in every design decision, even minor UI details, citing her authority as project sponsor. The design team feels micromanaged and is slowing down. What should the project manager do?",
+    "options": [
+      "Grant the sponsor full access to all design sessions out of respect for her authority",
+      "Exclude the sponsor from all design meetings and communicate only at milestone reviews",
+      "Work with the sponsor to define which decisions require her involvement versus which the team can make independently, documenting this in a decision register",
+      "Ask the design team to speed up their work to compensate for the delays"
+    ],
+    "correct": [2],
+    "explanation": "The project manager should negotiate a clear engagement model with the sponsor that defines decision boundaries. This empowers the design team to work autonomously on routine decisions while preserving the sponsor's involvement in strategic ones. Documenting this in a decision register provides clarity and prevents future conflicts.",
+    "explanation_vi": "Người quản lý dự án nên đàm phán mô hình tham gia rõ ràng với nhà tài trợ xác định ranh giới quyết định. Điều này trao quyền cho nhóm thiết kế làm việc tự chủ trên các quyết định thông thường trong khi bảo tồn sự tham gia của nhà tài trợ trong các quyết định chiến lược. Ghi lại điều này trong sổ đăng ký quyết định cung cấp sự rõ ràng và ngăn ngừa xung đột trong tương lai.",
+    "difficulty": 4,
+    "tags": ["stakeholder-empowerment", "governance", "hybrid", "delegation"]
+  },
+  {
+    "id": "PPL-9019",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager consistently pre-populates meeting agendas with her own conclusions before consulting the team, leaving little room for team input. Team members feel their opinions do not matter and have stopped contributing in meetings. What is the underlying problem?",
+    "options": [
+      "The project manager is effectively managing time by preparing agendas in advance",
+      "The project manager is failing to create an environment where team members feel empowered to contribute",
+      "The team lacks the knowledge to contribute meaningfully to agenda topics",
+      "The project manager is correctly using directive leadership for a predictive project"
+    ],
+    "correct": [1],
+    "explanation": "Empowering team members requires creating an environment where their input is genuinely sought and valued. When the PM arrives at meetings with predetermined outcomes, team participation becomes performative. The PM should involve the team in shaping agendas and decisions, reflecting true collaborative leadership.",
+    "explanation_vi": "Trao quyền cho thành viên nhóm đòi hỏi tạo ra môi trường mà ý kiến đóng góp của họ thực sự được tìm kiếm và trân trọng. Khi PM đến họp với kết quả đã định sẵn, sự tham gia của nhóm trở nên hình thức. PM nên đưa nhóm tham gia vào việc định hình chương trình nghị sự và quyết định, phản ánh lãnh đạo cộng tác thực sự.",
+    "difficulty": 3,
+    "tags": ["empowerment", "team-involvement", "collaboration", "micromanagement"]
+  },
+  {
+    "id": "PPL-9020",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "agile",
+    "type": "single",
+    "question": "During a sprint review, a stakeholder asks the development team a detailed technical question about implementation choices. The project manager interrupts and says he will answer all questions. The team appears uncomfortable. What should the project manager do instead?",
+    "options": [
+      "Continue answering questions to ensure consistency in stakeholder communication",
+      "Allow the team to respond directly and facilitate the conversation without controlling it",
+      "Ask the stakeholder to submit all questions in writing for a formal response",
+      "Delegate a single team spokesperson to handle all stakeholder questions going forward"
+    ],
+    "correct": [1],
+    "explanation": "Sprint reviews are opportunities for the team to showcase their work and engage directly with stakeholders. The project manager should facilitate—not dominate—these conversations. Allowing the team to speak for themselves reinforces their ownership of the work and builds stakeholder confidence in the team directly.",
+    "explanation_vi": "Các buổi xem xét sprint là cơ hội để nhóm trình bày công việc và tương tác trực tiếp với các bên liên quan. Người quản lý dự án nên hỗ trợ—không thống trị—những cuộc trò chuyện này. Cho phép nhóm tự nói thay vì đại diện củng cố quyền sở hữu công việc của họ và xây dựng trực tiếp sự tin tưởng của bên liên quan vào nhóm.",
+    "difficulty": 3,
+    "tags": ["agile", "sprint-review", "empowerment", "team-ownership"]
+  },
+  {
+    "id": "PPL-9021",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager oversees a team of highly skilled specialists working on a complex engineering project. She creates detailed daily task lists for each specialist and checks whether the lists are completed every afternoon. The specialists have over 15 years of experience each. What is the likely impact of this behavior?",
+    "options": [
+      "Improved productivity due to clear daily objectives for each team member",
+      "Reduced risk of scope creep as all activities are tightly controlled",
+      "Decreased motivation and initiative as experienced specialists feel their expertise is not trusted",
+      "Better schedule performance because the project manager can intervene quickly if tasks fall behind"
+    ],
+    "correct": [2],
+    "explanation": "Experienced specialists have intrinsic motivation tied to autonomy and mastery. Assigning daily task lists to experts is classic micromanagement that signals distrust, stifles initiative, and reduces job satisfaction. Empowering them means assigning goals and outcomes, then trusting them to determine the best approach.",
+    "explanation_vi": "Các chuyên gia có kinh nghiệm có động lực nội tại gắn với quyền tự chủ và sự thành thạo. Giao danh sách nhiệm vụ hàng ngày cho các chuyên gia là kiểm soát vi mô điển hình báo hiệu thiếu tin tưởng, kìm hãm sáng kiến và làm giảm sự hài lòng với công việc. Trao quyền cho họ có nghĩa là giao mục tiêu và kết quả, sau đó tin tưởng họ xác định cách tiếp cận tốt nhất.",
+    "difficulty": 3,
+    "tags": ["micromanagement", "trust", "empowerment", "specialist"]
+  },
+  {
+    "id": "PPL-9022",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "agile",
+    "type": "multiple",
+    "question": "An agile coach observes that the project manager is preventing the team from fully self-organizing. Which TWO specific behaviors should the project manager STOP doing to better empower the team?",
+    "options": [
+      "Facilitating retrospectives to help the team identify improvements",
+      "Deciding which team member works on each task in the sprint",
+      "Removing organizational impediments reported in standups",
+      "Requiring team members to justify all technical decisions in writing before proceeding",
+      "Sharing project progress transparently with stakeholders"
+    ],
+    "correct": [1, 3],
+    "explanation": "Assigning tasks to specific team members (instead of letting the team self-organize) and requiring written justification for technical decisions (excessive bureaucracy) are micromanagement behaviors that directly prevent self-organization. Facilitating retrospectives, removing blockers, and communicating transparently are positive servant leadership behaviors that should continue.",
+    "explanation_vi": "Phân công nhiệm vụ cho các thành viên cụ thể (thay vì để nhóm tự tổ chức) và yêu cầu biện hộ bằng văn bản cho các quyết định kỹ thuật (quan liêu quá mức) là các hành vi kiểm soát vi mô trực tiếp ngăn cản sự tự tổ chức. Hỗ trợ hồi cố, loại bỏ trở ngại và truyền thông minh bạch là các hành vi lãnh đạo phục vụ tích cực nên tiếp tục.",
+    "difficulty": 4,
+    "tags": ["micromanagement", "self-organization", "agile", "empowerment"]
+  },
+  {
+    "id": "PPL-9023",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A stakeholder requests access to the project repository to review technical documentation and provide input before the design phase ends. The project manager is concerned about unauthorized changes and denies the request. What is the better course of action?",
+    "options": [
+      "Deny access to all stakeholders to maintain document control integrity",
+      "Provide read-only access or a structured review process that allows meaningful stakeholder input while maintaining document control",
+      "Share printed copies of documents at monthly steering committee meetings instead",
+      "Require the stakeholder to submit all feedback through the project manager's office"
+    ],
+    "correct": [1],
+    "explanation": "Stakeholder empowerment means enabling meaningful contribution, not unrestricted access. Providing read-only access or a structured review mechanism addresses both the need for stakeholder input and the concern about unauthorized changes. The PM should find ways to enable participation, not default to restriction.",
+    "explanation_vi": "Trao quyền cho bên liên quan có nghĩa là cho phép đóng góp có ý nghĩa, không phải quyền truy cập không hạn chế. Cung cấp quyền truy cập chỉ đọc hoặc cơ chế xem xét có cấu trúc giải quyết cả nhu cầu đóng góp của bên liên quan và mối lo ngại về thay đổi trái phép. PM nên tìm cách cho phép tham gia, không phải mặc định hạn chế.",
+    "difficulty": 3,
+    "tags": ["stakeholder-empowerment", "engagement", "governance"]
+  },
+  {
+    "id": "PPL-9024",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "hybrid",
+    "type": "single",
+    "question": "A project manager notices that a team member has found a more efficient solution to a technical problem but hesitated to propose it because the last two suggestions he made were dismissed without discussion. What should the project manager do to address the systemic issue?",
+    "options": [
+      "Remind the team member that proposed solutions must always align with the established project baseline",
+      "Create an anonymous suggestion box so team members can submit ideas without fear of rejection",
+      "Acknowledge past dismissals, create a safe environment where ideas are discussed openly, and actively solicit the team member's input",
+      "Schedule a formal innovation session at the end of the project to collect improvement ideas"
+    ],
+    "correct": [2],
+    "explanation": "When team members stop voicing ideas, it indicates a broken psychological safety environment. The project manager must actively repair this by acknowledging past behavior, inviting contribution, and demonstrating that ideas will be genuinely heard. Systemic disempowerment requires a direct, relationship-level response.",
+    "explanation_vi": "Khi các thành viên nhóm ngừng nêu ý tưởng, điều này cho thấy môi trường an toàn tâm lý bị phá vỡ. Người quản lý dự án phải tích cực sửa chữa điều này bằng cách thừa nhận hành vi trong quá khứ, mời đóng góp và chứng minh rằng các ý tưởng sẽ thực sự được lắng nghe. Tước quyền có tính hệ thống đòi hỏi phản hồi trực tiếp ở cấp độ mối quan hệ.",
+    "difficulty": 4,
+    "tags": ["psychological-safety", "empowerment", "innovation", "trust"]
+  },
+  {
+    "id": "PPL-9025",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "agile",
+    "type": "single",
+    "question": "The agile team decides to refactor a critical module to improve long-term maintainability. They include refactoring stories in the sprint and inform the project manager afterward. The project manager removes the refactoring stories, saying only business-requested features should be in the sprint. What is wrong with this action?",
+    "options": [
+      "Nothing; the project manager is correctly prioritizing business value over technical work",
+      "The project manager is removing technical work that the team owns, undermining their authority over engineering decisions",
+      "The team should have asked the product owner for approval before planning technical work",
+      "Refactoring should be handled in a dedicated technical sprint, not mixed with feature work"
+    ],
+    "correct": [1],
+    "explanation": "Technical decisions—including when and how to refactor—belong to the development team. The project manager does not have the authority to remove technical work items from the sprint. Doing so undermines the team's ownership of engineering quality and violates their autonomy over implementation decisions.",
+    "explanation_vi": "Các quyết định kỹ thuật—bao gồm thời điểm và cách tái cấu trúc—thuộc về nhóm phát triển. Người quản lý dự án không có quyền loại bỏ các mục công việc kỹ thuật khỏi sprint. Làm như vậy làm suy yếu quyền sở hữu của nhóm đối với chất lượng kỹ thuật và vi phạm quyền tự chủ của họ đối với các quyết định triển khai.",
+    "difficulty": 3,
+    "tags": ["agile", "technical-decisions", "empowerment", "team-ownership"]
+  },
+  {
+    "id": "PPL-9026",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager wants to empower her team but is uncertain how much autonomy is appropriate for a team where some members are new to the organization and others are highly experienced. What is the best approach?",
+    "options": [
+      "Apply uniform autonomy levels to all team members to ensure fairness",
+      "Restrict all autonomy until all team members complete onboarding",
+      "Tailor the level of delegation and support to each team member based on their competence and experience, adjusting as they grow",
+      "Allow only experienced members to make decisions and assign newer members as observers"
+    ],
+    "correct": [2],
+    "explanation": "Effective empowerment is situational. Newer team members may need more guidance and oversight while building confidence, while experienced members can handle broader delegation. The PM should apply a situational leadership approach—more directive support for developing members, more autonomous space for experienced ones—and expand autonomy as trust is built.",
+    "explanation_vi": "Trao quyền hiệu quả là tình huống cụ thể. Các thành viên mới hơn có thể cần nhiều hướng dẫn và giám sát hơn trong khi xây dựng sự tự tin, trong khi các thành viên có kinh nghiệm có thể xử lý ủy quyền rộng hơn. PM nên áp dụng cách tiếp cận lãnh đạo tình huống—hỗ trợ trực tiếp hơn cho các thành viên đang phát triển, không gian tự chủ hơn cho những người có kinh nghiệm—và mở rộng quyền tự chủ khi niềm tin được xây dựng.",
+    "difficulty": 3,
+    "tags": ["delegation", "situational-leadership", "empowerment", "team-development"]
+  },
+  {
+    "id": "PPL-9027",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A team member who has been delegated ownership of a deliverable makes an error that sets the work back by three days. The project manager's first reaction is to take back ownership of the deliverable. What is the most effective response according to PMI principles?",
+    "options": [
+      "Take back the deliverable immediately to recover the schedule",
+      "Document the error formally and flag it in the team member's performance review",
+      "Work with the team member to understand what went wrong, provide support, and allow her to correct and complete the work",
+      "Transfer the deliverable to a more experienced team member to prevent further delays"
+    ],
+    "correct": [2],
+    "explanation": "Taking back work after a mistake destroys trust, undermines delegation, and teaches team members that errors result in loss of ownership. The PM should treat the error as a learning opportunity, provide coaching support, and allow the team member to recover—reinforcing accountability and building long-term capability.",
+    "explanation_vi": "Thu hồi công việc sau sai lầm phá hủy niềm tin, làm suy yếu sự ủy quyền và dạy các thành viên nhóm rằng sai lầm dẫn đến mất quyền sở hữu. PM nên coi sai lầm là cơ hội học hỏi, cung cấp hỗ trợ huấn luyện và cho phép thành viên nhóm phục hồi—củng cố trách nhiệm giải trình và xây dựng năng lực lâu dài.",
+    "difficulty": 4,
+    "tags": ["delegation", "trust", "learning", "empowerment"]
+  },
+  {
+    "id": "PPL-9028",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "agile",
+    "type": "single",
+    "question": "An agile team estimates that a feature will take three sprints. The project manager tells them the feature must be delivered in two sprints and instructs the team to adjust their estimates accordingly. The team believes this is not achievable without cutting scope. What should the project manager do?",
+    "options": [
+      "Override the team's estimate because the business deadline is non-negotiable",
+      "Accept the team's estimate and negotiate scope or timeline with stakeholders",
+      "Have the senior developer re-estimate alone without the team's influence",
+      "Split the team to work in parallel and reduce the sprint count"
+    ],
+    "correct": [1],
+    "explanation": "In agile, the team owns the estimates. The project manager cannot impose estimates without undermining the team's integrity and self-organization. The correct approach is to accept the team's assessment and then negotiate with stakeholders about scope, priority, or timeline trade-offs. Empowering the team means trusting their expertise in estimating their own work.",
+    "explanation_vi": "Trong agile, nhóm sở hữu các ước tính. Người quản lý dự án không thể áp đặt ước tính mà không làm suy yếu tính toàn vẹn và tự tổ chức của nhóm. Cách tiếp cận đúng là chấp nhận đánh giá của nhóm và sau đó đàm phán với các bên liên quan về đánh đổi phạm vi, ưu tiên hoặc thời gian. Trao quyền cho nhóm có nghĩa là tin tưởng chuyên môn của họ trong việc ước tính công việc của mình.",
+    "difficulty": 4,
+    "tags": ["agile", "estimation", "empowerment", "team-ownership"]
+  },
+  {
+    "id": "PPL-9029",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "hybrid",
+    "type": "single",
+    "question": "A project manager learns that a key stakeholder has been conducting informal interviews with team members to gather status updates, bypassing the official reporting structure. Rather than seeing this as a threat, what is the most empowering interpretation and response?",
+    "options": [
+      "Warn the stakeholder that all communications must go through the project manager",
+      "Prohibit team members from speaking with stakeholders without prior approval",
+      "Recognize the stakeholder's engagement as a positive sign, formalize their role as a stakeholder advisor, and help facilitate constructive two-way communication",
+      "Document the unauthorized communications in the risk register as a governance breach"
+    ],
+    "correct": [2],
+    "explanation": "An engaged stakeholder who seeks direct team input is an asset. Rather than restricting access, the project manager should channel this engagement constructively—formalizing the stakeholder's role and enabling meaningful contribution. This empowers both the stakeholder and the team while maintaining project coherence.",
+    "explanation_vi": "Một bên liên quan gắn kết tích cực tìm kiếm đóng góp trực tiếp từ nhóm là tài sản. Thay vì hạn chế quyền truy cập, người quản lý dự án nên hướng sự tham gia này một cách xây dựng—chính thức hóa vai trò của bên liên quan và cho phép đóng góp có ý nghĩa. Điều này trao quyền cho cả bên liên quan và nhóm trong khi duy trì sự gắn kết của dự án.",
+    "difficulty": 4,
+    "tags": ["stakeholder-empowerment", "engagement", "hybrid", "governance"]
+  },
+  {
+    "id": "PPL-9030",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager is told by his organization that empowering the team is a priority. However, he is uncomfortable giving up control and believes he should review all outputs before they are delivered to the client. He reviews every email, document, and deliverable, creating a significant bottleneck. What is the core issue?",
+    "options": [
+      "The project manager is demonstrating appropriate quality management oversight",
+      "The project manager has not understood that empowerment requires ceding some control and trusting the team's competence",
+      "The project manager's review process is necessary because the team lacks adequate training",
+      "The organization's requirement to empower the team is unrealistic for a client-facing project"
+    ],
+    "correct": [1],
+    "explanation": "Empowerment inherently requires trusting the team to produce quality work without the PM reviewing every output. The PM's discomfort with delegation is leading to micromanagement that creates bottlenecks, undermines team confidence, and contradicts the empowerment goal. Empowerment means giving the team authority to perform within agreed quality standards.",
+    "explanation_vi": "Trao quyền vốn đòi hỏi tin tưởng nhóm tạo ra công việc chất lượng mà không cần PM xem xét mọi đầu ra. Sự khó chịu của PM với việc ủy quyền dẫn đến kiểm soát vi mô tạo ra nút thắt cổ chai, làm suy yếu sự tự tin của nhóm và mâu thuẫn với mục tiêu trao quyền. Trao quyền có nghĩa là cho nhóm quyền thực hiện trong phạm vi tiêu chuẩn chất lượng đã thỏa thuận.",
+    "difficulty": 3,
+    "tags": ["empowerment", "trust", "micromanagement", "delegation"]
+  },
+  {
+    "id": "PPL-9031",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "agile",
+    "type": "single",
+    "question": "An agile team's velocity has dropped over three sprints. In the retrospective, team members mention they feel they spend most of their time waiting—for environment access, for approvals, and for dependencies from other teams. What is the project manager's primary responsibility here?",
+    "options": [
+      "Analyze the team's velocity trend and revise the project forecast accordingly",
+      "Ask the team to work overtime to compensate for lost velocity",
+      "Identify and systematically remove the organizational impediments preventing the team from working effectively",
+      "Reassign the team to higher-priority stories to focus effort on critical deliverables"
+    ],
+    "correct": [2],
+    "explanation": "When a team's velocity drops due to systemic waiting—environment access, approvals, dependency bottlenecks—the root cause is organizational impediments. The project manager's core servant leadership responsibility is to identify and remove these blockers so the team can work freely. Compensating for lost time does not solve the underlying empowerment failure.",
+    "explanation_vi": "Khi vận tốc của nhóm giảm do chờ đợi có tính hệ thống—quyền truy cập môi trường, phê duyệt, nút thắt cổ chai phụ thuộc—nguyên nhân gốc rễ là các trở ngại tổ chức. Trách nhiệm lãnh đạo phục vụ cốt lõi của người quản lý dự án là xác định và loại bỏ các trở ngại này để nhóm có thể làm việc tự do. Bù đắp cho thời gian đã mất không giải quyết được sự thất bại trao quyền cơ bản.",
+    "difficulty": 3,
+    "tags": ["blocker-removal", "servant-leadership", "agile", "empowerment"]
+  },
+  {
+    "id": "PPL-9032",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager wants to build a culture of accountability on her team. She publicly praises team members when work goes well but assigns personal blame to individuals when problems occur. What is the likely impact of this approach on team empowerment?",
+    "options": [
+      "Team members will take ownership of outcomes because both success and failure are personally attributed",
+      "Team members will become risk-averse and avoid making decisions, fearing blame rather than feeling empowered",
+      "The approach is balanced and will motivate the team through recognition and accountability",
+      "Public praise and private criticism will create a psychologically safe environment"
+    ],
+    "correct": [1],
+    "explanation": "Blame culture destroys psychological safety and empowerment. When team members fear personal blame for failures, they stop taking initiative, avoid decisions, and disengage from ownership. True accountability is built through shared responsibility, learning from failure, and creating conditions where people feel safe to try and fail without fear of punishment.",
+    "explanation_vi": "Văn hóa đổ lỗi phá hủy sự an toàn tâm lý và trao quyền. Khi các thành viên nhóm sợ bị đổ lỗi cá nhân về thất bại, họ ngừng chủ động, tránh quyết định và mất gắn kết với quyền sở hữu. Trách nhiệm giải trình thực sự được xây dựng thông qua trách nhiệm chung, học hỏi từ thất bại và tạo điều kiện để mọi người cảm thấy an toàn khi thử và thất bại mà không sợ bị trừng phạt.",
+    "difficulty": 3,
+    "tags": ["psychological-safety", "empowerment", "accountability", "blame-culture"]
+  },
+  {
+    "id": "PPL-9033",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager has delegated responsibility for vendor coordination to a senior team member. Three weeks later, the project manager learns that the team member has been making vendor commitments that exceed his authorized budget. What should the project manager do?",
+    "options": [
+      "Revoke all of the team member's delegated authority immediately",
+      "Take over all vendor negotiations to prevent further unauthorized commitments",
+      "Meet with the team member to clarify the boundaries of his authority, address the current overcommitments, and reinforce accountability going forward",
+      "Document the unauthorized commitments and submit a change request to adjust the budget"
+    ],
+    "correct": [2],
+    "explanation": "When delegation goes wrong, the response should be proportionate and constructive. The PM should clarify authority boundaries, address the specific problem, and reinforce accountability—not revoke all delegation. Revoking everything teaches that delegation is punished when problems arise, which discourages future initiative.",
+    "explanation_vi": "Khi ủy quyền gặp vấn đề, phản hồi nên tương xứng và mang tính xây dựng. PM nên làm rõ ranh giới quyền hạn, giải quyết vấn đề cụ thể và củng cố trách nhiệm giải trình—không thu hồi toàn bộ ủy quyền. Thu hồi tất cả mọi thứ dạy rằng ủy quyền bị trừng phạt khi phát sinh vấn đề, điều này làm nản lòng sáng kiến trong tương lai.",
+    "difficulty": 4,
+    "tags": ["delegation", "accountability", "authority-boundaries", "empowerment"]
+  },
+  {
+    "id": "PPL-9034",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "hybrid",
+    "type": "multiple",
+    "question": "A project manager wants to ensure team members feel genuinely empowered in a hybrid project environment. Which TWO approaches best reflect PMI's empowerment principles?",
+    "options": [
+      "Give team members ownership over planning the work within their area of expertise",
+      "Require weekly written justification reports from each team member explaining their work decisions",
+      "Create an environment where team members can raise concerns without fear of retaliation",
+      "Conduct bi-weekly one-on-one reviews to check that all decisions were made correctly",
+      "Personally respond to all escalations from stakeholders on behalf of the team"
+    ],
+    "correct": [0, 2],
+    "explanation": "Giving team members planning ownership leverages their expertise and builds commitment. Creating a psychologically safe environment where concerns can be raised freely is fundamental to empowerment. The other options are forms of control or micromanagement that undermine autonomy and trust.",
+    "explanation_vi": "Trao quyền sở hữu lập kế hoạch cho các thành viên nhóm tận dụng chuyên môn của họ và xây dựng cam kết. Tạo môi trường an toàn tâm lý nơi các lo ngại có thể được nêu ra tự do là nền tảng của trao quyền. Các tùy chọn khác là các hình thức kiểm soát hoặc kiểm soát vi mô làm suy yếu quyền tự chủ và niềm tin.",
+    "difficulty": 4,
+    "tags": ["empowerment", "hybrid", "psychological-safety", "team-ownership"]
+  },
+  {
+    "id": "PPL-9035",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager has successfully built a highly empowered team. A new executive sponsor joins mid-project and demands that all strategic decisions must now route through him before the team can act, citing his role as final authority. The project manager is concerned this will reverse team empowerment gains. What is the best approach?",
+    "options": [
+      "Comply immediately with all sponsor demands out of respect for his authority",
+      "Inform the team to ignore the sponsor's directive and continue operating as before",
+      "Meet with the sponsor to explain the current governance model, share evidence of team performance under the empowerment approach, and negotiate a collaboration model that preserves team autonomy for operational decisions",
+      "Escalate the sponsor's behavior to the PMO as a threat to project governance"
+    ],
+    "correct": [2],
+    "explanation": "The project manager must protect the team's empowerment environment while respecting legitimate sponsor authority. The best approach is to educate the sponsor on the benefits of the current model with performance evidence and negotiate a boundary that preserves team autonomy for day-to-day operational decisions while giving the sponsor appropriate involvement in strategic ones. Collaboration and data beat either submission or defiance.",
+    "explanation_vi": "Người quản lý dự án phải bảo vệ môi trường trao quyền của nhóm trong khi tôn trọng quyền hạn hợp pháp của nhà tài trợ. Cách tiếp cận tốt nhất là giáo dục nhà tài trợ về lợi ích của mô hình hiện tại với bằng chứng hiệu suất và đàm phán ranh giới bảo tồn quyền tự chủ của nhóm cho các quyết định hoạt động hàng ngày trong khi cho nhà tài trợ sự tham gia phù hợp trong các quyết định chiến lược. Sự hợp tác và dữ liệu đánh bại cả sự phục tùng lẫn sự chống đối.",
+    "difficulty": 5,
+    "tags": ["empowerment", "stakeholder-management", "governance", "negotiation"]
+  }
+]

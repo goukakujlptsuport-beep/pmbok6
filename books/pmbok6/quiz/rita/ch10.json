@@ -1,0 +1,248 @@
+{
+  "chapterId": "rita_10",
+  "chapterNum": 10,
+  "chapterTitle": "Quality of Deliverables and Products",
+  "source": "rita",
+  "questions": [
+    {
+      "id": "r10_q01",
+      "q": "A project manager is explaining quality to a new team member. Which statement BEST defines quality in project management?",
+      "opts": {
+        "A": "Delivering the most features possible within budget",
+        "B": "Conformance to requirements and fitness for use",
+        "C": "Meeting or exceeding the sponsor's personal expectations",
+        "D": "Achieving the highest grade product available"
+      },
+      "ans": "B",
+      "exp": "Chất lượng trong quản lý dự án được định nghĩa là sự tuân thủ các yêu cầu (conformance to requirements) VÀ phù hợp với mục đích sử dụng (fitness for use). Đây là định nghĩa chuẩn theo PMBOK và Rita. Không phải về nhiều tính năng nhất hay kỳ vọng cá nhân."
+    },
+    {
+      "id": "r10_q02",
+      "q": "A customer requests a low-grade software product with minimal features because they only need basic functionality. The product is delivered exactly as specified with no defects. Which statement is MOST accurate?",
+      "opts": {
+        "A": "The project has a quality problem because the grade is low",
+        "B": "The project has both a quality and grade problem",
+        "C": "Low grade is acceptable because the customer agreed; quality is acceptable because it meets requirements",
+        "D": "The PM should have recommended a higher-grade product regardless of the customer's request"
+      },
+      "ans": "C",
+      "exp": "Cần phân biệt grade (cấp độ) và quality (chất lượng). Grade thấp là hoàn toàn chấp nhận được nếu khách hàng đồng ý và biết rõ. Quality thấp KHÔNG bao giờ chấp nhận được. Vì sản phẩm không có lỗi và đáp ứng đúng yêu cầu, nên chất lượng tốt. Grade thấp là lựa chọn của khách hàng, không phải vấn đề."
+    },
+    {
+      "id": "r10_q03",
+      "q": "A project manager finds that 15% of the team's work hours are spent fixing defects found during testing. According to quality management principles, what is the BEST long-term solution?",
+      "opts": {
+        "A": "Hire more testers to find defects faster",
+        "B": "Invest more in prevention activities to build quality into the process",
+        "C": "Accept the 15% rework rate as a normal cost of doing business",
+        "D": "Reduce the testing phase to save time"
+      },
+      "ans": "B",
+      "exp": "Triết lý quản lý chất lượng nhấn mạnh phòng ngừa (prevention) hơn là kiểm tra (inspection). 'Xây dựng chất lượng vào quy trình' (build quality in) tiết kiệm chi phí hơn về lâu dài so với việc tìm và sửa lỗi sau khi đã tạo ra. Prevention costs thấp hơn nhiều so với failure costs."
+    },
+    {
+      "id": "r10_q04",
+      "q": "During project planning, the team identifies the following costs: training ($5,000), testing equipment ($8,000), rework from customer complaints ($12,000), and re-inspection after failures ($4,000). What is the total Cost of Non-Conformance?",
+      "opts": {
+        "A": "$29,000",
+        "B": "$13,000",
+        "C": "$16,000",
+        "D": "$17,000"
+      },
+      "ans": "C",
+      "exp": "Chi phí không tuân thủ (Cost of Non-Conformance) bao gồm: Internal failure costs (rework, scrap) và External failure costs (warranty, complaints, liability). Trong bài: rework từ khiếu nại khách hàng ($12,000 - external failure) + tái kiểm tra sau thất bại ($4,000 - internal failure) = $16,000. Training ($5,000) và testing equipment ($8,000) là chi phí tuân thủ (conformance costs)."
+    },
+    {
+      "id": "r10_q05",
+      "q": "A quality manager is reviewing Cost of Quality. Which of the following is an example of an Appraisal Cost?",
+      "opts": {
+        "A": "Training the development team on coding standards",
+        "B": "Re-doing work because the original did not meet specifications",
+        "C": "Inspecting completed deliverables before delivery to the customer",
+        "D": "Handling warranty claims from customers"
+      },
+      "ans": "C",
+      "exp": "Chi phí thẩm định (Appraisal costs) là chi phí để phát hiện lỗi - bao gồm kiểm tra, thử nghiệm, đánh giá chất lượng. Kiểm tra sản phẩm trước khi bàn giao là ví dụ điển hình. Training là Prevention cost; rework là Internal failure cost; warranty claims là External failure cost."
+    },
+    {
+      "id": "r10_q06",
+      "q": "The project manager is creating the Quality Management Plan. Which element should be included in this plan?",
+      "opts": {
+        "A": "The names of all stakeholders and their contact information",
+        "B": "Quality metrics, quality goals, and roles and responsibilities for quality activities",
+        "C": "The project budget breakdown by work package",
+        "D": "The risk register with all identified risks"
+      },
+      "ans": "B",
+      "exp": "Kế hoạch quản lý chất lượng (Quality Management Plan) mô tả: các chỉ số chất lượng (quality metrics), mục tiêu chất lượng, quy trình đảm bảo chất lượng, công cụ kiểm soát chất lượng, vai trò và trách nhiệm. Thông tin liên lạc stakeholder thuộc Communications Management Plan; ngân sách thuộc Cost Management Plan; rủi ro thuộc Risk Management Plan."
+    },
+    {
+      "id": "r10_q07",
+      "q": "A project team defines a quality metric as: 'The application shall have high performance.' Which statement about this metric is MOST accurate?",
+      "opts": {
+        "A": "This is a good metric because it focuses on performance",
+        "B": "This is a poor metric because it is not measurable or specific",
+        "C": "This metric should be included in the scope statement, not the quality plan",
+        "D": "This is acceptable as a qualitative metric for agile projects"
+      },
+      "ans": "B",
+      "exp": "Chỉ số chất lượng (quality metrics) phải có thể đo lường được (measurable) và cụ thể (specific). 'Hiệu năng cao' là mơ hồ, không thể đo lường. Một metric tốt ví dụ: 'Thời gian tải trang < 2 giây trong 95% các yêu cầu'. Metrics không rõ ràng sẽ không thể kiểm tra xem sản phẩm có đáp ứng yêu cầu hay không."
+    },
+    {
+      "id": "r10_q08",
+      "q": "During project execution, the quality team conducts a structured review to determine whether project quality processes are being followed and are effective. This is BEST described as:",
+      "opts": {
+        "A": "Control Quality",
+        "B": "Quality Audit",
+        "C": "Validate Scope",
+        "D": "Inspection"
+      },
+      "ans": "B",
+      "exp": "Kiểm toán chất lượng (Quality Audit) là đánh giá có cấu trúc về các quy trình chất lượng - xem có đang được tuân thủ và hiệu quả không. Đây là hoạt động trong Manage Quality (trước đây gọi là Perform Quality Assurance). Control Quality kiểm tra sản phẩm/kết quả cụ thể; Validate Scope là khách hàng chấp nhận; Inspection là kiểm tra vật lý."
+    },
+    {
+      "id": "r10_q09",
+      "q": "A control chart shows that 8 consecutive data points all fall on the same side of the mean, although all points are within the control limits. What action should the project manager take?",
+      "opts": {
+        "A": "No action needed since all points are within control limits",
+        "B": "Investigate the process because the 7-run rule indicates a special cause variation",
+        "C": "Expand the control limits to accommodate the pattern",
+        "D": "Remove the outlier data points and recalculate the mean"
+      },
+      "ans": "B",
+      "exp": "Quy tắc 7 điểm liên tiếp (7-run rule): nếu 7 điểm liên tiếp nằm cùng một phía của đường trung bình, hoặc đang tăng/giảm liên tiếp 7 lần, đây là nguyên nhân đặc biệt (special cause variation) và cần điều tra - dù các điểm vẫn trong giới hạn kiểm soát. Bài này có 8 điểm liên tiếp cùng phía - vi phạm quy tắc 7 điểm, cần hành động."
+    },
+    {
+      "id": "r10_q10",
+      "q": "A project manager reviews defect data and finds that 3 types of defects account for 78% of all problems. The PM decides to focus improvement efforts on these 3 types. Which quality tool is the PM applying?",
+      "opts": {
+        "A": "Fishbone diagram",
+        "B": "Control chart",
+        "C": "Pareto chart and the 80/20 principle",
+        "D": "Scatter diagram"
+      },
+      "ans": "C",
+      "exp": "Biểu đồ Pareto áp dụng quy tắc 80/20 (Pareto Principle): 80% vấn đề thường đến từ 20% nguyên nhân. Biểu đồ Pareto là biểu đồ cột được xếp hạng theo tần suất từ cao đến thấp, giúp PM tập trung vào những nguyên nhân gây ra vấn đề nhiều nhất. Đây là công cụ ưu tiên hóa (prioritization) trong kiểm soát chất lượng."
+    },
+    {
+      "id": "r10_q11",
+      "q": "The team is experiencing frequent production failures. The PM wants to identify the root cause systematically. Which tool should the PM use FIRST?",
+      "opts": {
+        "A": "Histogram",
+        "B": "Scatter diagram",
+        "C": "Fishbone (Ishikawa) diagram",
+        "D": "Run chart"
+      },
+      "ans": "C",
+      "exp": "Biểu đồ xương cá (Fishbone/Ishikawa diagram) là công cụ phân tích nguyên nhân gốc rễ (root cause analysis). Nó tổ chức các nguyên nhân tiềm năng theo 6M: Man (con người), Machine (máy móc), Method (phương pháp), Material (vật liệu), Measurement (đo lường), Mother Nature (môi trường). Đây là công cụ đầu tiên nên dùng khi cần tìm nguyên nhân gốc của vấn đề."
+    },
+    {
+      "id": "r10_q12",
+      "q": "A quality analyst wants to determine whether there is a relationship between the number of hours of developer training and the number of defects produced. Which quality tool is MOST appropriate?",
+      "opts": {
+        "A": "Pareto chart",
+        "B": "Scatter diagram",
+        "C": "Control chart",
+        "D": "Fishbone diagram"
+      },
+      "ans": "B",
+      "exp": "Biểu đồ phân tán (Scatter diagram) được sử dụng để xác định mối tương quan giữa hai biến số. Nếu có mối tương quan, khi tăng số giờ đào tạo thì số lỗi giảm (tương quan âm), hoặc ngược lại. Đây là công cụ phù hợp nhất để phân tích mối quan hệ giữa hai biến định lượng."
+    },
+    {
+      "id": "r10_q13",
+      "q": "The team has completed a set of deliverables. The quality team verified that all deliverables meet the technical specifications. The next step should be:",
+      "opts": {
+        "A": "Close the project",
+        "B": "Conduct Validate Scope to get formal customer acceptance",
+        "C": "Update the quality management plan",
+        "D": "Perform another round of Control Quality"
+      },
+      "ans": "B",
+      "exp": "Trình tự đúng là: Control Quality (kiểm tra sản phẩm đáp ứng thông số kỹ thuật) TRƯỚC, sau đó Validate Scope (khách hàng chấp nhận chính thức). Khi Control Quality đã xác nhận sản phẩm đúng spec, bước tiếp theo là Validate Scope để nhận được sự chấp thuận chính thức từ khách hàng/sponsor."
+    },
+    {
+      "id": "r10_q14",
+      "q": "A development team practicing agile decides to define exactly what 'done' means for each user story BEFORE writing any code. This practice is BEST described as:",
+      "opts": {
+        "A": "Gold plating",
+        "B": "Acceptance Test-Driven Development (ATDD)",
+        "C": "Quality auditing",
+        "D": "Statistical sampling"
+      },
+      "ans": "B",
+      "exp": "Phát triển hướng kiểm thử chấp nhận (ATDD - Acceptance Test-Driven Development) là thực hành định nghĩa tiêu chí chấp nhận TRƯỚC khi viết code. Team đồng ý về 'definition of done' trước, sau đó viết code để đáp ứng các tiêu chí đó. Đây là cách xây dựng chất lượng vào từ đầu trong môi trường agile."
+    },
+    {
+      "id": "r10_q15",
+      "q": "A project manager adds several extra features to the software deliverable that were not requested by the customer, believing they will be pleased with the additions. This is MOST likely an example of:",
+      "opts": {
+        "A": "Proactive quality management",
+        "B": "Continuous improvement",
+        "C": "Gold plating, which is a quality concern",
+        "D": "Scope validation"
+      },
+      "ans": "C",
+      "exp": "Gold plating là việc thêm các tính năng, tính năng hoặc chức năng không được yêu cầu vào sản phẩm. Đây là vấn đề chất lượng vì: làm tốn thêm tài nguyên, có thể gây ra lỗi mới, không đáp ứng yêu cầu thực tế, và có thể gây ra scope creep. PM không nên gold plate - nên thực hiện đúng những gì đã được phê duyệt."
+    },
+    {
+      "id": "r10_q16",
+      "q": "An organization wants to continuously improve its processes by eliminating waste and focusing on value-adding activities. Which quality improvement approach is MOST aligned with this goal?",
+      "opts": {
+        "A": "Six Sigma DMAIC",
+        "B": "Lean waste elimination",
+        "C": "ISO 9001 certification",
+        "D": "Statistical process control"
+      },
+      "ans": "B",
+      "exp": "Lean tập trung vào việc loại bỏ lãng phí (waste elimination) và tối đa hóa giá trị cho khách hàng. Lean xác định 7 loại lãng phí (transportation, inventory, motion, waiting, overproduction, overprocessing, defects). Six Sigma DMAIC tập trung vào giảm biến thiên và defects; ISO 9001 là tiêu chuẩn hệ thống quản lý; Statistical process control là công cụ kiểm soát."
+    },
+    {
+      "id": "r10_q17",
+      "q": "During an agile sprint, the team discovers a defect in a previously completed feature. According to agile quality principles, what is the BEST response?",
+      "opts": {
+        "A": "Log it in the defect tracking system and address it in a future sprint",
+        "B": "Fix it immediately to maintain the integrity of the working software",
+        "C": "Escalate to the project manager for a decision",
+        "D": "Update the risk register and continue with the current sprint"
+      },
+      "ans": "B",
+      "exp": "Trong agile, chất lượng được xây dựng vào trong quy trình (built-in quality). Lỗi nên được sửa ngay lập tức thay vì để tích lũy nợ kỹ thuật (technical debt). Agile nhấn mạnh kiểm thử liên tục và sửa lỗi ngay - 'stop and fix' thay vì tiếp tục và xử lý sau. Việc trì hoãn sửa lỗi làm tăng chi phí theo cấp số nhân."
+    },
+    {
+      "id": "r10_q18",
+      "q": "A project manager wants to use statistical sampling for quality control. The team produces 500 components per day. Rather than inspecting all 500, they inspect a random sample of 50. What is the PRIMARY advantage of this approach?",
+      "opts": {
+        "A": "It guarantees zero defects will reach the customer",
+        "B": "It reduces the cost and time of inspection while providing statistically valid quality data",
+        "C": "It eliminates the need for a quality management plan",
+        "D": "It replaces the need for control charts"
+      },
+      "ans": "B",
+      "exp": "Lấy mẫu thống kê (Statistical sampling) cho phép kiểm tra một phần đại diện của tổng thể để suy luận về chất lượng toàn bộ lô hàng. Ưu điểm chính: tiết kiệm chi phí và thời gian so với kiểm tra 100%, trong khi vẫn cung cấp dữ liệu chất lượng có giá trị thống kê. Đặc biệt hữu ích khi kiểm tra toàn bộ là không thực tế hoặc quá tốn kém."
+    },
+    {
+      "id": "r10_q19",
+      "q": "A histogram is created from quality inspection data. The histogram shows that most defects cluster around a specific value range. This information is MOST useful for:",
+      "opts": {
+        "A": "Determining the relationship between two quality variables",
+        "B": "Understanding the frequency distribution of defects and identifying the most common defect type/range",
+        "C": "Tracking whether the process is in statistical control over time",
+        "D": "Finding the root cause of a specific defect"
+      },
+      "ans": "B",
+      "exp": "Biểu đồ tần suất (Histogram) hiển thị phân phối tần suất của dữ liệu - cho thấy dữ liệu tập trung ở đâu và phân tán như thế nào. Nó giúp hiểu được kiểu phân phối của lỗi và xác định phạm vi xảy ra lỗi nhiều nhất. Scatter diagram dùng cho tương quan hai biến; Control chart dùng theo thời gian; Fishbone dùng cho nguyên nhân gốc."
+    },
+    {
+      "id": "r10_q20",
+      "q": "A project manager is reviewing a process flowchart as part of quality management. Which is the PRIMARY benefit of using flowcharts in quality management?",
+      "opts": {
+        "A": "They show the statistical distribution of defects",
+        "B": "They help identify where quality problems might occur by visualizing the process flow and decision points",
+        "C": "They track quality metrics over time",
+        "D": "They show the correlation between process variables"
+      },
+      "ans": "B",
+      "exp": "Lưu đồ quy trình (Flowchart) trong quản lý chất lượng giúp visualize toàn bộ quy trình, bao gồm các bước, điểm quyết định và luồng công việc. Lợi ích chính: giúp xác định các điểm tiềm ẩn có thể xảy ra vấn đề chất lượng (where things can go wrong), tìm ra các bước không cần thiết, và cải thiện quy trình. Đây là công cụ phân tích quy trình, không phải thống kê."
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "chapterId": "rita_06",
+  "chapterNum": 6,
+  "chapterTitle": "Build and Support Team Performance",
+  "source": "rita",
+  "questions": [
+    {
+      "id": "r06_q01",
+      "q": "A project manager is creating the resource management plan. Which of the following should be included as a key component of this plan?",
+      "opts": {
+        "A": "Cost performance index and earned value data",
+        "B": "Roles and responsibilities, organizational charts, and the staffing management plan",
+        "C": "Risk register and stakeholder engagement plan",
+        "D": "Change control procedures and quality metrics"
+      },
+      "ans": "B",
+      "exp": "Kế hoạch quản lý nguồn lực phải bao gồm: vai trò và trách nhiệm, sơ đồ tổ chức, và kế hoạch nhân sự (bao gồm thu mua, lịch biểu nhân sự, tiêu chí giải phóng nhân lực). Các yếu tố khác như chỉ số chi phí, rủi ro hay kiểm soát thay đổi không thuộc phạm vi của kế hoạch này."
+    },
+    {
+      "id": "r06_q02",
+      "q": "On a RACI chart, the project manager assigns 'A' to the business analyst for the requirements documentation work package. What does this designation mean?",
+      "opts": {
+        "A": "The business analyst is the person who physically performs the work",
+        "B": "The business analyst must be kept informed of progress but does not actively participate",
+        "C": "The business analyst owns the outcome and is ultimately answerable for the work package",
+        "D": "The business analyst provides expert input before decisions are made"
+      },
+      "ans": "C",
+      "exp": "Trong biểu đồ RACI, chữ 'A' (Accountable) nghĩa là người đó chịu trách nhiệm giải trình và sở hữu kết quả cuối cùng của gói công việc. Chỉ có MỘT người mang vai trò 'A' cho mỗi nhiệm vụ. 'R' = Responsible (người thực hiện), 'C' = Consulted (được hỏi ý kiến), 'I' = Informed (được thông báo)."
+    },
+    {
+      "id": "r06_q03",
+      "q": "A newly formed project team is experiencing conflicts about meeting norms, decision-making processes, and communication expectations. What document should the project manager create with the team to address these issues?",
+      "opts": {
+        "A": "Project charter",
+        "B": "Team charter",
+        "C": "Communications management plan",
+        "D": "Responsibility assignment matrix"
+      },
+      "ans": "B",
+      "exp": "Team charter (điều lệ nhóm) được tạo ra để thiết lập các chuẩn mực, giá trị và thỏa thuận làm việc của nhóm. Tài liệu này giúp giải quyết các mâu thuẫn về cách thức làm việc cùng nhau, quy trình ra quyết định và kỳ vọng giao tiếp — đây là công cụ quan trọng trong giai đoạn hình thành nhóm (Forming)."
+    },
+    {
+      "id": "r06_q04",
+      "q": "A project manager needs a specific software developer for her project, but that developer is already committed to another project in the organization. After consulting with the functional manager, the developer is formally allocated to the project before it begins. This is an example of which resource acquisition method?",
+      "opts": {
+        "A": "Negotiation",
+        "B": "Acquisition from outside the organization",
+        "C": "Pre-assignment",
+        "D": "Virtual team formation"
+      },
+      "ans": "C",
+      "exp": "Pre-assignment (phân công trước) xảy ra khi các thành viên nhóm được xác định và phân bổ vào dự án trước khi dự án bắt đầu. Điều này khác với negotiation (đàm phán với các bộ phận chức năng) và acquisition (thuê từ bên ngoài). Trong trường hợp này, nhà phát triển đã được phân bổ chính thức trước khi dự án khởi động."
+    },
+    {
+      "id": "r06_q05",
+      "q": "A project manager is managing a complex project with team members located in five different countries across three time zones. She decides to co-locate the core team in a shared physical space for the first two months to accelerate team development. This approach is best described as:",
+      "opts": {
+        "A": "Matrix organization structure",
+        "B": "Tight matrix or war room strategy",
+        "C": "Resource leveling technique",
+        "D": "Virtual team with asynchronous communication"
+      },
+      "ans": "B",
+      "exp": "Tight matrix (còn gọi là war room) là chiến lược đặt các thành viên nhóm dự án vào cùng một không gian làm việc vật lý để cải thiện giao tiếp và thúc đẩy sự gắn kết nhóm. Đây là ví dụ điển hình của co-location — một kỹ thuật phát triển nhóm hiệu quả, đặc biệt hữu ích trong giai đoạn đầu của dự án."
+    },
+    {
+      "id": "r06_q06",
+      "q": "Which of the following is a significant challenge unique to managing virtual teams that co-located teams generally do not face?",
+      "opts": {
+        "A": "Uneven skill distribution among team members",
+        "B": "Difficulty in building trust and team cohesion across distances and cultural differences",
+        "C": "Managing multiple stakeholder expectations",
+        "D": "Controlling scope creep"
+      },
+      "ans": "B",
+      "exp": "Nhóm ảo (virtual teams) phải đối mặt với thách thức đặc thù là xây dựng lòng tin và sự gắn kết giữa các thành viên khi không có sự tương tác trực tiếp. Sự khác biệt về múi giờ, văn hóa và ngôn ngữ làm phức tạp thêm việc giao tiếp phi ngôn ngữ. Những thách thức này ít xuất hiện hơn nhiều trong nhóm làm việc tại cùng một địa điểm."
+    },
+    {
+      "id": "r06_q07",
+      "q": "A project manager wants to improve team cohesion and overall performance. She organizes a team lunch, arranges a problem-solving workshop, and schedules regular team retrospectives. These activities best represent which aspect of team development?",
+      "opts": {
+        "A": "Performance appraisals",
+        "B": "Team building activities",
+        "C": "Resource histogram analysis",
+        "D": "Conflict resolution"
+      },
+      "ans": "B",
+      "exp": "Các hoạt động xây dựng nhóm (team building activities) như buổi ăn trưa chung, hội thảo giải quyết vấn đề và buổi hồi cố (retrospectives) đều nhằm mục đích phát triển nhóm — cải thiện sự gắn kết, tăng cường tin tưởng và nâng cao hiệu suất nhóm. Đây là một phần quan trọng trong quy trình 'Develop Team' của PMBOK."
+    },
+    {
+      "id": "r06_q08",
+      "q": "In a matrix organization, a team member performs poorly on a deliverable. The project manager discusses the performance issue directly with the team member and documents the concerns. Who is typically responsible for conducting the formal performance appraisal in this structure?",
+      "opts": {
+        "A": "The project manager alone, since the team member works on the project",
+        "B": "The functional manager, with input provided by the project manager",
+        "C": "The PMO director",
+        "D": "The project sponsor"
+      },
+      "ans": "B",
+      "exp": "Trong tổ chức ma trận, người quản lý chức năng (functional manager) thường thực hiện đánh giá hiệu suất chính thức vì họ quản lý sự nghiệp và việc làm lâu dài của nhân viên. Tuy nhiên, project manager cung cấp thông tin đầu vào quan trọng dựa trên hiệu suất thực tế của nhân viên trong dự án. Đây là đặc điểm quan trọng của cơ cấu ma trận."
+    },
+    {
+      "id": "r06_q09",
+      "q": "A project manager notices the team consistently misses daily stand-up meetings, frequently interrupts each other during discussions, and ignores agreed-upon coding standards. What should the project manager do FIRST?",
+      "opts": {
+        "A": "Escalate the issues to the project sponsor",
+        "B": "Individually discipline team members who violate norms",
+        "C": "Revisit and reinforce the ground rules established in the team charter",
+        "D": "Replace non-compliant team members"
+      },
+      "ans": "C",
+      "exp": "Khi nhóm vi phạm các chuẩn mực đã thỏa thuận, bước đầu tiên là xem lại và củng cố các quy tắc nền tảng (ground rules) đã được thiết lập trong team charter. PM phải nhắc nhở nhóm về các cam kết của họ và đảm bảo tuân thủ. Việc leo thang hay kỷ luật ngay lập tức là quá cực đoan khi chưa thử biện pháp nhắc nhở trước."
+    },
+    {
+      "id": "r06_q10",
+      "q": "A project manager is tracking team performance and wants to identify which KPIs are most relevant for evaluating team effectiveness. Which of the following sets of metrics is MOST appropriate?",
+      "opts": {
+        "A": "Net Present Value, IRR, and payback period",
+        "B": "Defect rates, schedule variance, team satisfaction scores, and velocity",
+        "C": "Stakeholder engagement index and risk probability scores",
+        "D": "Cost of quality and procurement KPIs"
+      },
+      "ans": "B",
+      "exp": "KPI hiệu suất nhóm bao gồm: tỷ lệ lỗi (chất lượng công việc), phương sai lịch trình (tiến độ), điểm hài lòng của nhóm (sức khỏe nhóm), và velocity (trong dự án Agile - khả năng hoàn thành công việc). Các chỉ số tài chính như NPV hay IRR là KPI của dự án, không phải của nhóm."
+    },
+    {
+      "id": "r06_q11",
+      "q": "In an agile project, team members are blocked from completing their sprint tasks due to an unresolved dependency on an external system that is outside the team's control. What is the project manager's primary responsibility in this situation?",
+      "opts": {
+        "A": "Remove the blocked stories from the sprint and add them to the next sprint",
+        "B": "Identify the impediment and work to remove it so the team can continue",
+        "C": "Ask the product owner to reprioritize the backlog",
+        "D": "Document the issue in the risk register and wait for it to be resolved naturally"
+      },
+      "ans": "B",
+      "exp": "Trong Agile, một trong những trách nhiệm chính của Project Manager (hoặc Scrum Master) là loại bỏ các trở ngại (impediment removal) để nhóm có thể tiếp tục làm việc. PM phải chủ động giải quyết sự phụ thuộc bên ngoài, không thụ động chờ đợi. Đây là sự khác biệt cốt lõi giữa vai trò PM trong Agile so với phương pháp truyền thống."
+    },
+    {
+      "id": "r06_q12",
+      "q": "A project manager needs to visualize the number of resources required across different time periods to identify potential over-allocation and under-utilization. Which tool is MOST appropriate?",
+      "opts": {
+        "A": "RACI matrix",
+        "B": "Resource histogram",
+        "C": "Probability and impact matrix",
+        "D": "Earned value chart"
+      },
+      "ans": "B",
+      "exp": "Resource histogram (biểu đồ thanh tài nguyên) hiển thị số lượng nguồn lực cần thiết theo từng khoảng thời gian, giúp PM nhận diện tình trạng phân bổ quá mức (over-allocation) hoặc thiếu sử dụng (under-utilization). Đây là công cụ trực quan hóa quan trọng trong quản lý nguồn lực dự án."
+    },
+    {
+      "id": "r06_q13",
+      "q": "A project is nearing completion, and several key team members are no longer needed. The project manager plans to release these resources. What should she do to ensure a smooth transition?",
+      "opts": {
+        "A": "Release team members immediately once their tasks are complete to reduce project costs",
+        "B": "Plan the release of team members in advance, ensuring transition plans are in place and knowledge is transferred",
+        "C": "Wait until the project is fully closed before releasing any team members",
+        "D": "Allow team members to self-assign to other projects without formal release procedures"
+      },
+      "ans": "B",
+      "exp": "Kế hoạch giải phóng nguồn lực cần được chuẩn bị trước, bao gồm: thời điểm giải phóng, kế hoạch chuyển giao kiến thức, và kế hoạch chuyển tiếp cho các thành viên sang dự án hoặc phòng ban khác. Việc giải phóng đột ngột không có kế hoạch có thể gây ra mất mát kiến thức quan trọng và ảnh hưởng đến nhân viên."
+    },
+    {
+      "id": "r06_q14",
+      "q": "A project manager is designing a recognition and reward system for her project team. Team member interviews reveal that some members are motivated by public recognition while others prefer private acknowledgment. What is the BEST approach?",
+      "opts": {
+        "A": "Use a standardized reward system that applies equally to all team members",
+        "B": "Reward only the highest performers to motivate the rest of the team",
+        "C": "Tailor rewards to individual preferences to maximize motivational impact",
+        "D": "Eliminate the reward system to avoid favoritism"
+      },
+      "ans": "C",
+      "exp": "Hệ thống khen thưởng hiệu quả nhất phải được điều chỉnh theo sở thích cá nhân của từng thành viên. Phần thưởng có giá trị với người này có thể không có ý nghĩa với người khác. PM giỏi nhận ra rằng động lực là cá nhân hóa — việc tìm hiểu điều gì thực sự có ý nghĩa với từng người và áp dụng phù hợp sẽ tạo ra tác động tích cực nhất."
+    },
+    {
+      "id": "r06_q15",
+      "q": "During project execution, a project manager observes that two senior team members have an ongoing conflict about the technical approach for a critical module. The disagreement has lasted two weeks and is beginning to affect team morale and productivity. What should the project manager do?",
+      "opts": {
+        "A": "Let the team resolve it on their own as it is a technical matter",
+        "B": "Choose one approach and instruct the team to proceed",
+        "C": "Facilitate a structured discussion to help the parties reach a mutually acceptable solution",
+        "D": "Remove one of the team members from the project"
+      },
+      "ans": "C",
+      "exp": "PM nên tạo điều kiện cho một cuộc thảo luận có cấu trúc (problem-solving/confronting) để giúp hai bên đạt được giải pháp được cả hai chấp nhận. Đây là phương pháp giải quyết xung đột hiệu quả nhất theo PMBOK — giải quyết trực tiếp nguyên nhân gốc rễ. Để mâu thuẫn kéo dài hai tuần mà không can thiệp đã là sai, và việc áp đặt hoặc sa thải là quá cực đoan."
+    },
+    {
+      "id": "r06_q16",
+      "q": "According to research cited in Rita Mulcahy's PMP Exam Prep, what is the MOST common source of conflict on projects?",
+      "opts": {
+        "A": "Personality clashes between team members",
+        "B": "Disagreements about technical opinions",
+        "C": "Schedule conflicts and competing priorities for resources",
+        "D": "Administrative procedure disputes"
+      },
+      "ans": "C",
+      "exp": "Theo Rita Mulcahy, nguồn xung đột phổ biến nhất trong dự án là mâu thuẫn về lịch trình và ưu tiên nguồn lực. Thứ tự các nguồn xung đột từ phổ biến đến ít phổ biến là: Schedules, Priorities, Resources, Technical opinions, Administrative procedures, Cost, Personality. Hiểu đúng thứ tự này rất quan trọng cho kỳ thi PMP."
+    },
+    {
+      "id": "r06_q17",
+      "q": "A project manager is in the Manage Team process. Which of the following inputs is she most likely using to identify performance gaps and team issues?",
+      "opts": {
+        "A": "Procurement documents and contract terms",
+        "B": "Work performance data, issue log, and team performance assessments",
+        "C": "Scope baseline and WBS dictionary",
+        "D": "Risk register and Monte Carlo simulation results"
+      },
+      "ans": "B",
+      "exp": "Trong quy trình Manage Team, PM sử dụng: dữ liệu hiệu suất công việc (work performance data), nhật ký vấn đề (issue log), đánh giá hiệu suất nhóm (team performance assessments), và báo cáo hiệu suất công việc. Những đầu vào này giúp PM xác định khoảng cách hiệu suất và các vấn đề của nhóm để có hành động phù hợp."
+    },
+    {
+      "id": "r06_q18",
+      "q": "A project manager needs to resolve an immediate over-allocation of a key engineer who is assigned to critical tasks on two parallel work packages simultaneously. What technique should she apply?",
+      "opts": {
+        "A": "Fast tracking",
+        "B": "Crashing",
+        "C": "Resource leveling",
+        "D": "Schedule compression"
+      },
+      "ans": "C",
+      "exp": "Resource leveling (cân bằng nguồn lực) được áp dụng khi nguồn lực bị phân bổ quá mức hoặc quá ít, điều chỉnh ngày bắt đầu và kết thúc của các hoạt động để cân bằng tải công việc. Kỹ thuật này có thể kéo dài lịch trình dự án nhưng giải quyết vấn đề over-allocation. Fast tracking và crashing là kỹ thuật nén lịch trình, không giải quyết vấn đề nguồn lực."
+    },
+    {
+      "id": "r06_q19",
+      "q": "A project manager wants to assess both individual and team capabilities to identify training needs and skill gaps. What is the CORRECT approach?",
+      "opts": {
+        "A": "Only assess the team as a whole since individual assessments can damage morale",
+        "B": "Only assess individuals through formal performance reviews",
+        "C": "Conduct both individual assessments (skills, competencies) and team assessments (collaboration, effectiveness) for a comprehensive view",
+        "D": "Delegate all assessments to the functional manager"
+      },
+      "ans": "C",
+      "exp": "PM cần tiến hành cả hai loại đánh giá: đánh giá cá nhân (kỹ năng, năng lực, nhu cầu đào tạo của từng thành viên) và đánh giá nhóm (mức độ hợp tác, hiệu quả giao tiếp, tính gắn kết nhóm). Chỉ đánh giá một loại sẽ bỏ sót thông tin quan trọng. Cả hai đánh giá đều cần thiết để xây dựng kế hoạch phát triển toàn diện."
+    },
+    {
+      "id": "r06_q20",
+      "q": "A project manager is about to start a new project with a team that has never worked together. She wants to set expectations from day one. At the kickoff meeting, she should prioritize establishing:",
+      "opts": {
+        "A": "The detailed project schedule and budget baselines",
+        "B": "Ground rules for team behavior, communication norms, and decision-making processes",
+        "C": "The risk register and probability assessments",
+        "D": "Individual performance targets and bonus structures"
+      },
+      "ans": "B",
+      "exp": "Ngay từ buổi họp khởi động, PM nên ưu tiên thiết lập các quy tắc nền tảng (ground rules) bao gồm: chuẩn mực hành vi nhóm, kỳ vọng giao tiếp, và quy trình ra quyết định. Việc thiết lập rõ ràng từ đầu giúp tránh mâu thuẫn sau này và tạo nền tảng cho một nhóm hiệu suất cao. Đây là nội dung cốt lõi của team charter."
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "chapterId": "rita_14",
+  "chapterNum": 14,
+  "chapterTitle": "Stakeholders",
+  "source": "rita",
+  "questions": [
+    {
+      "id": "r14_q01",
+      "q": "A project manager has just been assigned to a new infrastructure project. What is the FIRST thing she should do regarding stakeholders?",
+      "opts": {
+        "A": "Create the stakeholder engagement plan",
+        "B": "Identify stakeholders and create the stakeholder register",
+        "C": "Schedule a kickoff meeting with all known stakeholders",
+        "D": "Analyze stakeholder power and interest levels"
+      },
+      "ans": "B",
+      "exp": "Bước đầu tiên trong quản lý stakeholder là nhận diện (Identify Stakeholders) và tạo ra Stakeholder Register. Sau khi đã có danh sách stakeholder thì mới tiến hành phân tích và lập kế hoạch tương tác."
+    },
+    {
+      "id": "r14_q02",
+      "q": "A project manager places a key executive sponsor in the upper-right quadrant of the power/interest grid. Which engagement strategy is MOST appropriate?",
+      "opts": {
+        "A": "Monitor only — check in occasionally",
+        "B": "Keep Informed — provide regular updates",
+        "C": "Keep Satisfied — address their needs but limit information",
+        "D": "Manage Closely — engage frequently and involve in decisions"
+      },
+      "ans": "D",
+      "exp": "Trong mô hình power/interest grid, góc trên-phải (high power, high interest) tương ứng với chiến lược 'Manage Closely' (Quản lý chặt chẽ). Những stakeholder này có cả quyền lực lẫn sự quan tâm cao, cần được tham gia tích cực vào các quyết định của dự án."
+    },
+    {
+      "id": "r14_q03",
+      "q": "Which of the following is an OUTPUT of the Identify Stakeholders process?",
+      "opts": {
+        "A": "Stakeholder engagement plan",
+        "B": "Stakeholder engagement assessment matrix",
+        "C": "Stakeholder register",
+        "D": "Communications management plan"
+      },
+      "ans": "C",
+      "exp": "Stakeholder Register (Sổ đăng ký stakeholder) là đầu ra chính của quá trình Identify Stakeholders. Nó chứa thông tin nhận diện, thông tin đánh giá và phân loại từng stakeholder. Stakeholder Engagement Plan là đầu ra của Plan Stakeholder Engagement."
+    },
+    {
+      "id": "r14_q04",
+      "q": "During project execution, a stakeholder who was previously supportive becomes resistant due to a recent scope change. What should the project manager do FIRST?",
+      "opts": {
+        "A": "Escalate the situation to the project sponsor",
+        "B": "Meet privately with the stakeholder to understand their concerns",
+        "C": "Remove the stakeholder from the distribution list",
+        "D": "Ignore the change and continue with the project"
+      },
+      "ans": "B",
+      "exp": "Khi một stakeholder trở nên phản đối (resistant), PM nên gặp riêng để lắng nghe và hiểu mối quan ngại của họ trước tiên. Cách tiếp cận trực tiếp, thấu cảm giúp giải quyết vấn đề hiệu quả hơn là leo thang hoặc bỏ qua."
+    },
+    {
+      "id": "r14_q05",
+      "q": "A stakeholder engagement assessment matrix shows a stakeholder is currently 'Neutral (N)' but the desired level is 'Supportive (S)'. What does this indicate?",
+      "opts": {
+        "A": "The stakeholder must be removed from the project",
+        "B": "No action is needed since neutral is acceptable",
+        "C": "A gap exists and strategies are needed to move them to supportive",
+        "D": "The stakeholder is already at the optimal engagement level"
+      },
+      "ans": "C",
+      "exp": "Khi có khoảng cách giữa mức tương tác Hiện tại (C) và mức Mong muốn (D) trong Stakeholder Engagement Assessment Matrix, PM phải xây dựng chiến lược để thu hẹp khoảng cách đó và đưa stakeholder đến mức tương tác mong muốn."
+    },
+    {
+      "id": "r14_q06",
+      "q": "The salience model for stakeholder classification considers three attributes. Which combination identifies a stakeholder as 'Definitive' (highest priority)?",
+      "opts": {
+        "A": "High power and high interest",
+        "B": "Power, legitimacy, and urgency — all three present",
+        "C": "High influence and high impact",
+        "D": "Urgency and legitimacy only"
+      },
+      "ans": "B",
+      "exp": "Trong Salience Model (Mô hình Tầm quan trọng), stakeholder 'Definitive' là những người có đủ cả ba thuộc tính: Power (Quyền lực), Legitimacy (Tính hợp pháp) và Urgency (Tính cấp bách). Đây là nhóm ưu tiên cao nhất cần chú ý nhất."
+    },
+    {
+      "id": "r14_q07",
+      "q": "A project manager learns that a department head opposes the project because it will reduce his team's headcount. This stakeholder is BEST classified as:",
+      "opts": {
+        "A": "Supportive stakeholder",
+        "B": "Leading stakeholder",
+        "C": "Negative stakeholder",
+        "D": "Unaware stakeholder"
+      },
+      "ans": "C",
+      "exp": "Negative stakeholder (Stakeholder tiêu cực) là những người coi dự án là bất lợi cho quyền lợi của họ. Trưởng bộ phận phản đối vì dự án sẽ cắt giảm nhân sự của mình là ví dụ điển hình của negative stakeholder."
+    },
+    {
+      "id": "r14_q08",
+      "q": "In an agile project, who is primarily responsible for representing stakeholders and customers to the development team?",
+      "opts": {
+        "A": "Project manager",
+        "B": "Scrum master",
+        "C": "Product owner",
+        "D": "Business analyst"
+      },
+      "ans": "C",
+      "exp": "Trong môi trường Agile/Scrum, Product Owner (Chủ sản phẩm) là người đại diện cho khách hàng và stakeholder, quản lý product backlog, và đảm bảo nhóm phát triển hiểu các yêu cầu. PM truyền thống không có vai trò này trong Scrum."
+    },
+    {
+      "id": "r14_q09",
+      "q": "Which process involves developing appropriate management strategies to effectively engage stakeholders throughout the project?",
+      "opts": {
+        "A": "Identify Stakeholders",
+        "B": "Manage Stakeholder Engagement",
+        "C": "Plan Stakeholder Engagement",
+        "D": "Monitor Stakeholder Engagement"
+      },
+      "ans": "C",
+      "exp": "Plan Stakeholder Engagement (Lập kế hoạch tương tác stakeholder) là quá trình xây dựng các chiến lược phù hợp để tương tác hiệu quả với stakeholder trong suốt vòng đời dự án. Output chính là Stakeholder Engagement Plan."
+    },
+    {
+      "id": "r14_q10",
+      "q": "A project is halfway through execution when a new regulatory body is identified as having significant authority over the project's deliverables. What should the project manager do?",
+      "opts": {
+        "A": "Continue as planned since the project is already underway",
+        "B": "Update the stakeholder register and adjust engagement strategies",
+        "C": "Only inform the project sponsor about the new stakeholder",
+        "D": "Wait until the next phase to address the new stakeholder"
+      },
+      "ans": "B",
+      "exp": "Nhận diện stakeholder là quá trình liên tục, không chỉ thực hiện một lần ở đầu dự án. Khi phát hiện stakeholder mới, PM phải cập nhật Stakeholder Register và điều chỉnh chiến lược tương tác kịp thời để tránh ảnh hưởng tiêu cực."
+    },
+    {
+      "id": "r14_q11",
+      "q": "A project manager notices that a key stakeholder's emails are going unanswered and she no longer attends project meetings. What engagement level does this MOST likely represent?",
+      "opts": {
+        "A": "Leading",
+        "B": "Neutral",
+        "C": "Resistant",
+        "D": "Unaware"
+      },
+      "ans": "C",
+      "exp": "Stakeholder 'Resistant' (Phản đối) là người biết về dự án nhưng không ủng hộ và có thể hành động cản trở. Không trả lời email và không tham dự họp là dấu hiệu của sự phản đối thụ động (passive resistance), không phải Unaware vì họ đã biết dự án."
+    },
+    {
+      "id": "r14_q12",
+      "q": "The project sponsor consistently champions the project to senior leadership and secures additional funding when needed. This sponsor is demonstrating which stakeholder engagement level?",
+      "opts": {
+        "A": "Supportive",
+        "B": "Neutral",
+        "C": "Leading",
+        "D": "Resistant"
+      },
+      "ans": "C",
+      "exp": "Mức 'Leading' (Dẫn dắt) là mức tương tác cao nhất, trong đó stakeholder chủ động hỗ trợ dự án và có những hành động cụ thể để đảm bảo thành công. Một nhà tài trợ vận động và bảo đảm tài trợ thêm là minh chứng rõ ràng của mức Leading."
+    },
+    {
+      "id": "r14_q13",
+      "q": "When multiple stakeholders have conflicting interests on a project, what is the BEST approach for the project manager?",
+      "opts": {
+        "A": "Side with the most powerful stakeholder",
+        "B": "Use problem-solving to find a solution acceptable to all parties",
+        "C": "Ignore minor conflicts and focus on major issues",
+        "D": "Immediately escalate all conflicts to the sponsor"
+      },
+      "ans": "B",
+      "exp": "Khi xung đột xảy ra giữa các stakeholder, PM nên ưu tiên phương pháp Problem-Solving (Giải quyết vấn đề / Confronting) — tìm giải pháp thỏa mãn tất cả các bên. Đây là kỹ thuật giải quyết xung đột hiệu quả nhất và bền vững nhất theo PMBOK."
+    },
+    {
+      "id": "r14_q14",
+      "q": "Which information is typically found in the stakeholder register?",
+      "opts": {
+        "A": "Project budget and cost baseline",
+        "B": "Identification info, assessment info, and stakeholder classification",
+        "C": "Work packages and activity list",
+        "D": "Risk register and risk response strategies"
+      },
+      "ans": "B",
+      "exp": "Stakeholder Register chứa ba loại thông tin chính: Identification info (thông tin nhận diện: tên, tổ chức, vai trò), Assessment info (thông tin đánh giá: kỳ vọng, ảnh hưởng tiềm năng), và Stakeholder classification (phân loại: nội bộ/bên ngoài, hỗ trợ/phản đối)."
+    },
+    {
+      "id": "r14_q15",
+      "q": "A project manager wants to take a proactive approach to stakeholder management. Which action BEST demonstrates proactive engagement?",
+      "opts": {
+        "A": "Waiting for stakeholders to raise concerns before addressing them",
+        "B": "Sending monthly status reports to all stakeholders",
+        "C": "Identifying potentially negative stakeholders early and engaging them before problems arise",
+        "D": "Focusing all attention on the project sponsor"
+      },
+      "ans": "C",
+      "exp": "Tiếp cận chủ động (Proactive engagement) có nghĩa là nhận diện stakeholder tiêu cực sớm và chủ động tương tác trước khi vấn đề phát sinh. Điều này trái ngược với tiếp cận bị động (reactive) — chờ vấn đề xảy ra mới xử lý."
+    },
+    {
+      "id": "r14_q16",
+      "q": "An agile project team holds a sprint demo at the end of each two-week iteration. What is the PRIMARY stakeholder management benefit of these demos?",
+      "opts": {
+        "A": "They replace the need for a stakeholder register",
+        "B": "They provide frequent opportunities to gather stakeholder feedback and adjust direction",
+        "C": "They ensure the project stays on budget",
+        "D": "They eliminate the need for a communications management plan"
+      },
+      "ans": "B",
+      "exp": "Trong Agile, các buổi demo thường xuyên (sprint reviews) cho phép stakeholder xem kết quả thực tế và cung cấp phản hồi ngay lập tức. Đây là cơ chế tương tác stakeholder liên tục, giúp điều chỉnh hướng dự án theo nhu cầu thực tế."
+    },
+    {
+      "id": "r14_q17",
+      "q": "A project manager is managing a large IT transformation project. She discovers a powerful executive was not included in the original stakeholder analysis. He is known to oppose organizational change. What should she do FIRST?",
+      "opts": {
+        "A": "Continue the project and hope he doesn't interfere",
+        "B": "Ask the sponsor to handle communication with the executive",
+        "C": "Add him to the stakeholder register and schedule a meeting to understand his concerns",
+        "D": "Wait until the project is further along before involving him"
+      },
+      "ans": "C",
+      "exp": "Khi phát hiện stakeholder quan trọng bị bỏ sót, PM phải ngay lập tức thêm họ vào Stakeholder Register và chủ động gặp gỡ để hiểu mối quan ngại. Việc trì hoãn tiếp cận stakeholder có quyền lực và phản đối thay đổi sẽ dẫn đến rủi ro lớn hơn."
+    },
+    {
+      "id": "r14_q18",
+      "q": "The process of monitoring overall project stakeholder relationships and adjusting engagement strategies as needed is called:",
+      "opts": {
+        "A": "Plan Stakeholder Engagement",
+        "B": "Manage Stakeholder Engagement",
+        "C": "Monitor Stakeholder Engagement",
+        "D": "Identify Stakeholders"
+      },
+      "ans": "C",
+      "exp": "Monitor Stakeholder Engagement (Giám sát tương tác stakeholder) là quá trình theo dõi các mối quan hệ với stakeholder và điều chỉnh chiến lược khi cần. Khác với Manage (thực hiện tương tác), Monitor tập trung vào việc đánh giá hiệu quả và phát hiện sự thay đổi mức tương tác."
+    },
+    {
+      "id": "r14_q19",
+      "q": "Stakeholder satisfaction is best considered as:",
+      "opts": {
+        "A": "An input to the project charter",
+        "B": "A project success criterion",
+        "C": "An optional metric used only in agile projects",
+        "D": "A constraint that limits project scope"
+      },
+      "ans": "B",
+      "exp": "Sự hài lòng của stakeholder (stakeholder satisfaction) được coi là một tiêu chí thành công của dự án. Dự án không chỉ thành công khi hoàn thành đúng scope, schedule, cost — mà còn khi đáp ứng được kỳ vọng và nhu cầu của các stakeholder chủ chốt."
+    },
+    {
+      "id": "r14_q20",
+      "q": "A high-power stakeholder rarely attends project meetings and seems uninterested in project updates. According to the power/interest grid, which strategy is MOST appropriate?",
+      "opts": {
+        "A": "Manage Closely — involve in all decisions",
+        "B": "Keep Informed — send detailed weekly reports",
+        "C": "Keep Satisfied — meet their needs without requiring active participation",
+        "D": "Monitor — minimal effort required"
+      },
+      "ans": "C",
+      "exp": "Stakeholder có quyền lực cao nhưng mức độ quan tâm thấp (high power, low interest) nằm ở góc trên-trái của power/interest grid, tương ứng với chiến lược 'Keep Satisfied'. PM cần đảm bảo họ hài lòng và không phản đối dự án, nhưng không cần kéo họ vào chi tiết hàng ngày."
+    }
+  ]
+}

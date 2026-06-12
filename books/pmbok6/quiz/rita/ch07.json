@@ -1,0 +1,248 @@
+{
+  "chapterId": "rita_07",
+  "chapterNum": 7,
+  "chapterTitle": "Scope",
+  "source": "rita",
+  "questions": [
+    {
+      "id": "r07_q01",
+      "q": "A project manager is working on a software development project. The product owner describes a new mobile app with specific features like GPS tracking, push notifications, and offline mode. The project manager then defines all the work activities needed to build and deliver those features. Which of the following correctly distinguishes the two types of scope?",
+      "opts": {
+        "A": "GPS tracking is part of project scope; the work breakdown structure is part of product scope",
+        "B": "The features (GPS, notifications, offline mode) represent product scope; the work needed to deliver them represents project scope",
+        "C": "Both represent project scope since they relate to the same project",
+        "D": "Product scope and project scope are the same concept described differently"
+      },
+      "ans": "B",
+      "exp": "Product scope (phạm vi sản phẩm) mô tả các tính năng và chức năng của sản phẩm — trong trường hợp này là GPS, thông báo đẩy và chế độ ngoại tuyến. Project scope (phạm vi dự án) mô tả tất cả công việc cần thực hiện để tạo ra sản phẩm với phạm vi đó. Đây là sự phân biệt cơ bản quan trọng trong quản lý phạm vi."
+    },
+    {
+      "id": "r07_q02",
+      "q": "An agile team is planning their first release. The product owner wants to launch the product quickly to gather real user feedback before investing in full development. The team decides to release only the core features that provide value and can generate feedback. This approach best describes:",
+      "opts": {
+        "A": "Gold plating",
+        "B": "Scope creep",
+        "C": "Minimum Viable Product (MVP)",
+        "D": "Definition of Done"
+      },
+      "ans": "C",
+      "exp": "Minimum Viable Product (MVP — Sản phẩm khả thi tối thiểu) là phiên bản sản phẩm chỉ bao gồm những tính năng cốt lõi đủ để ra mắt và thu thập phản hồi từ người dùng thực tế. Mục tiêu là học hỏi nhanh với chi phí tối thiểu. Đây là khái niệm quan trọng trong Agile, tương tự với Minimum Marketable Features (MMF)."
+    },
+    {
+      "id": "r07_q03",
+      "q": "A product owner for an agile software project maintains a visual document that shows planned features across multiple releases over the next 12 months, helping stakeholders understand the strategic direction of the product. This document is best described as:",
+      "opts": {
+        "A": "Sprint backlog",
+        "B": "Product roadmap",
+        "C": "WBS dictionary",
+        "D": "Requirements traceability matrix"
+      },
+      "ans": "B",
+      "exp": "Product roadmap (lộ trình sản phẩm) là tài liệu chiến lược hiển thị kế hoạch phát triển sản phẩm qua nhiều phiên bản/releases theo thời gian. Nó cho thấy hướng đi chiến lược của sản phẩm cho các bên liên quan. Khác với sprint backlog (danh sách công việc của một sprint) hay WBS (cấu trúc phân rã công việc)."
+    },
+    {
+      "id": "r07_q04",
+      "q": "In an agile project, the product backlog currently contains 47 items. The development team has reviewed several items and provided estimates. The team then begins the sprint. Which statement about the product backlog is MOST accurate?",
+      "opts": {
+        "A": "The product backlog is owned jointly by the project manager and development team",
+        "B": "Once a sprint starts, no items can be added to the product backlog until the sprint ends",
+        "C": "The product owner owns and maintains the product backlog, and items are ordered by value and priority",
+        "D": "The product backlog is finalized at the beginning of the project and should not change"
+      },
+      "ans": "C",
+      "exp": "Product backlog (danh sách tồn đọng sản phẩm) thuộc sở hữu và được quản lý bởi Product Owner. Các hạng mục được sắp xếp theo thứ tự ưu tiên dựa trên giá trị kinh doanh. Nhóm phát triển cung cấp ước tính nhưng không sở hữu backlog. Product backlog là tài liệu sống, liên tục được cập nhật và tinh chỉnh (refinement) trong suốt dự án."
+    },
+    {
+      "id": "r07_q05",
+      "q": "A business analyst is gathering requirements for a new HR system. She visits employees at their workstations and watches them perform their daily tasks without interrupting them, noting pain points and workarounds. Which requirements elicitation technique is she using?",
+      "opts": {
+        "A": "Focus group",
+        "B": "Prototyping",
+        "C": "Observation (job shadowing)",
+        "D": "Nominal group technique"
+      },
+      "ans": "C",
+      "exp": "Observation (quan sát) hay còn gọi là job shadowing (đi theo và quan sát) là kỹ thuật thu thập yêu cầu bằng cách quan sát người dùng thực hiện công việc trong môi trường thực tế. Kỹ thuật này đặc biệt hiệu quả khi người dùng gặp khó khăn trong việc diễn đạt nhu cầu bằng lời nói. PM/BA học từ những gì người dùng thực sự làm, không chỉ những gì họ nói."
+    },
+    {
+      "id": "r07_q06",
+      "q": "A project team is using a technique where each requirement is linked back to the specific business objective it supports, allowing traceability from inception through delivery and testing. What tool are they using?",
+      "opts": {
+        "A": "WBS dictionary",
+        "B": "Scope statement",
+        "C": "Requirements traceability matrix",
+        "D": "Affinity diagram"
+      },
+      "ans": "C",
+      "exp": "Requirements traceability matrix (ma trận theo dõi yêu cầu) liên kết từng yêu cầu với mục tiêu kinh doanh tương ứng và theo dõi yêu cầu đó xuyên suốt vòng đời dự án — từ định nghĩa, thiết kế, phát triển đến kiểm thử và chấp nhận. Công cụ này đảm bảo mọi yêu cầu đều được thực hiện và mọi tính năng đều có lý do tồn tại."
+    },
+    {
+      "id": "r07_q07",
+      "q": "A project manager is creating the WBS for a construction project. A team member argues that a particular subcontractor's work package should be included in two different branches of the WBS since it supports two deliverables. The project manager should explain that:",
+      "opts": {
+        "A": "Work packages can appear multiple times in the WBS as needed",
+        "B": "The 100% rule requires that the WBS capture 100% of the work, and each work package should appear only once to avoid double-counting",
+        "C": "The WBS only needs to cover the critical path activities",
+        "D": "Subcontractor work is not included in the WBS"
+      },
+      "ans": "B",
+      "exp": "Quy tắc 100% (100% rule) của WBS yêu cầu WBS phải bao gồm 100% công việc của dự án — không thêm không bớt. Mỗi work package chỉ xuất hiện một lần trong WBS để tránh tính trùng (double-counting). Nếu một công việc hỗ trợ nhiều nhánh, nó nên được đặt ở cấp độ phù hợp nhất và chỉ xuất hiện một lần duy nhất."
+    },
+    {
+      "id": "r07_q08",
+      "q": "What is included in the scope baseline?",
+      "opts": {
+        "A": "Project charter, stakeholder register, and risk register",
+        "B": "Project scope statement, WBS, and WBS dictionary",
+        "C": "Schedule baseline, cost baseline, and quality plan",
+        "D": "Requirements documentation, resource plan, and procurement strategy"
+      },
+      "ans": "B",
+      "exp": "Scope baseline (đường cơ sở phạm vi) bao gồm ba thành phần: (1) Project scope statement — mô tả chi tiết phạm vi dự án, (2) WBS — cấu trúc phân rã công việc phân cấp, và (3) WBS dictionary — mô tả chi tiết từng work package. Đây là tài liệu tham chiếu để đo lường sai lệch phạm vi và kiểm soát thay đổi."
+    },
+    {
+      "id": "r07_q09",
+      "q": "A project manager has just received written approval from the customer for a completed deliverable. The customer signs off on the testing module, confirming it meets all specified requirements. This activity is part of which process?",
+      "opts": {
+        "A": "Control Quality",
+        "B": "Control Scope",
+        "C": "Validate Scope",
+        "D": "Define Scope"
+      },
+      "ans": "C",
+      "exp": "Validate Scope (xác nhận phạm vi) là quy trình trong nhóm Giám sát và Kiểm soát (Monitoring & Controlling) nơi khách hàng hoặc sponsor chính thức chấp nhận (formally accept) các deliverables đã hoàn thành. Kết quả là accepted deliverables. Khác với Control Quality (đảm bảo chất lượng sản phẩm) và Control Scope (kiểm soát thay đổi phạm vi)."
+    },
+    {
+      "id": "r07_q10",
+      "q": "During project execution, a developer adds a new dashboard feature that was not in the project scope statement, believing it would improve the user experience. The customer did not request this feature. This is an example of:",
+      "opts": {
+        "A": "Scope creep",
+        "B": "Gold plating",
+        "C": "Validate Scope",
+        "D": "Progressive elaboration"
+      },
+      "ans": "B",
+      "exp": "Gold plating (mạ vàng) là việc thêm các tính năng, tính năng bổ sung hoặc nâng cao không được yêu cầu bởi khách hàng — dù ý định tốt. Đây là thực hành XẤU vì nó lãng phí nguồn lực, có thể gây ra lỗi mới và thay đổi rủi ro. Khác với scope creep (khách hàng/stakeholder yêu cầu thêm không chính thức). Gold plating do đội dự án tự ý thực hiện."
+    },
+    {
+      "id": "r07_q11",
+      "q": "A project manager discovers that several new features have been added to the product over the past three sprints without going through the formal change control process. Stakeholders informally requested these additions directly to developers during hallway conversations. This situation is BEST described as:",
+      "opts": {
+        "A": "Gold plating",
+        "B": "Progressive elaboration",
+        "C": "Scope creep",
+        "D": "Approved change requests"
+      },
+      "ans": "C",
+      "exp": "Scope creep (lấn phạm vi) xảy ra khi phạm vi dự án mở rộng một cách không kiểm soát, thường do các yêu cầu bổ sung không chính thức từ stakeholders mà không đi qua quy trình kiểm soát thay đổi. Trong trường hợp này, các developer nhận yêu cầu trực tiếp từ hallway conversations là ví dụ điển hình của scope creep. PM phải thực thi quy trình change control."
+    },
+    {
+      "id": "r07_q12",
+      "q": "A project manager is working on a complex IT project. She finalizes the project scope statement after detailed planning. The scope statement should explicitly include:",
+      "opts": {
+        "A": "Only what is included in the project",
+        "B": "Both what IS included (deliverables and work) and what IS NOT included (exclusions)",
+        "C": "The project schedule and resource assignments",
+        "D": "The risk management approach and contingency reserves"
+      },
+      "ans": "B",
+      "exp": "Project scope statement (bản mô tả phạm vi dự án) phải bao gồm cả những gì NẰM TRONG và những gì NẰM NGOÀI phạm vi dự án. Việc xác định rõ các exclusions (loại trừ) cũng quan trọng như việc xác định deliverables, vì nó ngăn chặn các hiểu lầm về những gì dự án sẽ và không sẽ thực hiện — giảm thiểu scope creep."
+    },
+    {
+      "id": "r07_q13",
+      "q": "An agile team is writing user stories for a new e-commerce platform. They want to ensure everyone has a shared understanding of when a user story is complete and meets quality standards. What should they create?",
+      "opts": {
+        "A": "A detailed WBS for each user story",
+        "B": "Acceptance criteria and Definition of Done",
+        "C": "A RACI chart for story assignments",
+        "D": "A product roadmap for the feature"
+      },
+      "ans": "B",
+      "exp": "Trong Agile, Acceptance Criteria (tiêu chí chấp nhận) xác định các điều kiện cụ thể mà user story phải đáp ứng để được chấp nhận. Definition of Done (định nghĩa hoàn thành) là danh sách tiêu chuẩn chất lượng áp dụng cho tất cả công việc. Hai công cụ này cùng nhau tạo ra sự hiểu biết chung về 'hoàn thành' và giảm thiểu tranh luận sau này."
+    },
+    {
+      "id": "r07_q14",
+      "q": "An agile project manager is facilitating a sprint planning session. The team has a fixed two-week sprint duration. Due to this time constraint, some lower-priority features may not be completed in this sprint. This practice reflects which agile principle?",
+      "opts": {
+        "A": "Gold plating",
+        "B": "Resource leveling",
+        "C": "Timeboxing with variable scope",
+        "D": "Scope baseline management"
+      },
+      "ans": "C",
+      "exp": "Timeboxing (giới hạn thời gian) là nguyên tắc cốt lõi của Agile: thời gian là cố định (fixed) nhưng phạm vi là linh hoạt (variable). Thay vì kéo dài sprint để hoàn thành tất cả tính năng, nhóm ưu tiên làm những gì có giá trị nhất trong thời gian cố định. Điều này khác với quản lý dự án truyền thống nơi phạm vi cố định và thời gian/chi phí thường biến động."
+    },
+    {
+      "id": "r07_q15",
+      "q": "A product owner is prioritizing a backlog of 30 user stories for the next release. She categorizes each story using a framework: features the product MUST have, features it SHOULD have, features it COULD have, and features it WON'T have in this release. What prioritization technique is she using?",
+      "opts": {
+        "A": "Weighted scoring model",
+        "B": "MoSCoW method",
+        "C": "Delphi technique",
+        "D": "Expected Monetary Value"
+      },
+      "ans": "B",
+      "exp": "MoSCoW là kỹ thuật ưu tiên hóa phổ biến trong Agile, phân loại các yêu cầu thành: Must have (phải có), Should have (nên có), Could have (có thể có), và Won't have (sẽ không có lần này). Phương pháp này giúp nhóm và stakeholders đồng thuận về những gì thực sự cần thiết cho release, tránh tranh luận về ưu tiên."
+    },
+    {
+      "id": "r07_q16",
+      "q": "A project manager needs a detailed document that provides descriptions, assumptions, associated activities, milestones, quality requirements, and acceptance criteria for each work package in the WBS. What document should she create?",
+      "opts": {
+        "A": "Project scope statement",
+        "B": "Requirements documentation",
+        "C": "WBS dictionary",
+        "D": "Project management plan"
+      },
+      "ans": "C",
+      "exp": "WBS dictionary (từ điển WBS) cung cấp mô tả chi tiết cho từng work package trong WBS, bao gồm: mô tả công việc, giả định, các hoạt động liên quan, cột mốc, yêu cầu chất lượng, tiêu chí chấp nhận, thông tin tài chính, và thông tin hợp đồng. Đây là tài liệu tham chiếu chi tiết bổ sung cho WBS."
+    },
+    {
+      "id": "r07_q17",
+      "q": "A project team has generated a large number of potential requirements from multiple stakeholder interviews. To organize these requirements into logical groupings and identify common themes, the team writes each requirement on a separate note and arranges them into related clusters. What technique are they using?",
+      "opts": {
+        "A": "Context diagram",
+        "B": "Affinity diagram",
+        "C": "Prototyping",
+        "D": "Nominal group technique"
+      },
+      "ans": "B",
+      "exp": "Affinity diagram (sơ đồ ái lực) là kỹ thuật sắp xếp một lượng lớn ý tưởng hoặc yêu cầu vào các nhóm có chủ đề liên quan. Nhóm viết từng yêu cầu lên sticky note và sắp xếp chúng theo chủ đề chung một cách trực quan. Kỹ thuật này rất hữu ích khi có quá nhiều dữ liệu và cần tìm mô hình (pattern) trong dữ liệu đó."
+    },
+    {
+      "id": "r07_q18",
+      "q": "A project manager is facilitating a requirements workshop and wants to visually show how the new system interacts with external systems and users, showing the boundary between what is inside and outside the system scope. What tool should she use?",
+      "opts": {
+        "A": "RACI matrix",
+        "B": "Fishbone diagram",
+        "C": "Context diagram",
+        "D": "Resource histogram"
+      },
+      "ans": "C",
+      "exp": "Context diagram (sơ đồ ngữ cảnh) là công cụ trực quan hóa hiển thị hệ thống đang được xây dựng ở trung tâm, và tất cả các hệ thống bên ngoài, người dùng và tổ chức tương tác với nó ở xung quanh. Nó hiển thị rõ ràng ranh giới giữa những gì NẰM TRONG và NẰM NGOÀI phạm vi hệ thống — rất hữu ích cho việc thu thập yêu cầu."
+    },
+    {
+      "id": "r07_q19",
+      "q": "A project is three months into a six-month schedule. The project manager notices that the team has been consistently adding 'nice-to-have' features at the customer's verbal request, even though these items are not in the approved scope baseline. The formal change control board has not reviewed any of these additions. What should the project manager do?",
+      "opts": {
+        "A": "Continue allowing the additions since the customer requested them and customer satisfaction is paramount",
+        "B": "Document the additions as lessons learned at project close",
+        "C": "Halt unauthorized additions immediately and submit all requested changes through the formal change control process",
+        "D": "Negotiate additional budget to accommodate the extra work already done"
+      },
+      "ans": "C",
+      "exp": "PM phải ngừng ngay việc thêm tính năng không được phê duyệt và yêu cầu tất cả các thay đổi phải đi qua quy trình kiểm soát thay đổi chính thức (formal change control). Đây là trách nhiệm cốt lõi của Control Scope — ngăn chặn scope creep. Không nên tiếp tục cho phép vì có thể ảnh hưởng đến ngân sách, lịch trình và chất lượng dự án."
+    },
+    {
+      "id": "r07_q20",
+      "q": "In a predictive project, the project scope statement has been approved and the WBS has been created. The project manager now needs to ensure that requirements can be tracked throughout the project lifecycle and that each requirement can be linked back to a specific business objective. What should she create?",
+      "opts": {
+        "A": "A risk register cross-referenced with requirements",
+        "B": "A requirements traceability matrix",
+        "C": "A scope baseline with all deliverables",
+        "D": "A stakeholder engagement plan"
+      },
+      "ans": "B",
+      "exp": "Requirements traceability matrix (ma trận theo dõi yêu cầu) cho phép PM theo dõi từng yêu cầu từ nguồn gốc (mục tiêu kinh doanh) qua toàn bộ vòng đời dự án — từ thu thập, phân tích, thiết kế, phát triển, kiểm thử đến nghiệm thu. Ma trận này đảm bảo không có yêu cầu nào bị bỏ sót và mọi tính năng đều có thể được truy nguyên lý do tồn tại."
+    }
+  ]
+}

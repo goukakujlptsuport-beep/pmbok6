@@ -1,0 +1,247 @@
+{
+  "chapterId": "13_stakeholder_management",
+  "chapterNum": 13,
+  "chapterTitle": "Quản Lý Các Bên Liên Quan",
+  "questions": [
+    {
+      "id": "ch13_q01",
+      "q": "Bạn vừa được bổ nhiệm làm quản lý dự án cho một hệ thống ERP mới tại công ty sản xuất lớn. Trong buổi họp khởi động, bạn nhận thấy có nhiều phòng ban, nhà cung cấp, khách hàng và cơ quan quản lý nhà nước có liên quan đến dự án. Bạn cần thu thập thông tin về tất cả các bên liên quan, bao gồm vai trò, kỳ vọng và mức độ ảnh hưởng của họ. Đây là giai đoạn đầu của dự án và chưa có tài liệu nào được lập. Quy trình nào bạn cần thực hiện đầu tiên?",
+      "opts": {
+        "A": "Lập kế hoạch tham gia các bên liên quan",
+        "B": "Xác định các bên liên quan",
+        "C": "Quản lý sự tham gia của các bên liên quan",
+        "D": "Giám sát sự tham gia của các bên liên quan"
+      },
+      "ans": "B",
+      "exp": "Quy trình 'Xác định các bên liên quan' (Identify Stakeholders) phải được thực hiện đầu tiên. Kết quả của quy trình này là sổ đăng ký các bên liên quan (stakeholder register) — tài liệu liệt kê tất cả các bên liên quan cùng thông tin về vai trò, mức độ quan tâm và ảnh hưởng. Chỉ sau khi xác định xong mới có thể lập kế hoạch hoặc quản lý sự tham gia."
+    },
+    {
+      "id": "ch13_q02",
+      "q": "Trong dự án xây dựng hệ thống quản lý bệnh viện, Giám đốc Y tế có quyền lực (power) rất cao nhưng mức độ quan tâm (interest) đến chi tiết kỹ thuật lại thấp. Ông ấy chủ yếu quan tâm đến việc hệ thống không làm gián đoạn hoạt động khám chữa bệnh. Ngược lại, đội trưởng bộ phận IT có quyền lực thấp nhưng quan tâm rất cao đến từng tính năng kỹ thuật. Theo ma trận quyền lực/quan tâm (power/interest grid), chiến lược nào phù hợp nhất cho Giám đốc Y tế?",
+      "opts": {
+        "A": "Giám sát (Monitor)",
+        "B": "Giữ thông tin (Keep Informed)",
+        "C": "Giữ hài lòng (Keep Satisfied)",
+        "D": "Quản lý chặt chẽ (Manage Closely)"
+      },
+      "ans": "C",
+      "exp": "Trong ma trận quyền lực/quan tâm: bên liên quan có quyền lực CAO nhưng quan tâm THẤP thuộc góc phần tư 'Giữ hài lòng' (Keep Satisfied). Giám đốc Y tế có quyền có thể dừng dự án hoặc thay đổi phạm vi, nên cần duy trì sự hài lòng mà không làm mất thời gian của ông với các chi tiết kỹ thuật không liên quan. Đội trưởng IT (quyền thấp, quan tâm cao) sẽ được 'Giữ thông tin' (Keep Informed)."
+    },
+    {
+      "id": "ch13_q03",
+      "q": "Dự án xây dựng cầu vượt đang trong giai đoạn lập kế hoạch. Quản lý dự án đã hoàn thành sổ đăng ký các bên liên quan và cần xác định mức độ tham gia hiện tại so với mức độ tham gia mong muốn của từng bên. Một số bên liên quan chưa biết về dự án, một số khác đang chống đối, và một số đang ủng hộ tích cực. Công cụ nào phù hợp nhất để phân tích và lập kế hoạch thu hẹp khoảng cách này?",
+      "opts": {
+        "A": "Ma trận quyền lực/quan tâm (Power/Interest Grid)",
+        "B": "Mô hình nổi bật (Salience Model)",
+        "C": "Ma trận đánh giá tham gia các bên liên quan (Stakeholder Engagement Assessment Matrix)",
+        "D": "Sổ đăng ký các bên liên quan (Stakeholder Register)"
+      },
+      "ans": "C",
+      "exp": "Ma trận đánh giá tham gia các bên liên quan (Stakeholder Engagement Assessment Matrix) là công cụ thuộc quy trình 'Lập kế hoạch tham gia các bên liên quan'. Nó so sánh mức độ tham gia hiện tại (C — Current) với mức độ mong muốn (D — Desired) theo các cấp độ: Unaware (Không biết), Resistant (Chống đối), Neutral (Trung lập), Supportive (Ủng hộ), Leading (Dẫn dắt). Công cụ này giúp PM xác định chiến lược để đưa từng bên liên quan từ trạng thái hiện tại đến trạng thái mong muốn."
+    },
+    {
+      "id": "ch13_q04",
+      "q": "Quản lý dự án đang phân tích các bên liên quan cho dự án xây dựng nhà máy điện mặt trời. Một nhóm người dân địa phương không có nhiều quyền lực chính thức, nhưng đang tổ chức biểu tình và gây áp lực truyền thông mạnh mẽ, đòi hỏi phải được lắng nghe ngay lập tức. Theo mô hình nổi bật (Salience Model), nhóm này được mô tả tốt nhất bằng thuộc tính nào?",
+      "opts": {
+        "A": "Quyền lực và tính hợp pháp (Power and Legitimacy)",
+        "B": "Quyền lực và tính khẩn cấp (Power and Urgency)",
+        "C": "Tính hợp pháp và tính khẩn cấp (Legitimacy and Urgency)",
+        "D": "Quyền lực, tính hợp pháp và tính khẩn cấp (Power, Legitimacy, and Urgency)"
+      },
+      "ans": "C",
+      "exp": "Mô hình nổi bật (Salience Model) đánh giá bên liên quan dựa trên ba thuộc tính: Power (quyền lực), Legitimacy (tính hợp pháp — yêu cầu có cơ sở hợp lý), và Urgency (tính khẩn cấp — đòi hỏi chú ý ngay). Nhóm dân địa phương không có quyền lực chính thức, nhưng yêu cầu của họ được coi là hợp pháp (ảnh hưởng đến cuộc sống) và khẩn cấp (biểu tình đang diễn ra). Họ thuộc nhóm 'Dependent' trong mô hình nổi bật — có tính hợp pháp và khẩn cấp nhưng không có quyền lực."
+    },
+    {
+      "id": "ch13_q05",
+      "q": "Trong dự án triển khai phần mềm CRM cho chuỗi bán lẻ, nhân viên bán hàng (100 người) lo ngại rằng hệ thống mới sẽ theo dõi hiệu suất của họ và có thể dẫn đến sa thải. Họ đang âm thầm phá hoại quá trình thu thập yêu cầu bằng cách không tham gia các buổi họp. Ma trận tham gia ghi nhận mức độ hiện tại của họ là 'Resistant'. Quản lý dự án nên làm gì đầu tiên?",
+      "opts": {
+        "A": "Leo thang vấn đề lên nhà tài trợ dự án để xử lý nhân viên không hợp tác",
+        "B": "Bỏ qua nhóm này và tiếp tục thu thập yêu cầu từ cấp quản lý",
+        "C": "Tổ chức các buổi gặp gỡ riêng để hiểu lo ngại của họ và chia sẻ thông tin về mục đích thực sự của hệ thống",
+        "D": "Thêm điều khoản bắt buộc tham gia vào hợp đồng lao động của nhân viên"
+      },
+      "ans": "C",
+      "exp": "Khi bên liên quan ở mức 'Resistant' (chống đối), chiến lược chủ động trong quy trình 'Quản lý sự tham gia' là tìm hiểu nguyên nhân gốc rễ của sự phản đối và giải quyết lo ngại trực tiếp. Việc gặp gỡ riêng giúp xây dựng lòng tin, làm rõ hiểu lầm và chuyển họ từ 'Resistant' sang 'Neutral' rồi 'Supportive'. Leo thang quá sớm hoặc cưỡng bức sẽ làm tăng sự chống đối, còn bỏ qua nhóm này sẽ dẫn đến thất bại khi triển khai."
+    },
+    {
+      "id": "ch13_q06",
+      "q": "Dự án xây dựng khu đô thị mới đang ở giai đoạn thực hiện. Kế hoạch tham gia các bên liên quan đã được lập và phê duyệt. Quản lý dự án nhận được phản hồi từ một nhóm cư dân rằng họ chưa được thông báo về tiến độ dự án dù kế hoạch quy định phải gửi báo cáo hàng tháng. Đây là lần vi phạm thứ ba. Hành động nào phù hợp nhất theo quy trình quản lý dự án?",
+      "opts": {
+        "A": "Cập nhật kế hoạch quản lý truyền thông để giảm tần suất báo cáo",
+        "B": "Ghi nhận vấn đề vào nhật ký vấn đề (issue log) và thực hiện yêu cầu thay đổi để cải thiện quy trình thông tin",
+        "C": "Xin lỗi nhóm cư dân và hứa sẽ làm tốt hơn trong tương lai",
+        "D": "Loại bỏ nhóm cư dân khỏi danh sách bên liên quan vì họ không có quyền lực chính thức"
+      },
+      "ans": "B",
+      "exp": "Trong quy trình 'Quản lý sự tham gia các bên liên quan', khi phát sinh vấn đề lặp lại, PM cần ghi nhận vào nhật ký vấn đề (issue log) — đây là đầu ra quan trọng. Nếu cần thay đổi quy trình, phải lập yêu cầu thay đổi chính thức (change request). Việc chỉ xin lỗi không giải quyết gốc rễ vấn đề; giảm tần suất báo cáo là sai vì đó là yêu cầu của bên liên quan; loại bỏ bên liên quan là không phù hợp và có thể gây rủi ro pháp lý."
+    },
+    {
+      "id": "ch13_q07",
+      "q": "Một dự án phát triển ứng dụng mobile đang trong giai đoạn lập kế hoạch. Quản lý dự án sử dụng mô hình khối lập phương các bên liên quan (Stakeholder Cube) để phân tích. Công cụ này là sự mở rộng của ma trận nào và bổ sung thêm chiều nào?",
+      "opts": {
+        "A": "Ma trận quyền lực/ảnh hưởng, bổ sung thêm chiều 'Thái độ'",
+        "B": "Ma trận quyền lực/quan tâm, bổ sung thêm chiều 'Tính khẩn cấp'",
+        "C": "Ma trận ảnh hưởng/tác động, bổ sung thêm chiều 'Tính hợp pháp'",
+        "D": "Ma trận quyền lực/quan tâm, bổ sung thêm chiều 'Ảnh hưởng'"
+      },
+      "ans": "A",
+      "exp": "Mô hình khối lập phương các bên liên quan (Stakeholder Cube) kết hợp ba chiều: Power (quyền lực), Interest (quan tâm), và Attitude (thái độ — ủng hộ hoặc chống đối). Đây là sự mở rộng của ma trận Power/Influence (quyền lực/ảnh hưởng) hai chiều, tạo ra mô hình 3D cho phép phân tích phức tạp hơn. Mô hình này đặc biệt hữu ích khi cần phân biệt giữa các bên liên quan có cùng mức quyền lực và quan tâm nhưng thái độ khác nhau."
+    },
+    {
+      "id": "ch13_q08",
+      "q": "Giám đốc Tài chính của công ty (CFO) là nhà tài trợ chính của dự án triển khai hệ thống kế toán mới. Sau ba tháng triển khai, CFO đột ngột thông báo rằng ông không còn ủng hộ dự án và muốn dừng lại vì lo ngại về ngân sách. Trong ma trận tham gia, mức độ của ông đã thay đổi từ 'Leading' sang 'Resistant'. Đây là thông tin mới và quản lý dự án cần cập nhật tài liệu nào ngay lập tức?",
+      "opts": {
+        "A": "Kế hoạch quản lý dự án (Project Management Plan)",
+        "B": "Sổ đăng ký rủi ro (Risk Register)",
+        "C": "Sổ đăng ký các bên liên quan (Stakeholder Register)",
+        "D": "Nhật ký vấn đề (Issue Log)"
+      },
+      "ans": "C",
+      "exp": "Sổ đăng ký các bên liên quan (Stakeholder Register) là tài liệu sống động, cần được cập nhật khi có thay đổi về thông tin, mức độ tham gia hoặc thái độ của bên liên quan. Việc CFO thay đổi từ 'Leading' sang 'Resistant' là thông tin quan trọng cần ghi nhận ngay. Đây là đầu ra của cả quy trình 'Xác định' và được cập nhật trong các quy trình sau. Ngoài ra, việc này cũng có thể dẫn đến cập nhật nhật ký vấn đề, nhưng cập nhật sổ đăng ký bên liên quan là ưu tiên trực tiếp nhất."
+    },
+    {
+      "id": "ch13_q09",
+      "q": "Trong dự án cải tạo hệ thống thoát nước đô thị, quản lý dự án đang thực hiện quy trình 'Giám sát sự tham gia các bên liên quan'. Ông nhận thấy rằng chiến lược tham gia hiện tại không còn hiệu quả với một số bên liên quan quan trọng. Đầu ra nào của quy trình Giám sát sẽ giúp điều chỉnh tình huống này?",
+      "opts": {
+        "A": "Cập nhật sổ đăng ký các bên liên quan",
+        "B": "Yêu cầu thay đổi (Change Requests)",
+        "C": "Thông tin hiệu suất công việc (Work Performance Information)",
+        "D": "Cập nhật kế hoạch quản lý dự án"
+      },
+      "ans": "B",
+      "exp": "Quy trình 'Giám sát sự tham gia các bên liên quan' có thể tạo ra yêu cầu thay đổi (Change Requests) khi phát hiện chiến lược tham gia không còn hiệu quả. Những yêu cầu thay đổi này có thể đề xuất sửa đổi kế hoạch tham gia, kế hoạch truyền thông, hoặc các quy trình khác. Mặc dù thông tin hiệu suất công việc là đầu ra trực tiếp, nhưng để 'điều chỉnh tình huống', cần có yêu cầu thay đổi chính thức để thực sự thay đổi cách tiếp cận."
+    },
+    {
+      "id": "ch13_q10",
+      "q": "Một nhà đầu tư lớn vừa tham gia vào dự án xây dựng resort ven biển ở giai đoạn giữa dự án. Ông ta chưa biết gì về tiến độ hiện tại, các quyết định đã được đưa ra, hay những thách thức đang đối mặt. Trong ma trận đánh giá tham gia, mức độ hiện tại của ông ta là gì và mức độ mong muốn nên là gì?",
+      "opts": {
+        "A": "Hiện tại: Neutral (Trung lập) — Mong muốn: Supportive (Ủng hộ)",
+        "B": "Hiện tại: Unaware (Không biết) — Mong muốn: Supportive (Ủng hộ) hoặc Leading (Dẫn dắt)",
+        "C": "Hiện tại: Resistant (Chống đối) — Mong muốn: Neutral (Trung lập)",
+        "D": "Hiện tại: Unaware (Không biết) — Mong muốn: Unaware (Không biết)"
+      },
+      "ans": "B",
+      "exp": "Nhà đầu tư 'chưa biết gì' rõ ràng đang ở mức 'Unaware' (Không biết) — cấp độ thấp nhất trong ma trận. Vì ông là nhà đầu tư lớn (bên liên quan quan trọng), mức độ tham gia mong muốn nên là ít nhất 'Supportive' (Ủng hộ) hoặc thậm chí 'Leading' (Dẫn dắt — tích cực tham gia và vận động cho dự án). Khoảng cách C-D (Current-Desired) này cho thấy cần có kế hoạch hành động rõ ràng để tăng cường nhận thức và sự tham gia của ông."
+    },
+    {
+      "id": "ch13_q11",
+      "q": "Dự án xây dựng trường học mới đang trong giai đoạn thực hiện. Quản lý dự án tổ chức các buổi họp định kỳ với phụ huynh học sinh, ban giám hiệu và chính quyền địa phương. Trong buổi họp gần nhất, một phụ huynh đặt câu hỏi về tác động tiếng ồn đến khu dân cư. Quản lý dự án đã trả lời thỏa đáng và ghi nhận ý kiến. Đây là ví dụ về hoạt động nào?",
+      "opts": {
+        "A": "Xác định các bên liên quan",
+        "B": "Lập kế hoạch tham gia các bên liên quan",
+        "C": "Quản lý sự tham gia của các bên liên quan",
+        "D": "Giám sát sự tham gia của các bên liên quan"
+      },
+      "ans": "C",
+      "exp": "Việc tổ chức họp, giao tiếp trực tiếp, giải đáp thắc mắc và xây dựng mối quan hệ với các bên liên quan là các hoạt động thuộc quy trình 'Quản lý sự tham gia của các bên liên quan' (Manage Stakeholder Engagement). Quy trình này tập trung vào việc thực hiện kế hoạch đã lập, duy trì giao tiếp hai chiều và giải quyết các vấn đề phát sinh trong quá trình thực hiện dự án."
+    },
+    {
+      "id": "ch13_q12",
+      "q": "Trong dự án phát triển thuốc mới, Trưởng phòng Nghiên cứu và Phát triển liên tục yêu cầu thay đổi phạm vi dự án dựa trên kết quả thử nghiệm mới nhất. Những thay đổi này thường được đề xuất vào giai đoạn cuối của mỗi chu kỳ phát triển, gây ra chậm trễ đáng kể. Quản lý dự án nên làm gì để quản lý tốt hơn tình huống này trong tương lai?",
+      "opts": {
+        "A": "Từ chối tất cả các yêu cầu thay đổi từ Trưởng phòng R&D",
+        "B": "Cập nhật kế hoạch tham gia để đưa Trưởng phòng R&D vào sớm hơn trong chu kỳ và thiết lập cơ chế xem xét thay đổi định kỳ",
+        "C": "Loại Trưởng phòng R&D ra khỏi các cuộc họp dự án quan trọng",
+        "D": "Thực hiện tất cả các thay đổi được yêu cầu mà không cần xem xét ảnh hưởng"
+      },
+      "ans": "B",
+      "exp": "Đây là tình huống cần tiếp cận chủ động (proactive) thay vì phản ứng (reactive). Cập nhật kế hoạch tham gia để đưa Trưởng phòng R&D vào sớm hơn trong chu kỳ phát triển giúp phát hiện và xử lý thay đổi trước khi chúng gây chậm trễ. Thiết lập cơ chế xem xét thay đổi định kỳ (regular change review) giúp quản lý kỳ vọng và tránh các yêu cầu thay đổi đột xuất. Đây là bản chất của quản lý tham gia chủ động theo PMBOK 6."
+    },
+    {
+      "id": "ch13_q13",
+      "q": "Sau khi hoàn thành phân tích các bên liên quan, quản lý dự án phát hiện rằng Cục Bảo vệ Môi trường có thể có quyền phủ quyết dự án nếu tiêu chuẩn khí thải không được đáp ứng. Tuy nhiên, Cục này chưa được đưa vào sổ đăng ký các bên liên quan. Điều gì nên xảy ra tiếp theo?",
+      "opts": {
+        "A": "Không cần thêm vào vì đây không phải bên liên quan nội bộ",
+        "B": "Thêm Cục Bảo vệ Môi trường vào sổ đăng ký và cập nhật kế hoạch tham gia",
+        "C": "Chờ đến giai đoạn giám sát mới cập nhật sổ đăng ký",
+        "D": "Chỉ theo dõi riêng mà không cần cập nhật tài liệu dự án"
+      },
+      "ans": "B",
+      "exp": "Sổ đăng ký các bên liên quan là tài liệu sống (living document) cần được cập nhật khi phát hiện bên liên quan mới, đặc biệt là những bên có ảnh hưởng lớn như cơ quan quản lý nhà nước với quyền phủ quyết. Việc không đưa họ vào là rủi ro nghiêm trọng. Sau khi cập nhật sổ đăng ký, cần xem xét lại kế hoạch tham gia để đảm bảo có chiến lược phù hợp (ít nhất là Keep Satisfied hoặc Manage Closely). Bên liên quan bên ngoài (external) cũng quan trọng không kém nội bộ."
+    },
+    {
+      "id": "ch13_q14",
+      "q": "Trong dự án tái cơ cấu tổ chức, hai trưởng phòng có xung đột về phạm vi trách nhiệm sau khi tái cơ cấu. Mỗi người đều muốn kiểm soát một bộ phận quan trọng và đang vận động các thành viên khác về phía mình. Tình trạng này đang ảnh hưởng đến tiến độ dự án. Theo PMBOK 6, quản lý dự án nên xử lý xung đột này như thế nào trong bối cảnh quản lý các bên liên quan?",
+      "opts": {
+        "A": "Để hai trưởng phòng tự giải quyết mà không cần can thiệp",
+        "B": "Leo thang ngay lập tức lên Ban Giám đốc mà không cần thử giải quyết trực tiếp",
+        "C": "Gặp gỡ riêng từng người để hiểu quan điểm, sau đó tổ chức cuộc họp hòa giải có cấu trúc, và nếu không giải quyết được thì leo thang theo quy trình",
+        "D": "Đưa ra quyết định cuối cùng về phân công trách nhiệm và thông báo cho cả hai"
+      },
+      "ans": "C",
+      "exp": "PMBOK 6 đề cao việc giải quyết xung đột một cách chủ động và có cấu trúc trong quy trình Quản lý sự tham gia. Bước đầu tiên là hiểu quan điểm từng bên (gặp riêng), sau đó tạo điều kiện để họ đối thoại có cấu trúc. Chỉ leo thang khi không tự giải quyết được. PM không có quyền quyết định đơn phương về phân công trách nhiệm tổ chức (đó là quyền của lãnh đạo cấp cao). Sự tham gia của nhà tài trợ có thể cần thiết ở giai đoạn sau."
+    },
+    {
+      "id": "ch13_q15",
+      "q": "Quản lý dự án đang thực hiện quy trình 'Giám sát sự tham gia các bên liên quan' và nhận thấy rằng mặc dù tất cả các hoạt động truyền thông đã được thực hiện đầy đủ, một nhóm bên liên quan chủ chốt vẫn không tham gia tích cực vào các cuộc họp và không phản hồi email. Đây là dấu hiệu của điều gì và bước tiếp theo là gì?",
+      "opts": {
+        "A": "Bên liên quan đã hài lòng và không cần thêm tương tác",
+        "B": "Chiến lược tham gia hiện tại không hiệu quả; cần phân tích nguyên nhân và điều chỉnh phương pháp tiếp cận",
+        "C": "Vấn đề không đáng lo ngại vì họ không phản đối",
+        "D": "Nên loại bỏ họ khỏi danh sách bên liên quan chủ chốt"
+      },
+      "ans": "B",
+      "exp": "Trong quy trình 'Giám sát sự tham gia', sự thiếu tham gia (không phản hồi, không dự họp) dù đã có đủ hoạt động truyền thông là tín hiệu cảnh báo rằng chiến lược hiện tại không hiệu quả. Đây có thể là dấu hiệu của sự thờ ơ (neutral), chống đối ngầm, hoặc phương thức truyền thông không phù hợp. PM cần phân tích nguyên nhân gốc rễ và có thể lập yêu cầu thay đổi để điều chỉnh kế hoạch tham gia. Sự im lặng không đồng nghĩa với sự đồng thuận."
+    },
+    {
+      "id": "ch13_q16",
+      "q": "Dự án xây dựng cảng biển đang gặp phải sự phản đối mạnh mẽ từ ngư dân địa phương vì lo ngại về tác động đến ngư trường. Quản lý dự án đã tổ chức nhiều buổi họp thông tin nhưng tình trạng không cải thiện. Phân tích cho thấy ngư dân lo ngại chính là về sinh kế, không phải về quy trình kỹ thuật. Theo quy trình Quản lý sự tham gia, bước nào phù hợp nhất?",
+      "opts": {
+        "A": "Tăng số lượng buổi họp thông tin về kỹ thuật xây dựng",
+        "B": "Làm việc với nhà tài trợ để xem xét đưa chương trình hỗ trợ sinh kế vào phạm vi dự án hoặc như một dự án song song",
+        "C": "Thuê công ty PR để cải thiện hình ảnh dự án với ngư dân",
+        "D": "Tiếp tục dự án vì đã có đủ sự chấp thuận pháp lý"
+      },
+      "ans": "B",
+      "exp": "Quản lý sự tham gia hiệu quả đòi hỏi phải hiểu và giải quyết mối quan tâm thực sự (real concerns) của bên liên quan, không chỉ cung cấp thêm thông tin về những gì họ không quan tâm. Ngư dân quan tâm đến sinh kế, không phải kỹ thuật. Giải pháp phù hợp là giải quyết mối quan tâm thực sự đó — làm việc với nhà tài trợ về chương trình hỗ trợ. Đây cũng có thể là yêu cầu thay đổi phạm vi. Tiếp cận PR mà không giải quyết gốc rễ vấn đề sẽ không hiệu quả lâu dài."
+    },
+    {
+      "id": "ch13_q17",
+      "q": "Trong giai đoạn đóng dự án xây dựng trung tâm thương mại, quản lý dự án nhận thấy rằng một số bên liên quan quan trọng chưa bao giờ được mời tham gia vào quá trình nghiệm thu cuối cùng. Nhìn lại, nguyên nhân là do họ không được xác định đầy đủ ngay từ đầu dự án. Bài học kinh nghiệm này liên quan trực tiếp đến quy trình nào?",
+      "opts": {
+        "A": "Giám sát sự tham gia các bên liên quan",
+        "B": "Quản lý sự tham gia các bên liên quan",
+        "C": "Xác định các bên liên quan",
+        "D": "Lập kế hoạch tham gia các bên liên quan"
+      },
+      "ans": "C",
+      "exp": "Việc không xác định đầy đủ các bên liên quan ngay từ đầu là lỗi thuộc quy trình 'Xác định các bên liên quan' (Identify Stakeholders). Đây là quy trình đầu tiên và quan trọng nhất trong Quản lý các Bên liên quan. Sổ đăng ký không đầy đủ sẽ dẫn đến kế hoạch tham gia không đầy đủ và cuối cùng là quản lý không hiệu quả. PMBOK 6 nhấn mạnh rằng quy trình Xác định bên liên quan nên được thực hiện sớm, thường xuyên lặp lại, và không chỉ một lần duy nhất."
+    },
+    {
+      "id": "ch13_q18",
+      "q": "Quản lý dự án phần mềm banking đang xây dựng kế hoạch tham gia các bên liên quan. Ông nhận thấy rằng nhóm Kiểm toán Nội bộ là bên liên quan có quyền lực cao và quan tâm cao, nhưng hiện tại họ chưa biết gì về dự án (Unaware). Trong ma trận tham gia, ô 'C' (Current) được đánh dấu ở cột 'Unaware'. Mức độ mong muốn (Desired) nên được đặt ở đâu?",
+      "opts": {
+        "A": "Resistant — vì họ thường là bên phê bình",
+        "B": "Neutral — vì đây là mức độ vừa phải",
+        "C": "Supportive hoặc Leading — vì đây là bên liên quan quan trọng cần tích cực tham gia",
+        "D": "Giữ nguyên Unaware — vì ít thông tin hơn thì ít rủi ro hơn"
+      },
+      "ans": "C",
+      "exp": "Đối với bên liên quan có quyền lực CAO và quan tâm CAO (góc phần tư 'Manage Closely'), mức độ tham gia mong muốn phải ít nhất là 'Supportive' (Ủng hộ), lý tưởng là 'Leading' (Dẫn dắt — chủ động vận động cho dự án). Nhóm Kiểm toán Nội bộ đặc biệt quan trọng vì họ có thể phê duyệt hoặc từ chối các quyết định quan trọng. Giữ họ ở trạng thái 'Unaware' là rủi ro rất cao vì khi họ phát hiện ra, phản ứng có thể là 'Resistant' — khó quản lý hơn nhiều."
+    },
+    {
+      "id": "ch13_q19",
+      "q": "Trong dự án xây dựng đường cao tốc, Bộ Giao thông Vận tải là bên liên quan quan trọng nhất. Sau sáu tháng dự án, Thứ trưởng phụ trách dự án được điều chuyển và người thay thế hoàn toàn không biết về các cam kết trước đó. Người mới có quan điểm khác và muốn thay đổi nhiều yếu tố đã được thống nhất. Quản lý dự án nên làm gì đầu tiên?",
+      "opts": {
+        "A": "Tiếp tục dự án theo kế hoạch cũ và bỏ qua quan điểm của Thứ trưởng mới",
+        "B": "Cập nhật sổ đăng ký bên liên quan, gặp gỡ Thứ trưởng mới để giới thiệu dự án, chia sẻ tài liệu và tìm hiểu ưu tiên của ông",
+        "C": "Ngay lập tức thực hiện tất cả thay đổi được Thứ trưởng mới yêu cầu",
+        "D": "Leo thang đến Bộ trưởng để phàn nàn về sự gián đoạn"
+      },
+      "ans": "B",
+      "exp": "Khi có bên liên quan chủ chốt mới (thay thế người cũ), PM cần thực hiện quy trình tiếp nhận bên liên quan một cách chủ động: cập nhật sổ đăng ký, gặp gỡ trực tiếp để xây dựng mối quan hệ, cung cấp context đầy đủ về dự án và tìm hiểu quan điểm/ưu tiên của họ. Đây là cách tiếp cận proactive trong Manage Stakeholder Engagement. Không thể bỏ qua họ (rủi ro cao) hay chấp nhận tất cả thay đổi mà không qua quy trình kiểm soát thay đổi."
+    },
+    {
+      "id": "ch13_q20",
+      "q": "Quản lý dự án đang thực hiện đánh giá hiệu quả của kế hoạch tham gia các bên liên quan. Ông thu thập dữ liệu từ nhiều nguồn: tỷ lệ tham dự cuộc họp, số lượng phản hồi nhận được, số vấn đề được giải quyết, và mức độ hài lòng qua khảo sát. Đây là hoạt động thuộc quy trình nào và kết quả này được dùng để làm gì?",
+      "opts": {
+        "A": "Lập kế hoạch tham gia — để xây dựng kế hoạch mới",
+        "B": "Quản lý sự tham gia — để ghi nhận thành tích của nhóm dự án",
+        "C": "Giám sát sự tham gia — để đánh giá hiệu quả và xác định cần điều chỉnh gì",
+        "D": "Xác định các bên liên quan — để phân loại lại các bên liên quan"
+      },
+      "ans": "C",
+      "exp": "Việc thu thập và phân tích dữ liệu về mức độ tham gia (tỷ lệ tham dự, phản hồi, vấn đề được giải quyết, mức hài lòng) là đặc trưng của quy trình 'Giám sát sự tham gia các bên liên quan' (Monitor Stakeholder Engagement). Đây là quy trình kiểm soát (monitoring & controlling process group). Kết quả đánh giá được sử dụng để xác định xem chiến lược tham gia có đang hoạt động hiệu quả không, và nếu không, cần tạo yêu cầu thay đổi để điều chỉnh kế hoạch tham gia hoặc kế hoạch truyền thông."
+    }
+  ]
+}

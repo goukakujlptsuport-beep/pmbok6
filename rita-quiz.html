@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rita Mulcahy — Luyện Tập PMP Quiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #0d1420;
+  --bg2:      #111926;
+  --surface:  #1a2436;
+  --surface2: #1f2d42;
+  --gold:     #c9a84c;
+  --gold-lt:  #e8d5a3;
+  --gold-dim: rgba(201,168,76,0.15);
+  --red:      #c0390a;
+  --red-dim:  rgba(192,57,10,0.15);
+  --text:     #dde4f0;
+  --text-dim: #7a8baa;
+  --green:    #4caf50;
+  --amber:    #ffa000;
+  --r:        10px;
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+body {
+  background:var(--bg); color:var(--text);
+  font-family:'Source Sans 3',sans-serif;
+  min-height:100vh; -webkit-font-smoothing:antialiased;
+}
+
+/* HEADER */
+header {
+  position:sticky; top:0; z-index:100;
+  background:rgba(13,20,32,0.92); backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(201,168,76,0.15);
+  padding:0 2rem; height:60px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.logo { display:flex; align-items:center; gap:0.75rem; text-decoration:none; color:inherit; }
+.logo-icon {
+  width:34px; height:34px;
+  background:linear-gradient(135deg,#4a1505,#c0390a);
+  border:1.5px solid rgba(201,168,76,0.5); border-radius:8px;
+  display:flex; align-items:center; justify-content:center; font-size:1.1rem;
+}
+.logo-text { font-family:'Merriweather',serif; font-size:1.05rem; font-weight:700; color:var(--gold); }
+.logo-sub  { font-size:0.72rem; color:var(--text-dim); letter-spacing:0.04em; margin-top:0.05rem; }
+.header-right { display:flex; align-items:center; gap:1rem; }
+.btn-home {
+  font-size:0.8rem; color:var(--text-dim); text-decoration:none;
+  padding:0.35rem 0.8rem; border-radius:6px;
+  border:1px solid rgba(255,255,255,0.1); transition:all 0.15s;
+}
+.btn-home:hover { border-color:var(--gold); color:var(--gold); }
+
+/* HERO */
+.hero {
+  padding:2.5rem 2rem 0; max-width:1100px; margin:0 auto;
+  display:flex; flex-wrap:wrap; gap:1.5rem; align-items:center;
+}
+.hero-text h1 {
+  font-family:'Merriweather',serif;
+  font-size:clamp(1.4rem,3vw,2rem); font-weight:700; color:#fff; margin-bottom:0.5rem;
+}
+.hero-text p { font-size:0.92rem; color:var(--text-dim); max-width:520px; line-height:1.6; }
+.hero-badge {
+  margin-left:auto; background:var(--red-dim);
+  border:1px solid rgba(192,57,10,0.4); border-radius:var(--r);
+  padding:0.9rem 1.2rem; text-align:center; min-width:150px;
+}
+.hb-num { font-size:2rem; font-weight:700; color:#e06040; }
+.hb-lbl { font-size:0.7rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.08em; }
+
+/* CHAPTER GRID */
+.section { padding:2rem 2rem 3rem; max-width:1100px; margin:0 auto; }
+.section-header {
+  display:flex; align-items:center; gap:0.7rem;
+  margin-bottom:1.5rem; padding-bottom:0.75rem;
+  border-bottom:1px solid rgba(255,255,255,0.07);
+}
+.section-header h2 { font-family:'Merriweather',serif; font-size:1rem; font-weight:700; color:var(--gold-lt); }
+
+.ch-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+  gap:1rem;
+}
+.ch-card {
+  background:var(--surface);
+  border:1px solid rgba(255,255,255,0.07);
+  border-radius:var(--r); padding:1.1rem 1.1rem;
+  cursor:pointer; transition:all 0.2s ease;
+  display:flex; flex-direction:column; gap:0.5rem;
+  position:relative; overflow:hidden;
+}
+.ch-card:hover {
+  border-color:rgba(192,57,10,0.5);
+  background:rgba(192,57,10,0.08);
+  transform:translateY(-3px);
+  box-shadow:0 8px 24px rgba(0,0,0,0.4);
+}
+.ch-card.has-score { border-color:rgba(201,168,76,0.3); }
+.ch-num {
+  font-size:0.65rem; font-weight:800; letter-spacing:0.1em;
+  text-transform:uppercase; color:var(--text-dim);
+}
+.ch-title { font-size:0.88rem; font-weight:700; color:#fff; line-height:1.3; flex:1; }
+.ch-score {
+  font-size:0.75rem; font-weight:700;
+  padding:0.2rem 0.6rem; border-radius:20px;
+  background:rgba(201,168,76,0.15); color:var(--gold);
+  align-self:flex-start;
+}
+.ch-btn {
+  display:block; width:100%; margin-top:0.5rem;
+  background:rgba(192,57,10,0.8); color:#fff;
+  font-weight:700; font-size:0.76rem; letter-spacing:0.03em;
+  text-align:center; padding:0.4rem;
+  border-radius:6px; border:none; cursor:pointer;
+  transition:background 0.15s; font-family:inherit;
+}
+.ch-btn:hover { background:#c0390a; }
+.ch-card.has-score .ch-btn { background:rgba(201,168,76,0.7); color:#0a0f1a; }
+.ch-card.has-score .ch-btn:hover { background:var(--gold); }
+
+/* OVERALL STATS BAR */
+#stats-bar {
+  background:var(--surface);
+  border-bottom:1px solid rgba(255,255,255,0.07);
+  padding:0.75rem 2rem;
+  display:flex; align-items:center; gap:2rem; flex-wrap:wrap;
+}
+.stat-item { display:flex; flex-direction:column; align-items:center; }
+.stat-num { font-size:1.2rem; font-weight:700; color:var(--gold); }
+.stat-lbl { font-size:0.62rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.07em; }
+#stats-bar progress-track {
+  flex:1; min-width:200px; height:8px;
+  background:rgba(255,255,255,0.08); border-radius:4px; overflow:hidden;
+}
+
+/* ── QUIZ OVERLAY ────────────────────────────────────────── */
+#quiz-overlay {
+  position:fixed; inset:0; z-index:500;
+  background:rgba(5,10,20,0.95); backdrop-filter:blur(8px);
+  display:flex; align-items:center; justify-content:center;
+  padding:1rem;
+}
+#quiz-overlay[hidden] { display:none; }
+
+#quiz-box {
+  background:var(--surface);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:16px; width:100%; max-width:680px;
+  max-height:90vh; overflow-y:auto;
+  box-shadow:0 24px 80px rgba(0,0,0,0.7);
+  display:flex; flex-direction:column;
+}
+
+#quiz-head {
+  display:flex; align-items:flex-start; justify-content:space-between;
+  padding:1.1rem 1.3rem 0.9rem;
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  gap:1rem;
+}
+#quiz-head-title { font-size:0.8rem; font-weight:700; color:var(--gold); letter-spacing:0.04em; text-transform:uppercase; }
+#quiz-head-sub   { font-size:0.92rem; font-weight:700; color:#fff; margin-top:0.15rem; }
+#quiz-score-live { font-size:0.8rem; font-weight:700; color:var(--text-dim); white-space:nowrap; }
+#quiz-x {
+  background:none; border:none; color:var(--text-dim); font-size:1.2rem;
+  cursor:pointer; padding:0.25rem; border-radius:4px; line-height:1;
+}
+#quiz-x:hover { color:var(--text); }
+
+#quiz-bar-wrap { height:3px; background:rgba(255,255,255,0.08); }
+#quiz-bar      { height:100%; background:linear-gradient(90deg,#c0390a,#e06040); transition:width 0.4s ease; }
+
+/* Question screen */
+#quiz-q-screen { padding:1.3rem; }
+#quiz-q-screen[hidden] { display:none !important; }
+#quiz-q-num-badge {
+  display:inline-block; font-size:0.66rem; font-weight:800;
+  letter-spacing:0.1em; text-transform:uppercase;
+  background:rgba(192,57,10,0.2); color:#e06040;
+  padding:0.2rem 0.6rem; border-radius:20px; margin-bottom:0.9rem;
+}
+#quiz-q-body { font-size:0.95rem; line-height:1.7; color:var(--text); margin-bottom:1.1rem; }
+#quiz-opts { display:flex; flex-direction:column; gap:0.6rem; }
+.opt-card {
+  background:var(--surface2); border:1.5px solid rgba(255,255,255,0.1);
+  border-radius:8px; padding:0.7rem 1rem;
+  cursor:pointer; display:flex; align-items:flex-start; gap:0.7rem;
+  transition:all 0.15s ease; font-size:0.9rem; line-height:1.5;
+}
+.opt-card:hover:not(.locked) { border-color:rgba(192,57,10,0.5); background:rgba(192,57,10,0.1); }
+.opt-key {
+  font-weight:800; font-size:0.8rem; min-width:1.4rem;
+  color:#e06040; flex-shrink:0; margin-top:0.05rem;
+}
+.opt-card.correct { border-color:#4caf50 !important; background:rgba(76,175,80,0.15) !important; }
+.opt-card.correct .opt-key { color:#4caf50; }
+.opt-card.wrong   { border-color:#ef5350 !important; background:rgba(239,83,80,0.15) !important; }
+.opt-card.wrong   .opt-key { color:#ef5350; }
+.opt-card.locked  { cursor:default; }
+
+#quiz-exp {
+  margin-top:1rem; background:rgba(201,168,76,0.08);
+  border-left:3px solid var(--gold); border-radius:0 8px 8px 0;
+  padding:0.8rem 1rem; font-size:0.875rem; color:var(--text); line-height:1.65;
+}
+#quiz-exp[hidden] { display:none !important; }
+
+#quiz-q-foot {
+  display:flex; justify-content:flex-end; gap:0.8rem;
+  margin-top:1.1rem;
+}
+#quiz-btn-next, #quiz-btn-end {
+  background:#c0390a; color:#fff;
+  font-weight:700; font-size:0.84rem; padding:0.55rem 1.3rem;
+  border-radius:8px; border:none; cursor:pointer; font-family:inherit;
+  transition:background 0.15s;
+}
+#quiz-btn-next:hover, #quiz-btn-end:hover { background:#a02e06; }
+#quiz-btn-next[hidden] { display:none !important; }
+#quiz-btn-end[hidden]  { display:none !important; }
+
+/* Results screen */
+#quiz-r-screen { padding:1.5rem 1.3rem; display:flex; flex-direction:column; align-items:center; gap:1rem; }
+#quiz-r-screen[hidden] { display:none !important; }
+
+#quiz-r-circle {
+  width:120px; height:120px; border-radius:50%;
+  border:5px solid var(--gold);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  background:rgba(201,168,76,0.07);
+}
+#quiz-r-score { font-size:2rem; font-weight:800; color:var(--gold); line-height:1; }
+#quiz-r-pct   { font-size:0.75rem; color:var(--text-dim); margin-top:0.15rem; }
+#quiz-r-band  { font-size:1rem; font-weight:700; }
+#quiz-r-stats { font-size:0.85rem; color:var(--text-dim); text-align:center; line-height:1.7; }
+#quiz-r-review { width:100%; }
+#quiz-r-review h4 { font-size:0.8rem; font-weight:700; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.75rem; }
+
+.review-item {
+  background:var(--surface2); border-radius:8px; padding:0.9rem 1rem;
+  margin-bottom:0.6rem; font-size:0.86rem; line-height:1.55;
+}
+.review-q  { color:var(--text); margin-bottom:0.4rem; }
+.review-ans { display:flex; flex-wrap:wrap; gap:0.4rem 1.5rem; font-size:0.8rem; }
+.review-yours { color:#ef5350; }
+.review-correct { color:#4caf50; }
+.review-exp { color:var(--text-dim); margin-top:0.4rem; font-size:0.8rem; font-style:italic; }
+
+#quiz-r-foot {
+  display:flex; gap:0.9rem; flex-wrap:wrap; justify-content:center;
+  width:100%; padding-top:0.5rem;
+}
+#quiz-btn-retry {
+  background:rgba(192,57,10,0.8); color:#fff;
+  font-weight:700; font-size:0.84rem; padding:0.55rem 1.3rem;
+  border-radius:8px; border:none; cursor:pointer; font-family:inherit; transition:background 0.15s;
+}
+#quiz-btn-retry:hover { background:#c0390a; }
+#quiz-btn-close2 {
+  background:rgba(255,255,255,0.08); color:var(--text);
+  font-weight:700; font-size:0.84rem; padding:0.55rem 1.3rem;
+  border-radius:8px; border:none; cursor:pointer; font-family:inherit; transition:background 0.15s;
+}
+#quiz-btn-close2:hover { background:rgba(255,255,255,0.15); }
+
+footer {
+  text-align:center; padding:2rem;
+  font-size:0.72rem; color:var(--text-dim);
+  border-top:1px solid rgba(255,255,255,0.06);
+}
+@media(max-width:640px){
+  header { padding:0 1rem; }
+  .hero  { padding:2rem 1rem 0; }
+  .section { padding:1.5rem 1rem 2rem; }
+  .ch-grid { grid-template-columns:repeat(2,1fr); gap:0.75rem; }
+  #quiz-box { max-height:95vh; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="home.html" class="logo">
+    <div class="logo-icon">📕</div>
+    <div>
+      <div class="logo-text">Rita Quiz</div>
+      <div class="logo-sub">PMP Exam Prep · Luyện Tập</div>
+    </div>
+  </a>
+  <div class="header-right">
+    <a href="home.html" class="btn-home">← Thư Viện</a>
+  </div>
+</header>
+
+<div id="stats-bar" style="display:none"></div>
+
+<div class="hero">
+  <div class="hero-text">
+    <h1>📕 Rita Mulcahy — Quiz Luyện Thi PMP</h1>
+    <p>20 câu hỏi tình huống theo phong cách PMP thật cho mỗi chương của Rita Mulcahy PMP® Exam Prep 11th Edition. Câu hỏi bao gồm cả nội dung Agile, Hybrid và PMBOK7.</p>
+  </div>
+  <div class="hero-badge">
+    <div class="hb-num" id="total-done">0/17</div>
+    <div class="hb-lbl">Chương đã luyện</div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="section-header">
+    <h2>📚 Chọn Chương Để Luyện Tập</h2>
+  </div>
+  <div class="ch-grid" id="ch-grid"></div>
+</section>
+
+<footer>Rita Mulcahy PMP® Exam Prep · Câu hỏi gốc cho mục đích luyện tập cá nhân.</footer>
+
+<!-- QUIZ OVERLAY -->
+<div id="quiz-overlay" hidden>
+  <div id="quiz-box">
+    <div id="quiz-head">
+      <div>
+        <div id="quiz-head-title"></div>
+        <div id="quiz-head-sub"></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:0.75rem">
+        <div id="quiz-score-live"></div>
+        <button id="quiz-x" aria-label="Đóng quiz">✕</button>
+      </div>
+    </div>
+    <div id="quiz-bar-wrap"><div id="quiz-bar"></div></div>
+
+    <div id="quiz-q-screen">
+      <div id="quiz-q-num-badge"></div>
+      <div id="quiz-q-body"></div>
+      <div id="quiz-opts"></div>
+      <div id="quiz-exp" hidden></div>
+      <div id="quiz-q-foot">
+        <button id="quiz-btn-next" hidden>Câu tiếp theo →</button>
+        <button id="quiz-btn-end"  hidden>Xem kết quả ✓</button>
+      </div>
+    </div>
+
+    <div id="quiz-r-screen" hidden>
+      <div id="quiz-r-circle">
+        <div id="quiz-r-score"></div>
+        <div id="quiz-r-pct"></div>
+      </div>
+      <div id="quiz-r-band"></div>
+      <div id="quiz-r-stats"></div>
+      <div id="quiz-r-review"></div>
+      <div id="quiz-r-foot">
+        <button id="quiz-btn-retry">🔄 Làm lại</button>
+        <button id="quiz-btn-close2">✕ Đóng</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const CHAPTERS = [
+  { num:2,  id:'rita_02', title:'PMP Exam References in Context' },
+  { num:3,  id:'rita_03', title:'Project Management Foundations' },
+  { num:4,  id:'rita_04', title:'Integration' },
+  { num:5,  id:'rita_05', title:'Leadership Skills' },
+  { num:6,  id:'rita_06', title:'Build and Support Team Performance' },
+  { num:7,  id:'rita_07', title:'Scope' },
+  { num:8,  id:'rita_08', title:'Schedule' },
+  { num:9,  id:'rita_09', title:'Budget and Resources' },
+  { num:10, id:'rita_10', title:'Quality of Deliverables and Products' },
+  { num:11, id:'rita_11', title:'Communications' },
+  { num:12, id:'rita_12', title:'Risks and Issues' },
+  { num:13, id:'rita_13', title:'Procurement' },
+  { num:14, id:'rita_14', title:'Stakeholders' },
+  { num:15, id:'rita_15', title:'Compliance and Delivering Value' },
+  { num:16, id:'rita_16', title:'Tips for Passing the PMP Exam' },
+  { num:17, id:'rita_17', title:'Common Agile Methodologies' },
+  { num:18, id:'rita_18', title:'PMBOK Guide and PM Standard Principles' },
+];
+
+const LS_KEY = 'rita_quiz_scores';
+
+function getScores() {
+  try { return JSON.parse(localStorage.getItem(LS_KEY) || '{}'); }
+  catch { return {}; }
+}
+function saveScore(chId, correct, total) {
+  const s = getScores();
+  s[chId] = { correct, total, pct: Math.round(correct/total*100), ts: Date.now() };
+  localStorage.setItem(LS_KEY, JSON.stringify(s));
+}
+
+// ── RENDER CHAPTER CARDS ─────────────────────────────────
+function renderCards() {
+  const scores = getScores();
+  const grid   = document.getElementById('ch-grid');
+  grid.innerHTML = CHAPTERS.map(ch => {
+    const sc = scores[ch.id];
+    const hasScore = !!sc;
+    const pctBand  = sc ? (sc.pct >= 80 ? '✓' : sc.pct >= 60 ? '△' : '✗') : '';
+    const scoreHtml = sc ? `<span class="ch-score">${pctBand} ${sc.correct}/${sc.total} · ${sc.pct}%</span>` : '';
+    const btnLabel  = sc ? 'Làm lại' : 'Bắt đầu →';
+    return `<div class="ch-card${hasScore?' has-score':''}" onclick="startQuiz(${ch.num})">
+      <div class="ch-num">Chương ${ch.num}</div>
+      <div class="ch-title">${ch.title}</div>
+      ${scoreHtml}
+      <button class="ch-btn" onclick="event.stopPropagation();startQuiz(${ch.num})">${btnLabel}</button>
+    </div>`;
+  }).join('');
+
+  // hero counter
+  const done = Object.keys(scores).length;
+  document.getElementById('total-done').textContent = `${done}/17`;
+}
+
+renderCards();
+
+// ── QUIZ ENGINE ───────────────────────────────────────────
+let QS = null;
+
+async function startQuiz(chNum) {
+  const ch = CHAPTERS.find(c => c.num === chNum);
+  if (!ch) return;
+  const file = `books/pmbok6/quiz/rita/ch${String(chNum).padStart(2,'0')}.json`;
+  let data;
+  try {
+    const res = await fetch(file);
+    if (!res.ok) throw new Error('not found');
+    data = await res.json();
+  } catch {
+    alert(`Câu hỏi Chương ${chNum} chưa sẵn sàng. Vui lòng thử lại sau.`);
+    return;
+  }
+  const all = (data.questions || []);
+  const questions = all.sort(() => Math.random() - 0.5).slice(0, 20);
+  if (!questions.length) { alert('Không có câu hỏi.'); return; }
+
+  QS = { ch, questions, current: 0, answers: [], correct: 0, startTime: Date.now() };
+
+  document.getElementById('quiz-head-title').textContent = `Rita Mulcahy · Chương ${chNum}`;
+  document.getElementById('quiz-head-sub').textContent   = ch.title;
+  document.getElementById('quiz-overlay').hidden = false;
+  document.body.style.overflow = 'hidden';
+  showQuestion(0);
+}
+
+function showQuestion(idx) {
+  const { questions } = QS;
+  const q = questions[idx];
+  const total = questions.length;
+
+  document.getElementById('quiz-q-screen').hidden = false;
+  document.getElementById('quiz-r-screen').hidden = true;
+  document.getElementById('quiz-bar').style.width = `${((idx) / total) * 100}%`;
+  document.getElementById('quiz-q-num-badge').textContent = `Câu ${idx + 1} / ${total}`;
+  document.getElementById('quiz-q-body').textContent = q.q;
+  document.getElementById('quiz-exp').hidden = true;
+  document.getElementById('quiz-btn-next').hidden = true;
+  document.getElementById('quiz-btn-end').hidden  = true;
+  document.getElementById('quiz-score-live').textContent =
+    `${QS.correct}/${idx} đúng`;
+
+  const optsEl = document.getElementById('quiz-opts');
+  optsEl.innerHTML = ['A','B','C','D'].map(k => {
+    if (!q.opts[k]) return '';
+    return `<div class="opt-card" data-key="${k}" onclick="selectAnswer('${k}')">
+      <span class="opt-key">${k}</span>
+      <span>${q.opts[k]}</span>
+    </div>`;
+  }).join('');
+}
+
+function selectAnswer(selected) {
+  if (document.querySelector('.opt-card.locked')) return;
+  const q = QS.questions[QS.current];
+  const correct = q.ans;
+  const isRight = selected === correct;
+  if (isRight) QS.correct++;
+  QS.answers.push({ idx: QS.current, selected, correct, isRight });
+
+  document.querySelectorAll('.opt-card').forEach(card => {
+    card.classList.add('locked');
+    const k = card.dataset.key;
+    if (k === correct) card.classList.add('correct');
+    else if (k === selected && !isRight) card.classList.add('wrong');
+  });
+
+  const expEl = document.getElementById('quiz-exp');
+  expEl.textContent = q.exp || '';
+  expEl.hidden = false;
+
+  const isLast = QS.current === QS.questions.length - 1;
+  document.getElementById('quiz-btn-next').hidden = isLast;
+  document.getElementById('quiz-btn-end').hidden  = !isLast;
+  document.getElementById('quiz-score-live').textContent =
+    `${QS.correct}/${QS.current + 1} đúng`;
+}
+
+document.getElementById('quiz-btn-next').addEventListener('click', () => {
+  QS.current++;
+  showQuestion(QS.current);
+});
+
+document.getElementById('quiz-btn-end').addEventListener('click', showResults);
+
+function showResults() {
+  const { questions, correct, ch } = QS;
+  const total   = questions.length;
+  const pct     = Math.round(correct / total * 100);
+  const secs    = Math.round((Date.now() - QS.startTime) / 1000);
+  const mins    = Math.floor(secs / 60), rem = secs % 60;
+
+  saveScore(ch.id, correct, total);
+
+  document.getElementById('quiz-q-screen').hidden = true;
+  document.getElementById('quiz-r-screen').hidden = false;
+  document.getElementById('quiz-bar').style.width = '100%';
+
+  document.getElementById('quiz-r-score').textContent = `${correct}/${total}`;
+  document.getElementById('quiz-r-pct').textContent   = `${pct}%`;
+
+  let band, color;
+  if (pct >= 80)      { band='Xuất sắc 🏆'; color='#c9a84c'; }
+  else if (pct >= 70) { band='Tốt ✓'; color='#4caf50'; }
+  else if (pct >= 60) { band='Đạt △'; color='#ffa000'; }
+  else                { band='Cần ôn lại ✗'; color='#ef5350'; }
+
+  const bandEl = document.getElementById('quiz-r-band');
+  bandEl.textContent  = band;
+  bandEl.style.color  = color;
+
+  document.getElementById('quiz-r-stats').innerHTML =
+    `Thời gian: ${mins}p ${rem}s &nbsp;|&nbsp; Đúng: ${correct} &nbsp;|&nbsp; Sai: ${total - correct}`;
+
+  const wrong = QS.answers.filter(a => !a.isRight);
+  const revEl = document.getElementById('quiz-r-review');
+  if (wrong.length) {
+    revEl.innerHTML = `<h4>Câu trả lời sai (${wrong.length})</h4>` +
+      wrong.map(a => {
+        const q = questions[a.idx];
+        return `<div class="review-item">
+          <div class="review-q">${q.q.substring(0,120)}${q.q.length>120?'…':''}</div>
+          <div class="review-ans">
+            <span class="review-yours">Bạn chọn: ${a.selected}</span>
+            <span class="review-correct">Đúng: ${a.correct}</span>
+          </div>
+          <div class="review-exp">${q.exp || ''}</div>
+        </div>`;
+      }).join('');
+  } else {
+    revEl.innerHTML = '<div style="color:#4caf50;font-weight:700;text-align:center;padding:1rem">🎉 Tuyệt vời — không có câu nào sai!</div>';
+  }
+
+  renderCards();
+}
+
+function closeQuiz() {
+  document.getElementById('quiz-overlay').hidden = true;
+  document.body.style.overflow = '';
+  QS = null;
+}
+
+document.getElementById('quiz-x').addEventListener('click', closeQuiz);
+document.getElementById('quiz-btn-close2').addEventListener('click', closeQuiz);
+document.getElementById('quiz-btn-retry').addEventListener('click', () => {
+  const ch = QS?.ch;
+  closeQuiz();
+  if (ch) startQuiz(ch.num);
+});
+document.getElementById('quiz-overlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('quiz-overlay')) closeQuiz();
+});
+</script>
+</body>
+</html>

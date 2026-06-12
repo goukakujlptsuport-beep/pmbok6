@@ -1,0 +1,247 @@
+{
+  "chapterId": "09_resource_management",
+  "chapterNum": 9,
+  "chapterTitle": "Quản Lý Nguồn Lực Dự Án",
+  "questions": [
+    {
+      "id": "ch09_q01",
+      "q": "Bạn vừa được bổ nhiệm làm quản lý dự án cho một dự án phát triển phần mềm lớn. Trong quá trình lập kế hoạch, bạn cần xác định rõ ai chịu trách nhiệm thực hiện từng công việc, ai phê duyệt kết quả, ai cần tư vấn và ai cần được thông báo. Công cụ nào sau đây phù hợp nhất để tài liệu hóa thông tin này một cách rõ ràng cho toàn bộ nhóm?",
+      "opts": {
+        "A": "Sơ đồ tổ chức dự án (OBS)",
+        "B": "Ma trận phân công trách nhiệm RACI",
+        "C": "Biểu đồ histogram nguồn lực",
+        "D": "Lịch nguồn lực (Resource Calendar)"
+      },
+      "ans": "B",
+      "exp": "Ma trận RACI (Responsible/Accountable/Consult/Inform) là công cụ chuyên dụng để xác định và tài liệu hóa vai trò và trách nhiệm của từng thành viên đối với từng hoạt động trong dự án. Nó giúp tránh sự nhầm lẫn về trách nhiệm và đảm bảo tất cả các bên liên quan biết rõ vai trò của mình."
+    },
+    {
+      "id": "ch09_q02",
+      "q": "Nhóm dự án của bạn gồm các thành viên từ nhiều phòng ban khác nhau vừa được thành lập. Trong các cuộc họp ban đầu, các thành viên còn dè dặt, chưa quen nhau và chưa hiểu rõ mục tiêu dự án. Mọi người đang chờ đợi sự hướng dẫn từ quản lý dự án. Theo mô hình phát triển nhóm Tuckman, nhóm đang ở giai đoạn nào?",
+      "opts": {
+        "A": "Storming (Xung đột)",
+        "B": "Norming (Chuẩn hóa)",
+        "C": "Forming (Hình thành)",
+        "D": "Performing (Hiệu suất cao)"
+      },
+      "ans": "C",
+      "exp": "Giai đoạn Forming (Hình thành) là giai đoạn đầu tiên trong mô hình Tuckman, khi các thành viên mới làm quen với nhau và với dự án. Đặc điểm nhận biết: mọi người còn lịch sự, dè dặt, chưa rõ vai trò, phụ thuộc vào lãnh đạo để được hướng dẫn. Quản lý dự án cần cung cấp hướng dẫn rõ ràng và xây dựng mối quan hệ trong nhóm."
+    },
+    {
+      "id": "ch09_q03",
+      "q": "Trong dự án xây dựng hệ thống ERP, hai nhà phát triển cấp cao liên tục tranh luận về phương pháp kỹ thuật tốt nhất để thiết kế cơ sở dữ liệu. Cuộc tranh luận kéo dài ảnh hưởng đến tiến độ nhóm. Bạn triệu tập một cuộc họp, lắng nghe cả hai quan điểm, phân tích ưu nhược điểm và cùng nhóm tìm ra giải pháp kỹ thuật kết hợp tốt nhất từ cả hai phương pháp. Đây là kỹ thuật giải quyết xung đột nào?",
+      "opts": {
+        "A": "Compromising (Thỏa hiệp)",
+        "B": "Forcing (Áp đặt)",
+        "C": "Collaborating/Problem-Solving (Hợp tác/Giải quyết vấn đề)",
+        "D": "Smoothing/Accommodating (Xoa dịu)"
+      },
+      "ans": "C",
+      "exp": "Collaborating/Problem-Solving là kỹ thuật giải quyết xung đột tốt nhất vì nó tìm kiếm giải pháp win-win, giải quyết triệt để nguyên nhân gốc rễ của xung đột. Quản lý dự án đã lắng nghe cả hai phía, phân tích khách quan và tìm ra giải pháp kết hợp tốt nhất. Đây là phương pháp được PMBOK khuyến nghị ưu tiên vì tạo ra kết quả bền vững nhất."
+    },
+    {
+      "id": "ch09_q04",
+      "q": "Công ty bạn đang thực hiện một dự án nghiên cứu và phát triển đòi hỏi chuyên gia về trí tuệ nhân tạo, nhưng không có nhân sự nội bộ đáp ứng yêu cầu. Bạn cần tuyển dụng một chuyên gia từ bên ngoài và đánh giá nhiều ứng viên dựa trên kinh nghiệm, kỹ năng kỹ thuật, khả năng làm việc nhóm và chi phí. Kỹ thuật nào phù hợp nhất để lựa chọn ứng viên?",
+      "opts": {
+        "A": "Pre-assignment (Phân công trước)",
+        "B": "Multi-criteria Decision Analysis (Phân tích quyết định đa tiêu chí)",
+        "C": "Virtual Teams (Nhóm ảo)",
+        "D": "Resource Histogram (Biểu đồ histogram nguồn lực)"
+      },
+      "ans": "B",
+      "exp": "Multi-criteria Decision Analysis (Phân tích quyết định đa tiêu chí) là kỹ thuật phù hợp khi cần đánh giá và lựa chọn nguồn lực dựa trên nhiều tiêu chí khác nhau (kỹ năng, kinh nghiệm, chi phí, khả năng làm việc nhóm...). Kỹ thuật này cho phép gán trọng số cho từng tiêu chí và đánh giá tổng thể để đưa ra quyết định khách quan nhất."
+    },
+    {
+      "id": "ch09_q05",
+      "q": "Bạn đang quản lý một dự án phát triển ứng dụng di động với nhóm gồm 8 người. Sau 3 tháng làm việc cùng nhau, nhóm bắt đầu tự tổ chức công việc, hỗ trợ nhau, ít cần sự can thiệp của bạn và liên tục vượt các mục tiêu sprint. Các thành viên tin tưởng lẫn nhau và tập trung hoàn toàn vào mục tiêu dự án. Nhóm đang ở giai đoạn nào theo mô hình Tuckman?",
+      "opts": {
+        "A": "Norming (Chuẩn hóa)",
+        "B": "Storming (Xung đột)",
+        "C": "Adjourning (Kết thúc)",
+        "D": "Performing (Hiệu suất cao)"
+      },
+      "ans": "D",
+      "exp": "Giai đoạn Performing (Hiệu suất cao) là giai đoạn nhóm hoạt động ở mức độ hiệu quả cao nhất. Đặc điểm: nhóm tự tổ chức, tự giải quyết vấn đề, tin tưởng lẫn nhau, tập trung vào mục tiêu và đạt kết quả vượt trội mà không cần sự giám sát chặt chẽ của quản lý dự án. Đây là mục tiêu hướng đến của mọi quản lý dự án."
+    },
+    {
+      "id": "ch09_q06",
+      "q": "Nhóm dự án của bạn gồm các chuyên gia đến từ Việt Nam, Mỹ, Ấn Độ và Đức làm việc từ xa tại các múi giờ khác nhau. Một nhà phát triển tại Hà Nội hoàn thành phần công việc của mình và chuyển tiếp cho đồng nghiệp tại San Francisco tiếp tục. Hình thức tổ chức nhóm này được gọi là gì?",
+      "opts": {
+        "A": "Co-location (Làm việc cùng địa điểm)",
+        "B": "War Room (Phòng chiến tranh)",
+        "C": "Virtual Teams (Nhóm ảo)",
+        "D": "Matrix Organization (Tổ chức ma trận)"
+      },
+      "ans": "C",
+      "exp": "Virtual Teams (Nhóm ảo) là hình thức tổ chức nhóm khi các thành viên làm việc ở các địa điểm địa lý khác nhau, sử dụng công nghệ để giao tiếp và cộng tác. Lợi ích bao gồm: tiếp cận chuyên gia toàn cầu, giảm chi phí đi lại, linh hoạt về thời gian. Thách thức: khó xây dựng văn hóa nhóm, vấn đề múi giờ, rào cản ngôn ngữ và văn hóa."
+    },
+    {
+      "id": "ch09_q07",
+      "q": "Trong dự án xây dựng cầu, bạn nhận thấy 2 trong số 5 máy ủi đất được thuê đã hỏng và nhà thầu phụ không thể sửa chữa kịp thời. Việc này làm chậm tiến độ đào móng nghiêm trọng. Bạn cần thực hiện hành động gì trong quy trình nào của Quản lý Nguồn Lực?",
+      "opts": {
+        "A": "Develop Team - Đào tạo thêm kỹ năng cho nhân viên vận hành máy",
+        "B": "Control Resources - Thực hiện hành động khắc phục để giải quyết vấn đề nguồn lực vật chất",
+        "C": "Acquire Resources - Thương lượng lại hợp đồng thuê máy",
+        "D": "Plan Resource Management - Cập nhật kế hoạch quản lý nguồn lực"
+      },
+      "ans": "B",
+      "exp": "Control Resources (Kiểm soát Nguồn lực) là quy trình giám sát và điều chỉnh việc sử dụng nguồn lực vật chất (thiết bị, vật tư, cơ sở hạ tầng). Khi nguồn lực vật chất không khả dụng hoặc gặp sự cố, quản lý dự án cần thực hiện corrective actions (hành động khắc phục) như thuê thêm máy thay thế, điều chỉnh lịch trình hoặc tìm nhà cung cấp thay thế."
+    },
+    {
+      "id": "ch09_q08",
+      "q": "Một thành viên nhóm giỏi nhưng thường xuyên đến muộn và không hoàn thành công việc đúng hạn. Khi bạn hỏi lý do, anh ta cho biết mức lương của mình thấp hơn đồng nghiệp cùng cấp và cảm thấy không được công nhận. Theo lý thuyết của Herzberg, các yếu tố anh ta đề cập thuộc loại nào?",
+      "opts": {
+        "A": "Motivators (Yếu tố tạo động lực) - cần tăng cường",
+        "B": "Hygiene Factors (Yếu tố vệ sinh) - cần loại bỏ sự bất mãn",
+        "C": "Cả Motivators và Hygiene Factors",
+        "D": "Esteem Needs theo Maslow"
+      },
+      "ans": "B",
+      "exp": "Theo lý thuyết hai yếu tố của Herzberg, lương thưởng và sự công nhận (ở mức cơ bản) thuộc Hygiene Factors (yếu tố vệ sinh). Khi thiếu chúng, nhân viên bất mãn và giảm hiệu suất. Tuy nhiên, chỉ cải thiện hygiene factors không tạo ra động lực cao; cần thêm motivators (thành tích, trách nhiệm, cơ hội phát triển). Trong tình huống này, cần giải quyết vấn đề lương thưởng trước tiên."
+    },
+    {
+      "id": "ch09_q09",
+      "q": "Dự án phát triển sản phẩm mới sắp hoàn thành. Nhóm dự án đang trong giai đoạn chuyển giao sản phẩm cho bộ phận vận hành và các thành viên chuẩn bị quay lại phòng ban chức năng của mình. Có những buổi tiệc chia tay và đánh giá tổng kết được tổ chức. Theo mô hình Tuckman, nhóm đang ở giai đoạn nào?",
+      "opts": {
+        "A": "Performing (Hiệu suất cao)",
+        "B": "Norming (Chuẩn hóa)",
+        "C": "Adjourning (Kết thúc)",
+        "D": "Storming (Xung đột)"
+      },
+      "ans": "C",
+      "exp": "Adjourning (Kết thúc) là giai đoạn cuối cùng trong mô hình Tuckman (được bổ sung sau này), xảy ra khi dự án hoàn thành và nhóm giải tán. Thành viên hoàn thành công việc, chuyển giao và chuẩn bị chuyển sang vai trò khác. Quản lý dự án cần tổ chức đánh giá kết thúc dự án, ghi nhận đóng góp và hỗ trợ chuyển đổi cho thành viên."
+    },
+    {
+      "id": "ch09_q10",
+      "q": "Bạn đang lập kế hoạch cho một dự án 12 tháng và cần biết một kỹ sư cao cấp có thể làm việc bao nhiêu giờ mỗi tuần trong dự án của bạn, vì anh ta cũng tham gia hai dự án khác. Ngoài ra, bạn cần lên kế hoạch cho các thiết bị thử nghiệm đặc biệt chỉ có thể sử dụng được trong một số thời điểm nhất định. Tài liệu nào giúp bạn quản lý thông tin này?",
+      "opts": {
+        "A": "Resource Breakdown Structure (RBS)",
+        "B": "RACI Matrix",
+        "C": "Resource Calendars (Lịch nguồn lực)",
+        "D": "Team Charter (Hiến chương nhóm)"
+      },
+      "ans": "C",
+      "exp": "Resource Calendars (Lịch nguồn lực) ghi lại thời gian khả dụng của từng nguồn lực (cả con người và thiết bị), bao gồm: giờ làm việc, ngày nghỉ, thời gian dành cho dự án khác, bảo trì thiết bị. Thông tin này là đầu vào quan trọng cho quy trình Estimate Activity Resources và lập lịch dự án, giúp tránh over-allocation nguồn lực."
+    },
+    {
+      "id": "ch09_q11",
+      "q": "Trong buổi họp nhóm, hai thành viên có quan điểm trái chiều về cách tiếp cận kỹ thuật và bắt đầu nói to, ngắt lời nhau. Bạn quyết định tạm thời chấm dứt thảo luận về vấn đề này bằng cách nói: 'Chúng ta đều đồng ý muốn dự án thành công, và cả hai cách tiếp cận đều có giá trị. Hãy để tôi nghiên cứu thêm và chúng ta sẽ quay lại vấn đề này vào tuần tới.' Đây là kỹ thuật giải quyết xung đột nào?",
+      "opts": {
+        "A": "Collaborating (Hợp tác)",
+        "B": "Compromising (Thỏa hiệp)",
+        "C": "Smoothing/Accommodating (Xoa dịu)",
+        "D": "Withdrawing/Avoiding (Rút lui/Né tránh)"
+      },
+      "ans": "C",
+      "exp": "Smoothing/Accommodating (Xoa dịu) là kỹ thuật nhấn mạnh điểm chung, giảm căng thẳng tạm thời nhưng không giải quyết triệt để xung đột. Trong tình huống này, quản lý dự án đang làm dịu không khí bằng cách nhấn mạnh mục tiêu chung (dự án thành công) và hoãn quyết định. Đây là giải pháp tạm thời, không bền vững, vì vấn đề gốc rễ chưa được giải quyết."
+    },
+    {
+      "id": "ch09_q12",
+      "q": "Quản lý cấp cao yêu cầu bạn cắt giảm chi phí bằng cách loại bỏ các chương trình đào tạo và team building cho nhóm dự án. Nhóm của bạn đang trong giai đoạn Storming và hiệu suất chưa cao. Bạn giải thích rằng việc đầu tư vào phát triển nhóm sẽ mang lại lợi ích gì?",
+      "opts": {
+        "A": "Giúp nhóm nhanh chóng chuyển sang giai đoạn Norming và Performing, tăng hiệu suất tổng thể",
+        "B": "Đáp ứng yêu cầu tuân thủ quy định của công ty",
+        "C": "Tạo thêm tài liệu cho hồ sơ dự án",
+        "D": "Giúp quản lý dự án theo dõi hiệu suất cá nhân dễ hơn"
+      },
+      "ans": "A",
+      "exp": "Develop Team (Phát triển Nhóm) nhằm nâng cao năng lực, sự gắn kết và hiệu suất tổng thể của nhóm. Đào tạo và team building giúp nhóm vượt qua giai đoạn Storming nhanh hơn, đạt Norming và Performing sớm hơn. Theo mô hình Tuckman, nhóm cần đi qua các giai đoạn này và sự hỗ trợ của quản lý (đào tạo, team building) có thể rút ngắn đáng kể thời gian ở các giai đoạn đầu."
+    },
+    {
+      "id": "ch09_q13",
+      "q": "Bạn cần tuyển một chuyên gia bảo mật mạng cho dự án, nhưng bộ phận IT đã cam kết người đó cho dự án khác. Bạn gặp quản lý bộ phận IT, trình bày tầm quan trọng của vai trò này trong dự án của bạn và đề xuất chia sẻ thời gian (50% cho mỗi dự án). Cuối cùng quản lý IT đồng ý. Kỹ thuật thu thập nguồn lực nào được sử dụng?",
+      "opts": {
+        "A": "Pre-assignment (Phân công trước)",
+        "B": "Negotiation (Thương lượng)",
+        "C": "Acquisition (Mua sắm bên ngoài)",
+        "D": "Multi-criteria Decision Analysis"
+      },
+      "ans": "B",
+      "exp": "Negotiation (Thương lượng) là kỹ thuật thu thập nguồn lực khi cần thương lượng với các quản lý chức năng, quản lý dự án khác hoặc nhà cung cấp bên ngoài để có được nguồn lực cần thiết. Trong tình huống này, bạn đã thương lượng thành công với quản lý IT để chia sẻ nguồn lực. Đây là kỹ năng quan trọng trong môi trường tổ chức ma trận."
+    },
+    {
+      "id": "ch09_q14",
+      "q": "Nhóm của bạn đang hoạt động tốt (giai đoạn Performing), nhưng một thành viên chủ chốt vừa thông báo nghỉ việc đột ngột. Bạn phải nhanh chóng tuyển thêm người mới. Bạn lo ngại rằng điều này có thể ảnh hưởng đến động lực của nhóm. Theo lý thuyết nhu cầu của Maslow, nhu cầu nào của thành viên còn lại có thể bị ảnh hưởng trước tiên?",
+      "opts": {
+        "A": "Physiological Needs (Nhu cầu sinh lý)",
+        "B": "Safety Needs (Nhu cầu an toàn)",
+        "C": "Esteem Needs (Nhu cầu được tôn trọng)",
+        "D": "Self-Actualization (Nhu cầu tự hiện thực hóa)"
+      },
+      "ans": "B",
+      "exp": "Khi một thành viên chủ chốt rời đi đột ngột, các thành viên còn lại có thể lo lắng về sự ổn định công việc của mình (liệu họ có bị thay thế không?), về sự thay đổi trong môi trường làm việc và các mối quan hệ. Đây là Safety Needs (Nhu cầu an toàn - tầng 2 trong tháp Maslow). Quản lý dự án cần trấn an nhóm về sự ổn định và minh bạch trong quá trình thay thế nhân sự."
+    },
+    {
+      "id": "ch09_q15",
+      "q": "Một nhà phát triển trong nhóm của bạn liên tục tạo ra xung đột với đồng nghiệp và bạn đã thử nhiều cách giải quyết khác nhau nhưng không hiệu quả. Bạn quyết định gặp riêng anh ta và nói rõ: 'Hành vi này không thể tiếp tục. Nếu không cải thiện trong 2 tuần tới, tôi sẽ phải yêu cầu thay thế bạn trong dự án.' Đây là kỹ thuật giải quyết xung đột nào?",
+      "opts": {
+        "A": "Collaborating (Hợp tác)",
+        "B": "Withdrawing (Rút lui)",
+        "C": "Forcing (Áp đặt)",
+        "D": "Compromising (Thỏa hiệp)"
+      },
+      "ans": "C",
+      "exp": "Forcing (Áp đặt) là sử dụng quyền lực để áp đặt một quan điểm, thường tạo ra win-lose situation. Mặc dù không phải phương pháp ưu tiên, forcing đôi khi cần thiết khi: vấn đề ảnh hưởng nghiêm trọng đến dự án, các phương pháp khác đã thất bại, hoặc cần quyết định nhanh. Trong tình huống này, sau khi các phương pháp khác không hiệu quả, quản lý dự án phải dùng quyền lực để bảo vệ nhóm."
+    },
+    {
+      "id": "ch09_q16",
+      "q": "Trong quá trình thực hiện dự án, bạn nhận thấy một nhà phát triển giỏi đang làm việc kém hiệu quả hơn bình thường. Khi gặp riêng, anh ta nói rằng không thấy cơ hội thăng tiến và cảm thấy công việc hiện tại không còn thách thức. Theo lý thuyết McClelland, anh ta đang thiếu động lực từ nhu cầu nào?",
+      "opts": {
+        "A": "Need for Affiliation (Nhu cầu liên kết)",
+        "B": "Need for Power (Nhu cầu quyền lực)",
+        "C": "Need for Achievement (Nhu cầu thành tích)",
+        "D": "Safety Needs theo Maslow"
+      },
+      "ans": "C",
+      "exp": "Theo lý thuyết McClelland, Need for Achievement (Nhu cầu thành tích) thể hiện ở mong muốn đạt được mục tiêu thách thức, cải thiện bản thân và tiến bộ trong sự nghiệp. Nhà phát triển này cảm thấy thiếu thách thức và cơ hội phát triển - đây là dấu hiệu của Need for Achievement không được đáp ứng. Giải pháp: giao thêm công việc thách thức, cơ hội học hỏi kỹ năng mới và phát triển sự nghiệp."
+    },
+    {
+      "id": "ch09_q17",
+      "q": "Bạn đang quản lý một dự án xây dựng trụ sở công ty. Trong quá trình kiểm tra hiện trường, bạn phát hiện số lượng thép thanh giao không đủ theo hợp đồng: thiếu 15% so với kế hoạch. Điều này sẽ làm chậm tiến độ đổ bê tông cột. Hành động đúng đắn nhất cần thực hiện ngay lập tức là gì?",
+      "opts": {
+        "A": "Cập nhật bài học kinh nghiệm (Lessons Learned)",
+        "B": "Thực hiện hành động khắc phục: liên hệ nhà cung cấp để giao bổ sung khẩn cấp hoặc tìm nguồn thay thế",
+        "C": "Cập nhật kế hoạch quản lý dự án",
+        "D": "Báo cáo vấn đề lên ban điều hành dự án"
+      },
+      "ans": "B",
+      "exp": "Control Resources (Kiểm soát nguồn lực) yêu cầu quản lý dự án giám sát việc sử dụng nguồn lực vật chất và thực hiện corrective actions (hành động khắc phục) kịp thời khi phát hiện sai lệch. Khi phát hiện thiếu vật liệu, hành động ngay lập tức là liên hệ nhà cung cấp để giao bổ sung hoặc tìm nguồn thay thế nhằm tránh ảnh hưởng đến tiến độ. Các hành động khác có thể thực hiện sau nhưng không phải ưu tiên trước."
+    },
+    {
+      "id": "ch09_q18",
+      "q": "Nhóm dự án của bạn gồm 10 người được bố trí làm việc trong cùng một phòng lớn có bảng trắng, màn hình hiển thị tiến độ dự án và không gian để trao đổi tự do. Mục đích là tạo điều kiện giao tiếp và cộng tác tốt hơn. Kỹ thuật phát triển nhóm nào đang được áp dụng?",
+      "opts": {
+        "A": "Virtual Teams (Nhóm ảo)",
+        "B": "Co-location/War Room (Làm việc cùng địa điểm/Phòng tác chiến)",
+        "C": "Team Building Activities (Hoạt động xây dựng nhóm)",
+        "D": "Recognition and Rewards (Ghi nhận và khen thưởng)"
+      },
+      "ans": "B",
+      "exp": "Co-location (hay còn gọi là War Room hoặc Tight Matrix) là kỹ thuật bố trí tất cả thành viên nhóm làm việc tại cùng một địa điểm vật lý để tăng cường giao tiếp, cộng tác và đưa ra quyết định nhanh hơn. Việc bố trí phòng với bảng trắng và màn hình hiển thị thông tin dự án là đặc điểm điển hình của war room trong quản lý dự án."
+    },
+    {
+      "id": "ch09_q19",
+      "q": "Quản lý dự án tin rằng nhân viên về bản chất lười biếng, không thích trách nhiệm và cần được kiểm soát chặt chẽ, giám sát liên tục và đe dọa phạt để làm việc. Theo lý thuyết McGregor, phong cách quản lý này thuộc loại nào và có thể dẫn đến hậu quả gì?",
+      "opts": {
+        "A": "Theory Y - nhân viên sẽ làm việc tích cực hơn",
+        "B": "Theory X - có thể tạo ra môi trường làm việc căng thẳng, giảm sáng tạo và động lực nội tại",
+        "C": "Theory Z - phù hợp với văn hóa làm việc tập thể",
+        "D": "Hygiene Factors - đảm bảo môi trường làm việc ổn định"
+      },
+      "ans": "B",
+      "exp": "Theory X của McGregor giả định nhân viên vốn không thích làm việc, tránh trách nhiệm và cần kiểm soát chặt chẽ. Phong cách quản lý này dẫn đến: môi trường làm việc căng thẳng, giảm sáng tạo, nhân viên làm việc vì sợ hãi chứ không phải vì động lực nội tại. Ngược lại, Theory Y tin rằng nhân viên tự có động lực, thích chịu trách nhiệm khi được trao quyền, dẫn đến kết quả tốt hơn."
+    },
+    {
+      "id": "ch09_q20",
+      "q": "Trong dự án xây dựng hệ thống thông tin y tế, nhóm dự án vừa hoàn thành thành công một giai đoạn quan trọng đúng hạn và trong ngân sách. Bạn muốn ghi nhận đóng góp của nhóm. Tuy nhiên, có một thành viên đặc biệt xuất sắc trong giai đoạn này. Bạn cần cân nhắc điều gì khi thiết kế chương trình ghi nhận và khen thưởng?",
+      "opts": {
+        "A": "Chỉ khen thưởng cá nhân xuất sắc nhất để tạo động lực cạnh tranh",
+        "B": "Chỉ khen thưởng toàn nhóm để tránh tạo ra cạnh tranh",
+        "C": "Kết hợp ghi nhận thành tích nhóm và cá nhân, đảm bảo công bằng và phù hợp văn hóa tổ chức",
+        "D": "Không khen thưởng vì đây chỉ là hoàn thành công việc được giao"
+      },
+      "ans": "C",
+      "exp": "Chương trình Recognition and Rewards (Ghi nhận và Khen thưởng) hiệu quả cần: (1) ghi nhận cả thành tích nhóm và cá nhân, (2) đảm bảo công bằng và minh bạch, (3) phù hợp văn hóa tổ chức và sở thích cá nhân, (4) kịp thời - gần với thời điểm đạt thành tích. Chỉ khen thưởng cá nhân có thể gây chia rẽ nhóm; chỉ khen thưởng nhóm có thể không công nhận đóng góp đặc biệt. Kết hợp cả hai là cách tiếp cận cân bằng nhất."
+    }
+  ]
+}

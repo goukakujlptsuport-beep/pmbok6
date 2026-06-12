@@ -1,0 +1,289 @@
+[
+  {
+    "id": "PPL-9001",
+    "domain": "people",
+    "task": "1.2",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager is leading a team of experienced engineers on a complex systems integration project. The team consistently delivers high-quality work on time but rarely offers innovative solutions or challenges the current approach. What leadership style should the project manager primarily adopt?",
+    "options": [
+      "Directive leadership, providing detailed instructions and closely monitoring each task",
+      "Delegating leadership, granting the team full autonomy to define their own solutions and approaches",
+      "Coaching leadership, asking powerful questions to encourage critical thinking and stretch the team beyond routine delivery",
+      "Supportive leadership, focusing on team morale and removing obstacles without challenging work quality"
+    ],
+    "correct": [1],
+    "explanation": "Situational leadership theory (Hersey-Blanchard) recommends a delegating style for highly competent, motivated teams. However, since the team is capable but not innovating, a coaching style is most appropriate — it challenges without micromanaging. Directive (A) is for low-competence situations. Pure delegation (B) won't address the lack of innovation. Pure support (D) maintains the status quo without growth.",
+    "explanation_vi": "Lý thuyết lãnh đạo tình huống (Hersey-Blanchard) gợi ý phong cách ủy quyền cho nhóm có năng lực cao. Tuy nhiên, vì nhóm đủ năng lực nhưng không đổi mới, phong cách coaching phù hợp nhất — thách thức mà không giám sát vi mô. Chỉ đạo (A) dành cho tình huống năng lực thấp. Ủy quyền hoàn toàn (B) không giải quyết thiếu đổi mới. Hỗ trợ thuần túy (D) giữ nguyên hiện trạng mà không có sự phát triển.",
+    "difficulty": 4,
+    "tags": ["situational-leadership", "coaching", "team-development"]
+  },
+  {
+    "id": "PPL-9002",
+    "domain": "people",
+    "task": "1.2",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager has inherited a team mid-project where the previous manager used a command-and-control approach. Team members are disengaged, avoid decision-making, and wait to be told what to do. The project is 40% complete with no major schedule variance. What should the project manager do first?",
+    "options": [
+      "Maintain the existing directive approach to preserve stability during the project transition",
+      "Immediately delegate all decisions to the team to signal trust and reverse the dependency",
+      "Hold a team meeting to establish a shared vision, clarify roles, and begin gradually increasing team autonomy",
+      "Issue a formal team charter redefining norms and escalate any resistance to the project sponsor"
+    ],
+    "correct": [2],
+    "explanation": "When inheriting a disengaged team, the servant-leader approach begins by co-creating a shared direction, clarifying roles, and progressively building trust and autonomy. Maintaining directive control (A) perpetuates disengagement. Immediately delegating everything (B) overwhelms a team accustomed to being directed — a behavioral change must be gradual. A formal charter with escalation threats (D) is punitive and counterproductive.",
+    "explanation_vi": "Khi tiếp quản nhóm thiếu gắn kết, cách tiếp cận servant-leader bắt đầu bằng việc cùng nhau tạo ra định hướng chung, làm rõ vai trò và dần dần xây dựng sự tin tưởng và tự chủ. Duy trì kiểm soát chỉ huy (A) duy trì sự thiếu gắn kết. Ủy quyền ngay lập tức (B) khiến nhóm quen bị chỉ đạo bị choáng ngợp. Điều lệ chính thức với đe dọa leo thang (D) mang tính trừng phạt và phản tác dụng.",
+    "difficulty": 3,
+    "tags": ["servant-leadership", "team-engagement", "transition"]
+  },
+  {
+    "id": "PPL-9003",
+    "domain": "people",
+    "task": "1.2",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A new team member joins a highly specialized regulatory compliance project two months in. The team member has strong general project skills but lacks domain knowledge, and is visibly anxious about keeping up. What is the most effective leadership action?",
+    "options": [
+      "Assign the new member to low-risk tasks only until they demonstrate competency in all required areas",
+      "Pair the new member with a knowledgeable team member and set clear short-term milestones with regular check-ins",
+      "Inform the new member they have 30 days to reach full proficiency or the situation will be escalated to HR",
+      "Let the new member self-direct their own onboarding to encourage ownership and autonomy"
+    ],
+    "correct": [1],
+    "explanation": "A directing-coaching combination (Situational Leadership stage S1-S2) suits a new team member with low domain competence but high motivation. Pairing with a mentor and setting achievable short-term goals addresses both skill gaps and anxiety. Restricting to low-risk tasks only (A) slows development. A 30-day ultimatum (C) increases anxiety and damages psychological safety. Self-directed onboarding (D) is inappropriate for someone lacking the domain knowledge to know what to learn.",
+    "explanation_vi": "Sự kết hợp hướng dẫn-coaching (Lãnh đạo tình huống giai đoạn S1-S2) phù hợp với thành viên mới có năng lực chuyên môn thấp nhưng động lực cao. Ghép đôi với người hướng dẫn và đặt mục tiêu ngắn hạn đạt được giải quyết cả khoảng cách kỹ năng và lo lắng. Giới hạn nhiệm vụ rủi ro thấp (A) làm chậm sự phát triển. Tối hậu thư 30 ngày (C) tăng lo lắng và gây hại cho tâm lý an toàn. Tự định hướng onboarding (D) không phù hợp với người thiếu kiến thức chuyên môn.",
+    "difficulty": 3,
+    "tags": ["situational-leadership", "onboarding", "coaching"]
+  },
+  {
+    "id": "PPL-9004",
+    "domain": "people",
+    "task": "1.2",
+    "approach": "predictive",
+    "type": "single",
+    "question": "During project execution, a high-performing team member consistently meets deliverables but recently started arriving late to meetings and appears distracted. Performance metrics have not yet been impacted. What should the project manager do?",
+    "options": [
+      "Document the behavior and issue a formal performance warning before it impacts deliverables",
+      "Ignore the behavior since performance has not yet been affected",
+      "Privately check in with the team member to understand whether there are personal or work-related challenges",
+      "Reassign the team member's critical tasks to others as a precaution until behavior normalizes"
+    ],
+    "correct": [2],
+    "explanation": "Servant leadership calls for proactive, empathetic engagement before a performance issue escalates. A private check-in respects dignity while addressing the early warning signs. Issuing a formal warning (A) is premature and punitive for a currently high-performer. Ignoring the change (B) risks missing a solvable problem early. Reassigning critical tasks (D) sends a signal of distrust and could demotivate the team member further.",
+    "explanation_vi": "Lãnh đạo phục vụ kêu gọi sự tham gia chủ động, đồng cảm trước khi vấn đề hiệu suất leo thang. Kiểm tra riêng tư tôn trọng phẩm giá trong khi giải quyết các dấu hiệu cảnh báo sớm. Cảnh báo chính thức (A) quá sớm và mang tính trừng phạt đối với người đang thực hiện tốt. Bỏ qua thay đổi (B) có nguy cơ bỏ lỡ vấn đề có thể giải quyết sớm. Phân công lại nhiệm vụ quan trọng (D) gửi tín hiệu thiếu tin tưởng.",
+    "difficulty": 3,
+    "tags": ["servant-leadership", "empathy", "performance-management"]
+  },
+  {
+    "id": "PPL-9005",
+    "domain": "people",
+    "task": "1.2",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager is leading a multicultural team spread across three continents. The project manager notices that team members from one culture tend to remain silent in group calls even when they have relevant expertise to share. What is the most appropriate response?",
+    "options": [
+      "Formally require all team members to contribute a minimum number of comments per meeting",
+      "Create alternative participation channels such as async written input and direct pre-meeting consultations to surface quieter voices",
+      "Acknowledge that cultural communication styles differ and accept that some members will participate less",
+      "Rotate meeting facilitation to team leads from each region to ensure regional representation"
+    ],
+    "correct": [1],
+    "explanation": "Inclusive leadership adapts participation structures to cultural communication styles rather than requiring uniform behavior. Providing async and pre-meeting channels removes cultural barriers and ensures all expertise is accessible. Mandatory comment quotas (A) create compliance behavior, not genuine input. Accepting silent participation (C) wastes expertise and perpetuates inequity. Rotating facilitation (D) helps representation but doesn't resolve the participation barriers.",
+    "explanation_vi": "Lãnh đạo toàn diện điều chỉnh cấu trúc tham gia theo phong cách giao tiếp văn hóa thay vì yêu cầu hành vi đồng nhất. Cung cấp kênh async và trước cuộc họp loại bỏ rào cản văn hóa và đảm bảo tất cả chuyên môn được tiếp cận. Hạn ngạch bình luận bắt buộc (A) tạo ra hành vi tuân thủ, không phải đầu vào thực sự. Chấp nhận tham gia im lặng (C) lãng phí chuyên môn. Xoay vòng điều phối (D) giúp đại diện nhưng không giải quyết rào cản tham gia.",
+    "difficulty": 4,
+    "tags": ["cultural-intelligence", "inclusive-leadership", "virtual-teams"]
+  },
+  {
+    "id": "PPL-9006",
+    "domain": "people",
+    "task": "1.2",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager's team has been working under intense pressure for three consecutive months. Team members are showing signs of burnout, and two have submitted transfer requests. The project schedule cannot be compressed further. What should the project manager do?",
+    "options": [
+      "Deny the transfer requests to protect schedule continuity and promise team recognition at project completion",
+      "Escalate the burnout risk to the sponsor, advocate for resource relief or scope reduction, and immediately implement recovery measures such as adjusted workloads and recognition",
+      "Accept that burnout is inevitable during high-pressure projects and focus solely on delivering the remaining milestones",
+      "Arrange a team-building event to boost morale while maintaining the current workload"
+    ],
+    "correct": [1],
+    "explanation": "A servant leader protects the team and advocates for sustainable working conditions, even when schedule pressure is high. Escalating to the sponsor and implementing recovery measures addresses both the systemic cause and immediate symptoms. Denying transfers and promising future recognition (A) is manipulative and disrespectful. Accepting burnout as inevitable (C) abdicates leadership responsibility. A team-building event (D) without workload relief provides superficial morale boost while the root cause continues.",
+    "explanation_vi": "Lãnh đạo phục vụ bảo vệ nhóm và vận động cho điều kiện làm việc bền vững, ngay cả khi áp lực tiến độ cao. Báo cáo lên nhà tài trợ và thực hiện các biện pháp phục hồi giải quyết cả nguyên nhân hệ thống và triệu chứng tức thời. Từ chối chuyển đổi và hứa hẹn công nhận trong tương lai (A) mang tính thao túng và thiếu tôn trọng. Chấp nhận kiệt sức là không thể tránh khỏi (C) từ bỏ trách nhiệm lãnh đạo. Xây dựng nhóm (D) mà không giảm khối lượng công việc chỉ tăng tinh thần bề ngoài.",
+    "difficulty": 3,
+    "tags": ["servant-leadership", "burnout", "sustainable-pace"]
+  },
+  {
+    "id": "PPL-9007",
+    "domain": "people",
+    "task": "1.2",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A team member with strong technical skills consistently undermines the authority of the project manager in meetings by questioning decisions and encouraging colleagues to disregard project processes. The behavior is beginning to affect team cohesion. What should the project manager do?",
+    "options": [
+      "Publicly address the disruptive behavior in the next team meeting to establish authority",
+      "Speak privately with the team member to understand their concerns, set clear behavioral expectations, and explain the consequences if the behavior continues",
+      "Escalate immediately to the team member's functional manager and request their removal from the project",
+      "Adapt the project processes to incorporate the team member's suggestions to win their cooperation"
+    ],
+    "correct": [1],
+    "explanation": "PMI's preferred approach is to coach before discipline: address disruptive behavior privately first, understand the root cause, set expectations, and only escalate if coaching fails. Public confrontation (A) humiliates the person and may rally others against authority. Immediate escalation (C) bypasses the direct, constructive step and damages the team climate. Adapting processes under pressure (D) rewards disruptive behavior and sets a poor precedent.",
+    "explanation_vi": "Cách tiếp cận ưu tiên của PMI là coaching trước kỷ luật: giải quyết hành vi gây rối một cách riêng tư trước, hiểu nguyên nhân gốc, đặt kỳ vọng và chỉ leo thang nếu coaching thất bại. Đối đầu công khai (A) làm bẽ mặt người đó. Leo thang ngay lập tức (C) bỏ qua bước trực tiếp và mang tính xây dựng. Điều chỉnh quy trình dưới áp lực (D) khen thưởng hành vi gây rối và tạo tiền lệ xấu.",
+    "difficulty": 3,
+    "tags": ["coach-before-discipline", "conflict-management", "authority"]
+  },
+  {
+    "id": "PPL-9008",
+    "domain": "people",
+    "task": "1.2",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager is running a large program with five project leads reporting to them. Three leads are highly experienced and self-directed, while two are newly promoted and require frequent guidance. The project manager has limited time. What leadership approach is most effective?",
+    "options": [
+      "Apply the same collaborative leadership style uniformly to all five leads to ensure consistency",
+      "Use a delegating style with the three experienced leads and a directing/coaching style with the two new leads, adjusting as their competence grows",
+      "Focus most leadership effort on the three experienced leads because they drive the most value",
+      "Assign a single senior lead to mentor all others, freeing the project manager to focus on stakeholder management"
+    ],
+    "correct": [1],
+    "explanation": "Situational leadership requires adapting style to individual readiness levels. Delegating to high-competence leads frees capacity for coaching newer leads without neglecting either group. Uniform style (A) is inefficient — it over-manages experienced leads and under-supports new ones. Focusing only on experienced leads (C) neglects the development of new leads and creates risk. Delegating the mentoring role entirely (D) abdicates the project manager's direct leadership responsibility.",
+    "explanation_vi": "Lãnh đạo tình huống đòi hỏi điều chỉnh phong cách theo mức độ sẵn sàng cá nhân. Ủy quyền cho các trưởng nhóm có năng lực cao giải phóng năng lực để coaching các trưởng nhóm mới mà không bỏ bê cả hai nhóm. Phong cách đồng nhất (A) không hiệu quả. Tập trung chỉ vào các trưởng nhóm có kinh nghiệm (C) bỏ bê sự phát triển của trưởng nhóm mới. Ủy quyền hoàn toàn vai trò cố vấn (D) từ bỏ trách nhiệm lãnh đạo trực tiếp.",
+    "difficulty": 2,
+    "tags": ["situational-leadership", "delegation", "team-development"]
+  },
+  {
+    "id": "PPL-9009",
+    "domain": "people",
+    "task": "1.2",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager wants to motivate a team working on a long regulatory project that offers little room for creative work. The project is strategically important but team members have expressed frustration with the repetitive nature of tasks. What motivational approach aligns best with PMI principles?",
+    "options": [
+      "Offer financial bonuses tied to each completed milestone to maintain focus and reward effort",
+      "Connect individual tasks to the broader strategic impact, provide opportunities for skill-building, and recognize contributions publicly",
+      "Rotate team members through different tasks every two weeks to reduce monotony",
+      "Allow team members to spend 20% of their time on self-selected projects outside the regulatory work"
+    ],
+    "correct": [1],
+    "explanation": "Intrinsic motivation (purpose, mastery, recognition) is more sustainable than extrinsic incentives (bonuses) for long-duration, repetitive projects. Connecting work to strategic impact addresses meaning; skill-building addresses mastery; recognition addresses relatedness. Financial bonuses (A) create temporary motivation but do not address boredom or engagement. Task rotation (C) may disrupt workflow and productivity. A 20% free-time policy (D) may not be feasible in a regulated project context.",
+    "explanation_vi": "Động lực nội tại (mục đích, thành thạo, công nhận) bền vững hơn các ưu đãi ngoại tại (tiền thưởng) cho các dự án dài hạn, lặp đi lặp lại. Kết nối công việc với tác động chiến lược giải quyết ý nghĩa; xây dựng kỹ năng giải quyết thành thạo; công nhận giải quyết mối quan hệ. Tiền thưởng tài chính (A) tạo động lực tạm thời nhưng không giải quyết sự nhàm chán. Xoay vòng nhiệm vụ (C) có thể phá vỡ quy trình làm việc. Chính sách thời gian tự do 20% (D) có thể không khả thi trong bối cảnh dự án quy định.",
+    "difficulty": 2,
+    "tags": ["intrinsic-motivation", "maslow", "herzberg", "engagement"]
+  },
+  {
+    "id": "PPL-9010",
+    "domain": "people",
+    "task": "1.2",
+    "approach": "agile",
+    "type": "single",
+    "question": "A scrum team's velocity has dropped by 30% over the last three sprints. During the retrospective, team members say they spend significant time on unplanned support requests that come directly to individual developers from the operations team. The project manager is also the scrum master. What should be done?",
+    "options": [
+      "Assign one developer per sprint as a dedicated support person to handle all incoming requests",
+      "Establish a formal intake process for support requests, add them to the backlog, and protect sprint commitments by routing urgent requests through the product owner",
+      "Ask developers to manage support requests outside of sprint hours to avoid velocity impact",
+      "Escalate to senior management to mandate that operations stop contacting the development team directly"
+    ],
+    "correct": [1],
+    "explanation": "A servant leader protects the team's focus and sustainable pace. Creating an intake process and routing through the product owner maintains sprint integrity and gives the team visibility into real demand. A dedicated support developer (A) permanently reduces sprint capacity and may demotivate. Handling requests outside hours (C) violates sustainable pace and is counterproductive. Escalation without a process solution (D) may create friction without resolving the systemic issue.",
+    "explanation_vi": "Lãnh đạo phục vụ bảo vệ sự tập trung của nhóm và nhịp độ bền vững. Tạo quy trình tiếp nhận và định tuyến qua product owner duy trì tính toàn vẹn của sprint và cho nhóm thấy nhu cầu thực sự. Một developer hỗ trợ chuyên dụng (A) giảm vĩnh viễn năng lực sprint. Xử lý yêu cầu ngoài giờ (C) vi phạm nhịp độ bền vững. Leo thang không có giải pháp quy trình (D) có thể tạo ra xung đột mà không giải quyết vấn đề hệ thống.",
+    "difficulty": 3,
+    "tags": ["servant-leadership", "sprint-protection", "sustainable-pace"]
+  },
+  {
+    "id": "PPL-9011",
+    "domain": "people",
+    "task": "1.2",
+    "approach": "agile",
+    "type": "single",
+    "question": "During a sprint review, the product owner praises the overall team output but attributes most of the success to two specific developers by name in front of stakeholders, leaving the rest of the team visibly uncomfortable. As the project manager, what should you do?",
+    "options": [
+      "Say nothing during the meeting to avoid creating an awkward situation in front of stakeholders",
+      "After the meeting, speak with the product owner privately to explain how targeted individual recognition in team settings can damage team cohesion, and suggest group recognition practices going forward",
+      "During the meeting, immediately redirect praise to the full team to publicly correct the product owner",
+      "Reward the two recognized developers formally to reinforce high performance across the team"
+    ],
+    "correct": [1],
+    "explanation": "PMI values psychological safety and team cohesion. Addressing the issue privately with the product owner is respectful, constructive, and more likely to produce lasting behavioral change than a public correction. Saying nothing (A) allows the harmful dynamic to continue. Public correction (C) may embarrass the product owner and create further tension. Rewarding only the named individuals (D) deepens the divide and demotivates the rest of the team.",
+    "explanation_vi": "PMI coi trọng tâm lý an toàn và sự gắn kết nhóm. Giải quyết vấn đề riêng tư với product owner mang tính tôn trọng, xây dựng và có nhiều khả năng tạo ra sự thay đổi hành vi lâu dài hơn là sửa chữa công khai. Im lặng (A) cho phép động lực có hại tiếp tục. Sửa chữa công khai (C) có thể làm bẽ mặt product owner. Khen thưởng chỉ những cá nhân được nêu tên (D) làm sâu thêm sự chia rẽ.",
+    "difficulty": 3,
+    "tags": ["team-cohesion", "psychological-safety", "recognition"]
+  },
+  {
+    "id": "PPL-9012",
+    "domain": "people",
+    "task": "1.2",
+    "approach": "agile",
+    "type": "single",
+    "question": "A self-organizing agile team begins making architectural decisions that deviate significantly from enterprise standards without consulting the architecture review board. The team argues that self-organization means they have full technical autonomy. How should the project manager respond?",
+    "options": [
+      "Support the team's decisions fully, as self-organization is a core agile principle and the architecture board should not constrain the team",
+      "Override the team's decisions and enforce compliance with enterprise standards immediately",
+      "Facilitate a conversation with the team to help them understand the boundaries of self-organization, and arrange a working session with the architecture board to find solutions within constraints",
+      "Escalate to the PMO to have architecture governance rules formally documented and enforced"
+    ],
+    "correct": [2],
+    "explanation": "Self-organization operates within organizational boundaries and constraints. The servant-leader facilitates understanding and navigates constraints rather than allowing unconstrained autonomy or imposing top-down compliance. Full support for unconstrained decisions (A) exposes the organization to risk and creates technical debt. Immediate override (B) undermines team trust. PMO escalation (D) is bureaucratic and bypasses direct coaching, which should come first.",
+    "explanation_vi": "Tự tổ chức hoạt động trong giới hạn và ràng buộc của tổ chức. Servant-leader tạo điều kiện hiểu biết và điều hướng các ràng buộc thay vì cho phép quyền tự chủ không hạn chế hoặc áp đặt tuân thủ từ trên xuống. Hỗ trợ đầy đủ các quyết định không hạn chế (A) đưa tổ chức vào rủi ro. Ghi đè ngay lập tức (B) làm suy yếu lòng tin. Leo thang lên PMO (D) mang tính quan liêu và bỏ qua coaching trực tiếp.",
+    "difficulty": 3,
+    "tags": ["agile-boundaries", "self-organization", "servant-leadership"]
+  },
+  {
+    "id": "PPL-9013",
+    "domain": "people",
+    "task": "1.2",
+    "approach": "hybrid",
+    "type": "single",
+    "question": "A hybrid project team includes both waterfall-oriented senior engineers and agile-experienced junior developers. The two groups have different working preferences and are struggling to collaborate effectively. The project manager notices growing tension during joint planning sessions. What is the most effective action?",
+    "options": [
+      "Split the team into two separate sub-teams, each following their preferred methodology, with the project manager coordinating integration points",
+      "Mandate agile practices for the entire team since the project is moving toward more adaptive delivery",
+      "Facilitate a working session where both groups articulate their concerns, identify common ground, and co-create hybrid working agreements",
+      "Let the senior engineers lead planning since they have more experience and the junior developers will adapt over time"
+    ],
+    "correct": [2],
+    "explanation": "A servant-leader builds bridges across methodological divides by facilitating dialogue and co-creating norms. This approach builds ownership and respect on both sides. Splitting the team (A) reduces integration and may create silos. Mandating agile (B) disrespects the senior engineers' experience and may trigger resistance. Defaulting to senior engineer authority (D) marginalizes the junior developers and misses an opportunity to build a high-performing hybrid team.",
+    "explanation_vi": "Servant-leader xây dựng cầu nối qua các khác biệt phương pháp bằng cách tạo điều kiện đối thoại và cùng nhau tạo ra các chuẩn mực. Cách tiếp cận này xây dựng quyền sở hữu và tôn trọng ở cả hai phía. Tách nhóm (A) giảm tích hợp và có thể tạo ra silo. Bắt buộc agile (B) không tôn trọng kinh nghiệm của kỹ sư cao cấp. Mặc định thẩm quyền kỹ sư cao cấp (D) gạt ra ngoài lề các nhà phát triển junior.",
+    "difficulty": 3,
+    "tags": ["hybrid-teams", "collaboration", "working-agreements"]
+  },
+  {
+    "id": "PPL-9014",
+    "domain": "people",
+    "task": "1.2",
+    "approach": "hybrid",
+    "type": "multiple",
+    "question": "A project manager is leading a hybrid team delivering a product in three-week iterations while also managing dependencies with an external vendor working on a fixed-scope contract. During a retrospective, the team identifies two recurring problems: the project manager makes too many decisions on behalf of the team, and the vendor integration points are poorly communicated. Which TWO actions should the project manager take to address both issues?",
+    "options": [
+      "Empower the team to make decisions within defined boundaries by shifting from telling to asking and facilitating",
+      "Take personal ownership of all vendor communications to reduce the team's coordination burden",
+      "Establish a shared communication protocol with the vendor that the team co-manages, including regular integration checkpoints",
+      "Escalate both issues to the project sponsor for resolution",
+      "Reduce the iteration length to two weeks to create more frequent integration checkpoints with the vendor"
+    ],
+    "correct": [0, 2],
+    "explanation": "Option A addresses the over-control issue by applying servant leadership — shifting to facilitation and empowerment within clear boundaries. Option C addresses vendor communication by creating a shared, team-managed protocol, which improves transparency and shared ownership. Taking personal ownership of vendor comms (B) compounds the over-control problem. Sponsor escalation (D) bypasses solvable, team-level issues. Shortening iteration length (E) may reduce quality and doesn't address the communication or decision-making root causes.",
+    "explanation_vi": "Lựa chọn A giải quyết vấn đề kiểm soát quá mức bằng cách áp dụng servant leadership — chuyển sang tạo điều kiện và trao quyền trong giới hạn rõ ràng. Lựa chọn C giải quyết giao tiếp nhà cung cấp bằng cách tạo ra giao thức chung do nhóm quản lý, cải thiện tính minh bạch và quyền sở hữu chung. Cá nhân hóa giao tiếp nhà cung cấp (B) làm phức tạp thêm vấn đề kiểm soát. Leo thang lên nhà tài trợ (D) bỏ qua các vấn đề có thể giải quyết ở cấp nhóm. Rút ngắn lặp lại (E) có thể giảm chất lượng.",
+    "difficulty": 4,
+    "tags": ["servant-leadership", "empowerment", "vendor-management", "hybrid"]
+  },
+  {
+    "id": "PPL-9015",
+    "domain": "people",
+    "task": "1.2",
+    "approach": "hybrid",
+    "type": "multiple",
+    "question": "A project manager leading a hybrid program notices that a technically brilliant team member dominates every technical discussion, often dismissing colleagues' ideas before they are fully expressed. Other team members have stopped contributing ideas in meetings, and two have raised the issue informally. Which TWO actions most appropriately address this situation according to PMI principles?",
+    "options": [
+      "Establish structured facilitation techniques such as round-robin input and idea-parking boards to equalize participation in meetings",
+      "Remove the dominant team member from all group meetings and rely solely on their written technical input",
+      "Have a private, direct conversation with the dominant team member about the observed impact of their behavior and collaboratively agree on new engagement norms",
+      "Reorganize the team structure so the dominant team member works independently on a separate workstream",
+      "Send a group email reminder about respectful communication to address the behavior without singling anyone out"
+    ],
+    "correct": [0, 2],
+    "explanation": "Option A uses structured facilitation to create systemic equity in participation — a servant-leader tool that protects all voices without confrontation. Option C is the direct coaching conversation PMI recommends before any disciplinary or structural action — private, respectful, focused on behavior and impact, and collaborative in setting new norms. Removing the member from meetings (B) is disproportionate and loses technical value. Structural reorganization (D) avoids the root issue. A group email (E) is passive and unlikely to create meaningful change in the dominant individual's behavior.",
+    "explanation_vi": "Lựa chọn A sử dụng kỹ thuật điều phối có cấu trúc để tạo ra sự công bằng hệ thống trong tham gia — công cụ servant-leader bảo vệ tất cả giọng nói mà không đối đầu. Lựa chọn C là cuộc trò chuyện coaching trực tiếp mà PMI khuyến nghị trước bất kỳ hành động kỷ luật hay cơ cấu nào — riêng tư, tôn trọng, tập trung vào hành vi và tác động, và cộng tác trong việc đặt ra các chuẩn mực mới. Loại thành viên khỏi cuộc họp (B) không cân xứng và mất giá trị kỹ thuật. Tái cơ cấu (D) tránh vấn đề gốc. Email nhóm (E) thụ động và khó tạo ra thay đổi có ý nghĩa.",
+    "difficulty": 5,
+    "tags": ["psychological-safety", "coaching", "inclusive-leadership", "facilitation"]
+  }
+]

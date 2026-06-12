@@ -1,0 +1,248 @@
+{
+  "chapterId": "rita_04",
+  "chapterNum": 4,
+  "chapterTitle": "Integration",
+  "source": "rita",
+  "questions": [
+    {
+      "id": "r04_q01",
+      "q": "A project has just been approved and a project manager has been assigned. The project manager wants to know the high-level requirements and the initial budget for the project. Which document should the project manager review first?",
+      "opts": {
+        "A": "Project management plan",
+        "B": "Project charter",
+        "C": "Scope management plan",
+        "D": "Business case"
+      },
+      "ans": "B",
+      "exp": "Project charter chứa các thông tin cấp cao như yêu cầu ban đầu, ngân sách ước tính, các mốc quan trọng và quyền hạn của PM. Đây là tài liệu đầu tiên PM cần xem xét khi bắt đầu dự án. Project management plan chưa tồn tại ở giai đoạn này. Business case là đầu vào để tạo charter, không phải nơi PM tra cứu."
+    },
+    {
+      "id": "r04_q02",
+      "q": "Who has the authority to formally authorize a project and provide the project manager with the authority to apply organizational resources?",
+      "opts": {
+        "A": "Project manager",
+        "B": "Project team",
+        "C": "Sponsor or initiator",
+        "D": "Functional manager"
+      },
+      "ans": "C",
+      "exp": "Project charter được tạo bởi sponsor hoặc initiator (người khởi xướng dự án), không phải PM. Charter trao quyền cho PM sử dụng nguồn lực của tổ chức. PM có thể hỗ trợ viết charter nhưng không ký hoặc phát hành nó — đó là vai trò của sponsor."
+    },
+    {
+      "id": "r04_q03",
+      "q": "A project manager has been assigned to a project after the project charter was signed. The project manager disagrees with some of the constraints listed in the charter. What should the project manager do?",
+      "opts": {
+        "A": "Refuse to manage the project until the charter is revised",
+        "B": "Accept the project as defined in the charter and work within those constraints",
+        "C": "Immediately escalate to senior management",
+        "D": "Revise the charter to remove the constraints"
+      },
+      "ans": "B",
+      "exp": "Một khi project charter đã được ký, PM không thể nói 'không' với dự án. Charter là sự ủy quyền chính thức, PM phải chấp nhận và làm việc trong phạm vi các ràng buộc đó. Nếu có lo ngại, PM có thể thảo luận với sponsor nhưng vẫn phải tiến hành dự án theo charter hiện tại."
+    },
+    {
+      "id": "r04_q04",
+      "q": "During planning, the project manager is working with the team to create a document that will include all subsidiary management plans and baselines. What document is being created?",
+      "opts": {
+        "A": "Project charter",
+        "B": "Project scope statement",
+        "C": "Project management plan",
+        "D": "Work breakdown structure"
+      },
+      "ans": "C",
+      "exp": "Project management plan là tài liệu tổng hợp bao gồm tất cả các subsidiary plans (scope, schedule, cost, quality, resource, communications, risk, procurement, stakeholder management plans) cùng với change management plan, configuration management plan và các baselines (scope, schedule, cost). Đây là kết quả của quá trình lập kế hoạch tích hợp."
+    },
+    {
+      "id": "r04_q05",
+      "q": "Which of the following is NOT typically included in a project management plan?",
+      "opts": {
+        "A": "Change management plan",
+        "B": "Configuration management plan",
+        "C": "Lessons learned register",
+        "D": "Performance measurement baseline"
+      },
+      "ans": "C",
+      "exp": "Lessons learned register là một project document (tài liệu dự án), không phải là một phần của project management plan. Project management plan bao gồm các subsidiary plans và baselines. Lessons learned được thu thập trong suốt vòng đời dự án và lưu trữ trong register riêng, cuối dự án được cập nhật vào OPAs."
+    },
+    {
+      "id": "r04_q06",
+      "q": "The project manager has just completed the project management plan and wants to officially signal that the execution phase can begin and clarify roles and responsibilities to all stakeholders. What should the project manager do?",
+      "opts": {
+        "A": "Send an email to all team members with the project plan",
+        "B": "Hold a kickoff meeting",
+        "C": "Issue work authorizations to each team member",
+        "D": "Update the communications management plan"
+      },
+      "ans": "B",
+      "exp": "Kickoff meeting được tổ chức sau khi hoàn thành lập kế hoạch và trước khi bắt đầu thực thi. Mục đích là: chính thức thông báo dự án bắt đầu, đảm bảo tất cả stakeholders hiểu mục tiêu, vai trò và trách nhiệm, tạo sự đồng thuận và cam kết từ team. Đây không phải là cuộc họp lập kế hoạch mà là cuộc họp khởi động thực thi."
+    },
+    {
+      "id": "r04_q07",
+      "q": "A project manager uses a formal system to ensure that work packages are authorized and that the right work is done at the right time by the right resources. What system is the project manager using?",
+      "opts": {
+        "A": "Change control system",
+        "B": "Configuration management system",
+        "C": "Work authorization system",
+        "D": "Document control system"
+      },
+      "ans": "C",
+      "exp": "Work authorization system là hệ thống cho phép công việc bắt đầu một cách chính thức. Nó đảm bảo công việc đúng được thực hiện đúng lúc bởi đúng người theo đúng thứ tự. Hệ thống này có thể là miệng, email hoặc form chính thức tùy quy mô dự án. Không phải change control (quản lý thay đổi) hay configuration management (quản lý cấu hình)."
+    },
+    {
+      "id": "r04_q08",
+      "q": "A senior engineer has 20 years of experience managing complex technical projects. This knowledge is not written down anywhere. What type of knowledge is this, and how should the project manager handle it?",
+      "opts": {
+        "A": "Explicit knowledge; document it in the project management plan",
+        "B": "Tacit knowledge; encourage sharing through mentoring and collaboration",
+        "C": "Historical knowledge; retrieve it from the lessons learned repository",
+        "D": "Explicit knowledge; add it to the risk register"
+      },
+      "ans": "B",
+      "exp": "Tacit knowledge (kiến thức ngầm) là kiến thức dựa trên kinh nghiệm, trực giác và kỹ năng cá nhân — khó mô tả hoặc tài liệu hóa. Trái ngược với explicit knowledge (kiến thức tường minh) là kiến thức có thể viết ra. PM nên khuyến khích chia sẻ tacit knowledge thông qua mentoring, pair work và môi trường hợp tác, đồng thời cố gắng chuyển đổi nó thành explicit knowledge khi có thể."
+    },
+    {
+      "id": "r04_q09",
+      "q": "When should lessons learned be captured on a project?",
+      "opts": {
+        "A": "Only at the end of the project during closing",
+        "B": "At the end of each phase",
+        "C": "Throughout the entire project lifecycle",
+        "D": "Only when something goes wrong"
+      },
+      "ans": "C",
+      "exp": "Lessons learned phải được thu thập liên tục trong suốt vòng đời dự án, không chỉ ở cuối. Việc ghi lại ngay khi sự kiện xảy ra giúp thông tin chính xác hơn. Lessons learned register được cập nhật thường xuyên và cuối dự án các thông tin này được lưu vào OPAs (Organizational Process Assets) để các dự án tương lai tham khảo."
+    },
+    {
+      "id": "r04_q10",
+      "q": "During project execution, the project manager notices that the team has been completing work in a way that could prevent a future problem from occurring. This is an example of what type of change request?",
+      "opts": {
+        "A": "Corrective action",
+        "B": "Preventive action",
+        "C": "Defect repair",
+        "D": "Updates"
+      },
+      "ans": "B",
+      "exp": "Preventive action (hành động phòng ngừa) là các hành động được thực hiện để ngăn chặn vấn đề tiềm ẩn xảy ra trong tương lai. Corrective action là hành động đưa dự án trở lại đúng kế hoạch sau khi đã lệch. Defect repair là sửa chữa lỗi đã được phát hiện. Cả ba đều là loại change requests và cần đi qua integrated change control."
+    },
+    {
+      "id": "r04_q11",
+      "q": "A project team member discovers a significant defect in a deliverable that has already been accepted by the customer. What should the project manager submit?",
+      "opts": {
+        "A": "Preventive action",
+        "B": "Corrective action",
+        "C": "Defect repair",
+        "D": "Schedule update"
+      },
+      "ans": "C",
+      "exp": "Defect repair là yêu cầu thay đổi để sửa chữa một lỗi/khiếm khuyết đã được xác định. Khi phát hiện sản phẩm không đáp ứng yêu cầu, PM cần đệ trình defect repair request qua integrated change control. Corrective action là để điều chỉnh hiệu suất dự án trong tương lai, không phải để sửa sản phẩm đã bị lỗi."
+    },
+    {
+      "id": "r04_q12",
+      "q": "On a large infrastructure project, a request to change the project scope has been submitted. Who has the authority to approve this change?",
+      "opts": {
+        "A": "The project manager always has the authority to approve all changes",
+        "B": "The project team collectively votes on changes",
+        "C": "The Change Control Board (CCB)",
+        "D": "The customer, since they requested the change"
+      },
+      "ans": "C",
+      "exp": "Change Control Board (CCB) là cơ quan chính thức có quyền phê duyệt hoặc từ chối các change requests. PM có thể là thành viên của CCB hoặc không, tùy thuộc vào chính sách tổ chức. Điều quan trọng là PM không tự động có quyền phê duyệt tất cả các thay đổi — điều này phụ thuộc vào ngưỡng được xác định trong change management plan."
+    },
+    {
+      "id": "r04_q13",
+      "q": "Before the Change Control Board approves a scope change request, which of the following should the project manager do?",
+      "opts": {
+        "A": "Implement the change immediately to avoid delays",
+        "B": "Evaluate the impact of the change on schedule, cost, quality, risk, resources, and other knowledge areas",
+        "C": "Only evaluate the cost impact since that is most important",
+        "D": "Ask the customer if they are sure they want the change"
+      },
+      "ans": "B",
+      "exp": "Integrated change control đòi hỏi đánh giá tác động của mọi thay đổi lên TẤT CẢ các knowledge areas — không chỉ phạm vi, mà còn lịch trình, chi phí, chất lượng, rủi ro, nguồn lực, truyền thông, mua sắm và stakeholders. Đây là bản chất 'tích hợp' của quy trình này. Chỉ sau khi đánh giá toàn diện mới đệ trình lên CCB."
+    },
+    {
+      "id": "r04_q14",
+      "q": "In a predictive project, a stakeholder verbally requests a change to the project scope during a status meeting. What is the correct process?",
+      "opts": {
+        "A": "Implement the change immediately since it came from a stakeholder",
+        "B": "Document the change request, analyze impacts, submit to CCB for approval, then update baselines if approved",
+        "C": "Ask the team if they can fit the change into the current sprint",
+        "D": "Tell the stakeholder that no changes are allowed after planning"
+      },
+      "ans": "B",
+      "exp": "Trong dự án predictive (waterfall), quy trình thay đổi chính thức là: (1) Ghi nhận yêu cầu thay đổi bằng văn bản, (2) Phân tích tác động lên tất cả knowledge areas, (3) Đệ trình lên CCB để phê duyệt/từ chối, (4) Nếu được phê duyệt, cập nhật baselines và project management plan, (5) Thông báo stakeholders. Không bao giờ thực hiện thay đổi trước khi được phê duyệt chính thức."
+    },
+    {
+      "id": "r04_q15",
+      "q": "An agile team is working on a software project. A product owner wants to add a new feature that was not originally planned. What is the correct way to handle this?",
+      "opts": {
+        "A": "Submit a formal change request to the Change Control Board",
+        "B": "Reject the request since the project plan is already approved",
+        "C": "Add the feature to the product backlog and let the Product Owner prioritize it",
+        "D": "Have the team implement it in the current sprint immediately"
+      },
+      "ans": "C",
+      "exp": "Trong môi trường Agile, thay đổi được quản lý thông qua product backlog. Product Owner (không phải CCB) là người có quyền ưu tiên hóa các items trong backlog. Không có CCB chính thức trong Agile — thay vào đó, thay đổi được chào đón và tích hợp vào sprint planning tiếp theo sau khi Product Owner xem xét và ưu tiên. Đây là sự khác biệt cơ bản giữa change management trong Agile và Predictive."
+    },
+    {
+      "id": "r04_q16",
+      "q": "A project is nearing completion. The project manager needs to obtain formal acceptance of the deliverables, release project resources, and archive project documents. Which process is the project manager performing?",
+      "opts": {
+        "A": "Validate Scope",
+        "B": "Control Quality",
+        "C": "Close Project or Phase",
+        "D": "Monitor and Control Project Work"
+      },
+      "ans": "C",
+      "exp": "Close Project or Phase bao gồm: (1) Nhận formal acceptance từ khách hàng/sponsor, (2) Giải phóng nguồn lực dự án, (3) Lưu trữ tài liệu dự án, (4) Cập nhật OPAs với lessons learned, (5) Đóng tất cả hợp đồng và tài khoản. Quá trình này cũng bao gồm tổ chức ăn mừng thành công và ghi nhận đóng góp của team. Validate Scope là nhận acceptance cho từng deliverable, không phải toàn bộ dự án."
+    },
+    {
+      "id": "r04_q17",
+      "q": "During project execution, multiple versions of a technical specification document are circulating among team members, causing confusion about which version is current. What system should be implemented to prevent this problem?",
+      "opts": {
+        "A": "Change control system",
+        "B": "Configuration management system",
+        "C": "Work authorization system",
+        "D": "Document distribution system"
+      },
+      "ans": "B",
+      "exp": "Configuration management system (hệ thống quản lý cấu hình) đảm bảo mọi người đang làm việc với phiên bản chính xác và mới nhất của tài liệu và sản phẩm. Nó quản lý version control, tracking thay đổi và đảm bảo tính toàn vẹn của deliverables. Khi có nhiều phiên bản đang lưu hành gây nhầm lẫn, đây chính xác là vấn đề configuration management cần giải quyết."
+    },
+    {
+      "id": "r04_q18",
+      "q": "The Performance Measurement Baseline (PMB) is used to measure project performance. Which three components make up the PMB?",
+      "opts": {
+        "A": "Quality baseline, resource baseline, and risk baseline",
+        "B": "Scope baseline, schedule baseline, and cost baseline",
+        "C": "Scope baseline, quality baseline, and cost baseline",
+        "D": "Requirements baseline, schedule baseline, and budget baseline"
+      },
+      "ans": "B",
+      "exp": "Performance Measurement Baseline (PMB) = Scope baseline + Schedule baseline + Cost baseline. Đây là ba baseline chính được sử dụng trong Earned Value Management (EVM) để đo lường hiệu suất dự án. PMB thể hiện kế hoạch đã được phê duyệt cho công việc dự án. Bất kỳ thay đổi nào đối với PMB đều cần qua integrated change control và được CCB phê duyệt."
+    },
+    {
+      "id": "r04_q19",
+      "q": "A project manager is updating the project management plan after a change was approved by the CCB. A team member asks why the baseline needs to be updated when the actual work has not changed. What is the best response?",
+      "opts": {
+        "A": "The baseline does not need to be updated; only the schedule needs adjusting",
+        "B": "Baselines must be updated whenever an approved change affects the scope, schedule, or cost to maintain accurate performance measurement",
+        "C": "Baselines are fixed and can never be changed once approved",
+        "D": "Only the sponsor can decide whether to update the baseline"
+      },
+      "ans": "B",
+      "exp": "Baselines được cập nhật khi có thay đổi được phê duyệt ảnh hưởng đến phạm vi, lịch trình hoặc chi phí. Nếu không cập nhật baseline sau khi thay đổi được phê duyệt, các báo cáo hiệu suất sẽ không chính xác vì chúng đang so sánh thực tế với kế hoạch lỗi thời. Baseline không phải là bất biến — chúng thay đổi qua integrated change control để phản ánh kế hoạch hiện tại đã được chấp thuận."
+    },
+    {
+      "id": "r04_q20",
+      "q": "A project manager is directing and managing project work when they realize the team has been using an outdated version of a design specification, resulting in rework. Which process failed, and what should the project manager do going forward?",
+      "opts": {
+        "A": "Change control failed; implement more CCB meetings",
+        "B": "Configuration management failed; ensure the configuration management system is being followed to control document versions",
+        "C": "Scope management failed; revise the scope statement",
+        "D": "Quality control failed; increase inspection frequency"
+      },
+      "ans": "B",
+      "exp": "Khi team sử dụng phiên bản tài liệu lỗi thời gây ra rework, đây là dấu hiệu rõ ràng của sự thất bại trong configuration management. PM cần đảm bảo hệ thống quản lý cấu hình đang hoạt động đúng: xác định phiên bản chính thức của tài liệu, đảm bảo tất cả team members có quyền truy cập phiên bản mới nhất, và thực hiện quy trình kiểm soát khi tài liệu được cập nhật. Lessons learned từ sự cố này cần được ghi nhận."
+    }
+  ]
+}

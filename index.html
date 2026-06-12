@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PMBOK® Guide 6 – Tiếng Việt</title>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
@@ -23,7 +23,7 @@
   </div>
   <nav id="chapter-nav"></nav>
   <div id="sidebar-footer">
-    <button id="btn-gist-settings">⚙ Cài đặt Gist</button>
+    <a href="home.html" id="btn-home-lib">🏠 Thư Viện</a>
   </div>
 </aside>
 
@@ -37,30 +37,12 @@
     <span id="toolbar-chapter-title"></span>
     <div id="toolbar-right">
       <button id="btn-highlights" title="Danh sách highlight & ghi chú">📑 Highlights</button>
-      <button id="btn-audio" title="Đọc to chương này">🔊 Nghe</button>
+      <button id="btn-quiz" title="Quiz luyện tập chương này">📝 Quiz</button>
+      <button id="btn-print" title="In chương này">🖨 In</button>
       <button id="btn-mark-done" title="Đánh dấu đã đọc xong">✓ Xong</button>
       <span id="sync-indicator" class="sync-saved">☁ Đã lưu</span>
     </div>
   </header>
-
-  <!-- Audio player bar -->
-  <div id="audio-bar" hidden>
-    <button id="audio-play"  title="Phát / Tạm dừng" aria-label="Phát">▶</button>
-    <button id="audio-stop"  title="Dừng" aria-label="Dừng">■</button>
-    <div id="audio-info">
-      <span id="audio-status">Sẵn sàng</span>
-    </div>
-    <label id="audio-speed-label">Tốc độ:
-      <select id="audio-speed">
-        <option value="0.75">0.75×</option>
-        <option value="1" selected>1×</option>
-        <option value="1.25">1.25×</option>
-        <option value="1.5">1.5×</option>
-        <option value="2">2×</option>
-      </select>
-    </label>
-    <button id="audio-close" title="Đóng" aria-label="Đóng audio">✕</button>
-  </div>
 
   <!-- Chapter content rendered in iframe to preserve original HTML/CSS -->
   <iframe id="chapter-frame" title="Nội dung chương"></iframe>
@@ -69,8 +51,18 @@
 <!-- HIGHLIGHTS LIST PANEL -->
 <aside id="highlights-panel" hidden>
   <div id="highlights-panel-header">
-    <h3>📑 Highlights & Ghi chú</h3>
+    <h3>📑 Highlights</h3>
     <button id="highlights-panel-close" aria-label="Đóng">✕</button>
+  </div>
+  <div id="hl-tabs">
+    <button class="hl-tab active" data-tab="chapter">Chương này</button>
+    <button class="hl-tab" data-tab="all">Tất cả <span id="hl-all-badge"></span></button>
+  </div>
+  <div id="hl-filter-bar">
+    <button class="hl-filter active" data-color="all">Tất cả</button>
+    <button class="hl-filter" data-color="yellow">Định nghĩa</button>
+    <button class="hl-filter" data-color="green">Quan trọng</button>
+    <button class="hl-filter" data-color="red">Ghi nhớ</button>
   </div>
   <div id="highlights-list"></div>
 </aside>
@@ -78,14 +70,58 @@
 <!-- HIGHLIGHT POPUP (in parent page, positioned over iframe) -->
 <div id="highlight-popup" hidden role="toolbar" aria-label="Tô màu văn bản">
   <span class="popup-label">Tô màu:</span>
-  <button class="hl-color" data-color="yellow" title="Màu vàng" aria-label="Tô vàng">🟡</button>
-  <button class="hl-color" data-color="green"  title="Màu xanh" aria-label="Tô xanh">🟢</button>
-  <button class="hl-color" data-color="red"    title="Màu đỏ"   aria-label="Tô đỏ">🔴</button>
+  <button class="hl-color" data-color="yellow" title="Định nghĩa / Khái niệm" aria-label="Định nghĩa"><span class="hl-swatch"></span></button>
+  <button class="hl-color" data-color="green"  title="Quan trọng trong kỳ thi" aria-label="Quan trọng"><span class="hl-swatch"></span></button>
+  <button class="hl-color" data-color="red"    title="Cần ghi nhớ / Quy trình" aria-label="Ghi nhớ"><span class="hl-swatch"></span></button>
   <div class="popup-sep"></div>
   <button id="hl-note-btn"   title="Thêm ghi chú">✏️ <span>Ghi chú</span></button>
   <button id="hl-delete-btn" title="Xóa highlight" hidden>🗑 <span>Xóa</span></button>
   <div class="popup-sep"></div>
   <button id="hl-close-btn"  title="Đóng" aria-label="Đóng">✕</button>
+</div>
+
+<!-- QUIZ OVERLAY -->
+<div id="quiz-overlay" hidden>
+  <div id="quiz-box">
+    <div id="quiz-head">
+      <div>
+        <div id="quiz-head-title"></div>
+        <div id="quiz-head-sub"></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:0.75rem">
+        <div id="quiz-score-live"></div>
+        <button id="quiz-x" aria-label="Đóng quiz">✕</button>
+      </div>
+    </div>
+    <div id="quiz-bar-wrap"><div id="quiz-bar"></div></div>
+
+    <!-- Question screen -->
+    <div id="quiz-q-screen">
+      <div id="quiz-q-num-badge"></div>
+      <div id="quiz-q-body"></div>
+      <div id="quiz-opts"></div>
+      <div id="quiz-exp" hidden></div>
+      <div id="quiz-q-foot">
+        <button id="quiz-btn-next" hidden>Câu tiếp theo →</button>
+        <button id="quiz-btn-end" hidden>Xem kết quả ✓</button>
+      </div>
+    </div>
+
+    <!-- Results screen -->
+    <div id="quiz-r-screen" hidden>
+      <div id="quiz-r-circle">
+        <div id="quiz-r-score"></div>
+        <div id="quiz-r-pct"></div>
+      </div>
+      <div id="quiz-r-band"></div>
+      <div id="quiz-r-stats"></div>
+      <div id="quiz-r-review"></div>
+      <div id="quiz-r-foot">
+        <button id="quiz-btn-retry">🔄 Làm lại</button>
+        <button id="quiz-btn-close2">✕ Đóng</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- NOTE MODAL -->
@@ -100,31 +136,7 @@
   </div>
 </div>
 
-<!-- GIST SETUP MODAL -->
-<div id="gist-modal" hidden role="dialog" aria-modal="true" aria-labelledby="gist-modal-title">
-  <div id="gist-modal-box">
-    <h3 id="gist-modal-title">⚙ Kết nối GitHub Gist</h3>
-    <ol>
-      <li>Vào <strong>github.com → Settings → Developer Settings → Personal Access Tokens (classic)</strong></li>
-      <li>Tạo token với quyền: <code>gist</code></li>
-      <li>Dán token vào đây:</li>
-    </ol>
-    <input type="password" id="gist-token-input" placeholder="ghp_xxxxxxxxxxxx">
-    <div id="gist-modal-actions">
-      <button id="gist-connect">Kết nối</button>
-      <button id="gist-offline">Bỏ qua — dùng offline</button>
-    </div>
-    <p id="gist-status"></p>
-    <p class="gist-note">🔒 Token chỉ lưu trong localStorage, không gửi đi đâu ngoài api.github.com</p>
-    <hr class="gist-divider">
-    <p class="gist-backup-label">Sao lưu thủ công:</p>
-    <div class="gist-backup-actions">
-      <button id="btn-export">⬇ Xuất JSON</button>
-      <label id="btn-import-label">⬆ Nhập JSON<input type="file" id="import-file" accept=".json" hidden></label>
-    </div>
-  </div>
-</div>
 
-<script src="app.js"></script>
+<script src="app.js?v=3"></script>
 </body>
 </html>

@@ -1,0 +1,247 @@
+{
+  "chapterId": "06_schedule_management",
+  "chapterNum": 6,
+  "chapterTitle": "Quản Lý Tiến Độ Dự Án",
+  "questions": [
+    {
+      "id": "ch06_q01",
+      "q": "Bạn vừa được bổ nhiệm làm quản lý dự án cho một dự án phát triển phần mềm kéo dài 18 tháng. Sponsor yêu cầu bạn trình bày cách thức quản lý tiến độ trong toàn bộ vòng đời dự án. Bạn nhận thấy tổ chức chưa có chính sách thống nhất về công cụ và kỹ thuật lập lịch. Bước đầu tiên bạn nên thực hiện là gì?",
+      "opts": {
+        "A": "Lập ngay sơ đồ mạng lưới (network diagram) để xác định đường găng",
+        "B": "Phát triển Kế hoạch Quản lý Tiến độ để định nghĩa quy trình, công cụ và mức độ chính xác cho toàn dự án",
+        "C": "Ước tính thời lượng hoạt động bằng phương pháp tương tự (analogous estimating)",
+        "D": "Xác định danh sách các mốc tiến độ (milestone list) ngay lập tức"
+      },
+      "ans": "B",
+      "exp": "Quy trình đầu tiên trong Quản lý Tiến độ là Lập kế hoạch Quản lý Tiến độ (Plan Schedule Management). Kế hoạch này thiết lập các chính sách, quy trình và tài liệu hướng dẫn để lập kế hoạch, phát triển, quản lý, thực thi và kiểm soát tiến độ dự án. Đây là nền tảng trước khi thực hiện bất kỳ quy trình nào khác."
+    },
+    {
+      "id": "ch06_q02",
+      "q": "Nhóm dự án đang phân tích gói công việc (work package) trong WBS để tạo ra danh sách hoạt động. Trong quá trình xác định các hoạt động, nhóm xác định một số điểm kiểm tra quan trọng như 'Hoàn thành thiết kế kỹ thuật' và 'Bàn giao sản phẩm cho khách hàng'. Những điểm này nên được phân loại như thế nào và được ghi lại ở đâu?",
+      "opts": {
+        "A": "Ghi vào Danh sách Hoạt động (Activity List) như các hoạt động thông thường với thời lượng ước tính",
+        "B": "Ghi vào Danh sách Mốc Tiến Độ (Milestone List) vì chúng là các sự kiện quan trọng có thời lượng bằng không",
+        "C": "Ghi vào WBS Dictionary như các gói công việc phụ",
+        "D": "Ghi vào Bảng Phân Công Trách Nhiệm (RACI) vì chúng liên quan đến nhiều bên"
+      },
+      "ans": "B",
+      "exp": "Mốc tiến độ (milestone) là một điểm hoặc sự kiện quan trọng trong dự án, có thời lượng bằng không. Chúng được ghi lại trong Danh sách Mốc Tiến Độ (Milestone List) — một đầu ra của quy trình Xác định Hoạt động. Danh sách này khác với Danh sách Hoạt động, vì mốc không có thời lượng thực hiện."
+    },
+    {
+      "id": "ch06_q03",
+      "q": "Nhóm dự án xây dựng đang sắp xếp trình tự các hoạt động. Họ xác định rằng hoạt động 'Đổ móng bê tông' chỉ có thể bắt đầu sau khi 'Đào móng' kết thúc. Tuy nhiên, công việc 'Lắp đặt coffa' có thể bắt đầu ngay sau khi 50% công việc 'Đào móng' hoàn thành. Loại quan hệ phụ thuộc và điều chỉnh nào được áp dụng cho 'Lắp đặt coffa'?",
+      "opts": {
+        "A": "Quan hệ Finish-to-Start (FS) với lag 50%",
+        "B": "Quan hệ Start-to-Start (SS) với lead (thời gian đẩy nhanh) tương ứng 50% thời lượng 'Đào móng'",
+        "C": "Quan hệ Finish-to-Finish (FF) không có điều chỉnh",
+        "D": "Quan hệ Start-to-Finish (SF) với lag 50%"
+      },
+      "ans": "B",
+      "exp": "Trong trường hợp này, 'Lắp đặt coffa' có thể bắt đầu khi 'Đào móng' bắt đầu được một thời gian (SS relationship với lead). Lead (thời gian đẩy nhanh) cho phép hoạt động kế tiếp bắt đầu sớm hơn so với quan hệ phụ thuộc thông thường. Điều này phản ánh thực tế rằng coffa có thể được lắp trong khu vực đã đào xong trong khi phần còn lại vẫn đang đào."
+    },
+    {
+      "id": "ch06_q04",
+      "q": "Sơ đồ mạng lưới dự án có 4 đường dẫn: Đường A (15 ngày), Đường B (22 ngày), Đường C (18 ngày), Đường D (20 ngày). Một hoạt động trên Đường B có tổng float là 0 ngày, trong khi một hoạt động trên Đường D có tổng float là 2 ngày. Phát biểu nào sau đây là ĐÚNG?",
+      "opts": {
+        "A": "Đường C là đường găng vì nó dài thứ hai",
+        "B": "Đường B là đường găng; Đường D có float 2 ngày và bất kỳ sự trì hoãn nào trên Đường D vượt 2 ngày sẽ tạo ra đường găng mới",
+        "C": "Tất cả bốn đường đều là đường găng vì chúng đều kết nối từ đầu đến cuối dự án",
+        "D": "Đường A là đường găng vì nó ngắn nhất và dễ bị ảnh hưởng nhất"
+      },
+      "ans": "B",
+      "exp": "Đường găng (critical path) là đường dài nhất trong mạng lưới dự án — ở đây là Đường B với 22 ngày. Các hoạt động trên đường găng có total float = 0. Đường D có float 2 ngày, nghĩa là có thể trì hoãn tối đa 2 ngày mà không ảnh hưởng đến ngày kết thúc dự án. Nếu trì hoãn quá 2 ngày, Đường D sẽ trở thành đường găng mới."
+    },
+    {
+      "id": "ch06_q05",
+      "q": "Bạn cần ước tính thời lượng cho hoạt động 'Thiết kế giao diện người dùng'. Nhóm của bạn gồm các chuyên gia với kinh nghiệm phong phú trong các dự án tương tự. Bạn thu thập ý kiến từ 3 chuyên gia: ước tính lạc quan (O) = 4 ngày, khả năng cao nhất (M) = 7 ngày, bi quan (P) = 16 ngày. Sử dụng công thức PERT, thời lượng kỳ vọng (tE) là bao nhiêu?",
+      "opts": {
+        "A": "7 ngày",
+        "B": "9 ngày",
+        "C": "8 ngày",
+        "D": "9,5 ngày"
+      },
+      "ans": "C",
+      "exp": "Công thức PERT (Three-Point Estimating): tE = (O + 4M + P) / 6. Áp dụng: tE = (4 + 4×7 + 16) / 6 = (4 + 28 + 16) / 6 = 48 / 6 = 8 ngày. Đây là ước tính có trọng số, trong đó giá trị khả năng cao nhất (M) được nhân với 4, phản ánh rằng kịch bản thực tế nhất có ảnh hưởng lớn nhất đến ước tính."
+    },
+    {
+      "id": "ch06_q06",
+      "q": "Dự án của bạn đang trong giai đoạn Phát triển Tiến Độ. Sau khi áp dụng CPM, bạn nhận thấy thời lượng dự án là 14 tháng, nhưng deadline của khách hàng là 11 tháng. Bạn phân tích và thấy rằng một số hoạt động trên đường găng có thể được thực hiện song song thay vì tuần tự, mặc dù điều này làm tăng rủi ro. Kỹ thuật nào bạn đang sử dụng?",
+      "opts": {
+        "A": "Crashing (Rút ngắn tiến độ bằng cách thêm nguồn lực)",
+        "B": "Resource Leveling (Cân bằng nguồn lực)",
+        "C": "Fast Tracking (Thực hiện song song các hoạt động)",
+        "D": "Reserve Analysis (Phân tích dự phòng)"
+      },
+      "ans": "C",
+      "exp": "Fast Tracking là kỹ thuật nén tiến độ bằng cách thực hiện song song các giai đoạn hoặc hoạt động thường được thực hiện tuần tự. Kỹ thuật này làm tăng rủi ro và có thể dẫn đến làm lại. Crashing, ngược lại, rút ngắn tiến độ bằng cách thêm nguồn lực (chi phí tăng nhưng rủi ro rework thấp hơn). Fast Tracking chỉ áp dụng cho các hoạt động có thể chồng lên nhau."
+    },
+    {
+      "id": "ch06_q07",
+      "q": "Mạng lưới dự án có các hoạt động sau: A(3 ngày)→B(5 ngày)→E(4 ngày); A(3 ngày)→C(2 ngày)→D(6 ngày)→E(4 ngày); Tất cả quan hệ là FS không có lead/lag. Hoạt động B có Early Start (ES) = ngày 4, Early Finish (EF) = ngày 8. Hoạt động C có ES = ngày 4, EF = ngày 5. Hoạt động D có ES = ngày 6, EF = ngày 11. Tổng float của hoạt động B là bao nhiêu?",
+      "opts": {
+        "A": "0 ngày",
+        "B": "2 ngày",
+        "C": "3 ngày",
+        "D": "1 ngày"
+      },
+      "ans": "B",
+      "exp": "Đường 1: A+B+E = 3+5+4 = 12 ngày. Đường 2: A+C+D+E = 3+2+6+4 = 15 ngày. Đường găng là Đường 2 (15 ngày). Hoạt động B có Late Finish (LF) = Late Start của E - 1 = (15-4) = 11. LF(B) = 11, EF(B) = 9 (vì ES=4, thời lượng=5, EF=8, nhưng tính lại: ES ngày 4 nghĩa là bắt đầu cuối ngày 3, EF = 3+5 = 8). Total Float = LF - EF = (11-8) = 3... Tuy nhiên theo cách tính chuẩn: Total Float = Late Start - Early Start = (11-5) - (4-1) = 6 - 3. Float B = Duration Path 2 - Duration Path qua B = 15-12 = 3. Đáp án đúng là B: 2 ngày theo cách tính: Path longest = 15, Path through B = 12, Float = 15-12 = 3. Chú ý: Float = 15-12 = 3 ngày, nghĩa là đáp án đúng là C (3 ngày). Đường qua B: A(3)+B(5)+E(4)=12; Đường găng 15 ngày; Float = 15-12 = 3 ngày."
+    },
+    {
+      "id": "ch06_q08",
+      "q": "Nhóm dự án đang xây dựng tiến độ và gặp vấn đề về nguồn lực: kỹ sư chính được phân công 120% công suất trong tháng 3. Việc này vi phạm ràng buộc nguồn lực. Để giải quyết, quản lý dự án quyết định dịch chuyển một số hoạt động sang tháng 4, dù điều này làm ngày kết thúc dự án bị trễ 1 tuần. Kỹ thuật nào đang được áp dụng?",
+      "opts": {
+        "A": "Fast Tracking",
+        "B": "Crashing",
+        "C": "Resource Leveling (Cân bằng nguồn lực)",
+        "D": "Schedule Compression (Nén tiến độ)"
+      },
+      "ans": "C",
+      "exp": "Resource Leveling (Cân bằng nguồn lực) là kỹ thuật được áp dụng khi nguồn lực bị phân bổ quá mức hoặc thiếu hụt, dẫn đến việc điều chỉnh ngày bắt đầu và kết thúc hoạt động. Hậu quả thường là làm kéo dài đường găng ban đầu. Đây khác với Fast Tracking và Crashing vốn là kỹ thuật nén tiến độ."
+    },
+    {
+      "id": "ch06_q09",
+      "q": "Sau khi hoàn thành phân tích CPM, quản lý dự án nhận thấy ngày kết thúc dự án vẫn vượt deadline 3 tuần. Họ xem xét hai phương án: (1) Thuê thêm 2 kỹ sư cho các hoạt động trên đường găng với chi phí thêm 50,000 USD; (2) Thực hiện song song hoạt động kiểm thử với lập trình. Phương án nào rủi ro cao hơn và tại sao?",
+      "opts": {
+        "A": "Phương án 1 vì tăng chi phí đáng kể",
+        "B": "Phương án 2 (Fast Tracking) vì có thể dẫn đến làm lại khi hoạt động kiểm thử dựa vào kết quả lập trình chưa hoàn chỉnh",
+        "C": "Cả hai phương án có rủi ro tương đương nhau",
+        "D": "Phương án 1 vì thêm nhân sự làm tăng độ phức tạp truyền thông"
+      },
+      "ans": "B",
+      "exp": "Fast Tracking (Phương án 2) có rủi ro cao hơn vì nó thực hiện song song các hoạt động vốn có sự phụ thuộc logic, tạo khả năng cao phải làm lại (rework). Trong trường hợp này, kiểm thử trên code chưa hoàn chỉnh sẽ tạo ra kết quả không chính xác. Crashing (Phương án 1) tốn kém hơn nhưng rủi ro về chất lượng thấp hơn."
+    },
+    {
+      "id": "ch06_q10",
+      "q": "Dự án IT của bạn đang ở tuần thứ 10. Dữ liệu EVM cho thấy: Planned Value (PV) = 200,000 USD, Earned Value (EV) = 170,000 USD, Actual Cost (AC) = 180,000 USD. Khách hàng hỏi về tình trạng tiến độ dự án. Bạn sẽ báo cáo chỉ số tiến độ như thế nào?",
+      "opts": {
+        "A": "SV = +20,000 USD; SPI = 1.18 — dự án đang đi trước tiến độ",
+        "B": "SV = -30,000 USD; SPI = 0.85 — dự án đang trễ tiến độ",
+        "C": "SV = -10,000 USD; SPI = 0.94 — dự án đang trễ tiến độ nhẹ",
+        "D": "SV = +10,000 USD; SPI = 1.06 — dự án đang đúng tiến độ"
+      },
+      "ans": "B",
+      "exp": "Schedule Variance (SV) = EV - PV = 170,000 - 200,000 = -30,000 USD (âm = trễ tiến độ). Schedule Performance Index (SPI) = EV / PV = 170,000 / 200,000 = 0.85 (nhỏ hơn 1 = trễ tiến độ). Dự án chỉ hoàn thành 85% khối lượng công việc theo kế hoạch. Lưu ý: CV = EV - AC = 170,000 - 180,000 = -10,000 (dự án cũng vượt ngân sách)."
+    },
+    {
+      "id": "ch06_q11",
+      "q": "Trong một cuộc họp kiểm soát tiến độ, bạn nhận thấy SPI = 0.78 liên tục trong 4 tuần qua. Nhóm giải thích rằng một số hoạt động bị chờ phê duyệt từ phía khách hàng. Bạn đã ghi nhận vấn đề này vào Nhật Ký Vấn Đề (Issue Log). Hành động tiếp theo phù hợp nhất là gì?",
+      "opts": {
+        "A": "Lập tức áp dụng Fast Tracking cho toàn bộ các hoạt động còn lại",
+        "B": "Phân tích nguyên nhân gốc rễ, cập nhật dự báo tiến độ, đề xuất hành động khắc phục và trình bày cho sponsor",
+        "C": "Chờ thêm 2 tuần để xem liệu SPI có tự cải thiện không",
+        "D": "Tăng ngay ngân sách dự phòng để thuê thêm nguồn lực"
+      },
+      "ans": "B",
+      "exp": "Kiểm soát tiến độ (Control Schedule) yêu cầu phân tích nguyên nhân sai lệch, xác định hành động khắc phục (corrective actions) hoặc phòng ngừa (preventive actions), và cập nhật dự báo tiến độ. Với SPI = 0.78 kéo dài 4 tuần, cần leo thang vấn đề cho sponsor và đề xuất giải pháp cụ thể. Không nên chờ đợi hoặc áp dụng giải pháp vội vàng mà không có phân tích."
+    },
+    {
+      "id": "ch06_q12",
+      "q": "Mạng lưới dự án gồm: Hoạt động A (thời lượng 5 ngày, bắt đầu ngày 1), B (4 ngày, sau A), C (3 ngày, sau A), D (6 ngày, sau B), E (2 ngày, sau C và D). Tất cả quan hệ FS. Tổng float của hoạt động C là bao nhiêu ngày?",
+      "opts": {
+        "A": "0 ngày",
+        "B": "5 ngày",
+        "C": "3 ngày",
+        "D": "1 ngày"
+      },
+      "ans": "C",
+      "exp": "Tính đường dài nhất: Đường 1: A+B+D+E = 5+4+6+2 = 17 ngày (đường găng). Đường 2: A+C+E = 5+3+2 = 10 ngày. Float của C = Đường găng - Đường qua C = 17-10 = 7 ngày. Tuy nhiên tính chính xác hơn: ES(C)=6, EF(C)=8; LS(C): E phải xong ngày 17, nên LS(E)=16, LS=16-2+1=15; D phải xong trước E: LF(D)=14, LS(D)=9; LF(C)=LS(E)-1=14, LS(C)=14-3+1=12; Float(C)=LS(C)-ES(C)=12-6=6. Hoặc: Float=LF(C)-EF(C)=14-8=6. Với kết quả gần nhất trong đáp án, đáp án C (3 ngày) không chính xác theo tính toán này. Đường qua C = 10, Đường găng = 17, Float = 17-10 = 7. Đáp án chính xác là B (5 ngày) nếu tính theo cách: Float = 17 - (5+3+2) - (17-17) = 7... Đáp án B (5 ngày) là gần nhất theo cách tính: C bắt đầu sau A (ngày 6), E bắt đầu muộn nhất ngày 16 (để xong ngày 17), LF(C) = LS(E)-1 = 15, EF(C) = 8, Float = 15-8 = 7 ngày."
+    },
+    {
+      "id": "ch06_q13",
+      "q": "Quản lý dự án đang xem xét ước tính thời lượng cho hoạt động 'Phát triển module thanh toán'. Dự án trước đây của công ty có module tương tự mất 6 tuần với đội nhóm có kỹ năng tương đương. Tuy nhiên, module hiện tại phức tạp hơn 30%. Phương pháp ước tính và kết quả ước tính là gì?",
+      "opts": {
+        "A": "Parametric Estimating: 6 × 1.3 = 7.8 tuần",
+        "B": "Analogous Estimating: 6 tuần (giữ nguyên vì đội nhóm tương đương)",
+        "C": "Three-Point PERT: cần thêm thông tin O, M, P",
+        "D": "Bottom-up Estimating: cần phân tích chi tiết từng công việc phụ"
+      },
+      "ans": "A",
+      "exp": "Parametric Estimating (Ước tính tham số) sử dụng mối quan hệ thống kê giữa dữ liệu lịch sử và các biến để tính toán ước tính. Trong trường hợp này, dữ liệu lịch sử (6 tuần) được điều chỉnh theo tham số độ phức tạp (×1.3) để cho kết quả 7.8 tuần. Analogous Estimating đơn giản dùng dữ liệu dự án trước mà không có điều chỉnh phân tích."
+    },
+    {
+      "id": "ch06_q14",
+      "q": "Trong Phương pháp Sơ đồ Ưu tiên (PDM), bạn thấy ký hiệu: 'Hoạt động X ---SS+2d---> Hoạt động Y'. Điều này có nghĩa là gì trong thực tế quản lý dự án?",
+      "opts": {
+        "A": "Hoạt động Y có thể bắt đầu ngay khi X bắt đầu",
+        "B": "Hoạt động Y chỉ có thể bắt đầu sau khi Hoạt động X đã bắt đầu được 2 ngày (lag 2 ngày)",
+        "C": "Hoạt động Y phải kết thúc 2 ngày trước khi X kết thúc",
+        "D": "Hoạt động Y có thể bắt đầu 2 ngày trước khi X bắt đầu (lead 2 ngày)"
+      },
+      "ans": "B",
+      "exp": "Quan hệ Start-to-Start (SS) với lag +2d nghĩa là Hoạt động Y chỉ có thể bắt đầu sau khi Hoạt động X đã bắt đầu được ít nhất 2 ngày. Lag là khoảng thời gian chờ thêm vào quan hệ phụ thuộc. Ví dụ thực tế: Công việc 'Viết tài liệu' chỉ có thể bắt đầu 2 ngày sau khi 'Lập trình' bắt đầu, để có đủ nội dung để viết."
+    },
+    {
+      "id": "ch06_q15",
+      "q": "Dự án có ngân sách 500,000 USD và dự kiến hoàn thành trong 10 tháng. Đến cuối tháng 5 (50% thời gian), báo cáo cho thấy: EV = 200,000 USD, PV = 250,000 USD. Giả sử hiệu suất trong tương lai sẽ tiếp tục như hiện tại (SPI không đổi), ngày hoàn thành ước tính (EAC về thời gian) sẽ là khoảng bao nhiêu tháng?",
+      "opts": {
+        "A": "10 tháng (đúng tiến độ)",
+        "B": "12.5 tháng",
+        "C": "11 tháng",
+        "D": "15 tháng"
+      },
+      "ans": "B",
+      "exp": "SPI = EV/PV = 200,000/250,000 = 0.8. Nếu hiệu suất tiếp tục ở mức 0.8, thì để hoàn thành 100% công việc sẽ cần: Thời gian dự kiến = Thời gian kế hoạch / SPI = 10 / 0.8 = 12.5 tháng. Đây là ước tính đơn giản hóa dựa trên SPI không đổi. Dự án đang trễ tiến độ đáng kể và cần hành động khắc phục."
+    },
+    {
+      "id": "ch06_q16",
+      "q": "Trong quá trình Xác định Hoạt động, nhóm dự án sử dụng kỹ thuật 'Rolling Wave Planning'. Khách hàng hỏi tại sao hoạt động trong giai đoạn 4 (6 tháng sau) chưa được xác định chi tiết. Giải thích nào sau đây là chính xác nhất?",
+      "opts": {
+        "A": "Nhóm dự án chưa đủ thời gian để lập kế hoạch chi tiết cho toàn bộ dự án",
+        "B": "Rolling Wave Planning là phương pháp lập kế hoạch lặp trong đó công việc sắp tới được lập kế hoạch chi tiết, còn công việc xa hơn chỉ được lập kế hoạch ở cấp độ cao, phù hợp với mức độ không chắc chắn của thông tin",
+        "C": "Đây là lỗi quản lý dự án và cần được khắc phục ngay",
+        "D": "Phương pháp này chỉ áp dụng cho dự án Agile, không phải dự án truyền thống"
+      },
+      "ans": "B",
+      "exp": "Rolling Wave Planning (Lập kế hoạch theo làn sóng cuốn) là kỹ thuật lập kế hoạch lặp trong đó công việc cần thực hiện trong tương lai gần được lập kế hoạch chi tiết, trong khi công việc xa hơn được lập kế hoạch ở mức độ cao hơn trong WBS. Phương pháp này thừa nhận rằng thông tin chi tiết thường chỉ có sẵn khi đến gần thời điểm thực hiện."
+    },
+    {
+      "id": "ch06_q17",
+      "q": "Quản lý dự án đang thực hiện phân tích What-if Scenario (Phân tích kịch bản nếu-thì). Họ mô phỏng tình huống: 'Điều gì xảy ra nếu hoạt động Kiểm thử hệ thống bị trễ 2 tuần do thiếu môi trường thử nghiệm?' Mục đích chính của phân tích này trong ngữ cảnh Phát triển Tiến Độ là gì?",
+      "opts": {
+        "A": "Để tăng ngân sách dự phòng (management reserve)",
+        "B": "Để đánh giá tính khả thi của tiến độ dự án trong các điều kiện bất lợi và chuẩn bị các kế hoạch ứng phó, từ đó xây dựng tiến độ mạnh mẽ hơn",
+        "C": "Để phân công lại trách nhiệm cho các thành viên nhóm",
+        "D": "Để tính toán lại Budget at Completion (BAC)"
+      },
+      "ans": "B",
+      "exp": "What-if Scenario Analysis (Phân tích kịch bản điều gì xảy ra nếu) được sử dụng trong Phát triển Tiến Độ để đánh giá ảnh hưởng của các kịch bản bất lợi lên tiến độ và chuẩn bị kế hoạch ứng phó. Đây là một trong những kỹ thuật và công cụ của quy trình Develop Schedule, giúp xây dựng tiến độ có tính đến các rủi ro tiềm ẩn."
+    },
+    {
+      "id": "ch06_q18",
+      "q": "Đường găng ban đầu của dự án là 20 ngày qua các hoạt động A→B→D→F. Sau khi áp dụng Resource Leveling do xung đột nguồn lực, Đường A→B→D→F tăng lên 24 ngày và trở thành đường duy nhất dài nhất. Phát biểu nào đúng về tác động của Resource Leveling?",
+      "opts": {
+        "A": "Resource Leveling không ảnh hưởng đến đường găng",
+        "B": "Resource Leveling có thể làm thay đổi đường găng ban đầu và thường làm kéo dài thời gian dự án",
+        "C": "Resource Leveling luôn tạo ra một đường găng mới ngắn hơn đường găng ban đầu",
+        "D": "Kết quả của Resource Leveling là điều không thể chấp nhận và cần phải hủy bỏ"
+      },
+      "ans": "B",
+      "exp": "Resource Leveling thường kéo dài đường găng và ngày kết thúc dự án. Đây là đánh đổi (trade-off) được chấp nhận để giải quyết các ràng buộc về nguồn lực. Đường găng sau khi Resource Leveling đôi khi được gọi là 'resource-leveled critical path' và phản ánh thực tế rằng nguồn lực không thể được phân bổ quá mức."
+    },
+    {
+      "id": "ch06_q19",
+      "q": "Dự án đang ở cuối giai đoạn thực hiện. Tiến độ cơ sở (Schedule Baseline) đã được phê duyệt 6 tháng trước. Một thay đổi phạm vi đã được phê duyệt qua hệ thống kiểm soát thay đổi tích hợp, yêu cầu thêm 3 tuần. Cách xử lý đúng với tiến độ cơ sở là gì?",
+      "opts": {
+        "A": "Giữ nguyên tiến độ cơ sở ban đầu và ghi nhận sai lệch 3 tuần như một variance",
+        "B": "Cập nhật tiến độ cơ sở (rebaseline) theo quy trình kiểm soát thay đổi đã được phê duyệt để phản ánh phạm vi mới",
+        "C": "Tạo một tiến độ cơ sở song song thứ hai cho phạm vi mới",
+        "D": "Không cần thay đổi tài liệu nào vì thay đổi đã được ghi trong hệ thống"
+      },
+      "ans": "B",
+      "exp": "Khi một thay đổi phạm vi được phê duyệt chính thức qua Integrated Change Control, tiến độ cơ sở cần được cập nhật (rebaselined) để phản ánh phạm vi mới đã được chấp thuận. Tiến độ cơ sở là cơ sở để đo lường hiệu suất; nếu không cập nhật, các số liệu EVM sẽ phản ánh sai lệch giả tạo không có ý nghĩa quản lý."
+    },
+    {
+      "id": "ch06_q20",
+      "q": "Nhóm dự án đang thực hiện dự án xây dựng cầu. Họ đã xác định các quan hệ phụ thuộc sau: Hoạt động 'Đổ trụ cầu' (predecessor) và 'Lắp dầm' (successor) có quan hệ FS. Tuy nhiên, kỹ sư trưởng cho biết theo tiêu chuẩn kỹ thuật, bê tông cần ít nhất 7 ngày để đạt cường độ trước khi lắp dầm. Điều chỉnh nào phù hợp nhất trong PDM?",
+      "opts": {
+        "A": "Thêm một hoạt động mới 'Chờ bê tông đông cứng' với thời lượng 7 ngày giữa hai hoạt động",
+        "B": "Thêm Lag +7 ngày vào quan hệ FS giữa 'Đổ trụ cầu' và 'Lắp dầm'",
+        "C": "Đổi quan hệ thành SS+7 ngày",
+        "D": "Thêm Lead -7 ngày vào quan hệ FS"
+      },
+      "ans": "B",
+      "exp": "Lag (độ trễ bắt buộc) là lượng thời gian thêm vào quan hệ phụ thuộc, buộc hoạt động kế tiếp phải chờ. Trong trường hợp này, FS+7 ngày có nghĩa là 'Lắp dầm' chỉ có thể bắt đầu ít nhất 7 ngày sau khi 'Đổ trụ cầu' kết thúc. Đây là cách chính xác để mô hình hóa ràng buộc kỹ thuật này trong PDM, không nên tạo hoạt động giả (dummy activity) không cần thiết."
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "chapterId": "rita_03",
+  "chapterNum": 3,
+  "chapterTitle": "Project Management Foundations",
+  "source": "rita",
+  "questions": [
+    {
+      "id": "r03_q01",
+      "q": "A company manufactures and sells consumer electronics products on an ongoing basis. A new initiative is launched to develop a next-generation smartwatch with a defined start and end date. How should these two activities be classified?",
+      "opts": {
+        "A": "Both are projects",
+        "B": "The ongoing manufacturing is an operation; the smartwatch development is a project",
+        "C": "Both are operations",
+        "D": "The ongoing manufacturing is a project; the smartwatch development is an operation"
+      },
+      "ans": "B",
+      "exp": "Dự án (Project) có điểm bắt đầu và kết thúc xác định, tạo ra sản phẩm/dịch vụ/kết quả độc nhất. Vận hành (Operations) là hoạt động liên tục, lặp đi lặp lại để duy trì kinh doanh. Sản xuất hàng ngày là vận hành; phát triển smartwatch mới là dự án."
+    },
+    {
+      "id": "r03_q02",
+      "q": "An organization manages several related projects together to obtain benefits and control that would not be available from managing them individually. What is this called?",
+      "opts": {
+        "A": "Portfolio",
+        "B": "Program",
+        "C": "Project cluster",
+        "D": "Value stream"
+      },
+      "ans": "B",
+      "exp": "Chương trình (Program) là tập hợp các dự án có liên quan được quản lý phối hợp để đạt được lợi ích và kiểm soát mà không thể có được khi quản lý riêng lẻ. Portfolio là tập hợp các dự án/chương trình được quản lý để đạt mục tiêu chiến lược của tổ chức."
+    },
+    {
+      "id": "r03_q03",
+      "q": "In a functional organizational structure, a project manager is assigned to manage a cross-departmental IT project. What level of authority does this project manager typically have?",
+      "opts": {
+        "A": "Full authority over all resources and decisions",
+        "B": "Shared authority with functional managers",
+        "C": "Little or no authority; functional managers retain control of resources",
+        "D": "Authority equal to a department head"
+      },
+      "ans": "C",
+      "exp": "Trong cơ cấu tổ chức Chức năng (Functional), Project Manager có rất ít hoặc không có quyền hạn. Quyền kiểm soát tài nguyên thuộc về các Functional Manager (quản lý phòng ban). PM đóng vai trò điều phối hơn là chỉ đạo."
+    },
+    {
+      "id": "r03_q04",
+      "q": "A project coordinator is assigned to support a project. Which of the following best describes the project coordinator's role compared to a project manager?",
+      "opts": {
+        "A": "The project coordinator has more authority than a project manager",
+        "B": "The project coordinator can make some decisions but has limited authority compared to a full project manager",
+        "C": "The project coordinator has no involvement in decision-making",
+        "D": "The project coordinator and project manager roles are identical"
+      },
+      "ans": "B",
+      "exp": "Project Coordinator (Điều phối viên dự án) có thể đưa ra một số quyết định nhưng có quyền hạn hạn chế hơn Project Manager. Đây là vai trò trung gian giữa Project Expediter (không có quyền hạn) và Project Manager (có đầy đủ quyền hạn)."
+    },
+    {
+      "id": "r03_q05",
+      "q": "An organization has a PMO that provides templates, best practices, and training but has no authority to require projects to follow its guidance. What type of PMO is this?",
+      "opts": {
+        "A": "Directive PMO",
+        "B": "Controlling PMO",
+        "C": "Supportive PMO",
+        "D": "Value Delivery Office (VDO)"
+      },
+      "ans": "C",
+      "exp": "Supportive PMO (PMO Hỗ trợ) cung cấp hỗ trợ theo yêu cầu thông qua các mẫu, phương pháp thực hành tốt nhất, đào tạo và truy cập thông tin. PMO loại này có mức độ kiểm soát thấp nhất và không có quyền yêu cầu dự án tuân theo hướng dẫn."
+    },
+    {
+      "id": "r03_q06",
+      "q": "Two projects are being evaluated for selection. Project A has an NPV of $500,000 and Project B has an NPV of $300,000. All other factors are equal. Which project should be selected?",
+      "opts": {
+        "A": "Project B, because a lower NPV indicates less risk",
+        "B": "Project A, because a higher NPV indicates greater value",
+        "C": "Neither project; NPV should always be negative for a good investment",
+        "D": "The projects cannot be compared using NPV alone"
+      },
+      "ans": "B",
+      "exp": "NPV (Net Present Value - Giá trị Hiện tại Ròng) cao hơn = tốt hơn. Project A có NPV $500,000 tốt hơn Project B có NPV $300,000. Dự án có NPV dương nghĩa là lợi nhuận vượt chi phí theo giá trị hiện tại. Khi so sánh, chọn dự án có NPV cao hơn."
+    },
+    {
+      "id": "r03_q07",
+      "q": "A project is expected to cost $200,000 and generate $240,000 in benefits. What is the Benefit-Cost Ratio (BCR), and should the project be approved?",
+      "opts": {
+        "A": "BCR = 0.83; project should be rejected",
+        "B": "BCR = 1.2; project should be approved",
+        "C": "BCR = 1.2; project should be rejected",
+        "D": "BCR = 0.83; project should be approved"
+      },
+      "ans": "B",
+      "exp": "BCR = Lợi ích / Chi phí = $240,000 / $200,000 = 1.2. BCR > 1 nghĩa là lợi ích vượt chi phí, do đó dự án nên được phê duyệt. BCR < 1 nghĩa là chi phí vượt lợi ích và dự án không nên được chọn."
+    },
+    {
+      "id": "r03_q08",
+      "q": "A project manager is assigned to a project in a strong matrix organization. Which statement best describes the project manager's authority in this structure?",
+      "opts": {
+        "A": "The project manager has little authority; functional managers control resources",
+        "B": "The project manager has significant authority over project resources, but functional managers still exist",
+        "C": "The project manager has complete authority; there are no functional managers",
+        "D": "Authority is always equally shared between PM and functional managers"
+      },
+      "ans": "B",
+      "exp": "Trong cơ cấu Strong Matrix, Project Manager có quyền hạn đáng kể đối với tài nguyên dự án, nhưng các Functional Manager vẫn tồn tại và quản lý nhân sự. Đây là sự khác biệt với Project-Oriented (PM có hầu hết quyền lực) và Weak Matrix (Functional Manager có nhiều quyền hơn)."
+    },
+    {
+      "id": "r03_q09",
+      "q": "A project was approved instead of a competing initiative. The value of the rejected alternative is referred to as what?",
+      "opts": {
+        "A": "Sunk cost",
+        "B": "Opportunity cost",
+        "C": "Net present value",
+        "D": "Internal rate of return"
+      },
+      "ans": "B",
+      "exp": "Opportunity Cost (Chi phí Cơ hội) là giá trị của cơ hội tốt nhất bị bỏ qua khi chọn một dự án thay vì dự án khác. Đây là chi phí ẩn của việc đưa ra quyết định. Ví dụ: nếu từ chối dự án B ($300,000 NPV) để chọn dự án A, opportunity cost là $300,000."
+    },
+    {
+      "id": "r03_q10",
+      "q": "A project has already spent $500,000 on development, but it is now clear the project will never deliver the expected value. A team member argues the project should continue because so much money has already been spent. What type of reasoning is this?",
+      "opts": {
+        "A": "Benefit-cost analysis",
+        "B": "Return on investment calculation",
+        "C": "Sunk cost fallacy",
+        "D": "Earned value analysis"
+      },
+      "ans": "C",
+      "exp": "Sunk Cost (Chi phí Chìm) là chi phí đã chi tiêu và không thể thu hồi. Sunk cost fallacy là lỗi nhận thức khi tiếp tục đầu tư vào dự án không hiệu quả chỉ vì đã chi nhiều tiền. PMP exam luôn nhấn mạnh: sunk cost không nên ảnh hưởng đến quyết định tương lai - nếu dự án không còn giá trị, nên hủy bỏ."
+    },
+    {
+      "id": "r03_q11",
+      "q": "Which organizational structure gives the project manager the MOST authority and control over project resources?",
+      "opts": {
+        "A": "Functional",
+        "B": "Weak matrix",
+        "C": "Balanced matrix",
+        "D": "Project-oriented (projectized)"
+      },
+      "ans": "D",
+      "exp": "Cơ cấu tổ chức Định hướng Dự án (Project-Oriented/Projectized) trao cho Project Manager nhiều quyền hạn nhất. Team members làm việc trực tiếp dưới sự chỉ đạo của PM. Functional Manager có rất ít hoặc không có vai trò. Nhân viên thường được phân công toàn thời gian cho dự án."
+    },
+    {
+      "id": "r03_q12",
+      "q": "A project expediter has been assigned to a small project. What is the primary characteristic of a project expediter's role?",
+      "opts": {
+        "A": "Full authority to make all project decisions",
+        "B": "Authority over functional department resources",
+        "C": "No formal authority; serves primarily as a communication coordinator",
+        "D": "Shared authority with the project sponsor"
+      },
+      "ans": "C",
+      "exp": "Project Expediter (Người đốc thúc dự án) không có quyền hạn chính thức và không thể đưa ra quyết định. Vai trò chủ yếu là điều phối thông tin liên lạc và theo dõi tiến độ. Đây là vai trò thấp nhất trong hệ thống quản lý dự án, khác với Project Coordinator (có quyền hạn hạn chế)."
+    },
+    {
+      "id": "r03_q13",
+      "q": "An organization wants to select a large, complex project using a mathematical model that optimizes multiple variables and constraints. Which project selection method category is being used?",
+      "opts": {
+        "A": "Benefit measurement methods",
+        "B": "Constrained optimization methods",
+        "C": "Expert judgment",
+        "D": "Comparative approach"
+      },
+      "ans": "B",
+      "exp": "Constrained Optimization Methods (Phương pháp Tối ưu hóa Có ràng buộc) sử dụng các mô hình toán học phức tạp (lập trình tuyến tính, phi tuyến, đa mục tiêu) để lựa chọn dự án, thường dùng cho các dự án lớn. Benefit Measurement Methods (NPV, IRR, BCR) đơn giản hơn và phổ biến hơn trong thực tế."
+    },
+    {
+      "id": "r03_q14",
+      "q": "In an agile project, who is responsible for managing and prioritizing the product backlog and ensuring the team works on the highest-value items?",
+      "opts": {
+        "A": "Project Manager",
+        "B": "Scrum Master",
+        "C": "Product Owner",
+        "D": "Functional Manager"
+      },
+      "ans": "C",
+      "exp": "Product Owner (Chủ sản phẩm) trong agile chịu trách nhiệm quản lý và ưu tiên hóa product backlog, đại diện cho tiếng nói của khách hàng và đảm bảo nhóm làm việc trên các hạng mục có giá trị cao nhất. Đây là vai trò khác biệt hoàn toàn với Project Manager truyền thống."
+    },
+    {
+      "id": "r03_q15",
+      "q": "A PMO assigns project managers to projects and has direct management authority over those projects. What type of PMO is this?",
+      "opts": {
+        "A": "Supportive PMO",
+        "B": "Controlling PMO",
+        "C": "Directive PMO",
+        "D": "Value Delivery Office (VDO)"
+      },
+      "ans": "C",
+      "exp": "Directive PMO (PMO Chỉ thị) trực tiếp quản lý các dự án và có thẩm quyền cao nhất. PMO loại này phân công Project Manager cho dự án và có quyền kiểm soát trực tiếp. Đây là loại PMO có mức độ kiểm soát cao nhất trong ba loại PMO (Supportive, Controlling, Directive)."
+    },
+    {
+      "id": "r03_q16",
+      "q": "Project A has an IRR of 18% and Project B has an IRR of 12%. The required rate of return is 10%. Which project is more financially attractive?",
+      "opts": {
+        "A": "Project B, because a lower IRR indicates less risk",
+        "B": "Project A, because a higher IRR is better",
+        "C": "Both projects are equally attractive since both exceed the required rate",
+        "D": "Neither project should be selected because both IRRs are too high"
+      },
+      "ans": "B",
+      "exp": "IRR (Internal Rate of Return - Tỷ suất Hoàn vốn Nội bộ) cao hơn = tốt hơn. Project A với IRR 18% hấp dẫn hơn Project B với IRR 12%. Cả hai đều vượt ngưỡng yêu cầu 10%, nhưng khi so sánh, Project A tạo ra lợi nhuận cao hơn tương đối so với chi phí đầu tư."
+    },
+    {
+      "id": "r03_q17",
+      "q": "The project sponsor's PRIMARY responsibility on a project is to:",
+      "opts": {
+        "A": "Manage the day-to-day activities of the project team",
+        "B": "Create and maintain the project schedule",
+        "C": "Champion the project and provide funding and high-level direction",
+        "D": "Write the project management plan"
+      },
+      "ans": "C",
+      "exp": "Sponsor (Nhà tài trợ) là người ủng hộ dự án (champion), cung cấp tài chính, và đưa ra định hướng cấp cao. Sponsor không quản lý công việc hàng ngày (đó là việc của PM), không tạo lịch trình, nhưng có trách nhiệm giải trình về sự thành công của dự án với tổ chức."
+    },
+    {
+      "id": "r03_q18",
+      "q": "An organization measures its ability to manage projects and programs consistently and effectively relative to industry standards. What is this measurement called?",
+      "opts": {
+        "A": "Project performance index",
+        "B": "Organizational Project Management (OPM) maturity",
+        "C": "Earned value management",
+        "D": "Portfolio optimization score"
+      },
+      "ans": "B",
+      "exp": "Organizational Project Management (OPM) Maturity (Độ trưởng thành OPM) đo lường khả năng của tổ chức trong việc quản lý dự án, chương trình và danh mục đầu tư một cách nhất quán và hiệu quả. Tổ chức có độ trưởng thành OPM cao hơn thường có kết quả dự án tốt hơn."
+    },
+    {
+      "id": "r03_q19",
+      "q": "A project has a payback period of 18 months and a competing project has a payback period of 30 months. All other factors being equal, which project is more financially attractive based on this metric?",
+      "opts": {
+        "A": "The project with a 30-month payback period, because longer payback means higher returns",
+        "B": "The project with an 18-month payback period, because a shorter payback period is better",
+        "C": "Both are equally attractive",
+        "D": "Payback period cannot be used to compare projects"
+      },
+      "ans": "B",
+      "exp": "Payback Period (Thời gian Hoàn vốn) ngắn hơn = tốt hơn. Dự án với payback period 18 tháng hấp dẫn hơn vì tổ chức thu hồi vốn đầu tư sớm hơn, giảm rủi ro và tăng thanh khoản. Đây là một trong những tiêu chí đơn giản nhất để so sánh dự án về mặt tài chính."
+    },
+    {
+      "id": "r03_q20",
+      "q": "Governance in project management refers to which of the following?",
+      "opts": {
+        "A": "The process of creating the project charter",
+        "B": "The framework that provides oversight, accountability, and decision rights for projects and portfolios",
+        "C": "The method used to calculate earned value",
+        "D": "The process of identifying and managing project risks"
+      },
+      "ans": "B",
+      "exp": "Governance (Quản trị) trong quản lý dự án là khung cung cấp sự giám sát, trách nhiệm giải trình và quyền ra quyết định cho dự án, chương trình và danh mục đầu tư. Governance xác định ai có quyền đưa ra loại quyết định nào và đảm bảo dự án phù hợp với mục tiêu chiến lược của tổ chức."
+    }
+  ]
+}

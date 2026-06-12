@@ -1,0 +1,248 @@
+{
+  "chapterId": "rita_18",
+  "chapterNum": 18,
+  "chapterTitle": "PMBOK Guide and PM Standard Principles",
+  "source": "rita",
+  "questions": [
+    {
+      "id": "r18_q01",
+      "q": "PMBOK 7th Edition represents a fundamental shift from PMBOK 6th Edition. What is the PRIMARY change?",
+      "opts": {
+        "A": "PMBOK 7 added 5 new Knowledge Areas",
+        "B": "PMBOK 7 moved from a process-based framework to a principles-based framework with 8 Performance Domains",
+        "C": "PMBOK 7 eliminated all process groups and replaced them with Agile ceremonies",
+        "D": "PMBOK 7 requires all projects to use hybrid methodology"
+      },
+      "ans": "B",
+      "exp": "PMBOK 6 dựa trên quy trình (49 processes trong 5 Process Groups và 10 Knowledge Areas). PMBOK 7 chuyển sang dựa trên nguyên tắc (12 Principles + 8 Performance Domains) và tập trung vào KẾT QUẢ (outcomes/value) thay vì đầu ra (outputs/deliverables). Đây là thay đổi triết học lớn nhất trong lịch sử PMBOK."
+    },
+    {
+      "id": "r18_q02",
+      "q": "Which of the following is NOT one of the 12 Project Management Principles in PMBOK 7th Edition?",
+      "opts": {
+        "A": "Stewardship",
+        "B": "Systems thinking",
+        "C": "Cost control",
+        "D": "Adaptability and resiliency"
+      },
+      "ans": "C",
+      "exp": "12 Nguyên tắc PM trong PMBOK 7: (1) Stewardship (quản lý tận tâm), (2) Team, (3) Stakeholders, (4) Value, (5) Systems thinking, (6) Leadership, (7) Tailoring, (8) Quality, (9) Complexity, (10) Risk, (11) Adaptability & Resiliency, (12) Change. 'Cost control' không phải một nguyên tắc — đó là kỹ thuật/quy trình thuộc PMBOK 6."
+    },
+    {
+      "id": "r18_q03",
+      "q": "According to the ECO (Exam Content Outline) for the PMP exam, which domain has the HIGHEST percentage of exam questions?",
+      "opts": {
+        "A": "People (42%)",
+        "B": "Process (50%)",
+        "C": "Business Environment (8%)",
+        "D": "All domains are equally weighted"
+      },
+      "ans": "B",
+      "exp": "ECO phân bổ: Process (50%) — quy trình, phương pháp, kỹ thuật quản lý dự án; People (42%) — lãnh đạo, nhóm, stakeholder; Business Environment (8%) — lợi ích kinh doanh, tuân thủ, thay đổi tổ chức. Process chiếm nhiều nhất nhưng People quan trọng vì PMP hiện đại nhấn mạnh kỹ năng lãnh đạo. Biết tỷ lệ này giúp phân bổ thời gian học."
+    },
+    {
+      "id": "r18_q04",
+      "q": "A project manager is deciding which processes, tools, and techniques to use for a new project. This activity is BEST described as:",
+      "opts": {
+        "A": "Project planning",
+        "B": "Tailoring",
+        "C": "Risk management",
+        "D": "Scope definition"
+      },
+      "ans": "B",
+      "exp": "Tailoring (điều chỉnh/tùy biến) là việc lựa chọn và điều chỉnh quy trình, công cụ và kỹ thuật phù hợp với đặc điểm cụ thể của từng dự án. PMBOK 7 nhấn mạnh tailoring như một nguyên tắc cốt lõi — không có 'one-size-fits-all' trong quản lý dự án. PM phải đánh giá ngữ cảnh và lựa chọn phương pháp phù hợp."
+    },
+    {
+      "id": "r18_q05",
+      "q": "The PM Standard in PMBOK 7 is described as setting 'minimum requirements' while the PMBOK Guide provides 'best practices.' What does this distinction mean in practice?",
+      "opts": {
+        "A": "The Standard is mandatory; the Guide is optional",
+        "B": "The Standard defines what outcomes to achieve; the Guide suggests how to achieve them",
+        "C": "The Standard applies only to government projects; the Guide applies to all projects",
+        "D": "The Standard must be followed exactly; the Guide can be ignored"
+      },
+      "ans": "B",
+      "exp": "Standard (Tiêu chuẩn) thiết lập YÊU CẦU TỐI THIỂU — định nghĩa những gì cần đạt được (outcomes). Guide (Hướng dẫn) cung cấp THỰC HÀNH TỐT NHẤT — đề xuất cách thực hiện. Standard có tính quy phạm hơn; Guide linh hoạt và tùy bối cảnh hơn. Cả hai cùng nhau tạo nên khung toàn diện cho PM."
+    },
+    {
+      "id": "r18_q06",
+      "q": "According to PMBOK 7, what does the 'Stewardship' principle require of a project manager?",
+      "opts": {
+        "A": "Managing the project budget strictly within approved limits",
+        "B": "Acting responsibly as a steward of organizational resources, considering ethical, social, and environmental impacts",
+        "C": "Reporting project status accurately to senior management",
+        "D": "Ensuring all deliverables meet technical specifications"
+      },
+      "ans": "B",
+      "exp": "Nguyên tắc Stewardship (quản lý tận tâm) yêu cầu PM hành động như người QUẢN LÝ CÓ TRÁCH NHIỆM với tài nguyên tổ chức — không chỉ tài chính mà cả con người, môi trường và danh tiếng. PM phải cân nhắc tác động đạo đức, xã hội và môi trường của các quyết định dự án. Đây là sự mở rộng của PMI Code of Ethics."
+    },
+    {
+      "id": "r18_q07",
+      "q": "Which PMBOK 7 Performance Domain addresses how the project team is formed, developed, and led?",
+      "opts": {
+        "A": "Stakeholders Performance Domain",
+        "B": "Team Performance Domain",
+        "C": "Project Work Performance Domain",
+        "D": "Delivery Performance Domain"
+      },
+      "ans": "B",
+      "exp": "Team Performance Domain đề cập đến các hoạt động và chức năng liên quan đến đội dự án: xây dựng văn hóa nhóm, lãnh đạo, phát triển kỹ năng, giải quyết xung đột, và quản lý hiệu suất nhóm. 8 Performance Domains PMBOK 7: Stakeholders, Team, Development Approach & Life Cycle, Planning, Project Work, Delivery, Measurement, Uncertainty."
+    },
+    {
+      "id": "r18_q08",
+      "q": "What is the KEY difference between a PMO (Project Management Office) and a Value Delivery Office (VDO)?",
+      "opts": {
+        "A": "PMO focuses on compliance; VDO focuses on delivering business value and strategic outcomes",
+        "B": "PMO manages large projects; VDO manages small projects",
+        "C": "PMO uses Agile; VDO uses Waterfall",
+        "D": "There is no difference — VDO is just a newer name for PMO"
+      },
+      "ans": "A",
+      "exp": "PMO truyền thống tập trung vào tuân thủ quy trình, chuẩn hóa phương pháp và báo cáo. VDO (Value Delivery Office) theo PMBOK 7 tập trung vào PHÂN PHỐI GIÁ TRỊ KINH DOANH và kết quả chiến lược — giúp tổ chức đạt được lợi ích thực sự từ dự án/chương trình/danh mục. VDO linh hoạt hơn và hướng tới kết quả hơn."
+    },
+    {
+      "id": "r18_q09",
+      "q": "In PMBOK 7, the 'Systems Thinking' principle means that a project manager should:",
+      "opts": {
+        "A": "Use only IT systems for project tracking",
+        "B": "Recognize that projects exist within and interact with larger organizational, environmental, and social systems",
+        "C": "Focus exclusively on the technical aspects of the project",
+        "D": "Manage all project components in isolation for better control"
+      },
+      "ans": "B",
+      "exp": "Systems Thinking (tư duy hệ thống) nhắc nhở PM rằng dự án không tồn tại trong chân không — dự án là một phần của hệ thống lớn hơn bao gồm tổ chức, môi trường kinh doanh, xã hội và hệ sinh thái. Quyết định trong dự án có thể ảnh hưởng và bị ảnh hưởng bởi các yếu tố bên ngoài. PM phải nhìn bức tranh toàn cảnh."
+    },
+    {
+      "id": "r18_q10",
+      "q": "According to PMBOK 7, which of the following BEST describes a 'hybrid' development approach?",
+      "opts": {
+        "A": "Using two different project management tools simultaneously",
+        "B": "Combining predictive and adaptive elements based on project characteristics and needs",
+        "C": "Having both a PM and a Scrum Master on the same project",
+        "D": "Managing the project in two phases: planning and execution"
+      },
+      "ans": "B",
+      "exp": "Hybrid approach kết hợp yếu tố từ phương pháp predictive (truyền thống/waterfall) và adaptive (Agile) dựa trên đặc điểm dự án. Ví dụ: giai đoạn khởi tạo và lập kế hoạch có thể dùng predictive, trong khi giai đoạn phát triển dùng Agile sprints. PMBOK 7 khuyến khích tailoring và hybrid để phù hợp với thực tế dự án."
+    },
+    {
+      "id": "r18_q11",
+      "q": "A project is delivering outputs on time and within budget, but the business is not realizing the expected benefits. According to PMBOK 7's focus on outcomes, what is the underlying problem?",
+      "opts": {
+        "A": "The project team is not skilled enough",
+        "B": "The project succeeded in outputs but failed in outcomes — deliverables were produced but did not create expected value",
+        "C": "The project sponsor did not provide adequate resources",
+        "D": "The project should have used Agile instead of Waterfall"
+      },
+      "ans": "B",
+      "exp": "PMBOK 7 nhấn mạnh sự phân biệt giữa OUTPUTS (đầu ra — sản phẩm/dịch vụ được giao) và OUTCOMES (kết quả — lợi ích thực sự nhận được). Dự án có thể thành công về thời gian và ngân sách nhưng thất bại nếu không tạo ra giá trị kinh doanh mong đợi. PM phải quan tâm đến cả hai — đây là tư duy PMBOK 7."
+    },
+    {
+      "id": "r18_q12",
+      "q": "The Process Groups in PMBOK (Initiating, Planning, Executing, M&C, Closing) are often misunderstood. Which statement is CORRECT?",
+      "opts": {
+        "A": "Process Groups are sequential project phases that must be completed in order",
+        "B": "Process Groups are groupings of related PM processes, not sequential phases — they often overlap",
+        "C": "Process Groups are the same as project lifecycle phases",
+        "D": "Process Groups were removed in PMBOK 7 and replaced by Performance Domains"
+      },
+      "ans": "B",
+      "exp": "Process Groups KHÔNG PHẢI là các giai đoạn tuần tự. Đây là một hiểu lầm phổ biến và thường bị khai thác trong đề thi. Các process groups có thể xảy ra đồng thời và lặp lại trong suốt dự án. Chúng là cách phân loại các quy trình PM, không phải lịch trình dự án. Tuy nhiên, chúng vẫn có liên quan trong PMBOK 7."
+    },
+    {
+      "id": "r18_q13",
+      "q": "Which PMBOK 7 principle focuses on the leader's responsibility to develop and inspire the project team?",
+      "opts": {
+        "A": "Stewardship",
+        "B": "Value",
+        "C": "Leadership",
+        "D": "Team"
+      },
+      "ans": "C",
+      "exp": "Nguyên tắc Leadership (lãnh đạo) trong PMBOK 7 đề cập đến trách nhiệm của PM trong việc: truyền cảm hứng, thúc đẩy và phát triển nhóm dự án; xây dựng tầm nhìn; hỗ trợ các thành viên vượt qua thách thức; và điều chỉnh phong cách lãnh đạo phù hợp với từng tình huống và cá nhân. Khác với nguyên tắc Team vốn tập trung vào cấu trúc và văn hóa nhóm."
+    },
+    {
+      "id": "r18_q14",
+      "q": "A company is considering whether to adopt PMBOK 7 practices. A colleague says, 'PMBOK 7 just replaced everything in PMBOK 6.' How should a knowledgeable PM respond?",
+      "opts": {
+        "A": "Agree — PMBOK 7 completely replaced PMBOK 6",
+        "B": "PMBOK 7 complements PMBOK 6 — PMBOK 6 processes and knowledge areas are still valid and referenced in PMBOK 7",
+        "C": "PMBOK 7 only applies to Agile projects",
+        "D": "PMBOK 6 is now outdated and should not be referenced"
+      },
+      "ans": "B",
+      "exp": "PMBOK 7 BỔ SUNG cho PMBOK 6, không thay thế hoàn toàn. PMBOK 7 cung cấp framework nguyên tắc-based và đề cập đến các quy trình/kỹ thuật PMBOK 6 như tài liệu tham khảo. Nhiều tổ chức và bài thi PMP vẫn sử dụng cả hai. Hiểu biết về cả Process Groups, Knowledge Areas (PMBOK6) và Principles/Performance Domains (PMBOK7) đều cần thiết."
+    },
+    {
+      "id": "r18_q15",
+      "q": "According to PMBOK 7's 'Complexity' principle, what should a project manager do when facing a complex project with many interdependencies?",
+      "opts": {
+        "A": "Apply standard processes without modification",
+        "B": "Increase documentation to control complexity",
+        "C": "Use systems thinking, engage stakeholders broadly, and use adaptive approaches to navigate complexity",
+        "D": "Assign complexity management to a separate team"
+      },
+      "ans": "C",
+      "exp": "Nguyên tắc Complexity (phức tạp) nhắc nhở PM rằng dự án phức tạp đòi hỏi cách tiếp cận khác biệt. Phức tạp xuất phát từ nhiều nguồn: hành vi con người, tương tác hệ thống, sự không chắc chắn. PM phải dùng tư duy hệ thống, tương tác rộng với stakeholders, và cách tiếp cận thích nghi. Áp dụng quy trình chuẩn một cách cứng nhắc có thể thất bại trong môi trường phức tạp."
+    },
+    {
+      "id": "r18_q16",
+      "q": "The 'Measurement' Performance Domain in PMBOK 7 is concerned with:",
+      "opts": {
+        "A": "Only tracking schedule and budget variances",
+        "B": "Establishing effective metrics and measures to assess project performance and support decision-making",
+        "C": "Measuring team member performance for annual reviews",
+        "D": "Counting the number of completed deliverables"
+      },
+      "ans": "B",
+      "exp": "Measurement Performance Domain trong PMBOK 7 tập trung vào việc thiết lập các chỉ số hiệu suất hiệu quả để đánh giá tiến độ dự án và hỗ trợ ra quyết định. Bao gồm: xác định metrics phù hợp, thu thập và phân tích dữ liệu, diễn giải kết quả, và thực hiện hành động cải thiện. Không chỉ giới hạn ở EVM mà bao gồm mọi chỉ số liên quan đến mục tiêu dự án."
+    },
+    {
+      "id": "r18_q17",
+      "q": "The 'Uncertainty' Performance Domain in PMBOK 7 primarily focuses on:",
+      "opts": {
+        "A": "Identifying all risks and creating a risk register",
+        "B": "Navigating uncertainty, ambiguity, volatility, and complexity throughout the project",
+        "C": "Calculating contingency reserves for known risks",
+        "D": "Eliminating all unknowns before project execution"
+      },
+      "ans": "B",
+      "exp": "Uncertainty Performance Domain mở rộng hơn Risk Management truyền thống. Nó bao gồm VUCA (Volatility, Uncertainty, Complexity, Ambiguity) — không chỉ rủi ro có thể định lượng mà cả sự mơ hồ và không chắc chắn sâu sắc hơn. PM phải học cách ĐIỀU HƯỚNG sự không chắc chắn (không thể loại bỏ hoàn toàn) bằng cách phát triển khả năng thích ứng."
+    },
+    {
+      "id": "r18_q18",
+      "q": "In PMBOK 7, the 'Development Approach and Life Cycle' Performance Domain addresses which key question?",
+      "opts": {
+        "A": "How many sprints are needed to complete the project?",
+        "B": "Whether to use predictive, adaptive, or hybrid approach, and how to structure the project life cycle",
+        "C": "Which programming languages to use for software development",
+        "D": "How to train team members on new methodologies"
+      },
+      "ans": "B",
+      "exp": "Development Approach & Life Cycle Performance Domain giải quyết việc LỰA CHỌN PHƯƠNG PHÁP PHÁT TRIỂN phù hợp: predictive (kế hoạch trước), adaptive (Agile/iterative), hoặc hybrid — dựa trên đặc điểm dự án, yêu cầu sản phẩm, môi trường tổ chức, và yếu tố ngành. Đây là quyết định sớm có tác động lớn đến cách quản lý toàn bộ dự án."
+    },
+    {
+      "id": "r18_q19",
+      "q": "A project manager is acting as a 'steward' of organizational resources. According to PMBOK 7, which behavior BEST exemplifies this principle?",
+      "opts": {
+        "A": "Spending the entire budget to avoid losing next year's allocation",
+        "B": "Making decisions that consider ethical implications, organizational sustainability, and long-term value",
+        "C": "Prioritizing the project's success above all other organizational concerns",
+        "D": "Delegating all financial decisions to the project sponsor"
+      },
+      "ans": "B",
+      "exp": "Stewardship nghĩa là PM hành xử như người QUẢN GIA — trân trọng và sử dụng có trách nhiệm các tài nguyên được giao. Điều này bao gồm: ra quyết định có đạo đức, xem xét tính bền vững của tổ chức, cân nhắc tác động dài hạn. Tiêu hết ngân sách để bảo toàn ngân sách năm sau là ví dụ điển hình của hành vi KHÔNG đúng stewardship."
+    },
+    {
+      "id": "r18_q20",
+      "q": "The PMP exam now includes questions from both predictive (PMBOK 6) and adaptive (Agile) domains. What does this indicate about today's project management profession?",
+      "opts": {
+        "A": "PMP is now exclusively an Agile certification",
+        "B": "Traditional PM skills are no longer needed",
+        "C": "Modern PMs are expected to be fluent in both predictive and adaptive approaches and select the right one for each situation",
+        "D": "The PMP exam has become easier as candidates only need to know one methodology"
+      },
+      "ans": "C",
+      "exp": "PMP hiện đại đòi hỏi PM có khả năng làm việc trong cả môi trường predictive (truyền thống) lẫn adaptive (Agile) và biết lựa chọn hoặc kết hợp phương pháp phù hợp nhất cho từng tình huống cụ thể. ECO xác nhận: khoảng 50% câu hỏi liên quan đến Agile/hybrid. PM giỏi ngày nay cần tư duy linh hoạt và thành thạo đa phương pháp."
+    }
+  ]
+}

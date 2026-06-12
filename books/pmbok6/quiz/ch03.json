@@ -1,0 +1,247 @@
+{
+  "chapterId": "03_pm_role",
+  "chapterNum": 3,
+  "chapterTitle": "Vai Trò Của Người Quản Lý Dự Án",
+  "questions": [
+    {
+      "id": "ch03_q01",
+      "q": "Anh Minh là PM của một dự án phát triển phần mềm lớn. Nhóm của anh gồm các chuyên gia kỹ thuật giỏi nhưng họ thường xuyên xung đột với nhau về hướng kiến trúc. Anh Minh nhận ra rằng thay vì ra lệnh trực tiếp, anh nên tạo môi trường để nhóm tự giải quyết và phát triển. Anh tổ chức các buổi thảo luận mở, lắng nghe từng thành viên và loại bỏ các rào cản công việc. Phong cách lãnh đạo nào anh Minh đang áp dụng?",
+      "opts": {
+        "A": "Autocratic – ra quyết định một mình để tiết kiệm thời gian",
+        "B": "Servant leadership – phục vụ nhóm, tạo điều kiện cho nhóm thành công",
+        "C": "Laissez-faire – để nhóm tự xử lý mà không can thiệp",
+        "D": "Transformational – truyền cảm hứng bằng tầm nhìn cá nhân"
+      },
+      "ans": "B",
+      "exp": "Servant leadership (lãnh đạo phục vụ) là phong cách PM chủ động loại bỏ rào cản, lắng nghe nhóm và tạo môi trường thuận lợi để nhóm tự phát triển. Đây là phong cách được PMI khuyến nghị cho PM hiện đại. Laissez-faire (C) là không can thiệp hoàn toàn, thiếu định hướng. Autocratic (A) ra lệnh một chiều. Transformational (D) tập trung vào truyền cảm hứng qua tầm nhìn, không phải phục vụ nhóm."
+    },
+    {
+      "id": "ch03_q02",
+      "q": "Chị Lan được bổ nhiệm làm PM cho một dự án chuyển đổi số quan trọng. Tổ chức có nhiều phòng ban với lợi ích khác nhau. Sponsor yêu cầu chị xây dựng mối quan hệ với các giám đốc phòng ban ngay từ đầu. Chị Lan hiểu rằng ảnh hưởng của mình không chỉ giới hạn trong dự án mà còn phải mở rộng ra toàn tổ chức. Theo PMBOK 6, điều này phản ánh khái niệm nào trong phạm vi ảnh hưởng của PM?",
+      "opts": {
+        "A": "Ảnh hưởng trong phạm vi dự án (project sphere)",
+        "B": "Ảnh hưởng trong phạm vi tổ chức (organization sphere)",
+        "C": "Ảnh hưởng trong phạm vi ngành (industry sphere)",
+        "D": "Ảnh hưởng trong phạm vi chuyên môn (profession sphere)"
+      },
+      "ans": "B",
+      "exp": "PM cần xây dựng ảnh hưởng ở nhiều cấp độ. Khi PM làm việc với các phòng ban, lãnh đạo cấp cao trong cùng tổ chức, đó là ảnh hưởng trong phạm vi tổ chức (organization sphere). Phạm vi dự án (A) chỉ giới hạn trong nhóm dự án. Phạm vi ngành (C) là cộng đồng ngoài tổ chức như hội nghề nghiệp. Phạm vi chuyên môn (D) liên quan đến phát triển nghề nghiệp PM."
+    },
+    {
+      "id": "ch03_q03",
+      "q": "Anh Tuấn là PM với nhiều năm kinh nghiệm trong lĩnh vực xây dựng. Khi một thành viên nhóm gặp khó khăn kỹ thuật về thiết kế kết cấu, Anh Tuấn có thể đưa ra giải pháp ngay lập tức dựa trên kiến thức sâu của mình. Nhóm rất tin tưởng và thường xuyên hỏi ý kiến anh. Loại quyền lực nào đang được Anh Tuấn thể hiện trong tình huống này?",
+      "opts": {
+        "A": "Legitimate power – quyền lực do chức danh PM mang lại",
+        "B": "Reward power – khả năng thưởng cho thành viên nhóm",
+        "C": "Expert power – quyền lực từ kiến thức và kỹ năng chuyên môn",
+        "D": "Referent power – quyền lực từ sự ngưỡng mộ cá nhân"
+      },
+      "ans": "C",
+      "exp": "Expert power (quyền lực chuyên gia) xuất phát từ kiến thức, kỹ năng và kinh nghiệm chuyên môn của PM. Khi nhóm tin tưởng và tìm đến PM vì năng lực kỹ thuật, đó là expert power. Legitimate power (A) đến từ chức vụ chính thức. Reward power (B) từ khả năng khen thưởng. Referent power (D) từ sức hút cá nhân khiến người khác muốn noi theo."
+    },
+    {
+      "id": "ch03_q04",
+      "q": "Dự án của chị Hoa đang bị trì hoãn do một nhà thầu cung cấp thiết bị chậm tiến độ. Chị cần đàm phán để đẩy nhanh giao hàng mà không phá vỡ mối quan hệ đối tác lâu dài. Chị chuẩn bị kỹ lưỡng: xác định BATNA của mình, hiểu nhu cầu của nhà thầu và tìm điểm lợi ích chung. Kỹ năng nào của PM được thể hiện rõ nhất trong tình huống này?",
+      "opts": {
+        "A": "Kỹ năng lập kế hoạch dự án",
+        "B": "Kỹ năng đàm phán (negotiation skills)",
+        "C": "Kỹ năng quản lý rủi ro",
+        "D": "Kỹ năng quản lý phạm vi"
+      },
+      "ans": "B",
+      "exp": "Đàm phán là kỹ năng cốt lõi của PM, đặc biệt khi cần đạt thỏa thuận với các bên bên ngoài. Việc xác định BATNA (Best Alternative To a Negotiated Agreement), hiểu nhu cầu đối phương và tìm lợi ích chung là các kỹ thuật đàm phán win-win. PM giỏi không chỉ quản lý dự án nội bộ mà còn phải đàm phán hiệu quả với nhà cung cấp, khách hàng và các bên liên quan. Các đáp án A, C, D không phù hợp với bối cảnh đàm phán này."
+    },
+    {
+      "id": "ch03_q05",
+      "q": "Một thành viên nhóm phát hiện có lỗi nghiêm trọng trong sản phẩm nhưng lo ngại nếu báo cáo sẽ bị kỷ luật vì đã để xảy ra lỗi. Anh ấy tìm đến PM để hỏi ý kiến. PM nói: 'Chúng ta phải báo cáo lỗi này cho khách hàng ngay lập tức, dù hậu quả có thể không tốt cho nhóm trong ngắn hạn. Đây là điều đúng đắn cần làm.' Hành vi PM thể hiện điều gì theo PMI Code of Ethics?",
+      "opts": {
+        "A": "Kinh nghiệm kỹ thuật trong phát hiện lỗi phần mềm",
+        "B": "Trách nhiệm nghề nghiệp và tính trung thực (honesty and responsibility)",
+        "C": "Kỹ năng quản lý xung đột trong nhóm",
+        "D": "Khả năng lập kế hoạch quản lý rủi ro"
+      },
+      "ans": "B",
+      "exp": "PMI Code of Ethics and Professional Conduct nhấn mạnh tính trung thực (honesty) và trách nhiệm (responsibility) là giá trị cốt lõi. PM có nghĩa vụ báo cáo thông tin chính xác cho các bên liên quan, kể cả khi thông tin không thuận lợi. Quyết định báo cáo lỗi dù có hậu quả không tốt trong ngắn hạn thể hiện đạo đức nghề nghiệp và trách nhiệm với khách hàng. Các đáp án A, C, D không liên quan đến tình huống đạo đức này."
+    },
+    {
+      "id": "ch03_q06",
+      "q": "PMI Talent Triangle mô tả ba yếu tố kỹ năng mà một PM giỏi cần có. Chị Mai đang tham gia khóa học về phân tích kinh doanh, hiểu chiến lược doanh nghiệp và liên kết dự án với mục tiêu tổ chức. Cô cũng học cách trình bày giá trị kinh doanh của dự án cho ban lãnh đạo. Chị Mai đang phát triển yếu tố nào trong PMI Talent Triangle?",
+      "opts": {
+        "A": "Technical Project Management – kỹ năng kỹ thuật quản lý dự án",
+        "B": "Leadership – kỹ năng lãnh đạo và quản lý con người",
+        "C": "Strategic and Business Management – quản lý chiến lược và kinh doanh",
+        "D": "Risk Management – quản lý rủi ro dự án"
+      },
+      "ans": "C",
+      "exp": "PMI Talent Triangle gồm ba yếu tố: Technical Project Management (kỹ năng PM như lập lịch, quản lý rủi ro), Leadership (lãnh đạo, động lực, giao tiếp) và Strategic & Business Management (hiểu chiến lược tổ chức, giá trị kinh doanh, phân tích kinh doanh). Việc học phân tích kinh doanh và liên kết dự án với chiến lược tổ chức thuộc yếu tố Strategic & Business Management. Risk Management (D) là một phần của Technical PM, không phải yếu tố riêng."
+    },
+    {
+      "id": "ch03_q07",
+      "q": "Anh Đức là PM mới được bổ nhiệm và chưa có nhiều kinh nghiệm. Nhóm của anh gồm các chuyên gia kỳ cựu. Trong các cuộc họp, anh thường áp đặt quyết định của mình dù nhóm có nhiều ý kiến hay hơn, vì anh muốn thể hiện quyền lực của mình. Hệ quả là nhóm ngày càng mất động lực. Phong cách lãnh đạo nào anh Đức đang sử dụng và đây có phải cách tiếp cận tốt không?",
+      "opts": {
+        "A": "Transformational – phù hợp vì truyền được cảm hứng cho nhóm",
+        "B": "Autocratic – không phù hợp vì làm giảm động lực nhóm chuyên gia",
+        "C": "Democratic – phù hợp vì có họp nhóm thường xuyên",
+        "D": "Servant – không phù hợp vì PM phải có quyền lực"
+      },
+      "ans": "B",
+      "exp": "Autocratic leadership (lãnh đạo độc đoán) là khi PM ra quyết định một mình không tham khảo nhóm. Phong cách này có thể phù hợp trong tình huống khẩn cấp hoặc khi nhóm thiếu kinh nghiệm, nhưng không phù hợp với nhóm chuyên gia kỳ cựu vì làm giảm sự gắn kết và động lực. PMI khuyến nghị PM nên linh hoạt điều chỉnh phong cách theo bối cảnh và thành thạo servant leadership. Đáp án A, C, D không đúng với hành vi được mô tả."
+    },
+    {
+      "id": "ch03_q08",
+      "q": "Dự án của chị Ngọc đang gặp khó khăn vì một senior stakeholder liên tục phản đối các quyết định của nhóm dù họ đã được phê duyệt. Stakeholder này không có quyền chính thức nhưng có quan hệ rộng trong tổ chức. Chị Ngọc quyết định gặp riêng stakeholder để hiểu mối quan tâm của họ và tìm cách giải quyết trước khi leo thang vấn đề. Chị đang sử dụng kỹ năng gì?",
+      "opts": {
+        "A": "Risk avoidance – tránh rủi ro từ stakeholder khó tính",
+        "B": "Political and cultural awareness – nhận thức chính trị và văn hóa tổ chức",
+        "C": "Scope management – quản lý phạm vi dự án",
+        "D": "Quality management – đảm bảo chất lượng quyết định"
+      },
+      "ans": "B",
+      "exp": "Political and cultural awareness (nhận thức về chính trị và văn hóa) là kỹ năng quan trọng của PM. PM cần hiểu động lực chính trị, mối quan hệ quyền lực không chính thức trong tổ chức và biết cách điều hướng chúng. Việc gặp riêng để hiểu mối quan tâm của stakeholder có quyền lực không chính thức trước khi leo thang là cách tiếp cận chính trị khéo léo. Đây không phải quản lý rủi ro (A), phạm vi (C) hay chất lượng (D)."
+    },
+    {
+      "id": "ch03_q09",
+      "q": "Công ty của anh Phong đang thực hiện nhiều dự án cùng lúc. Anh được yêu cầu tham dự hội thảo PMI về các xu hướng mới trong quản lý dự án Agile. Sau hội thảo, anh chia sẻ kiến thức với đồng nghiệp và đề xuất cải tiến quy trình cho toàn bộ PMO. Theo PMBOK 6, hành động này phản ánh ảnh hưởng của PM ở phạm vi nào?",
+      "opts": {
+        "A": "Project sphere – ảnh hưởng trong phạm vi dự án của mình",
+        "B": "Organization sphere – ảnh hưởng trong toàn bộ tổ chức",
+        "C": "Industry sphere – ảnh hưởng qua tham gia cộng đồng ngành",
+        "D": "Profession sphere – ảnh hưởng đến sự phát triển nghề PM"
+      },
+      "ans": "C",
+      "exp": "Industry sphere (phạm vi ngành) là khi PM tham gia các hoạt động bên ngoài tổ chức như hội nghề nghiệp, hội thảo ngành, và mang kiến thức đó trở lại ứng dụng. Tham dự hội thảo PMI là hoạt động ở cấp ngành. Profession sphere (D) tập trung vào đóng góp cho nghề PM nói chung như xuất bản nghiên cứu. Organization sphere (B) là ảnh hưởng nội bộ tổ chức. Project sphere (A) chỉ là trong dự án."
+    },
+    {
+      "id": "ch03_q10",
+      "q": "Trong một cuộc họp, hai thành viên nhóm tranh luận gay gắt về phương pháp kiểm thử phần mềm. Cuộc tranh luận đang leo thang và ảnh hưởng đến bầu không khí làm việc. PM Thu can thiệp bằng cách đề nghị cả hai trình bày lập luận của mình, sau đó hướng nhóm đến giải pháp dựa trên dữ liệu và tiêu chí kỹ thuật khách quan. Phương pháp giải quyết xung đột nào PM Thu đang sử dụng?",
+      "opts": {
+        "A": "Smoothing/Accommodating – xoa dịu để tránh xung đột",
+        "B": "Forcing – áp đặt quyết định của PM",
+        "C": "Collaborating/Problem Solving – giải quyết gốc rễ vấn đề cùng nhau",
+        "D": "Withdrawing/Avoiding – rút lui, để nhóm tự xử lý"
+      },
+      "ans": "C",
+      "exp": "Collaborating/Problem Solving là phương pháp giải quyết xung đột tốt nhất theo PMI vì nó tìm kiếm giải pháp win-win dựa trên lợi ích thực sự của các bên. PM Thu đang cho cả hai phía trình bày quan điểm rồi dùng dữ liệu khách quan để tìm giải pháp – đây là cách tiếp cận cộng tác. Smoothing (A) chỉ che lấp vấn đề. Forcing (B) áp đặt một chiều. Withdrawing (D) không giải quyết vấn đề."
+    },
+    {
+      "id": "ch03_q11",
+      "q": "Anh Khoa là PM của dự án xây dựng cầu đường. Ông giám đốc kỹ thuật – người không thuộc nhóm dự án – thường xuyên tác động trực tiếp đến các kỹ sư trong nhóm mà không thông qua Anh Khoa, gây ra sự nhầm lẫn về ưu tiên công việc. Anh Khoa cần xử lý tình huống này theo cách nào phù hợp nhất với vai trò PM?",
+      "opts": {
+        "A": "Yêu cầu giám đốc kỹ thuật không được liên lạc với nhóm",
+        "B": "Thông báo với Sponsor để kỷ luật giám đốc kỹ thuật",
+        "C": "Gặp giám đốc kỹ thuật để thiết lập kênh giao tiếp rõ ràng và phối hợp hiệu quả",
+        "D": "Bỏ qua vấn đề vì giám đốc kỹ thuật có quyền cao hơn"
+      },
+      "ans": "C",
+      "exp": "PM có trách nhiệm quản lý giao tiếp và đảm bảo thông tin đến nhóm theo cách có kiểm soát. Gặp trực tiếp để thiết lập kênh giao tiếp rõ ràng là cách tiếp cận chuyên nghiệp và xây dựng quan hệ. PM không nên cấm giao tiếp (A) hoặc leo thang ngay khi chưa thử giải quyết trực tiếp (B). Bỏ qua (D) sẽ tiếp tục gây nhầm lẫn. Kỹ năng giao tiếp và quản lý stakeholder là năng lực cốt lõi của PM."
+    },
+    {
+      "id": "ch03_q12",
+      "q": "Chị Vân đang quản lý dự án triển khai ERP tại một công ty sản xuất. Cô nhận ra rằng dù có kế hoạch kỹ thuật tốt, nếu không thuyết phục được người dùng cuối chấp nhận hệ thống mới, dự án sẽ thất bại dù hoàn thành đúng tiến độ. Cô dành thời gian gặp gỡ, giải thích lợi ích và lắng nghe lo ngại của họ. Năng lực nào trong PMI Talent Triangle được thể hiện?",
+      "opts": {
+        "A": "Technical Project Management – lập kế hoạch triển khai ERP",
+        "B": "Leadership – dẫn dắt và tạo sự đồng thuận với người dùng",
+        "C": "Strategic and Business Management – hiểu giá trị kinh doanh của ERP",
+        "D": "Risk Management – giảm thiểu rủi ro từ user adoption"
+      },
+      "ans": "B",
+      "exp": "Leadership trong PMI Talent Triangle bao gồm kỹ năng giao tiếp, tạo sự đồng thuận, quản lý thay đổi và xây dựng quan hệ. Việc chị Vân chủ động gặp gỡ người dùng để giải thích, lắng nghe và thuyết phục họ chấp nhận thay đổi là thể hiện kỹ năng lãnh đạo và quản lý sự thay đổi – một phần quan trọng của Leadership. Technical PM (A) là về quy trình kỹ thuật. Strategic (C) về liên kết chiến lược. Risk Management (D) là một phần của Technical PM."
+    },
+    {
+      "id": "ch03_q13",
+      "q": "Nhóm dự án của anh Bình đang làm việc trong điều kiện áp lực cao với deadline gấp. Anh Bình nhận thấy hai thành viên nhóm đang có xung đột cá nhân ảnh hưởng đến năng suất. Thay vì xử lý ngay, anh quyết định chờ xem tình huống có tự giải quyết không vì còn nhiều việc quan trọng hơn. Cách tiếp cận này có phù hợp không?",
+      "opts": {
+        "A": "Phù hợp vì PM nên ưu tiên deadline dự án hơn xung đột cá nhân",
+        "B": "Phù hợp vì đây là kỹ năng Withdrawing/Avoiding đúng đắn",
+        "C": "Không phù hợp vì xung đột cá nhân nếu không xử lý sẽ leo thang và ảnh hưởng dự án",
+        "D": "Phù hợp nếu xung đột không liên quan đến công việc"
+      },
+      "ans": "C",
+      "exp": "PM có trách nhiệm quản lý xung đột trong nhóm. Withdrawing/Avoiding chỉ phù hợp tạm thời khi cần thời gian để các bên bình tĩnh, không phải giải pháp lâu dài. Xung đột cá nhân nếu không được xử lý sẽ leo thang, ảnh hưởng đến tinh thần nhóm và cuối cùng ảnh hưởng đến tiến độ dự án nghiêm trọng hơn. Deadline quan trọng nhưng PM cũng phải đảm bảo môi trường làm việc lành mạnh. PMI nhấn mạnh PM phải giải quyết xung đột sớm và trực tiếp."
+    },
+    {
+      "id": "ch03_q14",
+      "q": "Giám đốc điều hành (CEO) yêu cầu PM Linh bổ sung một tính năng quan trọng vào dự án đang thực hiện mà không thông qua quy trình kiểm soát thay đổi chính thức. CEO nói 'Đây là ưu tiên chiến lược, cần làm ngay.' PM Linh nên phản ứng như thế nào?",
+      "opts": {
+        "A": "Thực hiện ngay vì CEO có quyền cao nhất trong tổ chức",
+        "B": "Từ chối hoàn toàn vì vi phạm quy trình quản lý thay đổi",
+        "C": "Ghi nhận yêu cầu, giải thích tác động và dẫn dắt CEO qua quy trình kiểm soát thay đổi chính thức",
+        "D": "Chuyển yêu cầu cho Sponsor để quyết định"
+      },
+      "ans": "C",
+      "exp": "PM có trách nhiệm duy trì tính toàn vẹn của dự án thông qua quy trình kiểm soát thay đổi. Thực hiện ngay (A) tạo ra scope creep và có thể gây hậu quả không lường trước. Từ chối hoàn toàn (B) không thực tế và gây mất lòng stakeholder quan trọng. Chuyển cho Sponsor (D) né tránh trách nhiệm. PM giỏi cần giải thích tác động của thay đổi (chi phí, thời gian, rủi ro) và hướng dẫn stakeholder qua quy trình chính thức – đây là kỹ năng ảnh hưởng và giao tiếp với stakeholder cấp cao."
+    },
+    {
+      "id": "ch03_q15",
+      "q": "Anh Hùng là PM rất giỏi về mặt kỹ thuật nhưng nhận được phản hồi trong đánh giá 360 độ rằng nhóm cảm thấy anh không lắng nghe ý kiến của họ và thường tự giải quyết vấn đề thay vì hỗ trợ họ phát triển. Theo PMI Talent Triangle, anh Hùng cần cải thiện yếu tố nào?",
+      "opts": {
+        "A": "Technical Project Management – cần thêm kiến thức kỹ thuật",
+        "B": "Strategic and Business Management – cần hiểu chiến lược hơn",
+        "C": "Leadership – cần phát triển kỹ năng lắng nghe và phát triển người khác",
+        "D": "Risk Management – cần lập kế hoạch rủi ro tốt hơn"
+      },
+      "ans": "C",
+      "exp": "PMI Talent Triangle xác định Leadership là một trong ba trụ cột quan trọng. Leadership không chỉ là ra quyết định mà còn bao gồm kỹ năng lắng nghe tích cực (active listening), coaching, mentoring và phát triển năng lực nhóm. Anh Hùng đã mạnh về kỹ thuật (Technical PM) nhưng yếu về kỹ năng lãnh đạo con người. Servant leadership đòi hỏi PM phục vụ nhóm, giúp họ phát triển thay vì làm thay. Strategic (B) và Risk Management (D) không liên quan đến vấn đề được mô tả."
+    },
+    {
+      "id": "ch03_q16",
+      "q": "Chị Phương được bổ nhiệm làm PM cho dự án tại một văn phòng chi nhánh ở nước ngoài. Khi họp nhóm, cô nhận thấy các thành viên địa phương không bao giờ phản đối ý kiến của cô dù có vẻ không đồng ý. Cô cảm thấy có điều gì đó không ổn. Đây là biểu hiện của thách thức gì mà PM phải đối mặt?",
+      "opts": {
+        "A": "Thiếu kỹ năng kỹ thuật của nhóm địa phương",
+        "B": "Sự khác biệt văn hóa và nhận thức văn hóa (cultural awareness)",
+        "C": "Vấn đề về quản lý rủi ro dự án",
+        "D": "Thiếu quy trình kiểm soát chất lượng"
+      },
+      "ans": "B",
+      "exp": "Cultural awareness (nhận thức văn hóa) là kỹ năng thiết yếu của PM, đặc biệt trong môi trường đa văn hóa. Một số văn hóa có xu hướng không phản đối trực tiếp người có quyền lực (high power distance cultures). Chị Phương cần nhận ra sự khác biệt này và điều chỉnh phương pháp giao tiếp – ví dụ hỏi ý kiến riêng tư, tạo không gian an toàn để bày tỏ quan điểm. Đây là một phần của political and cultural awareness trong vai trò PM hiện đại."
+    },
+    {
+      "id": "ch03_q17",
+      "q": "Một thành viên nhóm dự án phàn nàn với PM rằng anh ta không được giao đủ việc làm và cảm thấy bị bỏ qua. Sau khi xem xét, PM nhận ra nhóm đã phân công công việc không đồng đều. Thay vì phán xét, PM họp nhóm, thừa nhận vấn đề và cùng nhóm tái cơ cấu phân công. Hành động này thể hiện điều gì của PM?",
+      "opts": {
+        "A": "Kỹ năng lập kế hoạch nguồn lực",
+        "B": "Quyền lực cưỡng chế (coercive power) đối với nhóm",
+        "C": "Trách nhiệm giải trình (accountability) và lãnh đạo có trách nhiệm",
+        "D": "Kỹ năng quản lý chi phí dự án"
+      },
+      "ans": "C",
+      "exp": "Trách nhiệm giải trình (accountability) là đặc trưng quan trọng của PM giỏi. PM thừa nhận lỗi trong phân công, minh bạch trước nhóm và chủ động sửa chữa – đây là biểu hiện của lãnh đạo có trách nhiệm và chính trực. Coercive power (B) là quyền lực thông qua sự trừng phạt, hoàn toàn trái nghĩa. Kỹ năng lập kế hoạch nguồn lực (A) hay quản lý chi phí (D) không phải trọng tâm của tình huống này."
+    },
+    {
+      "id": "ch03_q18",
+      "q": "Anh Long là PM có tiếng trong ngành xây dựng. Nhiều thành viên nhóm muốn làm việc với anh không phải vì anh có quyền thưởng phạt mà vì họ ngưỡng mộ phong cách làm việc, sự tận tâm và đạo đức nghề nghiệp của anh. Họ muốn học hỏi và noi theo anh. Anh Long đang sử dụng loại quyền lực nào?",
+      "opts": {
+        "A": "Legitimate power – quyền lực từ chức vụ chính thức",
+        "B": "Reward power – quyền lực từ khả năng khen thưởng",
+        "C": "Referent power – quyền lực từ sự ngưỡng mộ và tôn trọng cá nhân",
+        "D": "Expert power – quyền lực từ kiến thức chuyên môn"
+      },
+      "ans": "C",
+      "exp": "Referent power (quyền lực tham chiếu) xuất phát từ sức hút cá nhân, phẩm chất và đặc điểm được người khác ngưỡng mộ. Khi mọi người muốn noi theo và học hỏi từ một người vì phong cách và đạo đức của họ, đó là referent power – loại quyền lực mạnh nhất và bền vững nhất. Expert power (D) đến từ kiến thức kỹ thuật cụ thể. Legitimate power (A) đến từ chức danh. Reward power (B) đến từ khả năng khen thưởng."
+    },
+    {
+      "id": "ch03_q19",
+      "q": "Dự án của chị Lan đang vào giai đoạn cuối với nhiều áp lực. Sponsor yêu cầu chị tắt bớt một số bước kiểm thử để kịp deadline. Chị Lan biết rằng bỏ qua các bước này có thể tạo ra rủi ro chất lượng nghiêm trọng cho người dùng cuối. Chị nên làm gì?",
+      "opts": {
+        "A": "Đồng ý với Sponsor vì Sponsor có quyền quyết định cuối cùng",
+        "B": "Từ chối hoàn toàn và không thảo luận thêm",
+        "C": "Trình bày rõ rủi ro cho Sponsor, đề xuất các phương án thay thế và để Sponsor quyết định với đầy đủ thông tin",
+        "D": "Bí mật tiếp tục kiểm thử mà không báo Sponsor"
+      },
+      "ans": "C",
+      "exp": "PM có nghĩa vụ đạo đức cung cấp thông tin đầy đủ và chính xác để các bên ra quyết định có hiểu biết (informed decision). Đồng ý ngay (A) không thực hiện nghĩa vụ tư vấn của PM. Từ chối không thảo luận (B) không chuyên nghiệp. Làm bí mật (D) vi phạm đạo đức và tin tưởng. PM nên trình bày rõ rủi ro, đề xuất phương án thay thế (như kiểm thử có chọn lọc, phân tích rủi ro ưu tiên) rồi để Sponsor quyết định – đây là cách tiếp cận chuyên nghiệp và có đạo đức."
+    },
+    {
+      "id": "ch03_q20",
+      "q": "Trong một tổ chức ma trận yếu (weak matrix), PM Hải có rất ít quyền hạn chính thức. Các thành viên nhóm vẫn báo cáo trực tiếp cho quản lý chức năng của họ. Dự án đang chậm tiến độ vì các thành viên thường ưu tiên công việc từ quản lý chức năng hơn. PM Hải nên làm gì để tăng hiệu quả mà không có legitimate power?",
+      "opts": {
+        "A": "Yêu cầu tổ chức chuyển sang cấu trúc dự án hóa hoàn toàn",
+        "B": "Xây dựng expert power và referent power, sử dụng kỹ năng ảnh hưởng và đàm phán với quản lý chức năng",
+        "C": "Báo cáo với Sponsor để kỷ luật các thành viên không ưu tiên dự án",
+        "D": "Yêu cầu chuyển tất cả thành viên sang làm toàn thời gian cho dự án"
+      },
+      "ans": "B",
+      "exp": "Trong môi trường ma trận yếu, PM thiếu legitimate power (quyền hạn chính thức). Kỹ năng ảnh hưởng không dựa trên quyền lực là đặc biệt quan trọng. PM cần xây dựng expert power qua kiến thức, referent power qua uy tín cá nhân và sử dụng kỹ năng đàm phán với quản lý chức năng để đảm bảo nguồn lực. Đây là thực tế phổ biến PM phải đối mặt và là kỹ năng lãnh đạo không dựa vào quyền hạn (leading without authority). Các đáp án A, C, D đều không thực tế hoặc phản tác dụng."
+    }
+  ]
+}

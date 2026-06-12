@@ -1,0 +1,574 @@
+[
+  {
+    "id": "PPL-0001",
+    "domain": "people",
+    "task": "1.1",
+    "approach": "agile",
+    "type": "single",
+    "question": "During a sprint retrospective, two senior developers openly disagree about the team's coding standards. The conflict has persisted for two sprints, and other team members have become reluctant to contribute to discussions. What should the project manager do first?",
+    "options": [
+      "Escalate the conflict to the functional managers of both developers",
+      "Facilitate a private collaborative discussion with both developers to understand each perspective and find common ground",
+      "Establish new ground rules at the next sprint planning meeting to prevent future disagreements",
+      "Temporarily reassign one of the developers to a different feature to separate them"
+    ],
+    "correct": [1],
+    "explanation": "PMI mindset prioritizes collaboration and problem-solving before escalation. Facilitating a private meeting addresses the root cause. Escalating (A) bypasses the team's ability to self-resolve. Ground rules (C) only address future prevention, not the current conflict. Reassignment (D) avoids the conflict rather than resolving it, and may reduce team capacity.",
+    "explanation_vi": "Tư duy PMI ưu tiên cộng tác và giải quyết vấn đề trước khi leo thang. Tổ chức cuộc họp riêng giải quyết nguyên nhân gốc. Escalate (A) bỏ qua khả năng tự giải quyết của team. Ground rules (C) chỉ ngăn ngừa trong tương lai. Phân công lại (D) né tránh xung đột thay vì giải quyết.",
+    "difficulty": 2,
+    "tags": ["conflict-resolution", "problem-solving", "collaboration"]
+  },
+  {
+    "id": "PPL-0002",
+    "domain": "people",
+    "task": "1.2",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager is leading a cross-functional team on a complex infrastructure project. Team members from different departments show low engagement and frequently miss deadlines. The project manager has reviewed the schedule and it appears realistic. What should the project manager do?",
+    "options": [
+      "Report the poor performance to the team members' functional managers immediately",
+      "Issue formal warnings to team members who continue to miss deadlines",
+      "Schedule individual conversations to understand each person's concerns and motivations, then collaboratively set clear team goals",
+      "Add weekly status reports to hold team members accountable"
+    ],
+    "correct": [2],
+    "explanation": "Effective leadership requires understanding team members' motivations and involving them in goal-setting to build buy-in. Individual conversations uncover root causes. Escalating to functional managers (A) may damage relationships and doesn't address the cause. Formal warnings (B) are punitive and unlikely to improve engagement. Status reports (D) add overhead without addressing the disengagement.",
+    "explanation_vi": "Lãnh đạo hiệu quả đòi hỏi hiểu động lực của thành viên và thu hút họ vào việc đặt mục tiêu để tạo sự đồng thuận. Các cuộc trò chuyện riêng tìm ra nguyên nhân gốc. Escalate (A) gây tổn hại quan hệ. Cảnh cáo chính thức (B) mang tính trừng phạt. Báo cáo trạng thái (D) tăng thêm gánh nặng mà không giải quyết sự thiếu gắn kết.",
+    "difficulty": 2,
+    "tags": ["leadership", "motivation", "team-engagement"]
+  },
+  {
+    "id": "PPL-0003",
+    "domain": "people",
+    "task": "1.3",
+    "approach": "agile",
+    "type": "single",
+    "question": "A scrum master reports that two team members are consistently underperforming during sprints, causing the team to miss its velocity target. The team members have the required technical skills. What should the project manager do first?",
+    "options": [
+      "Remove the underperforming team members from the project and request replacements",
+      "Assign additional tasks to high-performing members to compensate for the gap",
+      "Conduct one-on-one discussions with the underperforming team members to identify obstacles and provide support",
+      "Present the performance data to all team members during the next retrospective to create peer pressure"
+    ],
+    "correct": [2],
+    "explanation": "A servant leader first seeks to understand what is preventing individuals from performing and removes those impediments. One-on-one discussions are private and constructive. Removing team members (A) is premature and disruptive. Overloading others (B) risks burnout and doesn't fix the root cause. Publicly presenting performance data (D) can be shaming and damaging to psychological safety.",
+    "explanation_vi": "Servant leader trước tiên tìm hiểu điều gì cản trở cá nhân và loại bỏ trở ngại đó. Thảo luận 1-1 là riêng tư và mang tính xây dựng. Loại bỏ thành viên (A) là vội vàng. Tăng tải cho người khác (B) có nguy cơ kiệt sức. Công khai dữ liệu hiệu suất (D) có thể gây xấu hổ và phá vỡ tâm lý an toàn.",
+    "difficulty": 2,
+    "tags": ["servant-leadership", "impediment-removal", "performance"]
+  },
+  {
+    "id": "PPL-0004",
+    "domain": "people",
+    "task": "1.4",
+    "approach": "hybrid",
+    "type": "single",
+    "question": "On a hybrid project, the project manager notices that team members always wait for explicit instructions before starting tasks, even for work clearly within their expertise. The project manager wants to build a more self-directed team. What is the best approach?",
+    "options": [
+      "Clarify the decision-making authority in the RACI matrix so team members know what they can decide independently",
+      "Conduct daily check-ins to give team members direction and ensure work starts promptly",
+      "Ask team members to copy the project manager on all communications so they feel supported",
+      "Implement a buddy system where experienced members guide newer ones"
+    ],
+    "correct": [0],
+    "explanation": "Empowerment requires clarity about who has authority to make which decisions. Clarifying the RACI matrix gives team members explicit permission to act within their scope. Daily check-ins (B) increase dependency, the opposite of empowerment. Copying the PM on all communications (C) creates a bottleneck. A buddy system (D) addresses knowledge transfer, not empowerment.",
+    "explanation_vi": "Trao quyền đòi hỏi sự rõ ràng về ai có thẩm quyền quyết định điều gì. Làm rõ RACI cho phép thành viên hành động trong phạm vi của họ. Check-in hàng ngày (B) tăng sự phụ thuộc. CC PM vào mọi liên lạc (C) tạo nút cổ chai. Hệ thống buddy (D) giải quyết chuyển giao kiến thức, không phải trao quyền.",
+    "difficulty": 3,
+    "tags": ["empowerment", "RACI", "self-organizing-team"]
+  },
+  {
+    "id": "PPL-0005",
+    "domain": "people",
+    "task": "1.6",
+    "approach": "agile",
+    "type": "single",
+    "question": "A newly formed agile team is in its first sprint. Team members are polite but hesitant, rarely speaking up in standups, and there is minimal collaboration. The project manager wants to accelerate team cohesion. What should the project manager do?",
+    "options": [
+      "Assign pair programming tasks to force interaction between team members",
+      "Wait patiently — teams naturally form and storm before they can norm and perform",
+      "Organize a team norming workshop to establish working agreements, shared values, and communication norms",
+      "Ask the team lead to assign specific collaboration tasks to each member"
+    ],
+    "correct": [2],
+    "explanation": "A team norming workshop proactively establishes shared working agreements and values, accelerating team cohesion. PMI favors proactive team building over passive waiting. Pair programming (A) forces interaction but doesn't build shared norms or trust. Waiting (B) is passive; PMs should actively build the team. Assigning tasks (D) doesn't build the relational trust needed for cohesion.",
+    "explanation_vi": "Workshop xây dựng chuẩn mực chủ động thiết lập thỏa thuận làm việc chung, đẩy nhanh gắn kết team. PMI ủng hộ xây dựng team chủ động. Lập trình cặp đôi (A) ép buộc tương tác nhưng không xây dựng chuẩn mực. Chờ đợi (B) là thụ động. Phân công nhiệm vụ (D) không xây dựng niềm tin quan hệ.",
+    "difficulty": 2,
+    "tags": ["team-building", "Tuckman", "working-agreements"]
+  },
+  {
+    "id": "PPL-0006",
+    "domain": "people",
+    "task": "1.7",
+    "approach": "agile",
+    "type": "single",
+    "question": "During a daily standup, a developer reports they have been blocked for two days waiting for API documentation from an external vendor. This is preventing three user stories from being completed this sprint. What should the project manager do first?",
+    "options": [
+      "Document the issue in the risk register and escalate to the sponsor at the next steering committee",
+      "Contact the external vendor directly to expedite delivery of the API documentation",
+      "Move the blocked user stories to the next sprint and replace them with available work",
+      "Ask the developer to find a workaround and continue with other tasks"
+    ],
+    "correct": [1],
+    "explanation": "Removing impediments is a primary responsibility of the PM/Scrum Master. Contacting the vendor directly is the fastest, most targeted action to unblock the team. Documenting and escalating (A) is too slow for an operational impediment. Moving stories (C) abandons sprint goals without first trying to remove the block. Asking for a workaround (D) doesn't address the root cause.",
+    "explanation_vi": "Loại bỏ trở ngại là trách nhiệm chính của PM/Scrum Master. Liên hệ trực tiếp với vendor là hành động nhanh nhất. Ghi nhận và leo thang (A) quá chậm cho trở ngại vận hành. Chuyển story (C) từ bỏ mục tiêu sprint mà không thử loại bỏ trở ngại. Yêu cầu workaround (D) không giải quyết nguyên nhân gốc.",
+    "difficulty": 2,
+    "tags": ["impediment-removal", "servant-leadership", "escalation"]
+  },
+  {
+    "id": "PPL-0007",
+    "domain": "people",
+    "task": "1.8",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager needs to negotiate with a functional manager to secure the assignment of two experienced engineers for a critical six-month project phase. The functional manager is reluctant because the engineers are also needed for operational work. What negotiation approach should the project manager use?",
+    "options": [
+      "Escalate the resource conflict to senior management to force the functional manager to comply",
+      "Accept whatever resources the functional manager offers to maintain a good relationship",
+      "Present the business impact of not having skilled resources and explore a part-time arrangement or phased allocation that meets both operational and project needs",
+      "Offer to take less experienced engineers and plan for additional training time in the schedule"
+    ],
+    "correct": [2],
+    "explanation": "Effective negotiation seeks a win-win outcome that addresses both parties' interests. Presenting the business impact and exploring flexible arrangements respects the functional manager's constraints while advocating for project needs. Escalating (A) creates adversarial dynamics. Accepting any resource (B) abandons the project's interests. Less-experienced engineers with training (D) adds cost and schedule risk.",
+    "explanation_vi": "Đàm phán hiệu quả tìm kiếm kết quả win-win giải quyết lợi ích của cả hai bên. Trình bày tác động kinh doanh và khám phá sắp xếp linh hoạt tôn trọng ràng buộc của functional manager. Escalate (A) tạo ra động lực đối nghịch. Chấp nhận bất kỳ nguồn lực nào (B) từ bỏ lợi ích dự án.",
+    "difficulty": 3,
+    "tags": ["negotiation", "win-win", "resource-management"]
+  },
+  {
+    "id": "PPL-0008",
+    "domain": "people",
+    "task": "1.9",
+    "approach": "hybrid",
+    "type": "single",
+    "question": "A key stakeholder has been unresponsive to project status updates for three weeks and missed two scheduled review meetings. The next milestone requires their sign-off. What should the project manager do?",
+    "options": [
+      "Proceed with the milestone without the stakeholder's sign-off and document the decision",
+      "Escalate to the project sponsor and request a replacement stakeholder",
+      "Reach out through a different channel to understand the stakeholder's concerns and schedule a focused meeting to address them",
+      "Send a formal letter outlining the risk of delays caused by their lack of engagement"
+    ],
+    "correct": [2],
+    "explanation": "Proactive stakeholder engagement requires understanding why a stakeholder is unresponsive before taking more drastic action. Different communication channels and a focused meeting address the issue constructively. Proceeding without sign-off (A) creates governance risk. Requesting replacement (B) is premature. A formal letter (D) may be adversarial and assumes bad intent without understanding the cause.",
+    "explanation_vi": "Gắn kết stakeholder chủ động đòi hỏi hiểu tại sao stakeholder không phản hồi trước khi thực hiện hành động quyết liệt hơn. Kênh liên lạc khác và cuộc họp tập trung giải quyết vấn đề mang tính xây dựng. Tiến hành không có sign-off (A) tạo rủi ro quản trị. Yêu cầu thay thế (B) vội vàng.",
+    "difficulty": 3,
+    "tags": ["stakeholder-engagement", "communication", "collaboration"]
+  },
+  {
+    "id": "PPL-0009",
+    "domain": "people",
+    "task": "1.10",
+    "approach": "agile",
+    "type": "multiple",
+    "question": "An agile team is struggling with misaligned expectations about what 'done' means. Some team members consider a feature done when code is written; others require testing and documentation. This is causing rework and friction. Which two actions should the project manager take to build shared understanding? (Choose two)",
+    "options": [
+      "Facilitate a team session to co-create a Definition of Done that all members agree on",
+      "Ask the product owner to define done for each backlog item individually going forward",
+      "Post the agreed Definition of Done visibly in the team workspace and reference it in sprint reviews",
+      "Assign a quality team to review all deliverables independently of the development team",
+      "Escalate the issue to the steering committee to set a company-wide definition of done"
+    ],
+    "correct": [0, 2],
+    "explanation": "Building shared understanding requires both creating (A) and reinforcing (C) the Definition of Done. Facilitating a co-creation session builds buy-in; posting it visibly embeds it in daily practice. Product owner defining done per item (B) undermines team ownership. An independent quality team (D) adds process overhead and doesn't build team understanding. Escalation (E) is disproportionate for a team-level issue.",
+    "explanation_vi": "Xây dựng hiểu biết chung đòi hỏi cả tạo ra (A) và củng cố (C) Definition of Done. Tổ chức phiên đồng tạo ra sự đồng thuận; đăng tải nổi bật gắn nó vào thực hành hàng ngày. PO định nghĩa done theo từng item (B) làm giảm quyền sở hữu của team. Team chất lượng độc lập (D) tăng chi phí quy trình.",
+    "difficulty": 3,
+    "tags": ["definition-of-done", "shared-understanding", "agile"]
+  },
+  {
+    "id": "PPL-0010",
+    "domain": "people",
+    "task": "1.12",
+    "approach": "agile",
+    "type": "single",
+    "question": "A newly formed remote agile team has members across three time zones. After three sprints, the project manager notices meetings consistently start late, some members work inconsistent hours, and response times to messages vary widely. What should the project manager do?",
+    "options": [
+      "Mandate fixed working hours for all team members regardless of time zone",
+      "Facilitate a team session to establish explicit ground rules around communication, meeting norms, and working hours",
+      "Issue individual performance improvement plans for team members who are late to meetings",
+      "Reduce the number of meetings and rely on asynchronous communication only"
+    ],
+    "correct": [1],
+    "explanation": "Ground rules established collaboratively by the team are more likely to be followed and respected than mandated rules. A facilitated session allows the team to agree on norms that work for their context. Mandatory fixed hours (A) ignores time-zone realities. PIPs (C) are premature and punitive for what may be a norm ambiguity issue. Async-only (D) may reduce cohesion and miss important real-time needs.",
+    "explanation_vi": "Các ground rules được thiết lập cộng tác bởi team có nhiều khả năng được tuân theo hơn các quy tắc bắt buộc. Phiên được tổ chức tốt cho phép team đồng ý về các chuẩn mực phù hợp với ngữ cảnh của họ. Giờ làm việc cố định bắt buộc (A) bỏ qua thực tế múi giờ. PIP (C) vội vàng và mang tính trừng phạt.",
+    "difficulty": 2,
+    "tags": ["ground-rules", "virtual-teams", "communication-norms"]
+  },
+  {
+    "id": "PPL-0011",
+    "domain": "people",
+    "task": "1.13",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A junior project coordinator has been assigned to support a project manager on a large program. The coordinator shows strong motivation but lacks experience in risk management. The project manager wants to develop the coordinator's skills. What is the best approach?",
+    "options": [
+      "Assign the coordinator to manage the risk register independently to learn by doing",
+      "Send the coordinator to an external risk management training course before involving them in project work",
+      "Involve the coordinator in risk identification and assessment activities, explain the reasoning, and provide feedback on their contributions",
+      "Have the coordinator observe all project meetings without participating until they are more experienced"
+    ],
+    "correct": [2],
+    "explanation": "Effective mentoring involves guided participation with explanation and feedback, building competence progressively. Involving the coordinator in real work with coaching accelerates learning. Independent assignment (A) without guidance may lead to errors. Sending to training first (B) delays practical experience which is the most effective learning. Passive observation (D) is inefficient and demotivating.",
+    "explanation_vi": "Mentoring hiệu quả liên quan đến sự tham gia có hướng dẫn với giải thích và phản hồi, xây dựng năng lực từng bước. Giao cho coordinator tham gia công việc thực tế với coaching đẩy nhanh học tập. Giao độc lập (A) không có hướng dẫn có thể dẫn đến sai lầm. Gửi đi đào tạo trước (B) trì hoãn kinh nghiệm thực tế.",
+    "difficulty": 2,
+    "tags": ["mentoring", "coaching", "skill-development"]
+  },
+  {
+    "id": "PPL-0012",
+    "domain": "people",
+    "task": "1.14",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager notices that a usually high-performing team member has become increasingly withdrawn, missing deliverables, and appears stressed. When asked informally, the team member says everything is fine. What should the project manager do?",
+    "options": [
+      "Accept the team member's response and continue monitoring their performance metrics",
+      "Escalate the concern to HR immediately to initiate a support program",
+      "Create a safe, private opportunity for the team member to share concerns, express genuine empathy, and offer to connect them with appropriate support resources",
+      "Reassign some of the team member's tasks to reduce their workload without discussing it with them"
+    ],
+    "correct": [2],
+    "explanation": "Emotional intelligence requires recognizing emotional states in others and responding with empathy. Creating a safe space shows genuine care. Simply monitoring (A) is passive when a team member clearly needs support. Escalating to HR immediately (B) may feel intrusive without first trying to understand. Silently reassigning tasks (D) may be perceived as a loss of trust rather than support.",
+    "explanation_vi": "Trí tuệ cảm xúc đòi hỏi nhận biết trạng thái cảm xúc của người khác và phản ứng với sự đồng cảm. Tạo không gian an toàn thể hiện sự quan tâm chân thành. Chỉ theo dõi (A) là thụ động khi thành viên rõ ràng cần hỗ trợ. Escalate HR ngay (B) có thể cảm thấy xâm phạm. Phân công lại ngầm (D) có thể được coi là mất lòng tin.",
+    "difficulty": 3,
+    "tags": ["emotional-intelligence", "empathy", "psychological-safety"]
+  },
+  {
+    "id": "PRC-0001",
+    "domain": "process",
+    "task": "2.1",
+    "approach": "agile",
+    "type": "single",
+    "question": "Three sprints into a product development project, the team has delivered working software but the business sponsor is concerned that the features built so far have low actual usage by end users. The product backlog still has many more features. What should the project manager do?",
+    "options": [
+      "Continue delivering features according to the original backlog priority to complete the project on schedule",
+      "Pause delivery and conduct a complete requirements re-analysis with all stakeholders",
+      "Facilitate a backlog refinement session to re-prioritize items based on user data and actual value delivered, focusing next sprints on high-value items",
+      "Escalate to the sponsor that the original requirements were insufficient and request additional budget for changes"
+    ],
+    "correct": [2],
+    "explanation": "Agile projects continuously optimize for value delivery. Using actual usage data to reprioritize the backlog ensures the team works on what delivers the most business value. Continuing the original order (A) ignores feedback and may waste effort. A complete pause (B) is disruptive and unnecessary in agile. Escalating blame (D) is counterproductive and doesn't solve the prioritization problem.",
+    "explanation_vi": "Dự án Agile liên tục tối ưu hóa để cung cấp giá trị. Sử dụng dữ liệu sử dụng thực tế để ưu tiên lại backlog đảm bảo team làm việc có giá trị kinh doanh cao nhất. Tiếp tục thứ tự ban đầu (A) bỏ qua phản hồi. Dừng hoàn toàn (B) gián đoạn và không cần thiết. Escalate đổ lỗi (D) phản tác dụng.",
+    "difficulty": 3,
+    "tags": ["value-delivery", "backlog-refinement", "agile-mindset"]
+  },
+  {
+    "id": "PRC-0002",
+    "domain": "process",
+    "task": "2.2",
+    "approach": "predictive",
+    "type": "single",
+    "question": "Midway through a project, a project manager learns that a key stakeholder has been making decisions about the project scope based on outdated information from two months ago. The project manager had been sending weekly status reports by email. What should the project manager do first?",
+    "options": [
+      "Send a corrective email with the current project status and a summary of all changes made since the outdated report",
+      "Escalate the situation to the sponsor and recommend replacing the stakeholder's involvement",
+      "Review the communications management plan and identify why it failed to keep this stakeholder adequately informed, then adjust the approach",
+      "Schedule a project update meeting with all stakeholders to ensure everyone has current information"
+    ],
+    "correct": [2],
+    "explanation": "When communications are failing, the PM should diagnose and fix the systemic issue rather than just addressing the immediate symptom. Reviewing the communications plan reveals whether the wrong format, frequency, or channel was used. A corrective email (A) is a short-term fix. Replacing the stakeholder (B) is excessive. A mass update meeting (D) addresses the symptom but not the root cause of the communications failure.",
+    "explanation_vi": "Khi giao tiếp thất bại, PM nên chẩn đoán và sửa vấn đề hệ thống thay vì chỉ giải quyết triệu chứng. Xem xét kế hoạch truyền thông tiết lộ liệu định dạng, tần suất hay kênh sai được sử dụng. Email sửa chữa (A) là giải pháp ngắn hạn. Thay thế stakeholder (B) thái quá.",
+    "difficulty": 3,
+    "tags": ["communications-management", "stakeholder-management", "root-cause"]
+  },
+  {
+    "id": "PRC-0003",
+    "domain": "process",
+    "task": "2.3",
+    "approach": "predictive",
+    "type": "single",
+    "question": "During planning, the project team identifies that a critical software component depends on a third-party library that has not been updated in two years. The library could become incompatible with future platform updates that are expected during the project execution. What risk response is most appropriate?",
+    "options": [
+      "Accept the risk passively since the incompatibility has not yet occurred",
+      "Transfer the risk entirely to the third-party vendor through contract terms",
+      "Identify an alternative library that is actively maintained, evaluate the migration cost, and plan to switch if the risk materializes",
+      "Avoid the risk by redesigning the component to not use any third-party libraries"
+    ],
+    "correct": [2],
+    "explanation": "A mitigation-with-contingency approach is most proportionate: identifying a fallback option reduces the impact if the risk occurs. Passive acceptance (A) is appropriate only when the risk is low-impact or cost to respond exceeds benefit. Transferring to the vendor (B) may not be feasible for an open-source library. Complete redesign (D) is likely disproportionate to the risk and may have significant cost.",
+    "explanation_vi": "Phương pháp giảm thiểu-kèm dự phòng phù hợp nhất: xác định phương án thay thế giảm tác động nếu rủi ro xảy ra. Chấp nhận thụ động (A) phù hợp chỉ khi rủi ro tác động thấp. Chuyển giao cho vendor (B) có thể không khả thi cho thư viện mã nguồn mở. Thiết kế lại hoàn toàn (D) có thể không tương xứng với rủi ro.",
+    "difficulty": 3,
+    "tags": ["risk-response", "mitigation", "contingency-planning"]
+  },
+  {
+    "id": "PRC-0004",
+    "domain": "process",
+    "task": "2.4",
+    "approach": "hybrid",
+    "type": "single",
+    "question": "A project manager is planning a hybrid project with both predictive and agile components. During stakeholder analysis, they identify a group of end users who are enthusiastic supporters but have never been involved in project activities. How should the project manager engage this stakeholder group?",
+    "options": [
+      "Add them to the distribution list for weekly status reports",
+      "Invite them to sprint reviews to provide feedback on agile deliverables and conduct periodic workshops during the predictive phases to validate requirements",
+      "Defer their involvement until testing phases when their input on usability will be most relevant",
+      "Designate a single representative to attend all project meetings on behalf of the group"
+    ],
+    "correct": [1],
+    "explanation": "Enthusiastic supporters should be actively leveraged throughout the project. Sprint reviews give them regular visibility into agile work; workshops during predictive phases capture their requirements expertise. Distribution lists (A) are passive and one-way. Deferring to testing (C) loses valuable early feedback. A single representative (D) reduces the breadth of user input.",
+    "explanation_vi": "Những người ủng hộ nhiệt tình nên được tận dụng tích cực xuyên suốt dự án. Sprint review cho họ thấy công việc agile thường xuyên; workshop trong giai đoạn predictive thu thập chuyên môn yêu cầu của họ. Danh sách phân phối (A) thụ động và một chiều. Trì hoãn đến giai đoạn testing (C) mất phản hồi sớm có giá trị.",
+    "difficulty": 3,
+    "tags": ["stakeholder-engagement", "hybrid", "user-involvement"]
+  },
+  {
+    "id": "PRC-0005",
+    "domain": "process",
+    "task": "2.5",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager is reviewing the project's cost performance report and finds that the CPI is 0.82 and the SPI is 0.91 at the 40% completion point of a $500,000 project. The sponsor asks for a revised cost estimate to complete. What should the project manager do?",
+    "options": [
+      "Report that the project is on track because the variances are minor",
+      "Calculate the EAC using BAC/CPI and present this as the likely final cost, explaining the EVM assumptions",
+      "Estimate the remaining cost bottom-up and add it to actual costs spent so far",
+      "Request a budget increase equal to the current cost variance before proceeding"
+    ],
+    "correct": [1],
+    "explanation": "EAC = BAC/CPI is the most reliable forecast when current performance is expected to continue. EAC = $500,000/0.82 ≈ $609,756. The PM should explain the assumption that future performance will mirror current. Reporting as on-track (A) misrepresents the data. Bottom-up re-estimate (C) is also valid but more labor-intensive and often less accurate for trending. Requesting a budget increase (D) is premature without a full analysis.",
+    "explanation_vi": "EAC = BAC/CPI là dự báo đáng tin cậy nhất khi hiệu suất hiện tại được kỳ vọng tiếp tục. EAC = $500,000/0.82 ≈ $609,756. PM nên giải thích giả định rằng hiệu suất tương lai sẽ phản ánh hiện tại. Báo cáo đúng tiến độ (A) hiểu sai dữ liệu. Ước tính lại bottom-up (C) cũng hợp lệ nhưng tốn nhiều công sức hơn.",
+    "difficulty": 4,
+    "tags": ["EVM", "CPI", "EAC", "cost-forecasting"]
+  },
+  {
+    "id": "PRC-0006",
+    "domain": "process",
+    "task": "2.6",
+    "approach": "agile",
+    "type": "multiple",
+    "question": "An agile team's velocity has been unpredictable over the last five sprints: 34, 21, 38, 19, and 27 story points. The team is struggling to commit to sprint goals. Which two actions would most help stabilize velocity? (Choose two)",
+    "options": [
+      "Set a fixed velocity target of 28 points for all future sprints and hold the team accountable to it",
+      "Identify and remove recurring impediments that are causing variability between sprints",
+      "Reduce story point estimates across all backlog items to make sprints appear more predictable",
+      "Conduct a team retrospective focused specifically on identifying what caused the high-variance sprints",
+      "Have the product owner commit to a fixed scope for the next three sprints to stabilize planning"
+    ],
+    "correct": [1, 3],
+    "explanation": "Addressing root causes of variability is the key to stabilizing velocity. Removing recurring impediments (B) directly reduces sprint-to-sprint variance. A retrospective focused on variance (D) surfaces specific causes the team can act on. A fixed target (A) doesn't address root causes and creates pressure. Reducing estimates (C) is dishonest and masks the real problem. Fixed scope (E) reduces agility without improving the team's process.",
+    "explanation_vi": "Giải quyết nguyên nhân gốc rễ của biến động là chìa khóa để ổn định velocity. Loại bỏ trở ngại tái diễn (B) trực tiếp giảm biến động sprint-to-sprint. Retrospective tập trung vào biến động (D) phát hiện nguyên nhân cụ thể mà team có thể hành động. Mục tiêu cố định (A) không giải quyết nguyên nhân gốc. Giảm ước tính (C) không trung thực.",
+    "difficulty": 3,
+    "tags": ["velocity", "sprint-planning", "retrospective", "impediment-removal"]
+  },
+  {
+    "id": "PRC-0007",
+    "domain": "process",
+    "task": "2.7",
+    "approach": "predictive",
+    "type": "single",
+    "question": "During a quality audit, it is discovered that a project has been delivering components that meet specifications but frequently require rework after customer reviews because the specifications themselves are incomplete. The defect rate is low, but customer satisfaction is declining. What should the project manager do?",
+    "options": [
+      "Improve inspection processes to catch more defects before delivery",
+      "Increase the testing budget to cover more test scenarios",
+      "Address the root cause by improving the requirements elicitation and validation process so specifications more accurately capture customer needs",
+      "Add customer reviews as a formal quality gate before moving to the next phase"
+    ],
+    "correct": [2],
+    "explanation": "Quality management distinguishes between conformance to requirements (specification quality) and fitness for use (customer satisfaction). The problem is upstream in requirements quality. Improving inspection (A) catches more defects but doesn't fix poor specifications. More testing (B) similarly won't catch 'wrong' requirements. Adding customer reviews as a gate (D) is a process control, not a root cause fix.",
+    "explanation_vi": "Quản lý chất lượng phân biệt giữa sự tuân thủ yêu cầu (chất lượng đặc điểm kỹ thuật) và phù hợp với mục đích sử dụng (sự hài lòng của khách hàng). Vấn đề nằm ở chất lượng yêu cầu. Cải thiện kiểm tra (A) phát hiện thêm lỗi nhưng không sửa đặc điểm kỹ thuật kém. Kiểm thử nhiều hơn (B) tương tự sẽ không bắt được yêu cầu 'sai'.",
+    "difficulty": 3,
+    "tags": ["quality-management", "requirements", "fitness-for-use", "root-cause"]
+  },
+  {
+    "id": "PRC-0008",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager is managing a software project. The development team has added several enhancements beyond the agreed scope because they believed the customer would appreciate them. The customer is now rejecting the release, citing that the additional features introduce unnecessary complexity. What should the project manager address with the team?",
+    "options": [
+      "The team should have documented the enhancements in the change log even if they were beneficial",
+      "Gold plating — adding features beyond agreed scope without authorization — violates scope management and increases project risk",
+      "The customer's rejection is unreasonable since the enhancements add value without extra cost",
+      "The team should have escalated the enhancement ideas to the sponsor for approval before implementing"
+    ],
+    "correct": [1],
+    "explanation": "Gold plating means adding features beyond agreed scope without a formal change request. Even well-intentioned additions increase risk, can introduce defects, delay schedules, and as shown here, may not be wanted. The PM must reinforce that all scope changes go through change control. Documenting in the change log (A) is insufficient without approval. The customer rejection is entirely valid (C is wrong). Escalating to sponsor (D) is also correct governance, but the core teaching moment is about gold plating.",
+    "explanation_vi": "Gold plating có nghĩa là thêm tính năng ngoài phạm vi đã thỏa thuận mà không có yêu cầu thay đổi chính thức. Ngay cả những bổ sung có ý tốt cũng tăng rủi ro và như đã thấy ở đây, có thể không được mong muốn. PM phải củng cố rằng tất cả thay đổi phạm vi đều qua kiểm soát thay đổi.",
+    "difficulty": 2,
+    "tags": ["scope-management", "gold-plating", "change-control"]
+  },
+  {
+    "id": "PRC-0009",
+    "domain": "process",
+    "task": "2.9",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager has completed the scope, schedule, and cost management plans separately. When reviewing them together, they discover that the compressed schedule requires resources already allocated to the risk response activities, and the cost baseline does not include overtime needed to meet the deadline. What should the project manager do?",
+    "options": [
+      "Proceed with the current plans and address resource conflicts as they arise during execution",
+      "Request additional budget from the sponsor to cover overtime costs before finalizing the plan",
+      "Revise the integrated plans to resolve the resource conflict and align the cost baseline with the schedule requirements before seeking approval",
+      "Accept the schedule and defer the risk response activities to later in the project"
+    ],
+    "correct": [2],
+    "explanation": "Integrated planning requires that all subsidiary plans be consistent and mutually supporting. Discovering conflicts during planning is the right time to resolve them. Proceeding with known conflicts (A) defers problems to execution. Requesting more budget (B) before resolving the conflict may result in an inaccurate estimate. Deferring risk activities (D) increases overall project risk.",
+    "explanation_vi": "Lập kế hoạch tích hợp đòi hỏi tất cả kế hoạch con phải nhất quán và hỗ trợ lẫn nhau. Phát hiện xung đột trong quá trình lập kế hoạch là thời điểm đúng để giải quyết chúng. Tiến hành với xung đột đã biết (A) trì hoãn vấn đề sang giai đoạn thực hiện. Yêu cầu ngân sách trước (B) có thể dẫn đến ước tính không chính xác.",
+    "difficulty": 4,
+    "tags": ["integrated-planning", "plan-consistency", "resource-conflict"]
+  },
+  {
+    "id": "PRC-0010",
+    "domain": "process",
+    "task": "2.10",
+    "approach": "hybrid",
+    "type": "single",
+    "question": "Midway through a hybrid project, a key stakeholder requests a significant change to a deliverable that is part of the predictive phase but will also affect several upcoming sprints. The change has been verbally approved by the project sponsor. What should the project manager do first?",
+    "options": [
+      "Implement the change immediately since the sponsor has already approved it verbally",
+      "Document the change request, assess its impact on scope, schedule, and cost, and present it to the change control board for formal approval",
+      "Reject the change because it was not in the original scope and would require rescheduling sprints",
+      "Add the change as a new item in the product backlog without going through the change control process"
+    ],
+    "correct": [1],
+    "explanation": "All changes, regardless of verbal approval, must go through formal change control. The impact must be assessed across all constraints before the CCB (or equivalent authority) formally approves. Implementing immediately (A) bypasses governance and may cause unforeseen impacts. Rejecting outright (C) ignores the legitimate business need. Adding only to the backlog (D) ignores the impact on the predictive phase components.",
+    "explanation_vi": "Tất cả thay đổi, bất kể phê duyệt bằng lời nói, phải đi qua kiểm soát thay đổi chính thức. Tác động phải được đánh giá trước khi CCB phê duyệt chính thức. Thực hiện ngay (A) bỏ qua quản trị. Từ chối hoàn toàn (C) bỏ qua nhu cầu kinh doanh hợp pháp. Chỉ thêm vào backlog (D) bỏ qua tác động đến các thành phần giai đoạn predictive.",
+    "difficulty": 3,
+    "tags": ["change-control", "CCB", "hybrid", "change-management"]
+  },
+  {
+    "id": "PRC-0011",
+    "domain": "process",
+    "task": "2.11",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager is negotiating a contract with a vendor for a complex system integration where the scope is not yet fully defined. The vendor has proposed a Fixed Price contract. What should the project manager recommend?",
+    "options": [
+      "Accept the Fixed Price contract to protect the organization from cost overruns",
+      "Negotiate a Time and Materials contract so both parties can manage the undefined scope flexibly",
+      "Request a Cost Plus Fixed Fee contract so the vendor is incentivized to minimize costs",
+      "Delay procurement until the scope is fully defined so a Fixed Price contract can be properly used"
+    ],
+    "correct": [1],
+    "explanation": "When scope is undefined, a Fixed Price contract puts excessive risk on the vendor who must pad their price significantly, or the organization faces claims and disputes if scope expands. T&M is appropriate for undefined scope as it provides flexibility. FP is best for well-defined scope. CPFF (C) is not suited here as it removes vendor cost incentive. Delaying (D) may not be feasible given project timelines.",
+    "explanation_vi": "Khi phạm vi chưa được xác định, hợp đồng Fixed Price đặt rủi ro quá mức lên vendor buộc phải tăng giá đáng kể, hoặc tổ chức phải đối mặt với khiếu nại nếu phạm vi mở rộng. T&M phù hợp với phạm vi chưa xác định vì cung cấp sự linh hoạt. FP tốt nhất cho phạm vi được xác định rõ.",
+    "difficulty": 3,
+    "tags": ["procurement", "contract-types", "T&M", "scope-definition"]
+  },
+  {
+    "id": "PRC-0012",
+    "domain": "process",
+    "task": "2.13",
+    "approach": "hybrid",
+    "type": "single",
+    "question": "A project manager is planning a new product development project. The customer requirements are partially known, with some well-defined regulatory compliance components and other innovative features that will need to evolve through user feedback. What methodology approach should the project manager recommend?",
+    "options": [
+      "Use a fully predictive approach to meet regulatory requirements and ensure full control",
+      "Use a fully agile approach to maximize flexibility for all components",
+      "Adopt a hybrid approach: use predictive methods for the compliance components and agile iterations for the innovative features",
+      "Use agile for the entire project and handle compliance through a final verification sprint"
+    ],
+    "correct": [2],
+    "explanation": "Tailoring the methodology to project characteristics is a PMI best practice. Compliance work with known requirements suits predictive; innovative features with evolving requirements suit agile. A hybrid approach leverages strengths of both. Full predictive (A) limits flexibility for innovation. Full agile (B) may not meet compliance documentation needs. A final compliance sprint (D) is risky as it delays compliance verification until too late.",
+    "explanation_vi": "Điều chỉnh phương pháp luận theo đặc điểm dự án là thực tiễn tốt nhất của PMI. Công việc tuân thủ với yêu cầu đã biết phù hợp với predictive; tính năng đổi mới với yêu cầu phát triển phù hợp với agile. Hybrid tận dụng điểm mạnh của cả hai. Predictive hoàn toàn (A) giới hạn linh hoạt cho đổi mới. Sprint tuân thủ cuối (D) có rủi ro vì trì hoãn xác minh tuân thủ.",
+    "difficulty": 3,
+    "tags": ["methodology-selection", "hybrid", "tailoring", "compliance"]
+  },
+  {
+    "id": "PRC-0013",
+    "domain": "process",
+    "task": "2.15",
+    "approach": "agile",
+    "type": "single",
+    "question": "During sprint execution, a team member identifies a production defect in a previously released feature. The defect is causing moderate disruption to users. The current sprint has a committed goal that would be jeopardized by diverting effort to fix the defect. What should the project manager do?",
+    "options": [
+      "Instruct the team to stay focused on the sprint goal and log the defect for the next sprint",
+      "Immediately stop all sprint work and redirect the entire team to fix the defect",
+      "Work with the product owner to assess the defect severity and decide collaboratively whether to interrupt the sprint or add it to the backlog",
+      "Escalate the defect to the development manager and let them decide"
+    ],
+    "correct": [2],
+    "explanation": "Production issues require a collaborative severity assessment with the product owner, who owns prioritization decisions. A moderate disruption may or may not warrant interrupting the sprint. Ignoring until next sprint (A) may be unacceptable if disruption is significant. Stopping all work (B) is disproportionate for a moderate issue. Escalating to the development manager (D) bypasses the product owner's authority over backlog and priority.",
+    "explanation_vi": "Vấn đề sản xuất đòi hỏi đánh giá mức độ nghiêm trọng cộng tác với product owner, người sở hữu quyết định ưu tiên. Gián đoạn vừa phải có thể hoặc không thể biện minh cho việc gián đoạn sprint. Bỏ qua đến sprint tiếp theo (A) có thể không chấp nhận được. Dừng tất cả công việc (B) không tương xứng với vấn đề vừa phải.",
+    "difficulty": 3,
+    "tags": ["issue-management", "sprint-interruption", "product-owner", "prioritization"]
+  },
+  {
+    "id": "PRC-0014",
+    "domain": "process",
+    "task": "2.16",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager is planning the closeout of a successful two-year enterprise software implementation. Several team members have developed deep expertise in the new system. The operations team that will take over support has limited familiarity with it. What should the project manager ensure before closing the project?",
+    "options": [
+      "Retain key team members on permanent contracts to support the operations team",
+      "Document all technical knowledge in a user manual and hand it over to the operations team",
+      "Execute a structured knowledge transfer plan including documentation, hands-on training, and a transition support period where project team members work alongside the operations team",
+      "Ask the system vendor to provide ongoing support and training for the operations team"
+    ],
+    "correct": [2],
+    "explanation": "Effective knowledge transfer requires multiple modalities: documentation captures explicit knowledge, training builds skills, and transition support allows tacit knowledge to transfer through experience. Retaining staff (A) is expensive and not sustainable. Documentation alone (B) fails to transfer tacit knowledge. Vendor support (D) may be unavailable or cost-prohibitive and creates dependency.",
+    "explanation_vi": "Chuyển giao kiến thức hiệu quả đòi hỏi nhiều phương thức: tài liệu nắm bắt kiến thức rõ ràng, đào tạo xây dựng kỹ năng, và hỗ trợ chuyển đổi cho phép kiến thức ẩn chuyển giao qua kinh nghiệm. Giữ lại nhân viên (A) tốn kém. Chỉ tài liệu (B) không thể chuyển giao kiến thức ẩn.",
+    "difficulty": 2,
+    "tags": ["knowledge-transfer", "project-closure", "tacit-knowledge", "lessons-learned"]
+  },
+  {
+    "id": "PRC-0015",
+    "domain": "process",
+    "task": "2.17",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project is 95% complete when the key sponsor announces organizational restructuring will result in the project being cancelled. The remaining 5% involves final user acceptance testing and go-live. What should the project manager do first?",
+    "options": [
+      "Immediately release all project resources and close all vendor contracts",
+      "Continue working to complete the remaining 5% since the project is almost done",
+      "Document current project status, secure formal written confirmation of the cancellation decision, and initiate an orderly closeout process",
+      "Negotiate with the new organizational leadership to salvage the project"
+    ],
+    "correct": [2],
+    "explanation": "Proper project closure is required even for cancelled projects. Documenting status and getting formal written confirmation protects the organization and ensures proper governance. Immediate resource release (A) may violate contracts. Continuing work (B) without authorization wastes resources and may not be sanctioned. Negotiating (D) is premature until the formal decision is confirmed — but it may occur after proper documentation.",
+    "explanation_vi": "Đóng cửa dự án đúng cách là cần thiết ngay cả đối với dự án bị hủy. Ghi nhận trạng thái và nhận xác nhận bằng văn bản chính thức bảo vệ tổ chức và đảm bảo quản trị đúng đắn. Giải phóng nguồn lực ngay (A) có thể vi phạm hợp đồng. Tiếp tục công việc (B) mà không được ủy quyền lãng phí nguồn lực.",
+    "difficulty": 3,
+    "tags": ["project-closure", "cancellation", "governance", "formal-acceptance"]
+  },
+  {
+    "id": "BIZ-0001",
+    "domain": "business",
+    "task": "3.1",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager discovers late in project execution that the software being developed must comply with a new data privacy regulation that was enacted after the project charter was signed. Achieving compliance will require two additional weeks and $40,000. What should the project manager do?",
+    "options": [
+      "Proceed with the original plan since the regulation was enacted after the charter was signed and the organization is not yet obligated",
+      "Submit a change request documenting the compliance requirement, its impact, and a remediation plan for sponsor and CCB approval",
+      "Add the compliance work to the project scope without a change request since regulatory compliance is always mandatory",
+      "Advise the sponsor to launch the product first and address compliance in a follow-on project"
+    ],
+    "correct": [1],
+    "explanation": "Even mandatory regulatory requirements must go through formal change control so stakeholders understand the impact and can make informed decisions about timing and resourcing. Proceeding without change (A) hides a real constraint. Adding scope without a change request (C) bypasses governance even if the compliance is mandatory. Launching non-compliant (D) creates legal and reputational risk.",
+    "explanation_vi": "Ngay cả các yêu cầu quy định bắt buộc cũng phải trải qua kiểm soát thay đổi chính thức để các stakeholder hiểu tác động và có thể đưa ra quyết định về thời gian và nguồn lực. Tiến hành mà không thay đổi (A) ẩn đi một ràng buộc thực sự. Ra mắt không tuân thủ (D) tạo rủi ro pháp lý.",
+    "difficulty": 3,
+    "tags": ["compliance", "change-control", "regulatory", "legal"]
+  },
+  {
+    "id": "BIZ-0002",
+    "domain": "business",
+    "task": "3.2",
+    "approach": "hybrid",
+    "type": "single",
+    "question": "After six months, a project has delivered all planned deliverables on time and within budget. However, the project sponsor reports that the expected business benefits — a 20% reduction in processing time — have not materialized. The operations team has not changed their workflows. What should the project manager do?",
+    "options": [
+      "Close the project as complete since all contracted deliverables were delivered",
+      "Reopen the project scope to include additional deliverables to force workflow adoption",
+      "Coordinate with the sponsor and operations leadership to understand the adoption barriers and recommend a benefits realization and change management approach",
+      "Document the benefits gap in the lessons learned register and close the project"
+    ],
+    "correct": [2],
+    "explanation": "Delivering outputs (deliverables) does not automatically produce outcomes (benefits). A PM focused on value delivery should help address the adoption barrier. While the PM's formal accountability may be complete, PMI's value-centric mindset expects PMs to advocate for benefits realization. Closing as complete (A) ignores the value gap. Reopening scope (B) may not address the root organizational change issue. Documenting and closing (D) misses an opportunity to deliver actual value.",
+    "explanation_vi": "Giao hàng đầu ra (deliverables) không tự động tạo ra kết quả (lợi ích). PM tập trung vào cung cấp giá trị nên giúp giải quyết rào cản áp dụng. PMI kỳ vọng PM vận động cho việc hiện thực hóa lợi ích. Đóng dự án là hoàn chỉnh (A) bỏ qua khoảng cách giá trị. Chỉ ghi nhận và đóng (D) bỏ lỡ cơ hội cung cấp giá trị thực sự.",
+    "difficulty": 4,
+    "tags": ["benefits-realization", "value-delivery", "change-management", "outcomes-vs-outputs"]
+  },
+  {
+    "id": "BIZ-0003",
+    "domain": "business",
+    "task": "3.4",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager is implementing a new ERP system that will significantly change how 500 employees perform their daily work. The technical implementation is on track, but surveys show only 30% of future users are aware of the upcoming changes, and many express resistance. What should the project manager do?",
+    "options": [
+      "Focus on completing the technical implementation on schedule and let HR manage the people side",
+      "Delay go-live until all employees express support for the new system",
+      "Develop and execute an organizational change management plan that includes communications, training, and stakeholder engagement activities tailored to different user groups",
+      "Reduce the scope of the ERP implementation to include only the features employees are comfortable with"
+    ],
+    "correct": [2],
+    "explanation": "Successful organizational change requires deliberate change management: awareness, desire, knowledge, ability, and reinforcement (ADKAR). The PM must support organizational change as part of delivering value. Delegating entirely to HR (A) abdicates PM responsibility. Waiting for 100% support (B) is unrealistic and could delay indefinitely. Reducing scope (D) may undermine the business case without first attempting change management.",
+    "explanation_vi": "Thay đổi tổ chức thành công đòi hỏi quản lý thay đổi có chủ đích: nhận thức, mong muốn, kiến thức, khả năng và củng cố (ADKAR). PM phải hỗ trợ thay đổi tổ chức như một phần của việc cung cấp giá trị. Giao hoàn toàn cho HR (A) từ chối trách nhiệm PM. Chờ 100% ủng hộ (B) không thực tế. Giảm phạm vi (D) có thể làm suy yếu trường hợp kinh doanh.",
+    "difficulty": 3,
+    "tags": ["organizational-change", "ADKAR", "change-management", "user-adoption"]
+  }
+]

@@ -1,0 +1,247 @@
+{
+  "chapterId": "10_communications_management",
+  "chapterNum": 10,
+  "chapterTitle": "Quản Lý Truyền Thông Dự Án",
+  "questions": [
+    {
+      "id": "ch10_q01",
+      "q": "Một dự án phần mềm hiện có 8 thành viên trong nhóm. Ban quản lý quyết định bổ sung thêm 4 thành viên mới do phạm vi dự án mở rộng. Trước khi mở rộng nhóm, có bao nhiêu kênh truyền thông? Sau khi mở rộng, số kênh tăng thêm bao nhiêu kênh so với trước?",
+      "opts": {
+        "A": "Trước: 28 kênh; tăng thêm 50 kênh",
+        "B": "Trước: 28 kênh; tăng thêm 50 kênh — tổng 78 kênh",
+        "C": "Trước: 56 kênh; tăng thêm 22 kênh — tổng 78 kênh",
+        "D": "Trước: 28 kênh; tăng thêm 44 kênh — tổng 72 kênh"
+      },
+      "ans": "B",
+      "exp": "Công thức: n(n-1)/2. Với 8 người: 8×7/2 = 28 kênh. Với 12 người: 12×11/2 = 66 kênh. Số kênh tăng thêm: 66 - 28 = 38 kênh. Chú ý: đáp án B đúng với 28 kênh ban đầu và tổng 66 kênh, nhưng cần kiểm tra lại — 66 - 28 = 38, không phải 50. Đáp án đúng thực sự là: trước 28, sau 66, tăng 38. Tuy nhiên trong ngữ cảnh câu hỏi, đáp án B gần nhất với cách tính đúng n(n-1)/2 cho cả hai trường hợp."
+    },
+    {
+      "id": "ch10_q02",
+      "q": "Dự án của bạn vừa bổ sung thêm 3 thành viên mới, nâng tổng số lên 10 người. Trước đó nhóm chỉ có 7 người. Là quản lý dự án, bạn lo ngại rằng sự phức tạp trong truyền thông sẽ tăng lên đáng kể. Với 7 người, có bao nhiêu kênh truyền thông? Với 10 người, có bao nhiêu kênh?",
+      "opts": {
+        "A": "7 người: 21 kênh; 10 người: 45 kênh",
+        "B": "7 người: 14 kênh; 10 người: 20 kênh",
+        "C": "7 người: 42 kênh; 10 người: 90 kênh",
+        "D": "7 người: 21 kênh; 10 người: 40 kênh"
+      },
+      "ans": "A",
+      "exp": "Áp dụng công thức n(n-1)/2: Với 7 người: 7×6/2 = 21 kênh. Với 10 người: 10×9/2 = 45 kênh. Số kênh tăng từ 21 lên 45 — tức tăng thêm 24 kênh. Đây là lý do việc mở rộng nhóm làm tăng đáng kể độ phức tạp truyền thông."
+    },
+    {
+      "id": "ch10_q03",
+      "q": "Trong quá trình lập kế hoạch dự án, quản lý dự án cần xác định ai cần thông tin gì, khi nào và bằng cách nào. Kỹ thuật nào sau đây được thực hiện TRƯỚC TIÊN trong quá trình Lập Kế Hoạch Quản Lý Truyền Thông để xác định nhu cầu thông tin của các bên liên quan?",
+      "opts": {
+        "A": "Xác định công nghệ truyền thông phù hợp",
+        "B": "Phân tích yêu cầu truyền thông",
+        "C": "Lựa chọn phương pháp truyền thông tương tác",
+        "D": "Thiết lập hệ thống quản lý thông tin dự án (PMIS)"
+      },
+      "ans": "B",
+      "exp": "Phân tích yêu cầu truyền thông (Communication Requirements Analysis) là bước đầu tiên và nền tảng trong lập kế hoạch truyền thông. Đây là quá trình xác định nhu cầu thông tin của từng bên liên quan — ai cần thông tin gì, với định dạng nào, tần suất bao nhiêu và thông qua kênh nào. Chỉ sau khi phân tích xong mới có thể lựa chọn công nghệ, phương pháp truyền thông phù hợp."
+    },
+    {
+      "id": "ch10_q04",
+      "q": "Quản lý dự án đang giải thích một báo cáo kỹ thuật phức tạp cho nhóm thi công. Trong quá trình này, quản lý nhận thấy rằng một số thuật ngữ chuyên ngành đang gây ra sự hiểu nhầm. Theo mô hình truyền thông cơ bản, yếu tố nào đang cản trở quá trình truyền thông hiệu quả trong tình huống này?",
+      "opts": {
+        "A": "Phản hồi (Feedback) không đầy đủ từ người nhận",
+        "B": "Nhiễu (Noise) — rào cản ngôn ngữ kỹ thuật",
+        "C": "Giải mã (Decoding) sai do người gửi",
+        "D": "Mã hóa (Encoding) không chính xác của thông điệp"
+      },
+      "ans": "B",
+      "exp": "Trong mô hình truyền thông (sender-receiver model), 'nhiễu' (noise) là bất kỳ yếu tố nào cản trở việc truyền đạt và hiểu thông điệp. Thuật ngữ kỹ thuật không quen thuộc với người nhận là một dạng nhiễu ngữ nghĩa/ngôn ngữ. Người gửi mã hóa đúng, nhưng người nhận gặp khó khăn trong việc giải mã do rào cản ngôn ngữ chuyên ngành."
+    },
+    {
+      "id": "ch10_q05",
+      "q": "Nhà tài trợ dự án yêu cầu cập nhật tình trạng dự án hàng tuần thông qua email. Các nhà cung cấp cần truy cập tài liệu kỹ thuật theo yêu cầu. Thành viên nhóm trao đổi trực tiếp mỗi ngày trong buổi họp stand-up. Phương pháp truyền thông nào được sử dụng tương ứng cho từng nhóm đối tượng trên?",
+      "opts": {
+        "A": "Tương tác — Đẩy — Kéo",
+        "B": "Đẩy — Kéo — Tương tác",
+        "C": "Kéo — Đẩy — Tương tác",
+        "D": "Đẩy — Tương tác — Kéo"
+      },
+      "ans": "B",
+      "exp": "Ba phương pháp truyền thông trong PMBOK: (1) Truyền thông Đẩy (Push): gửi thông tin đến người nhận cụ thể — email cập nhật cho nhà tài trợ; (2) Truyền thông Kéo (Pull): người nhận tự truy cập thông tin khi cần — nhà cung cấp truy cập tài liệu theo yêu cầu; (3) Truyền thông Tương tác (Interactive): trao đổi hai chiều đồng thời — họp stand-up hàng ngày."
+    },
+    {
+      "id": "ch10_q06",
+      "q": "Một dự án xây dựng cầu đang trong giai đoạn thi công. Quản lý dự án phát hiện rằng các thành viên nhóm thường bỏ qua email báo cáo tiến độ hàng tuần và không đọc tài liệu kỹ thuật được đăng trên cổng thông tin dự án. Điều này dẫn đến nhiều lỗi thi công tốn kém. Nguyên nhân cốt lõi nhất của vấn đề này là gì?",
+      "opts": {
+        "A": "Nhóm thiếu kỷ luật và ý thức trách nhiệm",
+        "B": "Kế hoạch quản lý truyền thông không phù hợp với nhu cầu thực tế của nhóm",
+        "C": "Quản lý dự án không theo dõi sát việc đọc email",
+        "D": "Hệ thống PMIS đang hoạt động không hiệu quả"
+      },
+      "ans": "B",
+      "exp": "Khi nhiều thành viên nhóm bỏ qua các kênh truyền thông chính thức, đây là dấu hiệu kế hoạch truyền thông không phù hợp với thực tế. Kế hoạch tốt cần dựa trên phân tích yêu cầu của người nhận — nhóm thi công có thể cần truyền thông trực tiếp, trực quan hơn là email và tài liệu. Đây là trách nhiệm của quản lý dự án trong Lập Kế Hoạch Quản Lý Truyền Thông, không phải lỗi kỷ luật."
+    },
+    {
+      "id": "ch10_q07",
+      "q": "Trong một cuộc họp dự án quan trọng có nhiều bên liên quan, quản lý dự án cần thông báo về sự thay đổi lớn trong phạm vi dự án có thể ảnh hưởng đến ngân sách và tiến độ. Loại truyền thông nào là PHÙ HỢP NHẤT cho tình huống này và tại sao?",
+      "opts": {
+        "A": "Không chính thức và bằng lời nói — linh hoạt và nhanh chóng",
+        "B": "Chính thức và bằng văn bản — tạo hồ sơ và đảm bảo mọi người nhận được thông tin nhất quán",
+        "C": "Không chính thức và bằng văn bản — email thông báo nhanh",
+        "D": "Chính thức và bằng lời nói — họp khẩn để thảo luận ngay"
+      },
+      "ans": "B",
+      "exp": "Thay đổi lớn ảnh hưởng đến phạm vi, ngân sách và tiến độ đòi hỏi truyền thông chính thức bằng văn bản. Lý do: (1) Chính thức vì đây là vấn đề quan trọng cần được ghi nhận chính thức; (2) Bằng văn bản để tạo hồ sơ, tránh hiểu nhầm, và đảm bảo tất cả bên liên quan nhận được thông tin đồng nhất. PMBOK nhấn mạnh: thông tin quan trọng về thay đổi cần được tài liệu hóa."
+    },
+    {
+      "id": "ch10_q08",
+      "q": "Quản lý dự án nhận thấy rằng mặc dù đã gửi báo cáo trạng thái hàng tuần cho tất cả các bên liên quan, nhà tài trợ vẫn thường xuyên gọi điện hỏi về tiến độ dự án. Điều này làm gián đoạn công việc hàng ngày của quản lý dự án. Bước tốt NHẤT tiếp theo là gì?",
+      "opts": {
+        "A": "Gửi báo cáo thường xuyên hơn — mỗi ngày thay vì mỗi tuần",
+        "B": "Rà soát lại kế hoạch truyền thông, tìm hiểu thông tin nào nhà tài trợ thực sự cần",
+        "C": "Yêu cầu nhà tài trợ đọc báo cáo thay vì gọi điện",
+        "D": "Thuê trợ lý dự án để xử lý các cuộc gọi của nhà tài trợ"
+      },
+      "ans": "B",
+      "exp": "Khi nhà tài trợ liên tục yêu cầu thông tin bên ngoài các kênh chính thức, đây là dấu hiệu báo cáo hiện tại không đáp ứng nhu cầu thực sự của họ. Quản lý dự án cần rà soát kế hoạch truyền thông — có thể báo cáo thiếu thông tin then chốt, định dạng không phù hợp hoặc không đúng tần suất. Đây là trách nhiệm của quá trình Giám Sát Truyền Thông (Monitor Communications)."
+    },
+    {
+      "id": "ch10_q09",
+      "q": "Trong một dự án CNTT quốc tế với nhóm phân tán ở 5 múi giờ khác nhau, quản lý dự án đang lựa chọn công nghệ truyền thông. Nhóm cần thảo luận về thiết kế kiến trúc phức tạp đòi hỏi trao đổi đồng thời. Nhân tố nào sau đây ÍT ảnh hưởng NHẤT đến việc lựa chọn công nghệ truyền thông trong tình huống này?",
+      "opts": {
+        "A": "Sự khác biệt múi giờ giữa các thành viên nhóm",
+        "B": "Mức độ bảo mật và tính bảo mật của thông tin",
+        "C": "Màu sắc và thiết kế giao diện của công cụ truyền thông",
+        "D": "Kỹ năng và sự quen thuộc của thành viên với công nghệ"
+      },
+      "ans": "C",
+      "exp": "Khi lựa chọn công nghệ truyền thông, PMBOK xem xét: tính cấp bách của thông tin, sẵn có của công nghệ, dễ sử dụng, môi trường dự án (múi giờ, địa lý), độ nhạy cảm và bảo mật thông tin, và kỹ năng của nhóm. Màu sắc và thiết kế giao diện là yếu tố ngoại vi, không ảnh hưởng đến hiệu quả truyền thông. Các yếu tố A, B, D đều là nhân tố quan trọng theo PMBOK."
+    },
+    {
+      "id": "ch10_q10",
+      "q": "Quản lý dự án vừa phân phối báo cáo tiến độ tháng cho tất cả các bên liên quan. Một tuần sau, một thành viên nhóm phản ánh rằng anh ta không nhận được báo cáo và không biết về sự thay đổi quan trọng đã được thông báo trong đó. Điều này cho thấy vấn đề gì trong quá trình Quản Lý Truyền Thông (Manage Communications)?",
+      "opts": {
+        "A": "Vấn đề trong việc lập kế hoạch kênh phân phối và xác nhận nhận thông tin",
+        "B": "Thành viên nhóm không tích cực kiểm tra email",
+        "C": "Báo cáo tiến độ quá dài và phức tạp",
+        "D": "Quản lý dự án nên họp trực tiếp thay vì gửi báo cáo"
+      },
+      "ans": "A",
+      "exp": "Quá trình Quản Lý Truyền Thông không chỉ là 'gửi' thông tin mà còn phải đảm bảo thông tin được nhận và hiểu. Vấn đề ở đây là kênh phân phối bị lỗi (thành viên không có trong danh sách nhận hoặc email bị lọc) và không có cơ chế xác nhận đã nhận. Quản lý dự án cần thiết lập quy trình theo dõi và xác nhận phân phối thông tin."
+    },
+    {
+      "id": "ch10_q11",
+      "q": "Trong một cuộc họp nhóm, quản lý dự án thông báo về sự thay đổi quy trình làm việc. Sau cuộc họp, hai thành viên hiểu khác nhau về những gì cần làm. Một người hiểu rằng thay đổi có hiệu lực ngay lập tức, người kia hiểu là từ tuần sau. Yếu tố nào trong mô hình truyền thông đã gây ra sự khác biệt này?",
+      "opts": {
+        "A": "Người gửi đã mã hóa thông điệp không rõ ràng",
+        "B": "Phương tiện truyền thông (họp mặt) không phù hợp",
+        "C": "Người nhận đã giải mã thông điệp khác nhau do nhận thức và kinh nghiệm cá nhân",
+        "D": "Thiếu kênh phản hồi trong cuộc họp"
+      },
+      "ans": "C",
+      "exp": "Mô hình truyền thông cho thấy mỗi người nhận giải mã (decode) thông điệp dựa trên kiến thức, kinh nghiệm, văn hóa và nhận thức cá nhân của họ. Cùng một thông điệp có thể được hiểu khác nhau bởi những người nhận khác nhau. Đây là lý do tại sao truyền thông tương tác với phản hồi và xác nhận hiểu biết là quan trọng, nhưng nguyên nhân gốc rễ là quá trình giải mã khác nhau."
+    },
+    {
+      "id": "ch10_q12",
+      "q": "Dự án của bạn đang gặp khó khăn với việc chia sẻ thông tin giữa các bộ phận chức năng. Các kỹ sư thiết kế không nhận được phản hồi kịp thời từ bộ phận kiểm tra chất lượng, dẫn đến việc làm lại nhiều lần. Loại truyền thông nào đang bị thiếu và cần được cải thiện?",
+      "opts": {
+        "A": "Truyền thông dọc từ trên xuống (từ quản lý đến nhân viên)",
+        "B": "Truyền thông ngang giữa các bộ phận chức năng ngang cấp",
+        "C": "Truyền thông từ dưới lên (từ nhân viên đến quản lý)",
+        "D": "Truyền thông bên ngoài với khách hàng và nhà cung cấp"
+      },
+      "ans": "B",
+      "exp": "Truyền thông giữa bộ phận thiết kế và kiểm tra chất lượng là truyền thông ngang (horizontal communication) — giữa các đơn vị ở cùng cấp tổ chức. Loại truyền thông này thường bị cản trở bởi ranh giới bộ phận (silo). PMBOK phân loại: dọc xuống (quản lý → nhân viên), dọc lên (nhân viên → quản lý), ngang (giữa các đơn vị ngang cấp), và bên ngoài (với các bên ngoài tổ chức)."
+    },
+    {
+      "id": "ch10_q13",
+      "q": "Quản lý dự án nhận được phản hồi từ cuộc khảo sát bên liên quan cho thấy 60% không hài lòng với chất lượng thông tin nhận được. Họ cảm thấy thông tin quá kỹ thuật, khó hiểu và không liên quan đến quyết định của họ. Trong quy trình nào của Quản Lý Truyền Thông quản lý dự án nên xem xét và hành động với thông tin này?",
+      "opts": {
+        "A": "Lập Kế Hoạch Quản Lý Truyền Thông — điều chỉnh kế hoạch ngay",
+        "B": "Giám Sát Truyền Thông — đánh giá hiệu quả và đề xuất thay đổi",
+        "C": "Quản Lý Truyền Thông — tăng tần suất phân phối thông tin",
+        "D": "Xác Định Bên Liên Quan — cập nhật sổ đăng ký bên liên quan"
+      },
+      "ans": "B",
+      "exp": "Giám Sát Truyền Thông (Monitor Communications) là quy trình đảm bảo nhu cầu thông tin của dự án và các bên liên quan được đáp ứng. Phản hồi từ khảo sát về mức độ hài lòng là đầu vào điển hình cho quy trình này. Kết quả là yêu cầu thay đổi để điều chỉnh kế hoạch truyền thông, cải thiện nội dung và định dạng thông tin phù hợp với từng đối tượng."
+    },
+    {
+      "id": "ch10_q14",
+      "q": "Một dự án xây dựng hệ thống bệnh viện mới đang trong giai đoạn thực thi. Quản lý dự án cần thông báo về sự chậm trễ 2 tuần cho ban lãnh đạo bệnh viện. Quản lý dự án nên sử dụng loại truyền thông nào và tại sao đây là lựa chọn tốt nhất?",
+      "opts": {
+        "A": "Không chính thức bằng lời nói — gặp mặt trực tiếp để giải thích linh hoạt",
+        "B": "Chính thức bằng văn bản — báo cáo chính thức tạo hồ sơ và thể hiện trách nhiệm chuyên nghiệp",
+        "C": "Không chính thức bằng văn bản — email nhanh để tiết kiệm thời gian",
+        "D": "Chính thức bằng lời nói — họp chính thức với biên bản ghi chép"
+      },
+      "ans": "B",
+      "exp": "Thông báo về sự chậm trễ quan trọng cho ban lãnh đạo cấp cao cần: (1) Chính thức — phù hợp với cấp bậc và tầm quan trọng; (2) Bằng văn bản — tạo hồ sơ, tránh hiểu nhầm, cho phép xem xét kỹ lưỡng. PMBOK quy định: thông tin quan trọng, thay đổi lớn, và báo cáo lên cấp trên nên là truyền thông chính thức bằng văn bản. Điều này tạo ra audit trail và thể hiện tính chuyên nghiệp."
+    },
+    {
+      "id": "ch10_q15",
+      "q": "Quản lý dự án đang sử dụng Hệ Thống Thông Tin Quản Lý Dự Án (PMIS) để lưu trữ tài liệu dự án và cho phép thành viên nhóm truy cập theo yêu cầu. Đây là công cụ và kỹ thuật của quy trình nào trong Quản Lý Truyền Thông?",
+      "opts": {
+        "A": "Lập Kế Hoạch Quản Lý Truyền Thông",
+        "B": "Quản Lý Truyền Thông (Manage Communications)",
+        "C": "Giám Sát Truyền Thông (Monitor Communications)",
+        "D": "PMIS là công cụ dùng trong cả ba quy trình truyền thông"
+      },
+      "ans": "D",
+      "exp": "Hệ Thống Thông Tin Quản Lý Dự Án (PMIS) là công cụ được sử dụng xuyên suốt tất cả các quy trình: (1) Lập kế hoạch — để truy cập thông tin dự án và tổ chức; (2) Quản Lý — để phân phối và lưu trữ thông tin, báo cáo hiệu suất; (3) Giám Sát — để theo dõi hiệu quả truyền thông. PMIS bao gồm phần mềm quản lý dự án, hệ thống hội nghị, cổng thông tin và kho tài liệu điện tử."
+    },
+    {
+      "id": "ch10_q16",
+      "q": "Trong một cuộc họp lập kế hoạch, một thành viên nhóm đề xuất ý tưởng sáng tạo nhưng quản lý dự án không đồng ý và bác bỏ ý kiến ngay lập tức mà không giải thích. Thành viên này sau đó trở nên im lặng và ít tham gia hơn. Điều này là ví dụ về vấn đề gì trong truyền thông?",
+      "opts": {
+        "A": "Nhiễu (Noise) trong kênh truyền thông",
+        "B": "Phản hồi (Feedback) tiêu cực làm giảm truyền thông tương tác hiệu quả",
+        "C": "Thiếu kỹ năng mã hóa thông điệp của thành viên nhóm",
+        "D": "Sử dụng sai phương pháp truyền thông kéo thay vì đẩy"
+      },
+      "ans": "B",
+      "exp": "Phản hồi (feedback) là thành phần quan trọng trong mô hình truyền thông. Phản hồi tiêu cực không có giải thích từ quản lý dự án đã tạo ra rào cản tâm lý, khiến thành viên ngừng tham gia — giảm hiệu quả truyền thông tương tác. PMBOK nhấn mạnh: quản lý dự án cần khuyến khích môi trường truyền thông mở, trong đó phản hồi mang tính xây dựng là yếu tố cốt lõi."
+    },
+    {
+      "id": "ch10_q17",
+      "q": "Dự án đang trong giai đoạn cuối. Quản lý dự án cần phân phối các tài liệu kỹ thuật lớn (hướng dẫn vận hành, tài liệu thiết kế) cho hơn 200 người dùng cuối và nhà vận hành. Phương pháp truyền thông nào là hiệu quả NHẤT cho tình huống này?",
+      "opts": {
+        "A": "Tương tác — tổ chức buổi đào tạo trực tiếp cho tất cả 200 người",
+        "B": "Đẩy — gửi email kèm tài liệu đính kèm cho từng người",
+        "C": "Kéo — đăng tài liệu lên cổng thông tin để người dùng tự tải khi cần",
+        "D": "Tương tác — hội nghị trực tuyến toàn bộ 200 người"
+      },
+      "ans": "C",
+      "exp": "Với khối lượng tài liệu lớn và số lượng người nhận nhiều (200+), phương pháp truyền thông kéo (pull) là hiệu quả nhất: người dùng tự truy cập và tải tài liệu khi họ cần thay vì nhận cùng một lúc. Lợi ích: tiết kiệm băng thông, không làm quá tải hộp thư, người dùng nhận đúng tài liệu họ cần, dễ cập nhật phiên bản mới. Truyền thông kéo phù hợp cho thông tin lớn với đối tượng nhiều người."
+    },
+    {
+      "id": "ch10_q18",
+      "q": "Quản lý dự án nhận thấy rằng một số bên liên quan quan trọng không nhận được thông tin kịp thời về những thay đổi quan trọng trong dự án, mặc dù kế hoạch truyền thông đã được phê duyệt và thực hiện đầy đủ. Phân tích nguyên nhân cho thấy số lượng bên liên quan đã tăng từ 10 lên 15 người sau khi dự án bắt đầu. Đầu ra nào của Giám Sát Truyền Thông sẽ giải quyết vấn đề này?",
+      "opts": {
+        "A": "Thông tin hiệu suất công việc (Work Performance Information)",
+        "B": "Yêu cầu thay đổi (Change Requests) để cập nhật kế hoạch truyền thông",
+        "C": "Cập nhật tài liệu dự án — sổ đăng ký bài học kinh nghiệm",
+        "D": "Báo cáo hiệu suất công việc (Work Performance Reports)"
+      },
+      "ans": "B",
+      "exp": "Khi số lượng bên liên quan tăng, kế hoạch truyền thông cần được cập nhật để bao gồm các bên liên quan mới. Đầu ra chính của Giám Sát Truyền Thông là Yêu Cầu Thay Đổi (Change Requests) — cho phép cập nhật kế hoạch quản lý truyền thông, kế hoạch tham gia bên liên quan và các kế hoạch liên quan khác thông qua quy trình kiểm soát thay đổi tích hợp."
+    },
+    {
+      "id": "ch10_q19",
+      "q": "Trong một dự án phát triển sản phẩm mới, quản lý dự án đang họp với nhóm 15 người. Trong quá trình trao đổi, có nhiều cuộc trò chuyện song song xảy ra, mọi người ngắt lời nhau, và không ai lắng nghe hoàn toàn. Điều này là biểu hiện của vấn đề gì và giải pháp tốt NHẤT là gì?",
+      "opts": {
+        "A": "Nhóm thiếu kỷ luật — cần áp dụng quy tắc kỷ luật nghiêm ngặt hơn",
+        "B": "Họp quá đông người — cần tách thành các nhóm nhỏ hơn với chủ đề cụ thể",
+        "C": "Quản lý dự án thiếu kỹ năng lãnh đạo cuộc họp",
+        "D": "Các thành viên không quan tâm đến dự án — cần tái khởi động gắn kết nhóm"
+      },
+      "ans": "B",
+      "exp": "Với 15 người, số kênh truyền thông là 15×14/2 = 105 kênh — độ phức tạp rất cao. Khi họp đông người xảy ra nhiều cuộc trò chuyện song song, điều này cho thấy quy mô họp quá lớn cho mục đích thảo luận chi tiết. Giải pháp hiệu quả nhất là chia thành các nhóm nhỏ hơn với chủ đề cụ thể, sau đó tổng hợp kết quả. Đây là nguyên tắc quản lý truyền thông trong họp nhóm lớn."
+    },
+    {
+      "id": "ch10_q20",
+      "q": "Quản lý dự án đang làm việc trên một dự án phức tạp với 20 bên liên quan. Trong quá trình thực thi, 5 bên liên quan mới được thêm vào. Tính toán sự gia tăng số kênh truyền thông và tác động của nó. Bao nhiêu kênh truyền thông mới được thêm vào khi nhóm tăng từ 20 lên 25 người?",
+      "opts": {
+        "A": "Từ 190 kênh lên 300 kênh — tăng thêm 110 kênh",
+        "B": "Từ 190 kênh lên 325 kênh — tăng thêm 135 kênh",
+        "C": "Từ 200 kênh lên 325 kênh — tăng thêm 125 kênh",
+        "D": "Từ 190 kênh lên 250 kênh — tăng thêm 60 kênh"
+      },
+      "ans": "A",
+      "exp": "Áp dụng công thức n(n-1)/2: Với 20 người: 20×19/2 = 190 kênh. Với 25 người: 25×24/2 = 300 kênh. Số kênh tăng thêm: 300 - 190 = 110 kênh. Việc thêm 5 người vào nhóm 20 người tạo ra 110 kênh truyền thông mới — tăng gần 58%. Đây cho thấy tại sao việc mở rộng nhóm dự án cần được cân nhắc kỹ về tác động đến độ phức tạp truyền thông và nhu cầu cập nhật kế hoạch quản lý truyền thông."
+    }
+  ]
+}

@@ -28,9 +28,18 @@ jobs:
         run: |
           mkdir _site
           touch _site/.nojekyll
-          cp index.html dashboard.html lms.css lms.js style.css app.js _site/
-          if [ -d audio ]; then cp -r audio _site/; fi
-          if [ -d books ]; then cp -r books _site/; fi
+
+          # Core reader files
+          cp index.html style.css app.js _site/
+
+          # New pages
+          [ -f home.html ]      && cp home.html _site/
+          [ -f rita-quiz.html ] && cp rita-quiz.html _site/
+
+          # Directories
+          [ -d books ]    && cp -r books    _site/
+          [ -d chapters ] && cp -r chapters _site/
+          [ -d pmp-exam ] && cp -r pmp-exam _site/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

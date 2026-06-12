@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rita's Process Chart™ - Interactive Full Version (v2)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            color: #222;
+        }
+        .page {
+            max-width: 1250px;
+            margin: 0 auto 40px auto;
+            background: #fff;
+            padding: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            position: relative;
+        }
+        .page-header {
+            color: #004b87;
+            border-bottom: 3px solid #004b87;
+            padding-bottom: 12px;
+            margin-bottom: 25px;
+        }
+        .page-header h1 {
+            margin: 0;
+            font-size: 1.8em;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .page-header h2 {
+            margin: 5px 0 0 0;
+            font-size: 1.4em;
+            color: #0073e6;
+            font-weight: 600;
+        }
+        .page-header h3 {
+            margin: 5px 0 0 0;
+            font-size: 1em;
+            color: #555;
+            font-weight: normal;
+            font-style: italic;
+        }
+        .intro-text p {
+            font-size: 1.05em;
+            line-height: 1.7;
+            margin-bottom: 18px;
+            text-align: justify;
+        }
+        table.overview-table {
+            width: 90%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        table.overview-table th, table.overview-table td {
+            border: 1px solid #aaa;
+            padding: 12px 15px;
+            text-align: left;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        table.overview-table th {
+            background-color: #004b87;
+            color: white;
+            font-weight: bold;
+        }
+        table.overview-table td:hover {
+            background-color: #e6f2ff;
+        }
+        table.overview-table tr:nth-child(even) td {
+            background-color: #f8fa9;
+        }
+        table.overview-table tr:nth-child(even) td:hover {
+            background-color: #e6f2ff;
+        }
+        .process-chart {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            align-items: stretch;
+            margin-top: 15px;
+        }
+        .col {
+            flex: 1;
+            min-width: 220px;
+            border: 1px solid #999;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            background-color: #fafafa;
+        }
+        .col-header {
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.95em;
+            border-bottom: 2px solid #888;
+            min-height: 45px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+        .col-header span {
+            font-size: 0.75em;
+            font-weight: normal;
+            margin-top: 4px;
+            line-height: 1.2;
+        }
+        
+        /* Specific column colors */
+        .initiating .col-header { background-color: #fce4d6; color: #a54800; border-bottom-color: #f8cbad; }
+        .planning .col-header { background-color: #fff2cc; color: #b28f00; border-bottom-color: #ffe599; }
+        .executing .col-header { background-color: #e2efda; color: #375623; border-bottom-color: #c5e0b4; }
+        .monitoring .col-header { background-color: #f2f2f2; color: #595959; border-bottom-color: #d9d9d9; }
+        .closing .col-header { background-color: #ddebf7; color: #1f4e78; border-bottom-color: #bdd7ee; }
+
+        .process-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            flex-grow: 1;
+        }
+        .process-list li {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ddd;
+            font-size: 0.85em;
+            line-height: 1.4;
+            background-color: #fff;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .process-list li:last-child {
+            border-bottom: none;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+        .process-list li:hover {
+            background-color: #e6f2ff;
+            color: #004b87;
+            font-weight: 500;
+            padding-left: 15px;
+        }
+        .footer {
+            margin-top: 35px;
+            padding-top: 15px;
+            border-top: 1px solid #ccc;
+            font-size: 0.82em;
+            color: #666;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-text {
+            max-width: 85%;
+            line-height: 1.4;
+        }
+        .page-num {
+            font-weight: bold;
+            color: #333;
+            white-space: nowrap;
+        }
+        
+        /* Popup Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-box {
+            background: #fff;
+            padding: 25px 30px;
+            border-radius: 10px;
+            max-width: 550px;
+            width: 90%;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        .modal-overlay.active .modal-box {
+            transform: translateY(0);
+        }
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 15px;
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #aaa;
+        }
+        .modal-close:hover {
+            color: #333;
+        }
+        .modal-title {
+            font-size: 0.9em;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .original-text {
+            font-size: 1.15em;
+            font-weight: 600;
+            color: #004b87;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        .translated-text {
+            font-size: 1.1em;
+            color: #2e7d32;
+            background-color: #e8f5e9;
+            padding: 12px 15px;
+            border-left: 4px solid #4caf50;
+            border-radius: 4px;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+        .tip-click {
+            text-align: center;
+            color: #0073e6;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tip-click">💡 Mẹo: Nhấp vào bất kỳ ô hoặc dòng nào để xem giải thích và dịch nghĩa tiếng Việt chi tiết!</div>
+
+    <!-- PAGE 1 -->
+    <div class="page" id="page-1">
+        <div class="page-header">
+            <h1>RMC LEARNING SOLUTIONS®</h1>
+            <h2>Rita's Process Chart™: By Process Categories</h2>
+        </div>
+        
+        <div class="intro-text">
+            <p><strong>Use Rita's Process Chart to Know: Where am I in the Project Management Process?</strong></p>
+            <p>First let's summarize the current PMI direction for project management. PMI's new Exam Content Outline (ECO), and their PMBOK Guide®, Seventh Edition, are based on principles specifically not meant to be prescriptive for how to manage a project. Although the PMBOK® Guide, Seventh Edition no longer emphasizes named knowledge areas, they have stated that the seventh edition adds to rather than negates the more process driven sixth (and other editions) of the PMBOK® Guide.</p>
+            <p>The five Process Groups and ten Knowledge areas continue to be important organizing principles, taken from the PMBOK® Guide, Sixth Edition.</p>
+            <p>Essentially, for the exam, it is still important to be able to answer: "Where am I in the Project Management Process?" so understanding your project management activities in this context will help you answer many questions correctly.</p>
+            <p>Rita's Process Chart can help you here. The use of non-prescriptive principles is a good direction that PMI is taking, since methods within organizations vary and change so much. Yet Rita's Process Chart remains an extremely useful tool in understanding how to manage a project from start to finish. And it speaks well to the Process Groups and Knowledge Areas.</p>
+            <p>For your review, here are the Process Groups and Knowledge Areas.</p>
+        </div>
+
+        <table class="overview-table">
+            <thead>
+                <tr>
+                    <th onclick="showPopup('Process Group (5)', 'Nhóm Quy trình (gồm 5 nhóm theo PMI)')">Process Group (5)</th>
+                    <th onclick="showPopup('Knowledge Area (10)', 'Lĩnh vực Kiến thức (gồm 10 lĩnh vực chuyên môn)')">Knowledge Area (10)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td onclick="showPopup('Initiating', 'Giai đoạn Khởi động dự án - Thiết lập nền móng và phê duyệt dự án')">Initiating</td>
+                    <td onclick="showPopup('Integration', 'Quản lý Tích hợp dự án - Gắn kết tất cả các thành phần lại với nhau')">Integration</td>
+                </tr>
+                <tr>
+                    <td onclick="showPopup('Planning', 'Giai đoạn Lập kế hoạch - Xác định phạm vi và xây dựng lộ trình chi tiết')">Planning</td>
+                    <td onclick="showPopup('Resources', 'Quản lý Nguồn lực - Điều phối nhân sự và các tài nguyên vật lý')">Resources</td>
+                </tr>
+                <tr>
+                    <td onclick="showPopup('Executing', 'Giai đoạn Thực thi - Triển khai công việc theo kế hoạch đã duyệt')">Executing</td>
+                    <td onclick="showPopup('Scope', 'Quản lý Phạm vi - Xác định chính xác những công việc thuộc hoặc không thuộc dự án')">Scope</td>
+                </tr>
+                <tr>
+                    <td onclick="showPopup('Monitoring and Controlling', 'Giai đoạn Giám sát và Kiểm soát - Theo dõi hiệu suất và quản lý các thay đổi')">Monitoring and Controlling</td>
+                    <td onclick="showPopup('Communications', 'Quản lý Truyền thông - Đảm bảo thông tin chính xác đến đúng người, đúng lúc')">Communications</td>
+                </tr>
+                <tr>
+                    <td onclick="showPopup('Closing', 'Giai đoạn Đóng dự án - Hoàn tất thủ tục, nghiệm thu và lưu trữ bài học')">Closing</td>
+                    <td onclick="showPopup('Schedule', 'Quản lý Tiến độ - Lập thời gian biểu và kiểm soát thời gian hoàn thành')">Schedule</td>
+                </tr>
+                <tr>
+                    <td style="background-color:#eee; cursor:default;"></td>
+                    <td onclick="showPopup('Risk', 'Quản lý Rủi ro - Nhận diện, phân tích và chuẩn bị kế hoạch ứng phó rủi ro')">Risk</td>
+                </tr>
+                <tr>
+                    <td style="background-color:#eee; cursor:default;"></td>
+                    <td onclick="showPopup('Cost', 'Quản lý Chi phí - Dự toán, lập ngân sách và kiểm soát chi tiêu dự án')">Cost</td>
+                </tr>
+                <tr>
+                    <td style="background-color:#eee; cursor:default;"></td>
+                    <td onclick="showPopup('Procurement', 'Quản lý Mua sắm / Thầu - Mua hàng hóa, dịch vụ và quản lý nhà thầu bên ngoài')">Procurement</td>
+                </tr>
+                <tr>
+                    <td style="background-color:#eee; cursor:default;"></td>
+                    <td onclick="showPopup('Quality', 'Quản lý Chất lượng - Đảm bảo bàn giao đáp ứng đúng tiêu chuẩn yêu cầu')">Quality</td>
+                </tr>
+                <tr>
+                    <td style="background-color:#eee; cursor:default;"></td>
+                    <td onclick="showPopup('Stakeholders', 'Quản lý Bên liên quan - Nhận diện và thúc đẩy sự tham gia tích cực của các bên có lợi ích gắn liền với dự án')">Stakeholders</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="intro-text">
+            <p>As you study Rita's book and other RMC Materials, it is useful for you to review the following versions of Rita's Process Chart. Each is shaded to emphasize the activities related to a knowledge area named on the chart, and within the context of a process group. For example, review the shaded areas of the chart for Integration Management and answer the question: "Where am I in the project management process" in the context of integration management. Do the same as you study the Scope knowledge area, and so on. Keep in mind that while these knowledge areas may appear like separate entities to manage on their own, they are not. They are interrelated and must be balanced together with other factors affecting project decisions.</p>
+        </div>
+
+        <div class="footer">
+            <div class="footer-text">This article complements information in Rita Mulcahy's™ CAPM Exam Prep book, 5th edition.<br>If you are preparing for the CAPM, consider contacting RMC Learning Solutions at info@rmcls.com to find the best prep strategy for you.</div>
+            <div class="page-num">p. 1 of 11</div>
+        </div>
+    </div>
+
+    <!-- PAGES 2 to 11 CONTAINER -->
+    <div id="pages-container"></div>
+
+    <!-- MODAL POPUP COMPONENT -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-title">Dịch nghĩa Tiếng Việt chi tiết</div>
+            <div class="original-text" id="modalOriginal">Original text here...</div>
+            <div class="translated-text" id="modalTranslated">Bản dịch hiển thị ở đây...</div>
+        </div>
+    </div>
+
+    <script>
+        // Data containing professional Vietnamese translations for 100% of the entries
+        const dictionary = {
+            // INITIATING
+            "Select project manager": "Chọn quản lý dự án (Project Manager)",
+            "Determine company culture and existing systems": "Xác định văn hóa công ty và các hệ thống hiện tại của tổ chức",
+            "Collect processes, procedures, and historical information": "Thu thập các quy trình, thủ tục mẫu và thông tin dữ liệu lịch sử",
+            "Divide large projects into phases or smaller projects": "Chia các dự án lớn thành các giai đoạn hoặc các dự án nhỏ hơn để quản lý hiệu quả",
+            "Understand business case and benefits management plan": "Hiểu phương án kinh doanh (Business Case) và kế hoạch quản lý lợi ích dự án",
+            "Uncover initial requirements, assumptions, risks, constraints, and existing agreements": "Khám phá các yêu cầu ban đầu, các giả định, rủi ro, ràng buộc và các thỏa thuận hiện có",
+            "Assess project and product feasibility within the given constraints": "Đánh giá tính khả thi của dự án và sản phẩm trong phạm vi các ràng buộc cho trước",
+            "Create measurable objectives and success criteria": "Tạo ra các mục tiêu có thể đo lường được và các tiêu chí để đánh giá thành công",
+            "Develop project charter": "Phát triển Điều lệ dự án (Project Charter) để chính thức phê duyệt dự án",
+            "Identify stakeholders and determine their expectations, interest, influence, and impact": "Xác định các bên liên quan và phân tích kỳ vọng, lợi ích, tầm ảnh hưởng cùng tác động của họ",
+            "Request changes": "Yêu cầu thay đổi (Sửa đổi hoặc bổ sung thông tin)",
+            "Develop assumption log": "Phát triển nhật ký giả định (Assumption Log)",
+            "Develop stakeholder register": "Phát triển danh sách các bên liên quan (Stakeholder Register)",
+
+            // PLANNING
+            "Determine development approach, life cycle, and how you will plan for each knowledge area": "Xác định cách tiếp cận phát triển (Agile/Waterfall), vòng đời dự án và phương pháp lập kế hoạch cho từng lĩnh vực kiến thức",
+            "Define and prioritize requirements": "Xác định chi tiết và thiết lập thứ tự ưu tiên cho các yêu cầu",
+            "Create project scope statement": "Tạo văn bản tuyên bố phạm vi dự án (Project Scope Statement)",
+            "Assess what to purchase and create procurement documents": "Đánh giá những gì cần mua sắm từ bên ngoài và tạo các tài liệu đấu thầu/mua sắm",
+            "Determine planning team": "Xác định đội ngũ tham gia lập kế hoạch dự án",
+            "Create WBS and WBS dictionary": "Tạo cấu trúc phân rã công việc (WBS) và từ điển giải nghĩa WBS",
+            "Create activity list": "Tạo danh sách các hoạt động cụ thể cần làm",
+            "Create network diagram": "Tạo sơ đồ mạng dự án (Project Network Diagram) để thấy mối quan hệ giữa các task",
+            "Estimate resource requirements": "Ước tính các yêu cầu về mặt nguồn lực (Nhân sự, thiết bị, nguyên vật liệu)",
+            "Estimate activity durations and costs": "Ước tính thời gian thực hiện và chi phí của từng hoạt động",
+            "Determine critical path": "Xác định đường tới hạn (Critical Path - chuỗi hoạt động quyết định thời gian ngắn nhất hoàn thành dự án)",
+            "Develop schedule": "Phát triển thời gian biểu/tiến độ dự án tổng thể chi tiết",
+            "Develop budget": "Phát triển ngân sách dự án (Tổng hợp các chi phí cơ sở)",
+            "Determine quality standards, processes, and metrics": "Xác định các tiêu chuẩn chất lượng áp dụng, quy trình thực hiện và chỉ số đo lường",
+            "Determine team charter and all roles and responsibilities": "Xác định điều lệ đội ngũ (Team Charter) cùng tất cả vai trò và trách nhiệm của từng thành viên",
+            "Plan communications and stakeholder engagement": "Lập kế hoạch quản lý truyền thông và kế hoạch thúc đẩy sự tham gia của bên liên quan",
+            "Perform risk identification, qualitative and quantitative risk analysis, and risk response planning": "Thực hiện nhận diện rủi ro, phân tích rủi ro định tính & định lượng, và lập kế hoạch phương án ứng phó rủi ro",
+            "Go back—iterations": "Quay lại bước trước — thực hiện các vòng lặp để tối ưu hóa kế hoạch",
+            "Finalize procurement strategy and documents": "Hoàn thiện chiến lược mua sắm và các bộ hồ sơ thầu/mua sắm cuối cùng",
+            "Create change and configuration management plans": "Tạo kế hoạch quản lý thay đổi và kế hoạch quản lý cấu hình hệ thống",
+            "Finalize all management plans": "Hoàn thiện tất cả các kế hoạch quản lý thành phần thành một bộ hoàn chỉnh",
+            "Develop realistic and sufficient project management plan and baselines": "Phát triển kế hoạch quản lý dự án (Project Management Plan) và các đường cơ sở (Baselines) thực tế, khả thi",
+            "Gain formal approval of the plan": "Thu được sự phê duyệt chính thức bằng văn bản cho toàn bộ kế hoạch",
+            "Hold kickoff meeting": "Tổ chức cuộc họp khởi động (Kickoff Meeting) để truyền thông mục tiêu cho toàn đội ngũ",
+
+            // EXECUTING
+            "Execute work according to the project management plan": "Thực hiện triển khai công việc thực tế theo đúng kế hoạch quản lý dự án đã duyệt",
+            "Produce product deliverables (product scope)": "Tạo ra các sản phẩm bàn giao thực tế của dự án (Phạm vi sản phẩm)",
+            "Gather work performance data": "Thu thập dữ liệu thô về hiệu suất công việc thực tế (Ví dụ: số giờ làm, số lỗi)",
+            "Implement only approved changes": "Chỉ triển khai các yêu cầu thay đổi đã được Hội đồng phê duyệt chính thức",
+            "Continuously improve; perform progressive elaboration": "Cải tiến quy trình liên tục; thực hiện làm rõ dần các thông tin khi có thêm dữ liệu",
+            "Follow processes": "Tuân thủ nghiêm ngặt các quy trình làm việc đã quy định",
+            "Determine whether quality plan and processes are correct and effective": "Xác định xem kế hoạch chất lượng và các quy trình thực tế có chính xác và hiệu quả không",
+            "Perform quality audits and issue quality report": "Thực hiện kiểm toán chất lượng độc lập và ban hành báo cáo chất lượng",
+            "Acquire final team and physical resources": "Huy động đầy đủ nhân sự chính thức và các tài nguyên vật chất cho dự án",
+            "Manage people": "Quản lý và dẫn dắt con người trong đội ngũ",
+            "Evaluate team and individual performance; provide training": "Đánh giá hiệu suất của toàn đội ngũ cũng như từng cá nhân; cung cấp đào tạo nếu thiếu hụt kỹ năng",
+            "Hold team-building activities": "Tổ chức các hoạt động xây dựng tinh thần đồng đội (Team-building)",
+            "Give recognition and rewards": "Ghi nhận đóng góp và thực hiện khen thưởng kịp thời",
+            "Use issue logs": "Sử dụng và cập nhật nhật ký ghi nhận các vấn đề phát sinh (Issue Logs)",
+            "Facilitate conflict resolution": "Đứng ra giải quyết các xung đột phát sinh trong nội bộ dự án",
+            "Release resources as work is completed": "Giải phóng và hoàn trả nguồn lực (Nhân sự/thiết bị) khi công việc tương ứng hoàn thành",
+            "Send and receive information, and solicit feedback": "Gửi và nhận thông tin báo cáo, đồng thời thu thập ý kiến phản hồi từ các bên liên quan",
+            "Report on project performance": "Lập báo cáo chính thức về hiệu suất và tình hình hoạt động của dự án",
+            "Facilitate stakeholder engagement and manage expectations": "Thúc đẩy sự tham gia tích cực của các bên liên quan và quản lý tốt kỳ vọng của họ",
+            "Hold meetings": "Tổ chức và điều phối các cuộc họp dự án",
+            "Evaluate sellers; negotiate and contract with sellers": "Đánh giá hồ sơ nhà thầu; đàm phán các điều khoản và ký kết hợp đồng với nhà thầu",
+            "Use and share project knowledge": "Sử dụng tri thức hiện có và chia sẻ các kiến thức mới thu được trong quá trình làm việc",
+            "Execute contingency plans": "Thực hiện các kế hoạch dự phòng (Contingency Plans) khi các rủi ro đã xác định xảy ra",
+            "Update project management plan and project documents": "Cập nhật lại kế hoạch quản lý dự án và các tài liệu liên quan sau khi thực thi",
+
+            // MONITORING & CONTROLLING
+            "Take action to monitor and control the project": "Thực hiện các hành động cần thiết để giám sát sát sao và kiểm soát toàn bộ dự án",
+            "Measure performance against performance measurement baseline": "Đo lường hiệu suất thực tế so với đường cơ sở đo lường hiệu suất (Performance Measurement Baseline)",
+            "Measure performance against other metrics in the project management plan": "Đo lường hiệu suất dựa trên các chỉ số và KPI khác quy định trong kế hoạch",
+            "Analyze and evaluate data and performance": "Phân tích, xử lý dữ liệu thô và đánh giá xu hướng hiệu suất thực tế",
+            "Determine if variances warrant a corrective action or other change request(s)": "Xác định xem các sai lệch có nghiêm trọng đến mức phải ra hành động khắc phục (Corrective Action) hoặc yêu cầu thay đổi không",
+            "Influence factors that cause change": "Tác động và quản lý các yếu tố gốc rễ gây ra sự thay đổi để hạn chế thay đổi tiêu cực",
+            "Perform integrated change control": "Thực hiện quy trình kiểm soát thay đổi tích hợp (Integrated Change Control) một cách toàn diện",
+            "Approve or reject changes": "Đưa ra quyết định phê duyệt hoặc từ chối các yêu cầu thay đổi",
+            "Inform stakeholders of all change request results": "Thông báo minh bạch cho các bên liên quan về tất cả kết quả phê duyệt/từ chối thay đổi",
+            "Monitor stakeholder engagement": "Giám sát trạng thái và mức độ tương tác, tham gia của các bên liên quan",
+            "Confirm configuration compliance": "Xác nhận mức độ tuân thủ cấu hình của hệ thống/sản phẩm",
+            "Create forecasts": "Tạo các dự báo về tương lai dự án (Ví dụ: dự báo chi phí khi hoàn thành EAC, dự báo thời gian hoàn thành)",
+            "Gain customer's acceptance of interim deliverables": "Thu được sự nghiệm thu/chấp nhận chính thức của khách hàng đối với các sản phẩm bàn giao trung gian",
+            "Perform quality control": "Thực hiện kiểm soát chất lượng (Quality Control - kiểm tra trực tiếp sản phẩm đầu ra)",
+            "Perform risk reviews, reassessments, and audits": "Thực hiện đánh giá định kỳ, xem xét lại danh mục rủi ro và kiểm toán quy trình rủi ro",
+            "Manage reserves": "Quản lý và sử dụng các khoản ngân sách dự phòng (Contingency Reserves & Management Reserves)",
+            "Manage, evaluate, and close procurements": "Quản lý tiến độ thầu, đánh giá hiệu suất nhà thầu và tiến hành đóng các hợp đồng mua sắm thành phần",
+            "Evaluate use of physical resources": "Đánh giá mức độ hiệu quả trong việc khai thác và sử dụng các nguồn lực vật chất",
+
+            // CLOSING
+            "Confirm work is done to requirements": "Xác nhận và đối chiếu xem toàn bộ công việc đã hoàn thành đúng theo các yêu cầu ban đầu chưa",
+            "Complete final procurement closure": "Hoàn tất việc nghiệm thu và đóng hợp đồng mua sắm/thầu cuối cùng với các đối tác",
+            "Gain final acceptance of product": "Thu được sự chấp nhận và ký nghiệm thu bàn giao cuối cùng của toàn bộ sản phẩm/dự án từ khách hàng",
+            "Complete financial closure": "Hoàn tất tất cả các thủ tục quyết toán tài chính, đóng sổ sách kế toán dự án",
+            "Hand off completed product": "Chính thức chuyển giao sản phẩm đã hoàn thành hoàn chỉnh cho bộ phận vận hành hoặc khách hàng",
+            "Solicit customer's feedback about the project": "Thu thập ý kiến phản hồi và đánh giá mức độ hài lòng của khách hàng về quá trình triển khai dự án",
+            "Complete final performance reporting": "Hoàn thành bộ báo cáo tổng kết hiệu suất cuối cùng của dự án gửi các bên cấp cao",
+            "Index and archive records": "Lập chỉ mục thông minh và tiến hành lưu trữ toàn bộ hồ sơ dữ liệu dự án vào hệ thống chung",
+            "Gather final lessons learned and update knowledge bases": "Tập hợp các bài học kinh nghiệm xương máu cuối cùng (Lessons Learned) và cập nhật vào cơ sở tri thức của tổ chức"
+        };
+
+        const processChartContent = {
+            initiating: [
+                "Select project manager", "Determine company culture and existing systems",
+                "Collect processes, procedures, and historical information", "Divide large projects into phases or smaller projects",
+                "Understand business case and benefits management plan", "Uncover initial requirements, assumptions, risks, constraints, and existing agreements",
+                "Assess project and product feasibility within the given constraints", "Create measurable objectives and success criteria",
+                "Develop project charter", "Identify stakeholders and determine their expectations, interest, influence, and impact",
+                "Request changes", "Develop assumption log", "Develop stakeholder register"
+            ],
+            planning: [
+                "Determine development approach, life cycle, and how you will plan for each knowledge area",
+                "Define and prioritize requirements", "Create project scope statement",
+                "Assess what to purchase and create procurement documents", "Determine planning team",
+                "Create WBS and WBS dictionary", "Create activity list", "Create network diagram",
+                "Estimate resource requirements", "Estimate activity durations and costs",
+                "Determine critical path", "Develop schedule", "Develop budget",
+                "Determine quality standards, processes, and metrics", "Determine team charter and all roles and responsibilities",
+                "Plan communications and stakeholder engagement", "Perform risk identification, qualitative and quantitative risk analysis, and risk response planning",
+                "Go back—iterations", "Finalize procurement strategy and documents",
+                "Create change and configuration management plans", "Finalize all management plans",
+                "Develop realistic and sufficient project management plan and baselines", "Gain formal approval of the plan",
+                "Hold kickoff meeting", "Request changes"
+            ],
+            executing: [
+                "Execute work according to the project management plan", "Produce product deliverables (product scope)",
+                "Gather work performance data", "Request changes", "Implement only approved changes",
+                "Continuously improve; perform progressive elaboration", "Follow processes",
+                "Determine whether quality plan and processes are correct and effective", "Perform quality audits and issue quality report",
+                "Acquire final team and physical resources", "Manage people",
+                "Evaluate team and individual performance; provide training", "Hold team-building activities",
+                "Give recognition and rewards", "Use issue logs", "Facilitate conflict resolution",
+                "Release resources as work is completed", "Send and receive information, and solicit feedback",
+                "Report on project performance", "Facilitate stakeholder engagement and manage expectations",
+                "Hold meetings", "Evaluate sellers; negotiate and contract with sellers",
+                "Use and share project knowledge", "Execute contingency plans", "Update project management plan and project documents"
+            ],
+            monitoring: [
+                "Take action to monitor and control the project", "Measure performance against performance measurement baseline",
+                "Measure performance against other metrics in the project management plan", "Analyze and evaluate data and performance",
+                "Determine if variances warrant a corrective action or other change request(s)", "Influence factors that cause change",
+                "Request changes", "Perform integrated change control", "Approve or reject changes",
+                "Update project management plan and project documents", "Inform stakeholders of all change request results",
+                "Monitor stakeholder engagement", "Confirm configuration compliance", "Create forecasts",
+                "Gain customer's acceptance of interim deliverables", "Perform quality control",
+                "Perform risk reviews, reassessments, and audits", "Manage reserves",
+                "Manage, evaluate, and close procurements", "Evaluate use of physical resources"
+            ],
+            closing: [
+                "Confirm work is done to requirements", "Complete final procurement closure",
+                "Gain final acceptance of product", "Complete financial closure", "Hand off completed product",
+                "Solicit customer's feedback about the project", "Complete final performance reporting",
+                "Index and archive records", "Gather final lessons learned and update knowledge bases"
+            ]
+        };
+
+        const knowledgeAreas = [
+            "Integration Management", "Scope Management", "Schedule Management", 
+            "Cost Management", "Quality Management", "Resource Management", 
+            "Communications Management", "Risk Management", "Procurement Management", 
+            "Stakeholder Management"
+        ];
+
+        const container = document.getElementById('pages-container');
+
+        // Function to create a list of interactive items
+        const generateInteractiveList = (items) => {
+            return `<ul class="process-list">` + items.map(item => {
+                const escapedItem = item.replace(/'/g, "\'");
+                const translation = dictionary[item] || "Chưa có bản dịch cho mục này.";
+                const escapedTranslation = translation.replace(/'/g, "\'");
+                return `<li onclick="showPopup('${escapedItem}', '${escapedTranslation}')">${item}</li>`;
+            }).join('') + `</ul>`;
+        };
+
+        // Render remaining 10 pages cleanly with accurate content mappings
+        knowledgeAreas.forEach((area, index) => {
+            const pageNum = index + 2;
+            const pageHtml = `
+                <div class="page" id="page-${pageNum}">
+                    <div class="page-header">
+                        <h1>RMC LEARNING SOLUTIONS</h1>
+                        <h2>${area}</h2>
+                        <h3>Rita's Process Chart™: By Process Categories</h3>
+                    </div>
+                    
+                    <div class="process-chart">
+                        <div class="col initiating">
+                            <div class="col-header">INITIATING</div>
+                            ${generateInteractiveList(processChartContent.initiating)}
+                        </div>
+                        <div class="col planning">
+                            <div class="col-header">PLANNING<br><span>(This is the only process group with a set order.)</span></div>
+                            ${generateInteractiveList(processChartContent.planning)}
+                        </div>
+                        <div class="col executing">
+                            <div class="col-header">EXECUTING</div>
+                            ${generateInteractiveList(processChartContent.executing)}
+                        </div>
+                        <div class="col monitoring">
+                            <div class="col-header">MONITORING & CONTROLLING</div>
+                            ${generateInteractiveList(processChartContent.monitoring)}
+                        </div>
+                        <div class="col closing">
+                            <div class="col-header">CLOSING</div>
+                            ${generateInteractiveList(processChartContent.closing)}
+                        </div>
+                    </div>
+
+                    <div class="footer">
+                        <div class="footer-text">This article complements information in Rita Mulcahy's™ CAPM Exam Prep book, 5th edition.<br>If you are preparing for the CAPM, consider contacting RMC Learning Solutions at info@rmcls.com to find the best prep strategy for you.</div>
+                        <div class="page-num">p. ${pageNum} of 11</div>
+                    </div>
+                </div>
+            `;
+            container.innerHTML += pageHtml;
+        });
+
+        // Popup logic functions
+        function showPopup(original, translation) {
+            document.getElementById('modalOriginal').innerText = original;
+            document.getElementById('modalTranslated').innerText = translation;
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+    </script>
+</body>
+</html>

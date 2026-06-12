@@ -1,0 +1,247 @@
+{
+  "chapterId": "12_procurement_management",
+  "chapterNum": 12,
+  "chapterTitle": "Quản Lý Mua Sắm Dự Án",
+  "questions": [
+    {
+      "id": "ch12_q01",
+      "q": "Công ty bạn đang xem xét việc xây dựng một hệ thống phần mềm quản lý kho hàng. Sau khi phân tích, nhóm dự án nhận thấy rằng công ty không có đủ chuyên môn nội bộ và thiếu nhân lực có kinh nghiệm trong lĩnh vực này. Chi phí để tự phát triển ước tính là 500.000 USD trong 18 tháng, trong khi thuê ngoài chỉ tốn 350.000 USD. Ban quản lý muốn biết quyết định đúng đắn. Kỹ thuật nào sau đây là phù hợp nhất để hỗ trợ quyết định này?",
+      "opts": {
+        "A": "Phân tích giá trị kiếm được (Earned Value Analysis)",
+        "B": "Phân tích tự làm hay mua ngoài (Make-or-buy analysis)",
+        "C": "Phân tích điểm hòa vốn (Break-even analysis)",
+        "D": "Phân tích cây quyết định (Decision tree analysis)"
+      },
+      "ans": "B",
+      "exp": "Phân tích tự làm hay mua ngoài (Make-or-buy analysis) là kỹ thuật được sử dụng trong quá trình Lập kế hoạch Mua sắm để xác định liệu tổ chức nên tự thực hiện hay thuê ngoài. Kỹ thuật này xem xét các yếu tố như chi phí, năng lực nội bộ, rủi ro và các yếu tố chiến lược. Đây là công cụ chuẩn trong PMBOK cho quyết định mua sắm."
+    },
+    {
+      "id": "ch12_q02",
+      "q": "Một dự án xây dựng cầu đường đang trong giai đoạn đầu và phạm vi công việc chưa được xác định rõ ràng. Chủ đầu tư muốn ký hợp đồng với nhà thầu ngay lập tức để bắt đầu công việc thiết kế sơ bộ. Nhà thầu sẽ được thanh toán theo số giờ lao động thực tế và chi phí vật liệu cộng thêm một biên lợi nhuận cố định. Loại hợp đồng nào phù hợp nhất với tình huống này?",
+      "opts": {
+        "A": "Hợp đồng giá cố định (Firm Fixed Price - FFP)",
+        "B": "Hợp đồng giá cố định có điều chỉnh kinh tế (FP-EPA)",
+        "C": "Hợp đồng thời gian và vật liệu (Time and Material - T&M)",
+        "D": "Hợp đồng chi phí cộng phí cố định (Cost Plus Fixed Fee - CPFF)"
+      },
+      "ans": "C",
+      "exp": "Hợp đồng T&M (Thời gian và Vật liệu) phù hợp nhất khi phạm vi công việc chưa rõ ràng và cần bắt đầu ngay. Loại hợp đồng này thanh toán theo số giờ lao động thực tế và chi phí vật liệu thực tế. Tuy nhiên, rủi ro chi phí thuộc về bên mua (chủ đầu tư), vì vậy cần có cơ chế kiểm soát chặt chẽ. Hợp đồng FFP không phù hợp vì phạm vi chưa rõ; CPFF đòi hỏi ước lượng chi phí ban đầu."
+    },
+    {
+      "id": "ch12_q03",
+      "q": "Dự án phát triển phần mềm của bạn đã ký hợp đồng giá cố định có phí khuyến khích (FPIF) với nhà cung cấp. Chi phí mục tiêu là 200.000 USD, phí mục tiêu là 20.000 USD, và tỷ lệ chia sẻ chi phí là 80/20 (bên mua/bên bán). Chi phí trần là 240.000 USD. Nhà cung cấp hoàn thành dự án với chi phí thực tế là 180.000 USD. Tổng số tiền nhà cung cấp nhận được là bao nhiêu?",
+      "opts": {
+        "A": "200.000 USD",
+        "B": "204.000 USD",
+        "C": "220.000 USD",
+        "D": "224.000 USD"
+      },
+      "ans": "B",
+      "exp": "Trong hợp đồng FPIF: Chi phí tiết kiệm = 200.000 - 180.000 = 20.000 USD. Phần thưởng bên bán được = 20.000 × 20% = 4.000 USD. Tổng phí nhà cung cấp nhận = Phí mục tiêu + Phần thưởng = 20.000 + 4.000 = 24.000 USD. Tổng thanh toán = Chi phí thực tế + Tổng phí = 180.000 + 24.000 = 204.000 USD. Bên bán được khuyến khích hoàn thành dưới chi phí mục tiêu và chia sẻ lợi ích tiết kiệm."
+    },
+    {
+      "id": "ch12_q04",
+      "q": "Trong một dự án cơ sở hạ tầng dài hạn kéo dài 5 năm, Ban quản lý lo ngại về sự biến động giá nguyên vật liệu và lạm phát có thể ảnh hưởng đến chi phí hợp đồng. Nhà thầu từ chối ký hợp đồng giá cố định thuần túy (FFP) vì rủi ro quá cao. Loại hợp đồng nào sau đây giải quyết tốt nhất mối lo ngại này trong khi vẫn giữ được tính chắc chắn về giá?",
+      "opts": {
+        "A": "Hợp đồng giá cố định (Firm Fixed Price - FFP)",
+        "B": "Hợp đồng giá cố định có điều chỉnh kinh tế (Fixed Price with Economic Price Adjustment - FP-EPA)",
+        "C": "Hợp đồng chi phí cộng phí thưởng (Cost Plus Award Fee - CPAF)",
+        "D": "Hợp đồng thời gian và vật liệu (T&M)"
+      },
+      "ans": "B",
+      "exp": "Hợp đồng FP-EPA (Giá cố định có điều chỉnh kinh tế) được thiết kế đặc biệt cho các hợp đồng dài hạn, cho phép điều chỉnh giá theo các chỉ số kinh tế đã được thống nhất trước (như CPI, chỉ số giá vật liệu xây dựng). Điều này bảo vệ cả hai bên trước biến động giá trong thời gian dài, đồng thời duy trì cấu trúc giá cơ bản là cố định. FFP thuần túy sẽ buộc nhà thầu đưa ra mức dự phòng rủi ro rất cao."
+    },
+    {
+      "id": "ch12_q05",
+      "q": "Bạn là Quản lý Dự án và đang chuẩn bị tài liệu mua sắm cho một hệ thống ERP phức tạp. Tổ chức muốn nhà cung cấp đề xuất giải pháp tốt nhất của họ, bao gồm phương pháp luận, kinh nghiệm và chi phí tổng thể. Tiêu chí lựa chọn sẽ dựa trên nhiều yếu tố, không chỉ là giá thấp nhất. Loại tài liệu mua sắm nào phù hợp nhất?",
+      "opts": {
+        "A": "Yêu cầu báo giá (Request for Quotation - RFQ)",
+        "B": "Mời thầu (Invitation for Bid - IFB)",
+        "C": "Yêu cầu đề xuất (Request for Proposal - RFP)",
+        "D": "Đơn đặt hàng mua (Purchase Order)"
+      },
+      "ans": "C",
+      "exp": "RFP (Yêu cầu đề xuất) phù hợp nhất khi tổ chức muốn nhà cung cấp đề xuất giải pháp toàn diện, bao gồm phương pháp tiếp cận, kinh nghiệm và chi phí. RFP được dùng cho các mua sắm phức tạp, không thể xác định rõ ràng yêu cầu từ đầu. RFQ phù hợp cho hàng hóa/dịch vụ đơn giản có thể định giá ngay; IFB dùng khi lựa chọn duy nhất theo giá thấp nhất đáp ứng yêu cầu."
+    },
+    {
+      "id": "ch12_q06",
+      "q": "Trong quá trình thực hiện hợp đồng, nhà cung cấp phần mềm thông báo rằng họ đã hoàn thành 60% công việc theo kế hoạch nhưng chi phí thực tế đã vượt 40% so với ngân sách. Với hợp đồng Chi phí cộng phí cố định (CPFF) hiện tại, bên mua đang lo lắng về chi phí vượt dự toán. Ai là người chịu rủi ro chi phí chủ yếu trong loại hợp đồng này?",
+      "opts": {
+        "A": "Bên bán (nhà cung cấp) chịu toàn bộ rủi ro",
+        "B": "Rủi ro được chia đều 50/50 giữa hai bên",
+        "C": "Bên mua (chủ đầu tư) chịu phần lớn rủi ro chi phí",
+        "D": "Không bên nào chịu rủi ro vì có bảo hiểm hợp đồng"
+      },
+      "ans": "C",
+      "exp": "Trong hợp đồng CPFF (Chi phí cộng phí cố định), bên mua chịu phần lớn rủi ro chi phí vì phải thanh toán toàn bộ chi phí thực tế phát sinh cộng thêm một khoản phí cố định. Nếu chi phí tăng, bên mua phải trả thêm, trong khi phí của nhà cung cấp không thay đổi. Đây là đặc điểm của tất cả hợp đồng loại CR (Cost Reimbursable), ngược lại với FFP nơi bên bán chịu rủi ro chi phí."
+    },
+    {
+      "id": "ch12_q07",
+      "q": "Một Quản lý Dự án đang tổ chức hội nghị nhà thầu (bidder conference) trước khi nhận hồ sơ dự thầu cho dự án xây dựng nhà máy. Trong hội nghị, một nhà thầu tiềm năng đặt câu hỏi kỹ thuật quan trọng về yêu cầu đặc biệt trong phạm vi công việc. Quản lý Dự án nên xử lý câu hỏi này như thế nào?",
+      "opts": {
+        "A": "Trả lời riêng cho nhà thầu đó sau hội nghị qua email bí mật",
+        "B": "Từ chối trả lời vì câu hỏi quá cụ thể và chi tiết",
+        "C": "Trả lời câu hỏi và đảm bảo tất cả nhà thầu tiềm năng đều nhận được câu trả lời này",
+        "D": "Yêu cầu nhà thầu rút câu hỏi và nộp lại bằng văn bản sau hội nghị"
+      },
+      "ans": "C",
+      "exp": "Hội nghị nhà thầu nhằm đảm bảo tất cả nhà thầu tiềm năng có cùng thông tin và hiểu rõ yêu cầu mua sắm. Mọi câu hỏi và câu trả lời phải được chia sẻ với tất cả các nhà thầu tham gia để đảm bảo tính công bằng và minh bạch. Trả lời riêng cho một nhà thầu sẽ tạo ra lợi thế cạnh tranh không công bằng và vi phạm nguyên tắc mua sắm. Thường thì câu trả lời sẽ được phát hành dưới dạng phụ lục bổ sung cho tài liệu đấu thầu."
+    },
+    {
+      "id": "ch12_q08",
+      "q": "Dự án CNTT của bạn đang trong giai đoạn thực hiện hợp đồng. Nhà cung cấp đề xuất một thay đổi kỹ thuật nhỏ mà họ cho là sẽ cải thiện hiệu suất hệ thống nhưng không có trong hợp đồng ban đầu. Họ yêu cầu tăng thêm 15% giá trị hợp đồng. Bước đầu tiên bạn nên làm là gì?",
+      "opts": {
+        "A": "Chấp nhận thay đổi ngay lập tức vì nó có lợi cho dự án",
+        "B": "Từ chối hoàn toàn vì không có trong hợp đồng gốc",
+        "C": "Xem xét yêu cầu thay đổi thông qua hệ thống kiểm soát thay đổi hợp đồng",
+        "D": "Yêu cầu nhà cung cấp thực hiện thay đổi trước rồi xem xét thanh toán sau"
+      },
+      "ans": "C",
+      "exp": "Mọi thay đổi đối với hợp đồng phải được xử lý thông qua hệ thống kiểm soát thay đổi hợp đồng (contract change control system), là một phần của quá trình Kiểm soát Mua sắm. Hệ thống này xác định quy trình để thay đổi hợp đồng được xem xét, phê duyệt và ghi lại. Không được chấp nhận thay đổi miệng hoặc không chính thức. Mọi thay đổi phải được ghi lại bằng văn bản và được phê duyệt bởi những người có thẩm quyền."
+    },
+    {
+      "id": "ch12_q09",
+      "q": "Trong quá trình đàm phán hợp đồng, nhà cung cấp yêu cầu điều khoản thanh toán 50% trước khi bắt đầu công việc, nhưng tổ chức của bạn có chính sách không thanh toán trước khi nhận sản phẩm. Cả hai bên đã thảo luận nhiều vòng nhưng không đạt được thỏa thuận. Phương pháp đàm phán nào sau đây nên được áp dụng khi tiếp cận điều này?",
+      "opts": {
+        "A": "Yêu cầu nhà cung cấp chấp nhận điều khoản của bạn hoặc không ký hợp đồng",
+        "B": "Đồng ý với yêu cầu của nhà cung cấp để không mất cơ hội",
+        "C": "Tìm kiếm các giải pháp sáng tạo có thể đáp ứng nhu cầu cốt lõi của cả hai bên",
+        "D": "Chuyển vấn đề lên Ban quản lý cấp cao để ra quyết định"
+      },
+      "ans": "C",
+      "exp": "Đàm phán hợp đồng hiệu quả theo PMBOK nhấn mạnh việc tìm kiếm các giải pháp có lợi cho cả hai bên (win-win). Thay vì tập trung vào lập trường (positions), nên tìm hiểu nhu cầu cốt lõi (interests) của mỗi bên. Ví dụ, nhà cung cấp có thể cần đảm bảo dòng tiền - có thể giải quyết qua thư tín dụng, thanh toán theo mốc tiến độ, hoặc bảo lãnh ngân hàng thay vì thanh toán trước. Điều này giúp đạt thỏa thuận mà không vi phạm chính sách tổ chức."
+    },
+    {
+      "id": "ch12_q10",
+      "q": "Quản lý Dự án đang xem xét báo cáo hiệu suất từ nhà cung cấp dịch vụ vận hành hệ thống. Theo hợp đồng, nhà cung cấp phải đạt SLA 99.9% uptime hàng tháng, nhưng trong 3 tháng qua, tỷ lệ uptime chỉ đạt 99.1%, 98.7%, và 99.0%. Bước tiếp theo phù hợp nhất trong quá trình Kiểm soát Mua sắm là gì?",
+      "opts": {
+        "A": "Chấm dứt hợp đồng ngay lập tức do vi phạm SLA",
+        "B": "Tiến hành đánh giá hiệu suất hợp đồng và thảo luận biện pháp khắc phục với nhà cung cấp",
+        "C": "Điều chỉnh SLA trong hợp đồng xuống mức 99.0% cho phù hợp thực tế",
+        "D": "Chờ thêm 3 tháng để xem xu hướng có cải thiện không"
+      },
+      "ans": "B",
+      "exp": "Trong quá trình Kiểm soát Mua sắm, khi nhà cung cấp không đạt yêu cầu hiệu suất, bước tiếp theo là tiến hành đánh giá hiệu suất hợp đồng chính thức. Điều này bao gồm ghi lại sự không tuân thủ, thảo luận với nhà cung cấp về nguyên nhân và yêu cầu kế hoạch khắc phục (corrective action plan). Chấm dứt hợp đồng ngay là biện pháp cuối cùng và phải tuân theo các điều khoản hợp đồng về thông báo và quy trình. Điều chỉnh SLA xuống thấp hơn là không thể chấp nhận."
+    },
+    {
+      "id": "ch12_q11",
+      "q": "Tổ chức bạn đang thực hiện một dự án nghiên cứu phát triển với nhiều không chắc chắn cao. Phạm vi công việc không thể xác định đầy đủ ngay từ đầu. Nhà cung cấp có năng lực kỹ thuật cao nhưng lo ngại về rủi ro chi phí. Ban quản lý muốn khuyến khích nhà cung cấp kiểm soát chi phí trong khi vẫn đảm bảo họ sẵn sàng tham gia. Loại hợp đồng nào tốt nhất?",
+      "opts": {
+        "A": "Firm Fixed Price (FFP)",
+        "B": "Cost Plus Fixed Fee (CPFF)",
+        "C": "Cost Plus Incentive Fee (CPIF)",
+        "D": "Fixed Price Incentive Fee (FPIF)"
+      },
+      "ans": "C",
+      "exp": "Hợp đồng CPIF (Chi phí cộng phí khuyến khích) phù hợp nhất cho dự án R&D với nhiều không chắc chắn và cần khuyến khích kiểm soát chi phí. Trong CPIF, bên mua chịu chi phí thực tế (phù hợp cho công việc không xác định rõ), nhưng phí của nhà cung cấp thay đổi theo hiệu quả chi phí - họ nhận phí cao hơn nếu hoàn thành dưới chi phí mục tiêu. Điều này tạo ra sự cân bằng: bên mua chịu rủi ro phạm vi, nhà cung cấp có động lực kiểm soát chi phí. FFP quá rủi ro cho R&D; CPFF không có khuyến khích."
+    },
+    {
+      "id": "ch12_q12",
+      "q": "Nhóm dự án của bạn đang chuẩn bị phạm vi công việc mua sắm (Procurement Statement of Work - SOW) cho một hợp đồng tư vấn quản lý. Trưởng nhóm kỹ thuật đề xuất viết SOW rất tổng quát để cho nhà tư vấn linh hoạt. Quản lý tài chính lại muốn SOW cực kỳ chi tiết. Thực hành tốt nhất về nội dung SOW là gì?",
+      "opts": {
+        "A": "SOW nên tổng quát để tránh giới hạn sự sáng tạo của nhà cung cấp",
+        "B": "SOW phải chi tiết đầy đủ để nhà cung cấp có thể xác định những gì cần thực hiện",
+        "C": "SOW chỉ cần mô tả kết quả cuối cùng, không cần chi tiết quá trình",
+        "D": "SOW chỉ quan trọng với hợp đồng giá cố định, không cần thiết với hợp đồng T&M"
+      },
+      "ans": "B",
+      "exp": "Phạm vi công việc mua sắm (Procurement SOW) phải đủ chi tiết để nhà cung cấp có thể xác định được những gì cần thực hiện và từ đó chuẩn bị đề xuất/báo giá chính xác. SOW quá tổng quát sẽ dẫn đến tranh chấp, hiểu lầm, và các yêu cầu thay đổi sau này. SOW cần mô tả rõ phạm vi, yêu cầu chất lượng, tiêu chuẩn kỹ thuật, thời gian, vị trí thực hiện và các điều kiện liên quan. Mức độ chi tiết phụ thuộc vào bản chất công việc nhưng luôn phải đủ rõ ràng."
+    },
+    {
+      "id": "ch12_q13",
+      "q": "Bạn đang đánh giá hồ sơ dự thầu cho một dự án triển khai hệ thống an ninh mạng quan trọng. Có 5 nhà thầu nộp hồ sơ. Nhà thầu A có giá thầu thấp nhất nhưng thiếu kinh nghiệm trong lĩnh vực an ninh mạng. Nhà thầu B có giá cao hơn 20% nhưng có chứng chỉ bảo mật hàng đầu và nhiều dự án tương tự thành công. Hệ thống đánh giá dựa trên trọng số đã cho Nhà thầu B điểm cao hơn tổng thể. Bạn nên làm gì?",
+      "opts": {
+        "A": "Chọn Nhà thầu A để tiết kiệm chi phí 20%",
+        "B": "Chọn Nhà thầu B dựa trên kết quả đánh giá có trọng số đã được xác định trước",
+        "C": "Yêu cầu Nhà thầu A và B đàm phán lại giá để tìm điểm trung bình",
+        "D": "Mở thầu lại vì sự chênh lệch giá giữa các nhà thầu quá lớn"
+      },
+      "ans": "B",
+      "exp": "Hệ thống đánh giá có trọng số (weighted scoring system) trong tiêu chí lựa chọn nguồn (source selection criteria) được thiết lập trước quá trình đánh giá để đảm bảo tính khách quan và nhất quán. Kết quả đánh giá tổng thể là cơ sở đưa ra quyết định. Trong các dự án có yêu cầu kỹ thuật cao như an ninh mạng, năng lực kỹ thuật và kinh nghiệm thường có trọng số cao hơn giá. Việc chọn nhà thầu giá thấp nhất mà không đủ năng lực có thể dẫn đến thất bại dự án và chi phí khắc phục còn cao hơn."
+    },
+    {
+      "id": "ch12_q14",
+      "q": "Trong giai đoạn thực hiện dự án xây dựng nhà máy, nhà thầu phụ trách hệ thống điện đệ trình yêu cầu bồi thường (claim) trị giá 2 triệu USD, cho rằng chủ đầu tư đã làm chậm tiến độ của họ do chậm trễ trong việc bàn giao mặt bằng. Chủ đầu tư từ chối vì cho rằng sự chậm trễ là do nhà thầu không chuẩn bị đủ nhân lực. Bước đầu tiên trong quản lý tranh chấp là gì?",
+      "opts": {
+        "A": "Chủ đầu tư nên chấp nhận claim để duy trì quan hệ tốt với nhà thầu",
+        "B": "Nhà thầu nên rút claim vì rủi ro mất hợp đồng tương lai",
+        "C": "Cả hai bên nên cố gắng giải quyết qua thương lượng trực tiếp trước khi dùng phương pháp khác",
+        "D": "Chuyển ngay vụ việc ra trọng tài theo điều khoản hợp đồng"
+      },
+      "ans": "C",
+      "exp": "Theo PMBOK, quản lý khiếu nại (claims administration) khuyến khích các bên cố gắng giải quyết tranh chấp qua thương lượng trực tiếp (negotiation) trước tiên. Đây là phương pháp ít tốn kém và nhanh nhất. Nếu thương lượng không thành công, mới chuyển sang các bước tiếp theo như hòa giải (mediation), trọng tài (arbitration), hoặc kiện tụng tòa án. Hợp đồng thường quy định quy trình xử lý khiếu nại bao gồm ghi nhận, phân tích bằng chứng, và leo thang tranh chấp theo thứ tự."
+    },
+    {
+      "id": "ch12_q15",
+      "q": "Dự án của bạn sắp kết thúc và bạn cần thực hiện Đóng Mua sắm (Close Procurements). Nhà cung cấp đã bàn giao tất cả sản phẩm và dịch vụ theo hợp đồng, nhưng vẫn còn một số hạng mục bảo hành chưa được giải quyết. Điều nào sau đây là KHÔNG ĐÚNG về quá trình Đóng Mua sắm?",
+      "opts": {
+        "A": "Đóng Mua sắm bao gồm việc xác nhận tất cả công việc và sản phẩm bàn giao đã được chấp nhận",
+        "B": "Đóng Mua sắm tự động giải phóng nhà cung cấp khỏi tất cả nghĩa vụ bảo hành",
+        "C": "Các hợp đồng phụ phải được đóng trước khi đóng hợp đồng chính",
+        "D": "Hồ sơ mua sắm được lưu trữ là một đầu ra quan trọng của Đóng Mua sắm"
+      },
+      "ans": "B",
+      "exp": "Đóng Mua sắm KHÔNG tự động giải phóng nhà cung cấp khỏi các nghĩa vụ bảo hành. Các điều khoản bảo hành trong hợp đồng vẫn còn hiệu lực sau khi đóng hợp đồng theo thời gian quy định. Đóng Mua sắm xác nhận rằng tất cả công việc và sản phẩm bàn giao đã hoàn thành và được chấp nhận, và thực hiện giải quyết tài chính cuối cùng. Hợp đồng phụ phải đóng trước hợp đồng chính là thực hành đúng. Lưu trữ hồ sơ là đầu ra quan trọng để phục vụ bài học kinh nghiệm và các dự án tương lai."
+    },
+    {
+      "id": "ch12_q16",
+      "q": "Một dự án xây dựng trung tâm dữ liệu đang sử dụng hợp đồng Chi phí cộng phí thưởng (Cost Plus Award Fee - CPAF). Nhà thầu đã hoàn thành công việc với chất lượng xuất sắc và trước hạn 2 tuần. Ban giám khảo đánh giá hiệu suất và quyết định mức phí thưởng sẽ nhận. Điều nào sau đây là đặc điểm phân biệt CPAF với CPIF?",
+      "opts": {
+        "A": "Trong CPAF, mức phí thưởng được tính theo công thức toán học cố định",
+        "B": "Trong CPAF, quyết định về mức phí thưởng hoàn toàn phụ thuộc vào đánh giá chủ quan của bên mua và thường không thể khiếu nại",
+        "C": "Trong CPAF, bên mua không chịu rủi ro chi phí như trong CPIF",
+        "D": "CPAF chỉ áp dụng cho các dự án xây dựng, còn CPIF cho các dự án phần mềm"
+      },
+      "ans": "B",
+      "exp": "Đặc điểm phân biệt quan trọng nhất của CPAF là mức phí thưởng (award fee) được quyết định dựa trên đánh giá chủ quan của bên mua về hiệu suất tổng thể - không có công thức toán học cụ thể như trong CPIF. Quyết định này thường không thể tranh chấp hoặc khiếu nại. Bên mua vẫn chịu rủi ro chi phí trong CPAF cũng như CPIF vì cả hai đều là hợp đồng loại CR. CPIF có công thức chia sẻ chi phí và phí được xác định trước theo toán học, tạo tính minh bạch hơn."
+    },
+    {
+      "id": "ch12_q17",
+      "q": "Quản lý Dự án nhận thấy rằng nhà cung cấp tư vấn liên tục gửi hóa đơn vượt quá số giờ làm việc đã được phê duyệt trong hợp đồng T&M. Trong 3 tháng qua, hóa đơn đều cao hơn 25-30% so với ước tính. Không có thay đổi phạm vi nào được phê duyệt. Bước quan trọng nhất cần thực hiện ngay là gì?",
+      "opts": {
+        "A": "Thanh toán tất cả hóa đơn để duy trì quan hệ tốt với nhà tư vấn",
+        "B": "Từ chối thanh toán toàn bộ hóa đơn cho đến khi vấn đề được giải quyết",
+        "C": "Yêu cầu nhà cung cấp cung cấp hồ sơ chứng từ chi tiết và đối chiếu với công việc thực tế đã thực hiện",
+        "D": "Chấm dứt hợp đồng ngay do vi phạm điều khoản hợp đồng"
+      },
+      "ans": "C",
+      "exp": "Trong hợp đồng T&M, hệ thống thanh toán (payment systems) là một phần quan trọng của kiểm soát mua sắm. Khi phát hiện bất thường trong hóa đơn, Quản lý Dự án phải yêu cầu chứng từ chi tiết (timesheet, nhật ký công việc, báo cáo hoạt động) và đối chiếu với phạm vi công việc thực tế. Hợp đồng T&M đặc biệt dễ xảy ra tình trạng chi phí leo thang do không có giới hạn tổng chi phí tự nhiên, vì vậy cần giám sát chặt chẽ. Từ chối toàn bộ hoặc chấm dứt hợp đồng ngay là quá vội vàng khi chưa có đủ bằng chứng."
+    },
+    {
+      "id": "ch12_q18",
+      "q": "Tổ chức của bạn đang lập kế hoạch mua một thiết bị máy móc chuyên dụng. Phân tích cho thấy: mua mới tốn 500.000 USD và có thể khấu hao trong 10 năm; thuê ngoài dịch vụ tương đương tốn 60.000 USD/năm. Ban quản lý muốn bạn xác định điểm hòa vốn để hỗ trợ quyết định. Sau bao nhiêu năm thì chi phí mua sẽ bằng chi phí thuê?",
+      "opts": {
+        "A": "Khoảng 6 năm",
+        "B": "Khoảng 7 năm",
+        "C": "Khoảng 8 năm",
+        "D": "Khoảng 9 năm"
+      },
+      "ans": "C",
+      "exp": "Điểm hòa vốn (Break-even point) trong phân tích tự làm hay mua ngoài: Chi phí mua = Chi phí thuê × Số năm. 500.000 = 60.000 × N → N = 500.000 / 60.000 ≈ 8.33 năm, tức là khoảng 8 năm. Trước 8 năm, thuê ngoài rẻ hơn; sau 8 năm, mua sẽ tiết kiệm hơn. Trong phân tích thực tế cần xem xét thêm các yếu tố như chi phí vận hành, bảo trì, giá trị còn lại của thiết bị, và giá trị thời gian của tiền."
+    },
+    {
+      "id": "ch12_q19",
+      "q": "Bạn vừa nhận được đề xuất từ 4 nhà cung cấp cho một dự án phát triển hệ thống. Một trong số đó có giá rất thấp, thấp hơn 40% so với các nhà thầu khác. Nhà cung cấp này đã thắng nhiều thầu trước đây với giá thấp nhưng thường gặp khó khăn về dòng tiền trong quá trình thực hiện và đôi khi không hoàn thành hợp đồng. Hành động thích hợp nhất cần thực hiện là gì?",
+      "opts": {
+        "A": "Chọn nhà cung cấp giá thấp nhất vì tiết kiệm ngân sách là ưu tiên hàng đầu",
+        "B": "Loại nhà cung cấp này ngay vì giá quá thấp cho thấy họ không hiểu yêu cầu",
+        "C": "Đánh giá đề xuất toàn diện bao gồm năng lực tài chính, kinh nghiệm và rủi ro, không chỉ giá",
+        "D": "Yêu cầu tất cả nhà cung cấp nộp lại báo giá theo cùng mức giá trung bình"
+      },
+      "ans": "C",
+      "exp": "Tiêu chí lựa chọn nguồn (source selection criteria) trong PMBOK không chỉ bao gồm giá mà còn đánh giá năng lực kỹ thuật, kinh nghiệm liên quan, sức mạnh tài chính, và rủi ro tổng thể. Giá thầu bất thường thấp (abnormally low bids) là dấu hiệu cảnh báo - có thể nhà cung cấp đã tính toán sai, sẽ tìm cách cắt giảm chất lượng, hoặc gặp khó khăn tài chính. Trong trường hợp này, lịch sử dòng tiền kém và hợp đồng chưa hoàn thành là yếu tố rủi ro nghiêm trọng cần xem xét trong đánh giá toàn diện."
+    },
+    {
+      "id": "ch12_q20",
+      "q": "Vào cuối dự án, Quản lý Dự án thực hiện Đóng Mua sắm cho hợp đồng bảo trì hệ thống. Nhà cung cấp đã hoàn thành tất cả công việc trong hợp đồng, nhưng Quản lý Dự án phát hiện rằng một số tài liệu kỹ thuật do nhà cung cấp bàn giao không đáp ứng tiêu chuẩn định dạng quy định. Nhà cung cấp cho rằng tiêu chuẩn định dạng không được nêu rõ trong hợp đồng. Phương pháp giải quyết tốt nhất là gì?",
+      "opts": {
+        "A": "Đóng hợp đồng và chấp nhận tài liệu vì công việc kỹ thuật đã hoàn thành",
+        "B": "Từ chối đóng hợp đồng cho đến khi nhà cung cấp định dạng lại tất cả tài liệu",
+        "C": "Xem xét ngôn ngữ hợp đồng và SOW để xác định yêu cầu thực sự và đàm phán giải pháp phù hợp",
+        "D": "Giữ lại toàn bộ khoản thanh toán cuối cùng cho đến khi tranh chấp được giải quyết qua tòa án"
+      },
+      "ans": "C",
+      "exp": "Khi có tranh chấp về việc liệu một yêu cầu có nằm trong phạm vi hợp đồng hay không, bước đầu tiên là xem xét cẩn thận ngôn ngữ hợp đồng gốc và phạm vi công việc (SOW). Nếu tiêu chuẩn định dạng không được nêu rõ, đây có thể là thiếu sót trong SOW ban đầu. Trong trường hợp này, việc đàm phán giải pháp hợp lý (ví dụ: nhà cung cấp điều chỉnh một phần tài liệu quan trọng, hoặc thỏa thuận về định dạng cho lần sau) thường tốt hơn là đối đầu. Quá trình Đóng Mua sắm bao gồm việc giải quyết mọi vấn đề tồn đọng trước khi phát hành xác nhận đóng chính thức."
+    }
+  ]
+}

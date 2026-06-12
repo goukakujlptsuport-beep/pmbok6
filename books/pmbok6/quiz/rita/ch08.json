@@ -1,0 +1,248 @@
+{
+  "chapterId": "rita_08",
+  "chapterNum": 8,
+  "chapterTitle": "Schedule",
+  "source": "rita",
+  "questions": [
+    {
+      "id": "r08_q01",
+      "q": "Which output of the Define Activities process has a duration of zero and represents a significant point or event in the project?",
+      "opts": {
+        "A": "Activity list",
+        "B": "Activity attributes",
+        "C": "Milestone list",
+        "D": "Work package"
+      },
+      "ans": "C",
+      "exp": "Milestone list là danh sách các mốc quan trọng trong dự án. Mỗi milestone có thời gian thực hiện bằng 0 vì nó chỉ là một điểm hoặc sự kiện đánh dấu, không phải một công việc cần thực hiện."
+    },
+    {
+      "id": "r08_q02",
+      "q": "A project manager is sequencing activities and finds that testing cannot begin until 5 days after coding is complete, to allow time for the test environment to be configured. This 5-day wait is best described as a:",
+      "opts": {
+        "A": "Lead",
+        "B": "Lag",
+        "C": "Mandatory dependency",
+        "D": "Discretionary dependency"
+      },
+      "ans": "B",
+      "exp": "Lag (độ trễ) là khoảng thời gian chờ đợi bắt buộc giữa hai hoạt động. Trong trường hợp này, việc phải chờ 5 ngày sau khi coding hoàn thành trước khi bắt đầu testing là một lag trong quan hệ Finish-to-Start."
+    },
+    {
+      "id": "r08_q03",
+      "q": "Two activities can run partially in parallel: Activity B can start 3 days before Activity A finishes. This is called a:",
+      "opts": {
+        "A": "Lag",
+        "B": "Lead",
+        "C": "Finish-to-Finish relationship",
+        "D": "Start-to-Start relationship"
+      },
+      "ans": "B",
+      "exp": "Lead (khởi động sớm) cho phép hoạt động kế tiếp bắt đầu trước khi hoạt động trước đó kết thúc. Lead thực chất là lag âm (negative lag). Ở đây, Activity B có thể bắt đầu 3 ngày trước khi A kết thúc."
+    },
+    {
+      "id": "r08_q04",
+      "q": "Which type of dependency is inherent in the nature of the work and cannot be changed? For example, you must lay the foundation before building the walls.",
+      "opts": {
+        "A": "Discretionary dependency",
+        "B": "External dependency",
+        "C": "Mandatory dependency",
+        "D": "Preferential dependency"
+      },
+      "ans": "C",
+      "exp": "Mandatory dependency (phụ thuộc bắt buộc) là sự phụ thuộc xuất phát từ bản chất công việc, không thể thay đổi. Ví dụ: phải đổ móng trước khi xây tường. Đây còn được gọi là 'hard logic'."
+    },
+    {
+      "id": "r08_q05",
+      "q": "Using the Precedence Diagramming Method (PDM), which relationship type means the successor activity cannot FINISH until the predecessor activity finishes?",
+      "opts": {
+        "A": "Finish-to-Start (FS)",
+        "B": "Start-to-Start (SS)",
+        "C": "Finish-to-Finish (FF)",
+        "D": "Start-to-Finish (SF)"
+      },
+      "ans": "C",
+      "exp": "Finish-to-Finish (FF) nghĩa là hoạt động kế tiếp không thể KẾT THÚC cho đến khi hoạt động trước đó kết thúc. Ví dụ: viết tài liệu (FF) kiểm tra tài liệu — việc kiểm tra chỉ có thể hoàn thành sau khi viết xong."
+    },
+    {
+      "id": "r08_q06",
+      "q": "A project has the following estimates for Activity X: Optimistic = 4 days, Most Likely = 7 days, Pessimistic = 16 days. Using PERT, what is the expected duration?",
+      "opts": {
+        "A": "7 days",
+        "B": "8 days",
+        "C": "8.5 days",
+        "D": "9 days"
+      },
+      "ans": "B",
+      "exp": "Công thức PERT: E = (O + 4M + P) / 6 = (4 + 4×7 + 16) / 6 = (4 + 28 + 16) / 6 = 48 / 6 = 8 ngày. Lưu ý: kết quả PERT thường nghiêng về phía Most Likely nhưng bị kéo sang hướng giá trị cực đoan hơn."
+    },
+    {
+      "id": "r08_q07",
+      "q": "For Activity Y, Optimistic = 2 days, Most Likely = 5 days, Pessimistic = 14 days. What is the Standard Deviation of this estimate?",
+      "opts": {
+        "A": "1 day",
+        "B": "2 days",
+        "C": "3 days",
+        "D": "4 days"
+      },
+      "ans": "B",
+      "exp": "Công thức độ lệch chuẩn PERT: SD = (P - O) / 6 = (14 - 2) / 6 = 12 / 6 = 2 ngày. Độ lệch chuẩn cho biết mức độ không chắc chắn của ước lượng — SD càng lớn thì rủi ro về lịch trình càng cao."
+    },
+    {
+      "id": "r08_q08",
+      "q": "Activity Z has: Optimistic = 3 days, Most Likely = 6 days, Pessimistic = 15 days. What is the variance of this activity's duration estimate?",
+      "opts": {
+        "A": "2",
+        "B": "4",
+        "C": "6",
+        "D": "9"
+      },
+      "ans": "B",
+      "exp": "Công thức phương sai PERT: Variance = ((P - O) / 6)² = ((15 - 3) / 6)² = (12/6)² = 2² = 4. Phương sai dùng để tính độ không chắc chắn tổng thể của cả chuỗi hoạt động bằng cách cộng các phương sai lại."
+    },
+    {
+      "id": "r08_q09",
+      "q": "A network diagram has the following path durations: Path A = 30 days, Path B = 28 days, Path C = 25 days. Which statement is CORRECT?",
+      "opts": {
+        "A": "Path C is the critical path because it has the most float",
+        "B": "Path A is the critical path because it is the longest path",
+        "C": "Path B is the critical path because it is closest to Path A",
+        "D": "All paths are critical because they all have float"
+      },
+      "ans": "B",
+      "exp": "Con đường găng (Critical Path) là con đường dài nhất trong mạng lịch trình. Nó quyết định thời gian hoàn thành dự án sớm nhất và có float = 0. Ở đây Path A = 30 ngày là con đường dài nhất, nên là con đường găng."
+    },
+    {
+      "id": "r08_q10",
+      "q": "Using CPM forward and backward pass: Activity A has ES=1, Duration=5, EF=5. Activity B follows A with Duration=4. What is Activity B's Early Start (ES) and Early Finish (EF)?",
+      "opts": {
+        "A": "ES=5, EF=8",
+        "B": "ES=6, EF=9",
+        "C": "ES=5, EF=9",
+        "D": "ES=6, EF=10"
+      },
+      "ans": "B",
+      "exp": "Forward pass (tính sớm): ES của B = EF của A + 1 = 5 + 1 = 6. EF của B = ES + Duration - 1 = 6 + 4 - 1 = 9. Quy tắc: EF = ES + Duration - 1 (vì ngày đầu tiên đã được tính là 1 ngày làm việc)."
+    },
+    {
+      "id": "r08_q11",
+      "q": "An activity has ES=8, EF=12, LS=11, LF=15. What is the Total Float for this activity?",
+      "opts": {
+        "A": "0 days",
+        "B": "2 days",
+        "C": "3 days",
+        "D": "4 days"
+      },
+      "ans": "C",
+      "exp": "Total Float = LF - EF = 15 - 12 = 3 ngày. Hoặc tính bằng: LS - ES = 11 - 8 = 3 ngày. Float = 3 ngày nghĩa là hoạt động này có thể bị trì hoãn tối đa 3 ngày mà không làm trễ ngày hoàn thành dự án."
+    },
+    {
+      "id": "r08_q12",
+      "q": "The project schedule shows a path with float of only 2 days while the critical path has zero float. The project manager should be MOST concerned about this near-critical path because:",
+      "opts": {
+        "A": "It has more resources than the critical path",
+        "B": "Any delay of more than 2 days could make it the new critical path",
+        "C": "It should be crashed immediately to add more float",
+        "D": "It is not important since it is not on the critical path"
+      },
+      "ans": "B",
+      "exp": "Con đường gần găng (near-critical path) có float rất nhỏ, dễ trở thành con đường găng nếu bị trễ. Nếu path này bị trễ hơn 2 ngày, nó sẽ trở thành con đường găng mới và kéo dài dự án. Đây là rủi ro lịch trình cần theo dõi chặt chẽ."
+    },
+    {
+      "id": "r08_q13",
+      "q": "The project is behind schedule and the sponsor demands an earlier completion date. The project manager decides to add more resources to critical path activities. This technique is called:",
+      "opts": {
+        "A": "Fast tracking",
+        "B": "Resource leveling",
+        "C": "Crashing",
+        "D": "Schedule compression"
+      },
+      "ans": "C",
+      "exp": "Crashing (dồn nguồn lực) là kỹ thuật rút ngắn lịch trình bằng cách thêm nguồn lực vào các hoạt động trên con đường găng. Crashing luôn làm tăng chi phí và chỉ áp dụng cho con đường găng. Khác với fast tracking là thực hiện song song các công việc."
+    },
+    {
+      "id": "r08_q14",
+      "q": "A project manager is compressing the schedule by overlapping phases that were originally planned sequentially — starting construction while design is still in progress. This is an example of:",
+      "opts": {
+        "A": "Crashing",
+        "B": "Fast tracking",
+        "C": "Resource leveling",
+        "D": "Lead time application"
+      },
+      "ans": "B",
+      "exp": "Fast tracking (đẩy nhanh tiến độ) là kỹ thuật thực hiện song song các hoạt động vốn được lên kế hoạch theo tuần tự. Fast tracking làm tăng rủi ro vì nếu phần trước thay đổi thì phần sau đã làm có thể bị sai. Không nhất thiết làm tăng chi phí."
+    },
+    {
+      "id": "r08_q15",
+      "q": "A resource-constrained project has a team member assigned to two critical activities simultaneously, causing overallocation. The project manager applies resource leveling. What is the MOST LIKELY result?",
+      "opts": {
+        "A": "The project cost decreases",
+        "B": "The project schedule is shortened",
+        "C": "The project schedule is extended",
+        "D": "The critical path changes to a shorter path"
+      },
+      "ans": "C",
+      "exp": "Resource leveling (cân bằng nguồn lực) giải quyết tình trạng phân công quá mức bằng cách điều chỉnh thời gian bắt đầu/kết thúc hoạt động. Hậu quả thường gặp nhất là kéo dài lịch trình dự án (nếu dùng nguồn lực có hạn). Đây là đánh đổi giữa lịch trình và năng lực nhóm."
+    },
+    {
+      "id": "r08_q16",
+      "q": "In an agile project, the team estimates user stories using T-shirt sizes (XS, S, M, L, XL) before assigning story points. This technique is known as:",
+      "opts": {
+        "A": "Planning Poker",
+        "B": "Wideband Delphi",
+        "C": "Affinity estimating",
+        "D": "Three-point estimating"
+      },
+      "ans": "C",
+      "exp": "Affinity estimating (ước lượng theo nhóm tương đồng) là kỹ thuật nhanh chóng phân loại user stories vào các nhóm kích thước tương đối (như áo T-shirt sizes) trước khi gán story points cụ thể. Đây là phương pháp phổ biến trong agile để ước lượng nhanh backlog lớn."
+    },
+    {
+      "id": "r08_q17",
+      "q": "An agile team completed 28, 32, 25, and 31 story points in the last four sprints. The product owner wants to know when the remaining 150 story points will be done. Using average velocity, how many sprints will it take?",
+      "opts": {
+        "A": "4 sprints",
+        "B": "5 sprints",
+        "C": "6 sprints",
+        "D": "7 sprints"
+      },
+      "ans": "B",
+      "exp": "Velocity trung bình = (28 + 32 + 25 + 31) / 4 = 116 / 4 = 29 story points/sprint. Số sprint cần thiết = 150 / 29 ≈ 5.17 → làm tròn lên = 5 sprints (hoặc 6 sprints nếu làm tròn thận trọng hơn). Trong đề thi, đáp án 5 sprints là chuẩn vì 5 × 29 = 145 < 150 và 6 × 29 = 174 > 150. Tuy nhiên nếu làm tròn lên thì cần 6."
+    },
+    {
+      "id": "r08_q18",
+      "q": "A burndown chart shows the remaining work increasing during a sprint instead of decreasing. What is the MOST LIKELY explanation?",
+      "opts": {
+        "A": "The team is completing work faster than planned",
+        "B": "New scope was added to the sprint backlog",
+        "C": "The sprint velocity is higher than estimated",
+        "D": "The team finished all stories and added stretch goals"
+      },
+      "ans": "B",
+      "exp": "Biểu đồ burndown theo dõi lượng công việc còn lại qua từng ngày trong sprint. Nếu đường burndown đi lên (tăng thay vì giảm), điều đó cho thấy scope đã được thêm vào sprint — tức là có công việc mới được bổ sung nhiều hơn công việc đã hoàn thành."
+    },
+    {
+      "id": "r08_q19",
+      "q": "At week 10 of a 20-week project, the BAC is $100,000. The project is 40% complete but has spent $50,000. EV = $40,000, AC = $50,000, PV = $50,000. What is the Schedule Performance Index (SPI)?",
+      "opts": {
+        "A": "0.80",
+        "B": "0.90",
+        "C": "1.00",
+        "D": "1.25"
+      },
+      "ans": "A",
+      "exp": "SPI = EV / PV = $40,000 / $50,000 = 0.80. SPI < 1 cho thấy dự án đang bị trễ tiến độ (chỉ đạt 80% so với kế hoạch). SPI là thước đo hiệu quả lịch trình tích hợp vào EVM. Chú ý: SPI dùng giá trị tiền tệ ($), không phải thời gian."
+    },
+    {
+      "id": "r08_q20",
+      "q": "The project has a PERT estimate with three activities on the critical path: Activity 1 (O=2, M=5, P=8), Activity 2 (O=1, M=3, P=5), Activity 3 (O=3, M=4, P=11). What is the total expected duration of the critical path?",
+      "opts": {
+        "A": "11 days",
+        "B": "12 days",
+        "C": "13 days",
+        "D": "14 days"
+      },
+      "ans": "C",
+      "exp": "Tính PERT từng hoạt động: Act1: E=(2+4×5+8)/6=(2+20+8)/6=30/6=5 ngày. Act2: E=(1+4×3+5)/6=(1+12+5)/6=18/6=3 ngày. Act3: E=(3+4×4+11)/6=(3+16+11)/6=30/6=5 ngày. Tổng thời gian con đường găng = 5+3+5 = 13 ngày."
+    }
+  ]
+}

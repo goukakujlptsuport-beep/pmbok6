@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rita's Agile Process Chart™ - Interactive Version</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            color: #222;
+        }
+        .page {
+            max-width: 1300px;
+            margin: 0 auto 40px auto;
+            background: #fff;
+            padding: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            position: relative;
+        }
+        .page-header {
+            color: #004b87;
+            border-bottom: 3px solid #004b87;
+            padding-bottom: 12px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .page-header h1 {
+            margin: 0;
+            font-size: 1.8em;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        .page-header h2 {
+            margin: 5px 0 0 0;
+            font-size: 1.6em;
+            color: #0073e6;
+            font-weight: 600;
+        }
+        .process-chart {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            align-items: flex-start;
+            margin-top: 25px;
+            padding-bottom: 10px;
+        }
+        .col {
+            flex: 1;
+            min-width: 220px;
+            border: 1px solid #999;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            background-color: #fafafa;
+        }
+        .col-header {
+            padding: 15px 12px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.05em;
+            border-bottom: 2px solid #888;
+            min-height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .col-header:hover {
+            opacity: 0.9;
+        }
+        
+        /* Specific column colors for Agile */
+        .feasibility .col-header { background-color: #fce4d6; color: #a54800; border-bottom-color: #f8cbad; }
+        .initiation .col-header { background-color: #fff2cc; color: #b28f00; border-bottom-color: #ffe599; }
+        .release-planning .col-header { background-color: #ddebf7; color: #1f4e78; border-bottom-color: #bdd7ee; }
+        .iteration .col-header { background-color: #e2efda; color: #375623; border-bottom-color: #c5e0b4; }
+        .close-out .col-header { background-color: #e6e6fa; color: #4b0082; border-bottom-color: #d8bfd8; }
+
+        .process-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            flex-grow: 1;
+        }
+        .process-list li {
+            padding: 12px 14px;
+            border-bottom: 1px solid #ddd;
+            font-size: 0.9em;
+            line-height: 1.4;
+            background-color: #fff;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .process-list li:last-child {
+            border-bottom: none;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+        .process-list li:hover {
+            background-color: #e6f2ff;
+            color: #004b87;
+            font-weight: 500;
+            padding-left: 18px;
+        }
+        .footer {
+            margin-top: 35px;
+            padding-top: 15px;
+            border-top: 1px solid #ccc;
+            font-size: 0.85em;
+            color: #666;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .footer-text {
+            max-width: 85%;
+            line-height: 1.5;
+        }
+        .page-num {
+            font-weight: bold;
+            color: #333;
+            white-space: nowrap;
+        }
+        
+        /* Popup Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-box {
+            background: #fff;
+            padding: 25px 30px;
+            border-radius: 10px;
+            max-width: 550px;
+            width: 90%;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        .modal-overlay.active .modal-box {
+            transform: translateY(0);
+        }
+        .modal-close {
+            position: absolute;
+            top: 12px;
+            right: 15px;
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #aaa;
+        }
+        .modal-close:hover {
+            color: #333;
+        }
+        .modal-title {
+            font-size: 0.9em;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        .original-text {
+            font-size: 1.15em;
+            font-weight: 600;
+            color: #004b87;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        .translated-text {
+            font-size: 1.1em;
+            color: #2e7d32;
+            background-color: #e8f5e9;
+            padding: 12px 15px;
+            border-left: 4px solid #4caf50;
+            border-radius: 4px;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+        .tip-click {
+            text-align: center;
+            color: #0073e6;
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tip-click">💡 Mẹo: Nhấp vào các tiêu đề cột hoặc bất kỳ dòng quy trình nào để xem bản dịch Tiếng Việt chi tiết!</div>
+
+    <div class="page">
+        <div class="page-header">
+            <h1>RMC LEARNING SOLUTIONS</h1>
+            <h2>Rita's Agile Process Chart™</h2>
+        </div>
+        
+        <div class="process-chart" id="agile-chart">
+            <!-- Content will be injected by JavaScript -->
+        </div>
+
+        <div class="footer">
+            <div class="footer-text">This article complements information in Rita Mulcahy's™ PMP® Exam Prep book, 11th edition.<br>If you are preparing for the PMP®, consider contacting RMC Learning Solutions at info@rmcls.com to find the best prep strategy for you.</div>
+            <div class="page-num">p. 1 of 1</div>
+        </div>
+    </div>
+
+    <!-- MODAL POPUP COMPONENT -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div class="modal-title">Dịch nghĩa Tiếng Việt chi tiết</div>
+            <div class="original-text" id="modalOriginal">Original text here...</div>
+            <div class="translated-text" id="modalTranslated">Bản dịch hiển thị ở đây...</div>
+        </div>
+    </div>
+
+    <script>
+        // Data and Translations
+        const agileData = {
+            feasibility: {
+                title: "FEASIBILITY",
+                items: [
+                    "Project visioning takes place",
+                    "Establish business case",
+                    "Create high-level user stories (features)",
+                    "Establish high-level estimates"
+                ]
+            },
+            initiation: {
+                title: "INITIATION",
+                items: [
+                    "Develop project charter",
+                    "Create team charter",
+                    "Hold daily standup meetings",
+                    "Build a release map",
+                    "Create personas",
+                    "Identify stakeholders and contact",
+                    "Create backlog of features",
+                    "Create high-level estimates using affinity estimating",
+                    "Create product roadmap using story maps",
+                    "Remove impediments for the team"
+                ]
+            },
+            release_planning: {
+                title: "RELEASE PLANNING",
+                items: [
+                    "Slice user stories (decompose features)",
+                    "Build a release plan",
+                    "Hold daily standup meetings",
+                    "Perform story estimation using Planning Poker",
+                    "Focus on how to deliver value",
+                    "Define \"done\"",
+                    "Estimate how much work can be done",
+                    "Calculate team velocity",
+                    "Reprioritize the backlog",
+                    "Define the first iteration goal",
+                    "Ensure there is shared understanding among team members",
+                    "Prepare stories of next iteration",
+                    "Remove impediments for the team"
+                ]
+            },
+            iteration: {
+                title: "ITERATION",
+                items: [
+                    "Perform iteration planning",
+                    "Build features as described in user stories",
+                    "Hold daily standup meetings",
+                    "Remove impediments for the team",
+                    "Update burnup charts",
+                    "Identify acceptance tests for stories",
+                    "Prepare accceptance tests",
+                    "Run exploratory tests",
+                    "Test user stories",
+                    "Hold iteration review",
+                    "Hold retrospective",
+                    "Prepare stories of next iteration",
+                    "Collaborate with team to answer questions and obtain story signoff"
+                ]
+            },
+            close_out: {
+                title: "CLOSE-OUT",
+                items: [
+                    "Obtain final release approval",
+                    "Turn over maintenance of product release to another team",
+                    "Hold final retrospective",
+                    "Ensure procurement closure",
+                    "Archive project artifacts"
+                ]
+            }
+        };
+
+        const dictionary = {
+            // Headers
+            "FEASIBILITY": "GIAI ĐOẠN KHẢ THI (Đánh giá và khởi tạo ý tưởng ban đầu)",
+            "INITIATION": "GIAI ĐOẠN KHỞI TẠO (Thiết lập cấu trúc cơ bản cho dự án Agile)",
+            "RELEASE PLANNING": "LẬP KẾ HOẠCH PHÁT HÀNH (Lên kế hoạch giao thành phẩm cho người dùng)",
+            "ITERATION": "VÒNG LẶP / SPRINT (Giai đoạn thực thi, phát triển sản phẩm thực tế)",
+            "CLOSE-OUT": "ĐÓNG DỰ ÁN / KẾT THÚC (Nghiệm thu, bàn giao và lưu trữ)",
+
+            // Feasibility
+            "Project visioning takes place": "Thiết lập và hình thành tầm nhìn của dự án",
+            "Establish business case": "Xây dựng phương án kinh doanh (Business Case) để chứng minh tính khả thi",
+            "Create high-level user stories (features)": "Tạo các Câu chuyện người dùng (User Stories) hoặc Tính năng (Features) ở mức tổng quan",
+            "Establish high-level estimates": "Thiết lập các ước lượng ở mức độ tổng quan ban đầu (về thời gian/chi phí)",
+
+            // Initiation
+            "Develop project charter": "Phát triển Điều lệ dự án (Project Charter)",
+            "Create team charter": "Tạo Điều lệ nhóm (Team Charter) - Quy tắc làm việc chung của team Agile",
+            "Hold daily standup meetings": "Tổ chức các cuộc họp đứng hàng ngày (Daily Standup) để đồng bộ thông tin",
+            "Build a release map": "Xây dựng bản đồ phát hành (Release Map)",
+            "Create personas": "Tạo chân dung khách hàng/người dùng mục tiêu (Personas)",
+            "Identify stakeholders and contact": "Xác định các bên liên quan và thiết lập thông tin liên lạc",
+            "Create backlog of features": "Tạo danh sách các tính năng tồn đọng (Feature Backlog)",
+            "Create high-level estimates using affinity estimating": "Tạo ước lượng tổng quan bằng phương pháp Ước lượng tương đồng (Affinity Estimating)",
+            "Create product roadmap using story maps": "Tạo lộ trình sản phẩm (Product Roadmap) thông qua Bản đồ câu chuyện (Story Maps)",
+            "Remove impediments for the team": "Loại bỏ các trở ngại/rào cản (Impediments) để nhóm làm việc trơn tru",
+
+            // Release Planning
+            "Slice user stories (decompose features)": "Cắt nhỏ câu chuyện người dùng (Phân rã các tính năng lớn thành task nhỏ hơn)",
+            "Build a release plan": "Xây dựng Kế hoạch phát hành chi tiết (Release Plan)",
+            "Perform story estimation using Planning Poker": "Thực hiện ước lượng độ lớn của câu chuyện bằng kỹ thuật Planning Poker",
+            "Focus on how to deliver value": "Tập trung vào cách thức phân phối và mang lại giá trị sớm nhất",
+            "Define \"done\"": "Định nghĩa tiêu chí \"Hoàn thành\" (Definition of Done - DoD)",
+            "Estimate how much work can be done": "Ước lượng khối lượng công việc nhóm có thể hoàn thành trong một khoảng thời gian",
+            "Calculate team velocity": "Tính toán Vận tốc/Tốc độ thực hiện công việc của nhóm (Team Velocity)",
+            "Reprioritize the backlog": "Sắp xếp lại mức độ ưu tiên của danh sách công việc tồn đọng (Backlog Refinement)",
+            "Define the first iteration goal": "Xác định mục tiêu cho Vòng lặp (Iteration/Sprint) đầu tiên",
+            "Ensure there is shared understanding among team members": "Đảm bảo sự hiểu biết chung và thống nhất giữa tất cả các thành viên trong nhóm",
+            "Prepare stories of next iteration": "Chuẩn bị sẵn sàng các Câu chuyện người dùng cho vòng lặp tiếp theo",
+
+            // Iteration
+            "Perform iteration planning": "Thực hiện lập kế hoạch cho Vòng lặp (Iteration Planning)",
+            "Build features as described in user stories": "Phát triển và lập trình các tính năng đúng như mô tả trong Câu chuyện người dùng",
+            "Update burnup charts": "Cập nhật Biểu đồ tiến độ (Burnup Charts) để theo dõi phạm vi và khối lượng đã làm",
+            "Identify acceptance tests for stories": "Xác định các bài kiểm thử nghiệm thu (Acceptance Tests) cho từng Câu chuyện",
+            "Prepare accceptance tests": "Chuẩn bị các kịch bản/bài kiểm thử nghiệm thu (Acceptance Tests)",
+            "Run exploratory tests": "Chạy các bài kiểm thử khám phá (Exploratory Tests) để tìm lỗi tiềm ẩn",
+            "Test user stories": "Thực hiện kiểm thử các Câu chuyện người dùng",
+            "Hold iteration review": "Tổ chức cuộc họp Đánh giá vòng lặp (Iteration Review / Sprint Review)",
+            "Hold retrospective": "Tổ chức cuộc họp Cải tiến/Nhìn lại (Retrospective) để rút kinh nghiệm",
+            "Collaborate with team to answer questions and obtain story signoff": "Hợp tác với nhóm để giải đáp thắc mắc và lấy xác nhận hoàn thành (Signoff) cho câu chuyện",
+
+            // Close-out
+            "Obtain final release approval": "Nhận được sự phê duyệt chính thức cho bản phát hành cuối cùng",
+            "Turn over maintenance of product release to another team": "Bàn giao việc bảo trì/vận hành sản phẩm cho một đội ngũ khác",
+            "Hold final retrospective": "Tổ chức cuộc họp Cải tiến/Nhìn lại (Retrospective) lần cuối cùng của toàn dự án",
+            "Ensure procurement closure": "Đảm bảo hoàn tất và đóng mọi hồ sơ, hợp đồng mua sắm",
+            "Archive project artifacts": "Lưu trữ các tài liệu, hiện vật và tri thức của dự án (Project Artifacts)"
+        };
+
+        const container = document.getElementById('agile-chart');
+        
+        // Escape helper for HTML attributes
+        const escapeHtml = (unsafe) => {
+            return unsafe
+                 .replace(/&/g, "&amp;")
+                 .replace(/</g, "&lt;")
+                 .replace(/>/g, "&gt;")
+                 .replace(/"/g, "&quot;")
+                 .replace(/'/g, "&#039;");
+        };
+
+        Object.keys(agileData).forEach(key => {
+            const section = agileData[key];
+            const headerClass = key.replace('_', '-');
+            
+            const headerTrans = escapeHtml(dictionary[section.title] || "Chưa có bản dịch");
+            
+            let listHtml = '<ul class="process-list">';
+            section.items.forEach(item => {
+                // Handle typo from PDF explicitly in key lookup if needed
+                const lookupKey = item.includes('"done"') ? 'Define "done"' : item; 
+                const translation = dictionary[lookupKey] || "Chưa có bản dịch cho mục này.";
+                
+                const escapedItem = escapeHtml(item);
+                const escapedTrans = escapeHtml(translation);
+                
+                listHtml += `<li onclick="showPopup('${escapedItem}', '${escapedTrans}')">${item}</li>`;
+            });
+            listHtml += '</ul>';
+
+            const colHtml = `
+                <div class="col ${headerClass}">
+                    <div class="col-header" onclick="showPopup('${escapeHtml(section.title)}', '${headerTrans}')">
+                        ${section.title}
+                    </div>
+                    ${listHtml}
+                </div>
+            `;
+            container.innerHTML += colHtml;
+        });
+
+        // Popup logic
+        function showPopup(original, translation) {
+            // Unescape for display
+            const unescapeHtml = (safe) => {
+                return safe.replace(/&amp;/g, '&')
+                           .replace(/&lt;/g, '<')
+                           .replace(/&gt;/g, '>')
+                           .replace(/&quot;/g, '"')
+                           .replace(/&#039;/g, "'");
+            };
+            
+            document.getElementById('modalOriginal').innerText = unescapeHtml(original);
+            document.getElementById('modalTranslated').innerText = unescapeHtml(translation);
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+    </script>
+</body>
+</html>

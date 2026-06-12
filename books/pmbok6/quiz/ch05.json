@@ -1,0 +1,247 @@
+{
+  "chapterId": "05_scope_management",
+  "chapterNum": 5,
+  "chapterTitle": "Quản Lý Phạm Vi Dự Án",
+  "questions": [
+    {
+      "id": "ch05_q01",
+      "q": "Bạn vừa được chỉ định làm quản lý dự án cho một dự án phát triển phần mềm mới. Sponsor yêu cầu bạn lập kế hoạch ngay cho toàn bộ phạm vi dự án. Trước tiên, bạn nhận thấy rằng chưa có tài liệu nào mô tả cách thức thu thập, xác định và kiểm soát phạm vi trong dự án này. Bạn nên làm gì trước tiên?",
+      "opts": {
+        "A": "Bắt đầu thu thập yêu cầu từ các bên liên quan ngay lập tức",
+        "B": "Tạo ra Kế Hoạch Quản Lý Phạm Vi để định nghĩa cách phạm vi sẽ được xác định, xác nhận và kiểm soát",
+        "C": "Xây dựng WBS để phân rã công việc của dự án",
+        "D": "Lập bản tuyên bố phạm vi dự án chi tiết"
+      },
+      "ans": "B",
+      "exp": "Quy trình đầu tiên trong Quản Lý Phạm Vi là Lập Kế Hoạch Quản Lý Phạm Vi (Plan Scope Management). Kế hoạch này mô tả cách phạm vi sẽ được xác định, tài liệu hóa, xác nhận và kiểm soát trong suốt dự án. Đây là nền tảng trước khi thực hiện bất kỳ hoạt động phạm vi nào khác."
+    },
+    {
+      "id": "ch05_q02",
+      "q": "Một dự án xây dựng hệ thống ERP đang trong giai đoạn Thu Thập Yêu Cầu. Nhóm dự án cần hiểu sâu về quy trình nghiệp vụ phức tạp của khách hàng, đặc biệt là các quy trình liên quan đến nhiều phòng ban khác nhau. Khách hàng có 50 bên liên quan từ 8 phòng ban. Kỹ thuật nào phù hợp nhất để thu thập yêu cầu trong tình huống này?",
+      "opts": {
+        "A": "Gửi bảng câu hỏi (questionnaire) cho tất cả 50 bên liên quan",
+        "B": "Phỏng vấn từng bên liên quan một cách riêng lẻ",
+        "C": "Tổ chức các workshop nhóm tập trung (focus groups) theo từng phòng ban",
+        "D": "Tạo nguyên mẫu (prototype) hệ thống để bên liên quan phản hồi"
+      },
+      "ans": "C",
+      "exp": "Focus groups là kỹ thuật phù hợp nhất khi cần thu thập yêu cầu từ nhiều bên liên quan thuộc các nhóm khác nhau. Tổ chức theo phòng ban giúp thu thập được góc nhìn nhất quán trong từng nhóm, tạo ra sự đồng thuận và tiết kiệm thời gian hơn phỏng vấn riêng lẻ. Questionnaire thì thiếu chiều sâu, còn prototype thích hợp hơn khi đã có yêu cầu sơ bộ."
+    },
+    {
+      "id": "ch05_q03",
+      "q": "Trong dự án phát triển ứng dụng di động, nhóm phát triển đã hoàn thành chức năng đăng nhập theo đúng yêu cầu. Tuy nhiên, một lập trình viên đã tự ý thêm tính năng nhận diện khuôn mặt vì nghĩ rằng khách hàng sẽ thích. Tính năng này không có trong tài liệu yêu cầu và không được phê duyệt. Đây là ví dụ về vấn đề gì?",
+      "opts": {
+        "A": "Scope Creep — phạm vi mở rộng không kiểm soát do yêu cầu từ khách hàng",
+        "B": "Gold Plating — thêm tính năng ngoài phạm vi đã thỏa thuận mà không được phê duyệt",
+        "C": "Validate Scope — kiểm tra sự chấp thuận của khách hàng về sản phẩm",
+        "D": "Progressive Elaboration — chi tiết hóa dần dần các yêu cầu dự án"
+      },
+      "ans": "B",
+      "exp": "Đây là Gold Plating — tình trạng nhóm dự án tự ý thêm tính năng ngoài phạm vi đã được phê duyệt vì nghĩ rằng khách hàng sẽ đánh giá cao. Gold plating là điều cần tránh trong quản lý dự án vì tiêu tốn tài nguyên, có thể gây trễ hạn và không nhất thiết mang lại giá trị. Scope Creep là khi phạm vi mở rộng do yêu cầu từ bên ngoài không kiểm soát."
+    },
+    {
+      "id": "ch05_q04",
+      "q": "Quản lý dự án đang xây dựng Bảng Phân Rã Công Việc (WBS) cho dự án xây dựng văn phòng. Khi phân rã đến cấp work package, đội ngũ nhận thấy một số work package vẫn còn quá lớn và khó ước tính. Tuy nhiên, một số thành viên cho rằng đã phân rã đủ rồi. Nguyên tắc nào nên được áp dụng để quyết định mức độ phân rã?",
+      "opts": {
+        "A": "Phân rã đến khi mỗi work package có thể hoàn thành trong 8 giờ làm việc",
+        "B": "Phân rã đến khi có thể ước tính chi phí và thời gian một cách đáng tin cậy",
+        "C": "Phân rã đến ít nhất 5 cấp độ để đảm bảo đủ chi tiết",
+        "D": "Ngừng phân rã khi số lượng work package đạt 100 phần tử"
+      },
+      "ans": "B",
+      "exp": "Tiêu chí để dừng phân rã WBS là khi work package có thể được ước tính chi phí và thời gian một cách đáng tin cậy, và có thể được quản lý và kiểm soát hiệu quả. Không có quy tắc cứng về số giờ hay số cấp độ — mức độ phân rã phụ thuộc vào bản chất của dự án và khả năng lập kế hoạch. Phân rã quá mức sẽ gây lãng phí."
+    },
+    {
+      "id": "ch05_q05",
+      "q": "Dự án phát triển website thương mại điện tử đang ở giai đoạn giữa dự án. Khách hàng liên tục yêu cầu thêm tính năng mới thông qua các cuộc họp không chính thức với lập trình viên mà không thông qua quy trình quản lý thay đổi. Kết quả là dự án đang bị trễ 3 tuần. Đây là ví dụ của vấn đề gì và cách xử lý tốt nhất là gì?",
+      "opts": {
+        "A": "Gold Plating; PM cần từ chối tất cả yêu cầu thay đổi từ khách hàng",
+        "B": "Scope Creep; PM cần yêu cầu tất cả thay đổi phải đi qua quy trình kiểm soát thay đổi chính thức",
+        "C": "Scope Creep; PM cần tăng nguồn lực để hoàn thành các yêu cầu mới",
+        "D": "Progressive Elaboration; PM cần cập nhật WBS để phản ánh các yêu cầu mới"
+      },
+      "ans": "B",
+      "exp": "Đây là Scope Creep — phạm vi dự án mở rộng không được kiểm soát thông qua các thay đổi không được phê duyệt chính thức. Biện pháp đúng đắn là áp dụng quy trình kiểm soát thay đổi (Integrated Change Control), yêu cầu tất cả thay đổi phải được đánh giá tác động, phê duyệt và cập nhật vào kế hoạch dự án trước khi thực hiện."
+    },
+    {
+      "id": "ch05_q06",
+      "q": "Sau khi hoàn thành giai đoạn thiết kế của dự án xây dựng, nhóm dự án đã chuẩn bị các bản vẽ kỹ thuật chi tiết. PM tổ chức một buổi họp với khách hàng để xem xét và ký duyệt các bản vẽ này. Khách hàng đã xem xét và ký xác nhận chấp thuận. Đây là hoạt động thuộc quy trình nào?",
+      "opts": {
+        "A": "Control Quality — kiểm tra chất lượng các bản vẽ kỹ thuật",
+        "B": "Control Scope — kiểm soát các thay đổi trong phạm vi dự án",
+        "C": "Validate Scope — nhận được sự chấp thuận chính thức từ khách hàng về các deliverable",
+        "D": "Close Project — hoàn thành và đóng giai đoạn thiết kế"
+      },
+      "ans": "C",
+      "exp": "Validate Scope là quy trình nhận được sự chấp thuận chính thức (formal acceptance) từ khách hàng hoặc sponsor về các deliverable đã hoàn thành. Mục tiêu là đảm bảo deliverable đáp ứng yêu cầu đã được xác định. Control Quality kiểm tra xem sản phẩm có đạt tiêu chuẩn chất lượng không (thường thực hiện trước Validate Scope), còn Validate Scope tập trung vào sự chấp thuận của khách hàng."
+    },
+    {
+      "id": "ch05_q07",
+      "q": "Nhóm dự án đang xây dựng WBS cho dự án tổ chức hội nghị quốc tế. Khi hoàn thành WBS, PM kiểm tra và phát hiện tổng công việc trong WBS không bao gồm một số hoạt động hậu cần quan trọng. Nguyên tắc nào của WBS đã bị vi phạm?",
+      "opts": {
+        "A": "Nguyên tắc phân cấp (hierarchical decomposition)",
+        "B": "Quy tắc 100% (100% rule) — WBS phải bao gồm 100% công việc cần thiết",
+        "C": "Nguyên tắc work package (mỗi work package chỉ có một người chịu trách nhiệm)",
+        "D": "Nguyên tắc từ điển WBS (mỗi phần tử phải có mô tả trong WBS dictionary)"
+      },
+      "ans": "B",
+      "exp": "Quy tắc 100% (100% rule) quy định rằng WBS phải bao gồm 100% công việc được xác định trong phạm vi dự án — không nhiều hơn, không ít hơn. Nếu WBS thiếu các hoạt động hậu cần quan trọng, quy tắc này đã bị vi phạm. Đây là nguyên tắc cơ bản nhất của WBS, đảm bảo không có công việc nào bị bỏ sót."
+    },
+    {
+      "id": "ch05_q08",
+      "q": "Một dự án phần mềm đã gần hoàn thành. Trong cuộc họp xem xét deliverable, khách hàng phát hiện rằng một số tính năng không đáp ứng tiêu chí nghiệm thu đã thỏa thuận. Khách hàng từ chối chấp thuận và yêu cầu sửa chữa. Kết quả của quy trình Validate Scope trong trường hợp này là gì?",
+      "opts": {
+        "A": "Accepted deliverables — khách hàng chấp thuận deliverable",
+        "B": "Work performance information — thông tin về hiệu suất công việc",
+        "C": "Change requests — yêu cầu thay đổi để sửa chữa deliverable bị từ chối",
+        "D": "Project document updates — cập nhật tài liệu dự án"
+      },
+      "ans": "C",
+      "exp": "Khi khách hàng từ chối chấp thuận deliverable trong Validate Scope, kết quả là Change Requests (yêu cầu thay đổi) để sửa chữa những gì không đáp ứng yêu cầu. Các deliverable bị từ chối cùng với lý do từ chối cũng được ghi lại. Accepted deliverables là kết quả khi deliverable được chấp thuận thành công."
+    },
+    {
+      "id": "ch05_q09",
+      "q": "PM đang xây dựng bản tuyên bố phạm vi dự án (Project Scope Statement) cho dự án triển khai hệ thống CRM. Một thành viên nhóm hỏi tại sao cần liệt kê các loại trừ (exclusions) trong tài liệu này. Lý do nào giải thích tốt nhất tại sao exclusions quan trọng trong Project Scope Statement?",
+      "opts": {
+        "A": "Exclusions giúp xác định ngân sách dự phòng cần thiết cho dự án",
+        "B": "Exclusions giúp ngăn ngừa scope creep bằng cách rõ ràng xác định những gì KHÔNG thuộc phạm vi dự án",
+        "C": "Exclusions là bắt buộc theo chuẩn PMBOK và không có lý do thực tiễn",
+        "D": "Exclusions giúp PM tính toán thời gian dự phòng (schedule reserve)"
+      },
+      "ans": "B",
+      "exp": "Các loại trừ (exclusions) trong Project Scope Statement rõ ràng xác định những gì KHÔNG được bao gồm trong dự án. Điều này rất quan trọng để ngăn ngừa scope creep — khi bên liên quan giả định rằng một số công việc được bao gồm trong dự án nhưng thực tế không phải vậy. Rõ ràng về exclusions giúp quản lý kỳ vọng và tránh hiểu nhầm."
+    },
+    {
+      "id": "ch05_q10",
+      "q": "Trong dự án xây dựng cầu, PM và nhóm đã hoàn thành WBS chi tiết. Sponsor yêu cầu một tài liệu cung cấp mô tả chi tiết về từng work package trong WBS, bao gồm tiêu chí chấp thuận, giả định và ràng buộc. Tài liệu nào đáp ứng yêu cầu này?",
+      "opts": {
+        "A": "Project Scope Statement — bản tuyên bố phạm vi dự án",
+        "B": "Requirements Traceability Matrix — ma trận theo dõi yêu cầu",
+        "C": "WBS Dictionary — từ điển WBS mô tả chi tiết từng phần tử WBS",
+        "D": "Requirements Documentation — tài liệu yêu cầu"
+      },
+      "ans": "C",
+      "exp": "WBS Dictionary (Từ điển WBS) là tài liệu cung cấp thông tin chi tiết về từng phần tử trong WBS, bao gồm: mô tả công việc, tiêu chí chấp thuận, giả định, ràng buộc, nguồn lực, chi phí ước tính và thông tin lịch trình. Cùng với WBS và Project Scope Statement, WBS Dictionary tạo thành Scope Baseline của dự án."
+    },
+    {
+      "id": "ch05_q11",
+      "q": "Ma trận Theo Dõi Yêu Cầu (Requirements Traceability Matrix) đang được sử dụng trong dự án phát triển hệ thống ngân hàng. Trong một cuộc họp kiểm tra, kiểm toán viên hỏi về giá trị của tài liệu này. Lợi ích chính của Requirements Traceability Matrix là gì?",
+      "opts": {
+        "A": "Nó xác định ai chịu trách nhiệm cho từng yêu cầu",
+        "B": "Nó theo dõi từng yêu cầu từ nguồn gốc đến khi hoàn thành, đảm bảo tất cả yêu cầu được thực hiện",
+        "C": "Nó cung cấp ước tính chi phí cho từng yêu cầu",
+        "D": "Nó xác định thứ tự ưu tiên của các yêu cầu trong dự án"
+      },
+      "ans": "B",
+      "exp": "Requirements Traceability Matrix (RTM) liên kết các yêu cầu với nguồn gốc của chúng và theo dõi chúng xuyên suốt vòng đời dự án đến khi bàn giao. RTM giúp đảm bảo rằng tất cả yêu cầu đã được phê duyệt đều được thực hiện, giảm rủi ro bỏ sót yêu cầu, và hỗ trợ quản lý thay đổi bằng cách hiển thị tác động khi một yêu cầu thay đổi."
+    },
+    {
+      "id": "ch05_q12",
+      "q": "Dự án phát triển sản phẩm dược phẩm mới đang trong giai đoạn Thu Thập Yêu Cầu. Nhóm cần xác định nhu cầu của bác sĩ về một thiết bị y tế mới, nhưng bác sĩ khó diễn đạt yêu cầu kỹ thuật cụ thể. Kỹ thuật nào phù hợp nhất để giúp bác sĩ hình dung và phản hồi về sản phẩm?",
+      "opts": {
+        "A": "Questionnaire — gửi bảng câu hỏi cho các bác sĩ",
+        "B": "Benchmarking — so sánh với các sản phẩm cạnh tranh trên thị trường",
+        "C": "Prototyping — tạo nguyên mẫu cụ thể để bác sĩ trải nghiệm và phản hồi",
+        "D": "Document Analysis — phân tích tài liệu y tế hiện có"
+      },
+      "ans": "C",
+      "exp": "Prototyping (Tạo nguyên mẫu) là kỹ thuật đặc biệt hiệu quả khi bên liên quan khó diễn đạt yêu cầu một cách trừu tượng. Nguyên mẫu cho phép bên liên quan trực tiếp trải nghiệm và phản hồi về sản phẩm thực tế, giúp thu thập yêu cầu chính xác và cụ thể hơn. Đây là cách tốt nhất khi người dùng cần 'nhìn thấy' để hiểu họ muốn gì."
+    },
+    {
+      "id": "ch05_q13",
+      "q": "PM đang so sánh phạm vi sản phẩm (product scope) và phạm vi dự án (project scope). Dự án là triển khai hệ thống phần mềm quản lý kho hàng. Đâu là ví dụ về phạm vi sản phẩm trong trường hợp này?",
+      "opts": {
+        "A": "Đào tạo 50 nhân viên sử dụng hệ thống trong 2 tuần",
+        "B": "Tổ chức 10 cuộc họp kiểm tra tiến độ hàng tháng với sponsor",
+        "C": "Hệ thống có khả năng theo dõi 10,000 SKU và tích hợp với phần mềm kế toán",
+        "D": "Lập báo cáo tình trạng dự án hàng tuần cho ban quản lý"
+      },
+      "ans": "C",
+      "exp": "Phạm vi sản phẩm (product scope) mô tả các tính năng và chức năng của sản phẩm hoặc dịch vụ được tạo ra. Khả năng theo dõi SKU và tích hợp với phần mềm kế toán là các tính năng của phần mềm — đây là product scope. Phạm vi dự án (project scope) bao gồm công việc cần thực hiện để bàn giao sản phẩm, như đào tạo, họp kiểm tra và báo cáo."
+    },
+    {
+      "id": "ch05_q14",
+      "q": "Trong khi kiểm tra báo cáo hiệu suất dự án, PM phát hiện rằng một số deliverable đã được hoàn thành nhưng khác so với phạm vi đã phê duyệt. PM so sánh công việc thực tế với scope baseline. Đây là hoạt động của quy trình nào?",
+      "opts": {
+        "A": "Validate Scope — nhận sự chấp thuận từ khách hàng",
+        "B": "Control Scope — theo dõi trạng thái phạm vi và quản lý thay đổi",
+        "C": "Define Scope — xác định và tài liệu hóa phạm vi dự án",
+        "D": "Control Quality — kiểm tra chất lượng deliverable"
+      },
+      "ans": "B",
+      "exp": "Control Scope là quy trình theo dõi trạng thái phạm vi dự án và sản phẩm, cũng như quản lý các thay đổi đối với scope baseline. Việc so sánh công việc thực tế với scope baseline (variance analysis) là hoạt động cốt lõi của Control Scope. Khi phát hiện sai lệch, PM cần xác định nguyên nhân và thực hiện hành động khắc phục hoặc phòng ngừa."
+    },
+    {
+      "id": "ch05_q15",
+      "q": "Scope Baseline của dự án được phê duyệt bao gồm những tài liệu nào? PM cần xác định chính xác các tài liệu cấu thành scope baseline để trả lời câu hỏi của auditor trong cuộc kiểm tra dự án.",
+      "opts": {
+        "A": "Project Charter + Project Scope Statement + WBS",
+        "B": "Project Scope Statement + WBS + WBS Dictionary",
+        "C": "WBS + WBS Dictionary + Requirements Documentation",
+        "D": "Project Scope Statement + Requirements Documentation + WBS"
+      },
+      "ans": "B",
+      "exp": "Scope Baseline bao gồm ba thành phần: (1) Project Scope Statement — mô tả phạm vi dự án, deliverables, giả định và ràng buộc; (2) WBS — phân rã phân cấp tổng thể công việc; (3) WBS Dictionary — cung cấp thông tin chi tiết về mỗi phần tử WBS. Ba tài liệu này cùng nhau tạo thành cơ sở để đo lường hiệu suất phạm vi của dự án."
+    },
+    {
+      "id": "ch05_q16",
+      "q": "Dự án xây dựng hệ thống quản lý học sinh đang trong giai đoạn thu thập yêu cầu. PM cần thu thập ý kiến từ 200 giáo viên trải rộng trên 15 trường học khác nhau trong toàn tỉnh. Thời gian thu thập bị giới hạn trong 2 tuần. Kỹ thuật nào hiệu quả nhất trong hoàn cảnh này?",
+      "opts": {
+        "A": "Phỏng vấn cá nhân từng giáo viên để đảm bảo thông tin đầy đủ",
+        "B": "Focus groups với 10 nhóm giáo viên đại diện từ các trường",
+        "C": "Questionnaire/Survey gửi đến tất cả 200 giáo viên cùng một lúc",
+        "D": "Observation — quan sát trực tiếp giáo viên làm việc tại mỗi trường"
+      },
+      "ans": "C",
+      "exp": "Questionnaire/Survey (Bảng câu hỏi/Khảo sát) là kỹ thuật phù hợp nhất khi cần thu thập thông tin từ số lượng lớn người tham gia (200 giáo viên) trong thời gian ngắn (2 tuần) và phân tán địa lý (15 trường). Questionnaire có thể được gửi đồng thời, tiết kiệm thời gian và chi phí đi lại. Phỏng vấn cá nhân sẽ mất quá nhiều thời gian; focus groups khó tổ chức với 200 người."
+    },
+    {
+      "id": "ch05_q17",
+      "q": "Khách hàng yêu cầu thay đổi một số tính năng sau khi scope baseline đã được phê duyệt. PM đánh giá rằng những thay đổi này sẽ ảnh hưởng đến chi phí và lịch trình. Bước tiếp theo PM nên thực hiện là gì?",
+      "opts": {
+        "A": "Từ chối yêu cầu vì scope baseline đã được phê duyệt và không thể thay đổi",
+        "B": "Ngay lập tức thực hiện thay đổi để giữ sự hài lòng của khách hàng",
+        "C": "Đánh giá đầy đủ tác động của thay đổi và gửi Change Request thông qua quy trình Integrated Change Control",
+        "D": "Cập nhật WBS ngay lập tức để phản ánh các tính năng mới"
+      },
+      "ans": "C",
+      "exp": "Khi có yêu cầu thay đổi phạm vi, PM phải tuân theo quy trình Integrated Change Control (ICC). Điều này bao gồm: đánh giá tác động đầy đủ về phạm vi, chi phí, lịch trình, chất lượng và rủi ro; sau đó gửi Change Request chính thức để được phê duyệt bởi Change Control Board. Chỉ sau khi được phê duyệt, scope baseline mới được cập nhật."
+    },
+    {
+      "id": "ch05_q18",
+      "q": "Trong buổi họp kick-off, PM giải thích sự khác biệt giữa Validate Scope và Control Quality cho nhóm dự án. Phát biểu nào mô tả chính xác nhất sự khác biệt giữa hai quy trình này?",
+      "opts": {
+        "A": "Validate Scope kiểm tra chất lượng kỹ thuật của sản phẩm; Control Quality nhận sự chấp thuận của khách hàng",
+        "B": "Validate Scope nhận sự chấp thuận chính thức từ khách hàng về deliverable; Control Quality đảm bảo deliverable đúng tiêu chuẩn kỹ thuật",
+        "C": "Validate Scope và Control Quality là cùng một quy trình thực hiện tại thời điểm khác nhau",
+        "D": "Validate Scope thuộc về PM; Control Quality thuộc về Quality Manager"
+      },
+      "ans": "B",
+      "exp": "Validate Scope tập trung vào việc nhận được sự chấp thuận chính thức (formal acceptance) từ khách hàng hoặc sponsor rằng deliverable đáp ứng yêu cầu — đây là câu hỏi 'Khách hàng có chấp thuận không?'. Control Quality kiểm tra xem deliverable có đáp ứng tiêu chuẩn chất lượng đã định nghĩa không — đây là câu hỏi 'Sản phẩm có đúng như thiết kế không?'. Control Quality thường được thực hiện trước Validate Scope."
+    },
+    {
+      "id": "ch05_q19",
+      "q": "PM đang phân tích một Work Package trong WBS của dự án xây dựng bệnh viện. Work Package 'Lắp đặt hệ thống điện tầng 3' đã được ước tính là 240 giờ công nhưng thực tế mất 310 giờ. PM cần báo cáo sai lệch này. Công cụ nào trong Control Scope phù hợp nhất để phân tích vấn đề này?",
+      "opts": {
+        "A": "Expert Judgment — xin ý kiến chuyên gia về nguyên nhân vượt giờ",
+        "B": "Variance Analysis — so sánh hiệu suất thực tế với scope baseline để xác định sai lệch",
+        "C": "Trend Analysis — phân tích xu hướng để dự báo hiệu suất tương lai",
+        "D": "Inspection — kiểm tra trực tiếp công việc đã hoàn thành"
+      },
+      "ans": "B",
+      "exp": "Variance Analysis (Phân tích sai lệch) là công cụ chính trong Control Scope để so sánh hiệu suất thực tế với scope baseline và xác định nguyên nhân, mức độ sai lệch. Trong trường hợp này, việc so sánh 310 giờ thực tế so với 240 giờ kế hoạch là variance analysis. Kết quả phân tích này có thể dẫn đến change requests hoặc hành động khắc phục."
+    },
+    {
+      "id": "ch05_q20",
+      "q": "Một dự án phát triển phần mềm đang sử dụng phương pháp Agile. Sau mỗi sprint, nhóm trình bày các tính năng đã hoàn thành cho Product Owner để xem xét và chấp thuận. Product Owner chấp thuận 8 trong số 10 tính năng và yêu cầu sửa đổi 2 tính năng còn lại. Hoạt động này tương đương với quy trình nào trong PMBOK?",
+      "opts": {
+        "A": "Control Quality — kiểm tra chất lượng từng tính năng trong sprint",
+        "B": "Validate Scope — nhận sự chấp thuận chính thức về các deliverable đã hoàn thành",
+        "C": "Control Scope — kiểm soát phạm vi không thay đổi trong sprint",
+        "D": "Plan Scope Management — lập kế hoạch phạm vi cho sprint tiếp theo"
+      },
+      "ans": "B",
+      "exp": "Buổi Sprint Review trong Agile, nơi Product Owner xem xét và chấp thuận hoặc từ chối các tính năng đã hoàn thành, tương đương với quy trình Validate Scope trong PMBOK. Kết quả bao gồm: accepted deliverables (8 tính năng được chấp thuận) và change requests (yêu cầu sửa đổi 2 tính năng bị từ chối). Đây là điểm kết nối quan trọng giữa phương pháp Agile và khung PMBOK."
+    }
+  ]
+}

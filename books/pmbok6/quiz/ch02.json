@@ -1,0 +1,247 @@
+{
+  "chapterId": "02_environment",
+  "chapterNum": 2,
+  "chapterTitle": "Môi Trường Dự Án",
+  "questions": [
+    {
+      "id": "ch02_q01",
+      "q": "Công ty bạn vừa mua lại một phần mềm quản lý dự án mới và triển khai nó trên toàn doanh nghiệp. Hệ thống này yêu cầu tất cả PM phải nhập dữ liệu theo một định dạng tiêu chuẩn. Một PM mới được tuyển dụng từ bên ngoài gặp khó khăn vì anh ta quen dùng hệ thống cũ hơn. Yếu tố nào đã ảnh hưởng đến khả năng thích nghi của PM mới này?",
+      "opts": {
+        "A": "Tài sản quy trình tổ chức (OPA) dưới dạng quy trình và thủ tục",
+        "B": "Yếu tố môi trường doanh nghiệp (EEF) nội bộ — hệ thống thông tin quản lý dự án",
+        "C": "Yếu tố môi trường doanh nghiệp (EEF) bên ngoài — tiêu chuẩn ngành",
+        "D": "Tài sản quy trình tổ chức (OPA) dưới dạng kho lưu trữ tri thức"
+      },
+      "ans": "B",
+      "exp": "Hệ thống phần mềm quản lý dự án được triển khai nội bộ là EEF nội bộ (cụ thể là hệ thống thông tin quản lý dự án - PMIS). EEF nội bộ bao gồm cơ sở hạ tầng, công cụ, và hệ thống thông tin do tổ chức kiểm soát. Đây không phải OPA vì OPA là các quy trình, chính sách, mẫu biểu đã có sẵn, không phải công cụ phần mềm. EEF bên ngoài là những yếu tố ngoài tầm kiểm soát của tổ chức như quy định pháp luật, điều kiện thị trường."
+    },
+    {
+      "id": "ch02_q02",
+      "q": "Một dự án xây dựng cầu đường phải tuân thủ các quy định môi trường mới của chính phủ ban hành gần đây. PM nhận thấy rằng những quy định này ảnh hưởng đáng kể đến thiết kế và tiến độ dự án. Đây là ví dụ điển hình của loại yếu tố nào trong môi trường dự án?",
+      "opts": {
+        "A": "OPA — chính sách và thủ tục tổ chức",
+        "B": "EEF nội bộ — văn hóa tổ chức",
+        "C": "EEF bên ngoài — quy định chính phủ và pháp lý",
+        "D": "OPA — kho lưu trữ bài học kinh nghiệm"
+      },
+      "ans": "C",
+      "exp": "Quy định của chính phủ là EEF bên ngoài vì chúng nằm ngoài tầm kiểm soát của tổ chức. EEF bên ngoài bao gồm: điều kiện thị trường, luật pháp và quy định chính phủ, tiêu chuẩn ngành, điều kiện kinh tế, yếu tố môi trường vật lý. Tổ chức phải tuân thủ nhưng không thể thay đổi chúng. OPA là những gì tổ chức TẠO RA và kiểm soát. EEF nội bộ là những điều kiện trong tổ chức như văn hóa, nguồn lực."
+    },
+    {
+      "id": "ch02_q03",
+      "q": "PM dự án phát triển phần mềm được yêu cầu sử dụng bộ mẫu báo cáo trạng thái chuẩn của công ty, tuân theo quy trình kiểm soát thay đổi nội bộ, và tham khảo hướng dẫn lập kế hoạch từ các dự án trước. Những yếu tố này thuộc loại nào và ảnh hưởng như thế nào đến việc lập kế hoạch dự án?",
+      "opts": {
+        "A": "EEF nội bộ — cung cấp ràng buộc cho dự án",
+        "B": "OPA — cung cấp đầu vào và hướng dẫn cho các quy trình quản lý dự án",
+        "C": "EEF bên ngoài — định hình cách thức triển khai dự án",
+        "D": "Cả EEF lẫn OPA — phụ thuộc vào từng yếu tố cụ thể"
+      },
+      "ans": "B",
+      "exp": "Mẫu báo cáo, quy trình kiểm soát thay đổi, và hướng dẫn từ dự án trước đều là OPA. OPA bao gồm: (1) Quy trình và thủ tục: mẫu biểu, chính sách, quy trình chuẩn; (2) Kho tri thức doanh nghiệp: bài học kinh nghiệm, dữ liệu lịch sử, thư viện mẫu. OPA là những gì tổ chức đã TẠO RA và TÍCH LŨY, có thể được PM sử dụng làm đầu vào. Khác với EEF là điều kiện môi trường mà PM phải THÍCH NGHI."
+    },
+    {
+      "id": "ch02_q04",
+      "q": "Một PM được giao phụ trách dự án tại một công ty sản xuất lớn, nơi mỗi phòng ban (Kỹ thuật, Marketing, Tài chính) có giám đốc riêng và nhân viên dự án vẫn báo cáo lên giám đốc phòng ban của họ. PM chỉ điều phối công việc chứ không có quyền trực tiếp quản lý nhân sự. Đây là loại cơ cấu tổ chức nào?",
+      "opts": {
+        "A": "Tổ chức dự án hóa (Projectized)",
+        "B": "Tổ chức ma trận mạnh (Strong Matrix)",
+        "C": "Tổ chức chức năng (Functional)",
+        "D": "Tổ chức ma trận cân bằng (Balanced Matrix)"
+      },
+      "ans": "C",
+      "exp": "Đây là cơ cấu tổ chức chức năng (Functional). Đặc điểm nhận biết: nhân viên báo cáo lên giám đốc chức năng, PM chỉ đóng vai trò điều phối (coordinator) chứ không có quyền quản lý trực tiếp, quyền lực tập trung ở giám đốc chức năng. Trong ma trận mạnh, PM có quyền lực nhiều hơn. Trong ma trận cân bằng, PM và giám đốc chức năng chia sẻ quyền lực. Trong tổ chức dự án hóa, PM có toàn quyền và nhân viên báo cáo trực tiếp cho PM."
+    },
+    {
+      "id": "ch02_q05",
+      "q": "Tại một công ty tư vấn, các PM được cấp văn phòng riêng, có toàn quyền phân bổ ngân sách và bổ nhiệm nhân sự cho dự án. Sau khi dự án kết thúc, nhân viên sẽ được chuyển sang dự án khác hoặc tạm thời không có việc làm. Mô hình này phù hợp nhất với loại cơ cấu tổ chức nào?",
+      "opts": {
+        "A": "Tổ chức chức năng (Functional)",
+        "B": "Tổ chức ma trận yếu (Weak Matrix)",
+        "C": "Tổ chức ma trận mạnh (Strong Matrix)",
+        "D": "Tổ chức dự án hóa (Projectized)"
+      },
+      "ans": "D",
+      "exp": "Đây là cơ cấu dự án hóa (Projectized). Đặc điểm: PM có toàn quyền về ngân sách và nhân sự, nhân viên làm việc hoàn toàn trong dự án, sau dự án có thể không có vị trí cố định. Ưu điểm: PM có quyền lực tối đa, giao tiếp nhanh, cam kết cao. Nhược điểm: nhân viên lo lắng về việc làm sau dự án, tài nguyên không được chia sẻ hiệu quả. Tổ chức chức năng thì ngược lại hoàn toàn. Ma trận mạnh có PM chuyên trách nhưng nhân viên vẫn có giám đốc chức năng."
+    },
+    {
+      "id": "ch02_q06",
+      "q": "Một PM đang quản lý dự án phát triển sản phẩm mới và nhận thấy rằng các thành viên nhóm thường xuyên nhận được chỉ thị mâu thuẫn từ anh ta và từ giám đốc chức năng của họ. Thành viên nhóm không biết nên ưu tiên nhiệm vụ nào trước. Vấn đề này là hệ quả điển hình của cơ cấu tổ chức nào?",
+      "opts": {
+        "A": "Tổ chức dự án hóa — thiếu phòng ban chức năng ổn định",
+        "B": "Tổ chức ma trận — xung đột quyền lực giữa PM và giám đốc chức năng",
+        "C": "Tổ chức chức năng — PM không có đủ thẩm quyền",
+        "D": "PMO tập trung — quá nhiều quy trình kiểm soát"
+      },
+      "ans": "B",
+      "exp": "Xung đột về quyền lực kép (dual authority) là nhược điểm điển hình của cơ cấu ma trận. Trong ma trận, nhân viên báo cáo cho cả PM lẫn giám đốc chức năng, dẫn đến tình trạng 'hai sếp' gây nhầm lẫn và xung đột ưu tiên. Đây không phải vấn đề của tổ chức dự án hóa (chỉ có một cấp chỉ huy là PM). Trong tổ chức chức năng, PM không có đủ quyền là vấn đề khác. PMO là bộ phận hỗ trợ, không phải cơ cấu tổ chức."
+    },
+    {
+      "id": "ch02_q07",
+      "q": "Công ty XYZ có một Văn phòng Quản lý Dự án (PMO) cung cấp mẫu biểu, hướng dẫn phương pháp luận và đào tạo cho các PM, nhưng các PM có quyền tự quyết định có sử dụng hay không. PMO không can thiệp trực tiếp vào từng dự án. Đây là loại PMO nào?",
+      "opts": {
+        "A": "PMO kiểm soát (Controlling PMO)",
+        "B": "PMO chỉ thị (Directive PMO)",
+        "C": "PMO hỗ trợ (Supportive PMO)",
+        "D": "PMO chiến lược (Strategic PMO)"
+      },
+      "ans": "C",
+      "exp": "PMO hỗ trợ (Supportive PMO) có mức độ kiểm soát thấp — chỉ cung cấp tư vấn, mẫu biểu, đào tạo, bài học kinh nghiệm, và hỗ trợ theo yêu cầu. PM có quyền tự quyết có sử dụng hay không. PMO kiểm soát yêu cầu tuân thủ các khung, phương pháp luận, và mẫu cụ thể (kiểm soát trung bình). PMO chỉ thị trực tiếp quản lý dự án và PM báo cáo lên PMO (kiểm soát cao). Không có loại 'PMO chiến lược' trong định nghĩa PMBOK."
+    },
+    {
+      "id": "ch02_q08",
+      "q": "Công ty ABC có PMO yêu cầu tất cả PM phải tuân thủ nghiêm ngặt phương pháp luận chuẩn, sử dụng bộ công cụ bắt buộc, và nộp báo cáo tiến độ hàng tuần theo mẫu quy định. PM nào vi phạm sẽ bị nhắc nhở. Đây là loại PMO nào?",
+      "opts": {
+        "A": "PMO hỗ trợ (Supportive PMO)",
+        "B": "PMO kiểm soát (Controlling PMO)",
+        "C": "PMO chỉ thị (Directive PMO)",
+        "D": "PMO tư vấn (Advisory PMO)"
+      },
+      "ans": "B",
+      "exp": "PMO kiểm soát (Controlling PMO) yêu cầu tuân thủ bắt buộc — các PM phải dùng phương pháp luận, công cụ, và mẫu chuẩn của PMO. Mức độ kiểm soát trung bình. Khác với PMO chỉ thị ở chỗ: PMO chỉ thị sẽ TRỰC TIẾP QUẢN LÝ dự án (PM báo cáo lên PMO, PMO phân công PM cho dự án). PMO hỗ trợ chỉ cung cấp hỗ trợ tự nguyện. 'PMO tư vấn' không phải thuật ngữ chính thức trong PMBOK."
+    },
+    {
+      "id": "ch02_q09",
+      "q": "Tổ chức DEF có PMO trực tiếp quản lý các dự án chiến lược quan trọng. Các PM của những dự án này báo cáo lên PMO, và PMO có thể quyết định ưu tiên dự án, phân bổ nguồn lực chung, và chấm dứt dự án nếu cần. Đây là loại PMO nào?",
+      "opts": {
+        "A": "PMO hỗ trợ (Supportive PMO)",
+        "B": "PMO kiểm soát (Controlling PMO)",
+        "C": "PMO chỉ thị (Directive PMO)",
+        "D": "PMO ma trận (Matrix PMO)"
+      },
+      "ans": "C",
+      "exp": "PMO chỉ thị (Directive PMO) có mức độ kiểm soát cao nhất — PMO trực tiếp quản lý dự án, PM báo cáo lên PMO, PMO có thể phân bổ nguồn lực và quyết định chiến lược dự án. Đây là mô hình tập trung nhất. Trong PMO hỗ trợ và kiểm soát, PM vẫn chịu trách nhiệm chính về dự án. PMO chỉ thị phù hợp khi tổ chức muốn đồng nhất hóa cao và kiểm soát chặt danh mục dự án."
+    },
+    {
+      "id": "ch02_q10",
+      "q": "Trong quá trình lập kế hoạch dự án, PM cần xem xét ảnh hưởng của việc công ty vừa sáp nhập với một công ty khác, dẫn đến thay đổi văn hóa tổ chức, chính sách nhân sự mới, và bộ máy quản lý được tái cơ cấu. Những yếu tố này thuộc phân loại nào?",
+      "opts": {
+        "A": "OPA — chính sách và thủ tục tổ chức cập nhật",
+        "B": "EEF nội bộ — điều kiện và văn hóa tổ chức thay đổi",
+        "C": "EEF bên ngoài — yếu tố thị trường và kinh tế",
+        "D": "OPA — bài học kinh nghiệm từ việc sáp nhập"
+      },
+      "ans": "B",
+      "exp": "Văn hóa tổ chức, cơ cấu bộ máy, và chính sách nhân sự là EEF nội bộ. EEF nội bộ bao gồm: văn hóa, cấu trúc, và quản trị tổ chức; phân phối địa lý cơ sở; cơ sở hạ tầng; phần mềm công nghệ thông tin; năng lực và sẵn có của nguồn lực; khả năng chấp nhận rủi ro. Đây là những điều kiện trong TẦM KIỂM SOÁT của tổ chức nhưng PM phải THÍCH NGHI với chúng trong dự án. Việc sáp nhập tạo ra OPA mới (chính sách mới) nhưng bản chất sáp nhập là EEF."
+    },
+    {
+      "id": "ch02_q11",
+      "q": "PM đang lập kế hoạch cho dự án công nghệ thông tin và nhận thấy rằng thị trường lao động cho lập trình viên chuyên ngành đang rất khan hiếm, mức lương trung bình ngành tăng 30% trong năm qua, và nhiều ứng viên có kinh nghiệm đang được các công ty đối thủ thu hút. Những điều này ảnh hưởng đến kế hoạch nhân sự của dự án như thế nào và thuộc loại EEF nào?",
+      "opts": {
+        "A": "EEF nội bộ — điều kiện nguồn lực con người của tổ chức",
+        "B": "OPA — chính sách tuyển dụng và lương thưởng",
+        "C": "EEF bên ngoài — điều kiện thị trường lao động",
+        "D": "EEF nội bộ — khả năng chấp nhận rủi ro của tổ chức"
+      },
+      "ans": "C",
+      "exp": "Điều kiện thị trường lao động, xu hướng lương ngành, và cạnh tranh nhân tài là EEF bên ngoài. EEF bên ngoài gồm: điều kiện thị trường, điều kiện kinh tế và tài chính, yếu tố môi trường và xã hội, quy định pháp lý, cơ sở dữ liệu thương mại. Tổ chức KHÔNG kiểm soát được các yếu tố này. PM phải nhận diện rủi ro và điều chỉnh kế hoạch. EEF nội bộ về nhân sự là năng lực và sẵn có của nguồn lực hiện có trong tổ chức, không phải thị trường bên ngoài."
+    },
+    {
+      "id": "ch02_q12",
+      "q": "Một PM mới nhận dự án và được cấp trên yêu cầu xem lại 'lessons learned' từ 5 dự án tương tự trước đây, sử dụng mẫu WBS chuẩn của công ty, và tuân theo quy trình onboarding nhà thầu đã được phê duyệt. Nhưng PM cũng phải tự lên kế hoạch ngân sách theo phán đoán của mình vì không có cơ sở dữ liệu chi phí lịch sử. Đâu là OPA trong tình huống này?",
+      "opts": {
+        "A": "Chỉ có mẫu WBS và quy trình onboarding",
+        "B": "Lessons learned, mẫu WBS, quy trình onboarding, và cả kế hoạch ngân sách sẽ tạo ra",
+        "C": "Lessons learned, mẫu WBS, và quy trình onboarding (không bao gồm kế hoạch ngân sách mới)",
+        "D": "Chỉ có lessons learned vì đây là dữ liệu lịch sử duy nhất"
+      },
+      "ans": "C",
+      "exp": "OPA là những gì tổ chức ĐÃ CÓ SẴN từ trước. Lessons learned từ dự án cũ, mẫu WBS chuẩn, và quy trình onboarding đã phê duyệt đều là OPA (cả hai loại: kho tri thức và quy trình/thủ tục). Kế hoạch ngân sách MỚI mà PM đang tạo ra CHƯA phải OPA — nó sẽ trở thành OPA sau khi hoàn thành và được lưu trữ. OPA là đầu vào cho dự án, không phải đầu ra. Thiếu cơ sở dữ liệu chi phí là dấu hiệu cho thấy OPA không đầy đủ."
+    },
+    {
+      "id": "ch02_q13",
+      "q": "Giám đốc điều hành hỏi PM về sự khác biệt giữa chương trình (program), danh mục đầu tư (portfolio), và dự án (project). PM giải thích: dự án là nỗ lực tạm thời, chương trình nhóm các dự án liên quan để quản lý phối hợp, còn danh mục đầu tư nhóm các dự án/chương trình để đạt mục tiêu chiến lược. Điều gì ĐÚNG nhất về danh mục đầu tư?",
+      "opts": {
+        "A": "Danh mục đầu tư chỉ bao gồm các dự án liên quan đến nhau về mặt kỹ thuật",
+        "B": "Danh mục đầu tư quản lý các dự án/chương trình chia sẻ nguồn lực hoặc phù hợp chiến lược chung, dù không nhất thiết liên quan kỹ thuật",
+        "C": "Danh mục đầu tư và chương trình là như nhau, chỉ khác tên gọi",
+        "D": "Danh mục đầu tư chỉ do PMO quản lý, không phải cấp lãnh đạo điều hành"
+      },
+      "ans": "B",
+      "exp": "Danh mục đầu tư (Portfolio) bao gồm các dự án, chương trình, và công việc khác được nhóm lại để đạt mục tiêu CHIẾN LƯỢC, không nhất thiết phải liên quan kỹ thuật với nhau. Chúng chia sẻ nguồn lực và được ưu tiên hóa theo giá trị kinh doanh. Ví dụ: danh mục 'chuyển đổi số' có thể bao gồm dự án HR, tài chính, vận hành — khác ngành nhưng cùng mục tiêu. Chương trình thì các dự án liên quan VÀ phụ thuộc nhau để đạt lợi ích mà từng dự án riêng lẻ không thể đạt được."
+    },
+    {
+      "id": "ch02_q14",
+      "q": "Một tổ chức đang chuyển đổi từ cơ cấu chức năng sang cơ cấu ma trận để tăng hiệu quả dự án. Ban lãnh đạo lo ngại về giai đoạn chuyển tiếp. PM được hỏi về rủi ro chính của cơ cấu ma trận so với chức năng. PM nên nêu vấn đề gì là QUAN TRỌNG NHẤT?",
+      "opts": {
+        "A": "Chi phí vận hành tổ chức ma trận cao hơn nhiều do cần nhiều văn phòng",
+        "B": "Nhân viên có thể bị xung đột ưu tiên do báo cáo cho cả PM lẫn giám đốc chức năng",
+        "C": "Cơ cấu ma trận không thể áp dụng cho công ty có trên 100 nhân viên",
+        "D": "PM trong ma trận không có quyền phê duyệt ngân sách nào cả"
+      },
+      "ans": "B",
+      "exp": "Xung đột ưu tiên do cấu trúc báo cáo kép là rủi ro chính nhất của ma trận. Khi nhân viên có hai 'sếp' (PM và giám đốc chức năng), họ thường phải quyết định ai quan trọng hơn, dẫn đến stress, nhầm lẫn, và có thể ảnh hưởng hiệu suất. Đây là thực tế được PMBOK ghi nhận. Phần còn lại: chi phí không nhất thiết cao hơn nhiều; ma trận áp dụng được cho mọi quy mô; trong ma trận mạnh PM CÓ quyền ngân sách. Vấn đề quyền lực kép là đặc trưng nhất cần chuẩn bị."
+    },
+    {
+      "id": "ch02_q15",
+      "q": "Công ty sản xuất ô tô thực hiện một chương trình gồm 3 dự án: thiết kế mẫu xe mới, nâng cấp dây chuyền sản xuất, và phát triển chiến dịch marketing ra mắt. Ba dự án này phối hợp chặt chẽ và lợi ích chỉ đạt được khi cả ba hoàn thành đồng bộ. Quản lý chương trình khác quản lý dự án ở điểm cốt lõi nào?",
+      "opts": {
+        "A": "Quản lý chương trình chỉ là quản lý dự án lớn hơn, không có sự khác biệt về bản chất",
+        "B": "Quản lý chương trình tập trung vào việc đạt lợi ích tổng hợp và phối hợp phụ thuộc giữa các dự án thành phần",
+        "C": "Quản lý chương trình không cần kế hoạch vì mỗi dự án có kế hoạch riêng",
+        "D": "Quản lý chương trình chỉ áp dụng cho các tổ chức dự án hóa"
+      },
+      "ans": "B",
+      "exp": "Điểm cốt lõi của quản lý chương trình là quản lý các PHỤ THUỘC và tạo RA LỢI ÍCH TỔ HỢP mà từng dự án riêng lẻ không tạo được. Trong ví dụ này: lợi ích (xe mới bán ra thị trường thành công) chỉ đạt được khi cả 3 dự án hoàn thành đồng bộ — đây là lý do tồn tại của chương trình. Quản lý chương trình không phải chỉ là dự án lớn hơn; nó có chiều cạnh quản lý lợi ích (benefits management) đặc thù. Không giới hạn cho cơ cấu dự án hóa."
+    },
+    {
+      "id": "ch02_q16",
+      "q": "Trong cuộc họp khởi động dự án, một thành viên nhóm hỏi: 'Tại sao chúng ta phải tuân thủ quy trình quản lý dự án của PMI thay vì làm theo cách chúng ta vẫn làm?' PM giải thích về tầm quan trọng của quản trị dự án (project governance). Câu trả lời nào CHÍNH XÁC NHẤT?",
+      "opts": {
+        "A": "Quản trị là để PMI kiểm soát cách công ty vận hành",
+        "B": "Quản trị dự án cung cấp khung ra quyết định, trách nhiệm giải trình, và đảm bảo dự án phù hợp với chiến lược tổ chức",
+        "C": "Quản trị chỉ quan trọng với dự án của chính phủ, không cần thiết cho công ty tư nhân",
+        "D": "Quản trị là quy trình hành chính không ảnh hưởng đến kết quả dự án"
+      },
+      "ans": "B",
+      "exp": "Quản trị dự án cung cấp: (1) Khung cho việc ra quyết định trong dự án; (2) Xác định vai trò và trách nhiệm; (3) Đảm bảo dự án phù hợp mục tiêu chiến lược tổ chức; (4) Cung cấp sự giám sát và kiểm soát. Quản trị không phải là kiểm soát từ PMI — PMI chỉ cung cấp tiêu chuẩn, còn quản trị là cơ chế nội bộ của tổ chức. Quản trị cần thiết cho mọi loại tổ chức (nhà nước và tư nhân). Và quản trị ảnh hưởng TRỰC TIẾP đến kết quả dự án qua chất lượng ra quyết định."
+    },
+    {
+      "id": "ch02_q17",
+      "q": "PM của dự án phần mềm nhận thấy rằng tổ chức vừa ban hành chính sách mới yêu cầu tất cả mã nguồn phải được kiểm tra bảo mật trước khi triển khai. Chính sách này chưa tồn tại khi dự án được lên kế hoạch ban đầu. PM cần xử lý tình huống này như thế nào và phân loại yếu tố này là gì?",
+      "opts": {
+        "A": "EEF nội bộ mới — cần đánh giá tác động và đề xuất thay đổi dự án theo quy trình kiểm soát thay đổi",
+        "B": "OPA mới — không cần thay đổi kế hoạch vì chính sách nội bộ không ảnh hưởng kỹ thuật",
+        "C": "EEF bên ngoài — yêu cầu bảo mật là quy định ngành",
+        "D": "OPA mới — cần báo cáo cho PMO và chờ hướng dẫn mà không cần hành động ngay"
+      },
+      "ans": "A",
+      "exp": "Chính sách bảo mật mới của tổ chức là EEF nội bộ (chính sách và điều kiện tổ chức). Khi EEF thay đổi trong quá trình thực hiện, PM phải: (1) Đánh giá tác động đến phạm vi, thời gian, và chi phí; (2) Đề xuất thay đổi qua quy trình kiểm soát thay đổi tích hợp. PM không thể bỏ qua hay tự ý thực hiện mà không cập nhật kế hoạch. Đây không phải OPA vì chính sách là điều kiện mà PM phải TUÂN THEO, không phải tài nguyên để SỬ DỤNG. EEF bên ngoài là quy định NGOÀI tầm kiểm soát của tổ chức."
+    },
+    {
+      "id": "ch02_q18",
+      "q": "Một PM đang làm việc trong tổ chức ma trận yếu (Weak Matrix). Anh ta cần một lập trình viên cụ thể cho giai đoạn tới của dự án nhưng lập trình viên này đang bị giám đốc kỹ thuật giữ lại cho công việc bảo trì hệ thống hiện có. PM nên làm gì trong tình huống này?",
+      "opts": {
+        "A": "Trực tiếp yêu cầu lập trình viên ưu tiên công việc dự án vì PM có quyền cao hơn",
+        "B": "Chấp nhận tình huống vì trong ma trận yếu, giám đốc chức năng có quyền lực cao hơn PM",
+        "C": "Thương lượng với giám đốc kỹ thuật hoặc báo cáo lên ban lãnh đạo để giải quyết xung đột nguồn lực",
+        "D": "Thuê lập trình viên bên ngoài mà không cần thông báo cho ai"
+      },
+      "ans": "C",
+      "exp": "Trong ma trận yếu, giám đốc chức năng có quyền lực lớn hơn PM về nhân sự, nhưng PM KHÔNG nên chỉ chấp nhận thụ động. Giải pháp đúng là thương lượng (negotiation for resources) với giám đốc chức năng, trình bày tác động đến dự án, và nếu cần thiết leo thang lên ban lãnh đạo hoặc nhà bảo trợ dự án. PM có trách nhiệm giải quyết vấn đề nguồn lực. Không thể ra lệnh cho nhân viên (sai quyền hạn), không thể chỉ chấp nhận (vi phạm trách nhiệm PM), không thể tự thuê mà không được phê duyệt."
+    },
+    {
+      "id": "ch02_q19",
+      "q": "Nhà tài trợ dự án (project sponsor) yêu cầu PM giải thích sự khác biệt giữa EEF và OPA vì họ nhầm lẫn hai khái niệm này. PM dùng ví dụ cụ thể nào sau đây sẽ CHÍNH XÁC NHẤT để minh họa sự khác biệt?",
+      "opts": {
+        "A": "EEF là dữ liệu lịch sử từ dự án cũ; OPA là tình trạng thị trường hiện tại",
+        "B": "EEF là điều kiện và hoàn cảnh mà dự án tồn tại trong đó (ví dụ: văn hóa công ty, quy định chính phủ); OPA là những công cụ và kiến thức tổ chức ĐÃ TẠO RA để hỗ trợ PM (ví dụ: mẫu biểu, lessons learned)",
+        "C": "EEF chỉ áp dụng cho yếu tố bên ngoài; OPA chỉ áp dụng cho yếu tố nội bộ",
+        "D": "EEF và OPA đều là đầu vào nhưng EEF dùng để lập kế hoạch còn OPA dùng để thực hiện"
+      },
+      "ans": "B",
+      "exp": "Câu B mô tả chính xác nhất sự khác biệt cốt lõi: EEF là ĐIỀU KIỆN/MÔI TRƯỜNG mà dự án phải hoạt động trong đó (PM phải thích nghi, không thể thay đổi ngay); OPA là TÀI SẢN/CÔNG CỤ tổ chức đã tạo ra và PM có thể sử dụng (policies, templates, historical data). EEF CÓ CẢ nội bộ lẫn bên ngoài (nên câu C sai). Cả EEF lẫn OPA đều là đầu vào cho cả lập kế hoạch lẫn thực hiện (câu D sai). Câu A đảo ngược hoàn toàn."
+    },
+    {
+      "id": "ch02_q20",
+      "q": "Tổ chức bạn đang trong giai đoạn chuyển đổi mô hình kinh doanh, với nhiều dự án chiến lược đang chạy song song. Ban lãnh đạo quyết định thành lập PMO mới với chức năng: phê duyệt tất cả yêu cầu nguồn lực, ưu tiên hóa danh mục dự án theo mục tiêu chiến lược, và PM các dự án phải báo cáo trực tiếp lên PMO. Mô hình PMO này phù hợp nhất với loại nào và khi nào nên áp dụng?",
+      "opts": {
+        "A": "PMO hỗ trợ — phù hợp khi tổ chức cần tiêu chuẩn hóa nhẹ",
+        "B": "PMO kiểm soát — phù hợp khi cần tuân thủ phương pháp luận chuẩn",
+        "C": "PMO chỉ thị — phù hợp khi tổ chức cần kiểm soát tập trung cao trong giai đoạn chuyển đổi chiến lược",
+        "D": "PMO hỗn hợp — kết hợp cả ba loại để tăng linh hoạt"
+      },
+      "ans": "C",
+      "exp": "Mô hình được mô tả (PM báo cáo lên PMO, PMO phê duyệt nguồn lực, ưu tiên hóa danh mục) là PMO chỉ thị (Directive PMO) với mức kiểm soát cao nhất. Đây phù hợp khi: tổ chức trong giai đoạn chuyển đổi lớn cần sự nhất quán, nhiều dự án cạnh tranh nguồn lực, và cần liên kết chặt chẽ giữa dự án và chiến lược. Nhược điểm là ít linh hoạt. PMO hỗ trợ quá lỏng lẻo cho tình huống này. PMO kiểm soát yêu cầu tuân thủ quy trình nhưng không quản lý trực tiếp. Không có 'PMO hỗn hợp' là loại chính thức trong PMBOK."
+    }
+  ]
+}

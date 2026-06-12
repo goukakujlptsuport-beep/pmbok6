@@ -1,0 +1,248 @@
+{
+  "chapterId": "rita_17",
+  "chapterNum": 17,
+  "chapterTitle": "Common Agile Methodologies",
+  "source": "rita",
+  "questions": [
+    {
+      "id": "r17_q01",
+      "q": "A Scrum team is struggling with too many tasks in progress simultaneously, causing delays. What Scrum/Kanban practice would BEST address this?",
+      "opts": {
+        "A": "Add more team members to handle the workload",
+        "B": "Implement WIP (Work In Progress) limits to improve flow",
+        "C": "Increase the sprint length to 4 weeks",
+        "D": "Hold more frequent Daily Scrum meetings"
+      },
+      "ans": "B",
+      "exp": "WIP limits (giới hạn công việc đang thực hiện) là nguyên tắc cốt lõi của Kanban. Giới hạn WIP buộc nhóm hoàn thành việc hiện tại trước khi bắt đầu việc mới, cải thiện luồng công việc và giảm chuyển đổi ngữ cảnh. Đây là biện pháp trực tiếp nhất để giải quyết vấn đề quá nhiều việc đang làm."
+    },
+    {
+      "id": "r17_q02",
+      "q": "In Scrum, who is responsible for managing and prioritizing the Product Backlog?",
+      "opts": {
+        "A": "Scrum Master",
+        "B": "Development Team",
+        "C": "Project Sponsor",
+        "D": "Product Owner"
+      },
+      "ans": "D",
+      "exp": "Product Owner (PO) chịu trách nhiệm quản lý và ưu tiên hóa Product Backlog. PO đại diện cho lợi ích của khách hàng và doanh nghiệp, đảm bảo nhóm phát triển luôn làm việc có giá trị nhất. Scrum Master loại bỏ trở ngại, Development Team tự tổ chức thực hiện công việc."
+    },
+    {
+      "id": "r17_q03",
+      "q": "A development team completes a sprint but the product owner says the increment does not meet the Definition of Done. What should happen?",
+      "opts": {
+        "A": "The increment is released to customers anyway since the sprint is over",
+        "B": "The work is moved to the next sprint's backlog as it was not truly completed",
+        "C": "The Sprint Review is skipped for this sprint",
+        "D": "The Scrum Master overrides the Product Owner's decision"
+      },
+      "ans": "B",
+      "exp": "Definition of Done (DoD) là thỏa thuận của nhóm về tiêu chí hoàn thành. Nếu increment không đáp ứng DoD, nó KHÔNG được coi là hoàn thành và phải đưa vào Product Backlog của sprint tiếp theo. Phát hành sản phẩm không đạt DoD vi phạm nguyên tắc chất lượng của Scrum."
+    },
+    {
+      "id": "r17_q04",
+      "q": "What is the PRIMARY purpose of the Daily Scrum (Daily Standup) in Scrum?",
+      "opts": {
+        "A": "To report individual progress to the Scrum Master",
+        "B": "To allow the Product Owner to assign new tasks to the team",
+        "C": "To synchronize team activities and identify impediments within 15 minutes",
+        "D": "To review and update the Product Backlog"
+      },
+      "ans": "C",
+      "exp": "Daily Scrum là cuộc họp 15 phút mỗi ngày để nhóm phát triển đồng bộ hóa công việc và xác định trở ngại. Ba câu hỏi điển hình: (1) Hôm qua tôi đã làm gì? (2) Hôm nay tôi sẽ làm gì? (3) Có trở ngại nào không? Đây là cuộc họp của Development Team, không phải báo cáo cho Scrum Master hay PM."
+    },
+    {
+      "id": "r17_q05",
+      "q": "A team is using Lean methodology. They identify a process step that does not add value for the customer. According to Lean, what should be done?",
+      "opts": {
+        "A": "Keep the step since it may be useful later",
+        "B": "Add more resources to make the step faster",
+        "C": "Eliminate the step as it is considered waste (MUDA)",
+        "D": "Document the step as a best practice"
+      },
+      "ans": "C",
+      "exp": "Lean tập trung vào việc loại bỏ lãng phí (MUDA). Bất kỳ bước quy trình nào không tạo ra giá trị cho khách hàng đều là lãng phí và cần được loại bỏ. 7 loại lãng phí trong Lean: (1) Tồn kho, (2) Chuyển động, (3) Chờ đợi, (4) Vận chuyển, (5) Gia công thừa, (6) Sản xuất dư thừa, (7) Lỗi/Sửa chữa."
+    },
+    {
+      "id": "r17_q06",
+      "q": "An XP (Extreme Programming) team wants to improve code quality and catch defects early. Which XP practice is MOST directly aimed at this?",
+      "opts": {
+        "A": "Pair programming and Test-Driven Development (TDD)",
+        "B": "Increasing sprint velocity",
+        "C": "Daily Scrum meetings",
+        "D": "MoSCoW prioritization"
+      },
+      "ans": "A",
+      "exp": "XP sử dụng pair programming (hai lập trình viên cùng làm một task) và TDD (viết test trước khi viết code) để cải thiện chất lượng và phát hiện lỗi sớm. TDD đảm bảo mọi tính năng đều có test coverage. Pair programming giúp review code liên tục và chia sẻ kiến thức."
+    },
+    {
+      "id": "r17_q07",
+      "q": "What is the Agile Manifesto's stance on documentation versus working software?",
+      "opts": {
+        "A": "Comprehensive documentation is MORE important than working software",
+        "B": "Working software is valued OVER comprehensive documentation, but documentation still has value",
+        "C": "Documentation should be eliminated entirely in Agile projects",
+        "D": "Documentation and working software are equally important"
+      },
+      "ans": "B",
+      "exp": "Agile Manifesto nêu rõ: 'Working software over comprehensive documentation' — phần mềm hoạt động được quan trọng hơn tài liệu toàn diện. Tuy nhiên, điều này KHÔNG có nghĩa là tài liệu bị loại bỏ hoàn toàn — 'items on the right still have value'. Đây là hiểu lầm phổ biến cần tránh trong thi PMP."
+    },
+    {
+      "id": "r17_q08",
+      "q": "A team using Kanban has a column that consistently gets backed up with work. What does this indicate?",
+      "opts": {
+        "A": "The team needs to work faster",
+        "B": "A bottleneck in the value stream that needs to be addressed",
+        "C": "The WIP limit should be increased for that column",
+        "D": "The sprint length should be reduced"
+      },
+      "ans": "B",
+      "exp": "Trong Kanban, cột bị tắc nghẽn (buildup) chỉ ra một BOTTLENECK trong value stream. Đây là cơ hội để cải tiến quy trình. Giải pháp đúng là phân tích nguyên nhân tắc nghẽn và cải thiện, không phải tăng WIP limit (điều đó sẽ làm vấn đề tệ hơn) hay làm việc nhanh hơn mà không giải quyết gốc rễ."
+    },
+    {
+      "id": "r17_q09",
+      "q": "In SAFe (Scaled Agile Framework), what is a PI Planning event?",
+      "opts": {
+        "A": "A 1-day sprint review for individual teams",
+        "B": "A cadence-based, face-to-face planning event where all ART teams align on a Program Increment",
+        "C": "A daily standup for enterprise leaders",
+        "D": "A retrospective held at the end of each quarter"
+      },
+      "ans": "B",
+      "exp": "PI (Program Increment) Planning là sự kiện lập kế hoạch theo nhịp độ (thường 2 ngày) trong đó tất cả các nhóm thuộc Agile Release Train (ART) cùng nhau lên kế hoạch cho Program Increment (thường 8-12 tuần). Đây là sự kiện quan trọng nhất trong SAFe, đảm bảo sự phối hợp và liên kết giữa các nhóm ở cấp độ doanh nghiệp."
+    },
+    {
+      "id": "r17_q10",
+      "q": "A Scrum team's velocity has been 40 story points per sprint for 5 sprints. The Product Backlog has 200 story points remaining. How many sprints are estimated to complete the backlog?",
+      "opts": {
+        "A": "4 sprints",
+        "B": "5 sprints",
+        "C": "6 sprints",
+        "D": "8 sprints"
+      },
+      "ans": "B",
+      "exp": "Velocity = 40 story points/sprint. Story points còn lại = 200. Số sprint ước tính = 200 / 40 = 5 sprints. Velocity là công cụ dự báo trong Scrum — dựa trên hiệu suất thực tế của nhóm (không phải ước tính lý thuyết) để dự đoán tiến độ tương lai."
+    },
+    {
+      "id": "r17_q11",
+      "q": "Which Agile methodology uses MoSCoW prioritization as a core technique?",
+      "opts": {
+        "A": "Scrum",
+        "B": "XP (Extreme Programming)",
+        "C": "DSDM (Dynamic Systems Development Method)",
+        "D": "Lean"
+      },
+      "ans": "C",
+      "exp": "DSDM sử dụng MoSCoW prioritization như một kỹ thuật cốt lõi. MoSCoW phân loại yêu cầu thành: Must have (bắt buộc), Should have (nên có), Could have (có thể có), Won't have (sẽ không có lần này). DSDM cũng nặng về quản trị (governance-heavy) và sử dụng timeboxing. Scrum dùng Product Backlog với story points."
+    },
+    {
+      "id": "r17_q12",
+      "q": "According to the 12 Agile Principles, how should a team respond to changing requirements, even late in development?",
+      "opts": {
+        "A": "Freeze the scope baseline and reject late changes",
+        "B": "Welcome changing requirements, as Agile processes harness change for the customer's competitive advantage",
+        "C": "Accept changes only if the customer pays extra",
+        "D": "Submit all late changes through a formal change control board"
+      },
+      "ans": "B",
+      "exp": "Agile Principle #2: 'Welcome changing requirements, even late in development. Agile processes harness change for the customer's competitive advantage.' Đây là sự khác biệt cơ bản giữa Agile và dự án truyền thống (predictive). Trong Agile, thay đổi được coi là cơ hội, không phải vấn đề cần kiểm soát."
+    },
+    {
+      "id": "r17_q13",
+      "q": "A team practicing XP wants all developers to be familiar with every part of the codebase. Which XP practice supports this?",
+      "opts": {
+        "A": "Test-Driven Development",
+        "B": "Continuous Integration",
+        "C": "Collective Code Ownership",
+        "D": "Small Releases"
+      },
+      "ans": "C",
+      "exp": "Collective Code Ownership (sở hữu code tập thể) trong XP có nghĩa là bất kỳ lập trình viên nào cũng có thể thay đổi bất kỳ phần nào của code. Điều này khuyến khích chia sẻ kiến thức và giảm sự phụ thuộc vào cá nhân. Pair programming cũng hỗ trợ mục tiêu này, nhưng Collective Code Ownership là cơ chế trực tiếp nhất."
+    },
+    {
+      "id": "r17_q14",
+      "q": "What distinguishes Kanban from Scrum in terms of iterations?",
+      "opts": {
+        "A": "Kanban uses 2-week sprints; Scrum uses 4-week sprints",
+        "B": "Kanban has no fixed iterations — work flows continuously; Scrum uses timeboxed sprints",
+        "C": "Kanban requires a Product Owner; Scrum does not",
+        "D": "Kanban focuses on planning; Scrum focuses on execution"
+      },
+      "ans": "B",
+      "exp": "Sự khác biệt quan trọng: Kanban là hệ thống liên tục (continuous flow) không có vòng lặp cố định — công việc được kéo vào khi có dung lượng. Scrum sử dụng Sprint cố định (1-4 tuần, thường 2 tuần). Kanban phù hợp với công việc bảo trì/hỗ trợ liên tục; Scrum phù hợp với phát triển tính năng mới có chu kỳ."
+    },
+    {
+      "id": "r17_q15",
+      "q": "Which of the following BEST describes the empirical process control model underlying Scrum?",
+      "opts": {
+        "A": "Detailed upfront planning eliminates uncertainty in software development",
+        "B": "Transparency, Inspection, and Adaptation — making decisions based on observation and evidence",
+        "C": "Following a defined process guarantees predictable outcomes",
+        "D": "Documentation drives quality in software projects"
+      },
+      "ans": "B",
+      "exp": "Scrum được xây dựng trên nền tảng kiểm soát quy trình thực nghiệm (empiricism) với 3 trụ cột: (1) Transparency (minh bạch) — mọi người đều thấy thực tế, (2) Inspection (kiểm tra) — thường xuyên kiểm tra tiến độ và sản phẩm, (3) Adaptation (thích nghi) — điều chỉnh dựa trên kết quả kiểm tra. Đây là nền tảng triết học của toàn bộ Scrum."
+    },
+    {
+      "id": "r17_q16",
+      "q": "In FDD (Feature-Driven Development), what is the central organizing unit of development?",
+      "opts": {
+        "A": "User Stories",
+        "B": "Features — small, client-valued functions expressed as '<action> <result> <object>'",
+        "C": "Epics defined by the Product Owner",
+        "D": "Sprint Goals"
+      },
+      "ans": "B",
+      "exp": "FDD (Feature-Driven Development) tổ chức công việc xung quanh 'features' — các chức năng nhỏ có giá trị cho khách hàng, thường được diễn đạt theo cú pháp '<action> <result> <by/for/of/to a(n)> <object>'. FDD có 5 quy trình: Develop Overall Model, Build Feature List, Plan by Feature, Design by Feature, Build by Feature."
+    },
+    {
+      "id": "r17_q17",
+      "q": "A Scrum Master is frequently assigning tasks to team members and directing their work. What is WRONG with this behavior?",
+      "opts": {
+        "A": "Nothing — the Scrum Master is responsible for team productivity",
+        "B": "The Scrum Master is acting as a traditional manager instead of a servant leader who removes impediments",
+        "C": "The Scrum Master should assign tasks but only during Sprint Planning",
+        "D": "The Scrum Master needs more authority to direct the team"
+      },
+      "ans": "B",
+      "exp": "Scrum Master là SERVANT LEADER (người lãnh đạo phục vụ), không phải người quản lý trực tiếp. Nhiệm vụ của Scrum Master là: loại bỏ trở ngại, bảo vệ nhóm, huấn luyện về Scrum, và phục vụ nhóm. Development Team tự tổ chức (self-organizing) và tự phân công công việc. Scrum Master chỉ đạo trực tiếp là vi phạm nguyên tắc cơ bản của Scrum."
+    },
+    {
+      "id": "r17_q18",
+      "q": "What is the purpose of a Sprint Retrospective in Scrum?",
+      "opts": {
+        "A": "To demonstrate the product increment to the Product Owner and stakeholders",
+        "B": "To plan the work for the next sprint",
+        "C": "For the team to inspect their process and identify improvements for the next sprint",
+        "D": "To update the Product Backlog with new user stories"
+      },
+      "ans": "C",
+      "exp": "Sprint Retrospective là cơ hội cho Development Team và Scrum Master (PO tùy chọn) để kiểm tra QUY TRÌNH LÀM VIỆC của mình và xác định cải tiến. Nó xảy ra sau Sprint Review và trước Sprint Planning tiếp theo. Sprint Review là để demo sản phẩm; Retrospective là để cải tiến quy trình — đây là sự khác biệt quan trọng."
+    },
+    {
+      "id": "r17_q19",
+      "q": "According to the Agile Manifesto, which of the following is valued MORE in Agile?",
+      "opts": {
+        "A": "Processes and tools over individuals and interactions",
+        "B": "Contract negotiation over customer collaboration",
+        "C": "Responding to change over following a plan",
+        "D": "Comprehensive documentation over working software"
+      },
+      "ans": "C",
+      "exp": "Bốn giá trị Agile Manifesto: (1) Individuals and interactions OVER processes and tools, (2) Working software OVER comprehensive documentation, (3) Customer collaboration OVER contract negotiation, (4) Responding to change OVER following a plan. Câu C là một trong 4 giá trị chính xác. A, B, D đều là 'phía không được ưu tiên' — đây là bẫy thường gặp trong đề thi."
+    },
+    {
+      "id": "r17_q20",
+      "q": "A team is transitioning from a traditional waterfall approach to Agile. The biggest cultural change they need to make is:",
+      "opts": {
+        "A": "Learning to use Jira and Confluence tools",
+        "B": "Shifting from a fear of failure to embracing 'fail fast and learn' with continuous improvement",
+        "C": "Reducing the number of team meetings",
+        "D": "Getting rid of all documentation requirements"
+      },
+      "ans": "B",
+      "exp": "Thách thức văn hóa lớn nhất khi chuyển sang Agile là thay đổi tư duy: từ sợ thất bại và trừng phạt lỗi lầm, sang chấp nhận 'fail fast, learn fast' và cải tiến liên tục. Agile mindset dựa trên empiricism — thử nghiệm, học hỏi và thích nghi. Công cụ và tài liệu là thứ yếu so với sự thay đổi tư duy và văn hóa."
+    }
+  ]
+}

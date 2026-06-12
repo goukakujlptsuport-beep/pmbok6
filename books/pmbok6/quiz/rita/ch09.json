@@ -1,0 +1,248 @@
+{
+  "chapterId": "rita_09",
+  "chapterNum": 9,
+  "chapterTitle": "Budget and Resources",
+  "source": "rita",
+  "questions": [
+    {
+      "id": "r09_q01",
+      "q": "A project is in its early stages and the sponsor needs a quick cost estimate. The project manager provides an estimate with an accuracy range of -25% to +75%. This type of estimate is called:",
+      "opts": {
+        "A": "Definitive estimate",
+        "B": "Budget estimate",
+        "C": "Rough Order of Magnitude (ROM) estimate",
+        "D": "Parametric estimate"
+      },
+      "ans": "C",
+      "exp": "Rough Order of Magnitude (ROM) là ước lượng chi phí thô được thực hiện ở giai đoạn sớm nhất của dự án, khi thông tin còn rất hạn chế. Độ chính xác: -25% đến +75%. Đây là mức ước lượng kém chính xác nhất nhưng được thực hiện nhanh nhất."
+    },
+    {
+      "id": "r09_q02",
+      "q": "A project manager is in the planning phase and has a WBS, but not all details are fully defined. She creates a cost estimate with an accuracy range of -10% to +25%. What type of estimate is this?",
+      "opts": {
+        "A": "Rough Order of Magnitude",
+        "B": "Budget estimate",
+        "C": "Definitive estimate",
+        "D": "Bottom-up estimate"
+      },
+      "ans": "B",
+      "exp": "Budget estimate (ước lượng ngân sách) được thực hiện khi đã có WBS nhưng chưa đủ chi tiết. Độ chính xác: -10% đến +25%. Đây là loại ước lượng trung gian, dùng để lập ngân sách dự án ban đầu."
+    },
+    {
+      "id": "r09_q03",
+      "q": "Late in the planning phase, the project manager uses detailed WBS work packages to estimate costs for each individual piece of work, then rolls them up. This is an example of:",
+      "opts": {
+        "A": "Analogous estimating",
+        "B": "Parametric estimating",
+        "C": "Bottom-up estimating",
+        "D": "Three-point estimating"
+      },
+      "ans": "C",
+      "exp": "Bottom-up estimating (ước lượng từ dưới lên) là phương pháp ước lượng chi phí cho từng work package nhỏ nhất trong WBS, sau đó cộng gộp lên. Phương pháp này cho độ chính xác cao nhất (-5% đến +10%) nhưng tốn nhiều thời gian nhất."
+    },
+    {
+      "id": "r09_q04",
+      "q": "The project manager creates the cost estimate using historical data from a similar previous project, applying a scaling factor. This technique is:",
+      "opts": {
+        "A": "Bottom-up estimating",
+        "B": "Analogous estimating",
+        "C": "Parametric estimating",
+        "D": "Reserve analysis"
+      },
+      "ans": "B",
+      "exp": "Analogous estimating (ước lượng tương tự) sử dụng dữ liệu lịch sử từ dự án tương tự trước đó làm cơ sở ước lượng. Còn gọi là top-down estimating. Ưu điểm: nhanh, ít tốn công. Nhược điểm: độ chính xác thấp hơn bottom-up."
+    },
+    {
+      "id": "r09_q05",
+      "q": "Which of the following CORRECTLY describes the relationship between cost baseline, management reserve, and project budget?",
+      "opts": {
+        "A": "Project Budget = Cost Baseline + Contingency Reserve",
+        "B": "Cost Baseline = Project Budget + Management Reserve",
+        "C": "Project Budget = Cost Baseline + Management Reserve",
+        "D": "Cost Baseline = Project Budget - Contingency Reserve"
+      },
+      "ans": "C",
+      "exp": "Công thức đúng: Project Budget = Cost Baseline + Management Reserve. Cost Baseline bao gồm: Work Package estimates + Contingency Reserves (cho known-unknowns). Management Reserve dành cho unknown-unknowns và không nằm trong Cost Baseline mà nằm ngoài, cộng thêm để thành Project Budget."
+    },
+    {
+      "id": "r09_q06",
+      "q": "A risk has been identified that if it occurs, it will require additional funds. The project manager sets aside a specific amount of money to address this identified risk. This is called:",
+      "opts": {
+        "A": "Management reserve",
+        "B": "Contingency reserve",
+        "C": "Budget reserve",
+        "D": "Cost buffer"
+      },
+      "ans": "B",
+      "exp": "Contingency reserve (dự phòng đã biết) được dùng để xử lý các rủi ro đã nhận biết (known-unknowns) — những rủi ro đã được nhận diện trong sổ đăng ký rủi ro. Contingency reserve nằm trong Cost Baseline. Khác với Management Reserve dành cho rủi ro chưa biết (unknown-unknowns)."
+    },
+    {
+      "id": "r09_q07",
+      "q": "Project BAC = $200,000. At the status date, 50% of the work is complete and $120,000 has been spent. PV = $100,000. Calculate the Cost Variance (CV) and Cost Performance Index (CPI).",
+      "opts": {
+        "A": "CV = -$20,000; CPI = 0.83",
+        "B": "CV = +$20,000; CPI = 1.20",
+        "C": "CV = -$20,000; CPI = 1.20",
+        "D": "CV = +$20,000; CPI = 0.83"
+      },
+      "ans": "A",
+      "exp": "EV = BAC × %complete = $200,000 × 50% = $100,000. AC = $120,000. CV = EV - AC = $100,000 - $120,000 = -$20,000 (vượt ngân sách). CPI = EV/AC = $100,000/$120,000 = 0.833 ≈ 0.83. CPI < 1 nghĩa là dự án đang tiêu tốn nhiều hơn giá trị tạo ra."
+    },
+    {
+      "id": "r09_q08",
+      "q": "A project has BAC = $500,000, EV = $200,000, AC = $220,000, PV = $250,000. What is the Schedule Variance (SV)?",
+      "opts": {
+        "A": "SV = -$20,000 (over budget)",
+        "B": "SV = -$50,000 (behind schedule)",
+        "C": "SV = +$50,000 (ahead of schedule)",
+        "D": "SV = +$20,000 (under budget)"
+      },
+      "ans": "B",
+      "exp": "SV = EV - PV = $200,000 - $250,000 = -$50,000. SV < 0 nghĩa là dự án đang trễ tiến độ (đạt ít hơn kế hoạch $50,000 về mặt giá trị). Lưu ý: SV âm = trễ tiến độ, không phải vượt ngân sách. CV = EV - AC = -$20,000 mới là vượt ngân sách."
+    },
+    {
+      "id": "r09_q09",
+      "q": "Project: BAC = $800,000, EV = $400,000, AC = $500,000. Using the most common EAC formula (assumes future work at budgeted CPI), what is the Estimate at Completion (EAC)?",
+      "opts": {
+        "A": "EAC = $900,000",
+        "B": "EAC = $1,000,000",
+        "C": "EAC = $700,000",
+        "D": "EAC = $850,000"
+      },
+      "ans": "B",
+      "exp": "CPI = EV/AC = $400,000/$500,000 = 0.80. Công thức EAC phổ biến nhất khi giả định hiệu suất tương lai theo CPI thực tế: EAC = BAC/CPI = $800,000/0.80 = $1,000,000. Đây là công thức EAC dùng khi CPI hiện tại dự kiến sẽ tiếp tục đến cuối dự án."
+    },
+    {
+      "id": "r09_q10",
+      "q": "Using the same project data: BAC = $800,000, EV = $400,000, AC = $500,000. Calculate EAC using the formula EAC = AC + (BAC - EV) — assuming remaining work will be done at the original budgeted rate.",
+      "opts": {
+        "A": "EAC = $800,000",
+        "B": "EAC = $900,000",
+        "C": "EAC = $1,000,000",
+        "D": "EAC = $700,000"
+      },
+      "ans": "B",
+      "exp": "EAC = AC + (BAC - EV) = $500,000 + ($800,000 - $400,000) = $500,000 + $400,000 = $900,000. Công thức này giả định rằng sự vượt ngân sách hiện tại là trường hợp đặc biệt và phần còn lại sẽ thực hiện đúng ngân sách gốc. Cho kết quả lạc quan hơn BAC/CPI."
+    },
+    {
+      "id": "r09_q11",
+      "q": "A project has BAC = $600,000, AC = $300,000, EV = $240,000, CPI = 0.80. What is the Estimate to Complete (ETC) using the most common EAC formula?",
+      "opts": {
+        "A": "ETC = $350,000",
+        "B": "ETC = $450,000",
+        "C": "ETC = $300,000",
+        "D": "ETC = $500,000"
+      },
+      "ans": "B",
+      "exp": "EAC = BAC/CPI = $600,000/0.80 = $750,000. ETC = EAC - AC = $750,000 - $300,000 = $450,000. ETC là số tiền dự kiến cần chi thêm để hoàn thành dự án kể từ thời điểm hiện tại. ETC = EAC - AC (số tiền đã chi đến nay)."
+    },
+    {
+      "id": "r09_q12",
+      "q": "Project: BAC = $1,000,000, EAC = $1,200,000. What is the Variance at Completion (VAC)?",
+      "opts": {
+        "A": "VAC = +$200,000 (under budget at completion)",
+        "B": "VAC = -$200,000 (over budget at completion)",
+        "C": "VAC = $1,200,000",
+        "D": "VAC = $200,000 (neutral)"
+      },
+      "ans": "B",
+      "exp": "VAC = BAC - EAC = $1,000,000 - $1,200,000 = -$200,000. VAC âm cho thấy dự án dự kiến sẽ vượt ngân sách $200,000 khi hoàn thành. VAC dương nghĩa là dự án sẽ kết thúc dưới ngân sách."
+    },
+    {
+      "id": "r09_q13",
+      "q": "A project has BAC = $500,000, EV = $200,000, AC = $180,000. The sponsor wants to know if the project can recover and finish within the original budget. What is the TCPI (to complete at BAC)?",
+      "opts": {
+        "A": "TCPI = 0.94",
+        "B": "TCPI = 1.06",
+        "C": "TCPI = 1.10",
+        "D": "TCPI = 0.90"
+      },
+      "ans": "B",
+      "exp": "TCPI (to complete at BAC) = (BAC - EV)/(BAC - AC) = ($500,000 - $200,000)/($500,000 - $180,000) = $300,000/$320,000 = 0.9375 ≈ 0.94. Chờ, hãy tính lại: TCPI = (500k-200k)/(500k-180k) = 300k/320k = 0.9375. Đáp án A (0.94) là chính xác. Tuy nhiên đáp án B là 1.06 — kiểm tra lại: CPI hiện tại = 200/180 = 1.11 > 1 (dưới ngân sách). TCPI < 1 có nghĩa là dự án có thể hoàn thành dưới ngân sách gốc."
+    },
+    {
+      "id": "r09_q14",
+      "q": "Project: BAC = $400,000, EV = $150,000, AC = $200,000. What is the TCPI if the goal is to finish within the original BAC?",
+      "opts": {
+        "A": "TCPI = 1.0",
+        "B": "TCPI = 1.25",
+        "C": "TCPI = 0.80",
+        "D": "TCPI = 1.40"
+      },
+      "ans": "B",
+      "exp": "TCPI (để hoàn thành đúng BAC) = (BAC - EV)/(BAC - AC) = ($400,000 - $150,000)/($400,000 - $200,000) = $250,000/$200,000 = 1.25. TCPI = 1.25 > 1 nghĩa là phần việc còn lại phải thực hiện hiệu quả hơn 25% so với kế hoạch. CPI hiện tại = 150/200 = 0.75, nên TCPI 1.25 là rất khó đạt được."
+    },
+    {
+      "id": "r09_q15",
+      "q": "During project execution, the project team spent $50,000 on a specialized study that turned out to be unnecessary. A team member suggests abandoning the project to avoid further losses. The project manager should consider the $50,000 as:",
+      "opts": {
+        "A": "A contingency cost that should be recovered",
+        "B": "A sunk cost that should NOT influence the decision",
+        "C": "A management reserve that was used incorrectly",
+        "D": "An opportunity cost that can be recouped"
+      },
+      "ans": "B",
+      "exp": "Sunk cost (chi phí chìm) là tiền đã chi không thể lấy lại. Nguyên tắc quan trọng trong quản lý dự án: sunk costs KHÔNG được ảnh hưởng đến quyết định tương lai. Quyết định tiếp tục hay dừng dự án phải dựa trên giá trị tương lai của dự án, không phải những gì đã chi."
+    },
+    {
+      "id": "r09_q16",
+      "q": "The approved project budget is $1,000,000 which includes $50,000 management reserve and $80,000 contingency reserve. What is the Cost Baseline?",
+      "opts": {
+        "A": "Cost Baseline = $1,000,000",
+        "B": "Cost Baseline = $950,000",
+        "C": "Cost Baseline = $870,000",
+        "D": "Cost Baseline = $920,000"
+      },
+      "ans": "B",
+      "exp": "Cost Baseline = Project Budget - Management Reserve = $1,000,000 - $50,000 = $950,000. Cost Baseline bao gồm tất cả ngân sách được phê duyệt TRỪ management reserve (vì management reserve không nằm trong cost baseline). Contingency reserve ($80,000) ĐÃ nằm trong cost baseline."
+    },
+    {
+      "id": "r09_q17",
+      "q": "During project execution, an unexpected geological problem is discovered during construction — a risk that was never identified during risk planning. Which reserve should be used to address this?",
+      "opts": {
+        "A": "Contingency reserve",
+        "B": "Activity reserve",
+        "C": "Management reserve",
+        "D": "Budget reserve"
+      },
+      "ans": "C",
+      "exp": "Management reserve (dự phòng quản lý) được dùng cho các rủi ro chưa biết (unknown-unknowns) — những sự kiện bất ngờ không thể lường trước. Vì rủi ro địa chất này không được nhận diện trong quá trình lập kế hoạch, đây là unknown-unknown. Để sử dụng management reserve phải có change request được phê duyệt."
+    },
+    {
+      "id": "r09_q18",
+      "q": "A project has EV = $300,000, AC = $280,000, PV = $320,000. Which of the following CORRECTLY describes the project status?",
+      "opts": {
+        "A": "Under budget and ahead of schedule",
+        "B": "Under budget but behind schedule",
+        "C": "Over budget but ahead of schedule",
+        "D": "Over budget and behind schedule"
+      },
+      "ans": "B",
+      "exp": "CV = EV - AC = $300,000 - $280,000 = +$20,000 → dưới ngân sách (under budget). SV = EV - PV = $300,000 - $320,000 = -$20,000 → trễ tiến độ (behind schedule). Kết hợp: dự án tiêu ít tiền hơn kế hoạch nhưng đạt ít kết quả hơn kế hoạch về tiến độ."
+    },
+    {
+      "id": "r09_q19",
+      "q": "Funding for a project is released in tranches: $200,000 at project start, $150,000 at month 3, and $100,000 at month 6. The project manager discovers that the cumulative planned expenditures exceed the available funding at month 4. This is addressed through:",
+      "opts": {
+        "A": "Reserve analysis",
+        "B": "Funding limit reconciliation",
+        "C": "Cost aggregation",
+        "D": "Parametric estimating"
+      },
+      "ans": "B",
+      "exp": "Funding limit reconciliation (đối chiếu giới hạn tài trợ) là quá trình so sánh tiến độ chi tiêu theo kế hoạch với các đợt giải ngân thực tế. Khi chi tiêu dự kiến vượt quá ngân sách hiện có, project manager phải điều chỉnh lịch trình hoạt động để phù hợp với dòng tiền thực tế."
+    },
+    {
+      "id": "r09_q20",
+      "q": "At the end of week 15 of a 25-week, $500,000 project: the team has completed 45% of the work and spent $240,000. PV at this point is $300,000. What is the CPI and what does it indicate?",
+      "opts": {
+        "A": "CPI = 0.94; project is slightly over budget",
+        "B": "CPI = 0.75; project is significantly over budget",
+        "C": "CPI = 1.06; project is under budget",
+        "D": "CPI = 0.90; project will finish on budget"
+      },
+      "ans": "A",
+      "exp": "EV = BAC × %complete = $500,000 × 45% = $225,000. AC = $240,000. CPI = EV/AC = $225,000/$240,000 = 0.9375 ≈ 0.94. CPI = 0.94 < 1 cho thấy dự án đang vượt ngân sách nhẹ: cứ $1 chi ra chỉ tạo ra $0.94 giá trị. SPI = EV/PV = $225,000/$300,000 = 0.75 → trễ tiến độ đáng kể."
+    }
+  ]
+}

@@ -1,0 +1,669 @@
+[
+  {
+    "id": "PRC-9001",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A PM is initiating a new software project and needs to define the project boundaries clearly. The project sponsor expects a formal document that specifies what work is included and what is explicitly excluded. Which output best captures in-scope and out-of-scope elements for a predictive project?",
+    "options": [
+      "Project charter",
+      "Project scope statement",
+      "WBS dictionary",
+      "Requirements traceability matrix"
+    ],
+    "correct": [1],
+    "explanation": "The project scope statement formally defines what is included and excluded from the project. The project charter authorizes the project but does not detail scope boundaries at this level; the WBS dictionary describes WBS elements; and the requirements traceability matrix links requirements to deliverables but is not a boundary document.",
+    "explanation_vi": "Bản mô tả phạm vi dự án (project scope statement) chính thức xác định những gì được đưa vào và những gì bị loại trừ khỏi dự án. Điều lệ dự án ủy quyền cho dự án nhưng không mô tả chi tiết ranh giới phạm vi; từ điển WBS mô tả các phần tử WBS; ma trận theo dõi yêu cầu liên kết yêu cầu với các kết quả bàn giao nhưng không phải là tài liệu ranh giới.",
+    "difficulty": 2,
+    "tags": ["scope", "scope-statement", "predictive"]
+  },
+  {
+    "id": "PRC-9002",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "predictive",
+    "type": "single",
+    "question": "During project execution, a senior developer suggests adding an advanced analytics dashboard that was not part of the approved project scope. The developer argues it would impress the client and takes only two days to build. The PM is aware that no formal change request has been submitted. What should the PM do?",
+    "options": [
+      "Allow the developer to build the dashboard since it adds value and takes minimal effort",
+      "Decline the addition and explain that all scope changes must go through formal change control",
+      "Ask the project sponsor informally if the dashboard is acceptable before proceeding",
+      "Document the addition in the project log and add it to the next status report"
+    ],
+    "correct": [1],
+    "explanation": "All scope additions—regardless of size or perceived value—must follow the formal integrated change control process. Allowing informal additions constitutes scope creep, and gold-plating (adding extras beyond requirements) should be avoided. The PM must direct the developer to submit a formal change request.",
+    "explanation_vi": "Tất cả các bổ sung phạm vi—bất kể quy mô hay giá trị nhận thức—đều phải tuân theo quy trình kiểm soát thay đổi tích hợp chính thức. Cho phép bổ sung không chính thức là leo thang phạm vi, và việc mạ vàng (thêm những thứ ngoài yêu cầu) cần tránh. PM phải yêu cầu nhà phát triển nộp yêu cầu thay đổi chính thức.",
+    "difficulty": 2,
+    "tags": ["scope-creep", "change-control", "gold-plating"]
+  },
+  {
+    "id": "PRC-9003",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project manager has completed a major phase and has prepared the deliverables for handover. The project sponsor insists on skipping the formal scope validation step to save time and move directly to the next phase. What risk does the PM face if scope validation is skipped?",
+    "options": [
+      "The WBS will become outdated and need to be rebuilt",
+      "The project budget will be automatically revised upward",
+      "Deliverables may be rejected later when the customer formally reviews them, causing costly rework",
+      "The change control board will audit the project and halt progress"
+    ],
+    "correct": [2],
+    "explanation": "Scope validation (formally obtaining customer acceptance of deliverables at the end of each phase) ensures that deliverables meet requirements before moving forward. Skipping it risks discovering defects or misalignments much later, when corrections are far more expensive.",
+    "explanation_vi": "Xác nhận phạm vi (chính thức nhận được sự chấp thuận của khách hàng về các kết quả bàn giao ở cuối mỗi giai đoạn) đảm bảo rằng các kết quả bàn giao đáp ứng yêu cầu trước khi tiến tiếp. Bỏ qua bước này có nguy cơ phát hiện lỗi hoặc sai lệch sau đó, khi việc sửa chữa sẽ tốn kém hơn rất nhiều.",
+    "difficulty": 3,
+    "tags": ["scope-validation", "predictive", "deliverables"]
+  },
+  {
+    "id": "PRC-9004",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A PM needs to collect requirements for a complex ERP implementation involving 30 stakeholders across five departments. Several stakeholders are in different time zones, and their requirements are expected to conflict. Which requirements-gathering technique is most effective for surfacing conflicting needs and reaching consensus among a large, diverse group?",
+    "options": [
+      "Individual interviews with each stakeholder",
+      "Online survey distributed to all 30 stakeholders",
+      "Facilitated focus groups organized by department",
+      "Prototyping a preliminary system for stakeholder review"
+    ],
+    "correct": [2],
+    "explanation": "Focus groups bring together pre-qualified stakeholders to discuss requirements in a structured setting where conflicts can be identified and resolved through facilitated dialogue. Individual interviews are good for sensitive topics but cannot foster cross-stakeholder consensus in one session; surveys lack the dialogue needed to resolve conflicts; prototyping is more appropriate after requirements are partially understood.",
+    "explanation_vi": "Nhóm tập trung tập hợp các bên liên quan đã được chọn lọc để thảo luận về yêu cầu trong một môi trường có cấu trúc, nơi các xung đột có thể được xác định và giải quyết thông qua đối thoại có điều phối. Phỏng vấn cá nhân phù hợp cho các chủ đề nhạy cảm nhưng không thể thúc đẩy sự đồng thuận giữa các bên liên quan trong một buổi; khảo sát thiếu đối thoại cần thiết để giải quyết xung đột; tạo mẫu thử phù hợp hơn sau khi yêu cầu được hiểu một phần.",
+    "difficulty": 3,
+    "tags": ["requirements-gathering", "focus-groups", "stakeholders"]
+  },
+  {
+    "id": "PRC-9005",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "predictive",
+    "type": "single",
+    "question": "During WBS creation, the project team has decomposed work to level three but is uncertain how to further decompose a construction work package because the detailed design has not yet been finalized. What planning approach should the PM apply?",
+    "options": [
+      "Delay the entire project until all work packages can be fully decomposed",
+      "Apply rolling wave planning, decomposing near-term work in detail while leaving future work at a higher level",
+      "Use expert judgment to estimate the unknown work packages and add a 50% contingency reserve",
+      "Remove the uncertain work package from the WBS and address it in a separate project"
+    ],
+    "correct": [1],
+    "explanation": "Rolling wave planning is the recommended technique when some scope cannot yet be fully defined. Near-term deliverables are planned in detail while future work packages remain at a summary level until sufficient information is available to decompose them further.",
+    "explanation_vi": "Lập kế hoạch cuốn chiếu là kỹ thuật được khuyến nghị khi một số phạm vi chưa thể xác định đầy đủ. Các kết quả bàn giao gần hạn được lên kế hoạch chi tiết trong khi các gói công việc tương lai vẫn ở mức tóm tắt cho đến khi có đủ thông tin để phân tích chi tiết hơn.",
+    "difficulty": 3,
+    "tags": ["WBS", "rolling-wave-planning", "decomposition"]
+  },
+  {
+    "id": "PRC-9006",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "predictive",
+    "type": "single",
+    "question": "The customer contacts the PM directly during execution and requests that a new reporting module be added to the project. The customer says the request is minor and asks the PM to instruct the team to start immediately. What is the correct PM response?",
+    "options": [
+      "Instruct the team to start the work immediately since the customer owns the project",
+      "Evaluate the request informally and add it to the backlog for the next sprint",
+      "Politely explain that the request must be submitted through the formal change control process before any work begins",
+      "Approve the change verbally and document it in the next weekly status report"
+    ],
+    "correct": [2],
+    "explanation": "All scope changes, regardless of source or perceived size, must be processed through formal integrated change control. Starting work without approval exposes the project to uncontrolled scope creep. The PM should guide the customer to submit a formal change request so impact analysis can be performed.",
+    "explanation_vi": "Tất cả các thay đổi phạm vi, bất kể nguồn gốc hay quy mô nhận thức, đều phải được xử lý thông qua kiểm soát thay đổi tích hợp chính thức. Bắt đầu công việc mà không có sự chấp thuận khiến dự án đối mặt với nguy cơ leo thang phạm vi không kiểm soát. PM nên hướng dẫn khách hàng nộp yêu cầu thay đổi chính thức để phân tích tác động có thể được thực hiện.",
+    "difficulty": 3,
+    "tags": ["scope-creep", "change-control", "customer-requests"]
+  },
+  {
+    "id": "PRC-9007",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A project scope baseline has been approved. During execution, the team discovers that one deliverable will require significantly more work than estimated due to technical complexity that was not apparent during planning. The PM needs to adjust the scope baseline. What must the PM do before changing the baseline?",
+    "options": [
+      "Update the WBS and WBS dictionary and notify stakeholders after the fact",
+      "Submit a change request, obtain approval through the change control board, and then update the scope baseline",
+      "Reduce scope in another area to compensate and keep the total budget unchanged",
+      "Document the variance in the issue log and wait until project closure to update the baseline"
+    ],
+    "correct": [1],
+    "explanation": "The scope baseline (scope statement + WBS + WBS dictionary) can only be changed through formal integrated change control. The PM must submit a change request, receive CCB approval, and then update the baseline documents. Changing baselines without approval violates governance processes.",
+    "explanation_vi": "Đường cơ sở phạm vi (bản mô tả phạm vi + WBS + từ điển WBS) chỉ có thể được thay đổi thông qua kiểm soát thay đổi tích hợp chính thức. PM phải nộp yêu cầu thay đổi, nhận được sự chấp thuận của CCB, rồi mới cập nhật các tài liệu cơ sở. Thay đổi các đường cơ sở mà không có sự chấp thuận vi phạm quy trình quản trị.",
+    "difficulty": 3,
+    "tags": ["scope-baseline", "change-control", "WBS"]
+  },
+  {
+    "id": "PRC-9008",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A PM is defining the difference between product scope and project scope for a new mobile banking app. The marketing team asks whether implementing biometric login (a system feature) is product scope or project scope. How should the PM explain the distinction?",
+    "options": [
+      "Product scope and project scope are the same thing for software projects",
+      "Biometric login is product scope (a feature of the product); the work required to design, build, and test it is project scope",
+      "Biometric login is project scope because it affects the project schedule",
+      "Both are captured only in the requirements register, not in the scope statement"
+    ],
+    "correct": [1],
+    "explanation": "Product scope refers to the features and functions of the product or service being created (e.g., biometric login as a system capability). Project scope refers to the work that must be performed to deliver that product with the specified features. Both need to be managed but they are distinct concepts.",
+    "explanation_vi": "Phạm vi sản phẩm đề cập đến các tính năng và chức năng của sản phẩm hoặc dịch vụ đang được tạo ra (ví dụ: đăng nhập sinh trắc học như một khả năng của hệ thống). Phạm vi dự án đề cập đến công việc phải được thực hiện để bàn giao sản phẩm đó với các tính năng đã chỉ định. Cả hai đều cần được quản lý nhưng chúng là các khái niệm riêng biệt.",
+    "difficulty": 2,
+    "tags": ["product-scope", "project-scope", "scope-definition"]
+  },
+  {
+    "id": "PRC-9009",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A PM notices that team members have been adding small enhancements to deliverables that go beyond the documented requirements, believing these extras will delight the customer. The schedule is beginning to slip as a result. What should the PM do to address this behavior?",
+    "options": [
+      "Reward the team for showing initiative and creativity",
+      "Negotiate a schedule extension with the sponsor to accommodate the enhancements",
+      "Address gold-plating by reminding the team to deliver exactly what is in the scope baseline without unauthorized additions",
+      "Submit retrospective change requests for all completed enhancements to maintain records"
+    ],
+    "correct": [2],
+    "explanation": "Gold-plating—adding features beyond what is required—is a form of scope creep that the PM must prevent. Even well-intentioned extras consume time and budget, risking schedule and cost overruns. The PM should redirect the team to focus on delivering only what is in the approved scope baseline.",
+    "explanation_vi": "Mạ vàng—thêm các tính năng ngoài yêu cầu—là một dạng leo thang phạm vi mà PM phải ngăn chặn. Ngay cả những phần bổ sung có thiện chí cũng tiêu tốn thời gian và ngân sách, gây rủi ro vượt tiến độ và chi phí. PM nên chuyển hướng nhóm tập trung vào việc bàn giao đúng những gì có trong đường cơ sở phạm vi đã được phê duyệt.",
+    "difficulty": 3,
+    "tags": ["gold-plating", "scope-control", "team-management"]
+  },
+  {
+    "id": "PRC-9010",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "predictive",
+    "type": "single",
+    "question": "The WBS dictionary for a highway construction project needs to be updated. A junior PM asks what information should be included in a WBS dictionary entry. Which set of information is most appropriate for a WBS dictionary entry?",
+    "options": [
+      "Work package ID, description of work, acceptance criteria, responsible organization, and cost estimates",
+      "Project charter, stakeholder register, and risk register references",
+      "Activity list, activity duration estimates, and resource leveling histogram",
+      "Project schedule network diagram and critical path information"
+    ],
+    "correct": [0],
+    "explanation": "A WBS dictionary entry provides detailed information for each WBS component, typically including the work package identifier, description of work, acceptance criteria, assigned resources or organization, and associated cost/schedule information. The other options describe separate project management documents.",
+    "explanation_vi": "Mục từ điển WBS cung cấp thông tin chi tiết cho mỗi thành phần WBS, thường bao gồm mã định danh gói công việc, mô tả công việc, tiêu chí chấp nhận, nguồn lực hoặc tổ chức được phân công, và thông tin chi phí/tiến độ liên quan. Các lựa chọn khác mô tả các tài liệu quản lý dự án riêng biệt.",
+    "difficulty": 3,
+    "tags": ["WBS-dictionary", "scope-baseline", "predictive"]
+  },
+  {
+    "id": "PRC-9011",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A PM is conducting scope validation for Phase 2 deliverables with the client. The client signs off on three of four deliverables but rejects the fourth, citing that it does not match the documented acceptance criteria. What should the PM do next?",
+    "options": [
+      "Escalate to the sponsor and ask for the client to be overruled",
+      "Accept the rejection, raise a defect or change request, and schedule rework to bring the deliverable into compliance",
+      "Document the rejection and wait until project closure to address it",
+      "Move the rejected deliverable to the next phase without rework"
+    ],
+    "correct": [1],
+    "explanation": "When a deliverable is rejected during scope validation, the PM should document the rejection, initiate a defect repair or change request as appropriate, and plan corrective action to bring the deliverable into compliance with the agreed acceptance criteria before re-presenting it to the customer.",
+    "explanation_vi": "Khi một kết quả bàn giao bị từ chối trong quá trình xác nhận phạm vi, PM nên ghi lại sự từ chối, khởi động yêu cầu sửa chữa lỗi hoặc thay đổi khi thích hợp, và lập kế hoạch hành động khắc phục để đưa kết quả bàn giao vào phù hợp với tiêu chí chấp nhận đã thỏa thuận trước khi trình lại cho khách hàng.",
+    "difficulty": 3,
+    "tags": ["scope-validation", "defect-repair", "acceptance-criteria"]
+  },
+  {
+    "id": "PRC-9012",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A stakeholder raises a requirement late in the planning phase for a healthcare records system: all audit logs must be retained for seven years to comply with a new regulation. This requirement was not included in the original scope statement. What is the most appropriate PM action?",
+    "options": [
+      "Reject the requirement because it was raised after the scope statement was approved",
+      "Add the requirement informally to the project log and instruct the team to accommodate it",
+      "Evaluate the requirement's regulatory legitimacy, then process it through formal change control if valid",
+      "Transfer the requirement to a future project phase to avoid re-planning the current phase"
+    ],
+    "correct": [2],
+    "explanation": "Regulatory requirements are often legitimate scope additions that must be addressed. However, even mandatory changes must follow the formal change control process so their schedule, cost, and risk impacts are analyzed and approved before work begins. Informal addition bypasses governance and creates uncontrolled scope changes.",
+    "explanation_vi": "Các yêu cầu pháp lý thường là những bổ sung phạm vi hợp lệ cần phải được giải quyết. Tuy nhiên, ngay cả những thay đổi bắt buộc cũng phải tuân theo quy trình kiểm soát thay đổi chính thức để tác động về tiến độ, chi phí và rủi ro được phân tích và phê duyệt trước khi công việc bắt đầu. Bổ sung không chính thức bỏ qua quản trị và tạo ra các thay đổi phạm vi không kiểm soát.",
+    "difficulty": 4,
+    "tags": ["scope-change", "change-control", "regulatory-requirements"]
+  },
+  {
+    "id": "PRC-9013",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A PM uses observation (job shadowing) as a requirements-elicitation technique when defining scope for a warehouse management system upgrade. Why is observation particularly valuable compared to other techniques in this context?",
+    "options": [
+      "Observation is faster than interviews and produces written requirements automatically",
+      "Observation reveals actual work processes and workarounds that users may not articulate in interviews or surveys",
+      "Observation eliminates the need for a requirements traceability matrix",
+      "Observation is required by PMI standards for all IT projects"
+    ],
+    "correct": [1],
+    "explanation": "Observation (job shadowing) allows the PM or analyst to watch users perform real tasks, uncovering implicit requirements, undocumented workarounds, and process realities that stakeholders often cannot or do not describe accurately in interviews or surveys. It is especially valuable for process-intensive systems like warehouse management.",
+    "explanation_vi": "Quan sát (theo dõi công việc) cho phép PM hoặc chuyên viên phân tích xem người dùng thực hiện các tác vụ thực tế, phát hiện các yêu cầu ngầm, các giải pháp không được ghi lại và thực tế quy trình mà các bên liên quan thường không thể hoặc không mô tả chính xác trong các cuộc phỏng vấn hoặc khảo sát. Nó đặc biệt có giá trị cho các hệ thống tập trung vào quy trình như quản lý kho.",
+    "difficulty": 3,
+    "tags": ["requirements-gathering", "observation", "scope-planning"]
+  },
+  {
+    "id": "PRC-9014",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "predictive",
+    "type": "multiple",
+    "question": "A project manager is establishing the scope baseline for a new infrastructure project. Which THREE documents together form the scope baseline?",
+    "options": [
+      "Project scope statement",
+      "Work breakdown structure (WBS)",
+      "WBS dictionary",
+      "Requirements traceability matrix",
+      "Project management plan"
+    ],
+    "correct": [0, 1, 2],
+    "explanation": "The scope baseline consists of the project scope statement, the WBS, and the WBS dictionary. The requirements traceability matrix and the project management plan are separate project documents that support scope management but are not components of the scope baseline itself.",
+    "explanation_vi": "Đường cơ sở phạm vi bao gồm bản mô tả phạm vi dự án, WBS và từ điển WBS. Ma trận theo dõi yêu cầu và kế hoạch quản lý dự án là các tài liệu dự án riêng biệt hỗ trợ quản lý phạm vi nhưng không phải là thành phần của chính đường cơ sở phạm vi.",
+    "difficulty": 2,
+    "tags": ["scope-baseline", "WBS", "predictive"]
+  },
+  {
+    "id": "PRC-9015",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "predictive",
+    "type": "single",
+    "question": "The project team has completed the WBS for a large bridge construction project. The lowest level of the WBS are work packages. What is the primary purpose of decomposing project scope down to work packages?",
+    "options": [
+      "To create an activity list for scheduling purposes only",
+      "To assign individual activities to specific team members for performance reviews",
+      "To provide a manageable level of detail for planning, executing, monitoring, and controlling project work",
+      "To satisfy audit requirements imposed by the project sponsor"
+    ],
+    "correct": [2],
+    "explanation": "Work packages are the lowest level of the WBS and represent units of work that can be realistically planned, estimated, assigned, and monitored. Decomposition to this level ensures that all project scope is accounted for and that work can be meaningfully tracked and controlled.",
+    "explanation_vi": "Các gói công việc là cấp thấp nhất của WBS và đại diện cho các đơn vị công việc có thể được lên kế hoạch, ước tính, phân công và theo dõi một cách thực tế. Phân tích xuống cấp độ này đảm bảo rằng tất cả phạm vi dự án đều được tính toán và công việc có thể được theo dõi và kiểm soát một cách có ý nghĩa.",
+    "difficulty": 2,
+    "tags": ["WBS", "decomposition", "work-packages"]
+  },
+  {
+    "id": "PRC-9016",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A PM is struggling with frequent scope creep on a complex government contract. The sponsor recommends creating a formal scope change threshold requiring changes above a certain cost or schedule impact to go to the change control board. Where should this threshold be documented?",
+    "options": [
+      "Risk register",
+      "Scope management plan",
+      "Communications management plan",
+      "Project charter"
+    ],
+    "correct": [1],
+    "explanation": "The scope management plan describes how scope will be defined, validated, and controlled, including thresholds for escalation to the change control board. It is the appropriate document to capture procedures and decision thresholds for managing scope changes.",
+    "explanation_vi": "Kế hoạch quản lý phạm vi mô tả cách phạm vi sẽ được xác định, xác nhận và kiểm soát, bao gồm các ngưỡng để leo thang lên ban kiểm soát thay đổi. Đây là tài liệu thích hợp để ghi lại các quy trình và ngưỡng quyết định để quản lý các thay đổi phạm vi.",
+    "difficulty": 3,
+    "tags": ["scope-management-plan", "change-control", "scope-control"]
+  },
+  {
+    "id": "PRC-9017",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A PM is preparing to validate scope at the end of Phase 3. The customer asks whether scope validation is the same as quality control. How should the PM explain the difference?",
+    "options": [
+      "They are the same; both verify that the deliverable meets the requirements",
+      "Scope validation obtains formal customer acceptance of deliverables; quality control checks that deliverables meet quality standards—quality control typically occurs before scope validation",
+      "Quality control is done by the PM; scope validation is done by the quality team",
+      "Scope validation applies only to the final project deliverable; quality control applies to all intermediate deliverables"
+    ],
+    "correct": [1],
+    "explanation": "Scope validation (Validate Scope) is the process of formalizing acceptance of completed deliverables by the customer or sponsor. Quality control (Control Quality) verifies that deliverables conform to quality requirements. QC typically precedes scope validation—deliverables should pass quality checks before being presented to the customer for acceptance.",
+    "explanation_vi": "Xác nhận phạm vi (Validate Scope) là quá trình chính thức hóa sự chấp thuận các kết quả bàn giao đã hoàn thành bởi khách hàng hoặc nhà tài trợ. Kiểm soát chất lượng (Control Quality) xác minh rằng các kết quả bàn giao phù hợp với các yêu cầu chất lượng. Kiểm soát chất lượng thường xảy ra trước xác nhận phạm vi—các kết quả bàn giao phải vượt qua kiểm tra chất lượng trước khi được trình lên khách hàng để chấp thuận.",
+    "difficulty": 3,
+    "tags": ["scope-validation", "quality-control", "deliverables"]
+  },
+  {
+    "id": "PRC-9018",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "predictive",
+    "type": "single",
+    "question": "A stakeholder submits a formal change request to expand the scope of a data migration project to include additional historical data dating back 15 years. The CCB approves the change. What project documents must the PM update as a result?",
+    "options": [
+      "Only the project schedule",
+      "The scope baseline (scope statement, WBS, and WBS dictionary), project schedule, and cost baseline",
+      "The stakeholder register and communications management plan only",
+      "The lessons learned register and the risk register only"
+    ],
+    "correct": [1],
+    "explanation": "An approved scope change requires updates to the scope baseline (project scope statement, WBS, and WBS dictionary) as well as any other project documents and performance measurement baselines that are affected, such as the schedule baseline and cost baseline, since the additional work will impact both time and cost.",
+    "explanation_vi": "Một thay đổi phạm vi được phê duyệt yêu cầu cập nhật đường cơ sở phạm vi (bản mô tả phạm vi dự án, WBS và từ điển WBS) cũng như bất kỳ tài liệu dự án và đường cơ sở đo lường hiệu suất nào khác bị ảnh hưởng, chẳng hạn như đường cơ sở tiến độ và đường cơ sở chi phí, vì công việc bổ sung sẽ ảnh hưởng đến cả thời gian và chi phí.",
+    "difficulty": 4,
+    "tags": ["scope-change", "scope-baseline", "change-control", "document-updates"]
+  },
+  {
+    "id": "PRC-9019",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "agile",
+    "type": "single",
+    "question": "An agile team is beginning a new two-week sprint. The product owner wants to add a high-priority feature mid-sprint that was not in the sprint backlog. The development team says this will prevent them from completing the sprint goal. What should the Scrum Master do?",
+    "options": [
+      "Add the feature immediately since the product owner has the highest authority over scope",
+      "Protect the sprint and explain that mid-sprint additions undermine the sprint commitment; the feature should be added to the product backlog and considered for the next sprint",
+      "Split the sprint into two parts so the new feature can be incorporated",
+      "Have the team work overtime to complete both the sprint goal and the new feature"
+    ],
+    "correct": [1],
+    "explanation": "In Scrum, the sprint backlog is protected during a sprint to enable the team to meet their commitment to the sprint goal. Mid-sprint scope additions violate this principle. The Scrum Master should coach the product owner to add the feature to the product backlog, where it can be prioritized and included in a future sprint.",
+    "explanation_vi": "Trong Scrum, backlog sprint được bảo vệ trong suốt một sprint để cho phép nhóm đáp ứng cam kết của họ đối với mục tiêu sprint. Việc thêm phạm vi giữa sprint vi phạm nguyên tắc này. Scrum Master nên hướng dẫn chủ sản phẩm thêm tính năng vào backlog sản phẩm, nơi nó có thể được ưu tiên và đưa vào một sprint trong tương lai.",
+    "difficulty": 3,
+    "tags": ["agile", "sprint-backlog", "scope-management", "scrum"]
+  },
+  {
+    "id": "PRC-9020",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "agile",
+    "type": "single",
+    "question": "A product owner in an agile project notices that many user stories in the product backlog are vague and do not have clear acceptance criteria. Why is this a problem, and what should be done?",
+    "options": [
+      "Vague stories are acceptable; acceptance criteria can be added during retrospectives",
+      "Vague stories with unclear acceptance criteria prevent the team from knowing when work is done, leading to rework; the product owner should refine stories with explicit acceptance criteria before they enter a sprint",
+      "The team should write acceptance criteria independently during the sprint without input from the product owner",
+      "Acceptance criteria are only needed for the final project deliverable, not individual user stories"
+    ],
+    "correct": [1],
+    "explanation": "Acceptance criteria define the conditions that must be met for a user story to be considered complete. Without clear acceptance criteria, teams cannot determine when a story is done, which risks rework, scope misunderstandings, and failure to meet stakeholder expectations. Backlog refinement sessions are used to clarify and add acceptance criteria before stories enter a sprint.",
+    "explanation_vi": "Tiêu chí chấp nhận xác định các điều kiện phải được đáp ứng để một câu chuyện người dùng được coi là hoàn chỉnh. Không có tiêu chí chấp nhận rõ ràng, nhóm không thể xác định khi nào một câu chuyện hoàn thành, điều này gây rủi ro làm lại, hiểu nhầm phạm vi và thất bại trong việc đáp ứng kỳ vọng của các bên liên quan. Các buổi tinh chỉnh backlog được sử dụng để làm rõ và thêm tiêu chí chấp nhận trước khi các câu chuyện vào một sprint.",
+    "difficulty": 3,
+    "tags": ["agile", "acceptance-criteria", "user-stories", "backlog-refinement"]
+  },
+  {
+    "id": "PRC-9021",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "agile",
+    "type": "single",
+    "question": "An agile team has been inconsistently calling features 'done' with different standards across team members—some consider a feature done when code is written, while others require testing and documentation. This inconsistency is causing integration problems. What practice should the team implement to resolve this?",
+    "options": [
+      "Create individual definitions of done for each team member",
+      "Establish a shared Definition of Done that all team members agree to and that specifies the quality criteria a user story must meet before it is considered complete",
+      "Ask the product owner to review every story individually and decide if it is done",
+      "Only call a story done after the sponsor provides written sign-off for each item"
+    ],
+    "correct": [1],
+    "explanation": "The Definition of Done (DoD) is a shared agreement within the team about the quality criteria that every user story or feature must satisfy before it is considered complete (e.g., code written, unit tested, peer reviewed, integrated, documented). A clear DoD eliminates ambiguity, ensures consistent quality, and prevents incomplete work from entering the system.",
+    "explanation_vi": "Định nghĩa về Hoàn thành (DoD) là một thỏa thuận chung trong nhóm về các tiêu chí chất lượng mà mỗi câu chuyện người dùng hoặc tính năng phải đáp ứng trước khi được coi là hoàn chỉnh (ví dụ: mã đã viết, đã kiểm thử đơn vị, đã đánh giá ngang hàng, đã tích hợp, đã ghi lại). DoD rõ ràng loại bỏ sự mơ hồ, đảm bảo chất lượng nhất quán và ngăn chặn công việc chưa hoàn chỉnh xâm nhập vào hệ thống.",
+    "difficulty": 3,
+    "tags": ["agile", "definition-of-done", "quality", "scope-management"]
+  },
+  {
+    "id": "PRC-9022",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "agile",
+    "type": "single",
+    "question": "A product owner wants to add ten new user stories to the product backlog based on feedback from a recent demo. The team is concerned the backlog will become unmanageable. What is the correct agile approach to managing the evolving product backlog?",
+    "options": [
+      "Freeze the backlog at sprint 3 and reject all new stories to maintain project control",
+      "Add all stories without review to demonstrate responsiveness to stakeholders",
+      "Conduct regular backlog refinement sessions where new items are reviewed, estimated, and prioritized so the backlog remains a living, ordered list of valuable scope",
+      "Transfer all new stories to a separate risk register for consideration at project closure"
+    ],
+    "correct": [2],
+    "explanation": "The product backlog is the living scope document in agile. Backlog refinement (grooming) sessions are used to review new items, add detail, estimate effort, and prioritize stories to ensure the team always works on the highest-value items. This keeps the backlog manageable and responsive to change without losing control.",
+    "explanation_vi": "Backlog sản phẩm là tài liệu phạm vi sống trong agile. Các buổi tinh chỉnh backlog được sử dụng để xem xét các mục mới, thêm chi tiết, ước tính công sức và ưu tiên các câu chuyện để đảm bảo nhóm luôn làm việc trên các mục có giá trị cao nhất. Điều này giữ cho backlog có thể quản lý được và phản hồi với sự thay đổi mà không mất kiểm soát.",
+    "difficulty": 3,
+    "tags": ["agile", "product-backlog", "backlog-refinement", "scope-management"]
+  },
+  {
+    "id": "PRC-9023",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "agile",
+    "type": "single",
+    "question": "During sprint planning for an e-commerce platform, the team selects user stories for the upcoming sprint. The product owner insists on including a story that is too large to complete within the sprint, describing it simply as 'improve checkout experience.' What should the team do?",
+    "options": [
+      "Accept the story as written and attempt to complete as much as possible during the sprint",
+      "Break down the epic into smaller, independently deliverable user stories with clear acceptance criteria before including them in the sprint",
+      "Assign the story to the most senior developer to ensure it gets done",
+      "Move the story to the done column to show progress to stakeholders"
+    ],
+    "correct": [1],
+    "explanation": "User stories that are too large to complete in a single sprint are called epics. They must be broken down into smaller, independently deliverable stories with clear acceptance criteria before they can be included in a sprint. Attempting to work on an oversized story risks an incomplete sprint and unclear scope.",
+    "explanation_vi": "Các câu chuyện người dùng quá lớn để hoàn thành trong một sprint duy nhất được gọi là epic. Chúng phải được chia nhỏ thành các câu chuyện nhỏ hơn, có thể bàn giao độc lập với tiêu chí chấp nhận rõ ràng trước khi có thể được đưa vào một sprint. Cố gắng làm việc trên một câu chuyện quá lớn có nguy cơ tạo ra một sprint không hoàn chỉnh và phạm vi không rõ ràng.",
+    "difficulty": 3,
+    "tags": ["agile", "user-stories", "sprint-planning", "epics"]
+  },
+  {
+    "id": "PRC-9024",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "agile",
+    "type": "single",
+    "question": "An agile team is working on a financial reporting system. During backlog refinement, the product owner proposes a new feature but cannot clearly articulate what 'done' looks like for it. How should the team handle this story?",
+    "options": [
+      "Accept the story and let the team decide acceptance criteria independently during the sprint",
+      "Do not add the story to the sprint backlog until the product owner defines clear acceptance criteria",
+      "Estimate the story at the maximum story points to account for uncertainty and proceed",
+      "Split the story arbitrarily into five tasks and assign them to team members"
+    ],
+    "correct": [1],
+    "explanation": "Without clear acceptance criteria, the team cannot know when the story is done. PMI's agile approach requires that user stories have clearly defined acceptance criteria before they enter a sprint. The product owner should work with the team during backlog refinement to define what done looks like for the story.",
+    "explanation_vi": "Không có tiêu chí chấp nhận rõ ràng, nhóm không thể biết khi nào câu chuyện hoàn thành. Cách tiếp cận agile của PMI yêu cầu các câu chuyện người dùng phải có tiêu chí chấp nhận được xác định rõ ràng trước khi chúng vào một sprint. Chủ sản phẩm nên làm việc với nhóm trong quá trình tinh chỉnh backlog để xác định 'hoàn thành' trông như thế nào đối với câu chuyện.",
+    "difficulty": 3,
+    "tags": ["agile", "acceptance-criteria", "backlog-refinement", "user-stories"]
+  },
+  {
+    "id": "PRC-9025",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "agile",
+    "type": "single",
+    "question": "A stakeholder approaches an agile developer directly during a sprint and asks for a small change to a delivered feature. The developer agrees to make the change without informing the product owner or team. What is the risk of this behavior, and what should the developer have done?",
+    "options": [
+      "There is no risk; informal scope additions are acceptable in agile because agile welcomes change",
+      "The risk is uncontrolled scope expansion; the developer should have directed the stakeholder to submit the request to the product owner for backlog prioritization",
+      "The developer should have completed the change and then notified the Scrum Master after the fact",
+      "The change is acceptable as long as it is completed within the sprint time-box"
+    ],
+    "correct": [1],
+    "explanation": "Even in agile, scope additions must be managed. Uncontrolled informal changes to delivered features undermine sprint goals, introduce untested work, and cause scope creep. The correct approach is for the developer to direct the stakeholder to the product owner, who decides whether to add the request to the product backlog and when to prioritize it.",
+    "explanation_vi": "Ngay cả trong agile, các bổ sung phạm vi phải được quản lý. Các thay đổi không chính thức không kiểm soát đối với các tính năng đã bàn giao làm suy yếu mục tiêu sprint, đưa ra công việc chưa được kiểm thử và gây ra leo thang phạm vi. Cách tiếp cận đúng là nhà phát triển hướng dẫn bên liên quan đến chủ sản phẩm, người quyết định có thêm yêu cầu vào backlog sản phẩm hay không và khi nào ưu tiên nó.",
+    "difficulty": 3,
+    "tags": ["agile", "scope-creep", "product-backlog", "change-management"]
+  },
+  {
+    "id": "PRC-9026",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "agile",
+    "type": "single",
+    "question": "An agile product owner is planning the next release. The team has a fixed sprint capacity and more stories than they can deliver. The product owner must decide what to include and what to defer. What is the correct mechanism for managing scope in this situation?",
+    "options": [
+      "Ask the team to work extended hours to accommodate all stories in the release",
+      "Prioritize the product backlog so that the highest-value stories are developed first, deferring lower-priority items to future sprints or releases",
+      "Deliver all stories at lower quality to fit within the time-box",
+      "Freeze the backlog and deliver only what was planned at project initiation"
+    ],
+    "correct": [1],
+    "explanation": "In agile, scope is managed by ordering the product backlog based on business value, risk, and priority. The product owner decides what goes into each sprint based on team capacity. Lower-priority items are deferred to future sprints or releases. This enables continuous delivery of value within time-box constraints without sacrificing quality.",
+    "explanation_vi": "Trong agile, phạm vi được quản lý bằng cách sắp xếp thứ tự backlog sản phẩm dựa trên giá trị kinh doanh, rủi ro và ưu tiên. Chủ sản phẩm quyết định những gì vào mỗi sprint dựa trên năng lực của nhóm. Các mục ưu tiên thấp hơn được hoãn lại cho các sprint hoặc phát hành trong tương lai. Điều này cho phép bàn giao giá trị liên tục trong các ràng buộc khung thời gian mà không làm giảm chất lượng.",
+    "difficulty": 3,
+    "tags": ["agile", "product-backlog", "prioritization", "scope-management"]
+  },
+  {
+    "id": "PRC-9027",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "agile",
+    "type": "single",
+    "question": "A team running an agile project wants to use prototyping as a requirements-gathering technique. A stakeholder asks how prototyping helps with scope management. What is the most accurate explanation?",
+    "options": [
+      "Prototyping replaces the need for a product backlog in agile projects",
+      "Prototyping creates early visual representations of the product that stakeholders can react to, helping to validate and refine requirements before extensive development effort is committed",
+      "Prototyping is only useful for hardware products, not software",
+      "Prototyping is equivalent to building a minimum viable product and locks in scope for the release"
+    ],
+    "correct": [1],
+    "explanation": "Prototyping involves creating a working model or mock-up of the product (or part of it) that stakeholders can review and provide feedback on. This technique surfaces misunderstandings and refines requirements early, reducing the risk of building the wrong product and helping the team clarify scope before committing to detailed development.",
+    "explanation_vi": "Tạo mẫu thử liên quan đến việc tạo ra một mô hình hoạt động hoặc mô hình giả của sản phẩm (hoặc một phần của nó) mà các bên liên quan có thể xem xét và cung cấp phản hồi. Kỹ thuật này phát hiện những hiểu lầm và tinh chỉnh các yêu cầu sớm, giảm nguy cơ xây dựng sản phẩm sai và giúp nhóm làm rõ phạm vi trước khi cam kết phát triển chi tiết.",
+    "difficulty": 3,
+    "tags": ["agile", "prototyping", "requirements-gathering", "scope-management"]
+  },
+  {
+    "id": "PRC-9028",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "agile",
+    "type": "single",
+    "question": "An agile team has just completed a sprint review. The stakeholders are satisfied with most deliverables but request a significant new feature that was not previously discussed. The product owner is enthusiastic about the idea. What is the next step?",
+    "options": [
+      "Add the feature directly to the current sprint since stakeholders requested it",
+      "Add the feature as a new user story to the product backlog, estimate it, and prioritize it against existing backlog items for a future sprint",
+      "Reject the feature because it was not part of the original project vision",
+      "Ask the team to work on it informally during slack time between sprints"
+    ],
+    "correct": [1],
+    "explanation": "Agile welcomes changing requirements, even late in development. However, new features should be added to the product backlog as properly written user stories, estimated, and prioritized by the product owner. This ensures the team continues to work on the highest-value items in an orderly way, rather than disrupting ongoing sprints.",
+    "explanation_vi": "Agile chào đón các thay đổi yêu cầu, ngay cả ở giai đoạn cuối phát triển. Tuy nhiên, các tính năng mới nên được thêm vào backlog sản phẩm dưới dạng các câu chuyện người dùng được viết đúng cách, được ước tính và được chủ sản phẩm ưu tiên. Điều này đảm bảo nhóm tiếp tục làm việc trên các mục có giá trị cao nhất theo cách có trật tự, thay vì làm gián đoạn các sprint đang diễn ra.",
+    "difficulty": 2,
+    "tags": ["agile", "product-backlog", "sprint-review", "scope-management"]
+  },
+  {
+    "id": "PRC-9029",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "agile",
+    "type": "single",
+    "question": "An agile team is completing its third sprint on a CRM system. The product owner asks whether the team's velocity can be used to forecast how much of the product backlog can be completed in the remaining sprints. How does velocity relate to scope management in agile?",
+    "options": [
+      "Velocity is only used for team performance reviews and has no scope management application",
+      "Velocity measures average story points completed per sprint and can be used to forecast how many backlog items the team can complete, helping the product owner decide which scope to include in the release",
+      "Velocity fixes the scope for the entire project at sprint 3 and cannot be changed",
+      "Velocity is used only in waterfall projects to measure scope completion"
+    ],
+    "correct": [1],
+    "explanation": "Velocity is the average number of story points a team completes per sprint. It enables the product owner to forecast how many backlog items can be completed within a release timeframe, supporting data-driven scope decisions about what features can realistically be delivered by a target date.",
+    "explanation_vi": "Vận tốc là số điểm câu chuyện trung bình mà một nhóm hoàn thành mỗi sprint. Nó cho phép chủ sản phẩm dự báo có bao nhiêu mục backlog có thể được hoàn thành trong khung thời gian phát hành, hỗ trợ các quyết định phạm vi dựa trên dữ liệu về những tính năng nào có thể thực sự được bàn giao theo một ngày mục tiêu.",
+    "difficulty": 4,
+    "tags": ["agile", "velocity", "scope-management", "forecasting"]
+  },
+  {
+    "id": "PRC-9030",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "hybrid",
+    "type": "single",
+    "question": "A hybrid project uses a predictive approach for infrastructure work and an agile approach for software development. The PM needs to establish scope for both tracks at the same time. How should scope be managed in this hybrid environment?",
+    "options": [
+      "Use only the WBS for both tracks since predictive tools always take precedence",
+      "Use only the product backlog for both tracks to maintain agile flexibility",
+      "Use a WBS and scope statement for the predictive infrastructure track and a product backlog with user stories for the agile software track, aligning them at integration milestones",
+      "Avoid defining scope formally and manage it through daily standups"
+    ],
+    "correct": [2],
+    "explanation": "In a hybrid project, the PM tailors scope management tools to each track. Predictive work benefits from formal scope documentation (WBS, scope statement), while agile work uses a product backlog and user stories. Integration milestones ensure the two tracks remain aligned. Neither approach should be forced onto a context where it does not fit.",
+    "explanation_vi": "Trong một dự án kết hợp, PM điều chỉnh các công cụ quản lý phạm vi cho từng luồng. Công việc dự đoán hưởng lợi từ tài liệu phạm vi chính thức (WBS, bản mô tả phạm vi), trong khi công việc agile sử dụng backlog sản phẩm và câu chuyện người dùng. Các cột mốc tích hợp đảm bảo hai luồng vẫn được điều chỉnh. Không có cách tiếp cận nào nên bị áp đặt vào một ngữ cảnh không phù hợp.",
+    "difficulty": 4,
+    "tags": ["hybrid", "WBS", "product-backlog", "scope-management"]
+  },
+  {
+    "id": "PRC-9031",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "hybrid",
+    "type": "single",
+    "question": "A hybrid project team completed the high-level scope definition using predictive techniques at project initiation. As the project moves into execution, they encounter requirements that are still evolving. How should the PM handle scope for the evolving requirements portion of the project?",
+    "options": [
+      "Lock all requirements before execution and reject any new information",
+      "Apply rolling wave planning combined with agile backlog management for the uncertain requirements, detailing them progressively as more information becomes available",
+      "Restart the project with a fully agile approach to accommodate the uncertainty",
+      "Add a flat 40% scope contingency reserve to the budget and proceed without further refinement"
+    ],
+    "correct": [1],
+    "explanation": "Rolling wave planning and agile backlog management are both appropriate for handling evolving requirements in a hybrid context. Rolling wave progressively elaborates scope as information emerges, while the agile backlog provides a flexible prioritized list of work. Together they allow the project to maintain control while remaining adaptive.",
+    "explanation_vi": "Lập kế hoạch cuốn chiếu và quản lý backlog agile đều phù hợp để xử lý các yêu cầu đang phát triển trong bối cảnh kết hợp. Lập kế hoạch cuốn chiếu dần dần phát triển phạm vi khi thông tin xuất hiện, trong khi backlog agile cung cấp một danh sách công việc được ưu tiên linh hoạt. Kết hợp lại, chúng cho phép dự án duy trì kiểm soát trong khi vẫn thích ứng.",
+    "difficulty": 4,
+    "tags": ["hybrid", "rolling-wave-planning", "backlog", "scope-management"]
+  },
+  {
+    "id": "PRC-9032",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "hybrid",
+    "type": "single",
+    "question": "In a hybrid project, the regulatory compliance deliverables are managed predictively, while the user interface components are developed using agile sprints. The compliance team raises a concern that the UI changes in sprint 4 will alter a regulated interface. What should the PM do?",
+    "options": [
+      "Allow the UI team to proceed since agile changes are always exempt from regulatory review",
+      "Halt the agile track until the compliance track finishes",
+      "Evaluate the UI change through formal change control and involve the compliance team in sprint reviews for regulated UI components",
+      "Remove the regulated interface from the project scope to avoid the conflict"
+    ],
+    "correct": [2],
+    "explanation": "When agile deliverables intersect with regulated or compliance-controlled scope, changes must still go through formal change control. The PM should also involve the compliance team in sprint reviews for those components so that regulatory impacts are assessed continuously. Hybrid projects require both adaptive delivery and formal governance where required.",
+    "explanation_vi": "Khi các kết quả bàn giao agile giao thoa với phạm vi được quy định hoặc kiểm soát bởi tuân thủ, các thay đổi vẫn phải trải qua kiểm soát thay đổi chính thức. PM cũng nên liên quan nhóm tuân thủ trong các buổi đánh giá sprint cho các thành phần đó để tác động quy định được đánh giá liên tục. Các dự án kết hợp yêu cầu cả bàn giao thích ứng và quản trị chính thức khi cần thiết.",
+    "difficulty": 4,
+    "tags": ["hybrid", "change-control", "compliance", "scope-management"]
+  },
+  {
+    "id": "PRC-9033",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "hybrid",
+    "type": "single",
+    "question": "A hybrid project PM is conducting the end-of-phase scope review for predictive components while also facilitating sprint reviews for agile components in the same phase. A key stakeholder is confused about whether they should be attending phase-gate reviews or sprint reviews for scope sign-off. How should the PM clarify the stakeholder's responsibilities?",
+    "options": [
+      "The stakeholder only needs to attend phase-gate reviews; sprint reviews are for the development team only",
+      "The stakeholder should attend both: phase-gate reviews for formal acceptance of predictive deliverables and sprint reviews for continuous feedback and acceptance of agile increments",
+      "Scope sign-off is only needed at project closure; neither review type requires stakeholder attendance",
+      "Replace both reviews with a single monthly meeting to simplify stakeholder engagement"
+    ],
+    "correct": [1],
+    "explanation": "In a hybrid project, stakeholders play dual roles. Phase-gate reviews (scope validation) are used for formal acceptance of predictive deliverables at phase end. Sprint reviews are used in agile tracks to gather stakeholder feedback and obtain informal acceptance of each increment. Stakeholders must participate in both to ensure complete scope validation across the hybrid environment.",
+    "explanation_vi": "Trong một dự án kết hợp, các bên liên quan đóng vai trò kép. Đánh giá giai đoạn (xác nhận phạm vi) được sử dụng để chấp thuận chính thức các kết quả bàn giao dự đoán ở cuối giai đoạn. Đánh giá sprint được sử dụng trong các luồng agile để thu thập phản hồi của bên liên quan và nhận được sự chấp thuận không chính thức của mỗi phần tăng trưởng. Các bên liên quan phải tham gia cả hai để đảm bảo xác nhận phạm vi hoàn chỉnh trong môi trường kết hợp.",
+    "difficulty": 4,
+    "tags": ["hybrid", "scope-validation", "sprint-review", "stakeholder-engagement"]
+  },
+  {
+    "id": "PRC-9034",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "hybrid",
+    "type": "multiple",
+    "question": "A hybrid project PM is planning scope management activities for a product that combines fixed regulatory requirements with innovative features that are not yet fully defined. Which TWO approaches should the PM apply?",
+    "options": [
+      "Define the regulatory requirements fully in a formal scope statement and WBS before execution begins",
+      "Use a product backlog with user stories and rolling wave planning for the innovative, uncertain features",
+      "Define all innovative features in full detail upfront to maintain schedule predictability",
+      "Apply only agile techniques to all components to ensure the team remains flexible",
+      "Lock the scope baseline after the first sprint and reject all subsequent changes"
+    ],
+    "correct": [0, 1],
+    "explanation": "For regulated, fixed requirements, a formal scope statement and WBS provide the structure and traceability required. For uncertain, innovative features, a product backlog with rolling wave planning allows the team to progressively elaborate scope as understanding grows. This combination is the core of hybrid scope management.",
+    "explanation_vi": "Đối với các yêu cầu quy định, cố định, bản mô tả phạm vi chính thức và WBS cung cấp cấu trúc và khả năng theo dõi cần thiết. Đối với các tính năng không chắc chắn, sáng tạo, backlog sản phẩm với lập kế hoạch cuốn chiếu cho phép nhóm dần dần phát triển phạm vi khi sự hiểu biết tăng lên. Sự kết hợp này là cốt lõi của quản lý phạm vi kết hợp.",
+    "difficulty": 4,
+    "tags": ["hybrid", "scope-management", "WBS", "product-backlog", "rolling-wave-planning"]
+  },
+  {
+    "id": "PRC-9035",
+    "domain": "process",
+    "task": "2.8",
+    "approach": "hybrid",
+    "type": "single",
+    "question": "A mid-project stakeholder analysis reveals that several influential stakeholders were not consulted during initial requirements gathering, and their needs have not been captured in the scope baseline. The project is 40% complete. What should the PM do?",
+    "options": [
+      "Ignore the gap since the scope baseline has already been approved and work is underway",
+      "Immediately add all suspected requirements to the scope without analysis to satisfy the stakeholders",
+      "Conduct targeted requirements elicitation sessions with the previously excluded stakeholders, evaluate resulting gaps, and process any necessary scope changes through formal change control",
+      "Replace the entire scope baseline with a new version incorporating the stakeholder needs without formal change control"
+    ],
+    "correct": [2],
+    "explanation": "Discovering previously excluded stakeholders mid-project is a serious scope risk. The PM should conduct requirements sessions with them to identify gaps, then rigorously assess the impact of any needed changes. All validated changes must go through formal integrated change control to update the scope baseline and other affected documents. Acting without change control would introduce unmanaged scope creep.",
+    "explanation_vi": "Phát hiện các bên liên quan bị loại trừ trước đây giữa dự án là một rủi ro phạm vi nghiêm trọng. PM nên tiến hành các buổi thu thập yêu cầu với họ để xác định các khoảng trống, sau đó đánh giá nghiêm ngặt tác động của bất kỳ thay đổi cần thiết nào. Tất cả các thay đổi được xác nhận phải trải qua kiểm soát thay đổi tích hợp chính thức để cập nhật đường cơ sở phạm vi và các tài liệu bị ảnh hưởng khác. Hành động mà không có kiểm soát thay đổi sẽ đưa ra leo thang phạm vi không được quản lý.",
+    "difficulty": 5,
+    "tags": ["hybrid", "requirements-gathering", "change-control", "stakeholder-management", "scope-management"]
+  }
+]

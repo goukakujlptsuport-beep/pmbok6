@@ -1,0 +1,247 @@
+{
+  "chapterId": "14_standard_for_pm",
+  "chapterNum": 14,
+  "chapterTitle": "Tiêu Chuẩn Quản Lý Dự Án",
+  "questions": [
+    {
+      "id": "ch14_q01",
+      "q": "Một công ty đang xem xét lại tài liệu quản lý dự án của mình. Giám đốc PMO hỏi về sự khác biệt giữa Tiêu Chuẩn Quản Lý Dự Án (The Standard for Project Management) và Hướng Dẫn PMBOK. Nhân viên nào trong nhóm mô tả đúng nhất sự khác biệt này?",
+      "opts": {
+        "A": "Tiêu Chuẩn mô tả các thực hành tốt nhất cụ thể cho từng ngành, còn Hướng Dẫn PMBOK là tài liệu chuẩn chung toàn cầu.",
+        "B": "Tiêu Chuẩn thiết lập nền tảng và nguyên tắc cơ bản của quản lý dự án, còn Hướng Dẫn PMBOK cung cấp kiến thức, công cụ và kỹ thuật thực hành chi tiết hơn.",
+        "C": "Tiêu Chuẩn chỉ áp dụng cho các dự án lớn cấp độ doanh nghiệp, còn Hướng Dẫn PMBOK áp dụng cho mọi loại dự án.",
+        "D": "Tiêu Chuẩn là tài liệu bắt buộc phải tuân theo theo quy định của PMI, còn Hướng Dẫn PMBOK chỉ là tài liệu tham khảo tùy chọn."
+      },
+      "ans": "B",
+      "exp": "Tiêu Chuẩn Quản Lý Dự Án (The Standard) đặt nền tảng, nguyên tắc và khung làm việc cơ bản. Hướng Dẫn PMBOK (Guide) xây dựng trên nền tảng đó bằng cách cung cấp kiến thức thực hành, công cụ và kỹ thuật cụ thể hơn. Cả hai đều áp dụng rộng rãi và không giới hạn theo quy mô hay ngành."
+    },
+    {
+      "id": "ch14_q02",
+      "q": "Tổ chức của bạn đang triển khai một dự án xây dựng hệ thống phần mềm quản lý kho hàng trị giá 5 triệu USD. Dự án này nằm trong một chương trình số hóa toàn doanh nghiệp, vốn lại là một phần của danh mục đầu tư chiến lược 5 năm. Điều nào mô tả ĐÚNG NHẤT mối quan hệ giữa dự án, chương trình và danh mục đầu tư?",
+      "opts": {
+        "A": "Danh mục đầu tư bao gồm tất cả các chương trình; chương trình bao gồm tất cả các dự án; dự án là đơn vị nhỏ nhất và độc lập hoàn toàn với chiến lược tổ chức.",
+        "B": "Danh mục đầu tư quản lý các chương trình và dự án để đạt mục tiêu chiến lược; chương trình quản lý các dự án liên quan để đạt lợi ích mà dự án đơn lẻ không thể đạt được; dự án tạo ra sản phẩm hoặc kết quả cụ thể.",
+        "C": "Chương trình và danh mục đầu tư đều là những tập hợp dự án lớn hơn nhưng không có sự phân cấp rõ ràng giữa chúng.",
+        "D": "Dự án có thể tồn tại độc lập hoặc trong chương trình nhưng không bao giờ là một phần của danh mục đầu tư."
+      },
+      "ans": "B",
+      "exp": "Theo PMBOK 6, mối quan hệ phân cấp là: Danh mục đầu tư (Portfolio) → Chương trình (Program) → Dự án (Project). Danh mục đầu tư tập trung vào mục tiêu chiến lược dài hạn của tổ chức. Chương trình quản lý các dự án liên quan để thu hoạch lợi ích tổng hợp. Dự án tạo ra sản phẩm/dịch vụ/kết quả duy nhất và xác định."
+    },
+    {
+      "id": "ch14_q03",
+      "q": "Sau khi hoàn thành dự án triển khai phần mềm CRM, khách hàng phàn nàn rằng mặc dù hệ thống được bàn giao đúng hạn, đúng ngân sách và đúng phạm vi, nhưng doanh số bán hàng không tăng như kỳ vọng sau 6 tháng sử dụng. Nhà tài trợ dự án cho rằng dự án thất bại. Tình huống này minh họa điều gì về tiêu chí thành công của dự án?",
+      "opts": {
+        "A": "Dự án thực sự thất bại vì các chỉ số tam giác sắt (thời gian, chi phí, phạm vi) không đủ để đo lường thành công.",
+        "B": "Dự án thành công vì đã đáp ứng đầy đủ ba ràng buộc cổ điển; vấn đề doanh số là trách nhiệm của bộ phận kinh doanh, không phải của quản lý dự án.",
+        "C": "Thành công của dự án ngày nay phải bao gồm cả việc mang lại lợi ích kinh doanh và giá trị cho tổ chức, không chỉ đơn thuần là hoàn thành đúng hạn, ngân sách và phạm vi.",
+        "D": "Đây là lỗi của nhà tài trợ vì không xác định rõ mục tiêu kinh doanh ngay từ đầu dự án."
+      },
+      "ans": "C",
+      "exp": "PMBOK 6 nhấn mạnh rằng tiêu chí thành công của dự án đã mở rộng ra ngoài tam giác sắt truyền thống (thời gian - chi phí - phạm vi). Thành công thực sự còn bao gồm việc đạt được lợi ích kinh doanh, tạo ra giá trị chiến lược cho tổ chức và đáp ứng sự hài lòng của các bên liên quan. Quản lý dự án hiện đại cần phải gắn kết với kết quả kinh doanh."
+    },
+    {
+      "id": "ch14_q04",
+      "q": "Một doanh nghiệp sản xuất đang đánh giá mức độ trưởng thành quản lý dự án của mình. Họ nhận thấy rằng quy trình quản lý dự án không nhất quán giữa các phòng ban, phụ thuộc nhiều vào kỹ năng cá nhân của từng PM, và kết quả dự án không thể dự đoán được. Điều này cho thấy tổ chức đang ở mức độ trưởng thành nào trong quản lý dự án?",
+      "opts": {
+        "A": "Mức độ trưởng thành cao vì các PM có quyền tự chủ trong việc áp dụng quy trình phù hợp với từng dự án.",
+        "B": "Mức độ trưởng thành thấp vì thiếu quy trình chuẩn hóa, kết quả không nhất quán và không thể dự đoán được.",
+        "C": "Mức độ trưởng thành trung bình vì mặc dù quy trình chưa chuẩn hóa nhưng các PM có kinh nghiệm.",
+        "D": "Không thể đánh giá mức độ trưởng thành chỉ dựa trên các thông tin này."
+      },
+      "ans": "B",
+      "exp": "Tổ chức có mức độ trưởng thành thấp trong quản lý dự án thường có các đặc điểm: quy trình không nhất quán, kết quả phụ thuộc vào cá nhân, không có khả năng dự đoán kết quả. Quản lý dự án tổ chức (OPM - Organizational Project Management) nhấn mạnh tầm quan trọng của việc chuẩn hóa quy trình, xây dựng năng lực tổ chức và học hỏi liên tục để nâng cao mức độ trưởng thành."
+    },
+    {
+      "id": "ch14_q05",
+      "q": "Dự án xây dựng nhà máy điện mặt trời đã hoàn thành. Ban lãnh đạo muốn đảm bảo rằng lợi ích từ nhà máy (giảm chi phí điện, tăng tính bền vững) sẽ được theo dõi và hiện thực hóa sau khi bàn giao. Ai là người chịu trách nhiệm chính cho việc quản lý hiện thực hóa lợi ích (Benefits Realization Management) SAU KHI dự án kết thúc?",
+      "opts": {
+        "A": "Quản lý dự án, vì họ hiểu rõ nhất về sản phẩm bàn giao của dự án.",
+        "B": "Nhóm dự án, vì họ đã xây dựng và triển khai hệ thống.",
+        "C": "Tổ chức thực hiện hoặc nhà tài trợ, thường thông qua bộ phận vận hành hoặc chủ sở hữu lợi ích được chỉ định.",
+        "D": "Khách hàng hoặc người dùng cuối, vì họ là người trực tiếp hưởng lợi."
+      },
+      "ans": "C",
+      "exp": "Theo PMBOK 6, quản lý hiện thực hóa lợi ích là trách nhiệm của tổ chức, không phải của quản lý dự án. Sau khi dự án kết thúc, nhà tài trợ hoặc tổ chức (thường qua bộ phận vận hành, quản lý chương trình, hoặc chủ sở hữu lợi ích được chỉ định) có trách nhiệm theo dõi, đo lường và đảm bảo lợi ích được hiện thực hóa theo kế hoạch."
+    },
+    {
+      "id": "ch14_q06",
+      "q": "Tổ chức của bạn đang xây dựng một kế hoạch hiện thực hóa lợi ích (Benefits Realization Plan) cho dự án triển khai hệ thống ERP. Tài liệu này nên bao gồm những yếu tố nào là QUAN TRỌNG NHẤT?",
+      "opts": {
+        "A": "Chỉ cần liệt kê các lợi ích dự kiến và ước tính giá trị tài chính của chúng.",
+        "B": "Định nghĩa rõ ràng các lợi ích, chỉ số đo lường (KPI), mốc thời gian đạt lợi ích, người chịu trách nhiệm và cách chuyển giao từ dự án sang vận hành.",
+        "C": "Chỉ cần xác định lợi ích chiến lược dài hạn mà không cần chỉ tiêu đo lường cụ thể.",
+        "D": "Tập trung vào chi phí và ROI, không cần quan tâm đến người chịu trách nhiệm hiện thực hóa lợi ích."
+      },
+      "ans": "B",
+      "exp": "Kế hoạch hiện thực hóa lợi ích cần bao gồm: định nghĩa rõ ràng từng lợi ích, chỉ số đo lường (metrics/KPI), mốc thời gian dự kiến đạt lợi ích, người/bộ phận chịu trách nhiệm, giả định và rủi ro, và cơ chế chuyển giao từ môi trường dự án sang vận hành thường ngày. Đây là yêu cầu toàn diện hơn chỉ liệt kê lợi ích hay tính ROI."
+    },
+    {
+      "id": "ch14_q07",
+      "q": "Trong quá trình thực hiện dự án phát triển sản phẩm mới, có một số quyết định vượt quá thẩm quyền của quản lý dự án, chẳng hạn như thay đổi ngân sách lớn, thay đổi phạm vi chiến lược, và giải quyết xung đột giữa các bên liên quan cấp cao. Cấu trúc nào trong quản trị dự án (Project Governance) chịu trách nhiệm xử lý các vấn đề này?",
+      "opts": {
+        "A": "Quản lý dự án phải tự giải quyết tất cả mọi vấn đề, dù lớn hay nhỏ.",
+        "B": "Ban điều hành dự án (Steering Committee) hoặc Hội đồng quản trị dự án, bao gồm các bên liên quan cấp cao và nhà tài trợ.",
+        "C": "PMO (Project Management Office) là cơ quan duy nhất có thẩm quyền giải quyết tất cả vấn đề dự án.",
+        "D": "Khách hàng và người dùng cuối phải đưa ra tất cả các quyết định quan trọng."
+      },
+      "ans": "B",
+      "exp": "Quản trị dự án bao gồm cơ cấu ra quyết định, trách nhiệm giải trình và giám sát. Ban điều hành hoặc Hội đồng quản trị dự án (gồm nhà tài trợ, lãnh đạo tổ chức, đại diện các bên liên quan chính) có thẩm quyền đưa ra các quyết định chiến lược vượt quá phạm vi của quản lý dự án. Đây là một phần thiết yếu của khung quản trị hiệu quả."
+    },
+    {
+      "id": "ch14_q08",
+      "q": "Công ty ABC đang thực hiện một dự án quan trọng nhưng nhận thấy dự án đang lệch hướng so với chiến lược kinh doanh đã định. Quản lý dự án đã báo cáo điều này lên nhà tài trợ. Tuy nhiên, nhà tài trợ yêu cầu tiếp tục dự án như cũ. Theo nguyên tắc quản trị dự án tốt, bước tiếp theo phù hợp nhất là gì?",
+      "opts": {
+        "A": "Tuân thủ chỉ đạo của nhà tài trợ và tiếp tục dự án không thay đổi.",
+        "B": "Quản lý dự án tự ý thay đổi hướng dự án theo những gì mình cho là đúng.",
+        "C": "Leo thang vấn đề lên cấp quản trị cao hơn (như Ban điều hành hoặc PMO) để đánh giá và quyết định về sự phù hợp chiến lược của dự án.",
+        "D": "Đóng cửa dự án ngay lập tức vì nó không còn phù hợp với chiến lược."
+      },
+      "ans": "C",
+      "exp": "Khi có xung đột về sự phù hợp chiến lược của dự án và không thể giải quyết ở cấp nhà tài trợ, quản trị dự án tốt yêu cầu leo thang lên cấp quản trị cao hơn. Đây có thể là PMO, Ban điều hành, hoặc Hội đồng danh mục đầu tư. Mục tiêu là đảm bảo các dự án luôn gắn kết với mục tiêu chiến lược của tổ chức."
+    },
+    {
+      "id": "ch14_q09",
+      "q": "Một tổ chức vừa hoàn thành dự án xây dựng hệ thống tự động hóa kho hàng. Giai đoạn chuyển tiếp từ dự án sang vận hành (transition to operations) đang được lên kế hoạch. Yếu tố NÀO là quan trọng nhất để đảm bảo quá trình chuyển tiếp này thành công?",
+      "opts": {
+        "A": "Đảm bảo tất cả tài liệu kỹ thuật đã được hoàn chỉnh trước khi bàn giao.",
+        "B": "Lên kế hoạch chuyển tiếp sớm, bao gồm đào tạo người dùng, hỗ trợ sau bàn giao, xác định người chịu trách nhiệm vận hành và thiết lập quy trình hỗ trợ.",
+        "C": "Đảm bảo dự án đã hoàn thành đúng ngân sách trước khi bàn giao.",
+        "D": "Nhóm dự án tiếp tục vận hành hệ thống ít nhất 6 tháng sau khi bàn giao."
+      },
+      "ans": "B",
+      "exp": "Chuyển tiếp từ dự án sang vận hành thành công đòi hỏi lập kế hoạch toàn diện từ sớm: xác định người chịu trách nhiệm vận hành, đào tạo người dùng, xây dựng quy trình hỗ trợ, thiết lập SLA, và chuẩn bị tài liệu vận hành. Chỉ có tài liệu kỹ thuật là chưa đủ. Kế hoạch này nên được bắt đầu ngay từ giai đoạn lập kế hoạch dự án."
+    },
+    {
+      "id": "ch14_q10",
+      "q": "Trong khung quản lý dự án tổ chức (OPM - Organizational Project Management), các yếu tố hỗ trợ tổ chức (Organizational Enablers) đóng vai trò như thế nào? Ví dụ nào SAU ĐÂY là một yếu tố hỗ trợ tổ chức điển hình?",
+      "opts": {
+        "A": "Yếu tố hỗ trợ chỉ bao gồm các công cụ phần mềm quản lý dự án như MS Project hay Jira.",
+        "B": "Yếu tố hỗ trợ tổ chức bao gồm cơ cấu quản trị, văn hóa tổ chức, phương pháp và quy trình chuẩn, phát triển năng lực nhân lực — ví dụ điển hình là chương trình đào tạo PM và hệ thống PMO.",
+        "C": "Yếu tố hỗ trợ chủ yếu là ngân sách và nguồn lực tài chính dành cho dự án.",
+        "D": "Yếu tố hỗ trợ chỉ áp dụng cho các tổ chức lớn có PMO chính thức."
+      },
+      "ans": "B",
+      "exp": "Yếu tố hỗ trợ tổ chức (Organizational Enablers) là các thực hành, kiến thức và điều kiện môi trường giúp tổ chức thực hiện quản lý dự án hiệu quả. Chúng bao gồm: cơ cấu quản trị rõ ràng, văn hóa ủng hộ quản lý dự án, quy trình chuẩn hóa, hệ thống thông tin, phát triển năng lực nhân lực, và PMO. Đây là nền tảng để nâng cao mức độ trưởng thành OPM."
+    },
+    {
+      "id": "ch14_q11",
+      "q": "Giám đốc danh mục đầu tư (Portfolio Manager) tại công ty XYZ đang xem xét danh sách 15 dự án đang đề xuất. Ngân sách có hạn chỉ cho phép thực hiện 8 dự án. Tiêu chí quan trọng nhất mà người quản lý danh mục đầu tư nên sử dụng để lựa chọn dự án là gì?",
+      "opts": {
+        "A": "Chọn 8 dự án có chi phí thấp nhất để tối ưu hóa ngân sách.",
+        "B": "Chọn 8 dự án có thời gian thực hiện ngắn nhất để hoàn thành nhanh.",
+        "C": "Chọn các dự án phù hợp nhất với mục tiêu chiến lược tổ chức, cân bằng rủi ro và lợi ích, và tối đa hóa giá trị tổng thể của danh mục.",
+        "D": "Chọn 8 dự án do các nhà quản lý dự án giỏi nhất đề xuất."
+      },
+      "ans": "C",
+      "exp": "Quản lý danh mục đầu tư tập trung vào việc tối đa hóa giá trị chiến lược cho tổ chức. Việc lựa chọn dự án phải dựa trên sự phù hợp chiến lược, cân bằng rủi ro và lợi ích, và đảm bảo nguồn lực được phân bổ hiệu quả nhất. Không nên chỉ tối ưu hóa chi phí hoặc thời gian một cách đơn thuần mà bỏ qua giá trị chiến lược."
+    },
+    {
+      "id": "ch14_q12",
+      "q": "Nhà tài trợ dự án (Project Sponsor) tại công ty của bạn hỏi về vai trò của mình trong quản trị dự án. Theo PMBOK 6, vai trò và trách nhiệm chính của nhà tài trợ là gì?",
+      "opts": {
+        "A": "Nhà tài trợ chỉ phê duyệt ngân sách và không tham gia vào các hoạt động quản lý dự án khác.",
+        "B": "Nhà tài trợ quản lý trực tiếp nhóm dự án và đưa ra tất cả các quyết định kỹ thuật.",
+        "C": "Nhà tài trợ cung cấp nguồn lực và hỗ trợ dự án, phê duyệt các thay đổi lớn, giải quyết các vấn đề leo thang, đảm bảo sự phù hợp chiến lược và là cầu nối giữa nhóm dự án và quản lý cấp cao.",
+        "D": "Nhà tài trợ chỉ tham gia vào giai đoạn khởi động và kết thúc dự án."
+      },
+      "ans": "C",
+      "exp": "Nhà tài trợ dự án có vai trò quan trọng trong quản trị: cung cấp tài nguyên và ủy quyền, phê duyệt chương trình dự án, giải quyết các vấn đề vượt thẩm quyền của PM, đảm bảo dự án phù hợp với chiến lược tổ chức, và kết nối dự án với lãnh đạo cấp cao. Họ tham gia liên tục trong suốt vòng đời dự án, không chỉ ở đầu và cuối."
+    },
+    {
+      "id": "ch14_q13",
+      "q": "Trong một dự án phát triển phần mềm, quản lý dự án nhận thấy rằng các yêu cầu được phê duyệt ban đầu không còn phù hợp do thị trường thay đổi nhanh chóng. Dự án đang sử dụng phương pháp thác nước (waterfall). Theo nguyên tắc quản trị dự án và liên kết chiến lược, hành động phù hợp nhất là gì?",
+      "opts": {
+        "A": "Tiếp tục thực hiện đúng theo yêu cầu ban đầu đã được phê duyệt, không thay đổi gì.",
+        "B": "Tự ý thay đổi yêu cầu mà không thông báo cho các bên liên quan.",
+        "C": "Thông báo cho nhà tài trợ và các bên liên quan về sự thay đổi của thị trường, đề xuất đánh giá lại yêu cầu và có thể xem xét thay đổi phương pháp hoặc điều chỉnh phạm vi thông qua quy trình kiểm soát thay đổi.",
+        "D": "Đóng dự án ngay lập tức vì không còn phù hợp với nhu cầu thị trường."
+      },
+      "ans": "C",
+      "exp": "Liên kết chiến lược đòi hỏi dự án phải tiếp tục tạo ra giá trị cho tổ chức. Khi môi trường kinh doanh thay đổi, PM cần chủ động thông báo cho nhà tài trợ và các bên liên quan, đề xuất đánh giá lại, và xử lý thay đổi thông qua quy trình quản lý thay đổi chính thức. Đây là sự cân bằng giữa tuân thủ kế hoạch và thích ứng với thực tế để dự án tiếp tục tạo giá trị."
+    },
+    {
+      "id": "ch14_q14",
+      "q": "PMO của tổ chức bạn đang xác định các chức năng giám sát dự án (Project Oversight Functions). Chức năng nào SAU ĐÂY KHÔNG phải là chức năng giám sát dự án tiêu chuẩn?",
+      "opts": {
+        "A": "Đánh giá hiệu suất dự án định kỳ và so sánh với kế hoạch cơ sở.",
+        "B": "Phê duyệt các thay đổi lớn về phạm vi, lịch trình và ngân sách.",
+        "C": "Quản lý chi tiết các nhiệm vụ kỹ thuật hàng ngày của các thành viên nhóm dự án.",
+        "D": "Đảm bảo dự án tuân thủ các chính sách, quy trình và tiêu chuẩn quản lý dự án của tổ chức."
+      },
+      "ans": "C",
+      "exp": "Giám sát dự án tập trung vào mức độ quản lý và đảm bảo: đánh giá hiệu suất, phê duyệt thay đổi quan trọng, đảm bảo tuân thủ tiêu chuẩn. Quản lý chi tiết các nhiệm vụ kỹ thuật hàng ngày là trách nhiệm của quản lý dự án và nhóm dự án, không phải chức năng giám sát. Vi quản lý (micromanagement) ở cấp độ giám sát sẽ làm giảm hiệu quả và trao quyền cho PM."
+    },
+    {
+      "id": "ch14_q15",
+      "q": "Trong một dự án xây dựng cầu quy mô lớn, có ba dự án liên quan được thực hiện song song: thi công cầu, xây dựng đường dẫn, và di dời tiện ích ngầm. Tại sao nên quản lý ba dự án này như một chương trình (program) thay vì ba dự án độc lập?",
+      "opts": {
+        "A": "Vì chương trình dễ quản lý hơn và tiết kiệm chi phí hành chính.",
+        "B": "Vì quản lý chương trình cho phép phối hợp các phụ thuộc lẫn nhau, tận dụng nguồn lực dùng chung, và thu hoạch lợi ích tổng hợp mà ba dự án độc lập không thể đạt được.",
+        "C": "Vì PMI yêu cầu tất cả các dự án lớn phải được tổ chức thành chương trình.",
+        "D": "Vì chương trình giúp đơn giản hóa báo cáo cho ban quản lý cấp cao."
+      },
+      "ans": "B",
+      "exp": "Quản lý chương trình mang lại giá trị khi các dự án có sự phụ thuộc lẫn nhau và cần phối hợp chặt chẽ. Trong trường hợp này, cần điều phối tiến độ thi công, quản lý xung đột nguồn lực, xử lý rủi ro chung và đảm bảo lợi ích tổng thể (cây cầu hoàn chỉnh và vận hành được) — điều mà quản lý ba dự án độc lập không thể tối ưu hóa được."
+    },
+    {
+      "id": "ch14_q16",
+      "q": "Tổ chức của bạn áp dụng OPM (Organizational Project Management) để cải thiện khả năng thực hiện dự án. Ban lãnh đạo hỏi OPM khác gì với quản lý dự án thông thường. Câu trả lời nào chính xác nhất?",
+      "opts": {
+        "A": "OPM và quản lý dự án thông thường là giống nhau, chỉ khác về quy mô.",
+        "B": "OPM là khung tích hợp liên kết quản lý danh mục, chương trình và dự án với chiến lược tổ chức, nhằm tối ưu hóa năng lực và kết quả tổng thể; còn quản lý dự án tập trung vào một dự án cụ thể.",
+        "C": "OPM chỉ áp dụng cho các tổ chức lớn có hơn 100 dự án đang hoạt động.",
+        "D": "OPM là một phương pháp quản lý dự án mới thay thế hoàn toàn PMBOK."
+      },
+      "ans": "B",
+      "exp": "OPM (Organizational Project Management) là khung quản lý tích hợp ở cấp độ tổ chức, kết nối quản lý danh mục đầu tư, chương trình và dự án với chiến lược kinh doanh. Mục tiêu là tối ưu hóa việc thực hiện các mục tiêu chiến lược thông qua quản lý dự án hiệu quả ở mọi cấp độ. Đây khác với quản lý dự án đơn lẻ vốn chỉ tập trung vào một dự án cụ thể."
+    },
+    {
+      "id": "ch14_q17",
+      "q": "Dự án phát triển sản phẩm mới của bạn đang bước vào giai đoạn cuối. Nhà tài trợ yêu cầu đánh giá xem dự án có nên tiếp tục, điều chỉnh hay kết thúc dựa trên điều kiện kinh doanh hiện tại. Điều này phản ánh chức năng quản trị nào?",
+      "opts": {
+        "A": "Quản lý rủi ro dự án.",
+        "B": "Kiểm soát phạm vi dự án.",
+        "C": "Đánh giá định kỳ về sự liên kết chiến lược và giá trị còn lại của dự án (Go/No-Go decision hoặc Stage-Gate review).",
+        "D": "Quản lý chất lượng dự án."
+      },
+      "ans": "C",
+      "exp": "Đây là chức năng quản trị quan trọng: đánh giá định kỳ (thường gọi là Stage-Gate Review hay Go/No-Go Decision) để xem xét liệu dự án có còn phù hợp với chiến lược và có đáng tiếp tục đầu tư không. Quản trị tốt đảm bảo tổ chức không tiếp tục đầu tư vào các dự án không còn tạo giá trị, ngay cả khi đã đầu tư đáng kể (tránh bẫy chi phí chìm)."
+    },
+    {
+      "id": "ch14_q18",
+      "q": "Trong khuôn khổ quản lý dự án của PMBOK 6, khung phân phối giá trị (Value Delivery Framework) nhấn mạnh điều gì về mối quan hệ giữa dự án và tổ chức?",
+      "opts": {
+        "A": "Dự án chỉ cần tập trung vào bàn giao sản phẩm kỹ thuật; giá trị kinh doanh là mối quan tâm của bộ phận khác.",
+        "B": "Dự án là phương tiện mà tổ chức sử dụng để tạo ra giá trị; quản lý dự án phải đảm bảo sản phẩm bàn giao cuối cùng chuyển thành lợi ích thực sự cho tổ chức và các bên liên quan.",
+        "C": "Giá trị chỉ được tạo ra khi dự án hoàn thành đúng hạn và đúng ngân sách.",
+        "D": "Khung phân phối giá trị chỉ áp dụng cho các dự án phần mềm và công nghệ thông tin."
+      },
+      "ans": "B",
+      "exp": "Khung phân phối giá trị trong PMBOK 6 nhấn mạnh rằng dự án là phương tiện tổ chức sử dụng để chuyển đổi chiến lược thành kết quả có giá trị. PM không chỉ quản lý tam giác sắt mà còn phải đảm bảo các sản phẩm bàn giao thực sự tạo ra lợi ích cho tổ chức và các bên liên quan. Điều này đòi hỏi sự hiểu biết sâu sắc về mục tiêu kinh doanh và giá trị chiến lược."
+    },
+    {
+      "id": "ch14_q19",
+      "q": "Quản lý dự án của bạn đang lập kế hoạch cho một dự án đổi mới sản phẩm. Để đảm bảo dự án tạo ra giá trị thực sự, người quản lý nên làm gì NGAY TỪ ĐẦU của dự án?",
+      "opts": {
+        "A": "Tập trung ngay vào lập kế hoạch chi tiết về thời gian và chi phí.",
+        "B": "Xác định rõ ràng lợi ích dự kiến, thiết lập các chỉ số đo lường thành công liên quan đến giá trị kinh doanh, và đảm bảo sự gắn kết với chiến lược tổ chức ngay từ giai đoạn khởi động.",
+        "C": "Chờ đến khi dự án gần hoàn thành rồi mới đánh giá giá trị tạo ra.",
+        "D": "Ủy thác toàn bộ việc xác định giá trị cho nhà tài trợ và ban lãnh đạo."
+      },
+      "ans": "B",
+      "exp": "Quản lý giá trị proactive đòi hỏi phải xác định lợi ích và giá trị ngay từ đầu: định nghĩa rõ 'thành công' theo nghĩa kinh doanh, thiết lập KPI đo lường giá trị, đảm bảo phù hợp chiến lược, và lập kế hoạch theo dõi lợi ích. Nếu không làm điều này sớm, dự án có nguy cơ hoàn thành đúng kế hoạch nhưng không tạo ra giá trị thực sự — một dạng thất bại chiến lược."
+    },
+    {
+      "id": "ch14_q20",
+      "q": "Công ty bạn vừa hoàn thành một dự án triển khai hệ thống quản lý nhân sự mới. Nhóm dự án đã bàn giao hệ thống hoạt động đầy đủ tính năng, nhưng sau 3 tháng vận hành, bộ phận HR báo cáo rằng nhân viên không sử dụng hệ thống mới và vẫn dùng bảng tính Excel cũ. Điều này cho thấy dự án đã thiếu sót ở điểm nào trong quản lý dự án theo tiêu chuẩn?",
+      "opts": {
+        "A": "Dự án thiếu kiểm soát chất lượng kỹ thuật của hệ thống.",
+        "B": "Dự án không đủ ngân sách để hoàn thành đầy đủ tính năng.",
+        "C": "Dự án không quản lý hiệu quả việc chuyển đổi tổ chức (organizational change management) và không chuẩn bị đầy đủ cho người dùng cuối về việc áp dụng hệ thống mới.",
+        "D": "Dự án không có đủ tài liệu hướng dẫn sử dụng."
+      },
+      "ans": "C",
+      "exp": "Đây là bài học kinh điển về tầm quan trọng của quản lý thay đổi tổ chức (OCM). Mặc dù hệ thống được bàn giao đầy đủ tính năng (thành công về mặt kỹ thuật), dự án thất bại trong việc đảm bảo người dùng thực sự áp dụng hệ thống mới. Tiêu chuẩn quản lý dự án hiện đại yêu cầu quản lý sự thay đổi, đào tạo người dùng, xây dựng sự chấp nhận, và hỗ trợ sau triển khai để đảm bảo lợi ích thực sự được hiện thực hóa."
+    }
+  ]
+}

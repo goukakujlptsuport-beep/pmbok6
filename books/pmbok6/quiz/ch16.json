@@ -1,0 +1,247 @@
+{
+  "chapterId": "16_agile_practice_guide",
+  "chapterNum": 16,
+  "chapterTitle": "Hướng Dẫn Thực Hành Agile",
+  "questions": [
+    {
+      "id": "ch16_q01",
+      "q": "Một nhóm phát triển phần mềm đang làm việc trên một dự án có yêu cầu thay đổi liên tục từ khách hàng. Product Owner liên tục cập nhật Product Backlog sau mỗi Sprint Review và ưu tiên lại các user story. Scrum Master nhận thấy nhóm đang bất mãn vì họ cảm thấy công việc không bao giờ kết thúc. Theo Agile Manifesto, nguyên tắc nào phản ánh đúng nhất cách nhóm nên tiếp cận sự thay đổi này?",
+      "opts": {
+        "A": "Nhóm nên yêu cầu khách hàng đóng băng yêu cầu sau Sprint 3 để nhóm có thể hoàn thành công việc ổn định",
+        "B": "Chào đón sự thay đổi yêu cầu, kể cả muộn trong quá trình phát triển; các quy trình Agile tận dụng sự thay đổi vì lợi thế cạnh tranh của khách hàng",
+        "C": "Nhóm nên lập kế hoạch chi tiết cho toàn bộ dự án ngay từ đầu để giảm thiểu sự thay đổi",
+        "D": "Scrum Master nên thương lượng với khách hàng để giới hạn số lần thay đổi yêu cầu mỗi Sprint"
+      },
+      "ans": "B",
+      "exp": "Agile Manifesto nêu rõ nguyên tắc: 'Chào đón sự thay đổi yêu cầu, kể cả muộn trong quá trình phát triển.' Thay vì coi sự thay đổi là vấn đề, nhóm Agile xem đây là cơ hội để tạo ra giá trị cạnh tranh cho khách hàng. Scrum Master nên giúp nhóm hiểu rằng sự thay đổi linh hoạt chính là lợi thế của Agile, đồng thời hỗ trợ nhóm thích nghi thay vì kháng cự."
+    },
+    {
+      "id": "ch16_q02",
+      "q": "Trong một Sprint Retrospective, nhóm Scrum xác định rằng nhiều bug đang bị phát hiện muộn trong chu kỳ phát triển, gây tốn nhiều thời gian sửa chữa. Một thành viên đề xuất áp dụng Test-Driven Development (TDD). Thành viên khác đề xuất thêm một giai đoạn kiểm thử chuyên biệt vào cuối Sprint. Scrum Master nên khuyến nghị điều gì phù hợp nhất với các thực hành Agile/XP?",
+      "opts": {
+        "A": "Thêm một giai đoạn kiểm thử riêng biệt vào cuối mỗi Sprint để đảm bảo chất lượng",
+        "B": "Áp dụng TDD: viết test trước khi viết code, giúp phát hiện lỗi sớm và đảm bảo code đáp ứng yêu cầu từ đầu",
+        "C": "Thuê thêm một tester chuyên biệt để kiểm tra toàn bộ code sau khi nhóm hoàn thành",
+        "D": "Kéo dài thời gian Sprint từ 2 tuần lên 4 tuần để có thêm thời gian kiểm thử"
+      },
+      "ans": "B",
+      "exp": "Test-Driven Development (TDD) là một thực hành cốt lõi của Extreme Programming (XP) trong Agile. TDD yêu cầu viết test tự động trước khi viết code chức năng, giúp phát hiện lỗi ngay từ đầu, giảm chi phí sửa lỗi và đảm bảo code luôn đáp ứng yêu cầu. Việc thêm giai đoạn kiểm thử riêng biệt mâu thuẫn với nguyên tắc Agile là tích hợp chất lượng vào suốt quá trình phát triển."
+    },
+    {
+      "id": "ch16_q03",
+      "q": "Một nhóm Kanban đang làm việc trên một hệ thống hỗ trợ khách hàng. Họ nhận thấy rằng nhiều task đang tồn đọng trong cột 'In Progress' và thời gian hoàn thành task (cycle time) ngày càng tăng. Khi phân tích, họ thấy rằng mỗi thành viên đang làm 5-6 task cùng lúc. Theo nguyên tắc Kanban, giải pháp tốt nhất là gì?",
+      "opts": {
+        "A": "Tăng số lượng thành viên trong nhóm để xử lý nhiều task hơn đồng thời",
+        "B": "Chia nhỏ các task lớn thành các task nhỏ hơn để dễ hoàn thành hơn",
+        "C": "Thiết lập giới hạn WIP (Work in Progress) cho mỗi cột để giảm đa nhiệm và cải thiện luồng công việc",
+        "D": "Tổ chức họp hàng ngày để theo dõi tiến độ và thúc đẩy nhóm làm việc nhanh hơn"
+      },
+      "ans": "C",
+      "exp": "Một trong những nguyên tắc cốt lõi của Kanban là giới hạn WIP (Work in Progress Limits). Khi nhóm thực hiện quá nhiều task đồng thời, hiệu suất giảm do chi phí chuyển đổi ngữ cảnh (context switching). Giới hạn WIP buộc nhóm hoàn thành task hiện tại trước khi bắt đầu task mới, từ đó cải thiện luồng công việc (flow), giảm cycle time và tăng thông lượng (throughput)."
+    },
+    {
+      "id": "ch16_q04",
+      "q": "Một công ty đang phát triển một sản phẩm phần mềm mới trong lĩnh vực fintech. Yêu cầu từ cơ quan quản lý bắt buộc phải có tài liệu chi tiết và kiểm toán được, nhưng các tính năng sản phẩm lại thay đổi thường xuyên theo phản hồi của thị trường. Project Manager đang cân nhắc phương pháp quản lý dự án phù hợp. Phương pháp nào phù hợp nhất?",
+      "opts": {
+        "A": "Sử dụng hoàn toàn Scrum vì Agile luôn tốt hơn Waterfall trong mọi dự án phần mềm",
+        "B": "Sử dụng hoàn toàn Waterfall để đảm bảo tài liệu đầy đủ theo yêu cầu quản lý",
+        "C": "Áp dụng phương pháp Hybrid: dùng Agile cho phát triển tính năng và Predictive cho các yêu cầu tuân thủ pháp lý cần tài liệu chi tiết",
+        "D": "Từ chối dự án vì yêu cầu tuân thủ pháp lý không tương thích với Agile"
+      },
+      "ans": "C",
+      "exp": "Phương pháp Hybrid kết hợp ưu điểm của cả Agile và Predictive (Waterfall). Trong trường hợp này, các phần tuân thủ pháp lý với yêu cầu tài liệu nghiêm ngặt có thể dùng Predictive, trong khi phát triển tính năng sản phẩm linh hoạt có thể dùng Agile. Hybrid là lựa chọn thực tế khi dự án có cả phần ổn định lẫn phần biến động, đặc biệt trong các ngành có yêu cầu tuân thủ cao."
+    },
+    {
+      "id": "ch16_q05",
+      "q": "Scrum Master của một nhóm 7 người nhận thấy rằng trong Daily Scrum, các thành viên thường xuyên đi lạc chủ đề, kéo dài cuộc họp đến 45 phút và giải quyết các vấn đề kỹ thuật chi tiết ngay trong cuộc họp. Điều này gây mất thời gian và một số thành viên bắt đầu bỏ cuộc họp. Scrum Master nên làm gì đầu tiên?",
+      "opts": {
+        "A": "Hủy bỏ Daily Scrum và thay thế bằng báo cáo tiến độ hàng ngày qua email",
+        "B": "Nhắc nhở nhóm về mục đích của Daily Scrum: mỗi người trả lời 3 câu hỏi trong 15 phút, và chuyển các vấn đề kỹ thuật sang thảo luận riêng sau cuộc họp",
+        "C": "Yêu cầu Product Owner tham dự Daily Scrum để đảm bảo cuộc họp tập trung",
+        "D": "Tăng thời gian Daily Scrum lên 1 giờ để có đủ thời gian giải quyết mọi vấn đề"
+      },
+      "ans": "B",
+      "exp": "Daily Scrum là một sự kiện time-boxed 15 phút dành cho Development Team để đồng bộ hóa hoạt động và lên kế hoạch cho 24 giờ tiếp theo. Ba câu hỏi cổ điển là: (1) Tôi đã làm gì hôm qua? (2) Tôi sẽ làm gì hôm nay? (3) Có trở ngại nào không? Các vấn đề kỹ thuật chi tiết nên được giải quyết trong các cuộc thảo luận riêng sau Daily Scrum (gọi là 'after party'). Scrum Master với vai trò servant leader cần giữ cuộc họp đúng mục đích."
+    },
+    {
+      "id": "ch16_q06",
+      "q": "Một nhóm Scrum đã hoàn thành Sprint Planning và cam kết hoàn thành 8 user story trong Sprint 2 tuần. Đến ngày thứ 8, nhóm nhận ra rằng họ đã đánh giá thấp độ phức tạp của 3 story quan trọng nhất và sẽ không thể hoàn thành tất cả. Product Owner muốn giảm chất lượng để hoàn thành đủ số lượng. Nhóm nên làm gì?",
+      "opts": {
+        "A": "Chấp nhận giảm chất lượng để đáp ứng cam kết với Product Owner",
+        "B": "Làm thêm giờ cuối tuần để hoàn thành tất cả 8 story đúng hạn",
+        "C": "Duy trì Definition of Done, thông báo với Product Owner về tình hình, và cộng tác để quyết định story nào ưu tiên hoàn thành đúng chất lượng trong Sprint này",
+        "D": "Kéo dài Sprint thêm 1 tuần mà không cần thông báo với stakeholders"
+      },
+      "ans": "C",
+      "exp": "Definition of Done (DoD) là cam kết về chất lượng của nhóm Scrum và không thể bị thỏa hiệp. Khi Sprint có nguy cơ không đạt mục tiêu, nhóm phải minh bạch với Product Owner. Theo nguyên tắc Scrum, Product Owner có quyền điều chỉnh scope (các story sẽ hoàn thành) nhưng chất lượng của mỗi Increment phải đáp ứng DoD. Làm thêm giờ liên tục không bền vững và mâu thuẫn với nguyên tắc Agile về nhịp độ bền vững (sustainable pace)."
+    },
+    {
+      "id": "ch16_q07",
+      "q": "Trong buổi Sprint Planning, nhóm Scrum cần ước lượng độ phức tạp của các user story. Product Owner đề xuất dùng giờ làm việc để ước lượng vì dễ hiểu hơn với stakeholders. Tuy nhiên, Scrum Master đề xuất dùng story points và planning poker. Lý do chính nào khiến story points phù hợp hơn trong bối cảnh Agile?",
+      "opts": {
+        "A": "Story points dễ tính toán hơn giờ làm việc và không cần công cụ đặc biệt",
+        "B": "Story points thể hiện độ phức tạp và effort tương đối, giảm thiểu sự thiên lệch cá nhân, và cho phép nhóm đạt được sự đồng thuận thông qua thảo luận trong planning poker",
+        "C": "Story points được quy định bắt buộc trong Scrum Guide nên phải sử dụng",
+        "D": "Story points giúp Project Manager báo cáo tiến độ chính xác hơn với ban lãnh đạo"
+      },
+      "ans": "B",
+      "exp": "Story points là đơn vị đo lường tương đối về effort, độ phức tạp và rủi ro của một user story so với các story khác. Không như giờ làm việc mang tính tuyệt đối và dễ bị thiên lệch bởi kinh nghiệm cá nhân, story points phản ánh nhận thức chung của cả nhóm. Planning poker (Estimation Poker) là kỹ thuật ước lượng đồng thuận: mỗi thành viên lựa chọn ước lượng độc lập rồi công bố đồng thời, từ đó kích thích thảo luận về sự khác biệt và đạt đồng thuận."
+    },
+    {
+      "id": "ch16_q08",
+      "q": "Một nhóm XP (Extreme Programming) đang triển khai tính năng mới và áp dụng pair programming. Một senior developer phàn nàn rằng pair programming lãng phí tài nguyên vì 'hai người làm việc của một người'. Manager đang xem xét có nên tiếp tục thực hành này không. Lập luận nào bảo vệ tốt nhất cho pair programming?",
+      "opts": {
+        "A": "Pair programming bắt buộc theo quy định trong XP và không thể bỏ",
+        "B": "Pair programming giúp giảm lỗi thông qua code review liên tục, chuyển giao kiến thức, và nghiên cứu cho thấy năng suất thực sự tăng khi tính đến chi phí rework",
+        "C": "Pair programming chỉ hữu ích cho junior developer, senior developer nên làm việc độc lập",
+        "D": "Pair programming giúp tiết kiệm chi phí máy tính vì hai người dùng chung một máy"
+      },
+      "ans": "B",
+      "exp": "Pair programming là một thực hành kỹ thuật của XP, trong đó hai lập trình viên làm việc cùng nhau tại một máy tính: một người viết code (driver) và một người review (navigator). Mặc dù có vẻ tốn nguồn lực, các nghiên cứu cho thấy pair programming giảm đáng kể số lượng lỗi, giảm chi phí rework, tăng cường chia sẻ kiến thức trong nhóm, và cải thiện chất lượng thiết kế. Chi phí tăng khoảng 15% nhưng lỗi giảm tới 70%."
+    },
+    {
+      "id": "ch16_q09",
+      "q": "Một tổ chức đang chuyển đổi sang Agile và Product Owner mới được chỉ định cho một nhóm Scrum. Product Owner này thường xuyên phân công task trực tiếp cho từng thành viên nhóm, quyết định ai làm việc gì trong Sprint, và yêu cầu các thành viên báo cáo tiến độ với cô ấy hàng ngày. Scrum Master cần can thiệp như thế nào?",
+      "opts": {
+        "A": "Ủng hộ cách tiếp cận này vì Product Owner là người chịu trách nhiệm về sản phẩm nên cần kiểm soát",
+        "B": "Giải thích với Product Owner rằng Development Team tự tổ chức và tự quản lý; Product Owner chịu trách nhiệm về WHAT (cái gì), không phải HOW (làm thế nào) và WHO (ai làm)",
+        "C": "Đề xuất Project Manager đảm nhận vai trò phân công task để đảm bảo công bằng",
+        "D": "Yêu cầu nhóm báo cáo với cả Product Owner và Scrum Master để đảm bảo minh bạch"
+      },
+      "ans": "B",
+      "exp": "Trong Scrum, Development Team là self-organizing (tự tổ chức): họ tự quyết định cách thực hiện công việc và ai làm việc gì. Product Owner chịu trách nhiệm về Product Backlog và ưu tiên hóa giá trị kinh doanh (WHAT), còn Development Team quyết định HOW và WHO. Scrum Master với vai trò servant leader cần bảo vệ nhóm khỏi sự can thiệp ngoài, giúp Product Owner hiểu đúng vai trò của mình trong Scrum."
+    },
+    {
+      "id": "ch16_q10",
+      "q": "Một nhóm Scrum có velocity trung bình 40 story points/Sprint trong 6 Sprint gần nhất. Product Owner có Product Backlog với tổng 320 story points còn lại. Sprint duration là 2 tuần. Một stakeholder hỏi khi nào dự án sẽ hoàn thành. Dựa trên dữ liệu này, ước tính nào phù hợp nhất?",
+      "opts": {
+        "A": "Dự án sẽ hoàn thành sau đúng 8 Sprint (16 tuần) vì 320/40 = 8",
+        "B": "Không thể ước tính được vì Agile không có ngày kết thúc cố định",
+        "C": "Khoảng 8 Sprint (16 tuần) là ước tính tốt nhất dựa trên velocity hiện tại, nhưng đây là ước tính và có thể thay đổi khi backlog được tinh chỉnh",
+        "D": "Ít nhất 12 Sprint vì cần tính dự phòng cho rủi ro phát sinh"
+      },
+      "ans": "C",
+      "exp": "Velocity là số story points nhóm hoàn thành trung bình mỗi Sprint, dùng để dự báo (không phải cam kết chắc chắn). 320 story points ÷ 40 points/Sprint = 8 Sprint = 16 tuần là ước tính hợp lý. Tuy nhiên, trong Agile, ước tính này mang tính xác suất và sẽ thay đổi khi Product Backlog được cập nhật (backlog refinement). Quan trọng là truyền đạt cho stakeholders tính không chắc chắn này thay vì đưa ra cam kết cứng nhắc."
+    },
+    {
+      "id": "ch16_q11",
+      "q": "Một tổ chức áp dụng Lean đang phân tích value stream của quy trình phát triển phần mềm. Họ phát hiện rằng code đã được viết xong thường phải chờ 5 ngày để được review, sau đó chờ thêm 3 ngày để deploy vào môi trường staging. Trong khi đó, thời gian thực sự viết code chỉ mất 2 ngày. Theo tư duy Lean, bước tiếp theo nên là gì?",
+      "opts": {
+        "A": "Thuê thêm developer để viết code nhanh hơn, giảm thời gian từ 2 ngày xuống 1 ngày",
+        "B": "Xác định và loại bỏ lãng phí (waste) trong thời gian chờ đợi bằng cách cải thiện quy trình review và tự động hóa deployment",
+        "C": "Chấp nhận thời gian chờ đợi là cần thiết để đảm bảo chất lượng",
+        "D": "Tăng kích thước batch để deploy nhiều tính năng cùng lúc, giảm số lần deploy"
+      },
+      "ans": "B",
+      "exp": "Lean tập trung vào loại bỏ 7 loại lãng phí (waste/muda). Trong ví dụ này, thời gian chờ đợi (waiting) là lãng phí lớn nhất: 5+3=8 ngày chờ so với 2 ngày làm việc thực sự. Value Stream Mapping giúp trực quan hóa luồng giá trị và xác định các điểm tắc nghẽn. Giải pháp bao gồm: thiết lập quy trình review nhanh hơn (code review sớm hơn, CI/CD), tự động hóa deployment. Tăng batch size sẽ làm vấn đề tệ hơn."
+    },
+    {
+      "id": "ch16_q12",
+      "q": "Trong Sprint Review, nhóm Scrum trình bày Increment hoàn thành. Product Owner nhận thấy rằng mặc dù tất cả các user story đã được hoàn thành theo Definition of Done, nhưng tính năng không thực sự đáp ứng nhu cầu kinh doanh như mong đợi. Điều này xảy ra vì các user story không mô tả đủ chi tiết. Nhóm nên học bài học gì từ tình huống này?",
+      "opts": {
+        "A": "Definition of Done cần được cập nhật để bao gồm yêu cầu kinh doanh chi tiết hơn",
+        "B": "Product Owner nên tham gia thường xuyên hơn trong Sprint, không chỉ ở Sprint Review, để cung cấp phản hồi sớm và tinh chỉnh user story qua Backlog Refinement",
+        "C": "Nhóm cần viết code cẩn thận hơn và tự kiểm tra với yêu cầu kinh doanh",
+        "D": "Sprint duration nên được kéo dài để có thêm thời gian phân tích yêu cầu"
+      },
+      "ans": "B",
+      "exp": "Đây là vấn đề về cộng tác liên tục với Product Owner và chất lượng của Product Backlog. Backlog Refinement (trước đây gọi là Grooming) là hoạt động quan trọng trong Sprint, nơi Product Owner và nhóm cộng tác để làm rõ, chi tiết hóa và ước lượng các story sắp đến. Ngoài ra, Product Owner cần tham gia thường xuyên trong Sprint (không chỉ Sprint Review) để trả lời câu hỏi và cung cấp phản hồi sớm, tránh 'surprises' tại Sprint Review."
+    },
+    {
+      "id": "ch16_q13",
+      "q": "Một Scrum Master mới đang áp dụng 'servant leadership' trong vai trò của mình. Giám đốc kỹ thuật (CTO) yêu cầu Scrum Master phải là người đưa ra quyết định kỹ thuật cuối cùng trong nhóm và phải chịu trách nhiệm cá nhân nếu Sprint không đạt mục tiêu. Scrum Master nên phản hồi như thế nào?",
+      "opts": {
+        "A": "Chấp nhận vai trò mới vì CTO có quyền hành và biết điều gì tốt nhất cho tổ chức",
+        "B": "Giải thích với CTO rằng Scrum Master là servant leader, không phải command-and-control manager; trách nhiệm kỹ thuật thuộc về Development Team và trách nhiệm về giá trị sản phẩm thuộc về Product Owner",
+        "C": "Từ chối vai trò Scrum Master nếu CTO không thay đổi kỳ vọng",
+        "D": "Đồng ý với CTO nhưng bí mật để nhóm tự quyết định vì Scrum Master không thể kiểm soát mọi thứ"
+      },
+      "ans": "B",
+      "exp": "Servant leadership là triết lý lãnh đạo cốt lõi trong Agile. Scrum Master phục vụ nhóm bằng cách loại bỏ trở ngại, tạo điều kiện cho nhóm tự tổ chức, và bảo vệ nhóm khỏi can thiệp bên ngoài. Scrum Master không phải là project manager truyền thống, không chịu trách nhiệm về kết quả kỹ thuật hay cam kết nhóm. Trong tình huống này, Scrum Master cần giáo dục CTO về vai trò và trách nhiệm trong Scrum một cách minh bạch và xây dựng."
+    },
+    {
+      "id": "ch16_q14",
+      "q": "Nhóm phát triển một ứng dụng di động đang xem xét liệu có nên áp dụng Agile hay Predictive. Dự án có: ngân sách cố định từ nhà đầu tư, thời hạn cứng 9 tháng, nhưng tính năng cụ thể vẫn chưa rõ ràng và sẽ được xác định dựa trên phản hồi của người dùng. Yếu tố nào nghiêng về việc sử dụng Agile?",
+      "opts": {
+        "A": "Ngân sách cố định và thời hạn cứng cho thấy nên dùng Predictive để kiểm soát chi phí",
+        "B": "Tính năng chưa xác định và cần phản hồi người dùng để tinh chỉnh là dấu hiệu điển hình của môi trường Agile, nơi scope linh hoạt và được khám phá qua từng iteration",
+        "C": "Ứng dụng di động luôn phải dùng Agile vì công nghệ thay đổi nhanh",
+        "D": "Dự án 9 tháng quá ngắn cho Agile, nên dùng Predictive"
+      },
+      "ans": "B",
+      "exp": "Agile phù hợp khi yêu cầu không chắc chắn, phức tạp và cần khám phá qua phản hồi. Trong tình huống này, scope chưa xác định và phụ thuộc vào phản hồi người dùng là dấu hiệu rõ ràng cho Agile. Với Agile, time và cost được cố định (time-boxes), còn scope linh hoạt. Điều này thực ra phù hợp với ngân sách và thời hạn cố định của dự án — nhóm sẽ tập trung vào các tính năng có giá trị cao nhất trong budget và timeline đã định."
+    },
+    {
+      "id": "ch16_q15",
+      "q": "Trong quá trình phát triển phần mềm theo XP, nhóm đang gặp phải vấn đề: codebase ngày càng phức tạp, khó đọc và khó bảo trì, dù tất cả các test đều pass. Một thành viên đề xuất dành cả Sprint tiếp theo để 'clean up' code mà không thêm tính năng mới. Product Owner phản đối vì không tạo ra business value trực tiếp. Phương án Agile tốt nhất là gì?",
+      "opts": {
+        "A": "Đồng ý với Product Owner, tiếp tục thêm tính năng mới và không cần lo về cấu trúc code",
+        "B": "Tích hợp refactoring liên tục vào công việc hàng ngày như một thực hành XP, thay vì tích lũy nợ kỹ thuật và cần một Sprint riêng để dọn dẹp",
+        "C": "Tạo một team riêng chuyên về refactoring song song với team phát triển tính năng",
+        "D": "Viết lại toàn bộ hệ thống từ đầu trong Sprint tiếp theo để giải quyết tất cả vấn đề"
+      },
+      "ans": "B",
+      "exp": "Refactoring liên tục là một thực hành cốt lõi của XP: cải thiện cấu trúc code nội tại mà không thay đổi hành vi bên ngoài. Agile khuyến khích xây dựng 'technical excellence' vào từng Sprint thay vì tích lũy technical debt. Khi refactoring được tích hợp vào công việc hàng ngày, nó không tạo ra một 'Sprint không có value' mà giúp duy trì tốc độ phát triển bền vững về lâu dài. Một 'hardening Sprint' hay 'cleanup Sprint' thường là dấu hiệu của việc không thực hành kỹ thuật tốt."
+    },
+    {
+      "id": "ch16_q16",
+      "q": "Một tổ chức đang bắt đầu dự án Agile mới và cần tạo tài liệu khởi động. Project Manager chuẩn bị một Project Charter dài 50 trang với phân tích chi tiết và WBS đầy đủ. Agile Coach can thiệp và đề xuất thay thế bằng Agile Project Charter. Đặc điểm chính của Agile Project Charter là gì?",
+      "opts": {
+        "A": "Agile Project Charter phải dài hơn Project Charter truyền thống để bao phủ tất cả các kịch bản có thể xảy ra",
+        "B": "Agile Project Charter là tài liệu ngắn gọn, tập trung vào vision, mục tiêu kinh doanh, constraints chính, và team cốt lõi; đủ để align nhưng không cố định mọi chi tiết",
+        "C": "Agile không cần Project Charter vì tài liệu là lãng phí theo Agile Manifesto",
+        "D": "Agile Project Charter chỉ cần chữ ký của Product Owner, không cần sponsor doanh nghiệp"
+      },
+      "ans": "B",
+      "exp": "Agile Manifesto ưu tiên 'working software over comprehensive documentation' — điều này không có nghĩa là không có tài liệu, mà là tài liệu nên đủ dùng, không thừa. Agile Project Charter (còn gọi là Project Vision Statement hay Team Charter) là tài liệu ngắn gọn bao gồm: vision sản phẩm, mục tiêu kinh doanh (business goals), các ràng buộc chính, thành viên nhóm cốt lõi. Nó cung cấp đủ định hướng để bắt đầu mà không cố định chi tiết sẽ được khám phá qua từng Sprint."
+    },
+    {
+      "id": "ch16_q17",
+      "q": "Sau 10 Sprint, nhóm Scrum nhận thấy velocity của họ biến động rất lớn: Sprint 1-3: 35 points, Sprint 4-6: 55 points, Sprint 7-10: 20 points. Khi phân tích, họ phát hiện Sprint 4-6 có velocity cao vì nhóm đã đưa vào những story 'dễ làm' và bỏ qua story phức tạp. Sprint 7-10 thấp vì phải xử lý các story phức tạp đã trì hoãn. Bài học nào phù hợp nhất?",
+      "opts": {
+        "A": "Velocity cao nhất (55 points) nên được dùng làm mục tiêu cho các Sprint tiếp theo",
+        "B": "Nhóm đã thực hành 'story cherry-picking' — ưu tiên story dễ thay vì ưu tiên theo giá trị kinh doanh; Product Owner cần đảm bảo Sprint Backlog phản ánh đúng thứ tự ưu tiên của Product Backlog",
+        "C": "Velocity không quan trọng; chỉ cần số tính năng hoàn thành là đủ",
+        "D": "Nhóm nên bỏ ước lượng story points vì không chính xác"
+      },
+      "ans": "B",
+      "exp": "Velocity chỉ có ý nghĩa khi nhóm làm việc trên đúng thứ tự ưu tiên của Product Backlog. 'Cherry-picking' — chọn story dễ để tăng velocity ảo — là anti-pattern phổ biến trong Scrum. Product Owner chịu trách nhiệm ưu tiên hóa Product Backlog theo giá trị kinh doanh, và Sprint Planning nên bắt đầu từ top của backlog. Velocity thực sự bền vững phản ánh khả năng thực sự của nhóm khi làm việc trên các item có độ phức tạp hỗn hợp."
+    },
+    {
+      "id": "ch16_q18",
+      "q": "Nhóm Scrum đang họp Sprint Retrospective sau Sprint thứ 8. Đây là lần thứ ba liên tiếp nhóm xác định 'thiếu giao tiếp giữa frontend và backend developer' là vấn đề chính. Hai Sprint trước, nhóm đã đề xuất cải tiến nhưng không thực hiện được. Theo Agile, Scrum Master nên làm gì khác đi trong lần này?",
+      "opts": {
+        "A": "Bỏ qua vấn đề này vì nhóm đã nhận thức được và sẽ tự cải thiện",
+        "B": "Đề xuất với ban lãnh đạo để họ can thiệp và giải quyết vấn đề giao tiếp",
+        "C": "Giúp nhóm xác định action item cụ thể, có người chịu trách nhiệm và deadline rõ ràng cho Sprint tiếp theo, và theo dõi việc thực hiện ngay từ đầu Sprint",
+        "D": "Thay đổi cấu trúc nhóm bằng cách tách frontend và backend thành hai Scrum team riêng"
+      },
+      "ans": "C",
+      "exp": "Sprint Retrospective không chỉ là để nói về vấn đề mà phải tạo ra cải tiến thực sự. Vấn đề tái diễn 3 Sprint liên tiếp cho thấy nhóm đã nhận biết nhưng chưa hành động hiệu quả. Scrum Master cần đảm bảo Retrospective tạo ra action items SMART (Specific, Measurable, Achievable, Relevant, Time-bound): ai làm gì, đến khi nào, đo lường thế nào. Theo dõi implementation của action items là trách nhiệm của toàn nhóm, được kiểm tra ở đầu Retrospective tiếp theo."
+    },
+    {
+      "id": "ch16_q19",
+      "q": "Một công ty sản xuất đang triển khai Agile lần đầu tiên. CTO đề xuất thực hiện 'Big Bang' Agile transformation: áp dụng Scrum cho tất cả 20 nhóm cùng một lúc vào đầu tháng tới. Agile Coach có kinh nghiệm không đồng ý với cách tiếp cận này. Lý do nào thuyết phục nhất để phản đối 'Big Bang' transformation?",
+      "opts": {
+        "A": "Scrum không phù hợp với công ty sản xuất, chỉ phù hợp với phát triển phần mềm",
+        "B": "Thay đổi đồng loạt 20 nhóm cùng lúc không cho phép học hỏi và điều chỉnh; rủi ro cao và thiếu Scrum Master/Agile Coach có kinh nghiệm; tốt hơn là bắt đầu với 1-2 nhóm pilot để học bài học trước khi nhân rộng",
+        "C": "Tháng tới quá sớm; cần ít nhất 1 năm chuẩn bị trước khi bắt đầu",
+        "D": "CTO không có quyền quyết định về phương pháp làm việc của các nhóm phát triển"
+      },
+      "ans": "B",
+      "exp": "Agile transformation thành công thường bắt đầu nhỏ (pilot), học hỏi từ thực tiễn, rồi nhân rộng dần. 'Big Bang' có nhiều rủi ro: thiếu Scrum Master/Coach có kinh nghiệm để hỗ trợ 20 nhóm, không có cơ hội học và điều chỉnh, có thể tạo ra 'Cargo Cult Agile' (áp dụng hình thức nhưng không hiểu nguyên tắc). Nguyên tắc Agile về inspect and adapt áp dụng cả cho transformation: pilot → inspect → adapt → scale."
+    },
+    {
+      "id": "ch16_q20",
+      "q": "Nhóm Scrum đang chuẩn bị Sprint Planning cho Sprint tiếp theo. Product Owner muốn đưa 15 user story vào Sprint Backlog vì stakeholders đang gây áp lực. Dựa trên velocity 6 Sprint gần nhất (38, 42, 35, 40, 41, 38 points), và 15 story này có tổng 85 story points, nhóm nên xử lý tình huống này như thế nào?",
+      "opts": {
+        "A": "Chấp nhận tất cả 15 story vì Product Owner có quyền quyết định Sprint Backlog",
+        "B": "Từ chối tất cả 15 story và yêu cầu Product Owner chọn lại từ đầu",
+        "C": "Nhóm tự cam kết dựa trên capacity thực tế (khoảng 39 points trung bình); cộng tác với Product Owner để chọn các story có giá trị cao nhất phù hợp với capacity, đồng thời minh bạch với stakeholders về lý do",
+        "D": "Đồng ý nhận tất cả nhưng sẽ giảm chất lượng để hoàn thành đủ số lượng story"
+      },
+      "ans": "C",
+      "exp": "Sprint Backlog thuộc về Development Team: chỉ nhóm mới có thể quyết định bao nhiêu work họ có thể cam kết trong một Sprint dựa trên velocity và capacity thực tế. Velocity trung bình ≈ 39 points, nhưng 85 points được yêu cầu — gấp đôi capacity. Product Owner quyết định ưu tiên, Development Team quyết định lượng. Scrum Master cần giúp Product Owner giải thích với stakeholders về nguyên tắc sustainable pace và việc over-commit dẫn đến chất lượng kém, nợ kỹ thuật, và giảm velocity lâu dài."
+    }
+  ]
+}

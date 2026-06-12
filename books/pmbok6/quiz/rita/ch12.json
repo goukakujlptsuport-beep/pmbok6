@@ -1,0 +1,248 @@
+{
+  "chapterId": "rita_12",
+  "chapterNum": 12,
+  "chapterTitle": "Risks and Issues",
+  "source": "rita",
+  "questions": [
+    {
+      "id": "r12_q01",
+      "q": "A project manager notices that the team is running out of a key material supplier. This situation has NOT yet caused any project delay. How should this be classified?",
+      "opts": {
+        "A": "An issue, because it is a current problem",
+        "B": "A risk, because it is a future uncertain event that may impact the project",
+        "C": "A constraint, because it limits the project's options",
+        "D": "A defect, because the supply chain has failed"
+      },
+      "ans": "B",
+      "exp": "Rủi ro (risk) là sự kiện không chắc chắn trong tương lai có thể ảnh hưởng đến dự án nếu xảy ra. Vì việc hết nguyên liệu chưa xảy ra mà chỉ có khả năng xảy ra, đây là một rủi ro. Nếu nó đã gây ra sự chậm trễ thực sự, thì sẽ trở thành một vấn đề (issue)."
+    },
+    {
+      "id": "r12_q02",
+      "q": "During project execution, the team discovers that a key vendor has filed for bankruptcy, causing an immediate delay to deliverables. This should be recorded in the:",
+      "opts": {
+        "A": "Risk register",
+        "B": "Risk breakdown structure",
+        "C": "Issues log",
+        "D": "Contingency reserve"
+      },
+      "ans": "C",
+      "exp": "Vấn đề (issue) là một sự kiện đang xảy ra hiện tại cần được giải quyết. Khi nhà cung cấp đã phá sản và gây ra sự chậm trễ ngay lập tức, đây là một vấn đề hiện tại và phải được ghi vào nhật ký vấn đề (issues log). Nhật ký vấn đề theo dõi các vấn đề hiện tại, chủ sở hữu và trạng thái giải quyết."
+    },
+    {
+      "id": "r12_q03",
+      "q": "An organization states it is willing to accept up to $100,000 in potential losses on a project before escalating. This $100,000 figure represents the organization's:",
+      "opts": {
+        "A": "Risk appetite",
+        "B": "Risk threshold",
+        "C": "Management reserve",
+        "D": "Contingency reserve"
+      },
+      "ans": "B",
+      "exp": "Ngưỡng rủi ro (risk threshold) là giới hạn cụ thể, có thể đo lường được mà tổ chức sẵn sàng chấp nhận. Con số $100,000 cụ thể là ngưỡng rủi ro. Ngược lại, khẩu vị rủi ro (risk appetite) là mức độ chấp nhận rủi ro tổng thể mang tính định tính hơn (ví dụ: 'chúng tôi thích tránh rủi ro')."
+    },
+    {
+      "id": "r12_q04",
+      "q": "A project manager wants to organize identified risks by category (technical, external, organizational, project management). The best tool for this is a:",
+      "opts": {
+        "A": "Risk register",
+        "B": "Probability and impact matrix",
+        "C": "Risk breakdown structure (RBS)",
+        "D": "Work breakdown structure (WBS)"
+      },
+      "ans": "C",
+      "exp": "Cấu trúc phân chia rủi ro (Risk Breakdown Structure - RBS) là một công cụ phân cấp dùng để phân loại rủi ro theo danh mục. Nó giúp tổ chức và nhóm các rủi ro đã xác định theo các nguồn gốc như kỹ thuật, bên ngoài, tổ chức và quản lý dự án."
+    },
+    {
+      "id": "r12_q05",
+      "q": "During risk identification, the project manager wants to gather anonymous expert opinions through multiple rounds of questionnaires to reach consensus. Which technique is being used?",
+      "opts": {
+        "A": "Brainstorming",
+        "B": "Delphi technique",
+        "C": "SWOT analysis",
+        "D": "Checklist analysis"
+      },
+      "ans": "B",
+      "exp": "Kỹ thuật Delphi thu thập ý kiến chuyên gia ẩn danh thông qua nhiều vòng bảng câu hỏi. Sau mỗi vòng, kết quả được tóm tắt và chia sẻ để các chuyên gia xem xét lại câu trả lời của mình. Kỹ thuật này giúp tránh ảnh hưởng của nhóm và đạt được sự đồng thuận. Brainstorming thì không ẩn danh và diễn ra trong một buổi họp."
+    },
+    {
+      "id": "r12_q06",
+      "q": "A project manager performs qualitative risk analysis and assigns each risk a score based on the likelihood it will occur and the severity of its impact. This score is used to:",
+      "opts": {
+        "A": "Calculate the exact monetary value of each risk",
+        "B": "Prioritize risks for further analysis or response planning",
+        "C": "Determine which risks need a contingency reserve",
+        "D": "Define the risk threshold for the project"
+      },
+      "ans": "B",
+      "exp": "Phân tích rủi ro định tính sử dụng ma trận xác suất × tác động để tính điểm rủi ro và ưu tiên hóa rủi ro. Mục đích chính là xác định rủi ro nào cần phân tích thêm (định lượng) hoặc lập kế hoạch ứng phó, không phải tính toán giá trị tiền tệ chính xác (đó là phân tích định lượng)."
+    },
+    {
+      "id": "r12_q07",
+      "q": "A project has a 40% probability of experiencing a software integration failure that would cost $75,000 to fix. What is the Expected Monetary Value (EMV) of this risk?",
+      "opts": {
+        "A": "+$30,000",
+        "B": "-$30,000",
+        "C": "-$75,000",
+        "D": "+$75,000"
+      },
+      "ans": "B",
+      "exp": "Giá trị tiền tệ kỳ vọng (EMV) = Xác suất × Tác động = 40% × (-$75,000) = -$30,000. Giá trị âm vì đây là rủi ro (mối đe dọa), gây ra chi phí tổn thất. EMV được dùng trong phân tích định lượng để định lượng ảnh hưởng tài chính của rủi ro."
+    },
+    {
+      "id": "r12_q08",
+      "q": "There are two risk scenarios: Risk A has a 30% chance of causing a $50,000 loss, and Risk B has a 20% chance of causing a $90,000 loss. What is the combined EMV of both risks?",
+      "opts": {
+        "A": "-$15,000",
+        "B": "-$18,000",
+        "C": "-$33,000",
+        "D": "-$140,000"
+      },
+      "ans": "C",
+      "exp": "EMV của Rủi ro A = 30% × (-$50,000) = -$15,000. EMV của Rủi ro B = 20% × (-$90,000) = -$18,000. Tổng EMV = -$15,000 + (-$18,000) = -$33,000. Trong phân tích cây quyết định và ước lượng dự phòng, ta cộng tất cả các EMV lại với nhau."
+    },
+    {
+      "id": "r12_q09",
+      "q": "A project manager is using a decision tree to evaluate two options. Option A has a 60% chance of a $200,000 gain and 40% chance of a $50,000 loss. Option B guarantees a $80,000 gain. Which option has the higher EMV?",
+      "opts": {
+        "A": "Option A, with EMV of $100,000",
+        "B": "Option B, with EMV of $80,000",
+        "C": "Option A, with EMV of $120,000",
+        "D": "Option B, with EMV of $100,000"
+      },
+      "ans": "A",
+      "exp": "EMV của Phương án A = (60% × $200,000) + (40% × -$50,000) = $120,000 - $20,000 = $100,000. EMV của Phương án B = $80,000. Phương án A có EMV cao hơn ($100,000 so với $80,000), vì vậy về mặt tài chính, Phương án A được ưu tiên hơn."
+    },
+    {
+      "id": "r12_q10",
+      "q": "A project manager identifies a risk that could delay the project by 3 weeks. She decides to negotiate a contract clause that transfers the financial impact of this delay to the vendor. This is an example of which threat response?",
+      "opts": {
+        "A": "Avoid",
+        "B": "Mitigate",
+        "C": "Transfer",
+        "D": "Accept"
+      },
+      "ans": "C",
+      "exp": "Chuyển giao (Transfer) rủi ro là chiến lược chuyển tác động tài chính của rủi ro sang bên thứ ba, thường qua hợp đồng, bảo hiểm, hoặc bảo đảm. Việc đàm phán điều khoản hợp đồng để nhà cung cấp chịu chi phí khi bị trễ là ví dụ điển hình của Transfer. Lưu ý: Transfer không loại bỏ rủi ro, chỉ chuyển giao tác động tài chính."
+    },
+    {
+      "id": "r12_q11",
+      "q": "To address a risk of scope creep, the project manager adds detailed requirements validation checkpoints throughout the project. This reduces the probability that scope creep will occur. This is an example of:",
+      "opts": {
+        "A": "Avoiding the risk",
+        "B": "Transferring the risk",
+        "C": "Mitigating the risk",
+        "D": "Actively accepting the risk"
+      },
+      "ans": "C",
+      "exp": "Giảm thiểu (Mitigate) rủi ro là giảm xác suất xảy ra hoặc giảm tác động của rủi ro. Việc thêm các điểm kiểm soát xác nhận yêu cầu giúp giảm khả năng xảy ra phạm vi bò (scope creep), do đó là ví dụ về Mitigate. Tránh né (Avoid) sẽ là thay đổi kế hoạch để loại bỏ hoàn toàn rủi ro."
+    },
+    {
+      "id": "r12_q12",
+      "q": "A project team decides not to use a new, untested technology and switches to a proven solution instead. This completely eliminates the associated technical risk. This response strategy is called:",
+      "opts": {
+        "A": "Mitigate",
+        "B": "Transfer",
+        "C": "Avoid",
+        "D": "Accept"
+      },
+      "ans": "C",
+      "exp": "Tránh né (Avoid) rủi ro là thay đổi kế hoạch dự án để loại bỏ hoàn toàn mối đe dọa. Việc chuyển sang công nghệ đã được chứng minh để loại bỏ rủi ro kỹ thuật từ công nghệ mới là ví dụ điển hình của Avoid. Đây là chiến lược mạnh nhất vì nó xóa bỏ hoàn toàn rủi ro."
+    },
+    {
+      "id": "r12_q13",
+      "q": "A project team has identified a risk and decided to prepare a contingency plan in case the risk occurs, while still proceeding with the original plan. This is an example of:",
+      "opts": {
+        "A": "Passive acceptance",
+        "B": "Active acceptance",
+        "C": "Risk mitigation",
+        "D": "Risk avoidance"
+      },
+      "ans": "B",
+      "exp": "Chấp nhận chủ động (Active Acceptance) là khi nhóm dự án chuẩn bị trước kế hoạch dự phòng (contingency plan) để sẵn sàng ứng phó nếu rủi ro xảy ra. Chấp nhận thụ động (Passive Acceptance) là không làm gì cả và sẽ giải quyết khi rủi ro xảy ra. Sự khác biệt chính là việc có hay không có kế hoạch dự phòng đã được chuẩn bị sẵn."
+    },
+    {
+      "id": "r12_q14",
+      "q": "A project team discovers a new market trend that could significantly increase demand for the product they are building. The PM decides to partner with a marketing firm to maximize this opportunity. This response is called:",
+      "opts": {
+        "A": "Exploit",
+        "B": "Share",
+        "C": "Enhance",
+        "D": "Accept"
+      },
+      "ans": "B",
+      "exp": "Chia sẻ (Share) là chiến lược ứng phó với cơ hội bằng cách hợp tác với bên thứ ba có khả năng tốt hơn để nắm bắt cơ hội đó. Việc hợp tác với công ty marketing để tận dụng xu hướng thị trường là ví dụ của Share. Exploit sẽ là đảm bảo cơ hội chắc chắn xảy ra; Enhance là tăng xác suất hoặc tác động của cơ hội."
+    },
+    {
+      "id": "r12_q15",
+      "q": "After implementing a risk response, the project manager notices that a new risk has been introduced as a direct result of that response. This new risk is called a:",
+      "opts": {
+        "A": "Residual risk",
+        "B": "Secondary risk",
+        "C": "Workaround",
+        "D": "Contingency risk"
+      },
+      "ans": "B",
+      "exp": "Rủi ro thứ cấp (Secondary risk) là rủi ro mới phát sinh trực tiếp từ việc thực hiện biện pháp ứng phó rủi ro. Ví dụ: nếu bạn thuê thêm nhân lực để giảm thiểu rủi ro tiến độ (mitigation), thì rủi ro về chi phí vượt ngân sách là rủi ro thứ cấp. Rủi ro còn lại (Residual risk) là rủi ro còn lại sau khi đã áp dụng biện pháp ứng phó."
+    },
+    {
+      "id": "r12_q16",
+      "q": "A risk was identified and accepted (passive) during planning. During execution, the risk occurred and the team had to improvise a solution on the spot. This improvised solution is called a:",
+      "opts": {
+        "A": "Contingency plan",
+        "B": "Fallback plan",
+        "C": "Workaround",
+        "D": "Risk response plan"
+      },
+      "ans": "C",
+      "exp": "Giải pháp tình thế (Workaround) là phản ứng không có kế hoạch trước đối với các rủi ro không được xác định hoặc được chấp nhận thụ động (không có kế hoạch dự phòng). Khi rủi ro xảy ra mà không có kế hoạch sẵn, nhóm phải ứng biến - đó là workaround. Kế hoạch dự phòng (Contingency plan) là đã được chuẩn bị trước khi rủi ro xảy ra."
+    },
+    {
+      "id": "r12_q17",
+      "q": "A project manager sets aside $30,000 in the project budget specifically to cover identified risks that may occur. This $30,000 is part of the:",
+      "opts": {
+        "A": "Management reserve",
+        "B": "Contingency reserve",
+        "C": "Project baseline budget",
+        "D": "Risk transfer fund"
+      },
+      "ans": "B",
+      "exp": "Dự phòng dự phòng (Contingency reserve) được dành riêng cho các rủi ro đã xác định (known-unknowns) và nằm trong đường cơ sở chi phí dự án. Dự phòng quản lý (Management reserve) dành cho các rủi ro chưa biết (unknown-unknowns) và KHÔNG nằm trong đường cơ sở - cần phê duyệt đặc biệt để sử dụng."
+    },
+    {
+      "id": "r12_q18",
+      "q": "The project sponsor wants to use $25,000 from the management reserve to cover an unexpected technical failure. Who has the authority to approve this?",
+      "opts": {
+        "A": "The project manager, as it is within their responsibility",
+        "B": "The project team, through a team vote",
+        "C": "Management or senior leadership, as management reserve is not in the project baseline",
+        "D": "The risk owner specified in the risk register"
+      },
+      "ans": "C",
+      "exp": "Dự phòng quản lý (Management reserve) không nằm trong đường cơ sở dự án và được kiểm soát bởi quản lý cấp cao, không phải người quản lý dự án. Để sử dụng dự phòng quản lý, cần có sự phê duyệt của cấp quản lý. Đây là điểm khác biệt quan trọng với dự phòng dự phòng mà PM có thể sử dụng trong phạm vi quyền hạn."
+    },
+    {
+      "id": "r12_q19",
+      "q": "During a risk audit, the project manager examines whether the risk response for a previously identified risk actually worked as intended. What is the main purpose of risk audits?",
+      "opts": {
+        "A": "To identify new risks that were not previously considered",
+        "B": "To examine and document the effectiveness of risk responses",
+        "C": "To update the probability and impact scores of all risks",
+        "D": "To determine if management reserve should be released"
+      },
+      "ans": "B",
+      "exp": "Kiểm toán rủi ro (Risk audits) kiểm tra và ghi lại tính hiệu quả của các biện pháp ứng phó rủi ro và quy trình quản lý rủi ro tổng thể. Mục đích chính là đánh giá xem các biện pháp ứng phó đã triển khai có hoạt động như mong đợi hay không, từ đó rút ra bài học kinh nghiệm. Xác định rủi ro mới là hoạt động nhận dạng rủi ro, không phải kiểm toán."
+    },
+    {
+      "id": "r12_q20",
+      "q": "A project manager identifies 15 risks. After qualitative analysis, 10 of them are scored very low in both probability and impact. What is the most appropriate action for these 10 risks?",
+      "opts": {
+        "A": "Perform quantitative analysis on all 10 risks immediately",
+        "B": "Accept them passively and place them on a watchlist for periodic monitoring",
+        "C": "Transfer all low-scored risks to the vendor",
+        "D": "Escalate them to the project sponsor for decision"
+      },
+      "ans": "B",
+      "exp": "Các rủi ro không quan trọng (non-critical risks) có điểm xác suất và tác động thấp nên được đưa vào danh sách theo dõi (watchlist) và giám sát định kỳ. Không cần đầu tư thời gian và nguồn lực đáng kể vào những rủi ro này. Đây là ví dụ về chấp nhận thụ động - nếu chúng thay đổi theo thời gian, có thể cần tái đánh giá."
+    }
+  ]
+}

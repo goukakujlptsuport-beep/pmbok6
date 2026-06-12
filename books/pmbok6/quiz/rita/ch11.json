@@ -1,0 +1,248 @@
+{
+  "chapterId": "rita_11",
+  "chapterNum": 11,
+  "chapterTitle": "Communications",
+  "source": "rita",
+  "questions": [
+    {
+      "id": "r11_q01",
+      "q": "A project manager is beginning to develop the Communications Management Plan. What should be identified FIRST?",
+      "opts": {
+        "A": "The communication tools and technologies available",
+        "B": "The stakeholders' communication needs and information requirements",
+        "C": "The project budget allocated for communications",
+        "D": "The frequency of status reports"
+      },
+      "ans": "B",
+      "exp": "Bước đầu tiên trong lập kế hoạch truyền thông là xác định nhu cầu thông tin của các bên liên quan (stakeholder communication needs). Cần hiểu ai cần thông tin gì, khi nào, ở định dạng nào - trước khi quyết định công cụ, ngân sách hay tần suất. Mọi quyết định truyền thông đều bắt nguồn từ việc phân tích nhu cầu stakeholder."
+    },
+    {
+      "id": "r11_q02",
+      "q": "A project has 6 stakeholders. How many communication channels exist on this project?",
+      "opts": {
+        "A": "12",
+        "B": "15",
+        "C": "30",
+        "D": "36"
+      },
+      "ans": "B",
+      "exp": "Công thức tính số kênh truyền thông: n(n-1)/2, trong đó n là số stakeholder. Với 6 stakeholder: 6 × (6-1) / 2 = 6 × 5 / 2 = 30 / 2 = 15 kênh. Công thức này cho thấy khi số người tăng, số kênh tăng theo cấp số nhân, làm phức tạp hóa việc quản lý truyền thông."
+    },
+    {
+      "id": "r11_q03",
+      "q": "A project team grows from 5 members to 10 members. How many additional communication channels are created?",
+      "opts": {
+        "A": "5",
+        "B": "25",
+        "C": "35",
+        "D": "45"
+      },
+      "ans": "C",
+      "exp": "Với 5 người: n(n-1)/2 = 5×4/2 = 10 kênh. Với 10 người: n(n-1)/2 = 10×9/2 = 45 kênh. Số kênh mới được tạo thêm: 45 - 10 = 35 kênh. Sự tăng đột biến này (thêm 5 người nhưng thêm 35 kênh) minh họa lý do tại sao quản lý truyền thông trở nên phức tạp khi dự án mở rộng."
+    },
+    {
+      "id": "r11_q04",
+      "q": "A project manager sends a weekly status report via email to all stakeholders without expecting a response. This is an example of which communication method?",
+      "opts": {
+        "A": "Interactive communication",
+        "B": "Pull communication",
+        "C": "Push communication",
+        "D": "Formal verbal communication"
+      },
+      "ans": "C",
+      "exp": "Giao tiếp đẩy (Push communication) là phương pháp gửi thông tin đến người nhận mà không cần phản hồi ngay lập tức - ví dụ: email, báo cáo, bản tin. Thông tin được 'đẩy' đến người nhận. Ngược lại: Interactive (hai chiều, thời gian thực như họp, gọi điện); Pull (người nhận tự lấy thông tin như intranet, knowledge base)."
+    },
+    {
+      "id": "r11_q05",
+      "q": "A project team uploads all project documentation to a shared intranet portal. Stakeholders can access the information at their convenience. This is an example of:",
+      "opts": {
+        "A": "Interactive communication",
+        "B": "Push communication",
+        "C": "Pull communication",
+        "D": "Formal written communication"
+      },
+      "ans": "C",
+      "exp": "Giao tiếp kéo (Pull communication) là phương pháp cho phép người nhận tự truy cập thông tin khi họ cần - ví dụ: intranet portal, knowledge base, cơ sở dữ liệu tài liệu. Người nhận 'kéo' thông tin theo ý muốn. Phù hợp cho lượng thông tin lớn hoặc khi stakeholder cần tra cứu theo nhu cầu riêng."
+    },
+    {
+      "id": "r11_q06",
+      "q": "A project manager is conducting a face-to-face meeting with a key stakeholder to resolve a complex issue. Which communication method is being used?",
+      "opts": {
+        "A": "Pull communication",
+        "B": "Push communication",
+        "C": "Interactive communication",
+        "D": "Formal written communication"
+      },
+      "ans": "C",
+      "exp": "Giao tiếp tương tác (Interactive communication) là phương pháp hai chiều, thời gian thực, phù hợp nhất cho các vấn đề phức tạp cần thảo luận và phản hồi ngay. Bao gồm: họp mặt trực tiếp, cuộc gọi điện thoại, video conference. Đây là hình thức hiệu quả nhất để giải quyết vấn đề vì cho phép làm rõ ngay lập tức."
+    },
+    {
+      "id": "r11_q07",
+      "q": "A project manager is drafting a project status email. According to the 5Cs of Communication, which set of attributes should the message have?",
+      "opts": {
+        "A": "Complete, concise, clear, correct, courteous",
+        "B": "Comprehensive, controlled, calibrated, consistent, confident",
+        "C": "Creative, compelling, clear, confirmed, concise",
+        "D": "Careful, correct, complete, current, credible"
+      },
+      "ans": "A",
+      "exp": "5Cs của truyền thông hiệu quả: Correct (chính xác - không có lỗi), Complete (đầy đủ - có tất cả thông tin cần thiết), Clear (rõ ràng - dễ hiểu), Concise (súc tích - không dài dòng), Courteous (lịch sự - tôn trọng người nhận). Đây là năm tiêu chí cần nhớ cho PMP exam."
+    },
+    {
+      "id": "r11_q08",
+      "q": "In the communication model, a project manager sends a message to a team member. The team member misunderstands due to technical jargon they are unfamiliar with. What is this interference called?",
+      "opts": {
+        "A": "Feedback loop",
+        "B": "Decoding error",
+        "C": "Noise",
+        "D": "Encoding failure"
+      },
+      "ans": "C",
+      "exp": "Trong mô hình truyền thông: Người gửi mã hóa (encode) thông điệp → truyền qua kênh → người nhận giải mã (decode). Noise (nhiễu) là bất kỳ yếu tố nào cản trở việc truyền đạt thông điệp, bao gồm: thuật ngữ kỹ thuật không quen, rào cản ngôn ngữ, tiếng ồn vật lý, văn hóa khác biệt, hay thành kiến của người nhận."
+    },
+    {
+      "id": "r11_q09",
+      "q": "During a project meeting, a stakeholder says: 'We need the system done by Q3.' The project manager responds: 'Just to confirm, you need the full system deployed and operational by the end of Q3, correct?' This is an example of:",
+      "opts": {
+        "A": "Formal written communication",
+        "B": "Active listening through paraphrasing/clarifying",
+        "C": "Pull communication",
+        "D": "Gold plating the requirements"
+      },
+      "ans": "B",
+      "exp": "Lắng nghe chủ động (Active listening) bao gồm các kỹ thuật: diễn giải lại (paraphrase), tóm tắt (summarize), làm rõ (clarify), và xác nhận hiểu đúng. PM đang dùng kỹ thuật làm rõ/xác nhận để đảm bảo hiểu đúng yêu cầu. Đây là kỹ năng quan trọng để tránh hiểu nhầm và xây dựng niềm tin với stakeholder."
+    },
+    {
+      "id": "r11_q10",
+      "q": "Which of the following is NOT a communication blocker?",
+      "opts": {
+        "A": "Language barriers between international team members",
+        "B": "Sending a weekly status report to all stakeholders",
+        "C": "Hostility between the project manager and a key stakeholder",
+        "D": "Cultural differences in communication styles"
+      },
+      "ans": "B",
+      "exp": "Các rào cản truyền thông (communication blockers) bao gồm: tiếng ồn (noise), thù địch (hostility), rào cản ngôn ngữ (language barriers), khác biệt văn hóa (cultural differences), định kiến, và môi trường. Gửi báo cáo trạng thái hàng tuần là hoạt động truyền thông bình thường (push communication) - không phải rào cản mà là phương tiện truyền đạt thông tin."
+    },
+    {
+      "id": "r11_q11",
+      "q": "An agile team uses a large whiteboard visible to everyone in the team room showing current sprint status, burndown chart, and impediments. This is BEST described as:",
+      "opts": {
+        "A": "A formal status report",
+        "B": "An information radiator",
+        "C": "A push communication tool",
+        "D": "A quality control chart"
+      },
+      "ans": "B",
+      "exp": "Bộ phát thông tin (Information radiator) trong agile là bất kỳ công cụ hiển thị trực quan nào (big visible chart, task board, kanban board) cho phép bất kỳ ai nhìn thấy trạng thái dự án mà không cần hỏi. Chúng được đặt ở nơi có thể nhìn thấy, tạo tính minh bạch và giảm nhu cầu họp hành để cập nhật tình hình."
+    },
+    {
+      "id": "r11_q12",
+      "q": "A project has 12 stakeholders. Three new stakeholders are added. How many additional communication channels need to be managed?",
+      "opts": {
+        "A": "3",
+        "B": "36",
+        "C": "42",
+        "D": "39"
+      },
+      "ans": "C",
+      "exp": "Với 12 stakeholder: n(n-1)/2 = 12×11/2 = 66 kênh. Với 15 stakeholder (12+3): n(n-1)/2 = 15×14/2 = 105 kênh. Số kênh mới: 105 - 66 = 39 kênh. Lưu ý: đáp án B (36) sai vì không thể chỉ nhân 3 với 12 - mỗi stakeholder mới kết nối với TẤT CẢ stakeholder hiện có và với nhau. Đáp án đúng là 39."
+    },
+    {
+      "id": "r11_q13",
+      "q": "A project manager needs to communicate a contract amendment to a vendor. Which communication type is MOST appropriate?",
+      "opts": {
+        "A": "Informal verbal (casual conversation)",
+        "B": "Informal written (email)",
+        "C": "Formal written (official document)",
+        "D": "Formal verbal (presentation)"
+      },
+      "ans": "C",
+      "exp": "Sửa đổi hợp đồng là vấn đề pháp lý nghiêm túc, đòi hỏi văn bản chính thức (Formal written communication). Các tình huống cần văn bản chính thức: hợp đồng, sửa đổi hợp đồng, vấn đề phức tạp cần hồ sơ chính thức, thông báo quan trọng. Informal verbal hay email không đủ tính pháp lý cho thay đổi hợp đồng."
+    },
+    {
+      "id": "r11_q14",
+      "q": "What is the PRIMARY purpose of managing a project meeting effectively?",
+      "opts": {
+        "A": "To ensure all stakeholders attend every meeting",
+        "B": "To ensure meetings have an agenda, stay on track, result in action items, and are time-boxed",
+        "C": "To minimize the number of stakeholders invited",
+        "D": "To replace all written communications with verbal discussions"
+      },
+      "ans": "B",
+      "exp": "Quản lý họp hiệu quả bao gồm: chuẩn bị agenda trước (lịch trình họp), giữ cho cuộc họp đúng chủ đề, ghi biên bản (minutes), xác định các hành động cần thực hiện (action items) cùng người chịu trách nhiệm và deadline, và timebox (giới hạn thời gian). Mục tiêu là đảm bảo họp có kết quả cụ thể và không lãng phí thời gian."
+    },
+    {
+      "id": "r11_q15",
+      "q": "A project manager is monitoring whether stakeholders are receiving and understanding project information. Which process is the PM performing?",
+      "opts": {
+        "A": "Plan Communications Management",
+        "B": "Manage Communications",
+        "C": "Monitor Communications",
+        "D": "Control Stakeholder Engagement"
+      },
+      "ans": "C",
+      "exp": "Giám sát Truyền thông (Monitor Communications) là quá trình đảm bảo thông tin đến đúng người, đúng lúc, ở định dạng phù hợp, và được hiểu đúng. PM kiểm tra xem kế hoạch truyền thông có hoạt động hiệu quả không. Nếu stakeholder không nhận được hoặc không hiểu thông tin, cần điều chỉnh. Đây khác với Plan (lập kế hoạch) và Manage (thực thi truyền thông)."
+    },
+    {
+      "id": "r11_q16",
+      "q": "A virtual team spans three continents with 8-hour time zone differences. What is the MOST significant communication challenge the project manager should address?",
+      "opts": {
+        "A": "Too many communication channels",
+        "B": "Time zone differences limiting real-time communication, combined with cultural differences and lack of non-verbal cues",
+        "C": "Insufficient project management software",
+        "D": "The team is too large to manage effectively"
+      },
+      "ans": "B",
+      "exp": "Thách thức truyền thông của đội ảo (virtual team) gồm nhiều yếu tố: khác múi giờ (khó họp thời gian thực), khác biệt văn hóa (phong cách giao tiếp khác nhau), thiếu ngôn ngữ cơ thể (non-verbal cues mất đi qua email/chat), rào cản ngôn ngữ, và cảm giác cô lập. PM phải xây dựng quy trình truyền thông đặc biệt cho đội ảo."
+    },
+    {
+      "id": "r11_q17",
+      "q": "A project manager receives a status report from a team lead stating the project is 'on track.' What should the PM do to apply best communication practices?",
+      "opts": {
+        "A": "Accept the report at face value and forward it to the sponsor",
+        "B": "Ask clarifying questions to understand what metrics support the 'on track' status",
+        "C": "Assume the team lead is being truthful and proceed with the project",
+        "D": "Replace the verbal report with a written one"
+      },
+      "ans": "B",
+      "exp": "Báo cáo 'đúng tiến độ' không có dữ liệu cụ thể là không đủ tiêu chuẩn của truyền thông tốt (5Cs: cần Correct và Complete). PM nên áp dụng lắng nghe chủ động và đặt câu hỏi làm rõ: 'Dựa trên chỉ số nào? SPI là bao nhiêu? Có nguy cơ nào không?' Điều này đảm bảo thông tin được truyền đạt chính xác và đầy đủ lên sponsor."
+    },
+    {
+      "id": "r11_q18",
+      "q": "Which of the following BEST describes the difference between a status report and a progress report?",
+      "opts": {
+        "A": "Status reports are for internal teams; progress reports are for external stakeholders",
+        "B": "A status report describes the current state of the project at a point in time; a progress report describes what has been accomplished during a period",
+        "C": "Status reports include financial data; progress reports do not",
+        "D": "There is no meaningful difference between the two"
+      },
+      "ans": "B",
+      "exp": "Phân biệt các loại báo cáo: Status report (báo cáo trạng thái) mô tả tình trạng hiện tại của dự án tại một thời điểm cụ thể - 'dự án đang ở đâu bây giờ'. Progress report (báo cáo tiến độ) mô tả những gì đã hoàn thành trong một khoảng thời gian - 'đã làm được gì'. Forecast (dự báo) mô tả tương lai - 'sẽ đi đến đâu'. Ba loại phục vụ mục đích khác nhau."
+    },
+    {
+      "id": "r11_q19",
+      "q": "A project manager has 20 stakeholders. After an organizational restructuring, the number increases to 25. How many NEW communication channels were created?",
+      "opts": {
+        "A": "5",
+        "B": "110",
+        "C": "120",
+        "D": "115"
+      },
+      "ans": "B",
+      "exp": "Với 20 stakeholder: n(n-1)/2 = 20×19/2 = 190 kênh. Với 25 stakeholder: n(n-1)/2 = 25×24/2 = 300 kênh. Số kênh mới tạo ra: 300 - 190 = 110 kênh. Thêm 5 người nhưng tạo thêm tới 110 kênh truyền thông mới! Điều này cho thấy tại sao việc kiểm soát quy mô dự án và quản lý truyền thông chặt chẽ là rất quan trọng."
+    },
+    {
+      "id": "r11_q20",
+      "q": "A project manager discovers that several key stakeholders are not reading the detailed 20-page monthly reports and are making decisions based on outdated information. What should the PM do FIRST?",
+      "opts": {
+        "A": "Require stakeholders to sign an acknowledgment that they received the report",
+        "B": "Escalate the issue to the project sponsor",
+        "C": "Review and update the Communications Management Plan to better address stakeholder information needs and preferences",
+        "D": "Continue sending the same reports and hope stakeholders start reading them"
+      },
+      "ans": "C",
+      "exp": "Khi kế hoạch truyền thông không hoạt động hiệu quả (stakeholder không đọc/không cập nhật thông tin), PM phải xem xét lại và cập nhật Communications Management Plan. Có thể vấn đề là: báo cáo quá dài, định dạng không phù hợp, tần suất không đúng, hay kênh truyền thông không phù hợp với sở thích của stakeholder. Giải pháp là thay đổi cách tiếp cận, không phải ép stakeholder thay đổi."
+    }
+  ]
+}

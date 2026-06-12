@@ -1,0 +1,248 @@
+{
+  "chapterId": "rita_02",
+  "chapterNum": 2,
+  "chapterTitle": "PMP Exam References in Context",
+  "source": "rita",
+  "questions": [
+    {
+      "id": "r02_q01",
+      "q": "The PMP Exam Content Outline (ECO) divides exam content into three domains. Which domain has the highest weighting on the PMP exam?",
+      "opts": {
+        "A": "People (42%)",
+        "B": "Process (50%)",
+        "C": "Business Environment (8%)",
+        "D": "All domains are weighted equally"
+      },
+      "ans": "B",
+      "exp": "Theo ECO (Exam Content Outline), domain Process chiếm tỷ trọng cao nhất với 50% nội dung bài thi PMP. Domain People chiếm 42% và Business Environment chiếm 8%."
+    },
+    {
+      "id": "r02_q02",
+      "q": "A project manager is working on a construction project that uses a traditional waterfall approach. Which process group involves formally completing the project and transferring deliverables to the customer?",
+      "opts": {
+        "A": "Monitoring & Controlling",
+        "B": "Executing",
+        "C": "Closing",
+        "D": "Planning"
+      },
+      "ans": "C",
+      "exp": "Process Group 'Closing' (Đóng dự án) là giai đoạn chính thức hoàn thành dự án, bàn giao sản phẩm cho khách hàng và kết thúc tất cả các hợp đồng. Đây là bước cuối cùng trong 5 Process Groups."
+    },
+    {
+      "id": "r02_q03",
+      "q": "A product is manufactured and sold for five years before being discontinued. A specific project is initiated to upgrade the product's packaging. Which statement best describes the relationship between project life cycle and product life cycle?",
+      "opts": {
+        "A": "The project life cycle and product life cycle are the same thing",
+        "B": "The project life cycle is a subset of the product life cycle",
+        "C": "The product life cycle is a subset of the project life cycle",
+        "D": "They are unrelated concepts"
+      },
+      "ans": "B",
+      "exp": "Vòng đời dự án (Project Life Cycle) là một phần trong vòng đời sản phẩm (Product Life Cycle). Một sản phẩm có thể trải qua nhiều dự án khác nhau trong suốt vòng đời của nó (phát triển, nâng cấp, bảo trì, ngừng sản xuất)."
+    },
+    {
+      "id": "r02_q04",
+      "q": "A software company is developing a new mobile application. Requirements are unclear and expected to change frequently. The team decides to deliver working software in two-week iterations. Which project approach is being used?",
+      "opts": {
+        "A": "Predictive (plan-driven)",
+        "B": "Adaptive (agile)",
+        "C": "Incremental",
+        "D": "Waterfall"
+      },
+      "ans": "B",
+      "exp": "Phương pháp Adaptive (Agile) được sử dụng khi yêu cầu không rõ ràng và thay đổi thường xuyên. Nhóm làm việc trong các vòng lặp ngắn (iterations/sprints) để liên tục bàn giao giá trị và thu thập phản hồi."
+    },
+    {
+      "id": "r02_q05",
+      "q": "At the end of each phase of a multi-phase project, management reviews project performance data and decides whether to continue to the next phase. What is this decision point called?",
+      "opts": {
+        "A": "Sprint review",
+        "B": "Phase gate (go/no-go decision)",
+        "C": "Lessons learned session",
+        "D": "Quality audit"
+      },
+      "ans": "B",
+      "exp": "Phase Gate (còn gọi là kill point, stage gate, hoặc go/no-go decision) là điểm quyết định ở cuối mỗi giai đoạn dự án. Ban quản lý xem xét hiệu suất và quyết định có tiếp tục sang giai đoạn tiếp theo hay không."
+    },
+    {
+      "id": "r02_q06",
+      "q": "A project manager is planning a large infrastructure project. Near-term work is planned in detail, while work further in the future is planned at a higher level and will be detailed later. What planning technique is being used?",
+      "opts": {
+        "A": "Decomposition",
+        "B": "Rolling wave planning",
+        "C": "Resource leveling",
+        "D": "Critical path method"
+      },
+      "ans": "B",
+      "exp": "Rolling Wave Planning (Lập kế hoạch cuốn chiếu) là kỹ thuật trong đó công việc gần nhất được lập kế hoạch chi tiết, còn công việc trong tương lai xa hơn được lập kế hoạch ở mức cao và sẽ được chi tiết hóa dần theo thời gian. Đây là hình thức của Progressive Elaboration."
+    },
+    {
+      "id": "r02_q07",
+      "q": "In an agile project, the team creates fictional characters representing different types of users who will interact with the product. These characters include demographics, goals, and behaviors. What are these representations called?",
+      "opts": {
+        "A": "User stories",
+        "B": "Personas",
+        "C": "Epics",
+        "D": "Stakeholder registers"
+      },
+      "ans": "B",
+      "exp": "Personas là những nhân vật hư cấu đại diện cho các loại người dùng khác nhau trong dự án agile. Chúng mô tả nhân khẩu học, mục tiêu và hành vi của người dùng để giúp nhóm phát triển hiểu rõ hơn về nhu cầu của khách hàng."
+    },
+    {
+      "id": "r02_q08",
+      "q": "Which Process Group is primarily concerned with measuring project performance against the project management plan and taking corrective action when necessary?",
+      "opts": {
+        "A": "Executing",
+        "B": "Planning",
+        "C": "Monitoring & Controlling",
+        "D": "Closing"
+      },
+      "ans": "C",
+      "exp": "Process Group 'Monitoring & Controlling' (Giám sát & Kiểm soát) chịu trách nhiệm đo lường hiệu suất dự án so với kế hoạch và thực hiện các hành động khắc phục khi cần. Process Group này chạy song song với tất cả các Process Group khác."
+    },
+    {
+      "id": "r02_q09",
+      "q": "A project uses a hybrid approach. Early phases follow predictive planning, while later development phases use agile sprints. Which statement best describes why a hybrid approach might be chosen?",
+      "opts": {
+        "A": "The organization has no experience with agile methods",
+        "B": "The project requirements are fully defined upfront",
+        "C": "Different parts of the project benefit from different approaches based on their characteristics",
+        "D": "Hybrid approaches always cost less than purely agile approaches"
+      },
+      "ans": "C",
+      "exp": "Phương pháp Hybrid (Kết hợp) được chọn khi các phần khác nhau của dự án có đặc điểm khác nhau và được hưởng lợi từ các phương pháp tiếp cận khác nhau. Ví dụ: phần cứng có thể dùng predictive, còn phần mềm dùng agile."
+    },
+    {
+      "id": "r02_q10",
+      "q": "In agile project management, the team plans high-level deliverables across multiple iterations for a given timeframe (e.g., a quarter). What is this planning activity called?",
+      "opts": {
+        "A": "Sprint planning",
+        "B": "Daily standup",
+        "C": "Product release planning",
+        "D": "Retrospective"
+      },
+      "ans": "C",
+      "exp": "Product Release Planning (Lập kế hoạch phát hành sản phẩm) là hoạt động lập kế hoạch cấp cao trong agile, trong đó nhóm xác định các tính năng và sản phẩm bàn giao dự kiến qua nhiều iterations trong một khung thời gian nhất định (thường là một quý)."
+    },
+    {
+      "id": "r02_q11",
+      "q": "The ECO domain 'Business Environment' accounts for what percentage of PMP exam questions?",
+      "opts": {
+        "A": "42%",
+        "B": "50%",
+        "C": "8%",
+        "D": "20%"
+      },
+      "ans": "C",
+      "exp": "Domain Business Environment (Môi trường Kinh doanh) chiếm 8% nội dung bài thi PMP. Mặc dù có tỷ trọng nhỏ nhất, nhưng các chủ đề như tuân thủ, lợi ích kinh doanh, và quản lý thay đổi tổ chức vẫn quan trọng."
+    },
+    {
+      "id": "r02_q12",
+      "q": "Which Process Group authorizes the project and formally recognizes the project manager's authority to apply resources?",
+      "opts": {
+        "A": "Planning",
+        "B": "Executing",
+        "C": "Initiating",
+        "D": "Monitoring & Controlling"
+      },
+      "ans": "C",
+      "exp": "Process Group 'Initiating' (Khởi tạo) là giai đoạn trong đó dự án được chính thức ủy quyền, project charter được phê duyệt, và quyền hạn của Project Manager được công nhận chính thức để sử dụng nguồn lực tổ chức."
+    },
+    {
+      "id": "r02_q13",
+      "q": "Progressive elaboration refers to which of the following concepts?",
+      "opts": {
+        "A": "Rapidly completing all project planning before work begins",
+        "B": "Continuously improving and detailing a project plan as more information becomes available",
+        "C": "Delegating planning responsibilities to team members",
+        "D": "Using lessons learned from previous projects to plan current ones"
+      },
+      "ans": "B",
+      "exp": "Progressive Elaboration (Xây dựng dần từng bước) là quá trình liên tục cải tiến và chi tiết hóa kế hoạch dự án khi có thêm thông tin. Đây là đặc điểm tự nhiên của quản lý dự án - kế hoạch ngày càng chi tiết hơn theo thời gian."
+    },
+    {
+      "id": "r02_q14",
+      "q": "An agile team has just completed all iterations and is wrapping up administrative tasks, documenting lessons learned, and archiving project information. Which agile phase are they in?",
+      "opts": {
+        "A": "Feasibility",
+        "B": "Initiation",
+        "C": "Release Planning",
+        "D": "Close-out"
+      },
+      "ans": "D",
+      "exp": "Close-out (Đóng dự án) là giai đoạn cuối trong các phase của agile. Sau khi hoàn thành tất cả các iterations, nhóm thực hiện các công việc hành chính, ghi lại bài học kinh nghiệm và lưu trữ thông tin dự án."
+    },
+    {
+      "id": "r02_q15",
+      "q": "Which statement correctly describes a value delivery system in the context of modern project management?",
+      "opts": {
+        "A": "A system focused exclusively on delivering projects on time and under budget",
+        "B": "A portfolio of projects, programs, and operations working together to deliver strategic value to the organization",
+        "C": "A software tool used to track project deliverables",
+        "D": "A financial model for calculating project ROI"
+      },
+      "ans": "B",
+      "exp": "Value Delivery System (Hệ thống cung cấp giá trị) là khái niệm từ PMBOK 7, đề cập đến tập hợp các dự án, chương trình và hoạt động vận hành phối hợp với nhau để cung cấp giá trị chiến lược cho tổ chức và các bên liên quan."
+    },
+    {
+      "id": "r02_q16",
+      "q": "In the agile life cycle, which phase involves evaluating whether the project is technically and financially feasible before committing to full development?",
+      "opts": {
+        "A": "Iteration phase",
+        "B": "Initiation phase",
+        "C": "Feasibility phase",
+        "D": "Release planning phase"
+      },
+      "ans": "C",
+      "exp": "Feasibility Phase (Giai đoạn Khả thi) trong agile là giai đoạn đánh giá xem dự án có khả thi về mặt kỹ thuật và tài chính hay không trước khi cam kết đầu tư đầy đủ. Tương đương với việc xác nhận business case trong predictive."
+    },
+    {
+      "id": "r02_q17",
+      "q": "A project manager must choose between a predictive and an adaptive approach for a new project. The requirements are well-understood, the technology is proven, and regulatory compliance requires detailed documentation at each phase. Which approach is most appropriate?",
+      "opts": {
+        "A": "Adaptive (agile), because it is always faster",
+        "B": "Predictive (plan-driven), because requirements are clear and compliance requires detailed documentation",
+        "C": "Hybrid, because all projects should use both approaches",
+        "D": "Adaptive, because team members prefer agile"
+      },
+      "ans": "B",
+      "exp": "Phương pháp Predictive (Plan-driven) phù hợp nhất khi yêu cầu rõ ràng, công nghệ đã được chứng minh, và tuân thủ quy định đòi hỏi tài liệu chi tiết ở từng giai đoạn. Đây là các tiêu chí lựa chọn phương pháp tiếp cận quan trọng."
+    },
+    {
+      "id": "r02_q18",
+      "q": "Rita's process chart maps the 49 project management processes to which framework structure?",
+      "opts": {
+        "A": "10 Knowledge Areas and 5 Process Groups",
+        "B": "12 Principles and 8 Performance Domains",
+        "C": "3 ECO Domains and 14 tasks",
+        "D": "5 phases and 4 life cycle stages"
+      },
+      "ans": "A",
+      "exp": "Rita's Process Chart (Biểu đồ quy trình của Rita) lập bản đồ 49 quy trình quản lý dự án theo 10 Lĩnh vực Kiến thức (Knowledge Areas) và 5 Nhóm Quy trình (Process Groups) từ PMBOK 6. Đây là công cụ học tập cốt lõi của sách Rita."
+    },
+    {
+      "id": "r02_q19",
+      "q": "Which of the following best describes the 'tailoring' concept in project management?",
+      "opts": {
+        "A": "Using the same standardized approach for every project",
+        "B": "Adjusting the project management approach, processes, and methods to fit the specific needs of the project and organization",
+        "C": "Reducing the project scope to meet budget constraints",
+        "D": "Delegating all planning activities to the project team"
+      },
+      "ans": "B",
+      "exp": "Tailoring (Điều chỉnh phù hợp) là khái niệm điều chỉnh phương pháp, quy trình và công cụ quản lý dự án để phù hợp với đặc điểm riêng của dự án, tổ chức và môi trường. Không có 'một kích thước phù hợp cho tất cả' trong quản lý dự án."
+    },
+    {
+      "id": "r02_q20",
+      "q": "In an agile project, after the product vision is established and initial backlog is created, the team plans the upcoming set of iterations for a release. What agile phase does this represent?",
+      "opts": {
+        "A": "Feasibility",
+        "B": "Initiation",
+        "C": "Release Planning",
+        "D": "Iteration"
+      },
+      "ans": "C",
+      "exp": "Release Planning (Lập kế hoạch phát hành) là giai đoạn trong đó nhóm agile lên kế hoạch cho các iterations sắp tới để hoàn thành một release. Sau khi tầm nhìn sản phẩm được xác lập và backlog ban đầu được tạo ra, nhóm bước vào giai đoạn này để lập kế hoạch cấp cao."
+    }
+  ]
+}

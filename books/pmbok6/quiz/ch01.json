@@ -1,0 +1,247 @@
+{
+  "chapterId": "01_instruction",
+  "chapterNum": 1,
+  "chapterTitle": "Giới Thiệu",
+  "questions": [
+    {
+      "id": "ch01_q01",
+      "q": "Công ty bạn đang triển khai một hệ thống phần mềm quản lý nhân sự mới để thay thế hệ thống cũ đã lỗi thời. Dự án có ngày bắt đầu rõ ràng, ngân sách xác định và sẽ kết thúc khi hệ thống được bàn giao và vận hành. Đây là ví dụ minh họa tốt nhất cho đặc điểm nào của dự án theo PMBOK 6?",
+      "opts": {
+        "A": "Dự án là hoạt động lặp đi lặp lại theo chu kỳ hàng năm",
+        "B": "Dự án là nỗ lực tạm thời nhằm tạo ra sản phẩm, dịch vụ hoặc kết quả duy nhất",
+        "C": "Dự án là tập hợp các chương trình liên quan được quản lý phối hợp",
+        "D": "Dự án là các hoạt động vận hành hàng ngày của tổ chức"
+      },
+      "ans": "B",
+      "exp": "Theo PMBOK 6, dự án được định nghĩa là nỗ lực tạm thời (có điểm bắt đầu và kết thúc xác định) nhằm tạo ra sản phẩm, dịch vụ hoặc kết quả duy nhất. Tình huống này thể hiện rõ đặc điểm đó: có ngày bắt đầu, ngân sách xác định và điểm kết thúc cụ thể. A sai vì dự án không phải hoạt động lặp lại. C sai vì đó là định nghĩa của chương trình. D sai vì vận hành là hoạt động thường xuyên, không phải dự án."
+    },
+    {
+      "id": "ch01_q02",
+      "q": "Giám đốc điều hành yêu cầu bạn giải thích sự khác biệt giữa quản lý dự án, chương trình và danh mục đầu tư (portfolio). Công ty đang có 3 dự án phát triển sản phẩm mới, 2 dự án cải tiến quy trình và 1 chương trình chuyển đổi số tổng thể. Tất cả được theo dõi chung để đảm bảo phù hợp với chiến lược doanh nghiệp. Cấu trúc này mô tả điều gì?",
+      "opts": {
+        "A": "Một chương trình gồm nhiều dự án con",
+        "B": "Một danh mục đầu tư (portfolio) bao gồm các dự án và chương trình được quản lý phối hợp để đạt mục tiêu chiến lược",
+        "C": "Một dự án lớn được phân chia thành các giai đoạn",
+        "D": "Một văn phòng quản lý dự án (PMO) tiêu chuẩn"
+      },
+      "ans": "B",
+      "exp": "Theo PMBOK 6, danh mục đầu tư (portfolio) là tập hợp các dự án, chương trình, danh mục con và các công việc khác được nhóm lại để quản lý phối hợp nhằm đạt mục tiêu chiến lược. Tình huống mô tả nhiều dự án và chương trình được theo dõi chung để đảm bảo phù hợp chiến lược - đây chính xác là định nghĩa portfolio. A sai vì chương trình chỉ bao gồm các dự án có liên quan, không phải tất cả. C sai vì đây không phải phân chia giai đoạn. D sai vì PMO là tổ chức/bộ phận, không phải cấu trúc dự án."
+    },
+    {
+      "id": "ch01_q03",
+      "q": "Một project manager đang lập kế hoạch cho dự án xây dựng cầu đường cao tốc. Anh ấy nhận thấy rằng các công việc như thiết kế, mua sắm vật liệu, thi công và kiểm tra đều có mối quan hệ phụ thuộc lẫn nhau. Để quản lý hiệu quả, anh ấy cần hiểu rõ các nhóm quy trình quản lý dự án. Nhóm quy trình nào đảm bảo rằng dự án được phép bắt đầu chính thức?",
+      "opts": {
+        "A": "Nhóm quy trình lập kế hoạch (Planning Process Group)",
+        "B": "Nhóm quy trình kiểm soát (Monitoring and Controlling Process Group)",
+        "C": "Nhóm quy trình khởi động (Initiating Process Group)",
+        "D": "Nhóm quy trình thực hiện (Executing Process Group)"
+      },
+      "ans": "C",
+      "exp": "Nhóm quy trình khởi động (Initiating Process Group) là nơi dự án được phép bắt đầu chính thức, bao gồm các quy trình như Develop Project Charter và Identify Stakeholders. Đây là điểm khởi đầu chính thức của một dự án hoặc giai đoạn. A sai vì Planning xảy ra sau khi dự án đã được khởi động. B sai vì M&C theo dõi tiến độ trong suốt dự án. D sai vì Executing thực hiện công việc theo kế hoạch."
+    },
+    {
+      "id": "ch01_q04",
+      "q": "Dự án phát triển ứng dụng di động đã hoàn thành sau 8 tháng. Tuy nhiên, ba tháng sau khi bàn giao, đội vận hành tiếp tục nhận yêu cầu sửa lỗi và nâng cấp tính năng theo quy trình định kỳ hàng tháng. Đâu là sự phân biệt đúng nhất giữa công việc của đội dự án và đội vận hành?",
+      "opts": {
+        "A": "Cả dự án và vận hành đều là nỗ lực tạm thời",
+        "B": "Dự án tạo ra kết quả duy nhất và có điểm kết thúc, còn vận hành là hoạt động liên tục và lặp lại",
+        "C": "Vận hành cũng là một dự án vì cũng tạo ra sản phẩm mới",
+        "D": "Không có sự khác biệt giữa dự án và vận hành trong môi trường Agile"
+      },
+      "ans": "B",
+      "exp": "Theo PMBOK 6, dự án là nỗ lực TẠM THỜI tạo ra kết quả DUY NHẤT, còn vận hành là hoạt động LIÊN TỤC và LẶP LẠI để duy trì tổ chức. Sau khi ứng dụng bàn giao, đội vận hành thực hiện bảo trì theo quy trình định kỳ - đây là hoạt động vận hành, không phải dự án. A sai vì vận hành không có điểm kết thúc. C sai vì bảo trì không tạo ra sản phẩm mới, mà duy trì sản phẩm hiện có. D sai vì Agile không xóa bỏ ranh giới này."
+    },
+    {
+      "id": "ch01_q05",
+      "q": "Công ty bạn đang triển khai 5 dự án liên quan đến chuyển đổi số: nâng cấp hạ tầng IT, đào tạo nhân viên, phát triển nền tảng dữ liệu, cải tiến quy trình và thay đổi văn hóa tổ chức. Các dự án này có mục tiêu chung và lợi ích chỉ đạt được khi tất cả hoàn thành phối hợp. Cách quản lý phù hợp nhất là gì?",
+      "opts": {
+        "A": "Quản lý từng dự án độc lập với project manager riêng biệt",
+        "B": "Nhóm tất cả vào một dự án duy nhất lớn",
+        "C": "Quản lý như một chương trình (program) để tận dụng lợi ích phối hợp",
+        "D": "Đưa vào danh mục đầu tư và không cần phối hợp giữa các dự án"
+      },
+      "ans": "C",
+      "exp": "Theo PMBOK 6, chương trình (program) là nhóm các dự án, chương trình con và hoạt động liên quan được quản lý phối hợp để đạt lợi ích KHÔNG THỂ đạt được khi quản lý riêng lẻ. Tình huống này hoàn toàn phù hợp: 5 dự án phụ thuộc nhau, lợi ích chỉ đạt khi phối hợp. A sai vì quản lý độc lập bỏ lỡ lợi ích phối hợp. B sai vì gộp thành một dự án sẽ quá phức tạp và không phản ánh đúng bản chất. D sai vì portfolio không nhấn mạnh sự phối hợp giữa các thành phần."
+    },
+    {
+      "id": "ch01_q06",
+      "q": "Giám đốc dự án Anna đang làm việc trong một tổ chức xây dựng. Cô nhận thấy rằng các dự án xây dựng nhà ở dân dụng và các dự án xây dựng cầu đường có quy trình và công cụ quản lý khác nhau mặc dù cùng trong một công ty. Khái niệm nào trong PMBOK 6 giải thích tại sao điều này là đúng và cần thiết?",
+      "opts": {
+        "A": "Standardization - tất cả dự án phải theo quy trình giống nhau",
+        "B": "Tailoring - điều chỉnh quy trình phù hợp với đặc điểm dự án cụ thể",
+        "C": "Portfolio management - phân loại dự án theo danh mục",
+        "D": "Progressive elaboration - chi tiết hóa dần dần theo thời gian"
+      },
+      "ans": "B",
+      "exp": "Tailoring (điều chỉnh/tùy biến) là khái niệm quan trọng trong PMBOK 6, cho phép project manager chọn lọc và điều chỉnh các quy trình, công cụ phù hợp với đặc điểm và bối cảnh của từng dự án cụ thể. Dự án nhà ở và cầu đường có rủi ro, quy mô, yêu cầu pháp lý khác nhau nên cần tailoring. A sai vì PMBOK 6 không yêu cầu áp dụng tất cả quy trình đồng nhất. C sai vì portfolio management là quản lý danh mục chiến lược. D sai vì progressive elaboration liên quan đến việc làm rõ chi tiết theo thời gian, không phải điều chỉnh quy trình."
+    },
+    {
+      "id": "ch01_q07",
+      "q": "Trong cuộc họp với ban lãnh đạo, project manager Tom được yêu cầu giải thích tại sao dự án phát triển sản phẩm mới này quan trọng với tổ chức. Tom cần trình bày rõ mối liên hệ giữa dự án và chiến lược tổ chức. Khái niệm nào mô tả giá trị dài hạn mà dự án mang lại cho tổ chức và các bên liên quan?",
+      "opts": {
+        "A": "Project scope - phạm vi của dự án",
+        "B": "Business value - giá trị kinh doanh mà dự án tạo ra",
+        "C": "Project deliverables - các sản phẩm bàn giao của dự án",
+        "D": "Project constraints - các ràng buộc của dự án"
+      },
+      "ans": "B",
+      "exp": "Business value (giá trị kinh doanh) theo PMBOK 6 là lợi ích hữu hình và vô hình mà dự án mang lại cho tổ chức và các bên liên quan, bao gồm lợi nhuận tài chính, thị phần, cải tiến quy trình, danh tiếng. Đây chính là thứ ban lãnh đạo muốn nghe để biện minh cho việc đầu tư vào dự án. A sai vì scope chỉ mô tả công việc cần làm. C sai vì deliverables là đầu ra cụ thể, chưa phản ánh đủ giá trị dài hạn. D sai vì constraints là giới hạn, không phải giá trị."
+    },
+    {
+      "id": "ch01_q08",
+      "q": "Một dự án xây dựng hệ thống lọc nước tại vùng nông thôn đang được triển khai. Khi dự án hoàn thành, cộng đồng địa phương sẽ có nước sạch và sức khỏe cộng đồng cải thiện đáng kể. Đây là dự án 6 tháng với nhóm thực hiện 10 người. Tình huống này thể hiện điều gì về bản chất của dự án?",
+      "opts": {
+        "A": "Dự án chỉ tạo ra sản phẩm vật lý, không tạo ra dịch vụ hay kết quả",
+        "B": "Dự án có thể tạo ra sản phẩm (hệ thống lọc nước), dịch vụ (cung cấp nước sạch) và kết quả (cải thiện sức khỏe)",
+        "C": "Dự án chỉ được coi là thành công nếu tạo ra lợi nhuận tài chính",
+        "D": "Dự án không có điểm kết thúc vì cộng đồng sẽ tiếp tục sử dụng nước"
+      },
+      "ans": "B",
+      "exp": "Theo PMBOK 6, dự án có thể tạo ra ba loại đầu ra: sản phẩm (product - hữu hình như hệ thống lọc nước), dịch vụ (service - khả năng cung cấp nước sạch) và kết quả (result - sức khỏe cộng đồng cải thiện). Tình huống này minh họa cả ba loại. A sai vì dự án không chỉ tạo sản phẩm vật lý. C sai vì dự án xã hội cũng hợp lệ, không cần lợi nhuận tài chính. D sai vì hoạt động sử dụng nước sau khi hoàn thành là vận hành, không phải dự án."
+    },
+    {
+      "id": "ch01_q09",
+      "q": "Tổ chức đang cân nhắc hai sáng kiến: (1) Phát triển nền tảng thương mại điện tử mới trong 12 tháng với ngân sách 2 tỷ đồng, và (2) Vận hành và bảo trì website hiện tại liên tục. Giám đốc chiến lược hỏi bạn sáng kiến nào là 'dự án' và sáng kiến nào là 'vận hành'. Bạn trả lời thế nào?",
+      "opts": {
+        "A": "Cả hai đều là dự án vì cả hai đều cần nguồn lực và ngân sách",
+        "B": "Sáng kiến 1 là dự án (tạm thời, kết quả duy nhất), sáng kiến 2 là vận hành (liên tục, lặp lại)",
+        "C": "Sáng kiến 2 là dự án vì liên quan đến website",
+        "D": "Cả hai đều là vận hành vì cùng liên quan đến website"
+      },
+      "ans": "B",
+      "exp": "Theo định nghĩa của PMBOK 6: Dự án là nỗ lực TẠM THỜI (có điểm đầu và cuối) tạo ra kết quả DUY NHẤT - Sáng kiến 1 hoàn toàn đáp ứng (12 tháng, nền tảng mới). Vận hành là hoạt động LIÊN TỤC, LẶP LẠI để duy trì tổ chức - Sáng kiến 2 là bảo trì định kỳ website hiện có. A sai vì việc cần nguồn lực không phải tiêu chí phân biệt. C và D đều sai vì lĩnh vực (website) không quyết định loại hoạt động."
+    },
+    {
+      "id": "ch01_q10",
+      "q": "Project manager Sarah đang dẫn dắt một dự án phát triển thuốc mới cho công ty dược phẩm. Dự án trải qua các giai đoạn: nghiên cứu cơ bản, thử nghiệm lâm sàng, xin cấp phép và thương mại hóa. Mỗi giai đoạn có đặc điểm và yêu cầu riêng biệt. Khái niệm nào mô tả chính xác cấu trúc này?",
+      "opts": {
+        "A": "Work Breakdown Structure (WBS)",
+        "B": "Project Life Cycle - vòng đời dự án được chia thành các giai đoạn",
+        "C": "Project Management Process Groups",
+        "D": "Organizational Process Assets"
+      },
+      "ans": "B",
+      "exp": "Vòng đời dự án (Project Life Cycle) theo PMBOK 6 là chuỗi các giai đoạn mà dự án trải qua từ khi bắt đầu đến khi kết thúc. Tình huống mô tả dự án dược phẩm với các giai đoạn rõ ràng (nghiên cứu, thử nghiệm, cấp phép, thương mại hóa) là ví dụ điển hình của project life cycle. A sai vì WBS là phân rã công việc, không phải giai đoạn dự án. C sai vì Process Groups (Initiating, Planning, Executing, M&C, Closing) là nhóm quy trình quản lý, không phải vòng đời sản phẩm. D sai vì OPA là tài sản quy trình tổ chức."
+    },
+    {
+      "id": "ch01_q11",
+      "q": "Công ty phần mềm XYZ có Văn phòng Quản lý Dự án (PMO) cung cấp các mẫu tài liệu, hướng dẫn phương pháp luận và đào tạo cho tất cả project manager. PMO không trực tiếp kiểm soát các dự án nhưng cung cấp hỗ trợ và tư vấn. Loại PMO nào được mô tả trong tình huống này?",
+      "opts": {
+        "A": "Controlling PMO - kiểm soát tất cả dự án",
+        "B": "Directive PMO - chỉ đạo và quản lý trực tiếp dự án",
+        "C": "Supportive PMO - hỗ trợ dự án bằng tư vấn, công cụ và tài nguyên",
+        "D": "Strategic PMO - quản lý danh mục đầu tư chiến lược"
+      },
+      "ans": "C",
+      "exp": "PMBOK 6 định nghĩa ba loại PMO: Supportive (cung cấp hỗ trợ, mẫu, tư vấn - mức độ kiểm soát thấp), Controlling (yêu cầu tuân thủ, kiểm tra quy trình - mức độ kiểm soát trung bình) và Directive (quản lý trực tiếp dự án - mức độ kiểm soát cao). Tình huống mô tả PMO cung cấp mẫu, hướng dẫn và đào tạo nhưng không kiểm soát trực tiếp - đây là Supportive PMO. A sai vì Controlling PMO yêu cầu tuân thủ quy trình. B sai vì Directive PMO quản lý trực tiếp. D không phải loại PMO được định nghĩa trong PMBOK 6."
+    },
+    {
+      "id": "ch01_q12",
+      "q": "Khi bắt đầu dự án triển khai hệ thống ERP, project manager John nhận thấy rằng chi phí để thay đổi yêu cầu rất thấp ở giai đoạn đầu nhưng sẽ tăng đột biến ở các giai đoạn sau. Đồng thời, rủi ro và sự không chắc chắn giảm dần khi dự án tiến triển. Mô hình nào trong PMBOK 6 mô tả hiện tượng này?",
+      "opts": {
+        "A": "Pareto Principle - 80/20 rule",
+        "B": "Cost of Quality model",
+        "C": "Cost and staffing levels typical across project life cycle - chi phí thay đổi tăng, rủi ro giảm theo vòng đời dự án",
+        "D": "Earned Value Management curve"
+      },
+      "ans": "C",
+      "exp": "PMBOK 6 mô tả một đặc điểm quan trọng của vòng đời dự án: chi phí để thay đổi (cost of changes) tăng theo tiến độ dự án, trong khi rủi ro và sự không chắc chắn giảm dần khi có thêm thông tin và công việc được hoàn thành. Đây là lý do tại sao việc xác định yêu cầu kỹ ở giai đoạn đầu rất quan trọng. A sai vì Pareto liên quan đến phân tích ưu tiên. B sai vì Cost of Quality liên quan đến chi phí phòng ngừa và sửa chữa lỗi. D sai vì EVM là công cụ đo lường tiến độ."
+    },
+    {
+      "id": "ch01_q13",
+      "q": "Giám đốc dự án Lisa đang quản lý dự án xây dựng bệnh viện. Trong quá trình lập kế hoạch, cô nhận thấy rằng PMBOK 6 cung cấp rất nhiều quy trình nhưng không phải tất cả đều áp dụng cho dự án của mình. Cô quyết định chỉ áp dụng các quy trình phù hợp nhất. Điều gì trong PMBOK 6 cho phép Lisa làm điều này?",
+      "opts": {
+        "A": "PMBOK 6 bắt buộc áp dụng tất cả 49 quy trình cho mọi dự án",
+        "B": "Lisa có thể bỏ qua PMBOK hoàn toàn vì nó không phù hợp với xây dựng",
+        "C": "PMBOK 6 là hướng dẫn (guide), không phải phương pháp bắt buộc - cho phép tailoring để phù hợp với dự án cụ thể",
+        "D": "Chỉ dự án IT mới cần áp dụng PMBOK"
+      },
+      "ans": "C",
+      "exp": "PMBOK 6 được thiết kế như một HƯỚNG DẪN (guide), không phải phương pháp luận cứng nhắc bắt buộc. Nó cung cấp các thực hành tốt (good practices) mà project manager có thể tailoring (điều chỉnh) phù hợp với đặc thù của từng dự án, tổ chức và ngành nghề. Lisa hoàn toàn đúng khi chọn lọc áp dụng. A sai vì PMBOK 6 không bắt buộc áp dụng tất cả quy trình. B sai vì PMBOK áp dụng được cho mọi ngành, bao gồm xây dựng. D sai vì PMBOK không giới hạn ngành IT."
+    },
+    {
+      "id": "ch01_q14",
+      "q": "Trong tổ chức của bạn, mỗi khi bắt đầu dự án mới, project manager phải thu thập yêu cầu chi tiết từ stakeholders, sau đó lập kế hoạch đầy đủ trước khi thực hiện. Các thay đổi yêu cầu phải qua quy trình phê duyệt chính thức. Đây là đặc điểm của loại vòng đời dự án nào?",
+      "opts": {
+        "A": "Adaptive life cycle (Agile)",
+        "B": "Iterative life cycle",
+        "C": "Predictive life cycle (Waterfall)",
+        "D": "Incremental life cycle"
+      },
+      "ans": "C",
+      "exp": "Predictive life cycle (còn gọi là waterfall) trong PMBOK 6 có đặc điểm: phạm vi được xác định đầy đủ từ sớm, lập kế hoạch chi tiết trước khi thực hiện, thay đổi được kiểm soát chặt chẽ qua quy trình phê duyệt. Đây phù hợp với dự án có yêu cầu ổn định và ít thay đổi. A sai vì Adaptive/Agile linh hoạt với thay đổi, không lập kế hoạch đầy đủ từ đầu. B sai vì Iterative tạo ra các phiên bản và cải thiện dần. D sai vì Incremental phân phối sản phẩm từng phần."
+    },
+    {
+      "id": "ch01_q15",
+      "q": "Một startup công nghệ đang phát triển ứng dụng mạng xã hội. Do thị trường thay đổi nhanh, họ triển khai theo các sprint 2 tuần, liên tục thu thập phản hồi người dùng và điều chỉnh tính năng. Yêu cầu có thể thay đổi đáng kể giữa các sprint. Đây là ví dụ của loại vòng đời dự án nào?",
+      "opts": {
+        "A": "Predictive life cycle vì dự án có ngân sách cố định",
+        "B": "Adaptive life cycle vì linh hoạt với thay đổi và phản hồi liên tục",
+        "C": "Vòng đời dự án không áp dụng cho startup",
+        "D": "Hybrid life cycle vì sử dụng cả sprint và ngân sách"
+      },
+      "ans": "B",
+      "exp": "Adaptive life cycle (Agile) trong PMBOK 6 đặc trưng bởi: yêu cầu thay đổi linh hoạt, chu kỳ ngắn (sprint), phản hồi liên tục từ người dùng, phù hợp với môi trường không chắc chắn và thay đổi nhanh. Startup ứng dụng mạng xã hội phù hợp hoàn toàn với mô tả này. A sai vì ngân sách cố định không phải tiêu chí phân loại vòng đời. C sai vì vòng đời dự án áp dụng cho mọi tổ chức. D sai vì tình huống không mô tả sự kết hợp với các yếu tố predictive."
+    },
+    {
+      "id": "ch01_q16",
+      "q": "Project manager Michael được thăng chức quản lý 5 dự án liên quan đến chuyển đổi cơ sở hạ tầng IT của tập đoàn. Các dự án này chia sẻ nguồn lực, có phụ thuộc kỹ thuật và lợi ích chỉ đạt được khi tất cả hoàn thành. Michael được giao chức danh Program Manager. Vai trò này khác với Project Manager như thế nào?",
+      "opts": {
+        "A": "Program Manager chỉ là tên gọi khác của Project Manager",
+        "B": "Program Manager quản lý ngân sách lớn hơn Project Manager",
+        "C": "Program Manager điều phối nhiều dự án liên quan để đạt lợi ích chiến lược không thể đạt khi quản lý riêng lẻ",
+        "D": "Program Manager chỉ làm việc với cấp lãnh đạo cấp cao"
+      },
+      "ans": "C",
+      "exp": "Theo PMBOK 6, Program Manager quản lý một CHƯƠNG TRÌNH gồm nhiều dự án, chương trình con liên quan, tập trung vào việc điều phối để đạt lợi ích KHÔNG THỂ đạt được khi quản lý từng dự án riêng lẻ. Michael điều phối 5 dự án phụ thuộc nhau để đạt mục tiêu chung. A sai vì đây là hai vai trò khác nhau với trách nhiệm khác nhau. B sai vì quy mô ngân sách không phải điểm phân biệt cốt lõi. D sai vì Program Manager làm việc với cả đội dự án và stakeholders."
+    },
+    {
+      "id": "ch01_q17",
+      "q": "Trong dự án phát triển phần mềm, project manager nhận ra rằng nhiều quy trình quản lý dự án diễn ra đồng thời và lặp lại. Chẳng hạn, trong khi đang thực hiện (Executing), nhóm vẫn phải lập kế hoạch chi tiết cho các giai đoạn tiếp theo và giám sát kiểm soát liên tục. Điều này phản ánh điều gì về các nhóm quy trình PMBOK?",
+      "opts": {
+        "A": "Các nhóm quy trình luôn diễn ra tuần tự, không bao giờ chồng lặp",
+        "B": "Chỉ có Executing và Monitoring & Controlling mới chồng lặp nhau",
+        "C": "Các nhóm quy trình có thể diễn ra đồng thời và lặp lại trong suốt vòng đời dự án",
+        "D": "Nếu các nhóm quy trình chồng lặp, đó là dấu hiệu quản lý dự án kém"
+      },
+      "ans": "C",
+      "exp": "PMBOK 6 nhấn mạnh rằng 5 nhóm quy trình (Initiating, Planning, Executing, Monitoring & Controlling, Closing) KHÔNG phải các giai đoạn tuần tự cứng nhắc. Chúng có thể diễn ra đồng thời và lặp lại - đặc biệt M&C diễn ra song song với tất cả nhóm khác. Planning có thể cần cập nhật liên tục khi có thông tin mới. A sai vì PMBOK 6 không mô tả Process Groups là tuần tự hoàn toàn. B sai vì nhiều cặp nhóm quy trình có thể chồng lặp. D sai vì chồng lặp là bình thường và cần thiết."
+    },
+    {
+      "id": "ch01_q18",
+      "q": "Ban lãnh đạo công ty yêu cầu project manager Helen giải thích tại sao dự án xây dựng nhà máy sản xuất mới lại quan trọng hơn so với việc mở rộng nhà máy hiện tại. Helen cần chứng minh sự phù hợp của dự án với chiến lược tổ chức. Theo PMBOK 6, đây là ví dụ về điều gì?",
+      "opts": {
+        "A": "Risk Management - quản lý rủi ro dự án",
+        "B": "Strategic alignment - dự án cần phù hợp và đóng góp vào chiến lược tổ chức",
+        "C": "Scope Management - quản lý phạm vi dự án",
+        "D": "Cost-benefit analysis - phân tích chi phí lợi ích"
+      },
+      "ans": "B",
+      "exp": "PMBOK 6 nhấn mạnh tầm quan trọng của Strategic Alignment - sự phù hợp chiến lược. Dự án nên được khởi động và duy trì vì chúng hỗ trợ mục tiêu chiến lược của tổ chức. Helen cần chứng minh dự án xây nhà máy mới phù hợp hơn với chiến lược dài hạn so với mở rộng hiện tại. A sai vì risk management không giải thích tại sao chọn dự án này. C sai vì scope management không liên quan đến quyết định lựa chọn dự án. D sai vì cost-benefit chỉ là một phần của lập luận, không phải toàn bộ câu trả lời."
+    },
+    {
+      "id": "ch01_q19",
+      "q": "Một tổ chức phi lợi nhuận đang triển khai dự án xây trường học ở vùng sâu vùng xa với mục tiêu tăng tỷ lệ học sinh đến trường. Sau khi dự án hoàn thành và trường học đưa vào sử dụng, tổ chức tiếp tục đo lường số học sinh nhập học hàng năm. Trong bối cảnh PMBOK 6, tổ chức đang đo lường điều gì?",
+      "opts": {
+        "A": "Project deliverables - sản phẩm bàn giao của dự án",
+        "B": "Project constraints - các ràng buộc dự án",
+        "C": "Business value và benefits realization - giá trị kinh doanh và hiện thực hóa lợi ích sau dự án",
+        "D": "Project scope - phạm vi công việc của dự án"
+      },
+      "ans": "C",
+      "exp": "Theo PMBOK 6, Business value (giá trị kinh doanh) và benefits realization (hiện thực hóa lợi ích) thường xảy ra SAU khi dự án kết thúc. Việc đo lường số học sinh nhập học sau khi trường xây xong là đo lường lợi ích thực sự của dự án, không phải đầu ra trực tiếp. Điều này minh họa rằng giá trị dự án đôi khi chỉ rõ ràng sau khi bàn giao. A sai vì deliverables (trường học) đã hoàn thành. B sai vì constraints là ràng buộc trong quá trình thực hiện. D sai vì scope là định nghĩa công việc, không phải kết quả sau khi hoàn thành."
+    },
+    {
+      "id": "ch01_q20",
+      "q": "Project manager Kevin đang tham gia phỏng vấn PMP. Giám khảo hỏi: 'Bạn đang quản lý một dự án phức tạp với nhiều stakeholders, ngân sách lớn và thời hạn chặt chẽ. Trong tháng đầu tiên, bạn sẽ ưu tiên tập trung vào nhóm quy trình nào và tại sao?' Kevin nên trả lời thế nào để thể hiện hiểu biết đúng về PMBOK 6?",
+      "opts": {
+        "A": "Tập trung vào Executing ngay lập tức để tiết kiệm thời gian",
+        "B": "Bỏ qua Initiating vì dự án đã được phê duyệt trước khi Kevin được giao",
+        "C": "Tập trung vào Initiating (xác nhận Project Charter, nhận diện stakeholders) và Planning (lập kế hoạch tổng thể) vì nền tảng vững chắc quyết định thành công dự án",
+        "D": "Chỉ cần Monitoring & Controlling vì phạm vi đã được xác định"
+      },
+      "ans": "C",
+      "exp": "Theo PMBOK 6, hai nhóm quy trình đầu tiên là cực kỳ quan trọng: Initiating (Develop Project Charter, Identify Stakeholders) đảm bảo dự án được phép bắt đầu và stakeholders được nhận diện; Planning xây dựng nền tảng cho toàn bộ dự án. Tháng đầu của dự án phức tạp phải dành cho việc xây dựng nền tảng vững chắc. A sai vì bắt đầu Executing mà không có kế hoạch đủ là sai lầm nghiêm trọng. B sai vì ngay cả khi Charter đã có, PM mới vẫn cần xem xét lại. D sai vì M&C không thể hoạt động hiệu quả nếu không có baseline từ Planning."
+    }
+  ]
+}
