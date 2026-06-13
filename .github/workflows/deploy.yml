@@ -2,7 +2,9 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - claude/rita-bilingual-font-editing-usw9tc
   workflow_dispatch:
 
 permissions:
