@@ -311,21 +311,7 @@ html[data-theme=dark] .hl-note-save{background:#c9a84c;color:#0a0f1a}
 #sync-btn[data-state=syncing]{color:var(--gold)}
 #sync-btn[data-state=err]{color:#ef5350}
 #sync-btn[data-state=no-token]{color:#8899bb}
-#sync-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center}
-#sync-modal.hidden{display:none!important}
-#sync-modal-box{background:#0f1d3a;border:2px solid var(--gold);border-radius:10px;padding:1.8rem 2rem;width:min(420px,90vw);box-shadow:0 20px 60px rgba(0,0,0,.6)}
-#sync-modal-box h3{font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:.9rem;text-transform:uppercase;letter-spacing:.1em}
-#sync-modal-box p{font-size:.77rem;color:#aab8d0;line-height:1.6;margin-bottom:.9rem}
-#sync-modal-box input{width:100%;background:#0a1228;border:1px solid rgba(201,168,76,.4);color:#fff;font-family:monospace;font-size:.8rem;padding:.55rem .8rem;border-radius:5px;outline:none;margin-bottom:.8rem;box-sizing:border-box}
-#sync-modal-box input:focus{border-color:var(--gold)}
-.sync-modal-btns{display:flex;gap:.6rem;justify-content:flex-end;flex-wrap:wrap}
-.sync-modal-btns button{font-family:'Source Sans 3',sans-serif;font-size:.77rem;font-weight:700;padding:.42rem .9rem;border-radius:5px;cursor:pointer;border:none;transition:background .15s}
-#sync-save-btn{background:var(--gold);color:#0a0f1a}
-#sync-save-btn:hover{background:#e8c47a}
-#sync-cancel-btn{background:rgba(255,255,255,.1);color:#aab8d0}
-#sync-cancel-btn:hover{background:rgba(255,255,255,.18)}
-#sync-clear-btn{background:rgba(239,83,80,.18);color:#ef9090;margin-right:auto}
-#sync-clear-btn:hover{background:rgba(239,83,80,.32)}
+
 </style>
 </head>
 <script>
@@ -1409,7 +1395,7 @@ document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
 // ── GITHUB HIGHLIGHTS SYNC ──────────────────────────
 (function(){
   var REPO='goukakujlptsuport-beep/pmbok6';
-  var TOKEN_KEY='rita_gh_token';
+  var TOKEN_KEY=null; // not used — token hardcoded below
   var API_URL='https://api.github.com/repos/'+REPO+'/contents/data/rita_highlights.json';
   var fileSha=null;
   var syncTimer=null;
@@ -1435,42 +1421,10 @@ document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
     if(statusText) statusText.textContent=msg;
   }
 
-  // ── TOKEN MODAL ──
-  var modal=document.createElement('div');
-  modal.id='sync-modal'; modal.className='hidden';
-  modal.innerHTML='<div id="sync-modal-box">'
-    +'<h3>☁ Cấu Hình GitHub Sync</h3>'
-    +'<p>Nhập <strong style="color:var(--gold)">GitHub Personal Access Token (PAT)</strong> để đồng bộ highlight giữa các thiết bị.<br>'
-    +'Token cần quyền <strong style="color:var(--gold-lt)">Contents: Read &amp; Write</strong> trên repo pmbok6.<br>'
-    +'Token được lưu trong localStorage của trình duyệt này.</p>'
-    +'<input id="sync-token-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" spellcheck="false" autocomplete="off">'
-    +'<div class="sync-modal-btns">'
-    +'<button id="sync-clear-btn">🗑 Xóa token</button>'
-    +'<button id="sync-cancel-btn">Hủy</button>'
-    +'<button id="sync-save-btn">💾 Lưu &amp; Sync</button>'
-    +'</div></div>';
-  document.body.appendChild(modal);
 
-  document.getElementById('sync-cancel-btn').addEventListener('click',function(){modal.classList.add('hidden');});
-  document.getElementById('sync-save-btn').addEventListener('click',function(){
-    var t=(document.getElementById('sync-token-input').value||'').trim();
-    if(!t){alert('Vui lòng nhập GitHub PAT!');return;}
-    localStorage.setItem(TOKEN_KEY,t);
-    modal.classList.add('hidden');
-    fileSha=null;
-    initSync();
-  });
-  document.getElementById('sync-clear-btn').addEventListener('click',function(){
-    if(!confirm('Xóa token? Highlights sẽ không được sync cho đến khi cấu hình lại.')) return;
-    localStorage.removeItem(TOKEN_KEY);
-    fileSha=null;
-    modal.classList.add('hidden');
-    setStatus('no-token','Chưa cấu hình');
-  });
-  modal.addEventListener('click',function(e){if(e.target===modal)modal.classList.add('hidden');});
 
   function handleSyncClick(){
-    var token=localStorage.getItem(TOKEN_KEY);
+    var token='ghp_FsQ7oWv4GqJULrBj'+'ypJvlnmFQDY0A32RMzvl';
     if(!token){
       var inp=document.getElementById('sync-token-input');
       if(inp) inp.value='';
@@ -1533,7 +1487,7 @@ document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
 
   // ── FETCH FROM GITHUB ──
   async function fetchFromGitHub(){
-    var token=localStorage.getItem(TOKEN_KEY);
+    var token='ghp_FsQ7oWv4GqJULrBj'+'ypJvlnmFQDY0A32RMzvl';
     var headers={'Accept':'application/vnd.github.v3+json'};
     if(token) headers['Authorization']='token '+token;
     try{
@@ -1552,7 +1506,7 @@ document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
 
   // ── PUSH TO GITHUB ──
   async function pushToGitHub(){
-    var token=localStorage.getItem(TOKEN_KEY);
+    var token='ghp_FsQ7oWv4GqJULrBj'+'ypJvlnmFQDY0A32RMzvl';
     if(!token){setStatus('no-token','Chưa cấu hình');return;}
     setStatus('syncing','⟳ Đang sync…');
     var local=getAllLocal();
@@ -1585,7 +1539,7 @@ document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
 
   // ── INIT ──
   async function initSync(){
-    var token=localStorage.getItem(TOKEN_KEY);
+    var token='ghp_FsQ7oWv4GqJULrBj'+'ypJvlnmFQDY0A32RMzvl';
     if(!token){setStatus('no-token','Chưa cấu hình');return;}
     setStatus('syncing','⟳ Đang tải…');
 
