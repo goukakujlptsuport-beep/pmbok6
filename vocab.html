@@ -200,8 +200,8 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
 }
 .term-row:hover{border-color:var(--gold);box-shadow:0 2px 8px rgba(0,0,0,.06);}
 .term-row.known-row{border-left:3px solid var(--green);}
-.term-vi{font-weight:700;font-size:14px;color:var(--navy);flex:0 0 auto;min-width:200px;}
-.term-en{font-size:13px;color:var(--dim);flex:1;font-style:italic;}
+.term-en{font-weight:700;font-size:14px;color:var(--navy);flex:0 0 auto;min-width:200px;}
+.term-vi{font-size:13px;color:var(--dim);flex:1;font-style:italic;}
 .term-cat-badge{font-size:10px;padding:2px 8px;border-radius:10px;
   background:rgba(201,168,76,.15);color:#7a5c00;font-weight:600;flex-shrink:0;}
 .term-known-btn{
@@ -221,7 +221,7 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
   .card-en{font-size:1.1rem;}
   .card-face{padding:22px 20px;}
   .quiz-wrap{padding:18px;}
-  .term-vi{min-width:140px;}
+  .term-en{min-width:140px;}
   .cat-tab{padding:5px 10px;font-size:11px;}
 }
 </style>
@@ -264,15 +264,15 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
     <div class="card-area" id="card-area" title="Click để lật thẻ">
       <div class="card-inner" id="card-inner">
         <div class="card-face card-front" id="card-front">
-          <div class="card-badge">Tiếng Việt → Click để xem tiếng Anh</div>
-          <div class="card-vi" id="cf-vi">—</div>
+          <div class="card-badge">English → Click để xem tiếng Việt</div>
+          <div class="card-en" id="cf-en">—</div>
           <div class="card-cat-tag" id="cf-cat"></div>
           <div class="card-flip-hint">👆 Click hoặc nhấn Space</div>
           <div class="card-num" id="cf-num"></div>
         </div>
         <div class="card-face card-back" id="card-back">
-          <div class="card-badge" style="color:var(--dim)">English Equivalent</div>
-          <div class="card-en" id="cb-en">—</div>
+          <div class="card-badge" style="color:var(--dim)">Tiếng Việt</div>
+          <div class="card-vi" id="cb-vi">—</div>
           <div class="card-hint" id="cb-hint"></div>
           <div class="card-flip-hint" style="color:var(--dim)">👆 Click để lật lại</div>
         </div>
@@ -399,8 +399,8 @@ function renderCard() {
   var inner = document.getElementById('card-inner');
   inner.classList.remove('flipped'); flipped = false;
 
-  document.getElementById('cf-vi').textContent  = t.vi;
-  document.getElementById('cb-en').textContent  = t.en;
+  document.getElementById('cf-en').textContent  = t.en;
+  document.getElementById('cb-vi').textContent  = t.vi;
   document.getElementById('cf-cat').textContent = catLabel(t.cat);
   document.getElementById('cf-num').textContent = (cardIdx+1) + ' / ' + deck.length;
   document.getElementById('cb-hint').textContent = catLabel(t.cat);
@@ -482,7 +482,7 @@ function renderQuizQ() {
   var body = document.getElementById('quiz-body');
   body.innerHTML =
     '<div class="quiz-num">Câu ' + (q.idx+1) + ' / ' + q.questions.length + '</div>' +
-    '<div class="quiz-question">"' + t.vi + '" trong tiếng Anh là gì?</div>' +
+    '<div class="quiz-question">"' + t.en + '" trong tiếng Việt là gì?</div>' +
     '<div class="quiz-sub">Chọn câu trả lời đúng:</div>' +
     '<div class="quiz-opts" id="quiz-opts"></div>' +
     '<div class="quiz-foot">' +
@@ -494,9 +494,9 @@ function renderQuizQ() {
   opts.forEach(function(opt, i) {
     var btn = document.createElement('button');
     btn.className = 'quiz-opt';
-    btn.dataset.en = opt.en;
-    btn.innerHTML = '<span class="opt-letter">' + letters[i] + '</span>' + opt.en;
-    btn.addEventListener('click', function() { answerQuiz(opt.en, t.en, t.vi); });
+    btn.dataset.vi = opt.vi;
+    btn.innerHTML = '<span class="opt-letter">' + letters[i] + '</span>' + opt.vi;
+    btn.addEventListener('click', function() { answerQuiz(opt.vi, t.vi, t.en); });
     optsDiv.appendChild(btn);
   });
 
@@ -515,12 +515,12 @@ function answerQuiz(chosen, correct, vi) {
   var opts = document.querySelectorAll('.quiz-opt');
   opts.forEach(function(b){
     b.classList.add('disabled');
-    if (b.dataset.en === correct) b.classList.add('correct');
-    else if (b.dataset.en === chosen && !isCorrect) b.classList.add('wrong');
+    if (b.dataset.vi === correct) b.classList.add('correct');
+    else if (b.dataset.vi === chosen && !isCorrect) b.classList.add('wrong');
   });
 
   var expEl = document.getElementById('quiz-exp');
-  expEl.textContent = isCorrect ? '✓ Chính xác!' : '✗ Sai. Đáp án đúng: ' + correct;
+  expEl.textContent = isCorrect ? '✓ Chính xác!' : '✗ Sai. Đáp án đúng: ' + correct + ' (' + vi + ')';
   expEl.className   = 'quiz-exp ' + (isCorrect ? 'correct-msg' : 'wrong-msg');
 
   document.getElementById('quiz-next').style.display = 'block';
@@ -565,8 +565,8 @@ function renderBrowse(filter) {
     var row = document.createElement('div');
     row.className = 'term-row' + (known ? ' known-row' : '');
     row.innerHTML =
-      '<span class="term-vi">' + t.vi + '</span>' +
       '<span class="term-en">' + t.en + '</span>' +
+      '<span class="term-vi">' + t.vi + '</span>' +
       '<span class="term-cat-badge">' + catLabel(t.cat) + '</span>' +
       '<button class="term-known-btn' + (known ? ' known' : '') + '" data-vi="' + encodeURIComponent(t.vi) + '" title="Đánh dấu đã biết">' +
         (known ? '✓' : '') +
