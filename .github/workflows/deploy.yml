@@ -33,6 +33,7 @@ jobs:
 
           # Core reader files
           cp index.html style.css app.js _site/
+          [ -f font-settings.js ] && cp font-settings.js _site/
 
           # New pages
           [ -f home.html ]      && cp home.html _site/

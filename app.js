@@ -597,6 +597,17 @@ function loadChapter(id) {
       script.textContent = BRIDGE_SCRIPT;
       iwin.document.body.appendChild(script);
 
+      // Inject global font settings into iframe
+      if (window.PMFontSettings) {
+        const fs = PMFontSettings.load();
+        if (fs.fontId || fs.sizeId) {
+          const fontStyle = iwin.document.createElement('style');
+          fontStyle.id = 'pmlib-font-inject';
+          fontStyle.textContent = PMFontSettings.buildCSS(fs.fontId, fs.sizeId);
+          iwin.document.head.appendChild(fontStyle);
+        }
+      }
+
       // Send saved highlights to iframe
       const highlights = state.highlights[id] || [];
       iwin.postMessage({ type: 'applyHighlights', highlights }, '*');
@@ -1276,6 +1287,31 @@ document.getElementById('quiz-btn-retry').addEventListener('click', () => {
 });
 document.getElementById('quiz-overlay').addEventListener('click', e => {
   if (e.target === document.getElementById('quiz-overlay')) closeQuiz();
+});
+
+// ── FONT SETTINGS ──
+document.getElementById('btn-font').addEventListener('click', function (e) {
+  e.stopPropagation();
+  const existing = document.getElementById('pmlib-font-panel');
+  if (existing) { existing.remove(); return; }
+  if (window.PMFontSettings) {
+    PMFontSettings.buildPanel(e.currentTarget, { side: 'bottom' });
+  }
+});
+
+// When font settings change, re-inject CSS into the current iframe
+window.addEventListener('pmlib-font-change', function (e) {
+  const frame = document.getElementById('chapter-frame');
+  if (!frame || !frame.contentDocument) return;
+  try {
+    let styleEl = frame.contentDocument.getElementById('pmlib-font-inject');
+    if (!styleEl) {
+      styleEl = frame.contentDocument.createElement('style');
+      styleEl.id = 'pmlib-font-inject';
+      frame.contentDocument.head.appendChild(styleEl);
+    }
+    styleEl.textContent = PMFontSettings.buildCSS(e.detail.fontId, e.detail.sizeId);
+  } catch (err) { /* cross-origin guard */ }
 });
 
 // ── BOOT ──

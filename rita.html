@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rita PMP® Exam Prep 11 — Thư Mục Chương</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="font-settings.js"></script>
 <style>
   :root {
     --navy:    #1a2744;
@@ -150,6 +151,11 @@
 <nav class="site-nav">
   <a href="home.html" class="nav-back">&#8592; Thư Viện</a>
   <div class="nav-title">Rita PMP® Exam Prep 11</div>
+  <a href="dashboard.html" class="nav-back" style="font-size:12px;">📊 Dashboard</a>
+  <button id="rita-index-font-btn"
+    style="background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.3);
+           color:#c9a84c;font-weight:700;font-size:13px;padding:5px 10px;
+           border-radius:4px;cursor:pointer;font-family:'Source Sans 3',sans-serif;">Aa</button>
 </nav>
 
 <div class="hero">
@@ -433,6 +439,17 @@
     }
   }
   checkChapters()
+
+  // Font settings button
+  var fontBtn = document.getElementById('rita-index-font-btn');
+  if (fontBtn && window.PMFontSettings) {
+    fontBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var existing = document.getElementById('pmlib-font-panel');
+      if (existing) { existing.remove(); return; }
+      PMFontSettings.buildPanel(e.currentTarget, { side: 'bottom' });
+    });
+  }
 </script>
 
 </body>

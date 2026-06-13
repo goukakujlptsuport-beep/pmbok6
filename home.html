@@ -264,6 +264,7 @@ footer {
   .tools-grid { grid-template-columns: 1fr; }
 }
 </style>
+<script src="font-settings.js"></script>
 </head>
 <body>
 
@@ -277,6 +278,12 @@ footer {
     </div>
   </a>
   <div class="header-stats" id="header-stats"></div>
+  <button id="home-font-btn" title="Cài đặt font / Display Settings"
+    style="background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.3);
+           color:var(--gold,#c9a84c);font-weight:700;font-size:13px;padding:5px 11px;
+           border-radius:4px;cursor:pointer;transition:all .2s;font-family:'Source Sans 3',sans-serif;">
+    Aa
+  </button>
 </header>
 
 <!-- HERO -->
@@ -566,6 +573,16 @@ document.getElementById('header-stats').innerHTML = `
   document.getElementById('lr-sub').textContent   = `${chTitle} · ${pct}% hoàn thành`;
   banner.hidden = false;
 })();
+
+// Font button
+document.getElementById('home-font-btn').addEventListener('click', function(e) {
+  e.stopPropagation();
+  var existing = document.getElementById('pmlib-font-panel');
+  if (existing) { existing.remove(); return; }
+  if (window.PMFontSettings) {
+    PMFontSettings.buildPanel(e.currentTarget, { side: 'bottom', dark: true });
+  }
+});
 </script>
 </body>
 </html>

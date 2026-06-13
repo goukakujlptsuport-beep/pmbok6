@@ -359,7 +359,7 @@
   }
 
   // ─── FONT SETTINGS ────────────────────────────────────────────────────────────
-  var LS_KEY = 'rita_font_v2';
+  var LS_KEY = 'pmlib_font_v1'; // shared key with PMBOK6 reader
 
   var FONT_OPTIONS = [
     { id: 'merriweather', label: 'Merriweather',   css: "'Merriweather', Georgia, serif" },
