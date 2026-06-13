@@ -1,34 +1,7 @@
 /* PMBOK6 app — iframe architecture */
 
-const CHAPTERS = [
-  { id: '01_instruction',               num: 1,  title: 'Giới Thiệu' },
-  { id: '02_environment',               num: 2,  title: 'Môi Trường Dự Án' },
-  { id: '03_pm_role',                   num: 3,  title: 'Vai Trò Của Người Quản Lý Dự Án' },
-  { id: '04_integration_management',    num: 4,  title: 'Quản Lý Tích Hợp Dự Án' },
-  { id: '05_scope_management',          num: 5,  title: 'Quản Lý Phạm Vi Dự Án' },
-  { id: '06_schedule_management',       num: 6,  title: 'Quản Lý Tiến Độ Dự Án' },
-  { id: '07_cost_management',           num: 7,  title: 'Quản Lý Chi Phí Dự Án' },
-  { id: '08_quality_management',        num: 8,  title: 'Quản Lý Chất Lượng Dự Án' },
-  { id: '09_resource_management',       num: 9,  title: 'Quản Lý Nguồn Lực Dự Án' },
-  { id: '10_communications_management', num: 10, title: 'Quản Lý Truyền Thông Dự Án' },
-  { id: '11_risk_management',           num: 11, title: 'Quản Lý Rủi Ro Dự Án' },
-  { id: '12_procurement_management',    num: 12, title: 'Quản Lý Mua Sắm Dự Án' },
-  { id: '13_stakeholder_management',    num: 13, title: 'Quản Lý Các Bên Liên Quan' },
-  { id: '14_standard_for_pm',           num: 14, title: 'Tiêu Chuẩn Quản Lý Dự Án' },
-  { id: '15_appendices_glossary',       num: 15, title: 'Phụ Lục & Từ Điển Thuật Ngữ' },
-  { id: '16_agile_practice_guide',      num: 16, title: 'Hướng Dẫn Thực Hành Agile' },
-];
-
-const TRANSLATED_IDS = new Set([
-  '01_instruction', '02_environment', '03_pm_role',
-  '04_integration_management', '05_scope_management',
-  '06_schedule_management', '07_cost_management',
-  '08_quality_management', '09_resource_management',
-  '10_communications_management', '11_risk_management',
-  '12_procurement_management', '13_stakeholder_management',
-  '14_standard_for_pm', '15_appendices_glossary',
-  '16_agile_practice_guide',
-]);
+const CHAPTERS = (window.PMLibConfig ? window.PMLibConfig.getChapters('pmbok6') : []);
+const TRANSLATED_IDS = new Set(CHAPTERS.map(ch => ch.id));
 
 // ── STATE ──
 let state = {

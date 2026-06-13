@@ -6,10 +6,11 @@
   'use strict';
 
   // ─── BILINGUAL DICTIONARY ────────────────────────────────────────────────────
-  // Sorted longest-first (most specific first) to prevent partial replacements.
-  // Format: [Vietnamese term, English equivalent]
-  var TERMS = [
-    // ── Long / specific phrases ───────────────────────────────────────────────
+  // Built from shared lib/vocab-terms.js (window.PMVocabTerms).
+  // Format: [Vietnamese term, English equivalent], sorted longest-first.
+  var TERMS = (window.PMVocabTerms || []).map(function(t) { return [t.vi, t.en]; });
+  // Fallback inline terms in case lib/vocab-terms.js wasn't loaded
+  if (!TERMS.length) TERMS = [
     ['Phân tích bên liên quan', 'Stakeholder Analysis'],
     ['Sổ đăng ký bên liên quan', 'Stakeholder Register'],
     ['Kế hoạch quản lý dự án', 'Project Management Plan'],
@@ -237,7 +238,7 @@
     ['Kiểm tra', 'Inspection'],
     ['Giai đoạn', 'Phase'],
     ['Cột mốc', 'Milestone'],
-  ];
+  ]; // end fallback
 
   // Sort by Vietnamese term length descending (longest = most specific first)
   TERMS.sort(function (a, b) { return b[0].length - a[0].length; });
@@ -358,76 +359,19 @@
     annotateSubtree(main);
   }
 
-  // ─── FONT SETTINGS ────────────────────────────────────────────────────────────
-  var LS_KEY = 'pmlib_font_v1'; // shared key with PMBOK6 reader
-
-  var FONT_OPTIONS = [
-    { id: 'merriweather', label: 'Merriweather',   css: "'Merriweather', Georgia, serif" },
-    { id: 'sourcesans',   label: 'Source Sans 3',  css: "'Source Sans 3', Arial, sans-serif" },
-    { id: 'georgia',      label: 'Georgia',         css: "Georgia, 'Times New Roman', serif" },
-    { id: 'arial',        label: 'Arial',           css: "Arial, Helvetica, sans-serif" },
-    { id: 'verdana',      label: 'Verdana',         css: "Verdana, Geneva, sans-serif" },
-    { id: 'tahoma',       label: 'Tahoma',          css: "Tahoma, Geneva, sans-serif" },
-  ];
-
-  var SIZE_OPTIONS = [
-    { id: 'xs', label: 'XS', scale: 0.82 },
-    { id: 'sm', label: 'S',  scale: 0.91 },
-    { id: 'md', label: 'M',  scale: 1.00 },
-    { id: 'lg', label: 'L',  scale: 1.12 },
-    { id: 'xl', label: 'XL', scale: 1.25 },
-  ];
+  // ─── FONT SETTINGS (delegated to font-settings.js) ─────────────────────────
+  var LS_KEY = 'pmlib_font_v1';
 
   function loadSettings() {
-    try { return JSON.parse(localStorage.getItem(LS_KEY) || '{}'); }
-    catch (e) { return {}; }
+    try { return JSON.parse(localStorage.getItem(LS_KEY) || '{}'); } catch(e) { return {}; }
   }
-
   function saveSettings(s) {
-    try { localStorage.setItem(LS_KEY, JSON.stringify(s)); } catch (e) {}
+    try { localStorage.setItem(LS_KEY, JSON.stringify(s)); } catch(e) {}
   }
 
-  function getStyleEl() {
-    var el = document.getElementById('rita-font-inject');
-    if (!el) {
-      el = document.createElement('style');
-      el.id = 'rita-font-inject';
-      document.head.appendChild(el);
-    }
-    return el;
-  }
-
-  function applySettings(s) {
-    var fontOpt = null, sizeOpt = null;
-    FONT_OPTIONS.forEach(function (f) { if (f.id === s.fontId) fontOpt = f; });
-    SIZE_OPTIONS.forEach(function (z) { if (z.id === s.sizeId) sizeOpt = z; });
-    fontOpt = fontOpt || FONT_OPTIONS[0];
-    sizeOpt = sizeOpt || SIZE_OPTIONS[2];
-
-    var scale = sizeOpt.scale;
-    var ff = fontOpt.css;
-    getStyleEl().textContent =
-      '#main p,#main li,#main td,#main blockquote{' +
-        'font-family:' + ff + '!important;' +
-        'font-size:calc(0.94rem * ' + scale + ')!important;' +
-      '}' +
-      '#main h3,#main h4,#main h5{' +
-        'font-family:' + ff + '!important;' +
-      '}' +
-      '#main ul.content-list li,#main ol.content-list li{' +
-        'font-family:' + ff + '!important;' +
-        'font-size:calc(0.92rem * ' + scale + ')!important;' +
-      '}';
-  }
-
-  // ─── FONT PANEL UI ───────────────────────────────────────────────────────────
   function buildFontPanel() {
     var sidebar = document.getElementById('sidebar');
     if (!sidebar || document.getElementById('rita-font-btn')) return;
-
-    var s = loadSettings();
-    var curFont = s.fontId || 'merriweather';
-    var curSize = s.sizeId || 'md';
 
     // ── Toggle button ──────────────────────────────────────────────────────────
     var btn = document.createElement('button');
@@ -446,174 +390,60 @@
       '</span>' +
       '<span style="font-size:.65rem;opacity:.55">&#9660;</span>';
 
-    // Insert before sidebar-nav (bottom nav) if present, else append
     var navEl = document.getElementById('sidebar-nav');
-    if (navEl) {
-      sidebar.insertBefore(btn, navEl);
-    } else {
-      sidebar.appendChild(btn);
-    }
-
-    // ── Panel ──────────────────────────────────────────────────────────────────
-    var panel = document.createElement('div');
-    panel.id = 'rita-font-panel';
-
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    function panelBg() { return document.documentElement.getAttribute('data-theme') === 'dark' ? '#1a2436' : '#fff'; }
-    function panelText() { return document.documentElement.getAttribute('data-theme') === 'dark' ? '#dde4f0' : '#2c2c2c'; }
-    function borderCol() { return 'var(--gold)'; }
-
-    // Position: right side of sidebar on desktop, bottom-left on mobile
-    var isMobile = window.innerWidth <= 860;
-    var panelLeft = isMobile ? '8px' : '268px';
-    panel.style.cssText =
-      'position:fixed;bottom:70px;left:' + panelLeft + ';z-index:650;' +
-      'background:' + panelBg() + ';' +
-      'border:2px solid var(--gold);border-radius:' + (isMobile ? '10px' : '0 10px 10px 0') + ';' +
-      'padding:1.1rem 1rem 1rem;width:260px;' +
-      'box-shadow:4px 4px 24px rgba(0,0,0,.25);' +
-      'display:none;';
-
-    panel.innerHTML =
-      '<div style="' +
-        "font-family:'Source Sans 3',sans-serif;font-size:.7rem;font-weight:700;" +
-        'letter-spacing:.12em;text-transform:uppercase;color:var(--gold);' +
-        'margin-bottom:.85rem;padding-bottom:.4rem;border-bottom:1px solid rgba(201,168,76,.3);' +
-      '">Cài đặt font / Font Settings</div>' +
-
-      '<div style="margin-bottom:.8rem;">' +
-        '<div id="rita-font-label" style="' +
-          "font-size:.65rem;font-weight:600;color:#888;font-family:'Source Sans 3',sans-serif;" +
-          'margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.08em;' +
-        '">Kiểu chữ (Font Family)</div>' +
-        '<div id="rita-font-choices" style="display:flex;flex-direction:column;gap:.28rem;"></div>' +
-      '</div>' +
-
-      '<div>' +
-        '<div style="' +
-          "font-size:.65rem;font-weight:600;color:#888;font-family:'Source Sans 3',sans-serif;" +
-          'margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.08em;' +
-        '">Cỡ chữ (Font Size)</div>' +
-        '<div id="rita-size-choices" style="display:flex;gap:.3rem;"></div>' +
-      '</div>' +
-
-      '<div style="margin-top:.7rem;padding-top:.5rem;border-top:1px solid rgba(201,168,76,.2);">' +
-        '<div style="display:flex;align-items:center;justify-content:space-between;gap:.5rem;">' +
-          '<div style="font-size:.65rem;font-weight:600;color:#888;font-family:\'Source Sans 3\',sans-serif;text-transform:uppercase;letter-spacing:.08em;">Song ngữ (Bilingual)</div>' +
-          '<label id="rita-bilingual-toggle" style="position:relative;display:inline-block;width:36px;height:20px;cursor:pointer;">' +
-            '<input type="checkbox" id="rita-bilingual-chk" style="opacity:0;width:0;height:0;" ' + (loadSettings().bilingualOff ? '' : 'checked') + '>' +
-            '<span style="position:absolute;inset:0;background:#ccc;border-radius:20px;transition:.3s;" id="rita-bilingual-slider"></span>' +
-          '</label>' +
-        '</div>' +
-      '</div>' +
-      '<div style="margin-top:.55rem;padding-top:.5rem;border-top:1px solid rgba(201,168,76,.2);' +
-        "font-size:.62rem;color:#aaa;font-style:italic;text-align:center;font-family:'Source Sans 3',sans-serif;" +
-      '">Lưu tự động trong trình duyệt</div>';
-
-    document.body.appendChild(panel);
-
-    // ── Font choices ───────────────────────────────────────────────────────────
-    var fontDiv = panel.querySelector('#rita-font-choices');
-    FONT_OPTIONS.forEach(function (f) {
-      var row = document.createElement('button');
-      row.dataset.fid = f.id;
-      var active = f.id === curFont;
-      row.style.cssText =
-        'display:flex;align-items:center;gap:.55rem;padding:.35rem .6rem;' +
-        'border-radius:5px;cursor:pointer;text-align:left;width:100%;' +
-        'border:1px solid ' + (active ? 'var(--gold)' : 'rgba(201,168,76,.25)') + ';' +
-        'background:' + (active ? 'rgba(201,168,76,.12)' : 'transparent') + ';' +
-        'transition:all .15s;';
-      row.innerHTML =
-        '<span style="font-family:' + f.css + ';font-size:.95rem;min-width:22px;' +
-          'color:' + (document.documentElement.getAttribute('data-theme') === 'dark' ? '#e8d5a3' : '#2c2c2c') + ';' +
-        '">Aa</span>' +
-        '<span style="font-family:\'Source Sans 3\',sans-serif;font-size:.78rem;' +
-          'color:' + (document.documentElement.getAttribute('data-theme') === 'dark' ? '#dde4f0' : '#444') + ';' +
-        '">' + f.label + '</span>';
-      row.addEventListener('click', function () {
-        var ns = loadSettings(); ns.fontId = f.id; saveSettings(ns); applySettings(ns);
-        fontDiv.querySelectorAll('button').forEach(function (b) {
-          var isActive = b.dataset.fid === f.id;
-          b.style.border = 'border:1px solid ' + (isActive ? 'var(--gold)' : 'rgba(201,168,76,.25)');
-          b.style.borderColor = isActive ? 'var(--gold)' : 'rgba(201,168,76,.25)';
-          b.style.background = isActive ? 'rgba(201,168,76,.12)' : 'transparent';
-        });
-      });
-      fontDiv.appendChild(row);
-    });
-
-    // ── Size choices ───────────────────────────────────────────────────────────
-    var sizeDiv = panel.querySelector('#rita-size-choices');
-    SIZE_OPTIONS.forEach(function (z) {
-      var b2 = document.createElement('button');
-      b2.dataset.sid = z.id;
-      var active = z.id === curSize;
-      b2.style.cssText =
-        'flex:1;padding:.3rem .1rem;border-radius:5px;cursor:pointer;text-align:center;' +
-        "font-family:'Source Sans 3',sans-serif;font-size:.78rem;font-weight:600;" +
-        'border:1px solid ' + (active ? 'var(--gold)' : 'rgba(201,168,76,.25)') + ';' +
-        'background:' + (active ? 'rgba(201,168,76,.12)' : 'transparent') + ';' +
-        'color:' + (active ? 'var(--gold)' : '#888') + ';' +
-        'transition:all .15s;';
-      b2.textContent = z.label;
-      b2.addEventListener('click', function () {
-        var ns = loadSettings(); ns.sizeId = z.id; saveSettings(ns); applySettings(ns);
-        sizeDiv.querySelectorAll('button').forEach(function (b) {
-          var isActive = b.dataset.sid === z.id;
-          b.style.borderColor = isActive ? 'var(--gold)' : 'rgba(201,168,76,.25)';
-          b.style.background = isActive ? 'rgba(201,168,76,.12)' : 'transparent';
-          b.style.color = isActive ? 'var(--gold)' : '#888';
-        });
-      });
-      sizeDiv.appendChild(b2);
-    });
+    if (navEl) { sidebar.insertBefore(btn, navEl); } else { sidebar.appendChild(btn); }
 
     // ── Bilingual toggle ───────────────────────────────────────────────────────
-    var chk = panel.querySelector('#rita-bilingual-chk');
-    var slider = panel.querySelector('#rita-bilingual-slider');
+    var biPanel = document.createElement('div');
+    biPanel.id = 'rita-bilingual-panel';
+    biPanel.style.cssText =
+      'display:none;padding:.7rem 1.2rem;border-top:1px solid rgba(255,255,255,.07);';
+    biPanel.innerHTML =
+      '<div style="display:flex;align-items:center;justify-content:space-between;gap:.5rem;">' +
+        '<div style="font-size:.65rem;font-weight:600;color:#888;font-family:'Source Sans 3',sans-serif;text-transform:uppercase;letter-spacing:.08em;">Song ngữ (Bilingual)</div>' +
+        '<label style="position:relative;display:inline-block;width:36px;height:20px;cursor:pointer;">' +
+          '<input type="checkbox" id="rita-bilingual-chk" style="opacity:0;width:0;height:0;" ' + (loadSettings().bilingualOff ? '' : 'checked') + '>' +
+          '<span style="position:absolute;inset:0;background:#ccc;border-radius:20px;transition:.3s;" id="rita-bilingual-slider"></span>' +
+        '</label>' +
+      '</div>';
+
+    if (navEl) { sidebar.insertBefore(biPanel, navEl); } else { sidebar.appendChild(biPanel); }
+
+    // ── Font panel via PMFontSettings ──────────────────────────────────────────
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      biPanel.style.display = biPanel.style.display === 'none' ? 'block' : 'none';
+      if (window.PMFontSettings) {
+        var existing = document.getElementById('pmlib-font-panel');
+        if (existing) { existing.remove(); return; }
+        PMFontSettings.buildPanel(btn, { side: 'bottom' });
+      }
+    });
+
+    // ── Bilingual toggle handler ───────────────────────────────────────────────
+    var chk = biPanel.querySelector('#rita-bilingual-chk');
+    var slider = biPanel.querySelector('#rita-bilingual-slider');
     if (chk && slider) {
-      // Set slider colour based on current state
       slider.style.background = chk.checked ? 'var(--gold)' : '#ccc';
-      chk.addEventListener('change', function () {
+      chk.addEventListener('change', function() {
         slider.style.background = chk.checked ? 'var(--gold)' : '#ccc';
-        var ns = loadSettings();
-        ns.bilingualOff = !chk.checked;
-        saveSettings(ns);
-        // Show/hide all .blt-en spans
-        var spans = document.querySelectorAll('.blt-en');
-        spans.forEach(function (sp) { sp.style.display = chk.checked ? '' : 'none'; });
+        var ns = loadSettings(); ns.bilingualOff = !chk.checked; saveSettings(ns);
+        document.querySelectorAll('.blt-en').forEach(function(sp) {
+          sp.style.display = chk.checked ? '' : 'none';
+        });
       });
-      // Apply initial state if bilingual is off
       if (loadSettings().bilingualOff) {
-        document.querySelectorAll('.blt-en').forEach(function (sp) { sp.style.display = 'none'; });
+        document.querySelectorAll('.blt-en').forEach(function(sp) { sp.style.display = 'none'; });
       }
     }
-
-    // ── Toggle visibility ──────────────────────────────────────────────────────
-    btn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      var visible = panel.style.display !== 'none';
-      panel.style.display = visible ? 'none' : 'block';
-    });
-
-    document.addEventListener('click', function (e) {
-      if (panel.style.display !== 'none' && !panel.contains(e.target) && e.target !== btn) {
-        panel.style.display = 'none';
-      }
-    });
-
-    // Keep panel colours in sync with dark-mode toggle
-    new MutationObserver(function () {
-      panel.style.background = panelBg();
-    }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
   }
 
   // ─── INIT ─────────────────────────────────────────────────────────────────────
   function init() {
     // Apply font settings immediately (before render)
-    var saved = loadSettings();
-    if (saved.fontId || saved.sizeId) applySettings(saved);
+    if (window.PMFontSettings) {
+      PMFontSettings.apply(PMFontSettings.load());
+    }
 
     // Annotation + panel after page fully loads (after highlight restore)
     function ready() {

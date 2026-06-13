@@ -6,6 +6,7 @@
 <title>Học Thuật Ngữ PM — PMLib</title>
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
 <script src="font-settings.js"></script>
+<script src="lib/vocab-terms.js"></script>
 <style>
 :root {
   --navy:  #1a2744;
@@ -313,215 +314,8 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
 </div><!-- /wrap -->
 
 <script>
-// ── FULL VOCABULARY ──────────────────────────────────────────────────────────
-var VOCAB = [
-  // cat: 'init' | 'plan' | 'exec' | 'monitor' | 'close' | 'agile' | 'risk' | 'proc' | 'people' | 'quality' | 'cost' | 'comm'
-
-  // ── KHỞI TẠO ──────────────────────────────────────────────────────────────
-  {vi:'Điều lệ dự án',               en:'Project Charter',                       cat:'init'},
-  {vi:'Phát triển Điều lệ Dự án',    en:'Develop Project Charter',               cat:'init'},
-  {vi:'Nhật ký giả định',            en:'Assumption Log',                        cat:'init'},
-  {vi:'Phân tích bên liên quan',     en:'Stakeholder Analysis',                  cat:'init'},
-  {vi:'Sổ đăng ký bên liên quan',    en:'Stakeholder Register',                  cat:'init'},
-  {vi:'Nhà tài trợ dự án',           en:'Project Sponsor',                       cat:'init'},
-  {vi:'Nhóm quy trình Khởi tạo',     en:'Initiating Process Group',              cat:'init'},
-  {vi:'Trường hợp kinh doanh',       en:'Business Case',                         cat:'init'},
-  {vi:'Tổ chức ma trận',             en:'Matrix Organization',                   cat:'init'},
-  {vi:'Tổ chức theo dự án',          en:'Projectized Organization',              cat:'init'},
-  {vi:'Tổ chức chức năng',           en:'Functional Organization',               cat:'init'},
-  {vi:'Văn phòng quản lý dự án',     en:'PMO – Project Management Office',       cat:'init'},
-  {vi:'Vòng đời dự án',              en:'Project Life Cycle',                    cat:'init'},
-
-  // ── LẬP KẾ HOẠCH ──────────────────────────────────────────────────────────
-  {vi:'Kế hoạch quản lý dự án',      en:'Project Management Plan',               cat:'plan'},
-  {vi:'Cấu trúc phân chia công việc',en:'WBS – Work Breakdown Structure',        cat:'plan'},
-  {vi:'Gói công việc',               en:'Work Package',                          cat:'plan'},
-  {vi:'Sơ đồ Gantt',                 en:'Gantt Chart',                           cat:'plan'},
-  {vi:'Sơ đồ mạng',                  en:'Network Diagram',                       cat:'plan'},
-  {vi:'Đường găng',                  en:'Critical Path',                         cat:'plan'},
-  {vi:'Phương pháp đường găng',      en:'Critical Path Method (CPM)',            cat:'plan'},
-  {vi:'Đường cơ sở lịch trình',      en:'Schedule Baseline',                     cat:'plan'},
-  {vi:'Đường cơ sở ngân sách',       en:'Cost Baseline',                         cat:'plan'},
-  {vi:'Đường cơ sở phạm vi',         en:'Scope Baseline',                        cat:'plan'},
-  {vi:'Đường cơ sở đo lường hiệu suất',en:'Performance Measurement Baseline',   cat:'plan'},
-  {vi:'Mô tả phạm vi dự án',         en:'Project Scope Statement',               cat:'plan'},
-  {vi:'Danh sách hoạt động',         en:'Activity List',                         cat:'plan'},
-  {vi:'Sắp xếp thứ tự hoạt động',   en:'Activity Sequencing',                   cat:'plan'},
-  {vi:'Ước tính thời gian hoạt động',en:'Activity Duration Estimating',          cat:'plan'},
-  {vi:'Ma trận trách nhiệm',         en:'Responsibility Assignment Matrix (RACI)',cat:'plan'},
-  {vi:'Lịch nguồn lực',              en:'Resource Calendar',                     cat:'plan'},
-  {vi:'Kế hoạch quản lý phạm vi',    en:'Scope Management Plan',                 cat:'plan'},
-  {vi:'Kế hoạch quản lý lịch trình', en:'Schedule Management Plan',              cat:'plan'},
-  {vi:'Kế hoạch quản lý chi phí',    en:'Cost Management Plan',                  cat:'plan'},
-  {vi:'Kế hoạch quản lý chất lượng', en:'Quality Management Plan',               cat:'plan'},
-  {vi:'Kế hoạch quản lý nguồn lực',  en:'Resource Management Plan',              cat:'plan'},
-  {vi:'Kế hoạch quản lý truyền thông',en:'Communications Management Plan',       cat:'plan'},
-  {vi:'Kế hoạch quản lý rủi ro',     en:'Risk Management Plan',                  cat:'plan'},
-  {vi:'Kế hoạch quản lý mua sắm',    en:'Procurement Management Plan',           cat:'plan'},
-  {vi:'Kế hoạch tham gia bên liên quan',en:'Stakeholder Engagement Plan',        cat:'plan'},
-  {vi:'Nhóm quy trình Lập kế hoạch', en:'Planning Process Group',                cat:'plan'},
-
-  // ── THỰC HIỆN ─────────────────────────────────────────────────────────────
-  {vi:'Cuộc họp khởi động',          en:'Kickoff Meeting',                       cat:'exec'},
-  {vi:'Quản lý kiến thức',           en:'Knowledge Management',                  cat:'exec'},
-  {vi:'Kiến thức tường minh',        en:'Explicit Knowledge',                    cat:'exec'},
-  {vi:'Kiến thức ẩn',                en:'Tacit Knowledge',                       cat:'exec'},
-  {vi:'Giao tiếp thẩm thấu',        en:'Osmotic Communication',                 cat:'exec'},
-  {vi:'Xây dựng nhóm',               en:'Team Building',                         cat:'exec'},
-  {vi:'Phát triển nhóm',             en:'Team Development',                      cat:'exec'},
-  {vi:'Nhóm tự tổ chức',             en:'Self-Organizing Team',                  cat:'exec'},
-  {vi:'Hệ thống ủy quyền công việc', en:'Work Authorization System',             cat:'exec'},
-  {vi:'Thúc đẩy nhóm',              en:'Team Motivation',                       cat:'exec'},
-  {vi:'Nhóm quy trình Thực hiện',    en:'Executing Process Group',               cat:'exec'},
-  {vi:'Bài học kinh nghiệm',         en:'Lessons Learned',                       cat:'exec'},
-  {vi:'Tài liệu mua sắm',            en:'Procurement Documents',                 cat:'exec'},
-  {vi:'Phát biểu công việc',         en:'Statement of Work (SOW)',               cat:'exec'},
-
-  // ── GIÁM SÁT & KIỂM SOÁT ─────────────────────────────────────────────────
-  {vi:'Quản lý giá trị kiếm được',   en:'Earned Value Management (EVM)',         cat:'monitor'},
-  {vi:'Giá trị kiếm được',           en:'EV – Earned Value',                     cat:'monitor'},
-  {vi:'Giá trị kế hoạch',            en:'PV – Planned Value',                    cat:'monitor'},
-  {vi:'Chi phí thực tế',             en:'AC – Actual Cost',                      cat:'monitor'},
-  {vi:'Ngân sách hoàn thành',        en:'BAC – Budget at Completion',            cat:'monitor'},
-  {vi:'Chỉ số hiệu suất chi phí',    en:'CPI – Cost Performance Index',          cat:'monitor'},
-  {vi:'Chỉ số hiệu suất lịch trình', en:'SPI – Schedule Performance Index',      cat:'monitor'},
-  {vi:'Sai lệch chi phí',            en:'CV – Cost Variance',                    cat:'monitor'},
-  {vi:'Sai lệch lịch trình',         en:'SV – Schedule Variance',                cat:'monitor'},
-  {vi:'Ước tính đến hoàn thành',     en:'ETC – Estimate to Complete',            cat:'monitor'},
-  {vi:'Ước tính lúc hoàn thành',     en:'EAC – Estimate at Completion',          cat:'monitor'},
-  {vi:'Ban kiểm soát thay đổi',      en:'Change Control Board (CCB)',            cat:'monitor'},
-  {vi:'Kiểm soát thay đổi',          en:'Change Control',                        cat:'monitor'},
-  {vi:'Yêu cầu thay đổi',            en:'Change Request',                        cat:'monitor'},
-  {vi:'Hành động khắc phục',         en:'Corrective Action',                     cat:'monitor'},
-  {vi:'Hành động phòng ngừa',        en:'Preventive Action',                     cat:'monitor'},
-  {vi:'Sửa chữa lỗi',                en:'Defect Repair',                         cat:'monitor'},
-  {vi:'Thông tin hiệu suất công việc',en:'Work Performance Information',         cat:'monitor'},
-  {vi:'Dữ liệu hiệu suất công việc', en:'Work Performance Data',                 cat:'monitor'},
-  {vi:'Nhóm quy trình Kiểm soát',    en:'Monitoring & Controlling Process Group',cat:'monitor'},
-
-  // ── KẾT THÚC ──────────────────────────────────────────────────────────────
-  {vi:'Đóng dự án',                  en:'Project Closure',                       cat:'close'},
-  {vi:'Đóng mua sắm',                en:'Procurement Closure',                   cat:'close'},
-  {vi:'Kiểm toán mua sắm',           en:'Procurement Audit',                     cat:'close'},
-  {vi:'Nhóm quy trình Kết thúc',     en:'Closing Process Group',                 cat:'close'},
-  {vi:'Lưu trữ dự án',               en:'Project Archive',                       cat:'close'},
-  {vi:'Tổng kết dự án',              en:'Project Review',                        cat:'close'},
-
-  // ── AGILE & HYBRID ────────────────────────────────────────────────────────
-  {vi:'Tồn đọng sản phẩm',           en:'Product Backlog',                       cat:'agile'},
-  {vi:'Tồn đọng Sprint',             en:'Sprint Backlog',                        cat:'agile'},
-  {vi:'Chủ sở hữu sản phẩm',         en:'Product Owner',                        cat:'agile'},
-  {vi:'Scrum Master',                en:'Scrum Master',                          cat:'agile'},
-  {vi:'Nhóm Scrum',                  en:'Scrum Team',                            cat:'agile'},
-  {vi:'Phiên retrospective',         en:'Retrospective',                         cat:'agile'},
-  {vi:'Lập kế hoạch lặp',            en:'Iteration Planning',                    cat:'agile'},
-  {vi:'Phương pháp Agile',           en:'Agile Methodology',                     cat:'agile'},
-  {vi:'Phương pháp hỗn hợp',         en:'Hybrid Approach',                       cat:'agile'},
-  {vi:'Phương pháp Scrum',           en:'Scrum Framework',                       cat:'agile'},
-  {vi:'Phương pháp Kanban',          en:'Kanban Method',                         cat:'agile'},
-  {vi:'Phương pháp XP',              en:'Extreme Programming (XP)',              cat:'agile'},
-  {vi:'Vòng lặp Sprint',             en:'Sprint',                                cat:'agile'},
-  {vi:'Lãnh đạo phục vụ',            en:'Servant Leader',                        cat:'agile'},
-  {vi:'Câu chuyện người dùng',       en:'User Story',                            cat:'agile'},
-  {vi:'Định nghĩa hoàn thành',       en:'Definition of Done (DoD)',              cat:'agile'},
-  {vi:'Điểm câu chuyện',             en:'Story Points',                          cat:'agile'},
-  {vi:'Sơ đồ tốc độ',               en:'Velocity Chart',                        cat:'agile'},
-  {vi:'Biểu đồ burndown',            en:'Burndown Chart',                        cat:'agile'},
-  {vi:'Biểu đồ burnup',              en:'Burnup Chart',                          cat:'agile'},
-  {vi:'Kiểm tra lặp',                en:'Sprint Review',                         cat:'agile'},
-
-  // ── RỦI RO ────────────────────────────────────────────────────────────────
-  {vi:'Nhật ký rủi ro',              en:'Risk Register',                         cat:'risk'},
-  {vi:'Nhận diện rủi ro',            en:'Risk Identification',                   cat:'risk'},
-  {vi:'Phân tích rủi ro định tính',  en:'Qualitative Risk Analysis',             cat:'risk'},
-  {vi:'Phân tích rủi ro định lượng', en:'Quantitative Risk Analysis',            cat:'risk'},
-  {vi:'Kế hoạch ứng phó rủi ro',     en:'Risk Response Plan',                    cat:'risk'},
-  {vi:'Tránh rủi ro',                en:'Risk Avoidance',                        cat:'risk'},
-  {vi:'Giảm thiểu rủi ro',           en:'Risk Mitigation',                       cat:'risk'},
-  {vi:'Chuyển giao rủi ro',          en:'Risk Transfer / Deflect',               cat:'risk'},
-  {vi:'Chấp nhận rủi ro',            en:'Risk Acceptance',                       cat:'risk'},
-  {vi:'Khai thác cơ hội',            en:'Exploit Opportunity',                   cat:'risk'},
-  {vi:'Tăng cường cơ hội',           en:'Enhance Opportunity',                   cat:'risk'},
-  {vi:'Chia sẻ cơ hội',              en:'Share Opportunity',                     cat:'risk'},
-  {vi:'Dự phòng quản lý',            en:'Management Reserve',                    cat:'risk'},
-  {vi:'Dự phòng dự phòng',           en:'Contingency Reserve',                   cat:'risk'},
-  {vi:'Phân tích cây quyết định',    en:'Decision Tree Analysis',                cat:'risk'},
-  {vi:'Phân tích Monte Carlo',       en:'Monte Carlo Analysis',                  cat:'risk'},
-  {vi:'Rủi ro còn sót lại',          en:'Residual Risk',                         cat:'risk'},
-  {vi:'Rủi ro thứ cấp',              en:'Secondary Risk',                        cat:'risk'},
-  {vi:'Giá trị tiền tệ kỳ vọng',     en:'EMV – Expected Monetary Value',        cat:'risk'},
-
-  // ── MUA SẮM ───────────────────────────────────────────────────────────────
-  {vi:'Hợp đồng giá cố định',        en:'Fixed-Price Contract (FP)',             cat:'proc'},
-  {vi:'Hợp đồng chi phí cộng',       en:'Cost-Plus Contract (CP)',               cat:'proc'},
-  {vi:'Hợp đồng thời gian & vật liệu',en:'Time & Material Contract (T&M)',      cat:'proc'},
-  {vi:'Hợp đồng giá cố định chắc chắn',en:'Firm Fixed Price (FFP)',             cat:'proc'},
-  {vi:'Hợp đồng tổng giá cố định + phí khích lệ',en:'Fixed Price Incentive Fee (FPIF)',cat:'proc'},
-  {vi:'Chi phí cộng phí cố định',    en:'Cost Plus Fixed Fee (CPFF)',            cat:'proc'},
-  {vi:'Yêu cầu đề xuất',             en:'RFP – Request for Proposal',            cat:'proc'},
-  {vi:'Yêu cầu báo giá',             en:'RFQ – Request for Quotation',           cat:'proc'},
-  {vi:'Phân tích tự làm hay mua',    en:'Make-or-Buy Analysis',                  cat:'proc'},
-  {vi:'Đàm phán',                    en:'Negotiation',                           cat:'proc'},
-  {vi:'Nhà cung cấp',                en:'Vendor / Supplier',                     cat:'proc'},
-  {vi:'Quản lý hợp đồng',            en:'Contract Management',                   cat:'proc'},
-
-  // ── CON NGƯỜI & LÃNH ĐẠO ─────────────────────────────────────────────────
-  {vi:'Kỹ năng lãnh đạo',            en:'Leadership Skills',                     cat:'people'},
-  {vi:'Phong cách lãnh đạo',         en:'Leadership Style',                      cat:'people'},
-  {vi:'Lãnh đạo tình huống',         en:'Situational Leadership',                cat:'people'},
-  {vi:'Quản lý xung đột',            en:'Conflict Management',                   cat:'people'},
-  {vi:'Kỹ năng giao tiếp',           en:'Communication Skills',                  cat:'people'},
-  {vi:'Thúc đẩy',                    en:'Motivation',                            cat:'people'},
-  {vi:'Lý thuyết Maslow',            en:'Maslow\'s Hierarchy of Needs',          cat:'people'},
-  {vi:'Lý thuyết Herzberg',          en:'Herzberg\'s Motivation-Hygiene Theory', cat:'people'},
-  {vi:'Lý thuyết McGregor X-Y',      en:'McGregor\'s Theory X and Y',            cat:'people'},
-  {vi:'Lý thuyết kỳ vọng Vroom',     en:'Vroom\'s Expectancy Theory',            cat:'people'},
-  {vi:'Văn hóa tổ chức',             en:'Organizational Culture',                cat:'people'},
-  {vi:'Bên liên quan',               en:'Stakeholder',                           cat:'people'},
-  {vi:'Quản lý bên liên quan',       en:'Stakeholder Management',                cat:'people'},
-  {vi:'Ma trận quyền lực/quan tâm',  en:'Power/Interest Grid',                   cat:'people'},
-  {vi:'Đánh giá hiệu suất',          en:'Performance Review',                    cat:'people'},
-  {vi:'Tạo điều kiện',               en:'Facilitation',                          cat:'people'},
-
-  // ── CHẤT LƯỢNG ────────────────────────────────────────────────────────────
-  {vi:'Đảm bảo chất lượng',          en:'Quality Assurance (QA)',                cat:'quality'},
-  {vi:'Kiểm soát chất lượng',        en:'Quality Control (QC)',                  cat:'quality'},
-  {vi:'Tiêu chí chấp nhận',          en:'Acceptance Criteria',                   cat:'quality'},
-  {vi:'Kiểm tra',                    en:'Inspection',                            cat:'quality'},
-  {vi:'Sơ đồ nguyên nhân-kết quả',   en:'Cause-and-Effect Diagram (Fishbone)',   cat:'quality'},
-  {vi:'Sơ đồ xương cá',              en:'Fishbone / Ishikawa Diagram',           cat:'quality'},
-  {vi:'Biểu đồ Pareto',              en:'Pareto Chart',                          cat:'quality'},
-  {vi:'Biểu đồ kiểm soát',           en:'Control Chart',                         cat:'quality'},
-  {vi:'Đường trung tâm',             en:'Mean / Central Line',                   cat:'quality'},
-  {vi:'Giới hạn kiểm soát',          en:'Control Limits',                        cat:'quality'},
-  {vi:'Giới hạn đặc tả',             en:'Specification Limits',                  cat:'quality'},
-  {vi:'Phân tích nguyên nhân gốc rễ',en:'Root Cause Analysis (RCA)',             cat:'quality'},
-  {vi:'Cải tiến liên tục',           en:'Continuous Improvement (Kaizen)',        cat:'quality'},
-
-  // ── CHI PHÍ ───────────────────────────────────────────────────────────────
-  {vi:'Ước tính tương tự',           en:'Analogous Estimating',                  cat:'cost'},
-  {vi:'Ước tính thông số',           en:'Parametric Estimating',                 cat:'cost'},
-  {vi:'Ước tính ba điểm',            en:'Three-Point Estimating (PERT)',         cat:'cost'},
-  {vi:'Ước tính từ dưới lên',        en:'Bottom-Up Estimating',                  cat:'cost'},
-  {vi:'Phân tích chi phí-lợi ích',   en:'Cost-Benefit Analysis',                 cat:'cost'},
-  {vi:'Giá trị hiện tại ròng',       en:'NPV – Net Present Value',               cat:'cost'},
-  {vi:'Tỷ suất hoàn vốn nội bộ',     en:'IRR – Internal Rate of Return',         cat:'cost'},
-  {vi:'Phân tích hòa vốn',           en:'Break-Even Analysis',                   cat:'cost'},
-  {vi:'Thời gian hoàn vốn',          en:'Payback Period',                        cat:'cost'},
-  {vi:'San bằng nguồn lực',          en:'Resource Leveling',                     cat:'cost'},
-  {vi:'Phân bổ nguồn lực',           en:'Resource Allocation',                   cat:'cost'},
-
-  // ── TRUYỀN THÔNG ──────────────────────────────────────────────────────────
-  {vi:'Kế hoạch truyền thông',       en:'Communications Management Plan',        cat:'comm'},
-  {vi:'Sản phẩm bàn giao',           en:'Deliverable',                           cat:'comm'},
-  {vi:'Mốc quan trọng',              en:'Milestone',                             cat:'comm'},
-  {vi:'Báo cáo hiệu suất',           en:'Performance Report',                    cat:'comm'},
-  {vi:'Biên bản cuộc họp',           en:'Meeting Minutes',                       cat:'comm'},
-  {vi:'Tài liệu dự án',              en:'Project Document',                      cat:'comm'},
-  {vi:'Nhật ký vấn đề',              en:'Issue Log',                             cat:'comm'},
-  {vi:'Kênh truyền thông',           en:'Communication Channel',                 cat:'comm'},
-  {vi:'Công thức kênh truyền thông', en:'N*(N-1)/2 channels formula',            cat:'comm'},
-];
+// Vocabulary loaded from lib/vocab-terms.js
+var VOCAB = window.PMVocabTerms || [];
 
 // ── CATEGORIES ───────────────────────────────────────────────────────────────
 var CATS = [
@@ -538,6 +332,7 @@ var CATS = [
   {id:'quality', label:'✅ Chất lượng'},
   {id:'cost',    label:'💰 Chi phí'},
   {id:'comm',    label:'📢 Truyền thông'},
+  {id:'general', label:'📌 Tổng quát'},
 ];
 
 // ── STATE ─────────────────────────────────────────────────────────────────────

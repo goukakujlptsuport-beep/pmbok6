@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rita Mulcahy — Luyện Tập PMP Quiz</title>
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="lib/books-config.js"></script>
 <style>
 :root {
   --bg:       #0d1420;
@@ -362,25 +363,9 @@ footer {
 </div>
 
 <script>
-const CHAPTERS = [
-  { num:2,  id:'rita_02', title:'PMP Exam References in Context' },
-  { num:3,  id:'rita_03', title:'Project Management Foundations' },
-  { num:4,  id:'rita_04', title:'Integration' },
-  { num:5,  id:'rita_05', title:'Leadership Skills' },
-  { num:6,  id:'rita_06', title:'Build and Support Team Performance' },
-  { num:7,  id:'rita_07', title:'Scope' },
-  { num:8,  id:'rita_08', title:'Schedule' },
-  { num:9,  id:'rita_09', title:'Budget and Resources' },
-  { num:10, id:'rita_10', title:'Quality of Deliverables and Products' },
-  { num:11, id:'rita_11', title:'Communications' },
-  { num:12, id:'rita_12', title:'Risks and Issues' },
-  { num:13, id:'rita_13', title:'Procurement' },
-  { num:14, id:'rita_14', title:'Stakeholders' },
-  { num:15, id:'rita_15', title:'Compliance and Delivering Value' },
-  { num:16, id:'rita_16', title:'Tips for Passing the PMP Exam' },
-  { num:17, id:'rita_17', title:'Common Agile Methodologies' },
-  { num:18, id:'rita_18', title:'PMBOK Guide and PM Standard Principles' },
-];
+const CHAPTERS = (window.PMLibConfig ? window.PMLibConfig.getChapters('rita') : [])
+  .filter(ch => ch.quizId)
+  .map(ch => ({ num: ch.num, id: ch.quizId, title: ch.titleEn }));
 
 const LS_KEY = 'rita_quiz_scores';
 

@@ -6,6 +6,8 @@
   <title>Dashboard – PMLib</title>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
   <script src="font-settings.js"></script>
+  <script src="lib/books-config.js"></script>
+  <script src="lib/progress.js"></script>
   <style>
     :root {
       --navy:   #1a2744;
@@ -212,103 +214,35 @@
 
 <script>
 // ── DATA ─────────────────────────────────────────────────────────────────────
-var PMBOK6_CHAPTERS = [
-  { id:'01_instruction',               num:1,  title:'Giới Thiệu' },
-  { id:'02_environment',               num:2,  title:'Môi Trường Dự Án' },
-  { id:'03_pm_role',                   num:3,  title:'Vai Trò PM' },
-  { id:'04_integration_management',    num:4,  title:'Quản Lý Tích Hợp' },
-  { id:'05_scope_management',          num:5,  title:'Quản Lý Phạm Vi' },
-  { id:'06_schedule_management',       num:6,  title:'Quản Lý Tiến Độ' },
-  { id:'07_cost_management',           num:7,  title:'Quản Lý Chi Phí' },
-  { id:'08_quality_management',        num:8,  title:'Quản Lý Chất Lượng' },
-  { id:'09_resource_management',       num:9,  title:'Quản Lý Nguồn Lực' },
-  { id:'10_communications_management', num:10, title:'Truyền Thông' },
-  { id:'11_risk_management',           num:11, title:'Quản Lý Rủi Ro' },
-  { id:'12_procurement_management',    num:12, title:'Quản Lý Mua Sắm' },
-  { id:'13_stakeholder_management',    num:13, title:'Bên Liên Quan' },
-  { id:'14_standard_for_pm',           num:14, title:'Tiêu Chuẩn PM' },
-  { id:'15_appendices_glossary',       num:15, title:'Phụ Lục & Từ Điển' },
-  { id:'16_agile_practice_guide',      num:16, title:'Hướng Dẫn Agile' },
-];
+// Chapter data and progress — loaded from lib/
+var PMBOK6_CHAPTERS = window.PMLibConfig ? window.PMLibConfig.getChapters('pmbok6') : [];
+var RITA_CHAPTERS   = window.PMLibConfig ? window.PMLibConfig.getChapters('rita')   : [];
 
-var RITA_CHAPTERS = [
-  { id:'rita_chap01', num:1,  title:'Mẹo Ôn Thi PMP®' },
-  { id:'rita_chap02', num:2,  title:'Tài Liệu Tham Khảo' },
-  { id:'rita_chap03', num:3,  title:'Nền Tảng Quản Lý Dự Án' },
-  { id:'rita_chap04', num:4,  title:'Tích Hợp' },
-  { id:'rita_chap05', num:5,  title:'Kỹ Năng Lãnh Đạo' },
-  { id:'rita_chap06', num:6,  title:'Xây Dựng Nhóm' },
-  { id:'rita_chap07', num:7,  title:'Phạm Vi Dự Án' },
-  { id:'rita_chap08', num:8,  title:'Tiến Độ & Ngân Sách' },
-  { id:'rita_chap10', num:10, title:'Chất Lượng Sản Phẩm' },
-  { id:'rita_chap11', num:11, title:'Truyền Thông' },
-  { id:'rita_chap12', num:12, title:'Rủi Ro & Vấn Đề' },
-  { id:'rita_chap13', num:13, title:'Mua Sắm' },
-  { id:'rita_chap14', num:14, title:'Các Bên Liên Quan' },
-  { id:'rita_chap15', num:15, title:'Tuân Thủ & Giá Trị' },
-  { id:'rita_chap16', num:16, title:'Mẹo Vượt Qua Kỳ Thi' },
-  { id:'rita_chap17', num:17, title:'Các Phương Pháp Agile' },
-  { id:'rita_chap18', num:18, title:'Hướng Dẫn PMBOK' },
-];
-
-// ── LOAD PMBOK6 PROGRESS ─────────────────────────────────────────────────────
 function loadPMBOK6() {
+  if (!window.PMProgress) return null;
+  // Return raw data format expected by renderBookCard callers
   try {
     var raw = localStorage.getItem('pmbok6_progress');
-    if (!raw) return null;
-    var data = JSON.parse(raw);
-    return data;
+    return raw ? JSON.parse(raw) : null;
   } catch(e) { return null; }
 }
 
-// ── COUNT RITA CHAPTERS VISITED (by highlights or last-read record) ──────────
 function loadRitaProgress() {
-  var lastChap = null;
-  try {
-    var rd = JSON.parse(localStorage.getItem('rita_reading') || '{}');
-    lastChap = rd.lastChap || null;
-  } catch(e) {}
-
+  if (!window.PMProgress) return { visited: {}, lastChap: null };
+  var p = PMProgress.getBookProgress('rita');
+  var lastChap = p.lastChap;
+  // Rebuild visited map for backward-compat with renderBookCard
   var visited = {};
   RITA_CHAPTERS.forEach(function(ch) {
-    try {
-      var hl = JSON.parse(localStorage.getItem('rita_hl_' + ch.id) || '[]');
-      if (hl.length > 0) visited[ch.id] = { status: 'reading', hlCount: hl.length };
-    } catch(e) {}
+    var status = PMProgress.getChapterStatus('rita', ch.id);
+    if (status !== 'unread') visited[ch.id] = { status: status, hlCount: 0 };
   });
-  if (lastChap && !visited[lastChap]) visited[lastChap] = { status: 'reading', hlCount: 0 };
   return { visited: visited, lastChap: lastChap };
 }
 
-// ── COUNT ALL HIGHLIGHTS ──────────────────────────────────────────────────────
-function countHighlights(pmbok6Data) {
-  var counts = { yellow: 0, green: 0, red: 0, total: 0, notes: 0 };
-  // PMBOK6
-  if (pmbok6Data && pmbok6Data.highlights) {
-    Object.values(pmbok6Data.highlights).forEach(function(chapHls) {
-      (chapHls || []).forEach(function(hl) {
-        counts.total++;
-        if (hl.color === 'yellow') counts.yellow++;
-        else if (hl.color === 'green') counts.green++;
-        else if (hl.color === 'red') counts.red++;
-        if (hl.note && hl.note.trim()) counts.notes++;
-      });
-    });
-  }
-  // Rita
-  RITA_CHAPTERS.forEach(function(ch) {
-    try {
-      var hls = JSON.parse(localStorage.getItem('rita_hl_' + ch.id) || '[]');
-      hls.forEach(function(hl) {
-        counts.total++;
-        if (hl.color === 'yellow') counts.yellow++;
-        else if (hl.color === 'green') counts.green++;
-        else if (hl.color === 'red') counts.red++;
-        if (hl.note && hl.note.trim()) counts.notes++;
-      });
-    } catch(e) {}
-  });
-  return counts;
+function countHighlights() {
+  if (!window.PMProgress) return { yellow:0, green:0, red:0, total:0, notes:0 };
+  return PMProgress.countHighlightsByColor(['pmbok6', 'rita']);
 }
 
 // ── RENDER BOOK CARD ──────────────────────────────────────────────────────────
@@ -420,7 +354,7 @@ function renderActivity(pmbok6Data, ritaProgress) {
 (function() {
   var pmbok6 = loadPMBOK6();
   var rita   = loadRitaProgress();
-  var hls    = countHighlights(pmbok6);
+  var hls    = countHighlights();
 
   // Highlight stats
   document.getElementById('hl-yellow').textContent = hls.yellow;

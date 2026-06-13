@@ -265,6 +265,8 @@ footer {
 }
 </style>
 <script src="font-settings.js"></script>
+<script src="lib/books-config.js"></script>
+<script src="lib/progress.js"></script>
 </head>
 <body>
 
@@ -373,75 +375,19 @@ footer {
 <footer>PMLibrary · Tài liệu chỉ dành cho mục đích học tập cá nhân.</footer>
 
 <script>
-// ── BOOKS CATALOG ────────────────────────────────────────────
-const BOOKS = [
-  {
-    id:       'pmbok6',
-    title:    'PMBOK® Guide',
-    edition:  'Lần xuất bản thứ 6',
-    lang:     '🇻🇳 Tiếng Việt',
-    desc:     'Hướng dẫn kiến thức quản lý dự án chuẩn quốc tế của PMI — 16 chương đã dịch đầy đủ.',
-    status:   'available',
-    url:      'index.html',
-    isbn:     '9781628251845',
-    gradient: 'linear-gradient(160deg,#0f1d3a 0%,#1a3060 100%)',
-    lsKey:    'pmbok6_progress',
-    total:    16,
-  },
-  {
-    id:       'pmbok7',
-    title:    'PMBOK® Guide',
-    edition:  '7th Edition',
-    lang:     '🌐 Đang chuẩn bị',
-    desc:     'Phiên bản mới nhất — tiếp cận dựa trên nguyên tắc (principle-based), không theo quy trình.',
-    status:   'coming-soon',
-    url:      null,
-    isbn:     '9781628256659',
-    gradient: 'linear-gradient(160deg,#0c2340 0%,#1565c0 100%)',
-  },
-  {
-    id:       'rita',
-    title:    'PMP® Exam Prep',
-    edition:  'Rita Mulcahy · 11th Ed. 2023',
-    lang:     '🇻🇳 Tiếng Việt',
-    desc:     "Bộ giáo trình luyện thi PMP nổi tiếng nhất thế giới của Rita Mulcahy — 18 chương dịch đầy đủ sang tiếng Việt.",
-    status:   'available',
-    url:      'rita.html',
-    isbn:     '9781932735680',
-    gradient: 'linear-gradient(160deg,#4a1505 0%,#c0390a 100%)',
-  },
-  {
-    id:       'agile',
-    title:    'Agile Practice Guide',
-    edition:  'PMI & Agile Alliance · 2017',
-    lang:     '🌐 Đang chuẩn bị',
-    desc:     'Hướng dẫn thực hành Agile chính thức của PMI — Agile, Scrum, Kanban và hybrid lifecycle.',
-    status:   'coming-soon',
-    url:      null,
-    isbn:     '9781628253993',
-    gradient: 'linear-gradient(160deg,#0a2e14 0%,#1a7a2e 100%)',
-  },
-];
+// ── BOOKS & PROGRESS — loaded from lib/ ──────────────────────
+const BOOKS = window.PMLibConfig ? window.PMLibConfig.books : [];
 
-// ── READ PROGRESS FROM localStorage ──────────────────────────
 function getProgress(book) {
-  if (!book.lsKey) return null;
-  try {
-    const raw = localStorage.getItem(book.lsKey);
-    if (!raw) return { done: 0, total: book.total };
-    const data = JSON.parse(raw);
-    const done = Object.values(data.progress || {}).filter(p => p.status === 'done').length;
-    return { done, total: book.total };
-  } catch { return { done: 0, total: book.total }; }
+  if (!window.PMProgress || !book.id) return null;
+  const p = PMProgress.getBookProgress(book.id);
+  if (!p || !p.total) return null;
+  return { done: p.done, total: p.total };
 }
 
 function getLastChapter(book) {
-  if (!book.lsKey) return null;
-  try {
-    const raw = localStorage.getItem(book.lsKey);
-    if (!raw) return null;
-    return JSON.parse(raw).lastChapter || null;
-  } catch { return null; }
+  if (!window.PMProgress) return null;
+  return PMProgress.getLastChap(book.id);
 }
 
 // ── BADGE ─────────────────────────────────────────────────────
@@ -505,12 +451,10 @@ document.getElementById('book-grid').innerHTML = BOOKS.map(renderCard).join('');
 
 // Rita: link directly to last-read chapter
 (function() {
-  var rd = {};
-  try { rd = JSON.parse(localStorage.getItem('rita_reading') || '{}'); } catch(e) {}
-  var target = rd.lastChap
-    ? 'books/PMPExamPrep/' + rd.lastChap + '.html'
+  var lastChap = window.PMProgress ? PMProgress.getLastChap('rita') : null;
+  var target = lastChap
+    ? 'books/PMPExamPrep/' + lastChap + '.html'
     : 'books/PMPExamPrep/rita_chap01.html';
-  // Update onclick and CTA href for the Rita card
   document.querySelectorAll('.book-card').forEach(function(card) {
     var onclick = card.getAttribute('onclick') || '';
     if (onclick.includes('rita.html')) {
@@ -552,26 +496,9 @@ document.getElementById('header-stats').innerHTML = `
 
   if (!lastCh || !prog) return;
 
-  const CHAPTER_TITLES = {
-    '01_instruction': 'Chương 1 – Giới Thiệu',
-    '02_environment': 'Chương 2 – Môi Trường Dự Án',
-    '03_pm_role': 'Chương 3 – Vai Trò Quản Lý Dự Án',
-    '04_integration_management': 'Chương 4 – Quản Lý Tích Hợp',
-    '05_scope_management': 'Chương 5 – Quản Lý Phạm Vi',
-    '06_schedule_management': 'Chương 6 – Quản Lý Tiến Độ',
-    '07_cost_management': 'Chương 7 – Quản Lý Chi Phí',
-    '08_quality_management': 'Chương 8 – Quản Lý Chất Lượng',
-    '09_resource_management': 'Chương 9 – Quản Lý Nguồn Lực',
-    '10_communications_management': 'Chương 10 – Quản Lý Truyền Thông',
-    '11_risk_management': 'Chương 11 – Quản Lý Rủi Ro',
-    '12_procurement_management': 'Chương 12 – Quản Lý Mua Sắm',
-    '13_stakeholder_management': 'Chương 13 – Quản Lý Các Bên Liên Quan',
-    '14_standard_for_pm': 'Chương 14 – Tiêu Chuẩn QLDA',
-    '15_appendices_glossary': 'Chương 15 – Phụ Lục & Từ Điển',
-    '16_agile_practice_guide': 'Chương 16 – Hướng Dẫn Agile',
-  };
-
-  const chTitle = CHAPTER_TITLES[lastCh] || lastCh;
+  const pmbok6Chapters = window.PMLibConfig ? window.PMLibConfig.getChapters('pmbok6') : [];
+  const chapObj = pmbok6Chapters.find(c => c.id === lastCh);
+  const chTitle = chapObj ? 'Chương ' + chapObj.num + ' – ' + chapObj.title : lastCh;
   const pct     = Math.round(prog.done / prog.total * 100);
 
   const banner = document.getElementById('last-read-banner');
