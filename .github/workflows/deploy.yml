@@ -2,7 +2,9 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - claude/rita-bilingual-font-editing-usw9tc
   workflow_dispatch:
 
 permissions:
@@ -34,7 +36,9 @@ jobs:
 
           # New pages
           [ -f home.html ]      && cp home.html _site/
+          [ -f rita.html ]      && cp rita.html _site/
           [ -f rita-quiz.html ] && cp rita-quiz.html _site/
+          [ -f dashboard.html ] && cp dashboard.html _site/
 
           # Directories
           [ -d books ]    && cp -r books    _site/
