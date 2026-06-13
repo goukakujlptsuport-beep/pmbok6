@@ -1,0 +1,2293 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phạm Vi Dự Án | Rita PMP® Exam Prep 11</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:     #1a2744;
+  --red:      #8b1a1a;
+  --gold:     #c9a84c;
+  --gold-lt:  #e8d5a3;
+  --cream:    #fdf8f0;
+  --text:     #2c2c2c;
+  --text-dim: #5a5a5a;
+  --border:   #d4c89a;
+  --sidebar-w: 268px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ── PROGRESS BAR ── */
+#progress-bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--gold);z-index:200;transition:width .1s}
+
+/* ── SIDEBAR ── */
+#sidebar{
+  width:var(--sidebar-w);background:var(--navy);color:#ccd4e8;
+  position:fixed;top:0;left:0;bottom:0;overflow-y:auto;z-index:100;
+  border-right:3px solid var(--gold);display:flex;flex-direction:column;
+}
+#sidebar-header{
+  background:linear-gradient(135deg,#0f1d3a 0%,#1a2744 100%);
+  padding:1.4rem 1.2rem;border-bottom:2px solid var(--gold);flex-shrink:0;
+}
+#sidebar-header .book-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.62rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;
+}
+#sidebar-header h2{font-size:.92rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:.25rem}
+#sidebar-header .edition{font-family:'Source Sans 3',sans-serif;font-size:.7rem;color:var(--gold-lt);font-style:italic}
+#sidebar-toc{flex:1;overflow-y:auto;padding:.6rem 0}
+#sidebar-toc a{
+  display:block;font-family:'Source Sans 3',sans-serif;font-size:.78rem;
+  color:#aab8d0;text-decoration:none;padding:.4rem 1.2rem;line-height:1.4;
+  transition:all .15s;border-left:3px solid transparent;
+}
+#sidebar-toc a:hover,#sidebar-toc a.active{color:#fff;background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+#sidebar-toc a.toc-h4{padding-left:2.2rem;font-size:.72rem;color:#8896b0}
+#sidebar-toc a.toc-h4:hover{color:#ccd4e8}
+#sidebar-toc .toc-group-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.6rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  padding:.7rem 1.2rem .25rem;opacity:.85;
+}
+#sidebar-nav{
+  flex-shrink:0;border-top:1px solid rgba(255,255,255,.08);
+  display:flex;justify-content:space-between;padding:.7rem .8rem;gap:.5rem;
+}
+#sidebar-nav a{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;color:var(--gold-lt);
+  text-decoration:none;padding:.4rem .7rem;border:1px solid rgba(201,168,76,.3);
+  border-radius:4px;transition:all .2s;line-height:1.3;text-align:center;flex:1;
+}
+#sidebar-nav a:hover{background:rgba(201,168,76,.15);color:#fff}
+#sidebar-nav a.disabled{opacity:.35;pointer-events:none}
+
+/* ── HAMBURGER (mobile) ── */
+#menu-btn{
+  display:none;position:fixed;top:.7rem;left:.8rem;z-index:150;
+  background:var(--navy);border:1px solid var(--gold);color:var(--gold);
+  width:36px;height:36px;border-radius:6px;font-size:1.1rem;cursor:pointer;
+  align-items:center;justify-content:center;
+}
+
+/* ── MAIN ── */
+#main{margin-left:var(--sidebar-w);max-width:880px;padding:0 2.8rem 5rem}
+
+/* ── CHAPTER HERO ── */
+.chapter-hero{
+  background:linear-gradient(135deg,var(--navy) 0%,#2a3a6a 100%);
+  color:white;padding:2.8rem 2.8rem 2.2rem;margin:0 -2.8rem 2.8rem;
+  border-bottom:4px solid var(--gold);position:relative;overflow:hidden;
+}
+.chapter-hero::before{
+  content:'7';position:absolute;right:1.5rem;top:50%;
+  transform:translateY(-50%);font-size:10rem;font-weight:700;
+  color:rgba(255,255,255,.05);font-family:'Merriweather',serif;line-height:1;
+}
+.chapter-hero .ch-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;font-weight:700;
+  letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;
+}
+.chapter-hero h1{font-size:2rem;font-weight:700;line-height:1.2;margin-bottom:.35rem}
+.chapter-hero .ch-en{font-family:'Source Sans 3',sans-serif;font-size:.95rem;color:rgba(255,255,255,.5);font-style:italic}
+
+/* ── CONTENT HEADINGS ── */
+h3{
+  font-family:'Merriweather',serif;font-size:1.25rem;color:var(--navy);
+  margin:2.5rem 0 .85rem;padding-bottom:.45rem;border-bottom:2px solid var(--gold);
+}
+h4{
+  font-family:'Merriweather',serif;font-size:1.05rem;color:var(--navy);
+  margin:2rem 0 .65rem;padding-left:.75rem;border-left:4px solid var(--gold);
+}
+h5{
+  font-family:'Source Sans 3',sans-serif;font-size:.9rem;font-weight:700;
+  color:var(--red);margin:1.4rem 0 .45rem;text-transform:uppercase;letter-spacing:.05em;
+}
+p{font-family:'Merriweather',serif;font-size:.94rem;line-height:1.88;margin-bottom:.95rem;color:var(--text)}
+
+/* ── LISTS ── */
+ul.content-list,ol.content-list{
+  margin:.5rem 0 1rem;padding:0;list-style:none;
+}
+ul.content-list li{
+  position:relative;padding:.28rem 0 .28rem 1.6rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);
+}
+ul.content-list li::before{
+  content:'◆';position:absolute;left:0;color:var(--gold);font-size:.65rem;top:.45rem;
+}
+ol.content-list{counter-reset:ol-c;list-style:none}
+ol.content-list li{
+  position:relative;padding:.28rem 0 .28rem 2rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);counter-increment:ol-c;
+}
+ol.content-list li::before{
+  content:counter(ol-c)'.';position:absolute;left:0;color:var(--navy);
+  font-weight:700;font-size:.85rem;min-width:1.5rem;
+}
+ul.content-list ul.content-list li::before{content:'–';color:var(--text-dim);font-size:.9rem;top:.35rem}
+
+/* ── CALLOUT / DEF BOX ── */
+.callout{
+  background:linear-gradient(135deg,#f5f0e8,#ede8d8);
+  border:1px solid var(--border);border-left:5px solid var(--gold);
+  border-radius:0 6px 6px 0;padding:1rem 1.2rem;margin:1.3rem 0;
+}
+.callout p{font-size:.9rem;margin-bottom:.5rem}
+.callout p:last-child{margin-bottom:0}
+.callout ul.content-list li{font-size:.88rem}
+.callout-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.65rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;
+}
+.callout.tip{border-left-color:#2d7a2d;background:linear-gradient(135deg,#f0f7f0,#e4f0e4)}
+.callout.tip .callout-label{color:#2d7a2d}
+
+/* ── HIGHLIGHT (quicktest / exam alert) ── */
+.highlight{
+  background:var(--navy);color:#e8d5a3;
+  border-radius:8px;padding:1.1rem 1.3rem;margin:1.5rem 0;
+}
+.highlight h5,.highlight strong{color:var(--gold-lt)}
+.highlight p,.highlight li{color:#ccd4e8;font-size:.88rem}
+.highlight ul.content-list li::before{color:var(--gold)}
+
+/* ── FIGURE ── */
+.img-center{
+  text-align:center;margin:1.8rem 0;padding:1rem;
+  background:#f8f5ee;border:1px solid var(--border);border-radius:8px;
+}
+.img-center img{max-width:100%;height:auto;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.img-center p,.img-center div{
+  margin-top:.65rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.8rem;color:var(--text-dim);font-style:italic;
+}
+
+/* ── TABLES ── */
+.table-wrap{overflow-x:auto;margin:1.5rem 0}
+table{width:100%;border-collapse:collapse;font-family:'Source Sans 3',sans-serif;font-size:.84rem}
+table th{background:var(--navy);color:white;padding:.6rem .8rem;text-align:center;font-weight:600;font-size:.79rem}
+table td{padding:.5rem .8rem;border:1px solid #ddd;vertical-align:top;line-height:1.5}
+table tr:nth-child(even) td{background:#f9f6ef}
+
+/* ── BACK TO TOP ── */
+#back-top{
+  position:fixed;bottom:1.5rem;right:1.5rem;
+  background:var(--navy);color:var(--gold);border:1px solid var(--gold);
+  width:38px;height:38px;border-radius:50%;font-size:1.2rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .25s;z-index:99;
+}
+#back-top:hover{background:var(--gold);color:var(--navy)}
+
+/* ── MOBILE ── */
+@media(max-width:860px){
+  #sidebar{transform:translateX(-100%);transition:transform .25s;top:3rem}
+  #sidebar.open{transform:translateX(0)}
+  #menu-btn{display:flex}
+  #main{margin-left:0;padding:3.5rem 1.2rem 4rem}
+  .chapter-hero{margin:0 -1.2rem 2rem;padding:2rem 1.4rem}
+  .chapter-hero::before{display:none}
+}
+
+/* ── DARK / LIGHT MODE ─────────────────────────────── */
+html[data-theme=dark]{--cream:#0f1520;--text:#dde4f0;--text-dim:#8899bb;--border:#253048;--gold-lt:#c9a84c}
+html[data-theme=dark] body{background:#0f1520;color:#dde4f0}
+html[data-theme=dark] #main{background:#0f1520}
+html[data-theme=dark] h1,html[data-theme=dark] h2{color:#e8d5a3}
+html[data-theme=dark] h3{color:#e8d5a3;border-bottom-color:var(--gold)}
+html[data-theme=dark] h4{color:#b8ccee;border-left-color:var(--gold)}
+html[data-theme=dark] p,html[data-theme=dark] li,html[data-theme=dark] td{color:#dde4f0}
+html[data-theme=dark] strong{color:#e8d5a3}
+html[data-theme=dark] em{color:#b8ccee}
+html[data-theme=dark] .callout{background:linear-gradient(135deg,#1a2436,#1e2d45);border-left-color:var(--gold);color:#dde4f0}
+html[data-theme=dark] .callout p{color:#dde4f0}
+html[data-theme=dark] blockquote{background:#1a2436;border-left-color:var(--gold);color:#b0c0d8}
+html[data-theme=dark] table{background:#131c2b}
+html[data-theme=dark] th{background:#1a2744;color:#e8d5a3;border-color:#253048}
+html[data-theme=dark] td{border-color:#253048}
+html[data-theme=dark] tr:nth-child(even) td{background:#1a2436}
+html[data-theme=dark] .highlight,.highlight-box{background:#1a2436!important;border-color:#253048!important;color:#dde4f0!important}
+html[data-theme=dark] #back-top{background:#1a2744;color:var(--gold);border:1px solid rgba(201,168,76,.4)}
+html[data-theme=dark] ul.content-list li,html[data-theme=dark] ol.content-list li{color:#dde4f0}
+html[data-theme=dark] .chapter-hero{background:linear-gradient(135deg,#0a1228 0%,#142040 100%)}
+html[data-theme=dark] .exercise-card{background:#1a2436;border-color:#253048}
+html[data-theme=dark] .answer-box{background:#152035;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] .answer-box p{color:#dde4f0}
+/* theme toggle button */
+#theme-btn{position:absolute;top:.65rem;right:.7rem;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.35);color:var(--gold);width:28px;height:28px;border-radius:5px;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+#theme-btn:hover{background:rgba(201,168,76,.2)}
+#sidebar-header{position:relative}
+
+/* ── HIGHLIGHT SYSTEM ─────────────────────────────────── */
+mark.hl{border-radius:2px;cursor:pointer;padding:1px 0;background:transparent}
+mark.hl[data-color=yellow]{background:rgba(255,241,118,.75)}
+mark.hl[data-color=green]{background:rgba(165,214,167,.75)}
+mark.hl[data-color=red]{background:rgba(239,154,154,.75)}
+mark.hl::after{display:none}
+mark.hl[data-note]:not([data-note=""])::after{content:"✏";font-size:.6rem;vertical-align:super;margin-left:1px;opacity:.65;display:inline}
+/* selection popup */
+#hl-popup{position:fixed;z-index:9999;background:#1a2744;border:1px solid rgba(201,168,76,.5);border-radius:8px;padding:.45rem .6rem;display:flex;align-items:center;gap:.35rem;box-shadow:0 4px 20px rgba(0,0,0,.4);pointer-events:all}
+#hl-popup.hidden{display:none!important}
+.hl-color-btn{width:24px;height:24px;border-radius:50%;border:2px solid rgba(255,255,255,.25);cursor:pointer;transition:transform .15s,border-color .15s;flex-shrink:0}
+.hl-color-btn:hover{transform:scale(1.2);border-color:rgba(255,255,255,.7)}
+.hl-color-btn[data-color=yellow]{background:#fff176}
+.hl-color-btn[data-color=green]{background:#a5d6a7}
+.hl-color-btn[data-color=red]{background:#ef9a9a}
+.hl-sep{width:1px;height:20px;background:rgba(255,255,255,.2);margin:0 .1rem}
+.hl-note-btn{background:none;border:none;color:rgba(255,255,255,.7);font-size:.9rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-note-btn:hover{color:#fff;background:rgba(255,255,255,.1)}
+.hl-del-btn{background:none;border:none;color:rgba(239,154,154,.8);font-size:.85rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-del-btn:hover{color:#ef9a9a;background:rgba(239,154,154,.12)}
+/* note modal */
+#hl-note-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center}
+#hl-note-modal.hidden{display:none!important}
+#hl-note-box{background:#fff;border-radius:10px;padding:1.4rem;width:min(420px,90vw);box-shadow:0 8px 32px rgba(0,0,0,.25)}
+#hl-note-box h3{font-size:.95rem;color:#1a2744;margin-bottom:.7rem;font-family:'Merriweather',serif}
+#hl-note-ta{width:100%;border:1px solid #d4c89a;border-radius:6px;padding:.6rem .8rem;font-size:.88rem;font-family:'Source Sans 3',sans-serif;resize:vertical;min-height:80px;color:#2c2c2c;outline:none}
+#hl-note-ta:focus{border-color:#c9a84c;box-shadow:0 0 0 2px rgba(201,168,76,.25)}
+.hl-note-actions{display:flex;justify-content:flex-end;gap:.6rem;margin-top:.8rem}
+.hl-note-cancel{background:transparent;border:1px solid #ccc;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+.hl-note-save{background:#1a2744;color:#fff;border:none;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+/* highlights panel */
+#hl-panel{position:fixed;top:0;right:0;bottom:0;width:300px;background:#fff;border-left:3px solid var(--gold);z-index:500;display:flex;flex-direction:column;box-shadow:-4px 0 20px rgba(0,0,0,.15);transform:translateX(100%);transition:transform .25s}
+#hl-panel.open{transform:translateX(0)}
+#hl-panel-hdr{background:#1a2744;padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--gold)}
+#hl-panel-hdr h3{font-size:.88rem;color:#fff;font-family:'Source Sans 3',sans-serif;font-weight:700;letter-spacing:.05em}
+#hl-panel-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.2rem;cursor:pointer;padding:.2rem;line-height:1}
+#hl-panel-close:hover{color:#fff}
+#hl-panel-list{flex:1;overflow-y:auto;padding:.6rem}
+#hl-panel-list:empty::before{content:"Chưa có ghi chú nào trong chương này.";font-size:.82rem;color:#999;display:block;padding:.8rem;text-align:center;font-style:italic}
+.hl-item{padding:.65rem .8rem;border-radius:6px;margin-bottom:.5rem;border-left:4px solid #ddd;background:#fafafa;cursor:pointer;transition:background .15s}
+.hl-item:hover{background:#f0f0f0}
+.hl-item[data-color=yellow]{border-left-color:#fdd835}
+.hl-item[data-color=green]{border-left-color:#66bb6a}
+.hl-item[data-color=red]{border-left-color:#ef5350}
+.hl-item-text{font-size:.8rem;color:#2c2c2c;line-height:1.5;margin-bottom:.3rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.hl-item-note{font-size:.75rem;color:#666;font-style:italic;margin-bottom:.3rem}
+.hl-item-del{float:right;background:none;border:none;color:#bbb;cursor:pointer;font-size:.8rem;padding:.1rem .3rem;border-radius:3px;line-height:1}
+.hl-item-del:hover{color:#ef5350;background:rgba(239,83,80,.08)}
+/* sidebar hl badge */
+#hl-sidebar-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:var(--gold);cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#hl-sidebar-btn:hover{background:rgba(201,168,76,.1)}
+#hl-badge{background:rgba(201,168,76,.2);color:var(--gold);font-size:.65rem;font-weight:700;padding:.1rem .4rem;border-radius:10px;min-width:18px;text-align:center}
+html[data-theme=dark] #hl-note-box{background:#1a2436;border:1px solid #253048}
+html[data-theme=dark] #hl-note-box h3{color:#e8d5a3}
+html[data-theme=dark] #hl-note-ta{background:#0f1520;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] #hl-panel{background:#131c2b;border-left-color:var(--gold)}
+html[data-theme=dark] .hl-item{background:#1a2436;border-bottom:1px solid #1e2d45}
+html[data-theme=dark] .hl-item:hover{background:#1e2d45}
+html[data-theme=dark] .hl-item-text{color:#dde4f0}
+html[data-theme=dark] .hl-item-note{color:#8899bb}
+html[data-theme=dark] .hl-note-cancel{border-color:#253048;color:#dde4f0;background:#1a2436}
+html[data-theme=dark] .hl-note-save{background:#c9a84c;color:#0a0f1a}
+
+/* ── CHAPTER NAV PANEL ─────────────────────────────────── */
+#chap-panel{position:fixed;inset:0;z-index:9000;display:flex;align-items:stretch}
+#chap-panel.hidden{display:none!important}
+#chap-panel-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);cursor:pointer}
+#chap-panel-box{position:relative;z-index:1;width:min(360px,90vw);background:#0f1d3a;border-right:3px solid var(--gold);display:flex;flex-direction:column;animation:slideInLeft .2s ease}
+@keyframes slideInLeft{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+#chap-panel-hdr{background:linear-gradient(135deg,#0a1228,#1a2744);padding:1.2rem 1.3rem;border-bottom:2px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
+#chap-panel-hdr h3{font-family:'Source Sans 3',sans-serif;font-size:.85rem;font-weight:700;color:#fff;letter-spacing:.1em;text-transform:uppercase}
+#chap-panel-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.3rem;cursor:pointer;padding:.2rem;line-height:1;transition:color .15s}
+#chap-panel-close:hover{color:#fff}
+#chap-panel-list{flex:1;overflow-y:auto;padding:.5rem 0}
+.chap-panel-item{display:flex;align-items:center;gap:.8rem;padding:.7rem 1.3rem;cursor:pointer;transition:background .15s;border-left:3px solid transparent;text-decoration:none}
+.chap-panel-item:hover{background:rgba(201,168,76,.1);border-left-color:var(--gold)}
+.chap-panel-item.active{background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+.cpanel-num{font-family:'Source Sans 3',sans-serif;font-size:.7rem;font-weight:700;color:var(--gold);min-width:28px;flex-shrink:0}
+.cpanel-title{font-family:'Source Sans 3',sans-serif;font-size:.8rem;color:#ccd4e8;line-height:1.35}
+.cpanel-item-active .cpanel-title{color:#fff;font-weight:600}
+.cpanel-status{margin-left:auto;font-size:.72rem;flex-shrink:0;opacity:.6}
+
+/* ── GITHUB SYNC ──────────────────────────────────── */
+#sync-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:#8899bb;cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s,color .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#sync-btn:hover{background:rgba(201,168,76,.08);color:var(--gold)}
+#sync-btn[data-state=ok]{color:#4caf50}
+#sync-btn[data-state=syncing]{color:var(--gold)}
+#sync-btn[data-state=err]{color:#ef5350}
+#sync-btn[data-state=no-token]{color:#8899bb}
+#sync-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center}
+#sync-modal.hidden{display:none!important}
+#sync-modal-box{background:#0f1d3a;border:2px solid var(--gold);border-radius:10px;padding:1.8rem 2rem;width:min(420px,90vw);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+#sync-modal-box h3{font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:.9rem;text-transform:uppercase;letter-spacing:.1em}
+#sync-modal-box p{font-size:.77rem;color:#aab8d0;line-height:1.6;margin-bottom:.9rem}
+#sync-modal-box input{width:100%;background:#0a1228;border:1px solid rgba(201,168,76,.4);color:#fff;font-family:monospace;font-size:.8rem;padding:.55rem .8rem;border-radius:5px;outline:none;margin-bottom:.8rem;box-sizing:border-box}
+#sync-modal-box input:focus{border-color:var(--gold)}
+.sync-modal-btns{display:flex;gap:.6rem;justify-content:flex-end;flex-wrap:wrap}
+.sync-modal-btns button{font-family:'Source Sans 3',sans-serif;font-size:.77rem;font-weight:700;padding:.42rem .9rem;border-radius:5px;cursor:pointer;border:none;transition:background .15s}
+#sync-save-btn{background:var(--gold);color:#0a0f1a}
+#sync-save-btn:hover{background:#e8c47a}
+#sync-cancel-btn{background:rgba(255,255,255,.1);color:#aab8d0}
+#sync-cancel-btn:hover{background:rgba(255,255,255,.18)}
+#sync-clear-btn{background:rgba(239,83,80,.18);color:#ef9090;margin-right:auto}
+#sync-clear-btn:hover{background:rgba(239,83,80,.32)}
+</style>
+</head>
+<script>
+(function(){var t=localStorage.getItem('rita_theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+</script>
+<body>
+<div id="progress-bar"></div>
+<button id="menu-btn" aria-label="Menu">☰</button>
+
+<aside id="sidebar">
+<div id="sidebar-header">
+  <div class="book-label">Rita PMP® Exam Prep</div>
+  <h2>Ôn Thi PMP®</h2>
+  <div class="edition">Rita Mulcahy · 11th Edition 2023 · Tiếng Việt</div>
+</div>
+<div id="sidebar-toc">
+  <div class="toc-group-label">Nội Dung Chương</div>
+  <a href="#ch7-scope" class="">7 Phạm Vi (Scope)</a>
+<a href="#ch7-introduction" class="">Giới Thiệu</a>
+<a href="#ch7-things-to-know" class="toc-h4">Những Điều Cần Biết Về Quản Lý Phạm Vi Cho Kỳ Thi</a>
+<a href="#ch7-quicktest" class="">QUICKTEST</a>
+<a href="#ch7-product-scope" class="toc-h4">Phạm Vi Sản Phẩm (Product Scope)</a>
+<a href="#ch7-project-scope" class="toc-h4">Phạm Vi Dự Án (Project Scope)</a>
+<a href="#ch7-iteration" class="toc-h4">Bước Lặp (Iteration)</a>
+<a href="#ch7-mvp" class="toc-h4">Sản Phẩm Khả Dụng Tối Thiểu — Minimal Viable Product (Tính Năng Có Thể</a>
+<a href="#ch7-scope-management-overview" class="toc-h4">Tổng Quan Về Quản Lý Phạm Vi</a>
+<a href="#ch7-eco-process-groups-model" class="toc-h4">Phác Thảo Nội Dung Kỳ Thi (ECO) và Mô Hình Nhóm Quy Trình</a>
+<a href="#ch7-plan-driven-scope-management" class="toc-h4">Quản Lý Phạm Vi Theo Kế Hoạch</a>
+<a href="#ch7-agile-scope-management" class="toc-h4">Quản Lý Phạm Vi Agile</a>
+<a href="#ch7-scope-management-planning" class="">Lập Kế Hoạch Quản Lý Phạm Vi</a>
+<a href="#ch7-scope-management-plan" class="toc-h4">Kế Hoạch Quản Lý Phạm Vi</a>
+<a href="#ch7-requirements-management-plan" class="toc-h4">Kế Hoạch Quản Lý Yêu Cầu</a>
+<a href="#ch7-agile-scope-planning" class="toc-h4">Lập Kế Hoạch Phạm Vi Agile</a>
+<a href="#ch7-agile-visioning" class="toc-h4">Tầm Nhìn Sản Phẩm Agile</a>
+<a href="#ch7-agile-product-roadmap" class="toc-h4">Lộ Trình Sản Phẩm Agile</a>
+<a href="#ch7-agile-product-backlog" class="toc-h4">Product Backlog Agile</a>
+<a href="#ch7-product-backlog" class="">Product Backlog</a>
+<a href="#ch7-iteration-planning" class="toc-h4">Lập Kế Hoạch Lặp (Iteration Planning)</a>
+<a href="#ch7-hybrid-project-planning" class="toc-h4">Lập Kế Hoạch Dự Án Lai (Hybrid Project Planning)</a>
+<a href="#ch7-eliciting-analyzing-requirements" class="toc-h4">Thu Thập và Phân Tích Yêu Cầu (Eliciting and Analyzing Requirements)</a>
+<a href="#ch7-methods-eliciting-requirements" class="toc-h4">Các Phương Pháp Thu Thập và Phân Tích Yêu Cầu</a>
+<a href="#ch7-verbal-requirements-elicitation-methods" class="toc-h4">Các Phương Pháp Thu Thập Yêu Cầu Bằng Lời Nói</a>
+<a href="#ch7-graphic-requirements-elicitation-methods" class="toc-h4">Các Phương Pháp Thu Thập Yêu Cầu Bằng Đồ Họa</a>
+<a href="#ch7-artifacts-eliciting-analyzing-balancing" class="toc-h4">Tài Liệu của Việc Thu Thập, Phân Tích và Cân Bằng Yêu Cầu</a>
+<a href="#ch7-balancing-requirements" class="toc-h4">Cân Bằng Yêu Cầu</a>
+<a href="#ch7-resolving-conflicting-requirements" class="toc-h4">Giải Quyết Các Yêu Cầu Mâu Thuẫn</a>
+<a href="#ch7-xac-minh-yeu-cau" class="toc-h4">Xác Minh Yêu Cầu</a>
+<a href="#ch7-tai-lieu-yeu-cau" class="toc-h4">Tài Liệu Yêu Cầu và Các Kết Quả Khác</a>
+<a href="#ch7-dinh-nghia-pham-vi" class="toc-h4">Xác Định Phạm Vi</a>
+<a href="#ch7-dinh-nghia-pham-vi-du-doan" class="toc-h4">Quản Lý Dự Án Dự Đoán và Xác Định Phạm Vi</a>
+<a href="#ch7-dinh-nghia-pham-vi-thich-ung" class="toc-h4">Xác Định Phạm Vi Thích Ứng</a>
+<a href="#ch7-yeu-cau-agile-pham-vi" class="toc-h4">Yêu Cầu Agile và Xác Định Phạm Vi</a>
+<a href="#ch7-ket-qua-dinh-nghia-pham-vi" class="toc-h4">Kết Quả của Xác Định Phạm Vi</a>
+<a href="#ch7-tao-wbs" class="toc-h4">Tạo WBS (Phân Rã Phạm Vi)</a>
+<a href="#ch7-wbs" class="toc-h4">Cấu Trúc Phân Rã Công Việc (WBS)</a>
+<a href="#ch7-exercise-7-2" class="">7.2 Bài Tập</a>
+<a href="#ch7-answer-7-2" class="toc-h4">Đáp Án</a>
+<a href="#ch7-exercise-7-3" class="">7.3 Bài Tập</a>
+<a href="#ch7-answer-7-3" class="toc-h4">Đáp Án</a>
+<a href="#ch7-exercise-7-4" class="">7.4 Bài Tập</a>
+<a href="#ch7-wbs-executing-controlling" class="toc-h4">Câu trả lời</a>
+<a href="#ch7-wbs-dictionary" class="toc-h4">Từ điển WBS</a>
+<a href="#ch7-scope-baseline" class="toc-h4">Đường cơ sở phạm vi</a>
+<a href="#ch7-agile-scope-decomposition" class="toc-h4">Phân tách phạm vi theo Agile</a>
+<a href="#ch7-other-agile-decomposition" class="toc-h4">Các cơ hội phân tách phạm vi Agile khác</a>
+
+</div>
+<div id="sidebar-nav">
+  <a href="rita_chap06.html" class="" title="Hiệu Suất Nhóm">← Ch6</a>
+  <a href="#" id="chap-muc-luc-btn">☰ Mục lục</a>
+  <a href="rita_chap08.html" class="" title="Tiến Độ & Ngân Sách">Ch8 →</a>
+</div></aside>
+
+<main id="main">
+  <div class="chapter-hero">
+    <div class="ch-label">Chương 7</div>
+    <h1>Phạm Vi Dự Án</h1>
+    <div class="ch-en">Scope</div>
+  </div>
+<h3 id="ch7-scope">7 Phạm Vi (Scope)</h3>
+
+<h3 id="ch7-introduction">Giới Thiệu</h3>
+
+<p>Bạn đã biết rằng một dự án phải, từ đầu đến cuối, góp phần đạt được các mục tiêu mà dự án đó được lựa chọn để thực hiện. Việc thu thập và phân tích các yêu cầu, xác định phạm vi dự án và sản phẩm, sau đó xây dựng và bàn giao phạm vi đó phù hợp với các yêu cầu — tất cả những việc này đều là cốt lõi của hệ thống tạo ra giá trị.</p>
+
+<p>Mục tiêu bàn giao phạm vi dự án là như nhau bất kể vòng đời dự án và phương pháp tiếp cận bàn giao là gì. Khi quản lý phạm vi, người quản lý dự án phải xác định công việc nào là cần thiết, sau đó đảm bảo tất cả công việc đó — và chỉ công việc đó — được hoàn thành. Đây thường là một chủ đề dễ hiểu, nhưng tất cả chúng ta đều có những lỗ hổng kiến thức. Hãy xem lại phần Quicktest và ghi chú lại những điểm còn thiếu để bạn có thể chú ý đặc biệt đến những phần đó trong chương này.</p>
+
+<p>Ngoài việc xem lại Quicktest, hãy xem liệu danh sách sau có giúp bạn phát hiện những lỗ hổng trong kiến thức của mình không.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//67107ee5-b068-4d71-9625-ca60a6b35176/markdown_1/imgs/img_in_image_box_62_405_113_457.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A02Z%2F-1%2F%2F1fd53be38ab46c6ae4380fe2eded0e18bd67b35027b8aef2bd61d0d218f99ddf" alt="Image" width="6%" /></div></div>
+
+<h4 id="ch7-things-to-know">Những Điều Cần Biết Về Quản Lý Phạm Vi Cho Kỳ Thi</h4>
+
+<ul class="content-list">
+  <li>Người quản lý dự án phải lập kế hoạch cho cách họ sẽ xác định phạm vi, cũng như cách họ sẽ quản lý và kiểm soát phạm vi. Đây là một phần của kế hoạch quản lý phạm vi.</li>
+  <li>Phạm vi phải được xác định rõ ràng và được phê duyệt chính thức trước khi công việc bắt đầu. Nếu sử dụng phương pháp thích ứng (adaptive), điều này có thể được thực hiện ở mức độ tổng quát hơn với một thỏa thuận tóm tắt.</li>
+  <li>Các yêu cầu phải được đánh giá dựa trên hồ sơ kinh doanh (business case), xếp hạng và ưu tiên hóa để xác định những gì thuộc và không thuộc phạm vi.</li>
+  <li>Cấu trúc phân rã công việc (WBS) được sử dụng trong tất cả các dự án áp dụng phương pháp dự đoán (predictive). Sử dụng công cụ này cho phép người quản lý dự án làm rõ phạm vi đã xác định cũng như tìm thêm phạm vi bổ sung.</li>
+  <li>Backlog, một phương án thay thế Agile cho WBS truyền thống, có thể được sử dụng trong các dự án áp dụng phương pháp thích ứng. Backlog tạo ra khả năng hiển thị về phạm vi cũng như các ưu tiên tổng thể của dự án vì backlog được xếp hạng theo thứ tự ưu tiên.</li>
+  <li>Trong khi dự án đang được thực hiện, người quản lý dự án phải kiểm tra để đảm bảo tất cả công việc được đưa vào kế hoạch quản lý dự án đang được thực hiện — và chỉ công việc đó mà thôi.</li>
+  <li>Không được phép "mạ vàng" (gold plating) dự án (thêm những thứ ngoài yêu cầu).</li>
+  <li>Bất kỳ thay đổi nào đối với phạm vi đều phải được đánh giá về tác động của nó đến tiến độ, chi phí, rủi ro, chất lượng, nguồn lực và sự hài lòng của khách hàng.</li>
+  <li>Trong các dự án hướng theo kế hoạch (plan-driven), các thay đổi về phạm vi cần được phê duyệt; các thay đổi phạm vi không nên được phê duyệt nếu chúng liên quan đến công việc không phù hợp với điều lệ dự án.</li>
+  <li>Các ưu tiên và thay đổi phạm vi linh hoạt hơn trong các dự án Agile, nơi công việc được lập kế hoạch và hoàn thành theo từng bước lặp và gia tăng, nhưng thay đổi không miễn phí. Điều này có nghĩa là khi phạm vi được bổ sung, backlog được sắp xếp lại ưu tiên và các hạng mục đã được ưu tiên trước đó sẽ bị đẩy xuống dưới phạm vi mới được thêm vào. Có thể một số phạm vi ở cuối backlog sẽ bị đẩy sang phiên bản phát hành hoặc dự án khác để giữ nguyên đường cơ sở chi phí và tiến độ.</li>
+</ul>
+
+<h3 id="ch7-quicktest">QUICKTEST</h3>
+
+<ul class="content-list">
+  <li>Phạm vi sản phẩm (Product Scope)</li>
+  <li>Phạm vi dự án (Project Scope)</li>
+  <li>Hộp thời gian (Timeboxing)</li>
+  <li>Sản phẩm khả dụng tối thiểu — minimal viable product (MVP)</li>
+  <li>Quy trình quản lý phạm vi</li>
+  <li>Kế hoạch quản lý phạm vi</li>
+  <li>Kế hoạch quản lý yêu cầu</li>
+  <li>Lộ trình sản phẩm (Product roadmap)</li>
+  <li>Backlog sản phẩm (Product backlog)</li>
+  <li>Các phương pháp thu thập yêu cầu:
+    <ul class="content-list">
+      <li>Động não (Brainstorming)</li>
+      <li>Phỏng vấn (Interviewing)</li>
+      <li>Nhóm tập trung (Focus groups)</li>
+      <li>Bảng câu hỏi và khảo sát (Questionnaires and surveys)</li>
+      <li>Bỏ phiếu (Voting)</li>
+      <li>Phân tích quyết định đa tiêu chí (Multicriteria decision analysis)</li>
+      <li>Kỹ thuật nhóm danh nghĩa (Nominal group technique)</li>
+      <li>Quan sát (Observation)</li>
+      <li>Tạo mẫu (Prototyping)</li>
+      <li>Điều phối (Facilitation)</li>
+      <li>Bản đồ tư duy (Mind maps)</li>
+      <li>Sơ đồ ngữ cảnh (Context diagrams)</li>
+      <li>Sơ đồ ái lực (Affinity diagrams)</li>
+    </ul>
+  </li>
+  <li>Cân bằng các yêu cầu (Balancing requirements)</li>
+  <li>Đánh giá bước lặp (Iteration reviews)</li>
+  <li>Tiêu chí chấp nhận (Acceptance criteria)</li>
+  <li>Định nghĩa hoàn thành (Definition of done)</li>
+  <li>Ma trận truy xuất yêu cầu (Requirements traceability matrix)</li>
+  <li>Phân tích sản phẩm (Product analysis)</li>
+  <li>Bản mô tả phạm vi dự án (Project scope statement)</li>
+  <li>Cấu trúc phân rã công việc (WBS)</li>
+  <li>Từ điển WBS (WBS dictionary)</li>
+  <li>Đường cơ sở phạm vi (Scope baseline)</li>
+  <li>Phân rã phạm vi theo Agile (Agile scope decomposition)</li>
+  <li>Kiểm tra (Inspection)</li>
+  <li>Ưu tiên hóa theo giá trị khách hàng (Customer-valued prioritization)</li>
+  <li>Bàn giao sản phẩm gia tăng (Incremental product delivery)</li>
+</ul>
+
+<div class="callout">
+  <p>Người quản lý dự án và nhóm dự án cần liên tục xác định những gì được và không được đưa vào phạm vi dự án.</p>
+  <p>Việc xác minh nội bộ, tiếp theo là sự chấp thuận của khách hàng đối với các sản phẩm bàn giao, diễn ra xuyên suốt dự án.</p>
+</div>
+
+<h5>Các Định Nghĩa Liên Quan Đến Quản Lý Phạm Vi</h5>
+
+<p>Điều quan trọng là phải hiểu sự khác biệt giữa phạm vi sản phẩm và phạm vi dự án. Các định nghĩa đó được trình bày tiếp theo, cùng với một số định nghĩa khác để giúp bạn hiểu nội dung chương này.</p>
+
+<h4 id="ch7-product-scope">Phạm Vi Sản Phẩm (Product Scope)</h4>
+
+<p>Phạm vi sản phẩm có thể được định nghĩa là các sản phẩm bàn giao với các tính năng và chức năng liên quan của chúng. Nói cách khác: Các yêu cầu liên quan đến sản phẩm, dịch vụ hoặc kết quả của dự án chính là phạm vi sản phẩm. Nó trả lời câu hỏi "Kết quả cuối cùng nào là cần thiết?" Có thể có một dự án riêng, sơ bộ để xác định phạm vi sản phẩm, hoặc các yêu cầu có thể được xác định như một phần của dự án, tùy thuộc vào nhu cầu của dự án và tổ chức.</p>
+
+<div class="callout tip">
+  <p><strong>Ví dụ:</strong> Giả sử dự án là xây dựng một nhà ga xe lửa mới. Phạm vi sản phẩm là "một nhà ga xe lửa đáp ứng các thông số kỹ thuật này." Các thông số kỹ thuật sẽ phức tạp và toàn diện như được xác định bởi các chuyên gia có chuyên môn. Để xác định xem dự án có đạt được phạm vi sản phẩm hay không, nhà ga xe lửa mới sẽ được so sánh với các thông số kỹ thuật, những thông số đã được ghi lại trong tài liệu yêu cầu và bản mô tả phạm vi dự án. Tất cả các khía cạnh của nhà ga đều cần được kiểm tra để đảm bảo chúng hoạt động đúng theo kế hoạch trước khi nhà ga được chấp nhận là hoàn thành và bàn giao cho bộ phận vận hành.</p>
+</div>
+
+<h4 id="ch7-project-scope">Phạm Vi Dự Án (Project Scope)</h4>
+
+<p>Phạm vi dự án là công việc mà nhóm dự án sẽ thực hiện để bàn giao phạm vi sản phẩm. Nó bao gồm phạm vi sản phẩm. Với ví dụ nhà ga xe lửa, phạm vi dự án sẽ là "một nhà ga xe lửa đáp ứng các thông số kỹ thuật này," cộng với việc quản lý và thực hiện tất cả công việc để bàn giao nhà ga đó. Nói cách khác, phạm vi dự án bao gồm các hoạt động lập kế hoạch, phối hợp và quản lý nhằm đảm bảo phạm vi sản phẩm được thực hiện. Những nỗ lực này trở thành một phần của đường cơ sở phạm vi và kế hoạch quản lý phạm vi, vốn là các thành phần của kế hoạch quản lý dự án.</p>
+
+<h4 id="ch7-iteration">Bước Lặp (Iteration)</h4>
+
+<p>Trong các dự án Agile, đây là một khoảng thời gian được xác định cụ thể mà trong đó nhóm dự án tinh chỉnh kế hoạch hoặc xây dựng sản phẩm của dự án. Trong bối cảnh lập kế hoạch, các kế hoạch được lặp đi lặp lại và tinh chỉnh khi có thông tin mới. Trong bối cảnh phạm vi, nhóm xây dựng sản phẩm theo từng bước gia tăng trong các khoảng thời gian cố định được gọi là các bước lặp (hoặc sprint, trong Scrum). Các bước lặp được đặt trong các "hộp thời gian" (timebox) cụ thể. (Xem phần Timeboxing tiếp theo.)</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//67107ee5-b068-4d71-9625-ca60a6b35176/markdown_2/imgs/img_in_image_box_680_579_728_637.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A03Z%2F-1%2F%2F8f7af2f7290733bd5788961dbe9209b5e7458c4094189d3ca6bbb4c519914237" alt="Image" width="5%" /></div></div>
+
+<h5>Hộp Thời Gian (Timeboxing)</h5>
+
+<p>Đối với dự án Agile, timebox là một khoảng thời gian ngắn, cố định được đặt ra để nhóm hoàn thành một tập hợp các hoạt động đã được lựa chọn và ưu tiên. Trong bối cảnh phạm vi, điều này có thể được hiểu là việc hoàn thành một tập hợp các user story cụ thể trong một bước lặp (hoặc sprint) hai tuần, chẳng hạn. Nếu công việc được lên kế hoạch cho bước lặp không hoàn thành trong hai tuần đó, nhóm sẽ để lại công việc chưa hoàn thành trong backlog để thực hiện trong bước lặp khác. Vì vậy, chính timebox (bước lặp) mới là thứ được tôn trọng. Không có cách tiếp cận "hoàn thành tất cả các story dù mất bao lâu".</p>
+
+<h4 id="ch7-mvp">Sản Phẩm Khả Dụng Tối Thiểu — Minimal Viable Product (Tính Năng Có Thể Bán Tối Thiểu hoặc MMF)</h4>
+
+<p>Thuật ngữ "MVP," hay sản phẩm khả dụng tối thiểu, trong Agile đề cập đến một phần sản phẩm ít nhất đủ hữu ích để khách hàng có thể nhận bàn giao MVP và sử dụng nó trong khi nhóm tiếp tục xây dựng phần còn lại của sản phẩm. Chúng ta nói "có thể" ở đây vì trong khi nhóm có thể trình bày MVP cho khách hàng, khách hàng có thể ký nhận và nhận bàn giao, rồi sử dụng nó. Hoặc khách hàng có thể chấp nhận, ký nhận và chờ thêm các MVP được bổ sung trước khi nhận bàn giao. Những sản phẩm có giá trị nhưng chưa hoàn thiện này còn được gọi là các tính năng có thể bán tối thiểu (minimal marketable features — MMF). Một bản phát hành sản phẩm thường sẽ có nhiều MMF được tích hợp lại với nhau, nhưng những gì được đưa vào là do khách hàng quyết định.</p>
+
+<div class="callout tip">
+  <p><strong>Ví dụ:</strong> Khách hàng có thể nhận bàn giao một chiếc ván trượt có tiềm năng chạy điện. Họ có thể sử dụng nó mà không có các linh kiện điện, và nâng cấp sau khi các tính năng điện đã sẵn sàng. Họ có thể quyết định sau xem có muốn gắn thêm tay nắm vốn đã có sẵn hay không (đây là tùy chọn), nhưng trong khi chờ nhóm xây dựng các linh kiện điện để lắp đặt, họ đã có được giá trị từ việc sử dụng chiếc ván trượt ở dạng cơ bản — đó chính là MVP của nó.</p>
+</div>
+
+<h4 id="ch7-scope-management-overview">Tổng Quan Về Quản Lý Phạm Vi</h4>
+
+<p>Trong kỳ thi, bạn cần hiểu quy trình quản lý phạm vi từ góc độ mô hình Nhóm Quy trình (Process Groups) cũng như từ góc độ môi trường thích ứng. Bạn cũng cần có hiểu biết vững chắc về cách các mô hình này phù hợp với các khái niệm được tìm thấy trong Đề cương Nội dung Thi (ECO) và Hướng dẫn PMBOK.</p>
+
+<h4 id="ch7-eco-process-groups-model">Phác Thảo Nội Dung Kỳ Thi (ECO) và Mô Hình Nhóm Quy Trình</h4>
+
+<p>Miền Quy Trình của ECO có một nhiệm vụ gọi là Lập Kế Hoạch và Quản Lý Phạm Vi, tương đương với quy trình Quản Lý Phạm Vi trong mô hình Nhóm Quy Trình. Điều này được minh họa trong hai cột đầu tiên của bảng sau.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//67107ee5-b068-4d71-9625-ca60a6b35176/markdown_3/imgs/img_in_image_box_53_275_734_478.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A04Z%2F-1%2F%2F5bb0cdc6747dc37ea75525f1613a7ee33852d83613080eaa45aa9d8ceb602b5c" alt="Image" width="82%" /></div></div>
+
+<p>Hiện tại, chỉ có một nhiệm vụ được liệt kê trong cột ECO phía trên. Điều này có nghĩa là chỉ "Lập kế hoạch và quản lý phạm vi" trong ECO là liên quan đến việc lập kế hoạch và kiểm soát phạm vi trong mô hình Nhóm Quy Trình, bất kể thuộc tính dự án và vòng đời dự án được chọn? Tất nhiên là không. Sẽ hữu ích nếu bạn cầm ECO trên tay hoặc mở nó trên máy tính trong khi làm việc qua phần này của chương. Suy nghĩ một cách tổng thể, bạn có thể đã nhận ra rằng nhiệm vụ ECO "lập kế hoạch và quản lý chất lượng sản phẩm/sản phẩm bàn giao" gắn kết chặt chẽ với việc quản lý phạm vi. Nhóm cũng sử dụng tiến độ và ngân sách để tạo ra phạm vi.</p>
+
+<p>Trước tiên, hãy nhớ rằng nhiều hoặc tất cả các kỹ năng trong miền Con Người được sử dụng để quản lý tất cả các ràng buộc dự án, vì người quản lý dự án làm việc cùng người khác để hoàn thành công việc. Bây giờ, hãy xem xét các ví dụ sau và lướt qua ECO để suy nghĩ về cách các nhiệm vụ này và các nhiệm vụ khác phối hợp với nhiệm vụ lập kế hoạch và quản lý phạm vi. Hãy suy nghĩ về các nhiệm vụ ECO một cách toàn diện. Đây chỉ là một vài ví dụ về các nhiệm vụ ECO khác hữu ích trong việc quản lý phạm vi:</p>
+
+<ul class="content-list">
+  <li>Quản lý phạm vi dựa trên công việc của người quản lý dự án để đảm bảo rằng các thành viên nhóm/bên liên quan được đào tạo đầy đủ (miền 1, nhiệm vụ 5). Bất kể đó là các chuyên gia tổng quát hóa cho dự án agile hay các thành viên nhóm chuyên môn cho dự án theo kế hoạch, người quản lý dự án xác định nhu cầu đào tạo và cung cấp đào tạo như một phần của việc hỗ trợ hiệu suất nhóm và giải quyết, loại bỏ các trở ngại (miền Con Người, nhiệm vụ 4 và 7).</li>
+  <li>Xem nhiệm vụ 2 của miền Môi Trường Kinh Doanh trong ECO: Đánh giá và bàn giao lợi ích và giá trị dự án. Đây là việc cân bằng các ràng buộc cạnh tranh, bao gồm chi phí, thời gian và chất lượng để xây dựng phạm vi sản phẩm.</li>
+</ul>
+
+<p>Các yêu cầu phần lớn được xác định sớm trong dự án theo kế hoạch, trong khi đối với dự án agile, người ta hiểu rằng phạm vi phát sinh và cần thu thập thêm yêu cầu từ các bên liên quan theo thời gian. Hình 7.1 là hình minh họa về quản lý phạm vi ở cấp độ cao từ góc độ mô hình Nhóm Quy Trình. Nó giúp bạn hình dung vị trí của mình</p>
+
+<p>trong quy trình quản lý phạm vi khi bạn tiếp tục với chương này, và hiểu nó sẽ giúp bạn trong kỳ thi khi đọc các câu hỏi tình huống.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//67107ee5-b068-4d71-9625-ca60a6b35176/markdown_4/imgs/img_in_image_box_142_162_288_456.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A05Z%2F-1%2F%2F14742cd4f1f108b6291e95d5b8003437335acf64ba92a17bc9d34a1b6f0dd838" alt="Image" width="17%" /></div></div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//67107ee5-b068-4d71-9625-ca60a6b35176/markdown_4/imgs/img_in_image_box_340_161_652_483.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A05Z%2F-1%2F%2F35672b1b3573caab72c3d0387f3b5666b863eb667c52b0b07ba3f09e1af491e9" alt="Image" width="37%" /></div></div>
+
+<div style="text-align: center;">HÌNH 7.1 Quy trình quản lý phạm vi</div>
+
+<h4 id="ch7-plan-driven-scope-management">Quản Lý Phạm Vi Theo Kế Hoạch</h4>
+
+<p>Có rất nhiều cách chấp nhận được để quản lý phạm vi. Nếu bạn làm theo cách khác với những gì được mô tả ở đây, bạn không nhất thiết là sai. Đối với kỳ thi, hãy nghĩ về quy trình quản lý phạm vi bao gồm những điều sau đây cho quản lý dự án dự đoán:</p>
+
+<ol class="content-list">
+  <li>Một kế hoạch được xây dựng về cách lập kế hoạch, xác nhận và kiểm soát phạm vi và yêu cầu.</li>
+  <li>Xác định các yêu cầu. Đảm bảo chúng hỗ trợ lý do kinh doanh của dự án (như được mô tả trong điều lệ dự án) — các lợi ích và giá trị mà dự án có nghĩa vụ mang lại (miền Môi Trường Kinh Doanh, nhiệm vụ 2).</li>
+  <li>Phân tích và cân bằng nhu cầu của các bên liên quan để xác định phạm vi.</li>
+  <li>Tạo WBS để phân chia phạm vi thành các phần nhỏ hơn, dễ quản lý hơn. Xác định từng phần trong từ điển WBS.</li>
+  <li>Nhận được xác nhận (chấp nhận có chữ ký) rằng phạm vi công việc đã hoàn thành là được chấp nhận bởi khách hàng hoặc nhà tài trợ.</li>
+  <li>Đo lường hiệu suất phạm vi và điều chỉnh khi cần thiết.</li>
+</ol>
+
+<p>Không ai có thể yêu cầu hoặc thêm công việc không liên quan đến lý do khởi động dự án. Tuy nhiên, trong thực tế của bạn, có những người muốn công việc được thực hiện và cố gắng gắn kết nó với bất kỳ dự án nào họ có thể để hoàn thành công việc đó không? Bạn có thấy phạm vi trong các dự án không hỗ trợ mục tiêu kinh doanh của công ty không? Điều này xảy ra mọi lúc. Kiểm soát thay đổi là về việc bảo vệ dự án khỏi các thay đổi không được phê duyệt trong môi trường dự đoán.</p>
+
+<div class="callout tip">
+<p>Khi làm bài thi, hãy giả định rằng bạn có thẩm quyền trong môi trường dự đoán để nói không khi ai đó cố thêm phạm vi không liên quan vào dự án của bạn. Điều này quan trọng để nội tâm hóa vì rất nhiều trong số chúng ta không có thẩm quyền này trong thực tế.</p>
+</div>
+
+<p>Lưu ý rằng trong môi trường dự đoán, việc tạo cấu trúc phân chia công việc (WBS) là một phần bắt buộc của quản lý dự án. Nếu bạn chưa bao giờ tạo một WBS hoặc hiện không sử dụng WBS trong các dự án của mình, chương này sẽ giúp bạn hiểu công cụ này có lợi như thế nào và nó có thể làm gì cho bạn. Hãy nhớ rằng, kỳ thi đặt câu hỏi ở cấp độ chuyên gia và giả định rằng bạn có kinh nghiệm sử dụng các công cụ khác nhau.</p>
+
+<h4 id="ch7-agile-scope-management">Quản Lý Phạm Vi Agile</h4>
+
+<p>Trong môi trường thích ứng, quản lý phạm vi trông như thế này:</p>
+
+<ol class="content-list">
+  <li>Các yêu cầu được xác định và ghi lại ở mức độ chi tiết đủ để chúng có thể được ưu tiên và ước tính ở cấp độ cao.</li>
+</ol>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//299764cf-a5c1-4352-8e89-aa3f9d8b09dd/markdown_0/imgs/img_in_image_box_666_113_713_167.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A23Z%2F-1%2F%2F90acdc2b9a5ffd27d1bebae9f3e247ffd143bd34c474bdee8bc722a5e0876b7b" alt="Image" width="5%" /></div></div>
+
+<ol class="content-list" start="2">
+  <li>Các tính năng của sản phẩm — tổng hợp là phạm vi sản phẩm — được lưu giữ trong một danh sách gọi là product backlog.</li>
+  <li>Công việc được phân chia thành các lần phát hành sản phẩm. Một dự án có thể bao gồm một hoặc nhiều lần phát hành.</li>
+  <li>Đối với mỗi lần phát hành, công việc được hoàn thành qua các lần lặp (các khoảng thời gian được xác định cụ thể, như hai tuần hoặc ba tuần, chẳng hạn).</li>
+  <li>Công việc của mỗi lần lặp (và phát hành) được xác định chi tiết hơn ngay trước khi công việc cho mỗi lần lặp bắt đầu. Theo cách này, các quyết định được trì hoãn đến "thời điểm trách nhiệm cuối cùng".</li>
+</ol>
+
+<p>Phạm vi sản phẩm thường linh hoạt hơn trong các dự án agile so với các dự án theo kế hoạch. Khi các tính năng sản phẩm thiết yếu được bàn giao trong các lần phát hành agile đầu tiên, nhiều tính năng tùy chọn hơn có thể được hoãn lại.</p>
+
+<div class="callout">
+<p><strong>Ví dụ</strong> Bạn đang mua một chiếc xe điện tùy chỉnh mới. Bạn đi du lịch nhiều, vì vậy bạn muốn ghế trước có thể ngả thành giường để bạn có thể dừng lại ở khu cắm trại để ngủ. Ngân sách của bạn không hỗ trợ những ghế thích nghi này ngay bây giờ, nhưng bạn cần xe ngay. Cả ngân sách lẫn tiến độ của bạn đều không hỗ trợ các tính năng tự lái sẽ cho phép bạn chợp mắt trong khi xe lái tự động trên một chuyến đi đường dài. Vì vậy công ty xe điện xây dựng chiếc xe cơ bản và bàn giao nhanh chóng trong Lần Phát Hành 1. Sau đó, trong một lần phát hành khác, bạn quay lại để lắp đặt thêm một số tính năng tùy chỉnh mà bạn đã thỏa thuận với nhà sản xuất xe. Cuối cùng bạn sẽ quay lại để lắp những ghế thích nghi khi giá giảm và bạn có tiền và thời gian để lắp đặt chúng.</p>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//299764cf-a5c1-4352-8e89-aa3f9d8b09dd/markdown_0/imgs/img_in_image_box_76_462_128_512.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A24Z%2F-1%2F%2F3f8130c804ab2c53397f99b237bc303356e3b26a4d8b2b25381a9805cfe00bca" alt="Image" width="6%" /></div></div>
+
+<p>Những người thực hành agile sơ khai xuất thân từ ngành phát triển phần mềm. Họ nhận thức rõ rằng hầu hết người dùng phần mềm thực sự chỉ sử dụng một tỷ lệ nhỏ các tính năng của một gói phần mềm nhất định. Vì vậy họ đặt câu hỏi tại sao phải chờ toàn bộ gói được xây dựng khi các tính năng có giá trị nhất có thể được sử dụng ngay lập tức (trong khi việc bàn giao một bộ tính năng lớn nổi tiếng là khó thực hiện đúng hạn)? Họ nhận ra điều đã trở thành một nguyên tắc agile: một lợi thế rõ ràng của môi trường thích ứng là giá trị tiết kiệm được trên các tính năng không được xây dựng. Nói cách khác, một phần của việc mang lại giá trị là quyết định công việc nào không được thực hiện (ngay lập tức, hoặc có thể không bao giờ).</p>
+
+<p>Trong ví dụ của chúng ta ở trên, điều gì xảy ra nếu sau này bạn quyết định xe của mình không cần những ghế ngả thành giường? Bạn có thể hủy tính năng đó và chỉ giữ lại chiếc xe cơ bản. Tuy nhiên nếu bạn quyết định sẽ lấy tính năng đó sau này, cơ hội tốt là bạn sẽ mua được một tính năng được cải tiến cũng trở nên tiết kiệm hơn.</p>
+
+<div class="callout tip">
+<p><strong>Lưu ý:</strong> Đối với vòng đời dự án theo kế hoạch, bạn chắc chắn sẽ cần một WBS, trong khi trong vòng đời định hướng thay đổi hơn, bạn có thể có một WBS, product backlog có thể thay thế nó, hoặc bạn có thể có cả hai. Hãy tìm bằng chứng trong các câu hỏi thi cho biết bạn đang xử lý loại vòng đời nào.</p>
+</div>
+
+<h5>Kết Quả Mong Đợi của Quản Lý Phạm Vi</h5>
+
+<p>Hãy giả định trong kỳ thi rằng phạm vi được lập kế hoạch và quản lý đúng cách trừ khi thông tin trong câu hỏi thi chỉ ra khác. Điều này có nghĩa là các kết quả sau đây nên được kỳ vọng từ quản lý phạm vi:</p>
+
+<ul class="content-list">
+  <li>Trong suốt dự án, nhóm dự án có hiểu biết rõ ràng về các yêu cầu sản phẩm và dự án, hoặc họ có khả năng làm rõ những yêu cầu đó thông qua tương tác với người quản lý dự án và các bên liên quan.</li>
+  <li>Trong suốt dự án, dữ liệu được thu thập và đo lường giá trị thu được (EVM) được thực hiện để chỉ ra tiến độ dự án so với kế hoạch. Điều này cho phép nhóm và các bên liên quan quản lý tốt nhất các kết quả mục tiêu và thực hiện điều chỉnh khi cần thiết. Điều này có thể có dạng đo lường EVM truyền thống cho các dự án theo kế hoạch (xem chương "Ngân Sách và Tài Nguyên"). Đối với các dự án agile, các nhóm có thể sử dụng biểu đồ burnup và burndown (xem chương "Xây Dựng và Hỗ Trợ Hiệu Suất").</li>
+  <li>Phạm vi dự án theo thỏa thuận giữa tổ chức thực hiện và các bên liên quan được bàn giao đúng hạn, trong ngân sách và với mức chất lượng đủ, theo thỏa thuận với khách hàng.</li>
+  <li>Phạm vi có thể dễ dàng kiểm soát, xác minh nội bộ và xác nhận với khách hàng. Quản lý phạm vi và chất lượng, cùng với sự tham gia của các bên liên quan và quản lý kỳ vọng của các bên liên quan, dẫn đến sự hài lòng của khách hàng với tiến độ dự án.</li>
+  <li>Khách hàng hài lòng với các sản phẩm bàn giao của dự án.</li>
+</ul>
+
+<h3 id="ch7-scope-management-planning">Lập Kế Hoạch Quản Lý Phạm Vi</h3>
+
+<p>Cùng với nhau, các kế hoạch quản lý yêu cầu và phạm vi cung cấp hướng dẫn về cách phạm vi dự án và sản phẩm sẽ được xác định, quản lý và kiểm soát. Điều lệ dự án, vòng đời dự án và mô tả cách tiếp cận phát triển, cùng các tài sản quy trình tổ chức (OPA) đều là đầu vào cho quy trình lập kế hoạch quản lý phạm vi. Cách tiếp cận phát triển ảnh hưởng đến cách các yêu cầu sẽ được thu thập và cách xây dựng bản tuyên bố phạm vi.</p>
+
+<h4 id="ch7-scope-management-plan">Kế Hoạch Quản Lý Phạm Vi</h4>
+
+<p>Kế hoạch quản lý phạm vi, là tài liệu chính của việc lập kế hoạch quản lý phạm vi, là một phần của kế hoạch quản lý dự án. Người quản lý dự án sử dụng nó để hướng dẫn việc xây dựng sản phẩm cho đến khi kết thúc. Nó chi tiết hóa cách phạm vi sẽ được lập kế hoạch, thực hiện và kiểm soát. Nó mô tả cách thực hiện những điều sau:</p>
+
+<ul class="content-list">
+  <li>Đạt được phạm vi tổng thể của dự án</li>
+  <li>Tạo WBS và từ điển WBS, hoặc product backlog và các story</li>
+  <li>Quản lý và kiểm soát phạm vi theo kế hoạch quản lý dự án</li>
+  <li>Nhận được sự chấp thuận đối với các sản phẩm bàn giao</li>
+</ul>
+
+<p>Mỗi kế hoạch quản lý phạm vi phải được điều chỉnh phù hợp với dự án cụ thể, nhưng nó có thể bao gồm các chủ đề có thể được chuẩn hóa cho một công ty hoặc một loại dự án cụ thể. Do đó, các tổ chức thường sử dụng các mẫu, biểu mẫu và tiêu chuẩn được chấp nhận cho việc quản lý phạm vi. Đây là các ví dụ về OPA.</p>
+
+<h4 id="ch7-requirements-management-plan">Kế Hoạch Quản Lý Yêu Cầu</h4>
+
+<p>Ngoài việc mô tả các phương pháp mà người quản lý dự án dự định sử dụng để xác định các yêu cầu, kế hoạch quản lý yêu cầu nên trả lời các câu hỏi sau:</p>
+
+<ul class="content-list">
+  <li>Những kỹ thuật yêu cầu nào sẽ được sử dụng để phân tích và ghi lại các yêu cầu?</li>
+  <li>Sau khi tôi có nhiều yêu cầu nhất có thể thu thập được, tôi sẽ làm gì để phân tích, ưu tiên, quản lý và theo dõi các thay đổi?</li>
+  <li>Tôi nên đưa điều gì vào ma trận truy xuất yêu cầu? (Được mô tả sau trong chương này.)</li>
+</ul>
+
+<p>Các kế hoạch quản lý yêu cầu và phạm vi có thể được phát triển theo từng giai đoạn hoặc lặp lại trong quá trình lập kế hoạch dự án. Bước đầu tiên là lập kế hoạch cách xác định phạm vi và ai sẽ tham gia. Các quyết định lập kế hoạch sau đó sẽ trở thành một phần của kế hoạch quản lý phạm vi. Các nỗ lực lập kế hoạch sau này có thể dẫn đến việc thêm phạm vi, vì vậy quy trình là lặp lại. Ví dụ, việc hoàn thành quy trình Lập Kế Hoạch Phản Hồi Rủi Ro có nghĩa là các phản hồi rủi ro này là một phần của phạm vi dự án, gây ra một lần lặp mới của kế hoạch quản lý phạm vi, bản tuyên bố phạm vi và WBS, hoặc lộ trình sản phẩm và backlog, đối với agile.</p>
+
+<h4 id="ch7-agile-scope-planning">Lập Kế Hoạch Phạm Vi Agile</h4>
+
+<p>Lập kế hoạch dự án và sản phẩm có tính lặp lại hơn trong các dự án agile so với các dự án theo kế hoạch. Cụ thể, lập kế hoạch sản phẩm lặp lại xảy ra đầu tiên ở cấp độ cao trong quá trình tầm nhìn sản phẩm. Sau đó nhóm bắt đầu phân rã sản phẩm thành một backlog chứa các story, có thể được phân rã thêm. Sau khi phân rã xảy ra, lộ trình sản phẩm được tạo ra chi tiết hơn. Cuối cùng, nhóm lập kế hoạch cho từng lần lặp.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//299764cf-a5c1-4352-8e89-aa3f9d8b09dd/markdown_1/imgs/img_in_image_box_664_712_714_764.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A24Z%2F-1%2F%2Fddea9d825b0550685e67ef205d2adb6d2a7b4c16af2adc8fba750e9e9e25d6df" alt="Image" width="6%" /></div></div>
+
+<h4 id="ch7-agile-visioning">Tầm Nhìn Sản Phẩm Agile</h4>
+
+<p>Chúng ta đã thảo luận về tầm nhìn sản phẩm trong chương "Tài Liệu Tham Khảo Kỳ Thi PMP trong Bối Cảnh". Đây là về việc thiết lập sự hiểu biết chung về sản phẩm là gì, nó làm gì, và tạo ra một cách ngắn gọn để mô tả nó và giá trị nó mang lại. Điều này thường được gọi là "tuyên bố thang máy," vì nó đủ ngắn để mô tả trong một chuyến đi thang máy ngắn.</p>
+
+<h4 id="ch7-agile-product-roadmap">Lộ Trình Sản Phẩm Agile</h4>
+
+<p>Bản thân lộ trình sản phẩm không phải là tương đương agile của kế hoạch quản lý phạm vi theo kế hoạch, nhưng nó là một biểu diễn trực quan về các thành phần chính của sản phẩm, được chia thành các lần phát hành sản phẩm tuần tự. Nó cũng đóng vai trò là:</p>
+
+<ul class="content-list">
+  <li>Công cụ giao tiếp cung cấp cho các bên liên quan cái nhìn tổng quan về chức năng dự kiến của mỗi lần phát hành</li>
+  <li>Công cụ lập kế hoạch linh hoạt với giả định rằng sẽ có những thay đổi đối với nó</li>
+  <li>Công cụ cho phép bạn và nhóm quay lại để xác nhận (và thay đổi) các thành phần lộ trình theo thời gian</li>
+</ul>
+
+<p>Lộ trình và backlog phối hợp với nhau như thế này để giúp nhóm lập kế hoạch dự án:</p>
+
+<ul class="content-list">
+  <li>Lộ trình cho thấy sản phẩm sẽ phát triển như thế nào theo từng lần phát hành.</li>
+  <li>Backlog tiếp tục phân chia các tính năng trong mỗi lần phát hành thành các phần nhỏ hơn, dễ quản lý hơn gọi là story.</li>
+</ul>
+
+<p>Lộ trình sản phẩm và backlog ảnh hưởng lẫn nhau, và các thay đổi về ưu tiên hoặc yêu cầu dự án được phản ánh trên cả hai. Hình 7.2 cho thấy một cách mà lộ trình sản phẩm có thể trông như thế nào đối với một sản phẩm phần mềm cho phép người dùng quản lý các cuộc hẹn và hóa đơn trên trang web của phòng khám y tế của họ. Ký hiệu "(P)" theo sau một số mục cho biết hoàn thành một phần đã lên kế hoạch cho lần phát hành đó, trong khi "(C)" cho biết hoàn thành toàn bộ tính năng theo kế hoạch. Bạn cũng sẽ nhận thấy ở cuối cột một rằng thường có các mục tiêu "stretch" (kéo dài) được thỏa thuận. Điều này có nghĩa là nếu nhóm hoàn thành các story cho lần phát hành nhanh hơn dự kiến, họ sẽ làm việc trên các mục tiêu stretch, nhưng khách hàng đã biết rằng đó là một mục tiêu kéo dài và có thể không được hoàn thành hoặc thậm chí bắt đầu cho lần phát hành đó.</p>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Lần Phát Hành 1</th>
+      <th>Lần Phát Hành 2</th>
+      <th>Lần Phát Hành 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Tuân thủ các quy định (P)</td>
+      <td>Tuân thủ các quy định (C)</td>
+      <td>Bệnh nhân có thể quản lý bảo hiểm và thanh toán</td>
+    </tr>
+    <tr>
+      <td>Thương hiệu/sơ đồ phong cách</td>
+      <td>Thiết kế giao diện người dùng (UID)</td>
+      <td>Bệnh nhân có thể xem dữ liệu của họ từ các cơ sở khác (P)</td>
+    </tr>
+    <tr>
+      <td>Tích hợp cơ sở dữ liệu (giai đoạn 1)</td>
+      <td>Tích hợp cơ sở dữ liệu (giai đoạn 2)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Bảo mật trang web</td>
+      <td>Bệnh nhân có thể thay đổi dữ liệu cá nhân và tùy chọn</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Quản lý tài khoản web (đăng nhập, mật khẩu, v.v.) (P)</td>
+      <td>Bệnh nhân có thể quản lý các cuộc hẹn</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Bệnh nhân có thể xem dữ liệu y tế của mình (P)</td>
+      <td>Bệnh nhân có quyền chỉnh sửa có thể làm hỏng cơ sở dữ liệu RỦI RO</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Năng lực trang web hiện tại có thể không đủ RỦI RO</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Kiến trúc hệ thống RỦI RO</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Thực hiện chiến dịch tiếp thị tiếp cận cộng đồng (stretch) (P)</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div style="text-align: center;">HÌNH 7.2 Ví dụ về lộ trình dự án cổng thông tin bệnh nhân</div>
+
+<h4 id="ch7-agile-product-backlog">Product Backlog Agile</h4>
+
+<h3 id="ch7-product-backlog">Product Backlog</h3>
+
+<p>Product backlog là một danh sách chủ yếu duy nhất, hiển thị rõ ràng toàn bộ công việc chức năng và phi chức năng đã được xác định cho dự án. Nói cách khác, backlog là danh sách các công việc cần thực hiện. Các story trong backlog có mô tả từng phần chức năng và được nhóm xem xét về rủi ro. Chúng được ưu tiên hóa bởi product owner (với tư cách là thành viên không thể thiếu trong nhóm). Một story cũng cần bao gồm các thông tin sau:</p>
+
+<ul class="content-list">
+  <li>Lợi ích kinh doanh</li>
+  <li>Định nghĩa hoàn thành (Definition of Done) để xác định khi nào story được xem là xong</li>
+  <li>Tiêu chí chấp nhận để xác định điều kiện (yêu cầu) nào khiến khách hàng chấp nhận story đó (tương tự kiểm tra và xác nhận phạm vi)</li>
+  <li>Bên liên quan đã yêu cầu story đó</li>
+</ul>
+
+<p>Dưới đây là nguyên tắc xây dựng và ưu tiên hóa các story:</p>
+
+<ul class="content-list">
+  <li>Product owner sắp xếp backlog theo thứ tự ưu tiên từ trên xuống dưới.</li>
+  <li>Các story có giá trị cao nhất luôn ở trên cùng, đó là nơi nhóm phát triển lấy công việc để xây dựng sản phẩm.</li>
+  <li>Mặc dù product backlog chứa toàn bộ phạm vi được công nhận chính thức, nhưng các hạng mục có ưu tiên thấp ở cuối backlog có thể sẽ không bao giờ được phát triển nếu chi phí hoặc thời gian thực hiện chúng được đánh giá là lớn hơn giá trị mang lại. Do phạm vi đang dần định hình, điều này đôi khi chỉ biết được về cuối dự án.</li>
+  <li>Việc ưu tiên hóa backlog ban đầu diễn ra sớm trong giai đoạn lập kế hoạch phát hành (release planning) và sau đó lặp lại trong giai đoạn lập kế hoạch lặp (iteration planning).</li>
+  <li>Nhóm xây dựng các story cho lần lặp hiện tại trong khi product owner tinh chỉnh và sắp xếp lại thứ tự ưu tiên backlog cho lần lặp tiếp theo. Trong quá trình đó, product owner cũng trả lời các câu hỏi liên quan đến lần lặp hiện tại.</li>
+</ul>
+
+<p>Hình 7.3 minh họa ví dụ về product backlog cho website bệnh nhân của phòng khám y tế. Một số chức năng bổ sung của backlog bao gồm:</p>
+
+<ul class="content-list">
+  <li>Nguồn thông tin duy nhất về dự án nhằm hỗ trợ giao tiếp hiệu quả và cung cấp tài liệu hiển thị về phạm vi và trạng thái dự án.</li>
+  <li>Công cụ liên tục cập nhật phạm vi khi dự án tiến triển và có thêm thông tin mới.</li>
+</ul>
+
+<div class="table-wrap">
+  <table>
+    <tr>
+      <th style="text-align:center;">#</th>
+      <th style="text-align:center;">Tính năng</th>
+      <th style="text-align:center;">Bên liên quan</th>
+    </tr>
+    <tr>
+      <td style="text-align:center;">P1</td>
+      <td>Quản lý lịch hẹn</td>
+      <td>Bệnh nhân, quản trị viên, bác sĩ/nhân viên y tế</td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">P2</td>
+      <td>Thay đổi dữ liệu cá nhân và tùy chọn</td>
+      <td>Bệnh nhân, quản trị viên, bác sĩ/nhân viên y tế</td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">P3</td>
+      <td>Xem thư viện thông tin sức khỏe</td>
+      <td>Bệnh nhân, bác sĩ/nhân viên y tế</td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">P4</td>
+      <td>Chiến dịch tiếp cận cộng đồng (marketing)</td>
+      <td>Bệnh nhân, bộ phận marketing</td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">P5</td>
+      <td>Giao tiếp giữa bác sĩ và bệnh nhân</td>
+      <td>Bệnh nhân, bác sĩ/nhân viên y tế, bộ phận marketing</td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">P6</td>
+      <td>Tuân thủ quy định</td>
+      <td>Bệnh nhân, cơ quan chính phủ</td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">P7</td>
+      <td>Xem dữ liệu y tế cá nhân từ Trung tâm</td>
+      <td>Bệnh nhân, quản trị viên, bác sĩ/nhân viên y tế</td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">P8</td>
+      <td>Xem dữ liệu y tế cá nhân từ các cơ sở khác</td>
+      <td>Bệnh nhân, quản trị viên, bác sĩ/nhân viên y tế</td>
+    </tr>
+    <tr>
+      <td style="text-align:center;">P9</td>
+      <td>Quản lý tài khoản web (đăng nhập, mật khẩu, v.v.)</td>
+      <td>Bệnh nhân, quản trị viên</td>
+    </tr>
+  </table>
+</div>
+
+<p style="text-align:center;"><em>HÌNH 7.3 Product backlog một phần cho trang web bệnh nhân</em></p>
+
+<h4 id="ch7-iteration-planning">Lập Kế Hoạch Lặp (Iteration Planning)</h4>
+
+<p>Sau khi hoàn thành lập kế hoạch phát hành và product backlog đã được tạo và ưu tiên hóa, nhóm — đặc biệt bao gồm product owner — sẽ quyết định những phần nào của sản phẩm sẽ được xây dựng trong lần lặp đầu tiên. Khi mỗi lần lặp hoàn thành thành công, product owner đã chuẩn bị sẵn các story để xây dựng cho lần lặp tiếp theo, và cứ thế tiếp tục cho đến hết dự án.</p>
+
+<h4 id="ch7-hybrid-project-planning">Lập Kế Hoạch Dự Án Lai (Hybrid Project Planning)</h4>
+
+<p>Các phần của dự án lai được điều hành theo kế hoạch, trong khi các phần khác được lập kế hoạch và bàn giao bằng phương pháp Agile. Ví dụ, giả sử có một sản phẩm lớn và phức tạp cần nhiều tính năng hoạt động đa dạng, chẳng hạn như hệ thống điều khiển cho một khu dân cư mới sử dụng năng lượng mặt trời. Hệ thống này có thể cần được xây dựng theo phương pháp điều hành theo kế hoạch, trong khi việc triển khai các tấm pin mặt trời có thể được thực hiện lặp đi lặp lại bằng phương pháp Agile khi các ngôi nhà mới trong khu dân cư được hoàn thành. Việc thiết kế, xây dựng, kiểm thử và lắp đặt hệ thống điều khiển trong tòa nhà cộng đồng sẽ được thực hiện bằng WBS, trong khi hệ thống pin mặt trời cho từng ngôi nhà có thể sử dụng danh sách như backlog, được tùy chỉnh theo từng khách hàng.</p>
+
+<p>Thường xuyên trong các môi trường doanh nghiệp hỗn hợp, các dự án sử dụng phương pháp lai sẽ có WBS (hoặc công cụ tương tự). Công việc sẽ được phân chia đến một cấp độ nhất định và được dùng để chia sẻ thông tin với PMO hoặc ban lãnh đạo, những người có thể đã quen với các phương pháp dự đoán và tài liệu truyền thống. Backlog sau đó có thể được dùng để tổ chức công việc với nhóm. Người quản lý dự án đóng vai trò là cầu nối giữa các nhóm.</p>
+
+<h4 id="ch7-eliciting-analyzing-requirements">Thu Thập và Phân Tích Yêu Cầu (Eliciting and Analyzing Requirements)</h4>
+
+<p>Các bên liên quan thường có thể mô tả một vấn đề họ gặp phải hoặc một cơ hội họ muốn tận dụng. Tuy nhiên, thường rất khó hoặc không thể để họ mô tả giải pháp.</p>
+
+<p>Phân tích nghiệp vụ (Business Analysis) là cần thiết để giúp nhóm dự án thu thập và phân tích các yêu cầu trước khi phạm vi sản phẩm và phạm vi dự án có thể được xác định đầy đủ. Yêu cầu là các tính năng của sản phẩm, hay những gì các bên liên quan cần từ sản phẩm và từ dự án. Quy trình "Thu Thập Yêu Cầu" (Collect Requirements) — như được đặt tên trong mô hình Process Groups — tìm kiếm tất cả các yêu cầu, không chỉ những yêu cầu liên quan đến sản phẩm. Quá trình thu thập và phân tích yêu cầu là yếu tố then chốt để dự án thành công, vì một yêu cầu bị bỏ sót có thể dẫn đến các thay đổi đáng kể và xung đột trong suốt phần còn lại của dự án.</p>
+
+<div class="callout">
+  <p><strong>Mô hình Process Groups</strong></p>
+  <p><em>Lưu ý:</em> Thuật ngữ "thu thập và phân tích" yêu cầu thể hiện rõ hơn tầm quan trọng và quy mô của quy trình này. Tuy nhiên, khi đề cập đến tên lịch sử được đặt cho quy trình này trong mô hình PMI Process Groups, chúng ta sẽ dùng "Collect Requirements." Bạn có thể gặp cả hai thuật ngữ trong kỳ thi.</p>
+  <p><strong>PG: Planning</strong><br>
+  <strong>Process: Collect Requirements</strong><br>
+  <strong>Domain II — Task 8:</strong> Lập kế hoạch và quản lý phạm vi<br>
+  <strong>PMBOK Guide — Domain 2.4:</strong> Planning</p>
+</div>
+
+<p>Các mục tiêu mà dự án được khởi xướng ban đầu là kết quả của quá trình Đánh Giá Nhu Cầu (Needs Assessment) đã được thực hiện để giúp xây dựng căn cứ kinh doanh (business case) cho dự án. Dựa trên thông tin này, tất cả các yêu cầu cần liên quan đến việc đạt được các mục tiêu đó, như đã được phác thảo và phê duyệt trong project charter. Các yêu cầu có thể bao gồm những đề nghị về cách lập kế hoạch và quản lý công việc.</p>
+
+<div class="callout tip">
+  <p><strong>Ví dụ:</strong> Một bên liên quan có thể yêu cầu rằng các hệ thống không được tắt trong giờ cao điểm kinh doanh để phục vụ cho một dự án.</p>
+</div>
+
+<p>Yêu cầu bao gồm các khả năng mà các bên liên quan cần từ sản phẩm, chẳng hạn như ứng dụng phần mềm tự động mở lúc một thời điểm nhất định khi có cập nhật cho người dùng. Nhưng yêu cầu cũng có thể là phi chức năng, thuộc các danh mục liên quan đến các ví dụ sau:</p>
+
+<ul class="content-list">
+  <li><strong>Chất lượng:</strong> Linh kiện D phải chịu được áp lực 200 pound.</li>
+  <li><strong>Quy trình kinh doanh:</strong> Bạn phải theo dõi và báo cáo chi phí dự án theo cách này.</li>
+  <li><strong>Tuân thủ:</strong> Theo pháp luật, chúng ta phải đáp ứng tiêu chuẩn an toàn này.</li>
+  <li><strong>Quản lý dự án:</strong> Chúng tôi yêu cầu sử dụng quy trình quản lý rủi ro X.</li>
+  <li><strong>Cân nhắc môi trường:</strong> Kết quả của nghiên cứu đánh giá tác động môi trường đầy đủ phải được tuân theo để dự án không gây ảnh hưởng tiêu cực đến môi trường.</li>
+  <li><strong>Nhu cầu xã hội:</strong> Tuyến tàu điện mới phải có chỗ cho người khuyết tật không thể lái xe.</li>
+</ul>
+
+<p>Các yêu cầu chức năng cũng thường được thiết kế để trả lời các câu hỏi cụ thể, chẳng hạn:</p>
+
+<ul class="content-list">
+  <li><strong>Yêu cầu kinh doanh:</strong> Tại sao dự án được thực hiện? Nhu cầu kinh doanh nào mà dự án nhằm giải quyết?</li>
+  <li><strong>Yêu cầu của bên liên quan:</strong> Các bên liên quan muốn đạt được gì từ dự án?</li>
+  <li><strong>Yêu cầu giải pháp:</strong> Sản phẩm cần trông như thế nào? Các yêu cầu chức năng (cách sản phẩm hoạt động) và yêu cầu phi chức năng (điều gì làm cho sản phẩm hiệu quả) là gì?</li>
+  <li><strong>Yêu cầu chuyển giao:</strong> Cần có những quy trình bàn giao hoặc đào tạo nào để chuyển giao sản phẩm cho khách hàng hoặc tổ chức?</li>
+  <li><strong>Yêu cầu chất lượng:</strong> Sản phẩm cần đáp ứng những tiêu chí chất lượng nào? Điều gì tạo nên một bàn giao phẩm được hoàn thành thành công?</li>
+  <li><strong>Yêu cầu kỹ thuật:</strong> Sản phẩm sẽ được xây dựng như thế nào? Các thông số kỹ thuật của sản phẩm là gì?</li>
+</ul>
+
+<p>Các phương pháp Agile không cố gắng xác định đầy đủ chi tiết các yêu cầu ngay từ đầu. Nhóm Agile ban đầu định nghĩa yêu cầu ở mức độ cao và sau đó tinh chỉnh dần. Cách tiếp cận này trì hoãn các quyết định về chi tiết triển khai đến thời điểm trách nhiệm cuối cùng (last responsible moment), giúp tránh hoặc giảm thiểu tác động của các yêu cầu thay đổi.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//d3165ab5-869d-4282-93b5-0ef0a0891b93/markdown_0/imgs/img_in_image_box_61_183_111_244.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A15Z%2F-1%2F%2F7316c4b4baf60f5e0ebbea36060cb2b6a23c48de75b0e26956fcacc6fa03d733" alt="Image" width="6%" /></div></div>
+
+<div class="callout">
+  <p><strong>Hãy Suy Nghĩ Về Điều Này.</strong> Quy trình "Collect Requirements" sử dụng các đầu vào sau để tạo ra tài liệu yêu cầu và ma trận truy xuất yêu cầu (requirements traceability matrix). Đây là các tài liệu cần thiết để thu thập và phân tích yêu cầu cho một dự án điều hành theo kế hoạch. Hãy xem xét và suy nghĩ về cách mỗi đầu vào có thể giúp thu thập và phân tích yêu cầu.</p>
+  <ul class="content-list">
+    <li><strong>Project charter:</strong> Quy trình Collect Requirements bắt đầu bằng các mô tả yêu cầu cấp cao trong charter. Đầu vào chi tiết hơn từ các bên liên quan là một phần lý do của Collect Requirements.</li>
+    <li><strong>Assumption log (Nhật ký giả định):</strong> Tài liệu này ghi lại các giả định đã biết của các bên liên quan liên quan đến yêu cầu sản phẩm và dự án. Thu thập và phân tích yêu cầu bao gồm việc tinh chỉnh và bổ sung vào danh sách này.</li>
+    <li><strong>Stakeholder register (Sổ đăng ký bên liên quan):</strong> Được tạo trong giai đoạn khởi động, bao gồm danh sách các bên liên quan đã được xác định cho đến nay, cũng như yêu cầu và kỳ vọng của họ.</li>
+    <li><strong>Agreements (Hợp đồng/Thỏa thuận):</strong> Yêu cầu của bên mua được ghi lại trong hợp đồng nếu dự án bao gồm mua sắm. Các yêu cầu đã thỏa thuận trong thư thỏa thuận nội bộ tổ chức cũng là một nguồn yêu cầu.</li>
+    <li><strong>OPA (Tài sản quy trình tổ chức):</strong> Ví dụ có thể là hồ sơ lịch sử và bài học kinh nghiệm. Chúng có thể cung cấp thông tin về các yêu cầu từ các dự án tương tự trong quá khứ cũng như thông tin có thể xác định các khu vực phạm vi thường bị bỏ sót.</li>
+    <li><strong>Kỳ vọng của bên liên quan:</strong> Nỗ lực Collect Requirements cũng bao gồm việc thu thập kỳ vọng của các bên liên quan — niềm tin hoặc hình ảnh trong tâm trí họ về kết quả dự án — và chuyển hóa những kỳ vọng đó thành yêu cầu khi cần thiết. Không phải tất cả kỳ vọng đều là yêu cầu, vì vậy đây là lĩnh vực đòi hỏi sự tin tưởng và giao tiếp hiệu quả với các bên liên quan.</li>
+  </ul>
+</div>
+
+<p>Trong các dự án lớn, có thể có hàng trăm bên liên quan, và không có phương pháp thu thập và phân tích yêu cầu đơn lẻ nào sẽ phù hợp với tất cả mọi người. Vì bỏ sót một yêu cầu có thể rất tốn kém, cần nỗ lực nghiêm túc để tìm kiếm càng nhiều yêu cầu càng tốt trước khi bắt đầu giai đoạn phát triển.</p>
+
+<h4 id="ch7-methods-eliciting-requirements">Các Phương Pháp Thu Thập và Phân Tích Yêu Cầu</h4>
+
+<p>Người quản lý dự án cần điều chỉnh lựa chọn phương pháp phù hợp với dự án và các bên liên quan. Các phương pháp sau đây là những ví dụ tiêu biểu được sử dụng để thu thập và phân tích yêu cầu.</p>
+
+<h4 id="ch7-verbal-requirements-elicitation-methods">Các Phương Pháp Thu Thập Yêu Cầu Bằng Lời Nói</h4>
+
+<p>Với các phương pháp trò chuyện để thu thập và phân tích yêu cầu, sự trao đổi giữa nhóm—có thể bao gồm một nhà phân tích nghiệp vụ—tạo ra các tài liệu văn bản, sau đó được sử dụng để xác định, lập kế hoạch và quản lý phạm vi dự án và sản phẩm.</p>
+
+<p><strong>Động não (Brainstorming)</strong> Nhiều người nghĩ đây chỉ là một cuộc họp nơi mọi người thảo luận ý tưởng, nhưng thực ra nhiều hơn thế. Mục đích của brainstorming là để mọi người chia sẻ ý tưởng về một chủ đề, và quan trọng là xây dựng dựa trên ý tưởng của nhau. Việc bao gồm những người có quan điểm hoặc nền tảng khác nhau có thể rất có ích. Người tham gia có thể là nội bộ hoặc bên ngoài dự án và/hoặc tổ chức. Cách thức hoạt động:</p>
+
+<ul class="content-list">
+  <li>Một người đề xuất một ý tưởng để giải quyết vấn đề hoặc, trong trường hợp này, thu thập yêu cầu và cuối cùng xác định phạm vi. Không có đánh giá nào xảy ra trong giai đoạn tạo ra ý tưởng.</li>
+  <li>Ý tưởng đó gợi ra ý tưởng từ người tham gia khác, dẫn đến một ý tưởng tiếp theo, và cứ tiếp tục như vậy.</li>
+  <li>Sau khi các ý tưởng được ghi lại, nhóm đánh giá và xếp hạng chúng bằng kỹ thuật nhóm danh nghĩa hoặc phân tích quyết định đa tiêu chí (được mô tả ở phần sau trong mục này).</li>
+</ul>
+
+<p><strong>Phỏng vấn</strong> Bạn cũng có thể thấy thuật ngữ "phỏng vấn chuyên gia" trong kỳ thi. Người quản lý dự án và/hoặc một thành viên nhóm phỏng vấn các bên liên quan để thu thập yêu cầu của họ về một yếu tố cụ thể của sản phẩm hoặc công việc dự án, hoặc cho toàn bộ dự án. Các cuộc phỏng vấn này diễn ra giữa hai cá nhân hoặc trong các buổi nhóm. Chúng cũng có thể được thực hiện qua email hoặc điện thoại hoặc sử dụng các công cụ cộng tác ảo.</p>
+
+<p><strong>Nhóm Tập Trung (Focus Groups)</strong> Kỹ thuật này thu thập ý kiến và yêu cầu cho sản phẩm hoặc dự án từ các bên liên quan và chuyên gia chủ đề. Thường được chọn từ một nhóm nhân khẩu học cụ thể của khách hàng, các thành viên nhóm tập trung thảo luận ý tưởng với nhau. Cuộc trò chuyện được điều hành bởi một người điều phối.</p>
+
+<p><strong>Bảng câu hỏi và Khảo sát</strong> Thường được sử dụng cho các nhóm lớn. Các câu hỏi được soạn thảo đặc biệt để thu thập yêu cầu và kỳ vọng từ người trả lời.</p>
+
+<p><strong>Đối chuẩn (Benchmarking)</strong> Phương pháp này xem xét những gì đối thủ cạnh tranh đang làm. Benchmarking tập trung vào việc đo lường hiệu suất của một tổ chức so với các tổ chức khác trong cùng ngành. Hạn chế của phương pháp này bao gồm việc nó có thể tốn nhiều thời gian và chi phí. Nó cũng có thể kìm hãm sáng tạo vì trọng tâm là kiểm tra các giải pháp đã được sử dụng thay vì đổi mới.</p>
+
+<p><strong>Điều phối (Facilitation)</strong> Kỹ thuật này tập hợp các bên liên quan với các quan điểm khác nhau, chẳng hạn như nhà thiết kế sản phẩm và người dùng cuối, để nói chuyện về sản phẩm và cuối cùng xác định yêu cầu. Nó sử dụng phương pháp đồng thuận, đạt được thỏa thuận chung về một quyết định. Những người muốn lựa chọn khác sẵn sàng chấp nhận quyết định được đa số thành viên trong nhóm ủng hộ. Người điều phối đôi khi sử dụng bỏ phiếu để giúp nhóm thảo luận các ý kiến khác nhau.</p>
+
+<p><strong>Bỏ phiếu</strong> Bỏ phiếu thường được sử dụng để ra quyết định nhóm. Việc thu thập ý kiến về yêu cầu từ các bên liên quan thường dẫn đến các yêu cầu mâu thuẫn. Một quy trình ra quyết định có thể có mục tiêu là sự đồng ý nhất trí. Hoặc, khi có các ý kiến mâu thuẫn, nhóm có thể thực hiện phương pháp đa số, chọn quyết định mà hơn một nửa thành viên ủng hộ. Nếu không có ý kiến đa số, nhóm có thể chọn quyết định có số người ủng hộ nhiều nhất. Đây được gọi là phương pháp đa phần. Người quản lý dự án cần cẩn thận khi ra quyết định dựa trên đa số vì các bên liên quan chủ chốt có thể thuộc nhóm thiểu số.</p>
+
+<p>Các nhóm Agile sử dụng bỏ phiếu thường xuyên để ra quyết định nhóm nhưng có thể khó sử dụng hơn với khách hàng, trong trường hợp đó nên sử dụng các phương pháp khác.</p>
+
+<p><strong>Phân tích Quyết định Đa Tiêu Chí</strong> Với kỹ thuật này, các bên liên quan định lượng hóa yêu cầu bằng cách sử dụng ma trận quyết định dựa trên các yếu tố như mức độ rủi ro dự kiến, ước tính thời gian, và ước tính chi phí và lợi ích.</p>
+
+<p><strong>Kỹ thuật Nhóm Danh Nghĩa</strong> Kỹ thuật này có thể được (nhưng không phải lúc nào cũng) thực hiện trong cùng một cuộc họp với brainstorming. Nó thực hiện theo các bước sau:</p>
+
+<ul class="content-list">
+  <li>Một câu hỏi hoặc vấn đề được đặt ra</li>
+  <li>Tất cả người tham gia viết ý tưởng của họ một cách riêng tư</li>
+  <li>Mỗi người tham gia chia sẻ ý tưởng của họ</li>
+  <li>Nhóm thảo luận về những gì đã được chia sẻ</li>
+  <li>Nhóm xếp hạng các ý tưởng dựa trên những ý tưởng nào hữu ích nhất trong bối cảnh đó</li>
+</ul>
+
+<p><strong>Quan sát</strong> Đây là cách tuyệt vời để tìm hiểu về các quy trình nghiệp vụ và cảm nhận môi trường làm việc của các bên liên quan. Kỹ thuật này hữu ích cho các dự án nhằm hợp lý hóa quy trình nghiệp vụ. Nó thường bao gồm việc theo dõi công việc—quan sát người dùng tiềm năng của sản phẩm đang làm việc, đặt câu hỏi và, trong một số trường hợp, tham gia vào công việc để giúp xác định yêu cầu.</p>
+
+<p><strong>Nguyên mẫu (Prototypes)</strong> Nguyên mẫu là mô hình của sản phẩm được đề xuất được trình bày cho các bên liên quan để phản hồi. Nguyên mẫu có thể được cập nhật nhiều lần để tích hợp phản hồi của các bên liên quan cho đến khi các yêu cầu cho sản phẩm được xác định chắc chắn.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//d3165ab5-869d-4282-93b5-0ef0a0891b93/markdown_1/imgs/img_in_image_box_661_803_709_858.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A15Z%2F-1%2F%2F673b7f8ec3861a3f3b81821a1bcdae4cdb6bf5f8e5cde1da0366b99f2c6f1b79" alt="Image" width="5%" /></div></div>
+
+<p><strong>Câu Chuyện Người Dùng (User Stories)</strong> Các bên liên quan có thể giúp phát triển user stories trong các buổi thảo luận có điều phối. Các câu chuyện mô tả chức năng hoặc tính năng mà các bên liên quan hy vọng sẽ thấy. Chúng thường được viết theo định dạng sau:</p>
+
+<div class="highlight">
+  <p>Với tư cách là &lt;vai trò&gt;, tôi muốn &lt;chức năng/mục tiêu&gt; để &lt;lợi ích kinh doanh&gt;</p>
+  <p><em>Hình 7.4 Định dạng câu chuyện</em></p>
+</div>
+
+<p><strong>Ví dụ:</strong> "Với tư cách là một người tổ chức cộng đồng, tôi muốn thư viện cung cấp không gian họp công cộng để chúng tôi có nơi tụ họp và giới thiệu những lợi ích của thư viện với các thành viên cộng đồng thông qua các sự kiện khu phố."</p>
+
+<p>Các ví dụ khác về các buổi điều phối bao gồm:</p>
+
+<ul class="content-list">
+  <li><strong>Thiết kế ứng dụng chung (JAD - Joint Application Design)</strong> Được sử dụng chủ yếu trong các nỗ lực phát triển phần mềm, các buổi JAD liên quan đến việc thu thập yêu cầu và các đầu vào khác để nâng cao quy trình phát triển phần mềm.</li>
+  <li><strong>Triển khai chức năng chất lượng (QFD - Quality Functional Deployment)</strong> Còn được gọi là Tiếng Nói Khách Hàng (VOC), kỹ thuật này thường được sử dụng trong sản xuất để thu thập và ưu tiên hóa các yêu cầu của khách hàng.</li>
+</ul>
+
+<h4 id="ch7-graphic-requirements-elicitation-methods">Các Phương Pháp Thu Thập Yêu Cầu Bằng Đồ Họa</h4>
+
+<p>Các loại tài liệu khác nhau được tạo ra từ việc thu thập và tổng hợp yêu cầu, sẽ giúp xác định, lập kế hoạch và quản lý phạm vi dự án. Các phương pháp sau đây để thu thập và phân tích yêu cầu tạo ra hình ảnh đồ họa, hoặc các cách khác nhau để biểu diễn yêu cầu dự án.</p>
+
+<p><strong>Bản đồ tư duy (Mind Maps)</strong> Đây là cách sơ đồ hóa ý tưởng hoặc ghi chú để giúp tạo ra, phân loại hoặc ghi lại thông tin. Nó phân nhánh ra từ một lõi trung tâm như được hiển thị trong hình 7.5. Màu sắc, hình ảnh và chú thích có thể được sử dụng để làm cho sơ đồ dễ đọc hơn.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//d3165ab5-869d-4282-93b5-0ef0a0891b93/markdown_2/imgs/img_in_image_box_57_386_737_649.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A16Z%2F-1%2F%2Fd3bc7ebe70db066305deb4ea2de116623eb68798ad1e0aac89a971b1bb2fefdc" alt="Image" width="82%" /></div></div>
+
+<div style="text-align: center;">Hình 7.5 Bản đồ tư duy</div>
+
+<p><strong>Sơ đồ Ngữ cảnh (Context Diagrams)</strong> Còn được gọi là sơ đồ luồng dữ liệu cấp ngữ cảnh, sơ đồ ngữ cảnh thường được sử dụng để xác định và mô hình hóa phạm vi. Nó hiển thị ranh giới của phạm vi sản phẩm bằng cách làm nổi bật sản phẩm và các giao diện của nó với con người, quy trình hoặc hệ thống.</p>
+
+<p>Hình 7.6 hiển thị một ví dụ về sơ đồ ngữ cảnh cho việc nâng cấp hệ thống bảng lương được mô tả trong điều lệ dự án trong chương "Tích hợp".</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//d3165ab5-869d-4282-93b5-0ef0a0891b93/markdown_2/imgs/img_in_image_box_227_777_556_1009.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A16Z%2F-1%2F%2F6e651e3b660ea1cd4758ba5566a03b888132f61edd1ea476093c2141590c8b62" alt="Image" width="40%" /></div></div>
+
+<div style="text-align: center;">Hình 7.6 Sơ đồ ngữ cảnh</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//d3165ab5-869d-4282-93b5-0ef0a0891b93/markdown_3/imgs/img_in_image_box_50_100_101_160.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A16Z%2F-1%2F%2F5be9d2a9e7b35741e272acdb0882e064c9eae8033aede5a151f8ade46b4846c1" alt="Image" width="6%" /></div></div>
+
+<div class="callout">
+  <p><strong>Hãy Suy Nghĩ.</strong> Hãy dừng lại một chút để suy nghĩ về cách bạn có thể sử dụng hai phương pháp sau để thu thập và phân tích yêu cầu. Trước tiên bạn có thể tạo ra một sơ đồ ngữ cảnh với sự giúp đỡ của các bên liên quan, để có được sự hiểu biết tổng thể về sản phẩm và ai có thể sử dụng nó. Sau đó bạn có thể sử dụng kết hợp khảo sát, quan sát và thảo luận có điều phối với các bên liên quan để thu thập yêu cầu của họ. Sau đó, như một phần của việc phân tích các yêu cầu bạn đã thu thập, bạn có thể sắp xếp chúng vào một sơ đồ ái lực để các mục tương tự được nhóm lại với nhau để phân tích thêm về cách chúng liên quan đến sản phẩm tổng thể.</p>
+</div>
+
+<p><strong>Sơ đồ Ái Lực (Affinity Diagrams)</strong> Kỹ thuật này nhóm các yêu cầu (được tạo ra từ các phương pháp thu thập khác) theo sự tương đồng. Việc sắp xếp này giúp dễ dàng nhận ra các lĩnh vực phạm vi bổ sung chưa được xác định. Hình 7.7 hiển thị một ví dụ về sơ đồ ái lực.</p>
+
+<div style="text-align: center;">Yêu Cầu Dự Án Thư Viện</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//d3165ab5-869d-4282-93b5-0ef0a0891b93/markdown_3/imgs/img_in_image_box_93_305_713_825.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A17Z%2F-1%2F%2F82bdda0c7cf67489799c126a91be42b0c73d38607c6b9a657ba023631190e8dd" alt="Image" width="75%" /></div></div>
+
+<div style="text-align: center;">Hình 7.7 Sơ đồ ái lực</div>
+
+<h4 id="ch7-artifacts-eliciting-analyzing-balancing">Tài Liệu của Việc Thu Thập, Phân Tích và Cân Bằng Yêu Cầu</h4>
+
+<p>Các khía cạnh quan trọng của việc thu thập và phân tích yêu cầu là cân bằng chúng với nhau, giải quyết xung đột khi có các yêu cầu cạnh tranh và, cuối cùng, hoàn thiện các tài liệu yêu cầu, để chúng sẽ giúp bạn với quy trình tiếp theo là Xác Định Phạm Vi.</p>
+
+<h4 id="ch7-balancing-requirements">Cân Bằng Yêu Cầu</h4>
+
+<p>Một phần của việc cân bằng yêu cầu của các bên liên quan liên quan đến việc đảm bảo các yêu cầu có thể được đáp ứng trong các mục tiêu dự án. Nếu không thể, thì người quản lý dự án cần tìm kiếm các lựa chọn để điều chỉnh các yêu cầu cạnh tranh về phạm vi, thời gian, chi phí, chất lượng, nguồn lực, rủi ro và sự hài lòng của khách hàng.</p>
+
+<p>Điều này không bao giờ dễ dàng hay nhanh chóng. Nó có thể trở nên không thể nếu không có các mục tiêu dự án rõ ràng. Bạn có cố gắng tiến gần đến các yêu cầu cuối cùng nhất có thể khi quản lý dự án không? Các yêu cầu của bạn có được xếp hạng theo thứ tự quan trọng không? Nếu không, hãy suy nghĩ về cách các hành động như vậy có thể cải thiện các dự án của bạn. Khi bạn làm bài thi, hãy giả định rằng người quản lý dự án đã cố gắng hết sức để khám phá tất cả các yêu cầu ở mức độ có thể biết được, và rằng những yêu cầu đó được xếp hạng theo thứ tự quan trọng.</p>
+
+<p>Các phương pháp tiếp cận Agile và lai thường được sử dụng khi các yêu cầu chính xác chưa được biết.</p>
+
+<p><strong>Ví dụ:</strong> Bạn có thể đang xây dựng thứ mà tổ chức chưa làm trước đây, chẳng hạn như tạo một cổng thông tin tự phục vụ cho khách hàng (hoặc bệnh nhân) cho phép mỗi khách hàng quản lý tài khoản của riêng họ. Trong trường hợp này:</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//d3165ab5-869d-4282-93b5-0ef0a0891b93/markdown_4/imgs/img_in_image_box_698_345_747_401.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A17Z%2F-1%2F%2F8b578494d4ea31bc40708e0792bb1e07e114d0a514a0c2928d5fe6c567e11254" alt="Image" width="5%" /></div></div>
+
+<ul class="content-list">
+  <li>Bạn có thể không biết các chức năng phổ biến nhất sẽ là gì hoặc phạm vi chính xác.</li>
+  <li>Bạn có thể cho phép khách hàng thay đổi các trường tên và địa chỉ của họ và các dịch vụ đã đăng ký, nhưng còn việc xóa tài khoản của họ thì sao?</li>
+  <li>Tất cả các bên liên quan chủ chốt có đồng ý về những tính năng nào nên và không nên được bao gồm trong cổng tự phục vụ không?</li>
+</ul>
+
+<p>Các yêu cầu bổ sung thường được phát hiện sau khi sử dụng sản phẩm hoặc dịch vụ một thời gian.</p>
+
+<ul class="content-list">
+  <li>Sau khi ra mắt cổng tự phục vụ, bạn có thể biết rằng một tỷ lệ lớn khách hàng truy cập qua thiết bị di động, nhưng cổng thông tin được tối ưu hóa cho PC.</li>
+  <li>Bạn cũng có thể khám phá ra cổng thông tin của đối thủ có tính năng "giới thiệu bạn bè" cung cấp phần thưởng, và bạn có thể muốn tạo một chương trình tương tự.</li>
+</ul>
+
+<p>Một dự án như thế này, nơi phạm vi không được xác định rõ ràng, có thể được hoàn thành tốt nhất bằng cách sử dụng dự án agile hoặc lai. Ví dụ, bạn có thể sử dụng bảng câu hỏi và khảo sát để tìm ra những tính năng quan trọng và đầu tiên của sản phẩm nên là gì. Bạn có thể tạo các nhóm tập trung cam kết để khi bản phát hành đầu tiên được triển khai, bạn có khách hàng sẵn sàng sử dụng và giúp bạn phát triển thêm các tính năng tiếp theo, v.v., cho đến khi sản phẩm trưởng thành và chỉ cần nâng cấp định kỳ.</p>
+
+<div class="callout tip">
+  <p><strong>Hãy Suy Nghĩ.</strong> Thường xuyên, phạm vi và ưu tiên thay đổi. Dự án càng dài, phạm vi càng có khả năng thay đổi vì những thay đổi trong thị trường, công nghệ hoặc tổ chức. Hãy dành một chút thời gian để suy nghĩ về ví dụ cổng thông tin bệnh nhân dưới góc độ lĩnh vực Môi Trường Kinh Doanh của ECO. Dưới đây là một số ví dụ:</p>
+  <ul class="content-list">
+    <li><strong>Lập kế hoạch và quản lý tuân thủ dự án (nhiệm vụ 1)</strong> Các quy định thay đổi bao lâu một lần? Loại chuyên gia chủ đề (SME) nào cần thiết để đảm bảo tuân thủ, và những SME đó sẽ đến từ đâu? Bên ngoài Hoa Kỳ, các yêu cầu tuân thủ là gì và bạn sẽ đảm bảo trang web của mình tuân thủ như thế nào?</li>
+  </ul>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//d3165ab5-869d-4282-93b5-0ef0a0891b93/markdown_4/imgs/img_in_image_box_66_715_116_774.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A17Z%2F-1%2F%2F826196e237cb0390719142b7cbd89ca1614e83559eab7910a0793efda8d264d5" alt="Image" width="6%" /></div></div>
+
+<ul class="content-list">
+  <li><strong>Hỗ trợ thay đổi tổ chức (nhiệm vụ 4)</strong> Bạn sẽ đảm bảo rằng mọi người trong phòng khám hiểu tầm nhìn sản phẩm, được đào tạo để sử dụng nó và cũng chấp nhận những thay đổi sắp đến trong tổ chức và cho khách hàng (bệnh nhân) như thế nào. Loại hỗ trợ thay đổi tổ chức này rất đáng kể và thường rất lớn đến mức nó có thể được thực hiện như một tiểu dự án hoặc một "bản phát hành" riêng của nó.</li>
+</ul>
+
+<h4 id="ch7-resolving-conflicting-requirements">Giải Quyết Các Yêu Cầu Mâu Thuẫn</h4>
+
+<p>Việc ưu tiên hóa các yêu cầu mâu thuẫn thường rất khó khăn.</p>
+
+<p><strong>Ví dụ:</strong> Hãy xem xét các ví dụ sau từ một tổ chức đang thực hiện dự án để cải thiện quy trình phát triển sản phẩm của họ:</p>
+
+<ul class="content-list">
+  <li>Nếu bộ phận kỹ thuật muốn dự án tập trung vào việc giảm lỗi trong khi bộ phận kế toán muốn dự án tập trung vào việc giảm chi phí thì sao? Cả hai nhu cầu có thể được đáp ứng không?</li>
+  <li>Nếu bộ phận kỹ thuật là bên liên quan chính hoặc thậm chí là nhà bảo trợ của dự án thì sao? Nhu cầu của bộ phận đó có nên được ưu tiên hơn nhu cầu của bộ phận kế toán không?</li>
+  <li>Nếu nhu cầu của bộ phận kỹ thuật ảnh hưởng tiêu cực đến bộ phận kế toán thì sao?</li>
+</ul>
+
+<p>Một số vấn đề không thể được giải quyết bởi người quản lý dự án và nhóm. Những vấn đề này yêu cầu sự can thiệp của nhà bảo trợ hoặc quản lý cấp cao khác. Tuy nhiên, có một số hướng dẫn tiêu chuẩn để cân bằng các yêu cầu cạnh tranh. Đối với kỳ thi, hãy nhớ rằng các yêu cầu cạnh tranh có thể được giải quyết bằng cách chấp nhận những yêu cầu phù hợp nhất với:</p>
+
+<ul class="content-list">
+  <li>Đề án kinh doanh (Business Case)</li>
+  <li>Tuyên bố phạm vi (Scope Statement)</li>
+  <li>Điều lệ dự án (Project Charter)</li>
+  <li>Các ràng buộc dự án đã biết</li>
+</ul>
+
+<p>Dưới đây là các cân nhắc bổ sung:</p>
+
+<ul class="content-list">
+  <li>Từ chối yêu cầu của bên liên quan để làm hoặc thêm điều gì đó không liên quan đến lý do dự án được khởi xướng. Nó không thể mang lại lợi ích dự án nếu không liên quan đến điều lệ dự án.</li>
+  <li>Nếu một yêu cầu liên quan đến lý do dự án được khởi xướng nhưng không nằm trong điều lệ dự án, yêu cầu này cũng nên bị từ chối. Người quản lý dự án có thể khuyến khích việc nộp một yêu cầu dự án mới thay thế.</li>
+  <li>Các thay đổi được đề xuất đối với điều lệ dự án phải được trình lên nhà bảo trợ để phê duyệt. Thông thường điều lệ dự án không thay đổi sau giai đoạn khởi xướng và tầm nhìn của dự án.</li>
+</ul>
+
+<p>Khi xem xét các ràng buộc, nếu ràng buộc quan trọng nhất là lịch trình, thì:</p>
+
+<ul class="content-list">
+  <li>Các yêu cầu mới sẽ làm chậm tiến độ sẽ không được chấp nhận. Tất nhiên, trong một dự án agile, chúng có thể được thêm vào backlog và các yêu cầu khác được giảm ưu tiên sang dự án khác. Backlog của dự án agile không nhất thiết phải được hoàn thành vào cuối dự án vì một số tính năng có thể được hoãn lại cho một dự án tương lai khác.</li>
+  <li>Các yêu cầu mới nén lịch trình hoặc ít nhất không làm chậm lịch trình (mà không ảnh hưởng nghiêm trọng đến các ràng buộc dự án khác) sẽ có khả năng được chấp nhận.</li>
+</ul>
+
+<p>Cho dù dự án được định hướng theo kế hoạch, agile hay lai, các yêu cầu không nằm trong các hướng dẫn này có thể trở thành một phần của dự án tương lai thay thế.</p>
+
+<h4 id="ch7-xac-minh-yeu-cau">Xác Minh Yêu Cầu</h4>
+
+<p>Đối với cả dự án theo kế hoạch định sẵn lẫn dự án Agile, việc xác minh yêu cầu ở mọi cơ hội là điều quan trọng. Điều này thường đòi hỏi phải gặp gỡ khách hàng để làm rõ những yêu cầu chưa rõ ràng và thảo luận về các yêu cầu đã được thu thập để đảm bảo chúng được hiểu đúng. Cần có sự hiểu biết chung về yêu cầu giữa khách hàng và nhóm. Thường thì các nguyên mẫu (prototype) rất hữu ích để cho khách hàng xem và đảm bảo yêu cầu được hiểu đúng trước khi xây dựng một phần tăng trưởng (increment) của sản phẩm.</p>
+
+<h5>Đánh Giá Lặp (Demo Sản Phẩm Sau Lặp)</h5>
+
+<p>Các dự án sử dụng phương pháp Agile và kết hợp thường xuyên trình diễn các phần tăng trưởng đã hoàn thành. Đôi khi các bên liên quan không quan tâm đến các phần tăng trưởng đầu tiên khi chức năng hiển thị chưa nhiều. Nhưng đây chính xác là lúc các nhóm cần phản hồi nhất. Việc đưa các bên liên quan tham gia vào các buổi đánh giá sớm rất quan trọng vì nó kích thích khả năng của họ trong việc nhìn nhận và diễn đạt yêu cầu thực sự của mình. Quản lý dự án và nhóm phải giải thích tầm quan trọng của phản hồi sớm này để đưa ra thiết kế và tính năng đúng trước khi việc thay đổi trở nên tốn kém hơn.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//232d74a3-154c-42e3-82c3-0e7de248a7b6/markdown_2/imgs/img_in_image_box_667_215_715_271.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A50Z%2F-1%2F%2Ff1fed17d0b3abc43126b89eb46eaa51115b638fc7658ca81af9decdbff1d4257" alt="Image" width="5%" /></div></div>
+
+<p>Quản lý dự án trên các dự án Agile và kết hợp nên giải thích chi phí của sự thay đổi (xem chương "Các Bên Liên Quan") cho các bên liên quan. Các nhóm muốn thảo luận về các thay đổi khi thiết kế sản phẩm vẫn đang trong quá trình phát triển và chi phí thay đổi còn tương đối thấp. Điều này đòi hỏi nhóm phải có sự dũng cảm để trình diễn các giải pháp chưa hoàn thiện có thể đối mặt với sự chỉ trích, và doanh nghiệp phải có sự tin tưởng và trí tưởng tượng về hình dạng của hệ thống để cung cấp phản hồi sớm nhất có thể.</p>
+
+<h4 id="ch7-tai-lieu-yeu-cau">Tài Liệu Yêu Cầu và Các Kết Quả Khác</h4>
+
+<p>Sau khi yêu cầu đã được thu thập, phân tích, xác minh và ưu tiên, việc lập tài liệu có thể được hoàn thành. Tài liệu yêu cầu trên các dự án dự đoán thường chính thức hơn so với các dự án thích ứng, vốn sử dụng các kỹ thuật nhẹ như sơ đồ vẽ tay. Hãy tưởng tượng việc thu thập yêu cầu từ hàng trăm người. Bạn có thể thấy việc tài liệu hóa những yêu cầu đó sẽ hữu ích như thế nào không? Tài liệu này là đầu ra của quá trình Thu Thập Yêu Cầu và giúp đảm bảo tất cả các yêu cầu đều rõ ràng và không mơ hồ.</p>
+
+<h5>Tiêu Chí Chấp Nhận</h5>
+
+<p>Tài liệu yêu cầu có thể chứa nhiều loại thông tin, nhưng một điều bắt buộc phải có là tiêu chí chấp nhận. Để tránh có những yêu cầu dễ bị hiểu nhầm, một câu hỏi hay nên đặt ra với các bên liên quan là: "Làm thế nào chúng ta biết công việc chúng ta thực hiện sẽ đáp ứng yêu cầu này?" Đây không chỉ là cách tốt để đảm bảo bạn hiểu yêu cầu của bên liên quan, mà còn giúp đảm bảo công việc đang được thực hiện sẽ được chấp nhận.</p>
+
+<h5>Định Nghĩa Hoàn Thành</h5>
+
+<p>Thường được liên kết nhiều nhất với các dự án Agile, nhưng định nghĩa này có lợi ích trên bất kỳ loại dự án nào. Các nhóm chỉ định "định nghĩa hoàn thành" cho mỗi thành phần sản phẩm ở cấp độ câu chuyện người dùng và cấp độ phát hành, cũng như ở cấp độ sản phẩm bàn giao cuối cùng. Ví dụ, hãy tưởng tượng một tình huống thực tế nơi chúng ta đang xây dựng một ngôi nhà. Vì nguồn tài chính chỉ có sẵn theo từng giai đoạn, ngôi nhà phải được xây dựng theo vòng đời Agile. Các ví dụ sau đây mô tả khi nào các sản phẩm bàn giao cho ngôi nhà được coi là "hoàn thành," và sản phẩm cuối cùng là ngôi nhà đã hoàn thiện:</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//232d74a3-154c-42e3-82c3-0e7de248a7b6/markdown_2/imgs/img_in_image_box_677_605_726_661.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A50Z%2F-1%2F%2F36b2b0e63d71d3f02a3b5e0a2d908999efaf3bbf5f45de242d372abaadf3f32b" alt="Image" width="5%" /></div></div>
+
+<ul class="content-list">
+  <li><strong>Cấp độ câu chuyện người dùng</strong> (Câu chuyện là "Hoàn thành Đổ Bê Tông"): "Đổ bê tông hoàn thành" đòi hỏi trước tiên móng phải được đặt và bê tông đã được đổ. "Hoàn thành Đổ Bê Tông" được coi là xong sau 7 ngày, đủ để chịu trọng lượng khi đi bộ lên (24–48 giờ) nhưng cũng đủ để chịu trọng lượng của xe công trình (7 ngày).</li>
+  <li><strong>Cấp độ phát hành</strong> ("Móng hoàn chỉnh"): "Móng hoàn chỉnh" được coi là "xong" khi móng đã được đặt, đổ bê tông hoàn thành, kiểm tra hoàn tất, kiểm định hoàn tất, đã trình bày cho nhà thầu xem, phản hồi của nhà thầu đã được giải quyết, và nhà thầu đã phê duyệt/ký xác nhận.</li>
+  <li><strong>Sản phẩm bàn giao cuối cùng</strong> (Dự án "ngôi nhà mơ ước" hoàn thành!): "Ngôi nhà mơ ước" được coi là "xong" khi tất cả các ưu tiên cao và trung bình đã hoàn thành theo định nghĩa hoàn thành riêng của từng hạng mục, tất cả các cuộc kiểm định và ký xác nhận kiểm định hoàn tất. Người mua đã dọn vào ở và đã sử dụng thành công tất cả các thiết bị cơ học trong sinh hoạt hàng ngày trong hai tháng. Họ đã hoàn thành khảo sát sự hài lòng của khách hàng với ít nhất 4 điểm trên thang 1–5. (Lưu ý rằng các hạng mục ưu tiên thấp trong việc xây nhà có thể bao gồm cảnh quan hoàn thiện hoặc tầng hầm hoàn thiện theo kế hoạch. Người mua có thể nhận quyền sở hữu với các hạng mục này vẫn còn nằm trong danh sách tồn đọng.)</li>
+</ul>
+
+<h5>Mối Quan Hệ Với Xác Nhận Phạm Vi</h5>
+
+<p>Yêu cầu phải được mô tả theo cách mà các sản phẩm bàn giao liên quan có thể được kiểm tra hoặc đo lường trong quá trình Xác Nhận Phạm Vi để xác nhận các sản phẩm bàn giao có thể chấp nhận được. Mức độ chi tiết tài liệu được lặp lại cho đến khi mỗi yêu cầu thỏa mãn tiêu chí rõ ràng, đầy đủ và có thể đo lường được, và tiêu chí chấp nhận được thiết lập.</p>
+
+<h5>Ma Trận Truy Xuất Yêu Cầu</h5>
+
+<p>Bạn đã từng làm việc trên một dự án mà một số yêu cầu bị lạc mất trong các chi tiết chưa? Có thể khó nhớ yêu cầu đến từ đâu, tầm quan trọng của nó đối với dự án là gì, hoặc nó liên quan đến những yêu cầu khác như thế nào. Việc mất dấu chi tiết yêu cầu có thể dẫn đến một mục tiêu dự án bị bỏ sót. Ma trận truy xuất yêu cầu là một dạng tài liệu yêu cầu giúp liên kết các yêu cầu với các mục tiêu và với các yêu cầu khác để đảm bảo các mục tiêu chiến lược được hoàn thành. Ma trận được sử dụng xuyên suốt dự án trong việc phân tích các thay đổi được đề xuất đối với phạm vi dự án hoặc phạm vi sản phẩm. Một ví dụ về ma trận truy xuất yêu cầu được hiển thị trong hình 7.8.</p>
+
+<p>Thông tin như số định danh yêu cầu, nguồn gốc của mỗi yêu cầu, ai được giao quản lý yêu cầu đó, và trạng thái của yêu cầu nên được ghi lại trong ma trận truy xuất yêu cầu. Tuy nhiên, đối với các dự án lớn, việc bao gồm tất cả thông tin này trong ma trận sẽ làm cho nó cồng kềnh và khó sử dụng. Một lựa chọn khác là lưu trữ dữ liệu này trong một kho lưu trữ riêng, giữ ma trận như một công cụ dễ tham chiếu. Đối với kỳ thi, chỉ cần hiểu rằng ma trận truy xuất yêu cầu liên kết các yêu cầu với các mục tiêu và/hoặc các yêu cầu khác, và các thuộc tính yêu cầu, như số định danh, nguồn gốc và trạng thái, cũng cần được ghi lại.</p>
+
+<p>Việc giao trách nhiệm quản lý một số yêu cầu nhất định tương tự như khái niệm giao chủ sở hữu rủi ro, được mô tả trong chương "Rủi Ro và Vấn Đề". Giao thành viên nhóm quản lý một số yêu cầu nhất định giúp đảm bảo các mục tiêu được đáp ứng và cũng giúp giải phóng thời gian của quản lý dự án. Quyền sở hữu yêu cầu là một loại công việc khác mà thành viên nhóm có thể thực hiện trong dự án ngoài công việc tạo ra sản phẩm. Nếu có một chuyên viên phân tích kinh doanh trong nhóm dự án, họ sẽ quản lý các yêu cầu.</p>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <td></td>
+    <td>Khu vực đọc sách</td>
+    <td>Lưu trữ sách</td>
+    <td>Không gian họp công cộng</td>
+    <td>Khu vực trẻ em</td>
+    <td>Âm thanh</td>
+    <td>Không gian văn phòng</td>
+    <td>Máy tính</td>
+  </tr>
+  <tr>
+    <td>Mục tiêu</td>
+    <td>Tạp chí</td>
+    <td>Báo</td>
+    <td>Ghế thoải mái—25, Bàn cho người dùng—2, 150.000 quyển sách</td>
+    <td>Biển hiệu phía trên để dễ định vị, Các phòng</td>
+    <td>Ghế nhỏ—80%, Màn chiếu kéo xuống</td>
+    <td>Phòng cho sách âm thanh và âm nhạc</td>
+    <td>Dùng công cộng—48, Cabin—15</td>
+  </tr>
+  <tr>
+    <td>Cải thiện khả năng tiếp cận tài nguyên việc làm thêm 20%.</td>
+    <td>X</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td>
+  </tr>
+  <tr>
+    <td>Nâng cao trình độ đọc của trẻ em địa phương lên hai lớp trong một năm.</td>
+    <td>X</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td>
+  </tr>
+  <tr>
+    <td>Cung cấp nơi dễ chịu để cộng đồng gặp gỡ.</td>
+    <td>X</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td>
+  </tr>
+  <tr>
+    <td>Thay thế thư viện hiện tại trước cuối quý tới.</td>
+    <td>X</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td>
+  </tr>
+</table>
+</div>
+
+<p><em>HÌNH 7.8 Ma trận truy xuất yêu cầu</em></p>
+
+<h4 id="ch7-dinh-nghia-pham-vi">Xác Định Phạm Vi</h4>
+
+<p>Quá trình Xác Định Phạm Vi liên quan đến việc xác định cụ thể những gì được bao gồm và không được bao gồm trong dự án và các sản phẩm bàn giao của nó. Quá trình này sử dụng tài liệu yêu cầu vừa thảo luận là kết quả từ quá trình "Thu Thập Yêu Cầu". Các kết quả khác cần làm việc bao gồm điều lệ dự án, kế hoạch quản lý phạm vi, nhật ký giả định và sổ đăng ký rủi ro.</p>
+
+<div class="callout">
+  <p><strong>Nhóm Quy Trình:</strong> Lập Kế Hoạch</p>
+  <p><strong>Quy Trình:</strong> Xác Định Phạm Vi</p>
+  <p><strong>ECO:</strong> Lĩnh vực II, Nhiệm vụ 8 – Lập kế hoạch và quản lý phạm vi</p>
+  <p><strong>PMBOK Guide:</strong> Lĩnh vực 2.4 Lập Kế Hoạch</p>
+</div>
+
+<h4 id="ch7-dinh-nghia-pham-vi-du-doan">Quản Lý Dự Án Dự Đoán và Xác Định Phạm Vi</h4>
+
+<p>Đây là cách xác định phạm vi diễn ra trong các môi trường dự đoán:</p>
+
+<ul class="content-list">
+  <li>Mọi thứ được biết ở cấp độ cao về phạm vi đã được ghi lại trong điều lệ dự án.</li>
+  <li>Nhiều chi tiết hơn về phạm vi được khám phá và ghi lại trong quá trình Thu Thập Yêu Cầu. Tại thời điểm này, việc xác định yêu cầu đủ để hoàn thiện định nghĩa phạm vi cho kế hoạch quản lý dự án.</li>
+  <li>Khi kế hoạch quản lý dự án (có định nghĩa này trong đó) đã được phê duyệt, có thể có các thay đổi đối với nó nhưng chúng sẽ phải chịu quy trình Kiểm Soát Thay Đổi Tích Hợp.</li>
+</ul>
+
+<h4 id="ch7-dinh-nghia-pham-vi-thich-ung">Xác Định Phạm Vi Thích Ứng</h4>
+
+<p>Bạn sẽ xác định phạm vi như thế nào trong các môi trường thích ứng? Hãy xem xét quá trình này từ góc độ Agile. Một lý do chính đáng để sử dụng Agile là phạm vi đang nổi lên, vì vậy phạm vi sẽ tương đối linh hoạt.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//232d74a3-154c-42e3-82c3-0e7de248a7b6/markdown_4/imgs/img_in_image_box_659_421_707_476.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A51Z%2F-1%2F%2F1c97d443de03da074ddfa9b4b8bb369edeebfd5bf4dc85430c91c3fd66b31582" alt="Image" width="5%" /></div></div>
+
+<h4 id="ch7-yeu-cau-agile-pham-vi">Yêu Cầu Agile và Xác Định Phạm Vi</h4>
+
+<p>Trong các môi trường thích ứng, yêu cầu và định nghĩa phạm vi đang nổi lên trong phần lớn dự án. Trên các dự án Agile, phạm vi được xác định với sự tinh chỉnh tiến triển; đầu tiên ở cấp độ điều lệ và tầm nhìn trong giai đoạn Khởi Động, sau đó với việc tạo ra danh sách tồn đọng cấp cao và kế hoạch phát hành. Các nhóm Agile sau đó phân rã các yêu cầu tính năng sản phẩm từ danh sách tồn đọng cấp cao bằng cách tinh chỉnh tiến triển các chi tiết yêu cầu tính năng và "phân lát" (slicing), hoặc phân rã, các câu chuyện cấp cao thành các phần công việc nhỏ hơn, dễ quản lý hơn, giống như việc tạo và phân rã các gói công việc của WBS trong môi trường dự đoán. Việc phân rã được thảo luận trong phần Phân Rã Phạm Vi Agile của chương này.</p>
+
+<ul class="content-list">
+  <li><strong>Tầm nhìn và điều lệ:</strong> Giá trị và lợi ích của sản phẩm dự án được mô tả ngắn gọn trong quá trình tầm nhìn (trong giai đoạn khả thi—không hiển thị ở đây). Trong điều lệ, các mục tiêu dự án được ghi lại.</li>
+  <li><strong>Danh sách tồn đọng:</strong> Danh sách tính năng cấp cao được tạo ra.</li>
+  <li><strong>Kế hoạch phát hành:</strong> Được hoàn thành cùng với hai kết quả trước đó. Kế hoạch (hoặc bản đồ phát hành) sẽ hiển thị ít nhất các chức năng đã biết cho lần phát hành đầu tiên nhưng cũng có thể hiển thị các lần phát hành tiếp theo.</li>
+  <li><strong>Yêu cầu chi tiết:</strong> Được thu thập sau đó khi các tính năng và câu chuyện từ danh sách tồn đọng được phân rã và nhóm chuẩn bị xây dựng các tính năng ưu tiên cho lần phát hành đầu tiên. Các buổi hội thảo viết câu chuyện được tổ chức để "phân lát," hoặc phân rã, những câu chuyện đó đến kích thước và độ phức tạp dễ quản lý nhất.</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//232d74a3-154c-42e3-82c3-0e7de248a7b6/markdown_4/imgs/img_in_image_box_357_608_731_886.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A51Z%2F-1%2F%2F43806869ca2a0360e25bb8cb5c179d391465e4e1b6630ac0544a1a8aa50bc6f2" alt="Image" width="45%" /></div></div>
+
+<p><em>Hình 7.9 Xác định phạm vi trong Agile</em></p>
+
+<h5>Xác Định Phạm Vi Linh Hoạt Ưu Tiên Thời Gian và Chi Phí</h5>
+
+<p>Các khung thời gian cố định (timebox) cho phép các nhóm Agile xác định và quản lý phạm vi linh hoạt để đạt được sản phẩm chất lượng cao nhất và ưu tiên cao nhất trong một chi phí cố định và một khung thời gian cố định. Do đó, bạn có thể nghĩ về phạm vi trong một dự án Agile là rất linh hoạt trong khi thời gian và chi phí cố định hơn. Các mục ưu tiên cao nhất được hoàn thành trong thời gian được cấp cho dự án.</p>
+
+<h5>Phân Tích Sản Phẩm Như Một Phương Pháp Xác Định Phạm Vi</h5>
+
+<p>Như đã lưu ý ở đầu phần này, một phần của việc xác định phạm vi là xác định các sản phẩm bàn giao của dự án. Phân tích sản phẩm là một phương pháp phân tích các mục tiêu và mô tả sản phẩm theo như khách hàng hoặc nhà tài trợ đã nêu. Thông tin đó sau đó được sử dụng để xác định các sản phẩm bàn giao hữu hình. Công việc phân tích sản phẩm có thể bao gồm phân tích mô tả sản phẩm và các yêu cầu đã nêu, hoặc sử dụng các kỹ thuật như kỹ thuật hệ thống, phân tích giá trị hoặc kỹ thuật giá trị.</p>
+
+<p>Phân tích sản phẩm cho phép quản lý dự án đảm bảo phạm vi sản phẩm và dự án được hiểu và chính xác. Đối với kỳ thi, hãy nhận ra rằng bạn có thể cần xác định và định nghĩa các sản phẩm bàn giao như một phần của dự án, thay vì nhận một danh sách đầy đủ từ khách hàng.</p>
+
+<h4 id="ch7-ket-qua-dinh-nghia-pham-vi">Kết Quả của Xác Định Phạm Vi</h4>
+
+<p>Các kết quả dự án từ quá trình Xác Định Phạm Vi cho một dự án theo kế hoạch định sẵn bao gồm tuyên bố phạm vi dự án và các cập nhật cho các kết quả dự án khác như tài liệu yêu cầu, ma trận truy xuất yêu cầu nếu một ma trận sẽ được sử dụng, và các cập nhật cho sổ đăng ký các bên liên quan và nhật ký giả định.</p>
+
+<h5>Tuyên Bố Phạm Vi Dự Án</h5>
+
+<p>Đây là kết quả chính của Xác Định Phạm Vi. Tài liệu này thực tế nói rằng: "Đây là những gì chúng ta sẽ thực hiện trong dự án này," hoặc "Đây là phạm vi dự án và sản phẩm hoặc dịch vụ đã được phê duyệt cho dự án này." Quản lý dự án và nhóm sẽ đã có nhiều cuộc thảo luận với các bên liên quan. Nhiều thứ không có trong dự án sẽ đã được thảo luận và không được chấp nhận vì chúng không có trong điều lệ và không thuộc về dự án. Vì vậy, trong tuyên bố phạm vi dự án, quản lý dự án cũng phải đảm bảo xác định những gì không có trong dự án. Họ cũng nên làm rõ các lĩnh vực mà họ đã biết có các yếu tố của phạm vi có thể dễ bị hiểu nhầm.</p>
+
+<p>Tuyên bố phạm vi dự án trong các môi trường dự đoán thường bao gồm:</p>
+
+<ul class="content-list">
+  <li>Phạm vi sản phẩm</li>
+  <li>Phạm vi dự án (bao gồm mô tả các thành phần quản lý dự án)</li>
+  <li>Danh sách các sản phẩm bàn giao sản phẩm</li>
+  <li>Tiêu chí chấp nhận</li>
+  <li>Những gì không thuộc dự án</li>
+  <li>Giả định và ràng buộc</li>
+</ul>
+
+<p>Trong Agile, có thể có hoặc không có định nghĩa phạm vi dưới dạng tuyên bố phạm vi. Chắc chắn sẽ có các thành phần của phạm vi như được mô tả trong phần Xác Định Phạm Vi Thích Ứng của chương này. Ngoài ra, các nhóm Agile phân rã các câu chuyện lớn hoặc phức tạp thành các câu chuyện nhỏ hơn, dễ quản lý hơn. Những "câu chuyện dễ quản lý hơn" này tương tự như các gói công việc của WBS trong một dự án theo kế hoạch định sẵn. Điều này có nghĩa là chúng đã được chia nhỏ để có thể dễ dàng ước tính hơn về thời gian, chi phí và các nhu cầu tài nguyên khác, cũng như giao cho các thành viên nhóm để xây dựng. Các câu chuyện đã hoàn thành được ưu tiên đưa vào một lần phát hành sau đó được tích hợp lại với nhau để trở thành phần tăng trưởng sản phẩm đang hoạt động có thể được phát hành cho khách hàng.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//a8f8d3cd-c109-4f9d-ad7c-e37b5355c4b8/markdown_0/imgs/img_in_image_box_673_739_720_795.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A47Z%2F-1%2F%2Fea200525cd26f1817e476203a2b5184e293f76ae69ee2a163b6f309fd468905f" alt="Image" width="5%" /></div></div>
+
+<h4 id="ch7-tao-wbs">Tạo WBS (Phân Rã Phạm Vi)</h4>
+
+<p>Trong việc lập kế hoạch theo phương pháp dự đoán, việc phân rã phạm vi bao gồm tạo WBS và từ điển WBS. Định nghĩa phạm vi bao gồm tuyên bố phạm vi, WBS và từ điển WBS tạo thành đường cơ sở phạm vi của dự án, vì vậy không có gì để nghi ngờ về sự cần thiết của cả ba thành phần này.</p>
+
+<p>Các phần sau về cấu trúc phân chia công việc (WBS), từ điển WBS và đường cơ sở phạm vi phần lớn được xem xét từ góc độ mô hình Nhóm Quy Trình. Chúng ta sẽ thảo luận về phân rã phạm vi Agile sau các phần này.</p>
+
+<div class="callout">
+  <p><strong>Nhóm Quy Trình:</strong> Lập Kế Hoạch</p>
+  <p><strong>Quy Trình:</strong> Tạo WBS</p>
+  <p><strong>ECO:</strong> Lĩnh vực II, Nhiệm vụ 8 – Lập kế hoạch và quản lý phạm vi</p>
+  <p><strong>PMBOK Guide:</strong> Lĩnh vực 2.4 Lập Kế Hoạch</p>
+</div>
+
+<h4 id="ch7-wbs">Cấu Trúc Phân Rã Công Việc (WBS)</h4>
+
+<p>WBS là gì? Hiểu và sử dụng công cụ này là điều cần thiết để thực hiện dự án thành công theo phương pháp truyền thống, và để vượt qua kỳ thi. Hãy bắt đầu bằng cách kiểm tra mức độ hiểu biết hiện tại của bạn.</p>
+
+<div class="callout">
+  <p><strong>Mô Hình Nhóm Quy Trình</strong></p>
+  <p>Nhóm Quy Trình: Lập Kế Hoạch</p>
+  <p>Quy Trình: Tạo WBS</p>
+  <p><strong>ECO</strong></p>
+  <p>Lĩnh Vực II</p>
+  <p>Nhiệm vụ 8: Lập kế hoạch và quản lý phạm vi</p>
+  <p><strong>Hướng Dẫn PMBOK</strong></p>
+  <p>Lĩnh Vực 2.4 Lập Kế Hoạch</p>
+</div>
+
+<h3 id="ch7-exercise-7-2">7.2 Bài Tập</h3>
+
+<p>WBS chứa đựng những gì và giá trị của nó như một phần của đường cơ sở phạm vi là gì? Viết câu trả lời vào Sổ Tay Bài Tập của bạn.</p>
+
+<h4 id="ch7-answer-7-2">Đáp Án</h4>
+
+<p>WBS là công cụ trực quan, có tổ chức (giống như một bộ phát tín hiệu thông tin!) hiển thị toàn bộ phạm vi của dự án, được phân rã thành các gói công việc có thể quản lý được. Nó giúp đảm bảo rằng không có sản phẩm bàn giao nào bị bỏ sót. Đây cũng là một công cụ giao tiếp vì nó cung cấp hình ảnh về những gì được bao gồm trong dự án.</p>
+
+<p>Dưới đây là một số câu trả lời bổ sung có thể giúp định nghĩa thêm về WBS và giá trị của nó đối với dự án.</p>
+
+<ul class="content-list">
+  <li>Việc xây dựng WBS bằng đồ thị cung cấp tầm nhìn có cấu trúc cho một dự án và giúp đảm bảo rằng không có gì, bao gồm cả các sản phẩm bàn giao, bị bỏ quên.</li>
+  <li>WBS được tạo ra với sự đóng góp từ nhóm và các bên liên quan. Việc thu hút nhóm và các bên liên quan giúp đạt được sự đồng thuận, và sự đồng thuận tăng cao dẫn đến hiệu suất cải thiện.</li>
+  <li>Quá trình tạo WBS cho phép nhóm đi qua dự án trong tâm trí của họ và từ đó cải thiện các kế hoạch dự án. Kết quả là việc thực thi dự án thường dễ dàng hơn và ít rủi ro hơn.</li>
+  <li>Tham gia vào việc tạo WBS giúp mọi người hiểu dự án tốt hơn. Nó cũng làm cho dự án có vẻ khả thi hơn.</li>
+  <li>WBS hiển thị hệ thống phân cấp đầy đủ của một dự án, giúp dễ dàng nhìn thấy mối quan hệ giữa các sản phẩm bàn giao với nhau.</li>
+</ul>
+
+<p>Hãy xem lại ví dụ WBS trong hình 7.10.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//a8f8d3cd-c109-4f9d-ad7c-e37b5355c4b8/markdown_2/imgs/img_in_image_box_81_131_766_353.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A48Z%2F-1%2F%2Ff1023e4a9a94a9de298885968658f4b437b091dcff6b0c43d95f31dcc1d743ff" alt="Image" width="83%" /></div></div>
+
+<p class="text-center"><em>HÌNH 7.10 WBS (ở cấp độ tóm tắt) cho một dự án tạo và cài đặt phần cứng/phần mềm</em></p>
+
+<p>Tất nhiên, việc phân rã cần được điều chỉnh theo từng dự án. Thông thường, tên dự án được đặt ở đầu WBS và cấp độ tiếp theo là vòng đời phát triển. Các cấp độ tiếp theo phân rã dự án thành các sản phẩm bàn giao, sau đó được phân rã liên tiếp cho đến khi đạt đến cấp độ gói công việc (được mô tả tiếp theo).</p>
+
+<p>Bạn có biết rằng WBS cho phép bạn phân rã một dự án có vẻ quá tải thành các phần có thể lập kế hoạch, tổ chức, quản lý và kiểm soát không? Việc tạo WBS là nỗ lực phân rã các sản phẩm bàn giao thành các sản phẩm bàn giao nhỏ hơn (gói công việc). Việc phân rã có thể được thực hiện theo phương pháp từ trên xuống (bắt đầu từ các phần cấp cao của dự án), phương pháp từ dưới lên (bắt đầu từ cấp độ gói công việc), hoặc bằng cách tuân theo các hướng dẫn hoặc mẫu của tổ chức và ngành.</p>
+
+<p>Để thi, hãy biết rằng trên WBS, "công việc" không đề cập đến một hoạt động, mà là các sản phẩm công việc là kết quả từ một hoạt động hoặc nhóm hoạt động. Các gói công việc là những thứ (sản phẩm bàn giao, sản phẩm) hơn là các hành động (hoạt động). Phạm vi sản phẩm đầy đủ cũng như phạm vi dự án (bao gồm cả các hoạt động quản lý dự án) đều được bao gồm.</p>
+
+<h5 id="ch7-wbs-guidelines">Hướng Dẫn WBS</h5>
+
+<p>Mỗi WBS đều là duy nhất, và mỗi quản lý dự án sẽ tạo WBS theo cách riêng của họ. Để thi, dưới đây là một số hướng dẫn mà mọi quản lý dự án nên tuân theo:</p>
+
+<ul class="content-list">
+  <li>Quản lý dự án tạo WBS với sự đóng góp từ nhóm và các bên liên quan khác.</li>
+  <li>Mỗi cấp độ của WBS là sự phân rã của cấp độ trước đó.</li>
+  <li>Toàn bộ dự án nên được bao gồm ở các cấp độ cao nhất của WBS. Không phải mọi cấp độ đều cần được phân rã thêm, nhưng những cấp độ dẫn đến gói công việc phải được phân rã đến cấp độ gói công việc.</li>
+  <li>WBS chỉ bao gồm các sản phẩm bàn giao của dự án là các yêu cầu. Các sản phẩm bàn giao không được bao gồm trong WBS không phải là một phần của dự án.</li>
+</ul>
+
+<p>Trong quá trình lập kế hoạch, nhóm quản lý dự án và các chuyên gia am hiểu về chủ đề phân rã định nghĩa phạm vi cho đến khi đạt đến cấp độ gói công việc. Điều này xảy ra khi các sản phẩm bàn giao:</p>
+
+<ul class="content-list">
+  <li>Có thể được ước tính một cách thực tế và tự tin (bao gồm các hoạt động, thời lượng và chi phí liên quan)</li>
+  <li>Có thể được phân công một cách hợp lý cho một nguồn lực hoặc nhiều nguồn lực riêng biệt</li>
+  <li>Có thể được hoàn thành trong thời gian tương đối ngắn</li>
+  <li>Có thể được hoàn thành mà không bị gián đoạn và không cần thêm thông tin</li>
+  <li>Có thể được thuê ngoài với ít hoặc không gây gián đoạn cho nhóm nội bộ.</li>
+</ul>
+
+<p>Các cấp độ trong WBS thường được đánh số để dễ tham chiếu. Phần mềm WBS thực hiện điều này tự động và có nhiều hệ thống đánh số khác nhau bạn có thể sử dụng.</p>
+
+<p>Hình 7.11 cung cấp một ví dụ.</p>
+
+<div class="callout tip">
+  <p>Trong kỳ thi, bạn có thể thấy thuật ngữ "gói lập kế hoạch" hoặc "tài khoản kiểm soát" như được thấy trong hình.</p>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//a8f8d3cd-c109-4f9d-ad7c-e37b5355c4b8/markdown_3/imgs/img_in_image_box_170_127_597_365.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A48Z%2F-1%2F%2F54dd969323842d0271db61eb4b229e043b9252062bba5dd29fbd0d02692281fd" alt="Image" width="51%" /></div></div>
+
+<p class="text-center"><em>HÌNH 7.11 Hệ thống đánh số WBS mẫu</em></p>
+
+<p>Các tài khoản kiểm soát, có thể bao gồm một hoặc nhiều gói lập kế hoạch, cho phép bạn quản lý và kiểm soát tập thể các chi phí, lịch trình và phạm vi ở cấp độ cao hơn so với gói công việc. Mỗi gói công việc trong WBS chỉ được gán cho một tài khoản kiểm soát.</p>
+
+<h5 id="ch7-wbs-schedule">WBS và Lập Kế Hoạch Tiến Độ</h5>
+
+<p>Khi việc lập kế hoạch tiến triển, nhóm phân rã các gói công việc từ WBS thành các hoạt động tiến độ cần thiết để tạo ra các gói công việc. Các hoạt động và dữ liệu của chúng thường được nhập vào biểu đồ Gantt của phần mềm quản lý dự án truyền thống. Dữ liệu có thể giúp tạo ra lịch trình dự án. Thông thường, phần mềm quản lý dự án cũng có thể tạo ra sơ đồ mạng từ dữ liệu biểu đồ Gantt. Trong danh sách sau, bạn có thể thấy từ một số dữ liệu hoạt động cơ bản cách lập kế hoạch phạm vi liên quan đến lập kế hoạch tiến độ, chi phí, nguồn lực và các ràng buộc khác:</p>
+
+<ul class="content-list">
+  <li>Tên (của gói công việc)</li>
+  <li>Ngày bắt đầu</li>
+  <li>Thời lượng</li>
+  <li>Ngày kết thúc (thường được xác định bởi thời lượng)</li>
+  <li>Phụ thuộc (cần làm gì trước gói công việc này?)</li>
+  <li>Nguồn lực được phân công</li>
+</ul>
+
+<h5 id="ch7-scope-statement-wbs">Bản Tuyên Bố Phạm Vi, WBS và Từ Điển WBS</h5>
+
+<p>Nhóm sử dụng ba thành phần kế hoạch này để giúp xác định các hoạt động cần thiết để tạo ra các sản phẩm bàn giao. Từ điển WBS được mô tả trong phần tiếp theo của chương này, và quy trình Xác Định Hoạt Động được mô tả trong chương "Tiến Độ".</p>
+
+<h5 id="ch7-how-work-packages-defined">Cách Xác Định Các Gói Công Việc</h5>
+
+<p>Cách phạm vi dự án được phân rã thành các gói công việc được điều chỉnh theo từng dự án. Trong lịch sử, các hướng dẫn đã chỉ ra rằng đối với các dự án nhỏ, WBS thường được phân rã thành các gói công việc mất từ 4 đến 40 giờ để hoàn thành. Các dự án vừa có thể bắt đầu với các gói công việc từ 8 đến 80 giờ làm việc, trong khi các dự án lớn có thể bắt đầu với các gói 300 giờ làm việc. Mặc dù chúng tôi đưa ra chúng ở đây phòng trường hợp bạn gặp chúng trong kỳ thi, các ví dụ lịch sử này ít có khả năng xuất hiện trong câu hỏi hơn so với trước đây. Thực tế này đã giảm dần để ủng hộ quyết định chủ quan của nhóm về "điều gì có ý nghĩa" về mặt ước tính, phân bổ nguồn lực và xây dựng gói công việc. Vì dự án được lập kế hoạch lặp đi lặp lại bất kể phương pháp nào, định nghĩa gói công việc có thể được tinh chỉnh theo từng bước lặp.</p>
+
+<h5 id="ch7-wbs-opa">WBS Như Tài Sản Quy Trình Tổ Chức</h5>
+
+<p>Nếu công ty của bạn thực hiện nhiều dự án tương tự nhau, WBS từ một dự án có thể được sử dụng làm cơ sở cho dự án khác. Hãy kỳ vọng rằng đối với mục đích thi, PMO thu thập và chia sẻ các ví dụ WBS, khuyến khích việc tạo ra các mẫu.</p>
+
+<p>Bạn có thực sự hiểu WBS và tầm quan trọng của nó đối với việc lập kế hoạch và quản lý phạm vi trong các môi trường dự đoán không? Hãy thử bài tập tiếp theo. Nếu bạn bỏ lỡ nhiều câu trả lời, đây là khoảng trống cần tiếp tục ôn tập trước kỳ thi.</p>
+
+<h3 id="ch7-exercise-7-3">7.3 Bài Tập</h3>
+
+<p>Tự kiểm tra! Lợi ích của WBS là gì? Viết câu trả lời vào Sổ Tay Bài Tập của bạn.</p>
+
+<h4 id="ch7-answer-7-3">Đáp Án</h4>
+
+<p>Sau đây là các lợi ích của việc sử dụng WBS:</p>
+
+<ul class="content-list">
+  <li>Cung cấp bức tranh về toàn bộ phạm vi dự án</li>
+  <li>Giúp mọi người hiểu dự án tốt hơn</li>
+  <li>Cung cấp cho nhóm sự hiểu biết về cách các sản phẩm bàn giao phù hợp với kế hoạch tổng thể</li>
+  <li>Cho các thành viên nhóm biết tác động của công việc của họ đối với toàn bộ dự án</li>
+  <li>Tạo điều kiện giao tiếp và hợp tác cho nhóm dự án và các bên liên quan khác</li>
+  <li>Giúp quản lý kỳ vọng của các bên liên quan về các sản phẩm bàn giao</li>
+  <li>Giúp nhận diện rủi ro</li>
+  <li>Giúp ngăn chặn công việc bị bỏ sót</li>
+  <li>Giúp ngăn chặn các thay đổi không cần thiết</li>
+  <li>Tập trung kinh nghiệm của nhóm vào những gì cần được thực hiện, dẫn đến chất lượng tăng cao và dự án dễ quản lý hơn</li>
+  <li>Cung cấp cơ sở để ước tính nguồn lực, chi phí và lịch trình</li>
+  <li>Cung cấp bằng chứng về nhu cầu nguồn lực, kinh phí và lịch trình</li>
+  <li>Giúp lập kế hoạch các nỗ lực kiểm soát</li>
+  <li>Hỗ trợ trong việc xây dựng tiêu chí chấp nhận sản phẩm bàn giao</li>
+  <li>Đạt được sự đồng thuận của nhóm và tạo điều kiện xây dựng nhóm</li>
+</ul>
+
+<p>WBS là thành phần nền tảng của quản lý dự án. Hầu hết mọi thứ xảy ra trong quá trình lập kế hoạch đều xoay quanh WBS.</p>
+
+<p>Chúng ta đã đề cập đến mối quan hệ của việc lập kế hoạch phạm vi với chi phí, tiến độ và nguồn lực. Hình 7.12 minh họa cách nhiều thành phần lập kế hoạch dự án khác phụ thuộc vào WBS. Sau đây là một số ví dụ về cách WBS hỗ trợ lập kế hoạch với các ràng buộc dự án:</p>
+
+<ul class="content-list">
+  <li>Trong quá trình lựa chọn dự án và trong quá trình khởi động, chi phí và lịch trình được ước tính ở cấp độ rất cao và cho toàn bộ dự án. Tuy nhiên, trong quá trình lập kế hoạch, chi phí và lịch trình được ước tính ở cấp độ gói công việc hoặc hoạt động.</li>
+  <li>WBS có thể giúp quản lý dự án và nhóm xác định thêm rủi ro bằng cách xem xét dự án ở cấp độ gói công việc.</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//a8f8d3cd-c109-4f9d-ad7c-e37b5355c4b8/markdown_4/imgs/img_in_image_box_424_629_758_866.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A49Z%2F-1%2F%2Fe3ebe50f4b080f82ef072e33d8bb929b0c113a7e1bad9ce1b458cf2000b61bc2" alt="Image" width="40%" /></div></div>
+
+<p class="text-center"><em>HÌNH 7.12 Nhiều hoạt động lập kế hoạch xoay quanh WBS</em></p>
+
+<p>Lập kế hoạch và quản lý nguồn lực được hỗ trợ bởi WBS. Các gói công việc được phân công cho các nguồn lực theo gói công việc và hoạt động.</p>
+
+<p>Hãy nghĩ trước một chút đến khía cạnh kiểm soát dự án khi có WBS. Bài tập tiếp theo sẽ giúp bạn ôn lại cách WBS được sử dụng vượt ra ngoài giai đoạn lập kế hoạch để còn kiểm soát dự án trong khi nhóm đang xây dựng sản phẩm.</p>
+
+<h3 id="ch7-exercise-7-4">7.4 Bài Tập</h3>
+
+<h4 id="ch7-wbs-executing-controlling">Câu trả lời</h4>
+
+<p>Khi hoàn thành, WBS có thể được sử dụng bất cứ khi nào phạm vi dự án cần được đánh giá. Bạn có thể nghĩ ra những điều khác, nhưng dưới đây là một số ví dụ.</p>
+
+<ul class="content-list">
+  <li><strong>Các yêu cầu thay đổi liên quan đến phạm vi:</strong> Người quản lý dự án có thể sử dụng WBS, cùng với bản mô tả phạm vi dự án, để xác định xem một yêu cầu thay đổi có nằm trong phạm vi dự án đã được phê duyệt hay không.</li>
+  <li><strong>Tác động của thay đổi:</strong> Người quản lý dự án và nhóm có thể sử dụng WBS như một phần của quy trình kiểm soát thay đổi tích hợp để đánh giá tác động của các yêu cầu thay đổi đối với phạm vi dự án.</li>
+  <li><strong>Kiểm soát scope creep:</strong> Người quản lý dự án có thể kiểm soát scope creep bằng cách sử dụng WBS để củng cố những công việc cần thực hiện. ("Scope creep" đề cập đến việc phạm vi tăng lên mà không thông qua các quy trình kiểm soát thay đổi phù hợp.)</li>
+  <li><strong>Truyền thông:</strong> WBS là công cụ truyền thông khi thảo luận về dự án trong nhóm hoặc với các bên liên quan khác (ví dụ: nhà tài trợ, khách hàng).</li>
+  <li><strong>Định hướng cho thành viên nhóm:</strong> WBS có thể giúp các thành viên mới hiểu vai trò của họ trong dự án.</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//91ae1ce1-f4af-4d62-812b-69f789532a4d/markdown_0/imgs/img_in_image_box_60_516_113_569.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A32Z%2F-1%2F%2F1eb8b008032749cc786281088a4ca14be1eca5fedb0a6c53320d443fbfab7003" alt="Image" width="6%" /></div></div>
+
+<p>Bây giờ, bạn có muốn trả lời đúng nhiều câu hỏi thi hơn không? Trước tiên, hãy biết rằng đề thi có thể sử dụng thuật ngữ "deconstruction" (phân rã) cũng như "decomposition" (phân tách). Cả hai thuật ngữ đều có nghĩa giống nhau. Thứ hai, nhiều người nhầm lẫn giữa "WBS" và "decomposition". Chúng có liên quan nhau nhưng có sự khác biệt. Cách tốt nhất để hiểu decomposition là: decomposition là hành động bạn đang thực hiện, còn WBS là phương pháp để thực hiện nó, đồng thời cũng là sản phẩm tạo ra từ quá trình đó. Nói cách khác, bạn phân tách (decompose) một dự án và quản lý phạm vi cùng các ràng buộc khác của nó bằng cách sử dụng WBS.</p>
+
+<h4 id="ch7-wbs-dictionary">Từ điển WBS</h4>
+
+<p>Hãy nghĩ về cách một gói công việc được xác định trong WBS. Nó thường chỉ được mô tả bằng một hoặc hai từ. Nhưng việc giao một sản phẩm bàn giao với mô tả ngắn gọn như vậy cho một thành viên nhóm có thể gây ra quá nhiều biến thể (điều này tự nó có thể gây ra scope creep). Từ điển WBS là tài liệu cung cấp các chi tiết cần thiết để xây dựng mỗi gói công việc. Nó cũng liệt kê các tiêu chí chấp nhận cho từng sản phẩm bàn giao, đảm bảo công việc kết quả phù hợp với những gì cần thiết. Người quản lý dự án và nhóm có thể sử dụng từ điển WBS để hiểu rõ hơn về công việc cần thực hiện, và để ngăn ngừa scope creep trước khi công việc bắt đầu thay vì phải đối phó với scope creep trong khi công việc đang được thực hiện.</p>
+
+<p>Từ điển WBS là đầu ra của quy trình Tạo WBS. Nó có thể được sử dụng như một phần của hệ thống ủy quyền công việc, thông báo cho các thành viên nhóm khi gói công việc của họ sắp bắt đầu. Bạn cũng có thể sử dụng nó để làm rõ sự hiểu biết của các bên liên quan về công sức cần thiết cho một gói công việc. Hình 7.13 là ví dụ về từ điển WBS. Từ điển WBS có thể bao gồm mô tả về:</p>
+
+<ul class="content-list">
+  <li>Các mốc lịch trình</li>
+  <li>Tiêu chí chấp nhận</li>
+  <li>Sự phụ thuộc lẫn nhau</li>
+  <li>Thông tin gói công việc khác</li>
+  <li>Thời lượng</li>
+</ul>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <td style="text-align: center;">ID# Tài khoản kiểm soát</td>
+    <td style="text-align: center;">Tên/Số gói công việc</td>
+    <td style="text-align: center;">Ngày cập nhật</td>
+    <td style="text-align: center;">Tổ chức/Cá nhân chịu trách nhiệm</td>
+  </tr>
+  <tr>
+    <td colspan="4">Mô tả sản phẩm bàn giao của gói công việc:</td>
+  </tr>
+  <tr>
+    <td colspan="4">Công việc liên quan để tạo ra sản phẩm bàn giao:</td>
+  </tr>
+  <tr>
+    <td colspan="4">Tiêu chí chấp nhận (Cách biết nếu sản phẩm bàn giao/công việc có thể chấp nhận được):</td>
+  </tr>
+  <tr>
+    <td colspan="4">Giả định và ràng buộc:</td>
+  </tr>
+  <tr>
+    <td colspan="4">Các chỉ số chất lượng:</td>
+  </tr>
+  <tr>
+    <td colspan="4">Tài liệu nguồn kỹ thuật:</td>
+  </tr>
+  <tr>
+    <td colspan="4">Rủi ro:</td>
+  </tr>
+  <tr>
+    <td colspan="4">Nguồn lực được phân công:</td>
+  </tr>
+  <tr>
+    <td colspan="4">Thời lượng:</td>
+  </tr>
+  <tr>
+    <td colspan="4">Các mốc lịch trình:</td>
+  </tr>
+  <tr>
+    <td colspan="4">Chi phí:</td>
+  </tr>
+  <tr>
+    <td colspan="4">Ngày đến hạn:</td>
+  </tr>
+  <tr>
+    <td colspan="4">Sự phụ thuộc (trước gói công việc này):</td>
+  </tr>
+  <tr>
+    <td colspan="4">Sự phụ thuộc (sau gói công việc này):</td>
+  </tr>
+  <tr>
+    <td colspan="2">Phê duyệt bởi:</td>
+    <td colspan="2">Ngày:</td>
+  </tr>
+</table>
+</div>
+
+<p style="text-align: center;"><em>HÌNH 7.13 Từ điển WBS</em></p>
+
+<div class="callout">
+  <p><strong>Lưu ý:</strong> Một số mục trong từ điển WBS, chẳng hạn như thời lượng và sự phụ thuộc, có thể được điền trong các lần lặp lại lập kế hoạch thay vì khi WBS và từ điển WBS được soạn thảo lần đầu. Ví dụ, sự phụ thuộc được xác định và hiểu rõ nhất từ kết quả của việc thực hiện sơ đồ mạng, vốn là một phần của lập kế hoạch lịch trình.</p>
+</div>
+
+<h4 id="ch7-scope-baseline">Đường cơ sở phạm vi</h4>
+
+<p>Trong môi trường dự đoán, đường cơ sở phạm vi là tập hợp các tài liệu tạo thành một phần của kế hoạch quản lý dự án và bao gồm bản mô tả phạm vi dự án, WBS và từ điển WBS.</p>
+
+<p>Đường cơ sở phạm vi được phê duyệt vào cuối giai đoạn lập kế hoạch và trước khi bắt đầu công việc xây dựng sản phẩm. Sau đó, khi công việc trên dự án đang được thực hiện, người quản lý dự án xem xét tiến độ dự án và so sánh dữ liệu đó với đường cơ sở bằng cách trả lời các câu hỏi sau:</p>
+
+<ul class="content-list">
+  <li>Phạm vi nào đã được hoàn thành trên dự án?</li>
+  <li>Nó có khớp với những gì được xác định trong WBS, từ điển WBS và bản mô tả phạm vi dự án không?</li>
+</ul>
+
+<h5>Các thay đổi đối với đường cơ sở phạm vi</h5>
+
+<div class="callout">
+  <p><strong>Nếu cần phạm vi không có trong đường cơ sở:</strong></p>
+  <ul class="content-list">
+    <li>Một thay đổi phải được phê duyệt chính thức thông qua quy trình Kiểm soát thay đổi tích hợp.</li>
+    <li>Cần thêm một mục mới (hoặc các mục) vào WBS, từ điển WBS và bản mô tả phạm vi dự án để phản ánh sự thay đổi.</li>
+    <li>Tài liệu được cập nhật trở thành đường cơ sở phạm vi mới của dự án.</li>
+    <li>Các thành phần tài liệu khác bị ảnh hưởng bởi thay đổi phạm vi cần được cập nhật, bao gồm (phổ biến nhất) tài liệu yêu cầu và nhật ký giả định.</li>
+  </ul>
+</div>
+
+<h5 id="ch7-performance-measurement">Đo lường hiệu suất</h5>
+
+<p>Các thước đo thành công của dự án bao gồm việc liệu dự án có đáp ứng tất cả các yêu cầu, bao gồm cả đường cơ sở phạm vi hay không. Điều cần thiết là phải sử dụng các công cụ quản lý dự án này trong thực tế. Ngoài việc sử dụng chúng để đạt được thành công của dự án, bạn cần phải cảm thấy thoải mái với chúng trong kỳ thi.</p>
+
+<h4 id="ch7-agile-scope-decomposition">Phân tách phạm vi theo Agile</h4>
+
+<p>Bây giờ hãy nói về việc phân tách phạm vi dự án từ góc độ agile. Điều này đáng nhắc lại từ phần Định nghĩa phạm vi thích ứng trong chương này:</p>
+
+<ul class="content-list">
+  <li>Trong agile, phạm vi sản phẩm được xác định ở mức cao trong quá trình định hướng và lập điều lệ dự án.</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//91ae1ce1-f4af-4d62-812b-69f789532a4d/markdown_2/imgs/img_in_image_box_682_372_732_430.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A33Z%2F-1%2F%2Fb1141be2041e45b7fd4692f7c244a7776a5b6186ce42b403a03d5d4226a36dc8" alt="Image" width="6%" /></div></div>
+
+<ul class="content-list">
+  <li>Sau đó, một product backlog ở mức cao được tạo ra, và lập kế hoạch phát hành được bắt đầu.</li>
+  <li>Từ product backlog ở mức cao đó, các tính năng sản phẩm được phân tách thành các story nhỏ hơn có thể được ước tính, phân công nguồn lực và xây dựng.</li>
+</ul>
+
+<p>Lưu ý rằng về bản chất đây là nguyên tắc của tinh chỉnh dần dần. Ban đầu, người quản lý dự án và nhóm thu thập các chi tiết định nghĩa phạm vi ở mức cao. Từ đó, các tính năng sản phẩm được phân tách dần dần thành các story nhỏ hơn thông qua các workshop viết story và "slicing" (phân tách) story.</p>
+
+<h5 id="ch7-requirements-decomposition-progression">Tiến trình xác định và phân tách yêu cầu</h5>
+
+<p>Hãy suy nghĩ về điều này. Sau đây là phân tách phạm vi agile, được minh họa. Hình 7.14 hiển thị các cấp độ yêu cầu agile. Theo sau hình, các phần của hình minh họa (được đánh số để tiện theo dõi) được giải thích chi tiết hơn. Sau đó, hãy hình dung quá trình thực hiện một dự án agile trong tâm trí, sử dụng trường hợp cổng thông tin khách hàng của phòng khám sức khỏe làm ví dụ.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//91ae1ce1-f4af-4d62-812b-69f789532a4d/markdown_2/imgs/img_in_image_box_147_672_638_936.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A33Z%2F-1%2F%2F1612240aa627c0c86b73eb47a58a9ef84ba148e568a9683fcacc1e93849e4d02" alt="Image" width="59%" /></div></div>
+
+<p style="text-align: center;"><em>Phân tách yêu cầu đúng thời điểm... Định nghĩa chi tiết hơn</em></p>
+<p style="text-align: center;"><em>HÌNH 7.14 Các cấp độ yêu cầu agile</em></p>
+
+<ol class="content-list">
+  <li><strong>Cao - Yêu cầu hoặc mục tiêu ở mức cao</strong> được xác định ngay từ đầu dự án. Mặc dù các học viên agile chấp nhận rằng phạm vi đang phát triển, họ vẫn nỗ lực khám phá càng nhiều yêu cầu càng tốt ngay từ đầu. Bạn có thể sẽ không thấy từ "epic" trong đề thi nhưng trong trường hợp bạn thấy, hãy biết rằng một số học viên agile sử dụng nó để mô tả các yêu cầu (hoặc story) lớn nhất. Epic quá lớn và phức tạp để xây dựng mà không cần phân tách.</li>
+  <li><strong>Trung bình - Các tính năng</strong> được tạo ra từ các yêu cầu ở mức cao lớn và phức tạp. Mức độ phân tách ở đây được gọi là "trung bình" trong hình nhưng lưu ý rằng chúng ta chỉ sử dụng các thuật ngữ tương đối. Không có định nghĩa chính xác về "mức cao" hay "trung bình", v.v.</li>
+  <li><strong>Nhỏ - Các yêu cầu</strong> ở mức trung bình được chia nhỏ thành các story nhỏ hơn.</li>
+  <li><strong>Chi tiết - Mỗi story</strong> cần được phân tách thêm theo các loại yêu cầu khác nhau, một số trong số đó được mô tả trong hình 7.14. Sự phân tách được mô tả là "đúng thời điểm" vì các nhóm agile chờ đến thời điểm trách nhiệm cuối cùng để đảm bảo họ có đủ tất cả các chi tiết để xây dựng một story. Thời điểm trách nhiệm cuối cùng là thời điểm mà việc phân tách story đã đạt đến kết luận logic và có nhiều thông tin nhất về những gì cần thực hiện để xây dựng một story.</li>
+</ol>
+
+<h5 id="ch7-agile-decomposition-health-clinic">Phân tách Agile: Cổng thông tin khách hàng phòng khám sức khỏe</h5>
+
+<p>Trước hết và quan trọng nhất, việc ưu tiên và phân tách tính năng sản phẩm agile dựa trên giá trị, luôn được thực hiện từ góc độ những gì các bên liên quan thấy có giá trị nhất.</p>
+
+<ul class="content-list">
+  <li><strong>Cấp độ phân tách bản đồ phát hành:</strong> Xem lại hình 7.2 ở trang 159 của ví dụ lộ trình dự án cổng thông tin bệnh nhân. Điều này sẽ giúp bạn dễ dàng hình dung dự án trong tâm trí hơn. Lộ trình cho dự án cổng thông tin bệnh nhân được hiển thị trong ba lần phát hành. Đây là các yêu cầu ở mức cao (hoặc epic).</li>
+  <li><strong>Cấp độ phân tách product backlog:</strong> Xem lại hình 7.3 ở trang 160: Đây là product backlog. Được liệt kê trong đó có thể là sự kết hợp của các tính năng từ mức cao đến trung bình, cần được phân tách thêm thành các story nhỏ hơn. Tập hợp các tính năng "quản lý tài khoản web" được hiển thị trong lộ trình sản phẩm cho Phát hành 1 có thể bao gồm P1 (quản lý cuộc hẹn), P2 (thay đổi dữ liệu cá nhân và tùy chọn), và có thể có các tính năng khác trong backlog này.</li>
+  <li><strong>Cấp độ phân tách story:</strong> Một tính năng nhất định thường được "slicing" (phân tách) thành hai hoặc nhiều story hơn; khi điều này được thực hiện, nhiều chi tiết hơn về các story riêng lẻ xuất hiện. Các story có thể là phức hợp, phức tạp, hoặc cả hai. Hình 7.15 và 7.16 đưa ra các ví dụ về từng loại trong trường hợp nghiên cứu cổng thông tin bệnh nhân.
+    <ul class="content-list">
+      <li>Một story phức hợp có nhiều story độc lập trong đó</li>
+      <li>Một story phức tạp là một story lớn phải được chia nhỏ để giảm độ phức tạp</li>
+    </ul>
+  </li>
+  <li><strong>Cấp độ phân tách chi tiết:</strong> Ở cấp độ này, nhóm cần có thông tin story chi tiết được thiết lập, như các định nghĩa cho quy tắc nghiệp vụ, các bài kiểm tra đơn vị, các bài kiểm tra chấp nhận và các nhiệm vụ để xây dựng story.</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//91ae1ce1-f4af-4d62-812b-69f789532a4d/markdown_3/imgs/img_in_image_box_123_714_357_961.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A34Z%2F-1%2F%2F903e99ca43a2c861ae90e301df13999361b501a1c8eec21f06bb4f63dd39a8d9" alt="Image" width="28%" /></div></div>
+
+<p style="text-align: center;"><em>HÌNH 7.15 Phân tách một story phức hợp</em></p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//91ae1ce1-f4af-4d62-812b-69f789532a4d/markdown_3/imgs/img_in_image_box_425_713_658_961.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A34Z%2F-1%2F%2F6a9479bcdc841dcada499915bb5f363aecbf983c7bc3e8f422e856d5995c4472" alt="Image" width="28%" /></div></div>
+
+<p style="text-align: center;"><em>HÌNH 7.16 Phân tách một story phức tạp</em></p>
+
+<h4 id="ch7-other-agile-decomposition">Các cơ hội phân tách phạm vi Agile khác</h4>
+
+<p>Ngoài các cơ hội phân tách phạm vi trong tầm nhìn sản phẩm và dự án, lộ trình sản phẩm, lập kế hoạch phát hành và lặp lại trên các dự án agile, các nhóm agile nhận thức được thực tế rằng trong suốt dự án, các cơ hội xuất hiện để có những cách tốt hơn và khác nhau để phân tách các yêu cầu sao cho các story liên quan dễ xây dựng hơn. Dưới đây là một vài ví dụ:</p>
+
+<ul class="content-list">
+  <li><strong>Ví dụ từ standup hằng ngày:</strong> Tại một cuộc họp standup hằng ngày cho dự án cổng thông tin khách hàng của phòng khám, một thành viên nhóm đề cập rằng họ đang gặp vấn đề với quy định C vì các yêu cầu kỹ thuật của nó trong chương trình can thiệp vào các yêu cầu kỹ thuật của quy định A. Sau cuộc họp, người quản lý dự án kết nối thành viên nhóm đó với một kiến trúc sư hệ thống mà họ biết có kinh nghiệm trong lĩnh vực này để giúp đơn giản hóa việc lập trình cho các quy định này.</li>
+  <li><strong>Ví dụ từ mô hình "thiết kế, xây dựng, kiểm thử, chấp nhận, phát hành":</strong> Các bước này mô tả quy trình chu kỳ lặp lại phổ biến tiếp tục trong suốt dự án. Bất kỳ lúc nào trong quá trình này, các cơ hội cải tiến trong phân tách story có thể xuất hiện. Ví dụ, giả sử trong bước xây dựng, hai thành viên nhóm đang thực hành lập trình cặp đôi (paired programming). (Điều này có nghĩa là hai lập trình viên ngồi cùng nhau và thay phiên nhau, một người lập trình trong khi người kia quan sát.) Điều gì sẽ xảy ra nếu lập trình viên đang quan sát story "quản lý tài khoản" trong hình 7.17 đột nhiên nhận ra rằng các story cho tính năng này có thể được phân tách và xây dựng theo cách khác dẫn đến thiết kế tốt hơn, đơn giản hơn? Mặc dù có thể không nhìn thấy đối với người dùng cuối, sản phẩm vừa được cải tiến.</li>
+</ul>
+
+
+</main>
+
+<button id="back-top" aria-label="Về đầu trang">↑</button>
+
+<script>
+// Progress bar
+const pb=document.getElementById('progress-bar');
+function updPB(){const d=document.documentElement;pb.style.width=Math.min((d.scrollTop/(d.scrollHeight-d.clientHeight))*100,100)+'%'}
+window.addEventListener('scroll',updPB,{passive:true});
+
+// Back to top
+const bt=document.getElementById('back-top');
+window.addEventListener('scroll',()=>{bt.style.opacity=scrollY>400?'1':'0';},{passive:true});
+bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+// Mobile menu
+const mb=document.getElementById('menu-btn'),sb=document.getElementById('sidebar');
+mb.addEventListener('click',()=>sb.classList.toggle('open'));
+document.addEventListener('click',e=>{if(!sb.contains(e.target)&&e.target!==mb)sb.classList.remove('open')});
+
+// Active TOC highlight on scroll
+const tocLinks=document.querySelectorAll('#sidebar-toc a[href^="#"]');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      tocLinks.forEach(a=>a.classList.remove('active'));
+      const a=document.querySelector('#sidebar-toc a[href="#'+e.target.id+'"]');
+      if(a){a.classList.add('active');a.scrollIntoView({block:'nearest',behavior:'smooth'})}
+    }
+  })
+},{rootMargin:'-20% 0px -75% 0px'});
+document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
+
+// ── THEME + READING POSITION ───────────────────────────
+(function(){
+  var THEME_KEY='rita_theme', READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var chapNum=m?m[1]:null;
+
+  // Build & inject theme toggle button
+  var hdr=document.getElementById('sidebar-header');
+  if(hdr){
+    var btn=document.createElement('button');
+    btn.id='theme-btn';
+    var curTheme=document.documentElement.getAttribute('data-theme')||'light';
+    btn.textContent=curTheme==='dark'?'☀':'🌙';
+    btn.title='Giao diện sáng / tối';
+    hdr.appendChild(btn);
+    btn.addEventListener('click',function(){
+      var next=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+      document.documentElement.setAttribute('data-theme',next);
+      localStorage.setItem(THEME_KEY,next);
+      btn.textContent=next==='dark'?'☀':'🌙';
+    });
+  }
+
+  if(!chapNum) return;
+
+  // Save last chapter visited
+  try{
+    var rd=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    rd.lastChap='rita_chap'+chapNum;
+    if(!rd.scrollPos) rd.scrollPos={};
+    localStorage.setItem(READ_KEY,JSON.stringify(rd));
+  }catch(e){}
+
+  // Restore scroll position
+  try{
+    var rdR=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    var savedPos=rdR.scrollPos&&rdR.scrollPos[chapNum]||0;
+    if(savedPos>200) setTimeout(function(){window.scrollTo(0,savedPos);},120);
+  }catch(e){}
+
+  // Save scroll position (debounced 600ms)
+  var saveT;
+  window.addEventListener('scroll',function(){
+    clearTimeout(saveT);
+    saveT=setTimeout(function(){
+      try{
+        var r2=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+        if(!r2.scrollPos) r2.scrollPos={};
+        r2.scrollPos[chapNum]=window.scrollY;
+        r2.lastChap='rita_chap'+chapNum;
+        localStorage.setItem(READ_KEY,JSON.stringify(r2));
+      }catch(e){}
+    },600);
+  },{passive:true});
+})();
+
+// ── HIGHLIGHT / NOTES SYSTEM ────────────────────────────
+(function(){
+  var READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  if(!m) return;
+  var chapNum=m[1];
+  var HL_KEY='rita_hl_'+chapNum;
+
+  // ── STORAGE ──
+  function loadHL(){try{return JSON.parse(localStorage.getItem(HL_KEY)||'[]')}catch(e){return[]}}
+  function saveHL(arr){localStorage.setItem(HL_KEY,JSON.stringify(arr));window.__ritaSyncTrigger&&window.__ritaSyncTrigger();}
+  function genId(){return 'h'+Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
+
+  // ── XPATH HELPERS ──
+  var mainEl=document.getElementById('main');
+  function getXPath(node){
+    if(!node||node===mainEl) return '.';
+    var parts=[];
+    var cur=node.nodeType===3?node.parentNode:node;
+    while(cur&&cur!==mainEl&&cur!==document.body){
+      var tag=cur.tagName.toLowerCase();
+      var idx=1,sib=cur.previousElementSibling;
+      while(sib){if(sib.tagName&&sib.tagName.toLowerCase()===tag)idx++;sib=sib.previousElementSibling;}
+      parts.unshift(tag+'['+idx+']');
+      cur=cur.parentElement;
+    }
+    return parts.join('/');
+  }
+  function resolveXPath(xpath){
+    if(!mainEl||xpath==='.') return mainEl;
+    try{
+      var r=document.evaluate('.//'+xpath,mainEl,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);
+      return r.singleNodeValue;
+    }catch(e){return null;}
+  }
+  function findTextAt(el,offset){
+    var walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null);
+    var count=0,node;
+    while((node=walker.nextNode())){
+      var len=node.textContent.length;
+      if(count+len>=offset) return{node:node,localOffset:offset-count};
+      count+=len;
+    }
+    return null;
+  }
+
+  // ── APPLY MARK TO DOM ──
+  function applyMark(hl){
+    try{
+      var sEl=resolveXPath(hl.sxp), eEl=resolveXPath(hl.exp);
+      if(!sEl||!eEl) return false;
+      var sInfo=sEl.nodeType===3?{node:sEl,localOffset:hl.so}:findTextAt(sEl,hl.so);
+      var eInfo=eEl.nodeType===3?{node:eEl,localOffset:hl.eo}:findTextAt(eEl,hl.eo);
+      if(!sInfo||!eInfo) return false;
+      var range=document.createRange();
+      range.setStart(sInfo.node,sInfo.localOffset);
+      range.setEnd(eInfo.node,eInfo.localOffset);
+      applyRange(range,hl.id,hl.color,hl.note||'');
+      return true;
+    }catch(e){return false;}
+  }
+  function applyRange(range,hlId,color,note){
+    var walker=document.createTreeWalker(
+      range.commonAncestorContainer.nodeType===3
+        ?range.commonAncestorContainer.parentNode
+        :range.commonAncestorContainer,
+      NodeFilter.SHOW_TEXT,null
+    );
+    var nodes=[],node;
+    while((node=walker.nextNode())){if(range.intersectsNode(node))nodes.push(node);}
+    nodes.forEach(function(tn){
+      var s=tn===range.startContainer?range.startOffset:0;
+      var e=tn===range.endContainer?range.endOffset:tn.textContent.length;
+      if(s>=e) return;
+      var nr=document.createRange();
+      nr.setStart(tn,s); nr.setEnd(tn,Math.min(e,tn.textContent.length));
+      try{
+        var mk=document.createElement('mark');
+        mk.className='hl'; mk.setAttribute('data-hl-id',hlId);
+        mk.setAttribute('data-color',color); mk.setAttribute('data-note',note);
+        nr.surroundContents(mk);
+      }catch(err){
+        try{
+          var c=nr.extractContents(),mk2=document.createElement('mark');
+          mk2.className='hl'; mk2.setAttribute('data-hl-id',hlId);
+          mk2.setAttribute('data-color',color); mk2.setAttribute('data-note',note);
+          mk2.appendChild(c); nr.insertNode(mk2);
+        }catch(_){}
+      }
+    });
+  }
+  function removeMarks(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      var p=mk.parentNode;
+      while(mk.firstChild)p.insertBefore(mk.firstChild,mk);
+      p.removeChild(mk);
+      p.normalize();
+    });
+  }
+  function updateMarks(hlId,color,note){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.setAttribute('data-color',color);
+      mk.setAttribute('data-note',note);
+    });
+  }
+
+  // ── RESTORE HIGHLIGHTS ON LOAD ──
+  var highlights=loadHL();
+  // Sort by sxp+so descending so earlier ranges aren't offset by later insertions
+  // Actually apply in order (each one is independent)
+  highlights.forEach(applyMark);
+  // Expose re-apply for sync module
+  window.__ritaReapplyMarks=function(){
+    document.querySelectorAll('mark.hl').forEach(function(mk){
+      var p=mk.parentNode;while(mk.firstChild)p.insertBefore(mk.firstChild,mk);p.removeChild(mk);p.normalize();
+    });
+    loadHL().forEach(applyMark);
+    if(typeof updateBadge==='function') updateBadge();
+    if(typeof renderPanelIfOpen==='function') renderPanelIfOpen();
+  };
+
+  // ── SIDEBAR BUTTON ──
+  function updateBadge(){
+    var hls=loadHL();
+    var badge=document.getElementById('hl-badge');
+    if(badge) badge.textContent=hls.length||'0';
+  }
+  var sidebarNav=document.getElementById('sidebar-toc');
+  if(sidebarNav){
+    var hlBtn=document.createElement('button');
+    hlBtn.id='hl-sidebar-btn';
+    hlBtn.innerHTML='<span>✏ Ghi chú & Highlight</span><span id="hl-badge">0</span>';
+    hlBtn.addEventListener('click',function(){openPanel();});
+    // Insert before sidebar-nav (bottom buttons)
+    var sidebarNavBottom=document.getElementById('sidebar-nav');
+    if(sidebarNavBottom) sidebarNavBottom.parentNode.insertBefore(hlBtn,sidebarNavBottom);
+    else document.getElementById('sidebar').appendChild(hlBtn);
+  }
+  updateBadge();
+
+  // ── PANEL ──
+  var panel=document.createElement('div');
+  panel.id='hl-panel';
+  panel.innerHTML='<div id="hl-panel-hdr"><h3>✏ Ghi Chú & Highlight</h3><button id="hl-panel-close">×</button></div><div id="hl-panel-list"></div>';
+  document.body.appendChild(panel);
+  document.getElementById('hl-panel-close').addEventListener('click',closePanel);
+  function openPanel(){renderPanel();panel.classList.add('open');}
+  function closePanel(){panel.classList.remove('open');}
+  function renderPanel(){
+    var list=document.getElementById('hl-panel-list');
+    var hls=loadHL();
+    list.innerHTML='';
+    hls.forEach(function(hl){
+      var item=document.createElement('div');
+      item.className='hl-item'; item.setAttribute('data-color',hl.color);
+      var noteHtml=hl.note?'<div class="hl-item-note">✏ '+escHtml(hl.note)+'</div>':'';
+      item.innerHTML='<button class="hl-item-del" data-id="'+hl.id+'">🗑</button>'
+        +'<div class="hl-item-text">'+escHtml(hl.text||'')+'</div>'+noteHtml;
+      item.addEventListener('click',function(e){
+        if(e.target.classList.contains('hl-item-del')) return;
+        var mk=document.querySelector('mark.hl[data-hl-id="'+hl.id+'"]');
+        if(mk){mk.scrollIntoView({behavior:'smooth',block:'center'});flashMark(hl.id);}
+        closePanel();
+      });
+      item.querySelector('.hl-item-del').addEventListener('click',function(e){
+        e.stopPropagation(); deleteHL(hl.id); renderPanel();
+      });
+      list.appendChild(item);
+    });
+  }
+
+  // ── POPUP ──
+  var popup=document.createElement('div');
+  popup.id='hl-popup'; popup.className='hidden';
+  popup.innerHTML=
+    '<button class="hl-color-btn" data-color="yellow" title="Vàng"></button>'
+    +'<button class="hl-color-btn" data-color="green" title="Xanh"></button>'
+    +'<button class="hl-color-btn" data-color="red" title="Đỏ"></button>'
+    +'<div class="hl-sep"></div>'
+    +'<button class="hl-note-btn" title="Thêm ghi chú">✏</button>'
+    +'<button class="hl-del-btn hl-del-action" title="Xóa">🗑</button>';
+  document.body.appendChild(popup);
+
+  var currentHlId=null;    // id being edited (null = new)
+  var pendingRange=null;   // Range for new highlight
+  var pendingXP=null;      // serialized position for new highlight
+
+  // Position popup near a rect
+  function positionPopup(rect){
+    var pw=popup.offsetWidth||160,ph=popup.offsetHeight||40;
+    var top=rect.top-ph-10+window.scrollY;
+    var left=rect.left+(rect.width-pw)/2;
+    if(top<window.scrollY+8) top=rect.bottom+10+window.scrollY;
+    left=Math.max(8,Math.min(left,window.innerWidth-pw-8));
+    popup.style.top=top+'px';
+    popup.style.left=left+'px';
+  }
+  function showPopup(rect,hlId){
+    currentHlId=hlId||null;
+    var isEdit=!!hlId;
+    popup.querySelector('.hl-del-action').style.display=isEdit?'':'none';
+    popup.querySelector('.hl-note-btn').style.display='';
+    popup.classList.remove('hidden');
+    positionPopup(rect);
+  }
+  function hidePopup(){
+    popup.classList.add('hidden');
+    pendingRange=null; pendingXP=null; currentHlId=null;
+  }
+
+  // Color buttons
+  popup.querySelectorAll('.hl-color-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var color=btn.getAttribute('data-color');
+      if(currentHlId){
+        // Update existing
+        var hls=loadHL();
+        var idx=hls.findIndex(function(h){return h.id===currentHlId;});
+        if(idx>=0){hls[idx].color=color;saveHL(hls);}
+        updateMarks(currentHlId,color,hls[idx]?hls[idx].note||'':'');
+        updateBadge(); renderPanelIfOpen();
+      } else if(pendingRange&&pendingXP){
+        // Create new
+        var id=genId();
+        var text=pendingRange.toString().substring(0,500);
+        applyRange(pendingRange,id,color,'');
+        pendingRange.collapse();
+        window.getSelection()&&window.getSelection().removeAllRanges();
+        var hls=loadHL();
+        hls.push({id:id,color:color,note:'',text:text,
+          sxp:pendingXP.sxp,so:pendingXP.so,exp:pendingXP.exp,eo:pendingXP.eo});
+        saveHL(hls); updateBadge(); renderPanelIfOpen();
+      }
+      hidePopup();
+    });
+  });
+
+  // Note button
+  popup.querySelector('.hl-note-btn').addEventListener('click',function(){
+    var id=currentHlId;
+    var existing='';
+    if(id){var hls=loadHL();var h=hls.find(function(x){return x.id===id;});if(h)existing=h.note||'';}
+    hidePopup();
+    openNoteModal(id,existing);
+  });
+
+  // Delete button
+  popup.querySelector('.hl-del-action').addEventListener('click',function(){
+    if(currentHlId) deleteHL(currentHlId);
+    hidePopup();
+  });
+
+  function deleteHL(id){
+    removeMarks(id);
+    var hls=loadHL().filter(function(h){return h.id!==id;});
+    saveHL(hls); updateBadge(); renderPanelIfOpen();
+  }
+
+  // ── NOTE MODAL ──
+  var noteModal=document.createElement('div');
+  noteModal.id='hl-note-modal'; noteModal.className='hidden';
+  noteModal.innerHTML='<div id="hl-note-box">'
+    +'<h3>✏ Ghi chú</h3>'
+    +'<textarea id="hl-note-ta" placeholder="Nhập ghi chú..."></textarea>'
+    +'<div class="hl-note-actions">'
+    +'<button class="hl-note-cancel">Hủy</button>'
+    +'<button class="hl-note-save">Lưu</button>'
+    +'</div></div>';
+  document.body.appendChild(noteModal);
+  var _noteTargetId=null;
+  function openNoteModal(hlId,existing){
+    _noteTargetId=hlId;
+    document.getElementById('hl-note-ta').value=existing||'';
+    noteModal.classList.remove('hidden');
+    setTimeout(function(){document.getElementById('hl-note-ta').focus();},50);
+  }
+  noteModal.querySelector('.hl-note-cancel').addEventListener('click',function(){noteModal.classList.add('hidden');});
+  noteModal.querySelector('.hl-note-save').addEventListener('click',function(){
+    var note=document.getElementById('hl-note-ta').value.trim();
+    if(_noteTargetId){
+      var hls=loadHL();
+      var idx=hls.findIndex(function(h){return h.id===_noteTargetId;});
+      if(idx>=0){hls[idx].note=note;saveHL(hls);updateMarks(_noteTargetId,hls[idx].color,note);updateBadge();renderPanelIfOpen();}
+    }
+    noteModal.classList.add('hidden');
+  });
+  noteModal.addEventListener('click',function(e){if(e.target===noteModal)noteModal.classList.add('hidden');});
+
+  // ── SELECTION HANDLER ──
+  document.addEventListener('mouseup',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    setTimeout(function(){
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed||!sel.rangeCount){hidePopup();return;}
+      var range=sel.getRangeAt(0);
+      var text=range.toString().trim();
+      if(!text||text.length<2){hidePopup();return;}
+      // Only highlight within #main
+      if(!mainEl||!mainEl.contains(range.commonAncestorContainer)){hidePopup();return;}
+      // Serialize positions
+      var sNode=range.startContainer,eNode=range.endContainer;
+      var sParent=sNode.nodeType===3?sNode.parentNode:sNode;
+      var eParent=eNode.nodeType===3?eNode.parentNode:eNode;
+      var sxp=getXPath(sParent),exp=getXPath(eParent);
+      // calc offsets within parent element
+      var so=0,eo=0;
+      var w=document.createTreeWalker(sParent,NodeFilter.SHOW_TEXT,null);
+      var n;while((n=w.nextNode())){if(n===sNode){so+=range.startOffset;break;}so+=n.textContent.length;}
+      var w2=document.createTreeWalker(eParent,NodeFilter.SHOW_TEXT,null);
+      while((n=w2.nextNode())){if(n===eNode){eo+=range.endOffset;break;}eo+=n.textContent.length;}
+      pendingRange=range.cloneRange();
+      pendingXP={sxp:sxp,so:so,exp:exp,eo:eo};
+      currentHlId=null;
+      var rect=range.getBoundingClientRect();
+      showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width});
+    },10);
+  });
+
+  // ── CLICK ON EXISTING MARK ──
+  document.addEventListener('click',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    var mk=e.target.closest('mark.hl');
+    if(!mk){
+      // click outside: if selection is collapsed, hide popup
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed) hidePopup();
+      return;
+    }
+    e.stopPropagation();
+    var hlId=mk.getAttribute('data-hl-id');
+    var rect=mk.getBoundingClientRect();
+    currentHlId=hlId;
+    pendingRange=null;pendingXP=null;
+    showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width},hlId);
+  });
+
+  // ── FLASH EFFECT ──
+  function flashMark(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.style.transition='outline .2s';mk.style.outline='3px solid #c9a84c';
+      setTimeout(function(){mk.style.outline='none';},1500);
+    });
+  }
+
+  function renderPanelIfOpen(){if(panel.classList.contains('open'))renderPanel();}
+
+  function escHtml(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+})();
+
+
+// ── CHAPTER NAV PANEL ───────────────────────────────────
+(function(){
+  var CHAPS=[
+    [1,'rita_chap01.html','Mẹo & Thủ Thuật Ôn Thi PMP®'],
+    [2,'rita_chap02.html','Tài Liệu Tham Khảo Kỳ Thi'],
+    [3,'rita_chap03.html','Nền Tảng Quản Lý Dự Án'],
+    [4,'rita_chap04.html','Tích Hợp'],
+    [5,'rita_chap05.html','Kỹ Năng Lãnh Đạo'],
+    [6,'rita_chap06.html','Xây Dựng & Hỗ Trợ Hiệu Suất Nhóm'],
+    [7,'rita_chap07.html','Phạm Vi Dự Án'],
+    [8,'rita_chap08.html','Tiến Độ & Ngân Sách Dự Án'],
+    [10,'rita_chap10.html','Chất Lượng Sản Phẩm Bàn Giao'],
+    [11,'rita_chap11.html','Truyền Thông'],
+    [12,'rita_chap12.html','Rủi Ro & Vấn Đề'],
+    [13,'rita_chap13.html','Mua Sắm'],
+    [14,'rita_chap14.html','Các Bên Liên Quan'],
+    [15,'rita_chap15.html','Tuân Thủ & Mang Lại Giá Trị'],
+    [16,'rita_chap16.html','Mẹo Vượt Qua Kỳ Thi PMP®'],
+    [17,'rita_chap17.html','Các Phương Pháp Agile Phổ Biến'],
+    [18,'rita_chap18.html','Hướng Dẫn PMBOK & Tiêu Chuẩn PM']
+  ];
+
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var curNum=m?parseInt(m[1]):null;
+  var READ_KEY='rita_reading';
+
+  // Build panel DOM
+  var panel=document.createElement('div');
+  panel.id='chap-panel'; panel.className='hidden';
+  var listHtml='';
+  CHAPS.forEach(function(c){
+    var isActive=c[0]===curNum;
+    listHtml+='<a class="chap-panel-item'+(isActive?' active':'')+'" href="'+c[1]+'">'
+      +'<span class="cpanel-num">Ch'+c[0]+'</span>'
+      +'<span class="cpanel-title">'+c[2]+'</span>'
+      +(isActive?'<span class="cpanel-status">● Đang đọc</span>':'')
+      +'</a>';
+  });
+  panel.innerHTML='<div id="chap-panel-overlay"></div>'
+    +'<div id="chap-panel-box">'
+    +'<div id="chap-panel-hdr"><h3>☰ Danh Sách Chương</h3><button id="chap-panel-close">×</button></div>'
+    +'<div id="chap-panel-list">'+listHtml+'</div>'
+    +'</div>';
+  document.body.appendChild(panel);
+
+  function openChapPanel(){panel.classList.remove('hidden');}
+  function closeChapPanel(){panel.classList.add('hidden');}
+  document.getElementById('chap-panel-overlay').addEventListener('click',closeChapPanel);
+  document.getElementById('chap-panel-close').addEventListener('click',closeChapPanel);
+
+  // Wire up the Mục lục button
+  var mucLucBtn=document.getElementById('chap-muc-luc-btn');
+  if(mucLucBtn) mucLucBtn.addEventListener('click',function(e){e.preventDefault();openChapPanel();});
+})();
+
+
+// ── GITHUB HIGHLIGHTS SYNC ──────────────────────────
+(function(){
+  var REPO='goukakujlptsuport-beep/pmbok6';
+  var TOKEN_KEY='rita_gh_token';
+  var API_URL='https://api.github.com/repos/'+REPO+'/contents/data/rita_highlights.json';
+  var fileSha=null;
+  var syncTimer=null;
+
+  // Called by patched saveHL after every highlight change
+  window.__ritaSyncTrigger=function(){
+    clearTimeout(syncTimer);
+    syncTimer=setTimeout(pushToGitHub,3000);
+  };
+
+  // ── STATUS BUTTON (inserted before #sidebar-nav) ──
+  var btn=document.createElement('button');
+  btn.id='sync-btn'; btn.dataset.state='no-token';
+  btn.innerHTML='<span>☁ Sync Git</span><span id="sync-status-text">Đang kết nối…</span>';
+  btn.title='Đồng bộ highlight / ghi chú lên GitHub';
+  btn.addEventListener('click',handleSyncClick);
+  var sidebarNavEl=document.getElementById('sidebar-nav');
+  if(sidebarNavEl) sidebarNavEl.parentNode.insertBefore(btn,sidebarNavEl);
+
+  var statusText=document.getElementById('sync-status-text');
+  function setStatus(state,msg){
+    btn.dataset.state=state;
+    if(statusText) statusText.textContent=msg;
+  }
+
+  // ── TOKEN MODAL ──
+  var modal=document.createElement('div');
+  modal.id='sync-modal'; modal.className='hidden';
+  modal.innerHTML='<div id="sync-modal-box">'
+    +'<h3>☁ Cấu Hình GitHub Sync</h3>'
+    +'<p>Nhập <strong style="color:var(--gold)">GitHub Personal Access Token (PAT)</strong> để đồng bộ highlight giữa các thiết bị.<br>'
+    +'Token cần quyền <strong style="color:var(--gold-lt)">Contents: Read &amp; Write</strong> trên repo pmbok6.<br>'
+    +'Token được lưu trong localStorage của trình duyệt này.</p>'
+    +'<input id="sync-token-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" spellcheck="false" autocomplete="off">'
+    +'<div class="sync-modal-btns">'
+    +'<button id="sync-clear-btn">🗑 Xóa token</button>'
+    +'<button id="sync-cancel-btn">Hủy</button>'
+    +'<button id="sync-save-btn">💾 Lưu &amp; Sync</button>'
+    +'</div></div>';
+  document.body.appendChild(modal);
+
+  document.getElementById('sync-cancel-btn').addEventListener('click',function(){modal.classList.add('hidden');});
+  document.getElementById('sync-save-btn').addEventListener('click',function(){
+    var t=(document.getElementById('sync-token-input').value||'').trim();
+    if(!t){alert('Vui lòng nhập GitHub PAT!');return;}
+    localStorage.setItem(TOKEN_KEY,t);
+    modal.classList.add('hidden');
+    fileSha=null;
+    initSync();
+  });
+  document.getElementById('sync-clear-btn').addEventListener('click',function(){
+    if(!confirm('Xóa token? Highlights sẽ không được sync cho đến khi cấu hình lại.')) return;
+    localStorage.removeItem(TOKEN_KEY);
+    fileSha=null;
+    modal.classList.add('hidden');
+    setStatus('no-token','Chưa cấu hình');
+  });
+  modal.addEventListener('click',function(e){if(e.target===modal)modal.classList.add('hidden');});
+
+  function handleSyncClick(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){
+      var inp=document.getElementById('sync-token-input');
+      if(inp) inp.value='';
+      modal.classList.remove('hidden');
+      setTimeout(function(){if(inp)inp.focus();},80);
+    } else {
+      // Manual re-sync
+      fileSha=null;
+      initSync();
+    }
+  }
+
+  // ── HELPERS ──
+  var ALL_CHAPS=['01','02','03','04','05','06','07','08','10','11','12','13','14','15','16','17','18'];
+
+  function getAllLocal(){
+    var all={};
+    ALL_CHAPS.forEach(function(n){
+      try{
+        var v=JSON.parse(localStorage.getItem('rita_hl_'+n)||'[]');
+        if(v&&v.length>0) all[n]=v;
+      }catch(e){}
+    });
+    return all;
+  }
+
+  function countHL(obj){
+    return Object.values(obj).reduce(function(s,a){return s+(a?a.length:0);},0);
+  }
+
+  // Union merge: keep all highlights by id, prefer local note if different
+  function mergeHL(local,remote){
+    var merged={};
+    var allChaps=new Set(Object.keys(local).concat(Object.keys(remote)));
+    allChaps.forEach(function(chap){
+      var loc=local[chap]||[];
+      var rem=remote[chap]||[];
+      var byId={};
+      loc.forEach(function(h){byId[h.id]=h;});
+      rem.forEach(function(h){if(!byId[h.id])byId[h.id]=h;});
+      var arr=Object.values(byId);
+      if(arr.length>0) merged[chap]=arr;
+    });
+    return merged;
+  }
+
+  function applyToLocal(highlights){
+    Object.keys(highlights).forEach(function(chap){
+      localStorage.setItem('rita_hl_'+chap,JSON.stringify(highlights[chap]));
+    });
+  }
+
+  // base64 encode/decode with Unicode support
+  function b64enc(str){
+    return btoa(unescape(encodeURIComponent(str)));
+  }
+  function b64dec(b64){
+    return decodeURIComponent(escape(atob(b64.replace(/[\r\n]/g,''))));
+  }
+
+  // ── FETCH FROM GITHUB ──
+  async function fetchFromGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    var headers={'Accept':'application/vnd.github.v3+json'};
+    if(token) headers['Authorization']='token '+token;
+    try{
+      var resp=await fetch(API_URL,{headers:headers});
+      if(resp.status===404){fileSha=null;return null;}
+      if(!resp.ok) throw new Error('HTTP '+resp.status);
+      var data=await resp.json();
+      fileSha=data.sha;
+      var content=JSON.parse(b64dec(data.content));
+      return content;
+    }catch(e){
+      console.warn('[sync] fetch:',e);
+      return 'error';
+    }
+  }
+
+  // ── PUSH TO GITHUB ──
+  async function pushToGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang sync…');
+    var local=getAllLocal();
+    var payload={version:1,lastSync:new Date().toISOString(),highlights:local};
+    var encoded=b64enc(JSON.stringify(payload,null,2));
+    var body={message:'sync: rita highlights ['+countHL(local)+' HL]',content:encoded};
+    if(fileSha) body.sha=fileSha;
+    try{
+      var resp=await fetch(API_URL,{
+        method:'PUT',
+        headers:{
+          'Authorization':'token '+token,
+          'Content-Type':'application/json',
+          'Accept':'application/vnd.github.v3+json'
+        },
+        body:JSON.stringify(body)
+      });
+      if(!resp.ok){
+        var err=await resp.json().catch(function(){return{};});
+        throw new Error(err.message||'HTTP '+resp.status);
+      }
+      var result=await resp.json();
+      fileSha=result.content.sha;
+      setStatus('ok','✓ Đã sync ('+countHL(local)+' HL)');
+    }catch(e){
+      setStatus('err','✗ '+e.message.slice(0,28));
+      console.error('[sync] push:',e);
+    }
+  }
+
+  // ── INIT ──
+  async function initSync(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang tải…');
+
+    var ghData=await fetchFromGitHub();
+    if(ghData==='error'){
+      setStatus('err','✗ Không kết nối được');
+      return;
+    }
+    if(ghData&&ghData.highlights){
+      var local=getAllLocal();
+      var merged=mergeHL(local,ghData.highlights);
+      applyToLocal(merged);
+      // Re-apply marks on current chapter from updated localStorage
+      if(typeof window.__ritaReapplyMarks==='function') window.__ritaReapplyMarks();
+      var ghN=countHL(ghData.highlights), mergedN=countHL(merged);
+      if(mergedN>ghN){
+        // New highlights from remote — push merged back
+        setTimeout(pushToGitHub,1200);
+      } else {
+        setStatus('ok','✓ Sync OK ('+mergedN+' HL)');
+      }
+    } else {
+      // File doesn't exist yet — push current local state
+      await pushToGitHub();
+    }
+  }
+
+  initSync();
+})();
+
+</script>
+
+</body>
+</html>

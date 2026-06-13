@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rita PMP® Exam Prep 11 — Thư Mục Chương</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:    #1a2744;
+    --gold:    #c9973a;
+    --gold-lt: #e8c47a;
+    --cream:   #faf7f2;
+    --text:    #2c2c2c;
+    --border:  #d4c4a0;
+    --accent:  #f5f0e8;
+    --surface: rgba(26,39,68,0.04);
+    --r:       6px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  .site-nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--navy);
+    border-bottom: 3px solid var(--gold);
+    display: flex; align-items: center;
+    padding: 0 28px; height: 56px; gap: 16px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+  }
+  .nav-back {
+    color: var(--gold-lt); text-decoration: none;
+    font-size: 13px; letter-spacing: 0.5px;
+    display: flex; align-items: center; gap: 6px;
+    padding: 6px 12px;
+    border: 1px solid rgba(201,151,58,0.35); border-radius: 4px;
+    transition: all 0.2s;
+  }
+  .nav-back:hover { background: rgba(201,151,58,0.15); color: white; }
+  .nav-title {
+    font-family: 'Playfair Display', serif; font-size: 15px;
+    color: rgba(255,255,255,0.75); flex: 1; text-align: center;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--navy); color: white;
+    padding: 64px 40px 48px; text-align: center;
+    border-bottom: 5px solid var(--gold);
+  }
+  .hero .badge {
+    font-family: 'Playfair Display', serif;
+    font-size: 12px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold-lt); margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px; font-weight: 900; line-height: 1.15; margin-bottom: 14px;
+  }
+  .hero p { font-size: 15px; color: #b0bcd4; font-style: italic; max-width: 560px; margin: 0 auto; }
+
+  /* CONTENT */
+  .content { max-width: 900px; margin: 0 auto; padding: 48px 32px 80px; }
+
+  .section-label {
+    font-family: 'Playfair Display', serif; font-size: 12px;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--navy); margin-bottom: 20px;
+    padding-bottom: 10px; border-bottom: 2px solid var(--gold);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label span { color: var(--gold); font-size: 18px; }
+
+  /* CHAPTER GRID */
+  .chapters { display: flex; flex-direction: column; gap: 4px; margin-bottom: 48px; }
+
+  .chap-row {
+    display: flex; align-items: stretch;
+    text-decoration: none; color: var(--text);
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--r);
+    overflow: hidden;
+    transition: all 0.2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .chap-row:hover { border-color: var(--gold); box-shadow: 0 3px 12px rgba(201,151,58,0.15); transform: translateX(3px); }
+  .chap-row.locked { opacity: 0.45; pointer-events: none; cursor: default; }
+
+  .chap-num {
+    background: var(--navy);
+    color: var(--gold-lt);
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 700;
+    width: 64px; min-width: 64px;
+    display: flex; align-items: center; justify-content: center;
+    border-right: 3px solid var(--gold);
+    flex-shrink: 0;
+  }
+  .chap-body {
+    padding: 14px 20px; flex: 1;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .chap-title-vi { font-weight: 600; font-size: 15px; color: var(--navy); }
+  .chap-title-en { font-size: 12px; color: #888; margin-top: 2px; font-style: italic; }
+  .chap-arrow { color: var(--gold); font-size: 18px; flex-shrink: 0; opacity: 0.7; }
+  .chap-row:hover .chap-arrow { opacity: 1; }
+  .chap-tag {
+    font-size: 11px; padding: 2px 8px;
+    border-radius: 10px; font-weight: 600;
+    letter-spacing: 0.5px; text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .chap-tag.done { background: rgba(39,174,96,0.12); color: #27ae60; }
+  .chap-tag.wip  { background: rgba(201,151,58,0.12); color: var(--gold); }
+  .chap-tag.soon { background: rgba(0,0,0,0.05); color: #999; }
+
+  /* CH8 PARTS */
+  .chap-parts { display: flex; flex-direction: column; gap: 2px; margin: 2px 0 2px 32px; }
+  .chap-part {
+    display: flex; align-items: center;
+    text-decoration: none; color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px; padding: 10px 16px;
+    font-size: 13px; gap: 12px; transition: all 0.2s;
+  }
+  .chap-part:hover { border-color: var(--gold); background: rgba(201,151,58,0.05); }
+  .part-num { color: var(--gold); font-weight: 700; min-width: 52px; }
+  .part-title { flex: 1; }
+  .part-arrow { color: var(--gold); opacity: 0.6; }
+
+  @media (max-width: 600px) {
+    .hero { padding: 48px 24px 36px; }
+    .hero h1 { font-size: 28px; }
+    .content { padding: 32px 16px 60px; }
+    .chap-num { width: 48px; min-width: 48px; font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="home.html" class="nav-back">&#8592; Thư Viện</a>
+  <div class="nav-title">Rita PMP® Exam Prep 11</div>
+</nav>
+
+<div class="hero">
+  <div class="badge">Rita Mulcahy · 11th Edition 2023</div>
+  <h1>PMP<sup>®</sup> Exam Prep<br>Bản dịch Tiếng Việt</h1>
+  <p>Bộ giáo trình luyện thi PMP nổi tiếng nhất thế giới — dịch đầy đủ 18 chương sang Tiếng Việt</p>
+</div>
+
+<div class="content">
+
+  <!-- SECTION I -->
+  <div class="section-label"><span>I</span> Phần I — Ôn Thi PMP® (Studying for the PMP® Exam)</div>
+  <div class="chapters">
+    <a href="books/PMPExamPrep/rita_chap01.html" class="chap-row">
+      <div class="chap-num">1</div>
+      <div class="chap-body">
+        <div>
+          <div class="chap-title-vi">Mẹo & Thủ Thuật Ôn Thi PMP®</div>
+          <div class="chap-title-en">Tricks of the Trade for Studying for the PMP® Exam</div>
+        </div>
+        <span class="chap-tag done">Đã dịch</span>
+        <span class="chap-arrow">&#8594;</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- SECTION II -->
+  <div class="section-label"><span>II</span> Phần II — Nền Tảng (Foundations)</div>
+  <div class="chapters">
+    <a href="books/PMPExamPrep/rita_chap02.html" class="chap-row">
+      <div class="chap-num">2</div>
+      <div class="chap-body">
+        <div>
+          <div class="chap-title-vi">Tài Liệu Tham Khảo Kỳ Thi PMP® Trong Bối Cảnh</div>
+          <div class="chap-title-en">PMP® Exam References in Context</div>
+        </div>
+        <span class="chap-tag done">Đã dịch</span>
+        <span class="chap-arrow">&#8594;</span>
+      </div>
+    </a>
+
+    <a href="books/PMPExamPrep/rita_chap03.html" class="chap-row">
+      <div class="chap-num">3</div>
+      <div class="chap-body">
+        <div>
+          <div class="chap-title-vi">Nền Tảng Quản Lý Dự Án</div>
+          <div class="chap-title-en">Project Management Foundations</div>
+        </div>
+        <span class="chap-tag done">Đã dịch</span>
+        <span class="chap-arrow">&#8594;</span>
+      </div>
+    </a>
+
+    <a href="books/PMPExamPrep/rita_chap04.html" class="chap-row">
+      <div class="chap-num">4</div>
+      <div class="chap-body">
+        <div>
+          <div class="chap-title-vi">Tích Hợp</div>
+          <div class="chap-title-en">Integration</div>
+        </div>
+        <span class="chap-tag done">Đã dịch</span>
+        <span class="chap-arrow">&#8594;</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- SECTION III -->
+  <div class="section-label"><span>III</span> Phần III — Lãnh Đạo (People)</div>
+  <div class="chapters">
+    <a href="books/PMPExamPrep/rita_chap05.html" class="chap-row">
+      <div class="chap-num">5</div>
+      <div class="chap-body">
+        <div>
+          <div class="chap-title-vi">Kỹ Năng Lãnh Đạo</div>
+          <div class="chap-title-en">Leadership Skills</div>
+        </div>
+        <span class="chap-tag done">Đã dịch</span>
+        <span class="chap-arrow">&#8594;</span>
+      </div>
+    </a>
+
+    <a href="books/PMPExamPrep/rita_chap06.html" class="chap-row">
+      <div class="chap-num">6</div>
+      <div class="chap-body">
+        <div>
+          <div class="chap-title-vi">Xây Dựng & Hỗ Trợ Hiệu Suất Nhóm</div>
+          <div class="chap-title-en">Build and Support Team Performance</div>
+        </div>
+        <span class="chap-tag done">Đã dịch</span>
+        <span class="chap-arrow">&#8594;</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- SECTION IV -->
+  <div class="section-label"><span>IV</span> Phần IV — Quy Trình (Process)</div>
+  <div class="chapters">
+    <a href="books/PMPExamPrep/rita_chap07.html" class="chap-row">
+      <div class="chap-num">7</div>
+      <div class="chap-body">
+        <div>
+          <div class="chap-title-vi">Phạm Vi Dự Án</div>
+          <div class="chap-title-en">Scope</div>
+        </div>
+        <span class="chap-tag done">Đã dịch</span>
+        <span class="chap-arrow">&#8594;</span>
+      </div>
+    </a>
+
+    <a href="books/PMPExamPrep/rita_chap08.html" class="chap-row">
+      <div class="chap-num">8</div>
+      <div class="chap-body">
+        <div>
+          <div class="chap-title-vi">Tiến Độ & Ngân Sách Dự Án</div>
+          <div class="chap-title-en">Schedule / Budget &amp; Resources</div>
+        </div>
+        <span class="chap-tag done">Đã dịch</span>
+        <span class="chap-arrow">&#8594;</span>
+      </div>
+    </a>
+
+    <a href="books/PMPExamPrep/rita_chap10.html" class="chap-row">
+      <div class="chap-num">10</div>
+      <div class="chap-body">
+        <div>
+          <div class="chap-title-vi">Chất Lượng Sản Phẩm Bàn Giao</div>
+          <div class="chap-title-en">Quality of Deliverables and Products</div>
+        </div>
+        <span class="chap-tag done">Đã dịch</span>
+        <span class="chap-arrow">&#8594;</span>
+      </div>
+    </a>
+
+    <a href="books/PMPExamPrep/rita_chap11.html" class="chap-row">
+      <div class="chap-num">11</div>
+      <div class="chap-body">
+        <div>
+          <div class="chap-title-vi">Truyền Thông</div>
+          <div class="chap-title-en">Communications</div>
+        </div>
+        <span class="chap-tag done">Đã dịch</span>
+        <span class="chap-arrow">&#8594;</span>
+      </div>
+    </a>
+
+    <a href="books/PMPExamPrep/rita_chap12.html" class="chap-row">
+      <div class="chap-num">12</div>
+      <div class="chap-body">
+        <div>
+          <div class="chap-title-vi">Rủi Ro & Vấn Đề</div>
+          <div class="chap-title-en">Risks and Issues</div>
+        </div>
+        <span class="chap-tag done">Đã dịch</span>
+        <span class="chap-arrow">&#8594;</span>
+      </div>
+    </a>
+
+    <a href="books/PMPExamPrep/rita_chap13.html" class="chap-row">
+      <div class="chap-num">13</div>
+      <div class="chap-body">
+        <div>
+          <div class="chap-title-vi">Mua Sắm</div>
+          <div class="chap-title-en">Procurement</div>
+        </div>
+        <span class="chap-tag done">Đã dịch</span>
+        <span class="chap-arrow">&#8594;</span>
+      </div>
+    </a>
+
+    <a href="books/PMPExamPrep/rita_chap14.html" class="chap-row">
+      <div class="chap-num">14</div>
+      <div class="chap-body">
+        <div>
+          <div class="chap-title-vi">Các Bên Liên Quan</div>
+          <div class="chap-title-en">Stakeholders</div>
+        </div>
+        <span class="chap-tag done">Đã dịch</span>
+        <span class="chap-arrow">&#8594;</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- SECTION V -->
+  <div class="section-label"><span>V</span> Phần V — Kết Thúc (Business Environment & Closing)</div>
+  <div class="chapters">
+    <a href="books/PMPExamPrep/rita_chap15.html" class="chap-row">
+      <div class="chap-num">15</div>
+      <div class="chap-body">
+        <div>
+          <div class="chap-title-vi">Tuân Thủ & Mang Lại Giá Trị</div>
+          <div class="chap-title-en">Compliance and Delivering Value</div>
+        </div>
+        <span class="chap-tag done">Đã dịch</span>
+        <span class="chap-arrow">&#8594;</span>
+      </div>
+    </a>
+
+    <a href="books/PMPExamPrep/rita_chap16.html" class="chap-row">
+      <div class="chap-num">16</div>
+      <div class="chap-body">
+        <div>
+          <div class="chap-title-vi">Mẹo Vượt Qua Kỳ Thi PMP® Ngay Lần Đầu</div>
+          <div class="chap-title-en">Tips for Passing the PMP® Exam the First Time</div>
+        </div>
+        <span class="chap-tag done">Đã dịch</span>
+        <span class="chap-arrow">&#8594;</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- SECTION VI -->
+  <div class="section-label"><span>VI</span> Phần VI — Agile & PMBOK7</div>
+  <div class="chapters">
+    <a href="books/PMPExamPrep/rita_chap17.html" class="chap-row">
+      <div class="chap-num">17</div>
+      <div class="chap-body">
+        <div>
+          <div class="chap-title-vi">Các Phương Pháp Agile Phổ Biến</div>
+          <div class="chap-title-en">Common Agile Methodologies</div>
+        </div>
+        <span class="chap-tag done">Đã dịch</span>
+        <span class="chap-arrow">&#8594;</span>
+      </div>
+    </a>
+
+    <a href="books/PMPExamPrep/rita_chap18.html" class="chap-row">
+      <div class="chap-num">18</div>
+      <div class="chap-body">
+        <div>
+          <div class="chap-title-vi">Hướng Dẫn PMBOK & Tiêu Chuẩn PM</div>
+          <div class="chap-title-en">PMBOK Guide and the PM Standard</div>
+        </div>
+        <span class="chap-tag done">Đã dịch</span>
+        <span class="chap-arrow">&#8594;</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- QUESTION BANK BANNER -->
+  <div style="margin-top:32px;padding:20px 24px;background:var(--navy);border-radius:8px;border:2px solid var(--gold);display:flex;align-items:center;gap:16px;">
+    <div style="font-size:2rem;flex-shrink:0">✏️</div>
+    <div style="flex:1">
+      <div style="font-family:'Playfair Display',serif;font-size:13px;font-weight:700;color:var(--gold-lt);margin-bottom:4px">Bộ Sưu Tập Bài Tập Rita</div>
+      <div style="font-size:12px;color:#b0bcd4">76 bài tập (bao gồm 9 câu trắc nghiệm) từ 17 chương — đáp án ẩn, chế độ Học & Thi thử</div>
+    </div>
+    <a href="books/PMPExamPrep/rita-questions.html" style="font-family:'Playfair Display',serif;font-size:13px;font-weight:700;background:var(--gold);color:#0a0f1a;padding:8px 16px;border-radius:5px;text-decoration:none;white-space:nowrap;flex-shrink:0">Luyện Tập →</a>
+  </div>
+
+</div><!-- /content -->
+
+<footer style="text-align:center; padding:24px; font-size:12px; color:#999; border-top:1px solid var(--border);">
+  Rita Mulcahy PMP® Exam Prep 11th Edition · Bản dịch Tiếng Việt · Chỉ dùng cho mục đích học tập
+</footer>
+
+<script>
+  // Auto-redirect to last-read Rita chapter (skip if ?list param present)
+  (function() {
+    if (!location.search.includes('list')) {
+      try {
+        var rd = JSON.parse(localStorage.getItem('rita_reading') || '{}')
+        if (rd.lastChap) {
+          location.replace('books/PMPExamPrep/' + rd.lastChap + '.html')
+          return
+        }
+      } catch(e) {}
+    }
+  })()
+
+  // Update chapter tags based on file availability
+  async function checkChapters() {
+    const rows = document.querySelectorAll('.chap-row[href], .chap-part[href]')
+    for (const row of rows) {
+      try {
+        const res = await fetch(row.getAttribute('href'), { method: 'HEAD' })
+        const tag = row.querySelector('.chap-tag')
+        if (res.ok && tag) {
+          tag.textContent = 'Đã dịch'
+          tag.className = 'chap-tag done'
+        }
+      } catch {}
+    }
+  }
+  checkChapters()
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2197 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Các Bên Liên Quan | Rita PMP® Exam Prep 11</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:     #1a2744;
+  --red:      #8b1a1a;
+  --gold:     #c9a84c;
+  --gold-lt:  #e8d5a3;
+  --cream:    #fdf8f0;
+  --text:     #2c2c2c;
+  --text-dim: #5a5a5a;
+  --border:   #d4c89a;
+  --sidebar-w: 268px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ── PROGRESS BAR ── */
+#progress-bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--gold);z-index:200;transition:width .1s}
+
+/* ── SIDEBAR ── */
+#sidebar{
+  width:var(--sidebar-w);background:var(--navy);color:#ccd4e8;
+  position:fixed;top:0;left:0;bottom:0;overflow-y:auto;z-index:100;
+  border-right:3px solid var(--gold);display:flex;flex-direction:column;
+}
+#sidebar-header{
+  background:linear-gradient(135deg,#0f1d3a 0%,#1a2744 100%);
+  padding:1.4rem 1.2rem;border-bottom:2px solid var(--gold);flex-shrink:0;
+}
+#sidebar-header .book-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.62rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;
+}
+#sidebar-header h2{font-size:.92rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:.25rem}
+#sidebar-header .edition{font-family:'Source Sans 3',sans-serif;font-size:.7rem;color:var(--gold-lt);font-style:italic}
+#sidebar-toc{flex:1;overflow-y:auto;padding:.6rem 0}
+#sidebar-toc a{
+  display:block;font-family:'Source Sans 3',sans-serif;font-size:.78rem;
+  color:#aab8d0;text-decoration:none;padding:.4rem 1.2rem;line-height:1.4;
+  transition:all .15s;border-left:3px solid transparent;
+}
+#sidebar-toc a:hover,#sidebar-toc a.active{color:#fff;background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+#sidebar-toc a.toc-h4{padding-left:2.2rem;font-size:.72rem;color:#8896b0}
+#sidebar-toc a.toc-h4:hover{color:#ccd4e8}
+#sidebar-toc .toc-group-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.6rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  padding:.7rem 1.2rem .25rem;opacity:.85;
+}
+#sidebar-nav{
+  flex-shrink:0;border-top:1px solid rgba(255,255,255,.08);
+  display:flex;justify-content:space-between;padding:.7rem .8rem;gap:.5rem;
+}
+#sidebar-nav a{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;color:var(--gold-lt);
+  text-decoration:none;padding:.4rem .7rem;border:1px solid rgba(201,168,76,.3);
+  border-radius:4px;transition:all .2s;line-height:1.3;text-align:center;flex:1;
+}
+#sidebar-nav a:hover{background:rgba(201,168,76,.15);color:#fff}
+#sidebar-nav a.disabled{opacity:.35;pointer-events:none}
+
+/* ── HAMBURGER (mobile) ── */
+#menu-btn{
+  display:none;position:fixed;top:.7rem;left:.8rem;z-index:150;
+  background:var(--navy);border:1px solid var(--gold);color:var(--gold);
+  width:36px;height:36px;border-radius:6px;font-size:1.1rem;cursor:pointer;
+  align-items:center;justify-content:center;
+}
+
+/* ── MAIN ── */
+#main{margin-left:var(--sidebar-w);max-width:880px;padding:0 2.8rem 5rem}
+
+/* ── CHAPTER HERO ── */
+.chapter-hero{
+  background:linear-gradient(135deg,var(--navy) 0%,#2a3a6a 100%);
+  color:white;padding:2.8rem 2.8rem 2.2rem;margin:0 -2.8rem 2.8rem;
+  border-bottom:4px solid var(--gold);position:relative;overflow:hidden;
+}
+.chapter-hero::before{
+  content:'14';position:absolute;right:1.5rem;top:50%;
+  transform:translateY(-50%);font-size:10rem;font-weight:700;
+  color:rgba(255,255,255,.05);font-family:'Merriweather',serif;line-height:1;
+}
+.chapter-hero .ch-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;font-weight:700;
+  letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;
+}
+.chapter-hero h1{font-size:2rem;font-weight:700;line-height:1.2;margin-bottom:.35rem}
+.chapter-hero .ch-en{font-family:'Source Sans 3',sans-serif;font-size:.95rem;color:rgba(255,255,255,.5);font-style:italic}
+
+/* ── CONTENT HEADINGS ── */
+h3{
+  font-family:'Merriweather',serif;font-size:1.25rem;color:var(--navy);
+  margin:2.5rem 0 .85rem;padding-bottom:.45rem;border-bottom:2px solid var(--gold);
+}
+h4{
+  font-family:'Merriweather',serif;font-size:1.05rem;color:var(--navy);
+  margin:2rem 0 .65rem;padding-left:.75rem;border-left:4px solid var(--gold);
+}
+h5{
+  font-family:'Source Sans 3',sans-serif;font-size:.9rem;font-weight:700;
+  color:var(--red);margin:1.4rem 0 .45rem;text-transform:uppercase;letter-spacing:.05em;
+}
+p{font-family:'Merriweather',serif;font-size:.94rem;line-height:1.88;margin-bottom:.95rem;color:var(--text)}
+
+/* ── LISTS ── */
+ul.content-list,ol.content-list{
+  margin:.5rem 0 1rem;padding:0;list-style:none;
+}
+ul.content-list li{
+  position:relative;padding:.28rem 0 .28rem 1.6rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);
+}
+ul.content-list li::before{
+  content:'◆';position:absolute;left:0;color:var(--gold);font-size:.65rem;top:.45rem;
+}
+ol.content-list{counter-reset:ol-c;list-style:none}
+ol.content-list li{
+  position:relative;padding:.28rem 0 .28rem 2rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);counter-increment:ol-c;
+}
+ol.content-list li::before{
+  content:counter(ol-c)'.';position:absolute;left:0;color:var(--navy);
+  font-weight:700;font-size:.85rem;min-width:1.5rem;
+}
+ul.content-list ul.content-list li::before{content:'–';color:var(--text-dim);font-size:.9rem;top:.35rem}
+
+/* ── CALLOUT / DEF BOX ── */
+.callout{
+  background:linear-gradient(135deg,#f5f0e8,#ede8d8);
+  border:1px solid var(--border);border-left:5px solid var(--gold);
+  border-radius:0 6px 6px 0;padding:1rem 1.2rem;margin:1.3rem 0;
+}
+.callout p{font-size:.9rem;margin-bottom:.5rem}
+.callout p:last-child{margin-bottom:0}
+.callout ul.content-list li{font-size:.88rem}
+.callout-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.65rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;
+}
+.callout.tip{border-left-color:#2d7a2d;background:linear-gradient(135deg,#f0f7f0,#e4f0e4)}
+.callout.tip .callout-label{color:#2d7a2d}
+
+/* ── HIGHLIGHT (quicktest / exam alert) ── */
+.highlight{
+  background:var(--navy);color:#e8d5a3;
+  border-radius:8px;padding:1.1rem 1.3rem;margin:1.5rem 0;
+}
+.highlight h5,.highlight strong{color:var(--gold-lt)}
+.highlight p,.highlight li{color:#ccd4e8;font-size:.88rem}
+.highlight ul.content-list li::before{color:var(--gold)}
+
+/* ── FIGURE ── */
+.img-center{
+  text-align:center;margin:1.8rem 0;padding:1rem;
+  background:#f8f5ee;border:1px solid var(--border);border-radius:8px;
+}
+.img-center img{max-width:100%;height:auto;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.img-center p,.img-center div{
+  margin-top:.65rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.8rem;color:var(--text-dim);font-style:italic;
+}
+
+/* ── TABLES ── */
+.table-wrap{overflow-x:auto;margin:1.5rem 0}
+table{width:100%;border-collapse:collapse;font-family:'Source Sans 3',sans-serif;font-size:.84rem}
+table th{background:var(--navy);color:white;padding:.6rem .8rem;text-align:center;font-weight:600;font-size:.79rem}
+table td{padding:.5rem .8rem;border:1px solid #ddd;vertical-align:top;line-height:1.5}
+table tr:nth-child(even) td{background:#f9f6ef}
+
+/* ── BACK TO TOP ── */
+#back-top{
+  position:fixed;bottom:1.5rem;right:1.5rem;
+  background:var(--navy);color:var(--gold);border:1px solid var(--gold);
+  width:38px;height:38px;border-radius:50%;font-size:1.2rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .25s;z-index:99;
+}
+#back-top:hover{background:var(--gold);color:var(--navy)}
+
+/* ── MOBILE ── */
+@media(max-width:860px){
+  #sidebar{transform:translateX(-100%);transition:transform .25s;top:3rem}
+  #sidebar.open{transform:translateX(0)}
+  #menu-btn{display:flex}
+  #main{margin-left:0;padding:3.5rem 1.2rem 4rem}
+  .chapter-hero{margin:0 -1.2rem 2rem;padding:2rem 1.4rem}
+  .chapter-hero::before{display:none}
+}
+
+/* ── DARK / LIGHT MODE ─────────────────────────────── */
+html[data-theme=dark]{--cream:#0f1520;--text:#dde4f0;--text-dim:#8899bb;--border:#253048;--gold-lt:#c9a84c}
+html[data-theme=dark] body{background:#0f1520;color:#dde4f0}
+html[data-theme=dark] #main{background:#0f1520}
+html[data-theme=dark] h1,html[data-theme=dark] h2{color:#e8d5a3}
+html[data-theme=dark] h3{color:#e8d5a3;border-bottom-color:var(--gold)}
+html[data-theme=dark] h4{color:#b8ccee;border-left-color:var(--gold)}
+html[data-theme=dark] p,html[data-theme=dark] li,html[data-theme=dark] td{color:#dde4f0}
+html[data-theme=dark] strong{color:#e8d5a3}
+html[data-theme=dark] em{color:#b8ccee}
+html[data-theme=dark] .callout{background:linear-gradient(135deg,#1a2436,#1e2d45);border-left-color:var(--gold);color:#dde4f0}
+html[data-theme=dark] .callout p{color:#dde4f0}
+html[data-theme=dark] blockquote{background:#1a2436;border-left-color:var(--gold);color:#b0c0d8}
+html[data-theme=dark] table{background:#131c2b}
+html[data-theme=dark] th{background:#1a2744;color:#e8d5a3;border-color:#253048}
+html[data-theme=dark] td{border-color:#253048}
+html[data-theme=dark] tr:nth-child(even) td{background:#1a2436}
+html[data-theme=dark] .highlight,.highlight-box{background:#1a2436!important;border-color:#253048!important;color:#dde4f0!important}
+html[data-theme=dark] #back-top{background:#1a2744;color:var(--gold);border:1px solid rgba(201,168,76,.4)}
+html[data-theme=dark] ul.content-list li,html[data-theme=dark] ol.content-list li{color:#dde4f0}
+html[data-theme=dark] .chapter-hero{background:linear-gradient(135deg,#0a1228 0%,#142040 100%)}
+html[data-theme=dark] .exercise-card{background:#1a2436;border-color:#253048}
+html[data-theme=dark] .answer-box{background:#152035;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] .answer-box p{color:#dde4f0}
+/* theme toggle button */
+#theme-btn{position:absolute;top:.65rem;right:.7rem;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.35);color:var(--gold);width:28px;height:28px;border-radius:5px;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+#theme-btn:hover{background:rgba(201,168,76,.2)}
+#sidebar-header{position:relative}
+
+/* ── HIGHLIGHT SYSTEM ─────────────────────────────────── */
+mark.hl{border-radius:2px;cursor:pointer;padding:1px 0;background:transparent}
+mark.hl[data-color=yellow]{background:rgba(255,241,118,.75)}
+mark.hl[data-color=green]{background:rgba(165,214,167,.75)}
+mark.hl[data-color=red]{background:rgba(239,154,154,.75)}
+mark.hl::after{display:none}
+mark.hl[data-note]:not([data-note=""])::after{content:"✏";font-size:.6rem;vertical-align:super;margin-left:1px;opacity:.65;display:inline}
+/* selection popup */
+#hl-popup{position:fixed;z-index:9999;background:#1a2744;border:1px solid rgba(201,168,76,.5);border-radius:8px;padding:.45rem .6rem;display:flex;align-items:center;gap:.35rem;box-shadow:0 4px 20px rgba(0,0,0,.4);pointer-events:all}
+#hl-popup.hidden{display:none!important}
+.hl-color-btn{width:24px;height:24px;border-radius:50%;border:2px solid rgba(255,255,255,.25);cursor:pointer;transition:transform .15s,border-color .15s;flex-shrink:0}
+.hl-color-btn:hover{transform:scale(1.2);border-color:rgba(255,255,255,.7)}
+.hl-color-btn[data-color=yellow]{background:#fff176}
+.hl-color-btn[data-color=green]{background:#a5d6a7}
+.hl-color-btn[data-color=red]{background:#ef9a9a}
+.hl-sep{width:1px;height:20px;background:rgba(255,255,255,.2);margin:0 .1rem}
+.hl-note-btn{background:none;border:none;color:rgba(255,255,255,.7);font-size:.9rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-note-btn:hover{color:#fff;background:rgba(255,255,255,.1)}
+.hl-del-btn{background:none;border:none;color:rgba(239,154,154,.8);font-size:.85rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-del-btn:hover{color:#ef9a9a;background:rgba(239,154,154,.12)}
+/* note modal */
+#hl-note-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center}
+#hl-note-modal.hidden{display:none!important}
+#hl-note-box{background:#fff;border-radius:10px;padding:1.4rem;width:min(420px,90vw);box-shadow:0 8px 32px rgba(0,0,0,.25)}
+#hl-note-box h3{font-size:.95rem;color:#1a2744;margin-bottom:.7rem;font-family:'Merriweather',serif}
+#hl-note-ta{width:100%;border:1px solid #d4c89a;border-radius:6px;padding:.6rem .8rem;font-size:.88rem;font-family:'Source Sans 3',sans-serif;resize:vertical;min-height:80px;color:#2c2c2c;outline:none}
+#hl-note-ta:focus{border-color:#c9a84c;box-shadow:0 0 0 2px rgba(201,168,76,.25)}
+.hl-note-actions{display:flex;justify-content:flex-end;gap:.6rem;margin-top:.8rem}
+.hl-note-cancel{background:transparent;border:1px solid #ccc;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+.hl-note-save{background:#1a2744;color:#fff;border:none;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+/* highlights panel */
+#hl-panel{position:fixed;top:0;right:0;bottom:0;width:300px;background:#fff;border-left:3px solid var(--gold);z-index:500;display:flex;flex-direction:column;box-shadow:-4px 0 20px rgba(0,0,0,.15);transform:translateX(100%);transition:transform .25s}
+#hl-panel.open{transform:translateX(0)}
+#hl-panel-hdr{background:#1a2744;padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--gold)}
+#hl-panel-hdr h3{font-size:.88rem;color:#fff;font-family:'Source Sans 3',sans-serif;font-weight:700;letter-spacing:.05em}
+#hl-panel-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.2rem;cursor:pointer;padding:.2rem;line-height:1}
+#hl-panel-close:hover{color:#fff}
+#hl-panel-list{flex:1;overflow-y:auto;padding:.6rem}
+#hl-panel-list:empty::before{content:"Chưa có ghi chú nào trong chương này.";font-size:.82rem;color:#999;display:block;padding:.8rem;text-align:center;font-style:italic}
+.hl-item{padding:.65rem .8rem;border-radius:6px;margin-bottom:.5rem;border-left:4px solid #ddd;background:#fafafa;cursor:pointer;transition:background .15s}
+.hl-item:hover{background:#f0f0f0}
+.hl-item[data-color=yellow]{border-left-color:#fdd835}
+.hl-item[data-color=green]{border-left-color:#66bb6a}
+.hl-item[data-color=red]{border-left-color:#ef5350}
+.hl-item-text{font-size:.8rem;color:#2c2c2c;line-height:1.5;margin-bottom:.3rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.hl-item-note{font-size:.75rem;color:#666;font-style:italic;margin-bottom:.3rem}
+.hl-item-del{float:right;background:none;border:none;color:#bbb;cursor:pointer;font-size:.8rem;padding:.1rem .3rem;border-radius:3px;line-height:1}
+.hl-item-del:hover{color:#ef5350;background:rgba(239,83,80,.08)}
+/* sidebar hl badge */
+#hl-sidebar-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:var(--gold);cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#hl-sidebar-btn:hover{background:rgba(201,168,76,.1)}
+#hl-badge{background:rgba(201,168,76,.2);color:var(--gold);font-size:.65rem;font-weight:700;padding:.1rem .4rem;border-radius:10px;min-width:18px;text-align:center}
+html[data-theme=dark] #hl-note-box{background:#1a2436;border:1px solid #253048}
+html[data-theme=dark] #hl-note-box h3{color:#e8d5a3}
+html[data-theme=dark] #hl-note-ta{background:#0f1520;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] #hl-panel{background:#131c2b;border-left-color:var(--gold)}
+html[data-theme=dark] .hl-item{background:#1a2436;border-bottom:1px solid #1e2d45}
+html[data-theme=dark] .hl-item:hover{background:#1e2d45}
+html[data-theme=dark] .hl-item-text{color:#dde4f0}
+html[data-theme=dark] .hl-item-note{color:#8899bb}
+html[data-theme=dark] .hl-note-cancel{border-color:#253048;color:#dde4f0;background:#1a2436}
+html[data-theme=dark] .hl-note-save{background:#c9a84c;color:#0a0f1a}
+
+/* ── CHAPTER NAV PANEL ─────────────────────────────────── */
+#chap-panel{position:fixed;inset:0;z-index:9000;display:flex;align-items:stretch}
+#chap-panel.hidden{display:none!important}
+#chap-panel-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);cursor:pointer}
+#chap-panel-box{position:relative;z-index:1;width:min(360px,90vw);background:#0f1d3a;border-right:3px solid var(--gold);display:flex;flex-direction:column;animation:slideInLeft .2s ease}
+@keyframes slideInLeft{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+#chap-panel-hdr{background:linear-gradient(135deg,#0a1228,#1a2744);padding:1.2rem 1.3rem;border-bottom:2px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
+#chap-panel-hdr h3{font-family:'Source Sans 3',sans-serif;font-size:.85rem;font-weight:700;color:#fff;letter-spacing:.1em;text-transform:uppercase}
+#chap-panel-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.3rem;cursor:pointer;padding:.2rem;line-height:1;transition:color .15s}
+#chap-panel-close:hover{color:#fff}
+#chap-panel-list{flex:1;overflow-y:auto;padding:.5rem 0}
+.chap-panel-item{display:flex;align-items:center;gap:.8rem;padding:.7rem 1.3rem;cursor:pointer;transition:background .15s;border-left:3px solid transparent;text-decoration:none}
+.chap-panel-item:hover{background:rgba(201,168,76,.1);border-left-color:var(--gold)}
+.chap-panel-item.active{background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+.cpanel-num{font-family:'Source Sans 3',sans-serif;font-size:.7rem;font-weight:700;color:var(--gold);min-width:28px;flex-shrink:0}
+.cpanel-title{font-family:'Source Sans 3',sans-serif;font-size:.8rem;color:#ccd4e8;line-height:1.35}
+.cpanel-item-active .cpanel-title{color:#fff;font-weight:600}
+.cpanel-status{margin-left:auto;font-size:.72rem;flex-shrink:0;opacity:.6}
+
+/* ── GITHUB SYNC ──────────────────────────────────── */
+#sync-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:#8899bb;cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s,color .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#sync-btn:hover{background:rgba(201,168,76,.08);color:var(--gold)}
+#sync-btn[data-state=ok]{color:#4caf50}
+#sync-btn[data-state=syncing]{color:var(--gold)}
+#sync-btn[data-state=err]{color:#ef5350}
+#sync-btn[data-state=no-token]{color:#8899bb}
+#sync-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center}
+#sync-modal.hidden{display:none!important}
+#sync-modal-box{background:#0f1d3a;border:2px solid var(--gold);border-radius:10px;padding:1.8rem 2rem;width:min(420px,90vw);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+#sync-modal-box h3{font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:.9rem;text-transform:uppercase;letter-spacing:.1em}
+#sync-modal-box p{font-size:.77rem;color:#aab8d0;line-height:1.6;margin-bottom:.9rem}
+#sync-modal-box input{width:100%;background:#0a1228;border:1px solid rgba(201,168,76,.4);color:#fff;font-family:monospace;font-size:.8rem;padding:.55rem .8rem;border-radius:5px;outline:none;margin-bottom:.8rem;box-sizing:border-box}
+#sync-modal-box input:focus{border-color:var(--gold)}
+.sync-modal-btns{display:flex;gap:.6rem;justify-content:flex-end;flex-wrap:wrap}
+.sync-modal-btns button{font-family:'Source Sans 3',sans-serif;font-size:.77rem;font-weight:700;padding:.42rem .9rem;border-radius:5px;cursor:pointer;border:none;transition:background .15s}
+#sync-save-btn{background:var(--gold);color:#0a0f1a}
+#sync-save-btn:hover{background:#e8c47a}
+#sync-cancel-btn{background:rgba(255,255,255,.1);color:#aab8d0}
+#sync-cancel-btn:hover{background:rgba(255,255,255,.18)}
+#sync-clear-btn{background:rgba(239,83,80,.18);color:#ef9090;margin-right:auto}
+#sync-clear-btn:hover{background:rgba(239,83,80,.32)}
+</style>
+</head>
+<script>
+(function(){var t=localStorage.getItem('rita_theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+</script>
+<body>
+<div id="progress-bar"></div>
+<button id="menu-btn" aria-label="Menu">☰</button>
+
+<aside id="sidebar">
+<div id="sidebar-header">
+  <div class="book-label">Rita PMP® Exam Prep</div>
+  <h2>Ôn Thi PMP®</h2>
+  <div class="edition">Rita Mulcahy · 11th Edition 2023 · Tiếng Việt</div>
+</div>
+<div id="sidebar-toc">
+  <div class="toc-group-label">Nội Dung Chương</div>
+  <a href="#ch14-stakeholders" class="">14 Các Bên Liên Quan</a>
+<a href="#ch14-introduction" class="">Giới Thiệu</a>
+<a href="#ch14-definitions-stakeholder" class="toc-h4">Các Định Nghĩa Liên Quan Đến Sự Tham Gia Của Các Bên Liên Quan</a>
+<a href="#ch14-cost-of-change" class="toc-h4">Chi Phí Thay Đổi</a>
+<a href="#ch14-engagement-overview" class="toc-h4">Tổng Quan Về Sự Gắn Kết Của Các Bên Liên Quan</a>
+<a href="#ch14-eco-process-groups" class="toc-h4">Phác Thảo Nội Dung Kỳ Thi và Mô Hình Nhóm Quy Trình</a>
+<a href="#ch14-domain-i" class="toc-h4">Miền I</a>
+<a href="#ch14-desired-outcomes" class="toc-h4">Kết Quả Mong Muốn Từ Sự Gắn Kết Thành Công Của Các Bên Liên Quan</a>
+<a href="#ch14-stakeholder-identification" class="toc-h4">Xác Định (Và Phân Tích) Các Bên Liên Quan</a>
+<a href="#ch14-methods-identification" class="toc-h4">Các Phương Pháp Để Xác Định Và Phân Tích Các Bên Liên Quan</a>
+<a href="#ch14-surveys" class="toc-h4">Khảo Sát, Phỏng Vấn Và Nhóm Tập Trung</a>
+<a href="#ch14-brainstorming" class="toc-h4">Động Não</a>
+<a href="#ch14-brainstorming" class="toc-h4">Động Não</a>
+<a href="#ch14-individual-analysis" class="toc-h4">Phân Tích Từng Bên Liên Quan</a>
+<a href="#ch14-document-analysis" class="toc-h4">Phân Tích Tài Liệu</a>
+<a href="#ch14-stakeholder-mapping" class="toc-h4">Lập Bản Đồ Các Bên Liên Quan</a>
+<a href="#ch14-artifacts-identification" class="toc-h4">Các Tài Liệu Từ Xác Định Và Phân Tích Các Bên Liên Quan</a>
+<a href="#ch14-stakeholder-register" class="toc-h4">Sổ Đăng Ký Các Bên Liên Quan</a>
+<a href="#ch14-plan-engagement" class="toc-h4">Lập Kế Hoạch Gắn Kết Các Bên Liên Quan</a>
+<a href="#ch14-exercise-141" class="toc-h4">Bài Tập 14.1</a>
+<a href="#ch14-answer-141" class="toc-h4">Đáp Án</a>
+<a href="#ch14-methods-planning" class="toc-h4">Các Phương Pháp Để Lập Kế Hoạch Gắn Kết Các Bên Liên Quan</a>
+<a href="#ch14-engagement-assessment" class="toc-h4">Biểu Đồ Đánh Giá Mức Độ Gắn Kết Các Bên Liên Quan</a>
+<a href="#ch14-assumptions-constraints" class="toc-h4">Giả Định Và Ràng Buộc</a>
+<a href="#ch14-root-cause" class="toc-h4">Phân Tích Nguyên Nhân Gốc Rễ</a>
+<a href="#ch14-elevator-statement" class="toc-h4">Phát Biểu Thang Máy Của Dự Án (Phát Biểu Tầm Nhìn Sản Phẩm)</a>
+<a href="#ch14-exercise-142" class="toc-h4">Bài Tập 14.2</a>
+<a href="#ch14-exercise-142-content" class="toc-h4">Bài Tập 14.2</a>
+<a href="#ch14-answer-142" class="toc-h4">Đáp Án</a>
+<a href="#ch14-artifacts-planning" class="toc-h4">Các Tài Liệu Từ Lập Kế Hoạch Gắn Kết Các Bên Liên Quan</a>
+<a href="#ch14-manage-engagement" class="toc-h4">Quản Lý Sự Gắn Kết Của Các Bên Liên Quan</a>
+<a href="#ch14-methods-managing" class="toc-h4">Các Phương Pháp Để Quản Lý Sự Gắn Kết Của Các Bên Liên Quan</a>
+<a href="#ch14-artifacts-managing" class="toc-h4">Các Tài Liệu Từ Quản Lý Sự Gắn Kết Của Các Bên Liên Quan</a>
+<a href="#ch14-exercise-143" class="toc-h4">Bài Tập 14.3</a>
+<a href="#ch14-answer-143" class="toc-h4">Đáp Án</a>
+<a href="#ch14-monitor-engagement" class="toc-h4">Giám Sát Sự Gắn Kết Của Các Bên Liên Quan</a>
+<a href="#ch14-methods-monitoring" class="toc-h4">Các Phương Pháp Để Giám Sát Sự Gắn Kết Của Các Bên Liên Quan</a>
+<a href="#ch14-utilizing-data" class="toc-h4">Sử Dụng Dữ Liệu</a>
+<a href="#ch14-exercise-144" class="toc-h4">Bài Tập 14.4</a>
+<a href="#ch14-exercise-144-content" class="toc-h4">Bài Tập 14.4</a>
+<a href="#ch14-answer-144" class="toc-h4">Đáp Án</a>
+<a href="#ch14-communication" class="toc-h4">Giao Tiếp</a>
+<a href="#ch14-interpersonal-skills" class="toc-h4">Kỹ Năng Liên Cá Nhân Và Nhóm</a>
+<a href="#ch14-artifacts-monitoring" class="toc-h4">Các Tài Liệu Từ Giám Sát Sự Gắn Kết Của Các Bên Liên Quan</a>
+<a href="#ch14-agile-environments" class="toc-h4">Sự Gắn Kết Của Các Bên Liên Quan Trong Môi Trường Agile</a>
+<a href="#ch14-information-radiators" class="toc-h4">Bộ Khuếch Đại Thông Tin Agile</a>
+<a href="#ch14-kanban-boards" class="toc-h4">Bảng Kanban</a>
+<a href="#ch14-definition-of-done" class="toc-h4">Định Nghĩa Hoàn Thành Trong Agile</a>
+<a href="#ch14-agile-modeling" class="toc-h4">Mô Hình Hóa Agile</a>
+<a href="#ch14-putting-together" class="">Tổng Hợp Lại</a>
+<a href="#ch14-case-study" class="toc-h4">Tình Huống Nghiên Cứu Xây Dựng Thư Viện Mới</a>
+<a href="#ch14-exercise-145" class="toc-h4">Bài Tập 14.5</a>
+<a href="#ch14-questions-145" class="toc-h4">Câu Hỏi</a>
+<a href="#ch14-answer-145" class="toc-h4">Đáp Án</a>
+<a href="#ch14-section-v" class="">Phần V</a>
+
+</div>
+<div id="sidebar-nav">
+  <a href="rita_chap13.html" class="" title="Mua Sắm">← Ch13</a>
+  <a href="#" id="chap-muc-luc-btn">☰ Mục lục</a>
+  <a href="rita_chap15.html" class="" title="Tuân Thủ & Giá Trị">Ch15 →</a>
+</div></aside>
+
+<main id="main">
+  <div class="chapter-hero">
+    <div class="ch-label">Chương 14</div>
+    <h1>Các Bên Liên Quan</h1>
+    <div class="ch-en">Stakeholders</div>
+  </div>
+<h3 id="ch14-stakeholders">14 Các Bên Liên Quan</h3>
+
+<h3 id="ch14-introduction">Giới Thiệu</h3>
+
+<p>Có một học viên đến lớp học tại RMC sau khi trượt kỳ thi. Khi trò chuyện, Rita phát hiện ra rằng anh ta luôn làm việc với cùng bốn người; vai trò của anh ta chỉ đơn giản là nói cho họ biết phải làm gì. Trong nhiều dự án, anh ta vừa là quản lý dự án vừa là chuyên gia về chủ đề.</p>
+
+<p>Trong kỳ thi, bạn nên giả định rằng vai trò của bạn chỉ là quản lý dự án, và bạn có một nhóm thực hiện công việc phát triển sản phẩm. Bạn là người lãnh đạo trong dự án nhưng bạn làm việc cộng tác với các thành viên nhóm khác, những người tự quản lý cách thực hiện công việc được giao của họ.</p>
+
+<p>Rita phát hiện ra rằng học viên này chỉ áp dụng kinh nghiệm hạn chế của bản thân khi ôn thi. Kết quả là anh ta không hiểu được các thực tiễn quản lý dự án tốt nhất một cách rộng hơn, và do đó không thể điều chỉnh những thực tiễn đó cho phù hợp với đa dạng các tình huống gặp phải trong kỳ thi.</p>
+
+<p>Khi đọc chương này và tất cả các chương khác trong cuốn sách, hãy liên tục cố gắng nâng cao hiểu biết của bạn về các thực tiễn được trình bày để bạn có thể điều chỉnh chúng cho bất kỳ tình huống nào. Điều này sẽ giúp ích cho cả sự nghiệp lẫn kỳ thi của bạn.</p>
+
+<h4 id="ch14-definitions-stakeholder">Các Định Nghĩa Liên Quan Đến Sự Tham Gia Của Các Bên Liên Quan</h4>
+
+<h4 id="ch14-cost-of-change">Chi Phí Thay Đổi</h4>
+
+<p>Lý do quan trọng nhất cho sự cần mẫn trong nỗ lực gắn kết các bên liên quan của chúng ta là: chúng ta càng làm việc chặt chẽ với khách hàng về thiết kế và phát triển sản phẩm, thì càng ít những thay đổi tốn kém xảy ra về sau. Điều này có nghĩa là cần mẫn trong việc đảm bảo chúng ta đã xác định tất cả các bên liên quan và bắt đầu gắn kết với họ càng sớm càng tốt trong dự án, sau đó liên tục làm việc với họ để không có những bất ngờ tốn kém về sau. Mục tiêu luôn là hoàn thành các yêu cầu của dự án và đạt được sự hài lòng của khách hàng.</p>
+
+<p>Tại sao điều quan trọng là phải hiểu</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//7fb39c79-90b3-400e-aa87-47540ad97bf2/markdown_4/imgs/img_in_chart_box_336_473_625_664.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A12Z%2F-1%2F%2Fee3ea9ee408993ce275f659d25a6895090ff7f46c8ee27ba11c5db268a4510ff" alt="Image" width="35%" /></div></div>
+
+<div class="table-wrap"><table>
+<tr><td style="text-align: center;">HÌNH 14.1 Chi phí thay đổi và ảnh hưởng đến thiết kế</td></tr>
+</table></div>
+
+<ul class="content-list">
+<li>Quy trình Quản lý Các Bên Liên Quan</li>
+</ul>
+
+<div class="callout tip">
+<strong>KIỂM TRA NHANH</strong>
+<p>Giao tiếp sớm và nhất quán với các bên liên quan là yếu tố then chốt vì chi phí thay đổi tăng theo thời gian, trong khi khả năng ảnh hưởng đến thiết kế lại giảm. Những thay đổi được thực hiện muộn hơn trong dự án (khi sản phẩm đã dần được xây dựng) khó thực hiện hơn so với những thay đổi được thực hiện ở giai đoạn đầu của dự án.</p>
+</div>
+
+<p>tầm quan trọng của các mối quan hệ tốt, ổn định với các bên liên quan?</p>
+
+<ul class="content-list">
+<li>Định nghĩa về bên liên quan</li>
+<li>Phân tích các bên liên quan</li>
+<li>Kỳ vọng của các bên liên quan</li>
+<li>Chi phí thay đổi</li>
+</ul>
+
+<p>Điều này được minh họa trong hình 14.1.</p>
+
+<p>Một bên liên quan của dự án là người bị ảnh hưởng tích cực hoặc tiêu cực bởi hoặc có thể ảnh hưởng tích cực hoặc tiêu cực đến dự án hay sản phẩm của dự án.</p>
+
+<ul class="content-list">
+<li>Quyền lợi</li>
+</ul>
+
+<p>Lập kế hoạch, lãnh đạo và liên tục đánh giá sự gắn kết của các bên liên quan sẽ có tác động đến sự hiểu biết của bạn về quản lý dự án và khả năng vượt qua kỳ thi. Hãy xem lại Kiểm Tra Nhanh của chương này trước khi tiếp tục. Lưu ý những chủ đề bạn chưa quen thuộc và dành nhiều thời gian hơn để nghiên cứu chúng. Trong chương này, chúng ta thảo luận về quy trình gắn kết các bên liên quan. Chúng ta cũng đề cập đến các phương pháp và tài liệu thường gặp nhất trong kỳ thi liên quan đến sự gắn kết của các bên liên quan, từ cả góc độ dựa trên kế hoạch lẫn góc độ Agile.</p>
+
+<ul class="content-list">
+<li>Personas</li>
+<li>Sự gắn kết của các bên liên quan</li>
+<li>Sổ đăng ký các bên liên quan</li>
+<li>Biểu đồ đánh giá mức độ gắn kết của các bên liên quan</li>
+</ul>
+
+<h5>Bên Liên Quan</h5>
+
+<ul class="content-list">
+<li>Giả định và ràng buộc</li>
+<li>Phân tích nguyên nhân gốc rễ</li>
+<li>Phát biểu thang máy của dự án</li>
+<li>Bảng Kanban</li>
+<li>Mô hình hóa Agile</li>
+<li>Wireframes</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//afeb4e14-4077-403b-9dc6-ba143b6f9ee7/markdown_0/imgs/img_in_image_box_59_98_111_157.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A05Z%2F-1%2F%2F55115b9eac47f1d6e8e26579f2caa110712039452056f122ab4a07245be870e4" alt="Image" width="6%" /></div></div>
+
+<div class="callout">
+<strong>Hãy Suy Nghĩ.</strong> Hãy tưởng tượng bạn được phân công làm quản lý dự án cho một dự án mới. Giám đốc phòng ban của bạn đưa cho bạn một bản điều lệ và phạm vi công việc rồi bảo bạn bắt đầu. Với tư cách là quản lý dự án, bạn sẽ làm gì tiếp theo?
+</div>
+
+<p>Thường thì trong kỳ thi bạn sẽ được hỏi quản lý dự án nên làm gì tiếp theo. Khi đọc câu hỏi trên, bạn có nghĩ rằng bạn nên bắt đầu thực hiện phạm vi công việc không? Liệu quản lý dự án có thể chấp nhận một bản điều lệ và phạm vi công việc mà không hiểu về các bên liên quan và yêu cầu của họ không?</p>
+
+<p>Khi quản lý dự án đã có một bản điều lệ đã được ký (ủy quyền dự án) và phạm vi công việc, các bước tiếp theo của quản lý dự án là:</p>
+
+<ul class="content-list">
+<li>Xác định tất cả các bên liên quan</li>
+<li>Phân tích quyền lực, mối quan tâm và mức độ gắn kết của họ</li>
+<li>Xây dựng các chiến lược và chiến thuật cho sự gắn kết của các bên liên quan</li>
+<li>Thu thập yêu cầu và kỳ vọng của họ</li>
+<li>Đánh giá và tích hợp các yêu cầu của các bên liên quan đã biết vào phạm vi dự án</li>
+</ul>
+
+<p>Việc gắn kết với các bên liên quan và đánh giá lại các chiến lược và chiến thuật gắn kết nên diễn ra trong suốt vòng đời dự án. Quản lý dự án và nhóm cần xây dựng và duy trì mối quan hệ với các bên liên quan, đồng thời đảm bảo họ được tham gia liên tục ở mức độ cần thiết để dự án thành công. Quản lý dự án thường xuyên tìm kiếm các bên liên quan mới hoặc chưa được chú ý, đánh giá xem chiến lược có đang mang lại kết quả cần thiết không, và thay đổi chiến lược, chiến thuật khi cần.</p>
+
+<p>Các phương pháp Agile bao gồm một thành viên nhóm là bên liên quan chủ chốt, thường được gọi là chủ sở hữu sản phẩm (product owner). Một trong những vai trò chính của họ là ưu tiên hóa và duy trì backlog. Cũng rất phổ biến khi có các buổi demo thường xuyên cho các bên liên quan về các phần nhỏ của sản phẩm đang hoạt động trong khi nó vẫn đang được phát triển. Ngược lại, các phương pháp dự đoán thường yêu cầu các bên liên quan xem xét các sản phẩm bàn giao tạm thời hoặc các gói công việc được phát triển đầy đủ hơn.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//afeb4e14-4077-403b-9dc6-ba143b6f9ee7/markdown_0/imgs/img_in_image_box_708_433_760_492.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A05Z%2F-1%2F%2F4d8d46fb9166499fdeb043c56f86802c12b8f73d7daef254adc0fa42aa3d3b75" alt="Image" width="6%" /></div></div>
+
+<h4 id="ch14-engagement-overview">Tổng Quan Về Sự Gắn Kết Của Các Bên Liên Quan</h4>
+
+<p>Quy trình Gắn Kết Các Bên Liên Quan, bất kể phương pháp tiếp cận và vòng đời của dự án, đòi hỏi sự hiểu biết tốt về các kỹ năng liên cá nhân và kỹ năng nhóm được đề cập trong phần miền Con Người của cuốn sách này. Hãy chắc chắn rằng bạn hiểu tất cả mọi thứ về miền Con Người trước khi đọc chương này. Các kỹ năng miền Con Người không chỉ giúp bạn trả lời đúng các câu hỏi trong kỳ thi mà còn hỗ trợ các kỹ năng quy trình gắn kết các bên liên quan được đề cập trong chương này.</p>
+
+<h4 id="ch14-eco-process-groups">Phác Thảo Nội Dung Kỳ Thi và Mô Hình Nhóm Quy Trình</h4>
+
+<p>Phần dưới đây minh họa rằng các nhiệm vụ ECO 4, 9, 10, và 13 trong miền I, và nhiệm vụ 4 trong miền II có thể ánh xạ trực tiếp đến quy trình quản lý các bên liên quan trong mô hình Nhóm Quy Trình. Hãy dành thời gian xem xét ECO để suy nghĩ điều này.</p>
+
+<div class="callout">
+<strong>ECO</strong>
+</div>
+
+<h4 id="ch14-domain-i">Miền I</h4>
+
+<h5>Nhiệm Vụ 4</h5>
+<p>Trao quyền cho thành viên nhóm và các bên liên quan</p>
+
+<h5>Nhiệm Vụ 9</h5>
+<p>Cộng tác với các bên liên quan</p>
+
+<h5>Nhiệm Vụ 10</h5>
+<p>Xây dựng sự hiểu biết chung</p>
+
+<h5>Nhiệm Vụ 13</h5>
+<p>Cố vấn cho các bên liên quan có liên quan</p>
+
+<p>Miền II</p>
+
+<h5>Nhiệm Vụ 4</h5>
+
+<div class="callout">
+<strong>Mô Hình Nhóm Quy Trình</strong>
+<p>Gắn kết các bên liên quan</p>
+</div>
+
+<div class="table-wrap"><table>
+<tr><td style="text-align: center;"><strong>Quản Lý Các Bên Liên Quan</strong></td></tr>
+<tr><td>Xác Định Các Bên Liên Quan — Khởi Động</td></tr>
+<tr><td>Lập Kế Hoạch Gắn Kết Các Bên Liên Quan — Lập Kế Hoạch</td></tr>
+<tr><td>Quản Lý Sự Gắn Kết Của Các Bên Liên Quan — Thực Hiện</td></tr>
+<tr><td>Giám Sát Sự Gắn Kết Của Các Bên Liên Quan — Giám Sát &amp; Kiểm Soát</td></tr>
+</table></div>
+
+<div class="callout">
+<strong>Hướng Dẫn PMBOK</strong>
+<p>Miền 2.1 – Các Bên Liên Quan</p>
+<p>Miền 2.4 – Lập Kế Hoạch</p>
+<p>Miền 2.7 – Đo Lường</p>
+<p>Miền 2.8 – Sự Không Chắc Chắn</p>
+</div>
+
+<div class="callout tip">
+<strong>Hãy Suy Nghĩ.</strong> Khi bạn học điều này, hãy nhớ rằng sự gắn kết của các bên liên quan không chỉ liên quan đến các nhiệm vụ ECO được liệt kê trong bảng trước. Bạn có thể thấy các nhiệm vụ ECO miền Con Người khác hỗ trợ các nhiệm vụ này như thế nào không? Ví dụ, bạn sẽ không thể Gắn Kết Các Bên Liên Quan (miền II, nhiệm vụ 4) thành công nếu bạn không thể áp dụng tất cả hoặc hầu hết các kỹ năng trong miền I (Con Người).
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//afeb4e14-4077-403b-9dc6-ba143b6f9ee7/markdown_1/imgs/img_in_image_box_58_153_84_189.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A06Z%2F-1%2F%2Fd88d6c3d499594b8b6c171efecf4c5ec09ec62f1f90ba7ff66ea052f4ef771d4" alt="Image" width="3%" /></div></div>
+
+<div class="highlight">
+<strong>Ví Dụ:</strong> Quản lý Xung Đột (nhiệm vụ 1) hỗ trợ Xây Dựng Sự Hiểu Biết Chung (nhiệm vụ 10). Gắn Kết &amp; Hỗ Trợ Nhóm Làm Việc Ảo (nhiệm vụ 11) hỗ trợ Trao Quyền Cho Thành Viên Nhóm Và Các Bên Liên Quan (nhiệm vụ 4).
+</div>
+
+<p>Hình 14.2 thể hiện quy trình Gắn Kết Các Bên Liên Quan từ góc độ mô hình Nhóm Quy Trình. Một số hoạt động liên quan đến quy trình này nằm trong lĩnh vực truyền thông vì truyền thông có mối liên hệ chặt chẽ với sự gắn kết của các bên liên quan.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//afeb4e14-4077-403b-9dc6-ba143b6f9ee7/markdown_1/imgs/img_in_image_box_87_281_260_590.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A06Z%2F-1%2F%2F152a76ad568334124d0f2026107d430a24073eed786e78a688220805d9430cc3" alt="Image" width="21%" /></div></div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//afeb4e14-4077-403b-9dc6-ba143b6f9ee7/markdown_1/imgs/img_in_image_box_320_281_668_608.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A06Z%2F-1%2F%2Fe8d35f211b6bb8fa698dad93b43f61b93ef6ce4afb667a6d5792573694019db0" alt="Image" width="42%" /></div></div>
+
+<div class="table-wrap"><table>
+<tr><td style="text-align: center;">HÌNH 14.2 Quy trình gắn kết các bên liên quan</td></tr>
+</table></div>
+
+<p>Sử dụng mô hình Nhóm Quy Trình làm điểm khởi đầu, bạn có thể thấy rằng quy trình gắn kết các bên liên quan bao gồm bốn quy trình con: Xác Định Các Bên Liên Quan (bao gồm phân tích các bên liên quan), Lập Kế Hoạch Gắn Kết Các Bên Liên Quan, Quản Lý Sự Gắn Kết Của Các Bên Liên Quan, và Giám Sát Sự Gắn Kết Của Các Bên Liên Quan.</p>
+
+<p>Quy trình gắn kết các bên liên quan có thể được tóm tắt như sau:</p>
+
+<ul class="content-list">
+<li><strong>Xác định tất cả các bên liên quan</strong> — Thực hiện điều này càng sớm càng tốt. Bên liên quan được phát hiện càng muộn, chi phí thay đổi liên quan đến các yêu cầu mới của họ càng cao. Xác định yêu cầu, kỳ vọng, mối quan tâm, ảnh hưởng, mức độ thẩm quyền và giá trị.
+  <ul class="content-list">
+    <li><strong>Yêu cầu</strong> — Thu thập càng nhiều yêu cầu càng tốt trước khi công việc bắt đầu. Mức độ chi tiết có thể khác nhau ở các giai đoạn khác nhau tùy thuộc vào vòng đời dự án, hoặc vì sự mở rộng dần dần hoặc phương pháp phát triển. Bạn có cố gắng làm điều này trong các dự án thực tế của mình không?</li>
+  </ul>
+</li>
+</ul>
+
+<p>Trong dự án dựa trên kế hoạch, quản lý dự án cố gắng nắm bắt tất cả các yêu cầu dự án càng sớm càng tốt trong quá trình lập kế hoạch. Trong dự án Agile, chỉ có các yêu cầu cấp cao được nắm bắt ngay từ đầu và các yêu cầu chi tiết được thu thập cho từng tính năng sản phẩm khi lặp được lên kế hoạch.</p>
+
+<ul class="content-list">
+<li><strong>Kỳ vọng</strong> — Kỳ vọng là gì? Chúng là những hình ảnh tinh thần về tương lai. Chúng bao gồm những gì các bên liên quan nghĩ sẽ xảy ra với họ, bộ phận của họ, và công ty do dự án, cũng như những gì họ muốn từ dự án chưa được nói ra hoặc chuyển thành yêu cầu.</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//afeb4e14-4077-403b-9dc6-ba143b6f9ee7/markdown_1/imgs/img_in_image_box_689_849_739_905.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A06Z%2F-1%2F%2Fa34121a8b9af43541a67c6f99ce90ec5c518865cd5ac2d3ff6c1b4de860e4904" alt="Image" width="6%" /></div></div>
+
+<p>Tại sao không ngăn chặn càng nhiều vấn đề càng tốt bằng cách hướng dẫn các bên liên quan qua những gì sẽ xảy ra và hỏi họ kỳ vọng gì? Đánh giá những kỳ vọng này, làm rõ một số trong số chúng để thúc đẩy sự hiểu biết chung, và chuyển đổi những kỳ vọng khác thành các yêu cầu đã xác định.</p>
+
+<ul class="content-list">
+<li><strong>Mối quan tâm</strong> — Điều này có nghĩa là sự quan tâm đến dự án. Xác định mức độ quan tâm của từng bên liên quan. Họ có khả năng tham gia không? Bạn cần bao nhiêu sự chú ý và hỗ trợ từ họ, và khi nào bạn cần?</li>
+<li><strong>Mức độ ảnh hưởng</strong> — Mỗi bên liên quan sẽ có thể tác động đến dự án theo hướng tiêu cực hoặc tích cực ở một mức độ nào đó. Xác định và quản lý mức độ ảnh hưởng của từng bên liên quan, dù là không chính thức.</li>
+<li><strong>Mức độ thẩm quyền</strong> — Mức độ thẩm quyền (hoặc khả năng thực thi quyết định) của mỗi bên liên quan sẽ ảnh hưởng đến tác động của họ đến công việc và kết quả của dự án.</li>
+<li><strong>Giá trị</strong> — Các ưu tiên của dự án có phù hợp với các tiêu chuẩn của các bên liên quan cũng được ủy quyền trong điều lệ dự án không? Quản lý dự án không nên lập kế hoạch hoặc khởi xướng công việc mà các bên liên quan không ủng hộ hoặc coi trọng.</li>
+<li><strong>Lập kế hoạch gắn kết các bên liên quan</strong> — Quản lý dự án tập trung vào việc lập kế hoạch trước khi thực hiện. Bạn sẽ gắn kết với các bên liên quan như thế nào? Bạn sẽ giữ họ tham gia vào dự án và bao gồm họ trong việc ra quyết định như thế nào? Sự gắn kết này được điều chỉnh phù hợp với dự án và phương pháp phát triển. Giao tiếp là yếu tố then chốt và có liên quan đến sự gắn kết của các bên liên quan. Lập kế hoạch và thực hiện giao tiếp cẩn thận giúp duy trì các bên liên quan ở mức độ gắn kết phù hợp.
+  <ul class="content-list">
+    <li><strong>Giao tiếp và gắn kết</strong> — Nuôi dưỡng mối quan hệ với các bên liên quan và giữ cho họ được thông báo đầy đủ. Mời họ tham gia các buổi trình bày dự án và trao đổi thông tin, bao gồm báo cáo tiến độ, kế hoạch quản lý dự án và các cập nhật tài liệu khác khi thích hợp.</li>
+    <li><strong>Quản lý kỳ vọng, ảnh hưởng và sự gắn kết</strong> — Làm việc với các bên liên quan và quản lý mối quan hệ trong suốt vòng đời dự án.</li>
+  </ul>
+</li>
+<li><strong>Giám sát sự gắn kết của các bên liên quan</strong> — Trong suốt dự án, xác định xem giao tiếp có bị gián đoạn ở đâu không, nơi các chiến thuật và chiến lược gắn kết không hoạt động như cần thiết, và điều chỉnh cách tiếp cận khi cần thiết để đảm bảo sự gắn kết ở mức độ phù hợp.</li>
+</ul>
+
+<p>Chìa khóa thành công của bạn với tư cách là người lãnh đạo dự án là cách bạn xử lý mối quan hệ với các bên liên quan. Sự tham gia của các bên liên quan phải được quản lý dự án ảnh hưởng một cách phù hợp. Sự tham gia đó có thể từ mức nhỏ đến rộng rãi tùy thuộc vào nhu cầu của dự án, nhóm, các bên liên quan và tổ chức.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//afeb4e14-4077-403b-9dc6-ba143b6f9ee7/markdown_2/imgs/img_in_image_box_73_611_132_664.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A07Z%2F-1%2F%2F1df24f717cfdd4e7dffc5603725565937847b9bfd8191b94dfd7a538fddd07af" alt="Image" width="7%" /></div></div>
+
+<p>Bây giờ chúng ta sẽ xem xét kỹ hơn từng quy trình này.</p>
+
+<h4 id="ch14-desired-outcomes">Kết Quả Mong Muốn Từ Sự Gắn Kết Thành Công Của Các Bên Liên Quan</h4>
+
+<p>Giả định cho kỳ thi rằng sự gắn kết của các bên liên quan được lập kế hoạch và quản lý đúng cách trừ khi thông tin trong câu hỏi thi cho thấy điều khác. Điều này có nghĩa là các kết quả sau đây nên được kỳ vọng là kết quả của sự gắn kết thành công của các bên liên quan:</p>
+
+<ul class="content-list">
+<li>Quản lý dự án có thể thiết lập và duy trì sự hiểu biết chung về dự án, mục tiêu của nó, các ràng buộc, và cách tất cả chúng tương tác để mang lại giá trị mong muốn mà các bên liên quan sẽ có từ các sản phẩm bàn giao của dự án.</li>
+<li>Quản lý dự án và nhóm có mối quan hệ làm việc tốt với các bên liên quan khác của dự án, và các bên liên quan được gắn kết ở mức độ mong muốn để giúp tạo điều kiện cho các kết quả mong muốn.</li>
+<li>Quản lý dự án biết phải làm gì để điều chỉnh sự gắn kết của các bên liên quan đến mức độ mong muốn khi cần thay đổi vì họ đã phân tích và lập kế hoạch cho nhu cầu của từng bên liên quan hoặc nhóm bên liên quan.</li>
+<li>Các bên liên quan không ủng hộ dự án sẽ không ảnh hưởng tiêu cực đến dự án hoặc kết quả của nó vì quản lý dự án giao tiếp với họ khi cần thiết để giúp họ chấp nhận dự án và kết quả của nó.</li>
+<li>Quản lý dự án đạt được sự hài lòng của khách hàng với các bên liên quan chính sẽ là người thụ hưởng sản phẩm của dự án. Điều này đạt được thông qua các mối quan hệ làm việc tốt, mức độ giao tiếp phù hợp và quản lý kỳ vọng.</li>
+</ul>
+
+<h4 id="ch14-stakeholder-identification">Xác Định (Và Phân Tích) Các Bên Liên Quan</h4>
+
+<p>Những bên liên quan đầu tiên có khả năng là những người xác định vấn đề hoặc nhu cầu. Họ có thể đã tham gia vào việc xây dựng các tài liệu kinh doanh cho dự án. Bản án kinh doanh và kế hoạch quản lý lợi ích, được tạo ra trước khi khởi động dự án, có thể bao gồm danh sách các bên liên quan sẽ được hưởng lợi từ hoặc bị ảnh hưởng bởi dự án. Các nguồn khác để xác định các bên liên quan bao gồm hợp đồng, thỏa thuận và điều lệ dự án.</p>
+
+<p>Hãy nhớ rằng bất kỳ bên liên quan nào bị bỏ sót có khả năng sẽ được tìm thấy sau, và các yêu cầu mới của họ có thể gây ra những thay đổi và chậm trễ tốn kém hoặc mất đi lợi ích và giá trị. Quản lý dự án cần giúp tạo ra một dự án xem xét tất cả các lợi ích, ảnh hưởng và sự phụ thuộc lẫn nhau của tất cả các bên liên quan càng sớm càng tốt.</p>
+
+<p>Đồng thời, điều này rất khó để thực hiện hoàn hảo. Tại sao bạn nghĩ vậy?</p>
+
+<div class="table-wrap"><table>
+<tr>
+  <td><strong>Mô Hình Nhóm Quy Trình</strong><br>NQT: Khởi Động<br>Quy Trình: Xác Định Các Bên Liên Quan</td>
+  <td><strong>ECO</strong><br>Miền I<br>Nhiệm Vụ 9: Cộng tác với các bên liên quan<br>Miền II<br>Nhiệm Vụ 4: Gắn kết các bên liên quan</td>
+  <td><strong>Hướng Dẫn PMBOK</strong><br>Miền 2.1 Các Bên Liên Quan<br>Miền 2.4 Lập Kế Hoạch</td>
+</tr>
+</table></div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//afeb4e14-4077-403b-9dc6-ba143b6f9ee7/markdown_3/imgs/img_in_image_box_156_357_531_504.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A07Z%2F-1%2F%2F94733750e35b24f3888c3bea6231b7e9ccaf89290a618efcb3ec147126366bfa" alt="Image" width="45%" /></div></div>
+
+<p>Trong suốt dự án, quản lý dự án đánh giá lại sổ đăng ký các bên liên quan và xem xét lại chiến lược gắn kết cho các bên liên quan hiện tại để xác định xem có nên thêm bên liên quan mới không và nếu có thì điều đó có nghĩa gì đối với dự án.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//afeb4e14-4077-403b-9dc6-ba143b6f9ee7/markdown_3/imgs/img_in_image_box_62_575_120_629.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A07Z%2F-1%2F%2Fddeda41c4dfcf53f52c7a633c820d3cac56ad1620299f8cad360ca110e6fc186" alt="Image" width="7%" /></div></div>
+
+<p>Nhiều quản lý dự án không xem xét đến phạm vi rộng của các bên liên quan tiềm năng.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//afeb4e14-4077-403b-9dc6-ba143b6f9ee7/markdown_3/imgs/img_in_image_box_193_608_616_761.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A07Z%2F-1%2F%2F9c31dd46241f90d1d1b5ca9ef8a22ce46384b52ee113a4438c728e30216c8d80" alt="Image" width="51%" /></div></div>
+
+<p>Như các học viên Agile biết, đây là quy trình nhóm nên hãy đảm bảo bạn đang cộng tác với nhóm trong việc xác định và phân tích các bên liên quan. Cũng nên tham khảo các bên liên quan khác: chuyên gia về chủ đề, quản lý dự án trong tổ chức đã làm việc trên các dự án tương tự, và các hiệp hội chuyên nghiệp. Bất kỳ bên liên quan nào cũng có thể đề xuất các bên liên quan khác để thêm vào danh sách.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//afeb4e14-4077-403b-9dc6-ba143b6f9ee7/markdown_3/imgs/img_in_image_box_690_776_741_834.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A08Z%2F-1%2F%2F7443aed47ef35106552daeec7800314d03ac70686dbc498b553453336e43c20e" alt="Image" width="6%" /></div></div>
+
+<h4 id="ch14-methods-identification">Các Phương Pháp Để Xác Định Và Phân Tích Các Bên Liên Quan</h4>
+
+<p>Dưới đây là các phương pháp để xác định và phân tích các bên liên quan có thể xuất hiện trong kỳ thi. Hãy nhớ rằng quy trình này bao gồm một phân tích hoàn chỉnh về các bên liên quan.</p>
+
+<h4 id="ch14-surveys">Khảo Sát, Phỏng Vấn Và Nhóm Tập Trung</h4>
+
+<p>Các công cụ này cung cấp các cách khác nhau để trao đổi thông tin với các thành viên nhóm và các bên liên quan khác. Chúng có thể được sử dụng để xác định các bên liên quan tiềm năng khác và cung cấp thông tin đầu vào về quản lý các loại bên liên quan hoặc nhóm bên liên quan khác nhau.</p>
+
+<h4 id="ch14-brainstorming">Động Não</h4>
+
+<h4 id="ch14-brainstorming">Động Não</h4>
+
+<p>Phương pháp tạo ý tưởng chung này có thể giúp xác định các bên liên quan.</p>
+
+<h4 id="ch14-individual-analysis">Phân Tích Từng Bên Liên Quan</h4>
+
+<p>Mỗi bên liên quan đều có kỳ vọng và thái độ đối với dự án cần được làm rõ. Họ quan tâm đến dự án ở mức độ nào, và điều gì đang bị đặt cược với họ? Các ví dụ về quyền lợi bao gồm:</p>
+
+<ul class="content-list">
+<li><strong>Quyền sở hữu</strong> — Bên liên quan có thể phải bán bất động sản cho một dự án mở rộng đường cao tốc đang đề xuất.</li>
+<li><strong>Kiến thức</strong> — Bên liên quan có thể là chuyên gia đã thiết kế một hệ thống quản lý hàng tồn kho kế thừa đang được nâng cấp hoặc thay thế.</li>
+<li><strong>Quyền lợi</strong> — Bên liên quan có thể lo ngại rằng một khu phát triển nhà ở mới sẽ gây nguy hiểm cho cộng đồng bằng cách phá hủy lưu vực nước.</li>
+<li><strong>Quyền lợi</strong> — Một quan chức chính phủ có thể chịu trách nhiệm đảm bảo rằng các biện pháp an toàn tại công trường xây dựng tuân thủ luật pháp của tiểu bang và liên bang.</li>
+<li><strong>Mối quan tâm</strong> — Cộng đồng có thể lo ngại rằng lưu lượng giao thông bổ sung sẽ vào khu dân cư của họ nếu một trạm xe buýt nhanh mới không có đủ chỗ đậu xe.</li>
+<li><strong>Đóng góp</strong> — Người quản lý nguồn lực có thể lo ngại rằng các thành viên nhóm nguồn lực được giao cho dự án sẽ không thể hoàn thành công việc vận hành bình thường của họ khi có thêm công việc dự án.</li>
+</ul>
+
+<h4 id="ch14-document-analysis">Phân Tích Tài Liệu</h4>
+
+<p>Kỹ thuật này đánh giá các tài liệu dự án hiện tại và lịch sử, chẳng hạn như bài học kinh nghiệm và thông tin khác từ các dự án trước đây (tài sản quy trình tổ chức — OPA). Phân tích có thể giúp quản lý dự án xác định các bên liên quan và quyền lợi của họ trong dự án.</p>
+
+<h4 id="ch14-stakeholder-mapping">Lập Bản Đồ Các Bên Liên Quan</h4>
+
+<p>Đây là phương pháp trình bày dữ liệu ánh xạ các thuộc tính của các bên liên quan vào các danh mục. Quản lý dự án sử dụng phương pháp này để phân tích và lập kế hoạch cách nhóm dự án sẽ ưu tiên các nỗ lực xây dựng mối quan hệ và gắn kết với các bên liên quan trong dự án.</p>
+
+<p>Các ví dụ về lập bản đồ bên liên quan bao gồm lưới quyền lực/mối quan tâm, khối lập phương bên liên quan và mô hình nổi bật. Các bên liên quan cũng có thể được nhóm theo hướng ảnh hưởng (hướng lên, hướng xuống, hướng ra ngoài và hướng ngang).</p>
+
+<p><strong>Lưới Quyền Lực/Mối Quan Tâm</strong> — Lưới này, được thể hiện trong hình 14.3, được sử dụng để nhóm các bên liên quan dựa trên mức độ quyền lực của họ đối với dự án và kết quả của nó tương quan với mối quan tâm của họ đến dự án. Nó có thể thông báo cho quản lý dự án về cách gắn kết với bên liên quan dựa trên các thuộc tính này.</p>
+
+<p>Các biến thể của công cụ này nhấn mạnh các thuộc tính khác của bên liên quan, chẳng hạn như quyền lực/ảnh hưởng hoặc tác động/ảnh hưởng.</p>
+
+<p><strong>Khối Lập Phương Bên Liên Quan</strong> — Mô hình ba chiều này được sử dụng để đại diện cho các chiều hoặc khía cạnh của một nhóm bên liên quan. Một ví dụ được thể hiện trong hình 14.4.</p>
+
+<p><strong>Mô Hình Nổi Bật</strong> — Mô hình này được sử dụng để nhóm các bên liên quan dựa trên tính phù hợp của sự tham gia của họ (Tính Hợp Pháp), thẩm quyền hoặc khả năng ảnh hưởng đến kết quả (Quyền Lực), và nhu cầu cần được chú ý ngay lập tức (Tính Cấp Thiết). Một ví dụ về mô hình này được thể hiện trong hình 14.5.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//afeb4e14-4077-403b-9dc6-ba143b6f9ee7/markdown_4/imgs/img_in_chart_box_96_817_291_990.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A08Z%2F-1%2F%2Fc31c71b78e97aeec8e4cad3acf990d5af99a57712b8147967f2b45a8db7c62d6" alt="Image" width="23%" /></div></div>
+
+<div class="table-wrap"><table>
+<tr><td style="text-align: center;">HÌNH 14.3 Lưới quyền lực/mối quan tâm</td></tr>
+</table></div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//afeb4e14-4077-403b-9dc6-ba143b6f9ee7/markdown_4/imgs/img_in_image_box_342_816_519_973.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A08Z%2F-1%2F%2F9ea52358ee7b8e678c14cd38430159649cda5e2af8fda30174accca4739bc4b4" alt="Image" width="21%" /></div></div>
+
+<div class="table-wrap"><table>
+<tr><td style="text-align: center;">HÌNH 14.4 Khối lập phương bên liên quan</td></tr>
+</table></div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//afeb4e14-4077-403b-9dc6-ba143b6f9ee7/markdown_4/imgs/img_in_image_box_568_802_765_971.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A08Z%2F-1%2F%2F0567d5e0cf0376e7cd1eadb12ef64e6bd66b4a02c0b45650f60c93b09555dac3" alt="Image" width="23%" /></div></div>
+
+<div class="table-wrap"><table>
+<tr><td style="text-align: center;">HÌNH 14.5 Mô hình nổi bật</td></tr>
+</table></div>
+
+<h5>Personas</h5>
+
+<p>Một persona là mô tả ngắn gọn về một mô hình bên liên quan thực tế hoặc tưởng tượng. Hình 14.6 là một persona mẫu cho dự án xây dựng thư viện mới. Personas được tạo ra cho các dự án Agile để hình dung tốt hơn cách mỗi loại bên liên quan sẽ sử dụng sản phẩm cuối cùng. Một persona có thể dựa trên một người thực hoặc kết hợp các đặc điểm từ một số loại người dùng sản phẩm.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e8c9cdb8-e0b3-4612-8aac-8b0b398a6f9a/markdown_0/imgs/img_in_image_box_676_123_726_181.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A16Z%2F-1%2F%2Fc21d238f4ff7a7c19942db940cbf59805aca09e1f732f7859ecd97234d7f7d85" alt="Image" width="6%" /></div></div>
+
+<p>Khi personas được sử dụng như một phương pháp thiết kế sản phẩm, chúng nên:</p>
+
+<ul class="content-list">
+<li>Neo giữ sự hiểu biết của nhóm vào các loại người thực sẽ sử dụng sản phẩm</li>
+<li>Cung cấp trọng tâm cho việc thiết kế và tạo ra các tính năng sản phẩm cụ thể và phù hợp</li>
+<li>Giúp các thành viên nhóm nhận thức được tác động của các lựa chọn thiết kế đối với người dùng sản phẩm</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e8c9cdb8-e0b3-4612-8aac-8b0b398a6f9a/markdown_0/imgs/img_in_image_box_49_283_128_353.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A16Z%2F-1%2F%2F0a12a71577298dbf6c7410e3a093f19b1f4d21193ff9e673dab74cc039c66320" alt="Image" width="9%" /></div></div>
+
+<h5>Jemelia — Người Tìm Việc</h5>
+
+<h5>Mô Tả</h5>
+
+<ul class="content-list">
+<li>Đang tìm việc mới sau khi hoàn thành bằng cử nhân về điều dưỡng</li>
+<li>Đang làm trợ lý y tế tại nhà</li>
+</ul>
+
+<h5>Giá Trị</h5>
+
+<ul class="content-list">
+<li>Không có máy tính để tìm việc</li>
+<li>Truy cập miễn phí vào máy tính với các ứng dụng dễ dùng</li>
+<li>Cần truy cập tài nguyên tìm việc vào những giờ lẻ trong thời gian nghỉ</li>
+<li>Truy cập internet miễn phí</li>
+<li>Hướng dẫn dễ hiểu về quy trình ứng tuyển và cách truy cập các bảng việc làm</li>
+</ul>
+
+<div class="table-wrap"><table>
+<tr><td style="text-align: center;">HÌNH 14.6 Persona mẫu</td></tr>
+</table></div>
+
+<p>Hãy nhìn lại thẻ mô tả Jemelia — Người Tìm Việc như một persona. Mục tiêu là đưa ra các quyết định tốt nhất liên quan đến việc tạo ra các tính năng và chức năng của sản phẩm. Bằng cách nhìn qua đôi mắt của một persona cụ thể, dễ dàng hơn để tưởng tượng những gì nhóm bên liên quan được đại diện cần từ sản phẩm. Ví dụ, nhóm có thể hỏi về một tính năng cụ thể họ đang thiết kế: Jemelia sẽ muốn gì từ tính năng này?</p>
+
+<h4 id="ch14-artifacts-identification">Các Tài Liệu Từ Xác Định Và Phân Tích Các Bên Liên Quan</h4>
+
+<p>Quy trình Xác Định Các Bên Liên Quan tạo ra sổ đăng ký các bên liên quan (và/hoặc personas nếu là dự án Agile), các yêu cầu thay đổi và cập nhật cho kế hoạch quản lý dự án cũng như các tài liệu dự án như:</p>
+
+<ul class="content-list">
+<li>Nhật ký giả định</li>
+<li>Sổ đăng ký rủi ro</li>
+<li>Nhật ký vấn đề</li>
+<li>Personas (phương pháp Agile)</li>
+</ul>
+
+<h4 id="ch14-stakeholder-register">Sổ Đăng Ký Các Bên Liên Quan</h4>
+
+<p>Thông tin về các bên liên quan được tổng hợp trong sổ đăng ký các bên liên quan, một đầu ra quan trọng của quy trình Xác Định Các Bên Liên Quan. Sổ đăng ký các bên liên quan (hình 14.7) có thể bao gồm thông tin chi tiết của từng bên liên quan. Sổ đăng ký này có thể bao gồm:</p>
+
+<ul class="content-list">
+<li>Tên &amp; chức danh</li>
+<li>Cấp trên</li>
+<li>Vai trò trong dự án</li>
+<li>Thông tin liên lạc</li>
+<li>Thông tin đánh giá, tác động và ảnh hưởng</li>
+<li>Các yêu cầu và kỳ vọng chính</li>
+<li>Thái độ (đối với dự án)</li>
+<li>Phân loại bên liên quan (nhóm theo các thuộc tính tương tự)</li>
+<li>Thông tin liên quan khác</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e8c9cdb8-e0b3-4612-8aac-8b0b398a6f9a/markdown_0/imgs/img_in_image_box_423_822_744_975.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A17Z%2F-1%2F%2F66e0b33c7c3f40e650d77073ef3d42bfd7776388aac712798eefb23394af54fd" alt="Image" width="39%" /></div></div>
+
+<div class="table-wrap"><table>
+<tr><td style="text-align: center;">HÌNH 14.7 Sổ đăng ký các bên liên quan mẫu</td></tr>
+</table></div>
+
+<p>Sổ đăng ký các bên liên quan là đầu vào quan trọng cho quy trình Lập Kế Hoạch Gắn Kết Các Bên Liên Quan cũng như một số quy trình lập kế hoạch khác, bao gồm Lập Kế Hoạch Quản Lý Truyền Thông. Hãy nhớ rằng sổ đăng ký các bên liên quan sẽ được cập nhật trong suốt dự án.</p>
+
+<h4 id="ch14-plan-engagement">Lập Kế Hoạch Gắn Kết Các Bên Liên Quan</h4>
+
+<p>Các bên liên quan có thể là tài sản hoặc vấn đề, và quy trình này nhằm thiết lập và ghi lại mức độ gắn kết tối ưu cho từng bên liên quan (hoặc nhóm bên liên quan). Quản lý dự án cũng cần thiết lập thời điểm cần sự gắn kết của từng bên liên quan, dựa trên việc xác định và phân tích các bên liên quan đã thực hiện, và thời điểm cần đánh giá lại mức độ gắn kết và chiến lược cho từng bên liên quan hoặc nhóm.</p>
+
+<p>Trong kỳ thi, hãy giả định rằng có một kế hoạch tại chỗ về cách quản lý dự án, nhóm và kết quả dự án sẽ tác động đến các bên liên quan, tương tác với họ, quản lý kỳ vọng của họ, bao gồm họ trong việc ra quyết định, và giữ cho họ hài lòng để đảm bảo họ là một tài sản.</p>
+
+<p>Biết rõ về các bên liên quan dẫn đến sự tự tin và thành công tốt hơn cho quản lý dự án và nhóm. Các yêu cầu sẽ được đáp ứng và vì tất cả các kỳ vọng đã được quản lý (ngay cả những kỳ vọng không đạt đến mức là yêu cầu), sự hài lòng của khách hàng sẽ đạt được.</p>
+
+<div class="table-wrap"><table>
+<tr>
+  <td><strong>Mô Hình Nhóm Quy Trình</strong><br>NQT: Lập Kế Hoạch<br>Quy Trình: Lập Kế Hoạch Gắn Kết Các Bên Liên Quan</td>
+  <td><strong>ECO</strong><br>Miền I<br>Nhiệm Vụ 9: Cộng tác với các bên liên quan<br>Nhiệm Vụ 10: Xây dựng sự hiểu biết chung<br>Miền II<br>Nhiệm Vụ 4: Gắn kết các bên liên quan</td>
+  <td><strong>Hướng Dẫn PMBOK</strong><br>Miền 2.1 Các Bên Liên Quan<br>Miền 2.4 Lập Kế Hoạch</td>
+</tr>
+</table></div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e8c9cdb8-e0b3-4612-8aac-8b0b398a6f9a/markdown_1/imgs/img_in_image_box_78_348_133_401.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A17Z%2F-1%2F%2F7902e7965383aef83bf27dfeb01f36abee96156a4ebef244078aad4af02f6472" alt="Image" width="6%" /></div></div>
+
+<p>Với tư cách là quản lý dự án, bạn càng gần gũi với các bên liên quan, họ càng thoải mái đến gặp bạn với những lo ngại của họ, và bạn càng dễ dàng nhận ra các dấu hiệu phi ngôn ngữ có thể cho bạn biết điều gì đó có thể sai. Điều này có thể là hệ thống cảnh báo sớm cho các vấn đề trong dự án của bạn. Nhưng bạn có thể tự hỏi làm thế nào để xây dựng các mối quan hệ tích cực và mạnh mẽ với các bên liên quan của bạn. Cũng giống như cách bạn đã xây dựng chúng với bạn bè và gia đình: bằng cách dành thời gian để biết về họ và cho phép họ biết về bạn. Hãy dựa trên kinh nghiệm của bạn với gia đình, bạn bè, đồng nghiệp và những người khác. Bạn sẽ có khả năng xác định nhu cầu, mối quan tâm, giá trị và kỳ vọng của các bên liên quan tốt hơn.</p>
+
+<p>Hãy đảm bảo rằng bạn quen thuộc với các khái niệm này trong bối cảnh quản lý dự án để chúng dễ dàng nghĩ đến khi đọc các câu hỏi thi. Hãy dành vài phút để suy nghĩ về các đặc điểm của một mối quan hệ tốt. Bạn có thể nghĩ đến các phẩm chất khác nhau hoặc bổ sung, nhưng đây là một số điều bạn muốn nuôi dưỡng trong các mối quan hệ của mình:</p>
+
+<ul class="content-list">
+<li>Tin tưởng</li>
+<li>Tôn trọng</li>
+<li>Trung thực</li>
+<li>Quan tâm</li>
+<li>Hứng thú</li>
+<li>Đồng cảm</li>
+<li>Chân thành</li>
+<li>Giao tiếp tốt</li>
+</ul>
+
+<p>Khi bạn lập kế hoạch gắn kết các bên liên quan, bạn sẽ cần:</p>
+
+<ul class="content-list">
+<li>Sử dụng kinh nghiệm của bạn từ các dự án khác</li>
+<li>Lấy thông tin chi tiết về những gì đã được lập kế hoạch hoặc ghi lại, bao gồm:
+  <ul class="content-list">
+    <li>Thông tin từ sổ đăng ký các bên liên quan</li>
+    <li>Thông tin và kế hoạch quản lý nguồn lực và truyền thông</li>
+    <li>Thông tin liên quan từ các dự án tương tự trước đây (hồ sơ lịch sử)</li>
+  </ul>
+</li>
+<li>Xem xét mức độ và loại gắn kết bạn cần từ các bên liên quan khác nhau trong mỗi giai đoạn dự án. Nói chuyện với họ để họ có thể đóng góp các ý tưởng giúp họ duy trì sự gắn kết khi cần.</li>
+</ul>
+
+<div class="highlight">
+<strong>Ví Dụ:</strong> Bạn yêu cầu một số bên liên quan tham gia nhiều hơn trong quá trình lập kế hoạch, trong khi những bên khác sẽ có vai trò nổi bật hơn trong quá trình thực hiện.
+</div>
+
+<ul class="content-list">
+<li>Gặp gỡ các bên liên quan chính của bạn càng sớm càng tốt để khởi xướng các mối quan hệ quan trọng này.</li>
+<li>Suy nghĩ về vai trò của từng bên liên quan, môi trường họ hoạt động và nhu cầu cụ thể của dự án của bạn.</li>
+<li>Suy nghĩ về thái độ và mối quan tâm của từng bên liên quan đối với dự án.</li>
+<li>Xác định bên liên quan nào sẽ đòi hỏi nhiều thời gian và công sức nhất của bạn.</li>
+<li>Đối với các bên liên quan bạn chưa biết rõ, hãy nói chuyện với quản lý dự án hoặc thành viên nhóm khác đã từng làm việc với họ trong quá khứ.</li>
+<li>Đảm bảo các bên liên quan hiểu tầm quan trọng của việc dự án đáp ứng nhu cầu của họ, và khuyến khích họ giao tiếp thường xuyên khi công việc lập kế hoạch và dự án tiến triển.</li>
+<li>Gặp gỡ các tổ chức chuyên nghiệp, tư vấn và chuyên gia về chủ đề để lắng nghe những hiểu biết về làm việc với các bên liên quan và nhóm bên liên quan khác nhau.</li>
+<li>Nếu có bất kỳ hoạt động mua sắm nào được thực hiện, hãy phối hợp với bộ phận mua sắm để lập kế hoạch các nỗ lực liên quan đến các bên của hợp đồng.</li>
+<li>Lập kế hoạch các cuộc họp xem xét để lấy phản hồi về tiến độ.</li>
+<li>Quyết định cách thực hiện các điều chỉnh về mức độ gắn kết, dựa trên kiến thức hiện tại về dự án và các bên liên quan của nó.</li>
+<li>Lập kế hoạch về cách thức và tần suất bạn sẽ xác định và phân tích sai lệch giữa mức độ gắn kết hiện tại và mong muốn. Làm việc với nhóm để xác định các cách đạt được mức độ gắn kết phù hợp.</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e8c9cdb8-e0b3-4612-8aac-8b0b398a6f9a/markdown_2/imgs/img_in_image_box_47_429_101_484.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A18Z%2F-1%2F%2F7472ba35c59c38728fe428fc3a9f68be6370c264d74d6580ab678356ad3ccb64" alt="Image" width="6%" /></div></div>
+
+<p>Không phải mọi bên liên quan đều sẽ gắn kết với dự án theo mức bạn cần, và một số có thể gắn kết nhiều hơn bạn mong muốn. Sự gắn kết của các bên liên quan có thể dao động từ không biết đến hoặc chống lại dự án đến trung lập đến ủng hộ hoặc thậm chí hứng thú muốn đóng vai trò lãnh đạo trong dự án.</p>
+
+<h4 id="ch14-exercise-141">Bài Tập 14.1</h4>
+
+<p>Hãy xem xét một ví dụ. Hãy tưởng tượng bạn đang quản lý một dự án thay thế quy trình đăng ký nhân viên trực tuyến cho công ty của bạn. Nhà tài trợ của bạn muốn đơn giản hóa quy trình và khuyến khích các ứng viên có kinh nghiệm kỹ thuật nâng cao đăng ký việc làm. Đây là danh sách sơ bộ các bên liên quan.</p>
+
+<div class="table-wrap"><table border="1">
+<tr>
+  <th style="text-align: center;">Các Bên Liên Quan</th>
+  <th style="text-align: center;">Các Bên Liên Quan Chính (Người bạn sẽ dành nhiều thời gian nhất)</th>
+</tr>
+<tr>
+  <td style="text-align: center;">Nhà tài trợ: Giám đốc nhân sự</td>
+  <td style="text-align: center;">Nhà tài trợ</td>
+</tr>
+<tr>
+  <td style="text-align: center;">Các ứng viên tiềm năng (có thể hàng triệu người!)</td>
+  <td style="text-align: center;">Người quản lý tuyển dụng</td>
+</tr>
+<tr>
+  <td style="text-align: center;">Người quản lý tuyển dụng trong công ty</td>
+  <td style="text-align: center;"></td>
+</tr>
+</table></div>
+
+<p>Có ai bị thiếu trong danh sách các bên liên quan chính không? Hãy ghi lại trước khi đọc tiếp.</p>
+
+<h4 id="ch14-answer-141">Đáp Án</h4>
+
+<p>Bạn sẽ muốn nhận phản hồi thường xuyên từ các bên liên quan chính về cách thiết kế đáp ứng yêu cầu và kỳ vọng của họ. Nếu bạn chưa làm vậy, hãy thêm vào danh sách đó một vài nhân viên mới được tuyển dụng gần đây có thể giúp nhóm hiểu các vấn đề với quy trình đăng ký hiện tại, cũng như quản trị viên trang web và quản trị viên nhân sự (và có thể còn nhiều hơn nữa!).</p>
+
+<h4 id="ch14-methods-planning">Các Phương Pháp Để Lập Kế Hoạch Gắn Kết Các Bên Liên Quan</h4>
+
+<p>Với tư cách là quản lý dự án, bạn sẽ cần chọn các công cụ để lập kế hoạch gắn kết các bên liên quan phù hợp với dự án. Sau đây không phải là danh sách đầy đủ nhưng là một đại diện tốt về những gì cần thiết.</p>
+
+<h4 id="ch14-engagement-assessment">Biểu Đồ Đánh Giá Mức Độ Gắn Kết Các Bên Liên Quan</h4>
+
+<p>Đây là công cụ trình bày dữ liệu (và cũng là một tài liệu) được sử dụng để so sánh mức độ gắn kết hiện tại và mong muốn của các bên liên quan. Kế hoạch gắn kết các bên liên quan ghi lại những hành động nào sẽ được thực hiện để đạt được sự gắn kết tối ưu. Biểu đồ này (hình 14.8) được sử dụng để thiết lập các chiến lược và chiến thuật cho sự gắn kết liên tục của các bên liên quan. Nó cũng được sử dụng trong quy trình giám sát.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e8c9cdb8-e0b3-4612-8aac-8b0b398a6f9a/markdown_3/imgs/img_in_chart_box_203_263_652_432.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A19Z%2F-1%2F%2F569c823a75d61981d3f4cef72a78176bf9c57f689a0b94c5710440d1ca2a83e2" alt="Image" width="54%" /></div></div>
+
+<div class="table-wrap"><table>
+<tr><td style="text-align: center;">HÌNH 14.8 Biểu đồ đánh giá mức độ gắn kết các bên liên quan</td></tr>
+</table></div>
+
+<h4 id="ch14-assumptions-constraints">Giả Định Và Ràng Buộc</h4>
+
+<p>Phân tích đánh giá các giả định về thái độ của các bên liên quan đối với dự án giúp nhóm xác định các hành động cần thiết để điều chỉnh mức độ gắn kết nhằm có lợi cho dự án. Phân tích các ràng buộc của dự án có thể cung cấp thông tin chi tiết để xác định các chiến lược điều chỉnh mức độ gắn kết của các bên liên quan.</p>
+
+<h4 id="ch14-root-cause">Phân Tích Nguyên Nhân Gốc Rễ</h4>
+
+<p>Đây là cách để quản lý dự án và nhóm phân tích nguyên nhân của mức độ hỗ trợ và gắn kết hiện tại của các bên liên quan. Làm như vậy sẽ giúp họ xác định cách tốt nhất để tạo điều kiện thay đổi nhằm đưa sự gắn kết của các bên liên quan đến mức độ mong muốn.</p>
+
+<h4 id="ch14-elevator-statement">Phát Biểu Thang Máy Của Dự Án (Phát Biểu Tầm Nhìn Sản Phẩm)</h4>
+
+<p>Đây là những mô tả ngắn về mục tiêu và lợi ích của dự án cho phép quản lý dự án giải thích dự án trong khoảng thời gian của một chuyến đi thang máy. Các bên liên quan có thể tham gia tạo ra phát biểu thang máy của dự án (còn gọi là "elevator pitch") để giúp mọi người hiểu dự án và truyền đạt nó cho người khác. Sau đây là định dạng phổ biến cho các phát biểu thang máy:</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e8c9cdb8-e0b3-4612-8aac-8b0b398a6f9a/markdown_3/imgs/img_in_image_box_704_666_754_725.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A19Z%2F-1%2F%2F66f90d343a381505aea37aaa851148bf754edd2aac0b28f230eab9d59a89bf63" alt="Image" width="6%" /></div></div>
+
+<div class="table-wrap"><table border="1">
+<tr>
+  <td>Dành cho:</td>
+  <td>Khách hàng mục tiêu</td>
+  <td rowspan="6"><strong>VÍ DỤ:</strong><br>Dành cho những người muốn phát trực tuyến nội dung video, dịch vụ Viking Ultimate là một dịch vụ phát trực tuyến nhanh hơn, rẻ hơn và tốt hơn; không giống như các dịch vụ ABC, chúng tôi không có hợp đồng dài hạn.</td>
+</tr>
+<tr>
+  <td>Ai:</td>
+  <td>Nhu cầu (cơ hội hoặc vấn đề)</td>
+</tr>
+<tr>
+  <td>Đó là:</td>
+  <td>Tên sản phẩm/dịch vụ</td>
+</tr>
+<tr>
+  <td>Là một:</td>
+  <td>Danh mục sản phẩm</td>
+</tr>
+<tr>
+  <td>Với:</td>
+  <td>Lợi ích chính/lý do để mua</td>
+</tr>
+<tr>
+  <td>Không giống như:</td>
+  <td>Phương án cạnh tranh chính</td>
+</tr>
+<tr>
+  <td>Chúng tôi:</td>
+  <td>Điểm khác biệt chính</td>
+  <td></td>
+</tr>
+</table></div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e8c9cdb8-e0b3-4612-8aac-8b0b398a6f9a/markdown_3/imgs/img_in_image_box_83_930_138_985.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A19Z%2F-1%2F%2Ffb21f04cdb88239d1ad88baa546ac69e7c00f73a2897809d3063a2bc00ef3910" alt="Image" width="6%" /></div></div>
+
+<div class="callout tip">
+Trong kỳ thi, "phát biểu thang máy" hoặc "elevator pitch" có thể sẽ báo hiệu câu hỏi đang đề cập đến một dự án Agile (hoặc phần Agile của dự án kết hợp), ảnh hưởng đến câu trả lời của bạn. Tuy nhiên, hãy tìm kiếm các dấu hiệu khác để đảm bảo đây là giả định đúng. "Phát biểu thang máy" hay "elevator pitch" là một khái niệm kinh doanh phổ biến có từ lâu trước Agile và được sử dụng trong nhiều bối cảnh, bao gồm cả quản lý dự án truyền thống. Trong các dự án Agile, điều này còn có thể được gọi là Phát Biểu Tầm Nhìn Sản Phẩm.
+</div>
+
+<h4 id="ch14-exercise-142">Bài Tập 14.2</h4>
+
+<h4 id="ch14-exercise-142-content">Bài Tập 14.2</h4>
+
+<p>Nếu bạn chưa bao giờ lập kế hoạch gắn kết các bên liên quan, có thể khó hình dung cách bạn thực hiện điều này ở cấp độ từng bên liên quan (hoặc nhóm) riêng lẻ. Hãy suy nghĩ về các bên liên quan khác nhau tham gia vào một dự án. Bảng sau mô tả một vài mô tả về bên liên quan dựa trên các tập hợp thuộc tính có thể được xác định và phân tích.</p>
+
+<p>Trong Sổ Tay Bài Tập của bạn, hãy ghi ra cách bạn lập kế hoạch quản lý sự tham gia của từng bên liên quan này dựa trên các mô tả đã cho. Trong các dự án của bạn, bạn sẽ muốn suy nghĩ về điều này trong quá trình lập kế hoạch để khi bạn đang thực hiện các quy trình quản lý và giám sát sự gắn kết của các bên liên quan, bạn sẽ biết phải làm gì.</p>
+
+<h5>Mô Tả Bên Liên Quan</h5>
+
+<ol class="content-list">
+<li>Mối quan tâm cao, ảnh hưởng thấp, thể hiện chuyên môn cao trong các lĩnh vực rủi ro cao</li>
+<li>Mối quan tâm thấp, là nguồn yêu cầu chính (ảnh hưởng cao), không phản hồi tốt với các thông tin liên lạc</li>
+<li>Mối quan tâm cao, ảnh hưởng cao, không ủng hộ dự án</li>
+<li>Mối quan tâm cao, ảnh hưởng cao, ủng hộ dự án</li>
+<li>Mối quan tâm vừa phải, ảnh hưởng cao vì họ đã xác định nhiều rủi ro tiềm năng, ủng hộ dự án</li>
+<li>Mối quan tâm vừa phải, lo lắng về việc hoàn thành các hoạt động được giao</li>
+</ol>
+
+<h4 id="ch14-answer-142">Đáp Án</h4>
+
+<p>Dưới đây là các gợi ý về cách bạn có thể lập kế hoạch quản lý sự gắn kết của các bên liên quan dựa trên các mô tả trong bảng trước. Đây là các mô tả và câu trả lời chung, nhưng sẽ giúp bạn hiểu rõ hơn về công việc cần thiết cho việc lập kế hoạch và quản lý gắn kết các bên liên quan tùy thuộc vào các thuộc tính khác nhau của bên liên quan.</p>
+
+<p>Các lựa chọn cho các chiến lược và chiến thuật gắn kết đã được lập kế hoạch dựa trên mô tả của bên liên quan:</p>
+
+<ol class="content-list">
+<li>Mời bên liên quan tham gia phân tích các rủi ro trong dự án.</li>
+<li>Họ có thể bị quá tải công việc. Xác định các cách thu thập yêu cầu hiệu quả nhất có thể.
+  <ol class="content-list">
+    <li>Xác định lý do tại sao mức độ phản hồi thấp. Hỏi họ về cách họ muốn tham gia vào dự án, và với phương thức giao tiếp nào (email, điện thoại, cuộc họp, v.v.).</li>
+    <li>Đảm bảo các yêu cầu được ghi lại rõ ràng và được bên liên quan phê duyệt là chính xác.</li>
+    <li>Gửi báo cáo để đảm bảo họ có thông tin cần thiết ngay cả khi bạn không nhận được phản hồi.</li>
+  </ol>
+</li>
+<li>Sử dụng trí tuệ cảm xúc. Hỏi bên liên quan điều gì quan trọng với họ liên quan đến dự án. Hỏi họ cách bạn có thể giành được sự ủng hộ của họ cho dự án.</li>
+<li>Mời họ tham gia các cuộc họp nhóm, báo cáo hiệu suất dự án cho họ, và khi thích hợp, bao gồm thông tin theo yêu cầu của bên liên quan.</li>
+<li>Lập kế hoạch gặp gỡ họ định kỳ trong suốt dự án để có khả năng xác định các rủi ro khác. Giữ cho họ được thông báo về hiệu quả của các nỗ lực quản lý rủi ro; mời họ tham gia các buổi xem xét và kiểm toán rủi ro.</li>
+<li>Lập kế hoạch tìm kiếm và chuyển tiếp tài liệu liên quan để giúp họ, và thu xếp đào tạo khi cần thiết.</li>
+</ol>
+
+<h4 id="ch14-artifacts-planning">Các Tài Liệu Từ Lập Kế Hoạch Gắn Kết Các Bên Liên Quan</h4>
+
+<p>Tài liệu chính của quy trình Lập Kế Hoạch Gắn Kết Các Bên Liên Quan là kế hoạch gắn kết các bên liên quan hỗ trợ quản lý dự án trong việc lập kế hoạch, quản lý và giám sát sự gắn kết của các bên liên quan.</p>
+
+<p>Kế hoạch Gắn Kết Các Bên Liên Quan bao gồm:</p>
+
+<ul class="content-list">
+<li>Mức độ gắn kết hiện tại và mong muốn cho tất cả các bên liên quan, bao gồm các kế hoạch để đạt được mức độ mong muốn.</li>
+<li>Chi tiết về các cách thức các bên liên quan sẽ tham gia vào dự án.</li>
+<li>Hướng dẫn và số liệu để giám sát và đánh giá mức độ đáp ứng nhu cầu của các bên liên quan và dự án của kế hoạch.</li>
+</ul>
+
+<p>Thường thì các kế hoạch gắn kết các bên liên quan ít chính thức hơn là cần thiết trong các môi trường thích ứng.</p>
+
+<div class="highlight">
+<strong>Ví Dụ:</strong> Scrum (một phương pháp Agile cụ thể) tích hợp các tương tác thường xuyên với các bên liên quan vào chu trình xây dựng và xem xét. Một sprint (lặp) là để xây dựng một phần tăng của sản phẩm. Sau sprint, một buổi xem xét sprint bao gồm việc trình diễn phần tăng sản phẩm mới được xây dựng cho khách hàng. Sau đó, một buổi hồi tưởng sprint bao gồm thời gian dành riêng để nhóm xem xét những gì đã đúng, những gì đã sai và những gì họ có thể làm khác đi. Bạn có thể thấy rằng sự gắn kết thường xuyên với các bên liên quan được tích hợp vào phương pháp tiếp cận này.
+</div>
+
+<p>Chúng ta sử dụng Scrum làm ví dụ ở đây nhưng các loại nhóm Agile khác hoạt động tương tự để xây dựng và xem xét các phần tăng của sản phẩm và sau đó xem xét quy trình và cách làm việc của họ. Với phương pháp Agile, chủ sở hữu sản phẩm tham gia vào tất cả các phần của chu trình xây dựng và xem xét, đại diện cho việc cung cấp giá trị cho khách hàng. Vì môi trường dự đoán có khoảng thời gian dài hơn giữa khi các sản phẩm bàn giao hoàn thành và khi chúng được trình bày cho khách hàng, thường cần một kế hoạch quản lý các bên liên quan chính thức hơn.</p>
+
+<p>Kế hoạch quản lý các bên liên quan và truyền thông có thể có thông tin tương tự về yêu cầu của bên liên quan và truyền thông. Mỗi kế hoạch có trọng tâm khác nhau và một phần của chúng được tạo ra cùng nhau. Kế hoạch gắn kết các bên liên quan giải thích tầm quan trọng của việc các bên liên quan nào cần nhận thông tin nào. Kế hoạch quản lý truyền thông chứa thông tin chi tiết về công nghệ truyền thông và ví dụ về thời điểm sử dụng email tốt nhất so với thực hiện cuộc gọi điện thoại.</p>
+
+<p>Hãy cẩn thận về những gì được ghi lại trong sổ đăng ký các bên liên quan hoặc các tài liệu liên quan khác, và với ai bạn chia sẻ nó. Hãy xem xét thông tin nhạy cảm đã tìm hiểu về thái độ và tính cách, hoặc về các thách thức. Có thể gây hại nếu ai đó tìm thấy loại thông tin này. Một nhà lãnh đạo tốt luôn động viên</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//d4501302-1311-421f-b9e5-27be4bddf743/markdown_0/imgs/img_in_image_box_703_287_753_349.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A35Z%2F-1%2F%2F5ececdbb4c19554642272e0ac22a3081c00c32cc6052a0c40cebb20abaf6fc06" alt="Image" width="6%" /></div></div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//d4501302-1311-421f-b9e5-27be4bddf743/markdown_0/imgs/img_in_image_box_75_483_129_537.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A35Z%2F-1%2F%2Fec428da911133d199f9029d00ed3e40443cd333c36b4d3784e3b90e1088987d9" alt="Image" width="6%" /></div></div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//d4501302-1311-421f-b9e5-27be4bddf743/markdown_0/imgs/img_in_image_box_75_584_130_637.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A35Z%2F-1%2F%2F99627ceaea964be892312f4aa3e9968180059fcd548639c90c40f6cc64f5ebde" alt="Image" width="6%" /></div></div>
+
+<p>và hỗ trợ mọi người, ngay cả những người chống lại việc ủng hộ dự án hoặc dành thời gian làm việc cùng bạn. Khi bạn phát hiện một thách thức liên quan đến bên liên quan, bạn có thể quyết định không chia sẻ nó (hoặc không ghi lại nó).</p>
+
+<h4 id="ch14-manage-engagement">Quản Lý Sự Gắn Kết Của Các Bên Liên Quan</h4>
+
+<p>Tại thời điểm này, quản lý dự án đã xác định và phân tích các bên liên quan và nhóm bên liên quan trong dự án, và đã lập kế hoạch cho sự gắn kết tối ưu với họ. Trong quy trình này, quản lý dự án thực hiện kế hoạch đó dựa trên những gì đã biết. Trong suốt dự án, quản lý dự án sẽ giao tiếp và làm việc với các bên liên quan để đáp ứng các yêu cầu của dự án và quản lý kỳ vọng của họ — dù tất cả kỳ vọng của họ có phải là yêu cầu thực sự của sản phẩm hoặc dự án hay không. Mặc dù nó được liên kết với nhóm quy trình thực hiện trong mô hình Nhóm Quy Trình, quản lý sự gắn kết của các bên liên quan là điều vốn có trong mọi thứ quản lý dự án làm trên một dự án.</p>
+
+<p>Với tư cách là quản lý dự án, bạn có lo lắng rằng bạn không có đủ thời gian để theo kịp các thông tin liên lạc, hoặc khuyến khích sự ủng hộ của các bên liên quan trong khi thu thập ý kiến đóng góp và mối quan tâm của họ không? Những nỗ lực này thực sự giúp bạn hiệu quả hơn bằng cách giảm thời gian giải quyết các vấn đề. Khi thi, hãy giả định rằng các thực hành quản lý bên liên quan tốt này</p>
+
+<div class="table-wrap"><table>
+<tr>
+  <td><strong>Mô Hình Nhóm Quy Trình</strong><br>NQT: Thực Hiện<br>Quy Trình: Quản Lý Sự Gắn Kết Của Các Bên Liên Quan</td>
+  <td><strong>ECO</strong><br>Miền I<br>Nhiệm Vụ 4: Trao quyền cho thành viên nhóm và các bên liên quan<br>Nhiệm Vụ 9: Cộng tác với các bên liên quan<br>Nhiệm Vụ 10: Xây dựng sự hiểu biết chung<br>Miền II<br>Nhiệm Vụ 4: Gắn kết các bên liên quan</td>
+  <td><strong>Hướng Dẫn PMBOK</strong><br>Miền 2.1 Các Bên Liên Quan<br>Miền 2.6 Hiệu Suất Bàn Giao<br>Miền 2.8 Sự Không Chắc Chắn</td>
+</tr>
+</table></div>
+
+<p>được tuân theo — trừ khi câu hỏi hoặc các lựa chọn câu trả lời cho biết khác. Công việc này cũng đòi hỏi các kỹ năng liên cá nhân và nhóm tốt như nhận thức về chính trị và văn hóa, đàm phán và quản lý xung đột.</p>
+
+<p>Trong quá trình thực hiện, quản lý dự án:</p>
+
+<ul class="content-list">
+<li>Thực hiện kế hoạch gắn kết các bên liên quan</li>
+<li>Tham khảo kế hoạch quản lý truyền thông và thực hiện các chiến lược và chiến thuật từ đó</li>
+<li>Xem xét các kế hoạch quản lý khác và các tài liệu dự án, chẳng hạn như:
+  <ul class="content-list">
+    <li>Sổ đăng ký các bên liên quan — Nhật ký thay đổi</li>
+    <li>Nhật ký vấn đề</li>
+    <li>Sổ đăng ký rủi ro</li>
+  </ul>
+</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//d4501302-1311-421f-b9e5-27be4bddf743/markdown_1/imgs/img_in_image_box_41_270_91_331.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A35Z%2F-1%2F%2F30d43256cc4fb387fd4a88ec7186c6a639c8a60dac11f2d42f1d1f084f963861" alt="Image" width="6%" /></div></div>
+
+<div class="callout tip">
+<strong>Hãy Suy Nghĩ.</strong> Hy vọng rằng bạn đang suy nghĩ toàn diện khi đọc cuốn sách này. Ví dụ, danh sách trước đã có "Tham khảo kế hoạch quản lý truyền thông và thực hiện các chiến lược và chiến thuật từ đó." Nếu bạn đang suy nghĩ toàn diện thì bạn sẽ tiếp tục suy nghĩ với "và thay đổi các chiến lược và chiến thuật này khi cần." Nếu bạn đã làm điều này, thì bạn đang đi đúng hướng để không chỉ tích hợp tất cả các kỹ năng quản lý dự án kỹ thuật của bạn mà còn điều chỉnh các chiến lược và chiến thuật quản lý dự án của bạn cho phù hợp với tình huống hiện tại trong dự án hiện tại. Đây là loại tư duy toàn diện mà bạn muốn mang đến cho mọi thứ bạn đọc trong cuốn sách này và tất cả các bài chuẩn bị thi của bạn.
+</div>
+
+<p>Những điều bạn đã thấy trong danh sách cho đến nay liên quan đến các kỹ năng quản lý dự án kỹ thuật. Còn những kỹ năng miền Con Người được đề cập trước đó trong cuốn sách này và trong phần Tổng Quan Về Sự Gắn Kết Của Các Bên Liên Quan của chương này thì sao? Chúng đáng được nhắc lại ở đây và bao gồm nhưng không giới hạn ở:</p>
+
+<ul class="content-list">
+<li>Tham khảo ý kiến nhóm khi giải quyết các vấn đề</li>
+<li>Cộng tác với các bên liên quan (bao gồm nhóm) để xây dựng (và duy trì) lòng tin, và để ảnh hưởng họ giúp thực hiện các mục tiêu dự án (miền I nhiệm vụ 9)</li>
+<li>Quản lý kỳ vọng của các bên liên quan để cân bằng với các yêu cầu và mục tiêu của dự án và sản phẩm (miền I nhiệm vụ 9)</li>
+<li>Tiếp tục xây dựng và đảm bảo sự hiểu biết chung, tránh càng nhiều hiểu lầm càng tốt (miền I nhiệm vụ 10)</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//d4501302-1311-421f-b9e5-27be4bddf743/markdown_1/imgs/img_in_image_box_38_601_90_665.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A35Z%2F-1%2F%2F4c724a7435bd29a0c82cb482f21380b59387ec7e0b224f47e11ae8715c62bc80" alt="Image" width="6%" /></div></div>
+
+<div class="callout tip">
+<strong>Hãy Suy Nghĩ.</strong> Nhiệm vụ ECO nào khác có thể liên quan đến quy trình này? Hãy nhanh chóng xem qua miền Con Người của ECO và cũng nghĩ về cách các nhiệm vụ Con Người (miền I) của nó không chỉ liên quan đến quy trình "Quản Lý" này của mô hình Nhóm Quy Trình, mà còn liên quan đến quy trình "Giám Sát" mà chúng ta thảo luận trong phần tiếp theo của cuốn sách này. Các kỹ năng Con Người tương tự được sử dụng cho cả Quản Lý và Giám Sát, và trên thực tế cho tất cả nhu cầu Gắn Kết Các Bên Liên Quan (và quy trình quản lý dự án khác).
+</div>
+
+<h4 id="ch14-methods-managing">Các Phương Pháp Để Quản Lý Sự Gắn Kết Của Các Bên Liên Quan</h4>
+
+<p>Chúng ta sẽ không cung cấp giải thích ở đây cho từng phương pháp sau đây để Quản Lý Sự Gắn Kết Của Các Bên Liên Quan vì chúng đã được hoặc sẽ được thảo luận trong cuốn sách này trong nhiều bối cảnh khác nhau. Hãy dành một chút thời gian để xem xét các phương pháp phổ biến nhất để Quản Lý Sự Gắn Kết Của Các Bên Liên Quan, và cho tổng thể các quy trình Gắn Kết Các Bên Liên Quan. Hãy hiểu rằng vì điều gì đó xuất hiện trong một cột không có nghĩa là nó không áp dụng cho bất kỳ môi trường nào trên phổ từ dự đoán đến thích ứng và các phương thức kết hợp ở giữa.</p>
+
+<div class="table-wrap"><table border="1">
+<tr>
+  <th>Các Phương Pháp Phổ Biến Liên Quan Đến Môi Trường Dự Đoán</th>
+  <th>Các Phương Pháp Liên Quan Đến Môi Trường Thích Ứng</th>
+</tr>
+<tr>
+  <td>Hội nghị nhà thầu (mua sắm)</td>
+  <td>Tinh chỉnh backlog</td>
+</tr>
+<tr>
+  <td>Hội đồng kiểm soát thay đổi (tích hợp)</td>
+  <td>Sử dụng các khung thời gian cố định (ví dụ: một lặp 2 tuần)</td>
+</tr>
+<tr>
+  <td>Khởi động dự án (tích hợp)</td>
+  <td>Họp đứng hàng ngày</td>
+</tr>
+<tr>
+  <td>Bài học kinh nghiệm (tích hợp)</td>
+  <td>Lập kế hoạch phát hành</td>
+</tr>
+<tr>
+  <td>Kết thúc dự án (tích hợp; nhóm quy trình kết thúc)</td>
+  <td>Lập kế hoạch lặp</td>
+</tr>
+<tr>
+  <td>Xem xét dự án</td>
+  <td>Hồi tưởng</td>
+</tr>
+<tr>
+  <td>Xem xét rủi ro</td>
+  <td></td>
+</tr>
+<tr>
+  <td>Trạng thái dự án</td>
+  <td></td>
+</tr>
+<tr>
+  <td>Ủy ban chỉ đạo</td>
+  <td></td>
+</tr>
+<tr>
+  <td>Xem xét dự án (ví dụ: xem xét kết quả dự án so với đường cơ sở, còn gọi là EVM hoặc đo lường giá trị kiếm được hoặc quản lý giá trị kiếm được)</td>
+  <td>Xem xét dự án (ví dụ: xem xét/tinh chỉnh vận tốc; phạm vi linh hoạt để kiểm soát thay đổi)</td>
+</tr>
+</table></div>
+
+<h4 id="ch14-artifacts-managing">Các Tài Liệu Từ Quản Lý Sự Gắn Kết Của Các Bên Liên Quan</h4>
+
+<p>Quản lý sự gắn kết của các bên liên quan có thể mang lại những thay đổi cho:</p>
+
+<ul class="content-list">
+<li>Kế hoạch gắn kết các bên liên quan</li>
+<li>Các cập nhật tài liệu dự án khác, chẳng hạn như:
+  <ul class="content-list">
+    <li>Nhật ký thay đổi</li>
+    <li>Sổ đăng ký các bên liên quan</li>
+    <li>Nhật ký vấn đề</li>
+    <li>Bài học kinh nghiệm</li>
+  </ul>
+</li>
+</ul>
+
+<p>Nhìn lại cột Các Phương Pháp Liên Quan Đến Môi Trường Thích Ứng trong bảng trước, bạn có thể đồng ý rằng các tài liệu từ các loại cuộc họp trong các dự án Agile (còn gọi là các nghi lễ) đôi khi vô hình, như mối quan hệ tốt với các bên liên quan (một kết quả mong muốn của sự gắn kết của bên liên quan), và đôi khi rất hữu hình. Hãy xem xét những điều sau:</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//d4501302-1311-421f-b9e5-27be4bddf743/markdown_2/imgs/img_in_image_box_704_618_752_674.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A36Z%2F-1%2F%2Fc968554381d9fe13fba80d9d5a7b97382a8ac218c294961170bdefb2e986af41" alt="Image" width="5%" /></div></div>
+
+<ul class="content-list">
+<li><strong>Cải tiến liên tục trong mối quan hệ với các bên liên quan</strong> — Điều này xảy ra như một kết quả tự nhiên của các nghi lễ qua đó các học viên Agile làm việc. Xem xét danh sách, chỉ cần nghĩ về bao nhiêu cơ hội mỗi thành viên nhóm và bên liên quan có để thúc đẩy sự hiểu biết chung.</li>
+<li><strong>Khoảng cách thực hiện và đánh giá</strong> — Khoảng cách này được thu hẹp thông qua các lặp ngắn (sử dụng khung thời gian cố định) tiếp theo là các buổi xem xét lặp. Khách hàng được xem các phần tăng nhỏ của sản phẩm và thảo luận chúng với nhóm, và theo cách này làm rõ hiểu biết của chính họ về yêu cầu của sản phẩm và cách truyền đạt những yêu cầu đó cho nhóm. Nhóm lần lượt trở nên tốt hơn trong việc hiểu và xây dựng những gì khách hàng cần.</li>
+<li><strong>Tích hợp sản phẩm tốt hơn</strong> — Bằng cách lập kế hoạch và xây dựng theo từng lặp và phần tăng, mỗi phần tăng của sản phẩm có thể đúng và "hoàn thành" trước khi được tích hợp với sản phẩm lớn hơn đang được xây dựng. Điều này sẽ dẫn đến ít vấn đề hơn với việc tích hợp liên tục các phần tăng sản phẩm và với sản phẩm đang hoạt động ngày càng phát triển.</li>
+<li>Bạn có thể nghĩ đến các tài liệu khác từ các thực hành này không?</li>
+</ul>
+
+<h4 id="ch14-exercise-143">Bài Tập 14.3</h4>
+
+<p>Kỳ thi sẽ trình bày các tình huống mà bạn sẽ phải chọn câu trả lời tốt nhất. Bạn có thể luyện tập thu thập thông tin từ các tình huống này bằng cách thực hiện bài tập này. Đọc các tình huống sau và ghi lại phân tích của riêng bạn. Bạn thấy bằng chứng gì về nơi bạn đang ở trong quy trình quản lý dự án hoặc về những gì đã xảy ra trước tình huống này? Quan sát nhanh những gì đang diễn ra khi bạn đọc một tình huống nhất định sẽ giúp bạn trả lời các câu hỏi thi.</p>
+
+<ol class="content-list">
+<li><strong>Tình huống.</strong> Một bên liên quan không hài lòng vì yêu cầu của họ không được đưa vào phạm vi sản phẩm. Tất cả các bên liên quan khác đã đồng ý về phạm vi nhưng quản lý dự án dự đoán người này sẽ tiếp tục gây áp lực để thêm yêu cầu của họ. Quản lý dự án gặp bên liên quan để nói về lý do tại sao yêu cầu này không được đưa vào và đề xuất họ xây dựng một bản án kinh doanh để đưa nó vào một dự án mới.</li>
+<li><strong>Tình huống.</strong> Một bên liên quan bày tỏ lo ngại về mức độ dự án sẽ ảnh hưởng đến công việc của phòng ban họ. Quản lý dự án nói với họ: "Tôi đã ghi nhớ mối quan tâm của bạn. Có rất ít khả năng chúng tôi có thể triển khai điều này mà không ảnh hưởng đến phòng ban của bạn nhưng đây là đánh giá về các tác động dự kiến, thời điểm tác động có thể xảy ra và cách nhóm có thể giảm thiểu các tác động. Bạn có muốn thảo luận sau khi đọc không?"</li>
+</ol>
+
+<h4 id="ch14-answer-143">Đáp Án</h4>
+
+<p>Dưới đây là một số phân tích ví dụ. Phân tích của bạn có thể không khớp chính xác với những điều này, vì vậy hãy đảm bảo bạn hiểu và tự tin về phân tích của bạn và các phân tích của bạn về các tình huống đã cho.</p>
+
+<ol class="content-list">
+<li><strong>Phân tích.</strong> Từ các từ "không được đưa vào," chúng ta thấy quy trình Tạo Bản Phát Biểu Phạm Vi (trong cột Lập Kế Hoạch của Biểu Đồ Quy Trình của Rita) đã hoàn thành. Quản lý dự án đang dự đoán "người này sẽ tiếp tục..." nên chiến lược của quản lý dự án là về tương lai. Một bản án kinh doanh cho một dự án khác là lựa chọn tốt nhất của bên liên quan. Dự án có thể đang trong giai đoạn lập kế hoạch hoặc thực hiện, nhưng quản lý dự án đã giám sát sự gắn kết của các bên liên quan để đưa ra quan sát này và đang nhìn về phía trước để quản lý kỳ vọng tốt.</li>
+<li><strong>Phân tích.</strong> Quản lý dự án đã dự đoán các mối quan tâm của các bên liên quan và đã lập kế hoạch giảm thiểu trong khi dự án đang tiến hành. Đây là thực hành gắn kết bên liên quan tốt, cũng xem xét đến rủi ro. Khi đọc câu hỏi, hãy ghi nhớ tích hợp dự án.</li>
+</ol>
+
+<h4 id="ch14-monitor-engagement">Giám Sát Sự Gắn Kết Của Các Bên Liên Quan</h4>
+
+<p>Những gì chúng ta học được từ việc quản lý và duy trì mối quan hệ với các bên liên quan giúp đảm bảo các chiến lược và chiến thuật đã lập kế hoạch đang hoạt động như dự định. Giám sát sự gắn kết của các bên liên quan giúp quản lý dự án biết khi nào cần điều chỉnh và khi nào thực hiện những điều chỉnh đó. Cùng với việc hoàn thành các yêu cầu dự án, quản lý dự án cần thực hiện những điều sau:</p>
+
+<ul class="content-list">
+<li>Hiểu nhận thức của các bên liên quan về tiến độ dự án</li>
+<li>Xem xét và đánh giá sự gắn kết của các bên liên quan trong dự án để tăng cường sự hợp tác của các bên liên quan</li>
+<li>Điều chỉnh chiến lược và chiến thuật để đảm bảo sự hài lòng liên tục của các bên liên quan</li>
+<li>Cập nhật sổ đăng ký các bên liên quan để:
+  <ul class="content-list">
+    <li>Thêm các bên liên quan khi thích hợp</li>
+    <li>Điều chỉnh mức độ tham gia đã ghi của các bên liên quan khi cần thiết</li>
+    <li>Ghi chú khi sự tham gia của một bên liên quan không còn cần thiết nữa</li>
+  </ul>
+</li>
+</ul>
+
+<div class="table-wrap"><table>
+<tr>
+  <td><strong>Mô Hình Nhóm Quy Trình</strong><br>NQT: Giám Sát và Kiểm Soát<br>Quy Trình: Giám Sát Sự Gắn Kết Của Các Bên Liên Quan</td>
+  <td><strong>ECO</strong><br>Miền I<br>Nhiệm Vụ 4: Trao quyền cho thành viên nhóm và các bên liên quan<br>Nhiệm Vụ 9: Cộng tác với các bên liên quan<br>Nhiệm Vụ 10: Xây dựng sự hiểu biết chung<br>Miền II<br>Nhiệm Vụ 4: Gắn kết các bên liên quan</td>
+  <td><strong>Hướng Dẫn PMBOK</strong><br>Miền 2.1 Các Bên Liên Quan<br>Miền 2.7 Đo Lường<br>Miền 2.8 Sự Không Chắc Chắn</td>
+</tr>
+</table></div>
+
+<p>Các tài liệu đưa vào (hoặc là đầu vào) của quy trình này bao gồm kế hoạch gắn kết các bên liên quan, kế hoạch quản lý truyền thông, kế hoạch quản lý nguồn lực, nhật ký vấn đề, và các sổ đăng ký bài học kinh nghiệm và rủi ro. Điều này có nghe quen từ quy trình trước đó Quản Lý Sự Gắn Kết Của Các Bên Liên Quan không? Đầu ra của một quy trình thường là đầu vào của quy trình tiếp theo.</p>
+
+<h4 id="ch14-methods-monitoring">Các Phương Pháp Để Giám Sát Sự Gắn Kết Của Các Bên Liên Quan</h4>
+
+<p>Giám sát sự gắn kết của các bên liên quan đòi hỏi quản lý dự án thu thập và phân tích dữ liệu. Khi các chiến lược và chiến thuật gắn kết không hoạt động, họ cần phân tích lý do tại sao các chiến lược đó không trả về kết quả dự định. Kế hoạch gắn kết các bên liên quan nên xác định cách phân tích và đánh giá này sẽ được thực hiện, ai nên tham gia, kết quả nên được ghi lại và trình bày như thế nào, và các thay đổi sẽ được xử lý ra sao. Nếu một thay đổi lớn sẽ ảnh hưởng đến đường cơ sở đo lường hiệu suất theo bất kỳ cách nào thì cần có yêu cầu thay đổi chính thức hơn; nhưng quản lý dự án có thể và thường xuyên thực hiện nhiều thay đổi nhỏ đối với các chiến lược và chiến thuật gắn kết bên liên quan mà không cần yêu cầu thay đổi chính thức.</p>
+
+<h4 id="ch14-utilizing-data">Sử Dụng Dữ Liệu</h4>
+
+<p>Hãy nhìn vào hình 14.9. Khi sử dụng dữ liệu để so sánh mức độ gắn kết thực tế với kế hoạch, có thể có những sai lệch cần phản hồi để đưa sự gắn kết của bên liên quan đến mức độ mong muốn.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//d4501302-1311-421f-b9e5-27be4bddf743/markdown_4/imgs/img_in_image_box_132_382_696_544.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A37Z%2F-1%2F%2F2daaf047863c3ddb61f6556cc96f475524ccdb3cff8a6276c944426bf87b027c" alt="Image" width="68%" /></div></div>
+
+<div class="table-wrap"><table>
+<tr><td style="text-align: center;">HÌNH 14.9 Sử dụng dữ liệu hiệu suất công việc để so sánh mức độ gắn kết thực tế với kế hoạch</td></tr>
+</table></div>
+
+<p>Bạn phân tích dữ liệu hiệu suất công việc liên quan đến mối quan hệ như thế nào? Bạn nên đã thiết lập trong kế hoạch gắn kết các bên liên quan của mình một số số liệu hiệu suất có thể đo lường được về sự gắn kết của các bên liên quan. Ví dụ, bạn có thể sử dụng một trong các kỹ thuật phân tích dữ liệu sau để giúp bạn xác định xem có cần điều chỉnh để duy trì sự gắn kết của bên liên quan không:</p>
+
+<ul class="content-list">
+<li>Phân tích nguyên nhân gốc rễ</li>
+<li>Phân tích các phương án</li>
+<li>Biểu đồ đánh giá mức độ gắn kết các bên liên quan</li>
+</ul>
+
+<p>Dữ liệu và số liệu hiệu suất công việc hữu ích để phân tích chất lượng của các mối quan hệ, nhưng hãy nhớ rằng một phần đánh giá này cũng sẽ mang tính chủ quan.</p>
+
+<div class="callout tip">
+<strong>Hãy Suy Nghĩ.</strong> Đây là một tình huống: Một hoạt động bị trễ tiến độ vì một bên liên quan chưa cung cấp một thành phần cần thiết. Sự chậm trễ này có thể chỉ ra vấn đề với sự gắn kết của bên liên quan hoặc một vấn đề khác. Bạn nên phân tích và làm việc để giải quyết vấn đề và cải thiện tình hình, như trong ví dụ sau.
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//d4501302-1311-421f-b9e5-27be4bddf743/markdown_4/imgs/img_in_image_box_69_774_119_832.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A37Z%2F-1%2F%2F60893dc8c8c5e28f7f7838d50821a945518715649a175febecea06d86fb82bf7" alt="Image" width="6%" /></div></div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//d4501302-1311-421f-b9e5-27be4bddf743/markdown_4/imgs/img_in_image_box_130_845_695_1007.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A37Z%2F-1%2F%2F2cb9238ec50665a64d5672d2fdf7b61fce07ba1c066c2c27095b54bec4a0fd93" alt="Image" width="68%" /></div></div>
+
+<div class="table-wrap"><table>
+<tr><td style="text-align: center;">HÌNH 14.10 Phân tích vấn đề gắn kết bên liên quan</td></tr>
+</table></div>
+
+<p>Trong hình 14.10, kết luận là chiến lược và ước tính thời gian đều ổn nhưng việc phân công công việc phải được đánh giá lại. Chúng ta thực hiện các loại đánh giá này một cách không chính thức mọi lúc. Chỉ cần đảm bảo bạn không quên bất kỳ tài liệu nào cần được cập nhật. Ví dụ, nếu người đó không trả lời điện thoại vì họ không bao giờ ở bàn làm việc, bạn có thể cần thay đổi chiến lược trong kế hoạch gắn kết các bên liên quan để làm việc với loại bên liên quan này trong tương lai.</p>
+
+<h4 id="ch14-exercise-144">Bài Tập 14.4</h4>
+
+<h4 id="ch14-exercise-144-content">Bài Tập 14.4</h4>
+
+<p>Đọc tình huống sau và ghi lại phân tích về thông tin sẽ hữu ích khi trả lời một câu hỏi thi dựa trên tình huống này. Ví dụ, chúng ta đang ở đâu trong quy trình quản lý dự án (khởi động, lập kế hoạch, thực hiện, hoặc giám sát và kết thúc)? Bạn có thể thu thập thêm thông tin gì từ tình huống?</p>
+
+<p>Phân tích của bạn có thể không khớp chính xác với phân tích của chúng tôi nhưng hãy đảm bảo bạn cảm thấy thoải mái với câu trả lời của bạn và câu trả lời của chúng tôi. Mục tiêu là luyện tập tư duy phê phán nhanh. Bằng cách luyện tập phân tích các tình huống, bạn sẽ được chuẩn bị tốt hơn để thực hiện điều đó một cách nhanh chóng và tự tin trong kỳ thi.</p>
+
+<p><strong>Tình huống.</strong> Một quản lý dự án nhận thấy ai đó đã ít tham gia vào dự án hơn. Bên liên quan đã đưa ra những ý kiến hữu ích về các sản phẩm bàn giao sớm nhất, nhưng bây giờ họ ít tham gia hơn vào dự án. Quản lý dự án liên hệ với bên liên quan và nói: "Tôi nhớ phản hồi của bạn và luôn trân trọng nó. Có lý do nào cho sự đóng góp ít hơn từ bạn không? Có điều gì tôi có thể làm để hỗ trợ sự tham gia thêm của bạn không?"</p>
+
+<h4 id="ch14-answer-144">Đáp Án</h4>
+
+<p><strong>Phân tích.</strong> Chúng ta đang ở trong giai đoạn thực hiện (vì đã có các sản phẩm bàn giao được tạo ra). Với thêm thông tin, chúng ta có thể xác định chúng ta đang ở trong giai đoạn giám sát và kiểm soát. Chúng ta có thể đang sử dụng phương pháp dự đoán, thích ứng hoặc kết hợp. Giao tiếp nên mang tính cá nhân (ví dụ: gọi điện hoặc gặp trực tiếp so với email). Cách diễn đạt và giọng điệu nên được cân nhắc kỹ lưỡng vì chúng ta muốn khuyến khích bên liên quan chứ không phải xúc phạm họ.</p>
+
+<h4 id="ch14-communication">Giao Tiếp</h4>
+
+<p>Giao tiếp đóng một vai trò lớn trong việc giúp quản lý dự án phát hiện và khắc phục các vấn đề gắn kết. Để duy trì sự gắn kết mạnh mẽ và mối quan hệ với các bên liên quan của dự án, quản lý dự án cần sử dụng bất kỳ phương pháp nào tốt nhất để làm việc với các bên liên quan. Họ cần sử dụng phương thức giao tiếp phù hợp nhất với từng bên liên quan. Một số thích nhắn tin, những người khác thích gọi điện, và những người khác nữa lại thích giao tiếp trực tiếp.</p>
+
+<h4 id="ch14-interpersonal-skills">Kỹ Năng Liên Cá Nhân Và Nhóm</h4>
+
+<p>Quản lý dự án tất nhiên có thể đặt câu hỏi như "Mọi thứ trong dự án đang diễn ra như thế nào?" Nhưng đánh giá sức mạnh của mối quan hệ với các bên liên quan và mức độ gắn kết của họ với dự án thường đòi hỏi giao tiếp phức tạp hơn. Các kỹ năng liên cá nhân sẽ giúp xác định các vấn đề hoặc mối quan tâm cần được chú ý. Để hiểu thêm về cảm nhận của các bên liên quan, hãy sử dụng các kỹ năng trong các lĩnh vực này:</p>
+
+<ul class="content-list">
+<li>Đặt câu hỏi và lắng nghe tích cực</li>
+<li>Tạo điều kiện</li>
+<li>Chú ý đến giọng điệu và ngôn ngữ cơ thể</li>
+<li>Cố vấn</li>
+<li>Trí tuệ cảm xúc</li>
+<li>Lãnh đạo</li>
+<li>Đàm phán</li>
+</ul>
+
+<h4 id="ch14-artifacts-monitoring">Các Tài Liệu Từ Giám Sát Sự Gắn Kết Của Các Bên Liên Quan</h4>
+
+<p>Mục đích của giám sát sự gắn kết của các bên liên quan là đảm bảo việc thực hiện chiến lược về bên liên quan đang diễn ra theo kế hoạch và đáp ứng các yêu cầu của bên liên quan. Quản lý dự án và nhóm sẽ có thông tin hiệu suất công việc để quyết định xem có cần thay đổi các chiến lược và chiến thuật gắn kết các bên liên quan không. Khi có thay đổi, có khả năng sẽ có sự thay đổi đối với các tài liệu dự án. Giám sát sự gắn kết của bên liên quan dẫn đến:</p>
+
+<ul class="content-list">
+<li>Thông tin hiệu suất công việc — phân tích hiệu suất công việc và xác nhận dữ liệu về sự gắn kết của cá nhân và nhóm</li>
+<li>Thay đổi để cải thiện sự gắn kết của một số bên liên quan thông qua các chiến lược và chiến thuật khác nhau hoặc được sửa đổi</li>
+<li>Cập nhật kế hoạch quản lý dự án</li>
+<li>Các cập nhật tài liệu dự án khác, chẳng hạn như:
+  <ul class="content-list">
+    <li>Sổ đăng ký các bên liên quan — Nhật ký vấn đề</li>
+    <li>Sổ đăng ký rủi ro</li>
+    <li>Bài học kinh nghiệm</li>
+  </ul>
+</li>
+</ul>
+
+<h4 id="ch14-agile-environments">Sự Gắn Kết Của Các Bên Liên Quan Trong Môi Trường Agile</h4>
+
+<p>Môi trường dự đoán và thích ứng có nhiều triết lý và thực hành gắn kết bên liên quan chung, mặc dù chúng biểu hiện khác nhau trong các phương pháp Agile so với dựa trên kế hoạch. Cho đến nay trong chương này, chúng ta đã tập trung cụ thể vào các thực hành Agile sau đây trong bối cảnh mô hình Nhóm Quy Trình. Ở đây chúng ta sẽ mở rộng thêm về mỗi điều:</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e7618245-b03b-4f1e-a3e8-6380b9e85ffe/markdown_1/imgs/img_in_image_box_706_392_756_450.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A50%3A42Z%2F-1%2F%2F21a9e311ecfeda3958137ae7865917d8d1b5f1c1698af9037a4e41943d1ec547" alt="Image" width="6%" /></div></div>
+
+<ul class="content-list">
+<li><strong>Chủ sở hữu sản phẩm</strong> — Chủ sở hữu sản phẩm là thành viên nhóm Agile có chuyên môn là ưu tiên hóa backlog. Chủ sở hữu sản phẩm đại diện cho quản lý giá trị trong dự án. Họ cộng tác với nhóm phát triển để chuẩn bị các backlog được ưu tiên đủ để phát triển các phần tăng nhỏ của sản phẩm với mỗi lặp. Quy trình này đảm bảo việc cung cấp giá trị liên tục cho các bên liên quan. Trong một lặp, chủ sở hữu sản phẩm trả lời câu hỏi cho nhóm phát triển và chuẩn bị backlog cho lặp tiếp theo. Là một thành viên nhóm không thể thiếu, họ tham gia vào các cuộc họp lập kế hoạch, xem xét lặp và hồi tưởng.</li>
+<li><strong>Personas</strong> — Khái niệm này đã được mô tả trước đó trong chương này. Personas tương đương với sự hiểu biết về câu ngạn ngữ cũ rằng "bước vào đôi giày của người khác" giúp chúng ta hiểu họ tốt hơn nhiều. Theo cách này, các thành viên nhóm có thể cảm nhận tốt hơn và hiểu sâu hơn những gì mỗi bên liên quan (hoặc nhóm bên liên quan) cần từ sản phẩm.</li>
+<li><strong>Lập kế hoạch gắn kết các bên liên quan</strong> — Chúng ta đã nói trước đó rằng các kế hoạch gắn kết bên liên quan thường không chính thức trong các dự án Agile. Điều này là vì các chiến lược và chiến thuật gắn kết bên liên quan được tích hợp vào chu kỳ lặp. Quản lý dự án và nhóm thiết kế, xây dựng, xem xét và bàn giao trong sự cộng tác liên tục với khách hàng.</li>
+</ul>
+
+<p>Cũng được đề cập trong chương này là các khái niệm sau liên quan đến miền Con Người của ECO. Các kỹ năng sau đây hoàn toàn phù hợp trên phổ từ dựa trên kế hoạch đến Agile và các phương thức kết hợp, và được đề cập chi tiết hơn trong phần miền Con Người của cuốn sách này.</p>
+
+<ul class="content-list">
+<li>Quản lý xung đột</li>
+<li>Tạo điều kiện</li>
+<li>Trí tuệ cảm xúc</li>
+<li>Đàm phán</li>
+</ul>
+
+<p>Cũng từ miền Con Người, những điều sau được mô tả là đặc thù hơn đối với các thực hành Agile:</p>
+
+<ul class="content-list">
+<li>Chia sẻ và chuyển giao kiến thức</li>
+<li>Ra quyết định có sự tham gia</li>
+</ul>
+
+<h4 id="ch14-information-radiators">Bộ Khuếch Đại Thông Tin Agile</h4>
+
+<p>Bộ khuếch đại thông tin là các màn hình hiển thị lớn, dễ thấy về thông tin dự án, thường xuất hiện trong khu làm việc của nhóm. Mục đích là giúp nhóm dễ dàng làm việc cùng nhau và cung cấp thông tin dễ tiếp cận cho các bên liên quan khác. Một số ví dụ dưới đây được minh họa trong chương này và các ví dụ khác được giải thích chi tiết hơn trong các chương khác.</p>
+
+<ul class="content-list">
+<li>Bảng Kanban (bảng câu chuyện)</li>
+<li>Chế độ xem tích hợp liên tục</li>
+<li>Bản đồ phát hành</li>
+<li>Biểu đồ burndown/burnup</li>
+</ul>
+
+<h4 id="ch14-kanban-boards">Bảng Kanban</h4>
+
+<p>"Kanban" là một từ tiếng Nhật có nghĩa là "bảng hiệu" hoặc "biển quảng cáo." Bảng Kanban có thể được sử dụng cho nhiều mục đích trong Agile, và chúng hoàn hảo để chia sẻ thông tin với các bên liên quan. Hình 14.11 minh họa một bảng hiển thị công việc đang tiến hành sử dụng các ghi chú dán để mô tả các câu chuyện cần được xây dựng. Đây là công nghệ thấp và dễ dàng cho nhóm cùng địa điểm. Khi các câu chuyện di chuyển qua quá trình sản xuất từ đầu đến cuối, các ghi chú dán đang được chuyển từ cột "Đang Chờ" sang "Thiết Kế," "Phát Triển," "Kiểm Thử Đơn Vị," "Kiểm Thử Tích Hợp" và "Hoàn Thành." Cách đặt tên các cột được điều chỉnh bởi nhóm và dự án, nhưng bảng hiển thị trạng thái của tất cả công việc hiện đang tiến hành. Điều này giúp bất kỳ bên liên quan nào dễ dàng thấy công việc đang tiến triển như thế nào.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e7618245-b03b-4f1e-a3e8-6380b9e85ffe/markdown_2/imgs/img_in_image_box_388_121_741_277.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A50%3A43Z%2F-1%2F%2Fe5fc3e3c8a8c04a288dfd96f187932cb9798f8c97d4ce40154d7fa762c68f55b" alt="Image" width="42%" /></div></div>
+
+<div class="table-wrap"><table>
+<tr><td style="text-align: center;">HÌNH 14.11 Bảng Kanban (bảng câu chuyện) hiển thị công việc đang tiến hành (nhóm cùng địa điểm)</td></tr>
+</table></div>
+
+<p>Có các công cụ điện tử phục vụ chức năng này. Bảng Kanban kỹ thuật số đang trở nên phổ biến hơn vì các nhóm phân bổ địa lý nhiều hơn.</p>
+
+<h4 id="ch14-definition-of-done">Định Nghĩa Hoàn Thành Trong Agile</h4>
+
+<p>Sự chú ý cẩn thận của Agile đến "định nghĩa hoàn thành" liên quan đến quản lý phạm vi. Trong sự gắn kết của các bên liên quan, điều này quan trọng vì nó đảm bảo sự hiểu biết chung về "hoàn thành" cho mỗi câu chuyện, cho tất cả các bên liên quan — cả nhóm lẫn khách hàng. Mỗi câu chuyện trong một dự án Agile phải có một định nghĩa về hoàn thành, thường được nói đến là "ở mặt sau của thẻ câu chuyện." Để hiểu rõ hơn điều này, hãy xem ví dụ sau về định nghĩa hoàn thành cho một chương sách.</p>
+
+<p><strong>Ví dụ phần tăng sản phẩm:</strong> Chương Giới Thiệu của một cuốn sách, bản nháp 1 (trong 2).</p>
+
+<p><strong>Định nghĩa hoàn thành cho Bản Nháp 1:</strong></p>
+
+<ul class="content-list">
+<li>Bản nháp hoàn chỉnh</li>
+<li>Đã chỉnh sửa hành văn</li>
+<li>Đã xem xét nội dung (nhóm và khách hàng)</li>
+<li>Xem xét sau chỉnh sửa hoàn chỉnh (nhóm và khách hàng)</li>
+<li>Đã sửa đổi nội dung</li>
+</ul>
+
+<h4 id="ch14-agile-modeling">Mô Hình Hóa Agile</h4>
+
+<p>Bạn đã thấy một ví dụ về mô hình hóa Agile. Một persona nếu không phải là một mô hình về một loại người dùng cụ thể của sản phẩm thì là gì? Các loại mô hình hóa Agile khác tập trung vào sản phẩm. Mô hình hóa sản phẩm bao gồm nhưng không giới hạn ở những điều sau, thường được sử dụng cả trong các phương pháp dự đoán:</p>
+
+<ul class="content-list">
+<li>Mô hình hóa ca sử dụng</li>
+<li>Wireframes</li>
+<li>Mô hình quy trình</li>
+<li>Nguyên mẫu độ trung thực cao</li>
+<li>Nguyên mẫu độ trung thực thấp</li>
+</ul>
+
+<p>Ngoại trừ nguyên mẫu độ trung thực cao, sự nhấn mạnh không phải vào độ chính xác của mô hình mà vào sự giao tiếp giữa nhóm và khách hàng khi họ tạo ra mô hình cùng nhau. Trong việc giao tiếp để tạo ra một mô hình cùng nhau, khách hàng hiểu rõ hơn về nhu cầu của họ và nhóm hiểu rõ hơn cách xây dựng nó. Sau đây là các ví dụ về các mô hình vừa được đề cập.</p>
+
+<p>Hình 14.12 thể hiện sơ đồ ca sử dụng cho một hệ thống theo dõi lực lượng lao động. Loại mô hình này thể hiện sản phẩm (một hệ thống) ở trung tâm và các tác nhân (người dùng của hệ thống) ở mỗi bên. Các đường thẳng chỉ ra các phần của hệ thống mà một người dùng cụ thể sẽ tương tác. Bạn có thể hình dung mô hình này sẽ tốt hơn bao nhiêu nếu nhóm làm việc trên đó cùng với người dùng của hệ thống thay vì họ chỉ tự tạo ra nó dựa trên các giả định của mình?</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e7618245-b03b-4f1e-a3e8-6380b9e85ffe/markdown_3/imgs/img_in_image_box_174_189_668_489.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A50%3A43Z%2F-1%2F%2F1a8d1e2de0a657e7c2cddc1335b1e2b3d64e28330bf9695dbbe3a04b105c674f" alt="Image" width="60%" /></div></div>
+
+<div class="table-wrap"><table>
+<tr><td style="text-align: center;">HÌNH 14.12 Sơ đồ ca sử dụng hệ thống theo dõi lực lượng lao động</td></tr>
+</table></div>
+
+<p>Hình 14.13 là một ví dụ về nguyên mẫu độ trung thực thấp của một trang web dành cho thông tin tài khoản bệnh nhân trên trang cổng thông tin bệnh nhân của phòng khám. Nó cũng giúp hình dung luồng quy trình sử dụng trang.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e7618245-b03b-4f1e-a3e8-6380b9e85ffe/markdown_3/imgs/img_in_image_box_64_593_708_762.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A50%3A43Z%2F-1%2F%2Ff824e89129a6160470db9911bc1afe1da00bbdee885e728173052dbc64941fbf" alt="Image" width="78%" /></div></div>
+
+<div class="table-wrap"><table>
+<tr><td style="text-align: center;">HÌNH 14.13 Luồng quy trình sử dụng một trang trên cổng thông tin web của phòng khám</td></tr>
+</table></div>
+
+<p>Sơ đồ luồng quy trình sau đây minh họa luồng quy trình thanh toán của một phòng khám (hình 14.14).</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e7618245-b03b-4f1e-a3e8-6380b9e85ffe/markdown_4/imgs/img_in_image_box_98_136_677_417.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A50%3A44Z%2F-1%2F%2F80fdbadae3b6cb41aa028d5bf86501d039700f1ea96079a943a698e2e3a56246" alt="Image" width="70%" /></div></div>
+
+<div class="table-wrap"><table>
+<tr><td style="text-align: center;">HÌNH 14.14 Sơ đồ luồng quy trình xử lý thanh toán</td></tr>
+</table></div>
+
+<p>Hình 14.15 thể hiện nguyên mẫu độ trung thực thấp cho trang chủ của cổng thông tin web phòng khám. Bạn có thể hình dung một bài tập thân thiện với bảng trắng và khách hàng ở đây.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e7618245-b03b-4f1e-a3e8-6380b9e85ffe/markdown_4/imgs/img_in_image_box_114_528_670_822.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A50%3A44Z%2F-1%2F%2Ff0e08f70c089ccda9b1f0bbb5889b35b7a4542f9bfedd757ec7afb89615f5543" alt="Image" width="67%" /></div></div>
+
+<div class="table-wrap"><table>
+<tr><td style="text-align: center;">HÌNH 14.15 Nguyên mẫu độ trung thực thấp cho cổng thông tin bệnh nhân</td></tr>
+</table></div>
+
+<p>Wireframes có thể được tạo bằng phần mềm để mô phỏng giao diện của một sản phẩm phần mềm. Hình 14.16 minh họa một wireframe. Chúng đặc biệt hữu ích vì khó để khách hàng hình dung cách một chương trình máy tính có thể được bố cục.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//07697cdf-00d0-4353-9a0b-898a74a1ae95/markdown_0/imgs/img_in_image_box_211_170_604_405.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A19Z%2F-1%2F%2Feab72baac1558dcfbb441aaccdc5ab153cfc81745f9703f2435ff0cb33a5b72f" alt="Image" width="47%" /></div></div>
+
+<div class="table-wrap"><table>
+<tr><td style="text-align: center;">HÌNH 14.16 Wireframe của màn hình trang web cho thuê xe</td></tr>
+</table></div>
+
+<h3 id="ch14-putting-together">Tổng Hợp Lại</h3>
+
+<p>Đối với kỳ thi, hãy nhớ rằng các bên liên quan quan trọng trong suốt dự án. Bạn cần xác định tất cả họ (hoặc càng nhiều càng tốt), càng sớm càng tốt, và lập kế hoạch cách quản lý các yêu cầu, kỳ vọng, ảnh hưởng và sự gắn kết của họ với dự án. Bạn cũng cần định kỳ cập nhật sổ đăng ký các bên liên quan khi bạn tìm hiểu những điều mới về các bên liên quan và có thể phát hiện ra các bên liên quan mới. Bạn cần nuôi dưỡng các mối quan hệ và giao tiếp tốt với họ, và quan trọng nhất là đảm bảo rằng dự án cung cấp các yêu cầu đã được phê duyệt của họ và các tính năng và chức năng của sản phẩm và dịch vụ dễ sử dụng và đạt sự hài lòng.</p>
+
+<p>Hãy xem lại Kiểm Tra Nhanh ở đầu chương này. Bạn đã có thể lấp đầy các khoảng trống bạn xác định khi bắt đầu chương chưa? Hầu hết mọi người vẫn còn các khoảng trống tại thời điểm này. Hãy đọc lại chương để xem xét các lĩnh vực bạn vẫn chưa chắc chắn. Sau đó hoàn thành bài ôn tập chương sau.</p>
+
+<p>Đây là một ví dụ về làm việc với các bên liên quan cho việc xây dựng một thư viện mới. Hãy chú ý đến các bên liên quan tham gia và cách quản lý dự án giữ cho họ gắn kết.</p>
+
+<h4 id="ch14-case-study">Tình Huống Nghiên Cứu Xây Dựng Thư Viện Mới</h4>
+
+<p>Quản lý dự án được giao nhiệm vụ xây dựng một thư viện mới ở một thành phố nhỏ xác định hàng trăm bên liên quan, bao gồm công dân của cộng đồng, các thành viên hội đồng thành phố, trưởng thư viện và nhân viên, cũng như thị trưởng của thành phố. Nghiên cứu của quản lý dự án cho thấy nhiệm kỳ của thị trưởng là ba năm và theo lịch sử, ít thị trưởng được bầu cho nhiều hơn một nhiệm kỳ. Trưởng thư viện đã quản lý thư viện hiện tại trong hai mươi lăm năm và lớn lên ở thành phố này. Bà biết mọi người! Các thành viên hội đồng thành phố đại diện cho nhiều nhóm khác nhau và ít nhất hai trong số họ luôn trong quá trình vận động tái cử. Khoảng một nửa trong số họ vận động về việc cắt giảm thuế thành phố. Mặc dù tài trợ đã được phê duyệt, nhưng việc duy trì sự gắn kết của các thành viên hội đồng sẽ rất quan trọng.</p>
+
+<p>Nhiều yêu cầu đã được xác định trong bản phát biểu phạm vi dự án nhưng quản lý dự án gặp trưởng thư viện để hỏi cách họ có thể hỗ trợ tốt nhất cho nhu cầu của bà và nhân viên trong việc phục vụ khách hàng của họ. Bà báo cáo rằng người về hưu, trẻ em và người tìm việc là những người đến thư viện thường xuyên nhất, và cần có các tùy chọn công nghệ mới để hỗ trợ các tài nguyên truyền thống là sách và tạp chí. Quản lý dự án hỏi trưởng thư viện xem họ có thể gặp nhau hàng tuần trong quá trình xây dựng để theo dõi tiến độ không.</p>
+
+<p>Quản lý dự án cũng gặp gỡ một số thành viên hội đồng thành phố muốn giảm thuế để hỏi ý kiến của họ về thư viện hiện tại và tầm quan trọng của nó đối với cộng đồng. Quản lý dự án đề nghị tham dự các cuộc họp hội đồng thành phố mỗi ba tháng để báo cáo tiến độ. Quản lý dự án xác định một phóng viên báo địa phương và yêu cầu dành không gian trên báo, hàng quý, để chia sẻ tiến độ về thư viện với cộng đồng. Quản lý dự án hứa sẽ thông báo cho phóng viên hàng tháng về các tin tức liên quan đến thư viện.</p>
+
+<h4 id="ch14-exercise-145">Bài Tập 14.5</h4>
+
+<p>Trả lời các câu hỏi sau về các bên liên quan trong tình huống nghiên cứu thư viện. Sau khi bạn hoàn thành việc trả lời các câu hỏi, hãy xem phần tiếp theo để biết câu trả lời tốt có thể cho từng câu hỏi.</p>
+
+<h4 id="ch14-questions-145">Câu Hỏi</h4>
+
+<ol class="content-list">
+<li>Những bên liên quan bổ sung nào có thể được xem xét?</li>
+<li>Thị trưởng quan trọng như thế nào với tư cách là một bên liên quan?</li>
+<li>Trưởng thư viện quan trọng như thế nào?</li>
+<li>Tại sao quản lý dự án gặp gỡ các thành viên hội đồng thành phố ủng hộ việc cắt giảm thuế?</li>
+<li>Tại sao quản lý dự án liên hệ với một phóng viên báo?</li>
+<li>Quản lý dự án sẽ giám sát sự gắn kết của các bên liên quan như thế nào?</li>
+<li>Quản lý dự án đã thể hiện phong cách lãnh đạo phục vụ như thế nào?</li>
+</ol>
+
+<h4 id="ch14-answer-145">Đáp Án</h4>
+
+<p>Các câu trả lời cho các câu hỏi trong bảng sau có thể không khớp chính xác với những gì bạn đưa ra nhưng một điều bạn nên tự hỏi là "Tôi đã trả lời câu hỏi đầy đủ so với các câu trả lời mẫu không?"</p>
+
+<h5>Câu Trả Lời Mẫu</h5>
+
+<ol class="content-list">
+<li>Các bên liên quan bổ sung có thể bao gồm:
+  <ul class="content-list">
+    <li>Các công ty xuất bản sách</li>
+    <li>Nhà cung cấp công nghệ và thiết bị</li>
+    <li>Quản lý trường học, các nhóm PTA (Hội Phụ Huynh và Giáo Viên)</li>
+  </ul>
+</li>
+<li>Mức độ vừa phải, ngắn hạn nhưng có ảnh hưởng cao thông qua mức độ hiện diện trước công chúng.</li>
+<li>Cao, bà là thành viên lâu năm của cộng đồng và là chuyên gia về giá trị của thư viện đối với cộng đồng.</li>
+<li>Họ có thể sẽ kháng cự nhất vì lo sợ rằng thư viện mới sẽ tăng thuế hoặc giữ nguyên mức thuế. Quản lý dự án cần nỗ lực để khiến các bên liên quan kháng cự ủng hộ dự án.</li>
+<li>Gắn kết cộng đồng sẽ quan trọng và báo chí là một cách tốt để cung cấp thông tin và nhận phản hồi (thư gửi đến tòa soạn).</li>
+<li>Các cuộc họp hội đồng thành phố, phản hồi từ các bài báo, các cuộc họp hàng tuần với trưởng thư viện.</li>
+<li>Gặp gỡ trưởng thư viện để xin giúp đỡ. Tiếp cận cộng đồng thông qua báo địa phương.</li>
+</ol>
+
+<h3 id="ch14-section-v">Phần V</h3>
+
+<h5>Miền III: Môi Trường Kinh Doanh</h5>
+
+<p>Phác Thảo Nội Dung Kỳ Thi (ECO) quy định rằng Miền III chiếm 8% của kỳ thi. Việc trình bày môi trường kinh doanh như một miền ECO riêng biệt giúp bạn tập trung vào việc hiểu tổ chức mà bạn làm việc và môi trường kinh doanh của tổ chức đó. Hiểu các yếu tố kinh doanh và môi trường là yếu tố then chốt để hoàn thành các mục tiêu dự án vì lợi ích của tổ chức và các bên liên quan của tổ chức.</p>
+
+<p>Trong phần này, chúng ta thảo luận về việc cung cấp lợi ích và giá trị trong môi trường kinh doanh. Đừng đánh giá thấp tầm quan trọng của phần này. Hiểu môi trường kinh doanh trong đó một dự án hoạt động cho phép quản lý dự án phản hồi phù hợp để cung cấp các lợi ích và giá trị mà dự án được thực hiện.</p>
+
+
+</main>
+
+<button id="back-top" aria-label="Về đầu trang">↑</button>
+
+<script>
+// Progress bar
+const pb=document.getElementById('progress-bar');
+function updPB(){const d=document.documentElement;pb.style.width=Math.min((d.scrollTop/(d.scrollHeight-d.clientHeight))*100,100)+'%'}
+window.addEventListener('scroll',updPB,{passive:true});
+
+// Back to top
+const bt=document.getElementById('back-top');
+window.addEventListener('scroll',()=>{bt.style.opacity=scrollY>400?'1':'0';},{passive:true});
+bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+// Mobile menu
+const mb=document.getElementById('menu-btn'),sb=document.getElementById('sidebar');
+mb.addEventListener('click',()=>sb.classList.toggle('open'));
+document.addEventListener('click',e=>{if(!sb.contains(e.target)&&e.target!==mb)sb.classList.remove('open')});
+
+// Active TOC highlight on scroll
+const tocLinks=document.querySelectorAll('#sidebar-toc a[href^="#"]');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      tocLinks.forEach(a=>a.classList.remove('active'));
+      const a=document.querySelector('#sidebar-toc a[href="#'+e.target.id+'"]');
+      if(a){a.classList.add('active');a.scrollIntoView({block:'nearest',behavior:'smooth'})}
+    }
+  })
+},{rootMargin:'-20% 0px -75% 0px'});
+document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
+
+// ── THEME + READING POSITION ───────────────────────────
+(function(){
+  var THEME_KEY='rita_theme', READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var chapNum=m?m[1]:null;
+
+  // Build & inject theme toggle button
+  var hdr=document.getElementById('sidebar-header');
+  if(hdr){
+    var btn=document.createElement('button');
+    btn.id='theme-btn';
+    var curTheme=document.documentElement.getAttribute('data-theme')||'light';
+    btn.textContent=curTheme==='dark'?'☀':'🌙';
+    btn.title='Giao diện sáng / tối';
+    hdr.appendChild(btn);
+    btn.addEventListener('click',function(){
+      var next=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+      document.documentElement.setAttribute('data-theme',next);
+      localStorage.setItem(THEME_KEY,next);
+      btn.textContent=next==='dark'?'☀':'🌙';
+    });
+  }
+
+  if(!chapNum) return;
+
+  // Save last chapter visited
+  try{
+    var rd=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    rd.lastChap='rita_chap'+chapNum;
+    if(!rd.scrollPos) rd.scrollPos={};
+    localStorage.setItem(READ_KEY,JSON.stringify(rd));
+  }catch(e){}
+
+  // Restore scroll position
+  try{
+    var rdR=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    var savedPos=rdR.scrollPos&&rdR.scrollPos[chapNum]||0;
+    if(savedPos>200) setTimeout(function(){window.scrollTo(0,savedPos);},120);
+  }catch(e){}
+
+  // Save scroll position (debounced 600ms)
+  var saveT;
+  window.addEventListener('scroll',function(){
+    clearTimeout(saveT);
+    saveT=setTimeout(function(){
+      try{
+        var r2=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+        if(!r2.scrollPos) r2.scrollPos={};
+        r2.scrollPos[chapNum]=window.scrollY;
+        r2.lastChap='rita_chap'+chapNum;
+        localStorage.setItem(READ_KEY,JSON.stringify(r2));
+      }catch(e){}
+    },600);
+  },{passive:true});
+})();
+
+// ── HIGHLIGHT / NOTES SYSTEM ────────────────────────────
+(function(){
+  var READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  if(!m) return;
+  var chapNum=m[1];
+  var HL_KEY='rita_hl_'+chapNum;
+
+  // ── STORAGE ──
+  function loadHL(){try{return JSON.parse(localStorage.getItem(HL_KEY)||'[]')}catch(e){return[]}}
+  function saveHL(arr){localStorage.setItem(HL_KEY,JSON.stringify(arr));window.__ritaSyncTrigger&&window.__ritaSyncTrigger();}
+  function genId(){return 'h'+Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
+
+  // ── XPATH HELPERS ──
+  var mainEl=document.getElementById('main');
+  function getXPath(node){
+    if(!node||node===mainEl) return '.';
+    var parts=[];
+    var cur=node.nodeType===3?node.parentNode:node;
+    while(cur&&cur!==mainEl&&cur!==document.body){
+      var tag=cur.tagName.toLowerCase();
+      var idx=1,sib=cur.previousElementSibling;
+      while(sib){if(sib.tagName&&sib.tagName.toLowerCase()===tag)idx++;sib=sib.previousElementSibling;}
+      parts.unshift(tag+'['+idx+']');
+      cur=cur.parentElement;
+    }
+    return parts.join('/');
+  }
+  function resolveXPath(xpath){
+    if(!mainEl||xpath==='.') return mainEl;
+    try{
+      var r=document.evaluate('.//'+xpath,mainEl,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);
+      return r.singleNodeValue;
+    }catch(e){return null;}
+  }
+  function findTextAt(el,offset){
+    var walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null);
+    var count=0,node;
+    while((node=walker.nextNode())){
+      var len=node.textContent.length;
+      if(count+len>=offset) return{node:node,localOffset:offset-count};
+      count+=len;
+    }
+    return null;
+  }
+
+  // ── APPLY MARK TO DOM ──
+  function applyMark(hl){
+    try{
+      var sEl=resolveXPath(hl.sxp), eEl=resolveXPath(hl.exp);
+      if(!sEl||!eEl) return false;
+      var sInfo=sEl.nodeType===3?{node:sEl,localOffset:hl.so}:findTextAt(sEl,hl.so);
+      var eInfo=eEl.nodeType===3?{node:eEl,localOffset:hl.eo}:findTextAt(eEl,hl.eo);
+      if(!sInfo||!eInfo) return false;
+      var range=document.createRange();
+      range.setStart(sInfo.node,sInfo.localOffset);
+      range.setEnd(eInfo.node,eInfo.localOffset);
+      applyRange(range,hl.id,hl.color,hl.note||'');
+      return true;
+    }catch(e){return false;}
+  }
+  function applyRange(range,hlId,color,note){
+    var walker=document.createTreeWalker(
+      range.commonAncestorContainer.nodeType===3
+        ?range.commonAncestorContainer.parentNode
+        :range.commonAncestorContainer,
+      NodeFilter.SHOW_TEXT,null
+    );
+    var nodes=[],node;
+    while((node=walker.nextNode())){if(range.intersectsNode(node))nodes.push(node);}
+    nodes.forEach(function(tn){
+      var s=tn===range.startContainer?range.startOffset:0;
+      var e=tn===range.endContainer?range.endOffset:tn.textContent.length;
+      if(s>=e) return;
+      var nr=document.createRange();
+      nr.setStart(tn,s); nr.setEnd(tn,Math.min(e,tn.textContent.length));
+      try{
+        var mk=document.createElement('mark');
+        mk.className='hl'; mk.setAttribute('data-hl-id',hlId);
+        mk.setAttribute('data-color',color); mk.setAttribute('data-note',note);
+        nr.surroundContents(mk);
+      }catch(err){
+        try{
+          var c=nr.extractContents(),mk2=document.createElement('mark');
+          mk2.className='hl'; mk2.setAttribute('data-hl-id',hlId);
+          mk2.setAttribute('data-color',color); mk2.setAttribute('data-note',note);
+          mk2.appendChild(c); nr.insertNode(mk2);
+        }catch(_){}
+      }
+    });
+  }
+  function removeMarks(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      var p=mk.parentNode;
+      while(mk.firstChild)p.insertBefore(mk.firstChild,mk);
+      p.removeChild(mk);
+      p.normalize();
+    });
+  }
+  function updateMarks(hlId,color,note){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.setAttribute('data-color',color);
+      mk.setAttribute('data-note',note);
+    });
+  }
+
+  // ── RESTORE HIGHLIGHTS ON LOAD ──
+  var highlights=loadHL();
+  // Sort by sxp+so descending so earlier ranges aren't offset by later insertions
+  // Actually apply in order (each one is independent)
+  highlights.forEach(applyMark);
+  // Expose re-apply for sync module
+  window.__ritaReapplyMarks=function(){
+    document.querySelectorAll('mark.hl').forEach(function(mk){
+      var p=mk.parentNode;while(mk.firstChild)p.insertBefore(mk.firstChild,mk);p.removeChild(mk);p.normalize();
+    });
+    loadHL().forEach(applyMark);
+    if(typeof updateBadge==='function') updateBadge();
+    if(typeof renderPanelIfOpen==='function') renderPanelIfOpen();
+  };
+
+  // ── SIDEBAR BUTTON ──
+  function updateBadge(){
+    var hls=loadHL();
+    var badge=document.getElementById('hl-badge');
+    if(badge) badge.textContent=hls.length||'0';
+  }
+  var sidebarNav=document.getElementById('sidebar-toc');
+  if(sidebarNav){
+    var hlBtn=document.createElement('button');
+    hlBtn.id='hl-sidebar-btn';
+    hlBtn.innerHTML='<span>✏ Ghi chú & Highlight</span><span id="hl-badge">0</span>';
+    hlBtn.addEventListener('click',function(){openPanel();});
+    // Insert before sidebar-nav (bottom buttons)
+    var sidebarNavBottom=document.getElementById('sidebar-nav');
+    if(sidebarNavBottom) sidebarNavBottom.parentNode.insertBefore(hlBtn,sidebarNavBottom);
+    else document.getElementById('sidebar').appendChild(hlBtn);
+  }
+  updateBadge();
+
+  // ── PANEL ──
+  var panel=document.createElement('div');
+  panel.id='hl-panel';
+  panel.innerHTML='<div id="hl-panel-hdr"><h3>✏ Ghi Chú & Highlight</h3><button id="hl-panel-close">×</button></div><div id="hl-panel-list"></div>';
+  document.body.appendChild(panel);
+  document.getElementById('hl-panel-close').addEventListener('click',closePanel);
+  function openPanel(){renderPanel();panel.classList.add('open');}
+  function closePanel(){panel.classList.remove('open');}
+  function renderPanel(){
+    var list=document.getElementById('hl-panel-list');
+    var hls=loadHL();
+    list.innerHTML='';
+    hls.forEach(function(hl){
+      var item=document.createElement('div');
+      item.className='hl-item'; item.setAttribute('data-color',hl.color);
+      var noteHtml=hl.note?'<div class="hl-item-note">✏ '+escHtml(hl.note)+'</div>':'';
+      item.innerHTML='<button class="hl-item-del" data-id="'+hl.id+'">🗑</button>'
+        +'<div class="hl-item-text">'+escHtml(hl.text||'')+'</div>'+noteHtml;
+      item.addEventListener('click',function(e){
+        if(e.target.classList.contains('hl-item-del')) return;
+        var mk=document.querySelector('mark.hl[data-hl-id="'+hl.id+'"]');
+        if(mk){mk.scrollIntoView({behavior:'smooth',block:'center'});flashMark(hl.id);}
+        closePanel();
+      });
+      item.querySelector('.hl-item-del').addEventListener('click',function(e){
+        e.stopPropagation(); deleteHL(hl.id); renderPanel();
+      });
+      list.appendChild(item);
+    });
+  }
+
+  // ── POPUP ──
+  var popup=document.createElement('div');
+  popup.id='hl-popup'; popup.className='hidden';
+  popup.innerHTML=
+    '<button class="hl-color-btn" data-color="yellow" title="Vàng"></button>'
+    +'<button class="hl-color-btn" data-color="green" title="Xanh"></button>'
+    +'<button class="hl-color-btn" data-color="red" title="Đỏ"></button>'
+    +'<div class="hl-sep"></div>'
+    +'<button class="hl-note-btn" title="Thêm ghi chú">✏</button>'
+    +'<button class="hl-del-btn hl-del-action" title="Xóa">🗑</button>';
+  document.body.appendChild(popup);
+
+  var currentHlId=null;    // id being edited (null = new)
+  var pendingRange=null;   // Range for new highlight
+  var pendingXP=null;      // serialized position for new highlight
+
+  // Position popup near a rect
+  function positionPopup(rect){
+    var pw=popup.offsetWidth||160,ph=popup.offsetHeight||40;
+    var top=rect.top-ph-10+window.scrollY;
+    var left=rect.left+(rect.width-pw)/2;
+    if(top<window.scrollY+8) top=rect.bottom+10+window.scrollY;
+    left=Math.max(8,Math.min(left,window.innerWidth-pw-8));
+    popup.style.top=top+'px';
+    popup.style.left=left+'px';
+  }
+  function showPopup(rect,hlId){
+    currentHlId=hlId||null;
+    var isEdit=!!hlId;
+    popup.querySelector('.hl-del-action').style.display=isEdit?'':'none';
+    popup.querySelector('.hl-note-btn').style.display='';
+    popup.classList.remove('hidden');
+    positionPopup(rect);
+  }
+  function hidePopup(){
+    popup.classList.add('hidden');
+    pendingRange=null; pendingXP=null; currentHlId=null;
+  }
+
+  // Color buttons
+  popup.querySelectorAll('.hl-color-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var color=btn.getAttribute('data-color');
+      if(currentHlId){
+        // Update existing
+        var hls=loadHL();
+        var idx=hls.findIndex(function(h){return h.id===currentHlId;});
+        if(idx>=0){hls[idx].color=color;saveHL(hls);}
+        updateMarks(currentHlId,color,hls[idx]?hls[idx].note||'':'');
+        updateBadge(); renderPanelIfOpen();
+      } else if(pendingRange&&pendingXP){
+        // Create new
+        var id=genId();
+        var text=pendingRange.toString().substring(0,500);
+        applyRange(pendingRange,id,color,'');
+        pendingRange.collapse();
+        window.getSelection()&&window.getSelection().removeAllRanges();
+        var hls=loadHL();
+        hls.push({id:id,color:color,note:'',text:text,
+          sxp:pendingXP.sxp,so:pendingXP.so,exp:pendingXP.exp,eo:pendingXP.eo});
+        saveHL(hls); updateBadge(); renderPanelIfOpen();
+      }
+      hidePopup();
+    });
+  });
+
+  // Note button
+  popup.querySelector('.hl-note-btn').addEventListener('click',function(){
+    var id=currentHlId;
+    var existing='';
+    if(id){var hls=loadHL();var h=hls.find(function(x){return x.id===id;});if(h)existing=h.note||'';}
+    hidePopup();
+    openNoteModal(id,existing);
+  });
+
+  // Delete button
+  popup.querySelector('.hl-del-action').addEventListener('click',function(){
+    if(currentHlId) deleteHL(currentHlId);
+    hidePopup();
+  });
+
+  function deleteHL(id){
+    removeMarks(id);
+    var hls=loadHL().filter(function(h){return h.id!==id;});
+    saveHL(hls); updateBadge(); renderPanelIfOpen();
+  }
+
+  // ── NOTE MODAL ──
+  var noteModal=document.createElement('div');
+  noteModal.id='hl-note-modal'; noteModal.className='hidden';
+  noteModal.innerHTML='<div id="hl-note-box">'
+    +'<h3>✏ Ghi chú</h3>'
+    +'<textarea id="hl-note-ta" placeholder="Nhập ghi chú..."></textarea>'
+    +'<div class="hl-note-actions">'
+    +'<button class="hl-note-cancel">Hủy</button>'
+    +'<button class="hl-note-save">Lưu</button>'
+    +'</div></div>';
+  document.body.appendChild(noteModal);
+  var _noteTargetId=null;
+  function openNoteModal(hlId,existing){
+    _noteTargetId=hlId;
+    document.getElementById('hl-note-ta').value=existing||'';
+    noteModal.classList.remove('hidden');
+    setTimeout(function(){document.getElementById('hl-note-ta').focus();},50);
+  }
+  noteModal.querySelector('.hl-note-cancel').addEventListener('click',function(){noteModal.classList.add('hidden');});
+  noteModal.querySelector('.hl-note-save').addEventListener('click',function(){
+    var note=document.getElementById('hl-note-ta').value.trim();
+    if(_noteTargetId){
+      var hls=loadHL();
+      var idx=hls.findIndex(function(h){return h.id===_noteTargetId;});
+      if(idx>=0){hls[idx].note=note;saveHL(hls);updateMarks(_noteTargetId,hls[idx].color,note);updateBadge();renderPanelIfOpen();}
+    }
+    noteModal.classList.add('hidden');
+  });
+  noteModal.addEventListener('click',function(e){if(e.target===noteModal)noteModal.classList.add('hidden');});
+
+  // ── SELECTION HANDLER ──
+  document.addEventListener('mouseup',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    setTimeout(function(){
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed||!sel.rangeCount){hidePopup();return;}
+      var range=sel.getRangeAt(0);
+      var text=range.toString().trim();
+      if(!text||text.length<2){hidePopup();return;}
+      // Only highlight within #main
+      if(!mainEl||!mainEl.contains(range.commonAncestorContainer)){hidePopup();return;}
+      // Serialize positions
+      var sNode=range.startContainer,eNode=range.endContainer;
+      var sParent=sNode.nodeType===3?sNode.parentNode:sNode;
+      var eParent=eNode.nodeType===3?eNode.parentNode:eNode;
+      var sxp=getXPath(sParent),exp=getXPath(eParent);
+      // calc offsets within parent element
+      var so=0,eo=0;
+      var w=document.createTreeWalker(sParent,NodeFilter.SHOW_TEXT,null);
+      var n;while((n=w.nextNode())){if(n===sNode){so+=range.startOffset;break;}so+=n.textContent.length;}
+      var w2=document.createTreeWalker(eParent,NodeFilter.SHOW_TEXT,null);
+      while((n=w2.nextNode())){if(n===eNode){eo+=range.endOffset;break;}eo+=n.textContent.length;}
+      pendingRange=range.cloneRange();
+      pendingXP={sxp:sxp,so:so,exp:exp,eo:eo};
+      currentHlId=null;
+      var rect=range.getBoundingClientRect();
+      showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width});
+    },10);
+  });
+
+  // ── CLICK ON EXISTING MARK ──
+  document.addEventListener('click',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    var mk=e.target.closest('mark.hl');
+    if(!mk){
+      // click outside: if selection is collapsed, hide popup
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed) hidePopup();
+      return;
+    }
+    e.stopPropagation();
+    var hlId=mk.getAttribute('data-hl-id');
+    var rect=mk.getBoundingClientRect();
+    currentHlId=hlId;
+    pendingRange=null;pendingXP=null;
+    showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width},hlId);
+  });
+
+  // ── FLASH EFFECT ──
+  function flashMark(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.style.transition='outline .2s';mk.style.outline='3px solid #c9a84c';
+      setTimeout(function(){mk.style.outline='none';},1500);
+    });
+  }
+
+  function renderPanelIfOpen(){if(panel.classList.contains('open'))renderPanel();}
+
+  function escHtml(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+})();
+
+
+// ── CHAPTER NAV PANEL ───────────────────────────────────
+(function(){
+  var CHAPS=[
+    [1,'rita_chap01.html','Mẹo & Thủ Thuật Ôn Thi PMP®'],
+    [2,'rita_chap02.html','Tài Liệu Tham Khảo Kỳ Thi'],
+    [3,'rita_chap03.html','Nền Tảng Quản Lý Dự Án'],
+    [4,'rita_chap04.html','Tích Hợp'],
+    [5,'rita_chap05.html','Kỹ Năng Lãnh Đạo'],
+    [6,'rita_chap06.html','Xây Dựng & Hỗ Trợ Hiệu Suất Nhóm'],
+    [7,'rita_chap07.html','Phạm Vi Dự Án'],
+    [8,'rita_chap08.html','Tiến Độ & Ngân Sách Dự Án'],
+    [10,'rita_chap10.html','Chất Lượng Sản Phẩm Bàn Giao'],
+    [11,'rita_chap11.html','Truyền Thông'],
+    [12,'rita_chap12.html','Rủi Ro & Vấn Đề'],
+    [13,'rita_chap13.html','Mua Sắm'],
+    [14,'rita_chap14.html','Các Bên Liên Quan'],
+    [15,'rita_chap15.html','Tuân Thủ & Mang Lại Giá Trị'],
+    [16,'rita_chap16.html','Mẹo Vượt Qua Kỳ Thi PMP®'],
+    [17,'rita_chap17.html','Các Phương Pháp Agile Phổ Biến'],
+    [18,'rita_chap18.html','Hướng Dẫn PMBOK & Tiêu Chuẩn PM']
+  ];
+
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var curNum=m?parseInt(m[1]):null;
+  var READ_KEY='rita_reading';
+
+  // Build panel DOM
+  var panel=document.createElement('div');
+  panel.id='chap-panel'; panel.className='hidden';
+  var listHtml='';
+  CHAPS.forEach(function(c){
+    var isActive=c[0]===curNum;
+    listHtml+='<a class="chap-panel-item'+(isActive?' active':'')+'" href="'+c[1]+'">'
+      +'<span class="cpanel-num">Ch'+c[0]+'</span>'
+      +'<span class="cpanel-title">'+c[2]+'</span>'
+      +(isActive?'<span class="cpanel-status">● Đang đọc</span>':'')
+      +'</a>';
+  });
+  panel.innerHTML='<div id="chap-panel-overlay"></div>'
+    +'<div id="chap-panel-box">'
+    +'<div id="chap-panel-hdr"><h3>☰ Danh Sách Chương</h3><button id="chap-panel-close">×</button></div>'
+    +'<div id="chap-panel-list">'+listHtml+'</div>'
+    +'</div>';
+  document.body.appendChild(panel);
+
+  function openChapPanel(){panel.classList.remove('hidden');}
+  function closeChapPanel(){panel.classList.add('hidden');}
+  document.getElementById('chap-panel-overlay').addEventListener('click',closeChapPanel);
+  document.getElementById('chap-panel-close').addEventListener('click',closeChapPanel);
+
+  // Wire up the Mục lục button
+  var mucLucBtn=document.getElementById('chap-muc-luc-btn');
+  if(mucLucBtn) mucLucBtn.addEventListener('click',function(e){e.preventDefault();openChapPanel();});
+})();
+
+
+// ── GITHUB HIGHLIGHTS SYNC ──────────────────────────
+(function(){
+  var REPO='goukakujlptsuport-beep/pmbok6';
+  var TOKEN_KEY='rita_gh_token';
+  var API_URL='https://api.github.com/repos/'+REPO+'/contents/data/rita_highlights.json';
+  var fileSha=null;
+  var syncTimer=null;
+
+  // Called by patched saveHL after every highlight change
+  window.__ritaSyncTrigger=function(){
+    clearTimeout(syncTimer);
+    syncTimer=setTimeout(pushToGitHub,3000);
+  };
+
+  // ── STATUS BUTTON (inserted before #sidebar-nav) ──
+  var btn=document.createElement('button');
+  btn.id='sync-btn'; btn.dataset.state='no-token';
+  btn.innerHTML='<span>☁ Sync Git</span><span id="sync-status-text">Đang kết nối…</span>';
+  btn.title='Đồng bộ highlight / ghi chú lên GitHub';
+  btn.addEventListener('click',handleSyncClick);
+  var sidebarNavEl=document.getElementById('sidebar-nav');
+  if(sidebarNavEl) sidebarNavEl.parentNode.insertBefore(btn,sidebarNavEl);
+
+  var statusText=document.getElementById('sync-status-text');
+  function setStatus(state,msg){
+    btn.dataset.state=state;
+    if(statusText) statusText.textContent=msg;
+  }
+
+  // ── TOKEN MODAL ──
+  var modal=document.createElement('div');
+  modal.id='sync-modal'; modal.className='hidden';
+  modal.innerHTML='<div id="sync-modal-box">'
+    +'<h3>☁ Cấu Hình GitHub Sync</h3>'
+    +'<p>Nhập <strong style="color:var(--gold)">GitHub Personal Access Token (PAT)</strong> để đồng bộ highlight giữa các thiết bị.<br>'
+    +'Token cần quyền <strong style="color:var(--gold-lt)">Contents: Read &amp; Write</strong> trên repo pmbok6.<br>'
+    +'Token được lưu trong localStorage của trình duyệt này.</p>'
+    +'<input id="sync-token-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" spellcheck="false" autocomplete="off">'
+    +'<div class="sync-modal-btns">'
+    +'<button id="sync-clear-btn">🗑 Xóa token</button>'
+    +'<button id="sync-cancel-btn">Hủy</button>'
+    +'<button id="sync-save-btn">💾 Lưu &amp; Sync</button>'
+    +'</div></div>';
+  document.body.appendChild(modal);
+
+  document.getElementById('sync-cancel-btn').addEventListener('click',function(){modal.classList.add('hidden');});
+  document.getElementById('sync-save-btn').addEventListener('click',function(){
+    var t=(document.getElementById('sync-token-input').value||'').trim();
+    if(!t){alert('Vui lòng nhập GitHub PAT!');return;}
+    localStorage.setItem(TOKEN_KEY,t);
+    modal.classList.add('hidden');
+    fileSha=null;
+    initSync();
+  });
+  document.getElementById('sync-clear-btn').addEventListener('click',function(){
+    if(!confirm('Xóa token? Highlights sẽ không được sync cho đến khi cấu hình lại.')) return;
+    localStorage.removeItem(TOKEN_KEY);
+    fileSha=null;
+    modal.classList.add('hidden');
+    setStatus('no-token','Chưa cấu hình');
+  });
+  modal.addEventListener('click',function(e){if(e.target===modal)modal.classList.add('hidden');});
+
+  function handleSyncClick(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){
+      var inp=document.getElementById('sync-token-input');
+      if(inp) inp.value='';
+      modal.classList.remove('hidden');
+      setTimeout(function(){if(inp)inp.focus();},80);
+    } else {
+      // Manual re-sync
+      fileSha=null;
+      initSync();
+    }
+  }
+
+  // ── HELPERS ──
+  var ALL_CHAPS=['01','02','03','04','05','06','07','08','10','11','12','13','14','15','16','17','18'];
+
+  function getAllLocal(){
+    var all={};
+    ALL_CHAPS.forEach(function(n){
+      try{
+        var v=JSON.parse(localStorage.getItem('rita_hl_'+n)||'[]');
+        if(v&&v.length>0) all[n]=v;
+      }catch(e){}
+    });
+    return all;
+  }
+
+  function countHL(obj){
+    return Object.values(obj).reduce(function(s,a){return s+(a?a.length:0);},0);
+  }
+
+  // Union merge: keep all highlights by id, prefer local note if different
+  function mergeHL(local,remote){
+    var merged={};
+    var allChaps=new Set(Object.keys(local).concat(Object.keys(remote)));
+    allChaps.forEach(function(chap){
+      var loc=local[chap]||[];
+      var rem=remote[chap]||[];
+      var byId={};
+      loc.forEach(function(h){byId[h.id]=h;});
+      rem.forEach(function(h){if(!byId[h.id])byId[h.id]=h;});
+      var arr=Object.values(byId);
+      if(arr.length>0) merged[chap]=arr;
+    });
+    return merged;
+  }
+
+  function applyToLocal(highlights){
+    Object.keys(highlights).forEach(function(chap){
+      localStorage.setItem('rita_hl_'+chap,JSON.stringify(highlights[chap]));
+    });
+  }
+
+  // base64 encode/decode with Unicode support
+  function b64enc(str){
+    return btoa(unescape(encodeURIComponent(str)));
+  }
+  function b64dec(b64){
+    return decodeURIComponent(escape(atob(b64.replace(/[\r\n]/g,''))));
+  }
+
+  // ── FETCH FROM GITHUB ──
+  async function fetchFromGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    var headers={'Accept':'application/vnd.github.v3+json'};
+    if(token) headers['Authorization']='token '+token;
+    try{
+      var resp=await fetch(API_URL,{headers:headers});
+      if(resp.status===404){fileSha=null;return null;}
+      if(!resp.ok) throw new Error('HTTP '+resp.status);
+      var data=await resp.json();
+      fileSha=data.sha;
+      var content=JSON.parse(b64dec(data.content));
+      return content;
+    }catch(e){
+      console.warn('[sync] fetch:',e);
+      return 'error';
+    }
+  }
+
+  // ── PUSH TO GITHUB ──
+  async function pushToGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang sync…');
+    var local=getAllLocal();
+    var payload={version:1,lastSync:new Date().toISOString(),highlights:local};
+    var encoded=b64enc(JSON.stringify(payload,null,2));
+    var body={message:'sync: rita highlights ['+countHL(local)+' HL]',content:encoded};
+    if(fileSha) body.sha=fileSha;
+    try{
+      var resp=await fetch(API_URL,{
+        method:'PUT',
+        headers:{
+          'Authorization':'token '+token,
+          'Content-Type':'application/json',
+          'Accept':'application/vnd.github.v3+json'
+        },
+        body:JSON.stringify(body)
+      });
+      if(!resp.ok){
+        var err=await resp.json().catch(function(){return{};});
+        throw new Error(err.message||'HTTP '+resp.status);
+      }
+      var result=await resp.json();
+      fileSha=result.content.sha;
+      setStatus('ok','✓ Đã sync ('+countHL(local)+' HL)');
+    }catch(e){
+      setStatus('err','✗ '+e.message.slice(0,28));
+      console.error('[sync] push:',e);
+    }
+  }
+
+  // ── INIT ──
+  async function initSync(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang tải…');
+
+    var ghData=await fetchFromGitHub();
+    if(ghData==='error'){
+      setStatus('err','✗ Không kết nối được');
+      return;
+    }
+    if(ghData&&ghData.highlights){
+      var local=getAllLocal();
+      var merged=mergeHL(local,ghData.highlights);
+      applyToLocal(merged);
+      // Re-apply marks on current chapter from updated localStorage
+      if(typeof window.__ritaReapplyMarks==='function') window.__ritaReapplyMarks();
+      var ghN=countHL(ghData.highlights), mergedN=countHL(merged);
+      if(mergedN>ghN){
+        // New highlights from remote — push merged back
+        setTimeout(pushToGitHub,1200);
+      } else {
+        setStatus('ok','✓ Sync OK ('+mergedN+' HL)');
+      }
+    } else {
+      // File doesn't exist yet — push current local state
+      await pushToGitHub();
+    }
+  }
+
+  initSync();
+})();
+
+</script>
+
+</body>
+</html>

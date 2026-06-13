@@ -1,0 +1,1648 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Truyền Thông | Rita PMP® Exam Prep 11</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:     #1a2744;
+  --red:      #8b1a1a;
+  --gold:     #c9a84c;
+  --gold-lt:  #e8d5a3;
+  --cream:    #fdf8f0;
+  --text:     #2c2c2c;
+  --text-dim: #5a5a5a;
+  --border:   #d4c89a;
+  --sidebar-w: 268px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ── PROGRESS BAR ── */
+#progress-bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--gold);z-index:200;transition:width .1s}
+
+/* ── SIDEBAR ── */
+#sidebar{
+  width:var(--sidebar-w);background:var(--navy);color:#ccd4e8;
+  position:fixed;top:0;left:0;bottom:0;overflow-y:auto;z-index:100;
+  border-right:3px solid var(--gold);display:flex;flex-direction:column;
+}
+#sidebar-header{
+  background:linear-gradient(135deg,#0f1d3a 0%,#1a2744 100%);
+  padding:1.4rem 1.2rem;border-bottom:2px solid var(--gold);flex-shrink:0;
+}
+#sidebar-header .book-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.62rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;
+}
+#sidebar-header h2{font-size:.92rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:.25rem}
+#sidebar-header .edition{font-family:'Source Sans 3',sans-serif;font-size:.7rem;color:var(--gold-lt);font-style:italic}
+#sidebar-toc{flex:1;overflow-y:auto;padding:.6rem 0}
+#sidebar-toc a{
+  display:block;font-family:'Source Sans 3',sans-serif;font-size:.78rem;
+  color:#aab8d0;text-decoration:none;padding:.4rem 1.2rem;line-height:1.4;
+  transition:all .15s;border-left:3px solid transparent;
+}
+#sidebar-toc a:hover,#sidebar-toc a.active{color:#fff;background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+#sidebar-toc a.toc-h4{padding-left:2.2rem;font-size:.72rem;color:#8896b0}
+#sidebar-toc a.toc-h4:hover{color:#ccd4e8}
+#sidebar-toc .toc-group-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.6rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  padding:.7rem 1.2rem .25rem;opacity:.85;
+}
+#sidebar-nav{
+  flex-shrink:0;border-top:1px solid rgba(255,255,255,.08);
+  display:flex;justify-content:space-between;padding:.7rem .8rem;gap:.5rem;
+}
+#sidebar-nav a{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;color:var(--gold-lt);
+  text-decoration:none;padding:.4rem .7rem;border:1px solid rgba(201,168,76,.3);
+  border-radius:4px;transition:all .2s;line-height:1.3;text-align:center;flex:1;
+}
+#sidebar-nav a:hover{background:rgba(201,168,76,.15);color:#fff}
+#sidebar-nav a.disabled{opacity:.35;pointer-events:none}
+
+/* ── HAMBURGER (mobile) ── */
+#menu-btn{
+  display:none;position:fixed;top:.7rem;left:.8rem;z-index:150;
+  background:var(--navy);border:1px solid var(--gold);color:var(--gold);
+  width:36px;height:36px;border-radius:6px;font-size:1.1rem;cursor:pointer;
+  align-items:center;justify-content:center;
+}
+
+/* ── MAIN ── */
+#main{margin-left:var(--sidebar-w);max-width:880px;padding:0 2.8rem 5rem}
+
+/* ── CHAPTER HERO ── */
+.chapter-hero{
+  background:linear-gradient(135deg,var(--navy) 0%,#2a3a6a 100%);
+  color:white;padding:2.8rem 2.8rem 2.2rem;margin:0 -2.8rem 2.8rem;
+  border-bottom:4px solid var(--gold);position:relative;overflow:hidden;
+}
+.chapter-hero::before{
+  content:'11';position:absolute;right:1.5rem;top:50%;
+  transform:translateY(-50%);font-size:10rem;font-weight:700;
+  color:rgba(255,255,255,.05);font-family:'Merriweather',serif;line-height:1;
+}
+.chapter-hero .ch-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;font-weight:700;
+  letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;
+}
+.chapter-hero h1{font-size:2rem;font-weight:700;line-height:1.2;margin-bottom:.35rem}
+.chapter-hero .ch-en{font-family:'Source Sans 3',sans-serif;font-size:.95rem;color:rgba(255,255,255,.5);font-style:italic}
+
+/* ── CONTENT HEADINGS ── */
+h3{
+  font-family:'Merriweather',serif;font-size:1.25rem;color:var(--navy);
+  margin:2.5rem 0 .85rem;padding-bottom:.45rem;border-bottom:2px solid var(--gold);
+}
+h4{
+  font-family:'Merriweather',serif;font-size:1.05rem;color:var(--navy);
+  margin:2rem 0 .65rem;padding-left:.75rem;border-left:4px solid var(--gold);
+}
+h5{
+  font-family:'Source Sans 3',sans-serif;font-size:.9rem;font-weight:700;
+  color:var(--red);margin:1.4rem 0 .45rem;text-transform:uppercase;letter-spacing:.05em;
+}
+p{font-family:'Merriweather',serif;font-size:.94rem;line-height:1.88;margin-bottom:.95rem;color:var(--text)}
+
+/* ── LISTS ── */
+ul.content-list,ol.content-list{
+  margin:.5rem 0 1rem;padding:0;list-style:none;
+}
+ul.content-list li{
+  position:relative;padding:.28rem 0 .28rem 1.6rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);
+}
+ul.content-list li::before{
+  content:'◆';position:absolute;left:0;color:var(--gold);font-size:.65rem;top:.45rem;
+}
+ol.content-list{counter-reset:ol-c;list-style:none}
+ol.content-list li{
+  position:relative;padding:.28rem 0 .28rem 2rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);counter-increment:ol-c;
+}
+ol.content-list li::before{
+  content:counter(ol-c)'.';position:absolute;left:0;color:var(--navy);
+  font-weight:700;font-size:.85rem;min-width:1.5rem;
+}
+ul.content-list ul.content-list li::before{content:'–';color:var(--text-dim);font-size:.9rem;top:.35rem}
+
+/* ── CALLOUT / DEF BOX ── */
+.callout{
+  background:linear-gradient(135deg,#f5f0e8,#ede8d8);
+  border:1px solid var(--border);border-left:5px solid var(--gold);
+  border-radius:0 6px 6px 0;padding:1rem 1.2rem;margin:1.3rem 0;
+}
+.callout p{font-size:.9rem;margin-bottom:.5rem}
+.callout p:last-child{margin-bottom:0}
+.callout ul.content-list li{font-size:.88rem}
+.callout-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.65rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;
+}
+.callout.tip{border-left-color:#2d7a2d;background:linear-gradient(135deg,#f0f7f0,#e4f0e4)}
+.callout.tip .callout-label{color:#2d7a2d}
+
+/* ── HIGHLIGHT (quicktest / exam alert) ── */
+.highlight{
+  background:var(--navy);color:#e8d5a3;
+  border-radius:8px;padding:1.1rem 1.3rem;margin:1.5rem 0;
+}
+.highlight h5,.highlight strong{color:var(--gold-lt)}
+.highlight p,.highlight li{color:#ccd4e8;font-size:.88rem}
+.highlight ul.content-list li::before{color:var(--gold)}
+
+/* ── FIGURE ── */
+.img-center{
+  text-align:center;margin:1.8rem 0;padding:1rem;
+  background:#f8f5ee;border:1px solid var(--border);border-radius:8px;
+}
+.img-center img{max-width:100%;height:auto;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.img-center p,.img-center div{
+  margin-top:.65rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.8rem;color:var(--text-dim);font-style:italic;
+}
+
+/* ── TABLES ── */
+.table-wrap{overflow-x:auto;margin:1.5rem 0}
+table{width:100%;border-collapse:collapse;font-family:'Source Sans 3',sans-serif;font-size:.84rem}
+table th{background:var(--navy);color:white;padding:.6rem .8rem;text-align:center;font-weight:600;font-size:.79rem}
+table td{padding:.5rem .8rem;border:1px solid #ddd;vertical-align:top;line-height:1.5}
+table tr:nth-child(even) td{background:#f9f6ef}
+
+/* ── BACK TO TOP ── */
+#back-top{
+  position:fixed;bottom:1.5rem;right:1.5rem;
+  background:var(--navy);color:var(--gold);border:1px solid var(--gold);
+  width:38px;height:38px;border-radius:50%;font-size:1.2rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .25s;z-index:99;
+}
+#back-top:hover{background:var(--gold);color:var(--navy)}
+
+/* ── MOBILE ── */
+@media(max-width:860px){
+  #sidebar{transform:translateX(-100%);transition:transform .25s;top:3rem}
+  #sidebar.open{transform:translateX(0)}
+  #menu-btn{display:flex}
+  #main{margin-left:0;padding:3.5rem 1.2rem 4rem}
+  .chapter-hero{margin:0 -1.2rem 2rem;padding:2rem 1.4rem}
+  .chapter-hero::before{display:none}
+}
+
+/* ── DARK / LIGHT MODE ─────────────────────────────── */
+html[data-theme=dark]{--cream:#0f1520;--text:#dde4f0;--text-dim:#8899bb;--border:#253048;--gold-lt:#c9a84c}
+html[data-theme=dark] body{background:#0f1520;color:#dde4f0}
+html[data-theme=dark] #main{background:#0f1520}
+html[data-theme=dark] h1,html[data-theme=dark] h2{color:#e8d5a3}
+html[data-theme=dark] h3{color:#e8d5a3;border-bottom-color:var(--gold)}
+html[data-theme=dark] h4{color:#b8ccee;border-left-color:var(--gold)}
+html[data-theme=dark] p,html[data-theme=dark] li,html[data-theme=dark] td{color:#dde4f0}
+html[data-theme=dark] strong{color:#e8d5a3}
+html[data-theme=dark] em{color:#b8ccee}
+html[data-theme=dark] .callout{background:linear-gradient(135deg,#1a2436,#1e2d45);border-left-color:var(--gold);color:#dde4f0}
+html[data-theme=dark] .callout p{color:#dde4f0}
+html[data-theme=dark] blockquote{background:#1a2436;border-left-color:var(--gold);color:#b0c0d8}
+html[data-theme=dark] table{background:#131c2b}
+html[data-theme=dark] th{background:#1a2744;color:#e8d5a3;border-color:#253048}
+html[data-theme=dark] td{border-color:#253048}
+html[data-theme=dark] tr:nth-child(even) td{background:#1a2436}
+html[data-theme=dark] .highlight,.highlight-box{background:#1a2436!important;border-color:#253048!important;color:#dde4f0!important}
+html[data-theme=dark] #back-top{background:#1a2744;color:var(--gold);border:1px solid rgba(201,168,76,.4)}
+html[data-theme=dark] ul.content-list li,html[data-theme=dark] ol.content-list li{color:#dde4f0}
+html[data-theme=dark] .chapter-hero{background:linear-gradient(135deg,#0a1228 0%,#142040 100%)}
+html[data-theme=dark] .exercise-card{background:#1a2436;border-color:#253048}
+html[data-theme=dark] .answer-box{background:#152035;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] .answer-box p{color:#dde4f0}
+/* theme toggle button */
+#theme-btn{position:absolute;top:.65rem;right:.7rem;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.35);color:var(--gold);width:28px;height:28px;border-radius:5px;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+#theme-btn:hover{background:rgba(201,168,76,.2)}
+#sidebar-header{position:relative}
+
+/* ── HIGHLIGHT SYSTEM ─────────────────────────────────── */
+mark.hl{border-radius:2px;cursor:pointer;padding:1px 0;background:transparent}
+mark.hl[data-color=yellow]{background:rgba(255,241,118,.75)}
+mark.hl[data-color=green]{background:rgba(165,214,167,.75)}
+mark.hl[data-color=red]{background:rgba(239,154,154,.75)}
+mark.hl::after{display:none}
+mark.hl[data-note]:not([data-note=""])::after{content:"✏";font-size:.6rem;vertical-align:super;margin-left:1px;opacity:.65;display:inline}
+/* selection popup */
+#hl-popup{position:fixed;z-index:9999;background:#1a2744;border:1px solid rgba(201,168,76,.5);border-radius:8px;padding:.45rem .6rem;display:flex;align-items:center;gap:.35rem;box-shadow:0 4px 20px rgba(0,0,0,.4);pointer-events:all}
+#hl-popup.hidden{display:none!important}
+.hl-color-btn{width:24px;height:24px;border-radius:50%;border:2px solid rgba(255,255,255,.25);cursor:pointer;transition:transform .15s,border-color .15s;flex-shrink:0}
+.hl-color-btn:hover{transform:scale(1.2);border-color:rgba(255,255,255,.7)}
+.hl-color-btn[data-color=yellow]{background:#fff176}
+.hl-color-btn[data-color=green]{background:#a5d6a7}
+.hl-color-btn[data-color=red]{background:#ef9a9a}
+.hl-sep{width:1px;height:20px;background:rgba(255,255,255,.2);margin:0 .1rem}
+.hl-note-btn{background:none;border:none;color:rgba(255,255,255,.7);font-size:.9rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-note-btn:hover{color:#fff;background:rgba(255,255,255,.1)}
+.hl-del-btn{background:none;border:none;color:rgba(239,154,154,.8);font-size:.85rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-del-btn:hover{color:#ef9a9a;background:rgba(239,154,154,.12)}
+/* note modal */
+#hl-note-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center}
+#hl-note-modal.hidden{display:none!important}
+#hl-note-box{background:#fff;border-radius:10px;padding:1.4rem;width:min(420px,90vw);box-shadow:0 8px 32px rgba(0,0,0,.25)}
+#hl-note-box h3{font-size:.95rem;color:#1a2744;margin-bottom:.7rem;font-family:'Merriweather',serif}
+#hl-note-ta{width:100%;border:1px solid #d4c89a;border-radius:6px;padding:.6rem .8rem;font-size:.88rem;font-family:'Source Sans 3',sans-serif;resize:vertical;min-height:80px;color:#2c2c2c;outline:none}
+#hl-note-ta:focus{border-color:#c9a84c;box-shadow:0 0 0 2px rgba(201,168,76,.25)}
+.hl-note-actions{display:flex;justify-content:flex-end;gap:.6rem;margin-top:.8rem}
+.hl-note-cancel{background:transparent;border:1px solid #ccc;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+.hl-note-save{background:#1a2744;color:#fff;border:none;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+/* highlights panel */
+#hl-panel{position:fixed;top:0;right:0;bottom:0;width:300px;background:#fff;border-left:3px solid var(--gold);z-index:500;display:flex;flex-direction:column;box-shadow:-4px 0 20px rgba(0,0,0,.15);transform:translateX(100%);transition:transform .25s}
+#hl-panel.open{transform:translateX(0)}
+#hl-panel-hdr{background:#1a2744;padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--gold)}
+#hl-panel-hdr h3{font-size:.88rem;color:#fff;font-family:'Source Sans 3',sans-serif;font-weight:700;letter-spacing:.05em}
+#hl-panel-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.2rem;cursor:pointer;padding:.2rem;line-height:1}
+#hl-panel-close:hover{color:#fff}
+#hl-panel-list{flex:1;overflow-y:auto;padding:.6rem}
+#hl-panel-list:empty::before{content:"Chưa có ghi chú nào trong chương này.";font-size:.82rem;color:#999;display:block;padding:.8rem;text-align:center;font-style:italic}
+.hl-item{padding:.65rem .8rem;border-radius:6px;margin-bottom:.5rem;border-left:4px solid #ddd;background:#fafafa;cursor:pointer;transition:background .15s}
+.hl-item:hover{background:#f0f0f0}
+.hl-item[data-color=yellow]{border-left-color:#fdd835}
+.hl-item[data-color=green]{border-left-color:#66bb6a}
+.hl-item[data-color=red]{border-left-color:#ef5350}
+.hl-item-text{font-size:.8rem;color:#2c2c2c;line-height:1.5;margin-bottom:.3rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.hl-item-note{font-size:.75rem;color:#666;font-style:italic;margin-bottom:.3rem}
+.hl-item-del{float:right;background:none;border:none;color:#bbb;cursor:pointer;font-size:.8rem;padding:.1rem .3rem;border-radius:3px;line-height:1}
+.hl-item-del:hover{color:#ef5350;background:rgba(239,83,80,.08)}
+/* sidebar hl badge */
+#hl-sidebar-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:var(--gold);cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#hl-sidebar-btn:hover{background:rgba(201,168,76,.1)}
+#hl-badge{background:rgba(201,168,76,.2);color:var(--gold);font-size:.65rem;font-weight:700;padding:.1rem .4rem;border-radius:10px;min-width:18px;text-align:center}
+html[data-theme=dark] #hl-note-box{background:#1a2436;border:1px solid #253048}
+html[data-theme=dark] #hl-note-box h3{color:#e8d5a3}
+html[data-theme=dark] #hl-note-ta{background:#0f1520;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] #hl-panel{background:#131c2b;border-left-color:var(--gold)}
+html[data-theme=dark] .hl-item{background:#1a2436;border-bottom:1px solid #1e2d45}
+html[data-theme=dark] .hl-item:hover{background:#1e2d45}
+html[data-theme=dark] .hl-item-text{color:#dde4f0}
+html[data-theme=dark] .hl-item-note{color:#8899bb}
+html[data-theme=dark] .hl-note-cancel{border-color:#253048;color:#dde4f0;background:#1a2436}
+html[data-theme=dark] .hl-note-save{background:#c9a84c;color:#0a0f1a}
+
+/* ── CHAPTER NAV PANEL ─────────────────────────────────── */
+#chap-panel{position:fixed;inset:0;z-index:9000;display:flex;align-items:stretch}
+#chap-panel.hidden{display:none!important}
+#chap-panel-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);cursor:pointer}
+#chap-panel-box{position:relative;z-index:1;width:min(360px,90vw);background:#0f1d3a;border-right:3px solid var(--gold);display:flex;flex-direction:column;animation:slideInLeft .2s ease}
+@keyframes slideInLeft{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+#chap-panel-hdr{background:linear-gradient(135deg,#0a1228,#1a2744);padding:1.2rem 1.3rem;border-bottom:2px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
+#chap-panel-hdr h3{font-family:'Source Sans 3',sans-serif;font-size:.85rem;font-weight:700;color:#fff;letter-spacing:.1em;text-transform:uppercase}
+#chap-panel-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.3rem;cursor:pointer;padding:.2rem;line-height:1;transition:color .15s}
+#chap-panel-close:hover{color:#fff}
+#chap-panel-list{flex:1;overflow-y:auto;padding:.5rem 0}
+.chap-panel-item{display:flex;align-items:center;gap:.8rem;padding:.7rem 1.3rem;cursor:pointer;transition:background .15s;border-left:3px solid transparent;text-decoration:none}
+.chap-panel-item:hover{background:rgba(201,168,76,.1);border-left-color:var(--gold)}
+.chap-panel-item.active{background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+.cpanel-num{font-family:'Source Sans 3',sans-serif;font-size:.7rem;font-weight:700;color:var(--gold);min-width:28px;flex-shrink:0}
+.cpanel-title{font-family:'Source Sans 3',sans-serif;font-size:.8rem;color:#ccd4e8;line-height:1.35}
+.cpanel-item-active .cpanel-title{color:#fff;font-weight:600}
+.cpanel-status{margin-left:auto;font-size:.72rem;flex-shrink:0;opacity:.6}
+
+/* ── GITHUB SYNC ──────────────────────────────────── */
+#sync-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:#8899bb;cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s,color .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#sync-btn:hover{background:rgba(201,168,76,.08);color:var(--gold)}
+#sync-btn[data-state=ok]{color:#4caf50}
+#sync-btn[data-state=syncing]{color:var(--gold)}
+#sync-btn[data-state=err]{color:#ef5350}
+#sync-btn[data-state=no-token]{color:#8899bb}
+#sync-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center}
+#sync-modal.hidden{display:none!important}
+#sync-modal-box{background:#0f1d3a;border:2px solid var(--gold);border-radius:10px;padding:1.8rem 2rem;width:min(420px,90vw);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+#sync-modal-box h3{font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:.9rem;text-transform:uppercase;letter-spacing:.1em}
+#sync-modal-box p{font-size:.77rem;color:#aab8d0;line-height:1.6;margin-bottom:.9rem}
+#sync-modal-box input{width:100%;background:#0a1228;border:1px solid rgba(201,168,76,.4);color:#fff;font-family:monospace;font-size:.8rem;padding:.55rem .8rem;border-radius:5px;outline:none;margin-bottom:.8rem;box-sizing:border-box}
+#sync-modal-box input:focus{border-color:var(--gold)}
+.sync-modal-btns{display:flex;gap:.6rem;justify-content:flex-end;flex-wrap:wrap}
+.sync-modal-btns button{font-family:'Source Sans 3',sans-serif;font-size:.77rem;font-weight:700;padding:.42rem .9rem;border-radius:5px;cursor:pointer;border:none;transition:background .15s}
+#sync-save-btn{background:var(--gold);color:#0a0f1a}
+#sync-save-btn:hover{background:#e8c47a}
+#sync-cancel-btn{background:rgba(255,255,255,.1);color:#aab8d0}
+#sync-cancel-btn:hover{background:rgba(255,255,255,.18)}
+#sync-clear-btn{background:rgba(239,83,80,.18);color:#ef9090;margin-right:auto}
+#sync-clear-btn:hover{background:rgba(239,83,80,.32)}
+</style>
+</head>
+<script>
+(function(){var t=localStorage.getItem('rita_theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+</script>
+<body>
+<div id="progress-bar"></div>
+<button id="menu-btn" aria-label="Menu">☰</button>
+
+<aside id="sidebar">
+<div id="sidebar-header">
+  <div class="book-label">Rita PMP® Exam Prep</div>
+  <h2>Ôn Thi PMP®</h2>
+  <div class="edition">Rita Mulcahy · 11th Edition 2023 · Tiếng Việt</div>
+</div>
+<div id="sidebar-toc">
+  <div class="toc-group-label">Nội Dung Chương</div>
+  <a href="#ch11-communications" class="">11 Truyền Thông</a>
+<a href="#ch11-introduction" class="toc-h4">Giới Thiệu</a>
+<a href="#ch11-communications-management-overview" class="toc-h4">Tổng Quan Về Quản Lý Truyền Thông</a>
+<a href="#ch11-eco-and-process-groups" class="toc-h4">ECO Và Mô Hình Nhóm Quy Trình</a>
+<a href="#ch11-desired-outcomes" class="toc-h4">Kết Quả Mong Muốn Từ Quản Lý Truyền Thông Thành Công</a>
+<a href="#ch11-communications-planning" class="toc-h4">Lập Kế Hoạch Truyền Thông</a>
+<a href="#ch11-exercise-11-1" class="toc-h4">Bài Tập 11.1</a>
+<a href="#ch11-communications-requirements" class="toc-h4">Yêu Cầu Truyền Thông</a>
+<a href="#ch11-artifacts-of-communications-planning" class="toc-h4">Tài Liệu Của Lập Kế Hoạch Truyền Thông</a>
+<a href="#ch11-managing-effective-communications" class="toc-h4">Quản Lý Truyền Thông Hiệu Quả</a>
+<a href="#ch11-methods-for-communication" class="toc-h4">Các Phương Pháp Truyền Thông</a>
+<a href="#ch11-meeting-management" class="toc-h4">Quản Lý Cuộc Họp</a>
+<a href="#ch11-project-reporting" class="toc-h4">Báo Cáo Dự Án</a>
+<a href="#ch11-knowledge-sharing" class="toc-h4">Chia Sẻ Kiến Thức</a>
+<a href="#ch11-information-radiators" class="toc-h4">Bảng Thông Tin (Information Radiators)</a>
+<a href="#ch11-artifacts-manage-communications" class="toc-h4">Các Sản Phẩm Đầu Ra Của Quy Trình Quản Lý Truyền Thông</a>
+<a href="#ch11-monitor-communication-effectiveness" class="toc-h4">Giám Sát Hiệu Quả Truyền Thông</a>
+<a href="#ch11-putting-it-all-together" class="toc-h4">Tổng Kết</a>
+<a href="#ch11-exercise-11-2" class="">11.2 Bài Tập</a>
+<a href="#ch11-exercise-11-2-answer" class="toc-h4">Đáp Án</a>
+
+</div>
+<div id="sidebar-nav">
+  <a href="rita_chap10.html" class="" title="Chất Lượng">← Ch10</a>
+  <a href="#" id="chap-muc-luc-btn">☰ Mục lục</a>
+  <a href="rita_chap12.html" class="" title="Rủi Ro & Vấn Đề">Ch12 →</a>
+</div></aside>
+
+<main id="main">
+  <div class="chapter-hero">
+    <div class="ch-label">Chương 11</div>
+    <h1>Truyền Thông</h1>
+    <div class="ch-en">Communications</div>
+  </div>
+<h3 id="ch11-communications">11 Truyền Thông</h3>
+
+<h4 id="ch11-introduction">Giới Thiệu</h4>
+
+<p>Bạn đã bao giờ gửi một thông điệp mà bạn chắc chắn rất rõ ràng, nhưng sau khi người nhận đọc xong lại nhận được vô số câu hỏi, hoặc về sau mới biết rằng thông điệp đó đã bị hiểu nhầm chưa? Hay những lần bạn để lại tin nhắn thoại hoặc email cho một người nào đó, chỉ để sau đó phát hiện ra rằng nếu bạn nhắn tin thì họ đã nhận được sớm hơn nhiều? Bạn có những sở thích giao tiếp nào? Có thể gần đây bạn đã nhận được một tin nhắn thoại tại văn phòng trong khi bây giờ bạn chỉ kiểm tra điện thoại di động của mình.</p>
+
+<p>Khi nghĩ về điều đó, giao tiếp có mặt trong hầu hết mọi việc bạn làm với tư cách là một quản lý dự án. Có rất nhiều công nghệ và phương pháp để lựa chọn, và có rất nhiều cách diễn giải khác nhau đối với một thông điệp nhất định, khiến cho các vấn đề về truyền thông là điều không thể tránh khỏi. Chỉ riêng về khối lượng, không có gì ngạc nhiên khi các quản lý dự án xác định các vấn đề liên quan đến truyền thông là vấn đề số một được trải nghiệm thường xuyên nhất trong dự án.</p>
+
+<h4 id="ch11-communications-management-overview">Tổng Quan Về Quản Lý Truyền Thông</h4>
+
+<p>Quản lý dự án phải lập kế hoạch, quản lý và kiểm soát truyền thông một cách cẩn thận để các công nghệ và phương pháp tốt nhất được lựa chọn phù hợp với từng đối tượng. Sau đó, quản lý dự án phải soạn thảo từng thông điệp một cách cẩn thận để đảm bảo sự rõ ràng và mức độ chi tiết tối ưu. Dưới đây chỉ là một số ví dụ về các yếu tố ảnh hưởng đến truyền thông dự án:</p>
+
+<ul class="content-list">
+  <li>Các dự án thường liên quan đến các nhóm ảo, đòi hỏi các chiến thuật và chiến lược truyền thông phức tạp.</li>
+  <li>Tốc độ thay đổi nhanh chóng trong dự án đòi hỏi phải liên tục xem xét lại các chiến thuật, chiến lược truyền thông và các thông tin liên lạc đã có.</li>
+  <li>Sở thích giao tiếp của các bên liên quan dẫn đến nhu cầu lựa chọn chiến thuật và chiến lược truyền thông một cách cẩn thận.</li>
+</ul>
+
+<p>Lập kế hoạch và quản lý truyền thông cũng có thể bao gồm:</p>
+
+<ul class="content-list">
+  <li>Đánh giá nhu cầu truyền thông của các bên liên quan (một phần của việc nhận diện và phân tích bên liên quan)</li>
+  <li>Xác định các phương pháp nào sẽ phù hợp nhất cho dự án</li>
+  <li>Hiểu biết về các kênh truyền thông hiện có</li>
+  <li>Quyết định tần suất và mức độ chi tiết của từng loại thông tin liên lạc dự án</li>
+  <li>Đảm bảo các phương pháp phù hợp cho các vòng phản hồi hiệu quả được cung cấp và thông hiểu</li>
+  <li>Xem xét mức độ phong phú của các kênh truyền thông hiện có khi lựa chọn công nghệ và phương pháp truyền thông</li>
+  <li>Xem xét lại các quyết định liên quan đến chiến thuật và chiến lược truyền thông đã lựa chọn để đảm bảo chúng vẫn hiệu quả xuyên suốt dự án</li>
+</ul>
+
+<p>Trong kỳ thi, các câu hỏi về truyền thông thường được kết hợp với các chủ đề khác. Sự tham gia của bên liên quan là một lĩnh vực nội dung rõ ràng góp phần vào các quyết định cần thiết để tạo ra các kế hoạch truyền thông được lập kế hoạch tốt và thực hiện chúng. Tất cả các lĩnh vực kiến thức khác cũng bị ảnh hưởng.</p>
+
+<div class="callout">
+  <p><strong>Ví dụ</strong> Các công cụ liên quan đến quản lý phạm vi — WBS, product backlog, hoặc release — cũng được sử dụng để giao tiếp với các bên liên quan.</p>
+</div>
+
+<div class="highlight">
+  <h5>QUICKTEST</h5>
+  <ul class="content-list">
+    <li>Quy trình Quản lý Truyền thông</li>
+    <li>Quản lý cuộc họp</li>
+    <li>Báo cáo Dự án
+      <ul class="content-list">
+        <li>Báo cáo tình trạng</li>
+        <li>Báo cáo tiến độ</li>
+        <li>Báo cáo xu hướng</li>
+        <li>Báo cáo dự báo</li>
+        <li>Báo cáo sai lệch</li>
+        <li>Báo cáo giá trị thu được</li>
+        <li>Chỉ số tiến độ</li>
+        <li>Kết quả hồi cố</li>
+        <li>Bài học kinh nghiệm</li>
+      </ul>
+    </li>
+    <li>Chia sẻ kiến thức</li>
+    <li>Bộ phát thông tin</li>
+  </ul>
+</div>
+
+<h4 id="ch11-eco-and-process-groups">ECO Và Mô Hình Nhóm Quy Trình</h4>
+
+<p>Bảng sau đây minh họa rằng ECO kết hợp các hoạt động quản lý truyền thông vào một nhiệm vụ duy nhất gọi là Quản Lý Truyền Thông, trong khi mô hình Nhóm Quy Trình chia các hoạt động quản lý truyền thông thành ba quy trình chính được ánh xạ vào các nhóm quy trình lập kế hoạch, thực hiện và theo dõi &amp; kiểm soát.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//56937fad-b5e9-472f-ab5d-df72fea7d7dd/markdown_2/imgs/img_in_image_box_75_189_755_404.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A47Z%2F-1%2F%2Fe013a14dfae9964cde1256d5eef2b5ac7c8eaaef3730be3c007d1cd485913b52" alt="Image" width="82%" /></div></div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//56937fad-b5e9-472f-ab5d-df72fea7d7dd/markdown_2/imgs/img_in_image_box_65_414_116_477.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A47Z%2F-1%2F%2F29053908b349fbfb0cbcd652ddea701cbb029121f82bb852c9148f54589c7bb9" alt="Image" width="6%" /></div></div>
+
+<p>Hãy suy nghĩ về điều đó. Ngoài "Quản lý truyền thông" từ ECO, nhiều nhiệm vụ ECO khác cũng liên quan đến quản lý truyền thông. Xem xét các nhiệm vụ dưới đây trong ECO và suy nghĩ về cách tất cả chúng đều tham gia một cách toàn diện vào việc quản lý truyền thông, và cách chúng lại phụ thuộc vào quản lý truyền thông. Các ví dụ sau đây không bao gồm tất cả.</p>
+
+<p>Chúng tôi đã ánh xạ các nhiệm vụ miền Quy trình ở đây trực tiếp hơn vào quản lý tích hợp dự án để cung cấp cho bạn cơ hội xem lại những điều này một lần nữa. Với tư cách là quản lý dự án, việc tích hợp mọi thứ đang diễn ra trong dự án là một trong những trách nhiệm chính của bạn.</p>
+
+<h5>Ví Dụ</h5>
+
+<div class="table-wrap">
+  <table>
+    <tr>
+      <td style="text-align: center; word-wrap: break-word;"><strong>Con Người (Miền I)</strong></td>
+      <td style="text-align: center; word-wrap: break-word;"><strong>Quy Trình (Miền II)</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; word-wrap: break-word;">Tất cả các nhiệm vụ miền Con Người đều quan trọng đối với truyền thông dự án hiệu quả. Điều ngược lại cũng đúng: Truyền thông dự án hiệu quả là không thể thiếu đối với sự thành công trong tất cả các nhiệm vụ miền Con Người.</td>
+      <td style="text-align: center; word-wrap: break-word;">
+        <ul class="content-list">
+          <li>Thực hiện dự án với tinh thần khẩn cấp để mang lại giá trị kinh doanh (nhiệm vụ 1)</li>
+          <li>Thu hút bên liên quan (nhiệm vụ 4)</li>
+          <li>Tích hợp các hoạt động lập kế hoạch dự án (nhiệm vụ 9)</li>
+          <li>Thiết lập cơ cấu quản trị dự án (nhiệm vụ 14)</li>
+        </ul>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<p>Bây giờ hãy dành thời gian xem xét quy trình quản lý truyền thông theo mô hình Nhóm Quy Trình. Góc nhìn từ mô hình Nhóm Quy Trình cung cấp cho bạn tổng quan về quy trình chung, giúp bạn định hướng qua phần còn lại của chương.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//56937fad-b5e9-472f-ab5d-df72fea7d7dd/markdown_3/imgs/img_in_image_box_108_171_669_480.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A48Z%2F-1%2F%2F60e41733034c7495906221e82be8f6acc91c8a401367f94a30dfacbe754dbc62" alt="Image" width="68%" /></div></div>
+
+<p style="text-align: center;"><em>HÌNH 11.1 Quy trình quản lý truyền thông</em></p>
+
+<p>Trước khi đi sâu vào các khía cạnh kỹ thuật quản lý dự án của quản lý truyền thông, bạn có thể muốn lướt qua phần Kỹ Năng Giao Tiếp trong chương "Kỹ Năng Lãnh Đạo". Hãy ghi nhớ điều này và tất cả các nhiệm vụ miền Con Người khi bạn nghiên cứu chương này.</p>
+
+<h4 id="ch11-desired-outcomes">Kết Quả Mong Muốn Từ Quản Lý Truyền Thông Thành Công</h4>
+
+<p>Hãy giả định trong kỳ thi rằng truyền thông dự án được lập kế hoạch và quản lý đúng cách trừ khi thông tin trong câu hỏi thi chỉ ra điều khác. Điều này có nghĩa là các kết quả sau đây cần được kỳ vọng nhờ quản lý truyền thông:</p>
+
+<ul class="content-list">
+  <li>Truyền thông được lập kế hoạch và thực hiện để thông tin đúng được chuyển đến các bên liên quan phù hợp bằng công nghệ phù hợp, rõ ràng và dễ hiểu, đến tay bên liên quan đúng lúc và theo định dạng phù hợp.</li>
+  <li>Quản lý dự án thu thập phản hồi từ người nhận thông tin để đảm bảo sự hiểu biết chung về tất cả thông tin được truyền đạt cũng như nhu cầu, nếu có, về các hành động tiếp theo.</li>
+  <li>Chiến lược và chiến thuật truyền thông được đo lường và phân tích thường xuyên, và các thay đổi phù hợp được thực hiện khi tình huống hoặc nhu cầu truyền thông trong dự án thay đổi.</li>
+  <li>Các chiến lược và chiến thuật quản lý truyền thông dự án góp phần vào sự hài lòng của bên liên quan vì bên liên quan hiểu những truyền thông nào cần mong đợi và khi nào. Họ cũng tự tin rằng mình sẽ nhận được thông tin liên lạc phù hợp với nhu cầu của họ trong dự án.</li>
+</ul>
+
+<h4 id="ch11-communications-planning">Lập Kế Hoạch Truyền Thông</h4>
+
+<p>Lập kế hoạch là về việc xem xét cách tiếp cận truyền thông tổng thể của dự án và về cách quản lý dự án sẽ sắp xếp các chi tiết cụ thể. Kế hoạch cần xác định những hệ thống và quy trình nào đã có sẵn để hỗ trợ truyền thông, cũng như những quy trình và tài liệu nào cần được tạo ra. Công việc này bao gồm việc lập kế hoạch thông tin nào sẽ được truyền đạt đến ai, khi nào, bằng phương pháp nào và tần suất như thế nào. Kế hoạch sẽ hướng dẫn quản lý dự án và nhóm trong việc quản lý và theo dõi truyền thông để đảm bảo thông tin đến được nơi cần thiết, rõ ràng và dễ hiểu, và cho phép các bên liên quan hành động khi cần thiết. Cuối cùng, nó cần có tính linh hoạt để thay đổi khi dự án tiến triển và nhu cầu thông tin cũng như của các bên liên quan thay đổi.</p>
+
+<p>Để lập kế hoạch truyền thông, quản lý dự án sẽ tham khảo điều lệ dự án và các tài liệu khác như tài liệu yêu cầu, sổ đăng ký bên liên quan, và các kế hoạch tham gia bên liên quan và quản lý nguồn lực. Kế hoạch truyền thông cần giải thích cách thức truyền thông dự án sẽ hỗ trợ các lĩnh vực liên quan.</p>
+
+<div class="callout">
+  <p><strong>Mô Hình Nhóm Quy Trình</strong></p>
+  <p>Nhóm Quy Trình: Lập Kế Hoạch</p>
+  <p>Quy trình: Lập Kế Hoạch Truyền Thông</p>
+  <p><strong>ECO</strong></p>
+  <p>Miền II, Nhiệm vụ 2: Quản lý truyền thông</p>
+  <p><strong>PMBOK Guide</strong></p>
+  <p>Miền 2.1 Bên liên quan | Miền 2.2 Nhóm | Miền 2.4 Lập kế hoạch | Miền 2.8 Bất định</p>
+</div>
+
+<p>Trên các dự án của bạn, bạn có dành thời gian hỏi các bên liên quan về các yêu cầu truyền thông của họ không? Các yêu cầu truyền thông cần được phân tích để xác định cách đáp ứng chúng và để đảm bảo rằng việc đáp ứng chúng sẽ tạo ra giá trị cho dự án và xứng đáng với công sức và chi phí bỏ ra.</p>
+
+<p>Quy mô dự án, vòng đời và phương pháp phát triển đều là các yếu tố cần xem xét trong lập kế hoạch truyền thông. Quản lý dự án cần thoải mái như nhau khi lập kế hoạch truyền thông cho các dự án lớn và nhỏ, sử dụng các phương pháp dự đoán, thích ứng hoặc kết hợp. Một dự án lớn có thể có nhóm hơn 100 người ở các quốc gia khác nhau, nói các ngôn ngữ khác nhau, với các cách tiếp cận truyền thông đa dạng, có thể bị ảnh hưởng bởi văn hóa. Một dự án nhỏ có thể được thực hiện hoàn toàn từ một địa điểm hoặc có thể có nhu cầu truyền thông đơn giản hơn. Nói cách khác, nỗ lực truyền thông phải được điều chỉnh phù hợp với dự án.</p>
+
+<p>Trong môi trường kết hợp, ví dụ, các nhà lãnh đạo dự án truyền đạt một số thông tin dự án thông qua cả phương pháp dự đoán và phương pháp agile. Các nhà lãnh đạo nhóm agile trong môi trường kết hợp thường phải cập nhật báo cáo tình trạng hàng tuần, biểu đồ Gantt và báo cáo giá trị thu được ngoài việc theo dõi các chỉ số agile như velocity và thông tin burnup, burndown.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//56937fad-b5e9-472f-ab5d-df72fea7d7dd/markdown_4/imgs/img_in_image_box_709_570_760_628.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A48Z%2F-1%2F%2F47157862089626ff2fcf671204d5e0a23aa1df0b0254bd44d98d114bca4e2c8d" alt="Image" width="6%" /></div></div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//56937fad-b5e9-472f-ab5d-df72fea7d7dd/markdown_4/imgs/img_in_image_box_74_658_125_717.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A49Z%2F-1%2F%2Fb88616badb92d693aa6ffef6dc9eb57a90b2515b84e8155834c01a8cbf0d79f4" alt="Image" width="6%" /></div></div>
+
+<div class="callout tip">
+  <p><strong>Hãy Suy Nghĩ Về Điều Này.</strong> Quản lý truyền thông rất quan trọng trong kỳ thi. Hãy suy nghĩ về mọi thứ bạn đã đọc cho đến nay trong chương này khi bạn xem danh sách sau. Bạn có làm những điều sau không?</p>
+  <ul class="content-list">
+    <li>Sử dụng nhiều phương pháp truyền thông.</li>
+    <li>Hỏi mọi người thông tin họ cần và khi nào.</li>
+    <li>Lập kế hoạch truyền thông cho từng bên liên quan hoặc nhóm dựa trên nhu cầu và lợi ích cá nhân.</li>
+    <li>Điều chỉnh các hoạt động truyền thông phù hợp với quy mô, độ phức tạp, vòng đời và phương pháp tiếp cận của dự án.</li>
+    <li>Lập kế hoạch cách bạn sẽ xác nhận truyền thông được nhận và hiểu.</li>
+    <li>Đáp ứng nhu cầu truyền thông theo nhiều hướng, ở tất cả các cấp độ, nội bộ và bên ngoài tổ chức.</li>
+    <li>Phân tích cách vị trí, văn hóa, bảo mật, quyền riêng tư và ngôn ngữ ảnh hưởng đến truyền thông.</li>
+    <li>Có một hệ thống để lưu trữ, duy trì và truy xuất thông tin dự án.</li>
+  </ul>
+</div>
+
+<h4 id="ch11-exercise-11-1">Bài Tập 11.1</h4>
+
+<p>Hãy tự kiểm tra! Viết vào Sổ Bài Tập của bạn thông tin nào cần được truyền đạt trong một dự án.</p>
+
+<h5>Đáp Án</h5>
+
+<p>Một số câu trả lời có thể là:</p>
+
+<ul class="content-list">
+  <li>Điều lệ dự án</li>
+  <li>Thông tin liên lạc của bên liên quan</li>
+  <li>Các loại email cần gửi đến từng bên liên quan hoặc nhóm</li>
+  <li>Tình trạng dự án</li>
+  <li>Các bất định (đặc biệt là các rủi ro mới được phát hiện)</li>
+  <li>Các tài liệu (kế hoạch, bản đồ release, user story, backlog, WBS, sơ đồ mạng)</li>
+  <li>Các phụ thuộc</li>
+  <li>Tác động đến và từ các dự án khác</li>
+  <li>Các vấn đề</li>
+  <li>Các thành công</li>
+  <li>Khi nào nguồn lực sẽ cần thiết</li>
+  <li>Thay đổi phạm vi dự án và sản phẩm</li>
+  <li>Thông tin về thời điểm các đánh giá quản lý sẽ được thực hiện</li>
+  <li>Quy chuẩn nhóm</li>
+  <li>Thỏa thuận làm việc</li>
+  <li>Định nghĩa hoàn thành</li>
+  <li>Cập nhật khi kế hoạch thay đổi</li>
+  <li>Lịch họp</li>
+  <li>Kết quả yêu cầu thay đổi</li>
+  <li>Biểu đồ burn</li>
+  <li>Bộ phát thông tin</li>
+  <li>Phân công công việc</li>
+  <li>Công việc sắp tới (ví dụ: các thành phần WBS đã lên lịch hoặc iteration backlog)</li>
+  <li>Sự chậm trễ</li>
+  <li>Ngày hoàn thành mốc tiếp theo</li>
+  <li>Báo cáo hiệu suất</li>
+  <li>Kết quả hồi cố; bài học kinh nghiệm</li>
+  <li>Nhật ký vấn đề</li>
+  <li>Các vấn đề quản lý cấu hình</li>
+</ul>
+
+<h4 id="ch11-communications-requirements">Yêu Cầu Truyền Thông</h4>
+
+<p>Hiểu và đáp ứng các yêu cầu truyền thông giúp quản lý dự án duy trì sự tham gia của bên liên quan bằng cách đảm bảo các nhu cầu truyền thông được đáp ứng. Thêm thông tin về phân tích yêu cầu có trong chương "Phạm Vi".</p>
+
+<p>Sử dụng thông tin sau để xác định và phân tích các yêu cầu truyền thông:</p>
+
+<ul class="content-list">
+  <li>Sổ đăng ký bên liên quan</li>
+  <li>Vị trí của các bên liên quan</li>
+  <li>Nhân cách bên liên quan</li>
+  <li>Số lượng kênh truyền thông</li>
+  <li>Kế hoạch tham gia bên liên quan</li>
+</ul>
+
+<h4 id="ch11-artifacts-of-communications-planning">Tài Liệu Của Lập Kế Hoạch Truyền Thông</h4>
+
+<p>Là kết quả của việc lập kế hoạch truyền thông, quản lý dự án cần có mô tả được ghi lại về nhu cầu truyền thông của các bên liên quan và chiến lược để đáp ứng chúng. Các thành phần của kế hoạch có thể bao gồm:</p>
+
+<ul class="content-list">
+  <li>Những truyền thông nào cần chuẩn bị và phổ biến đến các bên liên quan</li>
+  <li>Thông tin cần được đặt tên và lưu trữ như thế nào</li>
+  <li>Ai có quyền truy cập vào những truyền thông nào</li>
+  <li>Ai có trách nhiệm gửi và nhận các truyền thông nào</li>
+  <li>Ai có khả năng chỉnh sửa những gì</li>
+  <li>Các cách tiếp cận được điều chỉnh theo ngôn ngữ và văn hóa</li>
+  <li>Các cách tiếp cận được điều chỉnh theo mức độ chi tiết cần thiết</li>
+  <li>Thông tin về cách đánh giá hiệu quả truyền thông</li>
+</ul>
+
+<p style="text-align: center;">Vì truyền thông phức tạp, kế hoạch quản lý truyền thông cần được viết ra cho hầu hết các dự án. Hình 11.2 cho thấy một số điểm cân nhắc cho những gì bạn có thể đưa vào kế hoạch truyền thông.</p>
+
+<div class="table-wrap">
+  <table>
+    <tr>
+      <td colspan="3" style="text-align: center; word-wrap: break-word;"><strong>Những Gì Cần Được Truyền Đạt</strong></td>
+      <td colspan="3" style="text-align: center; word-wrap: break-word;"><strong>Phương Pháp Tốt Nhất / Trách Nhiệm / Khi Nào và Tần Suất</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; word-wrap: break-word;">Nội dung truyền đạt</td>
+      <td style="text-align: center; word-wrap: break-word;">Lý do</td>
+      <td style="text-align: center; word-wrap: break-word;">Giữa các đối tượng nào</td>
+      <td style="text-align: center; word-wrap: break-word;">Phương pháp truyền thông phù hợp</td>
+      <td style="text-align: center; word-wrap: break-word;">Người phụ trách gửi</td>
+      <td style="text-align: center; word-wrap: break-word;">Tần suất</td>
+    </tr>
+    <tr>
+      <td style="text-align: center; word-wrap: break-word;"></td>
+      <td style="text-align: center; word-wrap: break-word;"></td>
+      <td style="text-align: center; word-wrap: break-word;"></td>
+      <td style="text-align: center; word-wrap: break-word;"></td>
+      <td style="text-align: center; word-wrap: break-word;"></td>
+      <td style="text-align: center; word-wrap: break-word;"></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; word-wrap: break-word;"></td>
+      <td style="text-align: center; word-wrap: break-word;"></td>
+      <td style="text-align: center; word-wrap: break-word;"></td>
+      <td style="text-align: center; word-wrap: break-word;"></td>
+      <td style="text-align: center; word-wrap: break-word;"></td>
+      <td style="text-align: center; word-wrap: break-word;"></td>
+    </tr>
+  </table>
+</div>
+
+<p style="text-align: center;"><em>HÌNH 11.2 Phần mẫu của kế hoạch quản lý truyền thông</em></p>
+
+<h4 id="ch11-managing-effective-communications">Quản Lý Truyền Thông Hiệu Quả</h4>
+
+<p>Trong quá trình lập kế hoạch, các nhu cầu truyền thông của các bên liên quan được xác định và ghi lại. Trong suốt dự án, quản lý dự án và nhóm đáp ứng các nhu cầu này thông qua các cuộc họp và các hình thức giao tiếp trực tiếp khác, cũng như thông qua các truyền thông khác như báo cáo, đồ họa, bộ phát thông tin và email.</p>
+
+<p>Hầu như không có gì trong dự án được thực hiện mà không có truyền thông, vì vậy điều quan trọng là thông tin phải lưu thông qua lại trong dự án theo đúng chiến lược đã lập kế hoạch. Truyền thông hiệu quả là về việc tạo điều kiện và thực hành các cách tiếp cận linh hoạt trong các môi trường năng động. Nó cũng bao gồm việc cung cấp cơ hội cho các bên liên quan yêu cầu thông tin bổ sung và làm rõ.</p>
+
+<p>Trong khi các báo cáo và các truyền thông chính thức bằng văn bản là các khía cạnh quan trọng của hồ sơ lịch sử dự án, chúng không nên đòi hỏi nhiều thời gian của nhà lãnh đạo dự án hoặc nhóm.</p>
+
+<div class="callout">
+  <p><strong>Mô Hình Nhóm Quy Trình</strong></p>
+
+  <div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//4fbea65f-24af-4ec7-a87d-022d3a28caa9/markdown_1/imgs/img_in_image_box_66_532_133_588.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A33Z%2F-1%2F%2F29ba97aad5b75c4c7a73e80c2b1fa1253816bde4adab5c0b326d5c5811d023a6" alt="Image" width="8%" /></div></div>
+
+  <p>Nhóm Quy Trình: Thực Hiện</p>
+  <p>Quy trình: Quản Lý Truyền Thông</p>
+  <p><strong>ECO</strong></p>
+  <p>Miền II, Nhiệm vụ 2: Quản lý truyền thông</p>
+  <p><strong>PMBOK Guide</strong></p>
+  <p>Miền 2.1 Bên liên quan | Miền 2.2 Nhóm | Miền 2.5 Công việc dự án | Miền 2.8 Bất định</p>
+</div>
+
+<p>Thông thường truyền thông được điều chỉnh theo đối tượng. Trong môi trường kết hợp, nhà lãnh đạo dự án có thể thảo luận về "điểm", "Planning Poker", "velocity" và "blocker" với nhóm, rồi sử dụng thuật ngữ truyền thống hơn như "công việc đã hoàn thành", "tiến độ", "ước tính" và "mối đe dọa" với ban chỉ đạo tập trung vào phương pháp hướng kế hoạch hơn.</p>
+
+<div class="callout tip">
+  <p><strong>Ví dụ</strong> Với nhóm, nhà lãnh đạo dự án có thể nói: "Tôi có cuộc họp với bên liên quan. Tôi sẽ trình bày tỷ lệ burndown theo iteration." Với ban chỉ đạo, họ có thể nói: "Đây là tỷ lệ hoàn thành tính năng trung bình của chúng tôi được đo mỗi hai tuần."</p>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//4fbea65f-24af-4ec7-a87d-022d3a28caa9/markdown_1/imgs/img_in_image_box_692_607_743_663.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A33Z%2F-1%2F%2Ff930f326ddba4afd64463045d93d882e6e9d076477aacddead0ca0e795e1c592" alt="Image" width="6%" /></div></div>
+
+<p>Điều quan trọng là phải sử dụng mô hình truyền thông tương tác (như được hiển thị trong hình 5.3 trong chương "Kỹ Năng Lãnh Đạo") và các phương pháp và công nghệ phù hợp được lập kế hoạch cho dự án để mọi người đều biết phải làm gì với thông tin họ cần truyền đạt. Kế hoạch quản lý truyền thông, tài liệu dự án, báo cáo hiệu suất công việc và các tương tác hàng ngày sẽ cung cấp cho quản lý dự án dữ liệu và thông tin về những gì cần được truyền đạt. Cho dù đó là thông tin từ các đánh giá rủi ro gần đây, dự báo về hiệu suất dự án, hay chi tiết về các thay đổi đã đi qua quy trình kiểm soát thay đổi tích hợp chính thức, nhà lãnh đạo và nhóm dự án cần tuân theo kế hoạch quản lý truyền thông.</p>
+
+<p>Việc điều chỉnh cũng thường cần thiết để đáp lại phản hồi của bên liên quan, văn hóa của tổ chức (luôn phát triển) và các yếu tố khác.</p>
+
+<h4 id="ch11-methods-for-communication">Các Phương Pháp Truyền Thông</h4>
+
+<h4 id="ch11-meeting-management">Quản Lý Cuộc Họp</h4>
+
+<p>Các cuộc họp thường là yếu tố then chốt trong nỗ lực quản lý truyền thông. Như đã đề cập, người quản lý dự án và nhóm cần quyết định trong giai đoạn lập kế hoạch về cách thức chia sẻ thông tin trên dự án. Các cuộc họp cung cấp phương tiện để giao tiếp với nhóm và các bên liên quan. Có chiến lược cho các cuộc họp là điều cần thiết để sử dụng thời gian họp một cách hiệu quả và có kết quả. Điều này bao gồm tuân thủ chiến lược đã hoạch định về cách thức tiến hành cuộc họp, ai cần tham dự và khi nào chúng phù hợp nhất.</p>
+
+<p>Các cuộc họp hiệu quả có vẻ dễ lên kế hoạch nhưng không dễ tiến hành một cách nhất quán. Hãy xem xét các quy tắc họp sau:</p>
+
+<ul class="content-list">
+  <li>Họp thường xuyên khi phù hợp</li>
+  <li>Tập hợp đúng người</li>
+  <li>Lên lịch các cuộc họp định kỳ trước</li>
+  <li>Có mục đích cho mỗi cuộc họp</li>
+  <li>Nhắc nhở người tham dự về trách nhiệm của họ khi thích hợp</li>
+  <li>Làm cho tất cả người tham gia có trách nhiệm thực thi các quy tắc (không chỉ người điều hành)</li>
+  <li>Hủy một buổi trong chuỗi họp định kỳ nếu không cần thiết</li>
+  <li>Đặt giới hạn thời gian và tuân thủ chúng</li>
+  <li>Giao nhiệm vụ và giới hạn thời gian cho các công việc phát sinh từ cuộc họp</li>
+  <li>Có chương trình nghị sự và bám sát nó</li>
+  <li>Phân phát chương trình nghị sự trước</li>
+  <li>Lập và công bố biên bản cuộc họp khi thích hợp</li>
+  <li>Chủ trì và dẫn dắt cuộc họp theo một bộ quy tắc</li>
+  <li>Tuân thủ các quy tắc vốn có của từng loại cuộc họp cụ thể (ví dụ: họp standup hằng ngày)</li>
+</ul>
+
+<p>Môi trường hybrid có thể đặt ra các thách thức ngắn hạn liên quan đến các cuộc họp. Các thực hành "ít trang trọng hơn" của nhóm agile có thể khiến các bên liên quan truyền thống cảm thấy không thoải mái lúc đầu. Một cách giải quyết là để các bên liên quan quan sát buổi họp standup hằng ngày của nhóm agile. Đây là cách tuyệt vời để tìm hiểu về động lực nhóm và các hoạt động công việc hiện tại. Và vì các cuộc họp này thường được tổ chức ở khu vực làm việc của nhóm, có thể có các bảng thông tin (information radiators) trên tường để giúp thông báo cho các bên liên quan.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//4fbea65f-24af-4ec7-a87d-022d3a28caa9/markdown_2/imgs/img_in_image_box_674_479_725_540.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A33Z%2F-1%2F%2F8550f5dff378c6f3a1e127cb1b0e42fa81ee798fa54f68dc5741b71350e6ebec" alt="Image" width="6%" /></div></div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//4fbea65f-24af-4ec7-a87d-022d3a28caa9/markdown_2/imgs/img_in_image_box_33_570_97_627.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A33Z%2F-1%2F%2F7e5107630425a09e0a5b4b4b0bed6b2dc1f6dd549f24350f848b5c7b664cd8c3" alt="Image" width="7%" /></div></div>
+
+<p>Những người chưa quen với agile lo lắng rằng báo cáo quá không chính thức đối với các bên liên quan truyền thống. Thực tế là trong agile, các nội dung tương tự vẫn được theo dõi mặc dù công sức được tính bằng story point thay vì giờ hoặc ngày.</p>
+
+<p>Trên cơ sở hàng tuần, nhóm có thể chỉ quan tâm đến story point của vòng lặp hiện tại, nhưng theo thời gian, dữ liệu này có thể dễ dàng được chuyển thành báo cáo đo lường earned value (EVM) (xem hình 11.3).</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//4fbea65f-24af-4ec7-a87d-022d3a28caa9/markdown_2/imgs/img_in_chart_box_85_664_690_1008.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A34Z%2F-1%2F%2F8b82742a660e0f11ba5d929a0c9a85cf0fdbd3a18149be942dd67e85b74e9841" alt="Image" width="73%" /></div></div>
+
+<div style="text-align: center;"><div style="text-align: center;">HÌNH 11.3 Đo lường earned value (EVM) trong agile</div></div>
+
+<h5>Họp Standup</h5>
+
+<p>Các cuộc họp standup có thể được sử dụng để nắm bắt tiến độ, cơ hội, mối đe dọa và các vấn đề. Chúng cũng có thể được dùng để chia sẻ thông tin giữa các thành viên nhóm và các bên liên quan khác.</p>
+
+<h5>Đánh Giá Vòng Lặp (Iteration Reviews)</h5>
+
+<p>Đây là các cuộc họp với mục đích cụ thể là nhóm demo cho khách hàng phần phạm vi mới được phát triển, và hoặc nhận được sự chấp thuận và ký kết cho phần tăng trưởng phạm vi đó, hoặc thu thập phản hồi cần thiết để thực hiện điều đó vào thời điểm sau.</p>
+
+<h5>Kết Quả Retrospective</h5>
+
+<p>Các kết quả này cũng có thể được đưa vào bảng thông tin. Trong môi trường hybrid, kết quả retrospective có thể đóng vai trò là bài học kinh nghiệm liên tục. Sau đó, các báo cáo bài học kinh nghiệm cần thiết vào cuối dự án được xây dựng từ chúng, góp phần vào tài sản quy trình tổ chức (OPA).</p>
+
+<h4 id="ch11-project-reporting">Báo Cáo Dự Án</h4>
+
+<p>Báo cáo dự án liên quan đến việc thông báo cho các bên liên quan về tiến độ dự án hiện tại và dự báo trong tương lai. Phần lớn thông tin đó đến từ các báo cáo hiệu suất công việc. Nó cũng bao gồm việc yêu cầu phản hồi từ các bên liên quan để đảm bảo họ đã nhận được thông tin cần thiết và hiểu rõ, đồng thời xác định xem họ có cần thêm thông tin không. Ngoài các tương tác hằng ngày, các cuộc họp và bảng thông tin, việc truyền thông này có thể ở dạng báo cáo văn bản, thuyết trình và cập nhật trên mạng nội bộ như được nêu trong kế hoạch quản lý truyền thông.</p>
+
+<p>Hãy nhớ những điều sau về báo cáo. Chúng nên:</p>
+
+<ul class="content-list">
+  <li>Được thiết kế phù hợp với nhu cầu của dự án.</li>
+  <li>Cung cấp thông tin ở mức độ chi tiết mà các bên liên quan yêu cầu.</li>
+  <li>Bao gồm các đo lường so với đường cơ sở đo lường hiệu suất đã đặt ra cho dự án, giai đoạn hoặc vòng lặp (về phạm vi, lịch trình, chi phí và chất lượng).</li>
+  <li>Sử dụng phương pháp truyền thông phù hợp nhất khi gửi thông tin.</li>
+  <li>Trung thực. Điều này không cần phải nói nhưng vì không phải lúc nào cũng như vậy, có thể có các câu hỏi thi về báo cáo liên quan đến trách nhiệm nghề nghiệp và xã hội.</li>
+  <li>Giúp các thành viên nhóm biết khi nào cần đề xuất và thực hiện các hành động khắc phục.</li>
+</ul>
+
+<p>Ngoài ra, phản hồi từ các bên liên quan (những người nhận báo cáo như một phần của quy trình này) cần được phân tích để cho phép điều chỉnh các truyền thông trong tương lai nhằm tiếp tục đáp ứng hoặc đáp ứng tốt hơn nhu cầu của các bên liên quan. Người quản lý dự án có thể phát hành các loại báo cáo sau:</p>
+
+<ul class="content-list">
+  <li><strong>Báo cáo trạng thái (Status report)</strong> Mô tả hiệu suất dự án so với đường cơ sở đo lường hiệu suất.</li>
+  <li><strong>Báo cáo tiến độ (Progress report)</strong> Mô tả những gì đã được hoàn thành.</li>
+  <li><strong>Báo cáo xu hướng (Trend report)</strong> Xem xét kết quả theo thời gian để đánh giá sự cải thiện hoặc suy giảm hiệu suất.</li>
+  <li><strong>Báo cáo dự báo (Forecasting report)</strong> Dự đoán trạng thái và hiệu suất dự án trong tương lai.</li>
+  <li><strong>Báo cáo phương sai (Variance report)</strong> So sánh kết quả thực tế với đường cơ sở đo lường hiệu suất.</li>
+  <li><strong>Báo cáo earned value (Earned value report)</strong> Tích hợp các đo lường phạm vi, chi phí và lịch trình để đánh giá hiệu suất dự án so với đường cơ sở và phương sai.</li>
+  <li><strong>Chỉ số tiến độ (Progress metrics)</strong> Các báo cáo như Sơ đồ Luồng Tích lũy (Cumulative Flow Diagrams) và biểu đồ burnup được dùng để đánh giá hiệu suất.</li>
+  <li><strong>Kết quả retrospective</strong> Được dùng để kiểm tra, thích ứng và cải thiện hiệu suất dự án và nhóm.</li>
+  <li><strong>Bài học kinh nghiệm (Lessons learned)</strong> Tóm tắt các bài học kinh nghiệm có thể được sử dụng ngay trên dự án hoặc dùng cho các dự án trong tương lai.</li>
+</ul>
+
+<h4 id="ch11-knowledge-sharing">Chia Sẻ Kiến Thức</h4>
+
+<p>Bất kỳ báo cáo nào được liệt kê trước đó đều có thể được sử dụng trong các dự án để chia sẻ thông tin. Thảo luận về thông tin này và ý nghĩa của nó để giúp nhau cải thiện hiệu suất cá nhân và dự án chính là chia sẻ kiến thức. Đây là thành phần then chốt của quản lý truyền thông dự án thành công. Thông tin là yếu tố cơ bản của bất kỳ dự án nào nên nó phải được phân phối và chia sẻ. Bạn có từng quản lý dự án mà nhóm báo cáo họ không có đủ thông tin cần thiết, hoặc họ không biết cách sử dụng thông tin mình đã nhận chưa?</p>
+
+<div class="callout">
+<p><strong>Ví dụ</strong> Giả sử một thành viên nhóm không thể hoàn thành nhiệm vụ hoặc hoạt động vì thiếu thông tin hoặc kiến thức. Điều này xảy ra do kỳ nghỉ của một thành viên nhóm không được thông báo cho cả nhóm. Điều đó sẽ ảnh hưởng đến dự án như thế nào? Có thể làm gì khác đi để tránh vấn đề đó? Nếu nhóm dự án chia sẻ thông tin và kiến thức đúng cách, thành viên nhóm đó sẽ không gặp khó khăn khi hoàn thành công việc của mình.</p>
+</div>
+
+<p>Các dự án agile đón nhận việc chia sẻ kiến thức bằng nhiều công cụ:</p>
+
+<ul class="content-list">
+  <li>Các cuộc họp standup hằng ngày</li>
+  <li>Demo sản phẩm</li>
+  <li>Bảng Kanban</li>
+  <li>Bảng thông tin (Information radiators)</li>
+  <li>Personas</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//4fbea65f-24af-4ec7-a87d-022d3a28caa9/markdown_4/imgs/img_in_image_box_667_162_718_221.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A35Z%2F-1%2F%2F367783a4f6f681a82550a8335a8ba2ef063cad2e99d61da56462902289282fbb" alt="Image" width="6%" /></div></div>
+
+<ul class="content-list">
+  <li>Lập kế hoạch phát hành và vòng lặp</li>
+  <li>Wireframe (một dạng tạo mẫu độ trung thực thấp)</li>
+  <li>Retrospectives</li>
+</ul>
+
+<p>Tương tự, agile nhấn mạnh lập kế hoạch cộng tác, ước tính và retrospective. Điều này cho phép nhóm dự án cùng nhau thu thập và chia sẻ kiến thức dự án.</p>
+
+<h4 id="ch11-information-radiators">Bảng Thông Tin (Information Radiators)</h4>
+
+<p>Bảng Kanban (xem hình 11.4) là phương pháp giới hạn WIP và là bảng thông tin hiển thị WIP. Bảng Kanban là cách tuyệt vời để theo dõi luồng công việc, tiến độ dự án và minh họa WIP.</p>
+
+<p>Các cuộc họp không chính thức thường diễn ra trước các bảng nhiệm vụ này. Việc nhìn thấy công việc đã hoàn thành dồn lên ở phía bên phải của bảng cũng tạo cảm hứng cho cả các bên liên quan lẫn thành viên nhóm.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//4fbea65f-24af-4ec7-a87d-022d3a28caa9/markdown_4/imgs/img_in_image_box_287_336_734_518.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A35Z%2F-1%2F%2Fbf0bbec36c0a2fcba97a4de157edb9cb2a418f36de4372b9582f342c192f2f33" alt="Image" width="54%" /></div></div>
+
+<div style="text-align: center;"><div style="text-align: center;">HÌNH 11.4 Bảng Kanban</div></div>
+
+<p>Các loại thông tin được hiển thị qua bảng thông tin có thể bao gồm các biểu đồ lớn, đồ thị, tóm tắt dữ liệu — hoặc thậm chí màn hình máy tính hiển thị kết quả tích hợp liên tục trên các dự án phần mềm. Được đặt ở những khu vực có nhiều người qua lại, chúng cho phép bất kỳ ai cũng có thể xem tiến độ dự án bất cứ lúc nào.</p>
+
+<p>Thông tin được hiển thị bằng bảng thông tin có thể bao gồm:</p>
+
+<ul class="content-list">
+  <li>Các tính năng đã bàn giao cho đến nay và các tính năng còn lại cần bàn giao</li>
+  <li>Ai đang làm gì</li>
+  <li>Chỉ số vận tốc (Velocity metrics)</li>
+  <li>Các tính năng cho vòng lặp hiện tại</li>
+  <li>Chỉ số lỗi (Defect metrics)</li>
+  <li>Danh sách các vấn đề, mối đe dọa và cơ hội (rủi ro)</li>
+  <li>Biểu đồ burn (Burn charts)</li>
+  <li>Bản đồ story (Story maps)</li>
+</ul>
+
+<h4 id="ch11-artifacts-manage-communications">Các Sản Phẩm Đầu Ra Của Quy Trình Quản Lý Truyền Thông</h4>
+
+<p>Báo cáo, bảng thông tin và các truyền thông riêng lẻ là các sản phẩm đầu ra của truyền thông dự án, thường được lưu giữ dưới dạng văn bản trong hệ thống thông tin quản lý dự án (PMIS). Các bảng thông tin thủ công thường được chụp ảnh trước khi thay đổi đáng kể. Ví dụ, một bản vẽ trên bảng trắng có thể được ghi lại theo cách này trước khi bị xóa và vẽ lại với các lựa chọn mới. Dưới đây là một số sản phẩm chính thức hơn được cập nhật thường xuyên:</p>
+
+<ul class="content-list">
+  <li>Truyền thông dự án</li>
+  <li>Kế hoạch quản lý truyền thông</li>
+  <li>Cập nhật kế hoạch quản lý các bên liên quan</li>
+  <li>Cập nhật tài liệu dự án
+    <ul class="content-list">
+      <li>Nhật ký vấn đề (Issue log)</li>
+      <li>Bài học kinh nghiệm (Lessons learned)</li>
+      <li>Sổ đăng ký rủi ro (Risk register)</li>
+      <li>Sổ đăng ký các bên liên quan (Stakeholder register)</li>
+    </ul>
+  </li>
+  <li>Tài sản quy trình tổ chức (OPA)</li>
+</ul>
+
+<h4 id="ch11-monitor-communication-effectiveness">Giám Sát Hiệu Quả Truyền Thông</h4>
+
+<p>Tất nhiên, khi người quản lý dự án đang quản lý (hoặc thực hiện) truyền thông hiệu quả trong dự án, họ đồng thời giám sát nó để đảm bảo hiệu lực liên tục. Người lãnh đạo dự án cần đánh giá và đảm bảo thông tin đang được truyền đi như kế hoạch — đúng cách, đến đúng người và vào đúng thời điểm. Điều này thực sự giúp các bên liên quan và nhóm được thông báo đầy đủ và duy trì mức độ tham gia mong muốn của các bên liên quan. Phần trước đã liệt kê các loại dữ liệu và báo cáo với giả định bạn biết cách thu thập dữ liệu và chuyển đổi nó thành thông tin.</p>
+
+<p>Nếu bạn chưa quen với các kỹ thuật thu thập và đánh giá dữ liệu, hãy nghĩ về cách bạn sẽ sử dụng chúng và chúng có thể khác nhau như thế nào trên các loại dự án khác nhau. Quy trình này bao gồm:</p>
+
+<div class="callout tip">
+<p><strong>Nhóm Quy Trình:</strong> Giám Sát và Kiểm Soát<br>
+<strong>Mô Hình Nhóm Quy Trình</strong><br>
+<strong>ECO</strong><br>
+Quy trình: Giám Sát Truyền Thông<br>
+Lĩnh vực II<br>
+Nhiệm vụ 2: Quản lý truyền thông<br>
+<strong>PMBOK Guide</strong><br>
+Lĩnh vực 2.1 Các bên liên quan<br>
+Lĩnh vực 2.2 Nhóm<br>
+Lĩnh vực 2.5 Công việc dự án<br>
+Lĩnh vực 2.8 Sự không chắc chắn</p>
+</div>
+
+<ul class="content-list">
+  <li>Quan sát để xác định xem kế hoạch quản lý truyền thông có đang được tuân thủ không</li>
+  <li>Xác nhận rằng truyền thông và phản hồi được hiểu rõ</li>
+  <li>Đảm bảo rằng truyền thông đáp ứng nhu cầu của các bên liên quan</li>
+  <li>Xác định nơi truyền thông đang bị gián đoạn (nếu cần)</li>
+  <li>Điều chỉnh khi cần thiết để đáp ứng nhu cầu của các bên liên quan và nhóm</li>
+</ul>
+
+<p>Làm thế nào người quản lý dự án có thể biết nếu truyền thông đang bị gián đoạn? Ngoài các chỉ số đã thiết lập, họ dựa vào các kỹ năng giao tiếp cá nhân và lãnh đạo. Một số vấn đề có thể rõ ràng hơn các vấn đề khác. Các bên liên quan dự án có thể cho người quản lý dự án biết, ví dụ, nếu họ không nhận được các báo cáo hoặc thông tin mà họ đáng lẽ phải nhận. Hoặc người quản lý dự án sẽ được thông báo nếu nhóm dự án không theo dõi các hạng mục hành động được thiết lập thông qua các truyền thông trước đó. Ngoài ra, các thành viên nhóm dự án nên báo cáo bất kỳ vấn đề truyền thông nào họ gặp phải và giúp xác định các cách cải thiện truyền thông trong dự án. Đây là những lý do tại sao điều quan trọng là khuyến khích tất cả các bên liên quan cho người quản lý dự án biết liệu truyền thông dự án có đáp ứng nhu cầu của họ không. Bạn có làm điều này trong các dự án của mình không?</p>
+
+<h4 id="ch11-putting-it-all-together">Tổng Kết</h4>
+
+<p>Truyền thông không chỉ là công nghệ; nó còn bao gồm các kỹ năng giao tiếp cá nhân và làm việc nhóm mà mọi người quản lý dự án cần để trở thành người lãnh đạo thành công. Hãy đảm bảo bạn hiểu các phương pháp truyền thông khác nhau và những gì có trong kế hoạch quản lý truyền thông.</p>
+
+<p>Các khái niệm quan trọng có thể được tìm thấy trong bài kiểm tra nhanh ở đầu chương. Hãy sử dụng nó để tìm bất kỳ khoảng trống nào trong kiến thức của bạn. Xem lại chương một lần nữa để lấp đầy những khoảng trống đó, sau đó hoàn thành bài tập dưới đây.</p>
+
+<h3 id="ch11-exercise-11-2">11.2 Bài Tập</h3>
+
+<p>Hãy đưa ra ví dụ về các thách thức truyền thông mà người quản lý dự án có thể gặp với từng bên liên quan hoặc nhóm các bên liên quan trong nghiên cứu tình huống thư viện của chúng ta. Đề xuất các ý tưởng cho kế hoạch truyền thông tốt.</p>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;"><strong>Bên liên quan hoặc nhóm</strong></td>
+    <td style="text-align: center; word-wrap: break-word;"><strong>Thách thức truyền thông với bên liên quan này là gì?</strong></td>
+    <td style="text-align: center; word-wrap: break-word;"><strong>Người quản lý dự án sẽ giao tiếp tốt nhất với bên liên quan này như thế nào?</strong></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">Thị trưởng</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">Hội đồng thành phố</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">Độc giả / Người dùng</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">Thủ thư</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">Nhóm xây dựng</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+</table>
+</div>
+
+<h4 id="ch11-exercise-11-2-answer">Đáp Án</h4>
+
+<p>Dưới đây là một số câu trả lời mẫu. Bạn có thể đã nghĩ ra một số ý tưởng khác.</p>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;"><strong>Bên liên quan hoặc nhóm</strong></td>
+    <td style="text-align: center; word-wrap: break-word;"><strong>Thách thức truyền thông với bên liên quan này là gì?</strong></td>
+    <td style="text-align: center; word-wrap: break-word;"><strong>Người quản lý dự án sẽ giao tiếp tốt nhất với bên liên quan này như thế nào?</strong></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">Thị trưởng</td>
+    <td style="text-align: center; word-wrap: break-word;">Thị trưởng bận rộn và có nhiều vấn đề khác cần quản lý.</td>
+    <td style="text-align: center; word-wrap: break-word;">Vì thị trưởng có lẽ bận rộn, người quản lý dự án nên làm quen với trợ lý của thị trưởng và hỏi về cách thức giao tiếp tốt nhất.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">Hội đồng thành phố</td>
+    <td style="text-align: center; word-wrap: break-word;">Một số thành viên hội đồng luôn trong tình trạng tranh cử và có thể đang dùng thư viện như một vấn đề chính trị.</td>
+    <td style="text-align: center; word-wrap: break-word;">Người quản lý dự án nên truyền đạt các thông điệp giống nhau đến tất cả các thành viên hội đồng.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">Độc giả / Người dùng</td>
+    <td style="text-align: center; word-wrap: break-word;">Nhóm lớn, ít tiếp xúc trực tiếp.</td>
+    <td style="text-align: center; word-wrap: break-word;">Thông báo công khai trên báo và tạp chí. Khảo sát.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">Thủ thư</td>
+    <td style="text-align: center; word-wrap: break-word;">Thủ thư có thể quen với thư viện hiện tại và chống lại sự thay đổi.</td>
+    <td style="text-align: center; word-wrap: break-word;">Giữ thủ thư tham gia vào tất cả các quyết định.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">Nhóm xây dựng</td>
+    <td style="text-align: center; word-wrap: break-word;">Được quản lý bởi công ty khác nên người quản lý dự án không có thẩm quyền trực tiếp.</td>
+    <td style="text-align: center; word-wrap: break-word;">Làm việc với ban quản lý công ty xây dựng để truyền đạt thông tin đến các công nhân.</td>
+  </tr>
+</table>
+</div>
+
+
+</main>
+
+<button id="back-top" aria-label="Về đầu trang">↑</button>
+
+<script>
+// Progress bar
+const pb=document.getElementById('progress-bar');
+function updPB(){const d=document.documentElement;pb.style.width=Math.min((d.scrollTop/(d.scrollHeight-d.clientHeight))*100,100)+'%'}
+window.addEventListener('scroll',updPB,{passive:true});
+
+// Back to top
+const bt=document.getElementById('back-top');
+window.addEventListener('scroll',()=>{bt.style.opacity=scrollY>400?'1':'0';},{passive:true});
+bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+// Mobile menu
+const mb=document.getElementById('menu-btn'),sb=document.getElementById('sidebar');
+mb.addEventListener('click',()=>sb.classList.toggle('open'));
+document.addEventListener('click',e=>{if(!sb.contains(e.target)&&e.target!==mb)sb.classList.remove('open')});
+
+// Active TOC highlight on scroll
+const tocLinks=document.querySelectorAll('#sidebar-toc a[href^="#"]');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      tocLinks.forEach(a=>a.classList.remove('active'));
+      const a=document.querySelector('#sidebar-toc a[href="#'+e.target.id+'"]');
+      if(a){a.classList.add('active');a.scrollIntoView({block:'nearest',behavior:'smooth'})}
+    }
+  })
+},{rootMargin:'-20% 0px -75% 0px'});
+document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
+
+// ── THEME + READING POSITION ───────────────────────────
+(function(){
+  var THEME_KEY='rita_theme', READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var chapNum=m?m[1]:null;
+
+  // Build & inject theme toggle button
+  var hdr=document.getElementById('sidebar-header');
+  if(hdr){
+    var btn=document.createElement('button');
+    btn.id='theme-btn';
+    var curTheme=document.documentElement.getAttribute('data-theme')||'light';
+    btn.textContent=curTheme==='dark'?'☀':'🌙';
+    btn.title='Giao diện sáng / tối';
+    hdr.appendChild(btn);
+    btn.addEventListener('click',function(){
+      var next=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+      document.documentElement.setAttribute('data-theme',next);
+      localStorage.setItem(THEME_KEY,next);
+      btn.textContent=next==='dark'?'☀':'🌙';
+    });
+  }
+
+  if(!chapNum) return;
+
+  // Save last chapter visited
+  try{
+    var rd=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    rd.lastChap='rita_chap'+chapNum;
+    if(!rd.scrollPos) rd.scrollPos={};
+    localStorage.setItem(READ_KEY,JSON.stringify(rd));
+  }catch(e){}
+
+  // Restore scroll position
+  try{
+    var rdR=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    var savedPos=rdR.scrollPos&&rdR.scrollPos[chapNum]||0;
+    if(savedPos>200) setTimeout(function(){window.scrollTo(0,savedPos);},120);
+  }catch(e){}
+
+  // Save scroll position (debounced 600ms)
+  var saveT;
+  window.addEventListener('scroll',function(){
+    clearTimeout(saveT);
+    saveT=setTimeout(function(){
+      try{
+        var r2=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+        if(!r2.scrollPos) r2.scrollPos={};
+        r2.scrollPos[chapNum]=window.scrollY;
+        r2.lastChap='rita_chap'+chapNum;
+        localStorage.setItem(READ_KEY,JSON.stringify(r2));
+      }catch(e){}
+    },600);
+  },{passive:true});
+})();
+
+// ── HIGHLIGHT / NOTES SYSTEM ────────────────────────────
+(function(){
+  var READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  if(!m) return;
+  var chapNum=m[1];
+  var HL_KEY='rita_hl_'+chapNum;
+
+  // ── STORAGE ──
+  function loadHL(){try{return JSON.parse(localStorage.getItem(HL_KEY)||'[]')}catch(e){return[]}}
+  function saveHL(arr){localStorage.setItem(HL_KEY,JSON.stringify(arr));window.__ritaSyncTrigger&&window.__ritaSyncTrigger();}
+  function genId(){return 'h'+Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
+
+  // ── XPATH HELPERS ──
+  var mainEl=document.getElementById('main');
+  function getXPath(node){
+    if(!node||node===mainEl) return '.';
+    var parts=[];
+    var cur=node.nodeType===3?node.parentNode:node;
+    while(cur&&cur!==mainEl&&cur!==document.body){
+      var tag=cur.tagName.toLowerCase();
+      var idx=1,sib=cur.previousElementSibling;
+      while(sib){if(sib.tagName&&sib.tagName.toLowerCase()===tag)idx++;sib=sib.previousElementSibling;}
+      parts.unshift(tag+'['+idx+']');
+      cur=cur.parentElement;
+    }
+    return parts.join('/');
+  }
+  function resolveXPath(xpath){
+    if(!mainEl||xpath==='.') return mainEl;
+    try{
+      var r=document.evaluate('.//'+xpath,mainEl,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);
+      return r.singleNodeValue;
+    }catch(e){return null;}
+  }
+  function findTextAt(el,offset){
+    var walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null);
+    var count=0,node;
+    while((node=walker.nextNode())){
+      var len=node.textContent.length;
+      if(count+len>=offset) return{node:node,localOffset:offset-count};
+      count+=len;
+    }
+    return null;
+  }
+
+  // ── APPLY MARK TO DOM ──
+  function applyMark(hl){
+    try{
+      var sEl=resolveXPath(hl.sxp), eEl=resolveXPath(hl.exp);
+      if(!sEl||!eEl) return false;
+      var sInfo=sEl.nodeType===3?{node:sEl,localOffset:hl.so}:findTextAt(sEl,hl.so);
+      var eInfo=eEl.nodeType===3?{node:eEl,localOffset:hl.eo}:findTextAt(eEl,hl.eo);
+      if(!sInfo||!eInfo) return false;
+      var range=document.createRange();
+      range.setStart(sInfo.node,sInfo.localOffset);
+      range.setEnd(eInfo.node,eInfo.localOffset);
+      applyRange(range,hl.id,hl.color,hl.note||'');
+      return true;
+    }catch(e){return false;}
+  }
+  function applyRange(range,hlId,color,note){
+    var walker=document.createTreeWalker(
+      range.commonAncestorContainer.nodeType===3
+        ?range.commonAncestorContainer.parentNode
+        :range.commonAncestorContainer,
+      NodeFilter.SHOW_TEXT,null
+    );
+    var nodes=[],node;
+    while((node=walker.nextNode())){if(range.intersectsNode(node))nodes.push(node);}
+    nodes.forEach(function(tn){
+      var s=tn===range.startContainer?range.startOffset:0;
+      var e=tn===range.endContainer?range.endOffset:tn.textContent.length;
+      if(s>=e) return;
+      var nr=document.createRange();
+      nr.setStart(tn,s); nr.setEnd(tn,Math.min(e,tn.textContent.length));
+      try{
+        var mk=document.createElement('mark');
+        mk.className='hl'; mk.setAttribute('data-hl-id',hlId);
+        mk.setAttribute('data-color',color); mk.setAttribute('data-note',note);
+        nr.surroundContents(mk);
+      }catch(err){
+        try{
+          var c=nr.extractContents(),mk2=document.createElement('mark');
+          mk2.className='hl'; mk2.setAttribute('data-hl-id',hlId);
+          mk2.setAttribute('data-color',color); mk2.setAttribute('data-note',note);
+          mk2.appendChild(c); nr.insertNode(mk2);
+        }catch(_){}
+      }
+    });
+  }
+  function removeMarks(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      var p=mk.parentNode;
+      while(mk.firstChild)p.insertBefore(mk.firstChild,mk);
+      p.removeChild(mk);
+      p.normalize();
+    });
+  }
+  function updateMarks(hlId,color,note){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.setAttribute('data-color',color);
+      mk.setAttribute('data-note',note);
+    });
+  }
+
+  // ── RESTORE HIGHLIGHTS ON LOAD ──
+  var highlights=loadHL();
+  // Sort by sxp+so descending so earlier ranges aren't offset by later insertions
+  // Actually apply in order (each one is independent)
+  highlights.forEach(applyMark);
+  // Expose re-apply for sync module
+  window.__ritaReapplyMarks=function(){
+    document.querySelectorAll('mark.hl').forEach(function(mk){
+      var p=mk.parentNode;while(mk.firstChild)p.insertBefore(mk.firstChild,mk);p.removeChild(mk);p.normalize();
+    });
+    loadHL().forEach(applyMark);
+    if(typeof updateBadge==='function') updateBadge();
+    if(typeof renderPanelIfOpen==='function') renderPanelIfOpen();
+  };
+
+  // ── SIDEBAR BUTTON ──
+  function updateBadge(){
+    var hls=loadHL();
+    var badge=document.getElementById('hl-badge');
+    if(badge) badge.textContent=hls.length||'0';
+  }
+  var sidebarNav=document.getElementById('sidebar-toc');
+  if(sidebarNav){
+    var hlBtn=document.createElement('button');
+    hlBtn.id='hl-sidebar-btn';
+    hlBtn.innerHTML='<span>✏ Ghi chú & Highlight</span><span id="hl-badge">0</span>';
+    hlBtn.addEventListener('click',function(){openPanel();});
+    // Insert before sidebar-nav (bottom buttons)
+    var sidebarNavBottom=document.getElementById('sidebar-nav');
+    if(sidebarNavBottom) sidebarNavBottom.parentNode.insertBefore(hlBtn,sidebarNavBottom);
+    else document.getElementById('sidebar').appendChild(hlBtn);
+  }
+  updateBadge();
+
+  // ── PANEL ──
+  var panel=document.createElement('div');
+  panel.id='hl-panel';
+  panel.innerHTML='<div id="hl-panel-hdr"><h3>✏ Ghi Chú & Highlight</h3><button id="hl-panel-close">×</button></div><div id="hl-panel-list"></div>';
+  document.body.appendChild(panel);
+  document.getElementById('hl-panel-close').addEventListener('click',closePanel);
+  function openPanel(){renderPanel();panel.classList.add('open');}
+  function closePanel(){panel.classList.remove('open');}
+  function renderPanel(){
+    var list=document.getElementById('hl-panel-list');
+    var hls=loadHL();
+    list.innerHTML='';
+    hls.forEach(function(hl){
+      var item=document.createElement('div');
+      item.className='hl-item'; item.setAttribute('data-color',hl.color);
+      var noteHtml=hl.note?'<div class="hl-item-note">✏ '+escHtml(hl.note)+'</div>':'';
+      item.innerHTML='<button class="hl-item-del" data-id="'+hl.id+'">🗑</button>'
+        +'<div class="hl-item-text">'+escHtml(hl.text||'')+'</div>'+noteHtml;
+      item.addEventListener('click',function(e){
+        if(e.target.classList.contains('hl-item-del')) return;
+        var mk=document.querySelector('mark.hl[data-hl-id="'+hl.id+'"]');
+        if(mk){mk.scrollIntoView({behavior:'smooth',block:'center'});flashMark(hl.id);}
+        closePanel();
+      });
+      item.querySelector('.hl-item-del').addEventListener('click',function(e){
+        e.stopPropagation(); deleteHL(hl.id); renderPanel();
+      });
+      list.appendChild(item);
+    });
+  }
+
+  // ── POPUP ──
+  var popup=document.createElement('div');
+  popup.id='hl-popup'; popup.className='hidden';
+  popup.innerHTML=
+    '<button class="hl-color-btn" data-color="yellow" title="Vàng"></button>'
+    +'<button class="hl-color-btn" data-color="green" title="Xanh"></button>'
+    +'<button class="hl-color-btn" data-color="red" title="Đỏ"></button>'
+    +'<div class="hl-sep"></div>'
+    +'<button class="hl-note-btn" title="Thêm ghi chú">✏</button>'
+    +'<button class="hl-del-btn hl-del-action" title="Xóa">🗑</button>';
+  document.body.appendChild(popup);
+
+  var currentHlId=null;    // id being edited (null = new)
+  var pendingRange=null;   // Range for new highlight
+  var pendingXP=null;      // serialized position for new highlight
+
+  // Position popup near a rect
+  function positionPopup(rect){
+    var pw=popup.offsetWidth||160,ph=popup.offsetHeight||40;
+    var top=rect.top-ph-10+window.scrollY;
+    var left=rect.left+(rect.width-pw)/2;
+    if(top<window.scrollY+8) top=rect.bottom+10+window.scrollY;
+    left=Math.max(8,Math.min(left,window.innerWidth-pw-8));
+    popup.style.top=top+'px';
+    popup.style.left=left+'px';
+  }
+  function showPopup(rect,hlId){
+    currentHlId=hlId||null;
+    var isEdit=!!hlId;
+    popup.querySelector('.hl-del-action').style.display=isEdit?'':'none';
+    popup.querySelector('.hl-note-btn').style.display='';
+    popup.classList.remove('hidden');
+    positionPopup(rect);
+  }
+  function hidePopup(){
+    popup.classList.add('hidden');
+    pendingRange=null; pendingXP=null; currentHlId=null;
+  }
+
+  // Color buttons
+  popup.querySelectorAll('.hl-color-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var color=btn.getAttribute('data-color');
+      if(currentHlId){
+        // Update existing
+        var hls=loadHL();
+        var idx=hls.findIndex(function(h){return h.id===currentHlId;});
+        if(idx>=0){hls[idx].color=color;saveHL(hls);}
+        updateMarks(currentHlId,color,hls[idx]?hls[idx].note||'':'');
+        updateBadge(); renderPanelIfOpen();
+      } else if(pendingRange&&pendingXP){
+        // Create new
+        var id=genId();
+        var text=pendingRange.toString().substring(0,500);
+        applyRange(pendingRange,id,color,'');
+        pendingRange.collapse();
+        window.getSelection()&&window.getSelection().removeAllRanges();
+        var hls=loadHL();
+        hls.push({id:id,color:color,note:'',text:text,
+          sxp:pendingXP.sxp,so:pendingXP.so,exp:pendingXP.exp,eo:pendingXP.eo});
+        saveHL(hls); updateBadge(); renderPanelIfOpen();
+      }
+      hidePopup();
+    });
+  });
+
+  // Note button
+  popup.querySelector('.hl-note-btn').addEventListener('click',function(){
+    var id=currentHlId;
+    var existing='';
+    if(id){var hls=loadHL();var h=hls.find(function(x){return x.id===id;});if(h)existing=h.note||'';}
+    hidePopup();
+    openNoteModal(id,existing);
+  });
+
+  // Delete button
+  popup.querySelector('.hl-del-action').addEventListener('click',function(){
+    if(currentHlId) deleteHL(currentHlId);
+    hidePopup();
+  });
+
+  function deleteHL(id){
+    removeMarks(id);
+    var hls=loadHL().filter(function(h){return h.id!==id;});
+    saveHL(hls); updateBadge(); renderPanelIfOpen();
+  }
+
+  // ── NOTE MODAL ──
+  var noteModal=document.createElement('div');
+  noteModal.id='hl-note-modal'; noteModal.className='hidden';
+  noteModal.innerHTML='<div id="hl-note-box">'
+    +'<h3>✏ Ghi chú</h3>'
+    +'<textarea id="hl-note-ta" placeholder="Nhập ghi chú..."></textarea>'
+    +'<div class="hl-note-actions">'
+    +'<button class="hl-note-cancel">Hủy</button>'
+    +'<button class="hl-note-save">Lưu</button>'
+    +'</div></div>';
+  document.body.appendChild(noteModal);
+  var _noteTargetId=null;
+  function openNoteModal(hlId,existing){
+    _noteTargetId=hlId;
+    document.getElementById('hl-note-ta').value=existing||'';
+    noteModal.classList.remove('hidden');
+    setTimeout(function(){document.getElementById('hl-note-ta').focus();},50);
+  }
+  noteModal.querySelector('.hl-note-cancel').addEventListener('click',function(){noteModal.classList.add('hidden');});
+  noteModal.querySelector('.hl-note-save').addEventListener('click',function(){
+    var note=document.getElementById('hl-note-ta').value.trim();
+    if(_noteTargetId){
+      var hls=loadHL();
+      var idx=hls.findIndex(function(h){return h.id===_noteTargetId;});
+      if(idx>=0){hls[idx].note=note;saveHL(hls);updateMarks(_noteTargetId,hls[idx].color,note);updateBadge();renderPanelIfOpen();}
+    }
+    noteModal.classList.add('hidden');
+  });
+  noteModal.addEventListener('click',function(e){if(e.target===noteModal)noteModal.classList.add('hidden');});
+
+  // ── SELECTION HANDLER ──
+  document.addEventListener('mouseup',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    setTimeout(function(){
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed||!sel.rangeCount){hidePopup();return;}
+      var range=sel.getRangeAt(0);
+      var text=range.toString().trim();
+      if(!text||text.length<2){hidePopup();return;}
+      // Only highlight within #main
+      if(!mainEl||!mainEl.contains(range.commonAncestorContainer)){hidePopup();return;}
+      // Serialize positions
+      var sNode=range.startContainer,eNode=range.endContainer;
+      var sParent=sNode.nodeType===3?sNode.parentNode:sNode;
+      var eParent=eNode.nodeType===3?eNode.parentNode:eNode;
+      var sxp=getXPath(sParent),exp=getXPath(eParent);
+      // calc offsets within parent element
+      var so=0,eo=0;
+      var w=document.createTreeWalker(sParent,NodeFilter.SHOW_TEXT,null);
+      var n;while((n=w.nextNode())){if(n===sNode){so+=range.startOffset;break;}so+=n.textContent.length;}
+      var w2=document.createTreeWalker(eParent,NodeFilter.SHOW_TEXT,null);
+      while((n=w2.nextNode())){if(n===eNode){eo+=range.endOffset;break;}eo+=n.textContent.length;}
+      pendingRange=range.cloneRange();
+      pendingXP={sxp:sxp,so:so,exp:exp,eo:eo};
+      currentHlId=null;
+      var rect=range.getBoundingClientRect();
+      showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width});
+    },10);
+  });
+
+  // ── CLICK ON EXISTING MARK ──
+  document.addEventListener('click',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    var mk=e.target.closest('mark.hl');
+    if(!mk){
+      // click outside: if selection is collapsed, hide popup
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed) hidePopup();
+      return;
+    }
+    e.stopPropagation();
+    var hlId=mk.getAttribute('data-hl-id');
+    var rect=mk.getBoundingClientRect();
+    currentHlId=hlId;
+    pendingRange=null;pendingXP=null;
+    showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width},hlId);
+  });
+
+  // ── FLASH EFFECT ──
+  function flashMark(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.style.transition='outline .2s';mk.style.outline='3px solid #c9a84c';
+      setTimeout(function(){mk.style.outline='none';},1500);
+    });
+  }
+
+  function renderPanelIfOpen(){if(panel.classList.contains('open'))renderPanel();}
+
+  function escHtml(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+})();
+
+
+// ── CHAPTER NAV PANEL ───────────────────────────────────
+(function(){
+  var CHAPS=[
+    [1,'rita_chap01.html','Mẹo & Thủ Thuật Ôn Thi PMP®'],
+    [2,'rita_chap02.html','Tài Liệu Tham Khảo Kỳ Thi'],
+    [3,'rita_chap03.html','Nền Tảng Quản Lý Dự Án'],
+    [4,'rita_chap04.html','Tích Hợp'],
+    [5,'rita_chap05.html','Kỹ Năng Lãnh Đạo'],
+    [6,'rita_chap06.html','Xây Dựng & Hỗ Trợ Hiệu Suất Nhóm'],
+    [7,'rita_chap07.html','Phạm Vi Dự Án'],
+    [8,'rita_chap08.html','Tiến Độ & Ngân Sách Dự Án'],
+    [10,'rita_chap10.html','Chất Lượng Sản Phẩm Bàn Giao'],
+    [11,'rita_chap11.html','Truyền Thông'],
+    [12,'rita_chap12.html','Rủi Ro & Vấn Đề'],
+    [13,'rita_chap13.html','Mua Sắm'],
+    [14,'rita_chap14.html','Các Bên Liên Quan'],
+    [15,'rita_chap15.html','Tuân Thủ & Mang Lại Giá Trị'],
+    [16,'rita_chap16.html','Mẹo Vượt Qua Kỳ Thi PMP®'],
+    [17,'rita_chap17.html','Các Phương Pháp Agile Phổ Biến'],
+    [18,'rita_chap18.html','Hướng Dẫn PMBOK & Tiêu Chuẩn PM']
+  ];
+
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var curNum=m?parseInt(m[1]):null;
+  var READ_KEY='rita_reading';
+
+  // Build panel DOM
+  var panel=document.createElement('div');
+  panel.id='chap-panel'; panel.className='hidden';
+  var listHtml='';
+  CHAPS.forEach(function(c){
+    var isActive=c[0]===curNum;
+    listHtml+='<a class="chap-panel-item'+(isActive?' active':'')+'" href="'+c[1]+'">'
+      +'<span class="cpanel-num">Ch'+c[0]+'</span>'
+      +'<span class="cpanel-title">'+c[2]+'</span>'
+      +(isActive?'<span class="cpanel-status">● Đang đọc</span>':'')
+      +'</a>';
+  });
+  panel.innerHTML='<div id="chap-panel-overlay"></div>'
+    +'<div id="chap-panel-box">'
+    +'<div id="chap-panel-hdr"><h3>☰ Danh Sách Chương</h3><button id="chap-panel-close">×</button></div>'
+    +'<div id="chap-panel-list">'+listHtml+'</div>'
+    +'</div>';
+  document.body.appendChild(panel);
+
+  function openChapPanel(){panel.classList.remove('hidden');}
+  function closeChapPanel(){panel.classList.add('hidden');}
+  document.getElementById('chap-panel-overlay').addEventListener('click',closeChapPanel);
+  document.getElementById('chap-panel-close').addEventListener('click',closeChapPanel);
+
+  // Wire up the Mục lục button
+  var mucLucBtn=document.getElementById('chap-muc-luc-btn');
+  if(mucLucBtn) mucLucBtn.addEventListener('click',function(e){e.preventDefault();openChapPanel();});
+})();
+
+
+// ── GITHUB HIGHLIGHTS SYNC ──────────────────────────
+(function(){
+  var REPO='goukakujlptsuport-beep/pmbok6';
+  var TOKEN_KEY='rita_gh_token';
+  var API_URL='https://api.github.com/repos/'+REPO+'/contents/data/rita_highlights.json';
+  var fileSha=null;
+  var syncTimer=null;
+
+  // Called by patched saveHL after every highlight change
+  window.__ritaSyncTrigger=function(){
+    clearTimeout(syncTimer);
+    syncTimer=setTimeout(pushToGitHub,3000);
+  };
+
+  // ── STATUS BUTTON (inserted before #sidebar-nav) ──
+  var btn=document.createElement('button');
+  btn.id='sync-btn'; btn.dataset.state='no-token';
+  btn.innerHTML='<span>☁ Sync Git</span><span id="sync-status-text">Đang kết nối…</span>';
+  btn.title='Đồng bộ highlight / ghi chú lên GitHub';
+  btn.addEventListener('click',handleSyncClick);
+  var sidebarNavEl=document.getElementById('sidebar-nav');
+  if(sidebarNavEl) sidebarNavEl.parentNode.insertBefore(btn,sidebarNavEl);
+
+  var statusText=document.getElementById('sync-status-text');
+  function setStatus(state,msg){
+    btn.dataset.state=state;
+    if(statusText) statusText.textContent=msg;
+  }
+
+  // ── TOKEN MODAL ──
+  var modal=document.createElement('div');
+  modal.id='sync-modal'; modal.className='hidden';
+  modal.innerHTML='<div id="sync-modal-box">'
+    +'<h3>☁ Cấu Hình GitHub Sync</h3>'
+    +'<p>Nhập <strong style="color:var(--gold)">GitHub Personal Access Token (PAT)</strong> để đồng bộ highlight giữa các thiết bị.<br>'
+    +'Token cần quyền <strong style="color:var(--gold-lt)">Contents: Read &amp; Write</strong> trên repo pmbok6.<br>'
+    +'Token được lưu trong localStorage của trình duyệt này.</p>'
+    +'<input id="sync-token-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" spellcheck="false" autocomplete="off">'
+    +'<div class="sync-modal-btns">'
+    +'<button id="sync-clear-btn">🗑 Xóa token</button>'
+    +'<button id="sync-cancel-btn">Hủy</button>'
+    +'<button id="sync-save-btn">💾 Lưu &amp; Sync</button>'
+    +'</div></div>';
+  document.body.appendChild(modal);
+
+  document.getElementById('sync-cancel-btn').addEventListener('click',function(){modal.classList.add('hidden');});
+  document.getElementById('sync-save-btn').addEventListener('click',function(){
+    var t=(document.getElementById('sync-token-input').value||'').trim();
+    if(!t){alert('Vui lòng nhập GitHub PAT!');return;}
+    localStorage.setItem(TOKEN_KEY,t);
+    modal.classList.add('hidden');
+    fileSha=null;
+    initSync();
+  });
+  document.getElementById('sync-clear-btn').addEventListener('click',function(){
+    if(!confirm('Xóa token? Highlights sẽ không được sync cho đến khi cấu hình lại.')) return;
+    localStorage.removeItem(TOKEN_KEY);
+    fileSha=null;
+    modal.classList.add('hidden');
+    setStatus('no-token','Chưa cấu hình');
+  });
+  modal.addEventListener('click',function(e){if(e.target===modal)modal.classList.add('hidden');});
+
+  function handleSyncClick(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){
+      var inp=document.getElementById('sync-token-input');
+      if(inp) inp.value='';
+      modal.classList.remove('hidden');
+      setTimeout(function(){if(inp)inp.focus();},80);
+    } else {
+      // Manual re-sync
+      fileSha=null;
+      initSync();
+    }
+  }
+
+  // ── HELPERS ──
+  var ALL_CHAPS=['01','02','03','04','05','06','07','08','10','11','12','13','14','15','16','17','18'];
+
+  function getAllLocal(){
+    var all={};
+    ALL_CHAPS.forEach(function(n){
+      try{
+        var v=JSON.parse(localStorage.getItem('rita_hl_'+n)||'[]');
+        if(v&&v.length>0) all[n]=v;
+      }catch(e){}
+    });
+    return all;
+  }
+
+  function countHL(obj){
+    return Object.values(obj).reduce(function(s,a){return s+(a?a.length:0);},0);
+  }
+
+  // Union merge: keep all highlights by id, prefer local note if different
+  function mergeHL(local,remote){
+    var merged={};
+    var allChaps=new Set(Object.keys(local).concat(Object.keys(remote)));
+    allChaps.forEach(function(chap){
+      var loc=local[chap]||[];
+      var rem=remote[chap]||[];
+      var byId={};
+      loc.forEach(function(h){byId[h.id]=h;});
+      rem.forEach(function(h){if(!byId[h.id])byId[h.id]=h;});
+      var arr=Object.values(byId);
+      if(arr.length>0) merged[chap]=arr;
+    });
+    return merged;
+  }
+
+  function applyToLocal(highlights){
+    Object.keys(highlights).forEach(function(chap){
+      localStorage.setItem('rita_hl_'+chap,JSON.stringify(highlights[chap]));
+    });
+  }
+
+  // base64 encode/decode with Unicode support
+  function b64enc(str){
+    return btoa(unescape(encodeURIComponent(str)));
+  }
+  function b64dec(b64){
+    return decodeURIComponent(escape(atob(b64.replace(/[\r\n]/g,''))));
+  }
+
+  // ── FETCH FROM GITHUB ──
+  async function fetchFromGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    var headers={'Accept':'application/vnd.github.v3+json'};
+    if(token) headers['Authorization']='token '+token;
+    try{
+      var resp=await fetch(API_URL,{headers:headers});
+      if(resp.status===404){fileSha=null;return null;}
+      if(!resp.ok) throw new Error('HTTP '+resp.status);
+      var data=await resp.json();
+      fileSha=data.sha;
+      var content=JSON.parse(b64dec(data.content));
+      return content;
+    }catch(e){
+      console.warn('[sync] fetch:',e);
+      return 'error';
+    }
+  }
+
+  // ── PUSH TO GITHUB ──
+  async function pushToGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang sync…');
+    var local=getAllLocal();
+    var payload={version:1,lastSync:new Date().toISOString(),highlights:local};
+    var encoded=b64enc(JSON.stringify(payload,null,2));
+    var body={message:'sync: rita highlights ['+countHL(local)+' HL]',content:encoded};
+    if(fileSha) body.sha=fileSha;
+    try{
+      var resp=await fetch(API_URL,{
+        method:'PUT',
+        headers:{
+          'Authorization':'token '+token,
+          'Content-Type':'application/json',
+          'Accept':'application/vnd.github.v3+json'
+        },
+        body:JSON.stringify(body)
+      });
+      if(!resp.ok){
+        var err=await resp.json().catch(function(){return{};});
+        throw new Error(err.message||'HTTP '+resp.status);
+      }
+      var result=await resp.json();
+      fileSha=result.content.sha;
+      setStatus('ok','✓ Đã sync ('+countHL(local)+' HL)');
+    }catch(e){
+      setStatus('err','✗ '+e.message.slice(0,28));
+      console.error('[sync] push:',e);
+    }
+  }
+
+  // ── INIT ──
+  async function initSync(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang tải…');
+
+    var ghData=await fetchFromGitHub();
+    if(ghData==='error'){
+      setStatus('err','✗ Không kết nối được');
+      return;
+    }
+    if(ghData&&ghData.highlights){
+      var local=getAllLocal();
+      var merged=mergeHL(local,ghData.highlights);
+      applyToLocal(merged);
+      // Re-apply marks on current chapter from updated localStorage
+      if(typeof window.__ritaReapplyMarks==='function') window.__ritaReapplyMarks();
+      var ghN=countHL(ghData.highlights), mergedN=countHL(merged);
+      if(mergedN>ghN){
+        // New highlights from remote — push merged back
+        setTimeout(pushToGitHub,1200);
+      } else {
+        setStatus('ok','✓ Sync OK ('+mergedN+' HL)');
+      }
+    } else {
+      // File doesn't exist yet — push current local state
+      await pushToGitHub();
+    }
+  }
+
+  initSync();
+})();
+
+</script>
+
+</body>
+</html>

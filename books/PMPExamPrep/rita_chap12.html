@@ -1,0 +1,2143 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rủi Ro & Vấn Đề | Rita PMP® Exam Prep 11</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:     #1a2744;
+  --red:      #8b1a1a;
+  --gold:     #c9a84c;
+  --gold-lt:  #e8d5a3;
+  --cream:    #fdf8f0;
+  --text:     #2c2c2c;
+  --text-dim: #5a5a5a;
+  --border:   #d4c89a;
+  --sidebar-w: 268px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ── PROGRESS BAR ── */
+#progress-bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--gold);z-index:200;transition:width .1s}
+
+/* ── SIDEBAR ── */
+#sidebar{
+  width:var(--sidebar-w);background:var(--navy);color:#ccd4e8;
+  position:fixed;top:0;left:0;bottom:0;overflow-y:auto;z-index:100;
+  border-right:3px solid var(--gold);display:flex;flex-direction:column;
+}
+#sidebar-header{
+  background:linear-gradient(135deg,#0f1d3a 0%,#1a2744 100%);
+  padding:1.4rem 1.2rem;border-bottom:2px solid var(--gold);flex-shrink:0;
+}
+#sidebar-header .book-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.62rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;
+}
+#sidebar-header h2{font-size:.92rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:.25rem}
+#sidebar-header .edition{font-family:'Source Sans 3',sans-serif;font-size:.7rem;color:var(--gold-lt);font-style:italic}
+#sidebar-toc{flex:1;overflow-y:auto;padding:.6rem 0}
+#sidebar-toc a{
+  display:block;font-family:'Source Sans 3',sans-serif;font-size:.78rem;
+  color:#aab8d0;text-decoration:none;padding:.4rem 1.2rem;line-height:1.4;
+  transition:all .15s;border-left:3px solid transparent;
+}
+#sidebar-toc a:hover,#sidebar-toc a.active{color:#fff;background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+#sidebar-toc a.toc-h4{padding-left:2.2rem;font-size:.72rem;color:#8896b0}
+#sidebar-toc a.toc-h4:hover{color:#ccd4e8}
+#sidebar-toc .toc-group-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.6rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  padding:.7rem 1.2rem .25rem;opacity:.85;
+}
+#sidebar-nav{
+  flex-shrink:0;border-top:1px solid rgba(255,255,255,.08);
+  display:flex;justify-content:space-between;padding:.7rem .8rem;gap:.5rem;
+}
+#sidebar-nav a{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;color:var(--gold-lt);
+  text-decoration:none;padding:.4rem .7rem;border:1px solid rgba(201,168,76,.3);
+  border-radius:4px;transition:all .2s;line-height:1.3;text-align:center;flex:1;
+}
+#sidebar-nav a:hover{background:rgba(201,168,76,.15);color:#fff}
+#sidebar-nav a.disabled{opacity:.35;pointer-events:none}
+
+/* ── HAMBURGER (mobile) ── */
+#menu-btn{
+  display:none;position:fixed;top:.7rem;left:.8rem;z-index:150;
+  background:var(--navy);border:1px solid var(--gold);color:var(--gold);
+  width:36px;height:36px;border-radius:6px;font-size:1.1rem;cursor:pointer;
+  align-items:center;justify-content:center;
+}
+
+/* ── MAIN ── */
+#main{margin-left:var(--sidebar-w);max-width:880px;padding:0 2.8rem 5rem}
+
+/* ── CHAPTER HERO ── */
+.chapter-hero{
+  background:linear-gradient(135deg,var(--navy) 0%,#2a3a6a 100%);
+  color:white;padding:2.8rem 2.8rem 2.2rem;margin:0 -2.8rem 2.8rem;
+  border-bottom:4px solid var(--gold);position:relative;overflow:hidden;
+}
+.chapter-hero::before{
+  content:'12';position:absolute;right:1.5rem;top:50%;
+  transform:translateY(-50%);font-size:10rem;font-weight:700;
+  color:rgba(255,255,255,.05);font-family:'Merriweather',serif;line-height:1;
+}
+.chapter-hero .ch-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;font-weight:700;
+  letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;
+}
+.chapter-hero h1{font-size:2rem;font-weight:700;line-height:1.2;margin-bottom:.35rem}
+.chapter-hero .ch-en{font-family:'Source Sans 3',sans-serif;font-size:.95rem;color:rgba(255,255,255,.5);font-style:italic}
+
+/* ── CONTENT HEADINGS ── */
+h3{
+  font-family:'Merriweather',serif;font-size:1.25rem;color:var(--navy);
+  margin:2.5rem 0 .85rem;padding-bottom:.45rem;border-bottom:2px solid var(--gold);
+}
+h4{
+  font-family:'Merriweather',serif;font-size:1.05rem;color:var(--navy);
+  margin:2rem 0 .65rem;padding-left:.75rem;border-left:4px solid var(--gold);
+}
+h5{
+  font-family:'Source Sans 3',sans-serif;font-size:.9rem;font-weight:700;
+  color:var(--red);margin:1.4rem 0 .45rem;text-transform:uppercase;letter-spacing:.05em;
+}
+p{font-family:'Merriweather',serif;font-size:.94rem;line-height:1.88;margin-bottom:.95rem;color:var(--text)}
+
+/* ── LISTS ── */
+ul.content-list,ol.content-list{
+  margin:.5rem 0 1rem;padding:0;list-style:none;
+}
+ul.content-list li{
+  position:relative;padding:.28rem 0 .28rem 1.6rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);
+}
+ul.content-list li::before{
+  content:'◆';position:absolute;left:0;color:var(--gold);font-size:.65rem;top:.45rem;
+}
+ol.content-list{counter-reset:ol-c;list-style:none}
+ol.content-list li{
+  position:relative;padding:.28rem 0 .28rem 2rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);counter-increment:ol-c;
+}
+ol.content-list li::before{
+  content:counter(ol-c)'.';position:absolute;left:0;color:var(--navy);
+  font-weight:700;font-size:.85rem;min-width:1.5rem;
+}
+ul.content-list ul.content-list li::before{content:'–';color:var(--text-dim);font-size:.9rem;top:.35rem}
+
+/* ── CALLOUT / DEF BOX ── */
+.callout{
+  background:linear-gradient(135deg,#f5f0e8,#ede8d8);
+  border:1px solid var(--border);border-left:5px solid var(--gold);
+  border-radius:0 6px 6px 0;padding:1rem 1.2rem;margin:1.3rem 0;
+}
+.callout p{font-size:.9rem;margin-bottom:.5rem}
+.callout p:last-child{margin-bottom:0}
+.callout ul.content-list li{font-size:.88rem}
+.callout-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.65rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;
+}
+.callout.tip{border-left-color:#2d7a2d;background:linear-gradient(135deg,#f0f7f0,#e4f0e4)}
+.callout.tip .callout-label{color:#2d7a2d}
+
+/* ── HIGHLIGHT (quicktest / exam alert) ── */
+.highlight{
+  background:var(--navy);color:#e8d5a3;
+  border-radius:8px;padding:1.1rem 1.3rem;margin:1.5rem 0;
+}
+.highlight h5,.highlight strong{color:var(--gold-lt)}
+.highlight p,.highlight li{color:#ccd4e8;font-size:.88rem}
+.highlight ul.content-list li::before{color:var(--gold)}
+
+/* ── FIGURE ── */
+.img-center{
+  text-align:center;margin:1.8rem 0;padding:1rem;
+  background:#f8f5ee;border:1px solid var(--border);border-radius:8px;
+}
+.img-center img{max-width:100%;height:auto;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.img-center p,.img-center div{
+  margin-top:.65rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.8rem;color:var(--text-dim);font-style:italic;
+}
+
+/* ── TABLES ── */
+.table-wrap{overflow-x:auto;margin:1.5rem 0}
+table{width:100%;border-collapse:collapse;font-family:'Source Sans 3',sans-serif;font-size:.84rem}
+table th{background:var(--navy);color:white;padding:.6rem .8rem;text-align:center;font-weight:600;font-size:.79rem}
+table td{padding:.5rem .8rem;border:1px solid #ddd;vertical-align:top;line-height:1.5}
+table tr:nth-child(even) td{background:#f9f6ef}
+
+/* ── BACK TO TOP ── */
+#back-top{
+  position:fixed;bottom:1.5rem;right:1.5rem;
+  background:var(--navy);color:var(--gold);border:1px solid var(--gold);
+  width:38px;height:38px;border-radius:50%;font-size:1.2rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .25s;z-index:99;
+}
+#back-top:hover{background:var(--gold);color:var(--navy)}
+
+/* ── MOBILE ── */
+@media(max-width:860px){
+  #sidebar{transform:translateX(-100%);transition:transform .25s;top:3rem}
+  #sidebar.open{transform:translateX(0)}
+  #menu-btn{display:flex}
+  #main{margin-left:0;padding:3.5rem 1.2rem 4rem}
+  .chapter-hero{margin:0 -1.2rem 2rem;padding:2rem 1.4rem}
+  .chapter-hero::before{display:none}
+}
+
+/* ── DARK / LIGHT MODE ─────────────────────────────── */
+html[data-theme=dark]{--cream:#0f1520;--text:#dde4f0;--text-dim:#8899bb;--border:#253048;--gold-lt:#c9a84c}
+html[data-theme=dark] body{background:#0f1520;color:#dde4f0}
+html[data-theme=dark] #main{background:#0f1520}
+html[data-theme=dark] h1,html[data-theme=dark] h2{color:#e8d5a3}
+html[data-theme=dark] h3{color:#e8d5a3;border-bottom-color:var(--gold)}
+html[data-theme=dark] h4{color:#b8ccee;border-left-color:var(--gold)}
+html[data-theme=dark] p,html[data-theme=dark] li,html[data-theme=dark] td{color:#dde4f0}
+html[data-theme=dark] strong{color:#e8d5a3}
+html[data-theme=dark] em{color:#b8ccee}
+html[data-theme=dark] .callout{background:linear-gradient(135deg,#1a2436,#1e2d45);border-left-color:var(--gold);color:#dde4f0}
+html[data-theme=dark] .callout p{color:#dde4f0}
+html[data-theme=dark] blockquote{background:#1a2436;border-left-color:var(--gold);color:#b0c0d8}
+html[data-theme=dark] table{background:#131c2b}
+html[data-theme=dark] th{background:#1a2744;color:#e8d5a3;border-color:#253048}
+html[data-theme=dark] td{border-color:#253048}
+html[data-theme=dark] tr:nth-child(even) td{background:#1a2436}
+html[data-theme=dark] .highlight,.highlight-box{background:#1a2436!important;border-color:#253048!important;color:#dde4f0!important}
+html[data-theme=dark] #back-top{background:#1a2744;color:var(--gold);border:1px solid rgba(201,168,76,.4)}
+html[data-theme=dark] ul.content-list li,html[data-theme=dark] ol.content-list li{color:#dde4f0}
+html[data-theme=dark] .chapter-hero{background:linear-gradient(135deg,#0a1228 0%,#142040 100%)}
+html[data-theme=dark] .exercise-card{background:#1a2436;border-color:#253048}
+html[data-theme=dark] .answer-box{background:#152035;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] .answer-box p{color:#dde4f0}
+/* theme toggle button */
+#theme-btn{position:absolute;top:.65rem;right:.7rem;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.35);color:var(--gold);width:28px;height:28px;border-radius:5px;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+#theme-btn:hover{background:rgba(201,168,76,.2)}
+#sidebar-header{position:relative}
+
+/* ── HIGHLIGHT SYSTEM ─────────────────────────────────── */
+mark.hl{border-radius:2px;cursor:pointer;padding:1px 0;background:transparent}
+mark.hl[data-color=yellow]{background:rgba(255,241,118,.75)}
+mark.hl[data-color=green]{background:rgba(165,214,167,.75)}
+mark.hl[data-color=red]{background:rgba(239,154,154,.75)}
+mark.hl::after{display:none}
+mark.hl[data-note]:not([data-note=""])::after{content:"✏";font-size:.6rem;vertical-align:super;margin-left:1px;opacity:.65;display:inline}
+/* selection popup */
+#hl-popup{position:fixed;z-index:9999;background:#1a2744;border:1px solid rgba(201,168,76,.5);border-radius:8px;padding:.45rem .6rem;display:flex;align-items:center;gap:.35rem;box-shadow:0 4px 20px rgba(0,0,0,.4);pointer-events:all}
+#hl-popup.hidden{display:none!important}
+.hl-color-btn{width:24px;height:24px;border-radius:50%;border:2px solid rgba(255,255,255,.25);cursor:pointer;transition:transform .15s,border-color .15s;flex-shrink:0}
+.hl-color-btn:hover{transform:scale(1.2);border-color:rgba(255,255,255,.7)}
+.hl-color-btn[data-color=yellow]{background:#fff176}
+.hl-color-btn[data-color=green]{background:#a5d6a7}
+.hl-color-btn[data-color=red]{background:#ef9a9a}
+.hl-sep{width:1px;height:20px;background:rgba(255,255,255,.2);margin:0 .1rem}
+.hl-note-btn{background:none;border:none;color:rgba(255,255,255,.7);font-size:.9rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-note-btn:hover{color:#fff;background:rgba(255,255,255,.1)}
+.hl-del-btn{background:none;border:none;color:rgba(239,154,154,.8);font-size:.85rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-del-btn:hover{color:#ef9a9a;background:rgba(239,154,154,.12)}
+/* note modal */
+#hl-note-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center}
+#hl-note-modal.hidden{display:none!important}
+#hl-note-box{background:#fff;border-radius:10px;padding:1.4rem;width:min(420px,90vw);box-shadow:0 8px 32px rgba(0,0,0,.25)}
+#hl-note-box h3{font-size:.95rem;color:#1a2744;margin-bottom:.7rem;font-family:'Merriweather',serif}
+#hl-note-ta{width:100%;border:1px solid #d4c89a;border-radius:6px;padding:.6rem .8rem;font-size:.88rem;font-family:'Source Sans 3',sans-serif;resize:vertical;min-height:80px;color:#2c2c2c;outline:none}
+#hl-note-ta:focus{border-color:#c9a84c;box-shadow:0 0 0 2px rgba(201,168,76,.25)}
+.hl-note-actions{display:flex;justify-content:flex-end;gap:.6rem;margin-top:.8rem}
+.hl-note-cancel{background:transparent;border:1px solid #ccc;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+.hl-note-save{background:#1a2744;color:#fff;border:none;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+/* highlights panel */
+#hl-panel{position:fixed;top:0;right:0;bottom:0;width:300px;background:#fff;border-left:3px solid var(--gold);z-index:500;display:flex;flex-direction:column;box-shadow:-4px 0 20px rgba(0,0,0,.15);transform:translateX(100%);transition:transform .25s}
+#hl-panel.open{transform:translateX(0)}
+#hl-panel-hdr{background:#1a2744;padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--gold)}
+#hl-panel-hdr h3{font-size:.88rem;color:#fff;font-family:'Source Sans 3',sans-serif;font-weight:700;letter-spacing:.05em}
+#hl-panel-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.2rem;cursor:pointer;padding:.2rem;line-height:1}
+#hl-panel-close:hover{color:#fff}
+#hl-panel-list{flex:1;overflow-y:auto;padding:.6rem}
+#hl-panel-list:empty::before{content:"Chưa có ghi chú nào trong chương này.";font-size:.82rem;color:#999;display:block;padding:.8rem;text-align:center;font-style:italic}
+.hl-item{padding:.65rem .8rem;border-radius:6px;margin-bottom:.5rem;border-left:4px solid #ddd;background:#fafafa;cursor:pointer;transition:background .15s}
+.hl-item:hover{background:#f0f0f0}
+.hl-item[data-color=yellow]{border-left-color:#fdd835}
+.hl-item[data-color=green]{border-left-color:#66bb6a}
+.hl-item[data-color=red]{border-left-color:#ef5350}
+.hl-item-text{font-size:.8rem;color:#2c2c2c;line-height:1.5;margin-bottom:.3rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.hl-item-note{font-size:.75rem;color:#666;font-style:italic;margin-bottom:.3rem}
+.hl-item-del{float:right;background:none;border:none;color:#bbb;cursor:pointer;font-size:.8rem;padding:.1rem .3rem;border-radius:3px;line-height:1}
+.hl-item-del:hover{color:#ef5350;background:rgba(239,83,80,.08)}
+/* sidebar hl badge */
+#hl-sidebar-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:var(--gold);cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#hl-sidebar-btn:hover{background:rgba(201,168,76,.1)}
+#hl-badge{background:rgba(201,168,76,.2);color:var(--gold);font-size:.65rem;font-weight:700;padding:.1rem .4rem;border-radius:10px;min-width:18px;text-align:center}
+html[data-theme=dark] #hl-note-box{background:#1a2436;border:1px solid #253048}
+html[data-theme=dark] #hl-note-box h3{color:#e8d5a3}
+html[data-theme=dark] #hl-note-ta{background:#0f1520;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] #hl-panel{background:#131c2b;border-left-color:var(--gold)}
+html[data-theme=dark] .hl-item{background:#1a2436;border-bottom:1px solid #1e2d45}
+html[data-theme=dark] .hl-item:hover{background:#1e2d45}
+html[data-theme=dark] .hl-item-text{color:#dde4f0}
+html[data-theme=dark] .hl-item-note{color:#8899bb}
+html[data-theme=dark] .hl-note-cancel{border-color:#253048;color:#dde4f0;background:#1a2436}
+html[data-theme=dark] .hl-note-save{background:#c9a84c;color:#0a0f1a}
+
+/* ── CHAPTER NAV PANEL ─────────────────────────────────── */
+#chap-panel{position:fixed;inset:0;z-index:9000;display:flex;align-items:stretch}
+#chap-panel.hidden{display:none!important}
+#chap-panel-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);cursor:pointer}
+#chap-panel-box{position:relative;z-index:1;width:min(360px,90vw);background:#0f1d3a;border-right:3px solid var(--gold);display:flex;flex-direction:column;animation:slideInLeft .2s ease}
+@keyframes slideInLeft{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+#chap-panel-hdr{background:linear-gradient(135deg,#0a1228,#1a2744);padding:1.2rem 1.3rem;border-bottom:2px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
+#chap-panel-hdr h3{font-family:'Source Sans 3',sans-serif;font-size:.85rem;font-weight:700;color:#fff;letter-spacing:.1em;text-transform:uppercase}
+#chap-panel-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.3rem;cursor:pointer;padding:.2rem;line-height:1;transition:color .15s}
+#chap-panel-close:hover{color:#fff}
+#chap-panel-list{flex:1;overflow-y:auto;padding:.5rem 0}
+.chap-panel-item{display:flex;align-items:center;gap:.8rem;padding:.7rem 1.3rem;cursor:pointer;transition:background .15s;border-left:3px solid transparent;text-decoration:none}
+.chap-panel-item:hover{background:rgba(201,168,76,.1);border-left-color:var(--gold)}
+.chap-panel-item.active{background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+.cpanel-num{font-family:'Source Sans 3',sans-serif;font-size:.7rem;font-weight:700;color:var(--gold);min-width:28px;flex-shrink:0}
+.cpanel-title{font-family:'Source Sans 3',sans-serif;font-size:.8rem;color:#ccd4e8;line-height:1.35}
+.cpanel-item-active .cpanel-title{color:#fff;font-weight:600}
+.cpanel-status{margin-left:auto;font-size:.72rem;flex-shrink:0;opacity:.6}
+
+/* ── GITHUB SYNC ──────────────────────────────────── */
+#sync-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:#8899bb;cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s,color .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#sync-btn:hover{background:rgba(201,168,76,.08);color:var(--gold)}
+#sync-btn[data-state=ok]{color:#4caf50}
+#sync-btn[data-state=syncing]{color:var(--gold)}
+#sync-btn[data-state=err]{color:#ef5350}
+#sync-btn[data-state=no-token]{color:#8899bb}
+#sync-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center}
+#sync-modal.hidden{display:none!important}
+#sync-modal-box{background:#0f1d3a;border:2px solid var(--gold);border-radius:10px;padding:1.8rem 2rem;width:min(420px,90vw);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+#sync-modal-box h3{font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:.9rem;text-transform:uppercase;letter-spacing:.1em}
+#sync-modal-box p{font-size:.77rem;color:#aab8d0;line-height:1.6;margin-bottom:.9rem}
+#sync-modal-box input{width:100%;background:#0a1228;border:1px solid rgba(201,168,76,.4);color:#fff;font-family:monospace;font-size:.8rem;padding:.55rem .8rem;border-radius:5px;outline:none;margin-bottom:.8rem;box-sizing:border-box}
+#sync-modal-box input:focus{border-color:var(--gold)}
+.sync-modal-btns{display:flex;gap:.6rem;justify-content:flex-end;flex-wrap:wrap}
+.sync-modal-btns button{font-family:'Source Sans 3',sans-serif;font-size:.77rem;font-weight:700;padding:.42rem .9rem;border-radius:5px;cursor:pointer;border:none;transition:background .15s}
+#sync-save-btn{background:var(--gold);color:#0a0f1a}
+#sync-save-btn:hover{background:#e8c47a}
+#sync-cancel-btn{background:rgba(255,255,255,.1);color:#aab8d0}
+#sync-cancel-btn:hover{background:rgba(255,255,255,.18)}
+#sync-clear-btn{background:rgba(239,83,80,.18);color:#ef9090;margin-right:auto}
+#sync-clear-btn:hover{background:rgba(239,83,80,.32)}
+</style>
+</head>
+<script>
+(function(){var t=localStorage.getItem('rita_theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+</script>
+<body>
+<div id="progress-bar"></div>
+<button id="menu-btn" aria-label="Menu">☰</button>
+
+<aside id="sidebar">
+<div id="sidebar-header">
+  <div class="book-label">Rita PMP® Exam Prep</div>
+  <h2>Ôn Thi PMP®</h2>
+  <div class="edition">Rita Mulcahy · 11th Edition 2023 · Tiếng Việt</div>
+</div>
+<div id="sidebar-toc">
+  <div class="toc-group-label">Nội Dung Chương</div>
+  <a href="#ch12-rui-ro-va-van-de" class="">12 Rủi Ro Và Vấn Đề</a>
+<a href="#ch12-gioi-thieu" class="toc-h4">Giới Thiệu</a>
+<a href="#ch12-dinh-nghia-lien-quan" class="toc-h4">Các Định Nghĩa Liên Quan Đến Quản Lý Rủi Ro</a>
+<a href="#ch12-rui-ro-du-an" class="toc-h4">Rủi Ro Dự Án</a>
+<a href="#ch12-quan-ly-rui-ro-du-an" class="toc-h4">Quản Lý Rủi Ro Dự Án</a>
+<a href="#ch12-danh-sach-theo-doi" class="toc-h4">Danh Sách Theo Dõi</a>
+<a href="#ch12-chu-so-huu-rui-ro" class="toc-h4">Chủ Sở Hữu Rủi Ro</a>
+<a href="#ch12-moi-de-doa-va-co-hoi" class="toc-h4">Mối Đe Dọa Và Cơ Hội</a>
+<a href="#ch12-cac-yeu-to-rui-ro" class="toc-h4">Các Yếu Tố Rủi Ro</a>
+<a href="#ch12-khau-vi-va-nguong-rui-ro" class="toc-h4">Khẩu Vị Và Ngưỡng Rủi Ro</a>
+<a href="#ch12-dinh-nghia-rui-ro-agile" class="toc-h4">Các Định Nghĩa Rủi Ro Đặc Thù Cho Agile</a>
+<a href="#ch12-spikes" class="toc-h4">Spikes</a>
+<a href="#ch12-architectural-spike" class="toc-h4">Architectural Spike</a>
+<a href="#ch12-that-bai-nhanh" class="toc-h4">Thất Bại Nhanh</a>
+<a href="#ch12-tong-quan-quan-ly-rui-ro" class="toc-h4">Tổng Quan Về Quản Lý Rủi Ro</a>
+<a href="#ch12-eco-va-mo-hinh-nhom-quy-trinh" class="toc-h4">ECO Và Mô Hình Nhóm Quy Trình</a>
+<a href="#ch12-ket-qua-mong-muon" class="toc-h4">Kết Quả Mong Muốn Của Quản Lý Rủi Ro</a>
+<a href="#ch12-tom-tat-quan-ly-rui-ro" class="toc-h4">Tóm Tắt Quản Lý Rủi Ro</a>
+<a href="#ch12-lap-ke-hoach-quan-ly-rui-ro" class="toc-h4">Lập Kế Hoạch Quản Lý Rủi Ro</a>
+<a href="#ch12-artifacts-qualitative-risk-analysis" class="toc-h4">Kết quả của Phân tích Rủi ro Định tính</a>
+<a href="#ch12-perform-quantitative-risk-analysis" class="toc-h4">Thực hiện Phân tích Rủi ro Định lượng</a>
+<a href="#ch12-methods-quantitative-risk-analysis" class="toc-h4">Các Phương pháp Phân tích Rủi ro Định lượng</a>
+<a href="#ch12-simulations" class="toc-h4">Mô phỏng</a>
+<a href="#ch12-sensitivity-analysis" class="toc-h4">Phân tích Độ nhạy</a>
+<a href="#ch12-emv" class="toc-h4">Giá trị Tiền tệ Kỳ vọng (EMV)</a>
+<a href="#ch12-exercise-12-1" class="">Bài tập 12.1</a>
+<a href="#ch12-exercise-12-1-answer" class="toc-h4">Đáp án</a>
+<a href="#ch12-decision-tree-analysis" class="toc-h4">Phân tích Cây Quyết định</a>
+<a href="#ch12-exercise-12-2" class="">Bài tập 12.2</a>
+<a href="#ch12-exercise-12-2-answer" class="toc-h4">Đáp án</a>
+<a href="#ch12-artifacts-quantitative-risk-analysis" class="toc-h4">Kết quả của Thực hiện Phân tích Rủi ro Định lượng</a>
+<a href="#ch12-plan-risk-responses" class="toc-h4">Lập kế hoạch Ứng phó Rủi ro</a>
+<a href="#ch12-responses-top-risks" class="toc-h4">Các Phương án Ứng phó cho Rủi ro Hàng đầu</a>
+<a href="#ch12-responses-residual-risks" class="toc-h4">Các Phương án Ứng phó cho Rủi ro Còn lại</a>
+<a href="#ch12-risk-response-strategies" class="toc-h4">Các Chiến Lược Phản Ứng Rủi Ro</a>
+<a href="#ch12-response-strategies-threats" class="toc-h4">Các Chiến Lược Phản Ứng Đối Với Mối Đe Dọa</a>
+<a href="#ch12-response-strategies-opportunities" class="toc-h4">Các Chiến Lược Phản Ứng Đối Với Cơ Hội</a>
+<a href="#ch12-common-response-strategies" class="toc-h4">Các Chiến Lược Phản Ứng Chung Cho Mối Đe Dọa Hoặc Cơ Hội</a>
+<a href="#ch12-exercise-12-3" class="">12.3 Bài Tập</a>
+<a href="#ch12-artifacts-plan-risk-responses" class="toc-h4">Kết Quả Đầu Ra Của Lập Kế Hoạch Phản Ứng Rủi Ro</a>
+<a href="#ch12-risk-report" class="toc-h4">Báo Cáo Rủi Ro</a>
+<a href="#ch12-cap-nhat-so-dang-ky-rui-ro" class="toc-h4">Cập Nhật Sổ Đăng Ký Rủi Ro</a>
+<a href="#ch12-bai-tap-12-4" class="">Bài Tập 12.4</a>
+<a href="#ch12-du-lieu-du-an-12-4" class="toc-h4">Dữ Liệu Dự Án</a>
+<a href="#ch12-dap-an-12-4" class="toc-h4">Đáp Án</a>
+<a href="#ch12-bai-tap-12-5" class="">Bài Tập 12.5</a>
+<a href="#ch12-dap-an-12-5" class="toc-h4">Đáp Án</a>
+<a href="#ch12-ung-pho-rui-ro-agile" class="toc-h4">Ứng Phó Rủi Ro theo Agile</a>
+<a href="#ch12-backlog-dieu-chinh-rui-ro" class="toc-h4">Backlog Điều Chỉnh Rủi Ro</a>
+<a href="#ch12-thiet-ke-da-phuong-an" class="toc-h4">Thiết Kế Đa Phương Án</a>
+<a href="#ch12-thuc-hien-ung-pho-rui-ro" class="toc-h4">Thực Hiện Ứng Phó Rủi Ro</a>
+<a href="#ch12-implement-risk-responses" class="">Thực Hiện Các Phản Ứng Rủi Ro</a>
+<a href="#ch12-artifacts-implement-risk" class="toc-h4">Sản Phẩm của Thực Hiện Các Phản Ứng Rủi Ro</a>
+<a href="#ch12-monitor-risks" class="">Giám Sát Rủi Ro</a>
+<a href="#ch12-agile-risk-monitoring" class="toc-h4">Giám Sát Rủi Ro Agile</a>
+<a href="#ch12-methods-monitoring-risk" class="toc-h4">Các Phương Pháp Giám Sát Rủi Ro</a>
+<a href="#ch12-risk-reassessments" class="toc-h4">Đánh Giá Lại Rủi Ro</a>
+<a href="#ch12-reserve-analysis" class="toc-h4">Phân Tích Dự Trữ</a>
+<a href="#ch12-technical-performance-analysis" class="toc-h4">Phân Tích Hiệu Suất Kỹ Thuật</a>
+
+</div>
+<div id="sidebar-nav">
+  <a href="rita_chap11.html" class="" title="Truyền Thông">← Ch11</a>
+  <a href="#" id="chap-muc-luc-btn">☰ Mục lục</a>
+  <a href="rita_chap13.html" class="" title="Mua Sắm">Ch13 →</a>
+</div></aside>
+
+<main id="main">
+  <div class="chapter-hero">
+    <div class="ch-label">Chương 12</div>
+    <h1>Rủi Ro & Vấn Đề</h1>
+    <div class="ch-en">Risks and Issues</div>
+  </div>
+<h3 id="ch12-rui-ro-va-van-de">12 Rủi Ro Và Vấn Đề</h3>
+
+<h4 id="ch12-gioi-thieu">Giới Thiệu</h4>
+
+<p>Tác động của quản lý rủi ro là không thể tách rời khỏi công việc hàng ngày của một người quản lý dự án, và kỳ thi sẽ kiểm tra kiến thức của bạn về quản lý rủi ro ở mức độ chuyên sâu. Ví dụ, bạn có thể được cho một tình huống và, dựa trên thông tin được cung cấp, cần xác định quy trình quản lý rủi ro nào đang được thực hiện hoặc bước tiếp theo cần làm là gì.</p>
+
+<p>Trước khi chúng ta xem xét quy trình quản lý rủi ro một cách chi tiết, hãy bắt đầu với một câu chuyện. Một học viên RMC là người quản lý dự án trong một dự án cài đặt phần cứng và phần mềm tại một khu vực mà bão nhiệt đới xảy ra khá thường xuyên. Rồi một cơn bão ập đến. Không lâu sau khi bão qua đi, người quản lý dự án đã kể cho mọi người nghe về công việc tuyệt vời mà nhóm của ông đã làm và họ đã phục hồi sau thảm họa nhanh chóng như thế nào.</p>
+
+<p><strong>Hãy Suy Nghĩ.</strong> Bạn có tự hào về bản thân nếu bạn là người quản lý dự án đó không? Khi trả lời, hãy xem xét các thông tin sau:</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//1a1590c5-8d4a-485e-8aea-c5d915fc9fea/markdown_3/imgs/img_in_image_box_49_389_100_448.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A56Z%2F-1%2F%2Ff96940f843969a03f7dfb1423c9c3a6bfa60e1a8ac29b873cf9462f94d3a0a0c" alt="Image" width="6%" /></div></div>
+
+<ul class="content-list">
+  <li>Hoạt động mà nhóm đang thực hiện cần ba ngày để hoàn thành.</li>
+  <li>Người quản lý dự án đã được cảnh báo trước rằng bão sắp đến.</li>
+  <li>Họ phải phục hồi sau thảm họa.</li>
+</ul>
+
+<p>Thay vì hào hứng về việc nhóm của mình đã phục hồi sau cơn bão nhanh như thế nào, người quản lý dự án — và nhà tài trợ — lẽ ra phải đặt câu hỏi về sự khôn ngoan khi lên lịch triển khai vào thời điểm có xác suất cao xảy ra bão. Hoặc, nếu lịch trình đã được lập xong, họ lẽ ra phải đặt câu hỏi về sự khôn ngoan khi tiếp tục giữ nguyên lịch trình đó. Đây chính là giá trị của quản lý rủi ro. Khi bão được dự báo, nhóm có thể đã ứng phó theo một kế hoạch, chẳng hạn như dời việc triển khai sang một cuối tuần khác để tránh nguy hiểm, thiệt hại và công việc phải làm lại.</p>
+
+<p>Công việc của người quản lý dự án nên tập trung vào việc phòng ngừa các vấn đề thay vì giải quyết chúng. Hãy nghĩ về các dự án của chính bạn. Sẽ thế nào nếu bạn có thể nói rằng, "Không có vấn đề gì; chúng tôi đã lường trước điều này và chúng tôi đã có một kế hoạch sẵn sàng sẽ giải quyết nó bất cứ khi nào vấn đề xảy ra"? Bạn sẽ tiết kiệm được bao nhiêu thời gian và tiền bạc so với việc phải giải quyết vấn đề? Cuộc sống của bạn sẽ bớt căng thẳng đến mức nào?</p>
+
+<p>Các dự án vốn dĩ bao gồm sự không chắc chắn, biến động, phức tạp và mơ hồ (được thảo luận trong Lĩnh Vực Bất Định trong PMBOK Guide). Quản lý rủi ro dự án giúp ngăn ngừa nhiều mối đe dọa (hoặc rủi ro tiêu cực) và làm cho những mối đe dọa khác ít có khả năng xảy ra hơn hoặc có tác động ít hơn. Và nó giúp tăng xác suất và/hoặc tác động của các cơ hội (rủi ro tích cực). Khi người quản lý dự án loại bỏ các mối đe dọa và tăng cường các cơ hội, ước tính lịch trình và chi phí có thể được giảm xuống. Với suy nghĩ đó, chúng ta sẽ xem xét một số khái niệm cơ bản về quản lý rủi ro.</p>
+
+<h4 id="ch12-dinh-nghia-lien-quan">Các Định Nghĩa Liên Quan Đến Quản Lý Rủi Ro</h4>
+
+<p>Dưới đây là một số thuật ngữ cơ bản sẽ được sử dụng trong chương này.</p>
+
+<h4 id="ch12-rui-ro-du-an">Rủi Ro Dự Án</h4>
+
+<p>Một sự kiện có xác suất xảy ra mà, nếu xảy ra, sẽ tác động tiêu cực hoặc tích cực đến một hoặc nhiều ràng buộc của dự án. Rủi ro có thể ảnh hưởng đến khả năng của nhóm dự án trong việc cung cấp giá trị mà dự án được phê duyệt và đáp ứng các yêu cầu về ngân sách, lịch trình và chất lượng đã thỏa thuận.</p>
+
+<div class="callout">
+<h5>KIỂM TRA NHANH</h5>
+<ul class="content-list">
+  <li>Định nghĩa về quản lý rủi ro</li>
+  <li>Danh sách theo dõi</li>
+  <li>Chủ sở hữu rủi ro</li>
+  <li>Mối đe dọa và cơ hội</li>
+  <li>Các yếu tố rủi ro</li>
+  <li>Khẩu vị rủi ro</li>
+  <li>Ngưỡng rủi ro</li>
+  <li>Spike</li>
+  <li>Architectural spike</li>
+  <li>Thất bại nhanh (Fast failure)</li>
+  <li>Quy trình Quản Lý Rủi Ro</li>
+  <li>Các danh mục rủi ro</li>
+  <li>Pre-mortems dự án Agile</li>
+  <li>Đánh giá chất lượng dữ liệu rủi ro</li>
+  <li>Phân loại rủi ro</li>
+  <li>Ma trận xác suất và tác động</li>
+  <li>Đánh giá các thông số rủi ro</li>
+  <li>Mô phỏng (Simulations)</li>
+  <li>Phân tích độ nhạy</li>
+  <li>Giá trị tiền tệ kỳ vọng (EMV)</li>
+  <li>Phân tích cây quyết định</li>
+  <li>Các chiến lược ứng phó rủi ro</li>
+  <li>Tránh né (Avoid)</li>
+  <li>Giảm thiểu (Mitigate)</li>
+  <li>Chuyển giao (Transfer)</li>
+  <li>Khai thác (Exploit)</li>
+  <li>Chia sẻ (Share)</li>
+  <li>Tăng cường (Enhance)</li>
+  <li>Chấp nhận (Accept)</li>
+  <li>Leo thang (Escalate)</li>
+  <li>Rủi ro thuần túy (Pure risk)</li>
+  <li>Rủi ro thứ cấp (Secondary risk)</li>
+  <li>Sổ đăng ký rủi ro (Risk register)</li>
+  <li>Báo cáo rủi ro (Risk report)</li>
+  <li>Backlog được điều chỉnh theo rủi ro (Risk-adjusted backlog)</li>
+  <li>Thiết kế dựa trên tập hợp (Set-based design)</li>
+  <li>Giải pháp tình thế (Workarounds)</li>
+  <li>Đánh giá lại rủi ro (Risk reassessments)</li>
+  <li>Đánh giá và kiểm toán rủi ro</li>
+  <li>Phân tích dự phòng (Reserve analysis)</li>
+  <li>Phân tích hiệu suất kỹ thuật</li>
+  <li>Biểu đồ burndown rủi ro (Risk burndown chart)</li>
+</ul>
+</div>
+
+<h4 id="ch12-quan-ly-rui-ro-du-an">Quản Lý Rủi Ro Dự Án</h4>
+
+<p>Đây là quy trình xác định, đánh giá và lập kế hoạch ứng phó với các sự kiện không chắc chắn có thể xảy ra trong quá trình thực hiện dự án. Người quản lý dự án xác định các rủi ro và bắt đầu quản lý chúng trong giai đoạn khởi tạo và lập kế hoạch. Trong khi dự án đang triển khai, người quản lý dự án và nhóm thường xuyên xem xét những sự kiện không chắc chắn nào đã xảy ra hoặc có thể sớm xảy ra, và đánh giá lại chiến lược rủi ro đã được lập kế hoạch.</p>
+
+<h4 id="ch12-danh-sach-theo-doi">Danh Sách Theo Dõi</h4>
+
+<p>Đây là danh sách các rủi ro hiện tại không đảm bảo có các phản ứng rủi ro được lập kế hoạch, nhưng được hiểu rằng bất kỳ rủi ro nào trong số này có thể trở nên có nhiều khả năng xảy ra hơn và cần một phản ứng được lập kế hoạch.</p>
+
+<h4 id="ch12-chu-so-huu-rui-ro">Chủ Sở Hữu Rủi Ro</h4>
+
+<p>Cá nhân theo dõi sự xuất hiện của rủi ro được phân công và dẫn dắt việc thực hiện các phản ứng đã được lập kế hoạch trước.</p>
+
+<h4 id="ch12-moi-de-doa-va-co-hoi">Mối Đe Dọa Và Cơ Hội</h4>
+
+<p>Một sự kiện rủi ro có thể có tác động tích cực hoặc tiêu cực đến dự án nếu nó xảy ra. Chúng ta thường tập trung vào các mối đe dọa — những điều có thể đi sai. Nhưng cũng có thể có các cơ hội trong các dự án — những tác động tích cực có thể cho phép người quản lý dự án và nhóm cung cấp nhiều giá trị hơn cho tổ chức và khách hàng so với kế hoạch.</p>
+
+<p>Các cơ hội có thể bao gồm những điều như:</p>
+
+<ul class="content-list">
+  <li>Nếu chúng ta có thể kết hợp các đơn đặt hàng cho thiết bị ZYX, mua hơn 20 mặt hàng cùng một lúc, chúng ta có thể giảm chi phí xuống 20 phần trăm.</li>
+  <li>Nếu chúng ta có thể đào tạo nhóm để cải thiện hiệu quả, thì gói công việc số 3.4 (và có thể là những gói khác) có thể hoàn thành sớm hơn dự kiến hai ngày.</li>
+  <li>Nếu chúng ta có thể có được một nguồn lực có kinh nghiệm hơn với mức năng suất cao hơn, thì hoạt động trên đường tới hạn 4.7.2 có thể được hoàn thành nhanh hơn 10 phần trăm.</li>
+</ul>
+
+<p>Các dự án có tiềm năng cho nhiều cơ hội, và phần lớn các mối đe dọa được xác định có thể được giảm thiểu hoặc loại bỏ bằng cách thay đổi cách lập kế hoạch và thực hiện công việc. Có những chiến lược có thể làm giảm các mối đe dọa và thậm chí tạo ra các cơ hội; ví dụ, tối ưu hóa nguồn lực cẩn thận, sử dụng những người có kinh nghiệm nhất có thể và cung cấp đào tạo khi cần thiết.</p>
+
+<div class="callout tip">
+<h5>MẸO NGHỀ</h5>
+<p>Mặc dù mối đe dọa là điều chúng ta thường nghĩ đến khi nghe từ "rủi ro," nhưng trong kỳ thi hãy nhớ rằng có khả năng tương đương bạn sẽ thấy các câu hỏi liên quan đến cơ hội. Bản chất lặp lại của các phương pháp quản lý dự án cũng đòi hỏi sự chú ý liên tục đến việc cập nhật kế hoạch quản lý rủi ro. Việc xác định và lập kế hoạch rủi ro là liên tục trong suốt một dự án.</p>
+</div>
+
+<p><strong>Hãy Suy Nghĩ.</strong> Khái niệm rủi ro có liên quan chặt chẽ đến giá trị đến mức chúng ta có thể coi các rủi ro dự án tiêu cực (mối đe dọa) là "phản giá trị" — những yếu tố có khả năng làm xói mòn, loại bỏ hoặc làm giảm giá trị nếu chúng xảy ra. Hãy nghĩ về giá trị bạn tạo ra với dự án của mình như số tiền bạn mang vào ngân sách gia đình. Bạn dự định tích lũy giá trị trong ngân sách thông qua nỗ lực công việc (dẫn đến các khoản lương). Các mối đe dọa thực sự xảy ra như một chi phí bất ngờ lấy tiền ra khỏi ngân sách khiến nó có ít giá trị hơn. Tuy nhiên, một khoản thưởng bất ngờ có thể tăng giá trị của ngân sách. Để tạo ra giá trị tối đa, bạn tối đa hóa dòng tiền vào ngân sách (cơ hội) và giảm thiểu dòng tiền ra bất ngờ (mối đe dọa).</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//1a1590c5-8d4a-485e-8aea-c5d915fc9fea/markdown_4/imgs/img_in_image_box_56_723_110_784.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A57Z%2F-1%2F%2Fd0fa13497faebcacd4d998add5cb4174469cc8e0b8f1498ea6e70a08bc2d9980" alt="Image" width="6%" /></div></div>
+
+<h4 id="ch12-cac-yeu-to-rui-ro">Các Yếu Tố Rủi Ro</h4>
+
+<p>Khi đánh giá rủi ro, người quản lý dự án cần xác định:</p>
+
+<ul class="content-list">
+  <li>Xác suất một sự kiện rủi ro sẽ xảy ra (khả năng xảy ra như thế nào)</li>
+  <li>Phạm vi các kết quả có thể xảy ra (tác động hoặc mức độ bị ảnh hưởng)</li>
+  <li>Thời điểm dự kiến xảy ra trong vòng đời dự án (khi nào)</li>
+  <li>Tần suất dự kiến của các sự kiện rủi ro từ nguồn đó (bao lâu một lần)</li>
+</ul>
+
+<h4 id="ch12-khau-vi-va-nguong-rui-ro">Khẩu Vị Và Ngưỡng Rủi Ro</h4>
+
+<p>Các thuật ngữ này đề cập đến mức độ rủi ro mà một cá nhân hoặc nhóm sẵn sàng chấp nhận.</p>
+
+<ul class="content-list">
+  <li><strong>Khẩu vị rủi ro</strong> Còn được gọi là mức độ chịu đựng rủi ro, đây là mô tả chung về mức độ rủi ro có thể chấp nhận được đối với một cá nhân hoặc một tổ chức.<br><em>Ví dụ:</em> Một nhà tài trợ có thể sẵn sàng chấp nhận ít rủi ro đối với lịch trình của một dự án. Điều này có thể (và nên) làm cho nhà tài trợ linh hoạt hơn với chi phí vì việc bổ sung nguồn lực có thể rút ngắn lịch trình (điều này được gọi là "crashing").</li>
+  <li><strong>Ngưỡng rủi ro</strong> Đây là điểm cụ thể mà rủi ro trở nên không thể chấp nhận được.<br><em>Ví dụ:</em> Nhà tài trợ sẽ không chấp nhận rủi ro chậm trễ lịch trình từ 15 ngày trở lên.</li>
+  <li><strong>Né tránh rủi ro</strong> Thuật ngữ này mô tả một cá nhân hoặc tổ chức có khẩu vị rất thấp đối với tác động tiêu cực của các mối đe dọa.</li>
+</ul>
+
+<p>Khẩu vị và ngưỡng rủi ro thay đổi và có thể bao gồm bất kỳ ràng buộc dự án nào (phạm vi, lịch trình, chi phí, v.v.), cũng như các rủi ro đối với danh tiếng, sự hài lòng của khách hàng và các yếu tố vô hình khác tùy thuộc vào cá nhân hoặc tổ chức.</p>
+
+<p><em>Ví dụ:</em> Một tổ chức có thể có mức độ chịu đựng cao hơn đối với các rủi ro liên quan đến chi phí so với các rủi ro ảnh hưởng đến sự hài lòng của khách hàng hoặc danh tiếng của họ trên thị trường.</p>
+
+<p>Khi trả lời các câu hỏi thi liên quan đến các chiến lược ứng phó rủi ro, hãy tìm kiếm thông tin về khẩu vị và ngưỡng rủi ro của cá nhân và tổ chức.</p>
+
+<h4 id="ch12-dinh-nghia-rui-ro-agile">Các Định Nghĩa Rủi Ro Đặc Thù Cho Agile</h4>
+
+<p>Môi trường thích ứng rất phù hợp cho các dự án có nhiều sự không chắc chắn, đặc biệt là khi phạm vi liên tục phát triển. Bạn sẽ thấy khi chúng ta thảo luận về mô hình Nhóm Quy Trình đối với quản lý rủi ro rằng các dự án Agile có thể sử dụng mô hình dựa trên dự đoán này ở phần lớn, vì tất cả quản lý rủi ro nên được thực hiện lặp lại trong suốt bất kỳ dự án nào.</p>
+
+<p>Hãy bắt đầu với lời nhắc nhở rằng mọi backlog Agile được lập kế hoạch tốt đều là một backlog được điều chỉnh theo rủi ro. Sau đó, vì các dự án Agile có tính lặp lại, các nhóm trải qua việc xác định và phân tích rủi ro, cũng như giảm thiểu hoặc loại bỏ mối đe dọa cho mỗi vòng lặp. Ngoài ra, các thực hành cải tiến liên tục của Agile luôn bao gồm việc tìm kiếm các cơ hội để cung cấp nhiều giá trị nhất có thể. Các rủi ro được xác định trong các cuộc họp daily standup khi các thành viên trong nhóm báo cáo bất kỳ trở ngại tiềm năng nào.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//6446c6ee-ad8b-4b2b-a8c0-bd55ecf50127/markdown_0/imgs/img_in_image_box_665_441_714_498.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A02Z%2F-1%2F%2F0ebf711aa1965e3425b3e03ebc72efdbce3f804ac36eed71633f8fbde089f175" alt="Image" width="5%" /></div></div>
+
+<h4 id="ch12-spikes">Spikes</h4>
+
+<p>Các nhóm Agile thường khám phá các rủi ro lớn như quy trình mới hoặc công nghệ mới bằng cách sử dụng các vòng lặp đặc biệt được gọi là spikes. Một spike về cơ bản là một vòng lặp ngắn dành riêng để khám phá một vấn đề hoặc một cách tiếp cận. Một spike dựa trên rủi ro được thực hiện trước khi quá trình phát triển của các gia tăng liên quan bắt đầu để cố gắng giảm thiểu hoặc loại bỏ rủi ro — hoặc tăng cường, nếu một cơ hội đang được khám phá.</p>
+
+<p><em>Ví dụ:</em> Là một phần của thư viện mới, các tệp kỹ thuật số được lưu trữ của nhân viên đang được di chuyển từ ổ đĩa mạng cục bộ dùng chung sang môi trường đám mây. Rủi ro lớn nhất ở đây, tất nhiên, là mất tệp. Vì vậy, nhóm Agile sẽ lên lịch một risk spike để kiểm tra rằng việc di chuyển sẽ không dẫn đến mất tệp. Bằng cách thực hiện việc kiểm tra này trước, họ sẽ phát hiện ra các vấn đề và giảm đáng kể rủi ro bằng cách loại bỏ các vấn đề có thể phát hiện được.</p>
+
+<h4 id="ch12-architectural-spike">Architectural Spike</h4>
+
+<p>Bạn cũng có thể thấy thuật ngữ này trong kỳ thi. Spike này dành cho các nỗ lực chứng minh khái niệm. Trong ví dụ trước của chúng ta về di chuyển tệp, một architectural spike có thể được hoàn thành trước bất kỳ risk-based spike nào. Trong architectural spike, nhóm có thể cài đặt công nghệ mới hoặc chạy thử cách các quy trình hoạt động với công nghệ mới để đảm bảo mọi thứ hoạt động theo kế hoạch.</p>
+
+<h4 id="ch12-that-bai-nhanh">Thất Bại Nhanh</h4>
+
+<p>Spikes có thể gây ra "thất bại nhanh," và điều này thực sự là mong muốn. Thất bại càng sớm xảy ra thì các nguồn lực càng có thể được chuyển hướng sang một chiến lược khác trong một dự án, hoặc thậm chí sang một dự án khác nhanh hơn. Về cơ bản nhóm đang cố gắng gây ra sự thất bại nếu họ nghĩ rằng có xác suất nó sẽ xảy ra dù sao. Giả sử họ có thể khắc phục vấn đề, chi phí thất bại có thể được giảm nếu nó được khắc phục sớm trong dự án. Hình 12.1 minh họa cách thất bại nhanh có thể mang lại lợi ích cho một dự án.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//6446c6ee-ad8b-4b2b-a8c0-bd55ecf50127/markdown_1/imgs/img_in_chart_box_359_109_723_369.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A03Z%2F-1%2F%2F916a184106ff9068d938690115b1dd073ad9925dbd69bf2242bdeee53543f058" alt="Image" width="44%" /></div></div>
+
+<p>Sự thất bại trở nên tốn kém hơn theo thời gian khi sản phẩm đã được xây dựng tăng độ phức tạp, các nguồn lực được sử dụng ngày càng nhiều hơn; chi phí thay đổi ngày càng lớn hơn</p>
+
+<div class="img-center"><div style="text-align: center;">HÌNH 12.1 Thất bại nhanh</div></div>
+
+<h4 id="ch12-tong-quan-quan-ly-rui-ro">Tổng Quan Về Quản Lý Rủi Ro</h4>
+
+<p>Như chúng ta đã làm trong các chương khác, chúng ta sẽ giúp bạn hiểu quy trình Quản Lý Rủi Ro tổng thể bằng cách sử dụng mô hình Nhóm Quy Trình, cũng như bao gồm thông tin về các phương pháp quản lý rủi ro độc đáo đối với môi trường thích ứng. Trước tiên hãy xem xét cách quy trình Quản Lý Rủi Ro trong Đề Cương Nội Dung Kỳ Thi (ECO) ánh xạ đến cùng quy trình trong mô hình Nhóm Quy Trình.</p>
+
+<h4 id="ch12-eco-va-mo-hinh-nhom-quy-trinh">ECO Và Mô Hình Nhóm Quy Trình</h4>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//6446c6ee-ad8b-4b2b-a8c0-bd55ecf50127/markdown_1/imgs/img_in_image_box_78_581_129_640.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A03Z%2F-1%2F%2F1972eee0316214d80fa642943411f1cd119ba731ca7b800796c4af46a56e06a9" alt="Image" width="6%" /></div></div>
+
+<p><strong>Hãy Suy Nghĩ.</strong> Trong ECO, lĩnh vực II, nhiệm vụ 3 — đánh giá và quản lý rủi ro — có liên quan chặt chẽ đến quy trình quản lý rủi ro như được định nghĩa trong mô hình Nhóm Quy Trình. Các nhiệm vụ khác có sự liên kết chặt chẽ với quản lý rủi ro bao gồm nhưng không giới hạn ở:</p>
+
+<ul class="content-list">
+  <li>Lĩnh vực I (Lĩnh vực Con Người), nhiệm vụ 7: Giải quyết và loại bỏ các trở ngại, rào cản và vật cản cho nhóm</li>
+  <li>Lĩnh vực II (Lĩnh vực Quy Trình), nhiệm vụ 15: Quản lý các vấn đề dự án</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//6446c6ee-ad8b-4b2b-a8c0-bd55ecf50127/markdown_1/imgs/img_in_image_box_320_701_780_962.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A03Z%2F-1%2F%2F59b36d517818ec95ccbc1ae819f6389c6c8c29a4fea24b2829e6ffd411172251" alt="Image" width="55%" /></div></div>
+
+<p>Hãy dành thời gian xem xét ECO và lưu ý các nhiệm vụ bổ sung có thể áp dụng được.</p>
+
+<h5>Ví Dụ</h5>
+
+<ul class="content-list">
+  <li>Quản lý rủi ro có thể dựa vào công việc để Đảm bảo chuyển giao kiến thức cho sự liên tục của dự án (lĩnh vực II, nhiệm vụ 16).</li>
+  <li>Nếu có xung đột trong dự án của bạn, liệu việc để xung đột đó chưa được giải quyết có phải là rủi ro không? Sau đây cũng liên quan đến quản lý rủi ro:
+    <ul class="content-list">
+      <li>Quản lý xung đột (lĩnh vực I, nhiệm vụ I)</li>
+      <li>Đảm bảo các thành viên nhóm/các bên liên quan được đào tạo đầy đủ (lĩnh vực I, nhiệm vụ 5)</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Bạn có thể nhận ra những nhiệm vụ nào khác có thể ảnh hưởng đến rủi ro? Dành thời gian suy nghĩ về điều này bây giờ sẽ giúp bạn làm quen hơn với ECO và chuẩn bị tốt hơn cho kỳ thi.</p>
+
+<p>Mô hình Nhóm Quy Trình cho rủi ro có nhiều phần và học viên thường thích có một từ viết tắt khi có nhiều phần cần nhớ. Bạn có thể nhớ mô hình Nhóm Quy Trình sau đây cho rủi ro với từ viết tắt "PIP P PIM" (Lập kế hoạch-Xác định-Thực hiện-Thực hiện-Lập kế hoạch-Thực hiện-Theo dõi). Hoặc, nếu bạn thích: "PIQQRIM" (Lập kế hoạch-Xác định-Định tính-Định lượng-Phản ứng-Thực hiện-Theo dõi).</p>
+
+<p>Hình 12.2 là hình ảnh trực quan về quản lý rủi ro ở cấp độ cao từ góc độ mô hình Nhóm Quy Trình. Nó có thể giúp bạn hình dung vị trí của mình trong quy trình quản lý rủi ro khi bạn tiếp tục với chương này, và việc hiểu nó sẽ giúp bạn trong kỳ thi.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//6446c6ee-ad8b-4b2b-a8c0-bd55ecf50127/markdown_2/imgs/img_in_image_box_32_293_95_350.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A04Z%2F-1%2F%2F07ffb28b37834348ff2c0d2171a44d047660f852566b2d9dde31a95af0b79725" alt="Image" width="7%" /></div></div>
+
+<p>Sự thay đổi thúc đẩy một quy trình được lặp lại thông qua sự hoàn thiện dần dần hoặc các phương pháp Agile</p>
+
+<p>→ Các thay đổi gây ra việc quay trở lại giai đoạn khởi tạo là hiếm</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//6446c6ee-ad8b-4b2b-a8c0-bd55ecf50127/markdown_2/imgs/img_in_image_box_278_452_685_843.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A04Z%2F-1%2F%2Fccda9ff467a2dbff9b0ee7fa5446ed819af22016c4552b58a4283e48aff9f682" alt="Image" width="49%" /></div></div>
+
+<div class="img-center"><div style="text-align: center;">HÌNH 12.2 Quy trình quản lý rủi ro</div></div>
+
+<h4 id="ch12-ket-qua-mong-muon">Kết Quả Mong Muốn Của Quản Lý Rủi Ro</h4>
+
+<p>Trong kỳ thi, hãy giả định rằng quản lý rủi ro đã được lập kế hoạch đúng cách theo các khái niệm được trình bày trong chương này trừ khi câu hỏi chỉ định khác. Điều này có nghĩa là những điều sau đây được tích hợp vào lập kế hoạch rủi ro, và tiếp theo là giám sát rủi ro và thực hiện ứng phó rủi ro:</p>
+
+<ul class="content-list">
+  <li>Các yếu tố môi trường nội bộ và bên ngoài ảnh hưởng đến rủi ro dự án được xem xét.</li>
+  <li>Rủi ro và các phản ứng giải quyết sự không chắc chắn và phức tạp vốn có trong các dự án.</li>
+  <li>Rủi ro liên quan đến tất cả các biến và ràng buộc có thể có được tính đến cùng với sự phụ thuộc lẫn nhau của chúng.</li>
+  <li>Không có "đám cháy" lớn nào cần dập tắt mỗi ngày — chúng được loại bỏ bằng các kế hoạch ứng phó rủi ro.</li>
+  <li>Rủi ro được xem xét trong mọi cuộc họp, các chỉ số kích hoạt được theo dõi và rủi ro được giải quyết trước khi chúng xảy ra.</li>
+  <li>Thông thường, nếu một sự kiện rủi ro xảy ra, có một kế hoạch sẵn sàng để giải quyết nó. Các cuộc họp hỗn loạn để phát triển các phản ứng là hiếm và chỉ cần thiết khi một sự kiện rủi ro không được biết (tức là không thể đoán trước) xảy ra và yêu cầu nhóm phát triển một giải pháp tình thế.</li>
+  <li>Quản lý rủi ro giúp hạn chế các khoản đầu tư chi phí, thời gian và nguồn lực trong dự án.</li>
+  <li>Có các khoản dự phòng được dành riêng trong ngân sách cho các sự kiện rủi ro.</li>
+</ul>
+
+<h4 id="ch12-tom-tat-quan-ly-rui-ro">Tóm Tắt Quản Lý Rủi Ro</h4>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//6446c6ee-ad8b-4b2b-a8c0-bd55ecf50127/markdown_3/imgs/img_in_image_box_85_408_137_458.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A04Z%2F-1%2F%2F999d1b83a21326d98fc2d3a4d5273b20812b0fd07b9fa2af082d0c6eb2111b34" alt="Image" width="6%" /></div></div>
+
+<p>Hãy nhớ rằng mô hình Nhóm Quy Trình mô tả cách thức và thứ tự quản lý rủi ro nói chung diễn ra, nhưng quản lý dự án có tính lặp lại và năng động. Khởi tạo được lặp lại trong các dự án quy mô lớn khi sử dụng hệ thống phase-gate. Và, tất nhiên, trong một dự án Agile hoặc hybrid, quản lý rủi ro được xem xét mỗi khi backlog được ưu tiên cho một vòng lặp mới, khi ước tính được tạo ra, trong quá trình lập kế hoạch phát hành và vòng lặp, trong các buổi đánh giá vòng lặp và hồi cứu.</p>
+
+<h4 id="ch12-lap-ke-hoach-quan-ly-rui-ro">Lập Kế Hoạch Quản Lý Rủi Ro</h4>
+
+<p>Ngoài việc tạo ra danh sách rút gọn các rủi ro, phân tích rủi ro định tính còn bao gồm việc xác định các rủi ro cần được xử lý nhanh hơn các rủi ro khác trong quy trình, dựa trên các yếu tố được gọi là <strong>tham số rủi ro</strong>. Một số ví dụ về tham số rủi ro bao gồm:</p>
+
+<ul class="content-list">
+  <li><strong>Tính cấp bách (Urgency)</strong> – Tham số này cho biết rủi ro có khả năng xảy ra sớm (đòi hỏi phản ứng phải được thực hiện nhanh chóng) hay rủi ro đó đòi hỏi thời gian lập kế hoạch ứng phó đặc biệt dài. Các rủi ro khẩn cấp có thể được chuyển trực tiếp hoặc nhanh hơn vào bước lập kế hoạch ứng phó rủi ro.</li>
+  <li><strong>Thời gian tiềm ẩn (Dormancy)</strong> – Đây là khoảng thời gian dự kiến từ khi một rủi ro xảy ra đến khi tác động của nó được cảm nhận.</li>
+  <li><strong>Khả năng quản lý và kiểm soát (Manageability and Controllability)</strong> – Tham số này cho biết mức độ khó khăn khi xử lý một rủi ro đã được xác định, nếu nó xảy ra.</li>
+  <li><strong>Tác động chiến lược (Strategic Impact)</strong> – Đây là mức độ mà việc xảy ra của một rủi ro sẽ ảnh hưởng đến các mục tiêu chiến lược của tổ chức thực hiện dự án.</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//59921bf0-d5c8-4f18-b955-5a305cffc233/markdown_4/imgs/img_in_image_box_84_103_143_157.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A50%3A19Z%2F-1%2F%2Fe2536adbbfbc073a3a4a3a1253b46e9a2a522899bab535ed1b9b51b5c2a1b779" alt="Image" width="7%" /></div></div>
+
+<p>Phân tích rủi ro định tính có thể được sử dụng để điều chỉnh quản lý dự án nhằm thực hiện những việc sau:</p>
+
+<ul class="content-list">
+  <li>So sánh rủi ro của dự án với rủi ro tổng thể của các dự án khác.</li>
+  <li>Xác định liệu dự án có nên tiếp tục hay chấm dứt.</li>
+  <li>Xác định liệu có nên tiến hành quy trình Thực hiện Phân tích Rủi ro Định lượng hay quy trình Lập kế hoạch Ứng phó Rủi ro (tùy thuộc vào nhu cầu của dự án và tổ chức thực hiện).</li>
+</ul>
+
+<h4 id="ch12-artifacts-qualitative-risk-analysis">Kết quả của Phân tích Rủi ro Định tính</h4>
+
+<p>Khi quy trình này hoàn tất, sẽ có các cập nhật đối với các tài liệu sau:</p>
+
+<ul class="content-list">
+  <li>Kế hoạch quản lý dự án (bao gồm kế hoạch quản lý rủi ro)</li>
+  <li>Sổ đăng ký rủi ro (được cập nhật với dữ liệu phân tích định tính)</li>
+  <li>Nhật ký vấn đề</li>
+  <li>Tài liệu dự án</li>
+  <li>Nhật ký giả định</li>
+  <li>Danh sách theo dõi</li>
+  <li>Báo cáo rủi ro</li>
+</ul>
+
+<p>Báo cáo rủi ro sẽ bao gồm kết quả ưu tiên hóa rủi ro cho đến thời điểm đó, bao gồm danh sách các rủi ro xếp hạng cao nhất để chuyển tiếp sang quy trình Phân tích Rủi ro Định lượng. Những rủi ro không chuyển tiếp sang Phân tích Rủi ro Định lượng sẽ được chuyển vào danh sách theo dõi.</p>
+
+<h4 id="ch12-perform-quantitative-risk-analysis">Thực hiện Phân tích Rủi ro Định lượng</h4>
+
+<p>Quy trình Thực hiện Phân tích Rủi ro Định lượng liên quan đến việc phân tích xác suất và tác động (mức độ rủi ro hoặc hệ quả) của các rủi ro được xếp hạng cao nhất trong phân tích rủi ro định tính. Các con số được sử dụng trong trường hợp này dựa trên ước tính tiền tệ về thời gian và chi phí nếu một rủi ro xảy ra. Phân tích rủi ro định lượng cũng xem xét cách các rủi ro có thể ảnh hưởng đến các mục tiêu của dự án. Mục đích của phân tích rủi ro định lượng là xác định:</p>
+
+<ul class="content-list">
+  <li>Sự kiện rủi ro nào cần có kế hoạch ứng phó và sự kiện nào cần được chú ý nhất.</li>
+  <li>Rủi ro tổng thể của dự án (mức độ phơi nhiễm rủi ro).</li>
+  <li>Xác suất định lượng để đạt được các mục tiêu dự án.</li>
+</ul>
+
+<div class="callout">
+  <p><strong>Ví dụ:</strong> "Chúng tôi có 80% khả năng hoàn thành dự án trong vòng 6 tháng theo yêu cầu của khách hàng," hoặc "Chúng tôi có 75% khả năng hoàn thành dự án trong ngân sách $800,000."</p>
+</div>
+
+<ul class="content-list">
+  <li>Dự phòng chi phí và tiến độ.</li>
+  <li>Các mục tiêu chi phí, tiến độ hoặc phạm vi thực tế và khả thi.</li>
+</ul>
+
+<div class="callout tip">
+  <p>Đối với một số dự án, có thể có một tập hợp con các rủi ro đã được xác định cần phân tích định lượng. Trong khi người quản lý dự án luôn phải thực hiện phân tích rủi ro định tính, họ chỉ nên tiến hành phân tích rủi ro định lượng nếu điều đó xứng đáng với thời gian và chi phí bỏ ra; nếu không, họ nên chuyển trực tiếp sang lập kế hoạch ứng phó rủi ro.</p>
+  <p>Quy trình Thực hiện Phân tích Rủi ro Định lượng có thể bao gồm nhiều phép tính và phân tích. May mắn thay, các chi tiết của những nỗ lực này không phải là trọng tâm của kỳ thi. Bạn cần biết rằng các hành động sau đây là một phần của phân tích rủi ro định lượng nhưng không cần biết cách thực hiện chúng ngoài những gì được giải thích trong chương này:</p>
+  <ul class="content-list">
+    <li>Phân tích thêm các rủi ro xếp hạng cao nhất trong dự án và các kết quả khác của phân tích định tính.</li>
+    <li>Thực hiện phân tích dữ liệu để xác định rủi ro nào có tác động lớn nhất đến dự án.</li>
+    <li>Xác định mức độ rủi ro định lượng của dự án thông qua phân tích dữ liệu.</li>
+  </ul>
+</div>
+
+<h4 id="ch12-methods-quantitative-risk-analysis">Các Phương pháp Phân tích Rủi ro Định lượng</h4>
+
+<p>Xác suất và tác động định lượng có thể được xác định theo nhiều cách khác nhau, sử dụng một số hoặc tất cả các công cụ sau:</p>
+
+<ul class="content-list">
+  <li>Phán đoán chuyên gia từ nhóm dự án và các chuyên gia rủi ro</li>
+  <li>Các kỹ thuật thu thập dữ liệu, chẳng hạn như phỏng vấn</li>
+  <li>Các kỹ thuật phân tích dữ liệu, chẳng hạn như phân tích độ nhạy và phân tích cây quyết định</li>
+  <li>Sử dụng hồ sơ lịch sử để cung cấp thông tin tham chiếu</li>
+</ul>
+
+<h4 id="ch12-simulations">Mô phỏng</h4>
+
+<p>Các kỹ thuật này có thể cực kỳ có giá trị. Phân tích Monte Carlo là một mô phỏng trong đó các ước tính tiến độ và chi phí được sử dụng để "thực hiện" dự án nhiều lần nhằm mô phỏng kết quả. Theo truyền thống, trong kỳ thi chỉ có một hoặc hai câu hỏi về phân tích Monte Carlo.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//fa6c5d3f-a171-418a-92eb-a4eb2b3311b1/markdown_0/imgs/img_in_image_box_52_319_104_372.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A39Z%2F-1%2F%2Fbd595475408c0bc0aebeefff099c8c9435fd7e87fbe8f54dfe856a39d5c36272" alt="Image" width="6%" /></div></div>
+
+<p>Bạn không cần phải có kinh nghiệm trực tiếp thực hiện phân tích Monte Carlo cho kỳ thi. Bạn chỉ cần hiểu rằng phân tích Monte Carlo:</p>
+
+<ul class="content-list">
+  <li>Đánh giá rủi ro tổng thể trong dự án</li>
+  <li>Được thực hiện bằng ứng dụng máy tính chuyên dụng</li>
+  <li>Xác định xác suất hoàn thành dự án vào bất kỳ ngày cụ thể nào hoặc với bất kỳ chi phí cụ thể nào</li>
+  <li>Xác định xác suất của bất kỳ hoạt động nào thực sự nằm trên đường găng</li>
+  <li>Xem xét sự hội tụ đường dẫn (các điểm trong sơ đồ mạng lưới nơi nhiều đường dẫn hội tụ thành một hoạt động)</li>
+  <li>Chuyển đổi các sự không chắc chắn thành các tác động đối với dự án</li>
+  <li>Có thể được sử dụng để đánh giá tác động về chi phí và tiến độ</li>
+  <li>Cho kết quả là một phân phối xác suất (dưới dạng biểu đồ)</li>
+</ul>
+
+<h4 id="ch12-sensitivity-analysis">Phân tích Độ nhạy</h4>
+
+<p>Kỹ thuật này phân tích và so sánh các tác động tiềm năng của các rủi ro đã được xác định. Có thể sử dụng biểu đồ tornado để mô tả đồ họa kết quả của phân tích này. Các rủi ro được biểu diễn bằng các thanh ngang. Thanh dài nhất và ở trên cùng đại diện cho rủi ro lớn nhất, và các thanh ngang ngắn hơn dần bên dưới đại diện cho các rủi ro xếp hạng thấp hơn. Đồ họa kết quả trông giống như một đám mây phễu, hay cơn lốc xoáy, như được thể hiện trong hình 12.6.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//fa6c5d3f-a171-418a-92eb-a4eb2b3311b1/markdown_0/imgs/img_in_chart_box_160_657_620_838.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A39Z%2F-1%2F%2F2139db6302bb6795adef14ef71ca9821db608c81e1a7d34918e151eb95453e03" alt="Image" width="55%" /></div></div>
+
+<div style="text-align: center;"><em>HÌNH 12.6 Biểu đồ Tornado</em></div>
+
+<h4 id="ch12-emv">Giá trị Tiền tệ Kỳ vọng (EMV)</h4>
+
+<p>Đây là một phương pháp quan trọng trong phân tích rủi ro định lượng. EMV có thể được sử dụng theo nhiều cách nhưng thường được dùng để ước tính tác động của một rủi ro bằng cách tính tích của xác suất ước tính (theo tỷ lệ phần trăm) nhân với chi phí ước tính (theo số tiền, nếu rủi ro xảy ra). Công thức tính EMV là:</p>
+
+<div class="highlight">
+  <p><strong>EMV = P × I</strong></p>
+  <p><strong>Ví dụ:</strong> 65% × $40,000 = $26,000. Nói cách khác, một rủi ro có xác suất 65% mà nếu xảy ra sẽ tốn $40,000 thì có EMV là $26,000.</p>
+</div>
+
+<p>Các ước tính EMV cho các rủi ro trong phân tích rủi ro định lượng được cộng lại để tính toán dự phòng. Các câu hỏi trong kỳ thi có thể hỏi "Giá trị tiền tệ kỳ vọng của những điều sau đây là gì?" Hãy thực hiện bài tập sau để thử. Kỳ thi cũng có thể yêu cầu bạn tính giá trị tiền tệ kỳ vọng cho chi phí, giá trị kỳ vọng (hoặc chỉ là "giá trị") cho tiến độ của một đường dẫn, hoặc giá trị của quyết định của bạn.</p>
+
+<p>Lưu ý rằng đối với các cơ hội, giá trị tiền tệ kỳ vọng được trình bày là số dương (ví dụ: $3,000), trong khi các mối đe dọa được trình bày là số âm (ví dụ: -$3,000).</p>
+
+<h3 id="ch12-exercise-12-1">Bài tập 12.1</h3>
+
+<p>Trong Sổ tay Bài tập của bạn, hãy tính giá trị tiền tệ kỳ vọng cho từng gói công việc này. Phép tính không khó nhưng hoàn thành bài tập này sẽ giúp bạn nhớ phép tính này cho kỳ thi.</p>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;"><strong>Gói công việc</strong></td>
+    <td style="text-align: center; word-wrap: break-word;"><strong>Xác suất</strong></td>
+    <td style="text-align: center; word-wrap: break-word;"><strong>Tác động</strong></td>
+    <td style="text-align: center; word-wrap: break-word;"><strong>Giá trị Tiền tệ Kỳ vọng</strong></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">A</td>
+    <td style="text-align: center; word-wrap: break-word;">10%</td>
+    <td style="text-align: center; word-wrap: break-word;">$20,000</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">B</td>
+    <td style="text-align: center; word-wrap: break-word;">30%</td>
+    <td style="text-align: center; word-wrap: break-word;">$45,000</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">C</td>
+    <td style="text-align: center; word-wrap: break-word;">68%</td>
+    <td style="text-align: center; word-wrap: break-word;">$18,000</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+</table>
+</div>
+
+<h4 id="ch12-exercise-12-1-answer">Đáp án</h4>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;"><strong>Gói công việc</strong></td>
+    <td style="text-align: center; word-wrap: break-word;"><strong>Xác suất</strong></td>
+    <td style="text-align: center; word-wrap: break-word;"><strong>Tác động</strong></td>
+    <td style="text-align: center; word-wrap: break-word;"><strong>Giá trị Tiền tệ Kỳ vọng</strong></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">A</td>
+    <td style="text-align: center; word-wrap: break-word;">10%</td>
+    <td style="text-align: center; word-wrap: break-word;">$20,000</td>
+    <td style="text-align: center; word-wrap: break-word;">$2,000</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">B</td>
+    <td style="text-align: center; word-wrap: break-word;">30%</td>
+    <td style="text-align: center; word-wrap: break-word;">$45,000</td>
+    <td style="text-align: center; word-wrap: break-word;">$13,500</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">C</td>
+    <td style="text-align: center; word-wrap: break-word;">68%</td>
+    <td style="text-align: center; word-wrap: break-word;">$18,000</td>
+    <td style="text-align: center; word-wrap: break-word;">$12,240</td>
+  </tr>
+</table>
+</div>
+
+<h4 id="ch12-decision-tree-analysis">Phân tích Cây Quyết định</h4>
+
+<p>Trong lịch sử, kỳ thi chỉ có một hoặc hai câu hỏi về cây quyết định, nhưng vì nhiều người chưa quen với chủ đề này, chúng ta sẽ thảo luận về nó ở đây. Bạn cần biết cây quyết định là gì và có thể tính toán một cây đơn giản từ dữ liệu trong câu hỏi thi.</p>
+
+<p>Cây quyết định được phân tích bằng cách tính giá trị của từng nhánh (một cách khác để sử dụng EMV). Kết quả của phép tính này sẽ cho thấy lựa chọn tốt nhất cần chọn. Bạn cũng nên biết những điều sau về cây quyết định:</p>
+
+<ul class="content-list">
+  <li>Chúng xem xét các sự kiện trong tương lai.</li>
+  <li>Chúng tính toán giá trị kỳ vọng (xác suất nhân với tác động) trong các tình huống phức tạp hơn. Ví dụ, người quản lý dự án có thể đánh giá các ảnh hưởng về chi phí hoặc tiến độ và lợi ích của một số phương án ứng phó rủi ro cùng một lúc để xác định lựa chọn tốt nhất.</li>
+  <li>Chúng liên quan đến tính loại trừ lẫn nhau.</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//fa6c5d3f-a171-418a-92eb-a4eb2b3311b1/markdown_1/imgs/img_in_image_box_54_901_118_956.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A40Z%2F-1%2F%2F1eee4a22edb936ac676f98cb12128d06b7a1b4d7dbef039d5db5607fe821bac2" alt="Image" width="7%" /></div></div>
+
+<p>Một số ví dụ về cây quyết định có chi phí chỉ xảy ra ở cuối dự án, trong khi những ví dụ khác có chi phí xảy ra ở đầu hoặc giữa dự án. Vì cây quyết định mô hình hóa tất cả các lựa chọn có thể để giải quyết một vấn đề, chi phí có thể xuất hiện ở bất kỳ đâu trong sơ đồ, không chỉ ở cuối. Khi làm bài thi, đừng bị nhầm lẫn khi bạn nhìn vào các ví dụ về cây quyết định. Hãy chú ý đến dữ liệu được cung cấp trong câu hỏi để bạn có thể giải thích chính xác câu trả lời.</p>
+
+<h3 id="ch12-exercise-12-2">Bài tập 12.2</h3>
+
+<p>Một công ty đang cố gắng xác định xem việc tạo mẫu thử có xứng đáng trong một dự án hay không. Họ đã đưa ra các tác động sau (xem sơ đồ) về việc thiết bị hoạt động hay hỏng. Dựa trên thông tin được cung cấp trong sơ đồ, giá trị tiền tệ kỳ vọng của mỗi lựa chọn là bao nhiêu? Lựa chọn nào rẻ hơn — tạo mẫu thử hay không tạo mẫu thử? Hãy thực hiện các phép tính và viết câu trả lời vào Sổ tay Bài tập của bạn.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//fa6c5d3f-a171-418a-92eb-a4eb2b3311b1/markdown_2/imgs/img_in_image_box_150_255_628_424.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A40Z%2F-1%2F%2F7532f34daa7f15a1dbfebded3ea3d52d546ef5fe11b7f1014e4c6dbf6c671791" alt="Image" width="58%" /></div></div>
+
+<h4 id="ch12-exercise-12-2-answer">Đáp án</h4>
+
+<p>Nếu chỉ nhìn vào chi phí thiết lập của việc tạo mẫu thử, có vẻ như đây là quyết định không khôn ngoan khi bỏ tiền vào việc tạo mẫu thử. Tuy nhiên, phân tích lại chứng minh điều ngược lại. Chỉ xét đến một sự kiện tương lai duy nhất là liệu thiết bị có hoạt động hay hỏng, cây quyết định cho thấy rằng việc tạo mẫu thử sẽ rẻ hơn. Giá trị tiền tệ kỳ vọng của việc tạo mẫu thử là $242,000; giá trị tiền tệ kỳ vọng của việc không tạo mẫu thử là $315,000.</p>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <td rowspan="2"><strong>Tạo mẫu thử</strong></td>
+    <td style="text-align: center; word-wrap: break-word;">35% × $120,000 = $42,000</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">$42,000 + $200,000 = $242,000</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;"><strong>Không tạo</strong></td>
+    <td rowspan="2">70% × $450,000 = $315,000</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;"><strong>mẫu thử</strong></td>
+  </tr>
+</table>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//fa6c5d3f-a171-418a-92eb-a4eb2b3311b1/markdown_2/imgs/img_in_image_box_59_716_115_773.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A40Z%2F-1%2F%2F7b0961efd8183e6bc1d307c4f39260e2375984af6e0f9b7751aface2b421636e" alt="Image" width="6%" /></div></div>
+
+<div class="callout">
+  <p>Quản lý dự án giúp tiết kiệm thời gian và tiền bạc trong các dự án. Việc thuyết phục các lãnh đạo tổ chức của bạn hiểu được thực tế đó đôi khi có thể khó khăn. Sẽ có ích như thế nào nếu bạn có thể chứng minh được giá trị của quản lý dự án?</p>
+  <p><strong>Ví dụ:</strong> Hãy tưởng tượng bạn vừa tính toán EMV của tất cả các rủi ro được xếp hạng cao và ưu tiên cao trong phân tích rủi ro định tính, hoặc bạn vừa hoàn thành phân tích Monte Carlo cho một dự án. Trong cả hai trường hợp, bạn tính ra rằng bạn cần $98,000 dự phòng cho dự án để ứng phó với các rủi ro. Sau đó, khi nhóm dự án chuyển sang quy trình Lập kế hoạch Ứng phó Rủi ro (được thảo luận tiếp theo), họ loại bỏ một số rủi ro và giảm xác suất hoặc tác động của các rủi ro khác. Tính toán EMV hoặc phân tích Monte Carlo được thực hiện lại, cho thấy nhu cầu dự phòng được điều chỉnh xuống còn $12,000. Bạn đã có thể tiết kiệm $86,000 ngay cả trước khi công việc dự án bắt đầu!</p>
+</div>
+
+<h4 id="ch12-artifacts-quantitative-risk-analysis">Kết quả của Thực hiện Phân tích Rủi ro Định lượng</h4>
+
+<p>Quy trình Thực hiện Phân tích Rủi ro Định lượng dẫn đến các cập nhật đối với sổ đăng ký rủi ro và các tài liệu dự án khác, bao gồm:</p>
+
+<ul class="content-list">
+  <li><strong>Danh sách ưu tiên các rủi ro dự án đã được định lượng</strong> – Rủi ro nào có khả năng ảnh hưởng tiêu cực nhất đến đường găng? Rủi ro nào cần dự phòng nhiều nhất?</li>
+  <li><strong>Xác suất định lượng để đạt được các mục tiêu dự án</strong> – <em>Ví dụ:</em> "Chúng tôi có 80% khả năng hoàn thành dự án trong vòng 6 tháng theo yêu cầu của khách hàng," hoặc, "Chúng tôi có 75% khả năng hoàn thành dự án trong ngân sách $800,000."</li>
+  <li><strong>Xu hướng phân tích rủi ro định lượng</strong> – Khi người quản lý dự án lặp lại phân tích rủi ro định lượng trong giai đoạn lập kế hoạch dự án và khi có các thay đổi được đề xuất, họ có thể theo dõi các thay đổi đối với rủi ro tổng thể của dự án và xem các xu hướng.</li>
+  <li><strong>Dự phòng thời gian và chi phí ban đầu cần thiết</strong> (được hoàn thiện trong Lập kế hoạch Ứng phó Rủi ro) – <em>Ví dụ:</em> "Dự án cần thêm $50,000 và hai tháng để ứng phó với các rủi ro dự án."</li>
+  <li><strong>Đánh giá mức độ phơi nhiễm rủi ro tổng thể của dự án</strong> – Sử dụng xác suất thành công tổng thể của dự án (khả năng dự án đạt được tất cả các mục tiêu chính) và bất kỳ biến số nào vẫn có thể ảnh hưởng đến dự án để hiểu đầy đủ mức độ phơi nhiễm rủi ro tổng thể của dự án.</li>
+  <li><strong>Ngày hoàn thành và chi phí dự án thực tế và khả thi, với mức độ tin cậy</strong>, so với các mục tiêu thời gian và chi phí của dự án. – <em>Ví dụ:</em> "Chúng tôi chắc chắn 90% rằng chúng tôi có thể hoàn thành dự án này vào ngày 25 tháng 5 với chi phí $989,000."</li>
+  <li><strong>Các phương án ứng phó rủi ro được khuyến nghị</strong> – Sau khi phân tích rủi ro định lượng được thực hiện, sổ đăng ký rủi ro có thể bao gồm các phản ứng được đề xuất đối với các rủi ro tổng thể của dự án và các rủi ro cá nhân của dự án.</li>
+</ul>
+
+<h4 id="ch12-plan-risk-responses">Lập kế hoạch Ứng phó Rủi ro</h4>
+
+<p>Quy trình Lập kế hoạch Ứng phó Rủi ro liên quan đến việc tìm hiểu, "Chúng ta sẽ làm gì với từng rủi ro được xếp hạng cao?" Chúng ta đã có và sẽ sử dụng sổ đăng ký rủi ro, đã được cập nhật xuyên suốt quá trình quản lý rủi ro và hiện bao gồm các rủi ro đã được phân tích và ưu tiên. "Các rủi ro hàng đầu" là các rủi ro mà kế hoạch ứng phó sẽ được lập. Người quản lý dự án sẽ sử dụng các phương pháp như phân tích các lựa chọn thay thế và phân tích lợi ích-chi phí để đánh giá giá trị của các chiến lược ứng phó khác nhau và các kế hoạch ứng phó rủi ro cụ thể so với chi phí của chúng. Đường cơ sở chi phí sẽ mô tả một khoản dự phòng sẽ được sử dụng để giải quyết các rủi ro cụ thể này. Xem phần thảo luận về dự phòng ở phần sau của chương này.</p>
+
+<h4 id="ch12-responses-top-risks">Các Phương án Ứng phó cho Rủi ro Hàng đầu</h4>
+
+<p>Các phương án ứng phó rủi ro của dự án có thể bao gồm thực hiện một hoặc kết hợp các điều sau đây cho mỗi rủi ro hàng đầu:</p>
+
+<ul class="content-list">
+  <li>Làm điều gì đó để loại bỏ các mối đe dọa trước khi chúng xảy ra.</li>
+  <li>Làm điều gì đó để đảm bảo các cơ hội xảy ra.</li>
+  <li>Giảm xác suất và/hoặc tác động của các mối đe dọa.</li>
+  <li>Tăng xác suất và/hoặc tác động của các cơ hội.</li>
+</ul>
+
+<p>Đây là điều mà quản lý rủi ro hướng đến. Luôn luôn có các lựa chọn để ứng phó với rủi ro. Nếu sự thay đổi về sự sẵn có của một thành viên nhóm là một rủi ro hàng đầu, người quản lý dự án có thể điều tra khả năng thay thế thành viên đó bằng một nguồn lực khác có kỹ năng tương tự. Nếu một gói công việc đang gây ra một lượng rủi ro lớn, người quản lý dự án có thể xem xét:</p>
+
+<ul class="content-list">
+  <li>Thay đổi sản phẩm bàn giao</li>
+  <li>Sửa đổi công việc để tạo ra nó</li>
+  <li>Thay đổi các yêu cầu chất lượng</li>
+  <li>Loại bỏ phạm vi khỏi dự án</li>
+</ul>
+
+<h4 id="ch12-responses-residual-risks">Các Phương án Ứng phó cho Rủi ro Còn lại</h4>
+
+<p>Rủi ro tồn dư là những rủi ro còn lại trong dự án mà không thể dự đoán hay lên kế hoạch trước. Mọi dự án đều có chúng. Đối với những mối đe dọa tồn dư không thể loại bỏ hoặc khai thác:</p>
+
+<ul class="content-list">
+  <li>Thực hiện hành động nếu rủi ro xảy ra (kế hoạch dự phòng). Kế hoạch dự phòng phải có thể đo lường được để quản lý dự án có thể đánh giá hiệu quả của chúng.</li>
+  <li>Thực hiện hành động nếu kế hoạch dự phòng không hiệu quả hoặc chỉ hiệu quả một phần (kế hoạch dự phòng thứ cấp).</li>
+</ul>
+
+<p>Quản lý dự án và nhóm sẽ xác định cách xử lý từng rủi ro tồn dư — những rủi ro không thể loại bỏ hoặc khai thác. Điều này có thể có nghĩa là chấp nhận các rủi ro tồn dư này, hoặc lên kế hoạch thêm các phản ứng rủi ro. Công việc liên quan đến tất cả các phản ứng rủi ro sau đó được giao cho các chủ sở hữu rủi ro.</p>
+
+<div class="callout tip">
+  <p>Khi làm bài thi, hãy giả định rằng tất cả các vấn đề tiềm ẩn lớn và các cơ hội có thể được dự báo trước đều đã được xác định và phân tích trước khi xảy ra, và rằng đã có kế hoạch cho mỗi rủi ro. Với điều này trong đầu, câu trả lời tốt nhất cho một câu hỏi mô tả một vấn đề lớn trong dự án sẽ là lựa chọn nói về việc thực hiện kế hoạch dự phòng, thay vì lựa chọn liên quan đến việc thảo luận các giải pháp khả thi cho một vấn đề sau khi nó đã xảy ra. Nhiều người đã nói rằng những loại câu hỏi này là lý do họ không đậu kỳ thi. Họ đơn giản là đã chọn sai trong các câu hỏi tình huống. Hãy chắc chắn chuyển sang cách suy nghĩ này nếu nó còn xa lạ với bạn.</p>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//fa6c5d3f-a171-418a-92eb-a4eb2b3311b1/markdown_4/imgs/img_in_image_box_43_286_104_341.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A41Z%2F-1%2F%2F072ae1b449552778363d8b1c29ee92f994331764ce64aea6429b35ce84e79dfa" alt="Image" width="7%" /></div></div>
+
+<p>Tuy nhiên, dù có bao nhiêu phân tích rủi ro và lập kế hoạch phản ứng được thực hiện, thường vẫn có rủi ro tồn dư trong một dự án. Đó là lý do tại sao có cả dự phòng quản lý lẫn dự phòng bất trắc.</p>
+
+<p>Dưới đây là một vài điểm có thể gây nhầm lẫn trong kỳ thi:</p>
+
+<ul class="content-list">
+  <li>Liệu tất cả các mối đe dọa có thể được loại bỏ trong một dự án không? Hãy nhớ rằng các mối đe dọa có thể được loại bỏ và các cơ hội có thể được khai thác, nhưng thời gian và công sức liên quan đến việc loại bỏ tất cả các mối đe dọa và khai thác tất cả các cơ hội trong một dự án có thể sẽ không xứng đáng.</li>
+  <li>Bạn có biết rằng phân tích rủi ro định tính, phân tích rủi ro định lượng và lập kế hoạch phản ứng rủi ro xảy ra xuyên suốt vòng đời của dự án không? Như đã đề cập ở các phần khác trong sách này, lập kế hoạch là một quá trình lặp đi lặp lại. Quản lý dự án cần xem xét lại rủi ro xuyên suốt dự án, kể cả trong khi công việc dự án đang được thực hiện hoặc khi kiểm tra kết quả. Các rủi ro được xác định mới cần phải đi qua quy trình lập kế hoạch rủi ro.</li>
+</ul>
+
+<h4 id="ch12-risk-response-strategies">Các Chiến Lược Phản Ứng Rủi Ro</h4>
+
+<p>Khi hoàn thành lập kế hoạch phản ứng rủi ro, cần phải phân tích kỹ lưỡng các phản ứng tiềm năng cho từng rủi ro. Một số chiến lược phản ứng rủi ro này, còn được gọi là chiến lược giảm thiểu rủi ro hoặc chiến lược đối phó mối đe dọa và cơ hội, liên quan đến việc thay đổi cách tiếp cận đã lên kế hoạch để hoàn thành dự án, bao gồm các thay đổi đối với WBS, kế hoạch quản lý chất lượng, nguồn lực, lịch trình, ngân sách hoặc các chiến lược truyền thông.</p>
+
+<h4 id="ch12-response-strategies-threats">Các Chiến Lược Phản Ứng Đối Với Mối Đe Dọa</h4>
+
+<p>Các kế hoạch phản ứng rủi ro mà quản lý dự án có cho các rủi ro cụ thể được gọi là kế hoạch dự phòng. Các loại chiến lược phản ứng đối với mối đe dọa bao gồm:</p>
+
+<ul class="content-list">
+  <li><strong>Né tránh</strong> — Điều này có nghĩa là loại bỏ mối đe dọa bằng cách loại bỏ nguyên nhân. Ví dụ bao gồm loại bỏ một gói công việc hoặc thay đổi người được phân công thực hiện công việc. Né tránh mối đe dọa thậm chí có thể liên quan đến việc mở rộng phạm vi của dự án.
+    <div class="callout">
+      <p><strong>Ví dụ:</strong> Hãy tưởng tượng có khả năng ước tính 75% một mối đe dọa sẽ xảy ra, nhưng một cấp độ kiểm thử bổ sung hoặc một hoạt động bổ sung có thể ngăn chặn mối đe dọa này. Mở rộng phạm vi dự án theo cách này có thể giúp né tránh mối đe dọa.</p>
+      <p>Ở cấp độ dự án tổng thể, nếu mối đe dọa vượt quá ngưỡng rủi ro của tổ chức, quản lý dự án sẽ cần thực hiện hành động để làm cho dự án có thể chấp nhận được. Điều này có thể bao gồm việc loại bỏ các phần của dự án quá rủi ro để né tránh hoặc hủy toàn bộ dự án.</p>
+    </div>
+  </li>
+  <li><strong>Giảm thiểu</strong> — Đây là việc giảm xác suất và/hoặc tác động của mối đe dọa, qua đó làm cho nó trở thành rủi ro nhỏ hơn và có thể loại bỏ nó khỏi danh sách các rủi ro hàng đầu của dự án. Các lựa chọn để giảm xác suất được xem xét riêng biệt so với các lựa chọn để giảm tác động. Bất kỳ sự giảm nào đều sẽ tạo ra sự khác biệt, nhưng lựa chọn có khả năng giảm xác suất và/hoặc tác động nhiều nhất thường là lựa chọn được chọn.</li>
+  <li><strong>Chuyển giao (chuyển hướng, phân bổ)</strong> — Hãy nghĩ đến "bảo hiểm." Điều này được thực hiện bằng cách mua bảo hiểm, bảo lãnh thực hiện, bảo hành hoặc bảo đảm, hoặc bằng cách thuê ngoài công việc, để một bên ngoài chịu trách nhiệm quản lý rủi ro. Có mối liên hệ chặt chẽ ở đây giữa rủi ro và mua sắm (hợp đồng). Khi quản lý dự án được thực hiện đúng cách, phân tích rủi ro được hoàn thành trước khi ký hợp đồng, và việc chuyển giao rủi ro được đưa vào các điều khoản và điều kiện của hợp đồng.</li>
+</ul>
+
+<p>Né tránh và giảm thiểu thường được sử dụng cho các rủi ro có mức ưu tiên cao và tác động cao. Chuyển giao, cùng với leo thang và chấp nhận (được thảo luận tiếp theo) có thể phù hợp cho các rủi ro có mức ưu tiên thấp, tác động thấp cũng như những rủi ro có tác động cao hơn.</p>
+
+<ul class="content-list">
+  <li><strong>Rủi ro thuần túy</strong> — Một phản ứng với các rủi ro thuần túy — chẳng hạn như hỏa hoạn, thiệt hại tài sản hoặc thương tích cá nhân — là chuyển giao, hay mua bảo hiểm. Bảo hiểm đổi tác động chi phí không rõ của rủi ro đã biết thành tác động chi phí đã biết.
+    <div class="callout">
+      <p><strong>Ví dụ:</strong> Với rủi ro hỏa hoạn, tác động chi phí của rủi ro là không rõ. Nhưng khi mua bảo hiểm, tác động chi phí của rủi ro hỏa hoạn trở nên rõ ràng; đó là chi phí bảo hiểm và khoản khấu trừ. Chuyển giao rủi ro bằng cách mua bảo hiểm không loại bỏ tất cả các tác động. Vẫn có thể có các rủi ro tồn dư. Một dự án có thể gặp phải sự chậm trễ về lịch trình do hỏa hoạn ngay cả khi đã mua bảo hiểm hỏa hoạn, hoặc chi phí thiệt hại do hỏa hoạn có thể vượt quá số tiền bảo hiểm đã mua.</p>
+    </div>
+  </li>
+  <li><strong>Rủi ro thứ cấp</strong> — Trong một ví dụ khác, có một rủi ro là bản thân kế hoạch phản ứng rủi ro có thể gây ra vấn đề. Nếu bên thứ ba (công ty bảo hiểm hoặc người bán) gặp khó khăn trong việc thực hiện phần của họ, họ có thể gây ra sự chậm trễ về lịch trình. Quản lý dự án vẫn cần quyết định phải làm gì về bất kỳ rủi ro thứ cấp nào có thể xảy ra.</li>
+</ul>
+
+<h4 id="ch12-response-strategies-opportunities">Các Chiến Lược Phản Ứng Đối Với Cơ Hội</h4>
+
+<p>Các lựa chọn chiến lược phản ứng đối với cơ hội bao gồm:</p>
+
+<ul class="content-list">
+  <li><strong>Khai thác (ngược với né tránh)</strong> — Thêm công việc hoặc thay đổi dự án để đảm bảo cơ hội xảy ra. Điều này có thể ở cấp độ rủi ro dự án riêng lẻ hoặc cấp độ rủi ro dự án tổng thể.</li>
+  <li><strong>Tăng cường (ngược với giảm thiểu)</strong> — Tăng khả năng xảy ra (xác suất) và/hoặc các tác động tích cực của cơ hội. Điều này có thể liên quan đến cách tiếp cận tổng thể về phạm vi và lịch trình, các nguồn lực được sử dụng hoặc tái lập kế hoạch dự án, cũng như các rủi ro dự án riêng lẻ.</li>
+  <li><strong>Chia sẻ</strong> — Phân bổ quyền sở hữu hoặc quyền sở hữu một phần của cơ hội dự án riêng lẻ hoặc tổng thể cho một bên thứ ba (thành lập đối tác, nhóm hoặc liên doanh) có khả năng đạt được cơ hội tốt nhất.
+    <div class="callout">
+      <p><strong>Ví dụ:</strong> Trong hợp đồng mua sắm, thông thường người ta sẽ đưa ra tiền thưởng hoặc ưu đãi để hoàn thành phần công việc của người bán sớm hơn nếu điều đó tạo ra cơ hội tiết kiệm bằng hoặc tốt hơn cho người mua.</p>
+    </div>
+  </li>
+</ul>
+
+<p>Các chiến lược phản ứng cho cả mối đe dọa lẫn cơ hội bao gồm:</p>
+
+<ul class="content-list">
+  <li><strong>Leo thang</strong> — Nếu nằm ngoài phạm vi của dự án hoặc vượt quá thẩm quyền của quản lý dự án, một rủi ro cần được leo thang trong tổ chức. Những rủi ro này thường được quản lý ở cấp độ chương trình hoặc danh mục đầu tư. Một rủi ro được leo thang cần được quản lý chương trình hoặc danh mục đầu tư chấp nhận; việc leo thang sau đó được ghi lại và rủi ro không còn được theo dõi ở cấp độ dự án.</li>
+  <li><strong>Chấp nhận</strong> — Chấp nhận thụ động có nghĩa là không làm gì và về cơ bản nói rằng "Nếu nó xảy ra thì xảy ra." Điều này để lại các hành động cần được xác định khi cần thiết (giải pháp tạm thời) nếu rủi ro xảy ra. Chấp nhận chủ động liên quan đến việc tạo ra các kế hoạch dự phòng để thực hiện nếu rủi ro xảy ra và phân bổ dự phòng thời gian và chi phí cho dự án.</li>
+</ul>
+
+<h4 id="ch12-common-response-strategies">Các Chiến Lược Phản Ứng Chung Cho Mối Đe Dọa Hoặc Cơ Hội</h4>
+
+<p>Các quy tắc và chiến lược sau đây có thể được sử dụng cho cả mối đe dọa lẫn cơ hội:</p>
+
+<ul class="content-list">
+  <li>Các chiến lược phải kịp thời.</li>
+  <li>Nỗ lực được chọn phải phù hợp với mức độ nghiêm trọng của rủi ro. Tránh chi nhiều tiền hơn để ngăn chặn rủi ro so với chi phí tác động của rủi ro nếu nó xảy ra.</li>
+  <li>Một phản ứng có thể được sử dụng để giải quyết nhiều hơn một rủi ro.</li>
+  <li>Nhiều hơn một phản ứng có thể được sử dụng để giải quyết cùng một rủi ro.</li>
+  <li>Một phản ứng có thể giải quyết nguyên nhân gốc rễ của rủi ro và do đó giải quyết nhiều hơn một rủi ro.</li>
+  <li>Nhóm, các bên liên quan khác và các chuyên gia nên tham gia vào việc lựa chọn chiến lược.</li>
+</ul>
+
+<div class="callout tip">
+  <p>Hãy chú ý đến các câu hỏi trong kỳ thi về việc truyền đạt thông tin liên quan đến rủi ro! Các chiến lược phản ứng rủi ro phải được truyền đạt đến nhà tài trợ, ban quản lý và các bên liên quan. Những bên này sẽ cần biết rằng bạn đang kiểm soát dự án ngay cả khi có vấn đề, và họ có thể cần phê duyệt các nguồn lực để thực hiện các chiến lược phản ứng rủi ro. Truyền đạt về rủi ro là điều cần thiết để giành được sự ủng hộ đối với chiến lược.</p>
+</div>
+
+<h3 id="ch12-exercise-12-3">12.3 Bài Tập</h3>
+
+<p>Bây giờ hãy xem bạn có thể áp dụng những gì đã học không. Xác định loại chiến lược phản ứng rủi ro (né tránh, giảm thiểu xác suất, giảm thiểu tác động, chuyển giao, khai thác, tăng cường xác suất, tăng cường tác động, chia sẻ, leo thang hoặc chấp nhận) đang được mô tả. Ghi câu trả lời vào Sổ Tay Bài Tập của bạn cho mỗi mô tả.</p>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;"><strong>Mô tả</strong></td>
+    <td style="text-align: center; word-wrap: break-word;"><strong>Chiến lược phản ứng rủi ro</strong></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">1. Loại bỏ một gói công việc hoặc hoạt động khỏi dự án.</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">2. Phân công một thành viên nhóm thường xuyên đến thăm các cơ sở sản xuất của người bán để biết về các vấn đề giao hàng sớm nhất có thể.</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">3. Chuyển một gói công việc sang ngày khi có nguồn lực có kinh nghiệm hơn để phân công cho dự án.</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">4. Bắt đầu thương lượng cho thiết bị sớm hơn kế hoạch để đảm bảo giá thấp hơn.</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">5. Thuê ngoài một gói công việc để đạt được cơ hội.</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">6. Thông báo cho ban quản lý rằng có thể xảy ra tăng chi phí nếu rủi ro xảy ra vì không có hành động nào được thực hiện để ngăn chặn rủi ro.</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">7. Loại bỏ một nguồn lực gây rắc rối khỏi dự án.</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">8. Cung cấp đào tạo bổ sung cho một thành viên nhóm có kinh nghiệm hạn chế.</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">9. Đào tạo nhóm về các chiến lược giải quyết xung đột.</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">10. Thuê ngoài công việc khó khăn cho một công ty có kinh nghiệm hơn.</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">11. Yêu cầu khách hàng xử lý một phần công việc.</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">12. Tạo mẫu thử một thiết bị rủi ro.</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">13. Thông báo cho PMO rằng phần mềm kiểm thử cần thiết cho dự án có thể được sử dụng bởi ba nhóm IT khác nếu giải pháp doanh nghiệp được mua.</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">14. Nhóm thêm một rủi ro thử nghiệm để xem liệu một nhà cung cấp đám mây mới, ít tốn kém hơn có thể hỗ trợ sản phẩm không.</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+</table>
+</div>
+
+<h5>Đáp Án</h5>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <td colspan="3"><strong>Chiến lược phản ứng rủi ro</strong></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">1 — Né tránh</td>
+    <td style="text-align: center; word-wrap: break-word;">6 — Chấp nhận</td>
+    <td style="text-align: center; word-wrap: break-word;">11 — Chuyển giao</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">2 — Giảm thiểu tác động</td>
+    <td style="text-align: center; word-wrap: break-word;">7 — Né tránh</td>
+    <td style="text-align: center; word-wrap: break-word;">12 — Giảm thiểu xác suất</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">3 — Khai thác</td>
+    <td style="text-align: center; word-wrap: break-word;">8 — Giảm thiểu xác suất</td>
+    <td style="text-align: center; word-wrap: break-word;">13 — Leo thang</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">4 — Tăng cường tác động</td>
+    <td style="text-align: center; word-wrap: break-word;">9 — Giảm thiểu tác động</td>
+    <td style="text-align: center; word-wrap: break-word;">14 — Khai thác</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">5 — Chia sẻ</td>
+    <td style="text-align: center; word-wrap: break-word;">10 — Chuyển giao</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+</table>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//f97971bd-e36f-4e3e-83c3-0815f323b149/markdown_2/imgs/img_in_image_box_73_355_134_410.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A09Z%2F-1%2F%2Ff57198adb749e9335226e1ea4206709737a8de0be4213363bb8eaa6094ad4ac3" alt="Image" width="7%" /></div></div>
+
+<p>Các chiến lược phản ứng rủi ro tiềm năng và các kế hoạch dự phòng phải được phân tích để xác định chiến lược nào hoặc các chiến lược nào có hiệu quả chi phí cao nhất và có khả năng giải quyết rủi ro nhất. Phân tích chi phí-lợi ích và phân tích đa tiêu chí là các kỹ thuật để đánh giá và xếp hạng các phản ứng rủi ro tiềm năng. Bạn có thể thấy một câu hỏi trong kỳ thi yêu cầu bạn so sánh hiệu quả chi phí của các lựa chọn phản ứng rủi ro khác nhau.</p>
+
+<h4 id="ch12-artifacts-plan-risk-responses">Kết Quả Đầu Ra Của Lập Kế Hoạch Phản Ứng Rủi Ro</h4>
+
+<p>Các phản ứng rủi ro đã lên kế hoạch có thể yêu cầu thay đổi đối với các kế hoạch quản lý đã được soạn thảo trong quá trình lập kế hoạch — ở cấp độ rủi ro dự án tổng thể cũng như ở cấp độ rủi ro dự án riêng lẻ. Các cập nhật kết quả đầu ra khác do lập kế hoạch phản ứng rủi ro có thể bao gồm:</p>
+
+<ul class="content-list">
+  <li>Sổ đăng ký rủi ro (xem bên dưới)</li>
+  <li>Nhật ký giả định</li>
+  <li>Dự báo chi phí</li>
+  <li>Sổ đăng ký bài học kinh nghiệm</li>
+  <li>Lịch trình dự án</li>
+  <li>Phân công nhóm dự án (vai trò và trách nhiệm)</li>
+  <li>Yêu cầu thay đổi</li>
+  <li>Chiến lược tham gia của các bên liên quan</li>
+  <li>Chỉ số chất lượng</li>
+  <li>Báo cáo rủi ro</li>
+  <li>Kế hoạch quản lý truyền thông</li>
+</ul>
+
+<h4 id="ch12-risk-report">Báo Cáo Rủi Ro</h4>
+
+<p>Báo cáo này được cập nhật để truyền đạt các rủi ro có mối đe dọa hoặc cơ hội lớn nhất, mức độ phơi nhiễm rủi ro tổng thể của dự án, các thay đổi dự kiến và kết quả dự kiến của các phản ứng rủi ro đã lên kế hoạch. Các khái niệm được định nghĩa tiếp theo liên quan đến các cập nhật sổ đăng ký rủi ro từ Lập Kế Hoạch Phản Ứng Rủi Ro.</p>
+
+<h4 id="ch12-cap-nhat-so-dang-ky-rui-ro">Cập Nhật Sổ Đăng Ký Rủi Ro</h4>
+
+<p>Sổ đăng ký rủi ro được cập nhật để bổ sung kết quả của hoạt động lập kế hoạch ứng phó rủi ro, bao gồm:</p>
+
+<ul class="content-list">
+  <li><strong>Rủi ro tồn dư:</strong> Sau khi các rủi ro đã được né tránh, khai thác, giảm nhẹ, tăng cường, chuyển giao, chia sẻ, leo thang và chấp nhận (cùng với các kế hoạch dự phòng và kế hoạch dự bị liên quan đã được xây dựng), vẫn sẽ còn những rủi ro chưa được giải quyết. Các rủi ro tồn dư đã biết được chấp nhận một cách thụ động cần được ghi lại và xem xét trong suốt dự án vì thứ hạng của chúng có thể cần thay đổi.</li>
+  <li><strong>Kế hoạch dự phòng:</strong> Các kế hoạch này mô tả những hành động cụ thể sẽ được thực hiện nếu cơ hội hoặc mối đe dọa xảy ra.</li>
+  <li><strong>Kế hoạch dự bị:</strong> Các kế hoạch này là những hành động cụ thể sẽ được thực hiện nếu kế hoạch dự phòng không có hiệu quả. Hãy nghĩ xem bạn sẽ cảm thấy sẵn sàng đến mức nào nếu có kế hoạch cho những việc cần làm khi rủi ro xảy ra và kế hoạch dự phòng nếu kế hoạch ban đầu không hiệu quả.</li>
+  <li><strong>Chủ sở hữu rủi ro:</strong> Mỗi rủi ro phải được giao cho một người sẽ giúp dẫn dắt quá trình xây dựng ứng phó rủi ro và chịu trách nhiệm thực hiện ứng phó rủi ro, tức là "sở hữu" rủi ro đó. Chủ sở hữu rủi ro có thể là một bên liên quan ngoài thành viên nhóm dự án. Hãy nghĩ về cách áp dụng quản lý rủi ro có thể thay đổi các dự án thực tế. Khi rủi ro xảy ra, chủ sở hữu rủi ro thực hiện hành động đã được phê duyệt trước trong quá trình lập kế hoạch dự án và thông báo cho quản lý dự án. Không cần họp — chỉ cần hành động! Điều này có thể rất hiệu quả.</li>
+  <li><strong>Rủi ro thứ cấp:</strong> Bất kỳ rủi ro mới nào phát sinh do việc thực hiện các ứng phó rủi ro đã chọn cũng cần được phân tích trong quá trình lập kế hoạch ứng phó rủi ro. Thường xuyên, một ứng phó với rủi ro này sẽ tạo ra khả năng xuất hiện các rủi ro mới. Ví dụ, nếu một phần công việc dự án được thuê ngoài cho nhà cung cấp do nhóm dự án không có chuyên môn để hoàn thành công việc hiệu quả, thì có thể xuất hiện rủi ro thứ cấp là nhà cung cấp đó phá sản. Việc phát hiện rủi ro thứ cấp có thể yêu cầu lập kế hoạch ứng phó rủi ro bổ sung, bao gồm đảm bảo rằng mức độ nghiêm trọng của rủi ro thứ cấp thấp hơn rủi ro chính.</li>
+  <li><strong>Tác nhân kích hoạt rủi ro:</strong> Đây là các sự kiện kích hoạt ứng phó dự phòng. Các dấu hiệu cảnh báo sớm cho mỗi rủi ro trong dự án cần được xác định để chủ sở hữu rủi ro biết khi nào cần hành động.</li>
+  <li><strong>Hợp đồng:</strong> Trước khi một hợp đồng được hoàn thiện, quản lý dự án cần đã hoàn thành phân tích rủi ro và đưa vào các điều khoản và điều kiện hợp đồng cần thiết để giảm thiểu mối đe dọa và tăng cường cơ hội. Mọi hợp đồng được ký kết để xử lý rủi ro cần được ghi chú trong sổ đăng ký rủi ro.</li>
+  <li><strong>Dự phòng (dự phòng theo kế hoạch và dự phòng quản lý):</strong> Việc có dự phòng về thời gian và chi phí là một phần bắt buộc của quản lý dự án. Chúng ta sẽ giải thích thêm về vấn đề này ở phần tiếp theo.</li>
+</ul>
+
+<h5 id="ch12-du-phong-theo-ke-hoach-va-du-phong-quan-ly">Dự Phòng Theo Kế Hoạch và Dự Phòng Quản Lý</h5>
+
+<p>Dự phòng được đề cập trong chương "Ngân Sách và Nguồn Lực", nhưng hãy xem xét lại ở đây. Thời gian và chi phí đều có hai loại dự phòng: dự phòng theo kế hoạch và dự phòng quản lý. Dự phòng theo kế hoạch dành cho "những điều đã biết chưa rõ" (hay đơn giản là "điều đã biết"); đây là các hạng mục được xác định trong quá trình quản lý rủi ro. Dự phòng quản lý dành cho "những điều chưa biết chưa rõ" (hay đơn giản là "điều chưa biết"); đây là các hạng mục mà quản lý dự án không hoặc không thể xác định trong quá trình quản lý rủi ro.</p>
+
+<p>Dự án có thể có cả hai loại dự phòng. Như minh họa trong sơ đồ ở hình 12.7 (cũng được hiển thị trong chương "Ngân Sách và Nguồn Lực"), dự phòng theo kế hoạch được tính toán và trở thành một phần của đường cơ sở chi phí. Dự phòng quản lý được ước tính (ví dụ, 5 phần trăm chi phí dự án), và các khoản dự phòng này sau đó được cộng vào đường cơ sở chi phí để có được ngân sách dự án. Quản lý dự án có quyền kiểm soát đường cơ sở chi phí và có thể phê duyệt việc sử dụng dự phòng theo kế hoạch, nhưng cần có sự chấp thuận của cấp quản lý để sử dụng dự phòng quản lý. Điều tương tự cũng áp dụng cho dự phòng trong tiến độ.</p>
+
+<p>Hãy đảm bảo bạn hiểu rằng dự phòng không phải là chi phí bổ sung cho dự án. Quá trình quản lý rủi ro cần dẫn đến việc giảm thời gian và chi phí ước tính của dự án. Khi các mối đe dọa được loại bỏ hoặc giảm xác suất hay tác động của chúng, cần có sự giảm bớt trong tiến độ và ngân sách dự án. Dự phòng theo kế hoạch được phân bổ cho các kế hoạch dự phòng và kế hoạch dự bị để xử lý các cơ hội và mối đe dọa đã được chấp nhận còn lại sau khi các quy trình lập kế hoạch quản lý rủi ro đã hoàn thành. Dù quản lý dự án làm gì, rủi ro vẫn sẽ còn trong dự án, và cần có khoản thời gian hoặc chi phí dành cho chúng, giống như thời gian hoặc chi phí được phân bổ cho các hoạt động công việc trong dự án.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//f97971bd-e36f-4e3e-83c3-0815f323b149/markdown_4/imgs/img_in_image_box_133_155_697_574.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A10Z%2F-1%2F%2Fbb704c24c6430783fa427e874f1185f8a5c2d43e3eded80bc5f8ff854ba281c0" alt="Image" width="68%" /></div></div>
+
+<div class="table-wrap">
+  <p style="text-align: center;"><em>HÌNH 12.7 Dự phòng theo kế hoạch và dự phòng quản lý tạo nên ngân sách chi phí</em></p>
+</div>
+
+<p>Có thể có những câu hỏi trong kỳ thi yêu cầu bạn tính toán dự phòng theo kế hoạch cho một số sự kiện rủi ro, có thể là sự kết hợp giữa cơ hội và mối đe dọa. Để thực hiện điều này, bạn phải tính giá trị của mỗi rủi ro bằng phương trình giá trị kỳ vọng (P x I). Trong kỳ thi, bạn có thể phải tính dự phòng theo kế hoạch cho tiến độ (giá trị kỳ vọng) hoặc chi phí (giá trị tiền tệ kỳ vọng - EMV). Nhưng hãy suy nghĩ về điều này một chút. Hãy dùng ví dụ về tác động chi phí cho các dự án. Bạn có thể chỉ cộng tất cả các giá trị EMV của cơ hội và mối đe dọa lại để ra một tổng lớn cho ngân sách không? Không! Bạn cần trừ tổng EMV của các cơ hội khỏi tổng EMV của các mối đe dọa. Tại sao?</p>
+
+<p>Các cơ hội sẽ tiết kiệm tiền và thời gian cho dự án nếu chúng xảy ra. Điều này có thể giảm đường cơ sở chi phí hoặc tiến độ. Ngược lại, các mối đe dọa sẽ tăng thêm chi phí và thời gian cho dự án.</p>
+
+<p>Bạn đang được yêu cầu trừ đi các cơ hội ở đây, nhưng trước đó bạn có được nói rằng giá trị kỳ vọng thường được biểu diễn là một lượng dương cho cơ hội và âm cho mối đe dọa không? Điều đó thường đúng khi các giá trị được mô tả trên thứ gì đó như cây quyết định, để bạn có thể dễ dàng xác định kết quả tích cực và tiêu cực cũng như tác động tổng thể của chúng đối với chi phí hoặc tiến độ dự án. Nhưng ví dụ này đặc biệt muốn xác định xem cần dành ra bao nhiêu tiền hoặc thời gian cho dự phòng theo kế hoạch. Các mối đe dọa sẽ đòi hỏi tăng lượng dự phòng theo kế hoạch, trong khi các cơ hội sẽ giảm lượng dự phòng cần thiết.</p>
+
+<p>Bài tập tiếp theo sẽ cho bạn thực hành tính dự phòng theo kế hoạch.</p>
+
+<h3 id="ch12-bai-tap-12-4">Bài Tập 12.4</h3>
+
+<p>Hãy tưởng tượng bạn đang lập kế hoạch sản xuất các sửa đổi cho một sản phẩm hiện có. Phân tích của bạn đưa ra những thông tin sau đây. Trong Sổ Bài Tập của bạn, hãy tính dự phòng chi phí theo kế hoạch cho mỗi tình huống sau đây, rồi tính tổng dự phòng chi phí theo kế hoạch cho dự án.</p>
+
+<h4 id="ch12-du-lieu-du-an-12-4">Dữ Liệu Dự Án</h4>
+
+<ol class="content-list">
+  <li>Có 30% xác suất bị chậm trễ trong việc nhận linh kiện, với chi phí cho dự án là $9.000.</li>
+  <li>Có 20% xác suất linh kiện sẽ có giá thấp hơn $10.000 so với dự kiến.</li>
+  <li>Có 25% xác suất hai linh kiện sẽ không khớp nhau khi lắp đặt, tốn thêm $3.500.</li>
+  <li>Có 30% xác suất quá trình sản xuất có thể đơn giản hơn dự kiến, tiết kiệm được $2.500.</li>
+  <li>Có 5% xác suất có lỗi thiết kế, gây ra $5.000 công việc làm lại.</li>
+</ol>
+
+<p><strong>Tổng Dự Phòng Chi Phí Theo Kế Hoạch</strong></p>
+
+<h4 id="ch12-dap-an-12-4">Đáp Án</h4>
+
+<p>Bạn sử dụng phép tính giá trị tiền tệ kỳ vọng (EMV = P x I) để xác định dự phòng theo kế hoạch. Đáp án là $1.075 cho tổng dự phòng chi phí theo kế hoạch. Xem bảng sau để biết các tính toán chi tiết.</p>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Tình huống</th>
+        <th>Tính toán</th>
+        <th>Kết quả</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1. Chậm trễ nhận linh kiện (mối đe dọa)</td>
+        <td>30% × $9.000 = $2.700</td>
+        <td>Cộng $2.700</td>
+      </tr>
+      <tr>
+        <td>2. Linh kiện rẻ hơn dự kiến (cơ hội)</td>
+        <td>20% × $10.000 = $2.000</td>
+        <td>Trừ $2.000</td>
+      </tr>
+      <tr>
+        <td>3. Linh kiện không khớp nhau (mối đe dọa)</td>
+        <td>25% × $3.500 = $875</td>
+        <td>Cộng $875</td>
+      </tr>
+      <tr>
+        <td>4. Sản xuất đơn giản hơn (cơ hội)</td>
+        <td>30% × $2.500 = $750</td>
+        <td>Trừ $750</td>
+      </tr>
+      <tr>
+        <td>5. Lỗi thiết kế (mối đe dọa)</td>
+        <td>5% × $5.000 = $250</td>
+        <td>Cộng $250</td>
+      </tr>
+      <tr>
+        <td colspan="2"><strong>Tổng Dự Phòng Chi Phí Theo Kế Hoạch</strong></td>
+        <td><strong>$1.075</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//9c9707aa-53b1-48bb-93aa-4121a36d14c7/markdown_0/imgs/img_in_image_box_35_875_91_943.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A11Z%2F-1%2F%2Fbe9201818029d08d1cd7e3915e0c6d0f85bbe9accc5e6585c3cf2358a6d2af5d" alt="Image" width="6%" /></div></div>
+
+<div class="callout tip">
+  <p><strong>Hãy Suy Nghĩ Về Điều Này.</strong> Giả sử bài tập này có các ví dụ về mối đe dọa và cơ hội đối với tiến độ. Nếu bạn có 30% xác suất một hoạt động bị trễ 15 ngày, giá trị kỳ vọng sẽ là 4,5 ngày, và số này sẽ được cộng vào tiến độ. Và nếu xác suất một hoạt động hoàn thành sớm hơn kế hoạch 10 ngày là 20%, giá trị kỳ vọng sẽ là -2 ngày. Dự phòng kết quả cho hai rủi ro này sẽ là 2,5 ngày.</p>
+</div>
+
+<p>Nếu quá trình quản lý rủi ro còn mới với bạn, bài tập sau đây sẽ giúp bạn kết hợp tất cả lại bằng cách xem xét dưới dạng biểu đồ.</p>
+
+<h3 id="ch12-bai-tap-12-5">Bài Tập 12.5</h3>
+
+<p>Trong Sổ Bài Tập của bạn, hãy tạo một sơ đồ luồng về quy trình rủi ro từ Xác Định Rủi Ro đến Lập Kế Hoạch Ứng Phó Rủi Ro.</p>
+
+<h4 id="ch12-dap-an-12-5">Đáp Án</h4>
+
+<p>Việc tạo biểu đồ này sẽ giúp bạn kiểm tra xem mình đã hiểu những gì đã đọc trong chương này chưa. Sơ đồ luồng của bạn có thể khác với hình minh họa dưới đây.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//9c9707aa-53b1-48bb-93aa-4121a36d14c7/markdown_1/imgs/img_in_image_box_127_249_719_565.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A12Z%2F-1%2F%2Fbbdd8747d5b0706e7be19ead962286463221a4f8139cd2be8479ad66b77d54bf" alt="Image" width="72%" /></div></div>
+
+<h4 id="ch12-ung-pho-rui-ro-agile">Ứng Phó Rủi Ro theo Agile</h4>
+
+<p>Như đã đề cập trước đây, bất kỳ khái niệm và phương pháp nào đã thảo luận đều có thể được sử dụng trong bất kỳ môi trường nào. Trong môi trường Agile và hybrid, kết quả của tất cả các công việc này có dạng ưu tiên lại backlog, tạo các câu chuyện ứng phó rủi ro, cập nhật kế hoạch vòng lặp và phát hành, và cập nhật lộ trình vòng lặp.</p>
+
+<h4 id="ch12-backlog-dieu-chinh-rui-ro">Backlog Điều Chỉnh Rủi Ro</h4>
+
+<p>Trong môi trường Agile, backlog của dự án được ưu tiên không chỉ cho các tính năng mà còn cho các ứng phó rủi ro đã được xây dựng cho các rủi ro đã xác định. Trong việc lập kế hoạch mỗi vòng lặp, các nhóm Agile tìm cách cân bằng giữa việc cung cấp các tính năng có giá trị cao nhất và giảm thiểu các mối đe dọa lớn nhất còn lại trong dự án. Backlog lúc này có thể được gọi là "backlog điều chỉnh rủi ro", như minh họa trong hình 12.8.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//9c9707aa-53b1-48bb-93aa-4121a36d14c7/markdown_2/imgs/img_in_image_box_183_97_583_443.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A13Z%2F-1%2F%2F3426f18531fee8f28c95ffbe048c03c06b20ea602970d7be6aabf39a8139a299" alt="Image" width="48%" /></div></div>
+
+<div class="table-wrap">
+  <p style="text-align: center;"><em>HÌNH 12.8 Backlog điều chỉnh rủi ro (danh sách tính năng được ưu tiên)</em></p>
+</div>
+
+<h4 id="ch12-thiet-ke-da-phuong-an">Thiết Kế Đa Phương Án</h4>
+
+<p>Một khái niệm khác trong môi trường thích ứng là thiết kế đa phương án. Đây giống như việc thực hiện phân tích what-if (nếu-thì) toàn diện. Lưu ý rằng một công cụ như phân tích cây quyết định có thể được sử dụng ở đây. Thiết kế đa phương án bao gồm việc khám phá nhiều lựa chọn, hoặc thiết kế, từ sớm trong dự án và loại bỏ những lựa chọn không hiệu quả. Phương pháp này tạo ra sự linh hoạt và cho phép các nhóm phát triển kiến thức khi họ thực hiện qua các lựa chọn khác nhau.</p>
+
+<p>Hãy dành một chút thời gian để suy nghĩ về cách lập kế hoạch ứng phó rủi ro cũng có thể dẫn đến việc điều chỉnh các kế hoạch quản lý tiến độ, chi phí, chất lượng, mua sắm, truyền thông và nguồn lực, cũng như các đường cơ sở phạm vi, tiến độ và chi phí của dự án. Khái niệm này rất quan trọng để hiểu tác động mà quản lý rủi ro có đối với dự án, đặc biệt nếu bạn hiện không thực hiện quản lý rủi ro trong các dự án của mình.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//9c9707aa-53b1-48bb-93aa-4121a36d14c7/markdown_2/imgs/img_in_image_box_38_674_89_734.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A13Z%2F-1%2F%2F84e3ded88cb4121570a6cb474629cb7f2f59030f4a011a1f1216d6169cd409dd" alt="Image" width="6%" /></div></div>
+
+<div class="callout">
+  <p><strong>Hãy Suy Nghĩ Về Điều Này.</strong> Bạn đang tiến gần đến cuối phần Lập Kế Hoạch Ứng Phó Rủi Ro. Hãy xem xét một số khái niệm quan trọng cho kỳ thi trong nhóm câu hỏi và đáp án này. Hãy dành vài phút để tự kiểm tra bản thân.</p>
+
+  <p><strong>Câu hỏi:</strong> Bạn làm gì với các rủi ro không trọng yếu?<br>
+  <strong>Đáp án:</strong> Ghi lại chúng vào danh sách theo dõi và xem xét lại định kỳ.</p>
+
+  <p><strong>Câu hỏi:</strong> Bạn có chọn chỉ một chiến lược ứng phó rủi ro cho mỗi rủi ro cụ thể không? Cho toàn bộ dự án?<br>
+  <strong>Đáp án:</strong> Không, bạn có thể chọn kết hợp nhiều lựa chọn.</p>
+
+  <p><strong>Câu hỏi:</strong> Các hoạt động quản lý rủi ro nào được thực hiện trong quá trình thực hiện dự án?<br>
+  <strong>Đáp án:</strong> Theo dõi các rủi ro trong danh sách theo dõi (không trọng yếu) có mức độ quan trọng tăng lên và tìm kiếm các rủi ro mới; thực hiện các kế hoạch dự phòng nếu tác nhân kích hoạt cho thấy rủi ro sắp xảy ra hoặc đang xảy ra.</p>
+
+  <p><strong>Câu hỏi:</strong> Mục quan trọng nhất cần giải quyết trong các cuộc họp nhóm dự án là gì?<br>
+  <strong>Đáp án:</strong> Rủi ro.</p>
+
+  <p><strong>Câu hỏi:</strong> Rủi ro sẽ được giải quyết như thế nào trong các cuộc họp dự án?<br>
+  <strong>Đáp án:</strong> Bằng cách hỏi: "Tình trạng của các rủi ro như thế nào? Có rủi ro mới nào không? Thứ tự tầm quan trọng có thay đổi không?"</p>
+</div>
+
+<h4 id="ch12-thuc-hien-ung-pho-rui-ro">Thực Hiện Ứng Phó Rủi Ro</h4>
+
+<h3 id="ch12-implement-risk-responses">Thực Hiện Các Phản Ứng Rủi Ro</h3>
+
+<p>Thực hiện các phản ứng rủi ro là nơi giá trị của quản lý rủi ro đúng đắn trở nên rõ ràng nhất. Khi công tác chuẩn bị ban đầu được thực hiện tốt, quá trình Thực Hiện Các Phản Ứng Rủi Ro có thể được xử lý trơn tru, vì các kế hoạch đã được lập thành văn bản trước đó cho phép phản ứng kịp thời và hiệu quả trước các sự kiện rủi ro.</p>
+
+<p>Trong suốt dự án, sổ đăng ký rủi ro và báo cáo rủi ro được xem xét thường xuyên, đảm bảo mọi người đều nhận thức được các rủi ro tiềm ẩn và sẵn sàng thực hiện các phản ứng đã lập kế hoạch khi cần thiết. Thông tin về các tác nhân kích hoạt giúp người quản lý dự án, chủ sở hữu rủi ro và nhóm nhận ra các dấu hiệu cho thấy một sự kiện rủi ro sắp xảy ra. Tại thời điểm đó, chủ sở hữu rủi ro, được hỗ trợ bởi người quản lý dự án, dẫn dắt các nguồn lực đã được phân công trước đó để thực hiện các hoạt động phản ứng. Hậu quả của các mối đe dọa được ngăn chặn, hoặc các cơ hội được tận dụng. Ngưỡng rủi ro được ghi lại trong kế hoạch cùng với kết quả mong đợi của các phản ứng rủi ro—ví dụ, mỗi phản ứng rủi ro đã lập kế hoạch sẽ tiết kiệm được bao nhiêu để có thể đánh giá sự thành công của việc thực hiện.</p>
+
+<div class="callout">
+  <p><strong>Mô Hình Nhóm Quy Trình</strong></p>
+  <p><strong>Nhóm Quy Trình:</strong> Thực Hiện (Executing)</p>
+  <p><strong>Quy Trình:</strong> Thực Hiện Các Phản Ứng Rủi Ro (Implement Risk Responses)</p>
+</div>
+
+<div class="callout">
+  <p><strong>ECO</strong></p>
+  <ul class="content-list">
+    <li><strong>Lĩnh Vực I</strong><br>Nhiệm Vụ 7: Giải quyết và loại bỏ các trở ngại cho nhóm</li>
+    <li><strong>Lĩnh Vực II</strong><br>Nhiệm Vụ 3: Đánh giá và quản lý rủi ro<br>Nhiệm Vụ 15: Quản lý các vấn đề của dự án</li>
+  </ul>
+  <p><strong>Hướng Dẫn PMBOK</strong></p>
+  <ul class="content-list">
+    <li>Lĩnh vực 2.5: Công việc dự án</li>
+    <li>Lĩnh vực 2.6: Bàn giao</li>
+    <li>Lĩnh vực 2.8: Sự không chắc chắn</li>
+  </ul>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//9c9707aa-53b1-48bb-93aa-4121a36d14c7/markdown_3/imgs/img_in_image_box_73_436_123_495.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A13Z%2F-1%2F%2F485f383e10e5adc3583c6064e8864c91f396b4fbf78d2f4587cb1138a6d695d2" alt="Image" width="6%" /></div></div>
+
+<p>Hãy suy nghĩ về điều này. Ở đầu chương này, chúng ta đã kể câu chuyện về một người quản lý dự án đang quản lý việc cài đặt phần cứng/phần mềm trong một cơn bão. Hãy quay lại ví dụ đó. Nếu người quản lý dự án đã thực hiện quản lý rủi ro đúng đắn, anh ta đã có một kế hoạch sẵn sàng để tránh rủi ro từ một cơn bão ảnh hưởng đến dự án của mình.</p>
+
+<div class="callout tip">
+  <p><strong>Ví Dụ:</strong> Lập kế hoạch dự án xảy ra trước hoặc sau cơn bão được dự báo. Nếu người quản lý dự án và các chủ sở hữu rủi ro đã tích cực theo dõi các tác nhân kích hoạt rủi ro đã biết (chẳng hạn như kết quả của các bản tin thời tiết bao gồm tốc độ gió và đường đi dự kiến của cơn bão) và sau đó triển khai kế hoạch phản ứng rủi ro trước khi cơn bão đến khu vực, họ có thể đã tránh được nguy hiểm, công việc làm lại, sự chậm trễ, và các chi phí do cơn bão gây ra.</p>
+</div>
+
+<p>Đôi khi các kế hoạch được xây dựng cẩn thận không đạt được kết quả như mong đợi.</p>
+
+<div class="callout tip">
+  <p><strong>Ví Dụ:</strong> Giả sử chủ sở hữu rủi ro hoặc người quản lý dự án trong câu chuyện trước đã triển khai kế hoạch phản ứng rủi ro để sắp xếp lại lịch triển khai, khiến lịch trình bị kéo dài. Mặc dù kế hoạch đã được thực hiện đúng như dự định, cơn bão đã gây thiệt hại nhiều hơn dự kiến, và lịch trình phải được kéo dài vượt quá số ngày đã lập kế hoạch. Những kết quả không lường trước như vậy được quản lý thông qua các yêu cầu thay đổi đối với các kế hoạch quản lý chi phí và lịch trình.</p>
+</div>
+
+<h4 id="ch12-artifacts-implement-risk">Sản Phẩm của Thực Hiện Các Phản Ứng Rủi Ro</h4>
+
+<p>Các tài liệu dự án được cập nhật như một kết quả của quá trình Thực Hiện Các Phản Ứng Rủi Ro. Sổ đăng ký rủi ro và báo cáo rủi ro được cập nhật với thông tin về các phản ứng đã thực hiện, chi tiết về mức độ hiệu quả của các phản ứng trong việc giải quyết rủi ro, và các thay đổi được đề xuất cho các kế hoạch phản ứng rủi ro trong tương lai. Sổ đăng ký bài học kinh nghiệm được cập nhật với những gì đã hoạt động và những gì không hoạt động khi các phản ứng rủi ro được thực hiện. Báo cáo rủi ro được cập nhật với những thay đổi về mức độ phơi bày rủi ro của dự án và các thay đổi đối với các phản ứng rủi ro đã lập kế hoạch. Các vấn đề đang diễn ra, chẳng hạn như sự nhầm lẫn hoặc bất đồng liên quan đến phản ứng khi nó được triển khai, được thêm vào nhật ký vấn đề.</p>
+
+<h3 id="ch12-monitor-risks">Giám Sát Rủi Ro</h3>
+
+<p>Các câu hỏi liên quan đến rủi ro trong kỳ thi giả định rằng người quản lý dự án đã thực hiện quản lý dự án đúng đắn, bao gồm phân công chủ sở hữu rủi ro, đặt các kế hoạch dự phòng và dự trữ, và thực hiện các hành động như được phác thảo trong kế hoạch—trừ khi dữ liệu trong câu hỏi cho thấy điều khác. Kỳ thi cũng giả định rằng dự án ít rủi ro hơn đáng kể khi đã hoàn thành việc lập kế hoạch này. Nếu bạn không có kinh nghiệm sử dụng quản lý rủi ro trong thực tế, hãy dành nhiều thời gian hơn cho chương này và thực hành với các khái niệm này để bạn chuẩn bị tốt cho các câu hỏi thi này.</p>
+
+<p>Trong quá trình Giám Sát Rủi Ro, người quản lý dự án sẽ đánh giá tính hiệu quả của kế hoạch quản lý rủi ro. Trong cả môi trường dự đoán và thích ứng, người quản lý dự án sẽ đảm bảo rằng các quy trình quản lý rủi ro đúng đắn đang được tuân theo và sẽ theo dõi các tác động hoặc hậu quả bất ngờ của các sự kiện rủi ro. Các hành động khắc phục có thể cần thiết và các yêu cầu thay đổi sẽ được gửi đến kiểm soát thay đổi tích hợp, hoặc trong dự án agile, các điều chỉnh rủi ro bổ sung sẽ được thực hiện đối với backlog.</p>
+
+<div class="callout">
+  <p><strong>Mô Hình Nhóm Quy Trình</strong></p>
+  <p><strong>Nhóm Quy Trình:</strong> Giám Sát và Kiểm Soát (Monitoring and Controlling)</p>
+  <p><strong>Quy Trình:</strong> Giám Sát Rủi Ro (Monitor Risks)</p>
+</div>
+
+<div class="callout">
+  <p><strong>ECO</strong></p>
+  <ul class="content-list">
+    <li><strong>Lĩnh Vực I</strong><br>Nhiệm Vụ 7: Giải quyết và loại bỏ các trở ngại cho nhóm</li>
+    <li><strong>Lĩnh Vực II</strong><br>Nhiệm Vụ 3: Đánh giá và quản lý rủi ro<br>Nhiệm Vụ 10: Quản lý các thay đổi của dự án<br>Nhiệm Vụ 15: Quản lý các vấn đề của dự án</li>
+  </ul>
+  <p><strong>Hướng Dẫn PMBOK</strong></p>
+  <ul class="content-list">
+    <li>Lĩnh vực 2.7: Đo lường</li>
+  </ul>
+</div>
+
+<h4 id="ch12-agile-risk-monitoring">Giám Sát Rủi Ro Agile</h4>
+
+<p>Lĩnh vực 2.8: Sự không chắc chắn</p>
+
+<p>Bạn sẽ tìm thấy trên trang Tài Nguyên RMC một danh sách kiểm tra các hành động mà người quản lý dự án cần thực hiện trong môi trường dự đoán trong quá trình Giám Sát Rủi Ro. Hãy xem lại danh sách kiểm tra đó để đảm bảo bạn hiểu từng hành động. Bạn có thể tìm thấy nó bằng cách quét mã ở bên phải hoặc truy cập rmcls.com/rmc-resources.</p>
+
+<p>Trong môi trường agile hoặc kết hợp, bạn có thể cập nhật biểu đồ burndown rủi ro, xem xét rủi ro trong một buổi hồi cứu, và hỏi nhóm dự án xem các kế hoạch đang tiến triển như thế nào để giảm thiểu mối đe dọa và tối đa hóa cơ hội. Bạn có cần tạo bất kỳ câu chuyện mới nào để giải quyết các rủi ro mới hoặc đang leo thang không? Bạn có cần thu hút chủ sở hữu sản phẩm vào các cuộc thảo luận về việc sắp xếp lại ưu tiên backlog dựa trên thông tin rủi ro mới không?</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//9c9707aa-53b1-48bb-93aa-4121a36d14c7/markdown_4/imgs/img_in_image_box_632_393_739_497.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A14Z%2F-1%2F%2F3f6f5ff3de92d7f16098d9e8b85f1bb62124923035d49dca70536ce465a2f5c9" alt="Image" width="13%" /></div></div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//9c9707aa-53b1-48bb-93aa-4121a36d14c7/markdown_4/imgs/img_in_image_box_559_507_610_569.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A14Z%2F-1%2F%2F18243dff94bce250688b447b95b4f0b89afd75cd7d4f8231d1f8d055a9ead4a3" alt="Image" width="6%" /></div></div>
+
+<h4 id="ch12-methods-monitoring-risk">Các Phương Pháp Giám Sát Rủi Ro</h4>
+
+<p>Các công việc khác là một phần của quá trình Giám Sát Rủi Ro được phác thảo trong các phần sau.</p>
+
+<h5>Giải Pháp Thay Thế (Workarounds)</h5>
+
+<p>Nếu dự án đã lệch khỏi các đường cơ sở, nhóm có thể thực hiện hành động khắc phục để đưa nó trở lại đúng hướng. Các khuyến nghị cho các hành động khắc phục như vậy có thể bao gồm các giải pháp thay thế. Trong khi các phản ứng dự phòng được phát triển trước, các giải pháp thay thế là các phản ứng không có kế hoạch được phát triển để đối phó với sự xảy ra của các sự kiện hoặc vấn đề không lường trước trong dự án (hoặc để đối phó với các rủi ro đã được chấp nhận vì khả năng xảy ra thấp và/hoặc tác động tối thiểu). Những người quản lý dự án không thực hiện quản lý rủi ro dành nhiều thời gian tạo ra các giải pháp thay thế.</p>
+
+<h4 id="ch12-risk-reassessments">Đánh Giá Lại Rủi Ro</h4>
+
+<p>Các câu hỏi dường như luôn xuất hiện trong kỳ thi yêu cầu bạn biết rằng nhóm cần định kỳ xem xét kế hoạch quản lý rủi ro và sổ đăng ký rủi ro, đồng thời điều chỉnh tài liệu khi cần thiết. Điều quan trọng là xác định liệu có cần thực hiện bất kỳ thay đổi hoặc điều chỉnh nào đối với những gì đã được lập kế hoạch dựa trên thông tin trở nên rõ ràng khi công việc bắt đầu hay không. Đánh giá lại rủi ro là một chủ đề tốt cho cuộc họp nhóm, buổi hồi cứu, hoặc thậm chí một cuộc họp riêng, như một phần của các đánh giá rủi ro.</p>
+
+<h5>Đánh Giá và Kiểm Toán Rủi Ro</h5>
+
+<p>Để chuẩn bị cho kỳ thi, hãy nghĩ đến các cuộc họp trạng thái như các cuộc họp nhóm trong đó người quản lý dự án có thể thực hiện đánh giá rủi ro và kiểm toán rủi ro.</p>
+
+<ul class="content-list">
+  <li><strong>Đánh giá rủi ro</strong> được tổ chức thường xuyên để thảo luận về tính hiệu quả của các phản ứng rủi ro đã lập kế hoạch đã được thực hiện trong dự án, và có thể dẫn đến việc xác định các rủi ro mới, rủi ro thứ cấp được tạo ra bởi các kế hoạch phản ứng rủi ro, và các rủi ro không còn áp dụng nữa. Đóng cửa các rủi ro cho phép nhóm tập trung vào việc quản lý các rủi ro vẫn còn mở. Việc đóng cửa một rủi ro cần dẫn đến việc dự trữ rủi ro liên quan được trả lại cho công ty.</li>
+  <li><strong>Kiểm toán</strong> có thể được thực hiện trong các cuộc họp để đánh giá mức độ hoạt động của các quy trình rủi ro cho dự án. Quy trình kiểm toán được ghi lại trong kế hoạch quản lý rủi ro.</li>
+</ul>
+
+<h4 id="ch12-reserve-analysis">Phân Tích Dự Trữ</h4>
+
+<p>Phân tích dự trữ là việc kiểm tra xem còn lại bao nhiêu dự trữ và có thể cần bao nhiêu. Nó giống như kiểm tra số dư trong tài khoản ngân hàng của bạn để đảm bảo ngân sách hàng tháng của bạn đang đúng hướng. Dự trữ phải được bảo vệ trong suốt vòng đời dự án.</p>
+
+<p>Bây giờ hãy nói về một khái niệm có thể gây khó khăn trong kỳ thi, đặc biệt đối với những người không có kinh nghiệm quản lý rủi ro có hệ thống. Những người muốn thay đổi dự án để đối phó với các vấn đề đã xảy ra có thể đề xuất sử dụng dự trữ thay vì bổ sung chi phí hoặc thời gian cho dự án. Điều quan trọng cần biết là dự trữ dự phòng chỉ có thể được sử dụng để xử lý tác động của rủi ro cụ thể mà nó được dành riêng cho. Vì vậy, nếu thay đổi là một phần của kế hoạch phản ứng rủi ro đã được tính vào ngân sách trước đó, dự trữ được chỉ định cho phản ứng đó có thể được sử dụng. Nếu không, người quản lý dự án phải thực hiện hành động phòng ngừa hoặc khắc phục, đẩy nhanh tiến độ, nén lịch trình, hoặc điều chỉnh dự án theo cách khác để phù hợp hoặc bù đắp cho tác động của vấn đề và những thay đổi kết quả, hoặc yêu cầu các mục dự trữ mới.</p>
+
+<p>Trong một số trường hợp nhất định, thường được xác định bởi nhà tài trợ dự án, dự trữ quản lý có thể được sử dụng cho các tình huống nằm trong phạm vi dự án nhưng chưa được xác định trước đó.</p>
+
+<div class="callout tip">
+  <p><strong>Ví Dụ:</strong> Giả sử một thay đổi đối với chức năng đặt hàng sản phẩm trên một trang web đã phát lộ một sự không tương thích chia sẻ dữ liệu chưa được xác định với dữ liệu thời gian thực trên hệ thống quản lý hàng tồn kho kế thừa. Cần phải tạo một giải pháp thay thế để giữ dự án đúng tiến độ. Dự trữ quản lý sẽ được sử dụng để thuê các chuyên gia khắc phục vấn đề và giữ dự án gần với lịch trình hiện tại.</p>
+</div>
+
+<p>Nếu các rủi ro đã được xác định không xảy ra, dự trữ thời gian hoặc chi phí liên quan sẽ được trả lại cho công ty, thay vì được sử dụng để giải quyết các vấn đề khác trong dự án. Nếu bạn thiếu kinh nghiệm về quản lý rủi ro, hãy đảm bảo bạn hiểu cách sử dụng và bảo vệ dự trữ.</p>
+
+<h4 id="ch12-technical-performance-analysis">Phân Tích Hiệu Suất Kỹ Thuật</h4>
+
+<p>Phân tích hiệu suất kỹ thuật sử dụng dữ liệu dự án để so sánh việc hoàn thành các yêu cầu kỹ thuật theo kế hoạch với thực tế nhằm xác định xem có bất kỳ sai lệch nào so với những gì đã được lập kế hoạch hay không. Bất kỳ sai lệch nào cũng có thể chỉ ra các rủi ro tiềm ẩn cho dự án, có thể là cơ hội hoặc mối đe dọa.</p>
+
+
+</main>
+
+<button id="back-top" aria-label="Về đầu trang">↑</button>
+
+<script>
+// Progress bar
+const pb=document.getElementById('progress-bar');
+function updPB(){const d=document.documentElement;pb.style.width=Math.min((d.scrollTop/(d.scrollHeight-d.clientHeight))*100,100)+'%'}
+window.addEventListener('scroll',updPB,{passive:true});
+
+// Back to top
+const bt=document.getElementById('back-top');
+window.addEventListener('scroll',()=>{bt.style.opacity=scrollY>400?'1':'0';},{passive:true});
+bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+// Mobile menu
+const mb=document.getElementById('menu-btn'),sb=document.getElementById('sidebar');
+mb.addEventListener('click',()=>sb.classList.toggle('open'));
+document.addEventListener('click',e=>{if(!sb.contains(e.target)&&e.target!==mb)sb.classList.remove('open')});
+
+// Active TOC highlight on scroll
+const tocLinks=document.querySelectorAll('#sidebar-toc a[href^="#"]');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      tocLinks.forEach(a=>a.classList.remove('active'));
+      const a=document.querySelector('#sidebar-toc a[href="#'+e.target.id+'"]');
+      if(a){a.classList.add('active');a.scrollIntoView({block:'nearest',behavior:'smooth'})}
+    }
+  })
+},{rootMargin:'-20% 0px -75% 0px'});
+document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
+
+// ── THEME + READING POSITION ───────────────────────────
+(function(){
+  var THEME_KEY='rita_theme', READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var chapNum=m?m[1]:null;
+
+  // Build & inject theme toggle button
+  var hdr=document.getElementById('sidebar-header');
+  if(hdr){
+    var btn=document.createElement('button');
+    btn.id='theme-btn';
+    var curTheme=document.documentElement.getAttribute('data-theme')||'light';
+    btn.textContent=curTheme==='dark'?'☀':'🌙';
+    btn.title='Giao diện sáng / tối';
+    hdr.appendChild(btn);
+    btn.addEventListener('click',function(){
+      var next=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+      document.documentElement.setAttribute('data-theme',next);
+      localStorage.setItem(THEME_KEY,next);
+      btn.textContent=next==='dark'?'☀':'🌙';
+    });
+  }
+
+  if(!chapNum) return;
+
+  // Save last chapter visited
+  try{
+    var rd=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    rd.lastChap='rita_chap'+chapNum;
+    if(!rd.scrollPos) rd.scrollPos={};
+    localStorage.setItem(READ_KEY,JSON.stringify(rd));
+  }catch(e){}
+
+  // Restore scroll position
+  try{
+    var rdR=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    var savedPos=rdR.scrollPos&&rdR.scrollPos[chapNum]||0;
+    if(savedPos>200) setTimeout(function(){window.scrollTo(0,savedPos);},120);
+  }catch(e){}
+
+  // Save scroll position (debounced 600ms)
+  var saveT;
+  window.addEventListener('scroll',function(){
+    clearTimeout(saveT);
+    saveT=setTimeout(function(){
+      try{
+        var r2=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+        if(!r2.scrollPos) r2.scrollPos={};
+        r2.scrollPos[chapNum]=window.scrollY;
+        r2.lastChap='rita_chap'+chapNum;
+        localStorage.setItem(READ_KEY,JSON.stringify(r2));
+      }catch(e){}
+    },600);
+  },{passive:true});
+})();
+
+// ── HIGHLIGHT / NOTES SYSTEM ────────────────────────────
+(function(){
+  var READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  if(!m) return;
+  var chapNum=m[1];
+  var HL_KEY='rita_hl_'+chapNum;
+
+  // ── STORAGE ──
+  function loadHL(){try{return JSON.parse(localStorage.getItem(HL_KEY)||'[]')}catch(e){return[]}}
+  function saveHL(arr){localStorage.setItem(HL_KEY,JSON.stringify(arr));window.__ritaSyncTrigger&&window.__ritaSyncTrigger();}
+  function genId(){return 'h'+Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
+
+  // ── XPATH HELPERS ──
+  var mainEl=document.getElementById('main');
+  function getXPath(node){
+    if(!node||node===mainEl) return '.';
+    var parts=[];
+    var cur=node.nodeType===3?node.parentNode:node;
+    while(cur&&cur!==mainEl&&cur!==document.body){
+      var tag=cur.tagName.toLowerCase();
+      var idx=1,sib=cur.previousElementSibling;
+      while(sib){if(sib.tagName&&sib.tagName.toLowerCase()===tag)idx++;sib=sib.previousElementSibling;}
+      parts.unshift(tag+'['+idx+']');
+      cur=cur.parentElement;
+    }
+    return parts.join('/');
+  }
+  function resolveXPath(xpath){
+    if(!mainEl||xpath==='.') return mainEl;
+    try{
+      var r=document.evaluate('.//'+xpath,mainEl,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);
+      return r.singleNodeValue;
+    }catch(e){return null;}
+  }
+  function findTextAt(el,offset){
+    var walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null);
+    var count=0,node;
+    while((node=walker.nextNode())){
+      var len=node.textContent.length;
+      if(count+len>=offset) return{node:node,localOffset:offset-count};
+      count+=len;
+    }
+    return null;
+  }
+
+  // ── APPLY MARK TO DOM ──
+  function applyMark(hl){
+    try{
+      var sEl=resolveXPath(hl.sxp), eEl=resolveXPath(hl.exp);
+      if(!sEl||!eEl) return false;
+      var sInfo=sEl.nodeType===3?{node:sEl,localOffset:hl.so}:findTextAt(sEl,hl.so);
+      var eInfo=eEl.nodeType===3?{node:eEl,localOffset:hl.eo}:findTextAt(eEl,hl.eo);
+      if(!sInfo||!eInfo) return false;
+      var range=document.createRange();
+      range.setStart(sInfo.node,sInfo.localOffset);
+      range.setEnd(eInfo.node,eInfo.localOffset);
+      applyRange(range,hl.id,hl.color,hl.note||'');
+      return true;
+    }catch(e){return false;}
+  }
+  function applyRange(range,hlId,color,note){
+    var walker=document.createTreeWalker(
+      range.commonAncestorContainer.nodeType===3
+        ?range.commonAncestorContainer.parentNode
+        :range.commonAncestorContainer,
+      NodeFilter.SHOW_TEXT,null
+    );
+    var nodes=[],node;
+    while((node=walker.nextNode())){if(range.intersectsNode(node))nodes.push(node);}
+    nodes.forEach(function(tn){
+      var s=tn===range.startContainer?range.startOffset:0;
+      var e=tn===range.endContainer?range.endOffset:tn.textContent.length;
+      if(s>=e) return;
+      var nr=document.createRange();
+      nr.setStart(tn,s); nr.setEnd(tn,Math.min(e,tn.textContent.length));
+      try{
+        var mk=document.createElement('mark');
+        mk.className='hl'; mk.setAttribute('data-hl-id',hlId);
+        mk.setAttribute('data-color',color); mk.setAttribute('data-note',note);
+        nr.surroundContents(mk);
+      }catch(err){
+        try{
+          var c=nr.extractContents(),mk2=document.createElement('mark');
+          mk2.className='hl'; mk2.setAttribute('data-hl-id',hlId);
+          mk2.setAttribute('data-color',color); mk2.setAttribute('data-note',note);
+          mk2.appendChild(c); nr.insertNode(mk2);
+        }catch(_){}
+      }
+    });
+  }
+  function removeMarks(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      var p=mk.parentNode;
+      while(mk.firstChild)p.insertBefore(mk.firstChild,mk);
+      p.removeChild(mk);
+      p.normalize();
+    });
+  }
+  function updateMarks(hlId,color,note){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.setAttribute('data-color',color);
+      mk.setAttribute('data-note',note);
+    });
+  }
+
+  // ── RESTORE HIGHLIGHTS ON LOAD ──
+  var highlights=loadHL();
+  // Sort by sxp+so descending so earlier ranges aren't offset by later insertions
+  // Actually apply in order (each one is independent)
+  highlights.forEach(applyMark);
+  // Expose re-apply for sync module
+  window.__ritaReapplyMarks=function(){
+    document.querySelectorAll('mark.hl').forEach(function(mk){
+      var p=mk.parentNode;while(mk.firstChild)p.insertBefore(mk.firstChild,mk);p.removeChild(mk);p.normalize();
+    });
+    loadHL().forEach(applyMark);
+    if(typeof updateBadge==='function') updateBadge();
+    if(typeof renderPanelIfOpen==='function') renderPanelIfOpen();
+  };
+
+  // ── SIDEBAR BUTTON ──
+  function updateBadge(){
+    var hls=loadHL();
+    var badge=document.getElementById('hl-badge');
+    if(badge) badge.textContent=hls.length||'0';
+  }
+  var sidebarNav=document.getElementById('sidebar-toc');
+  if(sidebarNav){
+    var hlBtn=document.createElement('button');
+    hlBtn.id='hl-sidebar-btn';
+    hlBtn.innerHTML='<span>✏ Ghi chú & Highlight</span><span id="hl-badge">0</span>';
+    hlBtn.addEventListener('click',function(){openPanel();});
+    // Insert before sidebar-nav (bottom buttons)
+    var sidebarNavBottom=document.getElementById('sidebar-nav');
+    if(sidebarNavBottom) sidebarNavBottom.parentNode.insertBefore(hlBtn,sidebarNavBottom);
+    else document.getElementById('sidebar').appendChild(hlBtn);
+  }
+  updateBadge();
+
+  // ── PANEL ──
+  var panel=document.createElement('div');
+  panel.id='hl-panel';
+  panel.innerHTML='<div id="hl-panel-hdr"><h3>✏ Ghi Chú & Highlight</h3><button id="hl-panel-close">×</button></div><div id="hl-panel-list"></div>';
+  document.body.appendChild(panel);
+  document.getElementById('hl-panel-close').addEventListener('click',closePanel);
+  function openPanel(){renderPanel();panel.classList.add('open');}
+  function closePanel(){panel.classList.remove('open');}
+  function renderPanel(){
+    var list=document.getElementById('hl-panel-list');
+    var hls=loadHL();
+    list.innerHTML='';
+    hls.forEach(function(hl){
+      var item=document.createElement('div');
+      item.className='hl-item'; item.setAttribute('data-color',hl.color);
+      var noteHtml=hl.note?'<div class="hl-item-note">✏ '+escHtml(hl.note)+'</div>':'';
+      item.innerHTML='<button class="hl-item-del" data-id="'+hl.id+'">🗑</button>'
+        +'<div class="hl-item-text">'+escHtml(hl.text||'')+'</div>'+noteHtml;
+      item.addEventListener('click',function(e){
+        if(e.target.classList.contains('hl-item-del')) return;
+        var mk=document.querySelector('mark.hl[data-hl-id="'+hl.id+'"]');
+        if(mk){mk.scrollIntoView({behavior:'smooth',block:'center'});flashMark(hl.id);}
+        closePanel();
+      });
+      item.querySelector('.hl-item-del').addEventListener('click',function(e){
+        e.stopPropagation(); deleteHL(hl.id); renderPanel();
+      });
+      list.appendChild(item);
+    });
+  }
+
+  // ── POPUP ──
+  var popup=document.createElement('div');
+  popup.id='hl-popup'; popup.className='hidden';
+  popup.innerHTML=
+    '<button class="hl-color-btn" data-color="yellow" title="Vàng"></button>'
+    +'<button class="hl-color-btn" data-color="green" title="Xanh"></button>'
+    +'<button class="hl-color-btn" data-color="red" title="Đỏ"></button>'
+    +'<div class="hl-sep"></div>'
+    +'<button class="hl-note-btn" title="Thêm ghi chú">✏</button>'
+    +'<button class="hl-del-btn hl-del-action" title="Xóa">🗑</button>';
+  document.body.appendChild(popup);
+
+  var currentHlId=null;    // id being edited (null = new)
+  var pendingRange=null;   // Range for new highlight
+  var pendingXP=null;      // serialized position for new highlight
+
+  // Position popup near a rect
+  function positionPopup(rect){
+    var pw=popup.offsetWidth||160,ph=popup.offsetHeight||40;
+    var top=rect.top-ph-10+window.scrollY;
+    var left=rect.left+(rect.width-pw)/2;
+    if(top<window.scrollY+8) top=rect.bottom+10+window.scrollY;
+    left=Math.max(8,Math.min(left,window.innerWidth-pw-8));
+    popup.style.top=top+'px';
+    popup.style.left=left+'px';
+  }
+  function showPopup(rect,hlId){
+    currentHlId=hlId||null;
+    var isEdit=!!hlId;
+    popup.querySelector('.hl-del-action').style.display=isEdit?'':'none';
+    popup.querySelector('.hl-note-btn').style.display='';
+    popup.classList.remove('hidden');
+    positionPopup(rect);
+  }
+  function hidePopup(){
+    popup.classList.add('hidden');
+    pendingRange=null; pendingXP=null; currentHlId=null;
+  }
+
+  // Color buttons
+  popup.querySelectorAll('.hl-color-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var color=btn.getAttribute('data-color');
+      if(currentHlId){
+        // Update existing
+        var hls=loadHL();
+        var idx=hls.findIndex(function(h){return h.id===currentHlId;});
+        if(idx>=0){hls[idx].color=color;saveHL(hls);}
+        updateMarks(currentHlId,color,hls[idx]?hls[idx].note||'':'');
+        updateBadge(); renderPanelIfOpen();
+      } else if(pendingRange&&pendingXP){
+        // Create new
+        var id=genId();
+        var text=pendingRange.toString().substring(0,500);
+        applyRange(pendingRange,id,color,'');
+        pendingRange.collapse();
+        window.getSelection()&&window.getSelection().removeAllRanges();
+        var hls=loadHL();
+        hls.push({id:id,color:color,note:'',text:text,
+          sxp:pendingXP.sxp,so:pendingXP.so,exp:pendingXP.exp,eo:pendingXP.eo});
+        saveHL(hls); updateBadge(); renderPanelIfOpen();
+      }
+      hidePopup();
+    });
+  });
+
+  // Note button
+  popup.querySelector('.hl-note-btn').addEventListener('click',function(){
+    var id=currentHlId;
+    var existing='';
+    if(id){var hls=loadHL();var h=hls.find(function(x){return x.id===id;});if(h)existing=h.note||'';}
+    hidePopup();
+    openNoteModal(id,existing);
+  });
+
+  // Delete button
+  popup.querySelector('.hl-del-action').addEventListener('click',function(){
+    if(currentHlId) deleteHL(currentHlId);
+    hidePopup();
+  });
+
+  function deleteHL(id){
+    removeMarks(id);
+    var hls=loadHL().filter(function(h){return h.id!==id;});
+    saveHL(hls); updateBadge(); renderPanelIfOpen();
+  }
+
+  // ── NOTE MODAL ──
+  var noteModal=document.createElement('div');
+  noteModal.id='hl-note-modal'; noteModal.className='hidden';
+  noteModal.innerHTML='<div id="hl-note-box">'
+    +'<h3>✏ Ghi chú</h3>'
+    +'<textarea id="hl-note-ta" placeholder="Nhập ghi chú..."></textarea>'
+    +'<div class="hl-note-actions">'
+    +'<button class="hl-note-cancel">Hủy</button>'
+    +'<button class="hl-note-save">Lưu</button>'
+    +'</div></div>';
+  document.body.appendChild(noteModal);
+  var _noteTargetId=null;
+  function openNoteModal(hlId,existing){
+    _noteTargetId=hlId;
+    document.getElementById('hl-note-ta').value=existing||'';
+    noteModal.classList.remove('hidden');
+    setTimeout(function(){document.getElementById('hl-note-ta').focus();},50);
+  }
+  noteModal.querySelector('.hl-note-cancel').addEventListener('click',function(){noteModal.classList.add('hidden');});
+  noteModal.querySelector('.hl-note-save').addEventListener('click',function(){
+    var note=document.getElementById('hl-note-ta').value.trim();
+    if(_noteTargetId){
+      var hls=loadHL();
+      var idx=hls.findIndex(function(h){return h.id===_noteTargetId;});
+      if(idx>=0){hls[idx].note=note;saveHL(hls);updateMarks(_noteTargetId,hls[idx].color,note);updateBadge();renderPanelIfOpen();}
+    }
+    noteModal.classList.add('hidden');
+  });
+  noteModal.addEventListener('click',function(e){if(e.target===noteModal)noteModal.classList.add('hidden');});
+
+  // ── SELECTION HANDLER ──
+  document.addEventListener('mouseup',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    setTimeout(function(){
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed||!sel.rangeCount){hidePopup();return;}
+      var range=sel.getRangeAt(0);
+      var text=range.toString().trim();
+      if(!text||text.length<2){hidePopup();return;}
+      // Only highlight within #main
+      if(!mainEl||!mainEl.contains(range.commonAncestorContainer)){hidePopup();return;}
+      // Serialize positions
+      var sNode=range.startContainer,eNode=range.endContainer;
+      var sParent=sNode.nodeType===3?sNode.parentNode:sNode;
+      var eParent=eNode.nodeType===3?eNode.parentNode:eNode;
+      var sxp=getXPath(sParent),exp=getXPath(eParent);
+      // calc offsets within parent element
+      var so=0,eo=0;
+      var w=document.createTreeWalker(sParent,NodeFilter.SHOW_TEXT,null);
+      var n;while((n=w.nextNode())){if(n===sNode){so+=range.startOffset;break;}so+=n.textContent.length;}
+      var w2=document.createTreeWalker(eParent,NodeFilter.SHOW_TEXT,null);
+      while((n=w2.nextNode())){if(n===eNode){eo+=range.endOffset;break;}eo+=n.textContent.length;}
+      pendingRange=range.cloneRange();
+      pendingXP={sxp:sxp,so:so,exp:exp,eo:eo};
+      currentHlId=null;
+      var rect=range.getBoundingClientRect();
+      showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width});
+    },10);
+  });
+
+  // ── CLICK ON EXISTING MARK ──
+  document.addEventListener('click',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    var mk=e.target.closest('mark.hl');
+    if(!mk){
+      // click outside: if selection is collapsed, hide popup
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed) hidePopup();
+      return;
+    }
+    e.stopPropagation();
+    var hlId=mk.getAttribute('data-hl-id');
+    var rect=mk.getBoundingClientRect();
+    currentHlId=hlId;
+    pendingRange=null;pendingXP=null;
+    showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width},hlId);
+  });
+
+  // ── FLASH EFFECT ──
+  function flashMark(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.style.transition='outline .2s';mk.style.outline='3px solid #c9a84c';
+      setTimeout(function(){mk.style.outline='none';},1500);
+    });
+  }
+
+  function renderPanelIfOpen(){if(panel.classList.contains('open'))renderPanel();}
+
+  function escHtml(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+})();
+
+
+// ── CHAPTER NAV PANEL ───────────────────────────────────
+(function(){
+  var CHAPS=[
+    [1,'rita_chap01.html','Mẹo & Thủ Thuật Ôn Thi PMP®'],
+    [2,'rita_chap02.html','Tài Liệu Tham Khảo Kỳ Thi'],
+    [3,'rita_chap03.html','Nền Tảng Quản Lý Dự Án'],
+    [4,'rita_chap04.html','Tích Hợp'],
+    [5,'rita_chap05.html','Kỹ Năng Lãnh Đạo'],
+    [6,'rita_chap06.html','Xây Dựng & Hỗ Trợ Hiệu Suất Nhóm'],
+    [7,'rita_chap07.html','Phạm Vi Dự Án'],
+    [8,'rita_chap08.html','Tiến Độ & Ngân Sách Dự Án'],
+    [10,'rita_chap10.html','Chất Lượng Sản Phẩm Bàn Giao'],
+    [11,'rita_chap11.html','Truyền Thông'],
+    [12,'rita_chap12.html','Rủi Ro & Vấn Đề'],
+    [13,'rita_chap13.html','Mua Sắm'],
+    [14,'rita_chap14.html','Các Bên Liên Quan'],
+    [15,'rita_chap15.html','Tuân Thủ & Mang Lại Giá Trị'],
+    [16,'rita_chap16.html','Mẹo Vượt Qua Kỳ Thi PMP®'],
+    [17,'rita_chap17.html','Các Phương Pháp Agile Phổ Biến'],
+    [18,'rita_chap18.html','Hướng Dẫn PMBOK & Tiêu Chuẩn PM']
+  ];
+
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var curNum=m?parseInt(m[1]):null;
+  var READ_KEY='rita_reading';
+
+  // Build panel DOM
+  var panel=document.createElement('div');
+  panel.id='chap-panel'; panel.className='hidden';
+  var listHtml='';
+  CHAPS.forEach(function(c){
+    var isActive=c[0]===curNum;
+    listHtml+='<a class="chap-panel-item'+(isActive?' active':'')+'" href="'+c[1]+'">'
+      +'<span class="cpanel-num">Ch'+c[0]+'</span>'
+      +'<span class="cpanel-title">'+c[2]+'</span>'
+      +(isActive?'<span class="cpanel-status">● Đang đọc</span>':'')
+      +'</a>';
+  });
+  panel.innerHTML='<div id="chap-panel-overlay"></div>'
+    +'<div id="chap-panel-box">'
+    +'<div id="chap-panel-hdr"><h3>☰ Danh Sách Chương</h3><button id="chap-panel-close">×</button></div>'
+    +'<div id="chap-panel-list">'+listHtml+'</div>'
+    +'</div>';
+  document.body.appendChild(panel);
+
+  function openChapPanel(){panel.classList.remove('hidden');}
+  function closeChapPanel(){panel.classList.add('hidden');}
+  document.getElementById('chap-panel-overlay').addEventListener('click',closeChapPanel);
+  document.getElementById('chap-panel-close').addEventListener('click',closeChapPanel);
+
+  // Wire up the Mục lục button
+  var mucLucBtn=document.getElementById('chap-muc-luc-btn');
+  if(mucLucBtn) mucLucBtn.addEventListener('click',function(e){e.preventDefault();openChapPanel();});
+})();
+
+
+// ── GITHUB HIGHLIGHTS SYNC ──────────────────────────
+(function(){
+  var REPO='goukakujlptsuport-beep/pmbok6';
+  var TOKEN_KEY='rita_gh_token';
+  var API_URL='https://api.github.com/repos/'+REPO+'/contents/data/rita_highlights.json';
+  var fileSha=null;
+  var syncTimer=null;
+
+  // Called by patched saveHL after every highlight change
+  window.__ritaSyncTrigger=function(){
+    clearTimeout(syncTimer);
+    syncTimer=setTimeout(pushToGitHub,3000);
+  };
+
+  // ── STATUS BUTTON (inserted before #sidebar-nav) ──
+  var btn=document.createElement('button');
+  btn.id='sync-btn'; btn.dataset.state='no-token';
+  btn.innerHTML='<span>☁ Sync Git</span><span id="sync-status-text">Đang kết nối…</span>';
+  btn.title='Đồng bộ highlight / ghi chú lên GitHub';
+  btn.addEventListener('click',handleSyncClick);
+  var sidebarNavEl=document.getElementById('sidebar-nav');
+  if(sidebarNavEl) sidebarNavEl.parentNode.insertBefore(btn,sidebarNavEl);
+
+  var statusText=document.getElementById('sync-status-text');
+  function setStatus(state,msg){
+    btn.dataset.state=state;
+    if(statusText) statusText.textContent=msg;
+  }
+
+  // ── TOKEN MODAL ──
+  var modal=document.createElement('div');
+  modal.id='sync-modal'; modal.className='hidden';
+  modal.innerHTML='<div id="sync-modal-box">'
+    +'<h3>☁ Cấu Hình GitHub Sync</h3>'
+    +'<p>Nhập <strong style="color:var(--gold)">GitHub Personal Access Token (PAT)</strong> để đồng bộ highlight giữa các thiết bị.<br>'
+    +'Token cần quyền <strong style="color:var(--gold-lt)">Contents: Read &amp; Write</strong> trên repo pmbok6.<br>'
+    +'Token được lưu trong localStorage của trình duyệt này.</p>'
+    +'<input id="sync-token-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" spellcheck="false" autocomplete="off">'
+    +'<div class="sync-modal-btns">'
+    +'<button id="sync-clear-btn">🗑 Xóa token</button>'
+    +'<button id="sync-cancel-btn">Hủy</button>'
+    +'<button id="sync-save-btn">💾 Lưu &amp; Sync</button>'
+    +'</div></div>';
+  document.body.appendChild(modal);
+
+  document.getElementById('sync-cancel-btn').addEventListener('click',function(){modal.classList.add('hidden');});
+  document.getElementById('sync-save-btn').addEventListener('click',function(){
+    var t=(document.getElementById('sync-token-input').value||'').trim();
+    if(!t){alert('Vui lòng nhập GitHub PAT!');return;}
+    localStorage.setItem(TOKEN_KEY,t);
+    modal.classList.add('hidden');
+    fileSha=null;
+    initSync();
+  });
+  document.getElementById('sync-clear-btn').addEventListener('click',function(){
+    if(!confirm('Xóa token? Highlights sẽ không được sync cho đến khi cấu hình lại.')) return;
+    localStorage.removeItem(TOKEN_KEY);
+    fileSha=null;
+    modal.classList.add('hidden');
+    setStatus('no-token','Chưa cấu hình');
+  });
+  modal.addEventListener('click',function(e){if(e.target===modal)modal.classList.add('hidden');});
+
+  function handleSyncClick(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){
+      var inp=document.getElementById('sync-token-input');
+      if(inp) inp.value='';
+      modal.classList.remove('hidden');
+      setTimeout(function(){if(inp)inp.focus();},80);
+    } else {
+      // Manual re-sync
+      fileSha=null;
+      initSync();
+    }
+  }
+
+  // ── HELPERS ──
+  var ALL_CHAPS=['01','02','03','04','05','06','07','08','10','11','12','13','14','15','16','17','18'];
+
+  function getAllLocal(){
+    var all={};
+    ALL_CHAPS.forEach(function(n){
+      try{
+        var v=JSON.parse(localStorage.getItem('rita_hl_'+n)||'[]');
+        if(v&&v.length>0) all[n]=v;
+      }catch(e){}
+    });
+    return all;
+  }
+
+  function countHL(obj){
+    return Object.values(obj).reduce(function(s,a){return s+(a?a.length:0);},0);
+  }
+
+  // Union merge: keep all highlights by id, prefer local note if different
+  function mergeHL(local,remote){
+    var merged={};
+    var allChaps=new Set(Object.keys(local).concat(Object.keys(remote)));
+    allChaps.forEach(function(chap){
+      var loc=local[chap]||[];
+      var rem=remote[chap]||[];
+      var byId={};
+      loc.forEach(function(h){byId[h.id]=h;});
+      rem.forEach(function(h){if(!byId[h.id])byId[h.id]=h;});
+      var arr=Object.values(byId);
+      if(arr.length>0) merged[chap]=arr;
+    });
+    return merged;
+  }
+
+  function applyToLocal(highlights){
+    Object.keys(highlights).forEach(function(chap){
+      localStorage.setItem('rita_hl_'+chap,JSON.stringify(highlights[chap]));
+    });
+  }
+
+  // base64 encode/decode with Unicode support
+  function b64enc(str){
+    return btoa(unescape(encodeURIComponent(str)));
+  }
+  function b64dec(b64){
+    return decodeURIComponent(escape(atob(b64.replace(/[\r\n]/g,''))));
+  }
+
+  // ── FETCH FROM GITHUB ──
+  async function fetchFromGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    var headers={'Accept':'application/vnd.github.v3+json'};
+    if(token) headers['Authorization']='token '+token;
+    try{
+      var resp=await fetch(API_URL,{headers:headers});
+      if(resp.status===404){fileSha=null;return null;}
+      if(!resp.ok) throw new Error('HTTP '+resp.status);
+      var data=await resp.json();
+      fileSha=data.sha;
+      var content=JSON.parse(b64dec(data.content));
+      return content;
+    }catch(e){
+      console.warn('[sync] fetch:',e);
+      return 'error';
+    }
+  }
+
+  // ── PUSH TO GITHUB ──
+  async function pushToGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang sync…');
+    var local=getAllLocal();
+    var payload={version:1,lastSync:new Date().toISOString(),highlights:local};
+    var encoded=b64enc(JSON.stringify(payload,null,2));
+    var body={message:'sync: rita highlights ['+countHL(local)+' HL]',content:encoded};
+    if(fileSha) body.sha=fileSha;
+    try{
+      var resp=await fetch(API_URL,{
+        method:'PUT',
+        headers:{
+          'Authorization':'token '+token,
+          'Content-Type':'application/json',
+          'Accept':'application/vnd.github.v3+json'
+        },
+        body:JSON.stringify(body)
+      });
+      if(!resp.ok){
+        var err=await resp.json().catch(function(){return{};});
+        throw new Error(err.message||'HTTP '+resp.status);
+      }
+      var result=await resp.json();
+      fileSha=result.content.sha;
+      setStatus('ok','✓ Đã sync ('+countHL(local)+' HL)');
+    }catch(e){
+      setStatus('err','✗ '+e.message.slice(0,28));
+      console.error('[sync] push:',e);
+    }
+  }
+
+  // ── INIT ──
+  async function initSync(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang tải…');
+
+    var ghData=await fetchFromGitHub();
+    if(ghData==='error'){
+      setStatus('err','✗ Không kết nối được');
+      return;
+    }
+    if(ghData&&ghData.highlights){
+      var local=getAllLocal();
+      var merged=mergeHL(local,ghData.highlights);
+      applyToLocal(merged);
+      // Re-apply marks on current chapter from updated localStorage
+      if(typeof window.__ritaReapplyMarks==='function') window.__ritaReapplyMarks();
+      var ghN=countHL(ghData.highlights), mergedN=countHL(merged);
+      if(mergedN>ghN){
+        // New highlights from remote — push merged back
+        setTimeout(pushToGitHub,1200);
+      } else {
+        setStatus('ok','✓ Sync OK ('+mergedN+' HL)');
+      }
+    } else {
+      // File doesn't exist yet — push current local state
+      await pushToGitHub();
+    }
+  }
+
+  initSync();
+})();
+
+</script>
+
+</body>
+</html>

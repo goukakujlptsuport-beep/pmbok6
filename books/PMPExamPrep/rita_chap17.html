@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Các Phương Pháp Agile Phổ Biến | Rita PMP® Exam Prep 11</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:     #1a2744;
+  --red:      #8b1a1a;
+  --gold:     #c9a84c;
+  --gold-lt:  #e8d5a3;
+  --cream:    #fdf8f0;
+  --text:     #2c2c2c;
+  --text-dim: #5a5a5a;
+  --border:   #d4c89a;
+  --sidebar-w: 268px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ── PROGRESS BAR ── */
+#progress-bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--gold);z-index:200;transition:width .1s}
+
+/* ── SIDEBAR ── */
+#sidebar{
+  width:var(--sidebar-w);background:var(--navy);color:#ccd4e8;
+  position:fixed;top:0;left:0;bottom:0;overflow-y:auto;z-index:100;
+  border-right:3px solid var(--gold);display:flex;flex-direction:column;
+}
+#sidebar-header{
+  background:linear-gradient(135deg,#0f1d3a 0%,#1a2744 100%);
+  padding:1.4rem 1.2rem;border-bottom:2px solid var(--gold);flex-shrink:0;
+}
+#sidebar-header .book-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.62rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;
+}
+#sidebar-header h2{font-size:.92rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:.25rem}
+#sidebar-header .edition{font-family:'Source Sans 3',sans-serif;font-size:.7rem;color:var(--gold-lt);font-style:italic}
+#sidebar-toc{flex:1;overflow-y:auto;padding:.6rem 0}
+#sidebar-toc a{
+  display:block;font-family:'Source Sans 3',sans-serif;font-size:.78rem;
+  color:#aab8d0;text-decoration:none;padding:.4rem 1.2rem;line-height:1.4;
+  transition:all .15s;border-left:3px solid transparent;
+}
+#sidebar-toc a:hover,#sidebar-toc a.active{color:#fff;background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+#sidebar-toc a.toc-h4{padding-left:2.2rem;font-size:.72rem;color:#8896b0}
+#sidebar-toc a.toc-h4:hover{color:#ccd4e8}
+#sidebar-toc .toc-group-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.6rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  padding:.7rem 1.2rem .25rem;opacity:.85;
+}
+#sidebar-nav{
+  flex-shrink:0;border-top:1px solid rgba(255,255,255,.08);
+  display:flex;justify-content:space-between;padding:.7rem .8rem;gap:.5rem;
+}
+#sidebar-nav a{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;color:var(--gold-lt);
+  text-decoration:none;padding:.4rem .7rem;border:1px solid rgba(201,168,76,.3);
+  border-radius:4px;transition:all .2s;line-height:1.3;text-align:center;flex:1;
+}
+#sidebar-nav a:hover{background:rgba(201,168,76,.15);color:#fff}
+#sidebar-nav a.disabled{opacity:.35;pointer-events:none}
+
+/* ── HAMBURGER (mobile) ── */
+#menu-btn{
+  display:none;position:fixed;top:.7rem;left:.8rem;z-index:150;
+  background:var(--navy);border:1px solid var(--gold);color:var(--gold);
+  width:36px;height:36px;border-radius:6px;font-size:1.1rem;cursor:pointer;
+  align-items:center;justify-content:center;
+}
+
+/* ── MAIN ── */
+#main{margin-left:var(--sidebar-w);max-width:880px;padding:0 2.8rem 5rem}
+
+/* ── CHAPTER HERO ── */
+.chapter-hero{
+  background:linear-gradient(135deg,var(--navy) 0%,#2a3a6a 100%);
+  color:white;padding:2.8rem 2.8rem 2.2rem;margin:0 -2.8rem 2.8rem;
+  border-bottom:4px solid var(--gold);position:relative;overflow:hidden;
+}
+.chapter-hero::before{
+  content:'17';position:absolute;right:1.5rem;top:50%;
+  transform:translateY(-50%);font-size:10rem;font-weight:700;
+  color:rgba(255,255,255,.05);font-family:'Merriweather',serif;line-height:1;
+}
+.chapter-hero .ch-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;font-weight:700;
+  letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;
+}
+.chapter-hero h1{font-size:2rem;font-weight:700;line-height:1.2;margin-bottom:.35rem}
+.chapter-hero .ch-en{font-family:'Source Sans 3',sans-serif;font-size:.95rem;color:rgba(255,255,255,.5);font-style:italic}
+
+/* ── CONTENT HEADINGS ── */
+h3{
+  font-family:'Merriweather',serif;font-size:1.25rem;color:var(--navy);
+  margin:2.5rem 0 .85rem;padding-bottom:.45rem;border-bottom:2px solid var(--gold);
+}
+h4{
+  font-family:'Merriweather',serif;font-size:1.05rem;color:var(--navy);
+  margin:2rem 0 .65rem;padding-left:.75rem;border-left:4px solid var(--gold);
+}
+h5{
+  font-family:'Source Sans 3',sans-serif;font-size:.9rem;font-weight:700;
+  color:var(--red);margin:1.4rem 0 .45rem;text-transform:uppercase;letter-spacing:.05em;
+}
+p{font-family:'Merriweather',serif;font-size:.94rem;line-height:1.88;margin-bottom:.95rem;color:var(--text)}
+
+/* ── LISTS ── */
+ul.content-list,ol.content-list{
+  margin:.5rem 0 1rem;padding:0;list-style:none;
+}
+ul.content-list li{
+  position:relative;padding:.28rem 0 .28rem 1.6rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);
+}
+ul.content-list li::before{
+  content:'◆';position:absolute;left:0;color:var(--gold);font-size:.65rem;top:.45rem;
+}
+ol.content-list{counter-reset:ol-c;list-style:none}
+ol.content-list li{
+  position:relative;padding:.28rem 0 .28rem 2rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);counter-increment:ol-c;
+}
+ol.content-list li::before{
+  content:counter(ol-c)'.';position:absolute;left:0;color:var(--navy);
+  font-weight:700;font-size:.85rem;min-width:1.5rem;
+}
+ul.content-list ul.content-list li::before{content:'–';color:var(--text-dim);font-size:.9rem;top:.35rem}
+
+/* ── CALLOUT / DEF BOX ── */
+.callout{
+  background:linear-gradient(135deg,#f5f0e8,#ede8d8);
+  border:1px solid var(--border);border-left:5px solid var(--gold);
+  border-radius:0 6px 6px 0;padding:1rem 1.2rem;margin:1.3rem 0;
+}
+.callout p{font-size:.9rem;margin-bottom:.5rem}
+.callout p:last-child{margin-bottom:0}
+.callout ul.content-list li{font-size:.88rem}
+.callout-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.65rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;
+}
+.callout.tip{border-left-color:#2d7a2d;background:linear-gradient(135deg,#f0f7f0,#e4f0e4)}
+.callout.tip .callout-label{color:#2d7a2d}
+
+/* ── HIGHLIGHT (quicktest / exam alert) ── */
+.highlight{
+  background:var(--navy);color:#e8d5a3;
+  border-radius:8px;padding:1.1rem 1.3rem;margin:1.5rem 0;
+}
+.highlight h5,.highlight strong{color:var(--gold-lt)}
+.highlight p,.highlight li{color:#ccd4e8;font-size:.88rem}
+.highlight ul.content-list li::before{color:var(--gold)}
+
+/* ── FIGURE ── */
+.img-center{
+  text-align:center;margin:1.8rem 0;padding:1rem;
+  background:#f8f5ee;border:1px solid var(--border);border-radius:8px;
+}
+.img-center img{max-width:100%;height:auto;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.img-center p,.img-center div{
+  margin-top:.65rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.8rem;color:var(--text-dim);font-style:italic;
+}
+
+/* ── TABLES ── */
+.table-wrap{overflow-x:auto;margin:1.5rem 0}
+table{width:100%;border-collapse:collapse;font-family:'Source Sans 3',sans-serif;font-size:.84rem}
+table th{background:var(--navy);color:white;padding:.6rem .8rem;text-align:center;font-weight:600;font-size:.79rem}
+table td{padding:.5rem .8rem;border:1px solid #ddd;vertical-align:top;line-height:1.5}
+table tr:nth-child(even) td{background:#f9f6ef}
+
+/* ── BACK TO TOP ── */
+#back-top{
+  position:fixed;bottom:1.5rem;right:1.5rem;
+  background:var(--navy);color:var(--gold);border:1px solid var(--gold);
+  width:38px;height:38px;border-radius:50%;font-size:1.2rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .25s;z-index:99;
+}
+#back-top:hover{background:var(--gold);color:var(--navy)}
+
+/* ── MOBILE ── */
+@media(max-width:860px){
+  #sidebar{transform:translateX(-100%);transition:transform .25s;top:3rem}
+  #sidebar.open{transform:translateX(0)}
+  #menu-btn{display:flex}
+  #main{margin-left:0;padding:3.5rem 1.2rem 4rem}
+  .chapter-hero{margin:0 -1.2rem 2rem;padding:2rem 1.4rem}
+  .chapter-hero::before{display:none}
+}
+
+/* ── DARK / LIGHT MODE ─────────────────────────────── */
+html[data-theme=dark]{--cream:#0f1520;--text:#dde4f0;--text-dim:#8899bb;--border:#253048;--gold-lt:#c9a84c}
+html[data-theme=dark] body{background:#0f1520;color:#dde4f0}
+html[data-theme=dark] #main{background:#0f1520}
+html[data-theme=dark] h1,html[data-theme=dark] h2{color:#e8d5a3}
+html[data-theme=dark] h3{color:#e8d5a3;border-bottom-color:var(--gold)}
+html[data-theme=dark] h4{color:#b8ccee;border-left-color:var(--gold)}
+html[data-theme=dark] p,html[data-theme=dark] li,html[data-theme=dark] td{color:#dde4f0}
+html[data-theme=dark] strong{color:#e8d5a3}
+html[data-theme=dark] em{color:#b8ccee}
+html[data-theme=dark] .callout{background:linear-gradient(135deg,#1a2436,#1e2d45);border-left-color:var(--gold);color:#dde4f0}
+html[data-theme=dark] .callout p{color:#dde4f0}
+html[data-theme=dark] blockquote{background:#1a2436;border-left-color:var(--gold);color:#b0c0d8}
+html[data-theme=dark] table{background:#131c2b}
+html[data-theme=dark] th{background:#1a2744;color:#e8d5a3;border-color:#253048}
+html[data-theme=dark] td{border-color:#253048}
+html[data-theme=dark] tr:nth-child(even) td{background:#1a2436}
+html[data-theme=dark] .highlight,.highlight-box{background:#1a2436!important;border-color:#253048!important;color:#dde4f0!important}
+html[data-theme=dark] #back-top{background:#1a2744;color:var(--gold);border:1px solid rgba(201,168,76,.4)}
+html[data-theme=dark] ul.content-list li,html[data-theme=dark] ol.content-list li{color:#dde4f0}
+html[data-theme=dark] .chapter-hero{background:linear-gradient(135deg,#0a1228 0%,#142040 100%)}
+html[data-theme=dark] .exercise-card{background:#1a2436;border-color:#253048}
+html[data-theme=dark] .answer-box{background:#152035;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] .answer-box p{color:#dde4f0}
+/* theme toggle button */
+#theme-btn{position:absolute;top:.65rem;right:.7rem;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.35);color:var(--gold);width:28px;height:28px;border-radius:5px;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+#theme-btn:hover{background:rgba(201,168,76,.2)}
+#sidebar-header{position:relative}
+
+/* ── HIGHLIGHT SYSTEM ─────────────────────────────────── */
+mark.hl{border-radius:2px;cursor:pointer;padding:1px 0;background:transparent}
+mark.hl[data-color=yellow]{background:rgba(255,241,118,.75)}
+mark.hl[data-color=green]{background:rgba(165,214,167,.75)}
+mark.hl[data-color=red]{background:rgba(239,154,154,.75)}
+mark.hl::after{display:none}
+mark.hl[data-note]:not([data-note=""])::after{content:"✏";font-size:.6rem;vertical-align:super;margin-left:1px;opacity:.65;display:inline}
+/* selection popup */
+#hl-popup{position:fixed;z-index:9999;background:#1a2744;border:1px solid rgba(201,168,76,.5);border-radius:8px;padding:.45rem .6rem;display:flex;align-items:center;gap:.35rem;box-shadow:0 4px 20px rgba(0,0,0,.4);pointer-events:all}
+#hl-popup.hidden{display:none!important}
+.hl-color-btn{width:24px;height:24px;border-radius:50%;border:2px solid rgba(255,255,255,.25);cursor:pointer;transition:transform .15s,border-color .15s;flex-shrink:0}
+.hl-color-btn:hover{transform:scale(1.2);border-color:rgba(255,255,255,.7)}
+.hl-color-btn[data-color=yellow]{background:#fff176}
+.hl-color-btn[data-color=green]{background:#a5d6a7}
+.hl-color-btn[data-color=red]{background:#ef9a9a}
+.hl-sep{width:1px;height:20px;background:rgba(255,255,255,.2);margin:0 .1rem}
+.hl-note-btn{background:none;border:none;color:rgba(255,255,255,.7);font-size:.9rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-note-btn:hover{color:#fff;background:rgba(255,255,255,.1)}
+.hl-del-btn{background:none;border:none;color:rgba(239,154,154,.8);font-size:.85rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-del-btn:hover{color:#ef9a9a;background:rgba(239,154,154,.12)}
+/* note modal */
+#hl-note-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center}
+#hl-note-modal.hidden{display:none!important}
+#hl-note-box{background:#fff;border-radius:10px;padding:1.4rem;width:min(420px,90vw);box-shadow:0 8px 32px rgba(0,0,0,.25)}
+#hl-note-box h3{font-size:.95rem;color:#1a2744;margin-bottom:.7rem;font-family:'Merriweather',serif}
+#hl-note-ta{width:100%;border:1px solid #d4c89a;border-radius:6px;padding:.6rem .8rem;font-size:.88rem;font-family:'Source Sans 3',sans-serif;resize:vertical;min-height:80px;color:#2c2c2c;outline:none}
+#hl-note-ta:focus{border-color:#c9a84c;box-shadow:0 0 0 2px rgba(201,168,76,.25)}
+.hl-note-actions{display:flex;justify-content:flex-end;gap:.6rem;margin-top:.8rem}
+.hl-note-cancel{background:transparent;border:1px solid #ccc;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+.hl-note-save{background:#1a2744;color:#fff;border:none;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+/* highlights panel */
+#hl-panel{position:fixed;top:0;right:0;bottom:0;width:300px;background:#fff;border-left:3px solid var(--gold);z-index:500;display:flex;flex-direction:column;box-shadow:-4px 0 20px rgba(0,0,0,.15);transform:translateX(100%);transition:transform .25s}
+#hl-panel.open{transform:translateX(0)}
+#hl-panel-hdr{background:#1a2744;padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--gold)}
+#hl-panel-hdr h3{font-size:.88rem;color:#fff;font-family:'Source Sans 3',sans-serif;font-weight:700;letter-spacing:.05em}
+#hl-panel-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.2rem;cursor:pointer;padding:.2rem;line-height:1}
+#hl-panel-close:hover{color:#fff}
+#hl-panel-list{flex:1;overflow-y:auto;padding:.6rem}
+#hl-panel-list:empty::before{content:"Chưa có ghi chú nào trong chương này.";font-size:.82rem;color:#999;display:block;padding:.8rem;text-align:center;font-style:italic}
+.hl-item{padding:.65rem .8rem;border-radius:6px;margin-bottom:.5rem;border-left:4px solid #ddd;background:#fafafa;cursor:pointer;transition:background .15s}
+.hl-item:hover{background:#f0f0f0}
+.hl-item[data-color=yellow]{border-left-color:#fdd835}
+.hl-item[data-color=green]{border-left-color:#66bb6a}
+.hl-item[data-color=red]{border-left-color:#ef5350}
+.hl-item-text{font-size:.8rem;color:#2c2c2c;line-height:1.5;margin-bottom:.3rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.hl-item-note{font-size:.75rem;color:#666;font-style:italic;margin-bottom:.3rem}
+.hl-item-del{float:right;background:none;border:none;color:#bbb;cursor:pointer;font-size:.8rem;padding:.1rem .3rem;border-radius:3px;line-height:1}
+.hl-item-del:hover{color:#ef5350;background:rgba(239,83,80,.08)}
+/* sidebar hl badge */
+#hl-sidebar-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:var(--gold);cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#hl-sidebar-btn:hover{background:rgba(201,168,76,.1)}
+#hl-badge{background:rgba(201,168,76,.2);color:var(--gold);font-size:.65rem;font-weight:700;padding:.1rem .4rem;border-radius:10px;min-width:18px;text-align:center}
+html[data-theme=dark] #hl-note-box{background:#1a2436;border:1px solid #253048}
+html[data-theme=dark] #hl-note-box h3{color:#e8d5a3}
+html[data-theme=dark] #hl-note-ta{background:#0f1520;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] #hl-panel{background:#131c2b;border-left-color:var(--gold)}
+html[data-theme=dark] .hl-item{background:#1a2436;border-bottom:1px solid #1e2d45}
+html[data-theme=dark] .hl-item:hover{background:#1e2d45}
+html[data-theme=dark] .hl-item-text{color:#dde4f0}
+html[data-theme=dark] .hl-item-note{color:#8899bb}
+html[data-theme=dark] .hl-note-cancel{border-color:#253048;color:#dde4f0;background:#1a2436}
+html[data-theme=dark] .hl-note-save{background:#c9a84c;color:#0a0f1a}
+
+/* ── CHAPTER NAV PANEL ─────────────────────────────────── */
+#chap-panel{position:fixed;inset:0;z-index:9000;display:flex;align-items:stretch}
+#chap-panel.hidden{display:none!important}
+#chap-panel-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);cursor:pointer}
+#chap-panel-box{position:relative;z-index:1;width:min(360px,90vw);background:#0f1d3a;border-right:3px solid var(--gold);display:flex;flex-direction:column;animation:slideInLeft .2s ease}
+@keyframes slideInLeft{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+#chap-panel-hdr{background:linear-gradient(135deg,#0a1228,#1a2744);padding:1.2rem 1.3rem;border-bottom:2px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
+#chap-panel-hdr h3{font-family:'Source Sans 3',sans-serif;font-size:.85rem;font-weight:700;color:#fff;letter-spacing:.1em;text-transform:uppercase}
+#chap-panel-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.3rem;cursor:pointer;padding:.2rem;line-height:1;transition:color .15s}
+#chap-panel-close:hover{color:#fff}
+#chap-panel-list{flex:1;overflow-y:auto;padding:.5rem 0}
+.chap-panel-item{display:flex;align-items:center;gap:.8rem;padding:.7rem 1.3rem;cursor:pointer;transition:background .15s;border-left:3px solid transparent;text-decoration:none}
+.chap-panel-item:hover{background:rgba(201,168,76,.1);border-left-color:var(--gold)}
+.chap-panel-item.active{background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+.cpanel-num{font-family:'Source Sans 3',sans-serif;font-size:.7rem;font-weight:700;color:var(--gold);min-width:28px;flex-shrink:0}
+.cpanel-title{font-family:'Source Sans 3',sans-serif;font-size:.8rem;color:#ccd4e8;line-height:1.35}
+.cpanel-item-active .cpanel-title{color:#fff;font-weight:600}
+.cpanel-status{margin-left:auto;font-size:.72rem;flex-shrink:0;opacity:.6}
+
+/* ── GITHUB SYNC ──────────────────────────────────── */
+#sync-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:#8899bb;cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s,color .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#sync-btn:hover{background:rgba(201,168,76,.08);color:var(--gold)}
+#sync-btn[data-state=ok]{color:#4caf50}
+#sync-btn[data-state=syncing]{color:var(--gold)}
+#sync-btn[data-state=err]{color:#ef5350}
+#sync-btn[data-state=no-token]{color:#8899bb}
+#sync-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center}
+#sync-modal.hidden{display:none!important}
+#sync-modal-box{background:#0f1d3a;border:2px solid var(--gold);border-radius:10px;padding:1.8rem 2rem;width:min(420px,90vw);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+#sync-modal-box h3{font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:.9rem;text-transform:uppercase;letter-spacing:.1em}
+#sync-modal-box p{font-size:.77rem;color:#aab8d0;line-height:1.6;margin-bottom:.9rem}
+#sync-modal-box input{width:100%;background:#0a1228;border:1px solid rgba(201,168,76,.4);color:#fff;font-family:monospace;font-size:.8rem;padding:.55rem .8rem;border-radius:5px;outline:none;margin-bottom:.8rem;box-sizing:border-box}
+#sync-modal-box input:focus{border-color:var(--gold)}
+.sync-modal-btns{display:flex;gap:.6rem;justify-content:flex-end;flex-wrap:wrap}
+.sync-modal-btns button{font-family:'Source Sans 3',sans-serif;font-size:.77rem;font-weight:700;padding:.42rem .9rem;border-radius:5px;cursor:pointer;border:none;transition:background .15s}
+#sync-save-btn{background:var(--gold);color:#0a0f1a}
+#sync-save-btn:hover{background:#e8c47a}
+#sync-cancel-btn{background:rgba(255,255,255,.1);color:#aab8d0}
+#sync-cancel-btn:hover{background:rgba(255,255,255,.18)}
+#sync-clear-btn{background:rgba(239,83,80,.18);color:#ef9090;margin-right:auto}
+#sync-clear-btn:hover{background:rgba(239,83,80,.32)}
+</style>
+</head>
+<script>
+(function(){var t=localStorage.getItem('rita_theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+</script>
+<body>
+<div id="progress-bar"></div>
+<button id="menu-btn" aria-label="Menu">☰</button>
+
+<aside id="sidebar">
+<div id="sidebar-header">
+  <div class="book-label">Rita PMP® Exam Prep</div>
+  <h2>Ôn Thi PMP®</h2>
+  <div class="edition">Rita Mulcahy · 11th Edition 2023 · Tiếng Việt</div>
+</div>
+<div id="sidebar-toc">
+  <div class="toc-group-label">Nội Dung Chương</div>
+  <a href="#ch17-gioi-thieu" class="">Giới Thiệu</a>
+<a href="#ch17-tong-quan" class="toc-h4">Tổng Quan</a>
+<a href="#ch17-lean" class="toc-h4">Lean</a>
+<a href="#ch17-kanban" class="toc-h4">Kanban</a>
+<a href="#ch17-scrum" class="toc-h4">Scrum</a>
+<a href="#ch17-thuat-ngu-scrum-va-agile" class="toc-h4">Thuật Ngữ Scrum và Agile Chung</a>
+<a href="#ch17-khai-niem-cot-loi-scrum" class="toc-h4">Các Khái Niệm Cốt Lõi Của Scrum</a>
+<a href="#ch17-daily-scrum" class="toc-h4">Daily Scrum</a>
+<a href="#ch17-xp" class="toc-h4">XP (eXtreme Programming)</a>
+<a href="#ch17-xp-va-thuat-ngu-tuong-tu" class="toc-h4">XP và Thuật Ngữ Tương Tự</a>
+<a href="#ch17-gia-tri-xp" class="toc-h4">Giá Trị XP</a>
+<a href="#ch17-thuc-hanh-xp" class="toc-h4">Thực Hành XP</a>
+<a href="#ch17-nhom-phuong-phap-crystal" class="toc-h4">Nhóm Phương Pháp Luận Crystal</a>
+<a href="#ch17-dsdm" class="toc-h4">DSDM</a>
+<a href="#ch17-nguyen-tac-cot-loi-dsdm" class="toc-h4">Các Nguyên Tắc Cốt Lõi Của DSDM</a>
+<a href="#ch17-safe" class="toc-h4">Scaled Agile Framework® (SAFe®)</a>
+<a href="#ch17-lanh-dao-safe" class="toc-h4">Lãnh Đạo Cho SAFe</a>
+<a href="#ch17-fdd" class="toc-h4">Feature Driven Development (FDD)</a>
+<a href="#ch17-gia-tri-va-nguyen-tac-agile" class="toc-h4">Giá Trị và Nguyên Tắc Agile</a>
+<a href="#ch17-gia-tri-agile" class="toc-h4">Giá Trị Agile</a>
+<a href="#ch17-nguyen-tac-agile" class="toc-h4">Các Nguyên Tắc Agile</a>
+<a href="#ch17-bai-tap-17-1" class="">Bài Tập 17.1</a>
+<a href="#ch17-tu-duy-agile" class="toc-h4">Tư Duy Agile</a>
+<a href="#ch17-khai-niem-chinh" class="toc-h4">Các Khái Niệm Chính</a>
+<a href="#ch17-chao-don-thay-doi" class="toc-h4">Chào Đón Thay Đổi</a>
+<a href="#ch17-phan-tang-gia-tri-nho" class="toc-h4">Làm Việc Theo Các Phần Tăng Trưởng Giá Trị Nhỏ</a>
+<a href="#ch17-vong-lap-xay-va-phan-hoi" class="toc-h4">Sử Dụng Vòng Lặp Xây Dựng và Phản Hồi</a>
+<a href="#ch17-hoc-qua-kham-pha" class="toc-h4">Học Tập Qua Khám Phá</a>
+<a href="#ch17-that-bai-nhanh-va-hoc-tap" class="toc-h4">Thất Bại Nhanh Kết Hợp Với Học Tập</a>
+<a href="#ch17-phat-trien-huong-gia-tri" class="toc-h4">Phát Triển Hướng Giá Trị</a>
+<a href="#ch17-ban-giao-lien-tuc" class="toc-h4">Bàn Giao Liên Tục</a>
+<a href="#ch17-cai-tien-lien-tuc" class="toc-h4">Cải Tiến Liên Tục</a>
+<a href="#ch17-tam-giac-agile" class="toc-h4">Tam Giác Agile</a>
+<a href="#ch17-bai-tap-17-2" class="">Bài Tập 17.2</a>
+<a href="#ch17-dap-an-17-2" class="toc-h4">Đáp Án</a>
+
+</div>
+<div id="sidebar-nav">
+  <a href="rita_chap16.html" class="" title="Mẹo Vượt Kỳ Thi">← Ch16</a>
+  <a href="#" id="chap-muc-luc-btn">☰ Mục lục</a>
+  <a href="rita_chap18.html" class="" title="PMBOK & Tiêu Chuẩn">Ch18 →</a>
+</div></aside>
+
+<main id="main">
+  <div class="chapter-hero">
+    <div class="ch-label">Chương 17</div>
+    <h1>Các Phương Pháp Agile Phổ Biến</h1>
+    <div class="ch-en">Common Agile Methodologies</div>
+  </div>
+<h3 id="ch17-gioi-thieu">Giới Thiệu</h3>
+<p>Chúng ta đã thảo luận về các thực hành agile xuyên suốt cuốn sách này. Trong chương này, chúng ta sẽ nhìn sâu hơn vào nền tảng của agile thông qua Tuyên Ngôn Agile và xem xét một số phương pháp luận khác nhau. Các phương pháp luận này bao gồm:</p>
+<ul class="content-list">
+  <li>Lean</li>
+  <li>Kanban</li>
+  <li>DSDM (Dynamic Systems Development Method)</li>
+  <li>Scrum</li>
+  <li>FDD (Feature Driven Development)</li>
+  <li>XP (eXtreme Programming)</li>
+  <li>SAFe® (Scaled Agile Framework)</li>
+  <li>Nhóm Phương Pháp Luận Crystal</li>
+</ul>
+<p>Mặc dù agile có vẻ mới mẻ với nhiều người, thực ra nó đã tồn tại từ rất lâu, và những ý tưởng được sử dụng bởi các thực hành agile chắc chắn không phải mới. Những gì chúng ta gọi là "agile" là sự tổng hợp các thực hành mà mọi người đã thử nghiệm rồi chắt lọc những gì hiệu quả. Bộ sưu tập các thực hành tốt này đã trở nên có hệ thống.</p>
+<p>Các chuyên gia thường dùng các thuật ngữ agile và thích nghi thay thế cho nhau. Trên thực tế, agile là một thực hành còn thích nghi là thuật ngữ tổng quát hơn. Để ôn lại, trong các môi trường thích nghi, phạm vi không thể được xác định đầy đủ vào đầu dự án và sẽ phần lớn không ổn định trong suốt dự án. Phạm vi đang dần hình thành.</p>
+<p>Trước khi tiếp tục, hãy xem lại các phần sau trong chương "Tài Liệu Tham Khảo PMP® Trong Bối Cảnh":</p>
+<ul class="content-list">
+  <li>Tổng Quan Quy Trình Agile</li>
+  <li>Trò Chơi Sơ Đồ Quy Trình Agile của Rita — Bạn nên đã chơi trò chơi này một lần khi lần đầu đọc chương đó. Đây là thời điểm tốt để chơi lại để ôn tập.</li>
+</ul>
+
+<h4 id="ch17-tong-quan">Tổng Quan</h4>
+<p>Sau đây là các phương pháp luận agile phổ biến đã cung cấp cho các chuyên gia agile một bộ thực hành để kết hợp và tùy chỉnh, tùy thuộc vào nhu cầu của tổ chức, sản phẩm và dự án, nhóm và các bên liên quan. Chúng ta thảo luận về Lean và Kanban trước vì chúng không phải là phương pháp luận agile. Thay vào đó, cả Lean và Kanban đều là các phương pháp luận độc lập (ban đầu liên quan đến sản xuất) mà agile đã tích hợp nhiều ý tưởng.</p>
+
+<div class="callout">
+<strong>KIỂM TRA NHANH</strong>
+<ul class="content-list">
+  <li>Product backlog</li>
+  <li>Project backlog</li>
+  <li>Sprint backlog</li>
+  <li>Daily Scrum</li>
+  <li>XP</li>
+  <li>Spike</li>
+  <li>Architectural spike</li>
+  <li>Crystal</li>
+  <li>DSDM</li>
+  <li>SAFe®</li>
+  <li>FDD</li>
+  <li>Giá trị agile</li>
+  <li>Nguyên tắc agile</li>
+  <li>Các khái niệm cốt lõi của tư duy agile</li>
+  <li>Ràng buộc agile</li>
+</ul>
+</div>
+
+<p>Khi đọc bạn sẽ thấy có sự thiên lệch về phát triển phần mềm. Điều này là vì chính trong cộng đồng các nhà phát triển phần mềm mà các phương pháp luận khác nhau được tổng hợp và triết lý agile được tổ chức và lan rộng. Nếu bạn không làm trong lĩnh vực phát triển phần mềm, hãy suy nghĩ về cách các phương pháp này có thể được áp dụng trong tổ chức của bạn. Như đã đề cập trước đây trong cuốn sách này, các phương pháp agile hiện nay được sử dụng với nhiều loại dự án phù hợp với cách tiếp cận phát triển thích nghi.</p>
+<p>Các phần cuối của chương này mô tả các ảnh hưởng agile phổ biến và triết lý agile, còn được gọi là bốn giá trị và mười hai nguyên tắc của agile (có tại agilemanifesto.org).</p>
+
+<h4 id="ch17-lean">Lean</h4>
+<p>Phát triển sản phẩm theo Lean là cách tiếp cận có lịch sử trong sản xuất nhưng đã được điều chỉnh theo thời gian cho nhiều lĩnh vực kinh doanh, bao gồm quản lý dự án agile. Để thi, hãy biết rằng các phương pháp agile tuân thủ các nguyên tắc Lean.</p>
+<p>Đây là các nguyên tắc cơ bản của bảy nguyên tắc Lean:</p>
+<ul class="content-list">
+  <li><strong>Loại bỏ lãng phí</strong> — Ví dụ về lãng phí trong phát triển sản phẩm bao gồm thời gian chờ (và di chuyển, hay thời gian cần thiết để thực hiện hành động), công việc chưa hoàn thành, các quy trình hoặc tính năng thừa, chuyển đổi nhiệm vụ và lỗi. Một công cụ Lean hữu ích để loại bỏ lãng phí liên quan đến chuỗi giá trị và sơ đồ dòng giá trị. Như đã thảo luận trong chương "Tuân Thủ và Bàn Giao Giá Trị", sơ đồ dòng giá trị lập bản đồ và phân tích tất cả các bước trong quá trình (xây dựng và) bàn giao sản phẩm để xem nhóm có thể loại bỏ lãng phí ở đâu.</li>
+  <li><strong>Khuếch đại học tập</strong> — Ví dụ về nguyên tắc Lean này xuất hiện trong vòng phản hồi liên tục của agile được tạo điều kiện bởi lập kế hoạch lặp (ví dụ, tạo tầm nhìn sản phẩm, lập kế hoạch phát hành và lặp). Cuộc họp standup hàng ngày, xem xét lặp và cải tiến là các ví dụ bổ sung về cơ hội được tích hợp sẵn để khuếch đại học tập.</li>
+  <li><strong>Quyết định muộn nhất có thể</strong> — Vì trong các môi trường thích nghi, rất nhiều thông tin không có sẵn vào đầu dự án, các nhóm agile đưa ra quyết định về từng giai đoạn tiếp theo hoặc từng lặp tiếp theo (hoặc sprint). Tuy nhiên, trái ngược với môi trường dự đoán nơi có "lập kế hoạch lớn trước" và nhiều quyết định được đưa ra sớm, các nhóm agile hoãn các quyết định về bất cứ điều gì vượt ra ngoài giai đoạn tiếp theo (dù là kế hoạch phát hành, kế hoạch lặp, v.v.) đến "thời điểm trách nhiệm cuối cùng".</li>
+  <li><strong>Bàn giao nhanh nhất có thể</strong> — Việc bàn giao lặp và tăng dần của agile có nghĩa là các nhóm đang bàn giao giá trị liên tục và càng nhanh càng tốt. Đây là khái niệm Lean và tất cả các phương pháp luận agile đều sử dụng nó.<br>
+  <em>Ví dụ: Trong khi thực hiện sơ đồ dòng giá trị, nếu nhóm phát hiện ra một quy trình không còn cần thiết, nó có thể được loại bỏ ngay lập tức.</em></li>
+  <li><strong>Trao quyền cho nhóm</strong> — Được tích hợp sẵn trong agile — và trong ECO — là các nguyên tắc sử dụng kỹ năng con người, tin tưởng vào kỹ năng của các thành viên nhóm, cung cấp đào tạo khi cần và tin tưởng nhóm đưa ra các quyết định về công việc của họ.<br>
+  <em>Ví dụ: Niềm tin vào sự tự quyết của nhân viên và hiểu biết về cách động lực tạo điều kiện cho phong cách lãnh đạo phục vụ tốt trong việc trao quyền cho nhóm.</em></li>
+  <li><strong>Xây dựng tính toàn vẹn</strong> — Điều này đề cập đến tính toàn vẹn của sản phẩm, bao gồm không chỉ một sản phẩm hoạt động tốt cho mục đích sử dụng dự kiến mà còn dễ sử dụng cho khách hàng.<br>
+  <em>Ví dụ: Các nhóm agile sử dụng persona để làm cho khách hàng trở nên thực trong tâm trí họ. Ví dụ, nếu họ đang xây dựng trang web cho thuê phim trực tuyến, persona cho phép họ hỏi: "Liệu điều này có nhanh và dễ sử dụng cho 'Henry Bận Rộn' không?" Những câu hỏi như vậy có thể dẫn nhóm đến việc loại bỏ các yếu tố khả năng sử dụng không tối ưu khỏi sản phẩm, đơn giản hóa nó cho người dùng cuối.</em></li>
+  <li><strong>Nhìn toàn cảnh</strong> — Bạn có nhớ khi chúng ta thảo luận về tư duy hệ thống không? Hãy xem lại thông tin đó trong chương "Tuân Thủ và Bàn Giao Giá Trị" nếu cần. Hãy nghĩ về sản phẩm như một hệ thống với các thành phần tương tác và cũng phụ thuộc lẫn nhau. Bạn phải suy nghĩ toàn diện về sản phẩm, và các nhóm agile được khuyến khích làm điều này với nguyên tắc này, cũng như các nguyên tắc khác liên quan đến tư duy hệ thống.</li>
+</ul>
+
+<div class="callout tip">
+<strong>Hãy suy nghĩ.</strong> Bạn có bao giờ thấy mình đang làm điều gì đó trong khi nghĩ "Đây là lãng phí thời gian của tôi" không? Bạn có nghĩ đến cách có thể đơn giản hóa quy trình hoặc loại bỏ nó không? Nếu vậy, bạn đang suy nghĩ theo kiểu Lean.
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//3258446a-9478-484e-b244-ce38f08c313c/markdown_3/imgs/img_in_image_box_64_772_117_831.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A50%3A02Z%2F-1%2F%2F9b3b2471590ae3a529d93d718a2ddaade7378fd46555a8b5047f742ff381371e" alt="Image" width="6%" /></div></div>
+
+<h4 id="ch17-kanban">Kanban</h4>
+<p>Bắt nguồn từ Lean, Kanban là một từ tiếng Nhật có nghĩa là "bảng hiệu" (hãy nghĩ đến các biển hiệu vỉa hè bên ngoài quán cà phê quảng cáo các món đặc biệt trong ngày). Có hai điều bạn cần biết về Kanban để thi. Thứ nhất, bảng Kanban là một bộ chỉ số thông tin trực quan — hiển thị thông tin dự án một cách đồ họa và có thể nhìn thấy rõ ràng. Trong agile, các bảng Kanban được thiết kế để đơn giản về mặt kỹ thuật nhưng có giá trị tiếp xúc cao. Chúng được tạo bằng các tờ ghi chú dán trên bảng trắng hoặc bảng giấy. Hiện nay, có nhiều công cụ điện tử cho phép các nhóm chia sẻ bảng Kanban cộng tác từ các địa điểm phân tán.</p>
+<p>Trong chương Truyền Thông, chúng ta đã xem ví dụ sau về bảng Kanban:</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//3258446a-9478-484e-b244-ce38f08c313c/markdown_4/imgs/img_in_image_box_145_143_616_336.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A50%3A03Z%2F-1%2F%2F52a7a42dc66bcc1c951142288a7c2a2ad723be3cb219f416121593f9a65e9503" alt="Image" width="57%" /></div></div>
+<p style="text-align:center;"><strong>HÌNH 17.1</strong> Bảng Kanban</p>
+
+<p>Điều thứ hai cần biết về Kanban để thi là có năm nguyên tắc cốt lõi. Nhìn vào hình 17.1, bạn có thể thấy bảng Kanban hỗ trợ ba nguyên tắc đầu tiên được liệt kê bên dưới không?</p>
+<p>Năm nguyên tắc cốt lõi của Kanban là:</p>
+<ul class="content-list">
+  <li><strong>Hiển thị hóa quy trình làm việc</strong> — Nhóm và bất kỳ bên liên quan dự án nào khác đều có thể thấy trạng thái của các nhiệm vụ đang thực hiện bất kỳ lúc nào.</li>
+  <li><strong>Giới hạn WIP (công việc đang thực hiện)</strong> — Backlog của lặp là ví dụ về việc giới hạn công việc đang thực hiện. Trên bảng Kanban, các nhiệm vụ được mã màu hoặc đánh dấu theo người chịu trách nhiệm hoàn thành chúng. Trong ví dụ được đưa ra ở hình 17.1, một nhiệm vụ mới sẽ không được thêm vào cột Nhiệm Vụ Đang Thực Hiện cho một thành viên nhóm cho đến khi nhiệm vụ hiện tại của họ chuyển sang cột Nhiệm Vụ Hoàn Thành.</li>
+  <li><strong>Quản lý dòng chảy</strong> — Bằng cách thực hiện hai nguyên tắc đầu tiên và tập trung vào nhiệm vụ chưa hoàn thành trước khi thêm nhiệm vụ khác, người quản lý dự án đang quản lý dòng chảy.</li>
+  <li><strong>Làm rõ chính sách quy trình</strong> — Toàn bộ nhóm phải biết toàn bộ sản phẩm và quy trình ít nhất ở cấp độ tổng quan chứ không chỉ phần họ đang xây dựng. Bằng cách này họ có thể hiểu đóng góp của bản thân một cách toàn diện và thực hành tư duy hệ thống.</li>
+  <li><strong>Cải thiện cộng tác</strong> — Làm việc cộng tác và cải tiến liên tục là yếu tố quan trọng đối với các nhóm agile. Cải thiện sự cộng tác được khuyến khích trong Kanban và được tạo điều kiện bởi bảng Kanban như một bộ chỉ số thông tin trực quan được thảo luận thường xuyên trong nhóm.</li>
+</ul>
+
+<div class="callout tip">
+<strong>Hãy suy nghĩ.</strong> Nhìn lại ví dụ bảng Kanban trong hình 17.1. Bạn có thể thấy tại sao Kanban, nếu được sử dụng như một phương pháp phát triển sản phẩm, được gọi là hệ thống kéo không?
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//3258446a-9478-484e-b244-ce38f08c313c/markdown_4/imgs/img_in_image_box_17_735_70_798.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A50%3A03Z%2F-1%2F%2F5417b985d56d6a3d30984fbe6651b9949b5baa6780b498119e76f4bfe82c6bb9" alt="Image" width="6%" /></div></div>
+
+<ul class="content-list">
+  <li>Một thành viên nhóm kéo một nhiệm vụ từ Nhiệm Vụ Đang Thực Hiện và chuyển nó vào Nhiệm Vụ Hoàn Thành khi hoàn thành.</li>
+  <li>Chỉ khi đó họ mới kéo một nhiệm vụ từ cột Nhiệm Vụ Sẵn Sàng và chuyển nó vào Nhiệm Vụ Đang Thực Hiện.</li>
+  <li>Giới hạn số lượng story (được chia nhỏ thành các nhiệm vụ) vào cột Story Sẵn Sàng giúp kiểm soát dòng chảy và giới hạn công việc đang thực hiện.</li>
+  <li>Điều này phân biệt Kanban với các phương pháp agile khác sử dụng chu kỳ lặp để kiểm soát công việc đang thực hiện.</li>
+</ul>
+
+<div class="callout">
+<strong>Lưu ý:</strong> Quan trọng là có sự khác biệt giữa các phương pháp luận agile sử dụng ý tưởng Kanban và Kanban như một phương pháp luận. Kanban là một phương pháp luận riêng biệt và có thể được sử dụng để quản lý một dự án. Kanban như một phương pháp luận không yêu cầu các lặp. Tuy nhiên, các bảng Kanban (tức là bảng hiệu) được sử dụng trong nhiều phương pháp luận agile không sử dụng hệ thống kéo đã mô tả ở trên. Bảng Kanban trên thực tế thường được sử dụng kết hợp với các chu kỳ lặp.
+</div>
+
+<h4 id="ch17-scrum">Scrum</h4>
+<p>Scrum bắt đầu với các nhà phát triển phần mềm và có đặc điểm là phương pháp luận agile nổi tiếng và phổ biến nhất, vì vậy có ảnh hưởng lớn nhất đối với nhiều nhóm agile. Nhiều người dùng các thuật ngữ agile và Scrum thay thế cho nhau. Thực ra, trong bài thi, trong các câu hỏi agile và hybrid, bạn có khả năng đôi khi thấy các thuật ngữ Scrum được dùng thay thế với các thuật ngữ agile chung. Ví dụ, nhiều người nhận ra "lặp" là thuật ngữ agile chung (mặc dù nó xuất phát từ XP) nhưng khi nghe thuật ngữ "sprint" họ nghĩ cụ thể đến Scrum. Hai thuật ngữ có nghĩa như nhau — một khoảng thời gian có giới hạn để xây dựng sản phẩm — và được sử dụng tương tự và thường thay thế nhau.</p>
+
+<h4 id="ch17-thuat-ngu-scrum-va-agile">Thuật Ngữ Scrum và Agile Chung</h4>
+<p>Bảng dưới đây cho thấy thuật ngữ agile chung và tương đương trong Scrum:</p>
+
+<div class="table-wrap"><table>
+  <thead>
+    <tr>
+      <th>Danh Mục</th>
+      <th>Thuật Ngữ Scrum</th>
+      <th>Thuật Ngữ Agile Chung</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Hoạt Động</td>
+      <td>
+        <ul class="content-list">
+          <li>Sprint</li>
+          <li>Lập kế hoạch sprint</li>
+          <li>Daily scrum (nghi lễ)</li>
+          <li>Sprint review (nghi lễ)</li>
+          <li>Sprint retrospective (nghi lễ)</li>
+          <li>Tinh chỉnh backlog</li>
+        </ul>
+      </td>
+      <td>
+        <ul class="content-list">
+          <li>Lặp</li>
+          <li>Lập kế hoạch lặp</li>
+          <li>Standup hàng ngày (cuộc họp)</li>
+          <li>Xem xét lặp (cuộc họp)</li>
+          <li>Cải tiến lặp (cuộc họp)</li>
+          <li>Ưu tiên hóa backlog</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Vai Trò Nhóm</td>
+      <td>
+        <ul class="content-list">
+          <li>Product owner</li>
+          <li>Scrum Master</li>
+          <li>Nhóm phát triển</li>
+        </ul>
+      </td>
+      <td>
+        <ul class="content-list">
+          <li>Product owner (hoặc khách hàng)</li>
+          <li>Agile coach, trưởng nhóm</li>
+          <li>Nhóm phát triển</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Sản Phẩm</td>
+      <td>
+        <ul class="content-list">
+          <li>Product backlog</li>
+          <li>Sprint backlog</li>
+          <li>Sản phẩm có thể giao (phần tăng trưởng)</li>
+        </ul>
+      </td>
+      <td>
+        <ul class="content-list">
+          <li>Product backlog (hoặc project backlog)</li>
+          <li>Iteration backlog</li>
+          <li>Sản phẩm khả thi tối thiểu — MVP (phần tăng trưởng)</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>Lưu ý những điều sau về các thuật ngữ trong bảng trên:</p>
+<ul class="content-list">
+  <li>Bạn có thể thấy từ số lượng thuật ngữ tương tự ở đây rằng agile chung đã mượn rất nhiều thực hành, như khái niệm backlog, từ Scrum.</li>
+  <li>Các nhóm agile chung có thể tuân thủ một hỗn hợp tùy chỉnh của các thực hành này, tùy thuộc vào quản trị tổ chức và PMO. Các tổ chức sử dụng hình thức agile chung có thể có cách tiếp cận tùy chỉnh để đào tạo nhóm.</li>
+  <li>Các tổ chức đã triển khai Scrum tuân thủ chặt chẽ hơn các thực hành và nhóm Scrum cụ thể. Các nhóm Scrum có khả năng phải được đào tạo cụ thể về Scrum bởi các huấn luyện viên Scrum có chứng chỉ được ký hợp đồng từ bên ngoài tổ chức.</li>
+  <li>Có nhiều loại backlog khác nhau, hãy cẩn thận khi đọc câu hỏi thi.</li>
+  <li>Product backlog đại diện cho tất cả phạm vi sản phẩm đã biết. Các tính năng liên tục được thêm vào và xóa khi khách hàng đưa ra quyết định về phạm vi sản phẩm.</li>
+  <li>Project backlog — nếu thuật ngữ này được sử dụng — đề cập đến tất cả phạm vi sản phẩm đã biết sẽ được xây dựng trong một dự án cụ thể.</li>
+  <li>Thuật ngữ product backlog và project backlog không loại trừ lẫn nhau, và nhiều nhóm chỉ dùng thuật ngữ product backlog. Chúng ta đưa vào thuật ngữ project backlog phòng trường hợp bạn gặp nó trong bài thi.</li>
+  <li>Sprint backlog (hay iteration backlog) là phần tăng trưởng hoặc các phần tăng trưởng cụ thể của sản phẩm hiện đang ở đầu backlog được ưu tiên và được chọn cho sprint tiếp theo (hoặc hiện tại). Bạn có thể nhớ từ trước trong cuốn sách này rằng một dự án bao gồm một chuỗi các sprint (hoặc lặp) dẫn đến một hoặc nhiều lần phát hành sản phẩm.</li>
+  <li>Product backlog là một sản phẩm liên tục miễn là vòng đời của sản phẩm tiếp tục.</li>
+</ul>
+
+<p>Đối với phát triển sản phẩm mới, backlog chứa các tính năng cần thiết cho ít nhất lần phát hành sản phẩm đầu tiên. Nó có thể bao gồm đủ tính năng cho nhiều hơn một lần phát hành sản phẩm trong một dự án duy nhất. Phạm vi của một dự án duy nhất (bao gồm bao nhiêu lần phát hành) như mọi khi được xác định và thương lượng với khách hàng hoặc các bên liên quan nội bộ chính (được đại diện bởi product owner), tùy thuộc vào các nguồn lực có sẵn cho dự án.</p>
+<p>Đối với phát triển liên tục trên một sản phẩm hiện có, backlog là sự kết hợp của các tính năng mới, sửa lỗi (bug fix, đối với phần mềm) và nâng cấp cho các tính năng hiện có.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//25f51d1c-6cab-4a15-b580-8afc895843b5/markdown_1/imgs/img_in_image_box_41_243_90_301.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A24Z%2F-1%2F%2F800a8a2dea2fa0deae72e6a3da413cd14be65fa5b9e44398bfb62363cbcdd7ae" alt="Image" width="5%" /></div></div>
+
+<div class="callout tip">
+<strong>Hãy suy nghĩ.</strong> Các thuật ngữ Scrum và agile chung thường được dùng thay thế nhau trong các câu hỏi thi, vì vậy đừng bị phân tâm bởi ngữ nghĩa trong khi thi. Nếu bạn chuẩn bị tốt, bạn sẽ hiểu một câu hỏi cụ thể từ bối cảnh của tình huống được đưa ra.
+</div>
+
+<h4 id="ch17-khai-niem-cot-loi-scrum">Các Khái Niệm Cốt Lõi Của Scrum</h4>
+<p>Sau đây là những khái niệm được coi là cốt lõi của Scrum:</p>
+<ul class="content-list">
+  <li><strong>Phát triển lặp và tăng dần</strong> — Các thành viên Scrum bàn giao các phần tăng trưởng của sản phẩm, được xây dựng trong các sprint.</li>
+  <li><strong>Nhóm chuyên dụng</strong> — Nhóm Scrum được dành riêng cho dự án và ổn định, có nghĩa là cùng những người đó ở trong nhóm và các dự án được đưa đến họ. Điều này trái ngược với các môi trường dự đoán nơi các nhóm khác nhau có thể được tập hợp và giải tán theo từng dự án.</li>
+  <li><strong>Nhóm đa năng</strong> — Các thành viên nhóm Scrum là "biết nhiều thứ nhưng giỏi một số thứ". Điều này có nghĩa là trái ngược với các nhóm truyền thống nơi các thành viên là chuyên gia trong một hay hai lĩnh vực, một thành viên nhóm Scrum có thể thay thế cho thành viên nhóm khác khi cần. Ví dụ, một lập trình viên máy tính cũng có thể thực hiện kiểm thử.</li>
+  <li><strong>Trụ cột</strong> — Các trụ cột là khái niệm cốt lõi thiết yếu của Scrum. Đó là tính minh bạch, kiểm tra và thích nghi.
+    <ul class="content-list">
+      <li><em>Tính minh bạch</em> — Điều này có nghĩa là tạo ra sự hiểu biết chung giữa tất cả các bên có trách nhiệm. Tạo ra tầm nhìn dự án hoặc sản phẩm, điều lệ nhóm và định nghĩa hoàn thành cho một story hoặc một phần tăng trưởng sản phẩm đều là ví dụ về tính minh bạch.</li>
+      <li><em>Kiểm tra</em> — Đây là về việc kiểm tra cách công việc đang tiến triển một cách thường xuyên, đánh giá nhóm đang tiến triển như thế nào và những gì có thể cần thay đổi để liên tục cải thiện sự phù hợp của hiệu suất nhóm với các mục tiêu dự án (hoặc sản phẩm, hoặc lặp).</li>
+      <li><em>Thích nghi</em> — Đây là việc thực hiện các thay đổi phù hợp với những phát hiện từ kiểm tra. Ví dụ về các thực hành tạo điều kiện cho (kiểm tra và) thích nghi là các cuộc họp lập kế hoạch sprint, daily scrum, sprint retrospective và sprint review.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//25f51d1c-6cab-4a15-b580-8afc895843b5/markdown_1/imgs/img_in_image_box_37_720_91_781.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A24Z%2F-1%2F%2F7d9cf01c419237c1c602bca666321af6255650eee933c3b4728bcbfe0f315c67" alt="Image" width="6%" /></div></div>
+
+<div class="callout tip">
+<strong>Hãy suy nghĩ.</strong> Các thành viên nhóm thay đổi bao lần trong tổ chức của bạn? Khái niệm nhóm chuyên dụng cho phép các thành viên nhóm ở lại cùng nhau lâu dài, học cách làm việc tốt với nhau và trở nên rất năng suất. Bạn có thể thấy điều này sẽ tăng tốc độ nhóm có thể hoàn thành công việc như thế nào không?
+</div>
+
+<h4 id="ch17-daily-scrum">Daily Scrum</h4>
+<p>Daily scrum của nhóm được thiết kế để ngắn gọn, cung cấp thông tin và giữ cho công việc tiến triển mà không lãng phí thời gian. Cuộc họp này còn được gọi là cuộc họp standup hàng ngày. Tất cả các dự án đều có thể hưởng lợi từ loại cuộc họp này, nơi các thành viên nhóm được hỏi và sau đó trả lời ba câu hỏi:</p>
+<ul class="content-list">
+  <li>Tôi đã hoàn thành gì kể từ cuộc họp cuối?</li>
+  <li>Hôm nay tôi đang làm gì?</li>
+  <li>Có trở ngại nào với tiến trình không?</li>
+</ul>
+<p>Các quy tắc cho cuộc họp này là:</p>
+<ul class="content-list">
+  <li>Nếu bạn có điều gì đó cần báo cáo, bạn phải tham dự.</li>
+  <li>Nếu bạn không có gì để báo cáo, bạn không nên phát biểu trong cuộc họp.</li>
+  <li>Cuộc trò chuyện bị giới hạn trong việc giải quyết ba câu hỏi.</li>
+  <li>Nếu bạn đã xác định một trở ngại, nó sẽ được Scrum Master (hoặc bất kỳ ai có thể giúp loại bỏ trở ngại đó) xử lý sau cuộc họp. Nó không được mở rộng trong cuộc họp.</li>
+</ul>
+
+<h4 id="ch17-xp">XP (eXtreme Programming)</h4>
+<p>XP hay eXtreme Programming là một trong những phương pháp luận agile (phát triển phần mềm) đầu tiên đạt được sự phổ biến. Từ XP chúng ta có các thuật ngữ đã được sử dụng trong cuốn sách này: user story, lập kế hoạch phát hành, lặp, phần tăng trưởng sản phẩm, phát hành, cùng với khái niệm phát hành nhỏ.</p>
+
+<h4 id="ch17-xp-va-thuat-ngu-tuong-tu">XP và Thuật Ngữ Tương Tự</h4>
+<p>XP sử dụng thuật ngữ "coach" như chúng ta đã dùng "trưởng nhóm" hoặc "agile coach" trong cuốn sách này. Vai trò này tương đương với Scrum Master. Các thành viên nhóm XP khác là lập trình viên và người kiểm thử. XP sử dụng thuật ngữ "khách hàng" theo cách Scrum sử dụng "product owner".</p>
+<p>Chúng ta cũng lấy các thuật ngữ spike và architectural spike từ XP.</p>
+<ul class="content-list">
+  <li><strong>Spike</strong> — Còn được gọi là "spike rủi ro", đây là một lặp được lên kế hoạch cụ thể để khám phá các rủi ro nhằm hiểu rõ hơn và từ đó giảm thiểu chúng. Không giống như các lặp khác, không có phần tăng trưởng sản phẩm nào được tạo ra.</li>
+  <li><strong>Architectural spike</strong> — Giống như spike rủi ro, loại lặp này không yêu cầu phải bàn giao phần tăng trưởng sản phẩm vào cuối. Architectural spike khám phá các cách tiếp cận công nghệ mới để chứng minh chúng sẽ hoạt động cho sản phẩm và dự án.</li>
+</ul>
+<p>XP có các hoạt động, giá trị và thực hành.</p>
+
+<h4 id="ch17-gia-tri-xp">Giá Trị XP</h4>
+<p>Các giá trị sau đây được thiết kế để hướng dẫn các nhóm XP. Các khái niệm này đã được tích hợp vào agile chung.</p>
+<ol class="content-list">
+  <li><strong>Sự đơn giản</strong> — Điều này có nghĩa là không thêm các tính năng thiết kế hay chức năng không cần thiết, giữ sự phức tạp ở mức tối thiểu. Hãy liên kết "tìm điều đơn giản nhất có thể hoạt động" với XP.</li>
+  <li><strong>Truyền thông</strong> — Điều này đảm bảo tất cả các thành viên nhóm biết những gì người khác đang làm và cũng hiểu bức tranh toàn cảnh.</li>
+  <li><strong>Phản hồi</strong> — "Thất bại nhanh" là một cụm từ thông dụng thường được dùng trong agile xuất phát từ XP. Bàn giao nhanh các nguyên mẫu và các giải pháp có thể khác có nghĩa là nhóm nhanh chóng phát hiện ra những gì hiệu quả và những gì làm hài lòng khách hàng.</li>
+  <li><strong>Sự dũng cảm</strong> — XP khuyến khích sự cộng tác thông qua các thực hành nơi mọi người làm việc chặt chẽ với nhau và minh bạch về công việc của họ. Ví dụ như lập trình theo cặp và sở hữu mã nguồn tập thể trong phần Thực Hành XP.</li>
+  <li><strong>Sự tôn trọng</strong> — Điều này tự giải thích trong bất kỳ môi trường nhóm nào mà mọi người cùng chịu trách nhiệm về kết quả, là chuyên gia trong lĩnh vực của họ, nhưng vẫn đang làm điều gì đó mới mỗi ngày. Làm việc nhóm không thể hoạt động nếu không có sự tôn trọng lẫn nhau.</li>
+</ol>
+
+<h4 id="ch17-thuc-hanh-xp">Thực Hành XP</h4>
+<p>Là một phương pháp luận lập trình, XP chủ yếu quan tâm đến các thực hành kỹ thuật phần mềm. Mười ba thực hành cốt lõi làm nền tảng cho phương pháp luận XP.</p>
+<ol class="content-list">
+  <li><strong>Toàn bộ nhóm</strong> — Đây là khái niệm agile rằng nhóm có tất cả các kỹ năng cần thiết để xây dựng sản phẩm và nhóm cùng làm việc trong dự án. Điều này tương tự với khái niệm nhóm chuyên dụng và đa năng của Scrum.</li>
+  <li><strong>Trò chơi lập kế hoạch</strong> — Lập kế hoạch phát hành và lập kế hoạch lặp được gọi là các trò chơi lập kế hoạch.</li>
+  <li><strong>Phát hành nhỏ</strong> — Giống như các phương pháp luận agile khác, các phát hành nhỏ cho phép các nhóm XP bàn giao các bộ tính năng được ưu tiên nhỏ thường xuyên, từ đó cung cấp bàn giao giá trị liên tục.</li>
+  <li><strong>Thiết kế đơn giản</strong> — Giữ thiết kế đơn giản nhất có thể giúp thực hiện các phát hành nhỏ thường xuyên và cung cấp sản phẩm dễ bảo trì hơn về lâu dài.</li>
+  <li><strong>Ẩn dụ</strong> — Các thành viên XP sử dụng các phép ẩn dụ và sự tương tự để làm cho các khái niệm kỹ thuật dễ hiểu với khách hàng.</li>
+  <li><strong>Nhịp độ bền vững</strong> — Đây giống như việc nói rằng yêu cầu nhóm làm thêm giờ để đạt hạn chót không phải là chiến lược lập lịch khả thi trong các dự án. Các nhà phát triển sản phẩm phải có thể làm việc ở một nhịp độ bền vững trong dài hạn.</li>
+  <li><strong>Kiểm thử khách hàng</strong> — Đây là các bài kiểm thử được định hướng bởi mô tả của khách hàng về cách phần mềm nên hoạt động để chỉ ra rằng nó đang hoạt động như dự định.</li>
+  <li><strong>Phát triển hướng kiểm thử</strong> — Điều này có nghĩa là nhóm tạo ra các bài kiểm thử trước khi phát triển mã nguồn (hoặc phần tăng trưởng sản phẩm). Mã nguồn phải được xây dựng để vượt qua các bài kiểm thử.</li>
+  <li><strong>Lập trình theo cặp</strong> — Đây là thực hành của hai nhà phát triển làm việc cùng nhau, thay phiên nhau phát triển mã nguồn trong khi người kia quan sát. Nó tăng chất lượng vì "một đôi mắt khác" nhìn vào sản phẩm khi đang được phát triển tốt hơn so với nhà phát triển chủ động làm việc một mình.</li>
+  <li><strong>Sở hữu mã nguồn tập thể</strong> — Không ai trong nhóm sở hữu sản phẩm; toàn bộ nhóm sở hữu sản phẩm. Điều này có nghĩa là bất kỳ cặp lập trình viên nào cũng có thể thay đổi mã nguồn khi họ thấy có thể cải thiện nó, bất kể ai là người tạo ra mã nguồn ban đầu.</li>
+  <li><strong>Tiêu chuẩn mã nguồn</strong> — Các nhóm XP tuân theo một tiêu chuẩn viết mã nghiêm ngặt. Điều này ngăn lập trình theo cặp và sở hữu mã nguồn tập thể dẫn đến sản phẩm có thiết kế không nhất quán.</li>
+  <li><strong>Tích hợp liên tục</strong> — Làm sao bạn biết rằng khi một phần tăng trưởng sản phẩm mới được tạo ra nó sẽ không phá vỡ sản phẩm? Tích hợp liên tục có nghĩa là tích hợp tất cả mã nguồn mới vào sản phẩm (sau khi kiểm thử đơn vị hoàn thành) một cách thường xuyên để đảm bảo sản phẩm tiếp tục hoạt động như kế hoạch khi thêm mã nguồn mới.</li>
+  <li><strong>Tái cấu trúc</strong> — Luôn luôn có nhiều hơn một cách để hoàn thành một việc. Khi sản phẩm được xây dựng, các thành phần hiệu quả hơn và kém hiệu quả hơn có thể trở thành một phần của nó. Hãy nghĩ về tái cấu trúc như là dọn dẹp. Tái cấu trúc không phải là thay đổi cách hoạt động của sản phẩm mà làm cho mã nguồn hiệu quả hơn bằng cách loại bỏ mã nguồn trùng lặp hoặc không cần thiết và thực hiện đơn giản hóa thiết kế và các cải tiến khác.</li>
+</ol>
+
+<div class="highlight">
+<strong>Ví dụ:</strong> Hãy tưởng tượng nhóm phát triển phần mềm đã xây dựng ứng dụng di động yêu thích của bạn. Họ có ý tưởng và cùng nhau xây dựng các tính năng mà họ hy vọng bạn sẽ thích. Lần phát hành đầu tiên của ứng dụng có lẽ nhỏ và đơn giản, chỉ có vài tính năng. Họ nhận phản hồi và tiếp tục thêm các tính năng hơn dựa trên phản hồi của khách hàng. Một số lần phát hành mới là để sửa lỗi (tái cấu trúc) và mỗi thay đổi được tích hợp với ứng dụng hiện có (tích hợp liên tục).
+</div>
+
+<h4 id="ch17-nhom-phuong-phap-crystal">Nhóm Phương Pháp Luận Crystal</h4>
+
+<p>Crystal là nhóm các phương pháp mà người quản lý dự án và nhóm điều chỉnh để tìm ra giải pháp phù hợp với từng tình huống cụ thể. Để thi, bạn có khả năng cao nhất sẽ gặp các câu hỏi liên kết Crystal với việc điều chỉnh (tailoring). Hình 17.2 trông có vẻ phức tạp, nhưng chúng tôi cung cấp nó chỉ để cho bạn thấy rằng với các phương pháp luận Crystal, bạn chọn một bộ thực hành cụ thể dựa trên mức độ nghiêm trọng (criticality) của dự án.</p>
+<p>Các màu sắc chỉ là tên gọi cho các cách tiếp cận khác nhau. Tất nhiên, các nhóm lớn hơn đòi hỏi nhiều cấu trúc và quản trị hơn. Criticality phân loại các dự án theo rủi ro và tác động tiềm năng của chúng. Ví dụ, một dự án "C6" có mức độ nghiêm trọng thấp, vì vậy các thực hành có thể tương đối đơn giản. Ngược lại, thái cực còn lại là Magenta (L200), một bộ thực hành cho bất kỳ dự án nào có rủi ro đến Tính Mạng (L), như xây dựng thiết bị y tế, bất kể quy mô nhóm. Mức criticality "Tính Mạng" chỉ ra việc sử dụng quy trình và phương pháp trang trọng và nghiêm ngặt nhất.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//25f51d1c-6cab-4a15-b580-8afc895843b5/markdown_4/imgs/img_in_chart_box_191_306_671_502.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A26Z%2F-1%2F%2F32b517c0ca3b101c93afa7515a76130b2c70611411ceca1afb042e38c9effbe3" alt="Image" width="58%" /></div></div>
+<p style="text-align:center;"><strong>HÌNH 17.2</strong> Các cân nhắc về phương pháp luận Crystal dựa trên criticality</p>
+
+<h4 id="ch17-dsdm">DSDM</h4>
+<p>Dynamic Systems Development Method (DSDM) là một phương pháp agile sớm vẫn còn ảnh hưởng trong agile chung. Là một phương pháp độc lập, nó phổ biến hơn ở Anh. Chúng tôi hiển thị tám nguyên tắc cốt lõi của DSDM cùng với vòng đời ở hình 17.3, chỉ để giúp bạn nhận thức về nó và cho bạn ý tưởng về những điểm tương đồng với các phương pháp agile khác có ảnh hưởng đến agile.</p>
+
+<h4 id="ch17-nguyen-tac-cot-loi-dsdm">Các Nguyên Tắc Cốt Lõi Của DSDM</h4>
+<ul class="content-list">
+  <li>Tập trung vào nhu cầu kinh doanh</li>
+  <li>Bàn giao đúng hạn</li>
+  <li>Cộng tác</li>
+  <li>Không bao giờ thỏa hiệp về chất lượng</li>
+  <li>Xây dựng tăng dần</li>
+  <li>Phát triển lặp</li>
+  <li>Truyền thông liên tục và rõ ràng</li>
+  <li>Thể hiện kiểm soát</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//25f51d1c-6cab-4a15-b580-8afc895843b5/markdown_4/imgs/img_in_image_box_402_661_726_885.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A26Z%2F-1%2F%2F06a6f88666051871f2fda77cf2e62290587cd01029e128d2ec928ab1d53c5cb8" alt="Image" width="39%" /></div></div>
+<p style="text-align:center;"><strong>HÌNH 17.3</strong> Vòng đời DSDM</p>
+
+<h4 id="ch17-safe">Scaled Agile Framework® (SAFe®)</h4>
+<p>Chúng ta đã nói về các nhóm agile nhỏ — các nhóm tự tổ chức, đa chức năng làm việc cùng nhau để xây dựng một sản phẩm. Các nhóm nhỏ này hoạt động tốt để xây dựng một ứng dụng di động hoặc một trò chơi điện tử. Nhưng một nhóm nhỏ sẽ xây dựng một hệ thống lớn như hệ thống quản lý doanh nghiệp hoặc hệ thống kiểm soát tồn kho như thế nào? Và một danh mục hay chương trình sẽ được quản lý bằng các thực hành agile ra sao? "Scaled agile" đề cập đến việc sử dụng tư duy agile trong một bối cảnh lớn hơn.</p>
+<p>Scaled Agile Framework®, được phát hành lần đầu vào năm 2011, là một tập hợp các thực hành và quy trình quản lý hướng dẫn một nhóm các nhóm agile làm việc hướng tới một mục tiêu chung, thường là dài hạn. Framework này sử dụng các nhóm agile nhỏ, làm việc phối hợp với nhau, mỗi nhóm tạo ra một phần của sản phẩm hoặc giải pháp lớn hơn. SAFe thúc đẩy sự liên kết, cộng tác và bàn giao trên nhiều nhóm agile. SAFe dựa trên ba trong số các nền tảng kiến thức bạn đã học: phát triển agile, phát triển sản phẩm Lean và tư duy hệ thống.</p>
+<p>Trong SAFe, các nhóm agile có thể sử dụng Scrum hoặc một cách tiếp cận agile khác ở cấp độ nhóm. Công việc của họ được phối hợp dưới SAFe Framework. Một "nhóm của các nhóm" giám sát công việc của các nhóm riêng lẻ (thường là 5-12 nhóm) và được gọi là Agile Release Train (ART). SAFe cũng có các vai trò độc đáo như Release Train Engineer (RTE).</p>
+
+<div class="callout tip">
+<strong>Hãy suy nghĩ.</strong> SAFe sử dụng phép ẩn dụ đoàn tàu, với mỗi toa tàu là một nhóm agile. Mỗi toa tàu có mục đích cụ thể: một số chở ngũ cốc, một số được làm lạnh để chở thực phẩm dễ hỏng trong thời tiết nóng, một số chở xe cộ, và chúng có thể kết nối với bất kỳ toa nào khác vì chúng đều có cùng kích thước và cơ chế kết nối. Trong một doanh nghiệp sử dụng SAFe framework, mỗi nhóm được giao một thành phần hoặc khía cạnh cụ thể của sản phẩm để xây dựng, sau đó kết nối với các nhóm khác đang làm việc trên các thành phần khác của cùng sản phẩm. Lý tưởng nhất là công việc được tính toán thời gian sao cho tất cả các phần đến cùng một lúc và sản phẩm được bàn giao đúng tiến độ.
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//eab22d54-9411-42c9-aadb-3b18c00bd4f1/markdown_0/imgs/img_in_image_box_65_345_114_402.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A47Z%2F-1%2F%2F2f4c16f3c75539c70c2b9770b7ed862739f3affa451fa84f761fe2229c372210" alt="Image" width="5%" /></div></div>
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//eab22d54-9411-42c9-aadb-3b18c00bd4f1/markdown_0/imgs/img_in_image_box_146_473_660_544.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A47Z%2F-1%2F%2Fc8ad7ee5beda300b0bb3d43c9024b116f7774c5dab3161d35f23d9db09186f1b" alt="Image" width="62%" /></div></div>
+
+<p>Đây là bốn giá trị cốt lõi của SAFe:</p>
+<ul class="content-list">
+  <li><strong>Liên kết</strong> — Giá trị liên kết đề cập đến việc đảm bảo tất cả các nhóm được liên kết với chiến lược, mục tiêu của tổ chức và với nhau. Khi nhiều nhóm agile làm việc trên cùng một sản phẩm, điều quan trọng là công việc của họ phải được liên kết rõ ràng.</li>
+  <li><strong>Chất lượng tích hợp sẵn</strong> — Chất lượng tích hợp sẵn đề cập đến tầm quan trọng của việc xây dựng các thành phần sản phẩm và phần tăng trưởng giải pháp có chất lượng. Vì các thành phần được xây dựng bởi các nhóm khác nhau sẽ cần "khớp với nhau", tất cả chúng phải được xây dựng theo cùng một tiêu chuẩn chất lượng. Giá trị chất lượng tích hợp sẵn xuất phát từ nguyên tắc Lean "xây dựng tính toàn vẹn". Sản phẩm càng lớn, chất lượng tích hợp sẵn càng quan trọng. Không có giá trị này, công việc làm lại và velocity thấp hơn là điều chắc chắn.</li>
+  <li><strong>Tính minh bạch</strong> — Tính minh bạch có nghĩa là sự cởi mở, trung thực và ra quyết định dựa trên sự thật. Tính minh bạch đòi hỏi các mối quan hệ tin tưởng giữa các thành viên nhóm và các nhóm. Tính minh bạch cũng đề cập đến các hành vi đảm bảo rằng mọi người liên quan đến sản phẩm và dự án đều hiểu các mục tiêu và tầm nhìn.</li>
+  <li><strong>Thực thi chương trình</strong> — Sẽ không đạt được gì nếu các nhóm không thực thi theo các kế hoạch và framework. Các nhóm phải được đào tạo tốt, được huấn luyện và hiểu vai trò của họ trong toàn bộ framework.</li>
+</ul>
+
+<p>SAFe xác định các cấp độ công việc, mỗi cấp độ lớn hơn và có tính chiến lược hơn cấp độ trước.</p>
+<ul class="content-list">
+  <li><strong>Nhóm</strong> — Đây là nhóm agile sử dụng Scrum hoặc một cách tiếp cận agile khác.</li>
+  <li><strong>Chương trình</strong> — Như được định nghĩa trong chương "Nền Tảng Quản Lý Dự Án", một chương trình là một nhóm các dự án được phối hợp để hỗ trợ một mục tiêu tổ chức liên quan.</li>
+  <li><strong>Essential SAFe</strong> — Cấp độ nhóm và chương trình được kết hợp thành Essential SAFe.</li>
+  <li><strong>Giải pháp lớn</strong> — Một giải pháp lớn trên toàn tổ chức.</li>
+  <li><strong>Danh mục</strong> — Như được định nghĩa trong chương "Nền Tảng Quản Lý Dự Án", một danh mục bao gồm các chương trình, dự án và công việc vận hành liên quan hỗ trợ mục tiêu kinh doanh chiến lược. Hầu hết các tổ chức chỉ có một vài danh mục.</li>
+</ul>
+
+<h4 id="ch17-lanh-dao-safe">Lãnh Đạo Cho SAFe</h4>
+<p>Lãnh đạo rất quan trọng cho sự thành công với SAFe framework. Các vai trò như người quản lý danh mục và người quản lý sản phẩm đều có trách nhiệm cụ thể cho phần của họ trong framework. Họ chịu trách nhiệm ưu tiên công việc, truyền thông về nhu cầu của các bên liên quan, xem xét công việc đã hoàn thành và cung cấp phản hồi cho các nhóm phát triển. Cần có sự lãnh đạo mạnh mẽ, rõ ràng để đảm bảo rằng mỗi toa tàu được kết nối với các toa khác đi đến cùng một nơi, đi đúng đường ray, tránh va chạm với các tàu khác và bàn giao đúng như đã hứa. Hãy chuẩn bị để trả lời các câu hỏi thi về việc mở rộng quy mô agile cho các giải pháp lớn bằng SAFe.</p>
+
+<h4 id="ch17-fdd">Feature Driven Development (FDD)</h4>
+<p>Feature Driven Development (FDD) cũng xuất phát từ kỹ thuật phần mềm. Nhìn vào hình 17.4, bạn có thể thấy những điểm tương đồng giữa FDD và các thực hành agile bạn đã học trong cuốn sách này không? FDD tập trung vào bàn giao tính năng, bắt đầu từ một mô hình tổng thể. Sau đó, danh sách tính năng (tương tự như backlog) chứa các phần tăng trưởng chức năng có giá trị với khách hàng từ mô hình tổng quan. Sản phẩm sau đó được lập kế hoạch theo tính năng và từ đó công việc chuyển sang thiết kế và xây dựng.</p>
+<p>Feature-Driven Development là phương pháp luận agile đã phổ biến hóa biểu đồ dòng tích lũy và sơ đồ bãi đậu xe — là các bản tóm tắt tiến độ dự án trên một trang. Cả hai đều là các công cụ theo dõi và chẩn đoán hữu ích hiện được sử dụng bởi các cách tiếp cận agile khác.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//eab22d54-9411-42c9-aadb-3b18c00bd4f1/markdown_1/imgs/img_in_image_box_114_434_725_583.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A48Z%2F-1%2F%2F2f0b74e7b326439cefab0b42aa254657e0d466cbb12a00f7d56d811668667c51" alt="Image" width="74%" /></div></div>
+<p style="text-align:center;"><strong>HÌNH 17.4</strong> FDD hoặc phát triển hướng tính năng</p>
+
+<h4 id="ch17-gia-tri-va-nguyen-tac-agile">Giá Trị và Nguyên Tắc Agile</h4>
+<p>Một nhóm các chuyên gia phát triển phần mềm đã viết bốn giá trị và mười hai nguyên tắc của agile được gọi là Tuyên Ngôn Agile. Bạn không cần phải ghi nhớ điều này để thi, nhưng khi đọc Tuyên Ngôn Agile, nó sẽ có ý nghĩa tốt với bạn khi xem xét những gì bạn biết về cách agile hoạt động như một bộ thực hành được điều chỉnh.</p>
+<p>Chúng tôi gợi ý bạn thay thế "sản phẩm" hoặc "dịch vụ" cho "phần mềm", tùy thuộc vào nghề nghiệp của bạn.</p>
+
+<h4 id="ch17-gia-tri-agile">Giá Trị Agile</h4>
+<p>Khi xem qua bốn giá trị này, bạn sẽ nhận ra rằng các mục ở bên phải liên quan trực tiếp đến một dự án theo kế hoạch. Các mục in đậm ở bên trái là cốt lõi của các dự án agile. Tuyên ngôn phát biểu rằng "mặc dù có giá trị trong các mục ở bên phải, chúng ta coi trọng hơn các mục ở bên trái".</p>
+<ul class="content-list">
+  <li><strong>Cá nhân và sự tương tác</strong> hơn là quy trình và công cụ</li>
+  <li><strong>Phần mềm hoạt động</strong> hơn là tài liệu đầy đủ</li>
+  <li><strong>Cộng tác với khách hàng</strong> hơn là đàm phán hợp đồng</li>
+  <li><strong>Ứng phó với thay đổi</strong> hơn là tuân theo kế hoạch</li>
+</ul>
+<p>Định dạng của bốn giá trị — A hơn B ("Cá nhân và sự tương tác hơn là quy trình và công cụ") — đề cập đến ý định, trọng tâm và nỗ lực. Đây không phải là đen và trắng như chỉ nói "Làm A thay vì B". Thay vào đó, nó thừa nhận rằng cả A và B đều sẽ là thành phần của các dự án, nhưng chúng ta nên áp dụng nhiều trọng tâm, nhấn mạnh và ý định hơn cho A so với B.</p>
+
+<h4 id="ch17-nguyen-tac-agile">Các Nguyên Tắc Agile</h4>
+<p>Ngoài bốn giá trị agile, các tác giả của Tuyên Ngôn (Agilemanifesto.org) đã tạo ra mười hai nguyên tắc hướng dẫn cho các phương pháp agile:</p>
+<ol class="content-list">
+  <li>Ưu tiên cao nhất của chúng ta là làm hài lòng khách hàng thông qua việc bàn giao sớm và liên tục phần mềm có giá trị.</li>
+  <li>Chào đón các yêu cầu thay đổi, ngay cả khi đã ở giai đoạn phát triển muộn. Các quy trình agile khai thác sự thay đổi để mang lại lợi thế cạnh tranh cho khách hàng.</li>
+  <li>Bàn giao phần mềm hoạt động thường xuyên, từ vài tuần đến vài tháng, với ưu tiên cho khung thời gian ngắn hơn.</li>
+  <li>Người kinh doanh và nhà phát triển phải làm việc cùng nhau hàng ngày trong suốt dự án.</li>
+  <li>Xây dựng dự án xung quanh những cá nhân có động lực. Cung cấp cho họ môi trường và sự hỗ trợ cần thiết và tin tưởng họ hoàn thành công việc.</li>
+  <li>Phương pháp truyền đạt thông tin hiệu quả và hiệu lực nhất đến và trong một nhóm phát triển là trò chuyện trực tiếp.</li>
+  <li>Phần mềm hoạt động là thước đo tiến trình chính.</li>
+  <li>Các quy trình agile thúc đẩy phát triển bền vững. Nhà tài trợ, nhà phát triển và người dùng phải có thể duy trì một nhịp độ không đổi vô thời hạn.</li>
+  <li>Sự chú ý liên tục đến sự xuất sắc về kỹ thuật và thiết kế tốt làm tăng cường tính agile.</li>
+  <li>Sự đơn giản — nghệ thuật tối đa hóa lượng công việc không làm — là thiết yếu.</li>
+  <li>Các kiến trúc, yêu cầu và thiết kế tốt nhất xuất hiện từ các nhóm tự tổ chức.</li>
+  <li>Ở các khoảng thời gian đều đặn, nhóm phản ánh về cách trở nên hiệu quả hơn, sau đó điều chỉnh và thích nghi hành vi của mình.</li>
+</ol>
+
+<h3 id="ch17-bai-tap-17-1">Bài Tập 17.1</h3>
+<p>Hãy suy nghĩ về những nguyên tắc này. Bằng ngôn ngữ của riêng bạn, hãy mô tả ý nghĩa của từng nguyên tắc đối với bạn. Bạn có thể thấy một số nguyên tắc có thể áp dụng cho các dự án của bạn không?</p>
+
+<div class="table-wrap"><table>
+  <thead>
+    <tr>
+      <th>Nguyên Tắc</th>
+      <th>Ý nghĩa của điều này với bạn là gì?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Ưu tiên cao nhất của chúng ta là làm hài lòng khách hàng thông qua việc bàn giao sớm và liên tục phần mềm có giá trị.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Chào đón các yêu cầu thay đổi, ngay cả khi đã ở giai đoạn phát triển muộn. Các quy trình agile khai thác sự thay đổi để mang lại lợi thế cạnh tranh cho khách hàng.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Bàn giao phần mềm hoạt động thường xuyên, từ vài tuần đến vài tháng, với ưu tiên cho khung thời gian ngắn hơn.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Người kinh doanh và nhà phát triển làm việc cùng nhau hàng ngày trong suốt dự án.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Xây dựng dự án xung quanh những cá nhân có động lực. Cung cấp cho họ môi trường và sự hỗ trợ cần thiết và tin tưởng họ hoàn thành công việc.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Phương pháp truyền đạt thông tin hiệu quả và hiệu lực nhất đến và trong một nhóm phát triển là trò chuyện trực tiếp.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Phần mềm hoạt động là thước đo tiến trình chính.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Các quy trình agile thúc đẩy phát triển bền vững. Nhà tài trợ, nhà phát triển và người dùng phải có thể duy trì một nhịp độ không đổi vô thời hạn.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Sự chú ý liên tục đến sự xuất sắc về kỹ thuật và thiết kế tốt làm tăng cường tính agile.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Sự đơn giản — nghệ thuật tối đa hóa lượng công việc không làm — là thiết yếu.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Các kiến trúc, yêu cầu và thiết kế tốt nhất xuất hiện từ các nhóm tự tổ chức.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Ở các khoảng thời gian đều đặn, nhóm phản ánh về cách trở nên hiệu quả hơn, sau đó điều chỉnh và thích nghi hành vi của mình.</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h4 id="ch17-tu-duy-agile">Tư Duy Agile</h4>
+<p>Bạn có thể thấy cụm từ Tư Duy Agile trên bài thi. Cụm từ này đề cập đến ý tưởng rằng bạn không chỉ ghi nhớ các giá trị và nguyên tắc rồi tham gia một nhóm agile. Để thực sự agile, bạn phải thay đổi tư duy để áp dụng các nguyên tắc và cách làm việc này. Cần có thời gian để học và áp dụng tư duy agile và nó sẽ thay đổi cách bạn nhìn nhận phần lớn công việc của mình. Các cách tiếp cận agile ít quy định hơn so với các cách tiếp cận theo kế hoạch và dựa nhiều hơn vào việc các thành viên nhóm vận hành với tư duy agile.</p>
+
+<h4 id="ch17-khai-niem-chinh">Các Khái Niệm Chính</h4>
+<p>Dưới đây là một vài khái niệm, xuất phát từ các giá trị và nguyên tắc, mà bạn có thể gặp trong bài thi.</p>
+
+<h4 id="ch17-chao-don-thay-doi">Chào Đón Thay Đổi</h4>
+<p>Sự khác biệt lớn giữa môi trường dự đoán và thích nghi là phản ứng của người quản lý dự án (và nhóm) với các yêu cầu thay đổi của khách hàng. Trong các vòng đời theo kế hoạch, các thay đổi được coi là "điều cần thiết nhưng phiền hà" đòi hỏi một quy trình — Kiểm Soát Thay Đổi Tích Hợp — để đưa thay đổi vào một dự án đang diễn ra. Các cách tiếp cận agile chào đón thay đổi. Khi bạn thấy các câu hỏi thi về thay đổi trong dự án, hãy chú ý xem người quản lý dự án đang sử dụng cách tiếp cận theo kế hoạch hay agile trước khi trả lời.</p>
+
+<h4 id="ch17-phan-tang-gia-tri-nho">Làm Việc Theo Các Phần Tăng Trưởng Giá Trị Nhỏ</h4>
+<p>Các câu hỏi thi về các dự án theo kế hoạch giả định các dự án lớn với hàng trăm bên liên quan và tiến độ dài. Các câu hỏi thi về các dự án agile đề cập đến các nhóm nhỏ hơn, xây dựng các phần tăng trưởng nhỏ của sản phẩm, được bàn giao cho khách hàng càng sớm càng tốt. Điều này không có nghĩa là các dự án lớn sẽ không sử dụng cách tiếp cận agile, nhưng hãy nhớ rằng các sản phẩm được xây dựng thành các phần tăng trưởng nhỏ, có giá trị có thể được bàn giao cho khách hàng nhanh hơn toàn bộ sản phẩm.</p>
+
+<h4 id="ch17-vong-lap-xay-va-phan-hoi">Sử Dụng Vòng Lặp Xây Dựng và Phản Hồi</h4>
+<p>Khách hàng hoặc đại diện của họ (ví dụ: product owner) liên quan chặt chẽ với các nhóm agile và cung cấp phản hồi thường xuyên. Vào cuối mỗi lặp, khách hàng được xem các bản trình diễn về thành phần sản phẩm được xây dựng gần nhất và họ có thể yêu cầu bất kỳ thay đổi nào họ muốn. Các vòng phản hồi thường xuyên này ngăn nhóm đi quá xa theo một hướng mà khách hàng sẽ không thích.</p>
+
+<h4 id="ch17-hoc-qua-kham-pha">Học Tập Qua Khám Phá</h4>
+<p>Thử nghiệm hay khám phá rất quan trọng để các sản phẩm mới, sáng tạo nảy sinh. Khi các công nghệ mới trở nên sẵn có, các nhóm có thể cần thời gian để học cách sử dụng chúng tốt nhất. Các nhóm agile nhận ra nhu cầu lên kế hoạch thời gian cho việc học tập và thử nghiệm. Các nguyên mẫu thường được xây dựng sớm trong dự án để kiểm tra các ý tưởng. Điều này liên quan đến nguyên tắc trước về vòng lặp xây dựng và phản hồi. Các nguyên mẫu được khách hàng xem và cung cấp phản hồi sớm. Sau khi nhóm đã kiểm thử thành công một công nghệ mới, quá trình phát triển sản phẩm tiến triển suôn sẻ hơn.</p>
+
+<h4 id="ch17-that-bai-nhanh-va-hoc-tap">Thất Bại Nhanh Kết Hợp Với Học Tập</h4>
+<p>Liên quan đến học tập qua khám phá, khái niệm thất bại nhanh dẫn đến việc học tập thêm. Các phương pháp agile nhận ra rằng một số thử nghiệm thất bại và nhóm nên phát hiện càng sớm càng tốt liệu một công nghệ hay kiến trúc mới có hoạt động được hay không. Nếu không, họ có thể dừng lại và thiết kế lại. Bản năng con người thường dẫn các nhóm thực hiện công việc dễ trước, trì hoãn các nhiệm vụ khó đến cuối. Nhưng, phát hiện ra rằng công nghệ mới không hỗ trợ sản phẩm mới vào cuối dự án có thể tàn khốc và sẽ lãng phí nhiều giờ làm việc.</p>
+
+<h4 id="ch17-phat-trien-huong-gia-tri">Phát Triển Hướng Giá Trị</h4>
+<p>Các nhà lãnh đạo agile và nhóm của họ luôn tập trung vào việc cung cấp giá trị cho khách hàng. Phân tích các sản phẩm phần mềm hiện có cho thấy 80% nhiều tính năng ứng dụng hiếm khi được sử dụng (bạn có nhớ quy tắc Pareto 80-20 không?). Các tổ chức đã nhận ra họ cần tập trung vào các tính năng sản phẩm có giá trị nhất trước, bàn giao cho khách hàng càng sớm càng tốt.</p>
+
+<h4 id="ch17-ban-giao-lien-tuc">Bàn Giao Liên Tục</h4>
+<p>Một khái niệm quan trọng khác của các cách tiếp cận agile là bàn giao liên tục. Khi có thể, các nhóm xây dựng sản phẩm theo các phần tăng trưởng và bàn giao chúng ngay khi khách hàng có thể sử dụng. Hãy nghĩ về các bản cập nhật điện thoại di động của bạn. Nhà cung cấp điện thoại của bạn đang liên tục bàn giao các tính năng mới, cập nhật cho các tính năng hiện có, các bản sửa lỗi và cải tiến hệ điều hành điện thoại của bạn. Họ đang tạo ra một sản phẩm khả thi tối thiểu.</p>
+
+<h4 id="ch17-cai-tien-lien-tuc">Cải Tiến Liên Tục</h4>
+<p>Cuối cùng, khái niệm cải tiến liên tục được sử dụng xuyên suốt quá trình thực hiện dự án. Các quy trình và kỹ thuật cải tiến liên tục đã tồn tại từ lâu. Các cách tiếp cận agile dựa trên các công cụ hiện có như Lean và Kanban để khuyến khích cải tiến liên tục. Các vòng đời dự án theo kế hoạch sử dụng bài học kinh nghiệm để cải thiện các dự án trong tương lai. Các vòng đời agile sử dụng cải tiến (retrospective). Bất kể cách tiếp cận nào được sử dụng, tất cả các nhóm đều nên liên tục học tập và tìm ra cách làm việc tốt hơn.</p>
+
+<h4 id="ch17-tam-giac-agile">Tam Giác Agile</h4>
+<p>Trong quản lý dự án, hiểu các ràng buộc dự án là một trong những nhiệm vụ quan trọng nhất của người quản lý dự án. Trong các cách tiếp cận vòng đời theo kế hoạch truyền thống, phạm vi được coi là một ràng buộc chính. Một khi phạm vi được khách hàng phê duyệt, các thay đổi đối với phạm vi bị hạn chế vì toàn bộ kế hoạch quản lý dự án được xây dựng xung quanh việc hoàn thành phạm vi đã thỏa thuận. Các ràng buộc về chi phí và thời gian của dự án bị ảnh hưởng nếu phạm vi thay đổi.</p>
+<p>Trong các cách tiếp cận vòng đời agile, những ràng buộc này bị lật ngược. (Mô hình tam giác ngược lần đầu được công bố trong Cẩm Nang DSDM vào năm 1994.) Như bạn có thể thấy trong hình 17.5, các cách tiếp cận agile bắt đầu với các ràng buộc về thời gian và chi phí, được khách hàng hoặc nhà tài trợ đồng ý và phạm vi được phép thay đổi trong suốt dự án. Có nhiều lợi ích của cách tiếp cận này. Một là nhà tài trợ hoặc khách hàng biết chi phí nhân công vào đầu dự án. Thay vì chỉ là một ước tính, chi phí nhân công đã thỏa thuận sẽ là số tiền thực tế được chi tiêu vì nhóm agile có số lượng thành viên cố định và thời gian cố định. Ví dụ, nếu người quản lý dự án yêu cầu 5 thành viên nhóm trong 3 tháng, chi phí thực tế của nhóm được biết ngay từ đầu dự án.</p>
+<p>Lợi ích khác của cách tiếp cận agile cho khách hàng là sự linh hoạt để thay đổi phạm vi mong muốn khi dự án tiến triển. Sản phẩm được xây dựng theo các phần tăng trưởng nhỏ và khách hàng xem xét và phê duyệt từng phần tăng trưởng. Sau khi xem phiên bản đầu tiên của sản phẩm, khách hàng có thể chọn đưa sản phẩm theo một hướng thiết kế khác với kế hoạch ban đầu mà không có tác động tiêu cực đến thời gian hoặc chi phí. Hãy tưởng tượng một dự án xuất bản sách kỹ thuật số nơi mỗi chương được phát hành trực tuyến khi hoàn thành. Khi các chương trở nên sẵn có cho độc giả, họ có thể cung cấp phản hồi và các bản sửa đổi cho các chương đầu này có thể được thực hiện bất kỳ lúc nào. Các chương sau sẽ dựa trên các chương đầu, kết hợp phản hồi (ví dụ: "cần thêm hình minh họa") để tăng chất lượng và tính hữu ích của toàn bộ cuốn sách.</p>
+<p>Ưu điểm của tam giác ngược, đối với nhóm agile, là họ không mất hàng giờ cố gắng lập tài liệu mọi yêu cầu chi tiết trong một văn bản và/hoặc mất hàng giờ cố gắng ước tính thời gian cần thiết để xây dựng sản phẩm. Nhiều nhóm dự án vật lộn với cả yêu cầu và ước tính cho các sản phẩm kiến thức phức tạp, vì vậy cách tiếp cận agile giảm thời gian dành cho những việc mà con người không giỏi lắm.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//a3915c09-299e-4b09-97b5-18b6015c9f75/markdown_0/imgs/img_in_chart_box_143_181_671_454.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A12Z%2F-1%2F%2Fc07466d1905e9240860309efa9b20233f3838745360cf031142b77d22ea96d53" alt="Image" width="64%" /></div></div>
+<p style="text-align:center;"><strong>HÌNH 17.5</strong> Mô hình tam giác ngược</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//a3915c09-299e-4b09-97b5-18b6015c9f75/markdown_0/imgs/img_in_image_box_74_500_124_561.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A12Z%2F-1%2F%2F2d03afd2d2b59049d5b719ecaca39c0757322b5f96db7dfdb596a84d011752f3" alt="Image" width="6%" /></div></div>
+
+<h3 id="ch17-bai-tap-17-2">Bài Tập 17.2</h3>
+<p>Hãy suy nghĩ về điều này. Khi tiếp cận dự án tiếp theo, bạn có xem xét cách tiếp cận agile không? Lý do gì bạn nên cân nhắc? Hãy ghi câu trả lời trong Sổ Bài Tập.</p>
+
+<h4 id="ch17-dap-an-17-2">Đáp Án</h4>
+<p>Dưới đây là một số ví dụ về những gì bạn có thể đã nghĩ ra. Bạn cũng có thể có thêm các ý tưởng khác.</p>
+<ul class="content-list">
+  <li>Sản phẩm kiến thức mới, độc đáo hoặc phức tạp</li>
+  <li>Nhà tài trợ đang tìm kiếm tiết kiệm chi phí trong một quy trình phức tạp</li>
+  <li>Phạm vi không rõ ràng hoặc yêu cầu chưa biết</li>
+  <li>Sản phẩm có thể được bàn giao theo các phần tăng trưởng</li>
+  <li>Sản phẩm sẽ sử dụng công nghệ mới, chưa được thử nghiệm</li>
+  <li>Bàn giao giá trị sớm cho thị trường sẽ tạo ra doanh thu sớm hoặc đi trước đối thủ cạnh tranh ra thị trường</li>
+</ul>
+
+
+</main>
+
+<button id="back-top" aria-label="Về đầu trang">↑</button>
+
+<script>
+// Progress bar
+const pb=document.getElementById('progress-bar');
+function updPB(){const d=document.documentElement;pb.style.width=Math.min((d.scrollTop/(d.scrollHeight-d.clientHeight))*100,100)+'%'}
+window.addEventListener('scroll',updPB,{passive:true});
+
+// Back to top
+const bt=document.getElementById('back-top');
+window.addEventListener('scroll',()=>{bt.style.opacity=scrollY>400?'1':'0';},{passive:true});
+bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+// Mobile menu
+const mb=document.getElementById('menu-btn'),sb=document.getElementById('sidebar');
+mb.addEventListener('click',()=>sb.classList.toggle('open'));
+document.addEventListener('click',e=>{if(!sb.contains(e.target)&&e.target!==mb)sb.classList.remove('open')});
+
+// Active TOC highlight on scroll
+const tocLinks=document.querySelectorAll('#sidebar-toc a[href^="#"]');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      tocLinks.forEach(a=>a.classList.remove('active'));
+      const a=document.querySelector('#sidebar-toc a[href="#'+e.target.id+'"]');
+      if(a){a.classList.add('active');a.scrollIntoView({block:'nearest',behavior:'smooth'})}
+    }
+  })
+},{rootMargin:'-20% 0px -75% 0px'});
+document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
+
+// ── THEME + READING POSITION ───────────────────────────
+(function(){
+  var THEME_KEY='rita_theme', READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var chapNum=m?m[1]:null;
+
+  // Build & inject theme toggle button
+  var hdr=document.getElementById('sidebar-header');
+  if(hdr){
+    var btn=document.createElement('button');
+    btn.id='theme-btn';
+    var curTheme=document.documentElement.getAttribute('data-theme')||'light';
+    btn.textContent=curTheme==='dark'?'☀':'🌙';
+    btn.title='Giao diện sáng / tối';
+    hdr.appendChild(btn);
+    btn.addEventListener('click',function(){
+      var next=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+      document.documentElement.setAttribute('data-theme',next);
+      localStorage.setItem(THEME_KEY,next);
+      btn.textContent=next==='dark'?'☀':'🌙';
+    });
+  }
+
+  if(!chapNum) return;
+
+  // Save last chapter visited
+  try{
+    var rd=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    rd.lastChap='rita_chap'+chapNum;
+    if(!rd.scrollPos) rd.scrollPos={};
+    localStorage.setItem(READ_KEY,JSON.stringify(rd));
+  }catch(e){}
+
+  // Restore scroll position
+  try{
+    var rdR=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    var savedPos=rdR.scrollPos&&rdR.scrollPos[chapNum]||0;
+    if(savedPos>200) setTimeout(function(){window.scrollTo(0,savedPos);},120);
+  }catch(e){}
+
+  // Save scroll position (debounced 600ms)
+  var saveT;
+  window.addEventListener('scroll',function(){
+    clearTimeout(saveT);
+    saveT=setTimeout(function(){
+      try{
+        var r2=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+        if(!r2.scrollPos) r2.scrollPos={};
+        r2.scrollPos[chapNum]=window.scrollY;
+        r2.lastChap='rita_chap'+chapNum;
+        localStorage.setItem(READ_KEY,JSON.stringify(r2));
+      }catch(e){}
+    },600);
+  },{passive:true});
+})();
+
+// ── HIGHLIGHT / NOTES SYSTEM ────────────────────────────
+(function(){
+  var READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  if(!m) return;
+  var chapNum=m[1];
+  var HL_KEY='rita_hl_'+chapNum;
+
+  // ── STORAGE ──
+  function loadHL(){try{return JSON.parse(localStorage.getItem(HL_KEY)||'[]')}catch(e){return[]}}
+  function saveHL(arr){localStorage.setItem(HL_KEY,JSON.stringify(arr));window.__ritaSyncTrigger&&window.__ritaSyncTrigger();}
+  function genId(){return 'h'+Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
+
+  // ── XPATH HELPERS ──
+  var mainEl=document.getElementById('main');
+  function getXPath(node){
+    if(!node||node===mainEl) return '.';
+    var parts=[];
+    var cur=node.nodeType===3?node.parentNode:node;
+    while(cur&&cur!==mainEl&&cur!==document.body){
+      var tag=cur.tagName.toLowerCase();
+      var idx=1,sib=cur.previousElementSibling;
+      while(sib){if(sib.tagName&&sib.tagName.toLowerCase()===tag)idx++;sib=sib.previousElementSibling;}
+      parts.unshift(tag+'['+idx+']');
+      cur=cur.parentElement;
+    }
+    return parts.join('/');
+  }
+  function resolveXPath(xpath){
+    if(!mainEl||xpath==='.') return mainEl;
+    try{
+      var r=document.evaluate('.//'+xpath,mainEl,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);
+      return r.singleNodeValue;
+    }catch(e){return null;}
+  }
+  function findTextAt(el,offset){
+    var walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null);
+    var count=0,node;
+    while((node=walker.nextNode())){
+      var len=node.textContent.length;
+      if(count+len>=offset) return{node:node,localOffset:offset-count};
+      count+=len;
+    }
+    return null;
+  }
+
+  // ── APPLY MARK TO DOM ──
+  function applyMark(hl){
+    try{
+      var sEl=resolveXPath(hl.sxp), eEl=resolveXPath(hl.exp);
+      if(!sEl||!eEl) return false;
+      var sInfo=sEl.nodeType===3?{node:sEl,localOffset:hl.so}:findTextAt(sEl,hl.so);
+      var eInfo=eEl.nodeType===3?{node:eEl,localOffset:hl.eo}:findTextAt(eEl,hl.eo);
+      if(!sInfo||!eInfo) return false;
+      var range=document.createRange();
+      range.setStart(sInfo.node,sInfo.localOffset);
+      range.setEnd(eInfo.node,eInfo.localOffset);
+      applyRange(range,hl.id,hl.color,hl.note||'');
+      return true;
+    }catch(e){return false;}
+  }
+  function applyRange(range,hlId,color,note){
+    var walker=document.createTreeWalker(
+      range.commonAncestorContainer.nodeType===3
+        ?range.commonAncestorContainer.parentNode
+        :range.commonAncestorContainer,
+      NodeFilter.SHOW_TEXT,null
+    );
+    var nodes=[],node;
+    while((node=walker.nextNode())){if(range.intersectsNode(node))nodes.push(node);}
+    nodes.forEach(function(tn){
+      var s=tn===range.startContainer?range.startOffset:0;
+      var e=tn===range.endContainer?range.endOffset:tn.textContent.length;
+      if(s>=e) return;
+      var nr=document.createRange();
+      nr.setStart(tn,s); nr.setEnd(tn,Math.min(e,tn.textContent.length));
+      try{
+        var mk=document.createElement('mark');
+        mk.className='hl'; mk.setAttribute('data-hl-id',hlId);
+        mk.setAttribute('data-color',color); mk.setAttribute('data-note',note);
+        nr.surroundContents(mk);
+      }catch(err){
+        try{
+          var c=nr.extractContents(),mk2=document.createElement('mark');
+          mk2.className='hl'; mk2.setAttribute('data-hl-id',hlId);
+          mk2.setAttribute('data-color',color); mk2.setAttribute('data-note',note);
+          mk2.appendChild(c); nr.insertNode(mk2);
+        }catch(_){}
+      }
+    });
+  }
+  function removeMarks(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      var p=mk.parentNode;
+      while(mk.firstChild)p.insertBefore(mk.firstChild,mk);
+      p.removeChild(mk);
+      p.normalize();
+    });
+  }
+  function updateMarks(hlId,color,note){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.setAttribute('data-color',color);
+      mk.setAttribute('data-note',note);
+    });
+  }
+
+  // ── RESTORE HIGHLIGHTS ON LOAD ──
+  var highlights=loadHL();
+  // Sort by sxp+so descending so earlier ranges aren't offset by later insertions
+  // Actually apply in order (each one is independent)
+  highlights.forEach(applyMark);
+  // Expose re-apply for sync module
+  window.__ritaReapplyMarks=function(){
+    document.querySelectorAll('mark.hl').forEach(function(mk){
+      var p=mk.parentNode;while(mk.firstChild)p.insertBefore(mk.firstChild,mk);p.removeChild(mk);p.normalize();
+    });
+    loadHL().forEach(applyMark);
+    if(typeof updateBadge==='function') updateBadge();
+    if(typeof renderPanelIfOpen==='function') renderPanelIfOpen();
+  };
+
+  // ── SIDEBAR BUTTON ──
+  function updateBadge(){
+    var hls=loadHL();
+    var badge=document.getElementById('hl-badge');
+    if(badge) badge.textContent=hls.length||'0';
+  }
+  var sidebarNav=document.getElementById('sidebar-toc');
+  if(sidebarNav){
+    var hlBtn=document.createElement('button');
+    hlBtn.id='hl-sidebar-btn';
+    hlBtn.innerHTML='<span>✏ Ghi chú & Highlight</span><span id="hl-badge">0</span>';
+    hlBtn.addEventListener('click',function(){openPanel();});
+    // Insert before sidebar-nav (bottom buttons)
+    var sidebarNavBottom=document.getElementById('sidebar-nav');
+    if(sidebarNavBottom) sidebarNavBottom.parentNode.insertBefore(hlBtn,sidebarNavBottom);
+    else document.getElementById('sidebar').appendChild(hlBtn);
+  }
+  updateBadge();
+
+  // ── PANEL ──
+  var panel=document.createElement('div');
+  panel.id='hl-panel';
+  panel.innerHTML='<div id="hl-panel-hdr"><h3>✏ Ghi Chú & Highlight</h3><button id="hl-panel-close">×</button></div><div id="hl-panel-list"></div>';
+  document.body.appendChild(panel);
+  document.getElementById('hl-panel-close').addEventListener('click',closePanel);
+  function openPanel(){renderPanel();panel.classList.add('open');}
+  function closePanel(){panel.classList.remove('open');}
+  function renderPanel(){
+    var list=document.getElementById('hl-panel-list');
+    var hls=loadHL();
+    list.innerHTML='';
+    hls.forEach(function(hl){
+      var item=document.createElement('div');
+      item.className='hl-item'; item.setAttribute('data-color',hl.color);
+      var noteHtml=hl.note?'<div class="hl-item-note">✏ '+escHtml(hl.note)+'</div>':'';
+      item.innerHTML='<button class="hl-item-del" data-id="'+hl.id+'">🗑</button>'
+        +'<div class="hl-item-text">'+escHtml(hl.text||'')+'</div>'+noteHtml;
+      item.addEventListener('click',function(e){
+        if(e.target.classList.contains('hl-item-del')) return;
+        var mk=document.querySelector('mark.hl[data-hl-id="'+hl.id+'"]');
+        if(mk){mk.scrollIntoView({behavior:'smooth',block:'center'});flashMark(hl.id);}
+        closePanel();
+      });
+      item.querySelector('.hl-item-del').addEventListener('click',function(e){
+        e.stopPropagation(); deleteHL(hl.id); renderPanel();
+      });
+      list.appendChild(item);
+    });
+  }
+
+  // ── POPUP ──
+  var popup=document.createElement('div');
+  popup.id='hl-popup'; popup.className='hidden';
+  popup.innerHTML=
+    '<button class="hl-color-btn" data-color="yellow" title="Vàng"></button>'
+    +'<button class="hl-color-btn" data-color="green" title="Xanh"></button>'
+    +'<button class="hl-color-btn" data-color="red" title="Đỏ"></button>'
+    +'<div class="hl-sep"></div>'
+    +'<button class="hl-note-btn" title="Thêm ghi chú">✏</button>'
+    +'<button class="hl-del-btn hl-del-action" title="Xóa">🗑</button>';
+  document.body.appendChild(popup);
+
+  var currentHlId=null;    // id being edited (null = new)
+  var pendingRange=null;   // Range for new highlight
+  var pendingXP=null;      // serialized position for new highlight
+
+  // Position popup near a rect
+  function positionPopup(rect){
+    var pw=popup.offsetWidth||160,ph=popup.offsetHeight||40;
+    var top=rect.top-ph-10+window.scrollY;
+    var left=rect.left+(rect.width-pw)/2;
+    if(top<window.scrollY+8) top=rect.bottom+10+window.scrollY;
+    left=Math.max(8,Math.min(left,window.innerWidth-pw-8));
+    popup.style.top=top+'px';
+    popup.style.left=left+'px';
+  }
+  function showPopup(rect,hlId){
+    currentHlId=hlId||null;
+    var isEdit=!!hlId;
+    popup.querySelector('.hl-del-action').style.display=isEdit?'':'none';
+    popup.querySelector('.hl-note-btn').style.display='';
+    popup.classList.remove('hidden');
+    positionPopup(rect);
+  }
+  function hidePopup(){
+    popup.classList.add('hidden');
+    pendingRange=null; pendingXP=null; currentHlId=null;
+  }
+
+  // Color buttons
+  popup.querySelectorAll('.hl-color-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var color=btn.getAttribute('data-color');
+      if(currentHlId){
+        // Update existing
+        var hls=loadHL();
+        var idx=hls.findIndex(function(h){return h.id===currentHlId;});
+        if(idx>=0){hls[idx].color=color;saveHL(hls);}
+        updateMarks(currentHlId,color,hls[idx]?hls[idx].note||'':'');
+        updateBadge(); renderPanelIfOpen();
+      } else if(pendingRange&&pendingXP){
+        // Create new
+        var id=genId();
+        var text=pendingRange.toString().substring(0,500);
+        applyRange(pendingRange,id,color,'');
+        pendingRange.collapse();
+        window.getSelection()&&window.getSelection().removeAllRanges();
+        var hls=loadHL();
+        hls.push({id:id,color:color,note:'',text:text,
+          sxp:pendingXP.sxp,so:pendingXP.so,exp:pendingXP.exp,eo:pendingXP.eo});
+        saveHL(hls); updateBadge(); renderPanelIfOpen();
+      }
+      hidePopup();
+    });
+  });
+
+  // Note button
+  popup.querySelector('.hl-note-btn').addEventListener('click',function(){
+    var id=currentHlId;
+    var existing='';
+    if(id){var hls=loadHL();var h=hls.find(function(x){return x.id===id;});if(h)existing=h.note||'';}
+    hidePopup();
+    openNoteModal(id,existing);
+  });
+
+  // Delete button
+  popup.querySelector('.hl-del-action').addEventListener('click',function(){
+    if(currentHlId) deleteHL(currentHlId);
+    hidePopup();
+  });
+
+  function deleteHL(id){
+    removeMarks(id);
+    var hls=loadHL().filter(function(h){return h.id!==id;});
+    saveHL(hls); updateBadge(); renderPanelIfOpen();
+  }
+
+  // ── NOTE MODAL ──
+  var noteModal=document.createElement('div');
+  noteModal.id='hl-note-modal'; noteModal.className='hidden';
+  noteModal.innerHTML='<div id="hl-note-box">'
+    +'<h3>✏ Ghi chú</h3>'
+    +'<textarea id="hl-note-ta" placeholder="Nhập ghi chú..."></textarea>'
+    +'<div class="hl-note-actions">'
+    +'<button class="hl-note-cancel">Hủy</button>'
+    +'<button class="hl-note-save">Lưu</button>'
+    +'</div></div>';
+  document.body.appendChild(noteModal);
+  var _noteTargetId=null;
+  function openNoteModal(hlId,existing){
+    _noteTargetId=hlId;
+    document.getElementById('hl-note-ta').value=existing||'';
+    noteModal.classList.remove('hidden');
+    setTimeout(function(){document.getElementById('hl-note-ta').focus();},50);
+  }
+  noteModal.querySelector('.hl-note-cancel').addEventListener('click',function(){noteModal.classList.add('hidden');});
+  noteModal.querySelector('.hl-note-save').addEventListener('click',function(){
+    var note=document.getElementById('hl-note-ta').value.trim();
+    if(_noteTargetId){
+      var hls=loadHL();
+      var idx=hls.findIndex(function(h){return h.id===_noteTargetId;});
+      if(idx>=0){hls[idx].note=note;saveHL(hls);updateMarks(_noteTargetId,hls[idx].color,note);updateBadge();renderPanelIfOpen();}
+    }
+    noteModal.classList.add('hidden');
+  });
+  noteModal.addEventListener('click',function(e){if(e.target===noteModal)noteModal.classList.add('hidden');});
+
+  // ── SELECTION HANDLER ──
+  document.addEventListener('mouseup',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    setTimeout(function(){
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed||!sel.rangeCount){hidePopup();return;}
+      var range=sel.getRangeAt(0);
+      var text=range.toString().trim();
+      if(!text||text.length<2){hidePopup();return;}
+      // Only highlight within #main
+      if(!mainEl||!mainEl.contains(range.commonAncestorContainer)){hidePopup();return;}
+      // Serialize positions
+      var sNode=range.startContainer,eNode=range.endContainer;
+      var sParent=sNode.nodeType===3?sNode.parentNode:sNode;
+      var eParent=eNode.nodeType===3?eNode.parentNode:eNode;
+      var sxp=getXPath(sParent),exp=getXPath(eParent);
+      // calc offsets within parent element
+      var so=0,eo=0;
+      var w=document.createTreeWalker(sParent,NodeFilter.SHOW_TEXT,null);
+      var n;while((n=w.nextNode())){if(n===sNode){so+=range.startOffset;break;}so+=n.textContent.length;}
+      var w2=document.createTreeWalker(eParent,NodeFilter.SHOW_TEXT,null);
+      while((n=w2.nextNode())){if(n===eNode){eo+=range.endOffset;break;}eo+=n.textContent.length;}
+      pendingRange=range.cloneRange();
+      pendingXP={sxp:sxp,so:so,exp:exp,eo:eo};
+      currentHlId=null;
+      var rect=range.getBoundingClientRect();
+      showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width});
+    },10);
+  });
+
+  // ── CLICK ON EXISTING MARK ──
+  document.addEventListener('click',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    var mk=e.target.closest('mark.hl');
+    if(!mk){
+      // click outside: if selection is collapsed, hide popup
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed) hidePopup();
+      return;
+    }
+    e.stopPropagation();
+    var hlId=mk.getAttribute('data-hl-id');
+    var rect=mk.getBoundingClientRect();
+    currentHlId=hlId;
+    pendingRange=null;pendingXP=null;
+    showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width},hlId);
+  });
+
+  // ── FLASH EFFECT ──
+  function flashMark(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.style.transition='outline .2s';mk.style.outline='3px solid #c9a84c';
+      setTimeout(function(){mk.style.outline='none';},1500);
+    });
+  }
+
+  function renderPanelIfOpen(){if(panel.classList.contains('open'))renderPanel();}
+
+  function escHtml(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+})();
+
+
+// ── CHAPTER NAV PANEL ───────────────────────────────────
+(function(){
+  var CHAPS=[
+    [1,'rita_chap01.html','Mẹo & Thủ Thuật Ôn Thi PMP®'],
+    [2,'rita_chap02.html','Tài Liệu Tham Khảo Kỳ Thi'],
+    [3,'rita_chap03.html','Nền Tảng Quản Lý Dự Án'],
+    [4,'rita_chap04.html','Tích Hợp'],
+    [5,'rita_chap05.html','Kỹ Năng Lãnh Đạo'],
+    [6,'rita_chap06.html','Xây Dựng & Hỗ Trợ Hiệu Suất Nhóm'],
+    [7,'rita_chap07.html','Phạm Vi Dự Án'],
+    [8,'rita_chap08.html','Tiến Độ & Ngân Sách Dự Án'],
+    [10,'rita_chap10.html','Chất Lượng Sản Phẩm Bàn Giao'],
+    [11,'rita_chap11.html','Truyền Thông'],
+    [12,'rita_chap12.html','Rủi Ro & Vấn Đề'],
+    [13,'rita_chap13.html','Mua Sắm'],
+    [14,'rita_chap14.html','Các Bên Liên Quan'],
+    [15,'rita_chap15.html','Tuân Thủ & Mang Lại Giá Trị'],
+    [16,'rita_chap16.html','Mẹo Vượt Qua Kỳ Thi PMP®'],
+    [17,'rita_chap17.html','Các Phương Pháp Agile Phổ Biến'],
+    [18,'rita_chap18.html','Hướng Dẫn PMBOK & Tiêu Chuẩn PM']
+  ];
+
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var curNum=m?parseInt(m[1]):null;
+  var READ_KEY='rita_reading';
+
+  // Build panel DOM
+  var panel=document.createElement('div');
+  panel.id='chap-panel'; panel.className='hidden';
+  var listHtml='';
+  CHAPS.forEach(function(c){
+    var isActive=c[0]===curNum;
+    listHtml+='<a class="chap-panel-item'+(isActive?' active':'')+'" href="'+c[1]+'">'
+      +'<span class="cpanel-num">Ch'+c[0]+'</span>'
+      +'<span class="cpanel-title">'+c[2]+'</span>'
+      +(isActive?'<span class="cpanel-status">● Đang đọc</span>':'')
+      +'</a>';
+  });
+  panel.innerHTML='<div id="chap-panel-overlay"></div>'
+    +'<div id="chap-panel-box">'
+    +'<div id="chap-panel-hdr"><h3>☰ Danh Sách Chương</h3><button id="chap-panel-close">×</button></div>'
+    +'<div id="chap-panel-list">'+listHtml+'</div>'
+    +'</div>';
+  document.body.appendChild(panel);
+
+  function openChapPanel(){panel.classList.remove('hidden');}
+  function closeChapPanel(){panel.classList.add('hidden');}
+  document.getElementById('chap-panel-overlay').addEventListener('click',closeChapPanel);
+  document.getElementById('chap-panel-close').addEventListener('click',closeChapPanel);
+
+  // Wire up the Mục lục button
+  var mucLucBtn=document.getElementById('chap-muc-luc-btn');
+  if(mucLucBtn) mucLucBtn.addEventListener('click',function(e){e.preventDefault();openChapPanel();});
+})();
+
+
+// ── GITHUB HIGHLIGHTS SYNC ──────────────────────────
+(function(){
+  var REPO='goukakujlptsuport-beep/pmbok6';
+  var TOKEN_KEY='rita_gh_token';
+  var API_URL='https://api.github.com/repos/'+REPO+'/contents/data/rita_highlights.json';
+  var fileSha=null;
+  var syncTimer=null;
+
+  // Called by patched saveHL after every highlight change
+  window.__ritaSyncTrigger=function(){
+    clearTimeout(syncTimer);
+    syncTimer=setTimeout(pushToGitHub,3000);
+  };
+
+  // ── STATUS BUTTON (inserted before #sidebar-nav) ──
+  var btn=document.createElement('button');
+  btn.id='sync-btn'; btn.dataset.state='no-token';
+  btn.innerHTML='<span>☁ Sync Git</span><span id="sync-status-text">Đang kết nối…</span>';
+  btn.title='Đồng bộ highlight / ghi chú lên GitHub';
+  btn.addEventListener('click',handleSyncClick);
+  var sidebarNavEl=document.getElementById('sidebar-nav');
+  if(sidebarNavEl) sidebarNavEl.parentNode.insertBefore(btn,sidebarNavEl);
+
+  var statusText=document.getElementById('sync-status-text');
+  function setStatus(state,msg){
+    btn.dataset.state=state;
+    if(statusText) statusText.textContent=msg;
+  }
+
+  // ── TOKEN MODAL ──
+  var modal=document.createElement('div');
+  modal.id='sync-modal'; modal.className='hidden';
+  modal.innerHTML='<div id="sync-modal-box">'
+    +'<h3>☁ Cấu Hình GitHub Sync</h3>'
+    +'<p>Nhập <strong style="color:var(--gold)">GitHub Personal Access Token (PAT)</strong> để đồng bộ highlight giữa các thiết bị.<br>'
+    +'Token cần quyền <strong style="color:var(--gold-lt)">Contents: Read &amp; Write</strong> trên repo pmbok6.<br>'
+    +'Token được lưu trong localStorage của trình duyệt này.</p>'
+    +'<input id="sync-token-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" spellcheck="false" autocomplete="off">'
+    +'<div class="sync-modal-btns">'
+    +'<button id="sync-clear-btn">🗑 Xóa token</button>'
+    +'<button id="sync-cancel-btn">Hủy</button>'
+    +'<button id="sync-save-btn">💾 Lưu &amp; Sync</button>'
+    +'</div></div>';
+  document.body.appendChild(modal);
+
+  document.getElementById('sync-cancel-btn').addEventListener('click',function(){modal.classList.add('hidden');});
+  document.getElementById('sync-save-btn').addEventListener('click',function(){
+    var t=(document.getElementById('sync-token-input').value||'').trim();
+    if(!t){alert('Vui lòng nhập GitHub PAT!');return;}
+    localStorage.setItem(TOKEN_KEY,t);
+    modal.classList.add('hidden');
+    fileSha=null;
+    initSync();
+  });
+  document.getElementById('sync-clear-btn').addEventListener('click',function(){
+    if(!confirm('Xóa token? Highlights sẽ không được sync cho đến khi cấu hình lại.')) return;
+    localStorage.removeItem(TOKEN_KEY);
+    fileSha=null;
+    modal.classList.add('hidden');
+    setStatus('no-token','Chưa cấu hình');
+  });
+  modal.addEventListener('click',function(e){if(e.target===modal)modal.classList.add('hidden');});
+
+  function handleSyncClick(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){
+      var inp=document.getElementById('sync-token-input');
+      if(inp) inp.value='';
+      modal.classList.remove('hidden');
+      setTimeout(function(){if(inp)inp.focus();},80);
+    } else {
+      // Manual re-sync
+      fileSha=null;
+      initSync();
+    }
+  }
+
+  // ── HELPERS ──
+  var ALL_CHAPS=['01','02','03','04','05','06','07','08','10','11','12','13','14','15','16','17','18'];
+
+  function getAllLocal(){
+    var all={};
+    ALL_CHAPS.forEach(function(n){
+      try{
+        var v=JSON.parse(localStorage.getItem('rita_hl_'+n)||'[]');
+        if(v&&v.length>0) all[n]=v;
+      }catch(e){}
+    });
+    return all;
+  }
+
+  function countHL(obj){
+    return Object.values(obj).reduce(function(s,a){return s+(a?a.length:0);},0);
+  }
+
+  // Union merge: keep all highlights by id, prefer local note if different
+  function mergeHL(local,remote){
+    var merged={};
+    var allChaps=new Set(Object.keys(local).concat(Object.keys(remote)));
+    allChaps.forEach(function(chap){
+      var loc=local[chap]||[];
+      var rem=remote[chap]||[];
+      var byId={};
+      loc.forEach(function(h){byId[h.id]=h;});
+      rem.forEach(function(h){if(!byId[h.id])byId[h.id]=h;});
+      var arr=Object.values(byId);
+      if(arr.length>0) merged[chap]=arr;
+    });
+    return merged;
+  }
+
+  function applyToLocal(highlights){
+    Object.keys(highlights).forEach(function(chap){
+      localStorage.setItem('rita_hl_'+chap,JSON.stringify(highlights[chap]));
+    });
+  }
+
+  // base64 encode/decode with Unicode support
+  function b64enc(str){
+    return btoa(unescape(encodeURIComponent(str)));
+  }
+  function b64dec(b64){
+    return decodeURIComponent(escape(atob(b64.replace(/[\r\n]/g,''))));
+  }
+
+  // ── FETCH FROM GITHUB ──
+  async function fetchFromGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    var headers={'Accept':'application/vnd.github.v3+json'};
+    if(token) headers['Authorization']='token '+token;
+    try{
+      var resp=await fetch(API_URL,{headers:headers});
+      if(resp.status===404){fileSha=null;return null;}
+      if(!resp.ok) throw new Error('HTTP '+resp.status);
+      var data=await resp.json();
+      fileSha=data.sha;
+      var content=JSON.parse(b64dec(data.content));
+      return content;
+    }catch(e){
+      console.warn('[sync] fetch:',e);
+      return 'error';
+    }
+  }
+
+  // ── PUSH TO GITHUB ──
+  async function pushToGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang sync…');
+    var local=getAllLocal();
+    var payload={version:1,lastSync:new Date().toISOString(),highlights:local};
+    var encoded=b64enc(JSON.stringify(payload,null,2));
+    var body={message:'sync: rita highlights ['+countHL(local)+' HL]',content:encoded};
+    if(fileSha) body.sha=fileSha;
+    try{
+      var resp=await fetch(API_URL,{
+        method:'PUT',
+        headers:{
+          'Authorization':'token '+token,
+          'Content-Type':'application/json',
+          'Accept':'application/vnd.github.v3+json'
+        },
+        body:JSON.stringify(body)
+      });
+      if(!resp.ok){
+        var err=await resp.json().catch(function(){return{};});
+        throw new Error(err.message||'HTTP '+resp.status);
+      }
+      var result=await resp.json();
+      fileSha=result.content.sha;
+      setStatus('ok','✓ Đã sync ('+countHL(local)+' HL)');
+    }catch(e){
+      setStatus('err','✗ '+e.message.slice(0,28));
+      console.error('[sync] push:',e);
+    }
+  }
+
+  // ── INIT ──
+  async function initSync(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang tải…');
+
+    var ghData=await fetchFromGitHub();
+    if(ghData==='error'){
+      setStatus('err','✗ Không kết nối được');
+      return;
+    }
+    if(ghData&&ghData.highlights){
+      var local=getAllLocal();
+      var merged=mergeHL(local,ghData.highlights);
+      applyToLocal(merged);
+      // Re-apply marks on current chapter from updated localStorage
+      if(typeof window.__ritaReapplyMarks==='function') window.__ritaReapplyMarks();
+      var ghN=countHL(ghData.highlights), mergedN=countHL(merged);
+      if(mergedN>ghN){
+        // New highlights from remote — push merged back
+        setTimeout(pushToGitHub,1200);
+      } else {
+        setStatus('ok','✓ Sync OK ('+mergedN+' HL)');
+      }
+    } else {
+      // File doesn't exist yet — push current local state
+      await pushToGitHub();
+    }
+  }
+
+  initSync();
+})();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2394 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chất Lượng Sản Phẩm Bàn Giao | Rita PMP® Exam Prep 11</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:     #1a2744;
+  --red:      #8b1a1a;
+  --gold:     #c9a84c;
+  --gold-lt:  #e8d5a3;
+  --cream:    #fdf8f0;
+  --text:     #2c2c2c;
+  --text-dim: #5a5a5a;
+  --border:   #d4c89a;
+  --sidebar-w: 268px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ── PROGRESS BAR ── */
+#progress-bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--gold);z-index:200;transition:width .1s}
+
+/* ── SIDEBAR ── */
+#sidebar{
+  width:var(--sidebar-w);background:var(--navy);color:#ccd4e8;
+  position:fixed;top:0;left:0;bottom:0;overflow-y:auto;z-index:100;
+  border-right:3px solid var(--gold);display:flex;flex-direction:column;
+}
+#sidebar-header{
+  background:linear-gradient(135deg,#0f1d3a 0%,#1a2744 100%);
+  padding:1.4rem 1.2rem;border-bottom:2px solid var(--gold);flex-shrink:0;
+}
+#sidebar-header .book-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.62rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;
+}
+#sidebar-header h2{font-size:.92rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:.25rem}
+#sidebar-header .edition{font-family:'Source Sans 3',sans-serif;font-size:.7rem;color:var(--gold-lt);font-style:italic}
+#sidebar-toc{flex:1;overflow-y:auto;padding:.6rem 0}
+#sidebar-toc a{
+  display:block;font-family:'Source Sans 3',sans-serif;font-size:.78rem;
+  color:#aab8d0;text-decoration:none;padding:.4rem 1.2rem;line-height:1.4;
+  transition:all .15s;border-left:3px solid transparent;
+}
+#sidebar-toc a:hover,#sidebar-toc a.active{color:#fff;background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+#sidebar-toc a.toc-h4{padding-left:2.2rem;font-size:.72rem;color:#8896b0}
+#sidebar-toc a.toc-h4:hover{color:#ccd4e8}
+#sidebar-toc .toc-group-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.6rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  padding:.7rem 1.2rem .25rem;opacity:.85;
+}
+#sidebar-nav{
+  flex-shrink:0;border-top:1px solid rgba(255,255,255,.08);
+  display:flex;justify-content:space-between;padding:.7rem .8rem;gap:.5rem;
+}
+#sidebar-nav a{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;color:var(--gold-lt);
+  text-decoration:none;padding:.4rem .7rem;border:1px solid rgba(201,168,76,.3);
+  border-radius:4px;transition:all .2s;line-height:1.3;text-align:center;flex:1;
+}
+#sidebar-nav a:hover{background:rgba(201,168,76,.15);color:#fff}
+#sidebar-nav a.disabled{opacity:.35;pointer-events:none}
+
+/* ── HAMBURGER (mobile) ── */
+#menu-btn{
+  display:none;position:fixed;top:.7rem;left:.8rem;z-index:150;
+  background:var(--navy);border:1px solid var(--gold);color:var(--gold);
+  width:36px;height:36px;border-radius:6px;font-size:1.1rem;cursor:pointer;
+  align-items:center;justify-content:center;
+}
+
+/* ── MAIN ── */
+#main{margin-left:var(--sidebar-w);max-width:880px;padding:0 2.8rem 5rem}
+
+/* ── CHAPTER HERO ── */
+.chapter-hero{
+  background:linear-gradient(135deg,var(--navy) 0%,#2a3a6a 100%);
+  color:white;padding:2.8rem 2.8rem 2.2rem;margin:0 -2.8rem 2.8rem;
+  border-bottom:4px solid var(--gold);position:relative;overflow:hidden;
+}
+.chapter-hero::before{
+  content:'10';position:absolute;right:1.5rem;top:50%;
+  transform:translateY(-50%);font-size:10rem;font-weight:700;
+  color:rgba(255,255,255,.05);font-family:'Merriweather',serif;line-height:1;
+}
+.chapter-hero .ch-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;font-weight:700;
+  letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;
+}
+.chapter-hero h1{font-size:2rem;font-weight:700;line-height:1.2;margin-bottom:.35rem}
+.chapter-hero .ch-en{font-family:'Source Sans 3',sans-serif;font-size:.95rem;color:rgba(255,255,255,.5);font-style:italic}
+
+/* ── CONTENT HEADINGS ── */
+h3{
+  font-family:'Merriweather',serif;font-size:1.25rem;color:var(--navy);
+  margin:2.5rem 0 .85rem;padding-bottom:.45rem;border-bottom:2px solid var(--gold);
+}
+h4{
+  font-family:'Merriweather',serif;font-size:1.05rem;color:var(--navy);
+  margin:2rem 0 .65rem;padding-left:.75rem;border-left:4px solid var(--gold);
+}
+h5{
+  font-family:'Source Sans 3',sans-serif;font-size:.9rem;font-weight:700;
+  color:var(--red);margin:1.4rem 0 .45rem;text-transform:uppercase;letter-spacing:.05em;
+}
+p{font-family:'Merriweather',serif;font-size:.94rem;line-height:1.88;margin-bottom:.95rem;color:var(--text)}
+
+/* ── LISTS ── */
+ul.content-list,ol.content-list{
+  margin:.5rem 0 1rem;padding:0;list-style:none;
+}
+ul.content-list li{
+  position:relative;padding:.28rem 0 .28rem 1.6rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);
+}
+ul.content-list li::before{
+  content:'◆';position:absolute;left:0;color:var(--gold);font-size:.65rem;top:.45rem;
+}
+ol.content-list{counter-reset:ol-c;list-style:none}
+ol.content-list li{
+  position:relative;padding:.28rem 0 .28rem 2rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);counter-increment:ol-c;
+}
+ol.content-list li::before{
+  content:counter(ol-c)'.';position:absolute;left:0;color:var(--navy);
+  font-weight:700;font-size:.85rem;min-width:1.5rem;
+}
+ul.content-list ul.content-list li::before{content:'–';color:var(--text-dim);font-size:.9rem;top:.35rem}
+
+/* ── CALLOUT / DEF BOX ── */
+.callout{
+  background:linear-gradient(135deg,#f5f0e8,#ede8d8);
+  border:1px solid var(--border);border-left:5px solid var(--gold);
+  border-radius:0 6px 6px 0;padding:1rem 1.2rem;margin:1.3rem 0;
+}
+.callout p{font-size:.9rem;margin-bottom:.5rem}
+.callout p:last-child{margin-bottom:0}
+.callout ul.content-list li{font-size:.88rem}
+.callout-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.65rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;
+}
+.callout.tip{border-left-color:#2d7a2d;background:linear-gradient(135deg,#f0f7f0,#e4f0e4)}
+.callout.tip .callout-label{color:#2d7a2d}
+
+/* ── HIGHLIGHT (quicktest / exam alert) ── */
+.highlight{
+  background:var(--navy);color:#e8d5a3;
+  border-radius:8px;padding:1.1rem 1.3rem;margin:1.5rem 0;
+}
+.highlight h5,.highlight strong{color:var(--gold-lt)}
+.highlight p,.highlight li{color:#ccd4e8;font-size:.88rem}
+.highlight ul.content-list li::before{color:var(--gold)}
+
+/* ── FIGURE ── */
+.img-center{
+  text-align:center;margin:1.8rem 0;padding:1rem;
+  background:#f8f5ee;border:1px solid var(--border);border-radius:8px;
+}
+.img-center img{max-width:100%;height:auto;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.img-center p,.img-center div{
+  margin-top:.65rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.8rem;color:var(--text-dim);font-style:italic;
+}
+
+/* ── TABLES ── */
+.table-wrap{overflow-x:auto;margin:1.5rem 0}
+table{width:100%;border-collapse:collapse;font-family:'Source Sans 3',sans-serif;font-size:.84rem}
+table th{background:var(--navy);color:white;padding:.6rem .8rem;text-align:center;font-weight:600;font-size:.79rem}
+table td{padding:.5rem .8rem;border:1px solid #ddd;vertical-align:top;line-height:1.5}
+table tr:nth-child(even) td{background:#f9f6ef}
+
+/* ── BACK TO TOP ── */
+#back-top{
+  position:fixed;bottom:1.5rem;right:1.5rem;
+  background:var(--navy);color:var(--gold);border:1px solid var(--gold);
+  width:38px;height:38px;border-radius:50%;font-size:1.2rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .25s;z-index:99;
+}
+#back-top:hover{background:var(--gold);color:var(--navy)}
+
+/* ── MOBILE ── */
+@media(max-width:860px){
+  #sidebar{transform:translateX(-100%);transition:transform .25s;top:3rem}
+  #sidebar.open{transform:translateX(0)}
+  #menu-btn{display:flex}
+  #main{margin-left:0;padding:3.5rem 1.2rem 4rem}
+  .chapter-hero{margin:0 -1.2rem 2rem;padding:2rem 1.4rem}
+  .chapter-hero::before{display:none}
+}
+
+/* ── DARK / LIGHT MODE ─────────────────────────────── */
+html[data-theme=dark]{--cream:#0f1520;--text:#dde4f0;--text-dim:#8899bb;--border:#253048;--gold-lt:#c9a84c}
+html[data-theme=dark] body{background:#0f1520;color:#dde4f0}
+html[data-theme=dark] #main{background:#0f1520}
+html[data-theme=dark] h1,html[data-theme=dark] h2{color:#e8d5a3}
+html[data-theme=dark] h3{color:#e8d5a3;border-bottom-color:var(--gold)}
+html[data-theme=dark] h4{color:#b8ccee;border-left-color:var(--gold)}
+html[data-theme=dark] p,html[data-theme=dark] li,html[data-theme=dark] td{color:#dde4f0}
+html[data-theme=dark] strong{color:#e8d5a3}
+html[data-theme=dark] em{color:#b8ccee}
+html[data-theme=dark] .callout{background:linear-gradient(135deg,#1a2436,#1e2d45);border-left-color:var(--gold);color:#dde4f0}
+html[data-theme=dark] .callout p{color:#dde4f0}
+html[data-theme=dark] blockquote{background:#1a2436;border-left-color:var(--gold);color:#b0c0d8}
+html[data-theme=dark] table{background:#131c2b}
+html[data-theme=dark] th{background:#1a2744;color:#e8d5a3;border-color:#253048}
+html[data-theme=dark] td{border-color:#253048}
+html[data-theme=dark] tr:nth-child(even) td{background:#1a2436}
+html[data-theme=dark] .highlight,.highlight-box{background:#1a2436!important;border-color:#253048!important;color:#dde4f0!important}
+html[data-theme=dark] #back-top{background:#1a2744;color:var(--gold);border:1px solid rgba(201,168,76,.4)}
+html[data-theme=dark] ul.content-list li,html[data-theme=dark] ol.content-list li{color:#dde4f0}
+html[data-theme=dark] .chapter-hero{background:linear-gradient(135deg,#0a1228 0%,#142040 100%)}
+html[data-theme=dark] .exercise-card{background:#1a2436;border-color:#253048}
+html[data-theme=dark] .answer-box{background:#152035;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] .answer-box p{color:#dde4f0}
+/* theme toggle button */
+#theme-btn{position:absolute;top:.65rem;right:.7rem;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.35);color:var(--gold);width:28px;height:28px;border-radius:5px;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+#theme-btn:hover{background:rgba(201,168,76,.2)}
+#sidebar-header{position:relative}
+
+/* ── HIGHLIGHT SYSTEM ─────────────────────────────────── */
+mark.hl{border-radius:2px;cursor:pointer;padding:1px 0;background:transparent}
+mark.hl[data-color=yellow]{background:rgba(255,241,118,.75)}
+mark.hl[data-color=green]{background:rgba(165,214,167,.75)}
+mark.hl[data-color=red]{background:rgba(239,154,154,.75)}
+mark.hl::after{display:none}
+mark.hl[data-note]:not([data-note=""])::after{content:"✏";font-size:.6rem;vertical-align:super;margin-left:1px;opacity:.65;display:inline}
+/* selection popup */
+#hl-popup{position:fixed;z-index:9999;background:#1a2744;border:1px solid rgba(201,168,76,.5);border-radius:8px;padding:.45rem .6rem;display:flex;align-items:center;gap:.35rem;box-shadow:0 4px 20px rgba(0,0,0,.4);pointer-events:all}
+#hl-popup.hidden{display:none!important}
+.hl-color-btn{width:24px;height:24px;border-radius:50%;border:2px solid rgba(255,255,255,.25);cursor:pointer;transition:transform .15s,border-color .15s;flex-shrink:0}
+.hl-color-btn:hover{transform:scale(1.2);border-color:rgba(255,255,255,.7)}
+.hl-color-btn[data-color=yellow]{background:#fff176}
+.hl-color-btn[data-color=green]{background:#a5d6a7}
+.hl-color-btn[data-color=red]{background:#ef9a9a}
+.hl-sep{width:1px;height:20px;background:rgba(255,255,255,.2);margin:0 .1rem}
+.hl-note-btn{background:none;border:none;color:rgba(255,255,255,.7);font-size:.9rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-note-btn:hover{color:#fff;background:rgba(255,255,255,.1)}
+.hl-del-btn{background:none;border:none;color:rgba(239,154,154,.8);font-size:.85rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-del-btn:hover{color:#ef9a9a;background:rgba(239,154,154,.12)}
+/* note modal */
+#hl-note-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center}
+#hl-note-modal.hidden{display:none!important}
+#hl-note-box{background:#fff;border-radius:10px;padding:1.4rem;width:min(420px,90vw);box-shadow:0 8px 32px rgba(0,0,0,.25)}
+#hl-note-box h3{font-size:.95rem;color:#1a2744;margin-bottom:.7rem;font-family:'Merriweather',serif}
+#hl-note-ta{width:100%;border:1px solid #d4c89a;border-radius:6px;padding:.6rem .8rem;font-size:.88rem;font-family:'Source Sans 3',sans-serif;resize:vertical;min-height:80px;color:#2c2c2c;outline:none}
+#hl-note-ta:focus{border-color:#c9a84c;box-shadow:0 0 0 2px rgba(201,168,76,.25)}
+.hl-note-actions{display:flex;justify-content:flex-end;gap:.6rem;margin-top:.8rem}
+.hl-note-cancel{background:transparent;border:1px solid #ccc;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+.hl-note-save{background:#1a2744;color:#fff;border:none;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+/* highlights panel */
+#hl-panel{position:fixed;top:0;right:0;bottom:0;width:300px;background:#fff;border-left:3px solid var(--gold);z-index:500;display:flex;flex-direction:column;box-shadow:-4px 0 20px rgba(0,0,0,.15);transform:translateX(100%);transition:transform .25s}
+#hl-panel.open{transform:translateX(0)}
+#hl-panel-hdr{background:#1a2744;padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--gold)}
+#hl-panel-hdr h3{font-size:.88rem;color:#fff;font-family:'Source Sans 3',sans-serif;font-weight:700;letter-spacing:.05em}
+#hl-panel-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.2rem;cursor:pointer;padding:.2rem;line-height:1}
+#hl-panel-close:hover{color:#fff}
+#hl-panel-list{flex:1;overflow-y:auto;padding:.6rem}
+#hl-panel-list:empty::before{content:"Chưa có ghi chú nào trong chương này.";font-size:.82rem;color:#999;display:block;padding:.8rem;text-align:center;font-style:italic}
+.hl-item{padding:.65rem .8rem;border-radius:6px;margin-bottom:.5rem;border-left:4px solid #ddd;background:#fafafa;cursor:pointer;transition:background .15s}
+.hl-item:hover{background:#f0f0f0}
+.hl-item[data-color=yellow]{border-left-color:#fdd835}
+.hl-item[data-color=green]{border-left-color:#66bb6a}
+.hl-item[data-color=red]{border-left-color:#ef5350}
+.hl-item-text{font-size:.8rem;color:#2c2c2c;line-height:1.5;margin-bottom:.3rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.hl-item-note{font-size:.75rem;color:#666;font-style:italic;margin-bottom:.3rem}
+.hl-item-del{float:right;background:none;border:none;color:#bbb;cursor:pointer;font-size:.8rem;padding:.1rem .3rem;border-radius:3px;line-height:1}
+.hl-item-del:hover{color:#ef5350;background:rgba(239,83,80,.08)}
+/* sidebar hl badge */
+#hl-sidebar-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:var(--gold);cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#hl-sidebar-btn:hover{background:rgba(201,168,76,.1)}
+#hl-badge{background:rgba(201,168,76,.2);color:var(--gold);font-size:.65rem;font-weight:700;padding:.1rem .4rem;border-radius:10px;min-width:18px;text-align:center}
+html[data-theme=dark] #hl-note-box{background:#1a2436;border:1px solid #253048}
+html[data-theme=dark] #hl-note-box h3{color:#e8d5a3}
+html[data-theme=dark] #hl-note-ta{background:#0f1520;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] #hl-panel{background:#131c2b;border-left-color:var(--gold)}
+html[data-theme=dark] .hl-item{background:#1a2436;border-bottom:1px solid #1e2d45}
+html[data-theme=dark] .hl-item:hover{background:#1e2d45}
+html[data-theme=dark] .hl-item-text{color:#dde4f0}
+html[data-theme=dark] .hl-item-note{color:#8899bb}
+html[data-theme=dark] .hl-note-cancel{border-color:#253048;color:#dde4f0;background:#1a2436}
+html[data-theme=dark] .hl-note-save{background:#c9a84c;color:#0a0f1a}
+
+/* ── CHAPTER NAV PANEL ─────────────────────────────────── */
+#chap-panel{position:fixed;inset:0;z-index:9000;display:flex;align-items:stretch}
+#chap-panel.hidden{display:none!important}
+#chap-panel-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);cursor:pointer}
+#chap-panel-box{position:relative;z-index:1;width:min(360px,90vw);background:#0f1d3a;border-right:3px solid var(--gold);display:flex;flex-direction:column;animation:slideInLeft .2s ease}
+@keyframes slideInLeft{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+#chap-panel-hdr{background:linear-gradient(135deg,#0a1228,#1a2744);padding:1.2rem 1.3rem;border-bottom:2px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
+#chap-panel-hdr h3{font-family:'Source Sans 3',sans-serif;font-size:.85rem;font-weight:700;color:#fff;letter-spacing:.1em;text-transform:uppercase}
+#chap-panel-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.3rem;cursor:pointer;padding:.2rem;line-height:1;transition:color .15s}
+#chap-panel-close:hover{color:#fff}
+#chap-panel-list{flex:1;overflow-y:auto;padding:.5rem 0}
+.chap-panel-item{display:flex;align-items:center;gap:.8rem;padding:.7rem 1.3rem;cursor:pointer;transition:background .15s;border-left:3px solid transparent;text-decoration:none}
+.chap-panel-item:hover{background:rgba(201,168,76,.1);border-left-color:var(--gold)}
+.chap-panel-item.active{background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+.cpanel-num{font-family:'Source Sans 3',sans-serif;font-size:.7rem;font-weight:700;color:var(--gold);min-width:28px;flex-shrink:0}
+.cpanel-title{font-family:'Source Sans 3',sans-serif;font-size:.8rem;color:#ccd4e8;line-height:1.35}
+.cpanel-item-active .cpanel-title{color:#fff;font-weight:600}
+.cpanel-status{margin-left:auto;font-size:.72rem;flex-shrink:0;opacity:.6}
+
+/* ── GITHUB SYNC ──────────────────────────────────── */
+#sync-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:#8899bb;cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s,color .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#sync-btn:hover{background:rgba(201,168,76,.08);color:var(--gold)}
+#sync-btn[data-state=ok]{color:#4caf50}
+#sync-btn[data-state=syncing]{color:var(--gold)}
+#sync-btn[data-state=err]{color:#ef5350}
+#sync-btn[data-state=no-token]{color:#8899bb}
+#sync-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center}
+#sync-modal.hidden{display:none!important}
+#sync-modal-box{background:#0f1d3a;border:2px solid var(--gold);border-radius:10px;padding:1.8rem 2rem;width:min(420px,90vw);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+#sync-modal-box h3{font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:.9rem;text-transform:uppercase;letter-spacing:.1em}
+#sync-modal-box p{font-size:.77rem;color:#aab8d0;line-height:1.6;margin-bottom:.9rem}
+#sync-modal-box input{width:100%;background:#0a1228;border:1px solid rgba(201,168,76,.4);color:#fff;font-family:monospace;font-size:.8rem;padding:.55rem .8rem;border-radius:5px;outline:none;margin-bottom:.8rem;box-sizing:border-box}
+#sync-modal-box input:focus{border-color:var(--gold)}
+.sync-modal-btns{display:flex;gap:.6rem;justify-content:flex-end;flex-wrap:wrap}
+.sync-modal-btns button{font-family:'Source Sans 3',sans-serif;font-size:.77rem;font-weight:700;padding:.42rem .9rem;border-radius:5px;cursor:pointer;border:none;transition:background .15s}
+#sync-save-btn{background:var(--gold);color:#0a0f1a}
+#sync-save-btn:hover{background:#e8c47a}
+#sync-cancel-btn{background:rgba(255,255,255,.1);color:#aab8d0}
+#sync-cancel-btn:hover{background:rgba(255,255,255,.18)}
+#sync-clear-btn{background:rgba(239,83,80,.18);color:#ef9090;margin-right:auto}
+#sync-clear-btn:hover{background:rgba(239,83,80,.32)}
+</style>
+</head>
+<script>
+(function(){var t=localStorage.getItem('rita_theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+</script>
+<body>
+<div id="progress-bar"></div>
+<button id="menu-btn" aria-label="Menu">☰</button>
+
+<aside id="sidebar">
+<div id="sidebar-header">
+  <div class="book-label">Rita PMP® Exam Prep</div>
+  <h2>Ôn Thi PMP®</h2>
+  <div class="edition">Rita Mulcahy · 11th Edition 2023 · Tiếng Việt</div>
+</div>
+<div id="sidebar-toc">
+  <div class="toc-group-label">Nội Dung Chương</div>
+  <a href="#ch10-quality-deliverables-products" class="">10 Chất Lượng Sản Phẩm Bàn Giao và Sản Phẩm</a>
+<a href="#ch10-introduction" class="toc-h4">Giới Thiệu</a>
+<a href="#ch10-definitions-quality" class="toc-h4">Các Định Nghĩa Liên Quan Đến Chất Lượng</a>
+<a href="#ch10-quality" class="toc-h4">Chất Lượng</a>
+<a href="#ch10-grade" class="toc-h4">Cấp Độ (Grade)</a>
+<a href="#ch10-gold-plating" class="toc-h4">Mạ Vàng (Gold Plating)</a>
+<a href="#ch10-prevention-over-inspection" class="toc-h4">Phòng Ngừa Thay Vì Kiểm Tra</a>
+<a href="#ch10-cai-tien-lien-tuc" class="toc-h4">Cải Tiến Liên Tục</a>
+<a href="#ch10-just-in-time" class="toc-h4">Just in Time (JIT)</a>
+<a href="#ch10-tong-quan-lap-ke-hoach-quan-ly-chat-luong" class="">Tổng Quan về Lập Kế Hoạch và Quản Lý Chất Lượng</a>
+<a href="#ch10-eco" class="toc-h4">ECO</a>
+<a href="#ch10-hieu-su-khac-biet-lap-ke-hoach-quan-ly-kiem-soat" class="toc-h4">Hiểu Sự Khác Biệt giữa Lập Kế Hoạch, Quản Lý và Kiểm Soát Chất Lượng</a>
+<a href="#ch10-ket-qua-mong-muon-quan-ly-chat-luong" class="toc-h4">Kết Quả Mong Muốn Từ Quản Lý Chất Lượng Thành Công</a>
+<a href="#ch10-lap-ke-hoach-quan-ly-chat-luong" class="toc-h4">Lập Kế Hoạch Quản Lý Chất Lượng</a>
+<a href="#ch10-lap-ke-hoach-chat-luong" class="">Lập Kế Hoạch Quản Lý Chất Lượng</a>
+<a href="#ch10-xay-dung-ke-hoach-chat-luong" class="toc-h4">Xây Dựng Kế Hoạch Quản Lý Chất Lượng</a>
+<a href="#ch10-san-pham-lap-ke-hoach-chat-luong" class="toc-h4">Sản Phẩm của Lập Kế Hoạch Quản Lý Chất Lượng</a>
+<a href="#ch10-chi-so-chat-luong" class="toc-h4">Chỉ Số Chất Lượng</a>
+<a href="#ch10-quan-ly-chat-luong" class="">Quản Lý Chất Lượng</a>
+<a href="#ch10-san-pham-quan-ly-chat-luong" class="toc-h4">Sản Phẩm của Quản Lý Chất Lượng</a>
+<a href="#ch10-kiem-soat-chat-luong" class="">Kiểm Soát Chất Lượng</a>
+<a href="#ch10-san-pham-kiem-soat-chat-luong" class="toc-h4">Sản Phẩm của Kiểm Soát Chất Lượng</a>
+<a href="#ch10-thuat-ngu-kiem-soat-chat-luong" class="toc-h4">Thuật Ngữ Liên Quan đến Kiểm Soát Chất Lượng</a>
+<a href="#ch10-phuong-phap-quan-ly-chat-luong" class="">Các Phương Pháp Quản Lý Chất Lượng</a>
+<a href="#ch10-phuong-phap-lap-ke-hoach-chat-luong" class="toc-h4">Các Phương Pháp Lập Kế Hoạch Chất Lượng</a>
+<a href="#ch10-phong-van-brainstorming-benchmarking" class="toc-h4">Phỏng Vấn, Brainstorming và Benchmarking</a>
+<a href="#ch10-phuong-phap-ra-quyet-dinh" class="toc-h4">Các Phương Pháp Ra Quyết Định</a>
+<a href="#ch10-phan-tich-chi-phi-loi-ich" class="toc-h4">Phân Tích Chi Phí-Lợi Ích</a>
+<a href="#ch10-chi-phi-chat-luong" class="toc-h4">Chi Phí Chất Lượng (COQ)</a>
+<a href="#ch10-phan-tich-can-bien" class="toc-h4">Phân Tích Cận Biên</a>
+<a href="#ch10-mo-hinh-du-lieu-logic" class="toc-h4">Mô Hình Dữ Liệu Logic</a>
+<a href="#ch10-so-do-tu-duy" class="toc-h4">Sơ Đồ Tư Duy</a>
+<a href="#ch10-bieu-dien-ma-tran" class="toc-h4">Biểu Diễn Ma Trận</a>
+<a href="#ch10-ma-tran-uu-tien" class="toc-h4">Ma Trận Ưu Tiên (Biểu Đồ)</a>
+<a href="#ch10-flowcharts" class="toc-h4">Lưu Đồ (Flowcharts)</a>
+<a href="#ch10-methods-managing-quality" class="toc-h4">Các Phương Pháp Quản Lý Chất Lượng</a>
+<a href="#ch10-checklists" class="toc-h4">Danh Sách Kiểm Tra (Checklists)</a>
+<a href="#ch10-cause-effect-diagrams" class="toc-h4">Sơ Đồ Nhân Quả (Fishbone, Ishikawa, hoặc Why-Why)</a>
+<a href="#ch10-scatter-diagrams" class="toc-h4">Sơ Đồ Phân Tán (Scatter Diagrams)</a>
+<a href="#ch10-histograms" class="toc-h4">Biểu Đồ Tần Số (Histograms)</a>
+<a href="#ch10-document-analysis" class="toc-h4">Phân Tích Tài Liệu (Document Analysis)</a>
+<a href="#ch10-alternatives-analysis" class="toc-h4">Phân Tích Các Lựa Chọn Thay Thế (Alternatives Analysis)</a>
+<a href="#ch10-doe" class="toc-h4">Thiết Kế Thí Nghiệm - DOE (Design of Experiments)</a>
+<a href="#ch10-process-analysis" class="toc-h4">Phân Tích Quy Trình (Process Analysis)</a>
+<a href="#ch10-root-cause-analysis" class="toc-h4">Phân Tích Nguyên Nhân Gốc Rễ (Root Cause Analysis)</a>
+<a href="#ch10-failure-analysis" class="toc-h4">Phân Tích Thất Bại (Failure Analysis)</a>
+<a href="#ch10-multicriteria-decision" class="toc-h4">Phân Tích Quyết Định Đa Tiêu Chí (Multicriteria Decision Analysis)</a>
+<a href="#ch10-affinity-diagrams" class="toc-h4">Sơ Đồ Quan Hệ (Affinity Diagrams)</a>
+<a href="#ch10-audits" class="toc-h4">Kiểm Toán (Audits)</a>
+<a href="#ch10-design-for-x" class="toc-h4">Thiết Kế Cho X (Design for X)</a>
+<a href="#ch10-giai-quyet-van-de" class="toc-h4">Giải Quyết Vấn Đề</a>
+<a href="#ch10-phuong-phap-kiem-soat-chat-luong" class="toc-h4">Các Phương Pháp Kiểm Soát Chất Lượng</a>
+<a href="#ch10-phieu-kiem-tra" class="toc-h4">Phiếu Kiểm Tra</a>
+<a href="#ch10-lay-mau-thong-ke" class="toc-h4">Lấy Mẫu Thống Kê</a>
+<a href="#ch10-bieu-mau-khao-sat" class="toc-h4">Bảng Câu Hỏi và Khảo Sát</a>
+<a href="#ch10-danh-gia-hieu-suat-du-an" class="toc-h4">Đánh Giá Hiệu Suất Dự Án</a>
+<a href="#ch10-kiem-tra" class="toc-h4">Kiểm Tra</a>
+<a href="#ch10-bieu-do-kiem-soat" class="toc-h4">Biểu Đồ Kiểm Soát</a>
+<a href="#ch10-khai-niem-quan-ly-chat-luong-agile" class="">Các Khái Niệm Quản Lý Chất Lượng Agile</a>
+<a href="#ch10-chi-phi-thay-doi" class="toc-h4">Chi Phí Thay Đổi</a>
+<a href="#ch10-phat-trien-lap-va-tang-dan" class="toc-h4">Phát Triển Lặp Lại và Tăng Dần</a>
+<a href="#ch10-xac-minh-va-xac-nhan-thuong-xuyen" class="toc-h4">Xác Minh và Xác Nhận Thường Xuyên</a>
+<a href="#ch10-agile-meetings-quality" class="toc-h4">Các Cuộc Họp (Nghi Thức) Agile Tập Trung vào Chất Lượng</a>
+<a href="#ch10-iteration-planning-meeting" class="toc-h4">Cuộc Họp Lập Kế Hoạch Vòng Lặp</a>
+<a href="#ch10-daily-standup-meetings" class="toc-h4">Các Cuộc Họp Đứng Hàng Ngày</a>
+<a href="#ch10-retrospectives-meetings" class="toc-h4">Các Cuộc Họp Cải Tiến và Hồi Tố</a>
+<a href="#ch10-wip-cycle-time" class="toc-h4">Công Việc Đang Thực Hiện (WIP) và Thời Gian Chu Kỳ</a>
+<a href="#ch10-defects" class="toc-h4">Lỗi (Defects)</a>
+<a href="#ch10-open-safe-environments" class="toc-h4">Giữ Môi Trường Dự Án Cởi Mở và An Toàn cho Mọi Người</a>
+<a href="#ch10-quality-management-outcomes-summary" class="">Kết Quả Quản Lý Chất Lượng: Tóm Tắt</a>
+<a href="#ch10-tools-techniques-quality" class="">Hiểu Các Công Cụ và Kỹ Thuật Được Sử Dụng trong Quản Lý Chất Lượng</a>
+<a href="#ch10-exercise-10-1" class="">Bài Tập 10.1</a>
+<a href="#ch10-exercise-10-1-answer" class="toc-h4">Đáp Án</a>
+<a href="#ch10-putting-it-all-together" class="toc-h4">Tổng Hợp Lại</a>
+<a href="#ch10-exercise-10-2" class="">Bài Tập 10.2</a>
+
+</div>
+<div id="sidebar-nav">
+  <a href="rita_chap08.html" class="" title="Tiến Độ & Ngân Sách">← Ch8</a>
+  <a href="#" id="chap-muc-luc-btn">☰ Mục lục</a>
+  <a href="rita_chap11.html" class="" title="Truyền Thông">Ch11 →</a>
+</div></aside>
+
+<main id="main">
+  <div class="chapter-hero">
+    <div class="ch-label">Chương 10</div>
+    <h1>Chất Lượng Sản Phẩm Bàn Giao</h1>
+    <div class="ch-en">Quality of Deliverables</div>
+  </div>
+<h3 id="ch10-quality-deliverables-products">10 Chất Lượng Sản Phẩm Bàn Giao và Sản Phẩm</h3>
+
+<h4 id="ch10-introduction">Giới Thiệu</h4>
+
+<p>Hãy dừng lại một chút để suy nghĩ về cách quản lý chất lượng trong các dự án của bạn. Nếu bạn hiện chưa sử dụng kế hoạch quản lý chất lượng, đây có thể là một chủ đề khó trong kỳ thi. Chương này sẽ giúp bạn hiểu về chất lượng và vai trò của nó trong quy trình quản lý dự án. Trong bất kỳ tổ chức nào, ban quản lý cấp cao chịu trách nhiệm thúc đẩy một cách tiếp cận tổ chức nhằm hỗ trợ các nỗ lực về chất lượng. Các thành viên trong nhóm phải tự kiểm tra công việc của mình. Đối với kỳ thi, hãy giả định có một bộ phận chất lượng giúp xác định các phương pháp quản lý chất lượng mà người quản lý dự án và nhóm phải tuân theo.</p>
+
+<p>Tài sản quy trình tổ chức (OPA) thường có sẵn dưới dạng các mẫu, quy trình đã được lập thành văn bản và các yêu cầu về chất lượng. Trong phạm vi các ràng buộc chất lượng đã được thiết lập, người quản lý dự án và nhóm phải điều chỉnh quy trình cho phù hợp với nhu cầu của dự án.</p>
+
+<p>Chất lượng phải được lên kế hoạch từ trước, kế hoạch chất lượng phải được thực hiện, xem xét và thay đổi khi cần thiết. Sau đó, kết quả của công việc — các sản phẩm bàn giao — phải đáp ứng các yêu cầu về sản phẩm. Việc kiểm thử phải được thực hiện trước khi trình bày công việc với khách hàng để được phê duyệt.</p>
+
+<p>Với điều này trong tâm trí, hãy bắt đầu với một số định nghĩa cơ bản liên quan đến chất lượng.</p>
+
+<h4 id="ch10-definitions-quality">Các Định Nghĩa Liên Quan Đến Chất Lượng</h4>
+
+<p>Định nghĩa về chất lượng là như nhau cho cả môi trường dự đoán và thích ứng. Tất cả các bên liên quan đều phải được đại diện trong quy trình thu thập yêu cầu. Điều này làm cho nỗ lực thu thập yêu cầu, tài liệu yêu cầu và đường cơ sở phạm vi dự án trở nên rất quan trọng đối với nỗ lực quản lý chất lượng.</p>
+
+<h4 id="ch10-quality">Chất Lượng</h4>
+
+<p>Chất lượng là mức độ mà một dự án và các thành phần sản phẩm của nó đáp ứng các yêu cầu. Không hơn, không kém. Hãy ghi nhớ định nghĩa này; nó có thể giúp bạn trả lời đúng nhiều câu hỏi hơn trong kỳ thi.</p>
+
+<p>Đây là một ví dụ về vấn đề với các yêu cầu chất lượng. Hãy tưởng tượng một dự án trong đó một nhóm lớn các tài xế xe tải được yêu cầu sử dụng máy tính bảng có màn hình cảm ứng. Trước khi triển khai toàn bộ xe và trong quá trình thử nghiệm, người quản lý dự án nhận được phản hồi rằng dù các tài xế chạm vào màn hình nhiều đến đâu thì vẫn không có gì xảy ra. Sau một số thảo luận với các tài xế xe tải và kỹ sư phần mềm, người quản lý dự án nhận ra rằng bàn tay của các tài xế quá thô ráp và chai cứng khiến màn hình cảm ứng không hoạt động chính xác. Ở đây, các yêu cầu đã được thu thập và việc phát triển ban đầu chỉ được thực hiện với chủ sở hữu sản phẩm, người thiếu kinh nghiệm thực tế với các tài xế. Các tài xế đã có thể cung cấp thông tin hữu ích về cách họ sử dụng công nghệ trong quá trình thu thập yêu cầu.</p>
+
+<p>Các tổ chức và người quản lý dự án xác định cách tiếp cận quản lý chất lượng. Lý tưởng nhất là điều này có nghĩa là lên kế hoạch các tiêu chuẩn và quy trình chất lượng vào các dự án và sản phẩm của chúng. Quy trình chất lượng thường bao gồm một loạt các thực hành. Điều này bao gồm việc tuân theo các quy trình đã được thiết lập, và kiểm tra các sản phẩm bàn giao để đảm bảo chúng đáp ứng các tiêu chuẩn chất lượng trước khi gặp khách hàng để xác nhận và bàn giao. Trong quá trình đó, các bài học kinh nghiệm được ghi nhận và có thể thực hiện hành động phòng ngừa hoặc hành động khắc phục đối với một quy trình hoặc sản phẩm bàn giao. Các quy trình và tiêu chuẩn chất lượng có thể được cập nhật khi xem xét mức độ hiệu quả của chúng trong việc đạt được các tính năng sản phẩm hoặc dịch vụ mong muốn.</p>
+
+<p>Nếu được hỏi, "Lên kế hoạch về chất lượng hay kiểm tra để tìm ra vấn đề chất lượng tốt hơn?", hầu như mọi người đều sẽ trả lời đúng rằng tốt hơn là lên kế hoạch về chất lượng. Các câu hỏi thi tập trung vào các tình huống để xem bạn có biết cách áp dụng kiến thức này không.</p>
+
+<div class="callout">
+<h5>QUICKTEST</h5>
+<ul class="content-list">
+  <li>Định nghĩa về chất lượng</li>
+  <li>Quy trình Quản lý Chất lượng</li>
+  <li>Phòng ngừa thay vì kiểm tra</li>
+  <li>Cải tiến liên tục</li>
+  <li>Just in time (JIT)</li>
+  <li>Chỉ số chất lượng</li>
+  <li>Loại trừ lẫn nhau</li>
+  <li>Xác suất</li>
+  <li>Phân phối chuẩn</li>
+  <li>Độc lập thống kê</li>
+  <li>Độ lệch chuẩn</li>
+  <li>Phỏng vấn, động não, đối sánh</li>
+  <li>Phân tích chi phí - lợi ích</li>
+  <li>Chi phí chất lượng</li>
+  <li>Phân tích cận biên</li>
+  <li>Mô hình dữ liệu logic</li>
+  <li>Sơ đồ tư duy</li>
+  <li>Ma trận ưu tiên</li>
+  <li>Lên kế hoạch kiểm thử và kiểm tra</li>
+  <li>Danh sách kiểm tra và phiếu kiểm tra</li>
+  <li>Biểu đồ nhân quả</li>
+  <li>Biểu đồ phân tán</li>
+  <li>Biểu đồ cột</li>
+  <li>Phân tích phương án thay thế</li>
+  <li>Thiết kế thực nghiệm</li>
+  <li>Phân tích quy trình, nguyên nhân gốc rễ, hư hỏng</li>
+  <li>Phân tích quyết định đa tiêu chí</li>
+  <li>Sơ đồ ái lực</li>
+  <li>Kiểm toán</li>
+  <li>Thiết kế cho X</li>
+  <li>Lấy mẫu thống kê</li>
+  <li>Bảng câu hỏi và khảo sát</li>
+  <li>Đánh giá hiệu suất dự án</li>
+  <li>Kiểm tra</li>
+  <li>Biểu đồ kiểm soát</li>
+  <li>Chi phí thay đổi</li>
+  <li>Xác nhận và phê duyệt thường xuyên</li>
+  <li>WIP và thời gian chu kỳ</li>
+</ul>
+</div>
+
+<div class="callout tip">
+<p><strong>Ví dụ:</strong> Người quản lý dự án phát hiện ra rằng một thành viên trong nhóm đã tự tạo ra quy trình riêng của họ để cài đặt phần cứng. Người quản lý dự án nên làm gì? Nếu đây là câu hỏi thi, những người quản lý dự án mới vào nghề có thể chọn đáp án liên quan đến việc cảm ơn thành viên nhóm vì nỗ lực của họ. Những người quản lý dự án có kinh nghiệm hơn có thể chọn đáp án liên quan đến việc tìm hiểu xem quy trình đó có tốt không. Những người quản lý dự án có kinh nghiệm nhất, những người cũng hiểu các quy trình chất lượng này, chọn đáp án liên quan đến việc điều tra kế hoạch quản lý chất lượng để xác định xem có nên tuân theo một quy trình tiêu chuẩn không.</p>
+</div>
+
+<p>Trong môi trường thích ứng, người quản lý dự án thường ghi lại các yêu cầu chất lượng và tiêu chí chấp nhận trong các câu chuyện người dùng. Khi các câu chuyện người dùng được ưu tiên, các nỗ lực chất lượng sẽ được lên kế hoạch chi tiết hơn cho các phiên phát hành và lặp lại sắp tới. Các vòng lặp ngắn, có giới hạn thời gian giúp đảm bảo cơ hội thường xuyên để xác định và khắc phục các vấn đề chất lượng thông qua các cuộc họp đứng hằng ngày và các cuộc họp cải tiến (retrospective).</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//c50fa686-9f5f-4d6e-94ad-b8b071d26b95/markdown_3/imgs/img_in_image_box_701_219_752_276.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A05Z%2F-1%2F%2F92353e294c8d9178cc743e38786f95e1b50e7508eb997ff7e39225577203259e" alt="Image" width="6%" /></div></div>
+
+<h5 id="ch10-definition-of-done">Định Nghĩa Về "Hoàn Thành"</h5>
+
+<p>Các nhóm Agile xác định "hoàn thành" trông như thế nào trong suốt dự án. Họ quyết định các định nghĩa về hoàn thành ở cấp dự án, phiên phát hành và câu chuyện. Cấp dự án được phác thảo sơ bộ dựa trên lượng thời gian và tiền bạc cần có để hoàn thành dự án. Các yêu cầu (hoặc các phần tăng thêm về chức năng sản phẩm) được ưu tiên ở cấp độ cao này. Một bản đồ phát hành được tạo ra dựa trên số lượng phiên phát hành cần thiết để đạt đến mức chức năng mong muốn. Các phiên phát hành được bổ sung với các câu chuyện, đại diện cho chức năng được phân tách thành các phần nhỏ hơn, dễ quản lý hơn. Nếu bạn nghĩ đến hình ảnh "thẻ câu chuyện" viết tay, định nghĩa "hoàn thành" được viết ở mặt sau của thẻ (mặc dù trên thực tế các thẻ câu chuyện hiện nay thường được tạo điện tử).</p>
+
+<p>Hãy nhớ rằng trong các môi trường thích ứng, các yêu cầu có thể thay đổi thường xuyên, vì vậy nhóm dự án xem xét và sửa đổi các định nghĩa về hoàn thành một cách thường xuyên. Đây là ví dụ về các định nghĩa hoàn thành sử dụng ví dụ trước đó của chúng ta về dự án sản xuất máy tính bảng màn hình cảm ứng cho tài xế xe tải:</p>
+
+<ul class="content-list">
+  <li><strong>Câu chuyện:</strong> Hai câu chuyện tạo nên tính năng b đã được phát triển, tích hợp, lập thành văn bản, kiểm thử và được người dùng thực tế chấp nhận.</li>
+  <li><strong>Phiên phát hành:</strong> Đối với phiên phát hành 1, một nguyên mẫu máy tính bảng màn hình cảm ứng đang hoạt động đã được kiểm thử và được người dùng thực tế chấp nhận, bao gồm các tính năng a, b, d và g.</li>
+  <li><strong>Dự án:</strong> Một máy tính bảng màn hình cảm ứng đang hoạt động đã được kiểm thử và được người dùng thực tế chấp nhận, đã được chuyển giao cho bộ phận vận hành để sản xuất, với các tính năng a, b, d, g, k, t, x và y.</li>
+</ul>
+
+<h4 id="ch10-grade">Cấp Độ (Grade)</h4>
+
+<p>Khác với chất lượng, cấp độ đề cập đến một phân loại chung của sản phẩm như độ bền của bê tông (ví dụ: chịu được bao nhiêu trọng lượng) có thể được sử dụng cho các thông số kỹ thuật khác nhau (ví dụ: móng nhà hoặc vỉa hè). Bạn có thể gặp một câu hỏi tình huống trong kỳ thi sử dụng thuật ngữ "cấp độ" khi thảo luận về chất lượng, vì vậy đừng nhầm lẫn hai khái niệm này.</p>
+
+<div class="callout tip">
+<p><strong>Ví dụ:</strong> Một cấp độ bê tông thấp chịu được trọng lượng giới hạn nhưng không có khuyết tật có thể đủ đáp ứng nhu cầu của dự án miễn là nó đáp ứng các yêu cầu chất lượng đã được thiết lập (ví dụ: một sân bóng rổ nhỏ trong sân chơi chỉ cần chịu được trọng lượng của lưu lượng đi bộ của con người). Không cần phải chi nhiều tiền hơn cho các vật liệu chịu được trọng lượng nhiều hơn so với yêu cầu. Tương tự như vậy, một cấp độ bê tông cao được thiết kế để chịu được trọng lượng lớn hơn có thể có chất lượng không chấp nhận được nếu nó được trộn, đổ hoặc bảo dưỡng theo tiêu chuẩn thấp hoặc nếu không đáp ứng các chỉ số chất lượng đã được thiết lập.</p>
+</div>
+
+<div class="highlight">
+<p><strong>Hãy Suy Nghĩ Về Điều Này.</strong> Hãy tưởng tượng một dự án xây dựng một sân vận động. Phần bê tông của công việc đã hoàn thành được hai phần ba thì người mua đến và kiểm tra độ bền của bê tông. Người mua thấy rằng bê tông không đáp ứng các yêu cầu về độ bền được nêu rõ trong hợp đồng. Bạn có thể tưởng tượng những vấn đề phát sinh khi người mua nói, "Phá bỏ bê tông đi; nó không chấp nhận được." Đây là lỗi của ai? Tại sao điều này lại xảy ra?</p>
+<p>Chúng ta có thể nói đây là lỗi của người mua vì không kiểm tra bê tông sớm hơn? Bạn có thể lập luận theo hướng đó, nhưng lỗi thực sự có phải là của người bán vì đã không chọn đúng cấp độ bê tông và đảm bảo chất lượng của sản phẩm bàn giao hoàn chỉnh trước khi gặp khách hàng để phê duyệt không? Họ đã có kế hoạch chất lượng chưa? Họ nên lên kế hoạch về thời điểm và cách thức xác nhận rằng họ đã đáp ứng yêu cầu này. Việc thiếu chú ý đến chất lượng trong tình huống này đã thêm rủi ro đáng kể không cần thiết vào dự án, dẫn đến làm lại và chi phí bổ sung.</p>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//c50fa686-9f5f-4d6e-94ad-b8b071d26b95/markdown_3/imgs/img_in_image_box_68_811_120_872.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A05Z%2F-1%2F%2F0f76359b45bd0c264432be3d468adb0a381c8cfc5dfacf6d9eb40c4dcd51533b" alt="Image" width="6%" /></div></div>
+
+<p>Đây là điều khác cần suy nghĩ. Có bao giờ khách hàng của bạn nói rằng một trong những sản phẩm bàn giao của bạn không chấp nhận được, mặc dù họ chưa cung cấp cho bạn định nghĩa về những gì được chấp nhận không? Điều quan trọng là biết — trước khi bắt đầu — chất lượng chấp nhận được là gì và nó sẽ được đo lường như thế nào trong dự án. Sau đó, bạn có thể xác định những gì bạn sẽ làm để đảm bảo dự án đáp ứng các yêu cầu đó. Đây là trách nhiệm của người quản lý dự án để đảm bảo chất lượng được xác định trong kế hoạch cho mỗi sản phẩm bàn giao, nếu không sẽ có tiêu chí chấp nhận không rõ ràng, chẳng hạn như "khách hàng thích nó." Thực hiện tốt quy trình quản lý chất lượng giúp người quản lý dự án tránh nhiều vấn đề trong dự án.</p>
+
+<h4 id="ch10-gold-plating">Mạ Vàng (Gold Plating)</h4>
+
+<p>Bạn có nhớ một lần nào đó trong dự án khi một trong những thành viên trong nhóm của bạn đã bàn giao nhiều hơn những gì được yêu cầu không? Bạn có thể nghĩ đến một lần nào đó bạn gặp khó khăn trong việc giữ dự án không tạo ra một cung điện khi tất cả những gì bạn cần là một nhà kho, chẳng hạn? Mạ vàng đề cập đến việc cung cấp cho khách hàng những thứ phụ trội (chức năng bổ sung, các thành phần chất lượng cao hơn, phạm vi bổ sung hoặc hiệu suất tốt hơn). Mạ vàng thường là ấn tượng của nhóm về những gì khách hàng coi trọng, và khách hàng có thể không đồng ý. Vì hầu hết các nhóm dự án đều gặp khó khăn trong việc đáp ứng các mục tiêu dự án, tất cả nỗ lực sẵn có nên được dành cho việc đạt được các mục tiêu đó, thay vì dành cho việc mạ vàng.</p>
+
+<p>Đôi khi mạ vàng không được lên kế hoạch trước, mà phát sinh từ nỗ lực của thành viên trong nhóm muốn làm tốt nhất. Người quản lý dự án phải chú ý đến các thành viên trong nhóm đang cung cấp nhiều hơn những gì được yêu cầu cho dự án.</p>
+
+<h4 id="ch10-prevention-over-inspection">Phòng Ngừa Thay Vì Kiểm Tra</h4>
+
+<p>Tốt hơn là kiểm tra công việc để tìm ra vấn đề hay ngăn ngừa chúng ngay từ đầu? Điều nào đòi hỏi ít nỗ lực hơn và ít tốn kém hơn? Hãy nhớ rằng chất lượng phải được lên kế hoạch từ trước, không phải kiểm tra để tìm ra! Bạn có thể thấy các câu hỏi thi kiểm tra sự hiểu biết của bạn rằng việc không lên kế hoạch chất lượng vào dự án sẽ dẫn đến các vấn đề sau này trong dự án.</p>
+
+<h4 id="ch10-cai-tien-lien-tuc">Cải Tiến Liên Tục</h4>
+
+<p>Cải tiến liên tục là quá trình không ngừng tìm kiếm các cách để nâng cao chất lượng công việc, quy trình và kết quả. Trong một tổ chức, điều này có thể bao gồm việc phân tích cách quản lý chất lượng được lên kế hoạch và áp dụng trong các dự án. Có một số phương pháp cải tiến liên tục liên quan đến kỳ thi.</p>
+
+<p><strong>Kaizen</strong> Các thuật ngữ "cải tiến liên tục" và "Kaizen" được coi là đồng nghĩa trong kỳ thi; tuy nhiên, ở Nhật Bản, Kaizen có nghĩa là thay đổi (kai) và làm tốt hơn hoặc cải thiện (zen). Kaizen là một thuật ngữ chung, trong khi cải tiến liên tục là một phong trào chất lượng. Tại Hoa Kỳ và hầu hết Tây Âu, cải tiến liên tục tập trung vào những cải tiến lớn. Ở Nhật Bản, trọng tâm là những cải tiến nhỏ hơn.</p>
+
+<ul class="content-list">
+  <li><strong>Total Quality Management (TQM)</strong> TQM khuyến khích các công ty và nhân viên của họ tập trung vào việc liên tục tìm kiếm các cách cải thiện chất lượng sản phẩm và quy trình kinh doanh ở mọi cấp độ của tổ chức.</li>
+  <li><strong>Six Sigma</strong> Sigma (tên gọi khác của độ lệch chuẩn) cho biết mức độ sai lệch so với giá trị trung bình được cho phép trong một quy trình. Đây là một phương pháp để đạt được sự cải thiện quy trình tổ chức và mức độ chính xác cao với sai lệch được giảm thiểu tối đa. Sigma càng cao, sai lệch (hoặc phương sai) trong quy trình càng ít. Mức độ chất lượng mà một tổ chức yêu cầu thường được biểu thị bằng 3 hoặc 6 sigma.</li>
+</ul>
+
+<h4 id="ch10-just-in-time">Just in Time (JIT)</h4>
+
+<p>JIT có nghĩa là để nhà cung cấp giao nguồn lực ngay trước khi cần, từ đó giảm tồn kho xuống gần bằng không và giảm chi phí không cần thiết. Một công ty sử dụng JIT phải đạt được mức chất lượng cao trong các hoạt động của mình; nếu không, sẽ không có đủ vật liệu hoặc thiết bị để đáp ứng yêu cầu do lãng phí và làm lại. Hệ thống JIT buộc chú ý đến cả chất lượng lẫn tiến độ.</p>
+
+<div class="callout tip">
+  <p><strong>Các PMI-ism liên quan đến chất lượng.</strong> Kỳ thi có thể kiểm tra sự hiểu biết của bạn về nhu cầu đáp ứng các yêu cầu dự án thay vì cung cấp thêm cho khách hàng để "làm họ hài lòng." Hãy nắm rõ các PMI-ism sau để trả lời câu hỏi thi đúng:</p>
+  <ul class="content-list">
+    <li>Chất lượng có nghĩa là đáp ứng các yêu cầu, không phải là thêm những thứ ngoài yêu cầu.</li>
+    <li>Tất cả những người phát triển sản phẩm đều phải biết các tiêu chuẩn và số liệu chất lượng được sử dụng trong dự án.</li>
+    <li>Chất lượng nên được kiểm tra trước khi một hoạt động hoặc gói công việc hoàn thành.</li>
+    <li>Chất lượng cần được xem xét mỗi khi có thay đổi đối với bất kỳ ràng buộc nào của dự án.</li>
+    <li>Một số hoạt động chất lượng có thể được thực hiện bởi bộ phận chất lượng.</li>
+    <li>Quản lý dự án nên:
+      <ul class="content-list">
+        <li>Xác định các số liệu cần đo lường chất lượng trước khi công việc dự án bắt đầu.</li>
+        <li>Xác định các quy trình quản lý chất lượng của dự án và lên kế hoạch cho cải tiến liên tục.</li>
+        <li>Đề xuất cải tiến các tiêu chuẩn, chính sách và quy trình của tổ chức, điều này được kỳ vọng và đón nhận bởi ban lãnh đạo.</li>
+        <li>Đảm bảo rằng các phương pháp và quy trình được phê duyệt được tuân thủ.</li>
+        <li>Đảm bảo rằng các tiêu chuẩn và quy trình chất lượng trong dự án đủ để đáp ứng các yêu cầu chất lượng sản phẩm.</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<h3 id="ch10-tong-quan-lap-ke-hoach-quan-ly-chat-luong">Tổng Quan về Lập Kế Hoạch và Quản Lý Chất Lượng</h3>
+
+<p>Các tài liệu tham khảo sau đây cho thấy rằng Quản lý Chất lượng trong mô hình các Nhóm Quy trình theo hướng dự đoán được đại diện bởi Lập kế hoạch và Quản lý Chất lượng Sản phẩm/Sản phẩm Bàn giao trong ECO. Ngoài ra, khi quản lý mua sắm, bạn sẽ cần đảm bảo rằng bên mua và bên bán có cùng hiểu biết về quy trình chất lượng. Xem chương "Mua Sắm" để biết thêm thông tin.</p>
+
+<h4 id="ch10-eco">ECO</h4>
+
+<p>Lĩnh vực II</p>
+<p>Lập kế hoạch và quản lý chất lượng sản phẩm/sản phẩm bàn giao</p>
+<p>Quản lý Chất lượng</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//c7661e77-28c1-4551-a35c-b6ceb800ce79/markdown_0/imgs/img_in_image_box_45_786_98_849.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A14Z%2F-1%2F%2F86d2047e367fe0e7521a82fc7358db06a5c2b03fe240937254a53bc086d7f8fc" alt="Image" width="6%" /></div></div>
+
+<div class="callout">
+  <p><strong>Hãy Suy Nghĩ Về Điều Này.</strong> Bạn có thể thấy cách các nhiệm vụ khác từ lĩnh vực II, như sự tham gia của các bên liên quan và truyền thông, có thể ảnh hưởng đến quản lý chất lượng không? Nếu hai thành viên trong nhóm không đồng ý về cách tiếp cận xây dựng một sản phẩm bàn giao thì sao? Kế hoạch quản lý chất lượng cần phản ánh cách tiếp cận tốt nhất, được thống nhất và được chấp nhận. Các kỹ năng như quản lý xung đột và lãnh đạo nhóm từ lĩnh vực I rất vô giá để đạt được giải pháp tốt nhất. Các kỹ năng đàm phán và xây dựng nhóm (cũng từ lĩnh vực I) hỗ trợ kế hoạch quản lý chất lượng tốt nhất và kiểm soát chất lượng tổng thể. Hãy dành thời gian xem lại ECO ngay bây giờ và suy nghĩ về những kết nối này.</p>
+</div>
+
+<p>Đây là một ví dụ giúp bạn ghi nhớ hiểu biết về chất lượng cho kỳ thi:</p>
+
+<div class="callout">
+  <p><strong>Ví dụ</strong> Một học sinh trong một lớp học của RMC nhìn qua cửa sổ và nhận thấy ai đó đang sơn đá vôi của một tòa nhà cũ thành màu trắng. Học sinh đó nói: "Đó không phải là chất lượng!" Hãy suy nghĩ về điều này. Tại sao việc sơn đá vôi thành màu trắng lại không được coi là "chất lượng"? Vấn đề của học sinh là viên đá tuyệt vời đang được sơn thay vì được làm sạch. Đây là sự bất đồng với các yêu cầu, không phải chất lượng của công việc. Nếu hợp đồng sơn yêu cầu người sơn sử dụng một loại sơn nhất định và tuân thủ các tiêu chuẩn sơn, và anh ta đang làm như vậy, thì công việc đang đáp ứng các yêu cầu chất lượng.</p>
+</div>
+
+<p>Hình 10.1 thể hiện quy trình Quản lý Chất lượng từ góc độ mô hình Nhóm Quy trình. Hình này và các thảo luận sau đây về Lập kế hoạch, Quản lý và Kiểm soát Chất lượng có thể giúp bạn hình dung mô hình quản lý chất lượng theo hướng kế hoạch trông như thế nào. Nó cũng có thể giúp bạn hiểu quản lý chất lượng nói chung.</p>
+
+<p>Điều này không có nghĩa là các phương pháp agile không có những đặc điểm riêng của chúng, nhưng việc lập kế hoạch và quản lý chất lượng trong các dự án có cùng nguyên tắc bất kể vòng đời và phương pháp phát triển của dự án. Tiếp theo sau phần thảo luận dựa trên mô hình Nhóm Quy trình này là thông tin bổ sung từ các phương pháp agile.</p>
+
+<div class="callout">
+  <p><strong>Mô hình Nhóm Quy trình</strong></p>
+  <p>Lĩnh vực Kiến thức: Quản lý Chất lượng</p>
+  <p>Thay đổi thúc đẩy một quy trình được lặp lại thông qua sự chi tiết hóa dần dần hoặc các phương pháp agile</p>
+  <p>→ Những thay đổi khiến phải quay lại khởi đầu là rất hiếm</p>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//c7661e77-28c1-4551-a35c-b6ceb800ce79/markdown_1/imgs/img_in_image_box_348_264_673_615.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A15Z%2F-1%2F%2F1f1710a1d4bc812e929654df533e3e1e05da4cd2056f7ca19efb99cc40999487" alt="Image" width="39%" /></div></div>
+
+<p style="text-align: center;"><em>HÌNH 10.1 Quy trình quản lý chất lượng</em></p>
+
+<div class="callout">
+  <p><strong>Hãy Suy Nghĩ Về Điều Này.</strong> Nhiều người chuẩn bị cho kỳ thi có kinh nghiệm quản lý chất lượng hạn chế, vì vậy họ gặp khó khăn trong việc hình dung cách các nỗ lực quản lý chất lượng phù hợp với việc quản lý một dự án trong thực tế. Bây giờ bạn đã có thể hình dung quy trình quản lý chất lượng tổng thể, hãy đi qua nó khi bạn xem xét luồng quy trình quản lý chất lượng sau đây:</p>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//c7661e77-28c1-4551-a35c-b6ceb800ce79/markdown_1/imgs/img_in_image_box_39_751_745_936.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A15Z%2F-1%2F%2Fbc0c05601f2ebef35370b356b20e4536a1ccd5db59a4a6d5cc9bb93b10921985" alt="Image" width="85%" /></div></div>
+
+<p style="text-align: center;"><em>HÌNH 10.2 Luồng quy trình quản lý chất lượng</em></p>
+
+<h4 id="ch10-hieu-su-khac-biet-lap-ke-hoach-quan-ly-kiem-soat">Hiểu Sự Khác Biệt giữa Lập Kế Hoạch, Quản Lý và Kiểm Soát Chất Lượng</h4>
+
+<p>Một trong những thách thức lớn mà mọi người gặp phải khi học chủ đề này là hiểu sự khác biệt giữa Lập kế hoạch, Quản lý và Kiểm soát Chất lượng trong mô hình Nhóm Quy trình. Dưới đây là ba quy trình chất lượng đó và tổng quan ngắn gọn về từng quy trình.</p>
+
+<ul class="content-list">
+  <li><strong>Lập Kế Hoạch Quản Lý Chất Lượng</strong> Quy trình này tập trung vào việc xác định chất lượng cho dự án, sản phẩm và quản lý dự án, đồng thời lên kế hoạch cách đạt được điều đó.</li>
+  <li><strong>Quản Lý Chất Lượng</strong> Quy trình này tập trung vào cách công việc đang được thực hiện. Mục đích của nó là đảm bảo nhóm đang tuân theo các tiêu chuẩn, chính sách và quy trình của tổ chức như đã lên kế hoạch để tạo ra các sản phẩm bàn giao của dự án. Quản lý dự án cũng đánh giá xem kế hoạch quản lý chất lượng hoặc các quy trình có cần được cải thiện không.</li>
+  <li><strong>Kiểm Soát Chất Lượng</strong> Quy trình này bao gồm việc kiểm tra các sản phẩm bàn giao thực tế được tạo ra trong dự án để đảm bảo chúng chính xác và đáp ứng mức độ chất lượng đã lên kế hoạch, đánh giá các sai lệch, tìm nguồn gốc của vấn đề và đề xuất các cách giải quyết.</li>
+</ul>
+
+<p>Bạn không có khả năng gặp phải sự khác biệt giữa "quản lý" và "kiểm soát" chất lượng trong các câu hỏi liên quan đến agile, nhưng hiểu sự khác biệt trong mô hình Nhóm Quy trình có thể giúp bạn trả lời đúng nhiều câu hỏi dự đoán hơn.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//c7661e77-28c1-4551-a35c-b6ceb800ce79/markdown_2/imgs/img_in_image_box_80_315_135_368.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A16Z%2F-1%2F%2F381e74f1586af64dfd23ee4455ce9086fec3d476ac9162fbb66ce7be3ea3df0c" alt="Image" width="6%" /></div></div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//c7661e77-28c1-4551-a35c-b6ceb800ce79/markdown_2/imgs/img_in_image_box_80_389_135_442.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A16Z%2F-1%2F%2Fbddbf39533b0cc2ad0c82d972efaa7f3203f58770694c09ad36140e61cdbd018" alt="Image" width="6%" /></div></div>
+
+<p>Bảng sau đây trình bày một mẹo để hiểu ba quy trình quản lý chất lượng. Hãy nghiên cứu nó ngay bây giờ để hiểu trọng tâm của từng quy trình trước khi đọc phần còn lại của chương này. Mẹo là hiểu rằng trong quy trình "quản lý", quản lý dự án quan tâm đến các quy trình, thủ tục và tiêu chuẩn chất lượng được cho là sử dụng trong dự án, trong khi trong "kiểm soát", quản lý dự án quan tâm đến việc xác định chất lượng của các sản phẩm bàn giao. Hãy quay lại và xem lại bảng này sau khi bạn đọc hết chương.</p>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <td style="text-align: center;"><strong>Lập Kế Hoạch Quản Lý Chất Lượng</strong></td>
+    <td style="text-align: center;"><strong>Quản Lý Chất Lượng</strong></td>
+    <td style="text-align: center;"><strong>Kiểm Soát Chất Lượng</strong></td>
+  </tr>
+  <tr>
+    <td colspan="3"><strong>Nhóm Quy Trình</strong></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Lập kế hoạch</td>
+    <td style="text-align: center;">Thực thi</td>
+    <td style="text-align: center;">Theo dõi và kiểm soát</td>
+  </tr>
+  <tr>
+    <td colspan="3"><strong>Mô Tả Cấp Cao về Trọng Tâm của Từng Quy Trình</strong></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">
+      <ul class="content-list">
+        <li>Chất lượng là gì?</li>
+        <li>Chúng ta sẽ đảm bảo nó như thế nào?</li>
+      </ul>
+    </td>
+    <td style="text-align: center;">
+      <ul class="content-list">
+        <li>Chúng ta có đang tuân theo các chính sách, số liệu, thủ tục và quy trình như đã lên kế hoạch không?</li>
+        <li>Các thủ tục và quy trình có đang mang lại kết quả như mong muốn không?</li>
+        <li>Chúng ta có đạt được các mục tiêu chất lượng không?</li>
+      </ul>
+    </td>
+    <td style="text-align: center;">
+      <ul class="content-list">
+        <li>Kết quả công việc của chúng ta có đáp ứng các tiêu chuẩn và số liệu yêu cầu không?</li>
+        <li>Sai lệch có nằm trong giới hạn cho phép không, hay chúng ta phải hành động?</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3"><strong>Mô Tả Chi Tiết Hơn về Trọng Tâm của Từng Quy Trình</strong></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">
+      <ul class="content-list">
+        <li>Xem xét các kế hoạch và tài liệu dự án để hiểu các yêu cầu chất lượng dự án.</li>
+        <li>Xác định các thông lệ chất lượng và các tiêu chuẩn nội bộ, bên ngoài liên quan đến sản phẩm và dự án (OPA và EEF).</li>
+        <li>Điều chỉnh các thông lệ và quy trình cho phù hợp với dự án.</li>
+      </ul>
+    </td>
+    <td style="text-align: center;">
+      <ul class="content-list">
+        <li>Sử dụng các số liệu đo lường từ Kiểm soát Chất lượng để xác nhận rằng:
+          <ul class="content-list">
+            <li>Các chính sách và quy trình đang được tuân thủ.</li>
+            <li>Các chính sách, số liệu và quy trình vẫn còn phù hợp với dự án.</li>
+            <li>Các chính sách và quy trình có hiệu quả trong việc đạt được các kết quả chất lượng đã lên kế hoạch.</li>
+          </ul>
+        </li>
+      </ul>
+    </td>
+    <td style="text-align: center;">
+      <ul class="content-list">
+        <li>Kiểm tra và đo lường chất lượng của các sản phẩm bàn giao để xác định xem chúng có đáp ứng yêu cầu không.</li>
+        <li>Sử dụng PMIS để theo dõi các sai lệch so với chất lượng đã lên kế hoạch.</li>
+        <li>Xác định nhu cầu cải tiến chất lượng (hành động khắc phục hoặc phòng ngừa, và sửa chữa khiếm khuyết).</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//c7661e77-28c1-4551-a35c-b6ceb800ce79/markdown_3/imgs/img_in_image_box_43_113_746_624.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A16Z%2F-1%2F%2Fd187fbaa769357c8c79a656e444707305a98bafb1cd8c526066e1223ef6c9b39" alt="Image" width="85%" /></div></div>
+
+<h4 id="ch10-ket-qua-mong-muon-quan-ly-chat-luong">Kết Quả Mong Muốn Từ Quản Lý Chất Lượng Thành Công</h4>
+
+<p>Hãy giả định trong kỳ thi rằng chất lượng được lên kế hoạch và quản lý đúng cách trừ khi thông tin trong câu hỏi thi cho thấy điều ngược lại. Điều này có nghĩa là các kết quả sau đây nên được kỳ vọng như là kết quả của quản lý chất lượng:</p>
+
+<ul class="content-list">
+  <li>Các quy trình, thủ tục và kiểm tra chất lượng được hoàn thành.</li>
+  <li>Nhóm đã cẩn thận kiểm tra công việc của chính họ để đảm bảo nó đáp ứng các yêu cầu (trong quản lý và kiểm soát chất lượng).</li>
+  <li>Các thay đổi chất lượng sản phẩm được thực hiện khi cần thiết trước khi gặp khách hàng để được chấp nhận các sản phẩm bàn giao (trong xác nhận phạm vi).</li>
+  <li>Các thay đổi đối với các quy trình và thủ tục chất lượng được thực hiện trong suốt dự án để đảm bảo rằng chúng mang lại cho nhóm và các bên liên quan những kết quả mong muốn.</li>
+  <li>Ít vấn đề chất lượng phát sinh trong dự án vì chất lượng được lên kế hoạch, thực thi và kiểm soát cẩn thận. Tuy nhiên, trong các trường hợp dự án có tính chất "nghiên cứu và phát triển", thử nghiệm và sửa lỗi là một phần của kết quả dự án.</li>
+  <li>Sự tham gia của các bên liên quan và truyền thông có chất lượng cao nên sẽ có ít hoặc không có sự hiểu lầm nào với các bên liên quan.</li>
+  <li>Các dự án thường xuyên đạt được các mục tiêu và sản phẩm của chúng mang lại giá trị cần thiết cho khách hàng. Điều này mang lại cho khách hàng lợi ích mà dự án được thực hiện và góp phần thúc đẩy các mục tiêu chiến lược của tổ chức thực hiện.</li>
+</ul>
+
+<h4 id="ch10-lap-ke-hoach-quan-ly-chat-luong">Lập Kế Hoạch Quản Lý Chất Lượng</h4>
+
+<h3 id="ch10-lap-ke-hoach-chat-luong">Lập Kế Hoạch Quản Lý Chất Lượng</h3>
+
+<p>Lập Kế Hoạch Quản Lý Chất Lượng là quy trình xác định tất cả các thực hành, tiêu chuẩn và yêu cầu liên quan của tổ chức hoặc ngành nghề đối với chất lượng của dự án và sản phẩm, sau đó lên kế hoạch để đáp ứng các tiêu chuẩn và yêu cầu đó. Đầu ra chính của quy trình này là kế hoạch quản lý chất lượng.</p>
+
+<p>Mức độ nỗ lực về chất lượng cần được điều chỉnh phù hợp với nhu cầu của dự án, và chất lượng phải được cân bằng với các ràng buộc khác của dự án. Các tiêu chuẩn có thể đến từ nội bộ tổ chức hoặc từ nguồn bên ngoài.</p>
+
+<p>Nghe có vẻ đơn giản, phải không? Thực tế thường không phải vậy. Trong nhiều tổ chức, các thực hành chưa được chuẩn hóa. Nếu điều này đúng với các dự án của bạn, hãy dành thời gian để hình dung những thực hành chuẩn hóa lý tưởng cho dự án và tác động của chúng. Dưới đây là một ví dụ thực tế:</p>
+
+<div class="callout">
+  <p><strong>Mô Hình Nhóm Quy Trình</strong></p>
+  <p>Nhóm Quy Trình: Lập Kế Hoạch</p>
+  <p>Quy Trình: Lập Kế Hoạch Quản Lý Chất Lượng</p>
+  <p><strong>ECO</strong> — Lĩnh vực II, Nhiệm vụ 7: Lập kế hoạch và quản lý chất lượng sản phẩm/bàn giao</p>
+  <p><strong>PMBOK Guide</strong> — Lĩnh vực 2.4 Lập Kế Hoạch</p>
+  <p><em>Ví dụ:</em> Một công ty xây dựng có thể thiết lập quy trình chuẩn cho việc lắp đặt bếp trong các dự án xây dựng nhà ở. Hãy tưởng tượng tất cả các thợ lắp đặt trong tổ chức đó cùng đóng góp ý tưởng tốt nhất để cải tiến công việc lắp đặt cho các dự án tương lai. Đây sẽ là nỗ lực có giá trị giúp nâng cao chất lượng và an toàn, đồng thời tiết kiệm thời gian và chi phí. Mỗi nhóm dự án sau đó được yêu cầu xem xét tiêu chuẩn và điều chỉnh cho phù hợp với dự án lắp đặt cụ thể của họ.</em></p>
+</div>
+
+<p>Ví dụ về các tiêu chuẩn bên ngoài hiện có bao gồm ISO 9000 (từ Tổ chức Tiêu chuẩn hóa Quốc tế), OSHA (từ Cơ quan An toàn và Sức khỏe Nghề nghiệp), và Công ước của Liên Hợp Quốc về Hợp đồng Mua bán Hàng hóa Quốc tế (CISG).</p>
+
+<h4 id="ch10-xay-dung-ke-hoach-chat-luong">Xây Dựng Kế Hoạch Quản Lý Chất Lượng</h4>
+
+<p>Khi lập kế hoạch quản lý chất lượng, cần lưu ý những điểm sau:</p>
+
+<ul class="content-list">
+  <li>OPA có thể giúp xác định các tiêu chuẩn, chính sách và quy trình liên quan, đồng thời bao gồm các bài học kinh nghiệm từ các dự án trước.</li>
+  <li>Người quản lý dự án có thể tạo thêm các tiêu chuẩn và quy trình riêng cho từng dự án về cách định nghĩa chất lượng cho từng phần công việc.</li>
+  <li>Đối với kỳ thi, hãy hiểu rằng nỗ lực này cũng bao gồm việc định nghĩa các quy trình thực hiện các hoạt động quản lý dự án và đề xuất cải tiến cho các quy trình hiện có.</li>
+  <li>Các tiêu chuẩn chất lượng của khách hàng có thể được quy định trong hợp đồng hoặc cần được khám phá trong quy trình Thu thập Yêu cầu.</li>
+</ul>
+
+<p>Các yêu cầu chất lượng sau đó được sử dụng để kiểm soát chất lượng, được lập thành tài liệu, phân tích và ưu tiên theo kế hoạch quản lý yêu cầu. Ví dụ về các tiêu chuẩn như vậy bao gồm:</p>
+
+<ul class="content-list">
+  <li>Quy trình lắp đặt một loại vòi bếp tùy chỉnh cụ thể</li>
+  <li>Số lượng lỗi phần mềm cho phép trên mỗi mô-đun</li>
+  <li>Độ bền của bê tông</li>
+  <li>Thời gian trung bình cho mỗi lần lắp đặt</li>
+</ul>
+
+<p>Các kế hoạch và tài liệu quản lý hỗ trợ lập kế hoạch chất lượng bao gồm:</p>
+
+<ul class="content-list">
+  <li>Kế hoạch quản lý các bên liên quan</li>
+  <li>Sổ đăng ký các bên liên quan</li>
+  <li>Danh sách các sản phẩm bàn giao chính của dự án</li>
+  <li>Ngưỡng rủi ro (trong kế hoạch quản lý rủi ro)</li>
+  <li>Yêu cầu phê duyệt (trong điều lệ dự án)</li>
+  <li>Đường cơ sở phạm vi</li>
+  <li>Ma trận truy xuất yêu cầu</li>
+  <li>Nhật ký giả định</li>
+</ul>
+
+<p>Đường cơ sở phạm vi giúp người quản lý dự án duy trì góc nhìn đúng đắn và lập kế hoạch chất lượng ở mức độ phù hợp. Nhật ký giả định cung cấp cái nhìn về mức chất lượng được giả định là chấp nhận được trong dự án. Ma trận truy xuất yêu cầu cho thấy nguồn gốc của các yêu cầu liên quan đến chất lượng và sẽ được sử dụng để xác nhận rằng các yêu cầu chất lượng, bao gồm các yêu cầu tuân thủ bên ngoài, đã được đáp ứng.</p>
+
+<h4 id="ch10-san-pham-lap-ke-hoach-chat-luong">Sản Phẩm của Lập Kế Hoạch Quản Lý Chất Lượng</h4>
+
+<p>Hầu hết các kế hoạch quản lý chất lượng bao gồm các thực hành tiêu chuẩn đã thảo luận, cùng với vai trò và trách nhiệm trong quản lý chất lượng. Các báo cáo và chỉ số sẽ được sử dụng, bao gồm những phần nào của dự án hoặc sản phẩm bàn giao sẽ được đo lường và theo các khoảng thời gian nào. Các chiến lược cải tiến liên tục quy trình và thủ tục cũng được đưa vào.</p>
+
+<p>Lập kế hoạch chất lượng sẽ tạo ra một số sản phẩm và các cập nhật cho tài liệu hiện có, bao gồm:</p>
+
+<ul class="content-list">
+  <li>Kế hoạch quản lý chất lượng</li>
+  <li>Các cập nhật tài liệu dự án</li>
+  <li>Các cập nhật kế hoạch quản lý dự án</li>
+  <li>Chỉ số chất lượng</li>
+</ul>
+
+<p>Lập kế hoạch quản lý chất lượng cũng sẽ dẫn đến các lần lặp lại của các sản phẩm dự án khác. Dưới đây là một số ví dụ:</p>
+
+<ul class="content-list">
+  <li>Đường cơ sở phạm vi (bảng mô tả phạm vi, WBS và từ điển WBS)</li>
+  <li>Ngân sách</li>
+  <li>Sổ đăng ký rủi ro (để bổ sung các rủi ro liên quan đến chất lượng)</li>
+  <li>Danh sách hoạt động dự án</li>
+  <li>Lịch trình</li>
+  <li>Ma trận truy xuất yêu cầu</li>
+  <li>Phân công nguồn lực</li>
+</ul>
+
+<h4 id="ch10-chi-so-chat-luong">Chỉ Số Chất Lượng</h4>
+
+<p>Xuyên suốt cuốn sách này có một chủ đề xuyên suốt: người quản lý dự án phải biết dự án đang thực hiện như thế nào so với kế hoạch và có khả năng xác định khi nào cần yêu cầu thay đổi. Cách duy nhất để thực hiện điều này một cách hiệu quả là xác định các chỉ số trước khi có thể và quyết định phạm vi biến động nào là chấp nhận được.</p>
+
+<p>Các chỉ số sử dụng trong dự án có thể đại diện cho:</p>
+
+<ul class="content-list">
+  <li>Số lượng thay đổi (để đo lường chất lượng của quy trình lập kế hoạch)</li>
+  <li>Phương sai liên quan đến việc sử dụng nguồn lực (Có nhiều hay ít nguồn lực được sử dụng hơn kế hoạch? Phương sai lớn đến mức nào?)</li>
+  <li>Số lượng hạng mục không đạt kiểm tra</li>
+  <li>Phương sai về trọng lượng của sản phẩm do dự án tạo ra so với trọng lượng đã lập kế hoạch</li>
+  <li>Số lượng lỗi được tìm thấy trong phần mềm đang được phát triển như một phần của dự án</li>
+</ul>
+
+<h3 id="ch10-quan-ly-chat-luong">Quản Lý Chất Lượng</h3>
+
+<p>Các nỗ lực của quy trình Quản Lý Chất Lượng tập trung vào việc đảm bảo rằng công việc dự án để tạo ra các sản phẩm bàn giao được thực hiện theo các tiêu chuẩn và quy trình được thiết lập cho dự án trong kế hoạch quản lý dự án. Người quản lý dự án cũng phải đảm bảo rằng các tiêu chuẩn chất lượng này có hiệu quả trong việc đáp ứng nhu cầu của dự án.</p>
+
+<p>Một nhóm bên ngoài nhóm dự án, chẳng hạn như bộ phận chất lượng, thường hỗ trợ công việc này. Đối với kỳ thi, hãy giả định có một bộ phận chất lượng trừ khi bằng chứng trong câu hỏi gợi ý điều ngược lại.</p>
+
+<p>Các quy trình Quản Lý Chất Lượng và Kiểm Soát Chất Lượng hoạt động song hành với nhau. Trong Quản Lý Chất Lượng, các tài liệu kiểm tra và đánh giá được chuẩn bị để sử dụng trong Kiểm Soát Chất Lượng. Đến lượt mình, quy trình này phân tích các phép đo thu thập được trong Kiểm Soát Chất Lượng và sử dụng kế hoạch quản lý chất lượng, bao gồm các yêu cầu chất lượng, để trả lời các câu hỏi sau:</p>
+
+<div class="callout">
+  <p><strong>Mô Hình Nhóm Quy Trình</strong></p>
+  <p>Nhóm Quy Trình: Thực Hiện</p>
+  <p>Quy Trình: Quản Lý Chất Lượng</p>
+  <p><strong>ECO</strong> — Lĩnh vực II, Nhiệm vụ 7: Lập kế hoạch và quản lý chất lượng sản phẩm/bàn giao</p>
+  <p><strong>PMBOK Guide</strong> — Lĩnh vực 2.6 Hiệu Suất Bàn Giao</p>
+</div>
+
+<ul class="content-list">
+  <li>Các quy trình và thủ tục có đang được tuân thủ theo kế hoạch không?</li>
+  <li>Các yêu cầu chất lượng, chính sách tổ chức và quy trình được xác định trong kế hoạch quản lý chất lượng có đang tạo ra kết quả như dự kiến không?</li>
+  <li>Các quy trình và thủ tục có thể được cải tiến không?</li>
+  <li>Làm thế nào để chúng ta tăng hiệu quả và ngăn ngừa sự cố?</li>
+  <li>Dựa trên những gì chúng ta biết hiện tại, công việc đã lập kế hoạch có phải là công việc chất lượng phù hợp cho dự án này và đúng để đáp ứng yêu cầu của khách hàng không?</li>
+</ul>
+
+<p>Quy trình quản lý chất lượng cũng bao gồm việc đánh giá tất cả các khía cạnh của thiết kế sản phẩm để xác nhận kết quả cuối cùng sẽ đáp ứng các yêu cầu chất lượng và xác định những cải tiến có thể cho thiết kế.</p>
+
+<h4 id="ch10-san-pham-quan-ly-chat-luong">Sản Phẩm của Quản Lý Chất Lượng</h4>
+
+<p>Các tài liệu kiểm tra và đánh giá để sử dụng trong Kiểm Soát Chất Lượng, chẳng hạn như biểu đồ kiểm soát, danh sách kiểm tra và kế hoạch kiểm tra, cung cấp định dạng để đánh giá xem các mục tiêu chất lượng có đạt được hay không. Các tài liệu dự án như ma trận truy xuất yêu cầu cũng có thể được cập nhật tại đây. Các báo cáo chất lượng diễn giải và lập thành tài liệu kết quả của cả hai hoạt động Quản Lý và Kiểm Soát Chất Lượng. Chúng có thể trình bày thông tin ở các định dạng khác nhau và được sử dụng để xác định các thay đổi cần thiết đối với kế hoạch, chính sách và quy trình (cho Quản Lý Chất Lượng) và đối với sản phẩm (cho Kiểm Soát Chất Lượng) để đảm bảo các yêu cầu chất lượng sẽ được đáp ứng trong suốt vòng đời dự án.</p>
+
+<h3 id="ch10-kiem-soat-chat-luong">Kiểm Soát Chất Lượng</h3>
+
+<p>Quy trình Kiểm Soát Chất Lượng đề cập đến chất lượng của sản phẩm, dịch vụ hoặc kết quả của dự án. Kiểm soát nghĩa là đo lường, và trong kiểm soát chất lượng, chúng ta đo lường xem sản phẩm của dự án có phù hợp với các yêu cầu hay không. Quy trình này giúp đảm bảo sự chấp nhận của khách hàng, vì nó liên quan đến việc xác nhận và lập thành tài liệu sự đạt được các mục tiêu đã thỏa thuận cho từng sản phẩm bàn giao.</p>
+
+<p>Những gì cần để thực hiện Kiểm Soát Chất Lượng? Đầu vào bao gồm:</p>
+
+<div class="callout">
+  <p><strong>Mô Hình Nhóm Quy Trình</strong></p>
+  <p>Nhóm Quy Trình: Giám Sát và Kiểm Soát</p>
+  <p>Quy Trình: Kiểm Soát Chất Lượng</p>
+  <p><strong>ECO</strong> — Nhiệm vụ 7: Lập kế hoạch và quản lý chất lượng sản phẩm/bàn giao</p>
+  <p><strong>PMBOK Guide</strong> — Lĩnh vực 2.7 Đo Lường</p>
+</div>
+
+<ul class="content-list">
+  <li>Các sản phẩm bàn giao</li>
+  <li>Các tài liệu kiểm tra và đánh giá (được xây dựng trong Quản Lý Chất Lượng)</li>
+  <li>Kế hoạch quản lý chất lượng và có thể là các sản phẩm dự án khác</li>
+  <li>Dữ liệu hiệu suất công việc</li>
+  <li>Chỉ số chất lượng (các biện pháp đo lường chất lượng đã thỏa thuận được xây dựng trong giai đoạn lập kế hoạch)</li>
+  <li>Các yêu cầu thay đổi được phê duyệt (từ kiểm soát thay đổi tích hợp)</li>
+</ul>
+
+<p>Mặc dù người quản lý dự án và nhóm phải tham gia kiểm soát chất lượng, nhưng bộ phận chất lượng có thể hoàn thành phần lớn công việc này ở các công ty lớn. Bộ phận đó sau đó thông báo cho người quản lý dự án về các vấn đề chất lượng thông qua các yêu cầu thay đổi kèm theo tài liệu cần thiết.</p>
+
+<p>Trong Kiểm Soát Chất Lượng, chiều cao của cửa trong quy trình sản xuất hoặc số lượng lỗi trên mỗi mô-đun sẽ được đo lường. Kiểm soát chất lượng giúp trả lời các câu hỏi sau:</p>
+
+<ul class="content-list">
+  <li>Kết quả công việc có đáp ứng các tiêu chuẩn đã thỏa thuận và do đó đáp ứng các yêu cầu không?</li>
+  <li>Những phương sai thực tế so với tiêu chuẩn là gì và chúng có nằm trong giới hạn chấp nhận được không?</li>
+  <li>Những thay đổi nào trong dự án cần được xem xét?</li>
+</ul>
+
+<h4 id="ch10-san-pham-kiem-soat-chat-luong">Sản Phẩm của Kiểm Soát Chất Lượng</h4>
+
+<p>Các sản phẩm của Kiểm Soát Chất Lượng bao gồm các phép đo, thông tin hiệu suất công việc, các sản phẩm bàn giao đã được xác minh và có thể có các yêu cầu thay đổi, cũng như các cập nhật cho kế hoạch quản lý chất lượng, nhật ký vấn đề, tài liệu kiểm tra và đánh giá, bài học kinh nghiệm và sổ đăng ký rủi ro.</p>
+
+<h4 id="ch10-thuat-ngu-kiem-soat-chat-luong">Thuật Ngữ Liên Quan đến Kiểm Soát Chất Lượng</h4>
+
+<p>Để hiểu rõ hơn các câu hỏi liên quan đến Kiểm Soát Chất Lượng, hãy làm quen với các thuật ngữ sau:</p>
+
+<ul class="content-list">
+  <li><strong>Loại trừ lẫn nhau (Mutual exclusivity)</strong> — Đề thi có thể đề cập đến các thuật ngữ thống kê như "loại trừ lẫn nhau." Hai sự kiện được gọi là loại trừ lẫn nhau nếu cả hai không thể xảy ra cùng một lúc trong một lần thử.<br><em>Ví dụ:</em> Bạn không thể đồng thời nhìn thấy cả hai mặt của cùng một đồng xu.</li>
+  <li><strong>Xác suất (Probability)</strong> — Thuật ngữ này đề cập đến khả năng một điều gì đó sẽ xảy ra. Xác suất thường được biểu thị dưới dạng số thập phân hoặc phân số.</li>
+  <li><strong>Phân phối chuẩn (Normal distribution)</strong> — Phân phối chuẩn được biểu diễn bằng một biểu đồ có hình dạng đường cong hình chuông. Nó được sử dụng để đo lường các biến thiên so với "chuẩn."</li>
+  <li><strong>Độc lập thống kê (Statistical independence)</strong> — Khái niệm này có nghĩa là xác suất của một sự kiện xảy ra không ảnh hưởng đến xác suất của một sự kiện khác xảy ra.<br><em>Ví dụ:</em> Xác suất tung được số 6 trên một con xúc xắc hoàn toàn độc lập về mặt thống kê so với xác suất tung được số 5 (hoặc thậm chí số 6 khác) ở lần tung tiếp theo.</li>
+  <li><strong>Độ lệch chuẩn (Standard deviation hay Sigma)</strong> — Chỉ số cho một phạm vi đo lường là độ lệch chuẩn của nó. Chỉ số này cho thấy một phép đo cách xa giá trị trung bình (tức là mức trung bình) của các phép đo trong phạm vi bao nhiêu. Nó biểu thị liệu phạm vi đo lường có đại diện cho một quy trình hoặc đầu ra ổn định hay không.</li>
+</ul>
+
+<div class="callout tip">
+  <p>Nếu tình huống trong câu hỏi thi hướng về tương lai, đó rất có thể là chức năng lập kế hoạch. Nếu nó nhìn lại quá khứ về các quy trình và thủ tục, đó rất có thể là một phần của chức năng quản lý. Nếu nó nhìn lại quá khứ về kết quả, như một sản phẩm bàn giao, đó rất có thể là một phần của chức năng kiểm soát.</p>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//94156c38-3fbc-4d79-9c70-eb7be1e9753c/markdown_2/imgs/img_in_image_box_49_252_103_307.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A06Z%2F-1%2F%2F51ee0fc67bbe57ac468e18ce8bb8444360769e9a0bbdbbd1a8287ce85a3874df" alt="Image" width="6%" /></div></div>
+
+<h3 id="ch10-phuong-phap-quan-ly-chat-luong">Các Phương Pháp Quản Lý Chất Lượng</h3>
+
+<p>Hiểu cả phương pháp dự đoán và thích ứng trong quản lý chất lượng có thể giúp bạn trả lời đúng nhiều câu hỏi trong kỳ thi. Các phương pháp quản lý chất lượng đã được kết hợp trong phần này để giúp bạn dễ hiểu và phân biệt những công cụ nào được sử dụng trong từng quy trình quản lý chất lượng theo Mô hình Nhóm Quy Trình. Lưu ý rằng một số phương pháp có thể được sử dụng trong nhiều quy trình chất lượng.</p>
+
+<h4 id="ch10-phuong-phap-lap-ke-hoach-chat-luong">Các Phương Pháp Lập Kế Hoạch Chất Lượng</h4>
+
+<p>Các công cụ và kỹ thuật sau được sử dụng để lập kế hoạch quản lý chất lượng. Lưu ý rằng các cuộc họp có thể được sử dụng cho bất kỳ quy trình nào.</p>
+
+<h4 id="ch10-phong-van-brainstorming-benchmarking">Phỏng Vấn, Brainstorming và Benchmarking</h4>
+
+<p>Bạn có thể nhớ đã học về các kỹ thuật này trong chương "Phạm Vi." Phỏng vấn và brainstorming có thể giúp xác định các cách thức phù hợp để đo lường chất lượng và các chỉ số hoặc quy trình cần sử dụng. Benchmarking được sử dụng để xem xét các phương pháp luận được áp dụng bởi các dự án hoặc tổ chức tương đương, nhằm thiết lập các chỉ số chất lượng và phạm vi biến thiên chấp nhận được, và để đo lường chất lượng.</p>
+
+<h4 id="ch10-phuong-phap-ra-quyet-dinh">Các Phương Pháp Ra Quyết Định</h4>
+
+<p>Việc lập kế hoạch cho các quyết định then chốt có thể bao gồm việc chọn các chỉ số quan trọng nhất hoặc ưu tiên hóa các yêu cầu chất lượng. Các công cụ và kỹ thuật ra quyết định cho quy trình này bao gồm:</p>
+
+<ul class="content-list">
+  <li><strong>Phân tích quyết định đa tiêu chí (hay phân tích có trọng số đa tiêu chí)</strong> — Phương pháp này sử dụng ma trận để liệt kê và chấm điểm các yếu tố khác nhau trong mối quan hệ với nhau. Nó có thể được sử dụng trong lập kế hoạch chất lượng để đo lường chi phí của các nỗ lực chất lượng so với lợi ích của chúng.</li>
+  <li><strong>Sơ đồ ưu tiên (Prioritization diagram)</strong> — Ma trận này là một biểu đồ phân tán trong đó nỗ lực được thể hiện trên trục ngang và giá trị của nỗ lực đó được thể hiện trên trục dọc. Trong lập kế hoạch chất lượng, chi phí của các nỗ lực chất lượng so với lợi ích của chúng có thể được đánh giá theo cách này. Lưu ý rằng PMI sử dụng thuật ngữ "ma trận" thay vì "sơ đồ" và bạn có thể thấy các thuật ngữ này được sử dụng thay thế nhau trong tài liệu quản lý dự án. Về mặt kỹ thuật có sự khác biệt nhưng bạn nên biết cả hai thuật ngữ vì chúng ta không thể dự đoán thuật ngữ nào sẽ được dùng trong đề thi.</li>
+</ul>
+
+<h4 id="ch10-phan-tich-chi-phi-loi-ich">Phân Tích Chi Phí-Lợi Ích</h4>
+
+<p>Sử dụng kỹ thuật phân tích dữ liệu này, người quản lý dự án phân tích lợi ích so với chi phí của các nỗ lực chất lượng để xác định mức độ và yêu cầu chất lượng phù hợp cho dự án. Một phương pháp ra quyết định có thể được sử dụng như một công cụ để thực hiện phân tích này. Đề thi sẽ kiểm tra kiến thức của bạn về tác động của các nỗ lực chất lượng, hoặc thiếu chúng. Lưu ý rằng nếu chất lượng kém, bạn cũng có thể phải đối mặt với chi phí tăng, lợi nhuận giảm, tinh thần thấp, sự hài lòng của khách hàng thấp, rủi ro tăng và làm lại. Những khả năng này khiến phân tích chi phí-lợi ích và chi phí của chất lượng trở thành những công cụ quan trọng cần xem xét.</p>
+
+<h4 id="ch10-chi-phi-chat-luong">Chi Phí Chất Lượng (COQ)</h4>
+
+<p>Đánh giá chi phí chất lượng có nghĩa là đảm bảo dự án không chi tiêu quá nhiều để đạt được một mức chất lượng cụ thể. Nó liên quan đến việc cân bằng chi phí phù hợp và không phù hợp với chất lượng. Có bốn loại chi phí liên quan đến chất lượng: phòng ngừa, thẩm định, thất bại nội bộ và thất bại bên ngoài.</p>
+
+<ul class="content-list">
+  <li><strong>Phòng ngừa (Prevention)</strong> — Đây là các chi phí liên quan đến việc ngăn chặn bất kỳ vấn đề chất lượng nào xảy ra. Có chi phí cho việc lập kế hoạch và thiết lập hệ thống để tránh các vấn đề chất lượng.</li>
+  <li><strong>Thẩm định (Appraisal)</strong> — Các chi phí này liên quan đến việc giám sát và kiểm soát chất lượng. Kiểm toán chất lượng, xác minh và xác nhận nằm trong danh mục này.</li>
+  <li><strong>Thất bại nội bộ (Internal failure)</strong> — Điều này liên quan đến việc phát hiện vấn đề trước khi sản phẩm đến tay khách hàng. Nó bao gồm lãng phí (thực hiện công việc không cần thiết), phế liệu (vật liệu lỗi không thể bán được) và làm lại.</li>
+  <li><strong>Thất bại bên ngoài (External failure)</strong> — Điều này xảy ra sau khi sản phẩm đã đến tay khách hàng. Ví dụ trước đó về các tài xế xe tải và công nghệ màn hình cảm ứng là một ví dụ về thất bại bên ngoài. Thất bại bên ngoài là tốn kém nhất và tác động của chúng vượt ra ngoài tiền bạc, ảnh hưởng đến uy tín.</li>
+</ul>
+
+<p>Bảng sau đây cung cấp ví dụ về chi phí phù hợp và không phù hợp với chất lượng.</p>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <td style="text-align: center; font-weight: bold;">Chi Phí Phù Hợp</td>
+    <td style="text-align: center; font-weight: bold;">Chi Phí Không Phù Hợp</td>
+  </tr>
+  <tr>
+    <td>Đào tạo chất lượng</td>
+    <td>Phế liệu</td>
+  </tr>
+  <tr>
+    <td>Nghiên cứu</td>
+    <td>Chi phí hàng tồn kho</td>
+  </tr>
+  <tr>
+    <td>Đo lường chất lượng của các sản phẩm bàn giao trung gian</td>
+    <td>Làm lại các sản phẩm bàn giao không đáp ứng tiêu chuẩn chất lượng</td>
+  </tr>
+  <tr>
+    <td>Khảo sát sự hài lòng của khách hàng (và công việc phản hồi các vấn đề được nêu ra)</td>
+    <td>Chi phí bảo hành</td>
+  </tr>
+  <tr>
+    <td>Nỗ lực để đảm bảo mọi người biết các quy trình cần sử dụng để hoàn thành công việc của họ</td>
+    <td>Mất kinh doanh</td>
+  </tr>
+</table>
+</div>
+
+<h4 id="ch10-phan-tich-can-bien">Phân Tích Cận Biên</h4>
+
+<p>Chi phí chất lượng được lập kế hoạch và sau đó được giám sát, đo lường trong suốt vòng đời dự án. Phân tích cận biên tập trung vào việc tìm ra điểm mà tại đó lợi ích hoặc doanh thu thu được từ việc cải thiện chất lượng bằng với chi phí để đạt được điều đó. Sự chú ý thêm vào chất lượng không tạo ra giá trị gia tăng. Khi đạt đến điểm đó, người quản lý dự án ngừng cố gắng cải thiện chất lượng.</p>
+
+<h4 id="ch10-mo-hinh-du-lieu-logic">Mô Hình Dữ Liệu Logic</h4>
+
+<p>Mô hình dữ liệu đại diện cho các loại dữ liệu mà tổ chức cần sử dụng trong một ứng dụng cụ thể và các mối quan hệ giữa các loại dữ liệu đó. Hình 10.3 cho thấy một phần của mô hình dữ liệu được gọi là sơ đồ quan hệ thực thể (ERD). Nó minh họa dữ liệu liên quan đến "địa điểm văn phòng" có liên quan đến dữ liệu liên quan đến "nhân viên." Ví dụ này cho thấy rằng một nhân viên không nhất thiết phải được phân công đến một địa điểm văn phòng. Đây là một quy tắc kinh doanh có thể xác minh và kiểm tra được.</p>
+
+<h4 id="ch10-so-do-tu-duy">Sơ Đồ Tư Duy</h4>
+
+<p>Như đã thảo luận trong chương "Phạm Vi," sơ đồ tư duy là một sơ đồ về ý tưởng hoặc ghi chú để giúp tạo ra, phân loại hoặc ghi lại thông tin. Nó được sử dụng ở đây để hỗ trợ việc thu thập các yêu cầu chất lượng và minh họa tác động của chúng đến các phần khác của lập kế hoạch dự án.</p>
+
+<h4 id="ch10-bieu-dien-ma-tran">Biểu Diễn Ma Trận</h4>
+
+<p>Ma trận là thông tin được biểu diễn theo định dạng hàng và cột. Nó thể hiện trực quan mối quan hệ giữa hai hoặc nhiều tập hợp các mục. Trong lập kế hoạch, các sơ đồ ma trận có thể được sử dụng để liệt kê các yêu cầu chất lượng trong một cột và các đặc điểm của chúng trong các cột khác, ví dụ, nhãn chỉ mức độ ưu tiên. Danh sách có thể được sắp xếp để dễ dàng xác định những mục quan trọng nhất. Backlog Agile là một ví dụ tốt về dữ liệu được biểu diễn dưới dạng ma trận.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//94156c38-3fbc-4d79-9c70-eb7be1e9753c/markdown_3/imgs/img_in_image_box_603_602_765_959.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A07Z%2F-1%2F%2F1f9cb596666b07c6d4e4ba06784b921154ce4b94ee2372e9d887be0f4fcdfb11" alt="Image" width="19%" /></div></div>
+
+<h4 id="ch10-ma-tran-uu-tien">Ma Trận Ưu Tiên (Biểu Đồ)</h4>
+
+<p>Công cụ này có thể được dùng để xếp hạng theo số các lựa chọn hiện có. Nó hữu ích cho việc phân tích quyết định trong lập kế hoạch quản lý chất lượng. Hình 10.4 là ma trận ưu tiên hóa cho thấy người quản lý dự án nên thực hiện hai lựa chọn hàng đầu, nhưng có thể không nên thực hiện mỗi bài kiểm thử đơn vị quá ba lần. Trong kỳ thi, bạn có thể thấy từ "matrix" (ma trận), "diagram" (sơ đồ), hoặc "chart" (biểu đồ) được dùng để chỉ công cụ này.</p>
+
+<h4 id="ch10-flowcharts">Lưu Đồ (Flowcharts)</h4>
+
+<p>Còn được gọi là luồng quy trình hoặc bản đồ quy trình, lưu đồ có thể được sử dụng trong nhiều yếu tố của quản lý dự án. Chúng cho thấy cách một quy trình hoặc hệ thống vận hành từ đầu đến cuối, cách các yếu tố liên kết với nhau, và các đường đi thay thế mà quy trình có thể thực hiện. Lưu đồ có thể được dùng để:</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//94156c38-3fbc-4d79-9c70-eb7be1e9753c/markdown_4/imgs/img_in_image_box_513_106_737_305.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A07Z%2F-1%2F%2Ffcfc7fc95efd9cd3e2f91f3c106d8bbd4c5be43615b88c2e6e16c43de752f2ac" alt="Image" width="27%" /></div></div>
+
+<p>Xác định và truyền đạt các quy trình sẽ được sử dụng trong dự án, tránh xảy ra lỗi.</p>
+
+<p><em>Ma trận ưu tiên hóa (sơ đồ)</em></p>
+
+<ul class="content-list">
+  <li>Cho thấy các phụ thuộc trong một quy trình để xác định nơi có thể phát sinh vấn đề chất lượng trong quy trình đó.</li>
+  <li>Nghiên cứu các bước của một quy trình đang gây ra lỗi chất lượng. Phân tích này có thể phát hiện ra sự nhầm lẫn trong nhóm hoặc chỉ ra những cách quy trình cần được điều chỉnh để hiệu quả hơn.</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//94156c38-3fbc-4d79-9c70-eb7be1e9753c/markdown_4/imgs/img_in_image_box_187_419_597_556.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A07Z%2F-1%2F%2Fe6740b53e2b3ea88c327e29f5ebf5c5b921c74f2d16b8551650baa5477371dad" alt="Image" width="49%" /></div></div>
+
+<div style="text-align: center;">HÌNH 10.5 Lưu đồ tổng quát</div>
+
+<h5>Lập Kế Hoạch Kiểm Tra và Thanh Tra</h5>
+
+<p>Lập kế hoạch chất lượng bao gồm việc xác định cách nhóm sẽ xác nhận rằng mức độ chất lượng yêu cầu đã đạt được trong các sản phẩm bàn giao đã hoàn thành, cũng như cách các sản phẩm bàn giao sẽ được đánh giá về hiệu suất và độ tin cậy. Các phương pháp kiểm tra, thay đổi tùy theo loại sản phẩm, dịch vụ hoặc kết quả được tạo ra bởi dự án, được sử dụng để kiểm soát chất lượng. Kế hoạch quản lý chất lượng được tạo ra để ngăn ngừa các vấn đề chất lượng.</p>
+
+<h4 id="ch10-methods-managing-quality">Các Phương Pháp Quản Lý Chất Lượng</h4>
+
+<p>Các phương pháp Quản Lý Chất Lượng (Manage Quality) sau đây được vận dụng để phân tích các quy trình được sử dụng để tạo ra sản phẩm của dự án. Một số công cụ tương tự cũng được sử dụng trong Kiểm Soát Chất Lượng (Control Quality) để phân tích các lỗi sản phẩm.</p>
+
+<h4 id="ch10-checklists">Danh Sách Kiểm Tra (Checklists)</h4>
+
+<p>Danh sách kiểm tra (hình 10.6) có thể được dùng để xác nhận rằng tất cả các bước của một quy trình đã được hoàn thành. Nó cũng có thể được dùng để phân tích các lỗi được phát hiện trong các cuộc thanh tra chất lượng, để tìm kiếm vấn đề trong quy trình, và để đánh giá xem một sản phẩm bàn giao có đáp ứng các tiêu chí chấp nhận hay không.</p>
+
+<h4 id="ch10-cause-effect-diagrams">Sơ Đồ Nhân Quả (Fishbone, Ishikawa, hoặc Why-Why)</h4>
+
+<p>Nhóm có thể sử dụng sơ đồ nhân quả (xem hình 10.7) để xác nhận rằng các chính sách và quy trình đang được tuân thủ, các số liệu đang được sử dụng đúng cách, và các quy trình đã đầy đủ để tạo ra mức độ chất lượng yêu cầu trong các sản phẩm bàn giao của dự án.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//94156c38-3fbc-4d79-9c70-eb7be1e9753c/markdown_4/imgs/img_in_image_box_649_776_744_904.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A07Z%2F-1%2F%2Fe70136e9c0bdfd53e438b3c2972c72a828bc8cd191587d4659cafb6b4bc8c5c0" alt="Image" width="11%" /></div></div>
+
+<p><em>HÌNH 10.6 Danh sách kiểm tra</em></p>
+
+<p>Trong ví dụ sau, lỗi "hệ thống sẽ không cài đặt được" được thể hiện ở phía bên phải và sau đó các nguyên nhân có thể xảy ra được liệt kê nhằm nỗ lực tìm ra nguyên nhân gốc rễ của lỗi.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//04149c49-bccf-4259-8312-5094c15f9eef/markdown_0/imgs/img_in_image_box_267_166_574_384.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A49%3A08Z%2F-1%2F%2Ff96f75fbc0aa8fc62d7e82709d91e6b884ef63830f7be6f9b03e9a00d6bbd446" alt="Image" width="37%" /></div></div>
+
+<div style="text-align: center;">HÌNH 10.7 Sơ đồ nhân quả</div>
+
+<h4 id="ch10-scatter-diagrams">Sơ Đồ Phân Tán (Scatter Diagrams)</h4>
+
+<p>Sơ đồ này theo dõi hai biến số để xác định mối quan hệ của chúng với chất lượng kết quả. Hình 10.8 cho thấy ba ví dụ về sơ đồ phân tán.</p>
+
+<p>Đường hồi quy (hoặc đường xu hướng) được tính toán để thể hiện mối tương quan của các biến số, sau đó có thể được sử dụng để ước tính và dự báo. Hình 10.8 minh họa các mẫu kết quả có thể xảy ra: mối tương quan thuận hay tích cực giữa lượng sơn và thời gian khô, mối tương quan nghịch hay tiêu cực giữa tốc độ quạt sấy và thời gian khô, và không có mối tương quan giữa trọng lượng cửa và thời gian khô.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//04149c49-bccf-4259-8312-5094c15f9eef/markdown_0/imgs/img_in_chart_box_47_568_280_775.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A49%3A08Z%2F-1%2F%2Fd2cf5d2c4d1a59356a1d103d3c8024f17f01ddd0170418d6b0c43c6e557d0fc3" alt="Image" width="28%" /></div></div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//04149c49-bccf-4259-8312-5094c15f9eef/markdown_0/imgs/img_in_chart_box_283_568_516_778.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A49%3A08Z%2F-1%2F%2F96b53ccaf9ffaf426efcaa66d2017ab0fec72ba201a3fd01e7e474ee831bde7e" alt="Image" width="28%" /></div></div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//04149c49-bccf-4259-8312-5094c15f9eef/markdown_0/imgs/img_in_chart_box_517_568_749_768.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A49%3A08Z%2F-1%2F%2Fcf4d5703e1be2117faed792779817c491ce1d50ac9a2b314a8b5c619d4854f2e" alt="Image" width="28%" /></div></div>
+
+<div style="text-align: center;">HÌNH 10.8 Sơ đồ phân tán</div>
+
+<h4 id="ch10-histograms">Biểu Đồ Tần Số (Histograms)</h4>
+
+<p>Biểu đồ tần số có thể được sử dụng để phân tích loại và tần suất của các lỗi nhằm xác định nơi cần tập trung cải thiện chất lượng. Hình 10.9 là một ví dụ về biểu đồ tần số.</p>
+
+<h4 id="ch10-document-analysis">Phân Tích Tài Liệu (Document Analysis)</h4>
+
+<p>Phân tích tài liệu bao gồm việc xem xét kết quả kiểm tra và các báo cáo chất lượng khác để xác định những cách mà kế hoạch quản lý chất lượng và các quy trình có thể không hỗ trợ việc tạo ra các sản phẩm bàn giao đáp ứng yêu cầu chất lượng của dự án.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//04149c49-bccf-4259-8312-5094c15f9eef/markdown_0/imgs/img_in_chart_box_448_847_753_1003.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A49%3A09Z%2F-1%2F%2F7ff01b4bee2c6f798fe3c0e55d130141c5ce2d3b28e0ad09dcd90d8310afe239" alt="Image" width="37%" /></div></div>
+
+<h4 id="ch10-alternatives-analysis">Phân Tích Các Lựa Chọn Thay Thế (Alternatives Analysis)</h4>
+
+<p>Điều quan trọng là phải xem xét tất cả các cách để giải quyết một vấn đề hay sự cố. Trong Quản Lý Chất Lượng, phân tích các lựa chọn thay thế có thể được sử dụng để đánh giá hành động nào sẽ ảnh hưởng tốt nhất đến kết quả của các quy trình quản lý chất lượng. Ví dụ: một công cụ kiểm tra tự động mới sẽ mang lại nhiều lợi ích hơn hay việc xác định lại quy trình kiểm tra sẽ tốt hơn?</p>
+
+<h4 id="ch10-doe">Thiết Kế Thí Nghiệm - DOE (Design of Experiments)</h4>
+
+<p>Kỹ thuật này có thể được sử dụng cho phân tích các lựa chọn thay thế và có thể nhanh chóng khám phá ra các điều kiện tối ưu để tạo ra sản phẩm bàn giao có chất lượng. Thực nghiệm được tiến hành để xác định về mặt thống kê những biến số nào sẽ cải thiện chất lượng. Ví dụ, DOE có thể được sử dụng để tìm kiếm các cách mang lại cùng mức độ chất lượng với chi phí thấp hơn. DOE là một kỹ thuật nhanh và chính xác cho phép người quản lý dự án thay đổi có hệ thống các yếu tố quan trọng trong một quy trình và xem tổ hợp nào có tác động tối ưu lên các sản phẩm bàn giao của dự án.</p>
+
+<div class="callout">
+  <p><strong>Ví dụ</strong> Các nhà thiết kế có thể sử dụng DOE để xác định tổ hợp vật liệu, cấu trúc và cách xây dựng nào sẽ tạo ra sản phẩm có chất lượng cao nhất. Một lưu ý là việc thực hiện các thí nghiệm cho từng biến trong một quy trình để đánh giá tác động của nó đến chất lượng có thể tốn nhiều thời gian và có thể bỏ qua các tương tác giữa các biến số.</p>
+</div>
+
+<h4 id="ch10-process-analysis">Phân Tích Quy Trình (Process Analysis)</h4>
+
+<p>Phân tích quy trình là một phần của nỗ lực cải tiến liên tục và tập trung vào việc xác định những cải tiến có thể cần thiết trong các quy trình dự án. Bạn đã từng làm việc trong một dự án mà một số hoạt động hoặc gói công việc được lặp lại chưa? Điều này thường xảy ra khi các dự án có nhiều lần triển khai, chẳng hạn như một dự án cài đặt phần mềm lên hàng trăm máy tính. Những bài học kinh nghiệm từ một vài lần cài đặt đầu tiên được sử dụng để cải thiện quy trình cho các lần cài đặt còn lại. Mặc dù điều này thường xảy ra một cách tự nhiên, việc lên kế hoạch cho nó vào một số điểm nhất định trong dự án sẽ cải thiện kết quả.</p>
+
+<h4 id="ch10-root-cause-analysis">Phân Tích Nguyên Nhân Gốc Rễ (Root Cause Analysis)</h4>
+
+<p>Phân tích nguyên nhân gốc rễ trong Quản Lý Chất Lượng nhằm tìm kiếm và xác định các quy trình, thủ tục và chính sách trong kế hoạch có thể không hiệu quả hoặc cần được điều chỉnh. Việc xác định nguyên nhân gốc rễ của một vấn đề chất lượng giúp nhóm ngăn ngừa nó tái diễn. Sơ đồ nhân quả (như được trình bày trong hình 10.7) hỗ trợ trong phân tích nguyên nhân gốc rễ.</p>
+
+<h4 id="ch10-failure-analysis">Phân Tích Thất Bại (Failure Analysis)</h4>
+
+<p>Đây là một loại phân tích nguyên nhân gốc rễ. Nó phân tích các quy trình thất bại hoặc các thành phần thất bại của sản phẩm bàn giao để xác định nguyên nhân dẫn đến thất bại. Hành động khắc phục hoặc yêu cầu thay đổi thường là kết quả của phân tích này.</p>
+
+<h4 id="ch10-multicriteria-decision">Phân Tích Quyết Định Đa Tiêu Chí (Multicriteria Decision Analysis)</h4>
+
+<p>Người quản lý dự án phải tạo điều kiện thuận lợi cho các quyết định về chất lượng. Là một kỹ thuật ra quyết định, phân tích quyết định đa tiêu chí là một phương pháp phức tạp để đánh giá số học các lựa chọn dựa trên các tiêu chí như thời gian, chi phí và chất lượng. Nó có thể được sử dụng xuyên suốt một dự án để giúp nhóm đạt được sự đồng thuận về cách tốt nhất để giải quyết vấn đề hoặc cải thiện chất lượng. Trong Quản Lý Chất Lượng, nhóm có thể sử dụng kỹ thuật này khi xem xét có nên điều chỉnh kế hoạch quản lý chất lượng hay các quy trình và thủ tục cụ thể hay không. Ma trận ưu tiên hóa (được mô tả trước đó) là một kỹ thuật ra quyết định đơn giản hơn.</p>
+
+<h4 id="ch10-affinity-diagrams">Sơ Đồ Quan Hệ (Affinity Diagrams)</h4>
+
+<p>Chúng ta đã thấy kỹ thuật này lần đầu tiên trong quy trình Thu Thập Yêu Cầu (Collect Requirements). Trong Quản Lý Chất Lượng, sơ đồ quan hệ có thể giúp người quản lý dự án tổ chức và nhóm các kết quả của phân tích nguyên nhân gốc rễ.</p>
+
+<div class="callout tip">
+  <p><strong>Ví dụ</strong> Trong Kiểm Soát Chất Lượng, bạn có thể đã xác định được nguyên nhân khiến một sản phẩm bàn giao không đáp ứng yêu cầu. Bạn có thể sử dụng thông tin này trong quy trình Quản Lý Chất Lượng để xác định xem một sự thay đổi trong các tiêu chuẩn, chính sách hoặc thủ tục trong kế hoạch quản lý chất lượng có giải quyết được nguyên nhân gốc rễ của vấn đề hay không.</p>
+</div>
+
+<h4 id="ch10-audits">Kiểm Toán (Audits)</h4>
+
+<p>Hãy tưởng tượng một nhóm kiểm toán viên bước vào văn phòng của bạn một ngày nào đó để kiểm tra dự án. Công việc của họ là xem bạn có tuân thủ các tiêu chuẩn, chính sách và thủ tục của công ty như được xác định trong kế hoạch quản lý chất lượng hay không, và để xác định liệu những gì đang được sử dụng có hiệu quả và hiệu suất hay không. Kịch bản này thể hiện một cuộc kiểm toán chất lượng. Đừng coi một cuộc kiểm toán chất lượng là một sự kiện tiêu cực. Thay vào đó, một cuộc kiểm toán chất lượng tốt sẽ tìm kiếm những bài học kinh nghiệm mới và các thực hành hiệu quả mà dự án của bạn có thể đóng góp cho tổ chức thực hiện. Công việc của một dự án không chỉ là tạo ra sản phẩm của dự án; nó còn có thể đóng góp cho các thực hành tốt nhất trong tổ chức, giúp tổ chức trở nên tốt hơn.</p>
+
+<p>Nếu bạn không có nhóm kiểm toán viên từ bộ phận chất lượng đến thăm các dự án của bạn, bạn có đảm nhận trách nhiệm tìm kiếm cơ hội xác định bài học kinh nghiệm và các thực hành tốt nhất không? Mặc dù kiểm toán chất lượng thường được thực hiện bởi bộ phận chất lượng, người quản lý dự án có thể dẫn đầu nỗ lực này nếu tổ chức thực hiện không có bộ phận như vậy.</p>
+
+<div class="highlight">
+  <p>Nếu bạn thấy từ "audit" (kiểm toán) trong kỳ thi, câu hỏi rất có thể liên quan đến Quản Lý Chất Lượng (Manage Quality). Nếu bạn thấy từ "inspect" (thanh tra) trong kỳ thi, câu hỏi rất có thể liên quan đến Kiểm Soát Chất Lượng (Control Quality). Chúng ta kiểm toán quy trình và thanh tra sản phẩm.</p>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//04149c49-bccf-4259-8312-5094c15f9eef/markdown_2/imgs/img_in_image_box_81_186_136_241.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A49%3A10Z%2F-1%2F%2F92f8cda4e03c72f60386917fd65b2ca860b433fc66d8d30b5f01dd74691901c1" alt="Image" width="6%" /></div></div>
+
+<h4 id="ch10-design-for-x">Thiết Kế Cho X (Design for X)</h4>
+
+<p>Design for X là một cách khác để phân tích các biến số nhằm đánh giá cả hiệu quả của kế hoạch quản lý chất lượng và khả năng của nhóm trong việc đạt được các mục tiêu. Chữ X trong tên có thể đại diện cho một thuộc tính của chất lượng, chẳng hạn như độ tin cậy, bảo mật, hoặc khả năng bảo trì. Nếu kế hoạch không mang lại kết quả như dự định liên quan đến biến số đang được phân tích, Design for X có thể giúp xác định những thay đổi nào là cần thiết.</p>
+
+<h4 id="ch10-giai-quyet-van-de">Giải Quyết Vấn Đề</h4>
+<p>Hãy nghĩ xem kỹ thuật này quan trọng như thế nào khi gặp phải các vấn đề về chất lượng. Hiểu rõ vấn đề thực sự là bước đầu tiên để tìm ra giải pháp hiệu quả và lâu dài. Giải quyết vấn đề có thể được sử dụng khi xem xét các cải tiến chất lượng hoặc để xác định cách phản hồi tốt nhất đối với các thiếu sót được xác định trong các cuộc kiểm toán chất lượng.</p>
+<p>Sau đây là các bước được sử dụng để phân tích vấn đề chất lượng (và bất kỳ vấn đề nào):</p>
+<ol class="content-list">
+  <li>Xác định vấn đề thực sự hoặc căn nguyên. Nó thường không phải là những gì được trình bày hoặc những gì có vẻ là vấn đề.</li>
+  <li>Phân tích vấn đề.</li>
+  <li>Xác định các giải pháp.</li>
+  <li>Chọn một giải pháp.</li>
+  <li>Triển khai giải pháp.</li>
+  <li>Xem xét lại giải pháp và xác nhận rằng giải pháp đó đã giải quyết được vấn đề.</li>
+</ol>
+
+<h4 id="ch10-phuong-phap-kiem-soat-chat-luong">Các Phương Pháp Kiểm Soát Chất Lượng</h4>
+<p>Mục tiêu cuối cùng trong việc kiểm soát chất lượng là kiểm tra (kiểm tra và xác minh) rằng mỗi sản phẩm bàn giao đáp ứng các số liệu và yêu cầu được nêu trong kế hoạch quản lý chất lượng, bao gồm các tiêu chí nghiệm thu của khách hàng, và rằng sản phẩm bàn giao đã sẵn sàng để chuyển sang quy trình Xác Nhận Phạm Vi — quy trình này sẽ kết thúc bằng sự chấp thuận của khách hàng. Các phương pháp sau đã được giải thích trước đó trong chương này:</p>
+<ul class="content-list">
+  <li><strong>Danh sách kiểm tra:</strong> Trong Kiểm Soát Chất Lượng, danh sách kiểm tra được sử dụng để xác định rằng tất cả các tính năng và chức năng cần thiết đều được bao gồm, và rằng chúng đáp ứng các tiêu chí nghiệm thu. Danh sách kiểm tra có thể là một phần của tài liệu kiểm tra và đánh giá được tạo ra trong Quản Lý Chất Lượng. Danh sách kiểm tra chất lượng có thể là danh sách các mục cần kiểm tra, danh sách các bước cần thực hiện, hoặc hình ảnh của mục cần kiểm tra, có khoảng trống để ghi chú các khiếm khuyết tìm thấy.</li>
+  <li><strong>Phân tích căn nguyên:</strong> Phương pháp này được sử dụng để xác định nguyên nhân của các vấn đề chất lượng, bao gồm các khiếm khuyết, để xác định cách khắc phục chúng sao cho vấn đề không tái xảy ra.</li>
+  <li><strong>Sơ đồ nhân quả:</strong> Trong Quản Lý Chất Lượng, chúng ta đã thảo luận về việc áp dụng sơ đồ nhân quả để xác định căn nguyên của các vấn đề chất lượng liên quan đến kế hoạch, quy trình hoặc thủ tục. Trong Kiểm Soát Chất Lượng, công cụ này có thể được sử dụng để nhìn lại những gì có thể đã góp phần vào các khiếm khuyết đã xảy ra cũng như để phân tích tác động của các khiếm khuyết đối với chất lượng và khả năng chấp nhận của một sản phẩm bàn giao. Hãy xem lại hình 10.7 để ôn lại khái niệm này.</li>
+  <li><strong>Biểu đồ phân tán:</strong> Biểu đồ phân tán có thể được sử dụng để kiểm soát chất lượng bằng cách so sánh kết quả thực tế với những gì đã được dự đoán, và để ước tính và dự báo kết quả trong tương lai dựa trên sự so sánh này. Để ôn tập, hãy xem lại hình 10.8 và mô tả đi kèm trong phần Quản Lý Chất Lượng.</li>
+</ul>
+<div class="callout">
+  <p><strong>Ví dụ:</strong> Hãy tưởng tượng nhà sản xuất cửa của chúng ta có một dự án phát triển dòng sản phẩm cửa sơn mới. Biểu đồ phân tán có thể được sử dụng để xác định mối quan hệ của các biến độc lập, chẳng hạn như lượng sơn, tốc độ quạt sấy và trọng lượng cửa, với biến phụ thuộc là thời gian sấy, hoặc để tương quan các khiếm khuyết với các biến khác trong quy trình.</p>
+</div>
+<ul class="content-list">
+  <li><strong>Biểu đồ cột và biểu đồ Pareto:</strong> Kết quả của các phép đo thực hiện trong Kiểm Soát Chất Lượng được hiển thị trên biểu đồ cột để xác định các vấn đề cần được chú ý ngay nhất hoặc có khả năng nhất ngăn dự án đạt được các yêu cầu chất lượng.</li>
+</ul>
+<p>So sánh các biểu đồ cột trong hình 10.10 và lưu ý rằng biểu đồ cột thông thường (bên trái) trình bày dữ liệu không theo thứ tự cụ thể nào. Biểu Đồ Pareto, như được hiển thị bên phải, là một loại biểu đồ cột thường được sử dụng, sắp xếp kết quả từ thường xuyên nhất đến ít thường xuyên nhất để giúp xác định những vấn đề nào đang gây ra nhiều sự cố nhất. Còn được gọi là Nguyên Tắc Pareto, "quy tắc" 80/20 nêu rằng 80 phần trăm vấn đề là do 20 phần trăm căn nguyên. Giải quyết căn nguyên của các vấn đề thường xuyên nhất sẽ tạo ra tác động lớn nhất đến chất lượng.</p>
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//04149c49-bccf-4259-8312-5094c15f9eef/markdown_3/imgs/img_in_chart_box_49_209_390_353.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A49%3A11Z%2F-1%2F%2F7b380444e42a68422ac7fcddf1784d52ff004cd1b37b52c8d62c46baaa722efe" alt="Image" width="41%" /></div></div>
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//04149c49-bccf-4259-8312-5094c15f9eef/markdown_3/imgs/img_in_chart_box_408_209_749_353.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A49%3A11Z%2F-1%2F%2F5b91028b482651218b4bda9f8abc63a7822c8f742c3d51c4527e9e07c3e25784" alt="Image" width="41%" /></div></div>
+<div class="img-center"><p><em>HÌNH 10.10 So sánh biểu đồ cột thông thường (trái) và Biểu Đồ Pareto (phải)</em></p></div>
+
+<p>Các phương pháp sau đây dành riêng cho Kiểm Soát Chất Lượng.</p>
+
+<h4 id="ch10-phieu-kiem-tra">Phiếu Kiểm Tra</h4>
+<p>Phiếu kiểm tra là một loại danh sách kiểm tra có thể được sử dụng để theo dõi dữ liệu, chẳng hạn như các vấn đề chất lượng được phát hiện trong quá trình kiểm tra, cũng như để ghi lại tần suất xảy ra của một khiếm khuyết cụ thể, như minh họa trong hình 10.11.</p>
+
+<h4 id="ch10-lay-mau-thong-ke">Lấy Mẫu Thống Kê</h4>
+<div class="table-wrap">
+  <table>
+    <tr>
+      <th>Khiếm Khuyết</th>
+      <th>Tần Suất</th>
+    </tr>
+    <tr>
+      <td>Quá dài</td>
+      <td>will</td>
+    </tr>
+    <tr>
+      <td>Quá hẹp</td>
+      <td>III</td>
+    </tr>
+    <tr>
+      <td>Quá rộng</td>
+      <td>Willi</td>
+    </tr>
+    <tr>
+      <td>Quá ngắn</td>
+      <td>II</td>
+    </tr>
+  </table>
+</div>
+<p>Hãy nghĩ đến một dự án tạo ra quy trình mới để sản xuất cửa. Sẽ có một biến thể nhỏ được cho phép về chiều cao và chiều rộng của những cánh cửa đang được làm. Những nỗ lực đầu tiên trong việc tạo ra các cánh cửa phải được kiểm tra để đảm bảo các cánh cửa đáp ứng yêu cầu. Nhưng việc kiểm tra từng cánh cửa có mất quá nhiều thời gian không? Có thể lấy mẫu đủ số cửa để kiểm tra tuân thủ yêu cầu một cách tự tin mà không cần kiểm tra mỗi cánh cửa. Tốt nhất là lấy mẫu từ một tập hợp nếu người quản lý dự án cho rằng không có nhiều khiếm khuyết, hoặc nếu việc kiểm tra toàn bộ tập hợp sẽ mất quá nhiều thời gian, tốn quá nhiều chi phí, hoặc quá phá hủy.</p>
+<p>Kích thước mẫu và tần suất đo lường được xác định trong quá trình lập kế hoạch, quy trình được ghi lại trong quản lý chất lượng và việc lấy mẫu được thực hiện trong kiểm soát. Có thể cần thử nghiệm để xác định kích thước mẫu cho nhóm một thước đo an toàn về độ chính xác kích thước cửa.</p>
+<p>Việc lấy mẫu cũng có thể được thực hiện cho các hoạt động quản lý dự án. Ví dụ, ban đầu bạn có thể kiểm tra trạng thái đúng hạn cho 5 trong số 50 hoạt động của một nhóm. Nếu bạn phát hiện vấn đề trong 5 hoạt động đó, bạn có thể giả định rằng bạn sẽ cần kiểm tra thêm các vấn đề trong số 45 hoạt động còn lại.</p>
+
+<h4 id="ch10-bieu-mau-khao-sat">Bảng Câu Hỏi và Khảo Sát</h4>
+<p>Bảng câu hỏi và khảo sát có thể được sử dụng trong Kiểm Soát Chất Lượng để thu thập dữ liệu về chi tiết của các vấn đề hoặc khiếm khuyết, hoặc để xác nhận rằng khách hàng hoặc người dùng cuối hài lòng với các sản phẩm bàn giao đã được triển khai trong dự án. Kết quả có thể được sử dụng để xác định liệu sự tuân thủ chất lượng có đạt được hay không.</p>
+
+<h4 id="ch10-danh-gia-hieu-suat-du-an">Đánh Giá Hiệu Suất Dự Án</h4>
+<p>Người quản lý dự án hoặc bộ phận chất lượng có thể tiến hành các đánh giá hiệu suất định kỳ để chính thức đánh giá dự án đang thực hiện như thế nào về mặt đáp ứng các yêu cầu chất lượng. Loại đánh giá này bao gồm việc so sánh kết quả của các phép đo kiểm soát với các số liệu được xác định trong kế hoạch quản lý chất lượng. Nó có thể làm sáng tỏ những thay đổi cần thiết để đạt được các yêu cầu chất lượng.</p>
+
+<h4 id="ch10-kiem-tra">Kiểm Tra</h4>
+<p>Kiểm tra được sử dụng để xác minh rằng các sản phẩm bàn giao đáp ứng các yêu cầu. Kiểm tra có thể được gọi là "walk-through" và thường bao gồm việc đo lường các sản phẩm bàn giao của dự án. Danh sách kiểm tra và biểu đồ kiểm soát có thể được sử dụng để nắm bắt và minh họa dữ liệu tương ứng. Kiểm tra cũng được sử dụng để kiểm tra xem các thay đổi đã được phê duyệt trước đó đã được thực hiện đúng chưa, và rằng các thay đổi đã cung cấp kết quả dự kiến (các thay đổi đã được xác nhận).</p>
+
+<h4 id="ch10-bieu-do-kiem-soat">Biểu Đồ Kiểm Soát</h4>
+<p>Việc sử dụng biểu đồ kiểm soát và các tham số của chúng được thiết lập trong Quản Lý Kiểm Soát và được sử dụng trong Kiểm Soát Chất Lượng để giúp xác định xem kết quả của một quy trình có nằm trong giới hạn chấp nhận được hay không.</p>
+<p>Trong phần này chúng ta chủ yếu nói về sự biến động trong chất lượng sản phẩm, nhưng biểu đồ kiểm soát cũng có thể được sử dụng để biểu diễn và theo dõi dữ liệu về hiệu suất dự án, chẳng hạn như biến động chi phí và tiến độ. Ngoài biểu đồ kiểm soát, người quản lý dự án có thể có giới hạn kiểm soát cho nhiều thứ. Thế còn đối với một gói công việc thì sao? Chậm trễ một giờ trong việc giao sản phẩm có phải là vấn đề không? Một ngày thì sao? Giới hạn kiểm soát giúp người quản lý dự án biết khi nào cần hành động.</p>
+<p>Để hiểu rõ hơn sự cần thiết của biểu đồ kiểm soát, hãy tưởng tượng một nhà sản xuất cửa thực hiện một dự án tạo ra dây chuyền sản xuất mới. Để đảm bảo cơ sở sản xuất sẽ tạo ra những cánh cửa đáp ứng tiêu chuẩn chất lượng, điều cần thiết là phải theo dõi các quy trình và đầu ra để dây chuyền sản xuất mới có thể trở thành hoạt động kinh doanh liên tục. Mỗi cánh cửa có cùng chiều cao chính xác không? Trọng lượng thì sao? Điều đó không chắc. Mỗi cánh cửa nên nằm trong phạm vi giới hạn bình thường và chấp nhận được.</p>
+<p>Hãy xem một số thuật ngữ liên quan mà bạn cần biết cho kỳ thi. Những điều sau đây có thể được chỉ ra trên biểu đồ kiểm soát. Khi bạn nghiên cứu các thuật ngữ này, hãy dùng hình 10.12 để hình dung ý nghĩa thực tế của chúng. Hiểu các thuật ngữ này và cách sử dụng biểu đồ kiểm soát có thể giúp bạn trả lời đúng thêm một vài câu hỏi trong kỳ thi.</p>
+<ul class="content-list">
+  <li><strong>Vẽ biểu đồ kiểm soát:</strong> Trong quá trình Kiểm Soát Chất Lượng, các mẫu được lấy và dữ liệu được vẽ trong phần mềm có thể hiển thị biểu đồ (xem các hình vuông nhỏ được hiển thị trên biểu đồ kiểm soát trong hình 10.12). Biểu đồ kiểm soát cho thấy mỗi mẫu có nằm trong giới hạn chấp nhận được hay không. Nếu dữ liệu không nằm trong phạm vi chấp nhận được, kết quả được coi là "ngoài tầm kiểm soát", điều này cho thấy một vấn đề cần được khắc phục.</li>
+  <li><strong>Giới hạn kiểm soát trên và dưới:</strong> Giới hạn kiểm soát thường được hiển thị dưới dạng hai đường đứt nét và là phạm vi biến động chấp nhận được của kết quả một quy trình hoặc phép đo. Giới hạn kiểm soát chỉ ra sự ổn định so với mất ổn định (ngoài tầm kiểm soát). Các điểm dữ liệu trong phạm vi này thường được coi là "trong tầm kiểm soát", ngoại trừ quy tắc bảy (được mô tả sau trong phần này) và là phạm vi biến động chấp nhận được.</li>
+  <li><strong>Giá trị trung bình (trung bình cộng):</strong> Giá trị trung bình được biểu thị bằng một đường ở trung tâm của biểu đồ kiểm soát. Đường cong phân phối chuẩn biểu diễn phạm vi biến động chấp nhận được xung quanh giá trị trung bình, và nó nằm trong ranh giới của các giới hạn kiểm soát. Trong hình 10.12, đường cong phân phối chuẩn nằm ở phía bên phải của biểu đồ kiểm soát đầu tiên.</li>
+  <li><strong>Giới hạn đặc tả:</strong> Trong khi giới hạn kiểm soát đại diện cho các tiêu chuẩn chất lượng của tổ chức thực hiện, giới hạn đặc tả đại diện cho kỳ vọng của khách hàng — hoặc các yêu cầu hợp đồng — về hiệu suất và chất lượng của dự án. Giới hạn đặc tả là đầu vào từ khách hàng. Do đó, chúng có thể xuất hiện bên trong hoặc bên ngoài các giới hạn kiểm soát. Trong biểu đồ đầu tiên của hình 10.12, chúng là các đường liền nét phía trên và dưới các đường đứt nét (đại diện cho giới hạn kiểm soát trên và dưới). Để đáp ứng giới hạn đặc tả của khách hàng, các tiêu chuẩn chất lượng của tổ chức thực hiện (giới hạn kiểm soát) phải nghiêm ngặt hơn của khách hàng. Trong kỳ thi, hãy giả định rằng giới hạn đặc tả nằm ngoài các giới hạn kiểm soát trên và dưới.</li>
+  <li><strong>Ngoài tầm kiểm soát:</strong> Quy trình nằm ngoài trạng thái kiểm soát thống kê trong một trong hai trường hợp:
+    <ul class="content-list">
+      <li>Một điểm dữ liệu nằm ngoài giới hạn kiểm soát trên hoặc dưới.</li>
+      <li>Có các điểm dữ liệu không ngẫu nhiên; chúng có thể nằm trong các giới hạn kiểm soát trên và dưới, chẳng hạn như quy tắc bảy (được mô tả tiếp theo).</li>
+    </ul>
+    Hãy nghĩ về "ngoài tầm kiểm soát" như sự thiếu nhất quán và khả năng dự đoán trong quy trình hoặc vấn đề với kết quả của nó. Cũng cần lưu ý rằng giới hạn kiểm soát có thể được gọi là "dung sai" trong môi trường agile và "ngoài tầm kiểm soát" đôi khi được gọi là "ngoài dung sai".
+  </li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//04149c49-bccf-4259-8312-5094c15f9eef/markdown_4/imgs/img_in_image_box_698_862_747_918.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A49%3A11Z%2F-1%2F%2F7a2b5b37e1088ed6725b11128d26b78727d54085e7c2504b88d155665989bc08" alt="Image" width="5%" /></div></div>
+
+<ul class="content-list">
+  <li><strong>Quy tắc bảy:</strong> Quy tắc bảy là một quy tắc chung (và bạn có thể thấy một quy tắc chung được mô tả là "heuristic"). Nó đề cập đến một nhóm hoặc chuỗi điểm dữ liệu tổng cộng bảy hoặc hơn ở một phía của giá trị trung bình. Biểu đồ kiểm soát bên phải trong hình 10.12 có bảy điểm dữ liệu không ngẫu nhiên nằm trên giá trị trung bình. Quy tắc bảy cho người quản lý dự án biết rằng, mặc dù không có điểm nào trong số này nằm ngoài các giới hạn kiểm soát, chúng không ngẫu nhiên, và quy trình đang ngoài tầm kiểm soát. Người quản lý dự án nên điều tra tình huống này và tìm nguyên nhân.</li>
+  <li><strong>Biến động có nguyên nhân có thể quy kết/nguyên nhân đặc biệt:</strong> Biến động có nguyên nhân có thể quy kết hoặc nguyên nhân đặc biệt biểu thị rằng một quy trình đang ngoài tầm kiểm soát. (Xem điểm dữ liệu nằm trên giới hạn kiểm soát dưới trong biểu đồ bên trái trong hình 10.12.) Nếu có biến động có nguyên nhân có thể quy kết hoặc nguyên nhân đặc biệt, điều đó có nghĩa là một điểm dữ liệu, hoặc một chuỗi điểm dữ liệu, cần được điều tra để xác định nguyên nhân của sự biến động. Người quản lý dự án có thể sử dụng các công cụ bổ sung, chẳng hạn như sơ đồ nhân quả, để cố gắng khám phá căn nguyên của sự biến động.</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//9d7e80f6-1fda-4289-8d1d-7d7893cf5a15/markdown_0/imgs/img_in_chart_box_75_190_376_365.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A49%3A14Z%2F-1%2F%2F3bec01e8008988d16f48a3c0efca6fc83116eacb222a7882be403c1ceb5b7e6e" alt="Image" width="36%" /></div></div>
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//9d7e80f6-1fda-4289-8d1d-7d7893cf5a15/markdown_0/imgs/img_in_chart_box_403_192_701_363.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A49%3A15Z%2F-1%2F%2F41ec51fdced60d3cc6d2998aef5ef035d6b1b05ddc22f1e63d2a511dc96cc6be" alt="Image" width="36%" /></div></div>
+<div class="img-center"><p><em>HÌNH 10.12 Các ví dụ về biểu đồ kiểm soát</em></p></div>
+
+<h3 id="ch10-khai-niem-quan-ly-chat-luong-agile">Các Khái Niệm Quản Lý Chất Lượng Agile</h3>
+<p>Nhiều khái niệm chúng ta đã thảo luận liên quan đến mô hình Nhóm Quy Trình có thể áp dụng cho dự án agile hoặc dự án kết hợp. Các phần sau mô tả các công cụ được coi là đặc thù cho agile. Chúng có thể được sử dụng trong suốt vòng đời của dự án, trong cả môi trường thích ứng và kết hợp. Điều quan trọng là phải hiểu các thuật ngữ và khái niệm này cho các câu hỏi thi kiểm tra kiến thức của bạn về các thực hành quản lý chất lượng thích ứng.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//9d7e80f6-1fda-4289-8d1d-7d7893cf5a15/markdown_0/imgs/img_in_image_box_670_458_721_517.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A49%3A15Z%2F-1%2F%2Fa31c685ea38c3708c2f6d5ea9e789ecc0f00e15bd728af27bbf2b000de664b23" alt="Image" width="6%" /></div></div>
+
+<h4 id="ch10-chi-phi-thay-doi">Chi Phí Thay Đổi</h4>
+<p>Chúng ta thảo luận trong chương "Các Bên Liên Quan" về tầm quan trọng của việc xác định và phân tích các bên liên quan càng sớm càng tốt và nỗ lực gia hạn nỗ lực này liên tục trong suốt dự án. Điều này là vì các bên liên quan bị bỏ sót với các yêu cầu mới sau trong dự án làm tăng chi phí thay đổi. Triết lý này cũng áp dụng cho chất lượng. Càng sớm phát hiện ra các vấn đề chất lượng với các quy trình dự án hoặc phần tăng trưởng sản phẩm đang được xây dựng, thì càng dễ dàng và ít tốn kém hơn để khắc phục những vấn đề đó và học hỏi từ chúng.</p>
+<p>Các quy trình agile và kết hợp yêu cầu phát triển lặp lại và tăng dần với các vòng lặp ngắn. Điều đó có nghĩa là các phần nhỏ của công việc có thể được đánh giá và nhóm có thể nhận phản hồi về sản phẩm đang phát triển càng sớm càng tốt. Điều này cho phép các vấn đề được phát hiện sớm và giải quyết nhanh chóng để tránh các chi phí bổ sung cho dự án. Điều này cũng có nghĩa là ít làm lại hơn. Đường cong chi phí thay đổi trong hình 10.13 cho thấy các vấn đề được tìm thấy trong môi trường kiểm tra (điểm 1) ít tốn kém hơn nhiều so với</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//9d7e80f6-1fda-4289-8d1d-7d7893cf5a15/markdown_0/imgs/img_in_chart_box_382_556_745_820.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A49%3A15Z%2F-1%2F%2F4fea5cca44913e39236c75993a48c12a3891d87fcb8f44cf9a4d0c87edc38849" alt="Image" width="44%" /></div></div>
+<div class="img-center"><p><em>HÌNH 10.13 Chi phí thay đổi</em></p></div>
+<div class="img-center"><p><em>Bản quyền hình ảnh © Scott W. Ambler, www.agilemodeling.com</em></p></div>
+
+<p>các vấn đề được tìm thấy trong quá trình sản xuất (điểm 2). Đây là một khái niệm trực quan nhưng việc hình dung nó với hình ảnh này rất hữu ích nếu bạn chưa gặp nó trước đây.</p>
+
+<h4 id="ch10-phat-trien-lap-va-tang-dan">Phát Triển Lặp Lại và Tăng Dần</h4>
+<p>Việc sử dụng phát triển lặp lại và tăng dần cùng với các vòng lặp ngắn trong agile và kết hợp, và làm việc chặt chẽ cùng nhau trong các nhóm nhỏ có nghĩa là người quản lý dự án và nhóm là những người tham gia tích cực trong vòng phản hồi hàng ngày liên quan đến công việc xây dựng sản phẩm. Điều này thúc đẩy nhận thức nhanh chóng và sớm về các vấn đề chất lượng khi chúng thường vẫn còn nhỏ và không đáng kể, giảm chi phí thay đổi.</p>
+
+<h4 id="ch10-xac-minh-va-xac-nhan-thuong-xuyen">Xác Minh và Xác Nhận Thường Xuyên</h4>
+
+<p>Agile sử dụng kiểm thử thường xuyên, các khung thời gian ngắn và các buổi đánh giá để đáp ứng nhu cầu của khách hàng. Xác minh và phê chuẩn thường xuyên là cách để phát hiện và xử lý sai sót của con người hoặc sự hiểu nhầm về kỳ vọng của khách hàng, sớm và liên tục. Thực hành này được tích hợp sẵn trong tất cả các phương pháp luận agile.</p>
+
+<div class="callout tip">
+<strong>Ví dụ:</strong> Phần mềm Thư viện đang được cập nhật theo từng vòng lặp hai tuần. Nhóm bổ sung tính năng tìm kiếm sách theo tiêu đề. Tại buổi đánh giá vòng lặp, nhóm trình bày chức năng tìm kiếm mới này cho trưởng thư viện và nhân viên. Một nhân viên đề xuất rằng người dùng có thể chỉ cần gõ tiêu đề sách mà không cần đặt tiêu đề trong dấu ngoặc kép như bản demo đã hiển thị. Nhóm đồng ý thực hiện cải tiến này.
+</div>
+
+<h4 id="ch10-agile-meetings-quality">Các Cuộc Họp (Nghi Thức) Agile Tập Trung vào Chất Lượng</h4>
+
+<p>Các loại cuộc họp này cung cấp cách thức để các vấn đề được phát hiện sớm trong vòng đời sản phẩm. Một câu hỏi trong cuộc họp đứng hàng ngày—Có trở ngại nào đối với công việc dự án không?—có thể đưa ra các vấn đề và sự cố tiềm ẩn trước khi chúng tác động đến chất lượng hoặc tiến độ. Nếu một mối quan tâm được nêu ra trong cuộc họp đứng hàng ngày, người quản lý dự án phải điều tra và giải quyết vấn đề đó sau khi cuộc họp kết thúc.</p>
+
+<p>Hãy xem xét bốn nghi thức agile (hoặc Scrum) theo cách chúng hỗ trợ chất lượng.</p>
+
+<h4 id="ch10-iteration-planning-meeting">Cuộc Họp Lập Kế Hoạch Vòng Lặp</h4>
+
+<p>Cuộc họp lập kế hoạch vòng lặp (hoặc sprint) diễn ra trước mỗi vòng lặp. Đã có nhiều điều xảy ra trước đó. Nhóm đã tham gia vào việc hình dung sản phẩm và dự án, tạo ra danh sách tồn đọng các yêu cầu cấp cao (dưới dạng các câu chuyện người dùng), ưu tiên hóa với sự trợ giúp của product owner và đã hoàn thành các ước tính cấp cao cần thiết để đạt đến giai đoạn này. Trong cuộc họp này, các chi tiết tiếp theo cho vòng lặp sắp tới được thống nhất và các chi tiết đã được ghi lại trước đó được xác minh.</p>
+
+<h4 id="ch10-daily-standup-meetings">Các Cuộc Họp Đứng Hàng Ngày</h4>
+
+<p>Các cuộc họp đứng hàng ngày được thiết kế để duy trì đà tiến trong một vòng lặp và giao tiếp để mọi người đều biết người khác đang làm gì và có những trở ngại nào có thể cản trở việc hoàn thành công việc của vòng lặp. Không có hoạt động xử lý sự cố nào được thực hiện và người quản lý dự án sẽ điều tra các trở ngại đã được xác định sau cuộc họp.</p>
+
+<p>Các quy tắc cuộc họp nhằm giữ cho cuộc họp ngắn gọn và tập trung, và các thành viên tham gia trả lời ba câu hỏi sau:</p>
+
+<ol class="content-list">
+  <li>Bạn đã làm gì kể từ cuộc họp lần trước?</li>
+  <li>Hôm nay bạn đang làm gì?</li>
+  <li>Có vấn đề hoặc trở ngại nào đối với tiến độ của bạn không?</li>
+</ol>
+
+<h4 id="ch10-retrospectives-meetings">Các Cuộc Họp Cải Tiến và Hồi Tố</h4>
+
+<p>Trong khi cuộc họp hồi tố trong môi trường theo kế hoạch thường được tổ chức vào cuối dự án, trong môi trường agile hoặc kết hợp, các cuộc họp hồi tố thường diễn ra vào cuối mỗi vòng lặp ngắn có giới hạn thời gian. Cuộc họp hồi tố là cơ hội để các thành viên của nhóm phát triển kiểm tra và thích nghi các phương pháp làm việc và tinh thần đồng đội của họ. Bạn có thể thấy điều này có giá trị như thế nào để cải thiện chất lượng và xác định các vấn đề khi sản phẩm đang được phát triển không?</p>
+
+<p>Trong cuộc họp hồi tố, các câu hỏi sau được thảo luận:</p>
+
+<ol class="content-list">
+  <li>Điều gì đang diễn ra tốt?</li>
+  <li>Những lĩnh vực nào có thể cải thiện?</li>
+  <li>Chúng ta nên làm gì khác đi?</li>
+</ol>
+
+<h4 id="ch10-wip-cycle-time">Công Việc Đang Thực Hiện (WIP) và Thời Gian Chu Kỳ</h4>
+
+<p>Công việc đang thực hiện (WIP) là số lượng các phần công việc chưa hoàn thành đang diễn ra cùng một lúc. Sử dụng bảng Kanban là phương pháp phổ biến để giới hạn WIP. WIP quá nhiều liên quan đến một số vấn đề:</p>
+
+<ul class="content-list">
+  <li>Nó thể hiện số tiền đã đầu tư nhưng chưa tạo ra lợi nhuận nào.</li>
+  <li>Nó che giấu các điểm nghẽn và che khuất các vấn đề hiệu quả.</li>
+  <li>Nó mang rủi ro làm lại tiềm ẩn nếu các vấn đề chất lượng được phát hiện.</li>
+</ul>
+
+<p>Các phương pháp agile và kết hợp nhấn mạnh việc giới hạn WIP để giải quyết những rủi ro này. Ở đây, chúng ta sẽ xem xét một số khái niệm liên quan đến WIP và cách người quản lý dự án giới hạn WIP.</p>
+
+<p>Đầu tiên, chúng ta sẽ xem xét thời gian dẫn và thời gian chu kỳ. Hình 10.14 là một bảng Kanban cho thấy sự khác biệt giữa thời gian dẫn và thời gian chu kỳ.</p>
+
+<ul class="content-list">
+  <li><strong>Thời gian dẫn:</strong> Đo lường độ dài của toàn bộ quy trình. Ví dụ, từ thiết kế đến vận chuyển, hoặc từ thu thập yêu cầu qua phát triển đến triển khai.</li>
+  <li><strong>Thời gian chu kỳ:</strong> Đo lường độ dài của thời gian để đi qua một phần của quy trình. Ví dụ, từ lắp ráp đến sơn, hoặc từ viết code đến kiểm thử.</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//9d7e80f6-1fda-4289-8d1d-7d7893cf5a15/markdown_2/imgs/img_in_image_box_208_232_567_423.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A49%3A16Z%2F-1%2F%2F5d255088e385f9466393d296e0dbac88ce25cc906a689c63ca38f87788adefb3" alt="Image" width="43%" /></div></div>
+
+<div style="text-align: center;"><em>HÌNH 10.14 Thời gian dẫn và thời gian chu kỳ được minh họa trên bảng Kanban</em></div>
+
+<p>Thời gian chu kỳ có thể được tính bằng công thức liên quan đến WIP và thông lượng. Thông lượng là thời gian trung bình để hoàn thành công việc (ví dụ, toàn bộ công việc của một vòng lặp). Lưu ý rằng thông lượng thể hiện giá trị trung bình toàn cục—trong ví dụ này là cho một vòng lặp—không chỉ là giá trị trung bình cho một thời gian chu kỳ cụ thể.</p>
+
+<div class="highlight">
+  <p style="text-align:center;"><strong>Thời gian chu kỳ = WIP ÷ Thông lượng</strong></p>
+</div>
+
+<div class="callout tip">
+<strong>Ví dụ:</strong> Giả sử nhóm có 18 điểm WIP và đang làm việc với vận tốc 27 điểm mỗi vòng lặp, đây là thông lượng. Vậy 18 chia cho 27 bằng thời gian chu kỳ 6,6 điểm.<br><br>
+Thời gian chu kỳ = 18/27 = 6,6<br>
+(hoặc 6,6 ngày cho một vòng lặp 10 ngày)<br><br>
+Nói cách khác, mỗi chu kỳ được đề cập trung bình tương đương 6,6 điểm công việc.
+</div>
+
+<p>Thời gian chu kỳ dài có thể có nghĩa là có quá nhiều WIP, điều này làm tăng rủi ro và các vấn đề chất lượng. Các phương pháp agile và kết hợp tránh điều này bằng cách chia nhỏ công việc thành các lô nhỏ và tập trung vào việc hoàn thành chúng và nhận được sự chấp thuận của khách hàng càng sớm càng tốt.</p>
+
+<h4 id="ch10-defects">Lỗi (Defects)</h4>
+
+<p>Các dự án agile và kết hợp cũng theo dõi thời gian chu kỳ của lỗi. Đây là khoảng thời gian giữa thời điểm lỗi được đưa vào đến thời điểm nó được sửa chữa. Bằng cách đó, nhóm dự án có thể giữ cho chi phí thay đổi ở mức tối thiểu. Một số nhóm dự án tích cực theo dõi thời gian chu kỳ lỗi trung bình của họ và đặt mục tiêu giải quyết lỗi nhanh chóng. Điều này có thể giảm thiểu chi phí sửa lỗi.</p>
+
+<h4 id="ch10-open-safe-environments">Giữ Môi Trường Dự Án Cởi Mở và An Toàn cho Mọi Người</h4>
+
+<p>Một học viên trong lớp học của RMC đã tâm sự với giảng viên rằng họ đã phát hiện ra một lỗi trong một vòng lặp phát triển trang web và sợ phải báo cáo với người quản lý dự án của mình. Người quản lý dự án, họ nói, thường chỉ trích mọi người trong các buổi họp đứng hàng ngày và khiến họ xấu hổ. Học viên này đang hi vọng rằng lỗi sẽ được phát hiện sau đó khi khó có thể truy ngược công việc về phía họ.</p>
+
+<p>Như chúng ta đã đề cập trước đây, các lỗi được phát hiện muộn hơn sẽ làm tăng mức độ rủi ro cho dự án. Hãy nghĩ lại về đường cong chi phí thay đổi. Sẽ tốn kém ít hơn khi lỗi được sửa ngay khi phát hiện ra thay vì sau này khi sản phẩm hoàn chỉnh quá phức tạp để khắc phục sự cố.</p>
+
+<p>Điều quan trọng là người quản lý dự án phải tạo ra một môi trường mà mọi người cảm thấy thoải mái khi lên tiếng và ghi nhận các vấn đề càng sớm càng tốt. Người quản lý dự án nên tận dụng mọi cơ hội để cho các thành viên nhóm biết họ có thể nêu ra vấn đề và xin trợ giúp. Bằng cách xác định sớm các vấn đề, dự án có thể đi đúng hướng và tiết kiệm thời gian và tiền bạc.</p>
+
+<h3 id="ch10-quality-management-outcomes-summary">Kết Quả Quản Lý Chất Lượng: Tóm Tắt</h3>
+
+<p>Quản lý chất lượng tốt tạo ra cơ hội để bàn giao sản phẩm với ít hoặc không có lỗi, và phù hợp với mục đích sử dụng như được định nghĩa bởi các định nghĩa hoàn thành và tiêu chí chấp nhận đã được ghi lại. Việc bàn giao sản phẩm và kết thúc dự án phải phù hợp với tiến độ và ngân sách đã được phê duyệt, và ở các mức chất lượng đã thỏa thuận. Sản phẩm phải đáp ứng các mục tiêu kinh doanh của tổ chức và khách hàng mà dự án được lập kế hoạch để thực hiện.</p>
+
+<p>Quản lý chất lượng, cùng với các nỗ lực gắn kết các bên liên quan, phải dẫn đến sự hài lòng của khách hàng, và thành công cũng như cải thiện các hoạt động mua sắm (thông qua các thực hành tích hợp chuỗi cung ứng tốt). Thông qua tinh thần làm việc nhóm và lãnh đạo phục vụ, nhóm và tổ chức nên được hưởng lợi từ việc liên tục cải tiến các quy trình, khả năng ra quyết định và năng suất làm việc. Sự hài lòng và động lực của nhóm dự án phải được duy trì hoặc nâng cao.</p>
+
+<h3 id="ch10-tools-techniques-quality">Hiểu Các Công Cụ và Kỹ Thuật Được Sử Dụng trong Quản Lý Chất Lượng</h3>
+
+<p>Khi đọc qua chương này, bạn có thấy mình đặt câu hỏi như "Bây giờ, tất cả các công cụ và kỹ thuật này được sử dụng khi nào?" hoặc "Sự khác biệt giữa ba phần của quy trình quản lý chất lượng là gì?" không? Mọi người thường gặp khó khăn với những khái niệm này. Bài tập sau đây sẽ giúp bạn.</p>
+
+<h3 id="ch10-exercise-10-1">Bài Tập 10.1</h3>
+
+<p>Hãy dành thời gian nghiên cứu trong cuốn sách này các phương pháp khác nhau được tạo ra hoặc sử dụng trong mỗi quy trình quản lý chất lượng. Sau đó, trong Sổ Tay Bài Tập của bạn, hãy xác định xem các công cụ sau đây được sử dụng trong việc lập kế hoạch, quản lý và/hoặc kiểm soát chất lượng. Hãy nhớ rằng một số công cụ và kỹ thuật được sử dụng trong nhiều hơn một quy trình quản lý chất lượng. Hãy suy nghĩ về những cách chúng được sử dụng cho các mục đích khác nhau trong mỗi quy trình.</p>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <td style="text-align: center;">1.</td><td style="text-align: center;">Sơ đồ hoạt động</td>
+    <td style="text-align: center;">16.</td><td style="text-align: center;">Phỏng vấn</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">2.</td><td style="text-align: center;">Phân tích các phương án thay thế</td>
+    <td style="text-align: center;">17.</td><td style="text-align: center;">Mô hình dữ liệu logic</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">3.</td><td style="text-align: center;">Đối chuẩn (Benchmarking)</td>
+    <td style="text-align: center;">18.</td><td style="text-align: center;">Sơ đồ ma trận</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">4.</td><td style="text-align: center;">Động não (Brainstorming)</td>
+    <td style="text-align: center;">19.</td><td style="text-align: center;">Các cuộc họp</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">5.</td><td style="text-align: center;">Sơ đồ nhân quả</td>
+    <td style="text-align: center;">20.</td><td style="text-align: center;">Sơ đồ tư duy</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">6.</td><td style="text-align: center;">Danh sách kiểm tra</td>
+    <td style="text-align: center;">21.</td><td style="text-align: center;">Phân tích quyết định đa tiêu chí</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">7.</td><td style="text-align: center;">Phiếu kiểm tra</td>
+    <td style="text-align: center;">22.</td><td style="text-align: center;">Đánh giá hiệu suất</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">8.</td><td style="text-align: center;">Biểu đồ kiểm soát</td>
+    <td style="text-align: center;">23.</td><td style="text-align: center;">Giải quyết vấn đề</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">9.</td><td style="text-align: center;">Chi phí chất lượng (COQ)</td>
+    <td style="text-align: center;">24.</td><td style="text-align: center;">Phân tích quy trình</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">10.</td><td style="text-align: center;">Phân tích chi phí - lợi ích</td>
+    <td style="text-align: center;">25.</td><td style="text-align: center;">Bảng câu hỏi và khảo sát</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">11.</td><td style="text-align: center;">Thiết kế cho X</td>
+    <td style="text-align: center;">26.</td><td style="text-align: center;">Phân tích nguyên nhân gốc rễ</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">12.</td><td style="text-align: center;">Phân tích tài liệu</td>
+    <td style="text-align: center;">27.</td><td style="text-align: center;">Sơ đồ phân tán</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">13.</td><td style="text-align: center;">Lưu đồ</td>
+    <td style="text-align: center;">28.</td><td style="text-align: center;">Lấy mẫu thống kê</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">14.</td><td style="text-align: center;">Biểu đồ tần số</td>
+    <td style="text-align: center;">29.</td><td style="text-align: center;">Lập kế hoạch kiểm tra và giám sát</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">15.</td><td style="text-align: center;">Giám sát (Inspection)</td>
+    <td style="text-align: center;">30.</td><td style="text-align: center;">Kiểm thử/đánh giá sản phẩm</td>
+  </tr>
+</table>
+</div>
+
+<h4 id="ch10-exercise-10-1-answer">Đáp Án</h4>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"><strong>Công Cụ</strong></td>
+    <td style="text-align: center;"><strong>Sử dụng trong Lập Kế Hoạch Chất Lượng</strong></td>
+    <td style="text-align: center;"><strong>Sử dụng trong Quản Lý Chất Lượng</strong></td>
+    <td style="text-align: center;"><strong>Sử dụng trong Kiểm Soát Chất Lượng</strong></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">1.</td>
+    <td style="text-align: center;">Sơ đồ ái hữu</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">2.</td>
+    <td style="text-align: center;">Phân tích các phương án thay thế</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">3.</td>
+    <td style="text-align: center;">Đối chuẩn (Benchmarking)</td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">4.</td>
+    <td style="text-align: center;">Động não (Brainstorming)</td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">5.</td>
+    <td style="text-align: center;">Sơ đồ nhân quả</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;">X</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">6.</td>
+    <td style="text-align: center;">Danh sách kiểm tra</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;">X</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">7.</td>
+    <td style="text-align: center;">Phiếu kiểm tra</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;">X</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">8.</td>
+    <td style="text-align: center;">Biểu đồ kiểm soát</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;">X</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">9.</td>
+    <td style="text-align: center;">Chi phí chất lượng (COQ)</td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">10.</td>
+    <td style="text-align: center;">Phân tích chi phí - lợi ích</td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">11.</td>
+    <td style="text-align: center;">Thiết kế cho X</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">12.</td>
+    <td style="text-align: center;">Phân tích tài liệu</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">13.</td>
+    <td style="text-align: center;">Lưu đồ</td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">14.</td>
+    <td style="text-align: center;">Biểu đồ tần số</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;">X</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">15.</td>
+    <td style="text-align: center;">Giám sát (Inspection)</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;">X</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">16.</td>
+    <td style="text-align: center;">Phỏng vấn</td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">17.</td>
+    <td style="text-align: center;">Mô hình dữ liệu logic</td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">18.</td>
+    <td style="text-align: center;">Sơ đồ ma trận</td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">19.</td>
+    <td style="text-align: center;">Các cuộc họp</td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;">X</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">20.</td>
+    <td style="text-align: center;">Sơ đồ tư duy</td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">21.</td>
+    <td style="text-align: center;">Phân tích quyết định đa tiêu chí</td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">22.</td>
+    <td style="text-align: center;">Đánh giá hiệu suất</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;">X</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">23.</td>
+    <td style="text-align: center;">Giải quyết vấn đề</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">24.</td>
+    <td style="text-align: center;">Phân tích quy trình</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">25.</td>
+    <td style="text-align: center;">Bảng câu hỏi và khảo sát</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;">X</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">26.</td>
+    <td style="text-align: center;">Phân tích nguyên nhân gốc rễ</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;">X</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">27.</td>
+    <td style="text-align: center;">Sơ đồ phân tán</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;">X</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">28.</td>
+    <td style="text-align: center;">Lấy mẫu thống kê</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;">X</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">29.</td>
+    <td style="text-align: center;">Lập kế hoạch kiểm tra và giám sát</td>
+    <td style="text-align: center;">X</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">30.</td>
+    <td style="text-align: center;">Kiểm thử/đánh giá sản phẩm</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;">X</td>
+  </tr>
+</table>
+</div>
+
+<h4 id="ch10-putting-it-all-together">Tổng Hợp Lại</h4>
+
+<p>Bạn có nghĩ rằng mình đã hiểu quản lý chất lượng chưa? Bài tập sau đây sẽ giúp bạn ôn lại các thông tin đã học.</p>
+
+<h3 id="ch10-exercise-10-2">Bài Tập 10.2</h3>
+
+<p>Sử dụng ví dụ về thư viện của chúng ta, hãy khớp công việc được mô tả với quy trình Quản Lý Chất Lượng (các quy trình có thể được sử dụng nhiều hơn một lần).</p>
+
+<ol class="content-list">
+  <li>Lập Kế Hoạch Chất Lượng</li>
+  <li>Quản Lý Chất Lượng</li>
+  <li>Kiểm Soát Chất Lượng</li>
+</ol>
+
+<h5>Công Việc</h5>
+
+<ul class="content-list">
+  <li>A. Hỏi hội đồng thành phố về kỳ vọng của họ liên quan đến mức chất lượng của nội thất thư viện.</li>
+  <li>B. Phối hợp ngày giờ cho buổi kiểm tra nền móng theo kế hoạch của thành phố.</li>
+  <li>C. Thảo luận về một lần kiểm tra thất bại với đốc công xây dựng.</li>
+  <li>D. Yêu cầu giám đốc IT báo cáo số lượng lỗi phát hiện trong quá trình kiểm thử phần mềm.</li>
+  <li>E. Tạo yêu cầu thay đổi thiết kế sau khi phát hiện vấn đề.</li>
+  <li>F. Khi chọn công ty chuyển phát để đóng gói và vận chuyển các cuốn sách hiện có, hãy hỏi về các khiếu nại bảo hiểm trong ba lần vận chuyển gần nhất của họ.</li>
+  <li>G. Thuê một đơn vị kiểm toán an ninh mạng cho chức năng đăng nhập của người dùng thư viện.</li>
+</ul>
+
+<h5>Đáp Án</h5>
+
+<ul class="content-list">
+  <li>A. 1</li>
+  <li>B. 2</li>
+  <li>C. 3</li>
+  <li>D. 2</li>
+  <li>E. 3</li>
+  <li>F. 1</li>
+  <li>G. 2</li>
+</ul>
+
+
+</main>
+
+<button id="back-top" aria-label="Về đầu trang">↑</button>
+
+<script>
+// Progress bar
+const pb=document.getElementById('progress-bar');
+function updPB(){const d=document.documentElement;pb.style.width=Math.min((d.scrollTop/(d.scrollHeight-d.clientHeight))*100,100)+'%'}
+window.addEventListener('scroll',updPB,{passive:true});
+
+// Back to top
+const bt=document.getElementById('back-top');
+window.addEventListener('scroll',()=>{bt.style.opacity=scrollY>400?'1':'0';},{passive:true});
+bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+// Mobile menu
+const mb=document.getElementById('menu-btn'),sb=document.getElementById('sidebar');
+mb.addEventListener('click',()=>sb.classList.toggle('open'));
+document.addEventListener('click',e=>{if(!sb.contains(e.target)&&e.target!==mb)sb.classList.remove('open')});
+
+// Active TOC highlight on scroll
+const tocLinks=document.querySelectorAll('#sidebar-toc a[href^="#"]');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      tocLinks.forEach(a=>a.classList.remove('active'));
+      const a=document.querySelector('#sidebar-toc a[href="#'+e.target.id+'"]');
+      if(a){a.classList.add('active');a.scrollIntoView({block:'nearest',behavior:'smooth'})}
+    }
+  })
+},{rootMargin:'-20% 0px -75% 0px'});
+document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
+
+// ── THEME + READING POSITION ───────────────────────────
+(function(){
+  var THEME_KEY='rita_theme', READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var chapNum=m?m[1]:null;
+
+  // Build & inject theme toggle button
+  var hdr=document.getElementById('sidebar-header');
+  if(hdr){
+    var btn=document.createElement('button');
+    btn.id='theme-btn';
+    var curTheme=document.documentElement.getAttribute('data-theme')||'light';
+    btn.textContent=curTheme==='dark'?'☀':'🌙';
+    btn.title='Giao diện sáng / tối';
+    hdr.appendChild(btn);
+    btn.addEventListener('click',function(){
+      var next=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+      document.documentElement.setAttribute('data-theme',next);
+      localStorage.setItem(THEME_KEY,next);
+      btn.textContent=next==='dark'?'☀':'🌙';
+    });
+  }
+
+  if(!chapNum) return;
+
+  // Save last chapter visited
+  try{
+    var rd=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    rd.lastChap='rita_chap'+chapNum;
+    if(!rd.scrollPos) rd.scrollPos={};
+    localStorage.setItem(READ_KEY,JSON.stringify(rd));
+  }catch(e){}
+
+  // Restore scroll position
+  try{
+    var rdR=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    var savedPos=rdR.scrollPos&&rdR.scrollPos[chapNum]||0;
+    if(savedPos>200) setTimeout(function(){window.scrollTo(0,savedPos);},120);
+  }catch(e){}
+
+  // Save scroll position (debounced 600ms)
+  var saveT;
+  window.addEventListener('scroll',function(){
+    clearTimeout(saveT);
+    saveT=setTimeout(function(){
+      try{
+        var r2=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+        if(!r2.scrollPos) r2.scrollPos={};
+        r2.scrollPos[chapNum]=window.scrollY;
+        r2.lastChap='rita_chap'+chapNum;
+        localStorage.setItem(READ_KEY,JSON.stringify(r2));
+      }catch(e){}
+    },600);
+  },{passive:true});
+})();
+
+// ── HIGHLIGHT / NOTES SYSTEM ────────────────────────────
+(function(){
+  var READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  if(!m) return;
+  var chapNum=m[1];
+  var HL_KEY='rita_hl_'+chapNum;
+
+  // ── STORAGE ──
+  function loadHL(){try{return JSON.parse(localStorage.getItem(HL_KEY)||'[]')}catch(e){return[]}}
+  function saveHL(arr){localStorage.setItem(HL_KEY,JSON.stringify(arr));window.__ritaSyncTrigger&&window.__ritaSyncTrigger();}
+  function genId(){return 'h'+Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
+
+  // ── XPATH HELPERS ──
+  var mainEl=document.getElementById('main');
+  function getXPath(node){
+    if(!node||node===mainEl) return '.';
+    var parts=[];
+    var cur=node.nodeType===3?node.parentNode:node;
+    while(cur&&cur!==mainEl&&cur!==document.body){
+      var tag=cur.tagName.toLowerCase();
+      var idx=1,sib=cur.previousElementSibling;
+      while(sib){if(sib.tagName&&sib.tagName.toLowerCase()===tag)idx++;sib=sib.previousElementSibling;}
+      parts.unshift(tag+'['+idx+']');
+      cur=cur.parentElement;
+    }
+    return parts.join('/');
+  }
+  function resolveXPath(xpath){
+    if(!mainEl||xpath==='.') return mainEl;
+    try{
+      var r=document.evaluate('.//'+xpath,mainEl,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);
+      return r.singleNodeValue;
+    }catch(e){return null;}
+  }
+  function findTextAt(el,offset){
+    var walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null);
+    var count=0,node;
+    while((node=walker.nextNode())){
+      var len=node.textContent.length;
+      if(count+len>=offset) return{node:node,localOffset:offset-count};
+      count+=len;
+    }
+    return null;
+  }
+
+  // ── APPLY MARK TO DOM ──
+  function applyMark(hl){
+    try{
+      var sEl=resolveXPath(hl.sxp), eEl=resolveXPath(hl.exp);
+      if(!sEl||!eEl) return false;
+      var sInfo=sEl.nodeType===3?{node:sEl,localOffset:hl.so}:findTextAt(sEl,hl.so);
+      var eInfo=eEl.nodeType===3?{node:eEl,localOffset:hl.eo}:findTextAt(eEl,hl.eo);
+      if(!sInfo||!eInfo) return false;
+      var range=document.createRange();
+      range.setStart(sInfo.node,sInfo.localOffset);
+      range.setEnd(eInfo.node,eInfo.localOffset);
+      applyRange(range,hl.id,hl.color,hl.note||'');
+      return true;
+    }catch(e){return false;}
+  }
+  function applyRange(range,hlId,color,note){
+    var walker=document.createTreeWalker(
+      range.commonAncestorContainer.nodeType===3
+        ?range.commonAncestorContainer.parentNode
+        :range.commonAncestorContainer,
+      NodeFilter.SHOW_TEXT,null
+    );
+    var nodes=[],node;
+    while((node=walker.nextNode())){if(range.intersectsNode(node))nodes.push(node);}
+    nodes.forEach(function(tn){
+      var s=tn===range.startContainer?range.startOffset:0;
+      var e=tn===range.endContainer?range.endOffset:tn.textContent.length;
+      if(s>=e) return;
+      var nr=document.createRange();
+      nr.setStart(tn,s); nr.setEnd(tn,Math.min(e,tn.textContent.length));
+      try{
+        var mk=document.createElement('mark');
+        mk.className='hl'; mk.setAttribute('data-hl-id',hlId);
+        mk.setAttribute('data-color',color); mk.setAttribute('data-note',note);
+        nr.surroundContents(mk);
+      }catch(err){
+        try{
+          var c=nr.extractContents(),mk2=document.createElement('mark');
+          mk2.className='hl'; mk2.setAttribute('data-hl-id',hlId);
+          mk2.setAttribute('data-color',color); mk2.setAttribute('data-note',note);
+          mk2.appendChild(c); nr.insertNode(mk2);
+        }catch(_){}
+      }
+    });
+  }
+  function removeMarks(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      var p=mk.parentNode;
+      while(mk.firstChild)p.insertBefore(mk.firstChild,mk);
+      p.removeChild(mk);
+      p.normalize();
+    });
+  }
+  function updateMarks(hlId,color,note){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.setAttribute('data-color',color);
+      mk.setAttribute('data-note',note);
+    });
+  }
+
+  // ── RESTORE HIGHLIGHTS ON LOAD ──
+  var highlights=loadHL();
+  // Sort by sxp+so descending so earlier ranges aren't offset by later insertions
+  // Actually apply in order (each one is independent)
+  highlights.forEach(applyMark);
+  // Expose re-apply for sync module
+  window.__ritaReapplyMarks=function(){
+    document.querySelectorAll('mark.hl').forEach(function(mk){
+      var p=mk.parentNode;while(mk.firstChild)p.insertBefore(mk.firstChild,mk);p.removeChild(mk);p.normalize();
+    });
+    loadHL().forEach(applyMark);
+    if(typeof updateBadge==='function') updateBadge();
+    if(typeof renderPanelIfOpen==='function') renderPanelIfOpen();
+  };
+
+  // ── SIDEBAR BUTTON ──
+  function updateBadge(){
+    var hls=loadHL();
+    var badge=document.getElementById('hl-badge');
+    if(badge) badge.textContent=hls.length||'0';
+  }
+  var sidebarNav=document.getElementById('sidebar-toc');
+  if(sidebarNav){
+    var hlBtn=document.createElement('button');
+    hlBtn.id='hl-sidebar-btn';
+    hlBtn.innerHTML='<span>✏ Ghi chú & Highlight</span><span id="hl-badge">0</span>';
+    hlBtn.addEventListener('click',function(){openPanel();});
+    // Insert before sidebar-nav (bottom buttons)
+    var sidebarNavBottom=document.getElementById('sidebar-nav');
+    if(sidebarNavBottom) sidebarNavBottom.parentNode.insertBefore(hlBtn,sidebarNavBottom);
+    else document.getElementById('sidebar').appendChild(hlBtn);
+  }
+  updateBadge();
+
+  // ── PANEL ──
+  var panel=document.createElement('div');
+  panel.id='hl-panel';
+  panel.innerHTML='<div id="hl-panel-hdr"><h3>✏ Ghi Chú & Highlight</h3><button id="hl-panel-close">×</button></div><div id="hl-panel-list"></div>';
+  document.body.appendChild(panel);
+  document.getElementById('hl-panel-close').addEventListener('click',closePanel);
+  function openPanel(){renderPanel();panel.classList.add('open');}
+  function closePanel(){panel.classList.remove('open');}
+  function renderPanel(){
+    var list=document.getElementById('hl-panel-list');
+    var hls=loadHL();
+    list.innerHTML='';
+    hls.forEach(function(hl){
+      var item=document.createElement('div');
+      item.className='hl-item'; item.setAttribute('data-color',hl.color);
+      var noteHtml=hl.note?'<div class="hl-item-note">✏ '+escHtml(hl.note)+'</div>':'';
+      item.innerHTML='<button class="hl-item-del" data-id="'+hl.id+'">🗑</button>'
+        +'<div class="hl-item-text">'+escHtml(hl.text||'')+'</div>'+noteHtml;
+      item.addEventListener('click',function(e){
+        if(e.target.classList.contains('hl-item-del')) return;
+        var mk=document.querySelector('mark.hl[data-hl-id="'+hl.id+'"]');
+        if(mk){mk.scrollIntoView({behavior:'smooth',block:'center'});flashMark(hl.id);}
+        closePanel();
+      });
+      item.querySelector('.hl-item-del').addEventListener('click',function(e){
+        e.stopPropagation(); deleteHL(hl.id); renderPanel();
+      });
+      list.appendChild(item);
+    });
+  }
+
+  // ── POPUP ──
+  var popup=document.createElement('div');
+  popup.id='hl-popup'; popup.className='hidden';
+  popup.innerHTML=
+    '<button class="hl-color-btn" data-color="yellow" title="Vàng"></button>'
+    +'<button class="hl-color-btn" data-color="green" title="Xanh"></button>'
+    +'<button class="hl-color-btn" data-color="red" title="Đỏ"></button>'
+    +'<div class="hl-sep"></div>'
+    +'<button class="hl-note-btn" title="Thêm ghi chú">✏</button>'
+    +'<button class="hl-del-btn hl-del-action" title="Xóa">🗑</button>';
+  document.body.appendChild(popup);
+
+  var currentHlId=null;    // id being edited (null = new)
+  var pendingRange=null;   // Range for new highlight
+  var pendingXP=null;      // serialized position for new highlight
+
+  // Position popup near a rect
+  function positionPopup(rect){
+    var pw=popup.offsetWidth||160,ph=popup.offsetHeight||40;
+    var top=rect.top-ph-10+window.scrollY;
+    var left=rect.left+(rect.width-pw)/2;
+    if(top<window.scrollY+8) top=rect.bottom+10+window.scrollY;
+    left=Math.max(8,Math.min(left,window.innerWidth-pw-8));
+    popup.style.top=top+'px';
+    popup.style.left=left+'px';
+  }
+  function showPopup(rect,hlId){
+    currentHlId=hlId||null;
+    var isEdit=!!hlId;
+    popup.querySelector('.hl-del-action').style.display=isEdit?'':'none';
+    popup.querySelector('.hl-note-btn').style.display='';
+    popup.classList.remove('hidden');
+    positionPopup(rect);
+  }
+  function hidePopup(){
+    popup.classList.add('hidden');
+    pendingRange=null; pendingXP=null; currentHlId=null;
+  }
+
+  // Color buttons
+  popup.querySelectorAll('.hl-color-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var color=btn.getAttribute('data-color');
+      if(currentHlId){
+        // Update existing
+        var hls=loadHL();
+        var idx=hls.findIndex(function(h){return h.id===currentHlId;});
+        if(idx>=0){hls[idx].color=color;saveHL(hls);}
+        updateMarks(currentHlId,color,hls[idx]?hls[idx].note||'':'');
+        updateBadge(); renderPanelIfOpen();
+      } else if(pendingRange&&pendingXP){
+        // Create new
+        var id=genId();
+        var text=pendingRange.toString().substring(0,500);
+        applyRange(pendingRange,id,color,'');
+        pendingRange.collapse();
+        window.getSelection()&&window.getSelection().removeAllRanges();
+        var hls=loadHL();
+        hls.push({id:id,color:color,note:'',text:text,
+          sxp:pendingXP.sxp,so:pendingXP.so,exp:pendingXP.exp,eo:pendingXP.eo});
+        saveHL(hls); updateBadge(); renderPanelIfOpen();
+      }
+      hidePopup();
+    });
+  });
+
+  // Note button
+  popup.querySelector('.hl-note-btn').addEventListener('click',function(){
+    var id=currentHlId;
+    var existing='';
+    if(id){var hls=loadHL();var h=hls.find(function(x){return x.id===id;});if(h)existing=h.note||'';}
+    hidePopup();
+    openNoteModal(id,existing);
+  });
+
+  // Delete button
+  popup.querySelector('.hl-del-action').addEventListener('click',function(){
+    if(currentHlId) deleteHL(currentHlId);
+    hidePopup();
+  });
+
+  function deleteHL(id){
+    removeMarks(id);
+    var hls=loadHL().filter(function(h){return h.id!==id;});
+    saveHL(hls); updateBadge(); renderPanelIfOpen();
+  }
+
+  // ── NOTE MODAL ──
+  var noteModal=document.createElement('div');
+  noteModal.id='hl-note-modal'; noteModal.className='hidden';
+  noteModal.innerHTML='<div id="hl-note-box">'
+    +'<h3>✏ Ghi chú</h3>'
+    +'<textarea id="hl-note-ta" placeholder="Nhập ghi chú..."></textarea>'
+    +'<div class="hl-note-actions">'
+    +'<button class="hl-note-cancel">Hủy</button>'
+    +'<button class="hl-note-save">Lưu</button>'
+    +'</div></div>';
+  document.body.appendChild(noteModal);
+  var _noteTargetId=null;
+  function openNoteModal(hlId,existing){
+    _noteTargetId=hlId;
+    document.getElementById('hl-note-ta').value=existing||'';
+    noteModal.classList.remove('hidden');
+    setTimeout(function(){document.getElementById('hl-note-ta').focus();},50);
+  }
+  noteModal.querySelector('.hl-note-cancel').addEventListener('click',function(){noteModal.classList.add('hidden');});
+  noteModal.querySelector('.hl-note-save').addEventListener('click',function(){
+    var note=document.getElementById('hl-note-ta').value.trim();
+    if(_noteTargetId){
+      var hls=loadHL();
+      var idx=hls.findIndex(function(h){return h.id===_noteTargetId;});
+      if(idx>=0){hls[idx].note=note;saveHL(hls);updateMarks(_noteTargetId,hls[idx].color,note);updateBadge();renderPanelIfOpen();}
+    }
+    noteModal.classList.add('hidden');
+  });
+  noteModal.addEventListener('click',function(e){if(e.target===noteModal)noteModal.classList.add('hidden');});
+
+  // ── SELECTION HANDLER ──
+  document.addEventListener('mouseup',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    setTimeout(function(){
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed||!sel.rangeCount){hidePopup();return;}
+      var range=sel.getRangeAt(0);
+      var text=range.toString().trim();
+      if(!text||text.length<2){hidePopup();return;}
+      // Only highlight within #main
+      if(!mainEl||!mainEl.contains(range.commonAncestorContainer)){hidePopup();return;}
+      // Serialize positions
+      var sNode=range.startContainer,eNode=range.endContainer;
+      var sParent=sNode.nodeType===3?sNode.parentNode:sNode;
+      var eParent=eNode.nodeType===3?eNode.parentNode:eNode;
+      var sxp=getXPath(sParent),exp=getXPath(eParent);
+      // calc offsets within parent element
+      var so=0,eo=0;
+      var w=document.createTreeWalker(sParent,NodeFilter.SHOW_TEXT,null);
+      var n;while((n=w.nextNode())){if(n===sNode){so+=range.startOffset;break;}so+=n.textContent.length;}
+      var w2=document.createTreeWalker(eParent,NodeFilter.SHOW_TEXT,null);
+      while((n=w2.nextNode())){if(n===eNode){eo+=range.endOffset;break;}eo+=n.textContent.length;}
+      pendingRange=range.cloneRange();
+      pendingXP={sxp:sxp,so:so,exp:exp,eo:eo};
+      currentHlId=null;
+      var rect=range.getBoundingClientRect();
+      showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width});
+    },10);
+  });
+
+  // ── CLICK ON EXISTING MARK ──
+  document.addEventListener('click',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    var mk=e.target.closest('mark.hl');
+    if(!mk){
+      // click outside: if selection is collapsed, hide popup
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed) hidePopup();
+      return;
+    }
+    e.stopPropagation();
+    var hlId=mk.getAttribute('data-hl-id');
+    var rect=mk.getBoundingClientRect();
+    currentHlId=hlId;
+    pendingRange=null;pendingXP=null;
+    showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width},hlId);
+  });
+
+  // ── FLASH EFFECT ──
+  function flashMark(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.style.transition='outline .2s';mk.style.outline='3px solid #c9a84c';
+      setTimeout(function(){mk.style.outline='none';},1500);
+    });
+  }
+
+  function renderPanelIfOpen(){if(panel.classList.contains('open'))renderPanel();}
+
+  function escHtml(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+})();
+
+
+// ── CHAPTER NAV PANEL ───────────────────────────────────
+(function(){
+  var CHAPS=[
+    [1,'rita_chap01.html','Mẹo & Thủ Thuật Ôn Thi PMP®'],
+    [2,'rita_chap02.html','Tài Liệu Tham Khảo Kỳ Thi'],
+    [3,'rita_chap03.html','Nền Tảng Quản Lý Dự Án'],
+    [4,'rita_chap04.html','Tích Hợp'],
+    [5,'rita_chap05.html','Kỹ Năng Lãnh Đạo'],
+    [6,'rita_chap06.html','Xây Dựng & Hỗ Trợ Hiệu Suất Nhóm'],
+    [7,'rita_chap07.html','Phạm Vi Dự Án'],
+    [8,'rita_chap08.html','Tiến Độ & Ngân Sách Dự Án'],
+    [10,'rita_chap10.html','Chất Lượng Sản Phẩm Bàn Giao'],
+    [11,'rita_chap11.html','Truyền Thông'],
+    [12,'rita_chap12.html','Rủi Ro & Vấn Đề'],
+    [13,'rita_chap13.html','Mua Sắm'],
+    [14,'rita_chap14.html','Các Bên Liên Quan'],
+    [15,'rita_chap15.html','Tuân Thủ & Mang Lại Giá Trị'],
+    [16,'rita_chap16.html','Mẹo Vượt Qua Kỳ Thi PMP®'],
+    [17,'rita_chap17.html','Các Phương Pháp Agile Phổ Biến'],
+    [18,'rita_chap18.html','Hướng Dẫn PMBOK & Tiêu Chuẩn PM']
+  ];
+
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var curNum=m?parseInt(m[1]):null;
+  var READ_KEY='rita_reading';
+
+  // Build panel DOM
+  var panel=document.createElement('div');
+  panel.id='chap-panel'; panel.className='hidden';
+  var listHtml='';
+  CHAPS.forEach(function(c){
+    var isActive=c[0]===curNum;
+    listHtml+='<a class="chap-panel-item'+(isActive?' active':'')+'" href="'+c[1]+'">'
+      +'<span class="cpanel-num">Ch'+c[0]+'</span>'
+      +'<span class="cpanel-title">'+c[2]+'</span>'
+      +(isActive?'<span class="cpanel-status">● Đang đọc</span>':'')
+      +'</a>';
+  });
+  panel.innerHTML='<div id="chap-panel-overlay"></div>'
+    +'<div id="chap-panel-box">'
+    +'<div id="chap-panel-hdr"><h3>☰ Danh Sách Chương</h3><button id="chap-panel-close">×</button></div>'
+    +'<div id="chap-panel-list">'+listHtml+'</div>'
+    +'</div>';
+  document.body.appendChild(panel);
+
+  function openChapPanel(){panel.classList.remove('hidden');}
+  function closeChapPanel(){panel.classList.add('hidden');}
+  document.getElementById('chap-panel-overlay').addEventListener('click',closeChapPanel);
+  document.getElementById('chap-panel-close').addEventListener('click',closeChapPanel);
+
+  // Wire up the Mục lục button
+  var mucLucBtn=document.getElementById('chap-muc-luc-btn');
+  if(mucLucBtn) mucLucBtn.addEventListener('click',function(e){e.preventDefault();openChapPanel();});
+})();
+
+
+// ── GITHUB HIGHLIGHTS SYNC ──────────────────────────
+(function(){
+  var REPO='goukakujlptsuport-beep/pmbok6';
+  var TOKEN_KEY='rita_gh_token';
+  var API_URL='https://api.github.com/repos/'+REPO+'/contents/data/rita_highlights.json';
+  var fileSha=null;
+  var syncTimer=null;
+
+  // Called by patched saveHL after every highlight change
+  window.__ritaSyncTrigger=function(){
+    clearTimeout(syncTimer);
+    syncTimer=setTimeout(pushToGitHub,3000);
+  };
+
+  // ── STATUS BUTTON (inserted before #sidebar-nav) ──
+  var btn=document.createElement('button');
+  btn.id='sync-btn'; btn.dataset.state='no-token';
+  btn.innerHTML='<span>☁ Sync Git</span><span id="sync-status-text">Đang kết nối…</span>';
+  btn.title='Đồng bộ highlight / ghi chú lên GitHub';
+  btn.addEventListener('click',handleSyncClick);
+  var sidebarNavEl=document.getElementById('sidebar-nav');
+  if(sidebarNavEl) sidebarNavEl.parentNode.insertBefore(btn,sidebarNavEl);
+
+  var statusText=document.getElementById('sync-status-text');
+  function setStatus(state,msg){
+    btn.dataset.state=state;
+    if(statusText) statusText.textContent=msg;
+  }
+
+  // ── TOKEN MODAL ──
+  var modal=document.createElement('div');
+  modal.id='sync-modal'; modal.className='hidden';
+  modal.innerHTML='<div id="sync-modal-box">'
+    +'<h3>☁ Cấu Hình GitHub Sync</h3>'
+    +'<p>Nhập <strong style="color:var(--gold)">GitHub Personal Access Token (PAT)</strong> để đồng bộ highlight giữa các thiết bị.<br>'
+    +'Token cần quyền <strong style="color:var(--gold-lt)">Contents: Read &amp; Write</strong> trên repo pmbok6.<br>'
+    +'Token được lưu trong localStorage của trình duyệt này.</p>'
+    +'<input id="sync-token-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" spellcheck="false" autocomplete="off">'
+    +'<div class="sync-modal-btns">'
+    +'<button id="sync-clear-btn">🗑 Xóa token</button>'
+    +'<button id="sync-cancel-btn">Hủy</button>'
+    +'<button id="sync-save-btn">💾 Lưu &amp; Sync</button>'
+    +'</div></div>';
+  document.body.appendChild(modal);
+
+  document.getElementById('sync-cancel-btn').addEventListener('click',function(){modal.classList.add('hidden');});
+  document.getElementById('sync-save-btn').addEventListener('click',function(){
+    var t=(document.getElementById('sync-token-input').value||'').trim();
+    if(!t){alert('Vui lòng nhập GitHub PAT!');return;}
+    localStorage.setItem(TOKEN_KEY,t);
+    modal.classList.add('hidden');
+    fileSha=null;
+    initSync();
+  });
+  document.getElementById('sync-clear-btn').addEventListener('click',function(){
+    if(!confirm('Xóa token? Highlights sẽ không được sync cho đến khi cấu hình lại.')) return;
+    localStorage.removeItem(TOKEN_KEY);
+    fileSha=null;
+    modal.classList.add('hidden');
+    setStatus('no-token','Chưa cấu hình');
+  });
+  modal.addEventListener('click',function(e){if(e.target===modal)modal.classList.add('hidden');});
+
+  function handleSyncClick(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){
+      var inp=document.getElementById('sync-token-input');
+      if(inp) inp.value='';
+      modal.classList.remove('hidden');
+      setTimeout(function(){if(inp)inp.focus();},80);
+    } else {
+      // Manual re-sync
+      fileSha=null;
+      initSync();
+    }
+  }
+
+  // ── HELPERS ──
+  var ALL_CHAPS=['01','02','03','04','05','06','07','08','10','11','12','13','14','15','16','17','18'];
+
+  function getAllLocal(){
+    var all={};
+    ALL_CHAPS.forEach(function(n){
+      try{
+        var v=JSON.parse(localStorage.getItem('rita_hl_'+n)||'[]');
+        if(v&&v.length>0) all[n]=v;
+      }catch(e){}
+    });
+    return all;
+  }
+
+  function countHL(obj){
+    return Object.values(obj).reduce(function(s,a){return s+(a?a.length:0);},0);
+  }
+
+  // Union merge: keep all highlights by id, prefer local note if different
+  function mergeHL(local,remote){
+    var merged={};
+    var allChaps=new Set(Object.keys(local).concat(Object.keys(remote)));
+    allChaps.forEach(function(chap){
+      var loc=local[chap]||[];
+      var rem=remote[chap]||[];
+      var byId={};
+      loc.forEach(function(h){byId[h.id]=h;});
+      rem.forEach(function(h){if(!byId[h.id])byId[h.id]=h;});
+      var arr=Object.values(byId);
+      if(arr.length>0) merged[chap]=arr;
+    });
+    return merged;
+  }
+
+  function applyToLocal(highlights){
+    Object.keys(highlights).forEach(function(chap){
+      localStorage.setItem('rita_hl_'+chap,JSON.stringify(highlights[chap]));
+    });
+  }
+
+  // base64 encode/decode with Unicode support
+  function b64enc(str){
+    return btoa(unescape(encodeURIComponent(str)));
+  }
+  function b64dec(b64){
+    return decodeURIComponent(escape(atob(b64.replace(/[\r\n]/g,''))));
+  }
+
+  // ── FETCH FROM GITHUB ──
+  async function fetchFromGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    var headers={'Accept':'application/vnd.github.v3+json'};
+    if(token) headers['Authorization']='token '+token;
+    try{
+      var resp=await fetch(API_URL,{headers:headers});
+      if(resp.status===404){fileSha=null;return null;}
+      if(!resp.ok) throw new Error('HTTP '+resp.status);
+      var data=await resp.json();
+      fileSha=data.sha;
+      var content=JSON.parse(b64dec(data.content));
+      return content;
+    }catch(e){
+      console.warn('[sync] fetch:',e);
+      return 'error';
+    }
+  }
+
+  // ── PUSH TO GITHUB ──
+  async function pushToGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang sync…');
+    var local=getAllLocal();
+    var payload={version:1,lastSync:new Date().toISOString(),highlights:local};
+    var encoded=b64enc(JSON.stringify(payload,null,2));
+    var body={message:'sync: rita highlights ['+countHL(local)+' HL]',content:encoded};
+    if(fileSha) body.sha=fileSha;
+    try{
+      var resp=await fetch(API_URL,{
+        method:'PUT',
+        headers:{
+          'Authorization':'token '+token,
+          'Content-Type':'application/json',
+          'Accept':'application/vnd.github.v3+json'
+        },
+        body:JSON.stringify(body)
+      });
+      if(!resp.ok){
+        var err=await resp.json().catch(function(){return{};});
+        throw new Error(err.message||'HTTP '+resp.status);
+      }
+      var result=await resp.json();
+      fileSha=result.content.sha;
+      setStatus('ok','✓ Đã sync ('+countHL(local)+' HL)');
+    }catch(e){
+      setStatus('err','✗ '+e.message.slice(0,28));
+      console.error('[sync] push:',e);
+    }
+  }
+
+  // ── INIT ──
+  async function initSync(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang tải…');
+
+    var ghData=await fetchFromGitHub();
+    if(ghData==='error'){
+      setStatus('err','✗ Không kết nối được');
+      return;
+    }
+    if(ghData&&ghData.highlights){
+      var local=getAllLocal();
+      var merged=mergeHL(local,ghData.highlights);
+      applyToLocal(merged);
+      // Re-apply marks on current chapter from updated localStorage
+      if(typeof window.__ritaReapplyMarks==='function') window.__ritaReapplyMarks();
+      var ghN=countHL(ghData.highlights), mergedN=countHL(merged);
+      if(mergedN>ghN){
+        // New highlights from remote — push merged back
+        setTimeout(pushToGitHub,1200);
+      } else {
+        setStatus('ok','✓ Sync OK ('+mergedN+' HL)');
+      }
+    } else {
+      // File doesn't exist yet — push current local state
+      await pushToGitHub();
+    }
+  }
+
+  initSync();
+})();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2041 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mua Sắm | Rita PMP® Exam Prep 11</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:     #1a2744;
+  --red:      #8b1a1a;
+  --gold:     #c9a84c;
+  --gold-lt:  #e8d5a3;
+  --cream:    #fdf8f0;
+  --text:     #2c2c2c;
+  --text-dim: #5a5a5a;
+  --border:   #d4c89a;
+  --sidebar-w: 268px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ── PROGRESS BAR ── */
+#progress-bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--gold);z-index:200;transition:width .1s}
+
+/* ── SIDEBAR ── */
+#sidebar{
+  width:var(--sidebar-w);background:var(--navy);color:#ccd4e8;
+  position:fixed;top:0;left:0;bottom:0;overflow-y:auto;z-index:100;
+  border-right:3px solid var(--gold);display:flex;flex-direction:column;
+}
+#sidebar-header{
+  background:linear-gradient(135deg,#0f1d3a 0%,#1a2744 100%);
+  padding:1.4rem 1.2rem;border-bottom:2px solid var(--gold);flex-shrink:0;
+}
+#sidebar-header .book-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.62rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;
+}
+#sidebar-header h2{font-size:.92rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:.25rem}
+#sidebar-header .edition{font-family:'Source Sans 3',sans-serif;font-size:.7rem;color:var(--gold-lt);font-style:italic}
+#sidebar-toc{flex:1;overflow-y:auto;padding:.6rem 0}
+#sidebar-toc a{
+  display:block;font-family:'Source Sans 3',sans-serif;font-size:.78rem;
+  color:#aab8d0;text-decoration:none;padding:.4rem 1.2rem;line-height:1.4;
+  transition:all .15s;border-left:3px solid transparent;
+}
+#sidebar-toc a:hover,#sidebar-toc a.active{color:#fff;background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+#sidebar-toc a.toc-h4{padding-left:2.2rem;font-size:.72rem;color:#8896b0}
+#sidebar-toc a.toc-h4:hover{color:#ccd4e8}
+#sidebar-toc .toc-group-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.6rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  padding:.7rem 1.2rem .25rem;opacity:.85;
+}
+#sidebar-nav{
+  flex-shrink:0;border-top:1px solid rgba(255,255,255,.08);
+  display:flex;justify-content:space-between;padding:.7rem .8rem;gap:.5rem;
+}
+#sidebar-nav a{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;color:var(--gold-lt);
+  text-decoration:none;padding:.4rem .7rem;border:1px solid rgba(201,168,76,.3);
+  border-radius:4px;transition:all .2s;line-height:1.3;text-align:center;flex:1;
+}
+#sidebar-nav a:hover{background:rgba(201,168,76,.15);color:#fff}
+#sidebar-nav a.disabled{opacity:.35;pointer-events:none}
+
+/* ── HAMBURGER (mobile) ── */
+#menu-btn{
+  display:none;position:fixed;top:.7rem;left:.8rem;z-index:150;
+  background:var(--navy);border:1px solid var(--gold);color:var(--gold);
+  width:36px;height:36px;border-radius:6px;font-size:1.1rem;cursor:pointer;
+  align-items:center;justify-content:center;
+}
+
+/* ── MAIN ── */
+#main{margin-left:var(--sidebar-w);max-width:880px;padding:0 2.8rem 5rem}
+
+/* ── CHAPTER HERO ── */
+.chapter-hero{
+  background:linear-gradient(135deg,var(--navy) 0%,#2a3a6a 100%);
+  color:white;padding:2.8rem 2.8rem 2.2rem;margin:0 -2.8rem 2.8rem;
+  border-bottom:4px solid var(--gold);position:relative;overflow:hidden;
+}
+.chapter-hero::before{
+  content:'13';position:absolute;right:1.5rem;top:50%;
+  transform:translateY(-50%);font-size:10rem;font-weight:700;
+  color:rgba(255,255,255,.05);font-family:'Merriweather',serif;line-height:1;
+}
+.chapter-hero .ch-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;font-weight:700;
+  letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;
+}
+.chapter-hero h1{font-size:2rem;font-weight:700;line-height:1.2;margin-bottom:.35rem}
+.chapter-hero .ch-en{font-family:'Source Sans 3',sans-serif;font-size:.95rem;color:rgba(255,255,255,.5);font-style:italic}
+
+/* ── CONTENT HEADINGS ── */
+h3{
+  font-family:'Merriweather',serif;font-size:1.25rem;color:var(--navy);
+  margin:2.5rem 0 .85rem;padding-bottom:.45rem;border-bottom:2px solid var(--gold);
+}
+h4{
+  font-family:'Merriweather',serif;font-size:1.05rem;color:var(--navy);
+  margin:2rem 0 .65rem;padding-left:.75rem;border-left:4px solid var(--gold);
+}
+h5{
+  font-family:'Source Sans 3',sans-serif;font-size:.9rem;font-weight:700;
+  color:var(--red);margin:1.4rem 0 .45rem;text-transform:uppercase;letter-spacing:.05em;
+}
+p{font-family:'Merriweather',serif;font-size:.94rem;line-height:1.88;margin-bottom:.95rem;color:var(--text)}
+
+/* ── LISTS ── */
+ul.content-list,ol.content-list{
+  margin:.5rem 0 1rem;padding:0;list-style:none;
+}
+ul.content-list li{
+  position:relative;padding:.28rem 0 .28rem 1.6rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);
+}
+ul.content-list li::before{
+  content:'◆';position:absolute;left:0;color:var(--gold);font-size:.65rem;top:.45rem;
+}
+ol.content-list{counter-reset:ol-c;list-style:none}
+ol.content-list li{
+  position:relative;padding:.28rem 0 .28rem 2rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);counter-increment:ol-c;
+}
+ol.content-list li::before{
+  content:counter(ol-c)'.';position:absolute;left:0;color:var(--navy);
+  font-weight:700;font-size:.85rem;min-width:1.5rem;
+}
+ul.content-list ul.content-list li::before{content:'–';color:var(--text-dim);font-size:.9rem;top:.35rem}
+
+/* ── CALLOUT / DEF BOX ── */
+.callout{
+  background:linear-gradient(135deg,#f5f0e8,#ede8d8);
+  border:1px solid var(--border);border-left:5px solid var(--gold);
+  border-radius:0 6px 6px 0;padding:1rem 1.2rem;margin:1.3rem 0;
+}
+.callout p{font-size:.9rem;margin-bottom:.5rem}
+.callout p:last-child{margin-bottom:0}
+.callout ul.content-list li{font-size:.88rem}
+.callout-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.65rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;
+}
+.callout.tip{border-left-color:#2d7a2d;background:linear-gradient(135deg,#f0f7f0,#e4f0e4)}
+.callout.tip .callout-label{color:#2d7a2d}
+
+/* ── HIGHLIGHT (quicktest / exam alert) ── */
+.highlight{
+  background:var(--navy);color:#e8d5a3;
+  border-radius:8px;padding:1.1rem 1.3rem;margin:1.5rem 0;
+}
+.highlight h5,.highlight strong{color:var(--gold-lt)}
+.highlight p,.highlight li{color:#ccd4e8;font-size:.88rem}
+.highlight ul.content-list li::before{color:var(--gold)}
+
+/* ── FIGURE ── */
+.img-center{
+  text-align:center;margin:1.8rem 0;padding:1rem;
+  background:#f8f5ee;border:1px solid var(--border);border-radius:8px;
+}
+.img-center img{max-width:100%;height:auto;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.img-center p,.img-center div{
+  margin-top:.65rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.8rem;color:var(--text-dim);font-style:italic;
+}
+
+/* ── TABLES ── */
+.table-wrap{overflow-x:auto;margin:1.5rem 0}
+table{width:100%;border-collapse:collapse;font-family:'Source Sans 3',sans-serif;font-size:.84rem}
+table th{background:var(--navy);color:white;padding:.6rem .8rem;text-align:center;font-weight:600;font-size:.79rem}
+table td{padding:.5rem .8rem;border:1px solid #ddd;vertical-align:top;line-height:1.5}
+table tr:nth-child(even) td{background:#f9f6ef}
+
+/* ── BACK TO TOP ── */
+#back-top{
+  position:fixed;bottom:1.5rem;right:1.5rem;
+  background:var(--navy);color:var(--gold);border:1px solid var(--gold);
+  width:38px;height:38px;border-radius:50%;font-size:1.2rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .25s;z-index:99;
+}
+#back-top:hover{background:var(--gold);color:var(--navy)}
+
+/* ── MOBILE ── */
+@media(max-width:860px){
+  #sidebar{transform:translateX(-100%);transition:transform .25s;top:3rem}
+  #sidebar.open{transform:translateX(0)}
+  #menu-btn{display:flex}
+  #main{margin-left:0;padding:3.5rem 1.2rem 4rem}
+  .chapter-hero{margin:0 -1.2rem 2rem;padding:2rem 1.4rem}
+  .chapter-hero::before{display:none}
+}
+
+/* ── DARK / LIGHT MODE ─────────────────────────────── */
+html[data-theme=dark]{--cream:#0f1520;--text:#dde4f0;--text-dim:#8899bb;--border:#253048;--gold-lt:#c9a84c}
+html[data-theme=dark] body{background:#0f1520;color:#dde4f0}
+html[data-theme=dark] #main{background:#0f1520}
+html[data-theme=dark] h1,html[data-theme=dark] h2{color:#e8d5a3}
+html[data-theme=dark] h3{color:#e8d5a3;border-bottom-color:var(--gold)}
+html[data-theme=dark] h4{color:#b8ccee;border-left-color:var(--gold)}
+html[data-theme=dark] p,html[data-theme=dark] li,html[data-theme=dark] td{color:#dde4f0}
+html[data-theme=dark] strong{color:#e8d5a3}
+html[data-theme=dark] em{color:#b8ccee}
+html[data-theme=dark] .callout{background:linear-gradient(135deg,#1a2436,#1e2d45);border-left-color:var(--gold);color:#dde4f0}
+html[data-theme=dark] .callout p{color:#dde4f0}
+html[data-theme=dark] blockquote{background:#1a2436;border-left-color:var(--gold);color:#b0c0d8}
+html[data-theme=dark] table{background:#131c2b}
+html[data-theme=dark] th{background:#1a2744;color:#e8d5a3;border-color:#253048}
+html[data-theme=dark] td{border-color:#253048}
+html[data-theme=dark] tr:nth-child(even) td{background:#1a2436}
+html[data-theme=dark] .highlight,.highlight-box{background:#1a2436!important;border-color:#253048!important;color:#dde4f0!important}
+html[data-theme=dark] #back-top{background:#1a2744;color:var(--gold);border:1px solid rgba(201,168,76,.4)}
+html[data-theme=dark] ul.content-list li,html[data-theme=dark] ol.content-list li{color:#dde4f0}
+html[data-theme=dark] .chapter-hero{background:linear-gradient(135deg,#0a1228 0%,#142040 100%)}
+html[data-theme=dark] .exercise-card{background:#1a2436;border-color:#253048}
+html[data-theme=dark] .answer-box{background:#152035;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] .answer-box p{color:#dde4f0}
+/* theme toggle button */
+#theme-btn{position:absolute;top:.65rem;right:.7rem;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.35);color:var(--gold);width:28px;height:28px;border-radius:5px;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+#theme-btn:hover{background:rgba(201,168,76,.2)}
+#sidebar-header{position:relative}
+
+/* ── HIGHLIGHT SYSTEM ─────────────────────────────────── */
+mark.hl{border-radius:2px;cursor:pointer;padding:1px 0;background:transparent}
+mark.hl[data-color=yellow]{background:rgba(255,241,118,.75)}
+mark.hl[data-color=green]{background:rgba(165,214,167,.75)}
+mark.hl[data-color=red]{background:rgba(239,154,154,.75)}
+mark.hl::after{display:none}
+mark.hl[data-note]:not([data-note=""])::after{content:"✏";font-size:.6rem;vertical-align:super;margin-left:1px;opacity:.65;display:inline}
+/* selection popup */
+#hl-popup{position:fixed;z-index:9999;background:#1a2744;border:1px solid rgba(201,168,76,.5);border-radius:8px;padding:.45rem .6rem;display:flex;align-items:center;gap:.35rem;box-shadow:0 4px 20px rgba(0,0,0,.4);pointer-events:all}
+#hl-popup.hidden{display:none!important}
+.hl-color-btn{width:24px;height:24px;border-radius:50%;border:2px solid rgba(255,255,255,.25);cursor:pointer;transition:transform .15s,border-color .15s;flex-shrink:0}
+.hl-color-btn:hover{transform:scale(1.2);border-color:rgba(255,255,255,.7)}
+.hl-color-btn[data-color=yellow]{background:#fff176}
+.hl-color-btn[data-color=green]{background:#a5d6a7}
+.hl-color-btn[data-color=red]{background:#ef9a9a}
+.hl-sep{width:1px;height:20px;background:rgba(255,255,255,.2);margin:0 .1rem}
+.hl-note-btn{background:none;border:none;color:rgba(255,255,255,.7);font-size:.9rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-note-btn:hover{color:#fff;background:rgba(255,255,255,.1)}
+.hl-del-btn{background:none;border:none;color:rgba(239,154,154,.8);font-size:.85rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-del-btn:hover{color:#ef9a9a;background:rgba(239,154,154,.12)}
+/* note modal */
+#hl-note-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center}
+#hl-note-modal.hidden{display:none!important}
+#hl-note-box{background:#fff;border-radius:10px;padding:1.4rem;width:min(420px,90vw);box-shadow:0 8px 32px rgba(0,0,0,.25)}
+#hl-note-box h3{font-size:.95rem;color:#1a2744;margin-bottom:.7rem;font-family:'Merriweather',serif}
+#hl-note-ta{width:100%;border:1px solid #d4c89a;border-radius:6px;padding:.6rem .8rem;font-size:.88rem;font-family:'Source Sans 3',sans-serif;resize:vertical;min-height:80px;color:#2c2c2c;outline:none}
+#hl-note-ta:focus{border-color:#c9a84c;box-shadow:0 0 0 2px rgba(201,168,76,.25)}
+.hl-note-actions{display:flex;justify-content:flex-end;gap:.6rem;margin-top:.8rem}
+.hl-note-cancel{background:transparent;border:1px solid #ccc;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+.hl-note-save{background:#1a2744;color:#fff;border:none;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+/* highlights panel */
+#hl-panel{position:fixed;top:0;right:0;bottom:0;width:300px;background:#fff;border-left:3px solid var(--gold);z-index:500;display:flex;flex-direction:column;box-shadow:-4px 0 20px rgba(0,0,0,.15);transform:translateX(100%);transition:transform .25s}
+#hl-panel.open{transform:translateX(0)}
+#hl-panel-hdr{background:#1a2744;padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--gold)}
+#hl-panel-hdr h3{font-size:.88rem;color:#fff;font-family:'Source Sans 3',sans-serif;font-weight:700;letter-spacing:.05em}
+#hl-panel-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.2rem;cursor:pointer;padding:.2rem;line-height:1}
+#hl-panel-close:hover{color:#fff}
+#hl-panel-list{flex:1;overflow-y:auto;padding:.6rem}
+#hl-panel-list:empty::before{content:"Chưa có ghi chú nào trong chương này.";font-size:.82rem;color:#999;display:block;padding:.8rem;text-align:center;font-style:italic}
+.hl-item{padding:.65rem .8rem;border-radius:6px;margin-bottom:.5rem;border-left:4px solid #ddd;background:#fafafa;cursor:pointer;transition:background .15s}
+.hl-item:hover{background:#f0f0f0}
+.hl-item[data-color=yellow]{border-left-color:#fdd835}
+.hl-item[data-color=green]{border-left-color:#66bb6a}
+.hl-item[data-color=red]{border-left-color:#ef5350}
+.hl-item-text{font-size:.8rem;color:#2c2c2c;line-height:1.5;margin-bottom:.3rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.hl-item-note{font-size:.75rem;color:#666;font-style:italic;margin-bottom:.3rem}
+.hl-item-del{float:right;background:none;border:none;color:#bbb;cursor:pointer;font-size:.8rem;padding:.1rem .3rem;border-radius:3px;line-height:1}
+.hl-item-del:hover{color:#ef5350;background:rgba(239,83,80,.08)}
+/* sidebar hl badge */
+#hl-sidebar-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:var(--gold);cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#hl-sidebar-btn:hover{background:rgba(201,168,76,.1)}
+#hl-badge{background:rgba(201,168,76,.2);color:var(--gold);font-size:.65rem;font-weight:700;padding:.1rem .4rem;border-radius:10px;min-width:18px;text-align:center}
+html[data-theme=dark] #hl-note-box{background:#1a2436;border:1px solid #253048}
+html[data-theme=dark] #hl-note-box h3{color:#e8d5a3}
+html[data-theme=dark] #hl-note-ta{background:#0f1520;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] #hl-panel{background:#131c2b;border-left-color:var(--gold)}
+html[data-theme=dark] .hl-item{background:#1a2436;border-bottom:1px solid #1e2d45}
+html[data-theme=dark] .hl-item:hover{background:#1e2d45}
+html[data-theme=dark] .hl-item-text{color:#dde4f0}
+html[data-theme=dark] .hl-item-note{color:#8899bb}
+html[data-theme=dark] .hl-note-cancel{border-color:#253048;color:#dde4f0;background:#1a2436}
+html[data-theme=dark] .hl-note-save{background:#c9a84c;color:#0a0f1a}
+
+/* ── CHAPTER NAV PANEL ─────────────────────────────────── */
+#chap-panel{position:fixed;inset:0;z-index:9000;display:flex;align-items:stretch}
+#chap-panel.hidden{display:none!important}
+#chap-panel-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);cursor:pointer}
+#chap-panel-box{position:relative;z-index:1;width:min(360px,90vw);background:#0f1d3a;border-right:3px solid var(--gold);display:flex;flex-direction:column;animation:slideInLeft .2s ease}
+@keyframes slideInLeft{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+#chap-panel-hdr{background:linear-gradient(135deg,#0a1228,#1a2744);padding:1.2rem 1.3rem;border-bottom:2px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
+#chap-panel-hdr h3{font-family:'Source Sans 3',sans-serif;font-size:.85rem;font-weight:700;color:#fff;letter-spacing:.1em;text-transform:uppercase}
+#chap-panel-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.3rem;cursor:pointer;padding:.2rem;line-height:1;transition:color .15s}
+#chap-panel-close:hover{color:#fff}
+#chap-panel-list{flex:1;overflow-y:auto;padding:.5rem 0}
+.chap-panel-item{display:flex;align-items:center;gap:.8rem;padding:.7rem 1.3rem;cursor:pointer;transition:background .15s;border-left:3px solid transparent;text-decoration:none}
+.chap-panel-item:hover{background:rgba(201,168,76,.1);border-left-color:var(--gold)}
+.chap-panel-item.active{background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+.cpanel-num{font-family:'Source Sans 3',sans-serif;font-size:.7rem;font-weight:700;color:var(--gold);min-width:28px;flex-shrink:0}
+.cpanel-title{font-family:'Source Sans 3',sans-serif;font-size:.8rem;color:#ccd4e8;line-height:1.35}
+.cpanel-item-active .cpanel-title{color:#fff;font-weight:600}
+.cpanel-status{margin-left:auto;font-size:.72rem;flex-shrink:0;opacity:.6}
+
+/* ── GITHUB SYNC ──────────────────────────────────── */
+#sync-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:#8899bb;cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s,color .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#sync-btn:hover{background:rgba(201,168,76,.08);color:var(--gold)}
+#sync-btn[data-state=ok]{color:#4caf50}
+#sync-btn[data-state=syncing]{color:var(--gold)}
+#sync-btn[data-state=err]{color:#ef5350}
+#sync-btn[data-state=no-token]{color:#8899bb}
+#sync-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center}
+#sync-modal.hidden{display:none!important}
+#sync-modal-box{background:#0f1d3a;border:2px solid var(--gold);border-radius:10px;padding:1.8rem 2rem;width:min(420px,90vw);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+#sync-modal-box h3{font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:.9rem;text-transform:uppercase;letter-spacing:.1em}
+#sync-modal-box p{font-size:.77rem;color:#aab8d0;line-height:1.6;margin-bottom:.9rem}
+#sync-modal-box input{width:100%;background:#0a1228;border:1px solid rgba(201,168,76,.4);color:#fff;font-family:monospace;font-size:.8rem;padding:.55rem .8rem;border-radius:5px;outline:none;margin-bottom:.8rem;box-sizing:border-box}
+#sync-modal-box input:focus{border-color:var(--gold)}
+.sync-modal-btns{display:flex;gap:.6rem;justify-content:flex-end;flex-wrap:wrap}
+.sync-modal-btns button{font-family:'Source Sans 3',sans-serif;font-size:.77rem;font-weight:700;padding:.42rem .9rem;border-radius:5px;cursor:pointer;border:none;transition:background .15s}
+#sync-save-btn{background:var(--gold);color:#0a0f1a}
+#sync-save-btn:hover{background:#e8c47a}
+#sync-cancel-btn{background:rgba(255,255,255,.1);color:#aab8d0}
+#sync-cancel-btn:hover{background:rgba(255,255,255,.18)}
+#sync-clear-btn{background:rgba(239,83,80,.18);color:#ef9090;margin-right:auto}
+#sync-clear-btn:hover{background:rgba(239,83,80,.32)}
+</style>
+</head>
+<script>
+(function(){var t=localStorage.getItem('rita_theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+</script>
+<body>
+<div id="progress-bar"></div>
+<button id="menu-btn" aria-label="Menu">☰</button>
+
+<aside id="sidebar">
+<div id="sidebar-header">
+  <div class="book-label">Rita PMP® Exam Prep</div>
+  <h2>Ôn Thi PMP®</h2>
+  <div class="edition">Rita Mulcahy · 11th Edition 2023 · Tiếng Việt</div>
+</div>
+<div id="sidebar-toc">
+  <div class="toc-group-label">Nội Dung Chương</div>
+  <a href="#ch13-hop-dong-gia-co-dinh" class="toc-h4">Hợp Đồng Giá Cố Định (FP)</a>
+<a href="#ch13-vi-du-hop-dong-gia-co-dinh" class="toc-h4">Ví Dụ: Hợp Đồng Giá Cố Định</a>
+<a href="#ch13-vi-du-don-dat-hang" class="toc-h4">Ví Dụ: Đơn Đặt Hàng</a>
+<a href="#ch13-hop-dong-thoi-gian-vat-lieu" class="toc-h4">Hợp Đồng Thời Gian và Vật Liệu (T&amp;M)</a>
+<a href="#ch13-hop-dong-hoan-phi" class="toc-h4">Hợp Đồng Hoàn Phí (CR)</a>
+<a href="#ch13-vi-du-hop-dong-chi-phi" class="toc-h4">Ví Dụ: Hợp Đồng Chi Phí</a>
+<a href="#ch13-hop-dong-giao-hang-khong-xac-dinh" class="toc-h4">Hợp Đồng Giao Hàng Không Xác Định, Số Lượng Không Xác Định (IDIQ)</a>
+<a href="#ch13-rui-ro-va-loai-hop-dong" class="toc-h4">Rủi Ro và Loại Hợp Đồng</a>
+<a href="#ch13-uu-nhuoc-diem-moi-loai-hop-dong" class="toc-h4">Ưu Điểm và Nhược Điểm của Từng Loại Hợp Đồng</a>
+<a href="#ch13-bai-tap-13-1" class="">Bài Tập 13.1</a>
+<a href="#ch13-dap-an" class="toc-h4">Đáp Án</a>
+<a href="#ch13-mua-sam-agile-va-hop-dong" class="toc-h4">Mua Sắm và Hợp Đồng Trong Dự Án Agile</a>
+<a href="#ch13-thuat-ngu-hop-dong-bo-sung" class="toc-h4">Các Thuật Ngữ Hợp Đồng Bổ Sung Cần Biết</a>
+<a href="#ch13-dieu-khoan-va-dieu-kien" class="toc-h4">Điều Khoản và Điều Kiện</a>
+<a href="#ch13-bai-tap-13-2" class="">13.2 Bài Tập</a>
+<a href="#ch13-dap-an-bai-tap-13-2" class="toc-h4">Đáp Án</a>
+<a href="#ch13-lap-ke-hoach-mua-sam" class="">Lập Kế Hoạch Mua Sắm</a>
+<a href="#ch13-phuong-phap-lap-ke-hoach-quan-ly-mua-sam" class="toc-h4">Các Phương Pháp Lập Kế Hoạch Quản Lý Mua Sắm</a>
+<a href="#ch13-phan-tich-tu-lam-hay-mua-ngoai" class="toc-h4">Phân Tích Tự Làm Hay Mua Ngoài</a>
+<a href="#ch13-quan-ly-hau-can-va-chuoi-cung-ung" class="toc-h4">Quản Lý Hậu Cần Và Chuỗi Cung Ứng</a>
+<a href="#ch13-cac-bien-phap-kinh-te" class="toc-h4">Các Biện Pháp Kinh Tế</a>
+<a href="#ch13-phan-tich-lua-chon-nguon-cung" class="toc-h4">Phân Tích Lựa Chọn Nguồn Cung</a>
+<a href="#ch13-artifacts-plan-procurement" class="toc-h4">Các Sản Phẩm Đầu Ra Của Lập Kế Hoạch Mua Sắm</a>
+<a href="#ch13-procurement-sow" class="toc-h4">Phát Biểu Phạm Vi Công Việc Mua Sắm (SOW)</a>
+<a href="#ch13-noncompetitive-procurement" class="toc-h4">Các Hình Thức Mua Sắm Phi Cạnh Tranh</a>
+<a href="#ch13-conduct-procurements" class="toc-h4">Tiến Hành Mua Sắm</a>
+<a href="#ch13-methods-conduct-procurements" class="toc-h4">Các Phương Pháp Tiến Hành Mua Sắm</a>
+<a href="#ch13-bidder-conference" class="toc-h4">Hội Nghị Nhà Thầu</a>
+<a href="#ch13-seller-proposal" class="toc-h4">Đề Xuất Của Người Bán (hoặc Báo Giá hoặc Hồ Sơ Đấu Thầu)</a>
+<a href="#ch13-proposal-evaluation" class="toc-h4">Đánh Giá Đề Xuất</a>
+<a href="#ch13-weighting-system" class="toc-h4">Hệ Thống Trọng Số</a>
+<a href="#ch13-past-performance-history" class="toc-h4">Lịch Sử Hiệu Suất Quá Khứ</a>
+<a href="#ch13-independent-cost-estimates" class="toc-h4">Ước Tính Chi Phí Độc Lập</a>
+<a href="#ch13-presentations" class="toc-h4">Thuyết Trình</a>
+<a href="#ch13-negotiations" class="toc-h4">Đàm Phán</a>
+<a href="#ch13-legal-contract" class="toc-h4">Những Gì Cần Có Để Có Một Hợp Đồng Hợp Pháp?</a>
+<a href="#ch13-artifacts-conduct-procurements" class="toc-h4">Các Sản Phẩm Và Kết Quả Của Thực Hiện Mua Sắm</a>
+<a href="#ch13-change-requests-conduct" class="toc-h4">Yêu Cầu Thay Đổi</a>
+<a href="#ch13-bai-tap-6" class="">13.6 Bài Tập</a>
+<a href="#ch13-dap-an-bai-tap-6" class="toc-h4">Đáp Án</a>
+<a href="#ch13-hanh-dong-chinh-mua-sam" class="toc-h4">Các Hành Động Chính Cho Mỗi Quy Trình Mua Sắm</a>
+<a href="#ch13-bai-tap-7" class="">13.7 Bài Tập</a>
+<a href="#ch13-dap-an-bai-tap-7" class="toc-h4">Đáp Án</a>
+
+</div>
+<div id="sidebar-nav">
+  <a href="rita_chap12.html" class="" title="Rủi Ro & Vấn Đề">← Ch12</a>
+  <a href="#" id="chap-muc-luc-btn">☰ Mục lục</a>
+  <a href="rita_chap14.html" class="" title="Các Bên Liên Quan">Ch14 →</a>
+</div></aside>
+
+<main id="main">
+  <div class="chapter-hero">
+    <div class="ch-label">Chương 13</div>
+    <h1>Mua Sắm</h1>
+    <div class="ch-en">Procurement</div>
+  </div>
+<p>Có nhiều loại hợp đồng khác nhau có thể được sử dụng để mua sắm hàng hóa và dịch vụ. Các hợp đồng hoặc thỏa thuận mẫu được sử dụng trong một tổ chức là tài sản quy trình tổ chức (OPA). Người quản lý mua sắm lựa chọn loại hợp đồng cho từng gói mua sắm dựa trên các yếu tố sau:</p>
+
+<ul class="content-list">
+  <li>Đối tượng mua sắm là gì (sản phẩm hay dịch vụ)</li>
+  <li>Mức độ đầy đủ của bản mô tả phạm vi công việc (SOW)</li>
+  <li>Mức độ nỗ lực và chuyên môn mà bên mua có thể dành ra để quản lý bên bán</li>
+  <li>Bên mua có muốn đưa ra các điều khoản khuyến khích cho bên bán hay không</li>
+  <li>Tình hình thị trường hoặc nền kinh tế</li>
+  <li>Tiêu chuẩn ngành về loại hợp đồng được sử dụng</li>
+</ul>
+
+<p>Mặc dù bên mua ban đầu đề xuất loại hợp đồng, loại hợp đồng cuối cùng vẫn phụ thuộc vào đàm phán với bên bán. Loại hợp đồng tốt nhất là loại đáp ứng nhu cầu của gói mua sắm, mang lại mức rủi ro hợp lý cho bên bán, và tạo điều kiện cho bên bán có động lực lớn nhất để thực hiện công việc hiệu quả.</p>
+
+<p>Ba nhóm hợp đồng lớn bao gồm:</p>
+
+<ul class="content-list">
+  <li>Hợp đồng giá cố định (FP)</li>
+  <li>Hợp đồng thời gian và vật liệu (T&amp;M)</li>
+  <li>Hợp đồng hoàn phí (CR)</li>
+</ul>
+
+<div class="callout">
+  <p><strong>Lưu ý:</strong> Hãy đọc về các phân loại hợp đồng con trong ba nhóm lớn này trong bài viết miễn phí "Contract Types Subcategories" trên trang RMC Resources (www.rmcls.com/rmc-resources).</p>
+</div>
+
+<p>Các câu hỏi tình huống trong kỳ thi có thể yêu cầu bạn nhận ra rằng trách nhiệm và hành động của người quản lý dự án sẽ khác nhau tùy thuộc vào loại hợp đồng đang được sử dụng. Cũng có thể có các câu hỏi yêu cầu bạn chọn loại hợp đồng phù hợp nhất dựa trên một tình huống cụ thể. Hãy suy nghĩ kỹ phần này!</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//72fc772b-29cd-4b68-ab47-ad3cc8e7f0ce/markdown_0/imgs/img_in_image_box_624_393_727_495.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A04Z%2F-1%2F%2F526f2d83a00dd16bd33238f8957e876af72deba8e870fadb64ab88af8d2d7f89" alt="Image" width="12%" /></div></div>
+
+<h4 id="ch13-hop-dong-gia-co-dinh">Hợp Đồng Giá Cố Định (FP)</h4>
+
+<p>Hợp đồng giá cố định nên được sử dụng để mua sắm hàng hóa, sản phẩm hoặc dịch vụ có yêu cầu hoặc thông số kỹ thuật được xác định rõ ràng. Nhìn chung, với hợp đồng giá cố định, một SOW được xác định rõ ràng cùng với các hồ sơ thầu cạnh tranh có nghĩa là bạn có khả năng nhận được mức giá công bằng và hợp lý. Đây là một trong những loại hợp đồng phổ biến nhất được sử dụng, mặc dù nó có xu hướng được dùng trong lĩnh vực xây dựng nhiều hơn so với lĩnh vực như công nghệ thông tin.</p>
+
+<p>Nếu chi phí thực tế vượt quá số tiền đã thỏa thuận, bên bán phải chịu các chi phí phát sinh thêm. Do đó, bên mua có ít rủi ro về chi phí nhất với loại hợp đồng này vì phạm vi công việc đã được xác định rõ ràng. Tuy nhiên, cần lưu ý rằng khi hợp đồng giá cố định được ký kết mà SOW không đủ chi tiết, các khiếu nại và tranh chấp về phạm vi trong và ngoài hợp đồng sẽ tạo ra rủi ro cao hơn về việc vượt chi phí hoặc chậm tiến độ.</p>
+
+<p>Bên bán quan tâm nhất đến SOW trong hợp đồng giá cố định, vì điều này giúp họ ước tính thời gian và chi phí cho công việc liên quan một cách chính xác hơn, và xác định mức giá bao gồm lợi nhuận công bằng và hợp lý. Mức lợi nhuận không được tiết lộ cho bên mua.</p>
+
+<p>Để chuẩn bị cho kỳ thi, hãy lưu ý rằng mặc dù bên mua có thể ưu tiên hợp đồng giá cố định để kiểm soát chi phí, đây không phải lúc nào cũng là lựa chọn tốt nhất, và trong một số trường hợp, nó có thể không phù hợp. Bên bán trong một số ngành có thể không có hồ sơ kế toán chi tiết về các hoạt động dự án trong quá khứ cần thiết để ước tính chính xác các dự án trong tương lai. Bên mua có thể không có đủ chuyên môn để chuẩn bị SOW rõ ràng và đầy đủ theo yêu cầu của hợp đồng giá cố định.</p>
+
+<p>Vì nhiều bên mua không am hiểu về hợp đồng, họ thường yêu cầu bên bán cung cấp mức giá cố định ngay cả khi phạm vi công việc chưa hoàn chỉnh và chính xác. Hãy suy nghĩ về những bất lợi sau đây nếu SOW không đủ để bên bán đưa ra ước tính hợp lý:</p>
+
+<ul class="content-list">
+  <li>Bên bán bị buộc phải chấp nhận mức rủi ro cao.
+    <ul class="content-list">
+      <li>Bên bán cần thêm vào mức dự phòng đáng kể trong giá của họ để bù đắp rủi ro; do đó, bên mua trả nhiều hơn mức đáng lẽ phải trả.</li>
+      <li>Bên bán có thể dễ dàng cố gắng tăng lợi nhuận bằng cách cắt giảm phạm vi công việc hoặc khẳng định rằng công việc mà bên mua muốn nằm ngoài hợp đồng và do đó cần một lệnh thay đổi, và bên mua sẽ không thể khẳng định chắc chắn liệu công việc đó có nằm trong phạm vi công việc hay cần một lệnh thay đổi. Nếu bên bán nhận ra rằng họ sẽ không thể kiếm được lợi nhuận, họ có thể cố gắng rút những người giỏi nhất khỏi dự án, cắt bỏ công việc được đề cập cụ thể trong hợp đồng, cắt bỏ công việc không được đề cập trong hợp đồng nhưng cần thiết, giảm chất lượng, hoặc thực hiện các hành động khác để tiết kiệm chi phí.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="highlight">
+  <p><strong>Hợp đồng giá cố định (FP)</strong> Trong hợp đồng FP, một mức giá cố định tổng thể được đặt ra cho dự án, tất cả các yêu cầu đã được mô tả rõ ràng, và không nên có các thay đổi phạm vi công việc.</p>
+  <p><strong>Đơn đặt hàng (Purchase Order)</strong> Đơn đặt hàng là loại hợp đồng giá cố định đơn giản nhất. Loại hợp đồng này thường là đơn phương (được ký bởi một bên) thay vì song phương (được ký bởi cả hai bên). Tuy nhiên, một số bên mua yêu cầu chữ ký của bên bán trên đơn đặt hàng trước khi coi đó là chính thức. Trong trường hợp đó, chữ ký tạo thành sự chấp thuận cần thiết cho một hợp đồng.</p>
+</div>
+
+<h4 id="ch13-vi-du-hop-dong-gia-co-dinh">Ví Dụ: Hợp Đồng Giá Cố Định</h4>
+
+<p>Hợp đồng = 1.100.000 đô la.</p>
+
+<h4 id="ch13-vi-du-don-dat-hang">Ví Dụ: Đơn Đặt Hàng</h4>
+
+<p>Hợp đồng = 30 mét dài gỗ với giá 9 đô la mỗi mét.</p>
+
+<div class="callout">
+  <p><strong>Lưu ý:</strong> Đơn đặt hàng thường được sử dụng cho các gói mua sắm hàng hóa thông thường đơn giản. Chúng trở thành hợp đồng khi bên mua chấp nhận các điều khoản. Sau đó, bên bán thực hiện hoặc giao hàng theo các điều khoản đó (ví dụ: thiết bị hoặc sản phẩm).</p>
+</div>
+
+<h4 id="ch13-hop-dong-thoi-gian-vat-lieu">Hợp Đồng Thời Gian và Vật Liệu (T&amp;M)</h4>
+
+<p>Với loại hợp đồng này, bên mua trả tiền theo giờ hoặc theo đơn vị sản phẩm. Các hợp đồng này thường được sử dụng cho các dịch vụ mà mức độ nỗ lực không thể xác định được khi hợp đồng được trao. Nó có các yếu tố của cả hợp đồng giá cố định (ở mức giá cố định theo giờ) và hợp đồng hoàn phí (ở chi phí vật liệu và thực tế là tổng chi phí không xác định). So với các loại hợp đồng khác, hợp đồng T&amp;M thường có các điều khoản và điều kiện đơn giản hơn để cho phép đàm phán nhanh chóng và công việc có thể bắt đầu sớm hơn.</p>
+
+<p>Nếu bạn phải trả tiền cho ai đó theo hợp đồng cho mỗi giờ họ làm việc, bất kể họ có năng suất hay không và bất kể họ đang làm gì, bạn có muốn làm điều này trong một thời gian dài không? Hãy nhớ rằng, lợi nhuận của bên bán được tích hợp vào mức giá, vì vậy họ không có động lực để hoàn thành công việc nhanh chóng hoặc hiệu quả. Vì lý do này, hợp đồng T&amp;M được sử dụng tốt nhất cho công việc có giá trị nhỏ và kéo dài trong thời gian ngắn. Biết khi nào nên sử dụng hợp đồng T&amp;M có thể giúp bạn trả lời đúng các câu hỏi tình huống trong kỳ thi.</p>
+
+<p>Để đảm bảo chi phí không vượt quá ngân sách, bên mua có thể thêm điều khoản "Không vượt quá" (Not to Exceed) vào hợp đồng và do đó giới hạn tổng số tiền họ phải trả. Với hợp đồng T&amp;M, bên mua có mức rủi ro chi phí trung bình so với hợp đồng hoàn phí và hợp đồng giá cố định.</p>
+
+<h5>Ví Dụ: Hợp Đồng Thời Gian và Vật Liệu</h5>
+
+<p>Hợp đồng = 100 đô la mỗi giờ cộng với chi phí hoặc vật liệu theo giá thực tế.</p>
+
+<p>Hoặc</p>
+
+<p>Hợp đồng = 100 đô la mỗi giờ cộng với vật liệu theo giá 5 đô la mỗi mét dài gỗ.</p>
+
+<h4 id="ch13-hop-dong-hoan-phi">Hợp Đồng Hoàn Phí (CR)</h4>
+
+<p>Hợp đồng hoàn phí được sử dụng khi phạm vi công việc không chắc chắn và do đó, chi phí không thể ước tính đủ chính xác để sử dụng hợp đồng giá cố định một cách hiệu quả. Loại hợp đồng này quy định bên mua thanh toán cho bên bán các chi phí hợp lệ phát sinh trong phạm vi được quy định trong hợp đồng. Các hợp đồng như vậy thường cũng bao gồm một khoản phí bổ sung hoặc thưởng thêm vào chi phí để cho phép bên bán có lợi nhuận.</p>
+
+<p>Hợp đồng hoàn phí yêu cầu bên bán phải có hệ thống kế toán có thể theo dõi chi phí theo từng dự án. Với hợp đồng hoàn phí, bên mua có rủi ro chi phí cao nhất vì tổng chi phí không được biết trước. Bên bán cung cấp ước tính cho bên mua; bên mua có thể sử dụng ước tính đó cho mục đích lập kế hoạch và quản lý chi phí, nhưng nó không có tính ràng buộc. Điều có tính ràng buộc là trách nhiệm của bên mua trong việc bồi thường cho bên bán các chi phí hợp lệ cho công việc và vật liệu như được mô tả trong hợp đồng. Các dự án nghiên cứu và phát triển hoặc công nghệ thông tin mà phạm vi công việc chưa xác định là các ví dụ điển hình của hợp đồng hoàn phí.</p>
+
+<p>Các loại hợp đồng hoàn phí bao gồm hợp đồng chi phí, chi phí cộng phí cố định, chi phí cộng phí khuyến khích, chi phí cộng phí thưởng, chi phí cộng phí dịch vụ, và chi phí cộng phần trăm chi phí. Dưới đây là một trong những hợp đồng hoàn phí phổ biến nhất. Bạn có thể đọc về các loại khác tại trang RMC Resources tại rmcls.com/rmc-resources.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//72fc772b-29cd-4b68-ab47-ad3cc8e7f0ce/markdown_1/imgs/img_in_image_box_669_887_779_997.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A05Z%2F-1%2F%2F549fb513cf8425622d27734582242c499b8c605558f017101a0b26bc5ae68ceb" alt="Image" width="13%" /></div></div>
+
+<div class="highlight">
+  <p><strong>Hợp đồng chi phí (Cost Contract)</strong> Hợp đồng chi phí là loại hợp đồng trong đó bên bán không nhận được phí (lợi nhuận). Loại này phù hợp cho công việc được thực hiện bởi các tổ chức phi lợi nhuận.</p>
+</div>
+
+<h4 id="ch13-vi-du-hop-dong-chi-phi">Ví Dụ: Hợp Đồng Chi Phí</h4>
+
+<p>Hợp đồng = Chi phí cho công việc và vật liệu.</p>
+
+<p>Không có lợi nhuận. Bên bán được hoàn trả nhưng không kiếm được lợi nhuận.</p>
+
+<h4 id="ch13-hop-dong-giao-hang-khong-xac-dinh">Hợp Đồng Giao Hàng Không Xác Định, Số Lượng Không Xác Định (IDIQ)</h4>
+
+<p>Loại hợp đồng này cung cấp cho một số lượng hàng hóa và dịch vụ không xác định trong một khung thời gian cố định và trong một phạm vi chi phí nhất định. Ví dụ, một kiến trúc sư có thể được thuê trong thời hạn một năm để sẵn sàng giải quyết bất kỳ vấn đề nào phát sinh khi một tòa nhà văn phòng đang được xây dựng. Lượng dịch vụ cần thiết không được xác định, nhưng thời hạn hợp đồng thì được ấn định. Ngay cả khi không cần dịch vụ nào, bên bán vẫn sẽ được trả số tiền tối thiểu được ghi trong hợp đồng. Loại hợp đồng này được sử dụng phổ biến nhất trong lĩnh vực kỹ thuật hoặc công nghệ thông tin.</p>
+
+<p>Rủi ro với loại hợp đồng này được chia đều. Nếu hàng hóa hoặc dịch vụ của bên bán không cần thiết trong khung thời gian được phân bổ, thì bên mua chấp nhận rủi ro (họ phải thanh toán số tiền tối thiểu dù sao). Nếu bên bán cung cấp nhiều hàng hóa và dịch vụ hơn dự kiến, họ sẽ chấp nhận rủi ro vì phí của họ bị giới hạn trần.</p>
+
+<h5>Ví Dụ: Giao Hàng Không Xác Định, Số Lượng Không Xác Định</h5>
+
+<h4 id="ch13-rui-ro-va-loai-hop-dong">Rủi Ro và Loại Hợp Đồng</h4>
+
+<p>Hợp đồng = Hợp đồng một năm với mức tối thiểu 10.000 đô la và tối đa 18.000 đô la.</p>
+
+<p>Dưới đây là tổng quan về bên nào chịu rủi ro cho từng loại hợp đồng.</p>
+
+<ul class="content-list">
+  <li><strong>Hợp đồng giá cố định</strong> Bên bán chịu hầu hết hoặc toàn bộ rủi ro.</li>
+  <li><strong>Hợp đồng theo chi phí</strong> Bên mua đang chịu rủi ro trong loại hợp đồng này.</li>
+  <li><strong>Hợp đồng T&amp;M</strong> Rủi ro được chia sẻ giữa bên bán và bên mua.</li>
+</ul>
+
+<h4 id="ch13-uu-nhuoc-diem-moi-loai-hop-dong">Ưu Điểm và Nhược Điểm của Từng Loại Hợp Đồng</h4>
+
+<p>Bạn có hiểu những gì bạn vừa đọc không? Bạn có thể trả lời các câu hỏi sau đây không?</p>
+
+<ul class="content-list">
+  <li>Bạn chưa có phạm vi công việc hoàn chỉnh. Loại hợp đồng nào là tốt nhất?</li>
+  <li>Bạn chưa có SOW hoàn chỉnh, nhưng bạn có hợp đồng giá cố định. Bạn có thể gặp phải những vấn đề gì?</li>
+</ul>
+
+<h3 id="ch13-bai-tap-13-1">Bài Tập 13.1</h3>
+
+<p>Trong Sổ Tay Bài Tập của bạn, hãy ghi lại các ưu điểm và nhược điểm của từng hình thức hợp đồng theo quan điểm của bên mua. Các hình thức bao gồm:</p>
+
+<ul class="content-list">
+  <li>Hợp đồng giá cố định</li>
+  <li>Hợp đồng T&amp;M</li>
+  <li>Hợp đồng hoàn phí</li>
+</ul>
+
+<h4 id="ch13-dap-an">Đáp Án</h4>
+
+<p>Có thể có nhiều đáp án hơn danh sách dưới đây. Bạn có nhận ra và hiểu những điểm này không?</p>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <td colspan="3"><strong>Hợp Đồng Giá Cố Định</strong></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><strong>Ưu điểm</strong></td>
+    <td><strong>Nhược điểm</strong></td>
+  </tr>
+  <tr>
+    <td>—</td>
+    <td>Bên mua tốn ít công sức quản lý hơn.</td>
+    <td>Nếu bên bán định giá thấp cho công việc, họ có thể cố gắng bù đắp lợi nhuận bằng cách tính phí cao hơn mức cần thiết trong các lệnh thay đổi.</td>
+  </tr>
+  <tr>
+    <td>—</td>
+    <td>Bên bán có động lực mạnh mẽ để kiểm soát chi phí.</td>
+    <td>Bên bán có thể cố tình không hoàn thành một số hạng mục trong tuyên bố công việc mua sắm nếu họ bắt đầu thua lỗ.</td>
+  </tr>
+  <tr>
+    <td>—</td>
+    <td>Các công ty thường có kinh nghiệm với loại hợp đồng này.</td>
+    <td>—</td>
+  </tr>
+  <tr>
+    <td>—</td>
+    <td>Bên mua biết tổng giá trước khi công việc bắt đầu.</td>
+    <td>—</td>
+  </tr>
+</table>
+</div>
+
+<div class="callout tip">
+<p>Một mẹo cho kỳ thi là nhận ra rằng bên mua phải chọn loại hợp đồng phù hợp với những gì họ đang mua.</p>
+<p>Ghi nhớ các quy tắc chung sau đây cho các câu hỏi tình huống liên quan đến hợp đồng có thể giúp bạn trả lời đúng nhiều câu hỏi hơn trong kỳ thi.</p>
+</div>
+
+<ul class="content-list">
+  <li>Hợp đồng đòi hỏi tính trang trọng. Thư từ, làm rõ và thông báo liên quan đến hợp đồng phải là giao tiếp bằng văn bản trang trọng. Nếu phát sinh vấn đề cần trọng tài, hòa giải hoặc kiện tụng, giao tiếp bằng văn bản trang trọng có giá trị thực thi và hỗ trợ tốt hơn so với giao tiếp bằng lời nói.</li>
+  <li>Tất cả các yêu cầu về sản phẩm và quản lý dự án cho công việc mua sắm phải được ghi rõ ràng trong hợp đồng.</li>
+  <li>Nếu không có trong hợp đồng, cần có lệnh thay đổi hợp đồng chính thức để thực hiện công việc đó.</li>
+  <li>Nếu đã có trong hợp đồng, phải thực hiện hoặc cần có lệnh thay đổi hợp đồng chính thức để loại bỏ nó.</li>
+  <li>Yêu cầu thay đổi đối với hợp đồng phải được nộp bằng văn bản.</li>
+  <li>Hợp đồng có tính ràng buộc pháp lý; bên bán phải thực hiện theo thỏa thuận trong hợp đồng, nếu không sẽ vi phạm hợp đồng.</li>
+  <li>Hợp đồng cần giúp giảm thiểu rủi ro dự án.</li>
+  <li>Hầu hết các chính phủ hỗ trợ các hợp đồng trong phạm vi quyền tài phán của mình thông qua hệ thống tòa án để giải quyết tranh chấp.</li>
+</ul>
+
+<h4 id="ch13-mua-sam-agile-va-hop-dong">Mua Sắm và Hợp Đồng Trong Dự Án Agile</h4>
+
+<p>Mua sắm trong các dự án Agile còn thách thức hơn vì phạm vi đang dần hình thành. Có thể khó xác định đầy đủ các yêu cầu ngay từ đầu cho nhiều nhà thầu đề xuất thực hiện công việc. Tuyên ngôn Agile đề cao "cộng tác với khách hàng hơn là đàm phán hợp đồng" (xem chương "Phương pháp Agile"). Do đó, ký kết hợp đồng theo Agile được xây dựng trên mối quan hệ và đảm bảo hợp đồng công bằng và bình đẳng. Tuy nhiên, điều đó không có nghĩa là chỉ cần bắt tay là đủ; đặc biệt hợp đồng giá cố định truyền thống có những giới hạn nhất định đối với dự án Agile. Dưới đây là một số ví dụ về hợp đồng phù hợp với Agile:</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//72fc772b-29cd-4b68-ab47-ad3cc8e7f0ce/markdown_4/imgs/img_in_image_box_687_453_739_512.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A06Z%2F-1%2F%2F1c35c80fb329d28db3d61ec063362c6c754a1d4bd9c6ed9098b893ab99d3990b" alt="Image" width="6%" /></div></div>
+
+<ul class="content-list">
+  <li><strong>Giá cố định theo bậc (Graduated fixed-price)</strong> — Hợp đồng này có mức giá cố định dựa trên việc hoàn thành trước một ngày nhất định. Nếu công việc hoàn thành trước ngày mục tiêu, bên bán được trả phí cao hơn, về cơ bản là giá cố định cộng thêm tiền thưởng. Nếu công việc hoàn thành sau ngày mục tiêu, bên bán được trả ở mức phí thấp hơn giá cố định. Điều này tạo động lực để giao hàng sớm.</li>
+  <li><strong>Gói công việc giá cố định (Fixed-price work packages)</strong> — Hợp đồng có thể được thanh toán theo từng đợt khi các gói công việc được bàn giao, thay vì thanh toán một khoản tiền trọn gói vào cuối hợp đồng.</li>
+  <li><strong>T&amp;M không vượt trần (Not-to-exceed time and material)</strong> — Đây là hợp đồng theo thời gian và vật liệu có mức giá trần cho công việc. Tổng chi phí không được vượt quá mức này.</li>
+  <li><strong>Chấm dứt sớm (Early termination)</strong> — Cho phép bên mua hủy hợp đồng sớm với khoản phí hủy nếu phát hiện họ không còn cần sản phẩm bàn giao từ bên bán nữa.</li>
+</ul>
+
+<p>Trong các dự án Agile, lý tưởng nhất là hợp tác với bên bán cũng vận hành theo nhóm Agile, vì nhà thầu sẽ hiểu dự án tốt hơn và có khả năng bàn giao theo từng bước lặp và gia tăng tốt hơn nếu đó là điều cần thiết. Họ ít nhất sẽ hiểu cách dự án vận hành. Trong mọi trường hợp, các quản lý dự án trong dự án Agile nên thúc đẩy các nguyên tắc và thực hành Agile trong phạm vi có thể với các đối tác cung cấp hàng hóa hoặc dịch vụ. Khi làm việc với hợp đồng Agile, bên bán có thể tham gia cung cấp phản hồi về các sản phẩm bàn giao theo từng phần, ưu tiên hóa backlog và xếp hạng giá trị của các yêu cầu thay đổi đối với công việc.</p>
+
+<p>Ngoài ra, nhiều bài học từ mô hình Nhóm Quy Trình về mua sắm có thể được áp dụng trong môi trường Agile. Ví dụ, một chuyên gia hợp đồng, như luật sư hoặc cán bộ hợp đồng trong tổ chức, nên tham gia vào việc ký kết hợp đồng. Trong cả môi trường Agile lẫn dự đoán, các tổ chức thường có chính sách và thủ tục nghiêm ngặt liên quan đến hợp đồng. Trong môi trường lai, có thể có một hợp đồng chính cho hầu hết các công việc được ký kết và một phụ lục cho các phần thích ứng của hợp đồng. Điều này cho phép sự linh hoạt cần thiết cho các gói công việc thích ứng.</p>
+
+<h4 id="ch13-thuat-ngu-hop-dong-bo-sung">Các Thuật Ngữ Hợp Đồng Bổ Sung Cần Biết</h4>
+
+<p>Dưới đây là một số thuật ngữ hợp đồng bạn có thể gặp trong kỳ thi. Bạn có thể tìm thêm các thuật ngữ hợp đồng hữu ích cho quản lý dự án trên trang RMC Resources tại rmcls.com/rmc-resources.</p>
+
+<ul class="content-list">
+  <li><strong>Tỷ lệ chia sẻ (Sharing ratio)</strong> — Các khoản khuyến khích thường được biểu thị bằng tỷ lệ, chẳng hạn 80/20. Tỷ lệ chia sẻ này mô tả cách tiết kiệm chi phí hoặc vượt chi phí sẽ được phân chia; số đầu tiên đại diện cho phần của bên mua và số thứ hai đại diện cho phần của bên bán (bên mua/bên bán).</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//719fa1d7-a42d-4c03-930a-c98a7d24cf9b/markdown_0/imgs/img_in_image_box_659_86_795_197.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A22Z%2F-1%2F%2F0d3a089b2e46e1bffee4cf88e8fb5e7ead0a7d5f39106187a9d6dc17b37fb172" alt="Image" width="16%" /></div></div>
+
+<ul class="content-list">
+  <li><strong>Thỏa thuận bảo mật (NDA — Nondisclosure agreement)</strong> — Đối với nhiều giao dịch mua sắm, có nhu cầu lớn về bảo mật thông tin. Một thỏa thuận bằng văn bản giữa bên mua và các bên bán tiềm năng xác định thông tin hoặc tài liệu họ sẽ kiểm soát và giữ bí mật; nó cũng chi tiết hóa ai trong tổ chức sẽ có quyền truy cập vào thông tin bí mật. Với NDA, bên mua có thể nói cởi mở hơn về nhu cầu của mình mà không lo thông tin bị rò rỉ ra công chúng hoặc đối thủ cạnh tranh.</li>
+  <li><strong>Hợp đồng tiêu chuẩn (Standard contract)</strong> — Thường do bên mua tạo ra, hợp đồng tiêu chuẩn thường được soạn thảo — hoặc ít nhất là được xem xét — bởi luật sư và nhìn chung không cần xem xét thêm nếu được sử dụng đúng mục đích. Bạn cần hiểu hợp đồng tiêu chuẩn, nhưng cũng cần nhận ra vai trò của quản lý dự án trong các điều khoản đặc biệt (mô tả tiếp theo).</li>
+  <li><strong>Điều khoản đặc biệt (Special provisions / special conditions)</strong> — Quản lý dự án phải hiểu các điều khoản và điều kiện tiêu chuẩn nhưng cũng phải xác định khi nào cần bổ sung, thay đổi hoặc xóa bỏ các điều khoản tiêu chuẩn. Bằng cách tạo điều kiện cho các điều chỉnh cần thiết, quản lý dự án có thể đảm bảo hợp đồng kết quả đáp ứng nhu cầu của dự án. Quản lý dự án (hãy nhớ khi làm bài thi rằng bạn là quản lý dự án của bên mua, trừ khi câu hỏi nêu khác) gặp gỡ người quản lý mua sắm (nếu có) để thảo luận về nhu cầu dự án và xác định các điều khoản và điều kiện hợp đồng cuối cùng.<br><br>Các bổ sung, thay đổi hoặc xóa bỏ đôi khi được gọi là điều khoản đặc biệt và có thể đơn giản liên quan đến loại dự án và yêu cầu dự án, phân tích rủi ro và nhu cầu hành chính, pháp lý hoặc kinh doanh.</li>
+  <li><strong>Quan hệ hợp đồng (Privity)</strong> — Đây đơn giản là mối quan hệ hợp đồng. Phần sau giải thích về quan hệ hợp đồng và cho thấy cách các câu hỏi về chủ đề này có thể được đặt ra.</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//719fa1d7-a42d-4c03-930a-c98a7d24cf9b/markdown_0/imgs/img_in_image_box_73_568_123_629.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A22Z%2F-1%2F%2F334581652570bcdca018793328dd65d9bb50db519b6a0027dceae33c4aa0c57a" alt="Image" width="6%" /></div></div>
+
+<h5>Câu Hỏi:</h5>
+
+<div class="callout">
+<p><strong>Hãy Suy Nghĩ.</strong> Công ty A thuê công ty B làm một số công việc. Công ty B thuê lại công ty C. Quản lý dự án của công ty A đến công trường và yêu cầu công ty C dừng công việc. Nhìn chung, công ty C có phải nghe theo không?</p>
+</div>
+
+<h5>Đáp Án:</h5>
+
+<p>Không. Công ty C và công ty A không có quan hệ hợp đồng. Công ty A cần nói chuyện với công ty B, và công ty B mới nói chuyện với công ty C.</p>
+
+<p>Bạn có thể thấy điều này quan trọng như thế nào không? Bất kỳ chỉ thị nào mà quản lý dự án của công ty A đưa ra cho công ty C đều có thể gây ra trách nhiệm pháp lý cho công ty A. Ví dụ, công ty A có thể phải trả các khoản bồi thường chậm trễ cho công ty B, cộng với chi phí chậm trễ cho công ty C nếu công ty C đã dừng công việc theo chỉ đạo của công ty A.</p>
+
+<h4 id="ch13-dieu-khoan-va-dieu-kien">Điều Khoản và Điều Kiện</h4>
+
+<p>Có nhiều điều khoản và điều kiện liên quan đến mua sắm cần xem xét. Hãy bắt đầu bằng một câu chuyện để hiểu rõ hơn một số điều khoản và điều kiện này.</p>
+
+<div class="callout">
+<p><strong>Hãy Suy Nghĩ.</strong> Một quản lý dự án (bên mua) cần đào tạo các thành viên nhóm về một số thiết bị. Họ liên hệ với một bên bán để thực hiện công việc, sau đó nhờ bộ phận mua sắm gửi hợp đồng cho bên bán. Trong thời gian đó, quản lý dự án đã sắp xếp cho các thành viên nhóm đi lại để tham dự đào tạo. Trong hợp đồng có các điều khoản và điều kiện quy định rằng bên mua sẽ có quyền tạo các tác phẩm phái sinh và sao chép tài liệu phát tay từ lớp học. Các tài liệu phát tay là tài sản độc quyền và đã được bảo hộ bản quyền. Bên bán không thể và sẽ không ký hợp đồng. Lớp học phải bị hủy khi nhiều người đã ngồi trên máy bay để tham dự đào tạo.<br><br>Đây là lỗi của ai? Quản lý dự án phải đảm bảo rằng bộ phận mua sắm hiểu họ đang mua gì, và cũng phải xem xét hợp đồng trước khi gửi đi để đảm bảo ngôn ngữ của nó chính xác.</p>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//719fa1d7-a42d-4c03-930a-c98a7d24cf9b/markdown_0/imgs/img_in_image_box_73_851_123_911.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A22Z%2F-1%2F%2F4c5dac33da11cabd8f870dcfa277e3cc26b6205aee0717cddf967370a09a43b1" alt="Image" width="6%" /></div></div>
+
+<p>Việc tạo hợp đồng đòi hỏi sự tham gia của cả quản lý dự án và người quản lý mua sắm. Bạn có làm việc với người quản lý mua sắm để xem xét hợp đồng trong các dự án của mình không?</p>
+
+<p>Sau đây là các danh mục điều khoản và điều kiện có thể cấu thành các điều khoản tiêu chuẩn hoặc đặc biệt. Bạn có thể tìm thêm trên trang RMC Resources tại rmcls.com/rmc-resources. Hãy làm quen với các khái niệm này và tác động của chúng đối với hợp đồng. Trong kỳ thi, các thuật ngữ này thường chỉ được sử dụng trong câu, chẳng hạn như "Đã xảy ra một <em>force majeure</em>," và bạn cần hiểu điều đó có nghĩa là gì (sức mạnh tự nhiên, như lũ lụt hoặc hỏa hoạn). Ngược lại, bạn cần biết rằng "Đã xảy ra lũ lụt khiến bên bán không thể thực hiện" mô tả một <em>force majeure</em>.</p>
+
+<ul class="content-list">
+  <li><strong>Chuyển nhượng (Assignment)</strong> — Đề cập đến các trường hợp mà một bên có thể chuyển nhượng quyền hoặc nghĩa vụ của mình theo hợp đồng cho bên khác.</li>
+  <li><strong>Vi phạm/vỡ nợ (Breach/default)</strong> — Xảy ra khi bất kỳ nghĩa vụ nào của hợp đồng không được thực hiện. Lưu ý — vi phạm từ phía bên bán không thể được xử lý bằng vi phạm từ phía bên mua. Ví dụ, việc không hoàn thành một hạng mục trong tuyên bố công việc mua sắm (vi phạm của bên bán) không thể được bên mua xử lý bằng cách ngừng tất cả các khoản thanh toán (vi phạm của bên mua).<br><br>Vi phạm là một sự kiện cực kỳ nghiêm trọng. Bài thi có thể đưa ra các tình huống trong đó những điều tưởng như nhỏ nhặt trong hợp đồng không được thực hiện. Phản ứng đối với vi phạm phải luôn là gửi thư thông báo chính thức cho bên kia về vi phạm đó. Quản lý dự án phải hiểu các hệ quả pháp lý từ hành động của mình. Nếu không chú ý và gửi thông báo vi phạm chính thức, quản lý dự án có thể mất quyền yêu cầu vi phạm sau này.</li>
+  <li><strong>Bất khả kháng (Force majeure)</strong> — Đề cập đến tình huống có thể được coi là "hành động của tự nhiên," chẳng hạn như hỏa hoạn hoặc bão điện bất thường, và đây là lý do được chấp nhận cho việc một trong hai bên không đáp ứng các yêu cầu hợp đồng. Nếu xảy ra bất khả kháng, nó được coi là không phải lỗi của bên nào. Thường được giải quyết bằng cách bên bán nhận được gia hạn thời gian cho dự án. Ai chịu chi phí cho các hạng mục bị phá hủy trong hỏa hoạn hoặc sự kiện bất khả kháng khác? Thường rủi ro mất mát do bên bán chịu và hy vọng được bảo hiểm chi trả. (Xem thêm "Rủi ro mất mát" bên dưới.)</li>
+  <li><strong>Bồi thường thiệt hại (Indemnification / liability)</strong> — Ai chịu trách nhiệm về thương tích cá nhân, thiệt hại hoặc tai nạn?</li>
+  <li><strong>Sở hữu trí tuệ (Intellectual property)</strong> — Ai sở hữu tài sản trí tuệ (ví dụ: bằng sáng chế, nhãn hiệu, bản quyền, quy trình, mã nguồn hoặc sách) được sử dụng liên quan đến hoặc được phát triển như một phần của hợp đồng? Điều này có thể bao gồm bảo đảm về quyền sử dụng tài sản trí tuệ nhất định trong quá trình thực hiện hợp đồng.</li>
+  <li><strong>Yêu cầu quản lý (Management requirements)</strong> — Các ví dụ về yêu cầu quản lý bao gồm tham dự các cuộc họp và phê duyệt nhân sự được phân công cho dự án.</li>
+  <li><strong>Vi phạm trọng yếu (Material breach)</strong> — Vi phạm này nghiêm trọng đến mức có thể không thể hoàn thành công việc theo hợp đồng.</li>
+  <li><strong>Tiền giữ lại (Retainage)</strong> — Đây là một khoản tiền, thường là 5% hoặc 10%, được khấu trừ khỏi mỗi lần thanh toán. Khoản tiền này được thanh toán khi công việc cuối cùng hoàn thành. Nó giúp đảm bảo việc hoàn thành.</li>
+  <li><strong>Rủi ro mất mát (Risk of loss)</strong> — Phân bổ rủi ro giữa các bên trong hợp đồng trong trường hợp hàng hóa hoặc dịch vụ bị mất hoặc bị phá hủy trong quá trình thực hiện hợp đồng.</li>
+  <li><strong>Miễn trừ quyền (Waivers)</strong> — Đây là các tuyên bố nói rằng các quyền theo hợp đồng không thể bị từ bỏ hoặc sửa đổi ngoại trừ bằng thỏa thuận rõ ràng của các bên. Quản lý dự án phải nhận ra rằng họ có thể cố ý hoặc vô ý từ bỏ một quyền trong hợp đồng thông qua hành động, vô tình không thực thi hoặc thiếu giám sát. Do đó, quản lý dự án phải hiểu và thực thi tất cả các khía cạnh của hợp đồng, ngay cả khi có người quản lý mua sắm tham gia quản lý hợp đồng.</li>
+</ul>
+
+<h5>Khoản Khuyến Khích</h5>
+
+<p>Bên bán thường tập trung vào lợi nhuận, trong khi bên mua tập trung vào chi phí, hiệu suất, tiến độ hoặc kết hợp các yếu tố này. Các khoản khuyến khích được sử dụng để đưa mục tiêu của bên bán phù hợp với mục tiêu của bên mua và để thúc đẩy bên bán hướng tới hiệu quả. Hãy coi khoản khuyến khích như một phần thưởng cho bên bán. Bên mua sẽ cung cấp phí bổ sung nếu bên bán đáp ứng một số mục tiêu về chi phí, hiệu suất hoặc tiến độ.</p>
+
+<p>Bạn có thể thấy cách các khoản khuyến khích có thể thay đổi trọng tâm công việc của bên bán không? Nếu có khoản khuyến khích cho việc tiết kiệm chi phí, thì công việc là hoàn thành dự án và tìm kiếm tiết kiệm chi phí. Nếu khoản khuyến khích là cho một số mức hiệu suất tăng cao hơn (ví dụ: hệ thống có thể xử lý nhiều công suất hơn so với hợp đồng), thì công việc là hoàn thành dự án và tìm cách tăng hiệu suất. Bên bán thu lợi nhuận từ cả hai hoạt động.</p>
+
+<h3 id="ch13-bai-tap-13-2">13.2 Bài Tập</h3>
+
+<p>Trả lời các câu hỏi sau đây cho mỗi loại hợp đồng (hoàn trả chi phí, thời gian và vật liệu, và giá cố định). Viết câu trả lời vào Sổ Tay Bài Tập của bạn. (Đây là bài tập thách thức nhất trong chương này. Các câu hỏi được thiết kế rất khó để tiếp tục kiểm tra kiến thức của bạn.)</p>
+
+<h5>Câu Hỏi</h5>
+
+<ol class="content-list">
+  <li>Nhìn chung, cái gì đang được mua? (Sản phẩm hay dịch vụ)</li>
+  <li>Chi phí cho bên mua có thể được ghi như thế nào trong hợp đồng?</li>
+  <li>Lợi nhuận có thể được ghi như thế nào trong hợp đồng?</li>
+  <li>Rủi ro chi phí đối với bên mua là gì? (Cao, trung bình, thấp, không có)</li>
+  <li>Tuyên bố công việc mua sắm chi tiết quan trọng như thế nào? (Cao, trung bình, thấp, không có)</li>
+  <li>Ngành nào sử dụng loại hợp đồng này thường xuyên nhất?</li>
+  <li>Thường cần đàm phán bao nhiêu để ký hợp đồng sau khi nhận được giá của bên bán? (Cao, trung bình, thấp, không có)</li>
+  <li>Bên mua cần dành bao nhiêu nỗ lực và chuyên môn để quản lý bên bán? (Cao, trung bình, thấp, không có)</li>
+  <li>Chi phí được thanh toán cho bên mua như thế nào?</li>
+  <li>Bên mua cần kiểm toán chi phí của bên bán ở mức độ nào? (Cao, trung bình, thấp, không có)</li>
+</ol>
+
+<h4 id="ch13-dap-an-bai-tap-13-2">Đáp Án</h4>
+
+<p>So sánh các câu trả lời trong bảng dưới đây với câu trả lời của bạn.</p>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Hoàn Trả Chi Phí</th>
+      <th>Thời Gian Và Vật Tư</th>
+      <th>Giá Cố Định</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1.</td>
+      <td>Dịch vụ (một số sản phẩm có thể bao gồm)</td>
+      <td>Dịch vụ</td>
+      <td>Sản phẩm</td>
+    </tr>
+    <tr>
+      <td>2.</td>
+      <td>Chi phí biến đổi, nhưng phí/lợi nhuận cố định (dưới dạng một số tiền cố định hoặc tỷ lệ phần trăm)</td>
+      <td>Mức lương theo giờ hoặc giá theo đơn vị</td>
+      <td>Dưới dạng một số tiền cố định (ví dụ: 1 triệu đô la)</td>
+    </tr>
+    <tr>
+      <td>3.</td>
+      <td>Được liệt kê riêng và bên mua biết rõ</td>
+      <td>Bao gồm trong mức lương theo giờ và bên mua có thể không biết</td>
+      <td>Bao gồm trong giá và bên mua không biết</td>
+    </tr>
+    <tr>
+      <td>4.</td>
+      <td>Cao; chi phí tăng lên được bên mua hoàn trả</td>
+      <td>Trung bình; mặc dù chi phí không cố định, chúng được biết theo từng đơn vị, và loại hợp đồng này được sử dụng cho các giao dịch mua nhỏ trong thời gian có hạn</td>
+      <td>Thấp; chi phí tăng lên do bên bán chịu</td>
+    </tr>
+    <tr>
+      <td>5.</td>
+      <td>Thấp; SOW chỉ cần mô tả các yêu cầu về hiệu suất hoặc chức năng, vì bên bán cung cấp chuyên môn về cách thực hiện công việc; bên mua thanh toán toàn bộ chi phí nên ít cần phải hoàn thiện phạm vi</td>
+      <td>Thấp; loại này theo truyền thống có rất ít phạm vi và chỉ có thể mô tả các bộ kỹ năng cần thiết</td>
+      <td>Cao; SOW phải hoàn chỉnh để bên bán biết chính xác công việc cần thực hiện nhằm đưa ra mức giá chính xác để hoàn thành công việc</td>
+    </tr>
+    <tr>
+      <td colspan="2">Hoàn Trả Chi Phí</td>
+      <td>Thời Gian Và Vật Tư</td>
+      <td>Giá Cố Định</td>
+    </tr>
+    <tr>
+      <td>CNTT, nghiên cứu và phát triển, và công việc tri thức; khi công việc chưa từng được thực hiện trước đây</td>
+      <td>Khi thuê người theo mức lương theo giờ, bạn thường thuê dịch vụ như pháp lý, thợ ống nước, hoặc lập trình</td>
+      <td></td>
+      <td rowspan="2">Phạm vi công việc hoàn chỉnh phổ biến nhất trong ngành xây dựng</td>
+    </tr>
+    <tr>
+      <td>6. (như thường xảy ra trong các ngành này), bên bán không thể cố định giá; do đó, đây là hình thức tốt nhất để sử dụng</td>
+      <td>Khi thuê người theo mức lương theo giờ, bạn thường thuê dịch vụ như pháp lý, thợ ống nước, hoặc lập trình</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>7. Cao; tất cả chi phí ước tính được xem xét để tính phí cần trả</td>
+      <td>Thấp hoặc không có</td>
+      <td></td>
+      <td>Không có</td>
+    </tr>
+    <tr>
+      <td>8. Cao</td>
+      <td>Trung bình</td>
+      <td></td>
+      <td>Thấp</td>
+    </tr>
+    <tr>
+      <td>9. Chi phí thực tế phát sinh; lợi nhuận khi hoàn thành dự án, hoặc được phân bổ theo quy định trong hợp đồng</td>
+      <td>Mức lương theo giờ hoặc theo đơn vị (bao gồm tất cả chi phí và lợi nhuận)</td>
+      <td></td>
+      <td>Giá cố định (bao gồm lợi nhuận) theo lịch thanh toán khi công việc được hoàn thành và theo quy định trong hợp đồng</td>
+    </tr>
+    <tr>
+      <td>10. Cao; tất cả chi phí phải được kiểm toán và sẽ có số lượng lớn hóa đơn</td>
+      <td>Không có; có thể có kiểm toán số giờ công đã thực hiện so với số giờ được lập hóa đơn, nhưng điều đó sẽ tốn ít công sức</td>
+      <td></td>
+      <td>Thấp; vì tổng chi phí hợp đồng đã cố định, kiểm toán thường tập trung vào đảm bảo công việc được hoàn thành, không xem xét chi phí chi tiết và biên lai</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="ch13-lap-ke-hoach-mua-sam">Lập Kế Hoạch Mua Sắm</h3>
+
+<p>Quy trình Lập Kế Hoạch Quản Lý Mua Sắm trả lời các câu hỏi: "Phân tích tự làm hay mua ngoài sẽ được thực hiện như thế nào?" "Hàng hóa và dịch vụ nào chúng ta cần mua cho dự án này?" "Chúng ta sẽ mua chúng như thế nào?" "Những người bán tiềm năng nào cần xem xét?"</p>
+
+<p>Lập kế hoạch bao gồm việc soạn thảo các tài liệu đấu thầu sẽ được gửi cho các người bán tiềm năng mô tả nhu cầu của bên mua, cách phản hồi và tiêu chí bên mua sẽ sử dụng để lựa chọn người bán. Lập kế hoạch quy trình mua sắm bao gồm các hoạt động sau:</p>
+
+<ul class="content-list">
+  <li>Thực hiện phân tích tự làm hay mua ngoài</li>
+  <li>Tạo kế hoạch quản lý mua sắm</li>
+  <li>Tạo chiến lược mua sắm cho từng giao dịch mua</li>
+  <li>Tạo SOW cho từng giao dịch mua</li>
+  <li>Lựa chọn loại hợp đồng phù hợp cho từng giao dịch mua</li>
+  <li>Tạo tài liệu đấu thầu</li>
+  <li>Xác định tiêu chí lựa chọn nguồn cung</li>
+</ul>
+
+<div class="table-wrap">
+<table>
+  <tbody>
+    <tr>
+      <td><strong>Mô Hình Nhóm Quy Trình</strong><br>Nhóm Quy Trình: Lập Kế Hoạch<br>Quy Trình: Lập Kế Hoạch Quản Lý Mua Sắm</td>
+      <td><strong>ECO</strong><br>Nhiệm Vụ 11 Lập kế hoạch &amp; quản lý mua sắm<br>Lĩnh Vực 2.4 Lập Kế Hoạch<br>Lĩnh Vực 2.5 Công Việc Dự Án</td>
+      <td><strong>Hướng Dẫn PMBOK</strong></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>Những gì bạn cần lập kế hoạch cho các hoạt động mua sắm? Khi lập kế hoạch quản lý mua sắm, điều quan trọng là phải xem xét các tài liệu kinh doanh như kế hoạch quản lý lợi ích và trường hợp kinh doanh. Bạn cũng cần điều lệ dự án; các thành phần của kế hoạch quản lý dự án như đường cơ sở phạm vi và tiến độ cùng các tài liệu lập kế hoạch phạm vi, chất lượng và nguồn lực; tài liệu dự án; và bất kỳ EEF và OPA liên quan nào.</p>
+
+<p>Điều lệ dự án cung cấp bất kỳ nguồn tài chính đã được phê duyệt trước nào, trong khi các tài liệu dự án khác cung cấp:</p>
+
+<ul class="content-list">
+  <li>Danh sách mốc quan trọng</li>
+  <li>Yêu cầu nguồn lực</li>
+  <li>Phân công nhóm dự án</li>
+  <li>Sổ đăng ký rủi ro</li>
+  <li>Tài liệu yêu cầu (bao gồm ma trận truy xuất yêu cầu)</li>
+  <li>Sổ đăng ký các bên liên quan</li>
+  <li>Các giao dịch mua sắm đã có</li>
+</ul>
+
+<p>EEF trong mua sắm bao gồm điều kiện thị trường, các dịch vụ có sẵn để mua, và văn hóa cũng như cấu trúc hiện có xung quanh cách tiếp cận mua sắm của tổ chức. Các OPA liên quan có thể bao gồm quy trình và tài liệu mua sắm, loại hợp đồng tiêu chuẩn được tổ chức sử dụng, mẫu SOW, bài học kinh nghiệm từ các giao dịch mua sắm và dự án trong quá khứ. Danh sách người bán đã được phê duyệt trước (hoặc đã được xác nhận đủ điều kiện) và thỏa thuận dịch vụ chính, nếu có, cũng rất hữu ích.</p>
+
+<p>Danh sách người bán đã được phê duyệt trước giúp đẩy nhanh quy trình bằng cách đảm bảo năng lực của người bán đã được nghiên cứu kỹ. Tài liệu mua sắm chỉ được gửi cho các người bán đã được phê duyệt trước. Thỏa thuận dịch vụ chính là hợp đồng giữa hai bên bao gồm các điều khoản tiêu chuẩn sẽ điều chỉnh các giao dịch trong tương lai — một cách tiết kiệm thời gian khi bên mua thường xuyên làm việc với cùng một người bán vì các điều khoản tổng thể khi làm việc cùng nhau đã được cả hai bên mua và bán đồng ý và ký kết.</p>
+
+<h4 id="ch13-phuong-phap-lap-ke-hoach-quan-ly-mua-sam">Các Phương Pháp Lập Kế Hoạch Quản Lý Mua Sắm</h4>
+
+<h4 id="ch13-phan-tich-tu-lam-hay-mua-ngoai">Phân Tích Tự Làm Hay Mua Ngoài</h4>
+
+<p>Trong quá trình lập kế hoạch, bạn phải quyết định liệu phạm vi và công việc của dự án sẽ được hoàn thành trong nội bộ tổ chức hay một phần sẽ được thuê ngoài. Điều quan trọng là phải đặt ra các câu hỏi như "Các nguồn lực hiện đang được phân bổ như thế nào?" và "Năng lực của các nguồn lực của chúng ta là gì?" Phân tích tự làm hay mua ngoài được thực hiện sớm trong giai đoạn lập kế hoạch của dự án và dẫn đến quyết định tự làm hay mua ngoài.</p>
+
+<h4 id="ch13-quan-ly-hau-can-va-chuoi-cung-ung">Quản Lý Hậu Cần Và Chuỗi Cung Ứng</h4>
+
+<p>Một yếu tố quan trọng trong phân tích tự làm hay mua ngoài là thời gian đặt hàng cần thiết cho vật liệu và thiết bị cần mua. Các mặt hàng đặc biệt, sản phẩm tùy chỉnh và các mặt hàng đặt hàng quốc tế sẽ mất nhiều thời gian hơn, điều này phải được tính vào tiến độ dự án.</p>
+
+<h4 id="ch13-cac-bien-phap-kinh-te">Các Biện Pháp Kinh Tế</h4>
+
+<p>Các biện pháp kinh tế tương tự như những biện pháp được sử dụng trong lựa chọn dự án và được định nghĩa trong chương "Nền Tảng Quản Lý Dự Án" có thể hỗ trợ các quyết định tự làm hay mua ngoài. Ví dụ bao gồm thời gian hoàn vốn, ROI, IRR, dòng tiền chiết khấu và NPV.</p>
+
+<p>Hãy chú ý những câu hỏi trong kỳ thi đề cập đến phân tích tự làm hay mua ngoài, hoặc thậm chí những câu hỏi yêu cầu bạn tính toán các tình huống mua hay thuê, như câu hỏi sau đây.</p>
+
+<div class="callout tip">
+<p><strong>Hãy Suy Nghĩ Về Điều Này.</strong> Bạn đang cố gắng quyết định nên thuê hay mua một mặt hàng. Chi phí thuê hằng ngày là 120 đô la. Để mua mặt hàng, chi phí đầu tư là 1.000 đô la; chi phí bảo trì hằng ngày là 20 đô la. Mất bao lâu để chi phí thuê bằng chi phí mua?</p>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//719fa1d7-a42d-4c03-930a-c98a7d24cf9b/markdown_4/imgs/img_in_image_box_64_742_116_802.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A24Z%2F-1%2F%2Fe7e73e36ac98678cbc77388aae624f7794df9e353c1cac51f3091cd7ac64793a" alt="Image" width="6%" /></div></div>
+
+<div class="callout">
+<p><strong>Câu trả lời:</strong></p>
+<p>Đặt D bằng số ngày khi chi phí mua và thuê bằng nhau.</p>
+<p>$120D = $1.000 + $20D</p>
+<p>$120D - $20D = $1.000</p>
+<p>$100D = $1.000</p>
+<p>D = 10</p>
+<p>Phép tính cho thấy chi phí bằng nhau sau 10 ngày. Do đó, nếu bạn dự định sử dụng mặt hàng dưới 10 ngày, bạn nên thuê. Nếu không, mua mặt hàng sẽ rẻ hơn.</p>
+</div>
+
+<h4 id="ch13-phan-tich-lua-chon-nguon-cung">Phân Tích Lựa Chọn Nguồn Cung</h4>
+
+<p>Các ràng buộc của dự án là các yếu tố trong lựa chọn người bán (hoặc nguồn cung). Ví dụ, tiến độ có phải là tiêu chí quan trọng nhất hay chi phí mới là yếu tố quyết định? Bạn có thể muốn xem lại các ràng buộc dự án trong chương "Nền Tảng Quản Lý Dự Án".</p>
+
+<p>Các tiêu chí lựa chọn nguồn cung khác cũng được sử dụng và, như trong các ràng buộc dự án, một số tiêu chí thường được coi trọng hơn những tiêu chí khác. Nếu bên mua đang mua một hàng hóa thông thường, chẳng hạn như gỗ tính theo mét dài, tiêu chí lựa chọn nguồn cung có thể chỉ là giá thấp nhất. Nếu bên mua đang mua dịch vụ xây dựng, tiêu chí lựa chọn nguồn cung có thể là giá cộng với kinh nghiệm. Nếu bên mua đang mua dịch vụ, các tiêu chí phân tích lựa chọn nguồn cung có thể bao gồm:</p>
+
+<ul class="content-list">
+  <li>Số năm hoạt động trong ngành</li>
+  <li>Chuyên môn kỹ thuật</li>
+  <li>Sự ổn định tài chính</li>
+  <li>Chất lượng hiệu suất trong quá khứ</li>
+  <li>Hiểu biết về nhu cầu</li>
+  <li>Khả năng hoàn thành công việc đúng hạn</li>
+  <li>Giá hoặc chi phí vòng đời</li>
+</ul>
+
+<p>Nếu tổ chức có danh sách người bán ưu tiên, hoặc thỏa thuận dịch vụ chính với một nguồn cung bên ngoài, thông tin đó cũng được xem xét khi phân tích các phương án lựa chọn nguồn cung.</p>
+
+<h4 id="ch13-artifacts-plan-procurement">Các Sản Phẩm Đầu Ra Của Lập Kế Hoạch Mua Sắm</h4>
+
+<p>Các sản phẩm đầu ra của việc lập kế hoạch mua sắm bao gồm kế hoạch quản lý mua sắm. Kế hoạch này ghi chép hoặc tham chiếu đến quy trình quản lý cho các hoạt động mua sắm. Nó cung cấp hướng dẫn và các công cụ có sẵn cho việc phân tích tự làm hay mua ngoài và phân tích lựa chọn nguồn cung, quản lý giai đoạn và chuyển tiếp, cũng như các cân nhắc về điều chỉnh.</p>
+
+<p>Việc tiến hành và kiểm soát mua sắm được hỗ trợ bởi công tác lập kế hoạch, vì vậy các khía cạnh này cũng được đề cập trong kế hoạch. Các quy tắc và hướng dẫn về vai trò và trách nhiệm mua sắm, hội nghị nhà thầu và đàm phán đều được bao gồm. Phần kiểm soát của kế hoạch chỉ ra cách thức quản lý các yêu cầu hợp đồng, đồng thời cung cấp số liệu và thông tin về thời điểm và cách thức đo lường, hướng dẫn giải quyết tranh chấp, quy trình chấp nhận sản phẩm bàn giao và các khoản thanh toán sẽ được thực hiện.</p>
+
+<p>Các quyết định tự làm hay mua ngoài xuất phát từ phân tích tự làm hay mua ngoài, cũng như chiến lược mua sắm. Chiến lược này có ba yếu tố cơ bản:</p>
+
+<ul class="content-list">
+  <li>Cách thức hàng hóa hoặc dịch vụ sẽ được cung cấp đến người mua (ví dụ: việc mua sắm có bao gồm nhà thầu phụ hoặc nhà cung cấp dịch vụ bên ngoài hay không)</li>
+  <li>Lựa chọn hợp đồng (ví dụ: hợp đồng sẽ là giá cố định hay cộng thêm chi phí; có bao gồm các khoản khuyến khích hay phí thưởng hay không)</li>
+  <li>Cách thức thực hiện mua sắm cho từng giai đoạn.</li>
+</ul>
+
+<p>Các sản phẩm đầu ra khác của việc lập kế hoạch mua sắm bao gồm:</p>
+
+<ul class="content-list">
+  <li>Phát biểu phạm vi công việc mua sắm (SOW)</li>
+  <li>Ước tính chi phí độc lập</li>
+  <li>Tiêu chí lựa chọn nguồn cung</li>
+  <li>Các loại tài liệu đấu thầu được lựa chọn</li>
+</ul>
+
+<p>Đối với ước tính chi phí độc lập, người mua chuẩn bị ước tính nội bộ, thường sử dụng phán đoán chuyên gia để có được mức chuẩn so sánh với các hồ sơ thầu nhận được từ các nhà bán hàng tiềm năng. SOW mua sắm và tài liệu đấu thầu đã được giới thiệu trước đó, nhưng hãy cùng xem xét chúng chi tiết hơn.</p>
+
+<h4 id="ch13-procurement-sow">Phát Biểu Phạm Vi Công Việc Mua Sắm (SOW)</h4>
+
+<p>Toàn bộ phạm vi của một gói mua sắm được mô tả trong SOW mua sắm. Người quản lý dự án sử dụng các kỹ năng tương tự cho các kết quả tương tự như kỳ vọng từ công việc trên đường cơ sở phạm vi dự án, vì mỗi gói mua sắm đại diện cho một phần của tổng thể phạm vi dự án.</p>
+
+<p>Mỗi SOW phải càng rõ ràng, đầy đủ và súc tích càng tốt, nhưng đồng thời phải mô tả tất cả công việc và các hoạt động mà người bán được yêu cầu hoàn thành. Điều này bao gồm tất cả các cuộc họp, báo cáo và các hoạt động truyền thông. Nó cũng phải nêu chi tiết các tiêu chí nghiệm thu và quy trình để đạt được sự chấp thuận. Chi phí để bổ sung các hoạt động sau này thường tốn kém hơn so với chi phí bổ sung chúng ngay từ đầu quá trình mua sắm. Điều này có khiến bạn suy nghĩ về công việc cần thiết để tạo ra một SOW mua sắm hoàn chỉnh không?</p>
+
+<p>Cần nhớ rằng mức độ chi tiết yêu cầu cho SOW sẽ ảnh hưởng đến việc lựa chọn loại hợp đồng và việc tạo ra các tài liệu đấu thầu. Nó có thể bao gồm các bản vẽ, thông số kỹ thuật, và các mô tả kỹ thuật và mô tả bằng lời.</p>
+
+<p>"Toàn bộ phạm vi mua sắm" có nghĩa là gì? Điều đó phụ thuộc vào thứ bạn đang mua. Dưới đây là một số ví dụ:</p>
+
+<ul class="content-list">
+  <li><strong>Chuyên môn (ví dụ: thiết kế phần mềm hoặc dịch vụ pháp lý)</strong> — SOW mua sắm bao gồm các yêu cầu về chức năng và/hoặc hiệu suất, lịch trình, tiêu chí đánh giá, và các cuộc họp, báo cáo và hoạt động truyền thông cần thiết.</li>
+  <li><strong>Xây dựng một tòa nhà</strong> — Các yêu cầu cụ thể, phác thảo những nội dung như vật liệu sẽ được sử dụng, quy trình phải tuân theo và lịch trình thi công.</li>
+  <li><strong>Bổ sung nhân sự</strong> — Người quản lý dự án sẽ điều hành các nguồn nhân lực này, do đó sẽ cần chi tiết về những gì người đó sẽ được phân công tạo ra hoặc đạt được.</li>
+</ul>
+
+<div class="callout">
+  <p><strong>Lưu ý:</strong> Nếu việc mua sắm là cho dịch vụ thay vì sản phẩm, SOW mua sắm có thể được gọi là điều khoản tham chiếu (TOR). Nó bao gồm công việc mà người bán sẽ thực hiện, các tiêu chuẩn mà người bán dự kiến phải đạt được, và dữ liệu cùng dịch vụ sẽ được cung cấp cho người mua.</p>
+</div>
+
+<p>SOW mua sắm có thể được sửa đổi trong quá trình đàm phán hợp đồng, nhưng phải được hoàn thiện vào thời điểm hợp đồng được ký kết vì nó là một phần của hợp đồng. Nếu SOW mua sắm không đầy đủ, người bán có thể thường xuyên cần yêu cầu làm rõ hoặc yêu cầu các lệnh thay đổi, điều này có thể tốn kém, và người quản lý dự án và/hoặc người quản lý mua sắm có thể thấy mình liên tục xử lý các câu hỏi về việc liệu một phần công việc cụ thể có được bao gồm trong ước tính chi phí hoặc thời gian ban đầu hay không.</p>
+
+<p>Hãy suy nghĩ về các lệnh thay đổi trong bối cảnh chiến lược mua sắm và kế hoạch dự án. Nhìn chung, các lệnh thay đổi hợp đồng gây tốn kém tiền bạc hoặc gây ra sự chậm trễ. Các SOW mua sắm kém chất lượng có thể dẫn đến chi tiêu vượt mức và các dự án bị trễ hoặc thất bại.</p>
+
+<h5 id="ch13-bid-documents">Tài Liệu Đấu Thầu</h5>
+
+<p>Sau khi loại hợp đồng được lựa chọn và SOW mua sắm đã được tạo ra, người mua có thể tổng hợp tài liệu đấu thầu, mô tả nhu cầu của người mua cho người bán. Sau đây là các loại tài liệu đấu thầu.</p>
+
+<ul class="content-list">
+  <li><strong>Yêu cầu đề xuất (RFP)</strong> — RFP (đôi khi được gọi là yêu cầu dự thầu) yêu cầu một đề xuất chi tiết bao gồm thông tin về giá cả, cách thức thực hiện công việc, ai sẽ thực hiện (cùng với hồ sơ năng lực trong một số trường hợp) và kinh nghiệm của công ty.</li>
+  <li><strong>Thư mời thầu (IFB)</strong> — IFB, đôi khi được gọi là yêu cầu đặt giá thầu (RFB), thường yêu cầu một mức giá tổng thể để thực hiện toàn bộ công việc. Hãy nghĩ về IFB như một dạng RFP trong đó công việc được mô tả trong SOW mua sắm đủ chi tiết để các nhà thầu xác định được mức giá tổng thể.</li>
+  <li><strong>Yêu cầu báo giá (RFQ)</strong> — RFQ yêu cầu báo giá theo đơn vị sản phẩm, giờ công, mét, hoặc các đơn vị đo lường khác.</li>
+  <li><strong>Yêu cầu thông tin (RFI)</strong> — RFI có thể được sử dụng trước khi tài liệu đấu thầu được tạo ra. Các phản hồi đối với RFI giúp người mua xác định những công ty nào đủ năng lực để xử lý gói mua sắm. Người mua cũng có thể sử dụng RFI để thu thập thông tin về những công việc nào có thể thực hiện được, để đưa vào RFP hoặc IFB sau này. Cần nhớ rằng mục đích của RFI là để thu thập thông tin, trong khi mục đích của RFP hoặc RFQ là để mua thứ gì đó.</li>
+</ul>
+
+<p>Để cung cấp cho người bán bức tranh rõ ràng nhất có thể về những gì cần làm để giành được hợp đồng và công việc liên quan đến những gì, tài liệu đấu thầu có thể bao gồm các thông tin sau cho người bán:</p>
+
+<ul class="content-list">
+  <li>Thông tin nền tảng về lý do tại sao người mua muốn công việc được thực hiện</li>
+  <li>Các thủ tục để cố gắng giành được công việc (chẳng hạn như liệu có hội nghị nhà thầu hay không, thời hạn nộp hồ sơ, và cách thức lựa chọn nhà thầu trúng)</li>
+  <li>Hướng dẫn chuẩn bị hồ sơ đề xuất (chẳng hạn như độ dài tối đa và các chủ đề cần đề cập trong hồ sơ)</li>
+  <li>Định dạng chính xác mà hồ sơ phải theo (chẳng hạn như các mẫu biểu nào phải được điền và liệu có cho phép nộp hồ sơ qua email hay không)</li>
+  <li>Tiêu chí lựa chọn nguồn cung — các tiêu chí mà người mua sẽ sử dụng để đánh giá các hồ sơ phản hồi từ người bán (chẳng hạn như số năm hoạt động trong ngành, chất lượng của hồ sơ, hoặc giá cả)</li>
+  <li>Các biểu mẫu định giá (các biểu mẫu để mô tả đầy đủ mức giá cho người mua)</li>
+  <li>SOW mua sắm</li>
+  <li>Các điều khoản và điều kiện hợp đồng được đề xuất (pháp lý và kinh doanh)</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//47e985a2-cc6c-4005-b5db-efc4a05278b0/markdown_2/imgs/img_in_image_box_53_86_105_150.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A42Z%2F-1%2F%2F392c9b922b70502eba2f60fc548aa401c6b5da99f18b00a90a7aff4112441f1b" alt="Image" width="6%" /></div></div>
+
+<div class="callout tip">
+  <p><strong>Hãy Suy Nghĩ.</strong> Các hợp đồng đề xuất được bao gồm trong tài liệu mua sắm. Bạn có biết tại sao không? Các điều khoản và điều kiện của hợp đồng đại diện cho công việc cần được thực hiện, và có các chi phí liên quan đến công việc đó, bao gồm bảo hành, quyền sở hữu, bồi thường thiệt hại và các yêu cầu bảo hiểm. Người bán phải nhận thức được tất cả công việc cần hoàn thành để hiểu và định giá dự án một cách thỏa đáng.</p>
+</div>
+
+<p>Tài liệu đấu thầu được thiết kế tốt có thể có các tác động sau đây đối với một dự án:</p>
+
+<ul class="content-list">
+  <li>So sánh các hồ sơ phản hồi của người bán dễ dàng hơn</li>
+  <li>Hồ sơ phản hồi đầy đủ hơn</li>
+  <li>Định giá chính xác hơn</li>
+  <li>Giảm số lượng thay đổi đối với dự án</li>
+</ul>
+
+<p>Người bán có thể đề xuất các thay đổi đối với tài liệu mua sắm, bao gồm SOW mua sắm và các yêu cầu quản lý dự án được bao gồm trong các tài liệu, trước khi hợp đồng được ký kết. Khi được phê duyệt, các thay đổi này được người mua ban hành dưới dạng bổ sung cho tài liệu đấu thầu và cuối cùng sẽ trở thành một phần của hợp đồng chính thức.</p>
+
+<h4 id="ch13-noncompetitive-procurement">Các Hình Thức Mua Sắm Phi Cạnh Tranh</h4>
+
+<p>Các tổ chức công thường bị pháp luật yêu cầu phải tuân theo các thực tiễn nhất định liên quan đến mua sắm cạnh tranh và phải lựa chọn người bán theo một cách thức nhất định. Mặc dù có thể có các chính sách nội bộ cần tuân theo, nhưng các công ty tư nhân có thể bỏ qua quy trình mua sắm cạnh tranh bằng cách sử dụng thỏa thuận dịch vụ tổng thể hoặc danh sách nhà bán hàng ưu tiên, trong trường hợp đó họ có thể đơn giản là phát hành đơn đặt hàng để mua hàng hóa hoặc dịch vụ từ nhà bán hàng đã được phê duyệt hoặc ưu tiên.</p>
+
+<p>Nếu người quản lý dự án không sử dụng quy trình cạnh tranh, họ sẽ tham gia vào một trong các loại mua sắm phi cạnh tranh sau:</p>
+
+<ul class="content-list">
+  <li><strong>Nguồn duy nhất (Sole source)</strong> — Trong loại mua sắm này, chỉ có một người bán có thể cung cấp hàng hóa hoặc dịch vụ. Họ có thể sở hữu một bằng sáng chế cụ thể.</li>
+  <li><strong>Nguồn đơn lẻ (Single source)</strong> — Ở đây, người quản lý dự án ký hợp đồng trực tiếp với người bán ưu tiên mà không thông qua quy trình mua sắm đầy đủ. Người quản lý dự án có thể đã từng làm việc với công ty này trước đây và, vì nhiều lý do khác nhau, họ không muốn tìm kiếm một người bán khác. Trong một số trường hợp, có thể có một thỏa thuận dịch vụ tổng thể giữa một tổ chức và người bán này: một hợp đồng liên tục đã được thiết lập.</li>
+</ul>
+
+<p>Các lý do khác để làm việc với một công ty như là nguồn đơn lẻ bao gồm:</p>
+
+<ul class="content-list">
+  <li>Dự án đang chịu áp lực tiến độ cực kỳ lớn.</li>
+  <li>Người bán có những năng lực độc nhất.</li>
+  <li>Tồn tại các cơ chế khác để đảm bảo giá của người bán là hợp lý.</li>
+  <li>Gói mua sắm có giá trị nhỏ.</li>
+</ul>
+
+<p>Nếu người quản lý dự án đang tham gia vào mua sắm phi cạnh tranh, họ có thể tiết kiệm thời gian bằng cách loại bỏ một phần quy trình trước khi đấu thầu, nhưng vẫn phải đàm phán để hoàn thiện hợp đồng.</p>
+
+<p>Sau khi phân tích tự làm hay mua ngoài và chiến lược mua sắm hoàn tất, loại hợp đồng đã được lựa chọn, và SOW cùng tài liệu đấu thầu đã được hoàn thiện, người quản lý dự án đã sẵn sàng tương tác với các nhà bán hàng tiềm năng. Các tài liệu đấu thầu và tài liệu hỗ trợ được gửi đi, người quản lý dự án trả lời các câu hỏi của người bán, có thể tổ chức hội nghị nhà thầu và đánh giá các hồ sơ phản hồi của người bán. Người quản lý dự án lựa chọn người bán bằng cách sử dụng tiêu chí lựa chọn nguồn cung, sau đó đàm phán hợp đồng.</p>
+
+<h4 id="ch13-conduct-procurements">Tiến Hành Mua Sắm</h4>
+
+<p>Quản lý mua sắm bao gồm việc thực hiện chiến lược cuối cùng để tìm kiếm người bán và đàm phán, hoàn thiện hợp đồng với họ. Thông tin từ kế hoạch quản lý dự án, bao gồm các đường cơ sở cập nhật và các tài liệu lập kế hoạch khác, sẽ hỗ trợ trong quá trình này với các nhà bán hàng tiềm năng và trong việc đưa ra quyết định cuối cùng cho mỗi gói mua sắm. Vì quy trình hoàn thiện mua sắm là liên tục trong suốt dự án, bạn và nhóm dự án có thể tận dụng các bài học kinh nghiệm từ các gói mua sắm trước đó trong dự án hiện tại hoặc các dự án trước, điều này có thể cung cấp cái nhìn sâu sắc về kinh nghiệm của tổ chức với người bán. Thông tin này thường có thể đơn giản hóa đáng kể quy trình.</p>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Nhóm Quy Trình</th>
+        <th>Quy Trình</th>
+        <th>ECO</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>PG: Thực Thi</strong></td>
+        <td>Tiến Hành Mua Sắm</td>
+        <td>
+          <p><strong>Lĩnh vực I</strong><br>Nhiệm vụ 8: Đàm phán các thỏa thuận dự án</p>
+          <p><strong>Lĩnh vực II</strong><br>Nhiệm vụ 11: Lập kế hoạch &amp; quản lý mua sắm</p>
+          <p><strong>PMBOK Guide</strong><br>Lĩnh vực 2.5: Công Việc Dự Án</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h4 id="ch13-methods-conduct-procurements">Các Phương Pháp Tiến Hành Mua Sắm</h4>
+
+<p>Bạn có thể sử dụng các công cụ và kỹ thuật như quảng cáo để tìm kiếm người bán tiềm năng, hoặc có thể gửi tài liệu đấu thầu đến một danh sách người bán đã được tổ chức phê duyệt trước (một tài sản quy trình tổ chức). Tổ chức có thể đã có sẵn thỏa thuận với một người bán cụ thể. Trong trường hợp này, bạn có thể làm việc với người bán đó để đàm phán các điều khoản nhằm bổ sung công việc mới vào hợp đồng.</p>
+
+<div class="callout">
+  <p><strong>Lưu ý:</strong> Chính phủ Hoa Kỳ và nhiều cơ quan tiểu bang và địa phương được yêu cầu phải quảng cáo hầu hết các gói mua sắm của họ.</p>
+</div>
+
+<h4 id="ch13-bidder-conference">Hội Nghị Nhà Thầu</h4>
+
+<p>Trong hội nghị nhà thầu, phía người mua kiểm soát cẩn thận các hoạt động truyền thông với các nhà bán hàng tiềm năng để đảm bảo tính toàn vẹn pháp lý, sự công bằng và nhất quán trong quy trình. Tất cả câu hỏi của các nhà bán hàng tiềm năng đều được ghi chép và gửi đến tất cả các nhà thầu tiềm năng — cùng với các phản hồi tiếp theo — để đảm bảo mọi người đều có thông tin giống nhau.</p>
+
+<p>Việc nhận được câu trả lời cho các câu hỏi có thể rất quan trọng vì nhiều tài liệu đấu thầu sẽ bao gồm điều khoản nêu rằng bằng cách nộp hồ sơ đấu thầu hoặc đề xuất, người bán đảm bảo hồ sơ thầu bao gồm tất cả các công việc. Hội nghị nhà thầu cũng là cơ hội để người mua phát hiện bất kỳ điểm thiếu sót nào trong tài liệu đấu thầu.</p>
+
+<p>Hội nghị nhà thầu có thể là yếu tố then chốt để đảm bảo mức giá trong hồ sơ phản hồi của người bán phù hợp với công việc cần thực hiện và do đó là mức giá thấp nhất. Hội nghị nhà thầu mang lại lợi ích cho cả người mua lẫn người bán. Đây là thông lệ tốt để người quản lý dự án tham dự hội nghị nhà thầu. Kỳ thi thường hỏi về những điều mà người quản lý dự án phải chú ý trong hội nghị nhà thầu. Các câu trả lời bao gồm:</p>
+
+<ul class="content-list">
+  <li>Thông đồng</li>
+  <li>Người bán không đặt câu hỏi trước mặt đối thủ cạnh tranh</li>
+  <li>Đảm bảo tất cả câu hỏi và câu trả lời được ghi thành văn bản và được người mua phát hành đến tất cả các nhà bán hàng tiềm năng dưới dạng bổ sung cho tài liệu đấu thầu (đảm bảo tất cả người bán đều phản hồi dựa trên cùng một SOW mua sắm)</li>
+</ul>
+
+<h4 id="ch13-seller-proposal">Đề Xuất Của Người Bán (hoặc Báo Giá hoặc Hồ Sơ Đấu Thầu)</h4>
+
+<p>Đề xuất thường là phản hồi cho yêu cầu đề xuất (RFP), báo giá thường là phản hồi cho yêu cầu báo giá (RFQ), và hồ sơ dự thầu thường là phản hồi cho thư mời thầu (IFB). Đề xuất (hoặc báo giá hay hồ sơ dự thầu) đại diện cho một lời chào hàng chính thức từ người bán. Phản hồi cho RFP và RFQ mô tả cách người bán sẽ đáp ứng yêu cầu của người mua. Phản hồi của người bán tiềm năng đối với RFI cung cấp thông tin giúp người mua xác định rõ hơn nhu cầu mua sắm của họ. Phản hồi cho yêu cầu thông tin có thể thúc đẩy người mua tạo RFP hoặc RFQ. Cần lưu ý rằng người bán có thể nhận được rất nhiều RFP, RFQ và IFB. Họ cần có thời gian để xem xét và xác định cái nào họ quan tâm muốn phản hồi. Để đảm bảo những người bán tốt nhất sẽ quan tâm, các tài liệu hồ sơ thầu cần phải đầy đủ và đơn giản nhất có thể.</p>
+
+<p>Quản lý dự án của bên mua cần tính toán thời gian này — cùng với thời gian cần thiết cho hội nghị đấu thầu, phản hồi cho hội nghị đó, cũng như phần còn lại của quy trình mua sắm — trong tiến độ dự án.</p>
+
+<h4 id="ch13-proposal-evaluation">Đánh Giá Đề Xuất</h4>
+
+<p>Ủy ban đánh giá đề xuất của bên mua sử dụng tiêu chí lựa chọn nguồn cung để đánh giá khả năng và sự sẵn lòng cung cấp sản phẩm hoặc dịch vụ được yêu cầu. Kỹ thuật phân tích dữ liệu này cung cấp cơ sở để đánh giá các đề xuất một cách định lượng và giảm thiểu ảnh hưởng của định kiến cá nhân.</p>
+
+<p>Để lựa chọn người bán, bên mua có thể:</p>
+
+<ul class="content-list">
+  <li>Đơn giản là chọn một người bán và yêu cầu họ ký hợp đồng tiêu chuẩn.</li>
+  <li>Yêu cầu người bán thực hiện thuyết trình, và sau đó, nếu mọi thứ diễn ra tốt, tiến hành đàm phán.</li>
+  <li>Thu hẹp ("lập danh sách rút gọn") danh sách người bán xuống còn một vài người.</li>
+  <li>Yêu cầu các người bán trong danh sách rút gọn thực hiện thuyết trình, sau đó yêu cầu (các) người bán được chọn tiến hành đàm phán.</li>
+  <li>Đàm phán với nhiều hơn một người bán.</li>
+  <li>Sử dụng một số kết hợp giữa thuyết trình và đàm phán.</li>
+</ul>
+
+<p>Việc lựa chọn phương pháp phụ thuộc vào tầm quan trọng của việc mua sắm, số lượng người bán quan tâm và loại công việc cần thực hiện. Các đề xuất của người bán thường được ủy ban đánh giá xem xét và so sánh bằng cách sử dụng một hoặc kết hợp các quy trình có cấu trúc, chính thức được thảo luận tiếp theo.</p>
+
+<h4 id="ch13-weighting-system">Hệ Thống Trọng Số</h4>
+
+<p>Khi nhận được phản hồi từ người bán, ủy ban đánh giá của bên mua sẽ phân tích các phản hồi và chọn người bán để trao hợp đồng hoặc đàm phán. Nếu bên mua là một tổ chức công và phản hồi là cho thư mời thầu, câu trả lời khá đơn giản: công việc được trao cho người đấu thầu hợp lệ và có trách nhiệm với giá thấp nhất. Trong trường hợp đề xuất, quyết định lựa chọn phức tạp hơn. Bên mua sẽ áp dụng các tiêu chí lựa chọn đã chọn trong quá trình lập kế hoạch. Nhưng cái nào quan trọng hơn? Giá cả? Năng lực? Sự sẵn có? Các tiêu chí lựa chọn được gán giá trị dựa trên tầm quan trọng tương đối của chúng đối với việc mua sắm. Ví dụ: nếu giá cả quan trọng hơn, nó sẽ được cho đánh giá và trọng số cao hơn. Sau đó, ủy ban đánh giá của bên mua phân tích các phản hồi của người bán bằng cách sử dụng tiêu chí lựa chọn nguồn cung có trọng số.</p>
+
+<div class="callout">
+  <p><strong>Ví dụ:</strong> Không có phép tính nào trong kỳ thi liên quan đến hệ thống trọng số, nhưng ví dụ sau đây sẽ giúp bạn hiểu rõ hơn về khái niệm này.</p>
+</div>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <td colspan="4"><strong>Người Bán A</strong></td>
+  </tr>
+  <tr>
+    <td rowspan="2"><strong>Tiêu Chí</strong></td>
+    <td style="text-align: center;"><strong>A B</strong></td>
+    <td colspan="2" style="text-align: center;"><strong>C</strong></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"><strong>Trọng số</strong></td>
+    <td style="text-align: center;"><strong>đến 100)</strong></td>
+    <td style="text-align: center;"><strong>Đánh giá cho danh mục này (1 Điểm danh mục (cột A nhân B))</strong></td>
+  </tr>
+  <tr>
+    <td>Số năm hoạt động trong lĩnh vực kinh doanh</td>
+    <td style="text-align: center;">5 phần trăm</td>
+    <td style="text-align: center;">50</td>
+    <td style="text-align: center;">2,5</td>
+  </tr>
+  <tr>
+    <td>Hiểu biết về nhu cầu</td>
+    <td style="text-align: center;">25 phần trăm</td>
+    <td style="text-align: center;">80</td>
+    <td style="text-align: center;">20</td>
+  </tr>
+  <tr>
+    <td>Giá cả hoặc chi phí vòng đời</td>
+    <td style="text-align: center;">10 phần trăm</td>
+    <td style="text-align: center;">90</td>
+    <td style="text-align: center;">9</td>
+  </tr>
+  <tr>
+    <td>Năng lực kỹ thuật</td>
+    <td style="text-align: center;">25 phần trăm</td>
+    <td style="text-align: center;">40</td>
+    <td style="text-align: center;">10</td>
+  </tr>
+  <tr>
+    <td>Khả năng hoàn thành công việc đúng hạn</td>
+    <td style="text-align: center;">20 phần trăm</td>
+    <td style="text-align: center;">30</td>
+    <td style="text-align: center;">6</td>
+  </tr>
+  <tr>
+    <td>Năng lực quản lý dự án</td>
+    <td style="text-align: center;">15 phần trăm</td>
+    <td style="text-align: center;">30</td>
+    <td style="text-align: center;">4,5</td>
+  </tr>
+  <tr>
+    <td>Tổng điểm cho người bán này</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;">52</td>
+  </tr>
+</table>
+</div>
+
+<h4 id="ch13-past-performance-history">Lịch Sử Hiệu Suất Quá Khứ</h4>
+
+<p>Bên mua có thể xem xét cả lịch sử của họ với các người bán tiềm năng và phản hồi từ các tổ chức khác đã làm ăn với người bán khi xác định người bán nào được trao hợp đồng mua sắm.</p>
+
+<h4 id="ch13-independent-cost-estimates">Ước Tính Chi Phí Độc Lập</h4>
+
+<p>Bên mua nên so sánh chi phí đề xuất của người bán với một ước tính được tạo ra nội bộ hoặc với sự hỗ trợ bên ngoài trong quá trình lập kế hoạch mua sắm. Điều này cho phép bên mua phát hiện ra sự khác biệt đáng kể giữa những gì bên mua và người bán dự định trong phạm vi công việc mua sắm. Các phản hồi khác biệt đáng kể so với kỳ vọng có thể cho thấy vấn đề về sự hiểu biết của người bán đối với phạm vi công việc mua sắm.</p>
+
+<h4 id="ch13-presentations">Thuyết Trình</h4>
+
+<p>Trong nhiều trường hợp, một số người bán sẽ được yêu cầu thực hiện thuyết trình về đề xuất của họ. Đây thường là một cuộc họp chính thức giữa nhóm của bên mua và người bán. Nó cung cấp cho người bán cơ hội trình bày đề xuất, nhóm và cách tiếp cận để hoàn thành công việc của họ. Bên mua có cơ hội gặp gỡ nhóm mà họ có thể thuê và đặt câu hỏi để đánh giá năng lực của nhóm. Thuyết trình thường được sử dụng nhiều nhất cho các gói mua sắm có hợp đồng hoàn trả chi phí, nhưng chúng có thể được sử dụng bất cứ khi nào có nhiều điều cần đánh giá.</p>
+
+<h4 id="ch13-negotiations">Đàm Phán</h4>
+
+<p>Kỳ thi thường có một hoặc hai câu hỏi liên quan đến đàm phán hợp đồng và sự tham gia của quản lý dự án. Bạn không cần phải là một chuyên gia đàm phán để vượt qua kỳ thi. Nhưng, như bạn đã thấy trong các chương khác của cuốn sách này, khả năng đàm phán là một kỹ năng giao tiếp quan trọng đối với quản lý dự án. Mặc dù quản lý mua sắm hoặc cán bộ mua sắm thường dẫn dắt các cuộc đàm phán, quản lý dự án thường tham gia. Nếu không có sự tham gia của quản lý dự án trong các cuộc đàm phán, thường xảy ra trường hợp một hợp đồng được ký mà sau này quản lý dự án phát hiện ra không thể thực hiện được.</p>
+
+<p>Điều quan trọng là tất cả mọi người tham gia đàm phán đều hiểu rằng mục tiêu của đàm phán là:</p>
+
+<ul class="content-list">
+  <li>Đạt được mức giá công bằng và hợp lý</li>
+  <li>Phát triển mối quan hệ tốt giữa bên mua và người bán</li>
+</ul>
+
+<p>Việc mua sắm phải là tình huống đôi bên cùng có lợi. Bên mua được hoàn thành công việc và người bán kiếm được lợi nhuận hợp lý. Các dự án có thể thất bại nếu không có kết quả đàm phán đôi bên cùng có lợi này. Các chiến thuật đàm phán đôi khi được thể hiện trong các câu hỏi tình huống trong kỳ thi. Cần lưu ý rằng bên mua và người bán có thể sử dụng các chiến thuật đàm phán như trì hoãn hoặc rút lui để đạt được những gì họ muốn. Tất nhiên đây là những điều không mong muốn, và bạn nên có kỹ năng để vượt qua các chiến thuật này.</p>
+
+<p>Các nội dung chính cần giải quyết trong khi đàm phán hợp đồng có thể khác nhau tùy thuộc vào những gì đang được mua. Phạm vi, tiến độ và chi phí thường được đàm phán, theo thứ tự đó, mặc dù luôn phụ thuộc vào ưu tiên của dự án. Định nghĩa phạm vi càng rõ ràng, bên mua và người bán càng dễ đạt được thỏa thuận thực tế về các nội dung khác. Các nội dung khác cần đàm phán bao gồm rủi ro, trách nhiệm về rủi ro, thẩm quyền, luật áp dụng (luật từ một tiểu bang, quốc gia hoặc khu vực khác nên được phản ánh trong hợp đồng), quy trình quản lý dự án, lịch thanh toán và chất lượng.</p>
+
+<p>Khi đàm phán hoàn tất, hợp đồng được trao cho người bán được chọn.</p>
+
+<h4 id="ch13-legal-contract">Những Gì Cần Có Để Có Một Hợp Đồng Hợp Pháp?</h4>
+
+<ul class="content-list">
+  <li>Một đề nghị (chào hàng)</li>
+  <li>Chấp thuận</li>
+  <li>Đối giá (chuyển giao một thứ gì đó có giá trị, nhưng không nhất thiết là tiền)</li>
+  <li>Năng lực pháp lý (các bên pháp lý riêng biệt đều có đủ năng lực pháp lý)</li>
+  <li>Mục đích hợp pháp (không có hợp đồng pháp lý, có thể thực thi được đối với việc mua bán hàng hóa hoặc dịch vụ bất hợp pháp)</li>
+</ul>
+
+<p>Hợp đồng, đề nghị hoặc chấp thuận có thể là bằng lời nói hoặc bằng văn bản, mặc dù bằng văn bản được ưu tiên vì các thỏa thuận bằng lời nói khó thực thi trước tòa án.</p>
+
+<h4 id="ch13-artifacts-conduct-procurements">Các Sản Phẩm Và Kết Quả Của Thực Hiện Mua Sắm</h4>
+
+<p>Kết quả chính của quy trình Thực Hiện Mua Sắm là người bán được chọn và các yêu cầu thay đổi.</p>
+
+<h5 id="ch13-selected-sellers">Người Bán Được Chọn</h5>
+
+<p>Sau khi hoàn thành tất cả công việc đánh giá phản hồi và đàm phán với một hoặc nhiều người bán tiềm năng, một người bán được chọn cho mỗi gói mua sắm. Điều này có nghĩa là bên mua và người bán đã thống nhất và ký xác nhận tất cả các điều khoản và điều kiện của hợp đồng, và họ sẽ tiến hành tạo ra sản phẩm hoặc dịch vụ trong quá trình Kiểm Soát Mua Sắm.</p>
+
+<h4 id="ch13-change-requests-conduct">Yêu Cầu Thay Đổi</h4>
+
+<p>Kế hoạch quản lý mua sắm có thể sẽ được lặp lại nhiều lần. Các thay đổi đối với bất kỳ thành phần kế hoạch, đường cơ sở và các sản phẩm dự án khác đều có thể xảy ra. Đôi khi trong quá trình thực hiện dự án, các vấn đề phát sinh liên quan đến quy trình mua sắm (ví dụ: một người bán không thực hiện đúng) hoặc các lĩnh vực khác của dự án (chẳng hạn như quản lý rủi ro, chất lượng, tiến độ hoặc phạm vi) đòi hỏi phải đánh giá lại kế hoạch quản lý mua sắm và các quyết định tự làm hay thuê ngoài. Những thay đổi kế hoạch như vậy cần được gửi qua kiểm soát thay đổi tích hợp, nơi chúng được đánh giá so với toàn bộ dự án, và được phê duyệt, từ chối hoặc trì hoãn.</p>
+
+<p>Điều đáng đề cập lại là các hợp đồng có thể được hoàn thiện sau khi các kế hoạch dự án khác được hoàn thành và phê duyệt. Điều này có thể kích hoạt nhu cầu thay đổi đối với bất kỳ sản phẩm nào của toàn bộ dự án, có thể bao gồm các đường cơ sở phạm vi, tiến độ hoặc chi phí hoặc bất kỳ tài liệu lập kế hoạch nào khác như chất lượng, nguồn lực, truyền thông hoặc các thành phần kế hoạch rủi ro. Danh sách người bán đã được phê duyệt trước cũng có thể được cập nhật dựa trên công việc được thực hiện trong Thực Hiện Mua Sắm.</p>
+
+<p>Đó là toàn bộ quy trình mua sắm! Liệu có nhiều nội dung mới đối với bạn không? Nếu bạn chưa có nhiều kinh nghiệm làm việc với mua sắm, hãy đọc lại chương này và cố gắng hình dung cách các chủ đề khác nhau áp dụng cho một dự án lớn. Sau đó hãy hình dung cách nó có thể hoạt động trên các loại dự án khác. Điều này sẽ giúp bạn hiểu quy trình tốt hơn.</p>
+
+<p>Hãy kiểm tra kiến thức của bạn bằng cách hoàn thành bài tập sau. Lưu ý từ "hành động" trong bài tập này. Để thi, bạn cần biết những gì cần thực hiện trong mỗi bước cũng như kết quả bạn có được khi hoàn thành một quy trình (đầu ra hoặc kết quả). Đây là bài tập quan trọng để đảm bảo bạn có thể trả lời thành công các câu hỏi về mua sắm trong kỳ thi.</p>
+
+<h3 id="ch13-bai-tap-6">13.6 Bài Tập</h3>
+
+<p>Tái tạo quy trình quản lý mua sắm bằng cách lập danh sách trong Sổ Tay Bài Tập của bạn về các hành động chính và các kết quả thu được từ quy trình Lập Kế Hoạch Quản Lý Mua Sắm, Thực Hiện Mua Sắm, và Kiểm Soát Mua Sắm. Đáp án của bài tập này được liệt kê sau phần Mẹo Nghề Nghiệp® tiếp theo. Nếu bạn bỏ sót nhiều câu trả lời, hãy làm lại bài tập này sau khi xem lại tài liệu.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//7fb39c79-90b3-400e-aa87-47540ad97bf2/markdown_2/imgs/img_in_image_box_75_75_130_129.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A11Z%2F-1%2F%2F2f633163f6fc938895cfe22205dabc5c7bd2780447fa150111a51537a19acfc3" alt="Image" width="6%" /></div></div>
+
+<div class="callout tip">
+<p>Đây là một mẹo để hiểu quy trình mà không cần ghi nhớ toàn bộ — chỉ cần biết các kết quả đầu ra! Nếu một câu hỏi mô tả một hoạt động nào đó xảy ra <strong>sau</strong> khi tài liệu mua sắm được tạo ra và <strong>trước</strong> khi hợp đồng được ký kết, thì hoạt động đó phải đang diễn ra trong quy trình Thực Hiện Mua Sắm. Nếu nó đang diễn ra trong khoảng thời gian sau khi hợp đồng được ký kết đến khi công việc cơ bản hoàn thành, thì nó phải đang diễn ra trong quy trình Kiểm Soát Mua Sắm.</p>
+</div>
+
+<h4 id="ch13-dap-an-bai-tap-6">Đáp Án</h4>
+
+<p>Các hành động và đầu ra sau đây là những nội dung bạn nên chú ý nhiều nhất khi chuẩn bị cho kỳ thi.</p>
+
+<h4 id="ch13-hanh-dong-chinh-mua-sam">Các Hành Động Chính Cho Mỗi Quy Trình Mua Sắm</h4>
+
+<div class="table-wrap">
+<table>
+  <thead>
+    <tr>
+      <th>Lập Kế Hoạch Quản Lý Mua Sắm</th>
+      <th>Thực Hiện Mua Sắm</th>
+      <th>Kiểm Soát Mua Sắm</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <ul class="content-list">
+          <li>Thực hiện phân tích tự làm hay thuê ngoài.</li>
+          <li>Tạo kế hoạch quản lý mua sắm.</li>
+          <li>Tạo chiến lược mua sắm.</li>
+          <li>Tạo phạm vi công việc mua sắm (SOW).</li>
+          <li>Lựa chọn loại hợp đồng phù hợp.</li>
+          <li>Tạo các điều khoản và điều kiện, bao gồm điều kiện tiêu chuẩn và đặc biệt.</li>
+          <li>Tạo tài liệu đấu thầu.</li>
+          <li>Xác định tiêu chí lựa chọn nguồn cung.</li>
+          <li>Thu thập và phân tích dữ liệu về các nhà bán hàng tiềm năng, thị trường và giá thị trường.</li>
+          <li>Ước tính thời gian và chi phí cho hợp đồng và công việc.</li>
+          <li>Quyết định tự làm hay thuê ngoài.</li>
+        </ul>
+        <p><strong>Đầu ra:</strong></p>
+        <ul class="content-list">
+          <li>Kế hoạch quản lý mua sắm.</li>
+          <li>Các phạm vi công việc mua sắm (SOW).</li>
+        </ul>
+      </td>
+      <td>
+        <ul class="content-list">
+          <li>Tìm kiếm các nhà bán hàng tiềm năng thông qua quảng cáo, danh sách nhà bán hàng được phê duyệt trước, hoặc các phương tiện khác.</li>
+          <li>Gửi tài liệu mua sắm.</li>
+          <li>Tổ chức hội nghị đấu thầu.</li>
+          <li>Nhận phản hồi từ nhà bán hàng.</li>
+          <li>Giải đáp câu hỏi của nhà bán hàng.</li>
+          <li>So sánh các đề xuất với tiêu chí lựa chọn nguồn cung sử dụng hệ thống trọng số hoặc sàng lọc để chọn/lọc ngắn danh sách nhà bán hàng.</li>
+          <li>Nhận bài thuyết trình từ (các) nhà bán hàng.</li>
+          <li>So sánh với các ước tính độc lập.</li>
+          <li>Tiến hành đàm phán.</li>
+          <li>Sử dụng kỹ năng giao tiếp và làm việc nhóm, chẳng hạn như đàm phán.</li>
+          <li>Phân bổ rủi ro cho nhà bán hàng khi thích hợp.</li>
+        </ul>
+        <p><strong>Đầu ra:</strong></p>
+        <ul class="content-list">
+          <li>Các nhà bán hàng được lựa chọn.</li>
+          <li>Các hợp đồng đã ký.</li>
+          <li>Lịch nguồn lực.</li>
+          <li>Yêu cầu thay đổi.</li>
+          <li>Cập nhật kế hoạch quản lý dự án.</li>
+          <li>Cập nhật tài liệu dự án.</li>
+        </ul>
+      </td>
+      <td>
+        <ul class="content-list">
+          <li>Các khuyến nghị và cập nhật về quy trình và thủ tục mua sắm của tổ chức.</li>
+          <li>Hiểu rõ các hàm ý pháp lý từ hành động của bạn.</li>
+          <li>Tổ chức các đánh giá hiệu suất mua sắm.</li>
+          <li>Yêu cầu thay đổi.</li>
+          <li>Quản lý các khiếu nại.</li>
+          <li>Quản lý các mối quan hệ giữa các nhà bán hàng.</li>
+          <li>Theo dõi, phân tích và báo cáo hiệu suất so với hợp đồng.</li>
+          <li>Xem xét các hóa đơn chi phí và thực hiện thanh toán.</li>
+          <li>Thực hiện kiểm tra và kiểm toán.</li>
+          <li>Duy trì hồ sơ của tất cả mọi thứ.</li>
+          <li>Quản lý các mối quan hệ.</li>
+          <li>Nghiệm thu các kết quả bàn giao đã xác minh.</li>
+          <li>Thực hiện kiểm toán mua sắm.</li>
+          <li>Đàm phán giải quyết tranh chấp.</li>
+          <li>Lập bài học kinh nghiệm.</li>
+          <li>Hoàn tất báo cáo hiệu suất hợp đồng cuối cùng.</li>
+          <li>Xác nhận sản phẩm.</li>
+          <li>Phát hành chấp thuận chính thức.</li>
+          <li>Cập nhật hồ sơ.</li>
+          <li>Tạo hồ sơ mua sắm.</li>
+          <li>Thực hiện quyết toán tài chính.</li>
+          <li>Hoàn thành cơ bản các yêu cầu và kết quả bàn giao của hợp đồng.</li>
+        </ul>
+        <p><strong>Đầu ra:</strong></p>
+        <ul class="content-list">
+          <li>Thông tin hiệu suất công việc.</li>
+          <li>Yêu cầu thay đổi.</li>
+          <li>Cập nhật kế hoạch quản lý dự án.</li>
+          <li>Cập nhật tài liệu dự án (bao gồm cập nhật tài liệu mua sắm).</li>
+          <li>Cập nhật tài sản quy trình tổ chức (OPA).</li>
+          <li>Chấp thuận chính thức.</li>
+          <li>Các gói mua sắm đã đóng.</li>
+          <li>Cập nhật bài học kinh nghiệm và hồ sơ.</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3 id="ch13-bai-tap-7">13.7 Bài Tập</h3>
+
+<p>Đây là một bài tập khác để ôn lại những gì đã được thảo luận trong chương này. Để vượt qua kỳ thi, bạn phải hiểu vai trò của người quản lý dự án trong mua sắm. Sau khi đọc chương này, hãy mô tả vai trò của người quản lý dự án. Viết câu trả lời vào Sổ Tay Bài Tập của bạn.</p>
+
+<h4 id="ch13-dap-an-bai-tap-7">Đáp Án</h4>
+
+<p>Với tư cách là người quản lý dự án, bạn nên:</p>
+
+<ul class="content-list">
+  <li>Nắm rõ quy trình mua sắm để bạn tích hợp tất cả các hoạt động mua sắm vào dự án của mình.</li>
+  <li>Hiểu ý nghĩa của các điều khoản và điều kiện hợp đồng để bạn có thể đọc và hiểu hợp đồng.</li>
+  <li>Đảm bảo hợp đồng bao gồm toàn bộ phạm vi công việc và tất cả các yêu cầu quản lý dự án, chẳng hạn như tham dự các cuộc họp, báo cáo, hành động và thông tin liên lạc được coi là cần thiết để giảm thiểu các vấn đề và hiểu lầm với (các) nhà bán hàng.</li>
+  <li>Xác định rủi ro và kết hợp các biện pháp giảm nhẹ và phân bổ rủi ro vào hợp đồng để giảm rủi ro dự án.</li>
+  <li>Giúp điều chỉnh hợp đồng phù hợp với nhu cầu độc đáo của dự án trong quá trình soạn thảo.</li>
+  <li>Bao gồm đủ thời gian trong lịch dự án để hoàn thành quy trình mua sắm.</li>
+  <li>Bảo vệ tính toàn vẹn của dự án và khả năng hoàn thành công việc bằng cách đảm bảo quy trình mua sắm diễn ra thuận lợi nhất có thể.</li>
+  <li>Giúp đảm bảo tất cả công việc trong hợp đồng được hoàn thành — bao gồm báo cáo, kiểm tra và các kết quả bàn giao pháp lý, chẳng hạn như giải phóng quyền lưu giữ và quyền sở hữu tài liệu — không chỉ phạm vi kỹ thuật.</li>
+  <li>Không yêu cầu bất cứ điều gì không có trong hợp đồng mà không thực hiện thay đổi hợp đồng tương ứng.</li>
+  <li>Làm việc với người quản lý mua sắm để quản lý các thay đổi đối với hợp đồng.</li>
+</ul>
+
+
+</main>
+
+<button id="back-top" aria-label="Về đầu trang">↑</button>
+
+<script>
+// Progress bar
+const pb=document.getElementById('progress-bar');
+function updPB(){const d=document.documentElement;pb.style.width=Math.min((d.scrollTop/(d.scrollHeight-d.clientHeight))*100,100)+'%'}
+window.addEventListener('scroll',updPB,{passive:true});
+
+// Back to top
+const bt=document.getElementById('back-top');
+window.addEventListener('scroll',()=>{bt.style.opacity=scrollY>400?'1':'0';},{passive:true});
+bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+// Mobile menu
+const mb=document.getElementById('menu-btn'),sb=document.getElementById('sidebar');
+mb.addEventListener('click',()=>sb.classList.toggle('open'));
+document.addEventListener('click',e=>{if(!sb.contains(e.target)&&e.target!==mb)sb.classList.remove('open')});
+
+// Active TOC highlight on scroll
+const tocLinks=document.querySelectorAll('#sidebar-toc a[href^="#"]');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      tocLinks.forEach(a=>a.classList.remove('active'));
+      const a=document.querySelector('#sidebar-toc a[href="#'+e.target.id+'"]');
+      if(a){a.classList.add('active');a.scrollIntoView({block:'nearest',behavior:'smooth'})}
+    }
+  })
+},{rootMargin:'-20% 0px -75% 0px'});
+document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
+
+// ── THEME + READING POSITION ───────────────────────────
+(function(){
+  var THEME_KEY='rita_theme', READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var chapNum=m?m[1]:null;
+
+  // Build & inject theme toggle button
+  var hdr=document.getElementById('sidebar-header');
+  if(hdr){
+    var btn=document.createElement('button');
+    btn.id='theme-btn';
+    var curTheme=document.documentElement.getAttribute('data-theme')||'light';
+    btn.textContent=curTheme==='dark'?'☀':'🌙';
+    btn.title='Giao diện sáng / tối';
+    hdr.appendChild(btn);
+    btn.addEventListener('click',function(){
+      var next=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+      document.documentElement.setAttribute('data-theme',next);
+      localStorage.setItem(THEME_KEY,next);
+      btn.textContent=next==='dark'?'☀':'🌙';
+    });
+  }
+
+  if(!chapNum) return;
+
+  // Save last chapter visited
+  try{
+    var rd=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    rd.lastChap='rita_chap'+chapNum;
+    if(!rd.scrollPos) rd.scrollPos={};
+    localStorage.setItem(READ_KEY,JSON.stringify(rd));
+  }catch(e){}
+
+  // Restore scroll position
+  try{
+    var rdR=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    var savedPos=rdR.scrollPos&&rdR.scrollPos[chapNum]||0;
+    if(savedPos>200) setTimeout(function(){window.scrollTo(0,savedPos);},120);
+  }catch(e){}
+
+  // Save scroll position (debounced 600ms)
+  var saveT;
+  window.addEventListener('scroll',function(){
+    clearTimeout(saveT);
+    saveT=setTimeout(function(){
+      try{
+        var r2=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+        if(!r2.scrollPos) r2.scrollPos={};
+        r2.scrollPos[chapNum]=window.scrollY;
+        r2.lastChap='rita_chap'+chapNum;
+        localStorage.setItem(READ_KEY,JSON.stringify(r2));
+      }catch(e){}
+    },600);
+  },{passive:true});
+})();
+
+// ── HIGHLIGHT / NOTES SYSTEM ────────────────────────────
+(function(){
+  var READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  if(!m) return;
+  var chapNum=m[1];
+  var HL_KEY='rita_hl_'+chapNum;
+
+  // ── STORAGE ──
+  function loadHL(){try{return JSON.parse(localStorage.getItem(HL_KEY)||'[]')}catch(e){return[]}}
+  function saveHL(arr){localStorage.setItem(HL_KEY,JSON.stringify(arr));window.__ritaSyncTrigger&&window.__ritaSyncTrigger();}
+  function genId(){return 'h'+Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
+
+  // ── XPATH HELPERS ──
+  var mainEl=document.getElementById('main');
+  function getXPath(node){
+    if(!node||node===mainEl) return '.';
+    var parts=[];
+    var cur=node.nodeType===3?node.parentNode:node;
+    while(cur&&cur!==mainEl&&cur!==document.body){
+      var tag=cur.tagName.toLowerCase();
+      var idx=1,sib=cur.previousElementSibling;
+      while(sib){if(sib.tagName&&sib.tagName.toLowerCase()===tag)idx++;sib=sib.previousElementSibling;}
+      parts.unshift(tag+'['+idx+']');
+      cur=cur.parentElement;
+    }
+    return parts.join('/');
+  }
+  function resolveXPath(xpath){
+    if(!mainEl||xpath==='.') return mainEl;
+    try{
+      var r=document.evaluate('.//'+xpath,mainEl,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);
+      return r.singleNodeValue;
+    }catch(e){return null;}
+  }
+  function findTextAt(el,offset){
+    var walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null);
+    var count=0,node;
+    while((node=walker.nextNode())){
+      var len=node.textContent.length;
+      if(count+len>=offset) return{node:node,localOffset:offset-count};
+      count+=len;
+    }
+    return null;
+  }
+
+  // ── APPLY MARK TO DOM ──
+  function applyMark(hl){
+    try{
+      var sEl=resolveXPath(hl.sxp), eEl=resolveXPath(hl.exp);
+      if(!sEl||!eEl) return false;
+      var sInfo=sEl.nodeType===3?{node:sEl,localOffset:hl.so}:findTextAt(sEl,hl.so);
+      var eInfo=eEl.nodeType===3?{node:eEl,localOffset:hl.eo}:findTextAt(eEl,hl.eo);
+      if(!sInfo||!eInfo) return false;
+      var range=document.createRange();
+      range.setStart(sInfo.node,sInfo.localOffset);
+      range.setEnd(eInfo.node,eInfo.localOffset);
+      applyRange(range,hl.id,hl.color,hl.note||'');
+      return true;
+    }catch(e){return false;}
+  }
+  function applyRange(range,hlId,color,note){
+    var walker=document.createTreeWalker(
+      range.commonAncestorContainer.nodeType===3
+        ?range.commonAncestorContainer.parentNode
+        :range.commonAncestorContainer,
+      NodeFilter.SHOW_TEXT,null
+    );
+    var nodes=[],node;
+    while((node=walker.nextNode())){if(range.intersectsNode(node))nodes.push(node);}
+    nodes.forEach(function(tn){
+      var s=tn===range.startContainer?range.startOffset:0;
+      var e=tn===range.endContainer?range.endOffset:tn.textContent.length;
+      if(s>=e) return;
+      var nr=document.createRange();
+      nr.setStart(tn,s); nr.setEnd(tn,Math.min(e,tn.textContent.length));
+      try{
+        var mk=document.createElement('mark');
+        mk.className='hl'; mk.setAttribute('data-hl-id',hlId);
+        mk.setAttribute('data-color',color); mk.setAttribute('data-note',note);
+        nr.surroundContents(mk);
+      }catch(err){
+        try{
+          var c=nr.extractContents(),mk2=document.createElement('mark');
+          mk2.className='hl'; mk2.setAttribute('data-hl-id',hlId);
+          mk2.setAttribute('data-color',color); mk2.setAttribute('data-note',note);
+          mk2.appendChild(c); nr.insertNode(mk2);
+        }catch(_){}
+      }
+    });
+  }
+  function removeMarks(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      var p=mk.parentNode;
+      while(mk.firstChild)p.insertBefore(mk.firstChild,mk);
+      p.removeChild(mk);
+      p.normalize();
+    });
+  }
+  function updateMarks(hlId,color,note){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.setAttribute('data-color',color);
+      mk.setAttribute('data-note',note);
+    });
+  }
+
+  // ── RESTORE HIGHLIGHTS ON LOAD ──
+  var highlights=loadHL();
+  // Sort by sxp+so descending so earlier ranges aren't offset by later insertions
+  // Actually apply in order (each one is independent)
+  highlights.forEach(applyMark);
+  // Expose re-apply for sync module
+  window.__ritaReapplyMarks=function(){
+    document.querySelectorAll('mark.hl').forEach(function(mk){
+      var p=mk.parentNode;while(mk.firstChild)p.insertBefore(mk.firstChild,mk);p.removeChild(mk);p.normalize();
+    });
+    loadHL().forEach(applyMark);
+    if(typeof updateBadge==='function') updateBadge();
+    if(typeof renderPanelIfOpen==='function') renderPanelIfOpen();
+  };
+
+  // ── SIDEBAR BUTTON ──
+  function updateBadge(){
+    var hls=loadHL();
+    var badge=document.getElementById('hl-badge');
+    if(badge) badge.textContent=hls.length||'0';
+  }
+  var sidebarNav=document.getElementById('sidebar-toc');
+  if(sidebarNav){
+    var hlBtn=document.createElement('button');
+    hlBtn.id='hl-sidebar-btn';
+    hlBtn.innerHTML='<span>✏ Ghi chú & Highlight</span><span id="hl-badge">0</span>';
+    hlBtn.addEventListener('click',function(){openPanel();});
+    // Insert before sidebar-nav (bottom buttons)
+    var sidebarNavBottom=document.getElementById('sidebar-nav');
+    if(sidebarNavBottom) sidebarNavBottom.parentNode.insertBefore(hlBtn,sidebarNavBottom);
+    else document.getElementById('sidebar').appendChild(hlBtn);
+  }
+  updateBadge();
+
+  // ── PANEL ──
+  var panel=document.createElement('div');
+  panel.id='hl-panel';
+  panel.innerHTML='<div id="hl-panel-hdr"><h3>✏ Ghi Chú & Highlight</h3><button id="hl-panel-close">×</button></div><div id="hl-panel-list"></div>';
+  document.body.appendChild(panel);
+  document.getElementById('hl-panel-close').addEventListener('click',closePanel);
+  function openPanel(){renderPanel();panel.classList.add('open');}
+  function closePanel(){panel.classList.remove('open');}
+  function renderPanel(){
+    var list=document.getElementById('hl-panel-list');
+    var hls=loadHL();
+    list.innerHTML='';
+    hls.forEach(function(hl){
+      var item=document.createElement('div');
+      item.className='hl-item'; item.setAttribute('data-color',hl.color);
+      var noteHtml=hl.note?'<div class="hl-item-note">✏ '+escHtml(hl.note)+'</div>':'';
+      item.innerHTML='<button class="hl-item-del" data-id="'+hl.id+'">🗑</button>'
+        +'<div class="hl-item-text">'+escHtml(hl.text||'')+'</div>'+noteHtml;
+      item.addEventListener('click',function(e){
+        if(e.target.classList.contains('hl-item-del')) return;
+        var mk=document.querySelector('mark.hl[data-hl-id="'+hl.id+'"]');
+        if(mk){mk.scrollIntoView({behavior:'smooth',block:'center'});flashMark(hl.id);}
+        closePanel();
+      });
+      item.querySelector('.hl-item-del').addEventListener('click',function(e){
+        e.stopPropagation(); deleteHL(hl.id); renderPanel();
+      });
+      list.appendChild(item);
+    });
+  }
+
+  // ── POPUP ──
+  var popup=document.createElement('div');
+  popup.id='hl-popup'; popup.className='hidden';
+  popup.innerHTML=
+    '<button class="hl-color-btn" data-color="yellow" title="Vàng"></button>'
+    +'<button class="hl-color-btn" data-color="green" title="Xanh"></button>'
+    +'<button class="hl-color-btn" data-color="red" title="Đỏ"></button>'
+    +'<div class="hl-sep"></div>'
+    +'<button class="hl-note-btn" title="Thêm ghi chú">✏</button>'
+    +'<button class="hl-del-btn hl-del-action" title="Xóa">🗑</button>';
+  document.body.appendChild(popup);
+
+  var currentHlId=null;    // id being edited (null = new)
+  var pendingRange=null;   // Range for new highlight
+  var pendingXP=null;      // serialized position for new highlight
+
+  // Position popup near a rect
+  function positionPopup(rect){
+    var pw=popup.offsetWidth||160,ph=popup.offsetHeight||40;
+    var top=rect.top-ph-10+window.scrollY;
+    var left=rect.left+(rect.width-pw)/2;
+    if(top<window.scrollY+8) top=rect.bottom+10+window.scrollY;
+    left=Math.max(8,Math.min(left,window.innerWidth-pw-8));
+    popup.style.top=top+'px';
+    popup.style.left=left+'px';
+  }
+  function showPopup(rect,hlId){
+    currentHlId=hlId||null;
+    var isEdit=!!hlId;
+    popup.querySelector('.hl-del-action').style.display=isEdit?'':'none';
+    popup.querySelector('.hl-note-btn').style.display='';
+    popup.classList.remove('hidden');
+    positionPopup(rect);
+  }
+  function hidePopup(){
+    popup.classList.add('hidden');
+    pendingRange=null; pendingXP=null; currentHlId=null;
+  }
+
+  // Color buttons
+  popup.querySelectorAll('.hl-color-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var color=btn.getAttribute('data-color');
+      if(currentHlId){
+        // Update existing
+        var hls=loadHL();
+        var idx=hls.findIndex(function(h){return h.id===currentHlId;});
+        if(idx>=0){hls[idx].color=color;saveHL(hls);}
+        updateMarks(currentHlId,color,hls[idx]?hls[idx].note||'':'');
+        updateBadge(); renderPanelIfOpen();
+      } else if(pendingRange&&pendingXP){
+        // Create new
+        var id=genId();
+        var text=pendingRange.toString().substring(0,500);
+        applyRange(pendingRange,id,color,'');
+        pendingRange.collapse();
+        window.getSelection()&&window.getSelection().removeAllRanges();
+        var hls=loadHL();
+        hls.push({id:id,color:color,note:'',text:text,
+          sxp:pendingXP.sxp,so:pendingXP.so,exp:pendingXP.exp,eo:pendingXP.eo});
+        saveHL(hls); updateBadge(); renderPanelIfOpen();
+      }
+      hidePopup();
+    });
+  });
+
+  // Note button
+  popup.querySelector('.hl-note-btn').addEventListener('click',function(){
+    var id=currentHlId;
+    var existing='';
+    if(id){var hls=loadHL();var h=hls.find(function(x){return x.id===id;});if(h)existing=h.note||'';}
+    hidePopup();
+    openNoteModal(id,existing);
+  });
+
+  // Delete button
+  popup.querySelector('.hl-del-action').addEventListener('click',function(){
+    if(currentHlId) deleteHL(currentHlId);
+    hidePopup();
+  });
+
+  function deleteHL(id){
+    removeMarks(id);
+    var hls=loadHL().filter(function(h){return h.id!==id;});
+    saveHL(hls); updateBadge(); renderPanelIfOpen();
+  }
+
+  // ── NOTE MODAL ──
+  var noteModal=document.createElement('div');
+  noteModal.id='hl-note-modal'; noteModal.className='hidden';
+  noteModal.innerHTML='<div id="hl-note-box">'
+    +'<h3>✏ Ghi chú</h3>'
+    +'<textarea id="hl-note-ta" placeholder="Nhập ghi chú..."></textarea>'
+    +'<div class="hl-note-actions">'
+    +'<button class="hl-note-cancel">Hủy</button>'
+    +'<button class="hl-note-save">Lưu</button>'
+    +'</div></div>';
+  document.body.appendChild(noteModal);
+  var _noteTargetId=null;
+  function openNoteModal(hlId,existing){
+    _noteTargetId=hlId;
+    document.getElementById('hl-note-ta').value=existing||'';
+    noteModal.classList.remove('hidden');
+    setTimeout(function(){document.getElementById('hl-note-ta').focus();},50);
+  }
+  noteModal.querySelector('.hl-note-cancel').addEventListener('click',function(){noteModal.classList.add('hidden');});
+  noteModal.querySelector('.hl-note-save').addEventListener('click',function(){
+    var note=document.getElementById('hl-note-ta').value.trim();
+    if(_noteTargetId){
+      var hls=loadHL();
+      var idx=hls.findIndex(function(h){return h.id===_noteTargetId;});
+      if(idx>=0){hls[idx].note=note;saveHL(hls);updateMarks(_noteTargetId,hls[idx].color,note);updateBadge();renderPanelIfOpen();}
+    }
+    noteModal.classList.add('hidden');
+  });
+  noteModal.addEventListener('click',function(e){if(e.target===noteModal)noteModal.classList.add('hidden');});
+
+  // ── SELECTION HANDLER ──
+  document.addEventListener('mouseup',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    setTimeout(function(){
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed||!sel.rangeCount){hidePopup();return;}
+      var range=sel.getRangeAt(0);
+      var text=range.toString().trim();
+      if(!text||text.length<2){hidePopup();return;}
+      // Only highlight within #main
+      if(!mainEl||!mainEl.contains(range.commonAncestorContainer)){hidePopup();return;}
+      // Serialize positions
+      var sNode=range.startContainer,eNode=range.endContainer;
+      var sParent=sNode.nodeType===3?sNode.parentNode:sNode;
+      var eParent=eNode.nodeType===3?eNode.parentNode:eNode;
+      var sxp=getXPath(sParent),exp=getXPath(eParent);
+      // calc offsets within parent element
+      var so=0,eo=0;
+      var w=document.createTreeWalker(sParent,NodeFilter.SHOW_TEXT,null);
+      var n;while((n=w.nextNode())){if(n===sNode){so+=range.startOffset;break;}so+=n.textContent.length;}
+      var w2=document.createTreeWalker(eParent,NodeFilter.SHOW_TEXT,null);
+      while((n=w2.nextNode())){if(n===eNode){eo+=range.endOffset;break;}eo+=n.textContent.length;}
+      pendingRange=range.cloneRange();
+      pendingXP={sxp:sxp,so:so,exp:exp,eo:eo};
+      currentHlId=null;
+      var rect=range.getBoundingClientRect();
+      showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width});
+    },10);
+  });
+
+  // ── CLICK ON EXISTING MARK ──
+  document.addEventListener('click',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    var mk=e.target.closest('mark.hl');
+    if(!mk){
+      // click outside: if selection is collapsed, hide popup
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed) hidePopup();
+      return;
+    }
+    e.stopPropagation();
+    var hlId=mk.getAttribute('data-hl-id');
+    var rect=mk.getBoundingClientRect();
+    currentHlId=hlId;
+    pendingRange=null;pendingXP=null;
+    showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width},hlId);
+  });
+
+  // ── FLASH EFFECT ──
+  function flashMark(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.style.transition='outline .2s';mk.style.outline='3px solid #c9a84c';
+      setTimeout(function(){mk.style.outline='none';},1500);
+    });
+  }
+
+  function renderPanelIfOpen(){if(panel.classList.contains('open'))renderPanel();}
+
+  function escHtml(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+})();
+
+
+// ── CHAPTER NAV PANEL ───────────────────────────────────
+(function(){
+  var CHAPS=[
+    [1,'rita_chap01.html','Mẹo & Thủ Thuật Ôn Thi PMP®'],
+    [2,'rita_chap02.html','Tài Liệu Tham Khảo Kỳ Thi'],
+    [3,'rita_chap03.html','Nền Tảng Quản Lý Dự Án'],
+    [4,'rita_chap04.html','Tích Hợp'],
+    [5,'rita_chap05.html','Kỹ Năng Lãnh Đạo'],
+    [6,'rita_chap06.html','Xây Dựng & Hỗ Trợ Hiệu Suất Nhóm'],
+    [7,'rita_chap07.html','Phạm Vi Dự Án'],
+    [8,'rita_chap08.html','Tiến Độ & Ngân Sách Dự Án'],
+    [10,'rita_chap10.html','Chất Lượng Sản Phẩm Bàn Giao'],
+    [11,'rita_chap11.html','Truyền Thông'],
+    [12,'rita_chap12.html','Rủi Ro & Vấn Đề'],
+    [13,'rita_chap13.html','Mua Sắm'],
+    [14,'rita_chap14.html','Các Bên Liên Quan'],
+    [15,'rita_chap15.html','Tuân Thủ & Mang Lại Giá Trị'],
+    [16,'rita_chap16.html','Mẹo Vượt Qua Kỳ Thi PMP®'],
+    [17,'rita_chap17.html','Các Phương Pháp Agile Phổ Biến'],
+    [18,'rita_chap18.html','Hướng Dẫn PMBOK & Tiêu Chuẩn PM']
+  ];
+
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var curNum=m?parseInt(m[1]):null;
+  var READ_KEY='rita_reading';
+
+  // Build panel DOM
+  var panel=document.createElement('div');
+  panel.id='chap-panel'; panel.className='hidden';
+  var listHtml='';
+  CHAPS.forEach(function(c){
+    var isActive=c[0]===curNum;
+    listHtml+='<a class="chap-panel-item'+(isActive?' active':'')+'" href="'+c[1]+'">'
+      +'<span class="cpanel-num">Ch'+c[0]+'</span>'
+      +'<span class="cpanel-title">'+c[2]+'</span>'
+      +(isActive?'<span class="cpanel-status">● Đang đọc</span>':'')
+      +'</a>';
+  });
+  panel.innerHTML='<div id="chap-panel-overlay"></div>'
+    +'<div id="chap-panel-box">'
+    +'<div id="chap-panel-hdr"><h3>☰ Danh Sách Chương</h3><button id="chap-panel-close">×</button></div>'
+    +'<div id="chap-panel-list">'+listHtml+'</div>'
+    +'</div>';
+  document.body.appendChild(panel);
+
+  function openChapPanel(){panel.classList.remove('hidden');}
+  function closeChapPanel(){panel.classList.add('hidden');}
+  document.getElementById('chap-panel-overlay').addEventListener('click',closeChapPanel);
+  document.getElementById('chap-panel-close').addEventListener('click',closeChapPanel);
+
+  // Wire up the Mục lục button
+  var mucLucBtn=document.getElementById('chap-muc-luc-btn');
+  if(mucLucBtn) mucLucBtn.addEventListener('click',function(e){e.preventDefault();openChapPanel();});
+})();
+
+
+// ── GITHUB HIGHLIGHTS SYNC ──────────────────────────
+(function(){
+  var REPO='goukakujlptsuport-beep/pmbok6';
+  var TOKEN_KEY='rita_gh_token';
+  var API_URL='https://api.github.com/repos/'+REPO+'/contents/data/rita_highlights.json';
+  var fileSha=null;
+  var syncTimer=null;
+
+  // Called by patched saveHL after every highlight change
+  window.__ritaSyncTrigger=function(){
+    clearTimeout(syncTimer);
+    syncTimer=setTimeout(pushToGitHub,3000);
+  };
+
+  // ── STATUS BUTTON (inserted before #sidebar-nav) ──
+  var btn=document.createElement('button');
+  btn.id='sync-btn'; btn.dataset.state='no-token';
+  btn.innerHTML='<span>☁ Sync Git</span><span id="sync-status-text">Đang kết nối…</span>';
+  btn.title='Đồng bộ highlight / ghi chú lên GitHub';
+  btn.addEventListener('click',handleSyncClick);
+  var sidebarNavEl=document.getElementById('sidebar-nav');
+  if(sidebarNavEl) sidebarNavEl.parentNode.insertBefore(btn,sidebarNavEl);
+
+  var statusText=document.getElementById('sync-status-text');
+  function setStatus(state,msg){
+    btn.dataset.state=state;
+    if(statusText) statusText.textContent=msg;
+  }
+
+  // ── TOKEN MODAL ──
+  var modal=document.createElement('div');
+  modal.id='sync-modal'; modal.className='hidden';
+  modal.innerHTML='<div id="sync-modal-box">'
+    +'<h3>☁ Cấu Hình GitHub Sync</h3>'
+    +'<p>Nhập <strong style="color:var(--gold)">GitHub Personal Access Token (PAT)</strong> để đồng bộ highlight giữa các thiết bị.<br>'
+    +'Token cần quyền <strong style="color:var(--gold-lt)">Contents: Read &amp; Write</strong> trên repo pmbok6.<br>'
+    +'Token được lưu trong localStorage của trình duyệt này.</p>'
+    +'<input id="sync-token-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" spellcheck="false" autocomplete="off">'
+    +'<div class="sync-modal-btns">'
+    +'<button id="sync-clear-btn">🗑 Xóa token</button>'
+    +'<button id="sync-cancel-btn">Hủy</button>'
+    +'<button id="sync-save-btn">💾 Lưu &amp; Sync</button>'
+    +'</div></div>';
+  document.body.appendChild(modal);
+
+  document.getElementById('sync-cancel-btn').addEventListener('click',function(){modal.classList.add('hidden');});
+  document.getElementById('sync-save-btn').addEventListener('click',function(){
+    var t=(document.getElementById('sync-token-input').value||'').trim();
+    if(!t){alert('Vui lòng nhập GitHub PAT!');return;}
+    localStorage.setItem(TOKEN_KEY,t);
+    modal.classList.add('hidden');
+    fileSha=null;
+    initSync();
+  });
+  document.getElementById('sync-clear-btn').addEventListener('click',function(){
+    if(!confirm('Xóa token? Highlights sẽ không được sync cho đến khi cấu hình lại.')) return;
+    localStorage.removeItem(TOKEN_KEY);
+    fileSha=null;
+    modal.classList.add('hidden');
+    setStatus('no-token','Chưa cấu hình');
+  });
+  modal.addEventListener('click',function(e){if(e.target===modal)modal.classList.add('hidden');});
+
+  function handleSyncClick(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){
+      var inp=document.getElementById('sync-token-input');
+      if(inp) inp.value='';
+      modal.classList.remove('hidden');
+      setTimeout(function(){if(inp)inp.focus();},80);
+    } else {
+      // Manual re-sync
+      fileSha=null;
+      initSync();
+    }
+  }
+
+  // ── HELPERS ──
+  var ALL_CHAPS=['01','02','03','04','05','06','07','08','10','11','12','13','14','15','16','17','18'];
+
+  function getAllLocal(){
+    var all={};
+    ALL_CHAPS.forEach(function(n){
+      try{
+        var v=JSON.parse(localStorage.getItem('rita_hl_'+n)||'[]');
+        if(v&&v.length>0) all[n]=v;
+      }catch(e){}
+    });
+    return all;
+  }
+
+  function countHL(obj){
+    return Object.values(obj).reduce(function(s,a){return s+(a?a.length:0);},0);
+  }
+
+  // Union merge: keep all highlights by id, prefer local note if different
+  function mergeHL(local,remote){
+    var merged={};
+    var allChaps=new Set(Object.keys(local).concat(Object.keys(remote)));
+    allChaps.forEach(function(chap){
+      var loc=local[chap]||[];
+      var rem=remote[chap]||[];
+      var byId={};
+      loc.forEach(function(h){byId[h.id]=h;});
+      rem.forEach(function(h){if(!byId[h.id])byId[h.id]=h;});
+      var arr=Object.values(byId);
+      if(arr.length>0) merged[chap]=arr;
+    });
+    return merged;
+  }
+
+  function applyToLocal(highlights){
+    Object.keys(highlights).forEach(function(chap){
+      localStorage.setItem('rita_hl_'+chap,JSON.stringify(highlights[chap]));
+    });
+  }
+
+  // base64 encode/decode with Unicode support
+  function b64enc(str){
+    return btoa(unescape(encodeURIComponent(str)));
+  }
+  function b64dec(b64){
+    return decodeURIComponent(escape(atob(b64.replace(/[\r\n]/g,''))));
+  }
+
+  // ── FETCH FROM GITHUB ──
+  async function fetchFromGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    var headers={'Accept':'application/vnd.github.v3+json'};
+    if(token) headers['Authorization']='token '+token;
+    try{
+      var resp=await fetch(API_URL,{headers:headers});
+      if(resp.status===404){fileSha=null;return null;}
+      if(!resp.ok) throw new Error('HTTP '+resp.status);
+      var data=await resp.json();
+      fileSha=data.sha;
+      var content=JSON.parse(b64dec(data.content));
+      return content;
+    }catch(e){
+      console.warn('[sync] fetch:',e);
+      return 'error';
+    }
+  }
+
+  // ── PUSH TO GITHUB ──
+  async function pushToGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang sync…');
+    var local=getAllLocal();
+    var payload={version:1,lastSync:new Date().toISOString(),highlights:local};
+    var encoded=b64enc(JSON.stringify(payload,null,2));
+    var body={message:'sync: rita highlights ['+countHL(local)+' HL]',content:encoded};
+    if(fileSha) body.sha=fileSha;
+    try{
+      var resp=await fetch(API_URL,{
+        method:'PUT',
+        headers:{
+          'Authorization':'token '+token,
+          'Content-Type':'application/json',
+          'Accept':'application/vnd.github.v3+json'
+        },
+        body:JSON.stringify(body)
+      });
+      if(!resp.ok){
+        var err=await resp.json().catch(function(){return{};});
+        throw new Error(err.message||'HTTP '+resp.status);
+      }
+      var result=await resp.json();
+      fileSha=result.content.sha;
+      setStatus('ok','✓ Đã sync ('+countHL(local)+' HL)');
+    }catch(e){
+      setStatus('err','✗ '+e.message.slice(0,28));
+      console.error('[sync] push:',e);
+    }
+  }
+
+  // ── INIT ──
+  async function initSync(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang tải…');
+
+    var ghData=await fetchFromGitHub();
+    if(ghData==='error'){
+      setStatus('err','✗ Không kết nối được');
+      return;
+    }
+    if(ghData&&ghData.highlights){
+      var local=getAllLocal();
+      var merged=mergeHL(local,ghData.highlights);
+      applyToLocal(merged);
+      // Re-apply marks on current chapter from updated localStorage
+      if(typeof window.__ritaReapplyMarks==='function') window.__ritaReapplyMarks();
+      var ghN=countHL(ghData.highlights), mergedN=countHL(merged);
+      if(mergedN>ghN){
+        // New highlights from remote — push merged back
+        setTimeout(pushToGitHub,1200);
+      } else {
+        setStatus('ok','✓ Sync OK ('+mergedN+' HL)');
+      }
+    } else {
+      // File doesn't exist yet — push current local state
+      await pushToGitHub();
+    }
+  }
+
+  initSync();
+})();
+
+</script>
+
+</body>
+</html>

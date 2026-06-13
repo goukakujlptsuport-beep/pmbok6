@@ -1,0 +1,2178 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xây Dựng & Hỗ Trợ Hiệu Suất Nhóm | Rita PMP® Exam Prep 11</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:     #1a2744;
+  --red:      #8b1a1a;
+  --gold:     #c9a84c;
+  --gold-lt:  #e8d5a3;
+  --cream:    #fdf8f0;
+  --text:     #2c2c2c;
+  --text-dim: #5a5a5a;
+  --border:   #d4c89a;
+  --sidebar-w: 268px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ── PROGRESS BAR ── */
+#progress-bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--gold);z-index:200;transition:width .1s}
+
+/* ── SIDEBAR ── */
+#sidebar{
+  width:var(--sidebar-w);background:var(--navy);color:#ccd4e8;
+  position:fixed;top:0;left:0;bottom:0;overflow-y:auto;z-index:100;
+  border-right:3px solid var(--gold);display:flex;flex-direction:column;
+}
+#sidebar-header{
+  background:linear-gradient(135deg,#0f1d3a 0%,#1a2744 100%);
+  padding:1.4rem 1.2rem;border-bottom:2px solid var(--gold);flex-shrink:0;
+}
+#sidebar-header .book-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.62rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;
+}
+#sidebar-header h2{font-size:.92rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:.25rem}
+#sidebar-header .edition{font-family:'Source Sans 3',sans-serif;font-size:.7rem;color:var(--gold-lt);font-style:italic}
+#sidebar-toc{flex:1;overflow-y:auto;padding:.6rem 0}
+#sidebar-toc a{
+  display:block;font-family:'Source Sans 3',sans-serif;font-size:.78rem;
+  color:#aab8d0;text-decoration:none;padding:.4rem 1.2rem;line-height:1.4;
+  transition:all .15s;border-left:3px solid transparent;
+}
+#sidebar-toc a:hover,#sidebar-toc a.active{color:#fff;background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+#sidebar-toc a.toc-h4{padding-left:2.2rem;font-size:.72rem;color:#8896b0}
+#sidebar-toc a.toc-h4:hover{color:#ccd4e8}
+#sidebar-toc .toc-group-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.6rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  padding:.7rem 1.2rem .25rem;opacity:.85;
+}
+#sidebar-nav{
+  flex-shrink:0;border-top:1px solid rgba(255,255,255,.08);
+  display:flex;justify-content:space-between;padding:.7rem .8rem;gap:.5rem;
+}
+#sidebar-nav a{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;color:var(--gold-lt);
+  text-decoration:none;padding:.4rem .7rem;border:1px solid rgba(201,168,76,.3);
+  border-radius:4px;transition:all .2s;line-height:1.3;text-align:center;flex:1;
+}
+#sidebar-nav a:hover{background:rgba(201,168,76,.15);color:#fff}
+#sidebar-nav a.disabled{opacity:.35;pointer-events:none}
+
+/* ── HAMBURGER (mobile) ── */
+#menu-btn{
+  display:none;position:fixed;top:.7rem;left:.8rem;z-index:150;
+  background:var(--navy);border:1px solid var(--gold);color:var(--gold);
+  width:36px;height:36px;border-radius:6px;font-size:1.1rem;cursor:pointer;
+  align-items:center;justify-content:center;
+}
+
+/* ── MAIN ── */
+#main{margin-left:var(--sidebar-w);max-width:880px;padding:0 2.8rem 5rem}
+
+/* ── CHAPTER HERO ── */
+.chapter-hero{
+  background:linear-gradient(135deg,var(--navy) 0%,#2a3a6a 100%);
+  color:white;padding:2.8rem 2.8rem 2.2rem;margin:0 -2.8rem 2.8rem;
+  border-bottom:4px solid var(--gold);position:relative;overflow:hidden;
+}
+.chapter-hero::before{
+  content:'6';position:absolute;right:1.5rem;top:50%;
+  transform:translateY(-50%);font-size:10rem;font-weight:700;
+  color:rgba(255,255,255,.05);font-family:'Merriweather',serif;line-height:1;
+}
+.chapter-hero .ch-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;font-weight:700;
+  letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;
+}
+.chapter-hero h1{font-size:2rem;font-weight:700;line-height:1.2;margin-bottom:.35rem}
+.chapter-hero .ch-en{font-family:'Source Sans 3',sans-serif;font-size:.95rem;color:rgba(255,255,255,.5);font-style:italic}
+
+/* ── CONTENT HEADINGS ── */
+h3{
+  font-family:'Merriweather',serif;font-size:1.25rem;color:var(--navy);
+  margin:2.5rem 0 .85rem;padding-bottom:.45rem;border-bottom:2px solid var(--gold);
+}
+h4{
+  font-family:'Merriweather',serif;font-size:1.05rem;color:var(--navy);
+  margin:2rem 0 .65rem;padding-left:.75rem;border-left:4px solid var(--gold);
+}
+h5{
+  font-family:'Source Sans 3',sans-serif;font-size:.9rem;font-weight:700;
+  color:var(--red);margin:1.4rem 0 .45rem;text-transform:uppercase;letter-spacing:.05em;
+}
+p{font-family:'Merriweather',serif;font-size:.94rem;line-height:1.88;margin-bottom:.95rem;color:var(--text)}
+
+/* ── LISTS ── */
+ul.content-list,ol.content-list{
+  margin:.5rem 0 1rem;padding:0;list-style:none;
+}
+ul.content-list li{
+  position:relative;padding:.28rem 0 .28rem 1.6rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);
+}
+ul.content-list li::before{
+  content:'◆';position:absolute;left:0;color:var(--gold);font-size:.65rem;top:.45rem;
+}
+ol.content-list{counter-reset:ol-c;list-style:none}
+ol.content-list li{
+  position:relative;padding:.28rem 0 .28rem 2rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);counter-increment:ol-c;
+}
+ol.content-list li::before{
+  content:counter(ol-c)'.';position:absolute;left:0;color:var(--navy);
+  font-weight:700;font-size:.85rem;min-width:1.5rem;
+}
+ul.content-list ul.content-list li::before{content:'–';color:var(--text-dim);font-size:.9rem;top:.35rem}
+
+/* ── CALLOUT / DEF BOX ── */
+.callout{
+  background:linear-gradient(135deg,#f5f0e8,#ede8d8);
+  border:1px solid var(--border);border-left:5px solid var(--gold);
+  border-radius:0 6px 6px 0;padding:1rem 1.2rem;margin:1.3rem 0;
+}
+.callout p{font-size:.9rem;margin-bottom:.5rem}
+.callout p:last-child{margin-bottom:0}
+.callout ul.content-list li{font-size:.88rem}
+.callout-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.65rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;
+}
+.callout.tip{border-left-color:#2d7a2d;background:linear-gradient(135deg,#f0f7f0,#e4f0e4)}
+.callout.tip .callout-label{color:#2d7a2d}
+
+/* ── HIGHLIGHT (quicktest / exam alert) ── */
+.highlight{
+  background:var(--navy);color:#e8d5a3;
+  border-radius:8px;padding:1.1rem 1.3rem;margin:1.5rem 0;
+}
+.highlight h5,.highlight strong{color:var(--gold-lt)}
+.highlight p,.highlight li{color:#ccd4e8;font-size:.88rem}
+.highlight ul.content-list li::before{color:var(--gold)}
+
+/* ── FIGURE ── */
+.img-center{
+  text-align:center;margin:1.8rem 0;padding:1rem;
+  background:#f8f5ee;border:1px solid var(--border);border-radius:8px;
+}
+.img-center img{max-width:100%;height:auto;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.img-center p,.img-center div{
+  margin-top:.65rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.8rem;color:var(--text-dim);font-style:italic;
+}
+
+/* ── TABLES ── */
+.table-wrap{overflow-x:auto;margin:1.5rem 0}
+table{width:100%;border-collapse:collapse;font-family:'Source Sans 3',sans-serif;font-size:.84rem}
+table th{background:var(--navy);color:white;padding:.6rem .8rem;text-align:center;font-weight:600;font-size:.79rem}
+table td{padding:.5rem .8rem;border:1px solid #ddd;vertical-align:top;line-height:1.5}
+table tr:nth-child(even) td{background:#f9f6ef}
+
+/* ── BACK TO TOP ── */
+#back-top{
+  position:fixed;bottom:1.5rem;right:1.5rem;
+  background:var(--navy);color:var(--gold);border:1px solid var(--gold);
+  width:38px;height:38px;border-radius:50%;font-size:1.2rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .25s;z-index:99;
+}
+#back-top:hover{background:var(--gold);color:var(--navy)}
+
+/* ── MOBILE ── */
+@media(max-width:860px){
+  #sidebar{transform:translateX(-100%);transition:transform .25s;top:3rem}
+  #sidebar.open{transform:translateX(0)}
+  #menu-btn{display:flex}
+  #main{margin-left:0;padding:3.5rem 1.2rem 4rem}
+  .chapter-hero{margin:0 -1.2rem 2rem;padding:2rem 1.4rem}
+  .chapter-hero::before{display:none}
+}
+
+/* ── DARK / LIGHT MODE ─────────────────────────────── */
+html[data-theme=dark]{--cream:#0f1520;--text:#dde4f0;--text-dim:#8899bb;--border:#253048;--gold-lt:#c9a84c}
+html[data-theme=dark] body{background:#0f1520;color:#dde4f0}
+html[data-theme=dark] #main{background:#0f1520}
+html[data-theme=dark] h1,html[data-theme=dark] h2{color:#e8d5a3}
+html[data-theme=dark] h3{color:#e8d5a3;border-bottom-color:var(--gold)}
+html[data-theme=dark] h4{color:#b8ccee;border-left-color:var(--gold)}
+html[data-theme=dark] p,html[data-theme=dark] li,html[data-theme=dark] td{color:#dde4f0}
+html[data-theme=dark] strong{color:#e8d5a3}
+html[data-theme=dark] em{color:#b8ccee}
+html[data-theme=dark] .callout{background:linear-gradient(135deg,#1a2436,#1e2d45);border-left-color:var(--gold);color:#dde4f0}
+html[data-theme=dark] .callout p{color:#dde4f0}
+html[data-theme=dark] blockquote{background:#1a2436;border-left-color:var(--gold);color:#b0c0d8}
+html[data-theme=dark] table{background:#131c2b}
+html[data-theme=dark] th{background:#1a2744;color:#e8d5a3;border-color:#253048}
+html[data-theme=dark] td{border-color:#253048}
+html[data-theme=dark] tr:nth-child(even) td{background:#1a2436}
+html[data-theme=dark] .highlight,.highlight-box{background:#1a2436!important;border-color:#253048!important;color:#dde4f0!important}
+html[data-theme=dark] #back-top{background:#1a2744;color:var(--gold);border:1px solid rgba(201,168,76,.4)}
+html[data-theme=dark] ul.content-list li,html[data-theme=dark] ol.content-list li{color:#dde4f0}
+html[data-theme=dark] .chapter-hero{background:linear-gradient(135deg,#0a1228 0%,#142040 100%)}
+html[data-theme=dark] .exercise-card{background:#1a2436;border-color:#253048}
+html[data-theme=dark] .answer-box{background:#152035;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] .answer-box p{color:#dde4f0}
+/* theme toggle button */
+#theme-btn{position:absolute;top:.65rem;right:.7rem;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.35);color:var(--gold);width:28px;height:28px;border-radius:5px;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+#theme-btn:hover{background:rgba(201,168,76,.2)}
+#sidebar-header{position:relative}
+
+/* ── HIGHLIGHT SYSTEM ─────────────────────────────────── */
+mark.hl{border-radius:2px;cursor:pointer;padding:1px 0;background:transparent}
+mark.hl[data-color=yellow]{background:rgba(255,241,118,.75)}
+mark.hl[data-color=green]{background:rgba(165,214,167,.75)}
+mark.hl[data-color=red]{background:rgba(239,154,154,.75)}
+mark.hl::after{display:none}
+mark.hl[data-note]:not([data-note=""])::after{content:"✏";font-size:.6rem;vertical-align:super;margin-left:1px;opacity:.65;display:inline}
+/* selection popup */
+#hl-popup{position:fixed;z-index:9999;background:#1a2744;border:1px solid rgba(201,168,76,.5);border-radius:8px;padding:.45rem .6rem;display:flex;align-items:center;gap:.35rem;box-shadow:0 4px 20px rgba(0,0,0,.4);pointer-events:all}
+#hl-popup.hidden{display:none!important}
+.hl-color-btn{width:24px;height:24px;border-radius:50%;border:2px solid rgba(255,255,255,.25);cursor:pointer;transition:transform .15s,border-color .15s;flex-shrink:0}
+.hl-color-btn:hover{transform:scale(1.2);border-color:rgba(255,255,255,.7)}
+.hl-color-btn[data-color=yellow]{background:#fff176}
+.hl-color-btn[data-color=green]{background:#a5d6a7}
+.hl-color-btn[data-color=red]{background:#ef9a9a}
+.hl-sep{width:1px;height:20px;background:rgba(255,255,255,.2);margin:0 .1rem}
+.hl-note-btn{background:none;border:none;color:rgba(255,255,255,.7);font-size:.9rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-note-btn:hover{color:#fff;background:rgba(255,255,255,.1)}
+.hl-del-btn{background:none;border:none;color:rgba(239,154,154,.8);font-size:.85rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-del-btn:hover{color:#ef9a9a;background:rgba(239,154,154,.12)}
+/* note modal */
+#hl-note-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center}
+#hl-note-modal.hidden{display:none!important}
+#hl-note-box{background:#fff;border-radius:10px;padding:1.4rem;width:min(420px,90vw);box-shadow:0 8px 32px rgba(0,0,0,.25)}
+#hl-note-box h3{font-size:.95rem;color:#1a2744;margin-bottom:.7rem;font-family:'Merriweather',serif}
+#hl-note-ta{width:100%;border:1px solid #d4c89a;border-radius:6px;padding:.6rem .8rem;font-size:.88rem;font-family:'Source Sans 3',sans-serif;resize:vertical;min-height:80px;color:#2c2c2c;outline:none}
+#hl-note-ta:focus{border-color:#c9a84c;box-shadow:0 0 0 2px rgba(201,168,76,.25)}
+.hl-note-actions{display:flex;justify-content:flex-end;gap:.6rem;margin-top:.8rem}
+.hl-note-cancel{background:transparent;border:1px solid #ccc;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+.hl-note-save{background:#1a2744;color:#fff;border:none;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+/* highlights panel */
+#hl-panel{position:fixed;top:0;right:0;bottom:0;width:300px;background:#fff;border-left:3px solid var(--gold);z-index:500;display:flex;flex-direction:column;box-shadow:-4px 0 20px rgba(0,0,0,.15);transform:translateX(100%);transition:transform .25s}
+#hl-panel.open{transform:translateX(0)}
+#hl-panel-hdr{background:#1a2744;padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--gold)}
+#hl-panel-hdr h3{font-size:.88rem;color:#fff;font-family:'Source Sans 3',sans-serif;font-weight:700;letter-spacing:.05em}
+#hl-panel-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.2rem;cursor:pointer;padding:.2rem;line-height:1}
+#hl-panel-close:hover{color:#fff}
+#hl-panel-list{flex:1;overflow-y:auto;padding:.6rem}
+#hl-panel-list:empty::before{content:"Chưa có ghi chú nào trong chương này.";font-size:.82rem;color:#999;display:block;padding:.8rem;text-align:center;font-style:italic}
+.hl-item{padding:.65rem .8rem;border-radius:6px;margin-bottom:.5rem;border-left:4px solid #ddd;background:#fafafa;cursor:pointer;transition:background .15s}
+.hl-item:hover{background:#f0f0f0}
+.hl-item[data-color=yellow]{border-left-color:#fdd835}
+.hl-item[data-color=green]{border-left-color:#66bb6a}
+.hl-item[data-color=red]{border-left-color:#ef5350}
+.hl-item-text{font-size:.8rem;color:#2c2c2c;line-height:1.5;margin-bottom:.3rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.hl-item-note{font-size:.75rem;color:#666;font-style:italic;margin-bottom:.3rem}
+.hl-item-del{float:right;background:none;border:none;color:#bbb;cursor:pointer;font-size:.8rem;padding:.1rem .3rem;border-radius:3px;line-height:1}
+.hl-item-del:hover{color:#ef5350;background:rgba(239,83,80,.08)}
+/* sidebar hl badge */
+#hl-sidebar-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:var(--gold);cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#hl-sidebar-btn:hover{background:rgba(201,168,76,.1)}
+#hl-badge{background:rgba(201,168,76,.2);color:var(--gold);font-size:.65rem;font-weight:700;padding:.1rem .4rem;border-radius:10px;min-width:18px;text-align:center}
+html[data-theme=dark] #hl-note-box{background:#1a2436;border:1px solid #253048}
+html[data-theme=dark] #hl-note-box h3{color:#e8d5a3}
+html[data-theme=dark] #hl-note-ta{background:#0f1520;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] #hl-panel{background:#131c2b;border-left-color:var(--gold)}
+html[data-theme=dark] .hl-item{background:#1a2436;border-bottom:1px solid #1e2d45}
+html[data-theme=dark] .hl-item:hover{background:#1e2d45}
+html[data-theme=dark] .hl-item-text{color:#dde4f0}
+html[data-theme=dark] .hl-item-note{color:#8899bb}
+html[data-theme=dark] .hl-note-cancel{border-color:#253048;color:#dde4f0;background:#1a2436}
+html[data-theme=dark] .hl-note-save{background:#c9a84c;color:#0a0f1a}
+
+/* ── CHAPTER NAV PANEL ─────────────────────────────────── */
+#chap-panel{position:fixed;inset:0;z-index:9000;display:flex;align-items:stretch}
+#chap-panel.hidden{display:none!important}
+#chap-panel-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);cursor:pointer}
+#chap-panel-box{position:relative;z-index:1;width:min(360px,90vw);background:#0f1d3a;border-right:3px solid var(--gold);display:flex;flex-direction:column;animation:slideInLeft .2s ease}
+@keyframes slideInLeft{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+#chap-panel-hdr{background:linear-gradient(135deg,#0a1228,#1a2744);padding:1.2rem 1.3rem;border-bottom:2px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
+#chap-panel-hdr h3{font-family:'Source Sans 3',sans-serif;font-size:.85rem;font-weight:700;color:#fff;letter-spacing:.1em;text-transform:uppercase}
+#chap-panel-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.3rem;cursor:pointer;padding:.2rem;line-height:1;transition:color .15s}
+#chap-panel-close:hover{color:#fff}
+#chap-panel-list{flex:1;overflow-y:auto;padding:.5rem 0}
+.chap-panel-item{display:flex;align-items:center;gap:.8rem;padding:.7rem 1.3rem;cursor:pointer;transition:background .15s;border-left:3px solid transparent;text-decoration:none}
+.chap-panel-item:hover{background:rgba(201,168,76,.1);border-left-color:var(--gold)}
+.chap-panel-item.active{background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+.cpanel-num{font-family:'Source Sans 3',sans-serif;font-size:.7rem;font-weight:700;color:var(--gold);min-width:28px;flex-shrink:0}
+.cpanel-title{font-family:'Source Sans 3',sans-serif;font-size:.8rem;color:#ccd4e8;line-height:1.35}
+.cpanel-item-active .cpanel-title{color:#fff;font-weight:600}
+.cpanel-status{margin-left:auto;font-size:.72rem;flex-shrink:0;opacity:.6}
+
+/* ── GITHUB SYNC ──────────────────────────────────── */
+#sync-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:#8899bb;cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s,color .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#sync-btn:hover{background:rgba(201,168,76,.08);color:var(--gold)}
+#sync-btn[data-state=ok]{color:#4caf50}
+#sync-btn[data-state=syncing]{color:var(--gold)}
+#sync-btn[data-state=err]{color:#ef5350}
+#sync-btn[data-state=no-token]{color:#8899bb}
+#sync-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center}
+#sync-modal.hidden{display:none!important}
+#sync-modal-box{background:#0f1d3a;border:2px solid var(--gold);border-radius:10px;padding:1.8rem 2rem;width:min(420px,90vw);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+#sync-modal-box h3{font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:.9rem;text-transform:uppercase;letter-spacing:.1em}
+#sync-modal-box p{font-size:.77rem;color:#aab8d0;line-height:1.6;margin-bottom:.9rem}
+#sync-modal-box input{width:100%;background:#0a1228;border:1px solid rgba(201,168,76,.4);color:#fff;font-family:monospace;font-size:.8rem;padding:.55rem .8rem;border-radius:5px;outline:none;margin-bottom:.8rem;box-sizing:border-box}
+#sync-modal-box input:focus{border-color:var(--gold)}
+.sync-modal-btns{display:flex;gap:.6rem;justify-content:flex-end;flex-wrap:wrap}
+.sync-modal-btns button{font-family:'Source Sans 3',sans-serif;font-size:.77rem;font-weight:700;padding:.42rem .9rem;border-radius:5px;cursor:pointer;border:none;transition:background .15s}
+#sync-save-btn{background:var(--gold);color:#0a0f1a}
+#sync-save-btn:hover{background:#e8c47a}
+#sync-cancel-btn{background:rgba(255,255,255,.1);color:#aab8d0}
+#sync-cancel-btn:hover{background:rgba(255,255,255,.18)}
+#sync-clear-btn{background:rgba(239,83,80,.18);color:#ef9090;margin-right:auto}
+#sync-clear-btn:hover{background:rgba(239,83,80,.32)}
+</style>
+</head>
+<script>
+(function(){var t=localStorage.getItem('rita_theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+</script>
+<body>
+<div id="progress-bar"></div>
+<button id="menu-btn" aria-label="Menu">☰</button>
+
+<aside id="sidebar">
+<div id="sidebar-header">
+  <div class="book-label">Rita PMP® Exam Prep</div>
+  <h2>Ôn Thi PMP®</h2>
+  <div class="edition">Rita Mulcahy · 11th Edition 2023 · Tiếng Việt</div>
+</div>
+<div id="sidebar-toc">
+  <div class="toc-group-label">Nội Dung Chương</div>
+  <a href="#ch6-build-support-team-performance" class="">6 Xây Dựng và Hỗ Trợ Hiệu Suất Nhóm</a>
+<a href="#ch6-introduction" class="toc-h4">Giới Thiệu</a>
+<a href="#ch6-overview-building-supporting-performance" class="toc-h4">Tổng Quan về Xây Dựng và Hỗ Trợ Hiệu Suất</a>
+<a href="#ch6-quicktest" class="toc-h4">KIỂM TRA NHANH</a>
+<a href="#ch6-exercise-6-1" class="toc-h4">6.1 Bài Tập</a>
+<a href="#ch6-artifacts-planning-resource-management" class="toc-h4">Các Tài Liệu Cần Thiết Cho Lập Kế Hoạch Quản Lý Nguồn Lực</a>
+<a href="#ch6-methods-planning-resource-management" class="toc-h4">Các Phương Pháp Lập Kế Hoạch Quản Lý Nguồn Lực</a>
+<a href="#ch6-wbs-resource" class="toc-h4">WBS</a>
+<a href="#ch6-org-theory" class="toc-h4">Lý Thuyết Tổ Chức</a>
+<a href="#ch6-artifacts-plan-resource" class="toc-h4">Các Tài Liệu Của Quá Trình Lập Kế Hoạch Quản Lý Nguồn Lực</a>
+<a href="#ch6-resource-mgmt-plan" class="toc-h4">Kế Hoạch Quản Lý Nguồn Lực</a>
+<a href="#ch6-estimate-resources" class="toc-h4">Ước Tính Yêu Cầu Nguồn Lực</a>
+<a href="#ch6-histograms-leveling" class="toc-h4">Biểu Đồ Nguồn Lực và San Bằng Nguồn Lực</a>
+<a href="#ch6-artifacts-estimate-resources" class="toc-h4">Các Tài Liệu Của Quá Trình Ước Tính Yêu Cầu Nguồn Lực</a>
+<a href="#ch6-exercise-6-2" class="">Bài Tập 6.2</a>
+<a href="#ch6-exercise-6-2-answer" class="toc-h4">Đáp Án</a>
+<a href="#ch6-acquire-release-resources" class="toc-h4">Tiếp Nhận (và Giải Phóng) Nguồn Lực</a>
+<a href="#ch6-artifacts-develop-team" class="toc-h4">Kết quả của quá trình Phát triển nhóm</a>
+<a href="#ch6-manage-team" class="toc-h4">Quản lý nhóm</a>
+<a href="#ch6-methods-managing-team" class="toc-h4">Các phương pháp quản lý nhóm</a>
+<a href="#ch6-burndown-charts" class="toc-h4">Biểu đồ Burndown</a>
+<a href="#ch6-burnup-charts" class="toc-h4">Biểu Đồ Burnup</a>
+<a href="#ch6-issue-log" class="toc-h4">Nhật Ký Vấn Đề</a>
+<a href="#ch6-putting-it-all-together" class="toc-h4">Tổng Hợp Lại</a>
+<a href="#ch6-exercise-6-4" class="">6.4 Bài Tập</a>
+<a href="#ch6-exercise-6-4-answer" class="toc-h4">Đáp Án</a>
+<a href="#ch6-exercise-6-5" class="">6.5 Bài Tập</a>
+<a href="#ch6-exercise-6-5-answer" class="toc-h4">Đáp Án</a>
+<a href="#ch6-section-iv-intro" class="">Phần IV</a>
+
+</div>
+<div id="sidebar-nav">
+  <a href="rita_chap05.html" class="" title="Kỹ Năng Lãnh Đạo">← Ch5</a>
+  <a href="#" id="chap-muc-luc-btn">☰ Mục lục</a>
+  <a href="rita_chap07.html" class="" title="Phạm Vi">Ch7 →</a>
+</div></aside>
+
+<main id="main">
+  <div class="chapter-hero">
+    <div class="ch-label">Chương 6</div>
+    <h1>Xây Dựng & Hỗ Trợ Hiệu Suất Nhóm</h1>
+    <div class="ch-en">Build and Support Team Performance</div>
+  </div>
+<h3 id="ch6-build-support-team-performance">6 Xây Dựng và Hỗ Trợ Hiệu Suất Nhóm</h3>
+
+<h4 id="ch6-introduction">Giới Thiệu</h4>
+
+<p>Chương này sẽ đề cập đến các kỹ năng quản lý dự án kỹ thuật liên quan đến làm việc với nguồn nhân lực trong dự án mà bạn cần nắm vững để vượt qua kỳ thi. Những kỹ năng này thuộc mô hình Nhóm Quy Trình dành cho quản lý dự án dự đoán, cùng với các khái niệm quản lý dự án Agile liên quan. Khi nghiên cứu chương này, hãy lưu ý đến nội dung trong chương "Kỹ Năng Lãnh Đạo". Kỹ năng quản lý dự án kỹ thuật không đủ để thành công trong quản lý dự án, hay trong kỳ thi. Làm việc với người khác quan trọng đến mức 42% câu hỏi thi dựa trên lĩnh vực Con Người trong Đề Cương Nội Dung Kiểm Tra (ECO).</p>
+
+<p>Lĩnh vực Quy Trình của ECO không có nhiệm vụ riêng cho nguồn nhân lực. Thay vào đó, ECO kết hợp các kỹ năng tương tác cá nhân và nhóm với các kỹ năng kỹ thuật quản lý dự án dành cho việc lãnh đạo nhóm và các bên liên quan khác vào mười bốn nhiệm vụ thuộc lĩnh vực Con Người. Chương "Kỹ Năng Lãnh Đạo" chứa thông tin về các lý thuyết và mô hình liên quan đến giao tiếp và tâm lý con người, giúp ích trong việc áp dụng các kỹ năng tương tác cá nhân và nhóm.</p>
+
+<p>Hãy đảm bảo xem lại Kiểm Tra Nhanh của chương này trước và sau khi đọc chương. Ghi chú những điểm còn thiếu trong kỹ năng và kinh nghiệm của bạn để có thể bổ sung trước khi thi.</p>
+
+<h4 id="ch6-overview-building-supporting-performance">Tổng Quan về Xây Dựng và Hỗ Trợ Hiệu Suất</h4>
+
+<p>Chúng ta có thể đồng ý rằng được là thành viên của một nhóm hiệu suất cao thực sự tuyệt vời không? Tuy nhiên, để đạt được và duy trì mức hiệu suất đó đòi hỏi nỗ lực từ cả nhóm. Có nhiều điều mà người quản lý dự án cần làm để xây dựng và hỗ trợ hiệu suất cao trong nhóm dự án và giữa tất cả các bên liên quan, chẳng hạn như áp dụng kiến thức đã học trong chương "Kỹ Năng Lãnh Đạo" vào các phương pháp thu nạp nguồn lực, phát triển nhóm và quản lý nhóm được đề cập trong chương này.</p>
+
+<h5>Đề Cương Nội Dung Kiểm Tra và Mô Hình Nhóm Quy Trình</h5>
+
+<p>Phần dưới đây trình bày mười bốn kỹ năng thuộc lĩnh vực Con Người, mô hình Nhóm Quy Trình quản lý nguồn lực trong môi trường dự đoán, và tất nhiên là các lĩnh vực Hướng Dẫn PMBOK có liên quan trực tiếp nhất đến những kỹ năng này. Lĩnh vực Con Người của ECO tập trung chủ yếu vào nhóm dự án, vì vậy chương này bắt đầu từ đó trước khi đề cập đến mô hình Nhóm Quy Trình cho (nguồn nhân lực). Hãy dành một lúc để nhìn qua cột đầu tiên. Chú ý rằng tất cả các nhiệm vụ đều dành cho việc xây dựng và hỗ trợ nhóm. Mô hình Nhóm Quy Trình, trong khi tập trung vào các hoạt động quản lý dự án kỹ thuật, lại dựa trên các kỹ năng lãnh đạo và hỗ trợ hiệu suất nhóm.</p>
+
+<h4 id="ch6-quicktest">KIỂM TRA NHANH</h4>
+
+<ul class="content-list">
+  <li>Quy trình Quản Lý Nguồn Lực</li>
+  <li>Ma trận phân công trách nhiệm (RAM)
+    <ul class="content-list">
+      <li>Biểu đồ RACI</li>
+    </ul>
+  </li>
+  <li>Cơ cấu phân tích tổ chức</li>
+  <li>Cơ cấu phân tích nguồn lực (RBS)</li>
+  <li>Lý thuyết tổ chức</li>
+  <li>Kế hoạch quản lý nguồn lực
+    <ul class="content-list">
+      <li>Kế hoạch quản lý nguồn nhân lực</li>
+      <li>Kế hoạch quản lý ghi nhận</li>
+    </ul>
+  </li>
+  <li>Điều lệ nhóm</li>
+  <li>Biểu đồ nguồn lực (Resource histogram)</li>
+  <li>Cân bằng nguồn lực (Resource leveling)</li>
+  <li>Các loại cấu hình nhóm
+    <ul class="content-list">
+      <li>Chuyên trách</li>
+      <li>Bán thời gian</li>
+      <li>Đối tác</li>
+      <li>Ảo (Virtual)</li>
+      <li>Được phân công trước</li>
+      <li>Agile</li>
+    </ul>
+  </li>
+  <li>Đàm phán nguồn lực</li>
+  <li>Phân công trước (Pre-assignment)</li>
+  <li>Hiệu ứng hào quang (Halo effect)</li>
+  <li>Xây dựng nhóm</li>
+  <li>Văn hóa nhóm</li>
+  <li>Làm việc cùng địa điểm (Colocation)</li>
+  <li>Đánh giá cá nhân và nhóm</li>
+  <li>Đánh giá kết hợp (Hybrid assessments)</li>
+  <li>Đánh giá hiệu suất dự án</li>
+  <li>Chỉ số hiệu suất chính (KPIs)</li>
+  <li>Biểu đồ burndown</li>
+  <li>Biểu đồ burnup</li>
+  <li>Nhật ký vấn đề (Issue log)</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//f766d1af-3282-4d6c-9f59-cd90dd92e3af/markdown_4/imgs/img_in_image_box_72_98_779_595.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A46Z%2F-1%2F%2F0f6cdf9831d18cca03b40f6340621fec80f53feeb1aa4e487c5f692c093890a1" alt="Image" width="86%" /></div></div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//f766d1af-3282-4d6c-9f59-cd90dd92e3af/markdown_4/imgs/img_in_image_box_53_608_106_667.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A46Z%2F-1%2F%2Fdca201fb67c52db00665061560c69cb610138c09bfaed9d39b90c8b4dd9f5bc4" alt="Image" width="6%" /></div></div>
+
+<div class="callout">
+  <p><strong>Hãy Suy Nghĩ Về Điều Này.</strong> Lĩnh vực ECO I: Tất cả đều về con người! Thực tế là bạn cần thực hiện tất cả các nhiệm vụ này trong lĩnh vực ECO, và các yếu tố hỗ trợ đóng vai trò là ví dụ về cách chúng có thể biểu hiện trong một dự án. Khi nhìn vào biểu đồ này và ECO, hãy chú ý xem có bao nhiêu nhiệm vụ thuộc lĩnh vực Con Người có từ "nhóm" trong tên.</p>
+</div>
+
+<p>Chúng ta sẽ nói thêm về mô hình Nhóm Quy Trình và các phương pháp Agile ở phần sau của chương này, nhưng hiện tại, hãy chú ý rằng chúng tôi đã gạch bỏ "Kiểm Soát Nguồn Lực" ở cột giữa của bảng trên. Điều này là vì quy trình đó dành riêng cho các nguồn lực vật chất như thiết bị và vật tư, không liên quan đến quản lý nhóm. Khái niệm này vẫn áp dụng cho quản lý dự án dự đoán nhưng chúng tôi thảo luận trong chương lĩnh vực Quy Trình về "Ngân Sách và Nguồn Lực", vì ECO đề cập đến quy trình này với nhiệm vụ đó.</p>
+
+<p>Chúng tôi đã chia mười bốn nhiệm vụ của lĩnh vực Con Người thành hai nhóm mỗi nhóm bảy nhiệm vụ. Điều này sẽ giúp bạn dễ học hơn. Chúng tôi nhóm bảy nhiệm vụ lĩnh vực Con Người phù hợp với khái niệm xây dựng hiệu suất. Sau đó chúng tôi đặt bảy nhiệm vụ còn lại vào một nhóm phù hợp với khái niệm hỗ trợ hiệu suất. Bài tập dưới đây hỗ trợ việc sử dụng mô hình này. Đừng lo lắng về việc mô hình của chúng tôi có hoàn hảo không. Bạn sẽ không bị kiểm tra về số nhiệm vụ hay thứ tự của các nhiệm vụ trong ECO. Cuối cùng, tất cả các nhiệm vụ này đều có liên quan và số nhiệm vụ trong cuốn sách này chỉ để giúp bạn dễ tìm chúng trong ECO.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//f766d1af-3282-4d6c-9f59-cd90dd92e3af/markdown_4/imgs/img_in_image_box_60_785_119_841.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A46Z%2F-1%2F%2F52a7cb50c516ceb88819e0653069d9def5897c0a15e06e7d1f793c9509af3d90" alt="Image" width="7%" /></div></div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//f766d1af-3282-4d6c-9f59-cd90dd92e3af/markdown_4/imgs/img_in_image_box_57_914_119_971.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A46Z%2F-1%2F%2F98772102102c79a4ef1c3ac48d8ff2bf0032844277d7eb4a26392f05f1979934" alt="Image" width="7%" /></div></div>
+
+<p>Đừng lo lắng về việc ghi nhớ các nhiệm vụ ECO và các yếu tố hỗ trợ. Điều quan trọng ở đây là tạo ra các liên kết trong tâm trí bạn giữa những nhiệm vụ này và cách chúng liên quan đến việc xây dựng và hỗ trợ hiệu suất. Cũng hãy suy nghĩ về các nhiệm vụ theo góc độ thông tin bạn đã học trong chương "Kỹ Năng Lãnh Đạo" và những gì bạn đang học trong chương này. Hiểu được các nhiệm vụ ECO sẽ giúp bạn chuẩn bị tốt hơn cho các câu hỏi tình huống trong kỳ thi so với việc ghi nhớ máy móc.</p>
+
+<h4 id="ch6-exercise-6-1">6.1 Bài Tập</h4>
+
+<p>Nếu bạn có hai cây bút hoặc bút dạ màu khác nhau, hãy dùng chúng để thực hiện những việc sau. Bạn muốn các đánh dấu trên ECO của mình thật rõ ràng.</p>
+
+<ul class="content-list">
+  <li>Mở bản tải về của ECO. Nếu bạn chưa in ra, hãy làm ngay bây giờ.</li>
+  <li>Sau đó mở ECO đến phần lĩnh vực Con Người.</li>
+</ul>
+
+<ol class="content-list">
+  <li>Xem các danh sách sau, nơi chúng tôi đã chia các nhiệm vụ lĩnh vực Con Người thành "xây dựng" và "hỗ trợ" hiệu suất.</li>
+  <li>Trong danh sách nhiệm vụ lĩnh vực Con Người của ECO, đặt một chữ "X" (Xây dựng) lớn, rõ ràng bên dưới số nhiệm vụ trong ECO mà chúng tôi đã đặt trong cột Xây Dựng bên dưới.</li>
+  <li>Sau đó đặt chữ "H" (Hỗ trợ) lớn, rõ ràng bên dưới số nhiệm vụ mà chúng tôi đặt trong cột Hỗ Trợ—bằng màu khác nếu có thể.</li>
+  <li>Bây giờ hãy dành đúng hai phút đi qua các nhiệm vụ và các yếu tố hỗ trợ. Hãy nghĩ về chúng như là liên quan đến việc xây dựng một nhóm và hỗ trợ một nhóm tương ứng.</li>
+  <li>Khi bạn tiếp tục chuẩn bị cho kỳ thi, hãy tận dụng thêm các cơ hội để xem lại các nhiệm vụ này, các yếu tố hỗ trợ của chúng và mối liên hệ với việc xây dựng và hỗ trợ nhóm.</li>
+</ol>
+
+<p>Lưu ý: Chúng tôi đã rút gọn một số tên nhiệm vụ trong khi vẫn giữ nguyên ý nghĩa của chúng.</p>
+
+<h5>Đáp Án</h5>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <td colspan="4"><strong>Các Nhiệm Vụ Lĩnh Vực Con Người - Mẹo Ghi Nhớ Theo Nhóm</strong></td>
+  </tr>
+  <tr>
+    <td colspan="2"><strong>Xây Dựng Hiệu Suất</strong></td>
+    <td colspan="2"><strong>Hỗ Trợ Hiệu Suất</strong></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">(2)</td>
+    <td>Lãnh đạo nhóm</td>
+    <td style="text-align: center;">(1)</td>
+    <td>Quản lý xung đột</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">(4)</td>
+    <td>Trao quyền cho thành viên nhóm &amp; các bên liên quan</td>
+    <td style="text-align: center;">(3)</td>
+    <td>Hỗ trợ hiệu suất nhóm</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">(5)</td>
+    <td>Đảm bảo cung cấp đào tạo đầy đủ</td>
+    <td style="text-align: center;">(7)</td>
+    <td>Giải quyết &amp; loại bỏ trở ngại cho nhóm</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">(6)</td>
+    <td>Xây dựng nhóm</td>
+    <td style="text-align: center;">(9)</td>
+    <td>Hợp tác với các bên liên quan</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">(8)</td>
+    <td>Đàm phán thỏa thuận dự án</td>
+    <td style="text-align: center;">(11)</td>
+    <td>Gắn kết &amp; hỗ trợ nhóm ảo</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">(10)</td>
+    <td>Xây dựng sự hiểu biết chung</td>
+    <td style="text-align: center;">(13)</td>
+    <td>Cố vấn cho các bên liên quan phù hợp</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">(12)</td>
+    <td>Xác định các quy tắc nền tảng của nhóm</td>
+    <td style="text-align: center;">(14)</td>
+    <td>Thúc đẩy hiệu suất bằng trí tuệ cảm xúc</td>
+  </tr>
+</table>
+</div>
+
+<h5>Trách Nhiệm Lãnh Đạo</h5>
+
+<p>Khi công việc dự án đang được thực hiện, người quản lý dự án cần biết từ điều lệ dự án những quyết định nào họ có thể đưa ra và thực thi, và khi nào họ cần được phê duyệt từ cấp cao hơn trong tổ chức. Điều quan trọng là phải hiểu cách vai trò của người quản lý dự án liên quan đến các vai trò khác trong dự án, chẳng hạn như nhà tài trợ dự án, các quản lý chức năng và nhóm.</p>
+
+<p>Vai trò của người dẫn dắt nhóm Agile được định nghĩa rộng rãi theo nghĩa phục vụ nhóm. Điều này có nghĩa là thực hiện mọi thứ từ các nhiệm vụ lĩnh vực Con Người trong ECO. Một lãnh đạo giỏi sẽ tập trung vào việc đảm bảo rằng các quy trình cần thiết trong dự án được hiểu và được tuân thủ, và rằng các quy trình này đang phục vụ nhu cầu của nhóm — để cung cấp đào tạo cho nhóm khi cần và loại bỏ các trở ngại cho tiến trình dự án.</p>
+
+<p>Nếu có vai trò người quản lý dự án riêng biệt trong một dự án Agile, họ sẽ tương tác với các bên liên quan phù hợp khác như nhà tài trợ dự án và quản lý tổ chức khác. Họ cũng hỗ trợ quản lý thay đổi tổ chức khi dự án sẽ mang lại thay đổi lớn trong tổ chức, và họ theo dõi các yếu tố môi trường kinh doanh nội bộ và bên ngoài có thể ảnh hưởng đến dự án.</p>
+
+<p>Có những trách nhiệm khác mà vai trò người quản lý dự án sẽ đảm nhận trong một dự án Agile, nơi cả người dẫn dắt nhóm Agile và vai trò người quản lý dự án đều tồn tại trong cùng một dự án, chẳng hạn như lãnh đạo một nhóm gồm nhiều nhóm Agile trên cùng một dự án lớn và phức tạp. Hãy giả định rằng bài thi đang sử dụng thuật ngữ "huấn luyện viên Agile" hoặc "Scrum Master" thay thế cho nhau với "người quản lý dự án", trừ khi thông tin trong câu hỏi chỉ ra khác.</p>
+
+<p>Dưới đây là một số khía cạnh quan trọng của lãnh đạo nhóm cần biết cho kỳ thi:</p>
+
+<ul class="content-list">
+  <li>Các hoạt động quản lý nguồn lực của người quản lý dự án mang tính chính thức và yêu cầu tài liệu hóa.
+    <ul class="content-list">
+      <li>Cần có các vai trò và trách nhiệm rõ ràng trong dự án. Ví dụ, ai nên được phân công hỗ trợ người quản lý dự án, ai nên đảm nhận các trách nhiệm cụ thể trong các cuộc họp, và ai nên hoàn thành các công việc khác không liên quan trực tiếp đến hoạt động dự án? Các chủ đề thi như động lực, quản lý xung đột và quyền lực của người quản lý dự án khó hơn bạn có thể nghĩ. Điều quan trọng là phải biết rằng các khái niệm này cần được lập kế hoạch và quản lý xuyên suốt dự án.</li>
+    </ul>
+  </li>
+  <li>Dự án được lập kế hoạch bởi nhóm và điều phối bởi người quản lý dự án.</li>
+  <li>Các nhóm đa dạng về địa lý và văn hóa đòi hỏi sự chú ý và lập kế hoạch bổ sung từ người quản lý dự án.</li>
+  <li>Người quản lý dự án lập kế hoạch chính thức cho các hoạt động xây dựng nhóm trước; các hoạt động này là một phần bắt buộc của quản lý dự án.</li>
+  <li>Tạo hệ thống ghi nhận và khen thưởng là một chức năng quản lý nguồn lực quan trọng, và các hệ thống như vậy là một phần bắt buộc của quản lý dự án.</li>
+  <li>Người quản lý dự án có trách nhiệm cải thiện năng lực của các thành viên nhóm để họ có thể thực hiện công việc dự án hiệu quả nhất.</li>
+  <li>Người quản lý dự án phải liên tục xác nhận tính sẵn có của nguồn lực.</li>
+  <li>Các quy trình quản lý nguồn lực được lặp lại và cập nhật trong suốt dự án.</li>
+  <li>Người quản lý dự án có trách nhiệm kiểm soát các nguồn lực vật chất trong dự án; đây không chỉ là trách nhiệm của bộ phận mua sắm hoặc các bộ phận khác có thể cung cấp nguồn lực vật chất.</li>
+</ul>
+
+<p>Quy trình quản lý nguồn lực cần thời gian và công sức để lập kế hoạch. Bạn phải thực hiện những việc như xác định tất cả các nguồn lực cần thiết để hoàn thành dự án (bao gồm các kỹ năng cần có của nguồn lực nhóm và chất lượng, cấp độ yêu cầu của vật liệu hay thiết bị), xác định vai trò của mọi người, tạo hệ thống khen thưởng, cung cấp đào tạo và tạo động lực cho thành viên nhóm, quản lý việc sử dụng nguồn lực vật chất và theo dõi hiệu suất.</p>
+
+<p>Hình 6.1 là hình dung về lãnh đạo nhóm ở cấp độ cao từ góc độ mô hình Nhóm Quy Trình, gọi quy trình này là Quản Lý Nguồn Lực. Vì lý do này, chúng tôi thường sử dụng thuật ngữ "nguồn lực" thay cho "nhóm" khi nói về các quy trình cụ thể trong mô hình Nhóm Quy Trình. Mô hình sẽ giúp bạn hình dung trách nhiệm và kỹ năng cho quy trình lãnh đạo nhóm, và mặc dù nó áp dụng trực tiếp nhất cho mô hình Nhóm Quy Trình, nhiều khái niệm trong đó vẫn có ý nghĩa khi biết và áp dụng cho bất kỳ dự án nào. Hãy dành vài phút để hình dung quy trình trước khi chuyển sang phần Lập Kế Hoạch Quản Lý Nguồn Lực của chương này.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//7820b31d-7c72-4923-8171-78bd30cfe9d8/markdown_1/imgs/img_in_image_box_275_650_749_976.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A36Z%2F-1%2F%2Fd64f64c575697984833266a6628d7db326fdaa6fd4122bf35f0f05427212747e" alt="Image" width="57%" /></div></div>
+
+<div style="text-align: center;"><em>HÌNH 6.1 Quy trình quản lý nguồn lực</em></div>
+
+<h5>Lập Kế Hoạch Nguồn Lực</h5>
+
+<p>Các vai trò, trách nhiệm và quyền hạn đi kèm được thống nhất trong giai đoạn lập kế hoạch và được ghi chép trong kế hoạch quản lý nguồn lực. Việc xác định vai trò và trách nhiệm là một phần quan trọng của quy trình Lập Kế Hoạch Quản Lý Nguồn Lực. Công việc dự án thường bao gồm không chỉ việc hoàn thành các gói công việc mà còn các trách nhiệm khác, chẳng hạn như hỗ trợ các hoạt động rủi ro, chất lượng và quản lý dự án. Các thành viên nhóm cần biết họ được phân công vào các gói công việc và hoạt động nào, khi nào và làm thế nào họ được yêu cầu báo cáo, các cuộc họp nào họ phải tham dự và bất kỳ công việc nào khác họ sẽ được yêu cầu thực hiện trong dự án. Trong môi trường chức năng hoặc ma trận, các quản lý của nguồn lực nhóm cũng cần hiểu khi nào và trong bao lâu các nguồn lực này sẽ cần thiết cho dự án.</p>
+
+<p>Tóm lại, Lập Kế Hoạch Quản Lý Nguồn Lực trả lời các câu hỏi sau:</p>
+
+<div class="callout tip">
+  <p><strong>Mô Hình Nhóm Quy Trình</strong></p>
+  <p>Nhóm Quy Trình (PG): Lập kế hoạch</p>
+  <p>Quy trình: Lập Kế Hoạch Quản Lý Nguồn Lực</p>
+  <p>ECO — Lĩnh vực I — Tất cả các nhiệm vụ</p>
+  <p>Hướng Dẫn PMBOK</p>
+  <ul class="content-list">
+    <li>Lĩnh vực 2.2 Nhóm</li>
+    <li>Lĩnh vực 2.4 Lập kế hoạch</li>
+    <li>Lĩnh vực 2.5 Công việc dự án</li>
+  </ul>
+</div>
+
+<ul class="content-list">
+  <li>Chúng ta sẽ thực hiện tất cả những điều này như một nhóm như thế nào?</li>
+  <li>Ai cần có trong nhóm để hoàn thành điều đó?</li>
+  <li>Tôi cần làm gì để trở thành một người lãnh đạo phục vụ tốt trong dự án này?</li>
+</ul>
+
+<p>Chú ý thanh bên của phần này liệt kê lĩnh vực Con Người của ECO, "tất cả các nhiệm vụ." Trong Lập Kế Hoạch Quản Lý Nguồn Lực, bạn đang lập kế hoạch để:</p>
+
+<ul class="content-list">
+  <li>Lãnh đạo nhóm</li>
+  <li>Trao quyền cho nhóm</li>
+  <li>Xây dựng nhóm đó (để đạt hiệu suất cao)</li>
+  <li>Xây dựng và duy trì sự hiểu biết chung</li>
+  <li>Cung cấp đào tạo mà nhóm cần</li>
+</ul>
+
+<p>Để làm được tất cả những điều này, bạn cần lên kế hoạch đàm phán thỏa thuận dự án và giúp nhóm tự xác định các quy tắc nền tảng của họ.</p>
+
+<p>Bây giờ, điều đó bao gồm các khái niệm "xây dựng hiệu suất" đã thảo luận trước đó trong bài tập đầu tiên của chương này. Còn công việc "hỗ trợ hiệu suất" cho dự án, khi nhóm bắt đầu xây dựng sản phẩm và mọi thứ trở nên thách thức hơn thì sao? Đúng vậy — bạn cũng phải hỗ trợ hiệu suất bằng cách:</p>
+
+<ul class="content-list">
+  <li>Quản lý xung đột</li>
+  <li>Cố vấn cho các bên liên quan</li>
+  <li>Loại bỏ các trở ngại</li>
+  <li>Hợp tác với các bên liên quan (khác)</li>
+  <li>Sử dụng trí tuệ cảm xúc để thúc đẩy hiệu suất</li>
+  <li>Gắn kết và hỗ trợ nhóm ảo nếu cần</li>
+</ul>
+
+<p>Kế hoạch của bạn cũng phải trả lời các câu hỏi như:</p>
+
+<ul class="content-list">
+  <li>Cần những nguồn lực nào?</li>
+  <li>Cần bao nhiêu mỗi loại nguồn lực để hoàn thành công việc dự án?</li>
+  <li>Khi nào và trong bao lâu mỗi nguồn lực sẽ được cần đến?</li>
+  <li>Có giới hạn thời gian nào mà mỗi nguồn lực sẽ có sẵn cho dự án không?</li>
+  <li>Làm thế nào để các nguồn lực được thu nạp?</li>
+  <li>Tất cả các nguồn lực có sẵn trong nội bộ không, hay bộ phận mua sắm cần phải tham gia?</li>
+  <li>Chi phí của các nguồn lực này là bao nhiêu?</li>
+  <li>Các nguồn lực sẽ được quản lý như thế nào trong suốt dự án?</li>
+</ul>
+
+<p>Trong các dự án Agile, các thành viên nhóm thường ở lại dự án từ đầu đến cuối. Nhóm duy trì ổn định và các dự án được mang đến nhóm. Các thành viên nhóm thường là những chuyên gia tổng quát "hình chữ T" — tổng quát trong nhiều lĩnh vực, chuyên gia trong một vài lĩnh vực. Nhiều thành viên nhóm Agile chia sẻ trách nhiệm cho một số vai trò; ví dụ, vừa kiểm thử vừa xây dựng sản phẩm.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//7820b31d-7c72-4923-8171-78bd30cfe9d8/markdown_2/imgs/img_in_image_box_692_860_744_918.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A37Z%2F-1%2F%2Fab5d076105593bba02cb6547eac59af6abc6229b28c99250be46156d286c3dd4" alt="Image" width="6%" /></div></div>
+
+<h4 id="ch6-artifacts-planning-resource-management">Các Tài Liệu Cần Thiết Cho Lập Kế Hoạch Quản Lý Nguồn Lực</h4>
+
+<p>Trước khi bạn có thể xác định vai trò, trách nhiệm, cơ cấu báo cáo, v.v., bạn sẽ cần xem xét nhiều yếu tố thường đã được ghi chép trong kế hoạch quản lý dự án:</p>
+
+<ul class="content-list">
+  <li><strong>Vòng đời dự án và các quy trình</strong> — Điều này cần được xác định để bạn lập kế hoạch nguồn lực.</li>
+  <li><strong>Các cách tiếp cận công việc</strong> — Cách thức công việc sẽ được thực hiện.</li>
+  <li><strong>Nhu cầu giao tiếp của các bên liên quan</strong> — Một trong những yếu tố được ghi chép sớm nhất.</li>
+  <li><strong>Sổ đăng ký các bên liên quan</strong> — Danh sách các cá nhân và nhóm là các bên liên quan của dự án. Bao gồm phân tích các yếu tố như quyền lực và lợi ích của mỗi bên liên quan liên quan đến dự án.</li>
+  <li><strong>Kế hoạch gắn kết các bên liên quan</strong> — Bao gồm cách tiếp cận để nhóm và các bên liên quan khác tham gia, trong lập kế hoạch, ra quyết định và công việc dự án.</li>
+  <li><strong>Đường cơ sở phạm vi</strong> — Bao gồm mô tả các sản phẩm bàn giao của dự án và giúp người quản lý dự án xác định nguồn lực cần thiết để tạo ra chúng.</li>
+  <li><strong>Kế hoạch quản lý chất lượng</strong> — Bao gồm các mức chất lượng và cấp độ nguồn lực vật chất đã được thỏa thuận cần thiết để đáp ứng yêu cầu dự án. Các quyết định này sẽ ảnh hưởng đến các lựa chọn của nhóm về cách thức và nơi họ sẽ thu nạp các nguồn lực này.</li>
+  <li><strong>Kế hoạch quản lý mua sắm</strong> — Kế hoạch này mô tả cách người quản lý dự án nên tương tác với bộ phận mua sắm để tạo điều kiện thu nạp nguồn nhân lực hoặc nguồn lực vật chất cần thiết.</li>
+</ul>
+
+<p><strong>Tài Liệu Dự Án</strong> — Một số tài liệu dự án có thể được sử dụng để lập kế hoạch nguồn lực, ví dụ như tài liệu yêu cầu, lịch trình dự án và sổ đăng ký rủi ro và bên liên quan. Các tài liệu này cung cấp thông tin chính về loại nguồn lực nào sẽ cần để hoàn thành công việc dự án, thời gian cho chúng và cần bao nhiêu nguồn lực để hoàn thành một công việc cụ thể.</p>
+
+<p><strong>Yếu Tố Môi Trường Doanh Nghiệp (EEF)</strong> — Trước khi phát triển kế hoạch quản lý nguồn lực, hãy hiểu những EEF nào có thể liên quan. Đây là văn hóa công ty và các hệ thống hiện có mà dự án phải đối mặt hoặc có thể tận dụng. Hãy xem xét những điều sau:</p>
+
+<ul class="content-list">
+  <li>Những tổ chức nội bộ nào sẽ tham gia vào dự án?</li>
+  <li>Có các chương trình nghị sự ẩn không?</li>
+  <li>Có ai không muốn dự án không?</li>
+  <li>Các thành viên nhóm được phân công và tiềm năng có cùng địa điểm hay ở các văn phòng và/hoặc quốc gia khác nhau?</li>
+  <li>Tính sẵn có của sự trợ giúp hợp đồng là gì?</li>
+  <li>Khả năng đào tạo cho các thành viên nhóm dự án như thế nào?</li>
+</ul>
+
+<p><strong>Tài Sản Quy Trình Tổ Chức (OPA)</strong> — Những tài sản này có thể tăng hiệu quả tạo ra kế hoạch quản lý nguồn lực và tính hiệu quả của kế hoạch kết quả. Hãy xem xét các tài sản như:</p>
+
+<ul class="content-list">
+  <li>Mẫu kế hoạch quản lý nguồn lực (thường mô tả các nhu cầu và trách nhiệm nguồn lực tiêu chuẩn)</li>
+  <li>Các chính sách và quy trình hiện có về quản lý nguồn lực</li>
+  <li>Thông tin lịch sử, chẳng hạn như bài học kinh nghiệm từ các dự án tương tự</li>
+</ul>
+
+<h4 id="ch6-methods-planning-resource-management">Các Phương Pháp Lập Kế Hoạch Quản Lý Nguồn Lực</h4>
+
+<p>Có nhiều công cụ và kỹ thuật có thể được sử dụng để ghi lại và truyền đạt vai trò, trách nhiệm của ban quản lý, các thành viên nhóm và các bên liên quan khác. PMBOK Guide liệt kê các mục này là các tài liệu, nhưng tất nhiên bạn cũng cần biết cách sử dụng các phương pháp thu thập và phân tích dữ liệu (hay công cụ) để tạo ra các tài liệu đó. Ví dụ bao gồm:</p>
+
+<ul class="content-list">
+  <li>Ma trận phân công trách nhiệm (RAM)</li>
+  <li>Cấu trúc phân rã tổ chức</li>
+  <li>Biểu đồ RACI</li>
+  <li>RBS</li>
+  <li>WBS</li>
+  <li>Lý thuyết tổ chức</li>
+</ul>
+
+<p>Trong kỳ thi, bạn sẽ không được hỏi liệu bất kỳ mục nào trong số này là phương pháp hay tài liệu. Thay vào đó, bạn cần biết mỗi công cụ hiển thị gì và được dùng để làm gì, để có thể trả lời các câu hỏi tình huống có liên quan đến chúng.</p>
+
+<h5 id="ch6-ram">Ma Trận Phân Công Trách Nhiệm (RAM)</h5>
+
+<p>Biểu đồ này đối chiếu chéo các thành viên nhóm với các hoạt động hoặc gói công việc mà họ cần thực hiện. Hình 6.2 là một ví dụ về RAM. Lưu ý rằng biểu đồ không thể hiện thời gian, hay thời điểm mọi người sẽ thực hiện công việc của mình.</p>
+
+<div class="table-wrap">
+<table border="1" style="margin: auto; word-wrap: break-word;">
+  <tr>
+    <td rowspan="2">Hoạt động</td>
+    <td colspan="4" style="text-align: center;">Thành viên nhóm</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Karla</td>
+    <td style="text-align: center;">Patrick</td>
+    <td style="text-align: center;">Muhammad</td>
+    <td style="text-align: center;">Trisha</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">A</td>
+    <td style="text-align: center;">P</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;">S</td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">B</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;">S</td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;">P</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+    <td style="text-align: center;"></td>
+  </tr>
+</table>
+</div>
+
+<div class="img-center"><em>HÌNH 6.2 Ma trận phân công trách nhiệm</em></div>
+
+<h5 id="ch6-raci">Biểu Đồ RACI (Responsible - Chịu trách nhiệm. Accountable - Giải trình. Consult - Tham vấn. Inform - Thông báo)</h5>
+
+<p>Biểu đồ này là một dạng RAM giúp xác định phân công vai trò rõ ràng hơn so với ví dụ trong hình 6.2. Thay vì các chữ P và S như trong hình, các chữ cái R cho Responsible (Chịu trách nhiệm), A cho Accountable (Giải trình), C cho Consult (Tham vấn), và I cho Inform (Thông báo) được sử dụng. Lưu ý rằng nhiều nguồn lực có thể cùng chịu trách nhiệm, được thông báo hoặc được tham vấn, nhưng chỉ một người duy nhất chịu trách nhiệm giải trình.</p>
+
+<h5 id="ch6-obs">Cấu Trúc Phân Rã Tổ Chức</h5>
+
+<p>Công cụ này (hình 6.3) được dùng để phân công trách nhiệm cho các phòng ban hoặc bộ phận trong tổ chức, chẳng hạn như phòng marketing hay IT. Trong môi trường ma trận, trưởng dự án sẽ phối hợp với các trưởng phòng của từng bộ phận tham gia dự án để điều phối sự sẵn có và lập lịch các nguồn lực con người và vật chất cho dự án.</p>
+
+<h5 id="ch6-rbs">RBS</h5>
+
+<p>WBS thường được tham chiếu để tạo biểu đồ này. Có định dạng tương tự, RBS phân rã công việc theo loại nguồn lực cần thiết, như được thể hiện trong hình 6.4.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//7820b31d-7c72-4923-8171-78bd30cfe9d8/markdown_4/imgs/img_in_image_box_409_407_746_614.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A38Z%2F-1%2F%2Fcf646da0dbfd306746b60161caab4811cd0411a8086fa9d34e5982a5d055ba7c" alt="Image" width="40%" /></div></div>
+
+<div class="img-center"><em>HÌNH 6.3 Cấu trúc phân rã tổ chức</em></div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//7820b31d-7c72-4923-8171-78bd30cfe9d8/markdown_4/imgs/img_in_image_box_139_658_656_890.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A38Z%2F-1%2F%2F7c3cad9ce08e48010da38f358fcfd0190cefd53ca702a9dceda49dc9cc70f401" alt="Image" width="62%" /></div></div>
+
+<div class="img-center"><em>HÌNH 6.4 RBS</em></div>
+
+<h4 id="ch6-wbs-resource">WBS</h4>
+
+<p>Bạn đã thấy rằng chúng ta tham chiếu WBS để tạo RBS. WBS, được thảo luận trong chương "Phạm vi", là công cụ tuyệt vời để đảm bảo mỗi gói công việc đều có một "chủ sở hữu" — một thành viên nhóm chịu trách nhiệm cho công việc đó.</p>
+
+<h4 id="ch6-org-theory">Lý Thuyết Tổ Chức</h4>
+
+<p>Lý thuyết tổ chức là phương pháp nghiên cứu các tổ chức để xác định cách họ giải quyết vấn đề, tối đa hóa hiệu quả và năng suất, cũng như đáp ứng kỳ vọng của các bên liên quan. Phân tích này giúp tổ chức xây dựng các chính sách và quy trình quản lý nguồn lực hiệu quả cho việc tiếp nhận, quản lý và đánh giá các nguồn lực con người và vật chất. Áp dụng các phương pháp như Lean, Kaizen, just in time (JIT) hoặc Six Sigma sẽ ảnh hưởng đến cách dự án xử lý việc quản lý nguồn lực vật chất. Các phương pháp này được đề cập trong chương "Chất lượng Sản phẩm và Kết quả bàn giao" và chương "Phương pháp Agile".</p>
+
+<h4 id="ch6-artifacts-plan-resource">Các Tài Liệu Của Quá Trình Lập Kế Hoạch Quản Lý Nguồn Lực</h4>
+
+<p>Quá trình Lập kế hoạch Quản lý Nguồn lực tạo ra kế hoạch quản lý nguồn lực, điều lệ nhóm (bao gồm các quy tắc nền tảng), cũng như các cập nhật cho kế hoạch quản lý dự án và các tài liệu dự án như nhật ký giả định và sổ đăng ký rủi ro.</p>
+
+<h4 id="ch6-resource-mgmt-plan">Kế Hoạch Quản Lý Nguồn Lực</h4>
+
+<p>Các thành phần của kế hoạch quản lý nguồn lực bao gồm những mục sau:</p>
+
+<div class="callout tip">
+  <p>Nếu bạn quản lý các dự án nhỏ, hãy suy nghĩ xem nỗ lực quản lý nguồn lực sẽ như thế nào trên một dự án dự đoán quy mô lớn với hàng trăm nguồn lực được phân công. Liệu nó có đòi hỏi nhiều công việc hơn những gì bạn đang làm hiện tại để quản lý nguồn lực cho dự án của mình không?</p>
+</div>
+
+<h5 id="ch6-hr-team-plan">Kế Hoạch Quản Lý Nguồn Nhân Lực (Nhóm)</h5>
+
+<ul class="content-list">
+  <li>Yêu cầu nhóm (ai, khi nào, bao nhiêu người, kỹ năng gì, mức độ chuyên môn nào, thời lượng)</li>
+  <li>Vai trò và trách nhiệm</li>
+  <li>Sơ đồ tổ chức dự án</li>
+  <li>Quy trình tiếp nhận nguồn nhân lực (nội bộ hoặc thông qua mua sắm)</li>
+  <li>Đào tạo, phát triển nhóm và ghi nhận (mục tiêu, nội dung, thời điểm)</li>
+  <li>Quản lý nhóm dự án (điều lệ nhóm, quy tắc nền tảng, gắn kết, truyền thông)</li>
+  <li>Tuân thủ (Dự án sẽ tuân thủ các quy định liên quan đến nguồn nhân lực như thế nào?)</li>
+  <li>An toàn (các chính sách bảo vệ nguồn lực)</li>
+  <li>Giải phóng nguồn nhân lực</li>
+</ul>
+
+<h5 id="ch6-recognition-plan">Kế Hoạch Ghi Nhận</h5>
+
+<p>Ghi nhận thành tích của cá nhân và nhóm là một trong những cách hiệu quả nhất để tạo động lực cho mọi người. Kế hoạch nên bao gồm khi nào và cách thức nguồn lực sẽ được ghi nhận, cũng như những hành động hoặc thành tích nào sẽ được khen thưởng.</p>
+
+<p>Mọi người đều thích được trân trọng. Một khởi đầu tốt để lập kế hoạch sử dụng việc ghi nhận và khen thưởng là có ý thức ghi nhận sự nỗ lực của các thành viên nhóm một cách trực tiếp. Một nụ cười và lời "cảm ơn" thường có ý nghĩa hơn bạn nghĩ. Để làm cho phần thưởng trở nên cá nhân hơn, bạn có thể hỏi các thành viên nhóm và các bên liên quan về những gì họ muốn đạt được từ dự án, trên phương diện nghề nghiệp và cá nhân. Họ có thể trả lời những điều như: "Tôi muốn học thêm về XYZ," "Tôi muốn giảm thời gian được phân bổ cho dự án này," "Tôi muốn đảm bảo rời khỏi nơi làm việc đúng giờ vào tối thứ Ba vì tôi có nghĩa vụ gia đình," hoặc "Tôi muốn được phân công một phần cụ thể trong công việc dự án."</p>
+
+<p>Khi dự án tiến triển, kế hoạch có thể được lặp lại khi các thành viên nhóm mới được bổ sung, và khi trưởng dự án hiểu rõ hơn về nhóm và những gì tạo động lực cho họ. Việc ghi nhận và khen thưởng có thể bao gồm các hoạt động sau đây một cách liên tục, trong khi công việc dự án đang được thực hiện:</p>
+
+<ul class="content-list">
+  <li>Nói "cảm ơn" thường xuyên hơn</li>
+  <li>Trao giải thưởng vì thành tích</li>
+  <li>Đề xuất tăng lương hoặc lựa chọn công việc cho các thành viên nhóm (vốn có thể không chính thức là một phần trong đánh giá hiệu suất của họ)</li>
+  <li>Gửi thư thông báo về thành tích xuất sắc cho cấp quản lý của các thành viên nhóm</li>
+  <li>Lên kế hoạch tổ chức tiệc mừng cột mốc hoặc các buổi kỷ niệm khác</li>
+  <li>Điều chỉnh dự án để phân công mọi người vào các hoạt động mà họ muốn làm</li>
+  <li>Phân công thành viên nhóm mới vào hoạt động không nằm trên đường găng để họ có thể học hỏi trong lĩnh vực đó</li>
+</ul>
+
+<p>Danh sách có thể kéo dài vô tận, nhưng hãy tự hỏi bản thân: "Tôi có làm bất kỳ điều nào trong số này không? Tôi có thực hiện chúng một cách có hệ thống không?" Điều này đòi hỏi phải lập kế hoạch trước và sau đó lặp lại kế hoạch đó khi dự án tiến triển.</p>
+
+<h5 id="ch6-team-charter">Điều Lệ Nhóm</h5>
+
+<p>Tài liệu này là một thỏa thuận làm việc được xây dựng bởi các thành viên của nhóm dự án. Điều lệ nhóm mô tả cách tiếp cận mà nhóm sẽ thực hiện liên quan đến truyền thông, ra quyết định và giải quyết xung đột, cũng như các quy tắc nền tảng cho các cuộc họp nhóm. Điều lệ nhóm là một tài liệu dự án và có thể được tham chiếu bất cứ lúc nào trong suốt dự án.</p>
+
+<p>Thiết lập các quy tắc nền tảng có thể giúp loại bỏ các xung đột hoặc vấn đề với nhóm trong suốt dự án vì mọi người đều biết điều gì được kỳ vọng từ họ. Và nếu các thành viên nhóm có đầu vào trong việc tạo ra các quy tắc nền tảng, họ có nhiều khả năng tuân thủ chúng hơn. Các quy tắc nền tảng đặc biệt quan trọng khi nhóm được quản lý từ xa.</p>
+
+<p>Các quy tắc nền tảng có thể bao gồm các mục như:</p>
+
+<ul class="content-list">
+  <li>Cách một thành viên nhóm nên giải quyết xung đột với thành viên khác</li>
+  <li>Khi nào một thành viên nhóm nên thông báo cho trưởng dự án rằng họ đang gặp khó khăn với một hoạt động</li>
+  <li>Quy tắc cho các cuộc họp</li>
+  <li>Ai được phép chỉ đạo cho các nhà thầu</li>
+  <li>Cách nhóm sẽ quyết định phân công công việc</li>
+  <li>Khi nào và cách cung cấp báo cáo tiến độ cho trưởng dự án</li>
+  <li>Các phương pháp phối hợp và phê duyệt thay đổi lịch của các thành viên nhóm, trong cả tình huống bình thường và khẩn cấp</li>
+</ul>
+
+<p>Trên các dự án dự đoán với các yêu cầu hoặc công nghệ không thay đổi, việc lập kế hoạch kỹ lưỡng rồi thực thi là phù hợp. Nhưng trên các dự án Agile, các yếu tố then chốt có thể thay đổi nên mức độ lập kế hoạch cao có thể không phù hợp. Do đó, điều quan trọng là các nhóm phải có các quy trình (ví dụ: ưu tiên hóa, buổi demo, retrospective) để cho phép điều chỉnh hiệu quả và kịp thời trong suốt dự án.</p>
+
+<h4 id="ch6-estimate-resources">Ước Tính Yêu Cầu Nguồn Lực</h4>
+
+<p>Ở giai đoạn này trong lập kế hoạch nguồn lực, trưởng dự án và nhóm đã có kế hoạch về cách phối hợp các nhu cầu nguồn lực. Trong quản lý dự án dự đoán, trưởng dự án giờ đây phải ước tính loại và số lượng của tất cả các nguồn lực cần thiết để hoàn thành công việc dự án ở cấp độ gói công việc và hoạt động.</p>
+
+<p>Kế hoạch quản lý nguồn lực bao gồm tài liệu về các phương pháp ước tính có thể được sử dụng. Các tài liệu khác chứa thông tin cần thiết được liệt kê dưới đây. Hãy nhớ rằng việc lập kế hoạch là lặp đi lặp lại, vì vậy nhóm có thể sử dụng tất cả các tài liệu này cùng nhau để lập kế hoạch yêu cầu trong khi đồng thời tinh chỉnh lập kế hoạch phạm vi, lịch trình và chi phí. Đây là các tài liệu của các nhiệm vụ trong lĩnh vực Quy trình:</p>
+
+<ul class="content-list">
+  <li>Đường cơ sở phạm vi và danh sách hoạt động (xem chương "Lịch trình").</li>
+  <li>WBS — Ước tính gói công việc được tạo ra trong khi lập kế hoạch phạm vi.</li>
+  <li>Sơ đồ mạng lưới — Các hoạt động được hiển thị trong sơ đồ mạng lưới (xem chương "Lịch trình").</li>
+</ul>
+
+<div class="callout">
+  <p><strong>Mô hình Nhóm Quy trình</strong></p>
+  <p>Nhóm Quy trình: Lập kế hoạch</p>
+  <p>Quy trình: Ước tính Nguồn lực Hoạt động</p>
+  <p><strong>ECO</strong></p>
+  <p>Lĩnh vực I</p>
+  <p>Nhiệm vụ 5: Đảm bảo cung cấp đào tạo đầy đủ</p>
+  <p>Nhiệm vụ 8: Đàm phán các thỏa thuận dự án</p>
+  <p>Nhiệm vụ 6: Xây dựng nhóm</p>
+  <p><strong>PMBOK Guide</strong></p>
+  <p>Lĩnh vực 2.4 Lập kế hoạch</p>
+</div>
+
+<ul class="content-list">
+  <li>Thuộc tính hoạt động — Cung cấp thông tin cụ thể về từng hoạt động, chẳng hạn như loại và số lượng nguồn lực dự kiến cần thiết để hoàn thành các hoạt động đó.</li>
+  <li>Ước tính chi phí — Cung cấp các ràng buộc ước tính nguồn lực vì chi phí nguồn lực phải nằm trong đường cơ sở chi phí.</li>
+  <li>Lịch nguồn lực — Cũng liên quan đến Quản lý Lịch trình, các tài liệu này xác định giờ làm việc của tổ chức và ngày nghỉ của công ty, qua đó giúp thể hiện sự sẵn có của các nguồn lực tiềm năng.</li>
+  <li>OPA — Các chính sách và quy trình đã được thiết lập luôn được xem xét khi sắp xếp nhân sự và thiết bị cần thiết.</li>
+</ul>
+
+<h5 id="ch6-estimating-methods">Các Phương Pháp Ước Tính Yêu Cầu Nguồn Lực</h5>
+
+<p>Các kỹ thuật ước tính được thảo luận trong các chương "Lịch trình" và "Ngân sách và Nguồn lực". Một số kỹ thuật trong số đó, chẳng hạn như ước tính tương tự, cũng có thể được sử dụng để ước tính nguồn lực hoạt động. Dưới đây là một số phương pháp khác cần biết cho kỳ thi về ước tính nguồn lực.</p>
+
+<h4 id="ch6-histograms-leveling">Biểu Đồ Nguồn Lực và San Bằng Nguồn Lực</h4>
+
+<p>Biểu đồ nguồn lực và san bằng nguồn lực là các phương pháp để phân tích "điều gì xảy ra nếu" nhằm tinh chỉnh ước tính và đảm bảo nguồn lực sẵn có khi cần và không bị lãng phí khi không cần.</p>
+
+<p><strong>Biểu đồ nguồn lực</strong> — Công cụ này cung cấp phương pháp trực quan hóa các yêu cầu nguồn lực và so sánh nguồn lực cần thiết với sự sẵn có của chúng để ước tính tốt hơn. Hình 6.5 cho thấy biểu đồ nguồn lực (biểu đồ thanh) minh họa số lượng nguồn lực cần thiết theo từng khoảng thời gian. Nó cho phép trưởng dự án dễ dàng nhận ra nơi có sự tăng vọt trong nhu cầu nguồn lực. Nếu người ta không sẵn có khi cần thiết, trưởng dự án phải đánh giá các lựa chọn có sẵn, có thể bao gồm:</p>
+
+<ul class="content-list">
+  <li>Đàm phán với một bộ phận khác để cung cấp nguồn lực</li>
+  <li>Mua sắm nguồn lực từ nguồn bên ngoài</li>
+  <li>Điều chỉnh lịch trình để thực hiện công việc khi nguồn lực sẵn có</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//dd8557af-6511-413d-af59-fa50d6fc9611/markdown_2/imgs/img_in_chart_box_99_446_695_655.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A54Z%2F-1%2F%2F46439a4dd51df2c04cb92c3fb17dfd82847d04de7ec3feb2aec447288e8d5c65" alt="Image" width="72%" /></div></div>
+
+<div class="img-center"><em>Khoảng thời gian dự án</em></div>
+
+<div class="img-center"><em>HÌNH 6.5 Biểu đồ nguồn lực</em></div>
+
+<p><strong>San bằng nguồn lực</strong> — Kỹ thuật này có thể được sử dụng để thay đổi một dự án nhằm giảm thiểu các đỉnh và đáy trong việc sử dụng nguồn lực (san bằng nguồn lực). Biểu đồ nguồn lực cũng có thể được sử dụng để hỗ trợ thực hiện nhiệm vụ đó.</p>
+
+<h4 id="ch6-artifacts-estimate-resources">Các Tài Liệu Của Quá Trình Ước Tính Yêu Cầu Nguồn Lực</h4>
+
+<p>Sau khi ước tính yêu cầu nguồn lực, trưởng dự án và nhóm sẽ xác định được các yêu cầu cho các hoạt động dự án, bao gồm chi phí, số lượng và sự sẵn có của các thành viên nhóm. Hãy nhớ từ hình 6.4, các yêu cầu có thể được ghi lại trong RBS, vì vậy tài liệu này sẽ trải qua một lần lặp khác.</p>
+
+<h3 id="ch6-exercise-6-2">Bài Tập 6.2</h3>
+
+<p>Trong bảng dưới đây, hãy xác định các hoạt động nào tham gia vào Ước tính Nguồn lực Hoạt động. Tại đây hoặc trong Sổ tay Bài tập của bạn, viết "Y" nếu hành động được mô tả là một phần của quy trình Ước tính Nguồn lực Hoạt động. Nếu không, hãy viết "N".</p>
+
+<h5 id="ch6-exercise-6-2-action">Hành động: Có phải là một phần của Ước tính Nguồn lực Hoạt động không? (Y/N)</h5>
+
+<ol class="content-list">
+  <li>Xem xét kế hoạch quản lý dự án.</li>
+  <li>Xem xét đường cơ sở phạm vi.</li>
+  <li>Xem xét sự sẵn có của nguồn lực.</li>
+  <li>Xem xét ước tính chi phí.</li>
+  <li>Lấy một ước tính thời gian duy nhất cho mỗi hoạt động.</li>
+  <li>Hoàn thành phân tích các khoản dự phòng cần thiết trong dự án.</li>
+  <li>Tạo lịch công ty xác định các ngày làm việc và không làm việc.</li>
+  <li>Tạo các cột mốc.</li>
+  <li>Xem xét sổ đăng ký rủi ro và nhật ký giả định.</li>
+  <li>Xác định các nguồn lực có thể sẵn có và mức độ kỹ năng của họ.</li>
+  <li>Xem xét thông tin lịch sử về việc sử dụng nguồn lực trong các dự án tương tự.</li>
+  <li>Xem xét các chính sách của tổ chức về sử dụng nguồn lực.</li>
+  <li>Xem cách các mối quan hệ dẫn trước và độ trễ ảnh hưởng đến ước tính thời gian.</li>
+  <li>Xin ý kiến chuyên gia về các nguồn lực cần thiết và sẵn có.</li>
+  <li>Tạo ước tính từ dưới lên, tương tự hoặc theo tham số.</li>
+  <li>Phân tích thiết bị hoặc phương pháp thay thế để sử dụng trong hoàn thành công việc và các cách tiếp cận để sử dụng nguồn lực tốt hơn.</li>
+  <li>Hiển thị các phụ thuộc mạng lưới theo hoạt động.</li>
+  <li>Xác định các lĩnh vực của dự án không thể hoàn thành nội bộ hoặc có thể đạt hiệu quả hơn thông qua thuê ngoài. Thông tin này sẽ được chia sẻ với bộ phận mua sắm.</li>
+  <li>Dồn tiến độ dự án (Crash).</li>
+  <li>Phân rã hoạt động thêm nếu hoạt động quá phức tạp để ước tính nguồn lực (ước tính từ dưới lên).</li>
+  <li>Định lượng yêu cầu nguồn lực theo hoạt động.</li>
+  <li>Tạo hình ảnh phân cấp sắp xếp các nguồn lực đã lập kế hoạch theo danh mục và loại của chúng (RBS).</li>
+  <li>Tăng tốc dự án (Fast track).</li>
+  <li>Phát triển lịch trình.</li>
+  <li>Xây dựng kế hoạch về loại nguồn lực nào sẽ được sử dụng.</li>
+  <li>Cập nhật tài liệu dự án.</li>
+</ol>
+
+<h4 id="ch6-exercise-6-2-answer">Đáp Án</h4>
+
+<div class="table-wrap">
+<table border="1" style="margin: auto; word-wrap: break-word;">
+  <tr>
+    <td colspan="5">Hành động: Có phải là một phần của Ước tính Nguồn lực Hoạt động không? (Y/N)</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">1.Y</td>
+    <td style="text-align: center;">7.N</td>
+    <td style="text-align: center;">13.Y</td>
+    <td style="text-align: center;">19.Y</td>
+    <td style="text-align: center;">25.N</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">2.Y</td>
+    <td style="text-align: center;">8.N</td>
+    <td style="text-align: center;">14.N</td>
+    <td style="text-align: center;">20.N</td>
+    <td style="text-align: center;">26.Y</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">3.Y</td>
+    <td style="text-align: center;">9.Y</td>
+    <td style="text-align: center;">15.Y</td>
+    <td style="text-align: center;">21.Y</td>
+    <td style="text-align: center;">27.Y</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">4.Y</td>
+    <td style="text-align: center;">10.Y</td>
+    <td style="text-align: center;">16.Y</td>
+    <td style="text-align: center;">22.Y</td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">5.N</td>
+    <td style="text-align: center;">11.Y</td>
+    <td style="text-align: center;">17.Y</td>
+    <td style="text-align: center;">23.Y</td>
+    <td style="text-align: center;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">6.N</td>
+    <td style="text-align: center;">12.Y</td>
+    <td style="text-align: center;">18.N</td>
+    <td style="text-align: center;">24.N</td>
+    <td style="text-align: center;"></td>
+  </tr>
+</table>
+</div>
+
+<h4 id="ch6-acquire-release-resources">Tiếp Nhận (và Giải Phóng) Nguồn Lực</h4>
+
+<p>Phần chú thích bên cạnh cho biết rằng một lần nữa chúng ta đã ánh xạ Tiếp nhận Nguồn lực từ mô hình Nhóm Quy trình sang tất cả các nhiệm vụ trong lĩnh vực Con người. Trong môi trường dự đoán, quy trình này mô tả cách mọi người tham gia dự án vào các thời điểm cần thiết để hoàn thành công việc của họ. Mặc dù quy trình này được gọi là "Tiếp nhận Nguồn lực," việc giải phóng mọi người khỏi dự án diễn ra xuyên suốt dự án khi họ hoàn thành công việc của mình. Khi trưởng dự án tiếp nhận các thành viên nhóm mới, làm việc với họ và giải phóng họ khỏi dự án, trưởng dự án thực sự đang kết hợp tất cả các nhiệm vụ liên quan đến lĩnh vực Con người.</p>
+
+<p>Lưu ý rằng trong mô hình Nhóm Quy trình, đây là quy trình thực thi. Nó liên quan đến việc tuân theo kế hoạch quản lý nguồn lực để đảm bảo nguồn nhân lực khi cần thiết. Tài liệu yêu cầu nguồn lực cho trưởng dự án biết loại thành viên nhóm nào cần thiết, và kế hoạch quản lý nguồn lực mô tả nguồn nhân lực sẽ đến từ đâu (từ trong tổ chức hoặc từ nhà thầu, chẳng hạn). Đường cơ sở lịch trình và chi phí cung cấp thông tin thiết yếu về thời điểm các thành viên nhóm khác nhau sẽ được yêu cầu và số tiền ngân sách để chi trả cho họ.</p>
+
+<div class="callout">
+  <p><strong>Mô hình Nhóm Quy trình</strong></p>
+  <p>Nhóm Quy trình: Thực thi</p>
+  <p>Quy trình: Tiếp nhận Nguồn lực</p>
+  <p><strong>ECO</strong></p>
+  <p>Lĩnh vực I — Tất cả các nhiệm vụ</p>
+  <p><strong>PMBOK Guide</strong></p>
+  <p>Lĩnh vực 2.2 Nhóm</p>
+  <p>Lĩnh vực 2.5 Công việc Dự án</p>
+  <p>Lĩnh vực 2.6 Bàn giao</p>
+</div>
+
+<p>Để hiểu tại sao đây là quy trình thực thi, hãy nghĩ đến một dự án lớn có thể kéo dài rất lâu, đòi hỏi hàng trăm người và nhiều nguồn lực vật chất.</p>
+
+<ul class="content-list">
+  <li>Một nhóm lập kế hoạch được tiếp nhận sớm trong dự án để hỗ trợ trưởng dự án.</li>
+  <li>Nhiều người cần thiết cho công việc có thể không cần thiết cho đến rất lâu sau khi dự án bắt đầu.</li>
+  <li>Danh sách nhóm cuối cùng có thể bao gồm các nhà thầu, người bán và những người sẽ làm việc trong dự án xa trong tương lai và thậm chí có thể chưa được công ty tuyển dụng cho đến khi cần.</li>
+  <li>Theo thời gian, con người và nguồn lực vật chất sẽ tham gia và rời khỏi dự án khi công việc liên quan của họ được cần đến.</li>
+</ul>
+
+<p>Trưởng dự án cũng sẽ sử dụng tài liệu yêu cầu nguồn lực như một tài liệu tham khảo khi tiếp nhận nguồn lực vật chất. Điều này thường liên quan đến việc làm việc với bộ phận mua sắm hoặc quản lý kho.</p>
+
+<p>Như đã đề cập trước đó khi thảo luận về lịch nguồn lực và san bằng nguồn lực, tính sẵn có của nguồn lực được phối hợp để đảm bảo rằng các nguồn lực phù hợp sẽ sẵn có khi cần thiết.</p>
+
+<p>Tóm lại, tiếp nhận nguồn lực dự án bao gồm tất cả những điều sau:</p>
+
+<ul class="content-list">
+  <li>Biết các nguồn lực nào được phân công trước cho dự án và xác nhận sự sẵn có của họ</li>
+  <li>Đàm phán để có được các nguồn lực tốt nhất có thể</li>
+  <li>Tuyển dụng nhân viên mới</li>
+  <li>Thuê nguồn lực thông qua quy trình ký hợp đồng từ bên ngoài tổ chức thực hiện (thuê ngoài)</li>
+  <li>Sử dụng JIT, Lean hoặc các phương pháp khác theo yêu cầu của tổ chức</li>
+  <li>Quản lý rủi ro về việc nguồn lực không còn sẵn có</li>
+</ul>
+
+<h5 id="ch6-agile-teams">Nhóm Agile</h5>
+
+<h5>Đáp án</h5>
+
+<p>Bạn có thể đã thực hiện một số hoạt động liệt kê dưới đây trong các dự án của mình, dù có thể chưa lên kế hoạch chính thức hoặc thực hiện nhất quán. Hãy ghi nhớ chúng khi làm bài thi để hiểu rõ các tình huống được mô tả và chọn đáp án đúng nhất. Người quản lý dự án phải đảm bảo nhóm làm việc cùng nhau hiệu quả và năng suất nhất có thể.</p>
+
+<h5>Danh mục kiểm tra: Phát triển nhóm</h5>
+
+<ul class="content-list">
+  <li>Sử dụng kỹ năng mềm như cố vấn, lãnh đạo, đàm phán, gây ảnh hưởng và cởi mở.</li>
+  <li>Tìm cách đồng cảm và thực hành lắng nghe chủ động.</li>
+  <li>Khuyến khích làm việc nhóm. Dẫn đầu bằng gương mẫu. Vừa là lãnh đạo dự án vừa là đồng nghiệp ngang hàng.</li>
+  <li>Giao tiếp trung thực, hiệu quả và kịp thời.</li>
+  <li>Đánh giá và hành động phù hợp với điểm mạnh, điểm yếu, phong cách học tập và sở thích của từng thành viên nhóm.</li>
+  <li>Xây dựng và duy trì sự tin tưởng giữa các thành viên nhóm và tất cả các bên liên quan.</li>
+  <li>Hợp tác để tạo ra tầm nhìn chung.</li>
+  <li>Sử dụng việc ra quyết định có sự tham gia khi có thể; nỗ lực tìm kiếm giải pháp cùng có lợi cho các vấn đề phát sinh.</li>
+  <li>Tôn trọng sự khác biệt văn hóa và tận dụng chúng để làm phong phú thêm đời sống nhóm.</li>
+  <li>Tổ chức các hoạt động xây dựng đội nhóm.</li>
+  <li>Giúp nuôi dưỡng tinh thần nhận diện nhóm.</li>
+  <li>Đặt ra các mục tiêu thực tế.</li>
+  <li>Cung cấp đào tạo cho các thành viên nhóm khi cần thiết.</li>
+  <li>Hỗ trợ việc duy trì các thỏa thuận được ghi trong điều lệ nhóm.</li>
+  <li>Để các thành viên nhóm tự giải quyết xung đột nhưng hỗ trợ khi cần.</li>
+  <li>Tạo môi trường tràn đầy sự công nhận và khen thưởng.</li>
+  <li>Bố trí nhóm làm việc cùng địa điểm nếu có thể; nỗ lực hỗ trợ các nhóm làm việc ảo.</li>
+  <li>Tạo điều kiện giao tiếp trong nhóm.</li>
+  <li>Đánh giá và cải thiện hiệu suất nhóm; sáng tạo và cũng huy động sự tham gia của nhóm.</li>
+</ul>
+
+<h4 id="ch6-artifacts-develop-team">Kết quả của quá trình Phát triển nhóm</h4>
+
+<p>Các đầu ra của quá trình Phát triển nhóm bao gồm:</p>
+
+<ul class="content-list">
+  <li>Kết quả đánh giá</li>
+  <li>Yêu cầu thay đổi</li>
+  <li>Cập nhật tài sản quy trình tổ chức (OPA)</li>
+  <li>Cập nhật tài liệu dự án:
+    <ul class="content-list">
+      <li>Thay đổi yêu cầu đào tạo</li>
+      <li>Điều lệ nhóm</li>
+      <li>Các bài tập xây dựng nhóm mới được áp dụng</li>
+      <li>Bài học kinh nghiệm</li>
+    </ul>
+  </li>
+  <li>Sửa đổi các mẫu đánh giá hiện có</li>
+  <li>Lịch trình:
+    <ul class="content-list">
+      <li>Phân công và lịch nguồn lực</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Những kết quả này là đầu vào trực tiếp cho quá trình Quản lý nhóm, chủ đề của phần tiếp theo. Hãy nhớ rằng chúng cung cấp thông tin để người quản lý dự án cải tiến liên tục hiệu suất. Nếu người quản lý dự án xác định cần thay đổi các tài liệu kế hoạch ảnh hưởng đến đường cơ sở đo lường hiệu suất, họ phải xử lý thông qua kiểm soát thay đổi tích hợp.</p>
+
+<h4 id="ch6-manage-team">Quản lý nhóm</h4>
+
+<p>Quản lý nhóm bao gồm các hoạt động quản lý hàng ngày mà bạn có thể đã thực hiện trong các dự án, và bạn có thể đã rất thành thạo. Nhưng điều quan trọng là phải củng cố kiến thức của bạn từ góc độ kỳ thi.</p>
+
+<p>Trước tiên, chúng ta có kế hoạch quản lý dự án và các tài liệu đã được cập nhật từ tất cả các quy trình khác, đặc biệt là Phát triển nhóm. Chi tiết liên quan đến các hoạt động quản lý nhóm được đưa vào kế hoạch quản lý nguồn lực. Ngoài các kết quả đã liệt kê cho quá trình phát triển nhóm, các đầu vào khác bao gồm:</p>
+
+<ul class="content-list">
+  <li>Phân công nhóm dự án (có thể được ghi lại trong biểu đồ RACI)</li>
+</ul>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <td style="text-align: center;">Mô hình nhóm quy trình</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Nhóm quy trình: Thực hiện</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Quy trình: Quản lý nhóm</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">ECO</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Lĩnh vực 1</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Tất cả nhiệm vụ</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Hướng dẫn PMBOK</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Lĩnh vực 2.2 Nhóm</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Lĩnh vực 2.5 Công việc dự án</td>
+  </tr>
+  <tr>
+    <td style="text-align: center;">Lĩnh vực 2.6 Bàn giao</td>
+  </tr>
+</table>
+</div>
+
+<ul class="content-list">
+  <li>Nhật ký vấn đề</li>
+  <li>Điều lệ nhóm</li>
+  <li>Báo cáo hiệu suất công việc</li>
+</ul>
+
+<p>Báo cáo hiệu suất công việc cung cấp thông tin về tiến độ dự án so với kế hoạch quản lý dự án. Thông tin này được dùng để xác định các hành động khắc phục cần thiết. Người quản lý dự án phân tích kết quả từ các đánh giá hiệu suất để nhận biết những thành công cần được ghi nhận, những lĩnh vực nhóm có thể cần hỗ trợ hoặc trợ giúp thêm, và những vấn đề hoặc xung đột cần được giải quyết trong quá trình này. Các thành viên nhóm cũng được bàn giao khi công việc của họ hoàn thành.</p>
+
+<p>Dưới đây là một số lưu ý về những việc cần làm trong quá trình Quản lý nhóm để giúp các thành viên nhóm duy trì hiệu suất cao:</p>
+
+<ul class="content-list">
+  <li>Quan sát những gì đang diễn ra</li>
+  <li>Theo dõi và đánh giá hiệu suất nhóm</li>
+  <li>Tìm kiếm các xung đột mà thành viên nhóm không thể tự giải quyết</li>
+  <li>Cung cấp sự lãnh đạo</li>
+  <li>Tạo điều kiện giải quyết xung đột</li>
+  <li>Cố vấn cho các thành viên nhóm</li>
+  <li>Đàm phán và gây ảnh hưởng</li>
+  <li>Lên kế hoạch và tạo điều kiện phát triển nghề nghiệp</li>
+  <li>Điều chỉnh kế hoạch dựa trên dữ liệu hiệu suất</li>
+  <li>Xử lý các vấn đề của nhóm</li>
+  <li>Quản lý rủi ro đối với sự thành công của nhóm</li>
+  <li>Sử dụng nhật ký vấn đề để theo dõi tiến trình giải quyết</li>
+</ul>
+
+<h4 id="ch6-methods-managing-team">Các phương pháp quản lý nhóm</h4>
+
+<p>Kỹ năng giao tiếp cá nhân và nhóm là phương pháp chính để quản lý nhóm, bao gồm giải quyết xung đột, trí tuệ cảm xúc, lãnh đạo và gây ảnh hưởng. Một phần của việc hỗ trợ nhóm có hiệu suất cao là đánh giá từng thành viên nhóm đang thực hiện trách nhiệm của họ như thế nào. Đánh giá hiệu suất dự án và theo dõi tiến độ cung cấp thông tin này về từng thành viên nhóm. Phép đo giá trị thu được (EVM), được thảo luận trong chương "Ngân sách và Nguồn lực", phản ánh dự án đang tiến triển so với kế hoạch như thế nào. Đây là cửa sổ nhìn vào hiệu suất của nhóm (cũng như liệu kế hoạch có cần thay đổi hay không).</p>
+
+<p>Biểu đồ burndown và burnup được sử dụng trong dự án Agile để theo dõi hiệu suất nhóm. Những biểu đồ này có thể là một phần của bộ phát thông tin (information radiators).</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//b01706a3-7708-4cf9-907c-6427208cfe21/markdown_2/imgs/img_in_image_box_710_786_760_842.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A11Z%2F-1%2F%2F30e55baa4a978794c4f28da82586e9199b21097522060e09bd2a28baa0e78279" alt="Image" width="6%" /></div></div>
+
+<h4 id="ch6-burndown-charts">Biểu đồ Burndown</h4>
+
+<p>Biểu đồ burndown theo dõi khối lượng công việc còn cần thực hiện trong dự án. Khi công việc được hoàn thành, đường tiến độ trên biểu đồ sẽ di chuyển xuống, phản ánh lượng công việc vẫn cần được thực hiện. Chúng thường được dùng để đo lường tiến độ của nhóm trong việc hoàn thành công việc dự án. Một mẫu biểu đồ burndown được hiển thị trong hình 6.6.</p>
+
+<h4 id="ch6-burnup-charts">Biểu Đồ Burnup</h4>
+
+<p>Biểu đồ burnup theo dõi lượng công việc đã hoàn thành. Do đó, trong suốt quá trình thực hiện dự án, đường tiến độ trên biểu đồ burnup sẽ đi lên, thể hiện lượng công việc ngày càng tăng đã được hoàn thành. Ưu điểm lớn của việc sử dụng biểu đồ burnup là nó có thể hiển thị các thay đổi về phạm vi, giúp thấy rõ tác động của những thay đổi đó. Một mẫu biểu đồ burnup được minh họa trong hình 6.6.</p>
+
+<div class="callout tip">
+<p><strong>Lưu ý:</strong> Hãy nhớ rằng đây cũng là một công cụ rất quan trọng để kiểm soát phạm vi, tiến độ và chi phí. Thay vì lặp lại thông tin này trong từng chương, nó sẽ được tham chiếu chéo từ chương này.</p>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//b01706a3-7708-4cf9-907c-6427208cfe21/markdown_3/imgs/img_in_chart_box_68_190_378_354.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A12Z%2F-1%2F%2F4c5f1f390387d585f2b1b784a1417c595995b87fa96e06f2a751aa81d9263fc2" alt="Image" width="37%" /></div></div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//b01706a3-7708-4cf9-907c-6427208cfe21/markdown_3/imgs/img_in_chart_box_385_155_714_354.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A12Z%2F-1%2F%2F992832c5001bc697b9fca6069ac2cd5f8f8a8d99604c0f355e67ae5f1b1448a1" alt="Image" width="40%" /></div></div>
+
+<div class="img-center"><div style="text-align: center;">HÌNH 6.6 Biểu đồ Burndown (bên trái); Biểu đồ Burnup (bên phải)</div></div>
+
+<p>Mỗi dự án đều khác nhau và đặt ra những thách thức riêng đối với người quản lý dự án. Các yếu tố như quy mô và thành phần của nhóm, trình độ kinh nghiệm của nhóm, và sự phức tạp của công việc thực tế đều phải được người quản lý dự án cân nhắc trong nỗ lực khai thác tối đa tiềm năng của nhóm.</p>
+
+<div class="callout">
+<p><strong>Hãy Suy Nghĩ.</strong> Nếu bạn là người quan sát công việc quản lý dự án của chính mình, bạn sẽ thấy gì? Bạn có xu hướng bận rộn với các báo cáo thay vì thực sự nhìn nhận nhóm đang làm gì, các thành viên nhóm đang tương tác với nhau như thế nào, họ cảm thấy điều gì còn thiếu hoặc chưa hiệu quả, và điều gì có thể đang tạo ra vấn đề không? Dù nhóm của bạn làm việc tại cùng một địa điểm hay làm việc từ xa, việc chú ý đến tông điệu trong các tương tác, bao gồm email và cuộc trò chuyện điện thoại, sẽ cho bạn biết nhiều hơn về tình hình thực tế so với việc chỉ phân tích dữ liệu. Người quản lý dự án cần quan sát những gì đang xảy ra và nói chuyện trực tiếp với mọi người để hiểu mọi việc đang diễn ra như thế nào.</p>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//b01706a3-7708-4cf9-907c-6427208cfe21/markdown_3/imgs/img_in_image_box_72_453_118_508.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A12Z%2F-1%2F%2F27c72c4f08907fb1a040fb817a1d45f595bd86265295bf80fe1fd3f8bb1b8665" alt="Image" width="5%" /></div></div>
+
+<h5>Các Kết Quả Của Quy Trình Quản Lý Nhóm</h5>
+
+<p>Các đầu ra của quy trình Quản Lý Nhóm bao gồm:</p>
+
+<ul class="content-list">
+  <li>Tài liệu dự án được cập nhật
+    <ul class="content-list">
+      <li>Nhật ký vấn đề</li>
+      <li>Bài học kinh nghiệm</li>
+    </ul>
+  </li>
+  <li>Các yếu tố môi trường doanh nghiệp (EEF) như hệ thống đánh giá nguồn nhân lực</li>
+  <li>Tài sản quy trình tổ chức (OPA) như mẫu đánh giá nguồn nhân lực</li>
+  <li>Yêu cầu thay đổi (nhu cầu nguồn lực, chi phí, tiến độ hoặc bất kỳ phần nào của kế hoạch quản lý dự án)</li>
+</ul>
+
+<p>Kế hoạch giải phóng các thành viên nhóm được đưa vào kế hoạch quản lý nguồn lực. Vì thời gian và trọng tâm của các công việc được giao có thể khác nhau, các thành viên nhóm có thể được giải phóng vào các thời điểm khác nhau trong suốt dự án, khi công việc của họ hoàn thành.</p>
+
+<h4 id="ch6-issue-log">Nhật Ký Vấn Đề</h4>
+
+<p>Nhiều người quản lý dự án sử dụng nhật ký vấn đề, còn được gọi là sổ đăng ký vấn đề hoặc nhật ký hành động, để ghi lại các vấn đề và cách giải quyết chúng. Vì nó được cập nhật liên tục để phản ánh các vấn đề mới cũng như việc giải quyết các vấn đề hiện có, nó thường xuyên vừa là đầu vào vừa là đầu ra của cùng một quy trình.</p>
+
+<p>Trong khuôn khổ quản lý các thành viên nhóm và các bên liên quan, nhật ký vấn đề có thể được sử dụng để trao đổi về các vấn đề trong dự án. Nó tạo điều kiện thuận lợi cho việc đánh giá nguyên nhân của các vấn đề, tác động của các vấn đề đến phạm vi, tiến độ, chi phí, rủi ro và các khía cạnh khác của dự án, cũng như đề xuất các hành động khắc phục có thể thực hiện. Một nhật ký như vậy cho mọi người thấy rằng nhu cầu của họ sẽ được xem xét, ngay cả khi chúng chưa được giải quyết ngay tại thời điểm vấn đề phát sinh. Những người quản lý dự án hiệu quả kiểm soát các vấn đề để chúng không ảnh hưởng đến dự án. Nhật ký vấn đề được cập nhật trong quá trình cập nhật tài liệu dự án xuyên suốt dự án.</p>
+
+<p>Một nhật ký vấn đề có thể trông giống như ví dụ sau đây.</p>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <td></td>
+    <td></td>
+    <td style="text-align: center;">Ngày</td>
+    <td style="text-align: center;">Người Đề Xuất</td>
+    <td style="text-align: center;">Người Phụ Trách</td>
+    <td style="text-align: center;">Hạn Giải Quyết</td>
+    <td rowspan="2" style="text-align: center;">Trạng Thái</td>
+    <td style="text-align: center;">Ngày Giải Quyết</td>
+    <td rowspan="2" style="text-align: center;">Kết Quả Giải Quyết</td>
+  </tr>
+  <tr>
+    <td colspan="2" style="text-align: center;">Số Vấn Đề / Vấn Đề</td>
+    <td style="text-align: center;">Thêm Vào</td>
+    <td style="text-align: center;">&nbsp;</td>
+    <td style="text-align: center;">&nbsp;</td>
+    <td style="text-align: center;">&nbsp;</td>
+    <td style="text-align: center;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</div>
+
+<h5>HÌNH 6.7 Nhật ký vấn đề</h5>
+
+<p>Nhật ký vấn đề cần được tùy chỉnh để đáp ứng nhu cầu của những người sẽ sử dụng nó. Ví dụ, nhật ký vấn đề có thể bao gồm nhiều chi tiết hơn — chẳng hạn như mô tả hoặc phân loại vấn đề (như nhóm, tiến độ, hoặc kỹ thuật) — tùy theo sở thích của nhóm.</p>
+
+<h4 id="ch6-putting-it-all-together">Tổng Hợp Lại</h4>
+
+<p>Hãy chú tâm khi học chương này và chương trước. Nhiều học viên cho rằng đây là chủ đề dễ và không học đủ kỹ. Để ôn thi, bạn cần nắm rõ các lý thuyết động lực khác nhau, phong cách quản lý, hiểu về lãnh đạo phục vụ, trí tuệ cảm xúc, và cách quản lý xung đột.</p>
+
+<p>Xem lại QuickTest để đảm bảo bạn hiểu các khái niệm này và không có khoảng trống kiến thức. Sau đó hãy hoàn thành bài tập sau.</p>
+
+<h3 id="ch6-exercise-6-4">6.4 Bài Tập</h3>
+
+<p>Với mỗi quy trình Quản Lý Nguồn Lực, hãy đưa ra một ví dụ về công việc mà người quản lý dự án trong dự án thư viện cần thực hiện. Viết câu trả lời vào Sổ Bài Tập của bạn.</p>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <td style="text-align: center; font-weight: bold;">Quy Trình Nguồn Lực</td>
+  </tr>
+  <tr><td>1. Lập kế hoạch quản lý nguồn lực</td></tr>
+  <tr><td>2. Ước lượng nguồn lực cho hoạt động</td></tr>
+  <tr><td>3. Thu nhận nhóm</td></tr>
+  <tr><td>4. Phát triển nhóm</td></tr>
+  <tr><td>5. Quản lý nhóm</td></tr>
+</table>
+</div>
+
+<h4 id="ch6-exercise-6-4-answer">Đáp Án</h4>
+
+<p>Bạn có nghĩ ra một số ví dụ dưới đây không? Bạn có thể đã xác định được một số ví dụ khác.</p>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <td style="text-align: center; font-weight: bold;">Quy Trình Nguồn Lực</td>
+    <td style="text-align: center; font-weight: bold;">Ví Dụ Về Công Việc</td>
+  </tr>
+  <tr>
+    <td>1. Lập kế hoạch quản lý nguồn lực</td>
+    <td>Do thành phố có ít nhân viên sẵn sàng hỗ trợ dự án, người quản lý dự án sẽ xác định các công ty có thể cung cấp nhân tài cần thiết cho nhóm.</td>
+  </tr>
+  <tr>
+    <td>2. Ước lượng nguồn lực cho hoạt động</td>
+    <td>Người quản lý dự án yêu cầu hồ sơ công khai của hai thư viện được xây dựng gần đây nhất trong cùng quận để nghiên cứu thời gian và chi phí đã sử dụng.</td>
+  </tr>
+  <tr>
+    <td>3. Thu nhận nhóm</td>
+    <td>Người quản lý dự án sử dụng hồ sơ xây dựng thư viện trước đây để liệt kê các kỹ năng cần thiết cho nhóm. Các kỹ năng này được cung cấp cho các công ty thuê ngoài. Hồ sơ năng lực được xem xét để tìm kiếm những ứng viên phù hợp với kỹ năng cần thiết. Trưởng thư viện hỗ trợ trong việc đánh giá các nhân viên tiềm năng.</td>
+  </tr>
+  <tr>
+    <td>4. Phát triển nhóm</td>
+    <td>Lên lịch đào tạo an ninh mạng cho nhóm IT.</td>
+  </tr>
+  <tr>
+    <td>5. Quản lý nhóm</td>
+    <td>Các cuộc họp hai tuần một lần với các thành viên nhóm chủ chốt được lên lịch để kiểm tra tiến độ và các vấn đề tồn đọng.</td>
+  </tr>
+</table>
+</div>
+
+<p>Bài tập tiếp theo kiểm tra kiến thức của bạn về một số vai trò điển hình trong dự án. Bạn còn nhớ phần thảo luận về vai trò trong dự án ở chương "Nền Tảng Quản Lý Dự Án" không? Sự hiểu biết về nội dung đó sẽ ảnh hưởng đến mức độ làm tốt bài tập này của bạn. Bạn có thể muốn xem lại các trang đó trước khi bắt đầu bài tập này, hoặc sử dụng thông tin trong chương đó để lấp đầy các khoảng trống kiến thức.</p>
+
+<h3 id="ch6-exercise-6-5">6.5 Bài Tập</h3>
+
+<p>Tại đây hoặc trong Sổ Bài Tập của bạn, hãy viết chữ viết tắt của vai trò chính chịu trách nhiệm giải quyết từng vấn đề được liệt kê. Vì phần lớn sự nhầm lẫn của học viên thường xảy ra giữa các vai trò của thành viên nhóm (T), người quản lý dự án (PM), nhà tài trợ (SP), và người quản lý chức năng (FM), bài tập này chỉ giới hạn ở các vai trò đó.</p>
+
+<p>Hãy xem xét những gì bạn đã học về vai trò trong dự án và nhớ ghi nhớ các tổ chức ma trận khi đọc qua các tình huống này.</p>
+
+<h5>Tình Huống</h5>
+
+<ol class="content-list">
+  <li>Hai thành viên nhóm dự án đang có bất đồng với nhau.</li>
+  <li>Có sự thay đổi đối với toàn bộ kết quả bàn giao của dự án.</li>
+  <li>Một người quản lý chức năng đang cố gắng rút một thành viên nhóm khỏi dự án để làm công việc khác.</li>
+  <li>Người quản lý dự án không có đủ thẩm quyền để hoàn thành công việc.</li>
+  <li>Không có đủ nguồn lực để hoàn thành dự án.</li>
+  <li>Nhóm không chắc chắn về những gì cần xảy ra và khi nào.</li>
+  <li>Một hoạt động cần thêm thời gian và sẽ khiến dự án bị chậm tiến độ.</li>
+  <li>Một hoạt động cần thêm thời gian nhưng không làm chậm tiến độ dự án.</li>
+  <li>Một thành viên nhóm không hoàn thành tốt công việc.</li>
+  <li>Nhóm không chắc ai là người phụ trách dự án.</li>
+  <li>Có tin đồn rằng dự án có thể không còn cần thiết nữa.</li>
+  <li>Nhà tài trợ đưa ra mục tiêu tiến độ không thực tế.</li>
+  <li>Nhóm đang xảy ra xung đột về thứ tự ưu tiên giữa các hoạt động.</li>
+  <li>Dự án đang chậm tiến độ.</li>
+  <li>Một thành viên nhóm quyết định nên sử dụng phương pháp khác để hoàn thành hoạt động của họ.</li>
+  <li>Dự án đang cạn kiệt nguồn vốn.</li>
+  <li>Công việc bổ sung làm tăng chi phí (không được xác định trong quá trình quản lý rủi ro) được thêm vào dự án.</li>
+</ol>
+
+<h4 id="ch6-exercise-6-5-answer">Đáp Án</h4>
+
+<p>Bài tập này được thiết kế để giúp bạn trả lời các câu hỏi tình huống trong kỳ thi liên quan đến vai trò và trách nhiệm. Nếu bạn không đồng ý với một số câu trả lời, hãy đảm bảo rằng bạn không đọc thêm ý nghĩa vào câu hỏi, và hãy đánh giá xem liệu điều đó có cho thấy khoảng trống trong kiến thức quản lý dự án của bạn không.</p>
+
+<p>Hãy đảm bảo bạn hiểu rõ cách quản lý các bên liên quan, truyền thông và quản lý nguồn nhân lực liên quan đến nhau như thế nào. Điều này sẽ giúp bạn trả lời câu hỏi chính xác trong kỳ thi.</p>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <td colspan="2" style="font-weight: bold; text-align: center;">Vai Trò / Giải Thích</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; white-space: nowrap;">1. T</td>
+    <td>Những người trong một cuộc xung đột nên cố gắng tự giải quyết với nhau.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; white-space: nowrap;">2. SP</td>
+    <td>Thay đổi đối với toàn bộ kết quả bàn giao là thay đổi đối với điều lệ dự án. Chỉ nhà tài trợ mới có thể phê duyệt các thay đổi đối với điều lệ dự án.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; white-space: nowrap;">3. T</td>
+    <td>Hãy giả định rằng quản lý dự án được thực hiện đúng cách (trừ khi câu hỏi thi cho bạn biết khác). Người quản lý dự án cung cấp đủ thông tin cho các thành viên nhóm (ví dụ: lịch trình, sơ đồ mạng, kế hoạch quản lý dự án, các rủi ro đã xác định) để họ có thể quản lý khối lượng công việc của mình. Từ "đang cố gắng" cho thấy tình huống này đang xảy ra trong hiện tại. Nếu câu hỏi dùng "đã rút," câu trả lời sẽ là người quản lý dự án. Hãy đọc kỹ các câu hỏi tình huống.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; white-space: nowrap;">4. SP</td>
+    <td>Vai trò của nhà tài trợ là trao quyền cho người quản lý dự án thông qua điều lệ dự án.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; white-space: nowrap;">5. SP/FM</td>
+    <td>Nhà tài trợ và người quản lý chức năng kiểm soát nguồn lực.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; white-space: nowrap;">6. PM</td>
+    <td>Người quản lý dự án tiếp nhận các ước lượng thời gian riêng lẻ, tổng hợp chúng thành lịch trình dự án, và truyền đạt lịch trình đó đến nhóm.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; white-space: nowrap;">7. SP</td>
+    <td>Ngày hoàn thành dự án rất có thể nằm trong điều lệ dự án. Chú ý từ "sẽ." Điều này có nghĩa là đánh giá của nhóm đã hoàn thành và không còn dự phòng. Bất kỳ thay đổi nào như vậy đều là thay đổi đối với điều lệ dự án và đòi hỏi sự tham gia của nhà tài trợ.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; white-space: nowrap;">8. PM</td>
+    <td>Vai trò của người quản lý dự án là xem xét tác động đến các ràng buộc khác của dự án. (Hãy nghĩ về kiểm soát thay đổi tích hợp ở đây. Có thể cần sử dụng nhưng chúng ta chưa biết vì dấu hiệu cho thấy đường cơ sở tiến độ không bị ảnh hưởng.)</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; white-space: nowrap;">9. PM/FM</td>
+    <td>Người quản lý dự án (và người quản lý chức năng của thành viên nhóm đó) cùng chia sẻ trách nhiệm trong việc chỉ đạo nguồn lực.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; white-space: nowrap;">10. SP</td>
+    <td>Nhà tài trợ chỉ định người quản lý dự án trong điều lệ dự án.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; white-space: nowrap;">11. SP</td>
+    <td>Nhà tài trợ bảo vệ dự án khỏi một thay đổi lớn như chấm dứt dự án. Nếu rõ ràng rằng dự án sẽ không đạt được mục tiêu của tổ chức, nhà tài trợ sẽ phê duyệt việc chấm dứt.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; white-space: nowrap;">12. PM/SP</td>
+    <td>Chỉ nhà tài trợ mới có thể thay đổi điều lệ (bao gồm ràng buộc về tiến độ). Người quản lý dự án phải cung cấp bằng chứng rằng điều đó không thực tế và làm việc cùng nhà tài trợ để giải quyết.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; white-space: nowrap;">13. PM</td>
+    <td>Vai trò của người quản lý dự án là giải quyết các xung đột như vậy (và đảm bảo sơ đồ mạng và đường đi tới hạn được thiết lập).</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; white-space: nowrap;">14. PM</td>
+    <td>Người quản lý dự án chịu trách nhiệm kiểm soát tiến độ tổng thể của dự án.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; white-space: nowrap;">15. T</td>
+    <td>Một thành viên nhóm có quyền kiểm soát các hoạt động của họ miễn là họ đáp ứng các mục tiêu về thời gian, chất lượng, chi phí và phạm vi trong kế hoạch quản lý dự án. Tuy nhiên, thành viên nhóm phải thông báo cho người quản lý dự án về các thay đổi phương pháp. Khi thích hợp, người quản lý dự án có thể tích hợp các thay đổi phương pháp vào dự án và tìm kiếm các tác động không mong muốn.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; white-space: nowrap;">16. SP</td>
+    <td>Vai trò của nhà tài trợ là cung cấp tài chính cho dự án.</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; white-space: nowrap;">17. SP</td>
+    <td>Công việc bổ sung không được xác định trong quy trình quản lý rủi ro có nghĩa là nó không được đưa vào ngân sách dự án ban đầu (hoặc quỹ dự phòng). Nhà tài trợ phải tham gia vào việc cung cấp nguồn vốn bổ sung.</td>
+  </tr>
+</table>
+</div>
+
+<h3 id="ch6-section-iv-intro">Phần IV</h3>
+
+<h5>Lĩnh Vực II: Quy Trình</h5>
+
+<p>Đề cương Nội Dung Kỳ Thi (ECO) quy định rằng Lĩnh Vực II bao gồm 50% bài thi. Lĩnh vực Quy Trình bao gồm các kỹ năng quản lý dự án kỹ thuật, phương pháp và các hoạt động cần thiết để quản lý một dự án và mang lại những lợi ích mà dự án được khởi xướng để tạo ra. Trong phần này, bạn sẽ tìm thấy các chương sau:</p>
+
+<ul class="content-list">
+  <li>Phạm Vi</li>
+  <li>Truyền Thông</li>
+  <li>Tiến Độ</li>
+  <li>Rủi Ro và Vấn Đề</li>
+  <li>Ngân Sách và Nguồn Lực</li>
+  <li>Mua Sắm</li>
+  <li>Chất Lượng Kết Quả Bàn Giao và Sản Phẩm</li>
+  <li>Các Bên Liên Quan</li>
+</ul>
+
+<p>Quản lý quản trị dự án, các kết quả, vấn đề, thay đổi, việc sử dụng và chuyển giao bài học kinh nghiệm, và việc bàn giao sản phẩm cho bộ phận vận hành cũng là một phần của lĩnh vực này.</p>
+
+
+</main>
+
+<button id="back-top" aria-label="Về đầu trang">↑</button>
+
+<script>
+// Progress bar
+const pb=document.getElementById('progress-bar');
+function updPB(){const d=document.documentElement;pb.style.width=Math.min((d.scrollTop/(d.scrollHeight-d.clientHeight))*100,100)+'%'}
+window.addEventListener('scroll',updPB,{passive:true});
+
+// Back to top
+const bt=document.getElementById('back-top');
+window.addEventListener('scroll',()=>{bt.style.opacity=scrollY>400?'1':'0';},{passive:true});
+bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+// Mobile menu
+const mb=document.getElementById('menu-btn'),sb=document.getElementById('sidebar');
+mb.addEventListener('click',()=>sb.classList.toggle('open'));
+document.addEventListener('click',e=>{if(!sb.contains(e.target)&&e.target!==mb)sb.classList.remove('open')});
+
+// Active TOC highlight on scroll
+const tocLinks=document.querySelectorAll('#sidebar-toc a[href^="#"]');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      tocLinks.forEach(a=>a.classList.remove('active'));
+      const a=document.querySelector('#sidebar-toc a[href="#'+e.target.id+'"]');
+      if(a){a.classList.add('active');a.scrollIntoView({block:'nearest',behavior:'smooth'})}
+    }
+  })
+},{rootMargin:'-20% 0px -75% 0px'});
+document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
+
+// ── THEME + READING POSITION ───────────────────────────
+(function(){
+  var THEME_KEY='rita_theme', READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var chapNum=m?m[1]:null;
+
+  // Build & inject theme toggle button
+  var hdr=document.getElementById('sidebar-header');
+  if(hdr){
+    var btn=document.createElement('button');
+    btn.id='theme-btn';
+    var curTheme=document.documentElement.getAttribute('data-theme')||'light';
+    btn.textContent=curTheme==='dark'?'☀':'🌙';
+    btn.title='Giao diện sáng / tối';
+    hdr.appendChild(btn);
+    btn.addEventListener('click',function(){
+      var next=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+      document.documentElement.setAttribute('data-theme',next);
+      localStorage.setItem(THEME_KEY,next);
+      btn.textContent=next==='dark'?'☀':'🌙';
+    });
+  }
+
+  if(!chapNum) return;
+
+  // Save last chapter visited
+  try{
+    var rd=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    rd.lastChap='rita_chap'+chapNum;
+    if(!rd.scrollPos) rd.scrollPos={};
+    localStorage.setItem(READ_KEY,JSON.stringify(rd));
+  }catch(e){}
+
+  // Restore scroll position
+  try{
+    var rdR=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    var savedPos=rdR.scrollPos&&rdR.scrollPos[chapNum]||0;
+    if(savedPos>200) setTimeout(function(){window.scrollTo(0,savedPos);},120);
+  }catch(e){}
+
+  // Save scroll position (debounced 600ms)
+  var saveT;
+  window.addEventListener('scroll',function(){
+    clearTimeout(saveT);
+    saveT=setTimeout(function(){
+      try{
+        var r2=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+        if(!r2.scrollPos) r2.scrollPos={};
+        r2.scrollPos[chapNum]=window.scrollY;
+        r2.lastChap='rita_chap'+chapNum;
+        localStorage.setItem(READ_KEY,JSON.stringify(r2));
+      }catch(e){}
+    },600);
+  },{passive:true});
+})();
+
+// ── HIGHLIGHT / NOTES SYSTEM ────────────────────────────
+(function(){
+  var READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  if(!m) return;
+  var chapNum=m[1];
+  var HL_KEY='rita_hl_'+chapNum;
+
+  // ── STORAGE ──
+  function loadHL(){try{return JSON.parse(localStorage.getItem(HL_KEY)||'[]')}catch(e){return[]}}
+  function saveHL(arr){localStorage.setItem(HL_KEY,JSON.stringify(arr));window.__ritaSyncTrigger&&window.__ritaSyncTrigger();}
+  function genId(){return 'h'+Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
+
+  // ── XPATH HELPERS ──
+  var mainEl=document.getElementById('main');
+  function getXPath(node){
+    if(!node||node===mainEl) return '.';
+    var parts=[];
+    var cur=node.nodeType===3?node.parentNode:node;
+    while(cur&&cur!==mainEl&&cur!==document.body){
+      var tag=cur.tagName.toLowerCase();
+      var idx=1,sib=cur.previousElementSibling;
+      while(sib){if(sib.tagName&&sib.tagName.toLowerCase()===tag)idx++;sib=sib.previousElementSibling;}
+      parts.unshift(tag+'['+idx+']');
+      cur=cur.parentElement;
+    }
+    return parts.join('/');
+  }
+  function resolveXPath(xpath){
+    if(!mainEl||xpath==='.') return mainEl;
+    try{
+      var r=document.evaluate('.//'+xpath,mainEl,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);
+      return r.singleNodeValue;
+    }catch(e){return null;}
+  }
+  function findTextAt(el,offset){
+    var walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null);
+    var count=0,node;
+    while((node=walker.nextNode())){
+      var len=node.textContent.length;
+      if(count+len>=offset) return{node:node,localOffset:offset-count};
+      count+=len;
+    }
+    return null;
+  }
+
+  // ── APPLY MARK TO DOM ──
+  function applyMark(hl){
+    try{
+      var sEl=resolveXPath(hl.sxp), eEl=resolveXPath(hl.exp);
+      if(!sEl||!eEl) return false;
+      var sInfo=sEl.nodeType===3?{node:sEl,localOffset:hl.so}:findTextAt(sEl,hl.so);
+      var eInfo=eEl.nodeType===3?{node:eEl,localOffset:hl.eo}:findTextAt(eEl,hl.eo);
+      if(!sInfo||!eInfo) return false;
+      var range=document.createRange();
+      range.setStart(sInfo.node,sInfo.localOffset);
+      range.setEnd(eInfo.node,eInfo.localOffset);
+      applyRange(range,hl.id,hl.color,hl.note||'');
+      return true;
+    }catch(e){return false;}
+  }
+  function applyRange(range,hlId,color,note){
+    var walker=document.createTreeWalker(
+      range.commonAncestorContainer.nodeType===3
+        ?range.commonAncestorContainer.parentNode
+        :range.commonAncestorContainer,
+      NodeFilter.SHOW_TEXT,null
+    );
+    var nodes=[],node;
+    while((node=walker.nextNode())){if(range.intersectsNode(node))nodes.push(node);}
+    nodes.forEach(function(tn){
+      var s=tn===range.startContainer?range.startOffset:0;
+      var e=tn===range.endContainer?range.endOffset:tn.textContent.length;
+      if(s>=e) return;
+      var nr=document.createRange();
+      nr.setStart(tn,s); nr.setEnd(tn,Math.min(e,tn.textContent.length));
+      try{
+        var mk=document.createElement('mark');
+        mk.className='hl'; mk.setAttribute('data-hl-id',hlId);
+        mk.setAttribute('data-color',color); mk.setAttribute('data-note',note);
+        nr.surroundContents(mk);
+      }catch(err){
+        try{
+          var c=nr.extractContents(),mk2=document.createElement('mark');
+          mk2.className='hl'; mk2.setAttribute('data-hl-id',hlId);
+          mk2.setAttribute('data-color',color); mk2.setAttribute('data-note',note);
+          mk2.appendChild(c); nr.insertNode(mk2);
+        }catch(_){}
+      }
+    });
+  }
+  function removeMarks(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      var p=mk.parentNode;
+      while(mk.firstChild)p.insertBefore(mk.firstChild,mk);
+      p.removeChild(mk);
+      p.normalize();
+    });
+  }
+  function updateMarks(hlId,color,note){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.setAttribute('data-color',color);
+      mk.setAttribute('data-note',note);
+    });
+  }
+
+  // ── RESTORE HIGHLIGHTS ON LOAD ──
+  var highlights=loadHL();
+  // Sort by sxp+so descending so earlier ranges aren't offset by later insertions
+  // Actually apply in order (each one is independent)
+  highlights.forEach(applyMark);
+  // Expose re-apply for sync module
+  window.__ritaReapplyMarks=function(){
+    document.querySelectorAll('mark.hl').forEach(function(mk){
+      var p=mk.parentNode;while(mk.firstChild)p.insertBefore(mk.firstChild,mk);p.removeChild(mk);p.normalize();
+    });
+    loadHL().forEach(applyMark);
+    if(typeof updateBadge==='function') updateBadge();
+    if(typeof renderPanelIfOpen==='function') renderPanelIfOpen();
+  };
+
+  // ── SIDEBAR BUTTON ──
+  function updateBadge(){
+    var hls=loadHL();
+    var badge=document.getElementById('hl-badge');
+    if(badge) badge.textContent=hls.length||'0';
+  }
+  var sidebarNav=document.getElementById('sidebar-toc');
+  if(sidebarNav){
+    var hlBtn=document.createElement('button');
+    hlBtn.id='hl-sidebar-btn';
+    hlBtn.innerHTML='<span>✏ Ghi chú & Highlight</span><span id="hl-badge">0</span>';
+    hlBtn.addEventListener('click',function(){openPanel();});
+    // Insert before sidebar-nav (bottom buttons)
+    var sidebarNavBottom=document.getElementById('sidebar-nav');
+    if(sidebarNavBottom) sidebarNavBottom.parentNode.insertBefore(hlBtn,sidebarNavBottom);
+    else document.getElementById('sidebar').appendChild(hlBtn);
+  }
+  updateBadge();
+
+  // ── PANEL ──
+  var panel=document.createElement('div');
+  panel.id='hl-panel';
+  panel.innerHTML='<div id="hl-panel-hdr"><h3>✏ Ghi Chú & Highlight</h3><button id="hl-panel-close">×</button></div><div id="hl-panel-list"></div>';
+  document.body.appendChild(panel);
+  document.getElementById('hl-panel-close').addEventListener('click',closePanel);
+  function openPanel(){renderPanel();panel.classList.add('open');}
+  function closePanel(){panel.classList.remove('open');}
+  function renderPanel(){
+    var list=document.getElementById('hl-panel-list');
+    var hls=loadHL();
+    list.innerHTML='';
+    hls.forEach(function(hl){
+      var item=document.createElement('div');
+      item.className='hl-item'; item.setAttribute('data-color',hl.color);
+      var noteHtml=hl.note?'<div class="hl-item-note">✏ '+escHtml(hl.note)+'</div>':'';
+      item.innerHTML='<button class="hl-item-del" data-id="'+hl.id+'">🗑</button>'
+        +'<div class="hl-item-text">'+escHtml(hl.text||'')+'</div>'+noteHtml;
+      item.addEventListener('click',function(e){
+        if(e.target.classList.contains('hl-item-del')) return;
+        var mk=document.querySelector('mark.hl[data-hl-id="'+hl.id+'"]');
+        if(mk){mk.scrollIntoView({behavior:'smooth',block:'center'});flashMark(hl.id);}
+        closePanel();
+      });
+      item.querySelector('.hl-item-del').addEventListener('click',function(e){
+        e.stopPropagation(); deleteHL(hl.id); renderPanel();
+      });
+      list.appendChild(item);
+    });
+  }
+
+  // ── POPUP ──
+  var popup=document.createElement('div');
+  popup.id='hl-popup'; popup.className='hidden';
+  popup.innerHTML=
+    '<button class="hl-color-btn" data-color="yellow" title="Vàng"></button>'
+    +'<button class="hl-color-btn" data-color="green" title="Xanh"></button>'
+    +'<button class="hl-color-btn" data-color="red" title="Đỏ"></button>'
+    +'<div class="hl-sep"></div>'
+    +'<button class="hl-note-btn" title="Thêm ghi chú">✏</button>'
+    +'<button class="hl-del-btn hl-del-action" title="Xóa">🗑</button>';
+  document.body.appendChild(popup);
+
+  var currentHlId=null;    // id being edited (null = new)
+  var pendingRange=null;   // Range for new highlight
+  var pendingXP=null;      // serialized position for new highlight
+
+  // Position popup near a rect
+  function positionPopup(rect){
+    var pw=popup.offsetWidth||160,ph=popup.offsetHeight||40;
+    var top=rect.top-ph-10+window.scrollY;
+    var left=rect.left+(rect.width-pw)/2;
+    if(top<window.scrollY+8) top=rect.bottom+10+window.scrollY;
+    left=Math.max(8,Math.min(left,window.innerWidth-pw-8));
+    popup.style.top=top+'px';
+    popup.style.left=left+'px';
+  }
+  function showPopup(rect,hlId){
+    currentHlId=hlId||null;
+    var isEdit=!!hlId;
+    popup.querySelector('.hl-del-action').style.display=isEdit?'':'none';
+    popup.querySelector('.hl-note-btn').style.display='';
+    popup.classList.remove('hidden');
+    positionPopup(rect);
+  }
+  function hidePopup(){
+    popup.classList.add('hidden');
+    pendingRange=null; pendingXP=null; currentHlId=null;
+  }
+
+  // Color buttons
+  popup.querySelectorAll('.hl-color-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var color=btn.getAttribute('data-color');
+      if(currentHlId){
+        // Update existing
+        var hls=loadHL();
+        var idx=hls.findIndex(function(h){return h.id===currentHlId;});
+        if(idx>=0){hls[idx].color=color;saveHL(hls);}
+        updateMarks(currentHlId,color,hls[idx]?hls[idx].note||'':'');
+        updateBadge(); renderPanelIfOpen();
+      } else if(pendingRange&&pendingXP){
+        // Create new
+        var id=genId();
+        var text=pendingRange.toString().substring(0,500);
+        applyRange(pendingRange,id,color,'');
+        pendingRange.collapse();
+        window.getSelection()&&window.getSelection().removeAllRanges();
+        var hls=loadHL();
+        hls.push({id:id,color:color,note:'',text:text,
+          sxp:pendingXP.sxp,so:pendingXP.so,exp:pendingXP.exp,eo:pendingXP.eo});
+        saveHL(hls); updateBadge(); renderPanelIfOpen();
+      }
+      hidePopup();
+    });
+  });
+
+  // Note button
+  popup.querySelector('.hl-note-btn').addEventListener('click',function(){
+    var id=currentHlId;
+    var existing='';
+    if(id){var hls=loadHL();var h=hls.find(function(x){return x.id===id;});if(h)existing=h.note||'';}
+    hidePopup();
+    openNoteModal(id,existing);
+  });
+
+  // Delete button
+  popup.querySelector('.hl-del-action').addEventListener('click',function(){
+    if(currentHlId) deleteHL(currentHlId);
+    hidePopup();
+  });
+
+  function deleteHL(id){
+    removeMarks(id);
+    var hls=loadHL().filter(function(h){return h.id!==id;});
+    saveHL(hls); updateBadge(); renderPanelIfOpen();
+  }
+
+  // ── NOTE MODAL ──
+  var noteModal=document.createElement('div');
+  noteModal.id='hl-note-modal'; noteModal.className='hidden';
+  noteModal.innerHTML='<div id="hl-note-box">'
+    +'<h3>✏ Ghi chú</h3>'
+    +'<textarea id="hl-note-ta" placeholder="Nhập ghi chú..."></textarea>'
+    +'<div class="hl-note-actions">'
+    +'<button class="hl-note-cancel">Hủy</button>'
+    +'<button class="hl-note-save">Lưu</button>'
+    +'</div></div>';
+  document.body.appendChild(noteModal);
+  var _noteTargetId=null;
+  function openNoteModal(hlId,existing){
+    _noteTargetId=hlId;
+    document.getElementById('hl-note-ta').value=existing||'';
+    noteModal.classList.remove('hidden');
+    setTimeout(function(){document.getElementById('hl-note-ta').focus();},50);
+  }
+  noteModal.querySelector('.hl-note-cancel').addEventListener('click',function(){noteModal.classList.add('hidden');});
+  noteModal.querySelector('.hl-note-save').addEventListener('click',function(){
+    var note=document.getElementById('hl-note-ta').value.trim();
+    if(_noteTargetId){
+      var hls=loadHL();
+      var idx=hls.findIndex(function(h){return h.id===_noteTargetId;});
+      if(idx>=0){hls[idx].note=note;saveHL(hls);updateMarks(_noteTargetId,hls[idx].color,note);updateBadge();renderPanelIfOpen();}
+    }
+    noteModal.classList.add('hidden');
+  });
+  noteModal.addEventListener('click',function(e){if(e.target===noteModal)noteModal.classList.add('hidden');});
+
+  // ── SELECTION HANDLER ──
+  document.addEventListener('mouseup',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    setTimeout(function(){
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed||!sel.rangeCount){hidePopup();return;}
+      var range=sel.getRangeAt(0);
+      var text=range.toString().trim();
+      if(!text||text.length<2){hidePopup();return;}
+      // Only highlight within #main
+      if(!mainEl||!mainEl.contains(range.commonAncestorContainer)){hidePopup();return;}
+      // Serialize positions
+      var sNode=range.startContainer,eNode=range.endContainer;
+      var sParent=sNode.nodeType===3?sNode.parentNode:sNode;
+      var eParent=eNode.nodeType===3?eNode.parentNode:eNode;
+      var sxp=getXPath(sParent),exp=getXPath(eParent);
+      // calc offsets within parent element
+      var so=0,eo=0;
+      var w=document.createTreeWalker(sParent,NodeFilter.SHOW_TEXT,null);
+      var n;while((n=w.nextNode())){if(n===sNode){so+=range.startOffset;break;}so+=n.textContent.length;}
+      var w2=document.createTreeWalker(eParent,NodeFilter.SHOW_TEXT,null);
+      while((n=w2.nextNode())){if(n===eNode){eo+=range.endOffset;break;}eo+=n.textContent.length;}
+      pendingRange=range.cloneRange();
+      pendingXP={sxp:sxp,so:so,exp:exp,eo:eo};
+      currentHlId=null;
+      var rect=range.getBoundingClientRect();
+      showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width});
+    },10);
+  });
+
+  // ── CLICK ON EXISTING MARK ──
+  document.addEventListener('click',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    var mk=e.target.closest('mark.hl');
+    if(!mk){
+      // click outside: if selection is collapsed, hide popup
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed) hidePopup();
+      return;
+    }
+    e.stopPropagation();
+    var hlId=mk.getAttribute('data-hl-id');
+    var rect=mk.getBoundingClientRect();
+    currentHlId=hlId;
+    pendingRange=null;pendingXP=null;
+    showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width},hlId);
+  });
+
+  // ── FLASH EFFECT ──
+  function flashMark(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.style.transition='outline .2s';mk.style.outline='3px solid #c9a84c';
+      setTimeout(function(){mk.style.outline='none';},1500);
+    });
+  }
+
+  function renderPanelIfOpen(){if(panel.classList.contains('open'))renderPanel();}
+
+  function escHtml(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+})();
+
+
+// ── CHAPTER NAV PANEL ───────────────────────────────────
+(function(){
+  var CHAPS=[
+    [1,'rita_chap01.html','Mẹo & Thủ Thuật Ôn Thi PMP®'],
+    [2,'rita_chap02.html','Tài Liệu Tham Khảo Kỳ Thi'],
+    [3,'rita_chap03.html','Nền Tảng Quản Lý Dự Án'],
+    [4,'rita_chap04.html','Tích Hợp'],
+    [5,'rita_chap05.html','Kỹ Năng Lãnh Đạo'],
+    [6,'rita_chap06.html','Xây Dựng & Hỗ Trợ Hiệu Suất Nhóm'],
+    [7,'rita_chap07.html','Phạm Vi Dự Án'],
+    [8,'rita_chap08.html','Tiến Độ & Ngân Sách Dự Án'],
+    [10,'rita_chap10.html','Chất Lượng Sản Phẩm Bàn Giao'],
+    [11,'rita_chap11.html','Truyền Thông'],
+    [12,'rita_chap12.html','Rủi Ro & Vấn Đề'],
+    [13,'rita_chap13.html','Mua Sắm'],
+    [14,'rita_chap14.html','Các Bên Liên Quan'],
+    [15,'rita_chap15.html','Tuân Thủ & Mang Lại Giá Trị'],
+    [16,'rita_chap16.html','Mẹo Vượt Qua Kỳ Thi PMP®'],
+    [17,'rita_chap17.html','Các Phương Pháp Agile Phổ Biến'],
+    [18,'rita_chap18.html','Hướng Dẫn PMBOK & Tiêu Chuẩn PM']
+  ];
+
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var curNum=m?parseInt(m[1]):null;
+  var READ_KEY='rita_reading';
+
+  // Build panel DOM
+  var panel=document.createElement('div');
+  panel.id='chap-panel'; panel.className='hidden';
+  var listHtml='';
+  CHAPS.forEach(function(c){
+    var isActive=c[0]===curNum;
+    listHtml+='<a class="chap-panel-item'+(isActive?' active':'')+'" href="'+c[1]+'">'
+      +'<span class="cpanel-num">Ch'+c[0]+'</span>'
+      +'<span class="cpanel-title">'+c[2]+'</span>'
+      +(isActive?'<span class="cpanel-status">● Đang đọc</span>':'')
+      +'</a>';
+  });
+  panel.innerHTML='<div id="chap-panel-overlay"></div>'
+    +'<div id="chap-panel-box">'
+    +'<div id="chap-panel-hdr"><h3>☰ Danh Sách Chương</h3><button id="chap-panel-close">×</button></div>'
+    +'<div id="chap-panel-list">'+listHtml+'</div>'
+    +'</div>';
+  document.body.appendChild(panel);
+
+  function openChapPanel(){panel.classList.remove('hidden');}
+  function closeChapPanel(){panel.classList.add('hidden');}
+  document.getElementById('chap-panel-overlay').addEventListener('click',closeChapPanel);
+  document.getElementById('chap-panel-close').addEventListener('click',closeChapPanel);
+
+  // Wire up the Mục lục button
+  var mucLucBtn=document.getElementById('chap-muc-luc-btn');
+  if(mucLucBtn) mucLucBtn.addEventListener('click',function(e){e.preventDefault();openChapPanel();});
+})();
+
+
+// ── GITHUB HIGHLIGHTS SYNC ──────────────────────────
+(function(){
+  var REPO='goukakujlptsuport-beep/pmbok6';
+  var TOKEN_KEY='rita_gh_token';
+  var API_URL='https://api.github.com/repos/'+REPO+'/contents/data/rita_highlights.json';
+  var fileSha=null;
+  var syncTimer=null;
+
+  // Called by patched saveHL after every highlight change
+  window.__ritaSyncTrigger=function(){
+    clearTimeout(syncTimer);
+    syncTimer=setTimeout(pushToGitHub,3000);
+  };
+
+  // ── STATUS BUTTON (inserted before #sidebar-nav) ──
+  var btn=document.createElement('button');
+  btn.id='sync-btn'; btn.dataset.state='no-token';
+  btn.innerHTML='<span>☁ Sync Git</span><span id="sync-status-text">Đang kết nối…</span>';
+  btn.title='Đồng bộ highlight / ghi chú lên GitHub';
+  btn.addEventListener('click',handleSyncClick);
+  var sidebarNavEl=document.getElementById('sidebar-nav');
+  if(sidebarNavEl) sidebarNavEl.parentNode.insertBefore(btn,sidebarNavEl);
+
+  var statusText=document.getElementById('sync-status-text');
+  function setStatus(state,msg){
+    btn.dataset.state=state;
+    if(statusText) statusText.textContent=msg;
+  }
+
+  // ── TOKEN MODAL ──
+  var modal=document.createElement('div');
+  modal.id='sync-modal'; modal.className='hidden';
+  modal.innerHTML='<div id="sync-modal-box">'
+    +'<h3>☁ Cấu Hình GitHub Sync</h3>'
+    +'<p>Nhập <strong style="color:var(--gold)">GitHub Personal Access Token (PAT)</strong> để đồng bộ highlight giữa các thiết bị.<br>'
+    +'Token cần quyền <strong style="color:var(--gold-lt)">Contents: Read &amp; Write</strong> trên repo pmbok6.<br>'
+    +'Token được lưu trong localStorage của trình duyệt này.</p>'
+    +'<input id="sync-token-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" spellcheck="false" autocomplete="off">'
+    +'<div class="sync-modal-btns">'
+    +'<button id="sync-clear-btn">🗑 Xóa token</button>'
+    +'<button id="sync-cancel-btn">Hủy</button>'
+    +'<button id="sync-save-btn">💾 Lưu &amp; Sync</button>'
+    +'</div></div>';
+  document.body.appendChild(modal);
+
+  document.getElementById('sync-cancel-btn').addEventListener('click',function(){modal.classList.add('hidden');});
+  document.getElementById('sync-save-btn').addEventListener('click',function(){
+    var t=(document.getElementById('sync-token-input').value||'').trim();
+    if(!t){alert('Vui lòng nhập GitHub PAT!');return;}
+    localStorage.setItem(TOKEN_KEY,t);
+    modal.classList.add('hidden');
+    fileSha=null;
+    initSync();
+  });
+  document.getElementById('sync-clear-btn').addEventListener('click',function(){
+    if(!confirm('Xóa token? Highlights sẽ không được sync cho đến khi cấu hình lại.')) return;
+    localStorage.removeItem(TOKEN_KEY);
+    fileSha=null;
+    modal.classList.add('hidden');
+    setStatus('no-token','Chưa cấu hình');
+  });
+  modal.addEventListener('click',function(e){if(e.target===modal)modal.classList.add('hidden');});
+
+  function handleSyncClick(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){
+      var inp=document.getElementById('sync-token-input');
+      if(inp) inp.value='';
+      modal.classList.remove('hidden');
+      setTimeout(function(){if(inp)inp.focus();},80);
+    } else {
+      // Manual re-sync
+      fileSha=null;
+      initSync();
+    }
+  }
+
+  // ── HELPERS ──
+  var ALL_CHAPS=['01','02','03','04','05','06','07','08','10','11','12','13','14','15','16','17','18'];
+
+  function getAllLocal(){
+    var all={};
+    ALL_CHAPS.forEach(function(n){
+      try{
+        var v=JSON.parse(localStorage.getItem('rita_hl_'+n)||'[]');
+        if(v&&v.length>0) all[n]=v;
+      }catch(e){}
+    });
+    return all;
+  }
+
+  function countHL(obj){
+    return Object.values(obj).reduce(function(s,a){return s+(a?a.length:0);},0);
+  }
+
+  // Union merge: keep all highlights by id, prefer local note if different
+  function mergeHL(local,remote){
+    var merged={};
+    var allChaps=new Set(Object.keys(local).concat(Object.keys(remote)));
+    allChaps.forEach(function(chap){
+      var loc=local[chap]||[];
+      var rem=remote[chap]||[];
+      var byId={};
+      loc.forEach(function(h){byId[h.id]=h;});
+      rem.forEach(function(h){if(!byId[h.id])byId[h.id]=h;});
+      var arr=Object.values(byId);
+      if(arr.length>0) merged[chap]=arr;
+    });
+    return merged;
+  }
+
+  function applyToLocal(highlights){
+    Object.keys(highlights).forEach(function(chap){
+      localStorage.setItem('rita_hl_'+chap,JSON.stringify(highlights[chap]));
+    });
+  }
+
+  // base64 encode/decode with Unicode support
+  function b64enc(str){
+    return btoa(unescape(encodeURIComponent(str)));
+  }
+  function b64dec(b64){
+    return decodeURIComponent(escape(atob(b64.replace(/[\r\n]/g,''))));
+  }
+
+  // ── FETCH FROM GITHUB ──
+  async function fetchFromGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    var headers={'Accept':'application/vnd.github.v3+json'};
+    if(token) headers['Authorization']='token '+token;
+    try{
+      var resp=await fetch(API_URL,{headers:headers});
+      if(resp.status===404){fileSha=null;return null;}
+      if(!resp.ok) throw new Error('HTTP '+resp.status);
+      var data=await resp.json();
+      fileSha=data.sha;
+      var content=JSON.parse(b64dec(data.content));
+      return content;
+    }catch(e){
+      console.warn('[sync] fetch:',e);
+      return 'error';
+    }
+  }
+
+  // ── PUSH TO GITHUB ──
+  async function pushToGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang sync…');
+    var local=getAllLocal();
+    var payload={version:1,lastSync:new Date().toISOString(),highlights:local};
+    var encoded=b64enc(JSON.stringify(payload,null,2));
+    var body={message:'sync: rita highlights ['+countHL(local)+' HL]',content:encoded};
+    if(fileSha) body.sha=fileSha;
+    try{
+      var resp=await fetch(API_URL,{
+        method:'PUT',
+        headers:{
+          'Authorization':'token '+token,
+          'Content-Type':'application/json',
+          'Accept':'application/vnd.github.v3+json'
+        },
+        body:JSON.stringify(body)
+      });
+      if(!resp.ok){
+        var err=await resp.json().catch(function(){return{};});
+        throw new Error(err.message||'HTTP '+resp.status);
+      }
+      var result=await resp.json();
+      fileSha=result.content.sha;
+      setStatus('ok','✓ Đã sync ('+countHL(local)+' HL)');
+    }catch(e){
+      setStatus('err','✗ '+e.message.slice(0,28));
+      console.error('[sync] push:',e);
+    }
+  }
+
+  // ── INIT ──
+  async function initSync(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang tải…');
+
+    var ghData=await fetchFromGitHub();
+    if(ghData==='error'){
+      setStatus('err','✗ Không kết nối được');
+      return;
+    }
+    if(ghData&&ghData.highlights){
+      var local=getAllLocal();
+      var merged=mergeHL(local,ghData.highlights);
+      applyToLocal(merged);
+      // Re-apply marks on current chapter from updated localStorage
+      if(typeof window.__ritaReapplyMarks==='function') window.__ritaReapplyMarks();
+      var ghN=countHL(ghData.highlights), mergedN=countHL(merged);
+      if(mergedN>ghN){
+        // New highlights from remote — push merged back
+        setTimeout(pushToGitHub,1200);
+      } else {
+        setStatus('ok','✓ Sync OK ('+mergedN+' HL)');
+      }
+    } else {
+      // File doesn't exist yet — push current local state
+      await pushToGitHub();
+    }
+  }
+
+  initSync();
+})();
+
+</script>
+
+</body>
+</html>

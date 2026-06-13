@@ -339,11 +339,18 @@ footer {
         <div class="tc-desc">20 câu tình huống/chương từ Rita Mulcahy 11th Ed — 17 chương, bao gồm Agile &amp; PMBOK7</div>
       </div>
     </a>
-    <a href="chapters/chap12.html" class="tool-card">
-      <div class="tc-icon">📝</div>
+    <a href="rita.html" class="tool-card">
+      <div class="tc-icon">📖</div>
       <div>
-        <div class="tc-title">PMP Exam Prep — Chương 1–2</div>
-        <div class="tc-desc">Rita Mulcahy tiếng Việt — Framework & Quy trình quản lý dự án</div>
+        <div class="tc-title">Rita PMP Exam Prep — 18 Chương</div>
+        <div class="tc-desc">Rita Mulcahy tiếng Việt — Đầy đủ 18 chương, bao gồm Agile & PMBOK7</div>
+      </div>
+    </a>
+    <a href="books/PMPExamPrep/rita-questions.html" class="tool-card">
+      <div class="tc-icon">✏️</div>
+      <div>
+        <div class="tc-title">Bộ Sưu Tập Bài Tập Rita</div>
+        <div class="tc-desc">76 bài tập (9 trắc nghiệm) từ 17 chương Rita Mulcahy — đáp án ẩn, 2 chế độ Học & Thi</div>
       </div>
     </a>
   </div>
@@ -382,10 +389,10 @@ const BOOKS = [
     id:       'rita',
     title:    'PMP® Exam Prep',
     edition:  'Rita Mulcahy · 11th Ed. 2023',
-    lang:     '🇻🇳 Tiếng Việt (đang dịch)',
-    desc:     "Bộ giáo trình luyện thi PMP nổi tiếng nhất thế giới của Rita Mulcahy — đang được dịch sang tiếng Việt.",
-    status:   'partial',
-    url:      'chapters/chap12.html',
+    lang:     '🇻🇳 Tiếng Việt',
+    desc:     "Bộ giáo trình luyện thi PMP nổi tiếng nhất thế giới của Rita Mulcahy — 18 chương dịch đầy đủ sang tiếng Việt.",
+    status:   'available',
+    url:      'rita.html',
     isbn:     '9781932735680',
     gradient: 'linear-gradient(160deg,#4a1505 0%,#c0390a 100%)',
   },
@@ -481,6 +488,25 @@ function renderCard(b) {
 
 // ── RENDER ALL ────────────────────────────────────────────────
 document.getElementById('book-grid').innerHTML = BOOKS.map(renderCard).join('');
+
+// Rita: link directly to last-read chapter
+(function() {
+  var rd = {};
+  try { rd = JSON.parse(localStorage.getItem('rita_reading') || '{}'); } catch(e) {}
+  var target = rd.lastChap
+    ? 'books/PMPExamPrep/' + rd.lastChap + '.html'
+    : 'books/PMPExamPrep/rita_chap01.html';
+  // Update onclick and CTA href for the Rita card
+  document.querySelectorAll('.book-card').forEach(function(card) {
+    var onclick = card.getAttribute('onclick') || '';
+    if (onclick.includes('rita.html')) {
+      card.setAttribute('onclick', "location.href='" + target + "'");
+      var cta = card.querySelector('a.bi-cta');
+      if (cta) cta.href = target;
+    }
+  });
+})();
+
 
 // ── HEADER STATS ──────────────────────────────────────────────
 const available = BOOKS.filter(b => b.status !== 'coming-soon').length;

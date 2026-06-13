@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mẹo & Thủ Thuật Ôn Thi PMP® | Rita PMP® Exam Prep 11</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1a2744;--red:#8b1a1a;--gold:#c9a84c;--gold-lt:#e8d5a3;
+  --cream:#fdf8f0;--text:#2c2c2c;--text-dim:#5a5a5a;--border:#d4c89a;--sidebar-w:268px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+#progress-bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--gold);z-index:200;transition:width .1s}
+#sidebar{width:var(--sidebar-w);background:var(--navy);color:#ccd4e8;position:fixed;top:0;left:0;bottom:0;overflow-y:auto;z-index:100;border-right:3px solid var(--gold);display:flex;flex-direction:column;}
+#sidebar-header{background:linear-gradient(135deg,#0f1d3a 0%,#1a2744 100%);padding:1.4rem 1.2rem;border-bottom:2px solid var(--gold);flex-shrink:0;}
+#sidebar-header .book-label{font-family:'Source Sans 3',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;}
+#sidebar-header h2{font-size:.92rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:.25rem}
+#sidebar-header .edition{font-family:'Source Sans 3',sans-serif;font-size:.7rem;color:var(--gold-lt);font-style:italic}
+#sidebar-toc{flex:1;overflow-y:auto;padding:.6rem 0}
+#sidebar-toc a{display:block;font-family:'Source Sans 3',sans-serif;font-size:.78rem;color:#aab8d0;text-decoration:none;padding:.4rem 1.2rem;line-height:1.4;transition:all .15s;border-left:3px solid transparent;}
+#sidebar-toc a:hover,#sidebar-toc a.active{color:#fff;background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+#sidebar-toc a.toc-h4{padding-left:2.2rem;font-size:.72rem;color:#8896b0}
+#sidebar-toc .toc-group-label{font-family:'Source Sans 3',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);padding:.7rem 1.2rem .25rem;opacity:.85;}
+#sidebar-nav{flex-shrink:0;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;padding:.7rem .8rem;gap:.5rem;}
+#sidebar-nav a{font-family:'Source Sans 3',sans-serif;font-size:.72rem;color:var(--gold-lt);text-decoration:none;padding:.4rem .7rem;border:1px solid rgba(201,168,76,.3);border-radius:4px;transition:all .2s;line-height:1.3;text-align:center;flex:1;}
+#sidebar-nav a:hover{background:rgba(201,168,76,.15);color:#fff}
+#sidebar-nav a.disabled{opacity:.35;pointer-events:none}
+#menu-btn{display:none;position:fixed;top:.7rem;left:.8rem;z-index:150;background:var(--navy);border:1px solid var(--gold);color:var(--gold);width:36px;height:36px;border-radius:6px;font-size:1.1rem;cursor:pointer;align-items:center;justify-content:center;}
+#main{margin-left:var(--sidebar-w);max-width:880px;padding:0 2.8rem 5rem}
+.chapter-hero{background:linear-gradient(135deg,var(--navy) 0%,#2a3a6a 100%);color:white;padding:2.8rem 2.8rem 2.2rem;margin:0 -2.8rem 2.8rem;border-bottom:4px solid var(--gold);position:relative;overflow:hidden;}
+.chapter-hero::before{content:'1';position:absolute;right:1.5rem;top:50%;transform:translateY(-50%);font-size:10rem;font-weight:700;color:rgba(255,255,255,.05);font-family:'Merriweather',serif;line-height:1;}
+.chapter-hero .ch-label{font-family:'Source Sans 3',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;}
+.chapter-hero h1{font-size:2rem;font-weight:700;line-height:1.2;margin-bottom:.35rem}
+.chapter-hero .ch-en{font-family:'Source Sans 3',sans-serif;font-size:.95rem;color:rgba(255,255,255,.5);font-style:italic}
+h3{font-family:'Merriweather',serif;font-size:1.25rem;color:var(--navy);margin:2.5rem 0 .85rem;padding-bottom:.45rem;border-bottom:2px solid var(--gold);}
+h4{font-family:'Merriweather',serif;font-size:1.05rem;color:var(--navy);margin:2rem 0 .65rem;padding-left:.75rem;border-left:4px solid var(--gold);}
+h5{font-family:'Source Sans 3',sans-serif;font-size:.9rem;font-weight:700;color:var(--red);margin:1.4rem 0 .45rem;text-transform:uppercase;letter-spacing:.05em;}
+p{font-family:'Merriweather',serif;font-size:.94rem;line-height:1.88;margin-bottom:.95rem;color:var(--text)}
+ul.content-list,ol.content-list{margin:.5rem 0 1rem;padding:0;list-style:none;}
+ul.content-list li{position:relative;padding:.28rem 0 .28rem 1.6rem;font-family:'Source Sans 3',sans-serif;font-size:.92rem;line-height:1.72;color:var(--text);}
+ul.content-list li::before{content:'◆';position:absolute;left:0;color:var(--gold);font-size:.65rem;top:.45rem;}
+ol.content-list{counter-reset:ol-c;list-style:none}
+ol.content-list li{position:relative;padding:.28rem 0 .28rem 2rem;font-family:'Source Sans 3',sans-serif;font-size:.92rem;line-height:1.72;color:var(--text);counter-increment:ol-c;}
+ol.content-list li::before{content:counter(ol-c)'.';position:absolute;left:0;color:var(--navy);font-weight:700;font-size:.85rem;min-width:1.5rem;}
+ul.content-list ul.content-list li::before{content:'–';color:var(--text-dim);font-size:.9rem;top:.35rem}
+.callout{background:linear-gradient(135deg,#f5f0e8,#ede8d8);border:1px solid var(--border);border-left:5px solid var(--gold);border-radius:0 6px 6px 0;padding:1rem 1.2rem;margin:1.3rem 0;}
+.callout p{font-size:.9rem;margin-bottom:.5rem}
+.callout p:last-child{margin-bottom:0}
+.callout-label{font-family:'Source Sans 3',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;}
+.callout.tip{border-left-color:#2d7a2d;background:linear-gradient(135deg,#f0f7f0,#e4f0e4)}
+.highlight{background:var(--navy);color:#e8d5a3;border-radius:8px;padding:1.1rem 1.3rem;margin:1.5rem 0;}
+.highlight h5,.highlight strong{color:var(--gold-lt)}
+.highlight p,.highlight li{color:#ccd4e8;font-size:.88rem}
+.highlight ul.content-list li::before{color:var(--gold)}
+.img-center{text-align:center;margin:1.8rem 0;padding:1rem;background:#f8f5ee;border:1px solid var(--border);border-radius:8px;}
+.img-center img{max-width:100%;height:auto;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.img-center p,.img-center div{margin-top:.65rem;font-family:'Source Sans 3',sans-serif;font-size:.8rem;color:var(--text-dim);font-style:italic;}
+.table-wrap{overflow-x:auto;margin:1.5rem 0}
+table{width:100%;border-collapse:collapse;font-family:'Source Sans 3',sans-serif;font-size:.84rem}
+table th{background:var(--navy);color:white;padding:.6rem .8rem;text-align:center;font-weight:600;font-size:.79rem}
+table td{padding:.5rem .8rem;border:1px solid #ddd;vertical-align:top;line-height:1.5}
+table tr:nth-child(even) td{background:#f9f6ef}
+#back-top{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--navy);color:var(--gold);border:1px solid var(--gold);width:38px;height:38px;border-radius:50%;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .25s;z-index:99;}
+#back-top:hover{background:var(--gold);color:var(--navy)}
+@media(max-width:860px){
+  #sidebar{transform:translateX(-100%);transition:transform .25s;top:3rem}
+  #sidebar.open{transform:translateX(0)}
+  #menu-btn{display:flex}
+  #main{margin-left:0;padding:3.5rem 1.2rem 4rem}
+  .chapter-hero{margin:0 -1.2rem 2rem;padding:2rem 1.4rem}
+  .chapter-hero::before{display:none}
+}
+
+/* ── DARK / LIGHT MODE ─────────────────────────────── */
+html[data-theme=dark]{--cream:#0f1520;--text:#dde4f0;--text-dim:#8899bb;--border:#253048;--gold-lt:#c9a84c}
+html[data-theme=dark] body{background:#0f1520;color:#dde4f0}
+html[data-theme=dark] #main{background:#0f1520}
+html[data-theme=dark] h1,html[data-theme=dark] h2{color:#e8d5a3}
+html[data-theme=dark] h3{color:#e8d5a3;border-bottom-color:var(--gold)}
+html[data-theme=dark] h4{color:#b8ccee;border-left-color:var(--gold)}
+html[data-theme=dark] p,html[data-theme=dark] li,html[data-theme=dark] td{color:#dde4f0}
+html[data-theme=dark] strong{color:#e8d5a3}
+html[data-theme=dark] em{color:#b8ccee}
+html[data-theme=dark] .callout{background:linear-gradient(135deg,#1a2436,#1e2d45);border-left-color:var(--gold);color:#dde4f0}
+html[data-theme=dark] .callout p{color:#dde4f0}
+html[data-theme=dark] blockquote{background:#1a2436;border-left-color:var(--gold);color:#b0c0d8}
+html[data-theme=dark] table{background:#131c2b}
+html[data-theme=dark] th{background:#1a2744;color:#e8d5a3;border-color:#253048}
+html[data-theme=dark] td{border-color:#253048}
+html[data-theme=dark] tr:nth-child(even) td{background:#1a2436}
+html[data-theme=dark] .highlight,.highlight-box{background:#1a2436!important;border-color:#253048!important;color:#dde4f0!important}
+html[data-theme=dark] #back-top{background:#1a2744;color:var(--gold);border:1px solid rgba(201,168,76,.4)}
+html[data-theme=dark] ul.content-list li,html[data-theme=dark] ol.content-list li{color:#dde4f0}
+html[data-theme=dark] .chapter-hero{background:linear-gradient(135deg,#0a1228 0%,#142040 100%)}
+html[data-theme=dark] .exercise-card{background:#1a2436;border-color:#253048}
+html[data-theme=dark] .answer-box{background:#152035;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] .answer-box p{color:#dde4f0}
+/* theme toggle button */
+#theme-btn{position:absolute;top:.65rem;right:.7rem;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.35);color:var(--gold);width:28px;height:28px;border-radius:5px;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+#theme-btn:hover{background:rgba(201,168,76,.2)}
+#sidebar-header{position:relative}
+
+/* ── HIGHLIGHT SYSTEM ─────────────────────────────────── */
+mark.hl{border-radius:2px;cursor:pointer;padding:1px 0;background:transparent}
+mark.hl[data-color=yellow]{background:rgba(255,241,118,.75)}
+mark.hl[data-color=green]{background:rgba(165,214,167,.75)}
+mark.hl[data-color=red]{background:rgba(239,154,154,.75)}
+mark.hl::after{display:none}
+mark.hl[data-note]:not([data-note=""])::after{content:"✏";font-size:.6rem;vertical-align:super;margin-left:1px;opacity:.65;display:inline}
+/* selection popup */
+#hl-popup{position:fixed;z-index:9999;background:#1a2744;border:1px solid rgba(201,168,76,.5);border-radius:8px;padding:.45rem .6rem;display:flex;align-items:center;gap:.35rem;box-shadow:0 4px 20px rgba(0,0,0,.4);pointer-events:all}
+#hl-popup.hidden{display:none!important}
+.hl-color-btn{width:24px;height:24px;border-radius:50%;border:2px solid rgba(255,255,255,.25);cursor:pointer;transition:transform .15s,border-color .15s;flex-shrink:0}
+.hl-color-btn:hover{transform:scale(1.2);border-color:rgba(255,255,255,.7)}
+.hl-color-btn[data-color=yellow]{background:#fff176}
+.hl-color-btn[data-color=green]{background:#a5d6a7}
+.hl-color-btn[data-color=red]{background:#ef9a9a}
+.hl-sep{width:1px;height:20px;background:rgba(255,255,255,.2);margin:0 .1rem}
+.hl-note-btn{background:none;border:none;color:rgba(255,255,255,.7);font-size:.9rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-note-btn:hover{color:#fff;background:rgba(255,255,255,.1)}
+.hl-del-btn{background:none;border:none;color:rgba(239,154,154,.8);font-size:.85rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-del-btn:hover{color:#ef9a9a;background:rgba(239,154,154,.12)}
+/* note modal */
+#hl-note-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center}
+#hl-note-modal.hidden{display:none!important}
+#hl-note-box{background:#fff;border-radius:10px;padding:1.4rem;width:min(420px,90vw);box-shadow:0 8px 32px rgba(0,0,0,.25)}
+#hl-note-box h3{font-size:.95rem;color:#1a2744;margin-bottom:.7rem;font-family:'Merriweather',serif}
+#hl-note-ta{width:100%;border:1px solid #d4c89a;border-radius:6px;padding:.6rem .8rem;font-size:.88rem;font-family:'Source Sans 3',sans-serif;resize:vertical;min-height:80px;color:#2c2c2c;outline:none}
+#hl-note-ta:focus{border-color:#c9a84c;box-shadow:0 0 0 2px rgba(201,168,76,.25)}
+.hl-note-actions{display:flex;justify-content:flex-end;gap:.6rem;margin-top:.8rem}
+.hl-note-cancel{background:transparent;border:1px solid #ccc;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+.hl-note-save{background:#1a2744;color:#fff;border:none;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+/* highlights panel */
+#hl-panel{position:fixed;top:0;right:0;bottom:0;width:300px;background:#fff;border-left:3px solid var(--gold);z-index:500;display:flex;flex-direction:column;box-shadow:-4px 0 20px rgba(0,0,0,.15);transform:translateX(100%);transition:transform .25s}
+#hl-panel.open{transform:translateX(0)}
+#hl-panel-hdr{background:#1a2744;padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--gold)}
+#hl-panel-hdr h3{font-size:.88rem;color:#fff;font-family:'Source Sans 3',sans-serif;font-weight:700;letter-spacing:.05em}
+#hl-panel-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.2rem;cursor:pointer;padding:.2rem;line-height:1}
+#hl-panel-close:hover{color:#fff}
+#hl-panel-list{flex:1;overflow-y:auto;padding:.6rem}
+#hl-panel-list:empty::before{content:"Chưa có ghi chú nào trong chương này.";font-size:.82rem;color:#999;display:block;padding:.8rem;text-align:center;font-style:italic}
+.hl-item{padding:.65rem .8rem;border-radius:6px;margin-bottom:.5rem;border-left:4px solid #ddd;background:#fafafa;cursor:pointer;transition:background .15s}
+.hl-item:hover{background:#f0f0f0}
+.hl-item[data-color=yellow]{border-left-color:#fdd835}
+.hl-item[data-color=green]{border-left-color:#66bb6a}
+.hl-item[data-color=red]{border-left-color:#ef5350}
+.hl-item-text{font-size:.8rem;color:#2c2c2c;line-height:1.5;margin-bottom:.3rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.hl-item-note{font-size:.75rem;color:#666;font-style:italic;margin-bottom:.3rem}
+.hl-item-del{float:right;background:none;border:none;color:#bbb;cursor:pointer;font-size:.8rem;padding:.1rem .3rem;border-radius:3px;line-height:1}
+.hl-item-del:hover{color:#ef5350;background:rgba(239,83,80,.08)}
+/* sidebar hl badge */
+#hl-sidebar-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:var(--gold);cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#hl-sidebar-btn:hover{background:rgba(201,168,76,.1)}
+#hl-badge{background:rgba(201,168,76,.2);color:var(--gold);font-size:.65rem;font-weight:700;padding:.1rem .4rem;border-radius:10px;min-width:18px;text-align:center}
+html[data-theme=dark] #hl-note-box{background:#1a2436;border:1px solid #253048}
+html[data-theme=dark] #hl-note-box h3{color:#e8d5a3}
+html[data-theme=dark] #hl-note-ta{background:#0f1520;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] #hl-panel{background:#131c2b;border-left-color:var(--gold)}
+html[data-theme=dark] .hl-item{background:#1a2436;border-bottom:1px solid #1e2d45}
+html[data-theme=dark] .hl-item:hover{background:#1e2d45}
+html[data-theme=dark] .hl-item-text{color:#dde4f0}
+html[data-theme=dark] .hl-item-note{color:#8899bb}
+html[data-theme=dark] .hl-note-cancel{border-color:#253048;color:#dde4f0;background:#1a2436}
+html[data-theme=dark] .hl-note-save{background:#c9a84c;color:#0a0f1a}
+
+/* ── CHAPTER NAV PANEL ─────────────────────────────────── */
+#chap-panel{position:fixed;inset:0;z-index:9000;display:flex;align-items:stretch}
+#chap-panel.hidden{display:none!important}
+#chap-panel-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);cursor:pointer}
+#chap-panel-box{position:relative;z-index:1;width:min(360px,90vw);background:#0f1d3a;border-right:3px solid var(--gold);display:flex;flex-direction:column;animation:slideInLeft .2s ease}
+@keyframes slideInLeft{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+#chap-panel-hdr{background:linear-gradient(135deg,#0a1228,#1a2744);padding:1.2rem 1.3rem;border-bottom:2px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
+#chap-panel-hdr h3{font-family:'Source Sans 3',sans-serif;font-size:.85rem;font-weight:700;color:#fff;letter-spacing:.1em;text-transform:uppercase}
+#chap-panel-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.3rem;cursor:pointer;padding:.2rem;line-height:1;transition:color .15s}
+#chap-panel-close:hover{color:#fff}
+#chap-panel-list{flex:1;overflow-y:auto;padding:.5rem 0}
+.chap-panel-item{display:flex;align-items:center;gap:.8rem;padding:.7rem 1.3rem;cursor:pointer;transition:background .15s;border-left:3px solid transparent;text-decoration:none}
+.chap-panel-item:hover{background:rgba(201,168,76,.1);border-left-color:var(--gold)}
+.chap-panel-item.active{background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+.cpanel-num{font-family:'Source Sans 3',sans-serif;font-size:.7rem;font-weight:700;color:var(--gold);min-width:28px;flex-shrink:0}
+.cpanel-title{font-family:'Source Sans 3',sans-serif;font-size:.8rem;color:#ccd4e8;line-height:1.35}
+.cpanel-item-active .cpanel-title{color:#fff;font-weight:600}
+.cpanel-status{margin-left:auto;font-size:.72rem;flex-shrink:0;opacity:.6}
+
+/* ── GITHUB SYNC ──────────────────────────────────── */
+#sync-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:#8899bb;cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s,color .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#sync-btn:hover{background:rgba(201,168,76,.08);color:var(--gold)}
+#sync-btn[data-state=ok]{color:#4caf50}
+#sync-btn[data-state=syncing]{color:var(--gold)}
+#sync-btn[data-state=err]{color:#ef5350}
+#sync-btn[data-state=no-token]{color:#8899bb}
+#sync-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center}
+#sync-modal.hidden{display:none!important}
+#sync-modal-box{background:#0f1d3a;border:2px solid var(--gold);border-radius:10px;padding:1.8rem 2rem;width:min(420px,90vw);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+#sync-modal-box h3{font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:.9rem;text-transform:uppercase;letter-spacing:.1em}
+#sync-modal-box p{font-size:.77rem;color:#aab8d0;line-height:1.6;margin-bottom:.9rem}
+#sync-modal-box input{width:100%;background:#0a1228;border:1px solid rgba(201,168,76,.4);color:#fff;font-family:monospace;font-size:.8rem;padding:.55rem .8rem;border-radius:5px;outline:none;margin-bottom:.8rem;box-sizing:border-box}
+#sync-modal-box input:focus{border-color:var(--gold)}
+.sync-modal-btns{display:flex;gap:.6rem;justify-content:flex-end;flex-wrap:wrap}
+.sync-modal-btns button{font-family:'Source Sans 3',sans-serif;font-size:.77rem;font-weight:700;padding:.42rem .9rem;border-radius:5px;cursor:pointer;border:none;transition:background .15s}
+#sync-save-btn{background:var(--gold);color:#0a0f1a}
+#sync-save-btn:hover{background:#e8c47a}
+#sync-cancel-btn{background:rgba(255,255,255,.1);color:#aab8d0}
+#sync-cancel-btn:hover{background:rgba(255,255,255,.18)}
+#sync-clear-btn{background:rgba(239,83,80,.18);color:#ef9090;margin-right:auto}
+#sync-clear-btn:hover{background:rgba(239,83,80,.32)}
+</style>
+<script>
+(function(){var t=localStorage.getItem('rita_theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+</script>
+</head><body>
+<div id="progress-bar"></div>
+<button id="menu-btn" aria-label="Menu">☰</button>
+<aside id="sidebar"><div id="sidebar-header">
+  <div class="book-label">Rita PMP® Exam Prep</div>
+  <h2>Ôn Thi PMP®</h2>
+  <div class="edition">Rita Mulcahy · 11th Edition 2023 · Tiếng Việt</div>
+</div>
+<div id="sidebar-toc">
+  <div class="toc-group-label">Nội Dung Chương</div>
+  <a href="#ch1-tricks-of-the-trade-for-studying-for-the-pmp-exam" class="">Bí Quyết Học Thi Chứng Chỉ PMP®</a>
+<a href="#ch1-quicktest" class="toc-h4">KIỂM TRA NHANH</a>
+<a href="#ch1-applying-to-take-the-exam" class="toc-h4">Đăng Ký Dự Thi</a>
+<a href="#ch1-how-this-book-is-organized" class="toc-h4">Cấu Trúc Của Cuốn Sách Này</a>
+<a href="#ch1-rmc-resources-web-page" class="toc-h4">Trang Web Tài Nguyên của RMC</a>
+<a href="#ch1-what-is-the-pmp-exam-like" class="toc-h4">Kỳ Thi PMP Như Thế Nào?</a>
+<a href="#ch1-additional-important-aspects-of-the-exam" class="toc-h4">Các Khía Cạnh Quan Trọng Khác của Kỳ Thi</a>
+<a href="#ch1-question-examples" class="toc-h4">Ví Dụ Câu Hỏi</a>
+<a href="#ch1-questions-in-different-format-types" class="toc-h4">Câu Hỏi Theo Các Định Dạng Khác Nhau</a>
+<a href="#ch1-recurring-themes-pmi-isms" class="toc-h4">Các Chủ Đề Lặp Đi Lặp Lại — Những "PMI-isms" Cần Biết Cho Kỳ Thi PMP</a>
+<a href="#ch1-planning-the-project" class="toc-h4">Lập Kế Hoạch Dự Án</a>
+<a href="#ch1-while-the-project-work-is-being-done" class="toc-h4">Trong Khi Công Việc Dự Án Đang Được Thực Hiện</a>
+<a href="#ch1-closing-the-project" class="toc-h4">Kết Thúc Dự Án</a>
+<a href="#ch1-how-to-study-for-the-pmp-exam" class="toc-h4">Cách Học Cho Kỳ Thi PMP</a>
+<a href="#ch1-your-step-by-step-study-plan" class="toc-h4">Kế Hoạch Học Tập Từng Bước Của Bạn</a>
+<a href="#ch1-plan-a-using-this-book-with-the-pmp-exam-prep-system" class="toc-h4">Kế Hoạch A: Sử Dụng Cuốn Sách Này Với Hệ Thống Chuẩn Bị Thi PMP</a>
+<a href="#ch1-plan-b-using-this-book-as-a-stand-alone" class="toc-h4">Kế Hoạch B: Sử Dụng Cuốn Sách Này Như Tài Liệu Độc Lập</a>
+<a href="#ch1-correct-errors-in-understanding" class="">6. Sửa Chữa Những Lỗi Trong Hiểu Biết Của Bạn Về Các Khái Niệm Được Th</a>
+<a href="#ch1-how-to-use-this-book-in-a-study-group" class="toc-h4">Cách Sử Dụng Cuốn Sách Này Trong Nhóm Học Tập</a>
+<a href="#ch1-section-ii-foundations" class="">Phần II</a>
+<a href="#ch1-foundations" class="toc-h4">Nền Tảng</a>
+
+</div>
+<div id="sidebar-nav">
+  <a href="#" class=" disabled"></a>
+  <a href="#" id="chap-muc-luc-btn">☰ Mục lục</a>
+  <a href="rita_chap02.html" class="">Ch2 →</a>
+</div></aside>
+<main id="main">
+  <div class="chapter-hero">
+    <div class="ch-label">Chương 1</div>
+    <h1>Mẹo & Thủ Thuật Ôn Thi PMP®</h1>
+    <div class="ch-en">Tricks of the Trade for Studying</div>
+  </div>
+<h3 id="ch1-tricks-of-the-trade-for-studying-for-the-pmp-exam">Bí Quyết Học Thi Chứng Chỉ PMP®</h3>
+
+<p>Chuẩn bị cho kỳ thi PMP® là một hành trình. Hành trình này có thể giúp bạn phát triển sự nghiệp và nâng cao kỹ năng, năng lực. Đây không chỉ đơn thuần là vượt qua một kỳ thi — bạn có thể trở thành một nhà quản lý dự án giỏi hơn. Cơ hội học hỏi này là một trong những lý do tốt nhất để đạt được chứng chỉ PMP.</p>
+
+<p>Để vượt qua kỳ thi PMP, bạn cần thực sự hiểu các quy trình quản lý dự án, các phương pháp thực hành tốt, cũng như vai trò và trách nhiệm của người quản lý dự án. Bạn cũng cần có khả năng điều chỉnh chiến thuật và chiến lược cho phù hợp với các tình huống mà những dự án khác nhau đặt ra — và với các tình huống khác nhau được trình bày trong các câu hỏi thi. Kỳ thi PMP được thiết kế để kiểm tra kiến thức và kinh nghiệm của bạn trong việc vận dụng nghệ thuật và khoa học quản lý dự án.</p>
+
+<p>Bên cạnh cơ hội học hỏi, còn có những động lực tài chính khi vượt qua kỳ thi. Theo khảo sát lương của Viện Quản lý Dự án (PMI®) năm 2020, trên toàn cầu, các nhà quản lý dự án có chứng chỉ PMP được trả lương cao hơn trung bình 16% so với những người không có chứng chỉ. RMC đã có những học viên nhận được thưởng, tăng lương, hoặc cả hai khi vượt qua kỳ thi. Những người khác cho biết họ đã được nhận việc trước các ứng viên đủ tiêu chuẩn khác vì họ có chứng chỉ PMP. Sở hữu chứng chỉ PMP có thể là lý do bạn được tuyển dụng, giữ được việc làm, hoặc được thăng chức.</p>
+
+<h5>Điều Kiện Dự Thi</h5>
+
+<p>Để dự thi PMP, bạn phải đáp ứng các yêu cầu hiện hành được tóm tắt dưới đây và trong bảng tiếp theo. Các yêu cầu có thể thay đổi, vì vậy hãy đảm bảo bạn xem xét các yêu cầu tại pmi.org, hoặc trong Phác thảo Nội dung Kỳ thi (ECO — Examination Content Outline) của PMI, nơi thông tin này được công bố.</p>
+
+<ul class="content-list">
+<li>Kinh nghiệm lãnh đạo dự án của bạn không được chồng chéo nhau. Ví dụ: Nếu bạn quản lý hai dự án cùng một lúc trong sáu tháng, bạn chỉ có thể sử dụng kinh nghiệm của một trong hai dự án đó cho khoảng thời gian sáu tháng đó.</li>
+<li>Nếu bạn là sinh viên tốt nghiệp từ chương trình Trung tâm Kiểm định Toàn cầu của PMI về Chương trình Giáo dục Quản lý Dự án (GAC), bạn sẽ được cộng thêm 12 tháng vào yêu cầu kinh nghiệm.</li>
+<li>Kinh nghiệm làm việc phải là kinh nghiệm chuyên nghiệp. Ví dụ: Quản lý dự án xây nhà cho bản thân không được tính vào kinh nghiệm làm việc.</li>
+<li>Ngoài nền tảng học vấn và kinh nghiệm làm việc chuyên nghiệp trong bảng ở trang tiếp theo, bạn phải có ít nhất 35 giờ học chính quy về quản lý dự án, trừ khi bạn đang là người sở hữu chứng chỉ CAPM® (Chứng chỉ Cộng sự Quản lý Dự án — Certified Associate in Project Management) còn hiệu lực. Những người đang sở hữu CAPM không cần 35 giờ đào tạo quản lý dự án này.</li>
+<li>Kiểm tra trang web của PMI để đảm bảo rằng các yêu cầu này là hiện tại vì yêu cầu PMP có thể thay đổi.</li>
+</ul>
+
+<h4 id="ch1-quicktest">KIỂM TRA NHANH</h4>
+
+<p>Bạn sẽ tìm thấy danh sách các chủ đề chính được đề cập trong mỗi chương ở đầu mỗi chương. Hãy sử dụng Kiểm tra Nhanh để kiểm tra kiến thức của bạn về các chủ đề đó và khám phá những lỗ hổng trong hiểu biết của bạn.</p>
+
+<div class="table-wrap"><table>
+<tr><th>Nền Tảng Học Vấn</th><th>Kinh Nghiệm Làm Việc Quản Lý Dự Án</th></tr>
+<tr><td>• Bằng trung học phổ thông (bằng tốt nghiệp trung học, bằng cao đẳng hoặc tương đương toàn cầu)</td><td>• Tối thiểu 5 năm / 60 tháng kinh nghiệm quản lý dự án chuyên nghiệp, không trùng lặp và không chồng chéo</td></tr>
+<tr><td>HOẶC</td><td></td></tr>
+<tr><td>• Bằng 4 năm (cử nhân hoặc tương đương toàn cầu)</td><td>• Tối thiểu 3 năm / 36 tháng kinh nghiệm quản lý dự án chuyên nghiệp, không trùng lặp và không chồng chéo</td></tr>
+<tr><td>HOẶC</td><td></td></tr>
+<tr><td>• Bằng cử nhân hoặc sau đại học từ chương trình được kiểm định GAC (cử nhân, thạc sĩ hoặc tương đương toàn cầu)</td><td>• Tối thiểu 2 năm / 24 tháng kinh nghiệm quản lý dự án chuyên nghiệp, không trùng lặp và không chồng chéo</td></tr>
+</table></div>
+
+<p>Cuốn sách này sẽ giúp bạn làm quen với các thực hành và thuật ngữ quản lý dự án cần thiết để vượt qua kỳ thi. Nếu bạn chưa đáp ứng các yêu cầu tối thiểu được liệt kê trong bảng trên, hãy cân nhắc thi chứng chỉ CAPM của PMI. Bạn có thể tìm thấy các yêu cầu cho kỳ thi CAPM tại pmi.org.</p>
+
+<h4 id="ch1-applying-to-take-the-exam">Đăng Ký Dự Thi</h4>
+
+<p>Đơn đăng ký dự thi phải được nộp trực tuyến cho PMI. Đây là quy trình sau khi bạn nộp đơn:</p>
+
+<ul class="content-list">
+<li>Bạn phải đăng nhập vào PMI.org để xem trạng thái đơn của bạn có được "chấp nhận" không.</li>
+<li>Sau khi tư cách dự thi của bạn được xác minh, bạn cần thanh toán phí thi.</li>
+<li>Sau khi thanh toán phí thi, bạn có thể đặt lịch thi tại trung tâm kiểm tra. Ngoài ra, có tùy chọn thi trực tuyến từ nhà hoặc văn phòng của bạn.</li>
+<li>Sau khi nhận được giấy phép dự thi PMP, bạn phải vượt qua kỳ thi trong vòng một năm. Bạn có thể thi tối đa ba lần trong năm đó.</li>
+<li>Nếu bạn trượt kỳ thi ba lần, bạn phải đợi một năm để nộp lại đơn dự thi.</li>
+</ul>
+
+<p><em>Một tỷ lệ phần trăm các ứng viên được chọn ngẫu nhiên để kiểm tra hồ sơ. Nếu bạn được chọn kiểm tra, bạn sẽ cần cung cấp cho PMI bản sao bằng cấp của bạn, xác nhận kinh nghiệm của bạn từ người quản lý, và bằng chứng về 35 giờ đào tạo (có ngoại lệ cho 35 giờ đào tạo này đối với những người đang sở hữu chứng chỉ CAPM).</em></p>
+
+<p>Có các quy tắc và hướng dẫn cụ thể cho từng loại kỳ thi (trực tuyến hoặc tại trung tâm kiểm tra). Đối với thi trực tuyến, rất khuyến khích bạn kiểm tra hệ thống máy tính với hệ thống thi của họ trước ngày thi. Trong hầu hết các trường hợp, xác nhận lịch thi của bạn sẽ cung cấp cho bạn thông tin chi tiết cụ thể. Hãy tham khảo cẩm nang chứng chỉ của PMI và truy cập pmi.org để biết thông tin chi tiết và cập nhật nhất về các tùy chọn kiểm tra, địa điểm và ngôn ngữ thi có sẵn.</p>
+
+<h5>Bạn Đã Sẵn Sàng Cho Kỳ Thi PMP Chưa?</h5>
+
+<p>Theo kinh nghiệm của chúng tôi, một nửa số người trượt kỳ thi là do họ chưa được đào tạo cơ bản về quản lý dự án, hoặc chưa có kinh nghiệm và đào tạo sử dụng thuật ngữ và khái niệm của PMI. Đây là một yếu tố nghiêm trọng cần cân nhắc khi xác định liệu bạn đã sẵn sàng dự thi chưa. Cuốn sách Chuẩn bị Thi PMP® này sẽ giúp bạn hiểu quản lý dự án từ góc độ của PMI; tuy nhiên, nếu bạn thấy rằng nhiều khái niệm và thuật ngữ được trình bày trong cuốn sách này còn mới với bạn — hoặc bạn không sử dụng nhiều phương pháp được thảo luận trong cuốn sách này (chẳng hạn như điều lệ dự án, WBS (cấu trúc phân tích công việc) hoặc backlog (danh sách tồn đọng) được ưu tiên, sơ đồ mạng và các kế hoạch quản lý) — bạn có lẽ cần được đào tạo cơ bản về quản lý dự án trước khi tiếp tục học.</p>
+
+<p>Những người khác trượt kỳ thi không có đủ kinh nghiệm thực tế về quản lý dự án và không hiểu phạm vi các loại dự án và phương pháp phát triển có thể có. Thay vào đó, họ có thể đang quản lý các dự án rất nhỏ hoặc các quy trình có thể lặp lại. Một số thậm chí có thể không làm việc với vai trò quản lý dự án. Trong kỳ thi, bạn sẽ cần nhận ra từ thông tin trong các câu hỏi tình huống loại dự án mà câu hỏi đang đề cập và trả lời từ góc độ đó. Đó có thể là một dự án lớn sử dụng phương pháp quản lý dự án dựa trên kế hoạch, một dự án sử dụng phương pháp agile (linh hoạt), hoặc một phương pháp kết hợp hai cách tiếp cận. Càng có nhiều kinh nghiệm với nhiều phương pháp quản lý dự án khác nhau, bạn sẽ càng được chuẩn bị tốt hơn cho kỳ thi.</p>
+
+<p>Sau đây là các ví dụ về các dự án có khả năng sử dụng phương pháp dựa trên kế hoạch:</p>
+
+<ul class="content-list">
+<li>Xây dựng một cây cầu</li>
+<li>Thiết kế và xây dựng một tòa nhà mới</li>
+</ul>
+
+<p>Sau đây là các ví dụ về các dự án có khả năng sử dụng phương pháp agile:</p>
+
+<ul class="content-list">
+<li>Tạo ra một sản phẩm mới không cần có tất cả các tính năng trước lần phát hành đầu tiên, mà có thể được phát hành với một tập hợp các tính năng quan trọng đã xác định</li>
+<li>Bàn giao một giải pháp theo từng phần nhỏ trong khi phạm vi dự án đang được định hình dần</li>
+</ul>
+
+<p>Sau đây là các ví dụ về các dự án hoặc chương trình sử dụng phương pháp kết hợp (hybrid):</p>
+
+<ul class="content-list">
+<li>Việc xây dựng một tòa nhà mới sử dụng phương pháp dựa trên kế hoạch. Sau đó, việc phân chia và hoàn thiện bên trong tòa nhà thành các văn phòng được thực hiện theo từng vòng lặp và gia tăng khi các hợp đồng thuê được ký kết.</li>
+<li>Một sản phẩm phần mềm nội bộ cho một tổ chức lớn được phát triển và thử nghiệm bằng phương pháp dựa trên kế hoạch. Sau đó nó được triển khai cho một nhóm nhỏ người dùng cuối thí điểm. Vào cuối giai đoạn dự đoán và thí điểm này, việc cài đặt và đào tạo phần mềm đã được kiểm nghiệm thực tế. Việc cài đặt và đào tạo cho phần còn lại của tổ chức có thể được thực hiện theo từng bộ phận và từng văn phòng cho đến khi hoàn tất triển khai.</li>
+<li>Một dự án công nghệ rất lớn có thể có nhiều "nhóm tính năng" thích ứng, mỗi nhóm được giao phát triển các thành phần phần mềm khác nhau. Công việc quản lý dự án tích hợp các tính năng do các nhóm tính năng tạo ra có thể được thực hiện bằng các phương pháp agile trong khi việc phát triển diễn ra. Các phương pháp dự đoán có thể được sử dụng để triển khai giải pháp cho các nhóm người dùng.</li>
+</ul>
+
+<p>Chiều sâu kiến thức và sự hiểu biết về quản lý dự án của bạn đến đâu? Hãy suy nghĩ về đào tạo và kinh nghiệm quản lý dự án của bạn khi xem xét danh sách tự đánh giá sau. Bạn có hiểu hầu hết các chủ đề này không, và bạn có đang áp dụng nhiều phương pháp có trong các danh sách này khi làm việc với dự án của mình không?</p>
+
+<p>Cuốn sách này sẽ giúp bạn tìm và lấp đầy những lỗ hổng trong kiến thức quản lý dự án cần thiết để áp dụng vào các câu hỏi thi tình huống nhằm vượt qua kỳ thi. Tuy nhiên, giả định ban đầu là với kinh nghiệm và học vấn quản lý dự án của bạn, bạn đã quen thuộc với nhiều khái niệm trong số này. Bạn càng xác định được nhiều lỗ hổng, bạn càng cần nỗ lực nhiều hơn cho việc chuẩn bị thi. Hầu hết các chương trong cuốn sách này sẽ cung cấp một Kiểm tra Nhanh, hoặc danh sách các khái niệm có trong chương đó. Hãy sử dụng công cụ đó và các hướng dẫn khác mà chúng tôi cung cấp để đảm bảo bạn đang lấp đầy những lỗ hổng khi làm việc với tài liệu trong cuốn sách này.</p>
+
+<h5>Danh Sách Tự Đánh Giá</h5>
+
+<p>Danh sách kiểm tra sau đây cung cấp ý tưởng về chiều rộng kiến thức và việc áp dụng kỹ năng cần thiết để vượt qua kỳ thi. Nếu bạn hiểu một mục trong danh sách, hãy đánh dấu nó để bạn có thể chú ý đến những mục mà bạn có lỗ hổng kiến thức.</p>
+
+<ul class="content-list">
+<li>Quản lý một dự án với sự khẩn trương cần thiết để bàn giao các lợi ích và giá trị mà dự án được lựa chọn để thực hiện.</li>
+<li>Sử dụng quy trình quản lý dự án có hệ thống, được thúc đẩy bởi kế hoạch, và hiểu tại sao mỗi bước là cần thiết. Hãy nghĩ về điều này khi bạn xem xét Mô hình Nhóm Quy trình của PMI trong chương "Tài liệu tham khảo Kỳ thi PMP® trong Ngữ cảnh" và các nơi khác trong cuốn sách này. Các phương pháp dựa trên kế hoạch và phương pháp agile sẽ được xác định và so sánh.</li>
+<li>Triết lý agile cho quản lý dự án, và các thực hành agile tốt từ nhiều phương pháp agile khác nhau, bao gồm Scrum, Lean và Kanban.</li>
+<li>Vai trò của người quản lý dự án, nhà tài trợ, chủ sản phẩm (product owner), nhóm và các bên liên quan (stakeholders).</li>
+<li>Việc sử dụng thông tin lịch sử từ các dự án trước đây, bao gồm các bài học kinh nghiệm (lessons learned).</li>
+<li>Điều lệ dự án (project charter) chính thức là gì và biết những gì nó yêu cầu.</li>
+<li>Ưu tiên hóa các ràng buộc dự án đầy đủ để cân bằng và quản lý các ràng buộc cạnh tranh.</li>
+<li>Cấu trúc phân tích công việc (WBS — work breakdown structure) là gì và cách tạo ra nó.</li>
+<li>Tạo tầm nhìn sản phẩm và dự án đủ để tạo ra lộ trình sản phẩm ở cấp độ cao.</li>
+<li>Sử dụng backlog tính năng sản phẩm được ưu tiên, điều chỉnh theo rủi ro để tạo các câu chuyện (stories) cho các vòng lặp phát triển sản phẩm.</li>
+<li>Hiểu mối quan hệ kết nối liên thông của các hoạt động (phụ thuộc) để tạo sơ đồ mạng cho dự án dựa trên kế hoạch.</li>
+<li>Con đường tới hạn (critical path) là gì, cách tìm nó và những lợi ích nó mang lại cho người quản lý dự án.</li>
+<li>Sử dụng nhiều kỹ thuật ước lượng khác nhau, bao gồm ước lượng sơ bộ (ROM — rough order of magnitude), ước lượng ba điểm (three-point estimating), hoặc ước lượng tương đối như phân loại theo mức độ tương đồng và ước lượng điểm câu chuyện (story point).</li>
+<li>Thực hiện phân tích và quản lý giá trị thu được (earned value).</li>
+<li>Thực hiện phân tích "nếu-thì" (what-if) về lịch trình và nén lịch trình (crashing và fast tracking).</li>
+<li>Quản lý khoảng dự phòng (float) của dự án và các hoạt động không có khoảng dự phòng.</li>
+<li>Tạo lịch trình thực tế.</li>
+<li>Quản lý chất lượng của cả dự án và các sản phẩm bàn giao (deliverables) kết quả.</li>
+<li>Phát triển mối quan hệ với các bên liên quan và giữ cho họ quan tâm và tham gia vào dự án.</li>
+<li>Sử dụng các cuộc họp và vòng phản hồi cần thiết để tiến bộ liên tục và cải tiến liên tục trong các dự án agile — ví dụ: họp đứng hàng ngày (daily standup), xem xét vòng lặp (iteration review) và cải tiến từ bài học kinh nghiệm (iteration retrospective).</li>
+<li>Sử dụng các công cụ bức xạ thông tin (information radiators) để cập nhật thông tin và thu hút các bên liên quan.</li>
+<li>Hiểu quy trình quản lý rủi ro.</li>
+<li>Tính toán dự phòng và hiểu mối quan hệ của chúng với quản lý rủi ro.</li>
+<li>Tạo kế hoạch quản lý dự án thực tế và được phê duyệt mà bạn sẵn sàng chịu trách nhiệm thực hiện.</li>
+<li>Giám sát và kiểm soát dự án theo kế hoạch quản lý dự án.</li>
+<li>Quản lý các yêu cầu thay đổi và kiểm soát sự thay đổi.</li>
+<li>Lập kế hoạch và phát triển theo từng vòng lặp và gia tăng đối với các dự án thay đổi theo yêu cầu.</li>
+<li>Hiểu trách nhiệm lãnh đạo chuyên nghiệp và xã hội được kỳ vọng từ một nhà quản lý dự án.</li>
+<li>Đảm bảo rằng các vai trò và trách nhiệm rõ ràng và các thành viên nhóm được đào tạo và định hướng phù hợp về dự án cũng như vòng đời và phương pháp phát triển được chọn.</li>
+</ul>
+
+<h5>Cách Sử Dụng Cuốn Sách Này</h5>
+
+<p>Đầu tiên, hãy đảm bảo bạn có tài liệu mới nhất. Phiên bản này của cuốn sách Chuẩn bị Thi PMP® phù hợp với Phác thảo Nội dung Kỳ thi (ECO) cho các kỳ thi được tổ chức sau tháng 1 năm 2021. Nó cũng sử dụng các khái niệm được tìm thấy trong các tài liệu từ PMI:</p>
+
+<ul class="content-list">
+<li>Hướng dẫn PMBOK® Phiên bản Thứ Bảy (©2021)</li>
+<li>Tiêu chuẩn về Quản lý Dự án (được xuất bản cùng với Hướng dẫn PMBOK®)</li>
+<li>Nhóm Quy trình: Hướng dẫn Thực hành (Process Groups: A Practice Guide) (©2023)</li>
+<li>Hướng dẫn Thực hành Agile (Agile Practice Guide) (©2017)</li>
+</ul>
+
+<p>Điều này có nghĩa là bạn phải đọc tất cả các tài liệu này không? Không! Chúng tôi đã nghiên cứu những gì bạn cần biết cho kỳ thi và đã cung cấp thông tin đó trong cuốn sách này.</p>
+
+<h5>Cách Sử Dụng Thuật Ngữ</h5>
+
+<p>Điều quan trọng là phải định nghĩa một số thuật ngữ ngay từ đầu. Chúng tôi đã liệt kê chúng ở đây. Bạn sẽ tìm thấy các thuật ngữ khác được mô tả trong chương có ngữ cảnh phù hợp nhất. Nếu một thuật ngữ không được định nghĩa, chúng tôi có thể đã giả định rằng đó là thuật ngữ quản lý dự án cơ bản và hầu hết mọi người đều hiểu nó như kiến thức phổ thông. PMI cung cấp Từ điển Thuật ngữ Quản lý Dự án trong danh sách các tiêu chuẩn và xuất bản phẩm của họ (trên pmi.org).</p>
+
+<p><strong>Môi Trường Dự Án và Phương Pháp Quản Lý Dự Án</strong></p>
+
+<p><strong>Môi trường dự án</strong> Một số tổ chức sử dụng một loại phương pháp quản lý dự án duy nhất, như phương pháp dựa trên kế hoạch hoặc agile. Các tổ chức khác sử dụng nhiều phương pháp khác nhau trên phổ từ dựa trên kế hoạch đến agile và hybrid. Điều này phụ thuộc vào nhiều yếu tố, bao gồm loại tổ chức, loại sản phẩm hoặc dịch vụ mà tổ chức tạo ra và hỗ trợ, quản trị tổ chức, và đặc điểm của các dự án mà tổ chức cần hoàn thành để đạt được các mục tiêu chiến lược và mang lại giá trị cho các bên liên quan.</p>
+
+<p><strong>Phương pháp tiếp cận dự án</strong> (hoặc phương pháp phát triển) Điều này đề cập đến cách tiếp cận có chọn lọc về quản lý dự án và phát triển sản phẩm dựa trên loại, kích thước, mức độ ưu tiên và độ phức tạp của một dự án cụ thể. Trong số các cân nhắc khác, phương pháp tiếp cận dự án thường được chọn dựa trên khả năng xác định chính xác phạm vi và các ràng buộc dự án khác ở giai đoạn đầu của dự án. Có một phổ các phương pháp từ dựa trên kế hoạch đến agile và hybrid.</p>
+
+<p>Khi chúng ta nói về môi trường dự án, chúng ta đang tổng quát hóa về phương pháp quản lý dự án (hoặc phát triển) mà một tổ chức có xu hướng sử dụng hoặc đang sử dụng cho nhiều dự án tại thời điểm hiện tại. Trong ngôn ngữ hàng ngày, thuật ngữ này được sử dụng khác nhau tùy thuộc vào tổ chức, văn phòng quản lý dự án (PMO), hoặc nhóm dự án. Để nhất quán và tránh nhầm lẫn trong cuốn sách này, chúng tôi sử dụng thuật ngữ sau để mô tả môi trường dự án và phương pháp quản lý dự án:</p>
+
+<ul class="content-list">
+<li><strong>Môi trường</strong> Chúng tôi mô tả môi trường dự án là dự đoán (predictive), thích ứng (adaptive) hoặc kết hợp (hybrid).</li>
+<li><strong>Phương pháp tiếp cận</strong> Chúng tôi mô tả các phương pháp quản lý dự án là dựa trên kế hoạch (plan-driven), agile hoặc kết hợp (hybrid).</li>
+</ul>
+
+<div class="callout"><p>Phương pháp dựa trên kế hoạch còn được gọi là truyền thống hoặc thác nước (waterfall) (hay dự đoán).</p>
+<p>Phương pháp agile còn có thể được gọi là thích ứng (adaptive). Một số người dùng các thuật ngữ agile và Scrum thay thế cho nhau, mặc dù Scrum là một phương pháp agile cụ thể.</p></div>
+
+<p><strong>Vòng đời dự án</strong> Vòng đời là sự tiến triển qua một loạt các giai đoạn phát triển. Vòng đời phát triển dự án phản ánh phương pháp luận của tổ chức thực hiện để quản lý một dự án. Đó là sự phân tích hợp lý về những gì người quản lý dự án cần làm để tạo ra các sản phẩm bàn giao của dự án, và được chọn dựa trên các yếu tố như loại sản phẩm đang được phát triển, ngành công nghiệp, sở thích của tổ chức và phương pháp phát triển.</p>
+
+<p>Vòng đời dự án có thể sử dụng phương pháp phát triển dựa trên kế hoạch hoặc phương pháp phát triển theo sự thay đổi, hoặc kết hợp cả hai. Một ví dụ về vòng đời phát triển sản phẩm mới có thể bao gồm các giai đoạn sau: nghiên cứu, thiết kế, xây dựng, kiểm thử và triển khai.</p>
+
+<h4 id="ch1-how-this-book-is-organized">Cấu Trúc Của Cuốn Sách Này</h4>
+
+<p>Cuốn sách này chứa sáu phần nội dung liên quan đến kỳ thi.</p>
+
+<h5>Phần I: Bí Quyết Học Thi Chứng Chỉ PMP®</h5>
+
+<p>Đây là chương duy nhất trong phần này.</p>
+
+<h5>Phần II: Nền Tảng</h5>
+
+<p>Đây là phần bạn sẽ học kiến thức nền tảng cần thiết để hiểu phần còn lại của nội dung cuốn sách này và bắt đầu chuẩn bị cho kỳ thi.</p>
+
+<p><strong>"Tài liệu tham khảo Kỳ thi trong Ngữ cảnh"</strong> Chương này cung cấp thông tin nền tảng về:</p>
+
+<ul class="content-list">
+<li>Phác thảo Nội dung Kỳ thi (ECO) — là tài liệu mà các tác giả câu hỏi thi được chỉ dẫn sử dụng khi soạn câu hỏi.</li>
+<li>Mô hình Nhóm Quy trình của PMI — được tìm thấy trong cuốn sách của PMI, <em>Process Groups: A Practice Guide</em> (Nhóm Quy trình: Hướng dẫn Thực hành). Chúng tôi gọi nội dung của <em>Process Groups: A Practice Guide</em> là "mô hình Nhóm Quy trình" vì chúng tôi xem đây là mô hình học tập tuyệt vời cho các phương pháp dựa trên kế hoạch, chiếm tỷ lệ lớn trong các câu hỏi thi. Việc hiểu mô hình Nhóm Thực hành cũng sẽ giúp bạn hiểu các nhiệm vụ của ECO, và nó cũng cung cấp thông tin cho nhiều thực hành được hiểu là một phần của các thành phần dựa trên kế hoạch trong các phương pháp quản lý dự án kết hợp.</li>
+<li>Biểu đồ Quy trình của Rita™ — một công cụ học tập quan trọng đã giúp hàng nghìn học viên chuẩn bị cho kỳ thi bằng cách tóm tắt phương pháp quản lý dự án dựa trên kế hoạch chi tiết.</li>
+<li>Biểu đồ Quy trình Agile của Rita™ — một công cụ học tập quan trọng khác sẽ giúp học viên chuẩn bị cho kỳ thi bằng cách tóm tắt phương pháp quản lý dự án agile.</li>
+<li>Tổng quan về Phương pháp Agile.</li>
+<li>Tổng quan về Phương pháp Kết hợp (Hybrid).</li>
+<li>Tổng quan về Hướng dẫn PMBOK® Phiên bản Thứ Bảy.</li>
+</ul>
+
+<p><strong>"Nền tảng Quản lý Dự án"</strong> Chương này thảo luận về các khái niệm cơ bản như dự án, chương trình, danh mục đầu tư, quản trị tổ chức và dự án. Nó cũng thảo luận về các loại tổ chức, lựa chọn dự án và vai trò cũng như trách nhiệm trong dự án.</p>
+
+<p><strong>"Tích hợp"</strong> Chương này thảo luận về công việc quan trọng nhất của người quản lý dự án, đó là cung cấp sự lãnh đạo cần thiết để kết hợp nhu cầu của nhiều bên liên quan và công việc của các chuyên gia nhóm lại với nhau thành một tổng thể gắn kết để bàn giao thành công giá trị kinh doanh mà dự án được chọn cho tổ chức và các bên liên quan.</p>
+
+<p>Ba phần tiếp theo của cuốn sách thảo luận về thông tin bạn cần biết cho kỳ thi từ góc độ kết hợp của các lĩnh vực ECO, mô hình Nhóm Quy trình và các thực hành dựa trên kế hoạch, agile và kết hợp. Các phần đó là:</p>
+
+<h5>Phần III: Lĩnh vực Con Người (People Domain) của ECO</h5>
+<h5>Phần IV: Lĩnh vực Quy trình (Process Domain) của ECO</h5>
+<h5>Phần V: Lĩnh vực Môi trường Kinh doanh (Business Environment Domain) của ECO</h5>
+
+<h5>Phần VI: Cách Vượt Qua Kỳ Thi Ngay Lần Đầu</h5>
+
+<p>Phần này của cuốn sách tiếp nối những gì bạn đã học, với các hướng dẫn để tiếp tục học cho đến khi bạn sẵn sàng ngồi vào phòng thi và vượt qua kỳ thi PMP. Phần này bao gồm các chương sau:</p>
+
+<ul class="content-list">
+<li>"Mẹo Vượt Qua Kỳ Thi PMP® Ngay Lần Đầu"</li>
+<li>"Các Phương pháp Agile Phổ biến"</li>
+<li>"Các Khái niệm Bổ sung trong Hướng dẫn PMBOK® Phiên bản Thứ Bảy"</li>
+</ul>
+
+<h5>Cấu Trúc Các Chương</h5>
+
+<p>Hầu hết các chương trong cuốn sách này được tổ chức theo cùng một cách: thảo luận giới thiệu, danh sách các chủ đề Kiểm tra Nhanh, tổng quan về quy trình và tài liệu ôn tập. Cuốn sách Chuẩn bị Thi PMP® này có thể được sử dụng độc lập, nhưng nó cũng là một phần của Hệ thống Chuẩn bị Thi PMP của chúng tôi, bao gồm trình mô phỏng kỳ thi PM FASTrack® Cloud cũng như các flashcard Hot Topics. Cùng với việc mua sách, bạn có quyền truy cập vào công cụ mới của chúng tôi, Bài Kiểm tra Tương tác Theo Chương của RMC.</p>
+
+<p>Mỗi chương từ bốn đến mười chín đều chứa:</p>
+
+<ul class="content-list">
+<li><strong>Giới thiệu và tổng quan các quy trình</strong> Phần thảo luận giới thiệu cung cấp thông tin chính để hiểu tài liệu được đề cập trong chương và định nghĩa một số thuật ngữ quan trọng. Tổng quan bắt đầu sự hiểu biết của bạn về các khái niệm và quy trình chính.</li>
+<li><strong>Kiểm tra Nhanh</strong> Danh sách ở đầu mỗi chương chỉ ra các chủ đề chính được đề cập trong chương. Để kiểm tra kiến thức của bạn về nội dung chương và ôn lại những gì quan trọng nhất, hãy quay lại danh sách này khi bạn hoàn thành mỗi chương. Sử dụng Kiểm tra Nhanh để kiểm tra kiến thức của bạn về các chủ đề đó và khám phá những lỗ hổng trong sự hiểu biết của bạn.</li>
+<li><strong>Bảng đồ họa và biểu đồ tổng quan quy trình</strong> Những tài liệu này phác thảo các nhiệm vụ ECO chính khi chúng liên quan đến mô hình Nhóm Quy trình, cùng với nội dung liên quan từ Hướng dẫn PMBOK® Phiên bản Thứ Bảy. Các biểu đồ tổng quan quy trình trong các chương thuộc lĩnh vực Quy trình sẽ cho bạn cái nhìn đồ họa cấp cao về mỗi quy trình.</li>
+<li><strong>Tài liệu ôn tập và bài tập</strong> Cuốn sách này chứa tài liệu ôn tập và bài tập phong phú trong mỗi chương này, khi có thể áp dụng. Những tài liệu này được phát triển dựa trên lý thuyết học tập tăng tốc và sự hiểu biết về nội dung kỳ thi.</li>
+</ul>
+
+<p>Các đáp án được liệt kê ngay sau các bài tập. Chúng tôi nhận thấy rằng hiệu quả nhất là đặt đáp án ngay sau bài tập thay vì ở phần sau của cuốn sách. Đừng bỏ qua các bài tập hoặc đi thẳng đến đáp án, ngay cả khi giá trị của chúng có vẻ không rõ ràng với bạn. Các bài tập và hoạt động là những lợi ích chính của cuốn sách này và sẽ giúp bạn vượt qua kỳ thi. Tích cực làm việc với thông tin bằng cách tự mình làm các bài tập trước khi kiểm tra đáp án sẽ chuẩn bị cho bạn tốt hơn so với việc chỉ đọc thụ động các đáp án.</p>
+
+<p><strong>Sổ tay Bài tập</strong> Để làm bài tập, bạn sẽ được nhắc tạo và sử dụng Sổ tay Bài tập. Trong khi một số người sẽ có cuốn sách Chuẩn bị Thi PMP® ở dạng in, nhiều người khác sẽ có quyền truy cập vào sách kỹ thuật số của chúng tôi. Vì vậy, chúng tôi khuyến khích người dùng tạo một sổ tay riêng (dạng vật lý hoặc điện tử) để ghi lại câu trả lời. Điều quan trọng là tích cực đưa ra câu trả lời cho các bài tập ở một nơi bạn có thể quay lại để ôn tập và ghi lại bất kỳ ghi chú nào khác sẽ giúp bạn ôn tập tài liệu cho kỳ thi.</p>
+
+<p>Chúng tôi đã đánh số mỗi bài tập và khuyến khích bạn ghi những số này vào Sổ tay Bài tập của mình. Sử dụng công cụ này để theo dõi bất kỳ lỗ hổng nào trong kiến thức của bạn. Chú ý đến bất kỳ mô hình nào trong các lỗ hổng. Bất kỳ lúc nào, bạn có thể xem lại sổ tay để tìm câu trả lời sai hoặc làm lại bài tập.</p>
+
+<p>Trong tài liệu ôn tập có các mẹo để vượt qua kỳ thi được gọi là Bí Quyết Thực Tiễn®. Những mẹo này được đánh dấu bằng hình ảnh hiển thị ở bên trái và sẽ cung cấp cho bạn một số thông tin thêm về những gì bạn cần biết về quản lý dự án và cách học cho kỳ thi.</p>
+
+<!--RITA_IMG_1-->
+
+
+<!--RITA_IMG_2-->
+
+
+<p><strong>Hãy Suy Ngẫm.</strong> Biểu tượng này chỉ ra một phần nơi bạn sẽ được yêu cầu chậm lại và thực sự suy nghĩ kỹ về một khái niệm đang được trình bày. Các phần "Hãy Suy Ngẫm" đôi khi sẽ trình bày một tình huống và yêu cầu bạn suy xét cách giải quyết; các lúc khác, nó có thể trình bày thêm thông tin về chủ đề đang được đề cập.</p>
+
+<!--RITA_IMG_3-->
+
+
+<p><strong>Tập Trung vào Agile</strong> Khi chúng tôi đi sâu vào khía cạnh agile của một chủ đề, biểu tượng này sẽ xuất hiện bên cạnh văn bản. Sử dụng nó để dễ dàng tìm vị trí các khái niệm agile đang được trình bày.</p>
+
+<h4 id="ch1-rmc-resources-web-page">Trang Web Tài Nguyên của RMC</h4>
+
+<p>Thông tin mới về kỳ thi luôn xuất hiện. RMC cung cấp tài nguyên trực tuyến để giúp bạn cập nhật tài liệu. Trang web Tài nguyên RMC của chúng tôi (rmcls.com/rmc-resources hoặc quét mã QR) là một công cụ học tập phong phú cung cấp tài liệu bổ sung để bạn làm việc cùng cũng như các đính chính và các cập nhật khác cho cuốn sách này. Tài nguyên RMC bao gồm các trò chơi tương tác, thông tin chuyên sâu hơn về các chủ đề cụ thể, bảng thuật ngữ quản lý dự án và nhiều hơn nữa. Khi chúng tôi quan sát thấy các xu hướng liên quan đến chuẩn bị thi, chúng tôi sẽ công bố tài liệu bổ sung trên Tài nguyên RMC. Hãy chắc chắn xem xét các tài liệu tại Tài nguyên RMC để biết mục nào sẽ hữu ích nhất cho bạn trong việc chuẩn bị cho kỳ thi. Chúng tôi sẽ đề cập đến Tài nguyên RMC trong suốt cuốn sách khi thích hợp và cung cấp mã QR để truy cập dễ dàng.</p>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//c5995dbe-3e77-486d-a820-b172d9631345/markdown_2/imgs/img_in_image_box_632_822_737_926.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A26Z%2F-1%2F%2Fae5c131548a6d7f43c425446520eb8fc9e97e5a40e271172d01f9aabaef69e6a" alt="Image" width="12%" /></div>
+
+
+<p><strong>TÀI NGUYÊN RMC</strong></p>
+
+<h5>Bài Kiểm Tra Tương Tác Theo Chương của RMC</h5>
+
+<p>Bài Kiểm Tra Tương Tác Theo Chương của RMC là một công cụ tương tác với các câu hỏi liên quan đến các chương 2 đến 15, cho phép bạn ôn tập tài liệu và kiểm tra sự hiểu biết của mình. Tham khảo phần "Cách Học cho Kỳ Thi PMP" ở trang 22 để hiểu cách thức và thời điểm sử dụng các bài kiểm tra thực hành này như một phần trong kế hoạch học tập của bạn. Công cụ này sẽ hiển thị điểm số của bạn trong các bài kiểm tra theo chương khi bạn sử dụng công cụ này.</p>
+
+<p>Các câu hỏi trong bài kiểm tra theo chương đại diện cho kiến thức và nguyên tắc được kiểm tra trong kỳ thi. Hãy nhớ rằng bạn không thể chỉ đơn giản thực hành trả lời câu hỏi để chuẩn bị cho kỳ thi. Các câu hỏi trong Bài Kiểm Tra Tương Tác Theo Chương của RMC giúp bạn đánh giá kiến thức và làm quen với các loại câu hỏi trong kỳ thi. Hãy đảm bảo tập trung nỗ lực học tập của bạn vào việc đọc cuốn sách này, làm các bài tập và hoạt động ôn tập, và lấp đầy những lỗ hổng trong kiến thức quản lý dự án của bạn.</p>
+
+<h4 id="ch1-what-is-the-pmp-exam-like">Kỳ Thi PMP Như Thế Nào?</h4>
+
+<p>Hãy ghi nhớ ba điều quan trọng về kỳ thi PMP. Thứ nhất, kỳ thi không phải là bài kiểm tra nội dung trong Hướng dẫn PMBOK®. Các câu hỏi được soạn bởi các nhà quản lý dự án có chứng chỉ PMP, dựa trên các tình huống thực tế. Thứ hai, mặc dù kinh nghiệm thực tế của bạn là điều cần thiết để giúp bạn vượt qua kỳ thi, nhưng bạn không thể chỉ dựa vào nó một mình. Thứ ba, đào tạo về quản lý dự án chuyên nghiệp phù hợp với ECO, mô hình Nhóm Quy trình được trình bày trong <em>Process Groups: A Practice Guide</em> và <em>Agile Practice Guide</em> là yếu tố then chốt cho sự thành công trong kỳ thi.</p>
+
+<p>Kỳ thi bao gồm 180 câu hỏi, tất cả đều là câu hỏi tình huống. Các câu hỏi có thể xuất hiện ở một trong năm định dạng khác nhau. Bao gồm trắc nghiệm một đáp án, nhiều đáp án, ghép nối, điền vào chỗ trống có hạn, và điểm nóng (hot spot) (ví dụ: bạn được yêu cầu đặt các điểm xác định lên biểu đồ). Xem phần Ví dụ Câu hỏi trong chương này để có ví dụ về các định dạng câu hỏi này. Kỳ thi phải được hoàn thành trong 230 phút, tức là gần bốn giờ. Bạn sẽ có cơ hội nghỉ hai lần, mỗi lần 10 phút, trong thời gian đó đồng hồ đếm giờ thi sẽ tạm dừng.</p>
+
+<p>Bạn sẽ được chấm điểm trên 175 trong số 180 câu hỏi của kỳ thi (vì năm câu là các câu hỏi "thử nghiệm" mới được soạn thảo và sẽ không được tính điểm). PMI không công bố điểm nào được coi là điểm vượt qua. Tuy nhiên, dựa trên lịch sử kỳ thi, chúng tôi ước tính rằng điểm đó nằm trong khoảng từ 61 đến 64 phần trăm (khoảng 110 đến 114 câu trả lời đúng trong số 180).</p>
+
+<p>Các câu hỏi được tạo ngẫu nhiên từ một cơ sở dữ liệu dựa trên số lượng câu hỏi phải được đưa vào từ một vùng nội dung cụ thể (ví dụ: lĩnh vực Con người của ECO). Mỗi câu trả lời đúng được tính một điểm và tất nhiên, bạn phải tích lũy đủ câu trả lời đúng để vượt qua ngưỡng vượt qua.</p>
+
+<p>Bảng sau đây cho thấy tỷ lệ phần trăm câu hỏi được tính điểm trong kỳ thi cho mỗi lĩnh vực Phác thảo Nội dung Kỳ thi (ECO).</p>
+
+<div class="table-wrap"><table>
+<tr><th colspan="2">Lĩnh vực ECO (Examination Content Outline) — Tỷ lệ Phần trăm Câu hỏi</th></tr>
+<tr><td>Con Người (People)</td><td>42%</td></tr>
+<tr><td>Quy Trình (Process)</td><td>50%</td></tr>
+<tr><td>Môi Trường Kinh Doanh (Business Environment)</td><td>8%</td></tr>
+<tr><td>TỔNG CỘNG</td><td>100%</td></tr>
+</table></div>
+
+<p>Chương "Tài liệu tham khảo Kỳ thi PMP® trong Ngữ cảnh" chứa thêm chi tiết về các lĩnh vực ECO. PMI đôi khi thực hiện các thay đổi đối với các khía cạnh của kỳ thi, bao gồm yêu cầu đủ tiêu chuẩn, quy trình đăng ký và phân bổ câu hỏi trong mỗi lĩnh vực. Để biết thông tin mới nhất, vui lòng truy cập pmi.org và đọc kỹ ECO, Cẩm nang Chứng chỉ và thông báo ủy quyền của bạn. Bất kỳ sự khác biệt nào giữa những gì được liệt kê ở đây và những gì được PMI thông báo nên được giải quyết theo thông tin mới nhất được đăng trên pmi.org.</p>
+
+<h4 id="ch1-additional-important-aspects-of-the-exam">Các Khía Cạnh Quan Trọng Khác của Kỳ Thi</h4>
+
+<ul class="content-list">
+<li>Kỳ thi kiểm tra kiến thức, ứng dụng và phân tích. Điều này làm cho kỳ thi trở thành nhiều hơn là bài kiểm tra trí nhớ. Bạn phải biết cách áp dụng thông tin trong cuốn sách này và có khả năng phân tích các tình huống liên quan đến thông tin này. Đừng mong đợi kỳ thi có phần lớn câu hỏi đơn giản, dạng định nghĩa.</li>
+<li>Kỳ thi đề cập đến kinh nghiệm thực tế. Các câu hỏi dựa trên một tình huống được mô tả trong mỗi câu hỏi. Đối với những người không có kinh nghiệm quản lý dự án phù hợp, những câu hỏi này có thể rất khó.</li>
+<li>Có thể có những trường hợp trong kỳ thi mà cùng một dữ liệu được sử dụng cho nhiều câu hỏi. Bạn cũng có thể thấy dữ liệu được lặp lại trong các lựa chọn câu trả lời.</li>
+<li>Nhiều câu hỏi tập trung vào "người quản lý dự án nên làm gì" trong tình huống câu hỏi đã cho. Điều quan trọng không chỉ là hiểu các quy trình quản lý dự án, mà còn phải hiểu mối quan hệ giữa các tài liệu và phương pháp liên quan đến các quy trình này.</li>
+<li>Khi bạn nhận ra một quy trình trong một câu hỏi thi, bạn phải có thể nhớ ngay những tài liệu (đôi khi được gọi là đầu vào) và phương pháp nào bạn cần với tư cách là người quản lý dự án để thực hiện quy trình đó. Ví dụ: để thực hiện đúng quy trình Quản lý Tương tác với Các bên Liên quan, bạn cần một kế hoạch tương tác với các bên liên quan (là một phần của kế hoạch quản lý dự án cho các dự án dựa trên kế hoạch).</li>
+<li>Bạn cũng phải hiểu những tài liệu bạn có được từ một quy trình cụ thể sau khi nó được thực hiện (đôi khi được gọi là đầu ra). Một quy trình thường dẫn đến việc cập nhật một số tài liệu tương tự mà bạn cần sử dụng để bắt đầu quy trình. Ví dụ: kế hoạch tương tác với các bên liên quan (được tạo trong quy trình Lập kế hoạch Tương tác với Các bên Liên quan) được sử dụng và tuân theo trong quy trình Quản lý Tương tác với Các bên Liên quan, nhưng kế hoạch cũng được cập nhật là kết quả của quy trình Quản lý Tương tác với Các bên Liên quan.</li>
+<li>Ngoài các tài liệu và phương pháp để thực hiện các quy trình, bạn cần hiểu kết quả mong muốn của các quy trình. Trong ví dụ trước về quy trình Quản lý Tương tác với Các bên Liên quan, có các tài liệu là kết quả của công việc, nhưng bạn cũng có mối quan hệ tốt với các bên liên quan, có thể quản lý kỳ vọng của họ phù hợp với điều kiện dự án và do đó đạt được sự hài lòng của các bên liên quan với dự án và kết quả của nó.</li>
+<li>Lịch sử, đã có tới 6 hoặc 7 câu tính toán liên quan đến công thức trong kỳ thi, nhưng gần đây chỉ có 1 đến 3 câu.</li>
+<li>Dự kiến có 7 đến 10 câu hỏi về giá trị thu được (earned value) trong kỳ thi. Lưu ý rằng hầu hết các câu hỏi về giá trị thu được tập trung chủ yếu vào sự hiểu biết của bạn về các khái niệm đằng sau giá trị thu được hơn là thực hiện tính toán.</li>
+<li>Thuật ngữ quản lý dự án thường sử dụng từ viết tắt. Hầu hết các từ viết tắt sẽ được viết đầy đủ (ví dụ: kỳ thi thường sử dụng thuật ngữ đầy đủ "work breakdown structure" thay vì "WBS"). Tuy nhiên, bạn nên biết cả từ viết tắt và thuật ngữ đầy đủ cho kỳ thi.</li>
+<li>Hầu hết mọi người cảm thấy không chắc chắn về chỉ 36 hoặc ít hơn trong số 180 câu hỏi của kỳ thi. Tập trung vào việc hiểu các khái niệm và có thể suy nghĩ toàn diện về các khái niệm này sẽ đóng góp vào sự tự tin của bạn khi trả lời các câu hỏi.</li>
+<li>Phần mềm kỳ thi có các công cụ hữu ích trong việc xử lý câu hỏi. Ví dụ, bạn có thể sử dụng:
+  <ul class="content-list">
+    <li>Đánh dấu để Xem lại — để gắn thẻ các câu hỏi bạn không chắc chắn và quay lại trước khi nộp bài.</li>
+    <li>Tô sáng các phần của câu hỏi mà bạn cho là quan trọng nhất với tình huống và để chọn câu trả lời đúng.</li>
+    <li>Gạch bỏ các phần của câu hỏi mà bạn cho là ít quan trọng nhất với câu trả lời đúng hoặc là "yếu tố gây nhiễu" làm phức tạp khả năng trả lời đúng câu hỏi.</li>
+  </ul>
+</li>
+</ul>
+
+<h4 id="ch1-question-examples">Ví Dụ Câu Hỏi</h4>
+
+<p>Các câu hỏi trong kỳ thi mang tính tình huống, có nghĩa là để trả lời chúng, bạn phải áp dụng kiến thức và kinh nghiệm của mình vào tình huống đã cho thay vì chỉ đưa ra câu trả lời sách giáo khoa. Nhiều câu hỏi mơ hồ. Các câu hỏi thường có vẻ như có hai hoặc nhiều câu trả lời đúng. Hãy chuẩn bị cho các loại câu hỏi sau để bạn không bị bất ngờ khi đang làm bài thi.</p>
+
+<ol class="content-list">
+<li><strong>Câu hỏi tình huống</strong> Đây là lý do tại sao kinh nghiệm quản lý dự án và kiến thức về các phương pháp thực hành tốt là điều quan trọng để vượt qua kỳ thi này. Những câu hỏi như vậy yêu cầu bạn điều chỉnh kinh nghiệm thực tế của mình với kiến thức về các khái niệm thi cử. Ví dụ:
+
+<p><strong>Câu hỏi</strong> Người quản lý dự án nhận được thông báo rằng một vật phẩm quan trọng mà họ đã mua cho dự án sẽ bị trễ. Điều tốt nhất người quản lý dự án nên làm là gì?</p>
+
+<p>A. Lập lại kế hoạch dự án để phù hợp với sự chậm trễ này.</p>
+<p>B. Thông báo cho nhà tài trợ dự án.</p>
+<p>C. Cho khách hàng biết về vấn đề và thảo luận về các lựa chọn.</p>
+<p>D. Họp với nhóm và xác định các phương án thay thế.</p>
+
+<div class="highlight"><p><strong>Đáp án D</strong></p></div>
+</li>
+
+<li><strong>Câu hỏi có hai hoặc nhiều câu trả lời đúng</strong> Các câu hỏi trắc nghiệm có vẻ như có hai hoặc nhiều câu trả lời đúng là khiếu kiện chính từ người dự thi. Những câu hỏi này, liệt kê một số lựa chọn có thể được thực hiện một cách hợp lý, đòi hỏi phân tích và quá trình loại trừ để tìm ra câu trả lời tốt nhất cho tình huống và chi tiết câu hỏi đã cho.
+
+<p>Khi bạn đọc các câu hỏi và xem xét đáp án trong Bài Kiểm Tra Tương Tác Theo Chương của RMC, hãy tìm các câu hỏi mà bạn nghĩ có nhiều hơn một câu trả lời đúng và cố gắng tìm hiểu tại sao bạn cho rằng nhiều lựa chọn là đúng. Chúng tôi đã cố ý đưa những câu hỏi như vậy vào Bài Kiểm Tra Tương Tác Theo Chương của RMC để cho bạn tiếp xúc với các loại câu hỏi này. Chúng tôi cung cấp giải thích để giúp bạn hiểu tại sao câu trả lời đúng của bạn có thể không phải là lựa chọn tốt nhất.</p>
+
+<p>Hãy xem lại câu hỏi tình huống trước đó. Thực ra chúng ta có thể làm tất cả các lựa chọn không? Câu trả lời đúng là D, nhưng nói với khách hàng cũng đúng không? Đúng, nhưng đó không phải là việc đầu tiên cần làm. Câu hỏi này thực sự đang hỏi "Điều tốt nhất cần làm tiếp theo là gì?" hoặc "Người quản lý dự án nên làm gì tiếp theo?" Khi trả lời các câu hỏi luyện tập, hãy ghi nhớ khái niệm về "điều tốt nhất cần làm tiếp theo" để giúp bạn quyết định câu trả lời nào xác định trách nhiệm của người quản lý dự án trong tình huống đã cho.</p>
+
+<p><em>Lưu ý: Bằng "quản lý dự án đúng đắn" chúng tôi thường có nghĩa là quản lý dự án theo các phương pháp thực hành tốt có hệ thống và được thống nhất. Cụ thể hơn cho kỳ thi, nếu chúng tôi đang nói về thứ tự của các hoạt động trong một quy trình, nó phải liên quan đến cách các quy trình được mô tả trong các lĩnh vực ECO, mô hình Nhóm Quy trình hoặc Agile Practice Guide. Chúng tôi biết rằng các quy trình có thể thay đổi về thứ tự của các hoạt động nhưng vì PMI đôi khi cụ thể về điều này, chúng tôi cũng sẽ cụ thể. Nói cách khác, đối với kỳ thi, chúng tôi có nghĩa là "quản lý dự án đúng đắn" theo PMI. Hãy cẩn thận — đôi khi điều này sẽ không phù hợp với kinh nghiệm quản lý dự án hàng ngày của bạn.</em></p>
+</li>
+
+<li><strong>Câu hỏi có thông tin thừa</strong> Không phải tất cả thông tin trong một câu hỏi đều liên quan.
+
+<p><strong>Câu hỏi</strong> Dự án tiếp theo của bạn là quản lý một sáng kiến agile để phân phối phần mềm quản lý lái xe mới cho đội xe taxi của công ty bạn. Tại thời điểm này, ban chỉ đạo dự án đang tranh luận về việc có nên ký hợp đồng với dịch vụ kiểm tra khả năng sử dụng cho dự án hay không. Họ yêu cầu ý kiến của bạn về việc điều này có tiết kiệm chi phí hay không. Bạn trả lời rằng mặc dù bạn chưa có dữ liệu cụ thể, nhưng theo quy tắc chung:</p>
+
+<p>A. Thời điểm kinh tế nhất để kiểm tra sẽ là gần cuối dự án khi các màn hình đã hoàn thành và ít có khả năng thay đổi hơn.</p>
+<p>B. Phát hiện vấn đề sớm hơn luôn được ưu tiên hơn vì có khả năng tiết kiệm rất nhiều tiền về lâu dài.</p>
+<p>C. Các lỗi được phát hiện bởi các nhà phát triển tốn ít chi phí khắc phục hơn so với những lỗi được phát hiện trong quá trình xem xét hoặc kiểm tra.</p>
+<p>D. Kiểm tra các màn hình gần cuối dự án sẽ không còn nhiều thời gian để tích hợp các thay đổi.</p>
+
+<div class="highlight"><p><strong>Đáp án B</strong></p></div>
+
+<p>Trong ví dụ này, loại hệ thống đang được phát triển (quản lý lái xe) không ảnh hưởng đến câu trả lời. Đó là thông tin thừa nhằm đánh lạc hướng bạn.</p>
+</li>
+
+<li><strong>Câu hỏi sử dụng các thuật ngữ bịa đặt</strong> Nhiều người thi kỳ thi kỳ vọng rằng tất cả các thuật ngữ được sử dụng làm lựa chọn phải có ý nghĩa. Điều đó không đúng. Các lựa chọn câu trả lời đôi khi bao gồm các thuật ngữ bịa đặt. Nếu bạn cho rằng mình đã chuẩn bị tốt và thấy một thuật ngữ trong kỳ thi mà bạn không biết, nhiều khả năng đó không phải là câu trả lời đúng. Ví dụ:
+
+<p><strong>Câu hỏi</strong> WBS (cấu trúc phân tích công việc), ước tính cho mỗi gói công việc và sơ đồ mạng đã hoàn thành. Bước tiếp theo người quản lý dự án cần làm là:</p>
+
+<p>A. Sắp xếp trình tự Hoạt động (Sequence Activities)</p>
+<p>B. Phát triển Lịch trình (Develop Schedule)</p>
+<p>C. Xác nhận Phạm vi (Validate Scope)</p>
+<p>D. Mô phỏng Nguồn lực (Resource Simulation)</p>
+
+<div class="highlight"><p><strong>Đáp án B</strong></p>
+<p>Trong câu hỏi này "Resource Simulation" (Mô phỏng Nguồn lực — lựa chọn D) không phải là thuật ngữ quản lý dự án thực sự.</p></div>
+</li>
+
+<li><strong>Câu hỏi đòi hỏi sự hiểu biết sâu sắc.</strong> Hãy xem câu hỏi sau:
+
+<p><strong>Câu hỏi</strong> Nhà thiết kế web cao cấp trong một dự án vừa bị cúm giữa vòng lặp. Người quản lý dự án nên làm gì?</p>
+
+<p>A. Họp với nhóm để tìm hiểu bao nhiêu công việc theo kế hoạch sẽ được hoàn thành.</p>
+<p>B. Yêu cầu hai nhà thiết kế khác làm thêm giờ trong tuần này.</p>
+<p>C. Yêu cầu chủ sản phẩm (product owner) hoãn buổi demo sản phẩm cho đến khi mục tiêu vòng lặp hoàn thành.</p>
+<p>D. Gọi cho người quản lý chức năng của nhà thiết kế web và yêu cầu một nhà thiết kế mới cho phần còn lại của vòng lặp.</p>
+
+<div class="highlight"><p><strong>Đáp án A</strong></p>
+<p>Để trả lời câu hỏi này, bạn phải hiểu các khung thời gian cố định (timebox) trong vòng lặp và cách các nhóm agile làm việc.</p></div>
+</li>
+
+<li><strong>Câu hỏi với phương pháp tiếp cận mới về một chủ đề quen thuộc</strong> Sẽ có nhiều trường hợp bạn hiểu chủ đề nhưng chưa bao giờ nghĩ về nó như được mô tả. Ví dụ:
+
+<p><strong>Câu hỏi</strong> Một sản phẩm đang được xây dựng theo từng vòng lặp trên một nền tảng công nghệ mới. Khi người quản lý dự án hỏi các thành viên nhóm về chất lượng của các phần tăng dần sản phẩm ban đầu, họ nói "Ổn thôi." Làm thế nào người quản lý dự án có thể xác minh rằng công nghệ mới đang hỗ trợ các mục tiêu chất lượng của dự án?</p>
+
+<p>A. Yêu cầu nhóm trình bày kết quả kiểm tra hiệu suất cho thấy các số liệu thực tế so với mong đợi.</p>
+<p>B. Hỏi chủ sản phẩm (product owner) về mức độ công nghệ đang mang lại giá trị kinh doanh.</p>
+<p>C. Trình bày kế hoạch quản lý chất lượng với huấn luyện viên của nhóm và hỏi xem công nghệ có đang hỗ trợ kế hoạch không.</p>
+<p>D. Đưa kiểm toán viên vào để đánh giá chất lượng.</p>
+
+<div class="highlight"><p><strong>Đáp án C</strong></p>
+<p>Nhìn thấy các từ "iterative" (lặp) và "increments" (tăng dần) nên làm bạn nghĩ đây là dự án vòng đời thích ứng nhưng điều đó có thể khiến bạn tránh xa một câu trả lời đề cập đến kế hoạch quản lý. Các kế hoạch quản lý có thể được sử dụng trong các vòng đời dự án thích ứng và kết hợp nếu người quản lý dự án thấy giá trị trong kế hoạch.</p></div>
+</li>
+
+<li><strong>Câu hỏi có nhiều hơn một hạng mục trong mỗi lựa chọn</strong> Hãy xem ví dụ sau:
+
+<p><strong>Câu hỏi</strong> Người bán đã gửi cho người quản lý dự án một thông báo chính thức rằng người bán đã bị thiệt hại bởi các hoạt động của người mua. Người bán khẳng định rằng phản hồi chậm của người mua đối với các phê duyệt được yêu cầu đã làm chậm trễ dự án và gây ra chi phí bất ngờ cho người bán. Những việc đầu tiên người quản lý dự án cần làm là:</p>
+
+<p>A. Thu thập tất cả dữ liệu có liên quan, gửi dữ liệu cho luật sư của công ty và tham khảo ý kiến luật sư về các phản hồi pháp lý.</p>
+<p>B. Xem xét hợp đồng về các điều khoản đã thỏa thuận cụ thể liên quan đến vấn đề, xem có phản hồi rõ ràng không và tham khảo ý kiến luật sư nếu cần.</p>
+<p>C. Xem xét tuyên bố phạm vi mua sắm để tìm các yêu cầu, gửi phản hồi xác nhận đã nhận khiếu nại và tổ chức cuộc họp để giải quyết vấn đề mà không cần đến hành động pháp lý nếu có thể.</p>
+<p>D. Tổ chức cuộc họp với nhóm để xem xét lý do tại sao các chấp nhận bị trễ, lập danh sách các lý do cụ thể và khắc phục những lý do đó.</p>
+
+<div class="highlight"><p><strong>Đáp án B</strong></p>
+<p>Những câu hỏi này có vẻ khó cho đến khi bạn áp dụng mẹo nhỏ này. Hãy sử dụng quá trình loại trừ, từng hạng mục một. Xem xét hạng mục đầu tiên được liệt kê trong mỗi lựa chọn và loại trừ các lựa chọn có hạng mục đầu tiên không hợp lý, nếu có. Sau đó nhìn vào hạng mục thứ hai trong mỗi lựa chọn còn lại và loại trừ các lựa chọn không hợp lý. Tiếp tục cho đến khi bạn còn lại một lựa chọn.</p></div>
+
+<p>Hãy chú ý! Đôi khi các hạng mục trong mỗi lựa chọn cho thấy một luồng hoặc quy trình. Xem ví dụ sau để suy nghĩ về việc đôi khi các hạng mục trong mỗi lựa chọn câu trả lời cho thấy một luồng hoặc quy trình:</p>
+
+<p><strong>Câu hỏi</strong> Một vấn đề về nguồn lực đã phát sinh trong một dự án xây dựng. Cách tốt nhất để giải quyết vấn đề là gì?</p>
+
+<p>A. Đến với nhóm, đến với quản lý, đến với các nhà quản lý nguồn lực</p>
+<p>B. Đến với các nhà quản lý nguồn lực, đến với quản lý, đến với khách hàng</p>
+<p>C. Tự xử lý, đến với khách hàng, đến với quản lý</p>
+<p>D. Giải quyết vấn đề với các nguồn lực bạn kiểm soát, đến với các nhà quản lý nguồn lực, đến với khách hàng</p>
+
+<div class="highlight"><p><strong>Đáp án D</strong></p>
+<p>Trong trường hợp này bạn cần xem xét mỗi lựa chọn một cách độc lập để xem liệu quy trình được liệt kê có đúng không.</p></div>
+</li>
+
+<li><strong>Câu hỏi quá dài dòng</strong> Thay vì nói "Dự án bị chậm tiến độ," kỳ thi có thể sử dụng cách diễn đạt dài dòng hơn như "Khoảng dự phòng (float) của dự án bằng không và gần đây đã giảm xuống âm 2." Thay vì nói "Nhóm không báo cáo đúng cách," kỳ thi có thể nói "Nhóm đã mất tầm nhìn về kế hoạch quản lý truyền thông." Bước đầu tiên trong việc trả lời nhiều câu hỏi là xác định câu hỏi thực sự đang hỏi gì, sau đó dịch cách diễn đạt dài dòng.</li>
+</ol>
+
+<h4 id="ch1-questions-in-different-format-types">Câu Hỏi Theo Các Định Dạng Khác Nhau</h4>
+
+<p>Các ví dụ của chúng ta cho đến nay đã sử dụng định dạng trắc nghiệm thông thường để chỉ ra các đặc điểm cụ thể về cách các câu hỏi được diễn đạt trong kỳ thi. Bây giờ hãy dành thời gian xem xét các định dạng câu hỏi mới hơn khác được sử dụng trong kỳ thi PMP.</p>
+
+<ol class="content-list">
+<li><strong>Câu hỏi nhiều đáp án</strong> Các câu hỏi sử dụng định dạng này yêu cầu bạn chọn hai hoặc ba câu trả lời đúng, như trong ví dụ này:
+
+<p><strong>Câu hỏi</strong> Một số bên liên quan có ý kiến khác nhau về yêu cầu sản phẩm. Hai trong số các kỹ thuật sau đây người quản lý dự án có thể sử dụng để đưa nhóm đến sự đồng thuận là:</p>
+
+<p>A. Hội thảo có hỗ trợ (Facilitated workshop)</p>
+<p>B. Phỏng vấn (Interview)</p>
+<p>C. Phiên tinh chỉnh backlog (Backlog refinement session)</p>
+<p>D. Quan sát (Observation)</p>
+<p>E. Khảo sát (Survey)</p>
+<p>F. Lập bản đồ tư duy (Mind mapping)</p>
+
+<div class="highlight"><p><strong>Đáp án A, C</strong></p></div>
+</li>
+
+<li><strong>Câu hỏi điểm nóng (hot spot)</strong> Các loại câu hỏi này cho bạn xem một đồ họa mà bạn sẽ phải nhấp vào "điểm nóng" chứa câu trả lời đúng:
+
+<p><strong>Câu hỏi</strong> Xem xét Biểu đồ Burnup. Vận tốc trung bình của nhóm là 4,6 điểm câu chuyện (story points) mỗi vòng lặp với 27 điểm đã hoàn thành. Phạm vi dự án đã được tăng trong các vòng lặp 3 và 4 lên tổng cộng 48 điểm câu chuyện. Ban quản lý muốn phạm vi dự án được hoàn thành vào vòng lặp 9. Mục tiêu của nhóm trong vòng lặp 7 nên là bao nhiêu? Nhấp vào sơ đồ hiển thị điểm dữ liệu tiếp theo trong đường Công việc Được chấp nhận.</p>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//93192737-9b5b-421e-a439-d0aea64ebaf0/markdown_4/imgs/img_in_chart_box_255_537_571_711.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A34Z%2F-1%2F%2F53bd0d78e9d9e702b4eeb5448cc176586e31552bf01f8f225befb132d2c3e5c6" alt="Image" width="38%" /></div>
+
+
+<p>Để trả lời câu hỏi, nhấp vào "điểm nóng" trên sơ đồ như được hiển thị bên dưới.</p>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//93192737-9b5b-421e-a439-d0aea64ebaf0/markdown_4/imgs/img_in_chart_box_256_770_572_942.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A46%3A34Z%2F-1%2F%2F10d33b3dbb752898afef7a755302a4570f65d1c0b27fabda8f23c426ce2e0e6f" alt="Image" width="38%" /></div>
+
+</li>
+
+<li><strong>Câu hỏi ghép nối</strong> Các câu hỏi ở định dạng này sẽ cho bạn hai cột khái niệm để ghép nối. Trong ví dụ sau, người thi sẽ kéo các thẻ trong cột "Hành động" vào hộp giữa phù hợp với cột "Thứ tự thực hiện".
+
+<p><strong>Câu hỏi</strong> Trong một buổi cải tiến nhóm (retrospective), người quản lý dự án cảm nhận thấy xung đột. Người quản lý dự án nên sử dụng các hành động sau theo thứ tự nào để giải quyết xung đột?</p>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//b08e7095-5f88-4290-be5d-dd30821e3ef0/markdown_0/imgs/img_in_image_box_81_213_659_571.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A35Z%2F-1%2F%2Fba1c7ed01baff59e1353403bfd5b5b24b885ef9dcf5840d8b6d6d61efbcad940" alt="Image" width="70%" /></div>
+
+<div class="highlight"><p><strong>Đáp án (xem hình)</strong></p></div>
+</li>
+
+<li><strong>Điền vào chỗ trống có hạn</strong> Các loại câu hỏi này sẽ yêu cầu bạn gõ câu trả lời (được biểu thị bằng một khoảng trống trong câu hỏi) vào một ô:
+
+<p><strong>Câu hỏi</strong> Xem xét biểu đồ xương cá (fishbone) cho vấn đề: Khiếu nại của khách hàng tăng. Nhập ký tự chỉ ra khu vực bao gồm các nguyên nhân có thể xảy ra của vấn đề liên quan đến con người.</p>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//b08e7095-5f88-4290-be5d-dd30821e3ef0/markdown_0/imgs/img_in_image_box_172_730_631_952.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A35Z%2F-1%2F%2F05b93009d8e164a58271657df4e2b859788fd05cab6955f5d2e8d332d7f033ed" alt="Image" width="55%" /></div>
+
+<div class="highlight"><p><strong>Đáp án C</strong></p></div>
+</li>
+</ol>
+
+<h4 id="ch1-recurring-themes-pmi-isms">Các Chủ Đề Lặp Đi Lặp Lại — Những "PMI-isms" Cần Biết Cho Kỳ Thi PMP</h4>
+
+<p>RMC đã giúp mọi người vượt qua kỳ thi PMP và trở thành những nhà quản lý dự án giỏi hơn trong hơn 30 năm. Trong thời gian đó, chúng tôi đã phát triển danh sách "PMI-isms" (các quan điểm của PMI) sau đây mà kỳ thi giả định là đúng nhưng nhiều nhà quản lý dự án không biết. Chúng tôi đề nghị bạn đọc nó ngay bây giờ và sau đó nhớ đọc lại nó cùng với Bí Quyết Thực Tiễn trong cuốn sách này, trước khi bạn thực sự thi. Giả định rằng các PMI-isms là đúng (trừ khi bằng chứng trong câu hỏi nói khác đi) sẽ giúp bạn chọn câu trả lời tốt nhất từ những gì có vẻ như có nhiều hơn một câu trả lời đúng. Hãy tìm các PMI-isms trong chương "Chất lượng Sản phẩm Bàn giao và Sản phẩm" cũng vậy. Chúng tôi có một số ở đó dành riêng cho chất lượng. Đối với kỳ thi, hãy giả định rằng bạn có (hoặc làm) tất cả những điều sau đây và rằng các khái niệm này là đúng cho các dự án của bạn. Khi bạn xem xét các PMI-isms này, hãy suy nghĩ về những điều nào là đúng cho các dự án của bạn. Nếu có bất kỳ điều nào không đúng cho các dự án của bạn, bạn có thể có lỗ hổng trong kiến thức của mình. Điều quan trọng là ghi nhớ bất kỳ lỗ hổng nào bạn có và xem xét các khu vực lỗ hổng này như một phần trong kế hoạch học tập tổng thể của bạn.</p>
+
+<div class="callout"><p><strong>Quan trọng:</strong> PMI đại diện cho các thực hành quản lý dự án trên một phạm vi các phương pháp tiếp cận là dự đoán, thích ứng và kết hợp (kết hợp các phương pháp). Khi bạn nghiên cứu các PMI-isms này, hãy nhớ rằng người quản lý dự án nên điều chỉnh phương pháp tiếp cận để phù hợp với nhu cầu của dự án.</p></div>
+
+<h5>Các PMI-isms Chung</h5>
+
+<ul class="content-list">
+<li>Không có người quản lý dự án có kỹ năng, phần lớn các dự án sẽ thất bại. Với một người được đào tạo về kỹ năng quản lý dự án, bất kể chức danh, một dự án có khả năng thành công cao.</li>
+<li>Người quản lý dự án đặt lợi ích tốt nhất của dự án lên trước — không phải lợi ích của chính họ.</li>
+<li>Người quản lý dự án hiểu giá trị của các nguyên tắc, phương pháp, mô hình và tài liệu của quản lý dự án và biết cách điều chỉnh chúng cho loại dự án họ đang quản lý.</li>
+<li>Người quản lý dự án được giao nhiệm vụ trong quá trình khởi động dự án (hoặc sớm hơn), không phải sau này trong dự án.</li>
+<li>Người quản lý dự án hiểu quy trình quản lý dự án (tức là phải làm gì trước, thứ hai, v.v. và tại sao) và có khả năng đưa ra các quyết định điều chỉnh chủ động.</li>
+<li>Các tổ chức có quy trình lựa chọn dự án chính thức và họ chọn dự án dựa trên mức độ đáp ứng nhu cầu và mục tiêu chiến lược của tổ chức và các bên liên quan.</li>
+<li>Người quản lý dự án hiểu tại sao dự án của họ được chọn. Họ đảm bảo trong khi lập kế hoạch và quản lý dự án rằng dự án bàn giao các lợi ích và giá trị mà nó được chọn để thực hiện.</li>
+<li>Người quản lý dự án và nhóm tạo ra tầm nhìn sản phẩm và dự án, và người quản lý dự án làm việc trong suốt dự án để thúc đẩy sự hiểu biết chung về tầm nhìn sản phẩm và dự án.</li>
+<li>Người quản lý dự án lập kế hoạch, quản lý, giám sát và kiểm soát phạm vi, lịch trình, chi phí, chất lượng, rủi ro và nguồn lực, sử dụng các dự án để mang lại giá trị cho tổ chức và các bên liên quan.</li>
+<li>Trong môi trường thích ứng, huấn luyện viên agile (hoặc Scrum Master) đảm bảo rằng các quy trình, công cụ và kỹ thuật phù hợp được hiểu rõ và đang được tuân theo.</li>
+<li>Các nhóm agile được trao quyền quản lý công việc của riêng họ theo các mục tiêu được ưu tiên bởi chủ sản phẩm (hoặc nhóm quản lý giá trị).</li>
+<li>Các nhóm được đào tạo và huấn luyện bởi người quản lý dự án (huấn luyện viên agile, Scrum Master) cho các kỹ năng phù hợp với phương pháp tiếp cận được sử dụng trong dự án mà họ đang làm việc.</li>
+<li>Các nhóm agile được huấn luyện không chỉ để biết các quy trình agile mà còn để "sống theo" agile.</li>
+<li>Mỗi dự án được tiếp cận toàn diện và được quản lý và thực hiện như một hệ thống bàn giao giá trị cho tổ chức và các bên liên quan.</li>
+<li>Các thành viên nhóm có động lực, được trao quyền và tham gia, và đến họp với những đề xuất; họ không cần sự quản lý vi mô từ người quản lý dự án.</li>
+<li>Các tổ chức có văn phòng quản lý dự án (PMO) và văn phòng đó có trách nhiệm quan trọng, được xác định rõ ràng liên quan đến các dự án trong toàn tổ chức.</li>
+<li>Các tổ chức có các chính sách quản lý dự án mà người quản lý dự án tuân thủ trong dự án của họ. Các chính sách này có thể bao gồm các phương pháp luận quản lý dự án, quy trình rủi ro, quy trình chất lượng và sở thích về phương pháp phát triển.</li>
+<li>Các dự án có điểm bắt đầu và kết thúc, và được sử dụng để tạo ra các giải pháp độc đáo để giải quyết các vấn đề kinh doanh cụ thể và phục vụ các nhu cầu kinh doanh cụ thể.</li>
+<li>Một dự án có thể là một phần của chương trình hoặc danh mục đầu tư, và mối quan hệ của dự án với các dự án khác có thể ảnh hưởng đáng kể đến cách người quản lý dự án làm việc.</li>
+<li>Các tổ chức lưu giữ hồ sơ (ví dụ: thông tin lịch sử và bài học kinh nghiệm) từ các dự án trước đây bao gồm các tài liệu lập kế hoạch và tài liệu về kết quả thực tế của dự án. Người quản lý dự án sử dụng các tài sản quy trình tổ chức này để lập kế hoạch dự án của họ. Người quản lý dự án sau đó đưa hồ sơ và bài học kinh nghiệm của dự án của chính họ trở lại cơ sở dữ liệu kiến thức của tổ chức.</li>
+<li>Quản trị tổ chức bao gồm các chính sách liên quan đến an toàn, đa dạng và hòa nhập cũng như nhiều trách nhiệm xã hội khác nhau nhằm bảo vệ người lao động, các bên liên quan, tổ chức và xã hội nói chung. Các nhà quản lý dự án chủ động học các điều này và sử dụng chúng trong các dự án.</li>
+<li>Các nhà quản lý dự án và các lãnh đạo tổ chức khác được sàng lọc và đào tạo, và thực hành trí tuệ cảm xúc trong các mối quan hệ với nhóm và các bên liên quan dự án, như một phần của kỹ năng lãnh đạo của họ.</li>
+<li>Người quản lý dự án làm việc trong các hệ thống và văn hóa hiện có của công ty (các yếu tố môi trường doanh nghiệp), và một trong những kết quả của dự án là cung cấp đầu vào để cải thiện các hệ thống đó.</li>
+<li>Mỗi dự án có một điều lệ dự án (project charter), phê duyệt dự án và vai trò của người quản lý dự án.</li>
+<li>Mỗi dự án có sự chuyển giao được lập kế hoạch và thực hiện đầy đủ về sản phẩm của dự án cho khách hàng (hoặc hoạt động vận hành, đối với các dự án nội bộ). Việc chuyển giao là một phần không thể thiếu của quy trình Đóng Dự án hoặc Giai đoạn.</li>
+<li>Cấu trúc phân tích công việc (WBS) và từ điển WBS được sử dụng trong tất cả các dự án dựa trên kế hoạch. Người quản lý dự án agile sử dụng product backlog (danh sách tồn đọng sản phẩm), lộ trình sản phẩm (product roadmap), bản đồ câu chuyện (story maps) và các câu chuyện người dùng (stories).</li>
+<li>Kế hoạch quản lý dự án là một tập hợp các kế hoạch quản lý. Người quản lý dự án tạo ra kế hoạch quản lý dự án và các tài liệu dự án khác được điều chỉnh theo phương pháp phát triển và vòng đời của dự án, cùng các đặc điểm dự án cụ thể khác.</li>
+<li>Người quản lý dự án giữ tất cả các tài liệu dự án cập nhật để giúp quản lý và kiểm soát dự án.</li>
+<li>Các bên liên quan tham gia trong suốt dự án. Nhu cầu của họ được xem xét trong khi lập kế hoạch dự án và tạo kế hoạch quản lý truyền thông và kế hoạch tương tác với các bên liên quan.</li>
+<li>Mọi người phải được trả thù lao cho công việc của họ và xứng đáng có một môi trường công bằng và tích cực để họ có thể đóng góp công việc tốt nhất của mình.</li>
+<li>Các bên liên quan dự án agile được đại diện bởi chủ sản phẩm (product owner) là một phần của nhóm. Các thành viên nhóm có thể thấy góc nhìn của các bên liên quan thông qua việc sử dụng personas (nhân vật đại diện) và các công cụ agile khác.</li>
+<li>Các thành viên nhóm agile tương tác hàng ngày với các bên liên quan trực tiếp hoặc thông qua chủ sản phẩm để thiết kế và xây dựng sản phẩm, thực hiện các buổi xem xét vòng lặp (iteration reviews) và sau đó sử dụng các buổi cải tiến nhóm (iteration retrospectives) như một phần của quá trình cải tiến liên tục của chính họ.</li>
+<li>Gold plating (thêm chức năng bổ sung ngoài yêu cầu) không có lợi cho dự án và nên được ngăn chặn.</li>
+<li>Các dự án được quản lý trong môi trường ma trận (matrix environment) trong đó các công cụ và kỹ thuật thường đơn giản. Tuy nhiên, điều quan trọng cần biết là các khái niệm và công cụ như lý thuyết động lực (motivation theories) và giải quyết xung đột có thể trở nên phức tạp hơn trong các môi trường thay thế.</li>
+<li>Người quản lý dự án có trách nhiệm chuyên nghiệp là sử dụng và điều chỉnh đúng cách các công cụ và quy trình phù hợp với phương pháp phát triển và vòng đời được chọn.</li>
+<li>Các nhà quản lý dự án thực hành lãnh đạo phục vụ (servant leadership) để tạo điều kiện thành công cho nhóm và dự án. Họ là những người quản lý đáng tin cậy về nguồn lực và nhu cầu của tổ chức và các bên liên quan, và thực hiện trách nhiệm của họ vì lợi ích tốt nhất của cả hai.</li>
+<li>Quản lý cho các nhà quản lý dự án bao gồm các quan điểm và thực hành toàn diện để thực hiện các trách nhiệm tài chính, xã hội, kỹ thuật và môi trường của họ đối với tổ chức, các nhóm và các bên liên quan của tổ chức, và xã hội lớn hơn.</li>
+<li>Các nhà quản lý dự án am hiểu môi trường kinh doanh và thực hiện các trách nhiệm của họ liên quan đến các yếu tố môi trường ảnh hưởng đến dự án hoặc các yếu tố mà dự án ảnh hưởng.</li>
+</ul>
+
+<h4 id="ch1-planning-the-project">Lập Kế Hoạch Dự Án</h4>
+
+<ul class="content-list">
+<li>Tất cả các dự án phải được lập kế hoạch bằng các quy trình lập kế hoạch được điều chỉnh theo dự án.</li>
+<li>Trong môi trường dự đoán, người quản lý dự án lập kế hoạch dự án với sự đóng góp của nhóm và các bên liên quan. Môi trường thích ứng bao gồm toàn bộ nhóm để lập kế hoạch.</li>
+<li>Lập kế hoạch bao gồm việc lựa chọn vòng đời dự án và phương pháp phát triển phù hợp cho dự án.</li>
+<li>Mỗi ràng buộc dự án cùng các yếu tố quan trọng khác đối với sự thành công của dự án (yêu cầu và phạm vi, lịch trình, chi phí, chất lượng, nguồn lực, truyền thông, rủi ro, mua sắm, quản lý bên liên quan) sẽ được lập kế hoạch, quản lý và kiểm soát. Độ dài và chi tiết của kế hoạch có thể thay đổi tùy theo quy mô, độ phức tạp và mức độ ưu tiên của dự án cũng như phương pháp phát triển.</li>
+<li>Trong các môi trường agile, người quản lý dự án sử dụng các hướng dẫn từ một phương pháp luận toàn diện và chính thức hóa phù hợp được thiết lập theo quản trị của tổ chức thực hiện.</li>
+<li>Người quản lý dự án, nhóm và các chuyên gia về chủ đề phù hợp khác xác định các số liệu đo lường chất lượng.</li>
+<li>Người quản lý dự án lập kế hoạch và thực hành cải tiến quy trình liên tục.</li>
+<li>Người quản lý dự án tạo và sử dụng hệ thống ghi nhận và khen thưởng phù hợp với từng dự án.</li>
+<li>Người quản lý dự án ghi lại và phân công rõ ràng các vai trò và trách nhiệm trong dự án với sự trợ giúp của nhóm. Bao gồm trách nhiệm báo cáo, phân công quản lý rủi ro, tham dự cuộc họp và công việc dự án. Các nhóm agile có các chuyên gia tổng hợp (generalizing specialists) — những người am hiểu một hoặc nhiều lĩnh vực nhưng có thể và sẽ hỗ trợ ở các lĩnh vực khác khi cần.</li>
+<li>Người quản lý dự án và nhóm tập trung nghiêm túc vào việc xác định rủi ro phù hợp với phương pháp tiếp cận.</li>
+<li>Các thành viên nhóm và các bên liên quan khác tham gia vào các trách nhiệm nhận diện rủi ro và quản lý rủi ro.</li>
+<li>Người quản lý dự án và nhóm nhận thức được rằng quản lý rủi ro giúp tiết kiệm thời gian và tiền bạc cho dự án.</li>
+<li>Chi phí và lịch trình dự án không thể được hoàn thiện nếu không hoàn thành quản lý rủi ro.</li>
+<li>Quản lý dự án dựa trên kế hoạch bao gồm việc tạo lịch trình và ngân sách thực tế dựa trên phạm vi đã xác định của dự án. Quản lý dự án agile đòi hỏi sự linh hoạt về phạm vi trong khi giữ lịch trình và chi phí thực tế và cố định.</li>
+<li>Người quản lý dự án đánh giá liệu một dự án dựa trên kế hoạch có thể đáp ứng (các) ngày kết thúc và các ràng buộc và mục tiêu dự án khác hay không. Họ gặp ban quản lý để giải quyết những khác biệt trước khi công việc dự án bắt đầu. Người quản lý dự án biết rằng các lịch trình không thực tế là lỗi của họ vì họ có các công cụ và kỹ năng để giúp giải quyết chúng.</li>
+<li>Người quản lý dự án cho dự án agile thiết lập sản phẩm khả thi tối thiểu (MVP — minimally viable product) có thể được bàn giao trong phạm vi chi phí, lịch trình và các ràng buộc dự án khác. Họ cung cấp kế hoạch bàn giao MVP trong các đợt phát hành thông qua việc xây dựng và bàn giao sản phẩm theo từng vòng lặp và gia tăng.</li>
+<li>Người quản lý dự án lập kế hoạch khi nào và cách nào để đo lường hiệu suất so với đường cơ sở đo lường hiệu suất (performance measurement baseline), được ghi lại trong kế hoạch quản lý dự án. Họ lập kế hoạch cho các phương pháp khác, như lập bản đồ luồng giá trị (value stream mapping), để xác định cách dự án và các quy trình đang hoạt động trong khi công việc đang được thực hiện.</li>
+<li>Người quản lý dự án lập kế hoạch tương tác với các bên liên quan ở tất cả các cấp và tạo ra các chiến thuật để thiết lập và duy trì mức độ tương tác của các bên liên quan mong muốn cho từng bên liên quan hoặc nhóm.</li>
+<li>Kế hoạch quản lý dự án thực tế và mọi người tin rằng nó có thể đạt được.</li>
+<li>Người quản lý dự án tổ chức cuộc họp khởi động (kickoff meeting) với nhóm.</li>
+</ul>
+
+<h4 id="ch1-while-the-project-work-is-being-done">Trong Khi Công Việc Dự Án Đang Được Thực Hiện</h4>
+
+<ul class="content-list">
+<li>Người quản lý dự án chịu trách nhiệm tạo điều kiện cho việc ghi lại tài liệu và chia sẻ kiến thức trong suốt dự án.</li>
+<li>Người quản lý dự án đo lường so với kế hoạch quản lý dự án để giúp xác định tình trạng dự án trong suốt vòng đời của dự án.</li>
+<li>Các dự án được ước tính lại trong suốt vòng đời của dự án để đảm bảo (các) ngày kết thúc và mục tiêu chi phí sẽ được đáp ứng. Do đó, người quản lý dự án hầu như luôn biết liệu dự án có thể đáp ứng (các) ngày kết thúc và ngân sách đã thỏa thuận hay không.</li>
+<li>Người quản lý dự án có thẩm quyền và năng lực. Họ có thể nói không và làm việc để kiểm soát dự án vì lợi ích của tổ chức và các bên liên quan.</li>
+<li>Sự thay đổi phạm vi phải được đánh giá về tác động của nó đến lịch trình, chi phí, chất lượng, rủi ro, nguồn lực và sự hài lòng của khách hàng. Người quản lý dự án có đủ dữ liệu về dự án để thực hiện phân tích này.</li>
+<li>Người quản lý dự án nhận ra rằng, theo thời gian, những người liên quan đến dự án có thể có sự hiểu biết khác nhau về dự án là gì và những gì có thể xảy ra trong vòng đời dự án. Người quản lý dự án liên tục tạo điều kiện cho sự hiểu biết chung và kỳ vọng phù hợp.</li>
+<li>Người quản lý dự án hiểu và coi trọng trách nhiệm về nguồn lực trong dự án.</li>
+<li>Người quản lý dự án dành thời gian cho các hoạt động như xây dựng nhóm và đảm bảo hiệu suất nhóm cao.</li>
+<li>Người quản lý dự án chủ động, phát hiện vấn đề sớm, tìm kiếm sự thay đổi và ngăn ngừa vấn đề.</li>
+<li>Rủi ro được quản lý chủ động. Hầu hết các vấn đề phát sinh đều có kế hoạch phản hồi rủi ro để đối phó với chúng. Các nhóm agile làm việc với backlog được điều chỉnh theo rủi ro bao gồm các kế hoạch phản hồi rủi ro.</li>
+<li>Rủi ro được giải quyết trong mỗi cuộc họp nhóm.</li>
+<li>Các cuộc họp dự án có chương trình nghị sự được lên kế hoạch và tuân theo. Các cuộc họp nhóm agile có dạng các cuộc họp đứng hàng ngày (daily standup) ngắn và tuân theo chương trình đã định nghiêm ngặt.</li>
+<li>Tất cả các thay đổi đối với kế hoạch quản lý dự án đi qua quy trình quản lý thay đổi và kiểm soát thay đổi tích hợp (integrated change control) (hoặc tương đương agile của nó).</li>
+<li>Người quản lý dự án và nhóm thực hiện và kiểm soát dự án với sự khẩn trương cần thiết để hoàn thành các mục tiêu mà dự án được thực hiện.</li>
+<li>Người quản lý dự án đảm bảo rằng dự án tuân thủ quản trị tổ chức và mọi luật và quy định hiện hành bên ngoài tổ chức.</li>
+<li>Người quản lý dự án đề xuất cải tiến cho các tiêu chuẩn, chính sách và quy trình của tổ chức thực hiện. Những đề xuất như vậy được kỳ vọng và được ban quản lý hoan nghênh.</li>
+<li>Chất lượng nên được xem xét bất cứ khi nào có sự thay đổi đối với bất kỳ thành phần nào của dự án.</li>
+<li>Chất lượng nên được kiểm tra trước khi một hoạt động hoặc gói công việc được coi là hoàn thành.</li>
+<li>Người quản lý dự án làm việc chặt chẽ với bộ phận chất lượng trong việc thực hiện một số hoạt động chất lượng được thảo luận trong <em>Process Groups: A Practice Guide</em>.</li>
+<li>Người quản lý dự án tham gia tích cực vào quy trình mua sắm và hỗ trợ quản lý các hợp đồng mua sắm.</li>
+<li>Người quản lý dự án hiểu ngôn ngữ hợp đồng.</li>
+<li>Người quản lý dự án đảm bảo rằng tất cả các điều khoản của hợp đồng được đáp ứng, kể cả những điều khoản có vẻ không quan trọng.</li>
+</ul>
+
+<h4 id="ch1-closing-the-project">Kết Thúc Dự Án</h4>
+
+<ul class="content-list">
+<li>Không có dự án nào hoàn tất cho đến khi sản phẩm được chuyển giao cho các bên liên quan và đào tạo về cách sử dụng và bảo trì sản phẩm đã được cung cấp để hiện thực hóa các lợi ích của nó, khi cần thiết.</li>
+<li>Không có dự án nào hoàn tất cho đến khi có sự chấp nhận cuối cùng từ khách hàng.</li>
+<li>Tất cả các dự án tạo ra một báo cáo cuối cùng cho nhóm dự án cơ hội thông báo rằng các mục tiêu dự án đã được đáp ứng.</li>
+<li>Người quản lý dự án và nhóm đảm bảo rằng tất cả hồ sơ dự án được cập nhật và lưu trữ.</li>
+</ul>
+
+<p>Mục nào trong danh sách này có vẻ khác với cách bạn hoặc tổ chức của bạn quản lý dự án? Mục nào trong số này bạn không hiểu? Xem lại danh sách này khi bạn nghĩ rằng bạn đã học xong. Đặc biệt chú ý đến những mục không đúng với các dự án của bạn. Có mục nào bạn cần suy nghĩ thêm để đảm bảo bạn sẽ nhớ chúng khi thi? Biết những PMI-isms này có thể tạo ra sự khác biệt đáng kể. Hầu hết học viên có kinh nghiệm quản lý dự án hàng ngày khác với một số lượng lớn các PMI-isms này, khiến đây là một lỗ hổng đáng kể mà học viên cần thu hẹp trước khi dự thi.</p>
+
+<h4 id="ch1-how-to-study-for-the-pmp-exam">Cách Học Cho Kỳ Thi PMP</h4>
+
+<p>Một số người tin rằng bạn cần đọc mọi tài liệu hiện có, xem nhiều video và dành càng nhiều thời gian càng tốt để chuẩn bị cho kỳ thi PMP. Đừng mắc sai lầm đó. Bạn không nên đọc tất cả mọi thứ bạn có thể tìm thấy, vì một số tài liệu không được kiểm chứng kỹ. Chúng tôi khuyến nghị phương pháp tiếp cận được nêu trong các phần sau.</p>
+
+<p><strong>Phép Màu Ba Lần</strong> Các nghiên cứu đã chỉ ra rằng nếu bạn truy cập một chủ đề ba lần, bạn có nhiều khả năng nhớ hơn. Đọc cuốn sách này một lần và sau đó lướt qua nó thêm hai lần nữa, tập trung nhiều nhất vào các hoạt động bạn không làm trong thực tế và các khái niệm bạn gặp khó khăn trong việc hiểu hoặc ghi nhớ. Bạn nên ghi lại những điều này khi làm việc qua cuốn sách này vì chúng đại diện cho những lỗ hổng trong kiến thức và sự hiểu biết của bạn cần được lấp đầy trước kỳ thi.</p>
+
+<p><strong>Vào Trạng Thái Làm Bài Thi</strong> Hãy làm quen với việc nhảy từ chủ đề này sang chủ đề khác. Bạn cũng sẽ cần thực hành trả lời câu hỏi trong bốn giờ. Bạn có thể làm điều này bằng cách chờ đợi để làm bất kỳ bài kiểm tra theo chương nào cho đến khi bạn cảm thấy sẵn sàng trả lời các câu hỏi. Sau đó làm tất cả Bài Kiểm Tra Tương Tác Theo Chương của RMC trong một lần (xem bước 4 trong kế hoạch B ở trang 24). Đừng đánh giá thấp các khía cạnh thể chất, tinh thần và cảm xúc của việc làm một kỳ thi kéo dài đó. Bạn cũng có thể vào trạng thái làm bài thi bằng cách sử dụng trình mô phỏng kỳ thi PM FASTrack® của chúng tôi.</p>
+
+<h4 id="ch1-your-step-by-step-study-plan">Kế Hoạch Học Tập Từng Bước Của Bạn</h4>
+
+<p>Chúng tôi đề nghị bạn sử dụng một trong các kế hoạch học tập sau. Thực hiện Kế hoạch A nếu bạn sở hữu Hệ thống Chuẩn bị Thi PMP đầy đủ của RMC (Cuốn sách Chuẩn bị Thi PMP® này, giấy phép PM FASTrack® Cloud Exam Simulator và Hot Topics). Thực hiện Kế hoạch B nếu bạn chỉ có sách chứ không có toàn bộ hệ thống.</p>
+
+<h4 id="ch1-plan-a-using-this-book-with-the-pmp-exam-prep-system">Kế Hoạch A: Sử Dụng Cuốn Sách Này Với Hệ Thống Chuẩn Bị Thi PMP</h4>
+
+<p>(Sách Chuẩn bị Thi PMP®, PM FASTrack® Cloud Exam Simulator và Hot Topics)</p>
+
+<p>Một sai lầm phổ biến mà những người mua Hệ thống Chuẩn bị Thi PMP® mắc phải là dành phần lớn thời gian học để trả lời các câu hỏi trong PM FASTrack®. Cách tiếp cận này sẽ không hiệu quả. Như chúng tôi đã đề cập trước đó, hãy tập trung nỗ lực vào việc đọc cuốn sách này, hoàn thành các bài tập và hoạt động ôn tập, và lấp đầy những lỗ hổng trong kiến thức thực tế về các phương pháp quản lý dự án tốt cho các dự án dựa trên kế hoạch, agile và kết hợp. Hãy sử dụng các bước sau để học cuốn sách này cùng với PM FASTrack® và Hot Topics:</p>
+
+<p>Đọc cuốn sách này lần đầu tiên và hoàn thành các bài tập. Dành nhiều thời gian hơn cho các lĩnh vực mà bạn nhận ra mình có lỗ hổng kiến thức hoặc kinh nghiệm; những mục bạn không biết hoặc không thực hiện trước khi bắt đầu học. Thường xuyên tham khảo Biểu đồ Quy trình™ của Rita và Biểu đồ Quy trình Agile™ của Rita (được đưa vào chương 3 của cuốn sách này). Hãy chắc chắn bạn hiểu tất cả các nỗ lực liên quan đến các chủ đề bạn đang làm việc. Sử dụng ECO như được chỉ dẫn trong từng chương lĩnh vực ECO để trở nên quen thuộc một cách thoải mái với nội dung ECO khi bạn hoàn thành cuốn sách này.</p>
+
+<ol class="content-list">
+<li>Khi bạn hoàn thành mỗi chương, hãy xem lại Kiểm tra Nhanh ở đầu chương. Hãy chắc chắn bạn biết ý nghĩa của từng khái niệm. Sử dụng Hot Topics để cải thiện khả năng nhớ lại và kiểm tra kiến thức của bạn về từng chương.</li>
+<li>Nếu có thể, hãy thành lập nhóm học tập sau khi bạn đã đọc cuốn sách lần đầu tiên. Thời gian học tập của bạn sẽ hiệu quả hơn. Bạn sẽ có thể thảo luận nội dung cùng nhau và việc học (và ăn mừng sau đó) sẽ thú vị hơn. Nhóm học tập chỉ nên gồm ba hoặc bốn người. (Xem Cách Sử Dụng Cuốn Sách Này trong Nhóm Học Tập ở trang 25.)</li>
+<li>Lướt qua cuốn sách này lần nữa, xem xét các lĩnh vực mà bạn không tự tin với nội dung.</li>
+<li>Đối với các lĩnh vực bạn xem xét vì bạn có ít tự tin hơn, hãy trả lời một mẫu nhỏ các câu hỏi (không quá 20) bằng cách sử dụng chức năng Kiểm tra Tập Trung trong PM FASTrack®. Phân tích lý do tại sao bạn trả lời sai câu hỏi và tiếp tục học các lĩnh vực lỗ hổng này. PM FASTrack® hỗ trợ điều này bằng cách cho phép bạn tải xuống bảng tính các câu hỏi bạn trả lời sai. Nó được gọi là "Export Analysis Data" trong PM FASTrack®.</li>
+<li>Khi bạn cảm thấy đã chuẩn bị để làm vậy, hãy thực hiện một bài mô phỏng kỳ thi đầy đủ trên PM FASTrack®. Bước này sẽ cung cấp cho bạn mức cơ sở để theo dõi tiến trình của bạn khi bạn tiếp tục học.</li>
+</ol>
+
+<div class="highlight"><p><strong>CẢNH BÁO:</strong> Giới hạn bản thân không quá hai bài mô phỏng kỳ thi đầy đủ trước khi bạn thi thực tế. Nếu không, bạn làm giảm giá trị của PM FASTrack® bằng cách ghi nhớ các câu hỏi và đáp án sẽ không được trình bày theo cách giống nhau trong kỳ thi.</p></div>
+
+<div class="highlight"><p><strong>CẢNH BÁO:</strong> Nếu bạn không đạt 70 phần trăm trở lên trong lần đầu tiên thi mô phỏng đầy đủ (không chỉ là bài kiểm tra ngắn hơn về một lĩnh vực nội dung hoặc lĩnh vực ECO), bạn có thể cần được bổ sung kiến thức cơ bản về quản lý dự án. Nếu bạn đã tham gia lớp học cơ bản về quản lý dự án, hãy xem xét lại tài liệu bạn nhận được từ lớp học đó. Nếu bạn chưa tham gia lớp học này, hãy cân nhắc tham gia. Hoặc bạn có thể cần một lớp học Chuẩn bị PMP®. Liên hệ với chúng tôi qua thông tin trên rmcls.com/contact-us/. Chúng tôi có thể giúp đánh giá nhu cầu của bạn.</p></div>
+
+<ol class="content-list" start="6">
+<li>Xem xét từng câu hỏi bạn trả lời sai trong PM FASTrack®, ghi lại các lý do cụ thể cho từng câu trả lời sai. Đánh giá lý do tại sao lựa chọn đúng là đúng và tại sao các câu trả lời khác là sai. Trong PM FASTrack®, chúng tôi giải thích các đáp án và đưa ra tài liệu tham khảo để giúp bạn nhanh chóng quay lại nội dung liên quan. Sử dụng "Export Analysis Data" trong FASTrack để tải xuống bảng tính các câu hỏi bạn trả lời sai.</li>
+<li>Sử dụng danh sách lý do tại sao bạn trả lời sai mỗi câu hỏi (từ bước trước) để xác định những gì cần học thêm. Điều này sẽ giúp bạn xác định bạn cần thêm bao nhiêu thời gian học và những lĩnh vực nội dung nào cần xem xét cẩn thận hơn. Tiếp tục học cuốn sách này, tập trung vào các lĩnh vực bạn có nhiều lỗ hổng hơn và lướt qua các phần hoặc chương mà bạn làm tốt. Đối với các chương bạn cần xem xét, luôn bắt đầu bằng cách xem xét các phần Tổng quan của chương, nơi chúng tôi ánh xạ ECO với các tài liệu PMI khác và chỉ ra các khía cạnh quan trọng của các nhiệm vụ lĩnh vực ECO. Và hãy nhớ, hãy suy nghĩ về các thực hành quản lý dự án tốt theo PMI như được thảo luận trong cuốn sách này và dựa trên các phương pháp tiếp cận theo phổ từ dựa trên kế hoạch, agile và kết hợp. Hãy làm điều này bất kể cách bạn quản lý dự án của mình trong thực tế.</li>
+<li>Đối với các lĩnh vực chủ đề mà bạn gặp khó khăn nhất, hãy xem xét lại chúng. Sau đó bạn có thể muốn trả lời một mẫu nhỏ câu hỏi (không quá 20) bằng cách sử dụng chức năng Kiểm tra Tập Trung trong PM FASTrack®. Phân tích lý do tại sao bạn trả lời sai câu hỏi và tiếp tục học các lĩnh vực lỗ hổng.</li>
+</ol>
+
+<div class="highlight"><p><strong>CẢNH BÁO:</strong> Bạn có thể bị cám dỗ trả lời nhiều hơn 20 câu hỏi, nhưng điều này nên đủ để đánh giá tiến trình của bạn trong lĩnh vực nội dung cụ thể và liệu bạn có cần học thêm không. Trả lời nhiều hơn 20 câu hỏi trong một lĩnh vực cụ thể có thể làm giảm giá trị của PM FASTrack® và sẽ không chuẩn bị cho bạn cho chiều rộng của trải nghiệm kỳ thi.</p></div>
+
+<ol class="content-list" start="9">
+<li>Tham gia bài thi mô phỏng PMP lần thứ hai và cuối cùng của bạn. Bạn nên đạt trên 75 phần trăm trước khi thi thực tế. Bạn đang lạm dụng PM FASTrack® nếu bạn thấy nhiều câu hỏi lặp lại.</li>
+<li>Sử dụng Hot Topics và các tài liệu khác để tiếp tục xem xét nội dung cho đến khi bạn thi.</li>
+<li>Tạo chiến lược thi của bạn (xem chương "Mẹo Vượt Qua Kỳ Thi PMP Ngay Lần Đầu").</li>
+<li>VƯỢT QUA KỲ THI!</li>
+</ol>
+
+<h4 id="ch1-plan-b-using-this-book-as-a-stand-alone">Kế Hoạch B: Sử Dụng Cuốn Sách Này Như Tài Liệu Độc Lập</h4>
+
+<p>(Sách Chuẩn bị Thi PMP®, Tài nguyên RMC, Bài Kiểm Tra Tương Tác Theo Chương của RMC)</p>
+
+<p>Đọc cuốn sách này lần đầu tiên và hoàn thành các bài tập. Dành nhiều thời gian hơn cho các lĩnh vực mà bạn nhận ra mình có lỗ hổng kiến thức hoặc kinh nghiệm; những mục bạn không biết hoặc không thực hiện trước khi bắt đầu học. Thường xuyên tham khảo Biểu đồ Quy trình™ của Rita và Biểu đồ Quy trình Agile™ của Rita (được đưa vào chương 3 của cuốn sách này). Hãy chắc chắn bạn hiểu tất cả các nỗ lực liên quan đến các chủ đề bạn đang làm việc. Sử dụng ECO như chúng tôi chỉ dẫn trong từng chương lĩnh vực ECO, để trở nên quen thuộc một cách thoải mái với nội dung ECO khi bạn hoàn thành cuốn sách này.</p>
+
+<ol class="content-list">
+<li>Khi bạn hoàn thành mỗi chương, hãy xem lại Kiểm tra Nhanh ở đầu chương. Hãy chắc chắn bạn biết ý nghĩa của từng khái niệm.</li>
+<li>Nếu có thể, hãy thành lập nhóm học tập sau khi bạn đã đọc cuốn sách lần đầu tiên. Thời gian học tập của bạn sẽ hiệu quả hơn. Bạn sẽ có thể thảo luận nội dung cùng nhau và việc học (và ăn mừng sau đó) sẽ thú vị hơn. Nhóm học tập chỉ nên gồm ba hoặc bốn người. (Xem "Cách Sử Dụng Cuốn Sách Này trong Nhóm Học Tập" ở trang 25.)</li>
+<li>Lướt qua cuốn sách này lần nữa, xem xét các lĩnh vực mà bạn không tự tin với nội dung.</li>
+<li>Khi bạn cảm thấy tự tin về tài liệu, hãy làm Bài Kiểm Tra Tương Tác Theo Chương của RMC trong một lần ngồi. Điều này sẽ cung cấp cho bạn mức cơ sở để biết bạn đã học được bao nhiêu. Nó cũng sẽ giúp bạn xác định bạn cần thêm bao nhiêu thời gian học và những chương nào cần đọc cẩn thận hơn.</li>
+<li>Xem xét từng câu hỏi bạn trả lời sai trong Bài Kiểm Tra Tương Tác Theo Chương của RMC, ghi lại các lý do cụ thể cho từng câu trả lời sai. Đánh giá lý do tại sao lựa chọn đúng là đúng và tại sao các câu trả lời khác là sai. Trong Bài Kiểm Tra Tương Tác Theo Chương của RMC, chúng tôi giải thích các đáp án và đưa ra tài liệu tham khảo để giúp bạn nhanh chóng quay lại nội dung liên quan. Bài Kiểm Tra Tương Tác Theo Chương của RMC hỗ trợ điều này bằng cách cho phép bạn tải xuống bảng tính các câu hỏi bạn trả lời sai (được gọi là "Export Analysis Data" trong công cụ Bài Kiểm Tra Tương Tác Theo Chương của RMC). Tiếp tục học cuốn sách này, tập trung vào các lĩnh vực bạn có lỗ hổng kiến thức và lướt qua các phần hoặc chương mà bạn làm tốt.</li>
+</ol>
+
+<h3 id="ch1-correct-errors-in-understanding">6. Sửa Chữa Những Lỗi Trong Hiểu Biết Của Bạn Về Các Khái Niệm Được Thảo Luận Trong Cuốn Sách Này</h3>
+
+<div class="highlight"><p><strong>CẢNH BÁO:</strong> Nếu bạn không đạt 70 phần trăm trở lên trong lần đầu tiên tham gia Bài Kiểm Tra Tương Tác Theo Chương của RMC, bạn có thể cần được bổ sung kiến thức cơ bản về quản lý dự án. Nếu bạn đã tham gia lớp học cơ bản về quản lý dự án, hãy xem xét lại tài liệu bạn nhận được từ lớp học đó. Nếu bạn chưa tham gia lớp học này, hãy cân nhắc tham gia. Hoặc bạn có thể cần một lớp học Chuẩn bị PMP®. Liên hệ với chúng tôi qua thông tin trên rmcls.com/contact-us/. Chúng tôi có thể giúp đánh giá nhu cầu của bạn.</p></div>
+
+<ol class="content-list" start="7">
+<li>Hãy chắc chắn bạn thực sự biết tài liệu, sau đó làm lại Bài Kiểm Tra Tương Tác Theo Chương của RMC. Như ở bước 5, hãy sử dụng bảng tính được tải xuống từ công cụ để xác định lý do cụ thể, không phải chung chung, tại sao bạn trả lời sai mỗi câu hỏi.</li>
+<li>Sử dụng danh sách lý do tại sao bạn trả lời sai mỗi câu hỏi (từ bước trước) để xác định những gì cần học thêm. Điều này sẽ giúp bạn xác định bạn cần thêm bao nhiêu thời gian học và những lĩnh vực nội dung nào cần xem xét cẩn thận hơn. Tiếp tục học cuốn sách này, tập trung vào các lĩnh vực bạn có nhiều lỗ hổng hơn và lướt qua các phần hoặc chương mà bạn làm tốt. Đối với các chương bạn cần xem xét, luôn bắt đầu bằng cách xem xét các phần Tổng quan của chương, nơi chúng tôi ánh xạ ECO với các tài liệu PMI khác và chỉ ra các khía cạnh quan trọng của các nhiệm vụ lĩnh vực ECO. Và hãy nhớ, hãy suy nghĩ về các thực hành quản lý dự án tốt theo PMI như chúng tôi thảo luận trong cuốn sách này và dựa trên các phương pháp tiếp cận theo phổ từ dựa trên kế hoạch, agile và kết hợp. Hãy làm điều này bất kể cách bạn quản lý dự án của mình trong thực tế.</li>
+<li>Tạo chiến lược thi của bạn (xem chương "Mẹo Vượt Qua Kỳ Thi PMP® Ngay Lần Đầu").</li>
+<li>VƯỢT QUA KỲ THI!</li>
+</ol>
+
+<h4 id="ch1-how-to-use-this-book-in-a-study-group">Cách Sử Dụng Cuốn Sách Này Trong Nhóm Học Tập</h4>
+
+<p>Để bắt đầu, hãy chọn một người dẫn dắt thảo luận cho mỗi chương (tốt nhất là người không thoải mái với chương đó, vì người trình bày thường học và ghi nhớ nhiều nhất trong nhóm). Mỗi lần bạn gặp nhau, hãy ôn lại các câu hỏi về các chủ đề bạn không hiểu và xem xét các chủ đề hot topics trong kỳ thi bằng cách sử dụng flashcard Hot Topics nếu bạn có. Hầu hết các nhóm gặp nhau trong một giờ mỗi chương. Hoặc độc lập hoặc với nhóm học tập của bạn, hãy nghiên cứu thêm về nội dung bạn không tự tin với các câu hỏi bạn trả lời sai trong Bài Kiểm Tra Tương Tác Theo Chương của RMC hoặc PM FASTrack®.</p>
+
+<p>Mỗi thành viên trong nhóm học tập nên có bản sao của cuốn sách này, có thể được sử dụng trong nhóm để thực hiện các cam kết học tập và thảo luận cho các buổi học nhóm. (Xin lưu ý rằng việc sao chép tài liệu trong cuốn sách này hoặc tạo ra các tác phẩm phái sinh từ cuốn sách có bản quyền này là vi phạm luật bản quyền quốc tế.)</p>
+
+<h3 id="ch1-section-ii-foundations">Phần II</h3>
+
+<h4 id="ch1-foundations">Nền Tảng</h4>
+
+<p>Trong phần này, bạn sẽ học các nền tảng của quản lý dự án. Đầu tiên, chúng tôi sẽ hướng dẫn bạn qua các tài liệu tham khảo PMI chính và cách chúng liên quan đến kỳ thi. Sau đó, chúng tôi sẽ thảo luận về các phương pháp tiếp cận dự đoán, kết hợp và thích ứng cho quản lý dự án. Bạn sẽ tìm hiểu cách các dự án được lựa chọn và vai trò trong dự án là gì. Dưới đây là một số điểm nổi bật của phần này:</p>
+
+<ul class="content-list">
+<li>Tổng quan về phương pháp dự đoán và agile</li>
+<li>Các nhóm quy trình dựa trên kế hoạch: khởi động (initiating), lập kế hoạch (planning), thực hiện (executing), giám sát và kiểm soát (monitoring and controlling) và kết thúc (closing)</li>
+<li>Các quy trình agile: tính khả thi (feasibility), khởi động (initiation), lập kế hoạch phát hành (release planning), vòng lặp và phát hành sản phẩm (iterations and product release) và kết thúc (closing)</li>
+<li>Biểu đồ Quy trình của Rita (một công cụ học tập có giá trị khi học về các dự án dựa trên kế hoạch)</li>
+<li>Biểu đồ Quy trình Agile của Rita (khi học về các dự án agile)</li>
+<li>Quản lý dự án liên quan đến tổ chức như thế nào</li>
+<li>Các dự án được lựa chọn như thế nào</li>
+<li>Vai trò và trách nhiệm trong dự án</li>
+<li>Tích hợp có nghĩa là gì và tại sao nó là một phần quan trọng của việc quản lý dự án</li>
+</ul>
+
+
+</main>
+<button id="back-top" aria-label="Về đầu trang">↑</button>
+<script>
+const pb=document.getElementById('progress-bar');
+function updPB(){const d=document.documentElement;pb.style.width=Math.min((d.scrollTop/(d.scrollHeight-d.clientHeight))*100,100)+'%'}
+window.addEventListener('scroll',updPB,{passive:true});
+const bt=document.getElementById('back-top');
+window.addEventListener('scroll',()=>{bt.style.opacity=scrollY>400?'1':'0';},{passive:true});
+bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+const mb=document.getElementById('menu-btn'),sb=document.getElementById('sidebar');
+mb.addEventListener('click',()=>sb.classList.toggle('open'));
+document.addEventListener('click',e=>{if(!sb.contains(e.target)&&e.target!==mb)sb.classList.remove('open')});
+const tocLinks=document.querySelectorAll('#sidebar-toc a[href^="#"]');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){tocLinks.forEach(a=>a.classList.remove('active'));const a=document.querySelector('#sidebar-toc a[href="#'+e.target.id+'"]');if(a){a.classList.add('active');a.scrollIntoView({block:'nearest',behavior:'smooth'})}}})},{rootMargin:'-20% 0px -75% 0px'});
+document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
+
+// ── THEME + READING POSITION ───────────────────────────
+(function(){
+  var THEME_KEY='rita_theme', READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var chapNum=m?m[1]:null;
+
+  // Build & inject theme toggle button
+  var hdr=document.getElementById('sidebar-header');
+  if(hdr){
+    var btn=document.createElement('button');
+    btn.id='theme-btn';
+    var curTheme=document.documentElement.getAttribute('data-theme')||'light';
+    btn.textContent=curTheme==='dark'?'☀':'🌙';
+    btn.title='Giao diện sáng / tối';
+    hdr.appendChild(btn);
+    btn.addEventListener('click',function(){
+      var next=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+      document.documentElement.setAttribute('data-theme',next);
+      localStorage.setItem(THEME_KEY,next);
+      btn.textContent=next==='dark'?'☀':'🌙';
+    });
+  }
+
+  if(!chapNum) return;
+
+  // Save last chapter visited
+  try{
+    var rd=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    rd.lastChap='rita_chap'+chapNum;
+    if(!rd.scrollPos) rd.scrollPos={};
+    localStorage.setItem(READ_KEY,JSON.stringify(rd));
+  }catch(e){}
+
+  // Restore scroll position
+  try{
+    var rdR=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    var savedPos=rdR.scrollPos&&rdR.scrollPos[chapNum]||0;
+    if(savedPos>200) setTimeout(function(){window.scrollTo(0,savedPos);},120);
+  }catch(e){}
+
+  // Save scroll position (debounced 600ms)
+  var saveT;
+  window.addEventListener('scroll',function(){
+    clearTimeout(saveT);
+    saveT=setTimeout(function(){
+      try{
+        var r2=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+        if(!r2.scrollPos) r2.scrollPos={};
+        r2.scrollPos[chapNum]=window.scrollY;
+        r2.lastChap='rita_chap'+chapNum;
+        localStorage.setItem(READ_KEY,JSON.stringify(r2));
+      }catch(e){}
+    },600);
+  },{passive:true});
+})();
+
+// ── HIGHLIGHT / NOTES SYSTEM ────────────────────────────
+(function(){
+  var READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  if(!m) return;
+  var chapNum=m[1];
+  var HL_KEY='rita_hl_'+chapNum;
+
+  // ── STORAGE ──
+  function loadHL(){try{return JSON.parse(localStorage.getItem(HL_KEY)||'[]')}catch(e){return[]}}
+  function saveHL(arr){localStorage.setItem(HL_KEY,JSON.stringify(arr));window.__ritaSyncTrigger&&window.__ritaSyncTrigger();}
+  function genId(){return 'h'+Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
+
+  // ── XPATH HELPERS ──
+  var mainEl=document.getElementById('main');
+  function getXPath(node){
+    if(!node||node===mainEl) return '.';
+    var parts=[];
+    var cur=node.nodeType===3?node.parentNode:node;
+    while(cur&&cur!==mainEl&&cur!==document.body){
+      var tag=cur.tagName.toLowerCase();
+      var idx=1,sib=cur.previousElementSibling;
+      while(sib){if(sib.tagName&&sib.tagName.toLowerCase()===tag)idx++;sib=sib.previousElementSibling;}
+      parts.unshift(tag+'['+idx+']');
+      cur=cur.parentElement;
+    }
+    return parts.join('/');
+  }
+  function resolveXPath(xpath){
+    if(!mainEl||xpath==='.') return mainEl;
+    try{
+      var r=document.evaluate('.//'+xpath,mainEl,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);
+      return r.singleNodeValue;
+    }catch(e){return null;}
+  }
+  function findTextAt(el,offset){
+    var walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null);
+    var count=0,node;
+    while((node=walker.nextNode())){
+      var len=node.textContent.length;
+      if(count+len>=offset) return{node:node,localOffset:offset-count};
+      count+=len;
+    }
+    return null;
+  }
+
+  // ── APPLY MARK TO DOM ──
+  function applyMark(hl){
+    try{
+      var sEl=resolveXPath(hl.sxp), eEl=resolveXPath(hl.exp);
+      if(!sEl||!eEl) return false;
+      var sInfo=sEl.nodeType===3?{node:sEl,localOffset:hl.so}:findTextAt(sEl,hl.so);
+      var eInfo=eEl.nodeType===3?{node:eEl,localOffset:hl.eo}:findTextAt(eEl,hl.eo);
+      if(!sInfo||!eInfo) return false;
+      var range=document.createRange();
+      range.setStart(sInfo.node,sInfo.localOffset);
+      range.setEnd(eInfo.node,eInfo.localOffset);
+      applyRange(range,hl.id,hl.color,hl.note||'');
+      return true;
+    }catch(e){return false;}
+  }
+  function applyRange(range,hlId,color,note){
+    var walker=document.createTreeWalker(
+      range.commonAncestorContainer.nodeType===3
+        ?range.commonAncestorContainer.parentNode
+        :range.commonAncestorContainer,
+      NodeFilter.SHOW_TEXT,null
+    );
+    var nodes=[],node;
+    while((node=walker.nextNode())){if(range.intersectsNode(node))nodes.push(node);}
+    nodes.forEach(function(tn){
+      var s=tn===range.startContainer?range.startOffset:0;
+      var e=tn===range.endContainer?range.endOffset:tn.textContent.length;
+      if(s>=e) return;
+      var nr=document.createRange();
+      nr.setStart(tn,s); nr.setEnd(tn,Math.min(e,tn.textContent.length));
+      try{
+        var mk=document.createElement('mark');
+        mk.className='hl'; mk.setAttribute('data-hl-id',hlId);
+        mk.setAttribute('data-color',color); mk.setAttribute('data-note',note);
+        nr.surroundContents(mk);
+      }catch(err){
+        try{
+          var c=nr.extractContents(),mk2=document.createElement('mark');
+          mk2.className='hl'; mk2.setAttribute('data-hl-id',hlId);
+          mk2.setAttribute('data-color',color); mk2.setAttribute('data-note',note);
+          mk2.appendChild(c); nr.insertNode(mk2);
+        }catch(_){}
+      }
+    });
+  }
+  function removeMarks(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      var p=mk.parentNode;
+      while(mk.firstChild)p.insertBefore(mk.firstChild,mk);
+      p.removeChild(mk);
+      p.normalize();
+    });
+  }
+  function updateMarks(hlId,color,note){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.setAttribute('data-color',color);
+      mk.setAttribute('data-note',note);
+    });
+  }
+
+  // ── RESTORE HIGHLIGHTS ON LOAD ──
+  var highlights=loadHL();
+  // Sort by sxp+so descending so earlier ranges aren't offset by later insertions
+  // Actually apply in order (each one is independent)
+  highlights.forEach(applyMark);
+  // Expose re-apply for sync module
+  window.__ritaReapplyMarks=function(){
+    document.querySelectorAll('mark.hl').forEach(function(mk){
+      var p=mk.parentNode;while(mk.firstChild)p.insertBefore(mk.firstChild,mk);p.removeChild(mk);p.normalize();
+    });
+    loadHL().forEach(applyMark);
+    if(typeof updateBadge==='function') updateBadge();
+    if(typeof renderPanelIfOpen==='function') renderPanelIfOpen();
+  };
+
+  // ── SIDEBAR BUTTON ──
+  function updateBadge(){
+    var hls=loadHL();
+    var badge=document.getElementById('hl-badge');
+    if(badge) badge.textContent=hls.length||'0';
+  }
+  var sidebarNav=document.getElementById('sidebar-toc');
+  if(sidebarNav){
+    var hlBtn=document.createElement('button');
+    hlBtn.id='hl-sidebar-btn';
+    hlBtn.innerHTML='<span>✏ Ghi chú & Highlight</span><span id="hl-badge">0</span>';
+    hlBtn.addEventListener('click',function(){openPanel();});
+    // Insert before sidebar-nav (bottom buttons)
+    var sidebarNavBottom=document.getElementById('sidebar-nav');
+    if(sidebarNavBottom) sidebarNavBottom.parentNode.insertBefore(hlBtn,sidebarNavBottom);
+    else document.getElementById('sidebar').appendChild(hlBtn);
+  }
+  updateBadge();
+
+  // ── PANEL ──
+  var panel=document.createElement('div');
+  panel.id='hl-panel';
+  panel.innerHTML='<div id="hl-panel-hdr"><h3>✏ Ghi Chú & Highlight</h3><button id="hl-panel-close">×</button></div><div id="hl-panel-list"></div>';
+  document.body.appendChild(panel);
+  document.getElementById('hl-panel-close').addEventListener('click',closePanel);
+  function openPanel(){renderPanel();panel.classList.add('open');}
+  function closePanel(){panel.classList.remove('open');}
+  function renderPanel(){
+    var list=document.getElementById('hl-panel-list');
+    var hls=loadHL();
+    list.innerHTML='';
+    hls.forEach(function(hl){
+      var item=document.createElement('div');
+      item.className='hl-item'; item.setAttribute('data-color',hl.color);
+      var noteHtml=hl.note?'<div class="hl-item-note">✏ '+escHtml(hl.note)+'</div>':'';
+      item.innerHTML='<button class="hl-item-del" data-id="'+hl.id+'">🗑</button>'
+        +'<div class="hl-item-text">'+escHtml(hl.text||'')+'</div>'+noteHtml;
+      item.addEventListener('click',function(e){
+        if(e.target.classList.contains('hl-item-del')) return;
+        var mk=document.querySelector('mark.hl[data-hl-id="'+hl.id+'"]');
+        if(mk){mk.scrollIntoView({behavior:'smooth',block:'center'});flashMark(hl.id);}
+        closePanel();
+      });
+      item.querySelector('.hl-item-del').addEventListener('click',function(e){
+        e.stopPropagation(); deleteHL(hl.id); renderPanel();
+      });
+      list.appendChild(item);
+    });
+  }
+
+  // ── POPUP ──
+  var popup=document.createElement('div');
+  popup.id='hl-popup'; popup.className='hidden';
+  popup.innerHTML=
+    '<button class="hl-color-btn" data-color="yellow" title="Vàng"></button>'
+    +'<button class="hl-color-btn" data-color="green" title="Xanh"></button>'
+    +'<button class="hl-color-btn" data-color="red" title="Đỏ"></button>'
+    +'<div class="hl-sep"></div>'
+    +'<button class="hl-note-btn" title="Thêm ghi chú">✏</button>'
+    +'<button class="hl-del-btn hl-del-action" title="Xóa">🗑</button>';
+  document.body.appendChild(popup);
+
+  var currentHlId=null;    // id being edited (null = new)
+  var pendingRange=null;   // Range for new highlight
+  var pendingXP=null;      // serialized position for new highlight
+
+  // Position popup near a rect
+  function positionPopup(rect){
+    var pw=popup.offsetWidth||160,ph=popup.offsetHeight||40;
+    var top=rect.top-ph-10+window.scrollY;
+    var left=rect.left+(rect.width-pw)/2;
+    if(top<window.scrollY+8) top=rect.bottom+10+window.scrollY;
+    left=Math.max(8,Math.min(left,window.innerWidth-pw-8));
+    popup.style.top=top+'px';
+    popup.style.left=left+'px';
+  }
+  function showPopup(rect,hlId){
+    currentHlId=hlId||null;
+    var isEdit=!!hlId;
+    popup.querySelector('.hl-del-action').style.display=isEdit?'':'none';
+    popup.querySelector('.hl-note-btn').style.display='';
+    popup.classList.remove('hidden');
+    positionPopup(rect);
+  }
+  function hidePopup(){
+    popup.classList.add('hidden');
+    pendingRange=null; pendingXP=null; currentHlId=null;
+  }
+
+  // Color buttons
+  popup.querySelectorAll('.hl-color-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var color=btn.getAttribute('data-color');
+      if(currentHlId){
+        // Update existing
+        var hls=loadHL();
+        var idx=hls.findIndex(function(h){return h.id===currentHlId;});
+        if(idx>=0){hls[idx].color=color;saveHL(hls);}
+        updateMarks(currentHlId,color,hls[idx]?hls[idx].note||'':'');
+        updateBadge(); renderPanelIfOpen();
+      } else if(pendingRange&&pendingXP){
+        // Create new
+        var id=genId();
+        var text=pendingRange.toString().substring(0,500);
+        applyRange(pendingRange,id,color,'');
+        pendingRange.collapse();
+        window.getSelection()&&window.getSelection().removeAllRanges();
+        var hls=loadHL();
+        hls.push({id:id,color:color,note:'',text:text,
+          sxp:pendingXP.sxp,so:pendingXP.so,exp:pendingXP.exp,eo:pendingXP.eo});
+        saveHL(hls); updateBadge(); renderPanelIfOpen();
+      }
+      hidePopup();
+    });
+  });
+
+  // Note button
+  popup.querySelector('.hl-note-btn').addEventListener('click',function(){
+    var id=currentHlId;
+    var existing='';
+    if(id){var hls=loadHL();var h=hls.find(function(x){return x.id===id;});if(h)existing=h.note||'';}
+    hidePopup();
+    openNoteModal(id,existing);
+  });
+
+  // Delete button
+  popup.querySelector('.hl-del-action').addEventListener('click',function(){
+    if(currentHlId) deleteHL(currentHlId);
+    hidePopup();
+  });
+
+  function deleteHL(id){
+    removeMarks(id);
+    var hls=loadHL().filter(function(h){return h.id!==id;});
+    saveHL(hls); updateBadge(); renderPanelIfOpen();
+  }
+
+  // ── NOTE MODAL ──
+  var noteModal=document.createElement('div');
+  noteModal.id='hl-note-modal'; noteModal.className='hidden';
+  noteModal.innerHTML='<div id="hl-note-box">'
+    +'<h3>✏ Ghi chú</h3>'
+    +'<textarea id="hl-note-ta" placeholder="Nhập ghi chú..."></textarea>'
+    +'<div class="hl-note-actions">'
+    +'<button class="hl-note-cancel">Hủy</button>'
+    +'<button class="hl-note-save">Lưu</button>'
+    +'</div></div>';
+  document.body.appendChild(noteModal);
+  var _noteTargetId=null;
+  function openNoteModal(hlId,existing){
+    _noteTargetId=hlId;
+    document.getElementById('hl-note-ta').value=existing||'';
+    noteModal.classList.remove('hidden');
+    setTimeout(function(){document.getElementById('hl-note-ta').focus();},50);
+  }
+  noteModal.querySelector('.hl-note-cancel').addEventListener('click',function(){noteModal.classList.add('hidden');});
+  noteModal.querySelector('.hl-note-save').addEventListener('click',function(){
+    var note=document.getElementById('hl-note-ta').value.trim();
+    if(_noteTargetId){
+      var hls=loadHL();
+      var idx=hls.findIndex(function(h){return h.id===_noteTargetId;});
+      if(idx>=0){hls[idx].note=note;saveHL(hls);updateMarks(_noteTargetId,hls[idx].color,note);updateBadge();renderPanelIfOpen();}
+    }
+    noteModal.classList.add('hidden');
+  });
+  noteModal.addEventListener('click',function(e){if(e.target===noteModal)noteModal.classList.add('hidden');});
+
+  // ── SELECTION HANDLER ──
+  document.addEventListener('mouseup',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    setTimeout(function(){
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed||!sel.rangeCount){hidePopup();return;}
+      var range=sel.getRangeAt(0);
+      var text=range.toString().trim();
+      if(!text||text.length<2){hidePopup();return;}
+      // Only highlight within #main
+      if(!mainEl||!mainEl.contains(range.commonAncestorContainer)){hidePopup();return;}
+      // Serialize positions
+      var sNode=range.startContainer,eNode=range.endContainer;
+      var sParent=sNode.nodeType===3?sNode.parentNode:sNode;
+      var eParent=eNode.nodeType===3?eNode.parentNode:eNode;
+      var sxp=getXPath(sParent),exp=getXPath(eParent);
+      // calc offsets within parent element
+      var so=0,eo=0;
+      var w=document.createTreeWalker(sParent,NodeFilter.SHOW_TEXT,null);
+      var n;while((n=w.nextNode())){if(n===sNode){so+=range.startOffset;break;}so+=n.textContent.length;}
+      var w2=document.createTreeWalker(eParent,NodeFilter.SHOW_TEXT,null);
+      while((n=w2.nextNode())){if(n===eNode){eo+=range.endOffset;break;}eo+=n.textContent.length;}
+      pendingRange=range.cloneRange();
+      pendingXP={sxp:sxp,so:so,exp:exp,eo:eo};
+      currentHlId=null;
+      var rect=range.getBoundingClientRect();
+      showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width});
+    },10);
+  });
+
+  // ── CLICK ON EXISTING MARK ──
+  document.addEventListener('click',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    var mk=e.target.closest('mark.hl');
+    if(!mk){
+      // click outside: if selection is collapsed, hide popup
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed) hidePopup();
+      return;
+    }
+    e.stopPropagation();
+    var hlId=mk.getAttribute('data-hl-id');
+    var rect=mk.getBoundingClientRect();
+    currentHlId=hlId;
+    pendingRange=null;pendingXP=null;
+    showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width},hlId);
+  });
+
+  // ── FLASH EFFECT ──
+  function flashMark(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.style.transition='outline .2s';mk.style.outline='3px solid #c9a84c';
+      setTimeout(function(){mk.style.outline='none';},1500);
+    });
+  }
+
+  function renderPanelIfOpen(){if(panel.classList.contains('open'))renderPanel();}
+
+  function escHtml(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+})();
+
+
+// ── CHAPTER NAV PANEL ───────────────────────────────────
+(function(){
+  var CHAPS=[
+    [1,'rita_chap01.html','Mẹo & Thủ Thuật Ôn Thi PMP®'],
+    [2,'rita_chap02.html','Tài Liệu Tham Khảo Kỳ Thi'],
+    [3,'rita_chap03.html','Nền Tảng Quản Lý Dự Án'],
+    [4,'rita_chap04.html','Tích Hợp'],
+    [5,'rita_chap05.html','Kỹ Năng Lãnh Đạo'],
+    [6,'rita_chap06.html','Xây Dựng & Hỗ Trợ Hiệu Suất Nhóm'],
+    [7,'rita_chap07.html','Phạm Vi Dự Án'],
+    [8,'rita_chap08.html','Tiến Độ & Ngân Sách Dự Án'],
+    [10,'rita_chap10.html','Chất Lượng Sản Phẩm Bàn Giao'],
+    [11,'rita_chap11.html','Truyền Thông'],
+    [12,'rita_chap12.html','Rủi Ro & Vấn Đề'],
+    [13,'rita_chap13.html','Mua Sắm'],
+    [14,'rita_chap14.html','Các Bên Liên Quan'],
+    [15,'rita_chap15.html','Tuân Thủ & Mang Lại Giá Trị'],
+    [16,'rita_chap16.html','Mẹo Vượt Qua Kỳ Thi PMP®'],
+    [17,'rita_chap17.html','Các Phương Pháp Agile Phổ Biến'],
+    [18,'rita_chap18.html','Hướng Dẫn PMBOK & Tiêu Chuẩn PM']
+  ];
+
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var curNum=m?parseInt(m[1]):null;
+  var READ_KEY='rita_reading';
+
+  // Build panel DOM
+  var panel=document.createElement('div');
+  panel.id='chap-panel'; panel.className='hidden';
+  var listHtml='';
+  CHAPS.forEach(function(c){
+    var isActive=c[0]===curNum;
+    listHtml+='<a class="chap-panel-item'+(isActive?' active':'')+'" href="'+c[1]+'">'
+      +'<span class="cpanel-num">Ch'+c[0]+'</span>'
+      +'<span class="cpanel-title">'+c[2]+'</span>'
+      +(isActive?'<span class="cpanel-status">● Đang đọc</span>':'')
+      +'</a>';
+  });
+  panel.innerHTML='<div id="chap-panel-overlay"></div>'
+    +'<div id="chap-panel-box">'
+    +'<div id="chap-panel-hdr"><h3>☰ Danh Sách Chương</h3><button id="chap-panel-close">×</button></div>'
+    +'<div id="chap-panel-list">'+listHtml+'</div>'
+    +'</div>';
+  document.body.appendChild(panel);
+
+  function openChapPanel(){panel.classList.remove('hidden');}
+  function closeChapPanel(){panel.classList.add('hidden');}
+  document.getElementById('chap-panel-overlay').addEventListener('click',closeChapPanel);
+  document.getElementById('chap-panel-close').addEventListener('click',closeChapPanel);
+
+  // Wire up the Mục lục button
+  var mucLucBtn=document.getElementById('chap-muc-luc-btn');
+  if(mucLucBtn) mucLucBtn.addEventListener('click',function(e){e.preventDefault();openChapPanel();});
+})();
+
+
+// ── GITHUB HIGHLIGHTS SYNC ──────────────────────────
+(function(){
+  var REPO='goukakujlptsuport-beep/pmbok6';
+  var TOKEN_KEY='rita_gh_token';
+  var API_URL='https://api.github.com/repos/'+REPO+'/contents/data/rita_highlights.json';
+  var fileSha=null;
+  var syncTimer=null;
+
+  // Called by patched saveHL after every highlight change
+  window.__ritaSyncTrigger=function(){
+    clearTimeout(syncTimer);
+    syncTimer=setTimeout(pushToGitHub,3000);
+  };
+
+  // ── STATUS BUTTON (inserted before #sidebar-nav) ──
+  var btn=document.createElement('button');
+  btn.id='sync-btn'; btn.dataset.state='no-token';
+  btn.innerHTML='<span>☁ Sync Git</span><span id="sync-status-text">Đang kết nối…</span>';
+  btn.title='Đồng bộ highlight / ghi chú lên GitHub';
+  btn.addEventListener('click',handleSyncClick);
+  var sidebarNavEl=document.getElementById('sidebar-nav');
+  if(sidebarNavEl) sidebarNavEl.parentNode.insertBefore(btn,sidebarNavEl);
+
+  var statusText=document.getElementById('sync-status-text');
+  function setStatus(state,msg){
+    btn.dataset.state=state;
+    if(statusText) statusText.textContent=msg;
+  }
+
+  // ── TOKEN MODAL ──
+  var modal=document.createElement('div');
+  modal.id='sync-modal'; modal.className='hidden';
+  modal.innerHTML='<div id="sync-modal-box">'
+    +'<h3>☁ Cấu Hình GitHub Sync</h3>'
+    +'<p>Nhập <strong style="color:var(--gold)">GitHub Personal Access Token (PAT)</strong> để đồng bộ highlight giữa các thiết bị.<br>'
+    +'Token cần quyền <strong style="color:var(--gold-lt)">Contents: Read &amp; Write</strong> trên repo pmbok6.<br>'
+    +'Token được lưu trong localStorage của trình duyệt này.</p>'
+    +'<input id="sync-token-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" spellcheck="false" autocomplete="off">'
+    +'<div class="sync-modal-btns">'
+    +'<button id="sync-clear-btn">🗑 Xóa token</button>'
+    +'<button id="sync-cancel-btn">Hủy</button>'
+    +'<button id="sync-save-btn">💾 Lưu &amp; Sync</button>'
+    +'</div></div>';
+  document.body.appendChild(modal);
+
+  document.getElementById('sync-cancel-btn').addEventListener('click',function(){modal.classList.add('hidden');});
+  document.getElementById('sync-save-btn').addEventListener('click',function(){
+    var t=(document.getElementById('sync-token-input').value||'').trim();
+    if(!t){alert('Vui lòng nhập GitHub PAT!');return;}
+    localStorage.setItem(TOKEN_KEY,t);
+    modal.classList.add('hidden');
+    fileSha=null;
+    initSync();
+  });
+  document.getElementById('sync-clear-btn').addEventListener('click',function(){
+    if(!confirm('Xóa token? Highlights sẽ không được sync cho đến khi cấu hình lại.')) return;
+    localStorage.removeItem(TOKEN_KEY);
+    fileSha=null;
+    modal.classList.add('hidden');
+    setStatus('no-token','Chưa cấu hình');
+  });
+  modal.addEventListener('click',function(e){if(e.target===modal)modal.classList.add('hidden');});
+
+  function handleSyncClick(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){
+      var inp=document.getElementById('sync-token-input');
+      if(inp) inp.value='';
+      modal.classList.remove('hidden');
+      setTimeout(function(){if(inp)inp.focus();},80);
+    } else {
+      // Manual re-sync
+      fileSha=null;
+      initSync();
+    }
+  }
+
+  // ── HELPERS ──
+  var ALL_CHAPS=['01','02','03','04','05','06','07','08','10','11','12','13','14','15','16','17','18'];
+
+  function getAllLocal(){
+    var all={};
+    ALL_CHAPS.forEach(function(n){
+      try{
+        var v=JSON.parse(localStorage.getItem('rita_hl_'+n)||'[]');
+        if(v&&v.length>0) all[n]=v;
+      }catch(e){}
+    });
+    return all;
+  }
+
+  function countHL(obj){
+    return Object.values(obj).reduce(function(s,a){return s+(a?a.length:0);},0);
+  }
+
+  // Union merge: keep all highlights by id, prefer local note if different
+  function mergeHL(local,remote){
+    var merged={};
+    var allChaps=new Set(Object.keys(local).concat(Object.keys(remote)));
+    allChaps.forEach(function(chap){
+      var loc=local[chap]||[];
+      var rem=remote[chap]||[];
+      var byId={};
+      loc.forEach(function(h){byId[h.id]=h;});
+      rem.forEach(function(h){if(!byId[h.id])byId[h.id]=h;});
+      var arr=Object.values(byId);
+      if(arr.length>0) merged[chap]=arr;
+    });
+    return merged;
+  }
+
+  function applyToLocal(highlights){
+    Object.keys(highlights).forEach(function(chap){
+      localStorage.setItem('rita_hl_'+chap,JSON.stringify(highlights[chap]));
+    });
+  }
+
+  // base64 encode/decode with Unicode support
+  function b64enc(str){
+    return btoa(unescape(encodeURIComponent(str)));
+  }
+  function b64dec(b64){
+    return decodeURIComponent(escape(atob(b64.replace(/[\r\n]/g,''))));
+  }
+
+  // ── FETCH FROM GITHUB ──
+  async function fetchFromGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    var headers={'Accept':'application/vnd.github.v3+json'};
+    if(token) headers['Authorization']='token '+token;
+    try{
+      var resp=await fetch(API_URL,{headers:headers});
+      if(resp.status===404){fileSha=null;return null;}
+      if(!resp.ok) throw new Error('HTTP '+resp.status);
+      var data=await resp.json();
+      fileSha=data.sha;
+      var content=JSON.parse(b64dec(data.content));
+      return content;
+    }catch(e){
+      console.warn('[sync] fetch:',e);
+      return 'error';
+    }
+  }
+
+  // ── PUSH TO GITHUB ──
+  async function pushToGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang sync…');
+    var local=getAllLocal();
+    var payload={version:1,lastSync:new Date().toISOString(),highlights:local};
+    var encoded=b64enc(JSON.stringify(payload,null,2));
+    var body={message:'sync: rita highlights ['+countHL(local)+' HL]',content:encoded};
+    if(fileSha) body.sha=fileSha;
+    try{
+      var resp=await fetch(API_URL,{
+        method:'PUT',
+        headers:{
+          'Authorization':'token '+token,
+          'Content-Type':'application/json',
+          'Accept':'application/vnd.github.v3+json'
+        },
+        body:JSON.stringify(body)
+      });
+      if(!resp.ok){
+        var err=await resp.json().catch(function(){return{};});
+        throw new Error(err.message||'HTTP '+resp.status);
+      }
+      var result=await resp.json();
+      fileSha=result.content.sha;
+      setStatus('ok','✓ Đã sync ('+countHL(local)+' HL)');
+    }catch(e){
+      setStatus('err','✗ '+e.message.slice(0,28));
+      console.error('[sync] push:',e);
+    }
+  }
+
+  // ── INIT ──
+  async function initSync(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang tải…');
+
+    var ghData=await fetchFromGitHub();
+    if(ghData==='error'){
+      setStatus('err','✗ Không kết nối được');
+      return;
+    }
+    if(ghData&&ghData.highlights){
+      var local=getAllLocal();
+      var merged=mergeHL(local,ghData.highlights);
+      applyToLocal(merged);
+      // Re-apply marks on current chapter from updated localStorage
+      if(typeof window.__ritaReapplyMarks==='function') window.__ritaReapplyMarks();
+      var ghN=countHL(ghData.highlights), mergedN=countHL(merged);
+      if(mergedN>ghN){
+        // New highlights from remote — push merged back
+        setTimeout(pushToGitHub,1200);
+      } else {
+        setStatus('ok','✓ Sync OK ('+mergedN+' HL)');
+      }
+    } else {
+      // File doesn't exist yet — push current local state
+      await pushToGitHub();
+    }
+  }
+
+  initSync();
+})();
+
+</script>
+</body></html>

@@ -1,0 +1,2324 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiến Độ & Ngân Sách Dự Án | Rita PMP® Exam Prep 11</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1a2744;--red:#8b1a1a;--gold:#c9a84c;--gold-lt:#e8d5a3;
+  --cream:#fdf8f0;--text:#2c2c2c;--text-dim:#5a5a5a;--border:#d4c89a;--sidebar-w:268px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+#progress-bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--gold);z-index:200;transition:width .1s}
+#sidebar{width:var(--sidebar-w);background:var(--navy);color:#ccd4e8;position:fixed;top:0;left:0;bottom:0;overflow-y:auto;z-index:100;border-right:3px solid var(--gold);display:flex;flex-direction:column;}
+#sidebar-header{background:linear-gradient(135deg,#0f1d3a 0%,#1a2744 100%);padding:1.4rem 1.2rem;border-bottom:2px solid var(--gold);flex-shrink:0;}
+#sidebar-header .book-label{font-family:'Source Sans 3',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;}
+#sidebar-header h2{font-size:.92rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:.25rem}
+#sidebar-header .edition{font-family:'Source Sans 3',sans-serif;font-size:.7rem;color:var(--gold-lt);font-style:italic}
+#sidebar-toc{flex:1;overflow-y:auto;padding:.6rem 0}
+#sidebar-toc a{display:block;font-family:'Source Sans 3',sans-serif;font-size:.78rem;color:#aab8d0;text-decoration:none;padding:.4rem 1.2rem;line-height:1.4;transition:all .15s;border-left:3px solid transparent;}
+#sidebar-toc a:hover,#sidebar-toc a.active{color:#fff;background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+#sidebar-toc a.toc-h4{padding-left:2.2rem;font-size:.72rem;color:#8896b0}
+#sidebar-toc .toc-group-label{font-family:'Source Sans 3',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);padding:.7rem 1.2rem .25rem;opacity:.85;}
+#sidebar-nav{flex-shrink:0;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;padding:.7rem .8rem;gap:.5rem;}
+#sidebar-nav a{font-family:'Source Sans 3',sans-serif;font-size:.72rem;color:var(--gold-lt);text-decoration:none;padding:.4rem .7rem;border:1px solid rgba(201,168,76,.3);border-radius:4px;transition:all .2s;line-height:1.3;text-align:center;flex:1;}
+#sidebar-nav a:hover{background:rgba(201,168,76,.15);color:#fff}
+#sidebar-nav a.disabled{opacity:.35;pointer-events:none}
+#menu-btn{display:none;position:fixed;top:.7rem;left:.8rem;z-index:150;background:var(--navy);border:1px solid var(--gold);color:var(--gold);width:36px;height:36px;border-radius:6px;font-size:1.1rem;cursor:pointer;align-items:center;justify-content:center;}
+#main{margin-left:var(--sidebar-w);max-width:880px;padding:0 2.8rem 5rem}
+.chapter-hero{background:linear-gradient(135deg,var(--navy) 0%,#2a3a6a 100%);color:white;padding:2.8rem 2.8rem 2.2rem;margin:0 -2.8rem 2.8rem;border-bottom:4px solid var(--gold);position:relative;overflow:hidden;}
+.chapter-hero::before{content:'8';position:absolute;right:1.5rem;top:50%;transform:translateY(-50%);font-size:10rem;font-weight:700;color:rgba(255,255,255,.05);font-family:'Merriweather',serif;line-height:1;}
+.chapter-hero .ch-label{font-family:'Source Sans 3',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;}
+.chapter-hero h1{font-size:2rem;font-weight:700;line-height:1.2;margin-bottom:.35rem}
+.chapter-hero .ch-en{font-family:'Source Sans 3',sans-serif;font-size:.95rem;color:rgba(255,255,255,.5);font-style:italic}
+h3{font-family:'Merriweather',serif;font-size:1.25rem;color:var(--navy);margin:2.5rem 0 .85rem;padding-bottom:.45rem;border-bottom:2px solid var(--gold);}
+h4{font-family:'Merriweather',serif;font-size:1.05rem;color:var(--navy);margin:2rem 0 .65rem;padding-left:.75rem;border-left:4px solid var(--gold);}
+h5{font-family:'Source Sans 3',sans-serif;font-size:.9rem;font-weight:700;color:var(--red);margin:1.4rem 0 .45rem;text-transform:uppercase;letter-spacing:.05em;}
+p{font-family:'Merriweather',serif;font-size:.94rem;line-height:1.88;margin-bottom:.95rem;color:var(--text)}
+ul.content-list,ol.content-list{margin:.5rem 0 1rem;padding:0;list-style:none;}
+ul.content-list li{position:relative;padding:.28rem 0 .28rem 1.6rem;font-family:'Source Sans 3',sans-serif;font-size:.92rem;line-height:1.72;color:var(--text);}
+ul.content-list li::before{content:'◆';position:absolute;left:0;color:var(--gold);font-size:.65rem;top:.45rem;}
+ol.content-list{counter-reset:ol-c;list-style:none}
+ol.content-list li{position:relative;padding:.28rem 0 .28rem 2rem;font-family:'Source Sans 3',sans-serif;font-size:.92rem;line-height:1.72;color:var(--text);counter-increment:ol-c;}
+ol.content-list li::before{content:counter(ol-c)'.';position:absolute;left:0;color:var(--navy);font-weight:700;font-size:.85rem;min-width:1.5rem;}
+ul.content-list ul.content-list li::before{content:'–';color:var(--text-dim);font-size:.9rem;top:.35rem}
+.callout{background:linear-gradient(135deg,#f5f0e8,#ede8d8);border:1px solid var(--border);border-left:5px solid var(--gold);border-radius:0 6px 6px 0;padding:1rem 1.2rem;margin:1.3rem 0;}
+.callout p{font-size:.9rem;margin-bottom:.5rem}
+.callout p:last-child{margin-bottom:0}
+.callout-label{font-family:'Source Sans 3',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;}
+.callout.tip{border-left-color:#2d7a2d;background:linear-gradient(135deg,#f0f7f0,#e4f0e4)}
+.highlight{background:var(--navy);color:#e8d5a3;border-radius:8px;padding:1.1rem 1.3rem;margin:1.5rem 0;}
+.highlight h5,.highlight strong{color:var(--gold-lt)}
+.highlight p,.highlight li{color:#ccd4e8;font-size:.88rem}
+.highlight ul.content-list li::before{color:var(--gold)}
+.img-center{text-align:center;margin:1.8rem 0;padding:1rem;background:#f8f5ee;border:1px solid var(--border);border-radius:8px;}
+.img-center img{max-width:100%;height:auto;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.img-center p,.img-center div{margin-top:.65rem;font-family:'Source Sans 3',sans-serif;font-size:.8rem;color:var(--text-dim);font-style:italic;}
+.table-wrap{overflow-x:auto;margin:1.5rem 0}
+table{width:100%;border-collapse:collapse;font-family:'Source Sans 3',sans-serif;font-size:.84rem}
+table th{background:var(--navy);color:white;padding:.6rem .8rem;text-align:center;font-weight:600;font-size:.79rem}
+table td{padding:.5rem .8rem;border:1px solid #ddd;vertical-align:top;line-height:1.5}
+table tr:nth-child(even) td{background:#f9f6ef}
+#back-top{position:fixed;bottom:1.5rem;right:1.5rem;background:var(--navy);color:var(--gold);border:1px solid var(--gold);width:38px;height:38px;border-radius:50%;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .25s;z-index:99;}
+#back-top:hover{background:var(--gold);color:var(--navy)}
+@media(max-width:860px){
+  #sidebar{transform:translateX(-100%);transition:transform .25s;top:3rem}
+  #sidebar.open{transform:translateX(0)}
+  #menu-btn{display:flex}
+  #main{margin-left:0;padding:3.5rem 1.2rem 4rem}
+  .chapter-hero{margin:0 -1.2rem 2rem;padding:2rem 1.4rem}
+  .chapter-hero::before{display:none}
+}
+
+/* ── DARK / LIGHT MODE ─────────────────────────────── */
+html[data-theme=dark]{--cream:#0f1520;--text:#dde4f0;--text-dim:#8899bb;--border:#253048;--gold-lt:#c9a84c}
+html[data-theme=dark] body{background:#0f1520;color:#dde4f0}
+html[data-theme=dark] #main{background:#0f1520}
+html[data-theme=dark] h1,html[data-theme=dark] h2{color:#e8d5a3}
+html[data-theme=dark] h3{color:#e8d5a3;border-bottom-color:var(--gold)}
+html[data-theme=dark] h4{color:#b8ccee;border-left-color:var(--gold)}
+html[data-theme=dark] p,html[data-theme=dark] li,html[data-theme=dark] td{color:#dde4f0}
+html[data-theme=dark] strong{color:#e8d5a3}
+html[data-theme=dark] em{color:#b8ccee}
+html[data-theme=dark] .callout{background:linear-gradient(135deg,#1a2436,#1e2d45);border-left-color:var(--gold);color:#dde4f0}
+html[data-theme=dark] .callout p{color:#dde4f0}
+html[data-theme=dark] blockquote{background:#1a2436;border-left-color:var(--gold);color:#b0c0d8}
+html[data-theme=dark] table{background:#131c2b}
+html[data-theme=dark] th{background:#1a2744;color:#e8d5a3;border-color:#253048}
+html[data-theme=dark] td{border-color:#253048}
+html[data-theme=dark] tr:nth-child(even) td{background:#1a2436}
+html[data-theme=dark] .highlight,.highlight-box{background:#1a2436!important;border-color:#253048!important;color:#dde4f0!important}
+html[data-theme=dark] #back-top{background:#1a2744;color:var(--gold);border:1px solid rgba(201,168,76,.4)}
+html[data-theme=dark] ul.content-list li,html[data-theme=dark] ol.content-list li{color:#dde4f0}
+html[data-theme=dark] .chapter-hero{background:linear-gradient(135deg,#0a1228 0%,#142040 100%)}
+html[data-theme=dark] .exercise-card{background:#1a2436;border-color:#253048}
+html[data-theme=dark] .answer-box{background:#152035;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] .answer-box p{color:#dde4f0}
+/* theme toggle button */
+#theme-btn{position:absolute;top:.65rem;right:.7rem;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.35);color:var(--gold);width:28px;height:28px;border-radius:5px;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+#theme-btn:hover{background:rgba(201,168,76,.2)}
+#sidebar-header{position:relative}
+
+/* ── HIGHLIGHT SYSTEM ─────────────────────────────────── */
+mark.hl{border-radius:2px;cursor:pointer;padding:1px 0;background:transparent}
+mark.hl[data-color=yellow]{background:rgba(255,241,118,.75)}
+mark.hl[data-color=green]{background:rgba(165,214,167,.75)}
+mark.hl[data-color=red]{background:rgba(239,154,154,.75)}
+mark.hl::after{display:none}
+mark.hl[data-note]:not([data-note=""])::after{content:"✏";font-size:.6rem;vertical-align:super;margin-left:1px;opacity:.65;display:inline}
+/* selection popup */
+#hl-popup{position:fixed;z-index:9999;background:#1a2744;border:1px solid rgba(201,168,76,.5);border-radius:8px;padding:.45rem .6rem;display:flex;align-items:center;gap:.35rem;box-shadow:0 4px 20px rgba(0,0,0,.4);pointer-events:all}
+#hl-popup.hidden{display:none!important}
+.hl-color-btn{width:24px;height:24px;border-radius:50%;border:2px solid rgba(255,255,255,.25);cursor:pointer;transition:transform .15s,border-color .15s;flex-shrink:0}
+.hl-color-btn:hover{transform:scale(1.2);border-color:rgba(255,255,255,.7)}
+.hl-color-btn[data-color=yellow]{background:#fff176}
+.hl-color-btn[data-color=green]{background:#a5d6a7}
+.hl-color-btn[data-color=red]{background:#ef9a9a}
+.hl-sep{width:1px;height:20px;background:rgba(255,255,255,.2);margin:0 .1rem}
+.hl-note-btn{background:none;border:none;color:rgba(255,255,255,.7);font-size:.9rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-note-btn:hover{color:#fff;background:rgba(255,255,255,.1)}
+.hl-del-btn{background:none;border:none;color:rgba(239,154,154,.8);font-size:.85rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-del-btn:hover{color:#ef9a9a;background:rgba(239,154,154,.12)}
+/* note modal */
+#hl-note-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center}
+#hl-note-modal.hidden{display:none!important}
+#hl-note-box{background:#fff;border-radius:10px;padding:1.4rem;width:min(420px,90vw);box-shadow:0 8px 32px rgba(0,0,0,.25)}
+#hl-note-box h3{font-size:.95rem;color:#1a2744;margin-bottom:.7rem;font-family:'Merriweather',serif}
+#hl-note-ta{width:100%;border:1px solid #d4c89a;border-radius:6px;padding:.6rem .8rem;font-size:.88rem;font-family:'Source Sans 3',sans-serif;resize:vertical;min-height:80px;color:#2c2c2c;outline:none}
+#hl-note-ta:focus{border-color:#c9a84c;box-shadow:0 0 0 2px rgba(201,168,76,.25)}
+.hl-note-actions{display:flex;justify-content:flex-end;gap:.6rem;margin-top:.8rem}
+.hl-note-cancel{background:transparent;border:1px solid #ccc;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+.hl-note-save{background:#1a2744;color:#fff;border:none;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+/* highlights panel */
+#hl-panel{position:fixed;top:0;right:0;bottom:0;width:300px;background:#fff;border-left:3px solid var(--gold);z-index:500;display:flex;flex-direction:column;box-shadow:-4px 0 20px rgba(0,0,0,.15);transform:translateX(100%);transition:transform .25s}
+#hl-panel.open{transform:translateX(0)}
+#hl-panel-hdr{background:#1a2744;padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--gold)}
+#hl-panel-hdr h3{font-size:.88rem;color:#fff;font-family:'Source Sans 3',sans-serif;font-weight:700;letter-spacing:.05em}
+#hl-panel-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.2rem;cursor:pointer;padding:.2rem;line-height:1}
+#hl-panel-close:hover{color:#fff}
+#hl-panel-list{flex:1;overflow-y:auto;padding:.6rem}
+#hl-panel-list:empty::before{content:"Chưa có ghi chú nào trong chương này.";font-size:.82rem;color:#999;display:block;padding:.8rem;text-align:center;font-style:italic}
+.hl-item{padding:.65rem .8rem;border-radius:6px;margin-bottom:.5rem;border-left:4px solid #ddd;background:#fafafa;cursor:pointer;transition:background .15s}
+.hl-item:hover{background:#f0f0f0}
+.hl-item[data-color=yellow]{border-left-color:#fdd835}
+.hl-item[data-color=green]{border-left-color:#66bb6a}
+.hl-item[data-color=red]{border-left-color:#ef5350}
+.hl-item-text{font-size:.8rem;color:#2c2c2c;line-height:1.5;margin-bottom:.3rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.hl-item-note{font-size:.75rem;color:#666;font-style:italic;margin-bottom:.3rem}
+.hl-item-del{float:right;background:none;border:none;color:#bbb;cursor:pointer;font-size:.8rem;padding:.1rem .3rem;border-radius:3px;line-height:1}
+.hl-item-del:hover{color:#ef5350;background:rgba(239,83,80,.08)}
+/* sidebar hl badge */
+#hl-sidebar-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:var(--gold);cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#hl-sidebar-btn:hover{background:rgba(201,168,76,.1)}
+#hl-badge{background:rgba(201,168,76,.2);color:var(--gold);font-size:.65rem;font-weight:700;padding:.1rem .4rem;border-radius:10px;min-width:18px;text-align:center}
+html[data-theme=dark] #hl-note-box{background:#1a2436;border:1px solid #253048}
+html[data-theme=dark] #hl-note-box h3{color:#e8d5a3}
+html[data-theme=dark] #hl-note-ta{background:#0f1520;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] #hl-panel{background:#131c2b;border-left-color:var(--gold)}
+html[data-theme=dark] .hl-item{background:#1a2436;border-bottom:1px solid #1e2d45}
+html[data-theme=dark] .hl-item:hover{background:#1e2d45}
+html[data-theme=dark] .hl-item-text{color:#dde4f0}
+html[data-theme=dark] .hl-item-note{color:#8899bb}
+html[data-theme=dark] .hl-note-cancel{border-color:#253048;color:#dde4f0;background:#1a2436}
+html[data-theme=dark] .hl-note-save{background:#c9a84c;color:#0a0f1a}
+
+/* ── CHAPTER NAV PANEL ─────────────────────────────────── */
+#chap-panel{position:fixed;inset:0;z-index:9000;display:flex;align-items:stretch}
+#chap-panel.hidden{display:none!important}
+#chap-panel-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);cursor:pointer}
+#chap-panel-box{position:relative;z-index:1;width:min(360px,90vw);background:#0f1d3a;border-right:3px solid var(--gold);display:flex;flex-direction:column;animation:slideInLeft .2s ease}
+@keyframes slideInLeft{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+#chap-panel-hdr{background:linear-gradient(135deg,#0a1228,#1a2744);padding:1.2rem 1.3rem;border-bottom:2px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
+#chap-panel-hdr h3{font-family:'Source Sans 3',sans-serif;font-size:.85rem;font-weight:700;color:#fff;letter-spacing:.1em;text-transform:uppercase}
+#chap-panel-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.3rem;cursor:pointer;padding:.2rem;line-height:1;transition:color .15s}
+#chap-panel-close:hover{color:#fff}
+#chap-panel-list{flex:1;overflow-y:auto;padding:.5rem 0}
+.chap-panel-item{display:flex;align-items:center;gap:.8rem;padding:.7rem 1.3rem;cursor:pointer;transition:background .15s;border-left:3px solid transparent;text-decoration:none}
+.chap-panel-item:hover{background:rgba(201,168,76,.1);border-left-color:var(--gold)}
+.chap-panel-item.active{background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+.cpanel-num{font-family:'Source Sans 3',sans-serif;font-size:.7rem;font-weight:700;color:var(--gold);min-width:28px;flex-shrink:0}
+.cpanel-title{font-family:'Source Sans 3',sans-serif;font-size:.8rem;color:#ccd4e8;line-height:1.35}
+.cpanel-item-active .cpanel-title{color:#fff;font-weight:600}
+.cpanel-status{margin-left:auto;font-size:.72rem;flex-shrink:0;opacity:.6}
+
+/* ── GITHUB SYNC ──────────────────────────────────── */
+#sync-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:#8899bb;cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s,color .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#sync-btn:hover{background:rgba(201,168,76,.08);color:var(--gold)}
+#sync-btn[data-state=ok]{color:#4caf50}
+#sync-btn[data-state=syncing]{color:var(--gold)}
+#sync-btn[data-state=err]{color:#ef5350}
+#sync-btn[data-state=no-token]{color:#8899bb}
+#sync-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center}
+#sync-modal.hidden{display:none!important}
+#sync-modal-box{background:#0f1d3a;border:2px solid var(--gold);border-radius:10px;padding:1.8rem 2rem;width:min(420px,90vw);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+#sync-modal-box h3{font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:.9rem;text-transform:uppercase;letter-spacing:.1em}
+#sync-modal-box p{font-size:.77rem;color:#aab8d0;line-height:1.6;margin-bottom:.9rem}
+#sync-modal-box input{width:100%;background:#0a1228;border:1px solid rgba(201,168,76,.4);color:#fff;font-family:monospace;font-size:.8rem;padding:.55rem .8rem;border-radius:5px;outline:none;margin-bottom:.8rem;box-sizing:border-box}
+#sync-modal-box input:focus{border-color:var(--gold)}
+.sync-modal-btns{display:flex;gap:.6rem;justify-content:flex-end;flex-wrap:wrap}
+.sync-modal-btns button{font-family:'Source Sans 3',sans-serif;font-size:.77rem;font-weight:700;padding:.42rem .9rem;border-radius:5px;cursor:pointer;border:none;transition:background .15s}
+#sync-save-btn{background:var(--gold);color:#0a0f1a}
+#sync-save-btn:hover{background:#e8c47a}
+#sync-cancel-btn{background:rgba(255,255,255,.1);color:#aab8d0}
+#sync-cancel-btn:hover{background:rgba(255,255,255,.18)}
+#sync-clear-btn{background:rgba(239,83,80,.18);color:#ef9090;margin-right:auto}
+#sync-clear-btn:hover{background:rgba(239,83,80,.32)}
+</style>
+<script>
+(function(){var t=localStorage.getItem('rita_theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+</script>
+</head><body>
+<div id="progress-bar"></div>
+<button id="menu-btn" aria-label="Menu">☰</button>
+<aside id="sidebar"><div id="sidebar-header">
+  <div class="book-label">Rita PMP® Exam Prep</div>
+  <h2>Ôn Thi PMP®</h2>
+  <div class="edition">Rita Mulcahy · 11th Edition 2023 · Tiếng Việt</div>
+</div>
+<div id="sidebar-toc">
+  <div class="toc-group-label">Nội Dung Chương</div>
+  <a href="#ch8-schedule" class="">8 Lịch Trình</a>
+<a href="#ch8-introduction" class="">Giới Thiệu</a>
+<a href="#ch8-quicktest" class="toc-h4">KIỂM TRA NHANH</a>
+<a href="#ch8-schedule-process-overview" class="toc-h4">Tổng Quan Quy Trình Lịch Trình</a>
+<a href="#ch8-desired-outcomes-of-schedule-management" class="toc-h4">Kết Quả Mong Muốn của Quản Lý Lịch Trình</a>
+<a href="#ch8-plan-schedule-management" class="toc-h4">Lập Kế Hoạch Quản Lý Lịch Trình</a>
+<a href="#ch8-define-activities" class="toc-h4">Xác Định Hoạt Động</a>
+<a href="#ch8-the-context-for-defining-activities" class="toc-h4">Bối Cảnh Xác Định Hoạt Động</a>
+<a href="#ch8-sequencing-activities" class="toc-h4">Sắp Xếp Trình Tự Hoạt Động</a>
+<a href="#ch8-precedence-diagramming-method" class="toc-h4">Phương Pháp Sơ Đồ Ưu Tiên (PDM)</a>
+<a href="#ch8-logical-relationships" class="toc-h4">Mối Quan Hệ Logic</a>
+<a href="#ch8-types-of-dependencies" class="toc-h4">Các Loại Phụ Thuộc</a>
+<a href="#ch8-dependencies-in-hybrid-environments" class="toc-h4">Phụ Thuộc trong Môi Trường Kết Hợp</a>
+<a href="#ch8-project-schedule-network-diagram" class="toc-h4">Sơ Đồ Mạng Lịch Trình Dự Án</a>
+<a href="#ch8-estimating-activity-durations" class="toc-h4">Ước Tính Thời Lượng Hoạt Động</a>
+<a href="#ch8-inputs-to-good-activity-estimates" class="toc-h4">Đầu Vào Cho Ước Tính Hoạt Động Tốt</a>
+<a href="#ch8-how-estimating-is-done" class="toc-h4">Cách Thực Hiện Ước Tính</a>
+<a href="#ch8-methods-for-predictive-estimating" class="toc-h4">Các Phương Pháp Ước Tính Dự Đoán</a>
+<a href="#ch8-bottom-up-estimating" class="toc-h4">Ước Tính Từ Dưới Lên</a>
+<a href="#ch8-parametric-estimating" class="toc-h4">Ước Tính Tham Số</a>
+<a href="#ch8-methods-for-adaptive-estimating" class="toc-h4">Các Phương Pháp Ước Tính Thích Nghi</a>
+<a href="#ch8-affinity-estimating" class="toc-h4">Ước Tính Theo Nhóm Tương Đồng</a>
+<a href="#ch8-t-shirt-sizing" class="toc-h4">Phân Loại Cỡ Áo (T-shirt Sizing)</a>
+<a href="#ch8-planning-poker" class="toc-h4">Planning Poker</a>
+<a href="#ch8-methods-for-data-analysis" class="toc-h4">Các Phương Pháp Phân Tích Dữ Liệu</a>
+<a href="#ch8-alternatives-analysis" class="toc-h4">Phân Tích Thay Thế</a>
+<a href="#ch8-reserve-analysis" class="toc-h4">Phân Tích Dự Phòng</a>
+<a href="#ch8-methods-for-decision-making" class="toc-h4">Các Phương Pháp Ra Quyết Định</a>
+<a href="#ch8-plurality-majority-or-unanimity" class="toc-h4">Đa Số, Quá Bán, hoặc Nhất Trí</a>
+<a href="#ch8-roman-voting" class="toc-h4">Bỏ Phiếu Kiểu La Mã</a>
+<a href="#ch8-fist-of-five" class="toc-h4">Fist of Five</a>
+<a href="#ch8-artifacts-of-schedule-estimating" class="toc-h4">Tài Liệu Của Ước Tính Lịch Trình</a>
+<a href="#ch8-develop-schedule" class="toc-h4">Phát Triển Lịch Trình</a>
+<a href="#ch8-schedule-network-analysis" class="toc-h4">Phân Tích Mạng Lịch Trình</a>
+<a href="#ch8-practice-with-the-critical-path-method" class="toc-h4">Thực Hành với Phương Pháp Đường Găng</a>
+<a href="#ch8-bai-tap-8-4" class="toc-h4">8.4 Bài Tập</a>
+<a href="#ch8-bai-tap-8-5" class="toc-h4">8.5 Bài Tập</a>
+<a href="#ch8-toi-uu-hoa-nguon-luc" class="toc-h4">Tối Ưu Hóa Nguồn Lực</a>
+<a href="#ch8-phat-trien-tien-do-agile" class="toc-h4">Phát Triển Tiến Độ Agile</a>
+<a href="#ch8-dau-ra-phat-trien-tien-do" class="toc-h4">Đầu Ra Của Quá Trình Phát Triển Tiến Độ Theo Kế Hoạch</a>
+<a href="#ch8-bieu-do-thanh" class="toc-h4">Biểu Đồ Thanh</a>
+<a href="#ch8-hieu-loi-ich-trinh-bay" class="toc-h4">Hiểu Lợi Ích Của Các Định Dạng Trình Bày Khác Nhau</a>
+<a href="#ch8-bai-tap-8-6" class="toc-h4">8.6 Bài Tập</a>
+<a href="#ch8-kiem-soat-tien-do" class="toc-h4">Kiểm Soát Tiến Độ</a>
+<a href="#ch8-phuong-phap-kiem-soat" class="toc-h4">Các Phương Pháp Kiểm Soát Tiến Độ</a>
+<a href="#ch8-ket-qua-kiem-soat" class="toc-h4">Kết Quả Của Kiểm Soát Tiến Độ</a>
+<a href="#ch8-tong-ket" class="toc-h4">Kết Hợp Tất Cả Lại</a>
+<a href="#ch8-bai-tap-8-7" class="toc-h4">8.7 Bài Tập</a>
+<a href="#ch8-bai-tap-8-8" class="toc-h4">8.8 Bài Tập</a>
+
+</div>
+<div id="sidebar-nav">
+  <a href="rita_chap07.html" class="">← Ch7</a>
+  <a href="#" id="chap-muc-luc-btn">☰ Mục lục</a>
+  <a href="rita_chap10.html" class="">Ch10 →</a>
+</div></aside>
+<main id="main">
+  <div class="chapter-hero">
+    <div class="ch-label">Chương 8</div>
+    <h1>Tiến Độ & Ngân Sách Dự Án</h1>
+    <div class="ch-en">Schedule / Budget & Resources</div>
+  </div>
+<h3 id="ch8-schedule">8 Lịch Trình</h3>
+
+<h3 id="ch8-introduction">Giới Thiệu</h3>
+
+<p>Lập kế hoạch lịch trình dự án và quy trình quản lý lịch trình tổng thể chủ yếu dựa vào kỹ năng quản lý dự án kỹ thuật. Bạn quản lý lịch trình dự án như thế nào? Với câu hỏi này, nhiều người ngay lập tức nghĩ đến phần mềm hoặc biểu đồ Gantt. Đúng vậy, phần mềm là một công cụ hữu ích. Nó có thể tiết kiệm thời gian trong việc lập lịch, phân tích các kịch bản giả định, thực hiện báo cáo trạng thái và nhiều thứ khác. Nhưng bạn cần hiểu các chi tiết ẩn sau dữ liệu.</p>
+
+<p>Chương này, cùng với các bài tập bổ sung trên trang RMC Resources (rmcls.com/rmc-resources), sẽ giúp bạn hiểu thấu đáo quy trình lập kế hoạch và quản lý lịch trình dự án. Theo truyền thống, các câu hỏi thi liên quan đến lập lịch thường yêu cầu kiến thức về cách vẽ sơ đồ mạng lưới. Các câu hỏi Agile có thể yêu cầu bạn biết cách xây dựng bản đồ câu chuyện (story map).</p>
+
+<p>Mặc dù quy trình lập kế hoạch và quản lý lịch trình khá đơn giản, bạn cần biết các phương án để xây dựng và rút ngắn lịch trình dự án. Lịch trình dự án phải thực tế trước khi bắt đầu công việc xây dựng sản phẩm. Trong bài thi, hãy giả sử bạn có thẩm quyền và trách nhiệm tạo ra một lịch trình thực tế. Bài thi được viết với giả định này mặc dù trong thực tế không phải lúc nào cũng đúng như vậy.</p>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06d89144-ee28-437e-a78d-747f92f7bf29/markdown_2/imgs/img_in_image_box_518_311_631_423.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A50%3A20Z%2F-1%2F%2F0c8111f6db08b5a125ee710227a482b215e72f48a7966b5db68974a42fb78643" alt="Image" width="13%" /></div>
+
+<h5>Các Định Nghĩa Liên Quan đến Lập Kế Hoạch và Quản Lý Lịch Trình</h5>
+
+<p>Đây là một số từ vựng cơ bản về ước tính và lịch trình sẽ được sử dụng trong các phần tiếp theo, nơi chúng ta sẽ đề cập chi tiết hơn về từng khái niệm.</p>
+
+<h5>Sự Phụ Thuộc (Dependencies)</h5>
+
+<p>Sự phụ thuộc là mối quan hệ logic giữa các hoạt động trong một dự án. Ví dụ phụ thuộc rõ ràng nhất là: "Hoạt động A phải hoàn thành trước khi Hoạt động B có thể bắt đầu." Có các loại phụ thuộc khác, được đề cập ở phần sau trong chương này.</p>
+
+<h5>Dự Phòng Thời Gian (Float)</h5>
+
+<p>Float (dự phòng thời gian) thể hiện tính linh hoạt của lịch trình. Đơn giản nhất, float là lượng thời gian một hoạt động có thể bị trễ mà không làm trễ ngày kết thúc dự án. Tuy nhiên, định nghĩa trong thực tế phức tạp hơn một chút so với điều này. Có một số loại float khác nhau, được đề cập ở phần sau trong chương này.</p>
+
+<h5>Thời Gian Dẫn Trước và Thời Gian Trễ (Leads and Lags)</h5>
+
+<p>Thời gian dẫn trước (lead) có thể được sử dụng để chỉ ra rằng một hoạt động có thể bắt đầu trước khi hoạt động tiền nhiệm của nó hoàn thành. Ví dụ, thiết kế trang web có thể bắt đầu năm ngày trước khi thiết kế cơ sở dữ liệu hoàn tất. Thời gian trễ (lag) là thời gian chờ đợi được chèn vào giữa các hoạt động. Ví dụ, cần có thời gian trễ ba ngày sau khi đổ bê tông trước khi xây dựng khung nhà.</p>
+
+<h5>Đường Găng (Critical Path)</h5>
+
+<p>Đường găng là con đường ngắn nhất để hoàn thành dự án. Các dự án phức tạp và có nhiều luồng công việc. Đường găng quan trọng vì đây là luồng công việc duy nhất không có float (linh hoạt lịch trình). Vì đường găng không có float, bất kỳ hoạt động nào trên đó bị hoàn thành trễ đều là rủi ro dẫn đến dự án hoàn thành trễ.</p>
+
+<h4 id="ch8-quicktest">KIỂM TRA NHANH</h4>
+
+<ul class="content-list">
+<li>Sự phụ thuộc (Dependencies)</li>
+<li>Dự phòng thời gian (Float)</li>
+<li>Thời gian dẫn trước và thời gian trễ (Leads and lags)</li>
+<li>Đường găng (Critical path)</li>
+<li>Mốc quan trọng (Milestone)</li>
+<li>Mô hình lịch trình (Schedule model)</li>
+<li>Quy trình Quản lý Lịch trình (Schedule Management process)</li>
+<li>Kế hoạch quản lý lịch trình (Schedule management plan)</li>
+<li>Phương pháp sơ đồ ưu tiên — PDM (Precedence diagramming method)</li>
+<li>Sự phụ thuộc (Dependencies)
+  <ul class="content-list">
+    <li>Bắt buộc (Mandatory)</li>
+    <li>Tùy ý (Discretionary)</li>
+    <li>Bên ngoài (External)</li>
+  </ul>
+</li>
+<li>Sơ đồ mạng lưới (Network diagram)</li>
+<li>Ước tính tương tự (Analogous estimating)</li>
+<li>Ước tính từ dưới lên (Bottom-up estimating)</li>
+<li>Ước tính tham số (Parametric estimating)</li>
+<li>Ước tính một điểm (Single-point estimating)</li>
+<li>Ước tính ba điểm (Three-point estimating)
+  <ul class="content-list">
+    <li>Phân phối tam giác (Triangular distribution)</li>
+    <li>Phân phối Beta (Beta distribution)</li>
+  </ul>
+</li>
+<li>Độ lệch chuẩn hoạt động (Activity standard deviation)</li>
+<li>Ước tính theo nhóm (Affinity estimating)</li>
+<li>Phân loại cỡ áo (T-shirt sizing)</li>
+<li>Planning Poker</li>
+<li>Phân tích thay thế (Alternative analysis)</li>
+<li>Phân tích dự phòng (Reserve analysis)</li>
+<li>Dự phòng có điều kiện (Contingency reserves)</li>
+<li>Dự phòng quản lý (Management reserves)</li>
+<li>Biểu quyết Fist of Five</li>
+<li>Cơ sở ước tính (Basis of estimates)</li>
+<li>Phương pháp đường găng — CPM (Critical path method)</li>
+<li>Rút ngắn tiến độ bằng chồng chéo hoạt động (Fast tracking)</li>
+<li>Rút ngắn tiến độ bằng bổ sung nguồn lực (Crashing)</li>
+<li>Phân tích Monte Carlo</li>
+<li>Cân bằng nguồn lực (Resource leveling)</li>
+<li>Làm mịn nguồn lực (Resource smoothing)</li>
+<li>Lập kế hoạch phát hành Agile (Agile release planning)</li>
+<li>Biểu đồ luồng tích lũy (Cumulative flow diagram)</li>
+<li>Vận tốc (Velocity)</li>
+<li>Lịch trình dự án (Project schedule)</li>
+<li>Biểu đồ mốc quan trọng (Milestone chart)</li>
+<li>Biểu đồ thanh (Bar chart)</li>
+<li>Đường cơ sở lịch trình (Schedule baseline)</li>
+<li>Ước tính lại (Reestimating)</li>
+</ul>
+
+<h5>Các Mốc Quan Trọng (Milestones)</h5>
+
+<p>Các điểm được xác định trong lịch trình dự án nơi các mục tiêu cụ thể cần đạt được gọi là mốc quan trọng (milestone). Chúng không phải là hoạt động công việc và không có thời lượng nhưng chúng rơi vào các ngày nhất định. Các mốc quan trọng ban đầu được ghi lại trong điều lệ dự án. Quản lý dự án cũng có thể chèn các mốc quan trọng làm điểm kiểm tra để giúp kiểm soát dự án. Danh sách mốc quan trọng là một tài liệu dự án, thường được tạo dưới dạng chế độ xem rút gọn của lịch trình. Nếu một mốc quan trọng trong lịch trình được đạt đến mà bất kỳ công việc đã lên kế hoạch nào chưa hoàn thành, dự án không tiến triển như kế hoạch, tức là dự án đang bị chậm tiến độ.</p>
+
+<p><strong>Ví dụ:</strong> Một bản thiết kế đã hoàn thành, một điểm kiểm tra bắt buộc của công ty, một cổng giai đoạn (phase gate), hoặc một điểm hoàn thành vòng lặp (iteration).</p>
+
+<h5>Mô Hình Lịch Trình (Schedule Model)</h5>
+
+<p>Lịch trình luôn là một dạng mô hình vì nó phải thay đổi dựa trên việc theo dõi và kiểm soát liên tục của dự án. Lịch dự án (hoặc lịch trình), cùng với tất cả các tài liệu lập kế hoạch liên quan được gọi là mô hình lịch trình. Ban đầu đây là mô hình làm việc của lịch trình, cùng với các tài liệu như thuộc tính hoạt động, ước tính và sơ đồ mạng lịch trình dự án (một khi nó được tạo ra). Tương đương Agile sẽ bao gồm bản đồ phát hành và các tài liệu lập kế hoạch phát hành khác, backlog được ưu tiên cộng với kế hoạch vòng lặp hiện tại.</p>
+
+<p>Khi lịch trình dự án được phê duyệt, mô hình lịch trình trở thành phiên bản hiện tại đã được phê duyệt của lịch trình cùng với các tài liệu liên quan đến lịch trình khác này. Đối với cả hai phương pháp Agile và theo kế hoạch, dữ liệu kết quả lịch sử theo kế hoạch và thực tế của dự án cùng các phân tích sẽ cung cấp thông tin cho mô hình lịch trình hiện tại.</p>
+
+<h4 id="ch8-schedule-process-overview">Tổng Quan Quy Trình Lịch Trình</h4>
+
+<p>Cũng như tất cả các quy trình quản lý dự án, bạn sẽ cần hiểu cách lập kế hoạch và quản lý lịch trình dự án từ nhiều góc độ. Quy trình Quản lý Lịch trình từ mô hình Nhóm Quy trình là một cách để nói về lịch trình dự án, và nhiệm vụ Lập kế hoạch và Quản lý Lịch trình trong lĩnh vực Quy trình của Phác thảo Nội dung Kỳ thi (ECO) là một cách khác. Hãy nhớ rằng trong khi phần lớn mô hình Nhóm Quy trình có thể được áp dụng cho bất kỳ vòng đời dự án và phương pháp phát triển nào, Agile có các phương pháp và thực hành riêng của nó. Bạn cũng sẽ muốn hiểu các thực hành lập lịch trình Agile, và cách chúng tương tự và khác nhau so với các thực hành theo kế hoạch.</p>
+
+<h5>Phác Thảo Nội Dung Kỳ Thi và Mô Hình Nhóm Quy Trình</h5>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06d89144-ee28-437e-a78d-747f92f7bf29/markdown_3/imgs/img_in_image_box_70_595_115_649.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A50%3A21Z%2F-1%2F%2Ff076de1dd1ef3ea246f3bbd0c2e40c120d557cb52123ed4830b8277091fe960c" alt="Image" width="5%" /></div>
+
+<div class="callout"><p><strong>Hãy Suy Nghĩ.</strong> Hãy dành thời gian với ECO và sơ đồ sau đây để suy nghĩ qua quy trình Quản lý Lịch trình của mô hình Nhóm Quy trình khi nó liên quan đến nhiệm vụ Lập kế hoạch và Quản lý Lịch trình từ lĩnh vực I (Quy trình) của ECO.</p>
+<ul class="content-list">
+<li>Trong mô hình Nhóm Quy trình, đây là tất cả các chức năng lập kế hoạch:
+  <ul class="content-list">
+    <li>Xác định các hoạt động (Define activities)</li>
+    <li>Sắp xếp trình tự các hoạt động (Sequence activities)</li>
+    <li>Ước tính thời lượng hoạt động (Estimate activity durations)</li>
+  </ul>
+</li>
+<li>Sau đó bạn đã sẵn sàng để phát triển lịch trình — cũng là chức năng lập kế hoạch.</li>
+<li>Trong suốt dự án bạn đang sử dụng đo lường giá trị đạt được (EVM — Earned Value Measurement) để kiểm soát lịch trình (bao gồm cả lịch trình mua sắm) và quản lý các thay đổi đối với nó. EVM được đề cập chi tiết hơn trong chương "Ngân Sách và Nguồn Lực", vì nó được sử dụng để theo dõi tiến độ về phạm vi, lịch trình và chi phí cùng nhau.</li>
+</ul></div>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06d89144-ee28-437e-a78d-747f92f7bf29/markdown_4/imgs/img_in_image_box_41_100_742_308.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A50%3A21Z%2F-1%2F%2Fa583b7bd30f7e44eb70c50c6ed1f770ee5b148186cbebf7e12dc4fab938063aa" alt="Image" width="85%" /></div>
+
+<p>Bạn có thể thấy các nhiệm vụ ECO khác hỗ trợ Lập kế hoạch và Quản lý Lịch trình không? Ví dụ, các quy trình ECO hỗ trợ là Quản lý Xung đột và Đàm phán Thỏa thuận Dự án (lĩnh vực Nhân sự I, nhiệm vụ 1 và 8). Ngoài ra hãy suy nghĩ về vai trò hỗ trợ của Thúc đẩy Hiệu suất Nhóm thông qua Ứng dụng Trí tuệ Cảm xúc, và Đảm bảo Thành viên Nhóm/Các Bên Liên Quan Được Đào Tạo Đầy Đủ (lĩnh vực Nhân sự I, nhiệm vụ 14 và 5). Hãy suy nghĩ có hệ thống khi bạn xem xét ECO. Các nhiệm vụ ECO khác cũng thường đóng vai trò trong việc lập kế hoạch và quản lý lịch trình dự án.</p>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//06d89144-ee28-437e-a78d-747f92f7bf29/markdown_4/imgs/img_in_image_box_121_441_650_808.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A50%3A21Z%2F-1%2F%2F69b5c3b0c94318ee84b8a984bee8a38760b9a286f1c7ebbd3b08f681e51e316f" alt="Image" width="64%" /></div>
+
+<div style="text-align: center;">HÌNH 8.1 Quy trình quản lý lịch trình</div>
+
+<h4 id="ch8-desired-outcomes-of-schedule-management">Kết Quả Mong Muốn của Quản Lý Lịch Trình</h4>
+
+<p>Trong bài thi, trừ khi câu hỏi chỉ định khác, hãy giả sử rằng quản lý lịch trình đã được lập kế hoạch đúng cách theo các khái niệm được trình bày trong chương này liên quan đến lập kế hoạch và quản lý lịch trình. Có kế hoạch có nghĩa là khi một vấn đề phát sinh, lựa chọn đầu tiên là tìm đến kế hoạch để biết cách xử lý nó. Những điều sau đây được kỳ vọng từ một dự án được lập kế hoạch và quản lý đúng cách:</p>
+
+<ul class="content-list">
+<li>Tất cả hoặc hầu hết các kết quả bàn giao được hoàn thành và bàn giao trong khung thời gian đã lên kế hoạch, trong ngân sách và với các thuộc tính chất lượng đã thỏa thuận.</li>
+<li>Số lượng thay đổi đối với yêu cầu dự án và sản phẩm nằm trong phạm vi kỳ vọng của quản lý dự án và nhóm.
+  <ul class="content-list">
+    <li>Dự kiến sẽ có nhiều thay đổi hơn trong các dự án Agile so với các dự án theo kế hoạch. Đàm phán phạm vi để giữ dự án đúng lịch trình trong các dự án Agile cũng được kỳ vọng vì phạm vi được hiểu là ràng buộc linh hoạt hơn.</li>
+    <li>Số lượng đáng kể thay đổi yêu cầu trong các dự án theo kế hoạch cần được đánh giá về các vấn đề có thể xảy ra với các bên liên quan hoặc sự rõ ràng của các định nghĩa phạm vi và yêu cầu.</li>
+  </ul>
+</li>
+<li>Hành vi và mối quan hệ của các bên liên quan cho thấy kết quả đầu ra của dự án phần lớn được chấp nhận và các bên liên quan có vẻ hài lòng tại một điểm nhất định.</li>
+<li>Nhịp độ phát triển, kiểm tra và triển khai phù hợp với dự án cụ thể và với phương pháp phát triển và vòng đời được chọn.</li>
+<li>Các phép đo cho thấy dự án đang thực hiện đúng như kế hoạch. Xem xét các dự báo trong quá khứ so với hiệu suất dự án hiện tại cho thấy dự án đang đúng tiến độ hoặc gần đúng tiến độ.</li>
+<li>Lợi ích dự án có thể được nhận ra trong khung thời gian được lên kế hoạch.</li>
+</ul>
+
+<h4 id="ch8-plan-schedule-management">Lập Kế Hoạch Quản Lý Lịch Trình</h4>
+
+<p>Quy trình Lập Kế Hoạch Quản Lý Lịch Trình liên quan đến việc ghi lại cách bạn sẽ lập kế hoạch, quản lý và kiểm soát dự án theo đường cơ sở lịch trình, và cách bạn sẽ quản lý các sai lệch lịch trình. Bạn cũng cần xác định trước và đảm bảo hiểu biết chung về:</p>
+
+<ul class="content-list">
+<li>Các thước đo hiệu suất sẽ là gì</li>
+<li>Cách thức và thời điểm thu thập dữ liệu để đánh giá hiệu suất</li>
+<li>Cách bạn sẽ sử dụng dữ liệu để giữ dự án đúng hướng</li>
+<li>Những gì bạn sẽ làm khi xảy ra sai lệch</li>
+</ul>
+
+<p>Lập Kế Hoạch Quản Lý Lịch Trình trả lời các câu hỏi như:</p>
+
+<ul class="content-list">
+<li>Ai sẽ tham gia, và cách tiếp cận nào sẽ được thực hiện để lập kế hoạch lịch trình cho dự án.</li>
+<li>Quy trình và thủ tục nào sẽ được sử dụng để tạo lịch trình?</li>
+</ul>
+
+<p>Bạn có nhớ rằng các phương pháp kết hợp (hybrid) và Agile có cái nhìn ngắn hạn hơn về phạm vi và lịch trình so với các phương pháp truyền thống không? Các nhóm hình thành một kế hoạch tổng quát và sau đó lên lịch và thực hiện công việc dự án theo từng vòng lặp. Sau đó họ đánh giá lại để xác định các bước tốt nhất tiếp theo dựa trên tiến độ thực tế. Các nhóm Agile cũng liên tục tinh chỉnh lịch trình khi các chi tiết mới xuất hiện. Cách tiếp cận này là tốt nhất khi thử nghiệm điều gì đó mới. Khi công việc mới và phạm vi đang hình thành thay vì ổn định, khám phá là hướng dẫn tốt hơn cho tiến độ so với chi tiết.</p>
+
+<p>Khi công việc và môi trường quen thuộc và có thể dự đoán được, có thể lên lịch công việc chính xác trước. Phương pháp kết hợp sử dụng các phương pháp lập lịch truyền thống ở một số khu vực của dự án trong khi sử dụng các phương pháp Agile ở các khu vực khác.</p>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//844f4eee-980a-454b-9939-9c757b6da53b/markdown_0/imgs/img_in_image_box_670_657_717_712.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A02Z%2F-1%2F%2F89dace700fcaabd7528a62e735fe8d6e1275f6529ff079d13ce83cb72b44014c" alt="Image" width="5%" /></div>
+
+<div class="callout"><p><strong>Ví dụ:</strong> Phương pháp truyền thống thường được sử dụng để xây dựng một tòa nhà văn phòng. Một tùy chọn kết hợp thực tế là bắt đầu và hoàn thành các khía cạnh bền vững nhất của tòa nhà bằng phương pháp truyền thống, và sau đó tùy chỉnh các không gian bên trong theo từng vòng lặp khi không gian văn phòng được thuê.</p></div>
+
+<p>Để lập kế hoạch lịch trình của dự án, quản lý dự án cũng sẽ cần:</p>
+
+<ul class="content-list">
+<li>Xem xét điều lệ dự án</li>
+<li>Sử dụng nhận định chuyên gia</li>
+<li>Sử dụng các kỹ thuật phân tích dữ liệu, như phân tích thay thế</li>
+<li>Tổ chức các cuộc họp bao gồm:
+  <ul class="content-list">
+    <li>Nhà tài trợ dự án</li>
+    <li>Thành viên nhóm</li>
+    <li>Các bên liên quan khác</li>
+  </ul>
+</li>
+</ul>
+
+<p>Vòng đời dự án và phương pháp phát triển đã được thỏa thuận trong Phát triển Kế hoạch Quản lý Dự án (một quy trình Tích hợp) sẽ ảnh hưởng đến mức độ và loại lập kế hoạch quản lý lịch trình mà quản lý dự án thực hiện. Họ cũng có thể cân nhắc sử dụng hoặc tạo ra các yếu tố môi trường doanh nghiệp, chẳng hạn như:</p>
+
+<ul class="content-list">
+<li>Hệ thống ủy quyền công việc cho dự án</li>
+<li>Phần mềm lập lịch quản lý dự án ưa thích, mà tổ chức có thể đã có</li>
+<li>Tác động của văn hóa công ty và cơ cấu tổng thể lên lịch trình dự án</li>
+</ul>
+
+<p><strong>Kế Hoạch Quản Lý Lịch Trình:</strong> Kết quả chính của quy trình này là gì? Một kế hoạch quản lý lịch trình chính thức hoặc không chính thức (một phần của kế hoạch quản lý dự án). Nó giúp ước tính và phát triển lịch trình nhanh hơn bằng cách chỉ định những điều sau:</p>
+
+<ul class="content-list">
+<li>Phương pháp lập lịch và phần mềm</li>
+<li>Quy tắc về cách ước tính sẽ được trình bày (Ví dụ: giờ, ngày, story points)</li>
+<li>Cách quản lý sai lệch lịch trình</li>
+<li>Có nên nêu cả nỗ lực lẫn thời lượng không</li>
+<li>Các thước đo hiệu suất sẽ giúp xác định sai lệch sớm</li>
+<li>Cách đường cơ sở lịch trình để đo lường sẽ được trình bày</li>
+<li>Ước tính về nơi có thể xảy ra thay đổi</li>
+<li>Ngưỡng sai lệch chấp nhận được</li>
+<li>Quy trình xác định liệu sai lệch có cần được xử lý không</li>
+<li>Thủ tục kiểm soát thay đổi</li>
+<li>Loại, định dạng và tần suất báo cáo cần thiết</li>
+<li>Độ dài của các vòng lặp và các lần phát hành cho Agile</li>
+</ul>
+
+<h4 id="ch8-define-activities">Xác Định Hoạt Động</h4>
+
+<p>Quy trình Xác Định Hoạt Động liên quan đến việc thực hiện những điều sau cho các gói công việc được tạo ra trong WBS (được tạo như một phần của Lập kế hoạch và Quản lý Phạm vi):</p>
+
+<ul class="content-list">
+<li>Phân rã chúng thành các hoạt động cần thiết để tạo ra các gói công việc</li>
+<li>Đảm bảo phân rã ở mức đủ nhỏ để:
+  <ul class="content-list">
+    <li>Lập lịch</li>
+    <li>Ước tính</li>
+    <li>Theo dõi và kiểm soát</li>
+  </ul>
+</li>
+<li>Chuẩn bị để sắp xếp trình tự các hoạt động này trong quy trình tiếp theo</li>
+</ul>
+
+<h4 id="ch8-the-context-for-defining-activities">Bối Cảnh Xác Định Hoạt Động</h4>
+
+<p>Quản lý dự án thường kết hợp nỗ lực Xác Định Hoạt Động với việc tạo WBS và từ điển WBS. Quản lý dự án và nhóm phân rã các gói công việc thành các hoạt động cần thiết để tạo ra chúng, thay vì dừng ở cấp độ gói công việc. Vậy, cần gì để xác định các hoạt động?</p>
+
+<ul class="content-list">
+<li>Kế hoạch quản lý lịch trình cung cấp cho quản lý dự án thông tin quan trọng về phương pháp lập lịch đã thỏa thuận</li>
+<li>Đường cơ sở phạm vi truyền thống (bản tuyên bố phạm vi, WBS và từ điển WBS), hoặc backlog sản phẩm của dự án cho các dự án Agile</li>
+<li>Thẻ câu chuyện (story cards) cho các dự án Agile</li>
+</ul>
+
+<p>Đây là công việc mà quản lý dự án bây giờ sẽ phân chia thành các hoạt động dự án. Cộng tác với nhóm giúp xác định các hoạt động đầy đủ và chính xác và sau này sẽ làm cho các ước tính chính xác hơn. Quản lý dự án có thể tham khảo các tài sản quy trình tổ chức, bao gồm:</p>
+
+<ul class="content-list">
+<li>Các mẫu hiện có</li>
+<li>Thông tin lịch sử như:
+  <ul class="content-list">
+    <li>Danh sách hoạt động</li>
+    <li>Danh sách vấn đề từ các dự án tương tự khác</li>
+  </ul>
+</li>
+<li>Tiêu chuẩn, chẳng hạn như các phương pháp lập lịch được quy định</li>
+</ul>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//844f4eee-980a-454b-9939-9c757b6da53b/markdown_2/imgs/img_in_image_box_95_106_148_159.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A03Z%2F-1%2F%2F19b3bd4ea39f6e00967a69b65dca54c36d5f62255418c2c54b096c496da48813" alt="Image" width="6%" /></div>
+
+<div class="highlight"><p>Khi đọc các câu hỏi thi, hãy nhớ xác định: "Tôi đang ở đâu trong quy trình quản lý dự án?" Phân rã (Decomposition) được sử dụng trong quản lý lịch trình, phạm vi và chi phí. Khi bạn thấy thuật ngữ "phân rã" trong bài thi, hãy tìm ngữ cảnh. Nếu các kết quả bàn giao đang được phân rã với nhóm thành các kết quả bàn giao nhỏ hơn (hoặc gói công việc) thì câu hỏi đang đề cập đến quy trình Tạo WBS (trong quản lý phạm vi) và một cách tiếp cận dự đoán. Nếu các gói công việc đang được phân rã thành các hoạt động để tạo ra chúng, câu hỏi đang đề cập đến Xác Định (cho quản lý lịch trình).</p></div>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//844f4eee-980a-454b-9939-9c757b6da53b/markdown_2/imgs/img_in_image_box_95_228_150_281.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A03Z%2F-1%2F%2F216c3bc89cf2514a7ffb2332f26aebf92b83529d9698917ed0a43bc756c8e0d4" alt="Image" width="6%" /></div>
+
+<p>Với phương pháp Agile, nhóm giúp xác định các hoạt động và chủ sở hữu sản phẩm (product owner) sắp xếp trình tự công việc bằng cách ưu tiên các câu chuyện trong backlog. Nhóm giúp xác định sự phụ thuộc, phát triển ước tính và cung cấp đầu vào về những gì có thể đạt được. Phát triển lịch trình là nỗ lực chung.</p>
+
+<h4 id="ch8-sequencing-activities">Sắp Xếp Trình Tự Hoạt Động</h4>
+
+<p>Sau khi các hoạt động gói công việc được xác định, quy trình tiếp theo liên quan đến việc sắp xếp chúng theo thứ tự mà công việc nên được thực hiện. Kết quả là một sơ đồ mạng lịch trình dự án. Một sơ đồ mạng lưới đơn giản được minh họa trong hình 8.2. Có các bài tập thực hành được thiết kế để giúp bạn học cách vẽ và giải thích sơ đồ mạng lưới ở phần sau trong chương này.</p>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//844f4eee-980a-454b-9939-9c757b6da53b/markdown_2/imgs/img_in_image_box_169_441_502_518.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A03Z%2F-1%2F%2F7122cf46eb1d5f659cc869278f494d97bd14b76f0c247c6c678d82c43bebfdd4" alt="Image" width="40%" /></div>
+
+<div style="text-align: center;">HÌNH 8.2 Sơ đồ mạng lưới</div>
+
+<p>Để thi, hãy biết những điều này về sơ đồ mạng lưới:</p>
+
+<ul class="content-list">
+<li>Ở dạng đơn giản nhất, nó chỉ hiển thị các sự phụ thuộc giữa các hoạt động.</li>
+<li>Nếu ước tính thời lượng hoạt động và thời gian dẫn trước/trễ được thêm vào sơ đồ, nó cũng có thể hiển thị đường găng, đây là con đường ngắn nhất để hoàn thành dự án.</li>
+<li>Nếu được vẽ theo thời gian (dựa trên lịch), sơ đồ mạng lưới là sơ đồ mạng lịch trình theo thang thời gian.</li>
+</ul>
+
+<p>Các đầu vào có thể ảnh hưởng đến sự phụ thuộc trong việc sắp xếp trình tự hoạt động bao gồm:</p>
+
+<ul class="content-list">
+<li>Nhật ký giả định</li>
+<li>Danh sách hoạt động</li>
+<li>Thuộc tính hoạt động</li>
+<li>Danh sách mốc quan trọng</li>
+</ul>
+
+<h4 id="ch8-precedence-diagramming-method">Phương Pháp Sơ Đồ Ưu Tiên (PDM)</h4>
+
+<p>Phương pháp này sử dụng các nút (hoặc hộp) để đại diện cho các hoạt động và các mũi tên để hiển thị sự phụ thuộc. Trong hình 8.3, ví dụ, hoạt động B phụ thuộc vào việc hoàn thành hoạt động A.</p>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//844f4eee-980a-454b-9939-9c757b6da53b/markdown_2/imgs/img_in_image_box_298_871_512_935.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A03Z%2F-1%2F%2F7d8298b94f55a3e49fe6fda9ce421152bbd9725f57ec069bde7efcbd150484a0" alt="Image" width="26%" /></div>
+
+<div style="text-align: center;">HÌNH 8.3 Phương pháp sơ đồ ưu tiên</div>
+
+<h4 id="ch8-logical-relationships">Mối Quan Hệ Logic</h4>
+
+<p>Có thể có bốn loại mối quan hệ logic giữa các hoạt động, như được hiển thị trong hình 8.4.</p>
+
+<ul class="content-list">
+<li><strong>Hoàn thành-để-Bắt đầu (Finish-to-start — FS):</strong> Một hoạt động phải hoàn thành trước khi hoạt động kế tiếp có thể bắt đầu. Đây là mối quan hệ được sử dụng phổ biến nhất. Ví dụ: Bạn phải hoàn thành việc đào hố trước khi có thể bắt đầu hoạt động tiếp theo là trồng cây.</li>
+<li><strong>Bắt đầu-để-Bắt đầu (Start-to-start — SS):</strong> Một hoạt động phải bắt đầu trước khi hoạt động kế tiếp có thể bắt đầu. Ví dụ: Bạn phải bắt đầu thiết kế và chờ độ trễ hai tuần để có đủ thiết kế hoàn thành để bắt đầu lập trình.</li>
+<li><strong>Hoàn thành-để-Hoàn thành (Finish-to-finish — FF):</strong> Một hoạt động phải hoàn thành trước khi hoạt động kế tiếp có thể hoàn thành. Ví dụ: Bạn phải hoàn thành kiểm tra trước khi có thể hoàn thành tài liệu.</li>
+<li><strong>Bắt đầu-để-Hoàn thành (Start-to-finish — SF):</strong> Một hoạt động phải bắt đầu trước khi hoạt động kế tiếp có thể hoàn thành. Sự phụ thuộc này hiếm khi được sử dụng. Ví dụ về loại này là "Bảo vệ ca đầu không thể rời đi cho đến khi bảo vệ ca hai đến nơi."</li>
+</ul>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//844f4eee-980a-454b-9939-9c757b6da53b/markdown_3/imgs/img_in_image_box_253_305_532_461.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A03Z%2F-1%2F%2F2f9f027aee414b34d5cc48264d89e90f63fcd4758395f2e6257e23ed170aa8e1" alt="Image" width="33%" /></div>
+
+<div style="text-align: center;">HÌNH 8.4 Các sự phụ thuộc Hoàn thành-để-Bắt đầu, Bắt đầu-để-Bắt đầu và Hoàn thành-để-Hoàn thành</div>
+
+<h4 id="ch8-types-of-dependencies">Các Loại Phụ Thuộc</h4>
+
+<p>Trình tự hoạt động cũng được xác định dựa trên các phụ thuộc này:</p>
+
+<ul class="content-list">
+<li><strong>Phụ thuộc bắt buộc (Mandatory dependency — hard logic):</strong> Phụ thuộc bắt buộc vốn có trong bản chất của công việc hoặc được yêu cầu bởi hợp đồng. Ví dụ: Bạn phải thiết kế trước khi có thể xây dựng.</li>
+<li><strong>Phụ thuộc tùy ý (Discretionary dependency — preferred, preferential, or soft logic):</strong> Điều này có nghĩa là có những cách khác có thể thực hiện, nhưng đây là cách tiếp cận mà tổ chức đã chọn để thực hiện công việc. Các phụ thuộc tùy ý là loại linh hoạt nhất và chúng quan trọng khi phân tích cách nén lịch trình để giảm thời lượng dự án (tức là fast track — chạy song song).</li>
+<li><strong>Phụ thuộc bên ngoài (External dependency):</strong> Loại phụ thuộc này dựa trên các yếu tố liên quan đến một bên bên ngoài dự án (ví dụ, chính phủ hoặc nhà cung cấp).</li>
+<li><strong>Phụ thuộc nội bộ (Internal dependency):</strong> Loại phụ thuộc này dựa trên nhu cầu nội bộ của dự án và có thể là điều mà nhóm dự án có thể kiểm soát.</li>
+</ul>
+
+<p>Có thể xác định nhiều hơn một phụ thuộc cho cùng một công việc. Các kết hợp bao gồm:</p>
+
+<ul class="content-list">
+<li>Bắt buộc bên ngoài (Mandatory external)</li>
+<li>Tùy ý bên ngoài (Discretionary external)</li>
+<li>Bắt buộc nội bộ (Mandatory internal)</li>
+<li>Tùy ý nội bộ (Discretionary internal)</li>
+</ul>
+
+<h4 id="ch8-dependencies-in-hybrid-environments">Phụ Thuộc trong Môi Trường Kết Hợp</h4>
+
+<p>Sản phẩm kỹ thuật số có các đặc điểm khác với sản phẩm truyền thống, vật lý. Hãy xem xét cách một nhà thầu xây nhà. Họ sẽ không hoàn thành nội thất của ngôi nhà trước khi xây mái, phải không? Tất nhiên là không. Mái nhà cần tường, tường cần móng, và móng cần đất đai và giấy phép. Các phụ thuộc là tĩnh, được hiểu rõ và chậm thay đổi. Các kỹ thuật như sơ đồ mạng lưới, phân tích đường găng và biểu đồ Gantt chi tiết rất có giá trị và cần thiết.</p>
+
+<p>Tuy nhiên, trong không gian sản phẩm kỹ thuật số, có nhiều tùy chọn và khả năng hơn. Kiến trúc CNTT tốt cho phép các dịch vụ được hoán đổi dễ dàng và thúc đẩy việc cô lập các thay đổi. Điều này có nghĩa là có ít phụ thuộc hơn nhiều trong các dự án kỹ thuật số. Điều này cùng với nhiều yêu cầu hơn khiến phần lớn phân tích phụ thuộc truyền thống và quản lý phụ thuộc trở nên dư thừa, không đáng tin cậy và lãng phí. Do đó, nhiều kỹ thuật này không được sử dụng trong các dự án kỹ thuật số nặng phần mềm. Thay vào đó, quản lý dự án làm việc với chủ sở hữu sản phẩm để xác định ưu tiên và làm việc với các nhóm về cách xây dựng tốt nhất. Thông thường, các tính năng có thể được triển khai và đánh giá độc lập với nhau.</p>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//844f4eee-980a-454b-9939-9c757b6da53b/markdown_3/imgs/img_in_image_box_682_826_730_882.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A03Z%2F-1%2F%2Fba2e3360b9d62ca37595115dff9950ba28e40b1e648020811f555ea40c70c3e1" alt="Image" width="5%" /></div>
+
+<p>Ví dụ, sử dụng phương pháp kết hợp để xây dựng hệ thống giao dịch năng lượng cho một nhà điều hành điện, chủ sở hữu sản phẩm có thể sử dụng phương pháp truyền thống để tạo chuỗi tính năng ban đầu cần phát triển. Sau đó họ có thể sắp xếp lại các tính năng còn lại một khi sản phẩm ban đầu đã có. Chủ sở hữu sản phẩm có thể sắp xếp lại các tính năng này một lần nữa sau khi phản hồi của cơ quan quản lý được tích hợp, và một lần nữa khi các tính năng bổ sung xuất hiện. Điều này sẽ yêu cầu rất nhiều công việc làm lại lịch trình với các sơ đồ mạng lưới và biểu đồ Gantt truyền thống. Để so sánh, việc sắp xếp lại backlog ở giai đoạn này của một dự án kết hợp ít công việc hơn nhiều.</p>
+
+<h4 id="ch8-project-schedule-network-diagram">Sơ Đồ Mạng Lịch Trình Dự Án</h4>
+
+<p>Sơ đồ mạng lịch trình là một tài liệu của việc lập kế hoạch và quản lý lịch trình dự án. Đây là hình minh họa mô tả luồng các hoạt động dự án theo thứ tự logic mà chúng sẽ được thực hiện (xem hình 8.11). Dưới đây là một số hướng dẫn để hiểu về sơ đồ mạng lịch trình:</p>
+
+<ul class="content-list">
+<li>Quản lý dự án cần danh sách hoạt động và biết các phụ thuộc giữa các hoạt động. Sau đó, sau khi có tất cả các ước tính thời lượng cho mỗi hoạt động, họ có thể thêm dữ liệu đó vào sơ đồ mạng lưới.</li>
+<li>Tất cả các hoạt động sau khi Bắt đầu phải được kết nối với ít nhất một hoạt động tiền nhiệm (ngoại trừ hoạt động đầu tiên trong mỗi luồng công việc sau Bắt đầu).</li>
+<li>Tất cả các hoạt động trên sơ đồ mạng lưới trước Kết thúc phải được kết nối với ít nhất một hoạt động kế tiếp.</li>
+<li>Sơ đồ mạng lưới giúp quản lý dự án lập kế hoạch những hoạt động nào có thể hoàn thành song song và nhìn thấy nơi cần thời gian dẫn trước hay trễ.</li>
+<li>Dự án càng phức tạp thì khả năng các hoạt động chồng lên nhau càng cao.</li>
+<li><strong>Hội tụ đường đi (Path convergence):</strong> Một hoạt động có hai hoặc nhiều hoạt động đi trực tiếp trước nó trên các đường khác nhau được gọi là hội tụ đường đi.</li>
+<li><strong>Phân kỳ đường đi (Path divergence):</strong> Một hoạt động có hai hoặc nhiều hoạt động kế tiếp đi trực tiếp sau nó trên các đường khác nhau được gọi là phân kỳ đường đi.</li>
+<li>Cả hội tụ và phân kỳ đường đi đều là chỉ số rủi ro trong các hoạt động bị ảnh hưởng.</li>
+</ul>
+
+<div class="callout"><p><strong>Ví dụ:</strong> Sử dụng ví dụ đơn giản trong hình 8.2, đây là cách xây dựng sơ đồ mạng lưới.</p>
+<ol class="content-list">
+<li>Đặt &lt;Bắt đầu&gt; và &lt;Kết thúc&gt; vào các hình phân biệt chúng với các nút (hoạt động được đặt tên).</li>
+<li>Từ &lt;Bắt đầu&gt;, tạo hình chữ nhật đầu tiên và ghi nhãn là Hoạt động A.</li>
+<li>Vẽ một đường từ Hoạt động A và thêm một nút khác, ghi nhãn nút thứ hai này là Hoạt động B. Đường cho biết kết nối phụ thuộc giữa hai hoạt động.</li>
+<li>Vẽ một đường từ Hoạt động B và thêm một nút khác, ghi nhãn nút thứ ba này là Hoạt động C.</li>
+<li>Thêm &lt;Kết thúc&gt; và vẽ một đường từ Hoạt động C đến &lt;Kết thúc&gt;.</li>
+<li>Lặp lại quy trình để thêm đường thứ hai (thêm Hoạt động D và E; thêm các đường giữa chúng rồi một đường đến &lt;Kết thúc&gt;. Sơ đồ mạng lưới đã sẵn sàng cho dữ liệu ước tính thời lượng hoạt động.</li>
+</ol></div>
+
+<p>Các sơ đồ mạng lịch trình dự án phức tạp bao gồm thời gian dẫn trước và trễ cũng như các phụ thuộc khác tốt nhất là được thực hiện với một hệ thống lập lịch tự động là một phần của PMIS (Hệ thống Thông tin Quản lý Dự án). Bạn sẽ được kỳ vọng trả lời các câu hỏi trong bài thi liên quan đến việc giải thích thông tin mà các sơ đồ này cung cấp. Bạn cần đã làm việc với các sơ đồ mạng lưới để trả lời chính xác các câu hỏi như vậy.</p>
+
+<p>Tóm lại, sơ đồ mạng lưới có thể được sử dụng để:</p>
+
+<ul class="content-list">
+<li>Giúp biện minh ước tính thời gian của quản lý dự án cho dự án.</li>
+<li>Hỗ trợ lập kế hoạch, tổ chức và kiểm soát dự án hiệu quả.</li>
+<li>Hiển thị sự phụ thuộc lẫn nhau của tất cả các hoạt động, và từ đó xác định các hoạt động rủi ro hơn.</li>
+<li>Hiển thị luồng công việc để nhóm biết những hoạt động nào cần xảy ra theo một trình tự cụ thể.</li>
+<li>Xác định cơ hội để nén lịch trình trong lập kế hoạch và trong suốt vòng đời dự án (được giải thích ở phần sau trong chương này).</li>
+<li>Hiển thị tiến độ dự án và giúp dự báo. Điều này được sử dụng để kiểm soát lịch trình và báo cáo, và liên quan đến đo lường giá trị đạt được (EVM). EVM liên quan đến phạm vi, lịch trình và chi phí, và được đề cập trong chương "Ngân Sách và Nguồn Lực".</li>
+</ul>
+
+<h4 id="ch8-estimating-activity-durations">Ước Tính Thời Lượng Hoạt Động</h4>
+
+<p>Khi các hoạt động đã được xác định và sắp xếp trình tự, bước tiếp theo là ước tính mỗi hoạt động sẽ mất bao lâu. Đây là quy trình Ước Tính Thời Lượng Hoạt Động. Khi có thể, người ước tính nên là những người sẽ thực hiện công việc, hoặc trong các dự án lớn, là các thành viên của nhóm quản lý dự án quen thuộc nhất với công việc cụ thể cần thực hiện.</p>
+
+<p>Cả quy trình Ước Tính Thời Lượng Hoạt Động và Ước Tính Chi Phí (trong chương "Ngân Sách và Nguồn Lực") đều liên quan đến việc ước tính. Theo truyền thống, bài thi đã tập trung nhiều hơn vào các phương pháp cần thiết để tạo ra ước tính tốt hơn là tính toán.</p>
+
+<p>Sử dụng danh sách kiểm tra này để đánh giá sự hiểu biết của bạn về ước tính hoạt động và lịch trình. Xác định các khoảng trống có thể ảnh hưởng đến cách bạn trả lời các câu hỏi thi. Theo dõi các mục bạn hiện không thực hiện trong công việc dự án và chú ý đặc biệt đến việc học những chủ đề này. Hãy nhớ, các thực hành quản lý dự án tệ (như đệm ước tính, ví dụ) có thể được liệt kê là lựa chọn trong bài thi.</p>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//60b4aefd-840d-4c51-a5b9-bc33a9953916/markdown_0/imgs/img_in_image_box_48_380_99_439.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A49%3A51Z%2F-1%2F%2F03dd36b5f60790ac729e33f1dcbd8bd7c120e2fc84e4011d1b87ce48530b8cea" alt="Image" width="6%" /></div>
+
+<div class="callout">
+<h5>Hãy Suy Nghĩ. Những Điều Cần Biết Về Ước Tính Cho Bài Thi</h5>
+<ul class="content-list">
+<li>Các kế hoạch quản lý cung cấp cách tiếp cận để ước tính.</li>
+<li>Quản lý dự án và nhóm có thể sử dụng một hoặc nhiều kỹ thuật để ước tính công việc dự án.</li>
+<li>Ước tính nên được thực hiện dựa trên các đơn vị công việc nhỏ, từ WBS hoặc từ thẻ câu chuyện trong Agile. Điều này cải thiện độ chính xác.</li>
+<li>Ước tính thời lượng, chi phí và nguồn lực có liên quan đến nhau. Ước tính thời lượng và nguồn lực thường ảnh hưởng đến ước tính chi phí.</li>
+<li>Các rủi ro đã xác định phải được xem xét khi ước tính thời lượng, chi phí và yêu cầu nguồn lực của công việc dự án. Các hành động quản lý rủi ro là các hạng mục riêng biệt trong dự phòng dự án (một phần của ngân sách). Đối với Agile, các hành động quản lý rủi ro được thể hiện dưới dạng các câu chuyện trong backlog.</li>
+<li>Ước tính thời lượng, chi phí và yêu cầu nguồn lực có thể phát hiện thêm các rủi ro.</li>
+<li>Ước tính nên được thực hiện bởi những người đang làm công việc hoặc những người quen thuộc nhất với nó để cải thiện độ chính xác.</li>
+<li>Thông tin lịch sử từ các dự án trước (một phần của tài sản quy trình tổ chức) thường là chìa khóa để bắt đầu và cải thiện ước tính.</li>
+<li>Ước tính chính xác hơn trên các thành phần công việc có kích thước nhỏ hơn.</li>
+<li>Quản lý dự án không chỉ chấp nhận các ràng buộc do quản lý đặt ra. Họ đánh giá các yêu cầu dự án, phát triển ước tính cùng nhóm và hòa giải các khác biệt, tạo ra một kế hoạch thực tế.</li>
+<li>Quản lý dự án có thể định kỳ tính toán lại ước tính để hoàn thành (ETC — Estimate to Complete) cho dự án để đảm bảo đủ thời gian, kinh phí và nguồn lực cho dự án (nhận được các thay đổi được phê duyệt cần thiết). ETC và các chỉ số kiểm soát dự án khác được thảo luận trong chương "Ngân Sách và Nguồn Lực".</li>
+<li>Các kế hoạch dựa trên ước tính nên được sửa đổi, với các thay đổi được phê duyệt, trong quá trình hoàn thành công việc, khi cần thiết.</li>
+<li>Có một quy trình trong kế hoạch quản lý dự án để tạo ra ước tính chính xác nhất có thể.</li>
+<li>Đệm ước tính không phải là thực hành quản lý dự án được chấp nhận.</li>
+<li>Quản lý dự án phải đáp ứng bất kỳ ước tính đã thỏa thuận nào.</li>
+<li>Ước tính (từ thành viên nhóm hoặc người bán) phải được xem xét để đảm bảo chúng hợp lý và không chứa đệm hoặc rủi ro chưa được xác định.</li>
+<li>Ước tính phải được giữ thực tế trong suốt dự án bằng cách ước tính lại định kỳ khi cần.</li>
+<li>Ước tính có thể được tác động tích cực bằng cách giảm hoặc loại bỏ rủi ro.</li>
+<li>Quản lý dự án có trách nhiệm chuyên nghiệp (với sự giúp đỡ của nhóm) cung cấp các ước tính chính xác nhất có thể và duy trì tính toàn vẹn của các ước tính đó trong suốt dự án.</li>
+</ul>
+</div>
+
+<h4 id="ch8-inputs-to-good-activity-estimates">Đầu Vào Cho Ước Tính Hoạt Động Tốt</h4>
+
+<p>Để đạt được ước tính thời gian thực tế, những cá nhân này cần có quyền truy cập vào những điều sau:</p>
+
+<ul class="content-list">
+<li><strong>Danh sách hoạt động và thuộc tính hoạt động:</strong> Các đầu vào liên quan có thể bao gồm thời gian cho các thời gian dẫn trước hoặc trễ cần thiết giữa các hoạt động, phải được tính vào ước tính thời lượng.</li>
+<li><strong>Nhật ký giả định:</strong> Các giả định hoặc ràng buộc góp phần vào rủi ro trong các hoạt động cần ước tính nên được tìm thấy ở đây.</li>
+<li><strong>Sổ đăng ký bài học kinh nghiệm:</strong> Thông tin liên quan đến thời lượng của các hoạt động bao gồm các bài học kinh nghiệm từ đầu dự án hiện tại hoặc từ các dự án tương tự trong quá khứ trong tổ chức.</li>
+<li><strong>Cấu trúc phân tách nguồn lực (Resource Breakdown Structure):</strong> Được tạo trong quy trình Ước Tính Nguồn Lực Hoạt Động (của Quản lý Nguồn Lực), cấu trúc phân tách nguồn lực hiển thị các danh mục nguồn lực cần thiết cho dự án.</li>
+<li><strong>Yêu cầu nguồn lực:</strong> Các yêu cầu này cho biết các kỹ năng cần thiết từ nguồn lực để thực hiện công việc dự án cụ thể.</li>
+<li><strong>Phân công nhóm dự án:</strong> Phân công nhóm nên bao gồm số lượng và mức độ kinh nghiệm của các cá nhân đã được cam kết với dự án.</li>
+<li><strong>Lịch nguồn lực:</strong> Các lịch này cung cấp thông tin về thời điểm các nguồn lực chính với các kỹ năng chuyên môn cần thiết cho các hoạt động sẽ có mặt. Nếu các nguồn lực không có mặt trong khung thời gian của dự án, quản lý dự án cần ước tính thời gian cho phép các nguồn lực ít kinh nghiệm hơn thực hiện công việc.</li>
+<li><strong>Sổ đăng ký rủi ro:</strong> Sổ đăng ký rủi ro có thể bao gồm các mối đe dọa và/hoặc cơ hội đã xác định cần được phản ánh trong các ước tính.</li>
+<li><strong>Kiến thức để tránh đệm:</strong> Đệm là thời gian hoặc chi phí thêm được thêm vào ước tính vì người ước tính không có đủ thông tin hoặc cảm thấy không tự tin trong việc ước tính. Đây không phải là cách lập kế hoạch dự án khả thi. Vấn đề gì với việc đệm? Hãy nghĩ về cách ước tính hoạt động trong các dự án của bạn trong giây lát. Bạn có thể thấy rằng, nếu các thành viên nhóm cá nhân đệm ước tính của họ, các ước tính dự án ngày càng trở nên không đáng tin cậy không? Đến lượt mình, đệm làm suy yếu khả năng tạo ra lịch trình và ngân sách thực tế.</li>
+</ul>
+
+<p>Trong trường hợp thông tin cần thiết để làm rõ các điều chưa biết không có sẵn, nhu cầu tiềm năng về thêm thời gian hoặc kinh phí nên được giải quyết bằng các khoản dự phòng trong quy trình quản lý rủi ro. Thông qua quản lý rủi ro, các sự không chắc chắn được chuyển thành các cơ hội và mối đe dọa có thể xác định được. Các sự không chắc chắn sau đó không còn bị ẩn đi.</p>
+
+<p>Hãy nhớ rằng đây là PMI-ism — quản lý dự án đúng đắn đã được thực hiện trừ khi câu hỏi thi chỉ ra khác. Không cần đệm khi có những điều sau trong một dự án được quản lý đúng cách:</p>
+
+<ul class="content-list">
+<li>Người ước tính có WBS và thậm chí có thể đã giúp tạo ra nó.</li>
+<li>Họ cũng có mô tả của từng gói công việc (từ điển WBS) và có thể đã giúp tạo ra nó.</li>
+<li>Họ thậm chí có thể đã giúp tạo ra danh sách hoạt động từ các gói công việc.</li>
+<li>Ước tính ba điểm có thể được sử dụng, bằng cách lấy trung bình kịch bản xấu nhất, kịch bản khả năng nhất và kịch bản tốt nhất, xây dựng sự không chắc chắn vào ước tính.</li>
+<li>Người ước tính biết rằng sẽ có các khoản dự phòng thời gian và chi phí trong dự án được xác định thông qua quy trình quản lý rủi ro để giải quyết các rủi ro đã xác định.</li>
+</ul>
+
+<h4 id="ch8-how-estimating-is-done">Cách Thực Hiện Ước Tính</h4>
+
+<p>Phần nhóm thực hiện ước tính có thể sử dụng một hoặc nhiều kỹ thuật như đã xác định trước đó trong kế hoạch quản lý lịch trình.</p>
+
+<p>Đầu tiên, hãy xem xét vai trò của quản lý dự án trong ước tính. Vai trò của quản lý dự án ở đây là:</p>
+
+<ul class="content-list">
+<li>Cung cấp cho nhóm đủ thông tin để ước tính đúng từng hoạt động.</li>
+<li>Cho những người ước tính biết ước tính của họ cần được tinh chỉnh đến mức nào.</li>
+<li>Thực hiện kiểm tra tính hợp lý của các ước tính.</li>
+<li>Ngăn chặn việc đệm.</li>
+<li>Xây dựng khoản dự phòng (thêm về điều này trong chương "Rủi Ro và Vấn Đề").</li>
+<li>Đảm bảo các giả định được thực hiện trong khi ước tính được ghi lại để xem xét sau.</li>
+</ul>
+
+<p>Bây giờ hãy xem xét các kỹ thuật ước tính có thể được sử dụng trong một dự án. Chúng tôi đã tổ chức hai phần sau đây thành các kỹ thuật ước tính dự đoán và thích nghi. Các phương pháp này thường được sử dụng với các cách tiếp cận này và có khả năng xuất hiện trong bài thi trong các bối cảnh này. Tuy nhiên, bất kỳ sự kết hợp nào của các kỹ thuật này đều có thể được sử dụng, đặc biệt với phương pháp kết hợp.</p>
+
+<h4 id="ch8-methods-for-predictive-estimating">Các Phương Pháp Ước Tính Dự Đoán</h4>
+
+<p>Các dự án truyền thống sử dụng các phương pháp sau để ước tính. Ước tính tương tự là một ví dụ về thực hành ước tính áp dụng cho cả hai phương pháp dự đoán và thích nghi.</p>
+
+<p><strong>Ước Tính Tương Tự (từ trên xuống — Analogous Estimating):</strong> Ước tính tương tự sử dụng nhận định chuyên gia và thông tin lịch sử để ước tính. Nó có thể áp dụng cho thời gian, chi phí và nguồn lực. Thường không được coi là ước tính dứt khoát. Ví dụ, quản lý hoặc nhà tài trợ có thể sử dụng ước tính tương tự để ước tính cấp cao trong khi xây dựng trường hợp kinh doanh và lựa chọn dự án. Khi dự án được khởi tạo, quản lý dự án có thể sử dụng ước tính tương tự ở cấp độ dự án, sử dụng dữ liệu lịch sử từ các dự án tương tự trong quá khứ. Ví dụ: "năm dự án tương tự như dự án này mỗi dự án mất tám tháng, vì vậy dự án này cũng nên vậy." Ước tính tương tự được tinh chỉnh sau đó trong quá trình lập kế hoạch.</p>
+
+<p>Ước tính tương tự cũng có thể được sử dụng ở cấp độ hoạt động nếu hoạt động đó đã được thực hiện trong các dự án trước và nếu có đủ dữ liệu lịch sử để hỗ trợ độ chính xác. Ví dụ: "Công ty này đã tạo ra hàng nghìn mô-đun lập trình và chúng mất trung bình X giờ, vì vậy chúng tôi sẽ sử dụng đó làm điểm xuất phát."</p>
+
+<p>Mặt khác, ước tính tương tự được sử dụng khi có ít dữ liệu hỗ trợ. Ví dụ: "Hai lần cuối hoạt động này được thực hiện đều mất ba ngày. Vì chúng tôi không có dữ liệu khác để dựa vào, chúng tôi sẽ ước tính ba ngày và xem xét lại ước tính khi tìm hiểu thêm chi tiết."</p>
+
+<p>Để thi, hãy biết ước tính tương tự có thể được thực hiện vào nhiều thời điểm khác nhau. Thường không được coi là dứt khoát nhưng mức độ chính xác cũng có thể phụ thuộc vào lượng dữ liệu tương tự có sẵn và mức độ phù hợp của dự án hoặc hoạt động với hồ sơ lịch sử.</p>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//60b4aefd-840d-4c51-a5b9-bc33a9953916/markdown_2/imgs/img_in_image_box_54_703_109_757.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A49%3A52Z%2F-1%2F%2F3b5359bafd850dc878cedecd578b907ef68e2bb3c84b1ee9f913243dd6251e09" alt="Image" width="6%" /></div>
+
+<h4 id="ch8-bottom-up-estimating">Ước Tính Từ Dưới Lên</h4>
+
+<p>Phương pháp này liên quan đến việc tạo các ước tính chi tiết cho mỗi hoạt động hoặc gói công việc, sử dụng WBS chính xác. Các ước tính riêng lẻ sau đó được tổng hợp lên thành các tài khoản kiểm soát và cuối cùng là ước tính dự án tổng thể. Bạn sẽ thấy cách các ước tính này tổng hợp thành ngân sách trong chương "Ngân Sách và Nguồn Lực".</p>
+
+<h4 id="ch8-parametric-estimating">Ước Tính Tham Số</h4>
+
+<p>Ước tính tham số liên quan đến một phương trình toán học sử dụng dữ liệu từ hồ sơ lịch sử hoặc các nguồn khác, chẳng hạn như yêu cầu ngành hoặc các số liệu tiêu chuẩn. Kỹ thuật này phân tích mối quan hệ giữa dữ liệu lịch sử và các biến khác để ước tính thời lượng hoặc chi phí. Nó có thể được áp dụng cho một số hoặc tất cả các hoạt động trong một dự án. Ví dụ, khi ước tính thời lượng hoạt động, người ước tính có thể sử dụng các số liệu như thời gian mỗi dòng mã, thời gian mỗi mét dài, hoặc thời gian mỗi lần cài đặt. Khi được sử dụng trong ước tính chi phí, các số liệu bao gồm chi phí là một trong các biến. Vì vậy các số liệu sẽ là chi phí mỗi dòng mã, chi phí mỗi mét dài, v.v.</p>
+
+<p>Người ước tính có thể tạo ra các ước tính tham số sử dụng những điều sau:</p>
+
+<p><strong>Phân tích hồi quy (Biểu đồ phân tán):</strong> Biểu đồ này theo dõi hai biến để xem chúng có liên quan không; biểu đồ sau đó được sử dụng để tạo một công thức toán học cho ước tính tham số trong tương lai. Hình 8.5 cho thấy ví dụ về biểu đồ phân tán.</p>
+
+<p><strong>Đường cong học hỏi (Learning Curve — ví dụ):</strong> Phòng thứ 100 được sơn sẽ mất ít thời gian hơn phòng đầu tiên vì hiệu quả được cải thiện.</p>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//60b4aefd-840d-4c51-a5b9-bc33a9953916/markdown_3/imgs/img_in_chart_box_284_227_569_408.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A49%3A53Z%2F-1%2F%2Fecd689b482790fff678053e0fd0f54ad958f853413e827cf399751455cfb5797" alt="Image" width="34%" /></div>
+
+<div style="text-align: center;">HÌNH 8.5 Phân tích hồi quy (biểu đồ phân tán)</div>
+
+<p><strong>Ước Tính Một Điểm (Single-point Estimating):</strong> Loại này dựa trên một ước tính duy nhất; tuy nhiên, nó có thể gặp vấn đề. Ví dụ, người thực hiện ước tính có thể nói rằng một hoạt động sẽ mất năm tuần. Điều này có thể dựa trên nhận định chuyên gia hoặc thông tin lịch sử, hoặc nó có thể chỉ là một phỏng đoán.</p>
+
+<p>Ước tính một điểm có thể có các tác động tiêu cực sau đây đến dự án:</p>
+
+<ul class="content-list">
+<li>Bị giới hạn trong việc đưa ra ước tính một điểm có thể khuyến khích mọi người đệm ước tính của họ vì nó không bao gồm các kịch bản tốt nhất và xấu nhất.</li>
+<li>Khi ước tính một điểm của một người hóa ra không chính xác — ví dụ một hoạt động mất 15 ngày thay vì ước tính 20 ngày — điều này có thể khiến ước tính dự án và người ước tính có vẻ không đáng tin cậy.</li>
+<li>Ước tính một điểm có thể dẫn đến một lịch trình mà không ai tin tưởng, do đó làm giảm sự ủng hộ với quy trình quản lý dự án.</li>
+</ul>
+
+<p>Chúng ta có thể sử dụng các con số đơn cho ước tính hoạt động dự án, ví dụ, sử dụng một phương pháp ước tính thực tế hơn như ước tính ba điểm, được đề cập tiếp theo. Đối với mỗi hoạt động, dễ dàng hơn khi sử dụng một con số đơn (số ngày, ví dụ) để vẽ sơ đồ mạng lưới và tìm đường găng của dự án. Trong bài thi, ước tính một điểm cho phép tính toán nhanh (nếu câu hỏi hỗ trợ điều đó) và chứng minh rằng bạn hiểu các khái niệm như đường găng.</p>
+
+<p><strong>Ước Tính Ba Điểm (Three-Point Estimating — một phiên bản của ước tính đa điểm):</strong> Ước tính tốt nhất được đưa ra trong một phạm vi vì xác suất rất nhỏ để hoàn thành một dự án vào chính xác bất kỳ ngày nào. Ước tính ba điểm là kỹ thuật ước tính đa điểm được biết đến nhiều nhất.</p>
+
+<p>Ước tính ba điểm tính đến sự không chắc chắn tốt hơn: Điều gì có thể diễn ra đúng (cơ hội) và điều gì có thể sai (mối đe dọa), để giúp người ước tính xác định phạm vi kỳ vọng. Bằng cách này, quản lý dự án có thể hiểu rõ hơn về sự biến động tiềm năng của các ước tính hoạt động.</p>
+
+<p>Có hai cách tính ước tính ba điểm trong bài thi, như sau. Hãy ghi nhớ các công thức này và nhớ rằng chúng có thể được sử dụng cho cả ước tính thời gian và chi phí:</p>
+
+<p><strong>Phân Phối Tam Giác (Trung Bình Đơn Giản — Triangular Distribution):</strong> Phân phối tam giác của ước tính ba điểm có thể được tính bằng công thức <em>(P + O + M)/3</em>. Việc sử dụng trung bình đơn giản cho trọng số bằng nhau cho mỗi ước tính ba điểm khi tính toán thời lượng hoặc chi phí hoạt động kỳ vọng. Sử dụng công thức này, các rủi ro (hoặc sự không chắc chắn, là ước tính P và O) được xem xét đồng đều cùng với ước tính khả năng nhất (M).</p>
+
+<p><strong>Phân Phối Beta (Trung Bình Có Trọng Số — Beta Distribution):</strong> Phân phối beta (trung bình có trọng số) cho nhiều cân nhắc hơn đến ước tính khả năng nhất (M). Phương pháp này sử dụng công thức <em>(P + 4M + O)/6</em>, một trung bình có trọng số. Khi thực hiện quy trình quản lý rủi ro tốt, các ước tính khả năng nhất chính xác hơn vì các kế hoạch ứng phó rủi ro đã được phát triển để xử lý các cơ hội và mối đe dọa đã xác định đã được tính vào các ước tính bi quan và lạc quan.</p>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//60b4aefd-840d-4c51-a5b9-bc33a9953916/markdown_4/imgs/img_in_image_box_43_189_94_247.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A49%3A53Z%2F-1%2F%2F911e7ffa373ad95ef7448745899d40cc82c78146c63100cb8fbfeab4263563e4" alt="Image" width="6%" /></div>
+
+<div class="callout"><p><strong>Hãy Suy Nghĩ.</strong> Để thi, hãy biết các công thức này và cách chúng được áp dụng vào ước tính.</p></div>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//60b4aefd-840d-4c51-a5b9-bc33a9953916/markdown_4/imgs/img_in_image_box_242_229_536_296.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A49%3A53Z%2F-1%2F%2Fac72df6ea1b0350e58bcbbaa5a5ebff2eed1898a8d102031fc4c3c323ba5902d" alt="Image" width="35%" /></div>
+
+<p><em>Chú giải: P = Bi quan (Pessimistic), M = Khả năng nhất (Most likely), O = Lạc quan (Optimistic)</em></p>
+
+<div style="text-align: center;">HÌNH 8.6 Các công thức ước tính ba điểm</div>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//60b4aefd-840d-4c51-a5b9-bc33a9953916/markdown_4/imgs/img_in_image_box_49_368_105_422.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A49%3A53Z%2F-1%2F%2F2fe1c5b8a61451857ccd764d85e216a8949b164b431eb9cb66dd43925b63fd22" alt="Image" width="6%" /></div>
+
+<div class="highlight"><p>Nếu bạn được yêu cầu tính thời lượng hoạt động hoặc chi phí, hãy đọc tình huống cẩn thận để xác định công thức nào cần sử dụng. Các thuật ngữ như "đơn giản" hoặc "thẳng" đề cập đến phân phối tam giác. "Có trọng số" đề cập đến phân phối beta. Biết điều này sẽ giúp bạn chọn đúng công thức.</p>
+<p>Bạn có thể được yêu cầu thực hiện tính toán hoặc chỉ phân tích thông tin để xác định công thức nào tốt nhất cho kịch bản. Sử dụng phân phối tam giác nếu kịch bản cho thấy quản lý dự án không có nhiều kinh nghiệm hoặc thông tin lịch sử; nó cung cấp trung bình thẳng. Sử dụng phân phối beta khi có dữ liệu lịch sử hoặc mẫu để làm việc. Hầu hết các câu hỏi thi liên quan đến điều này khá đơn giản và có thể yêu cầu đánh giá nhưng không tính toán. Nhưng các tính toán không khó và các bài tập sau đây có thể giúp bạn chuẩn bị cho chúng. Đầu tiên, hãy xem lại các công thức ước tính ba điểm trong hình 8.6.</p></div>
+
+<div class="callout">
+<h5>Bài Tập 8.1 (Phân Phối Tam Giác)</h5>
+<p>Tính thời lượng hoạt động kỳ vọng sử dụng phân phối tam giác. Bạn có thể viết câu trả lời ở đây hoặc sử dụng Vở Bài Tập của bạn. Tất cả ước tính đều tính bằng giờ.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Hoạt Động</th><th>P</th><th>M</th><th>O</th><th>Thời Lượng Kỳ Vọng</th></tr>
+<tr><td>A</td><td>47</td><td>27</td><td>14</td><td></td></tr>
+<tr><td>B</td><td>89</td><td>60</td><td>41</td><td></td></tr>
+<tr><td>C</td><td>48</td><td>44</td><td>39</td><td></td></tr>
+<tr><td>D</td><td>42</td><td>37</td><td>29</td><td></td></tr>
+</table>
+</div>
+
+<p><em>Đáp án (Phân Phối Tam Giác):</em></p>
+<div class="table-wrap">
+<table>
+<tr><th>Hoạt Động</th><th>Thời Lượng Kỳ Vọng</th></tr>
+<tr><td>A</td><td>29,33</td></tr>
+<tr><td>B</td><td>63,33</td></tr>
+<tr><td>C</td><td>43,66</td></tr>
+<tr><td>D</td><td>36</td></tr>
+</table>
+</div>
+</div>
+
+<div class="callout">
+<h5>Bài Tập 8.2 (Phân Phối Beta)</h5>
+<p>Tính thời lượng hoạt động kỳ vọng sử dụng phân phối beta. Bạn có thể viết câu trả lời ở đây hoặc sử dụng Vở Bài Tập của bạn. Tất cả ước tính đều tính bằng giờ.</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>Hoạt Động</th><th>P</th><th>M</th><th>O</th><th>Thời Lượng Kỳ Vọng</th></tr>
+<tr><td>A</td><td>47</td><td>27</td><td>14</td><td></td></tr>
+<tr><td>B</td><td>89</td><td>60</td><td>41</td><td></td></tr>
+<tr><td>C</td><td>48</td><td>44</td><td>39</td><td></td></tr>
+<tr><td>D</td><td>42</td><td>37</td><td>29</td><td></td></tr>
+</table>
+</div>
+
+<p><em>Đáp án (Phân Phối Beta):</em></p>
+<div class="table-wrap">
+<table>
+<tr><th>Hoạt Động</th><th>Thời Lượng Kỳ Vọng</th></tr>
+<tr><td>A</td><td>28,17</td></tr>
+<tr><td>B</td><td>61,67</td></tr>
+<tr><td>C</td><td>43,83</td></tr>
+<tr><td>D</td><td>36,50</td></tr>
+</table>
+</div>
+</div>
+
+<p>So sánh các câu trả lời sử dụng phân phối tam giác với các câu trả lời cho phân phối beta. Có vẻ như kết quả không khác nhau đáng kể, nhưng hãy nghĩ về nó theo nghĩa tác động tích lũy với nhiều hoạt động.</p>
+
+<p><strong>Độ Lệch Chuẩn Hoạt Động (Activity Standard Deviation):</strong> Khái niệm này mô tả một phạm vi có thể cho một ước tính.</p>
+
+<div class="callout"><p><strong>Ví dụ:</strong> Ước tính hoạt động là 30 giờ với độ lệch chuẩn ±2 được kỳ vọng mất từ 28 giờ đến 32 giờ.</p></div>
+
+<div class="callout"><p><strong>Hãy Suy Nghĩ.</strong> Bạn sẽ không được yêu cầu tính "độ lệch chuẩn hoạt động beta" hay (P - O)/6 nhưng việc giải thích nó trong câu hỏi tình huống là quan trọng. Hãy suy nghĩ qua những điều sau để bạn hiểu nó.</p>
+<p>Để thiết lập một phạm vi cho ước tính hoạt động cá nhân sử dụng trung bình có trọng số (beta), bạn cần biết thời lượng hoạt động kỳ vọng beta (EAD — Expected Activity Duration) và độ lệch chuẩn hoạt động beta (SD). SD có thể được cho trước. Bạn tính phạm vi sử dụng beta EAD +/- SD.</p>
+<p>Bắt đầu của phạm vi là beta EAD - SD, và kết thúc của phạm vi là beta EAD + SD. Xem lại bảng sau để thấy thông tin được trình bày như thế nào. Hãy nhớ rằng kịch bản thi có thể bao gồm thông tin để bạn thực hiện cùng đánh giá với phân phối tam giác.</p></div>
+
+<div class="table-wrap">
+<table>
+<tr><th>Hoạt Động</th><th>P</th><th>M</th><th>O</th><th>Thời Lượng Kỳ Vọng</th><th>Độ Lệch Chuẩn Hoạt Động Beta</th><th>Phạm Vi Ước Tính</th></tr>
+<tr><td>A</td><td>47</td><td>27</td><td>14</td><td>28,167</td><td>5,500</td><td>22,667 đến 33,667, hoặc 28,167 ± 5,500</td></tr>
+<tr><td>B</td><td>89</td><td>60</td><td>41</td><td>61,667</td><td>8,000</td><td>53,667 đến 69,667, hoặc 61,667 ± 8,000</td></tr>
+<tr><td>C</td><td>48</td><td>44</td><td>39</td><td>43,833</td><td>1,500</td><td>42,333 đến 45,333, hoặc 43,833 ± 1,500</td></tr>
+<tr><td>D</td><td>42</td><td>37</td><td>29</td><td>36,500</td><td>2,167</td><td>34,333 đến 38,667, hoặc 36,500 ± 2,167</td></tr>
+</table>
+</div>
+
+<p>Các điểm bổ sung cần biết:</p>
+
+<ul class="content-list">
+<li>Hiểu rằng ước tính thời gian (hoặc chi phí) nên được tính trong một phạm vi.</li>
+<li>Mặc dù có một công thức độ lệch chuẩn cho phân phối tam giác, nó phức tạp và khó có thể xuất hiện trong bài thi, vì vậy chúng tôi không trình bày ở đây. Điều bạn cần nhớ cho bài thi là độ lệch chuẩn càng lớn, rủi ro càng lớn.</li>
+<li>Các công thức chúng ta đang thảo luận liên quan đến các hoạt động. Bài thi tập trung vào ước tính ba điểm để tìm phạm vi ước tính thời lượng hoạt động và chi phí. Hãy chuẩn bị để thực hiện các tính toán đơn giản sử dụng các công thức này.</li>
+<li>Bạn cũng có thể thấy thời lượng dự án tổng thể beta được sử dụng trong các câu hỏi yêu cầu bạn đánh giá tình huống hơn là thực hiện tính toán (Ví dụ: Thời lượng dự án là 35 tháng cộng hoặc trừ 3 tháng). Như với một hoạt động, phạm vi cho dự án càng rộng, rủi ro càng lớn.</li>
+<li>Bạn có thể sử dụng các khái niệm này để theo dõi và kiểm soát dự án tốt hơn. Các thời lượng kỳ vọng giúp bạn biết các sai lệch tiềm năng trong dự án của mình và xác định các hành động phù hợp.</li>
+<li>Bạn có thể sử dụng các phạm vi ước tính và độ lệch chuẩn để đánh giá rủi ro. Nhìn lại bảng trình bày độ lệch chuẩn beta, hoạt động nào có rủi ro nhiều nhất? Câu trả lời là Hoạt Động B. Nó có phạm vi rộng nhất và độ lệch chuẩn cao nhất, và do đó có khả năng có rủi ro lớn nhất.</li>
+</ul>
+
+<h4 id="ch8-methods-for-adaptive-estimating">Các Phương Pháp Ước Tính Thích Nghi</h4>
+
+<p>Đáng nhắc lại rằng mặc dù chúng tôi đã tổ chức các phần này thành các kỹ thuật ước tính dự đoán và thích nghi, nhưng bất kỳ sự kết hợp nào của các kỹ thuật này đều có thể được sử dụng với các phương pháp từ dự đoán đến kết hợp đến thích nghi. Ví dụ, mặc dù thường nghĩ đến "ước tính theo nhóm tương đồng" (affinity estimating) trong bối cảnh Agile, việc phân loại các hoạt động trong các dự án dự đoán thành những hoạt động mất hơn hoặc ít hơn 40 giờ để hoàn thành cũng là một dạng ước tính theo nhóm tương đồng.</p>
+
+<p>Ước tính thích nghi được thực hiện theo từng giai đoạn, sử dụng tinh chỉnh dần dần. Ước tính thu thập câu chuyện thường bắt đầu với "phân loại cỡ áo" (t-shirt sizing) cho kế hoạch ban đầu, được tinh chỉnh trong quá trình lập kế hoạch phát hành và vòng lặp, và trong suốt dự án.</p>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//dcbf9dab-1fb5-4a77-b0e2-8b5e6d41b75f/markdown_1/imgs/img_in_image_box_682_454_732_514.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A23Z%2F-1%2F%2F4e646a34d417896f2f0e46c2854e3d096c3eead41964f1efbb7ae46864e490ff" alt="Image" width="6%" /></div>
+
+<h4 id="ch8-affinity-estimating">Ước Tính Theo Nhóm Tương Đồng</h4>
+
+<p>Đây là kỹ thuật trong đó các nhóm mục tương tự được nhóm lại thành các tập hợp — tức là "các nhóm tương đồng." Ví dụ, đặt các câu chuyện người dùng vào các danh mục kích thước giúp dễ dàng hơn để thấy liệu các câu chuyện với các ước tính tương tự có thực sự có kích thước tương đương không.</p>
+
+<h4 id="ch8-t-shirt-sizing">Phân Loại Cỡ Áo (T-shirt Sizing)</h4>
+
+<p>Là một dạng ước tính theo nhóm tương đồng, hay nhóm các mục tương tự lại với nhau, phân loại cỡ áo là cách tiếp cận để ước tính các tính năng sản phẩm và câu chuyện người dùng sớm trong dự án. Nhóm chưa cố gắng tạo ra các ước tính toàn diện. Họ đang hướng đến các ước tính cấp cao (thô), đủ để vạch ra nỗ lực dự án tổng thể.</p>
+
+<p>Đây là một ví dụ từ một dự án cho dịch vụ phim trực tuyến. Nhóm đã xác định sáu tính năng:</p>
+
+<div class="table-wrap">
+<table>
+<tr><th>ES</th><th>S</th><th>M</th><th>L</th><th>XL</th><th>XXL</th></tr>
+<tr>
+  <td>Sắp xếp phim theo năm</td>
+  <td>Đánh giá phim</td>
+  <td>Duyệt phim</td>
+  <td>Thuê phim</td>
+  <td>Bán phim</td>
+  <td></td>
+</tr>
+<tr>
+  <td></td>
+  <td></td>
+  <td>Nhận xét phim</td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+</table>
+</div>
+
+<h5>HÌNH 8.7 Các tính năng theo cỡ áo</h5>
+
+<p>Kết quả của nỗ lực phân loại kích thước được hiển thị trong hình 8.7. Như bạn thấy, đã quyết định rằng:</p>
+
+<ul class="content-list">
+<li>"Sắp xếp phim theo năm" sẽ yêu cầu ít nỗ lực nhất để xây dựng; đây là Extra Small (XS).</li>
+<li>Hai tính năng mà chúng tôi nghĩ sẽ mất nỗ lực Trung bình là "Duyệt phim" và "Nhận xét phim."</li>
+<li>Một giỏ hàng trực tuyến cho "Bán Phim" sẽ yêu cầu nỗ lực nhiều nhất; đây là Extra Large (XL).</li>
+<li>Không có tính năng nào trong số này sẽ yêu cầu nỗ lực Extra-Extra-Large (XXL).</li>
+</ul>
+
+<p>Sau khi nhóm đã xác định các tính năng, họ sẽ phân rã chúng thành các câu chuyện người dùng. Trong hình 8.8, các thẻ câu chuyện người dùng được xếp chồng dưới mỗi cột. Các thẻ câu chuyện người dùng này đại diện cho công việc được nhóm ước tính cần thực hiện để xây dựng sản phẩm.</p>
+
+<p>Bạn có thể thấy ngay những gì sẽ mất nhiều nỗ lực nhất để xây dựng ("Bán phim" với 14 câu chuyện người dùng) và những gì sẽ mất ít nhất ("Sắp xếp phim theo năm" với 2 câu chuyện người dùng).</p>
+
+<p>Cũng có vẻ như "Thuê phim," được phân loại là Large, thực tế có thể nhỏ hơn "Duyệt phim" và "Nhận xét phim," được phân loại là Medium.</p>
+
+<p>Tuy nhiên, nhóm chưa xác định được kích thước tương đối của các câu chuyện. Một số câu chuyện có thể rất nhỏ và một số khác có thể rất lớn. Nhóm phải ước tính tất cả các câu chuyện người dùng theo cỡ áo, như họ đã làm với các tính năng.</p>
+
+<p>Sau đó, họ cũng có thể sử dụng ước tính theo nhóm tương đồng để đảm bảo các câu chuyện trong mỗi danh mục có kích thước tương đương. Các câu chuyện dựa trên cỡ áo có thể trông giống như hình 8.9.</p>
+
+<p>Bây giờ tất cả các câu chuyện đã được phân loại kích thước, nhóm có thể sử dụng kích thước tương đối của các câu chuyện trong mỗi tính năng để tinh chỉnh ước tính cỡ áo cho từng tính năng. Ví dụ, giả sử họ phát hiện ra rằng,</p>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//dcbf9dab-1fb5-4a77-b0e2-8b5e6d41b75f/markdown_2/imgs/img_in_image_box_273_100_748_712.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A24Z%2F-1%2F%2Fc1ec6eb020b87ac38f266ca1b317ecd0b853edbe04b107fdf57f7e831af86bfb" alt="Image" width="57%" /></div>
+
+<div style="text-align: center;">HÌNH 8.8 Các tính năng và câu chuyện người dùng</div>
+
+<h4 id="ch8-planning-poker">Planning Poker</h4>
+
+<div style="text-align: center;">HÌNH 8.9 Các câu chuyện người dùng theo cỡ áo</div>
+
+<p>trung bình, các câu chuyện trong "Thuê phim" lớn hơn các câu chuyện trong "Duyệt phim" hoặc "Nhận xét phim." Khi đó "Thuê phim" sẽ yêu cầu nhiều nỗ lực hơn hai tính năng Trung bình như ban đầu nghĩ.</p>
+
+<p>Planning Poker là một trò chơi cộng tác phổ biến sử dụng phân loại kích thước tương đối. Mục tiêu không phải là tạo ra các ước tính chính xác. Nó nhằm giúp nhóm nhanh chóng và hiệu quả đạt được sự đồng thuận về các ước tính hợp lý. Dự án có thể tiếp tục tiến về phía trước.</p>
+
+<p>Đây là cách chơi. Một nhóm Agile tập hợp để ước tính các câu chuyện cần xây dựng. Mỗi người chơi nhận được một bộ bài với các số như hiển thị trong hình 8.10. Ai đó đọc một câu chuyện và mỗi người chơi đánh giá nó cho nỗ lực công việc họ nghĩ nó đòi hỏi. Quá trình ước tính tiếp tục như sau.</p>
+
+<p>Hãy nhớ những câu chuyện này nằm trong backlog mà chủ sở hữu sản phẩm đã ưu tiên.</p>
+
+<ol class="content-list">
+<li>Tất cả cùng một lúc (để tránh tư duy nhóm), mỗi thành viên nhóm lật bài (đại diện cho một số story points).</li>
+<li>Nhóm thảo luận về sự khác biệt. Khi làm điều này, họ đang thảo luận về công việc liên quan trong mỗi câu chuyện.</li>
+<li>Khi cần, họ chơi thêm một hoặc hai vòng ước tính trước khi đạt được sự đồng thuận về số điểm được gán cho câu chuyện.</li>
+<li>Họ lặp lại điều này cho tất cả các câu chuyện cần ước tính.</li>
+<li>Đối với vòng lặp đầu tiên của dự án, nhóm ước tính có bao nhiêu câu chuyện họ nghĩ có thể hoàn thành.</li>
+<li>Sau khi vòng lặp đầu tiên hoàn thành, họ so sánh story points ước tính với story points thực tế đã hoàn thành.</li>
+<li>Số lượng thực tế của story points đã hoàn thành được sử dụng để chọn câu chuyện cho vòng lặp tiếp theo.</li>
+<li>Sau một vài vòng lặp, họ có thể tính trung bình story points của mình để có vận tốc làm việc trung bình, hoặc vận tốc (velocity), của story points hoàn thành mỗi vòng lặp. Họ có thể điều chỉnh vận tốc phù hợp trong suốt dự án.</li>
+</ol>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//dcbf9dab-1fb5-4a77-b0e2-8b5e6d41b75f/markdown_3/imgs/img_in_image_box_254_338_507_456.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A25Z%2F-1%2F%2F937fb5486cc53f53c4378bcf11ac59d26b1e21e3a0ba6e3fd2ec5328df8dd916" alt="Image" width="30%" /></div>
+
+<div style="text-align: center;">HÌNH 8.10 Bài chơi ước tính Planning Poker</div>
+
+<p>Quan trọng cần lưu ý là story points không có giá trị nào ngoài việc được đo so với các câu chuyện khác trong cùng một dự án. Hãy cẩn thận nếu câu hỏi thi nói về việc so sánh hai vận tốc nhóm (tốc độ mà họ có thể xây dựng câu chuyện). So sánh vận tốc của hai nhóm trong hai dự án khác nhau là không liên quan và hữu ích.</p>
+
+<h4 id="ch8-methods-for-data-analysis">Các Phương Pháp Phân Tích Dữ Liệu</h4>
+
+<p>Quy trình Ước Tính Thời Lượng Hoạt Động sử dụng hai dạng phân tích dữ liệu: phân tích thay thế và phân tích dự phòng.</p>
+
+<h4 id="ch8-alternatives-analysis">Phân Tích Thay Thế</h4>
+
+<p>Khi ước tính hoạt động không thể chấp nhận được trong các ràng buộc của dự án, phân tích thay thế được sử dụng để xem xét kỹ hơn các biến ảnh hưởng đến ước tính.</p>
+
+<div class="callout"><p><strong>Ví dụ:</strong> So sánh các tùy chọn như thuê ngoài công việc so với hoàn thành nó nội bộ để đáp ứng ràng buộc lịch trình. Phân tích thay thế liên quan đến việc đánh giá tác động của từng tùy chọn đối với các ràng buộc dự án, bao gồm chi phí so với thời gian tiết kiệm được và mức độ rủi ro. Quy trình này sẽ dẫn đến việc xác định cách tiếp cận tốt nhất để hoàn thành công việc dự án trong các ràng buộc.</p></div>
+
+<h4 id="ch8-reserve-analysis">Phân Tích Dự Phòng</h4>
+
+<p>Điều này kết nối các chủ đề ước tính và quản lý rủi ro. Ước tính giúp xác định thêm các rủi ro. Quản lý rủi ro làm giảm sự không chắc chắn trong ước tính thời gian và chi phí. Điều này được thực hiện bằng cách đánh giá và lập kế hoạch cho các cơ hội và mối đe dọa đáng kể, bao gồm cách xử lý chúng nếu chúng xảy ra. Quản lý rủi ro giúp dự án tiết kiệm thời gian và tiền bạc!</p>
+
+<p>Như mô tả trong chương "Rủi Ro và Vấn Đề," hai loại dự phòng có thể được thêm vào lịch trình dự án (và ngân sách): dự phòng có điều kiện và dự phòng quản lý.</p>
+
+<p><strong>Dự Phòng Có Điều Kiện (Contingency Reserves):</strong> Dự phòng có điều kiện được phân bổ trong đường cơ sở lịch trình cho các rủi ro đã xác định sau quy trình Lập Kế Hoạch Ứng Phó Rủi Ro. Các rủi ro đáng kể đối với các hoạt động trên đường găng có thể được quản lý bằng cách phân bổ một lượng dự phòng lịch trình cụ thể. Sử dụng các kế hoạch dự phòng với dự phòng có điều kiện giúp giữ dự án trong đường cơ sở lịch trình.</p>
+
+<p><strong>Dự Phòng Quản Lý (Management Reserves):</strong> Đây là các khoản kinh phí và thời gian bổ sung để đối phó với các rủi ro không lường trước được (hay "ẩn số chưa biết") có thể ảnh hưởng đến khả năng đáp ứng lịch trình. Dự phòng quản lý không phải là một phần của đường cơ sở lịch trình. Chúng không thể được áp dụng theo quyết định của quản lý dự án. Chúng yêu cầu phê duyệt thông qua hệ thống kiểm soát thay đổi.</p>
+
+<h4 id="ch8-methods-for-decision-making">Các Phương Pháp Ra Quyết Định</h4>
+
+<p>Chúng tôi đã nói rằng việc thu hút các thành viên nhóm tham gia ước tính là có lợi vì những người quen thuộc nhất với công việc có hiểu biết tốt nhất về thời gian cần thiết để hoàn thành từng nỗ lực. Điều này và sự tham gia của nhóm trong việc ra quyết định làm tăng sự ủng hộ của họ đối với lịch trình kết quả. Dưới đây là một số phương pháp ra quyết định nhóm hữu ích trong ước tính dự án — và trong nhiều loại ra quyết định. Mỗi phương pháp là một biến thể của việc sử dụng bỏ phiếu trong ra quyết định.</p>
+
+<h4 id="ch8-plurality-majority-or-unanimity">Đa Số, Quá Bán, hoặc Nhất Trí</h4>
+
+<p>Trong các dự án theo kế hoạch, quản lý dự án có thể tiến hành bỏ phiếu đơn giản để đạt được một trong những điều này, tùy thuộc vào hoàn cảnh. Lấy ví dụ về một quyết định lập lịch liên quan đến một hoạt động nhỏ nằm rất xa trong tương lai của dự án và không nằm trên đường găng. Quản lý dự án có thể đạt được quyết định này với thỏa thuận đa số đơn giản, trong khi quyết định về hoạt động trên đường găng trong tương lai gần có thể yêu cầu thỏa thuận quá bán hoặc nhất trí.</p>
+
+<h4 id="ch8-roman-voting">Bỏ Phiếu Kiểu La Mã</h4>
+
+<p>Ở đây mọi người thể hiện trực quan mức độ ủng hộ của họ đối với một quyết định bằng phong cách bỏ phiếu "ngón cái lên, ngón cái xuống" đơn giản. "Ngón cái ngang" cũng có thể được sử dụng cho những người không chắc chắn về phiếu bầu của họ hoặc có sự do dự.</p>
+
+<h4 id="ch8-fist-of-five">Fist of Five</h4>
+
+<p>Kỹ thuật bỏ phiếu này thường được sử dụng trong các dự án theo hướng thay đổi (còn gọi là "fist to five"). Trong biến thể này, nắm tay đóng cho biết số không (không ủng hộ) và nắm tay mở cho biết năm (ủng hộ hoàn toàn). Các thành viên nhóm không ủng hộ (những người giơ hai ngón tay trở xuống trong cuộc bỏ phiếu) chia sẻ lý do tại sao họ không ủng hộ tùy chọn. Bỏ phiếu được lặp lại cho đến khi tất cả mọi người trong nhóm thể hiện sự ủng hộ của họ bằng cách giơ ít nhất ba ngón tay.</p>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//dcbf9dab-1fb5-4a77-b0e2-8b5e6d41b75f/markdown_4/imgs/img_in_image_box_712_393_763_452.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A25Z%2F-1%2F%2Fbeb416e6d38eeae8f08cca35e5697b1f63514efcc7bc53c3f4c83dc4245bf31d" alt="Image" width="6%" /></div>
+
+<h4 id="ch8-artifacts-of-schedule-estimating">Tài Liệu Của Ước Tính Lịch Trình</h4>
+
+<p>Khi quy trình Ước Tính Thời Lượng Hoạt Động hoàn thành — bao gồm cả các quy trình quản lý rủi ro — quản lý dự án sẽ có các ước tính, bao gồm cả dự phòng. Dưới đây là tóm tắt các đầu ra từ quy trình này liên quan đến cả dự án dự đoán và thích nghi. Đây có thể là các tài liệu đã tồn tại đang được cập nhật.</p>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//dcbf9dab-1fb5-4a77-b0e2-8b5e6d41b75f/markdown_4/imgs/img_in_image_box_711_527_763_586.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A25Z%2F-1%2F%2F133ab6f09e9696074e3f4cf538671f8828721e354b4a85ede8271110dd874cf8" alt="Image" width="6%" /></div>
+
+<div class="table-wrap">
+<table>
+<tr><th>Đầu Ra Dự Án Dự Đoán</th><th>Đầu Ra Dự Án Thích Nghi</th></tr>
+<tr><td>— Thuộc tính hoạt động</td><td>— Backlog câu chuyện người dùng được ưu tiên</td></tr>
+<tr><td>— Cập nhật nhật ký giả định</td><td>— Ước tính thô của câu chuyện người dùng</td></tr>
+<tr><td>— Cập nhật sổ đăng ký bài học kinh nghiệm</td><td>— Mục tiêu phát hành tập trung vào giá trị khách hàng</td></tr>
+<tr><td></td><td>— Ngày phát hành mục tiêu hoặc số lần phát hành</td></tr>
+</table>
+</div>
+
+<p><strong>Cơ Sở Ước Tính (Basis of Estimates):</strong> Một tài liệu khác của ước tính thời lượng hoạt động, cơ sở ước tính, giải thích cách ước tính được suy ra, bao gồm các giả định, ràng buộc, những rủi ro nào đã được xem xét. Cơ sở ước tính cũng bao gồm mức độ tin cậy cho các ước tính, được biểu thị dưới dạng một phạm vi, chẳng hạn như cộng hoặc trừ 20% trong đó kết quả dự án thực tế được kỳ vọng nằm trong khoảng đó.</p>
+
+<h4 id="ch8-develop-schedule">Phát Triển Lịch Trình</h4>
+
+<p>Sau khi sơ đồ mạng lưới và ước tính thời lượng hoạt động được hoàn thành — hoặc đối với Agile là kế hoạch phát hành, ưu tiên tính năng và câu chuyện trong backlog, và ước tính — đã đến lúc tạo ra một mô hình lịch trình. Điều này có thể được thực hiện bằng cách sử dụng nhiều công cụ phần mềm khác nhau trong một PMIS.</p>
+
+<p>Đối với các dự án truyền thống, mô hình lịch trình là bản đầu tiên của lịch trình và có thể được cập nhật trong suốt dự án dựa trên các thay đổi được phê duyệt. Trong quá trình lập kế hoạch dự án ban đầu, nó được lặp đi lặp lại cho đến khi sẵn sàng để phê duyệt. Nó được tạo ra bằng cách sử dụng dữ liệu dự án đã thu thập cho đến nay, bao gồm:</p>
+
+<ul class="content-list">
+<li>Các hoạt động</li>
+<li>Sự phụ thuộc</li>
+<li>Ngày bắt đầu (cho các hoạt động không có phụ thuộc)</li>
+<li>Thời gian dẫn trước và trễ</li>
+<li>Ước tính thời lượng</li>
+</ul>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//726e4ffe-bde1-431e-b5c7-6085afc46402/markdown_0/imgs/img_in_image_box_57_356_97_406.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A39Z%2F-1%2F%2F62f56e9a76dc3c226e4a454b6414bdd9d0936b8e998ecd76c381a39b7f142501" alt="Image" width="4%" /></div>
+
+<div class="callout"><p><strong>Hãy Suy Nghĩ.</strong> Các biểu diễn của lịch trình bao gồm biểu đồ mốc quan trọng và biểu đồ thanh (thường được hiển thị qua chế độ xem biểu đồ Gantt trong phần mềm quản lý dự án). Sau khi được phê duyệt, lịch trình trở thành một phần của đường cơ sở của dự án (đây là một phần của kế hoạch quản lý dự án). Nó dựa trên lịch, toàn diện và thực tế. Vốn có trong đó là các khoản dự phòng có điều kiện để quản lý rủi ro. Hãy xem xét những gì việc tạo mô hình lịch trình liên quan đến.</p></div>
+
+<p>Hãy bắt đầu từ đầu. Bạn cần gì trước khi có thể phát triển lịch trình cho dự án của mình? Để phát triển lịch trình, bạn cần có:</p>
+
+<ul class="content-list">
+<li>Hồ sơ lịch sử của các dự án trước tương tự bao gồm bài học kinh nghiệm</li>
+<li>Kế hoạch quản lý lịch trình và đường cơ sở phạm vi</li>
+<li>Các hoạt động đã xác định (danh sách hoạt động và thuộc tính)</li>
+<li>Ước tính yêu cầu nguồn lực</li>
+<li>Danh sách mốc quan trọng</li>
+<li>Ước tính thời lượng hoạt động</li>
+<li>Nhật ký giả định</li>
+<li>Lịch nguồn lực</li>
+<li>Thứ tự thực hiện công việc (sơ đồ mạng lưới)</li>
+<li>Các nguồn lực cần thiết theo danh mục (cấu trúc phân tách nguồn lực)</li>
+<li>Cơ sở ước tính</li>
+<li>Lịch công ty xác định các ngày làm việc và không làm việc</li>
+<li>Danh sách phân công nhóm dự án đã có</li>
+<li>Sổ đăng ký rủi ro</li>
+</ul>
+
+<div class="callout">
+<h5>Bài Tập 8.3</h5>
+<p>Là một quản lý dự án, bạn cần sử dụng dữ liệu ước tính và các đầu vào khác để tạo ra một lịch trình mà bạn có thể đặt cược uy tín của mình vào việc đáp ứng nó. Bạn cần làm gì để tạo ra một lịch trình như vậy? Viết câu trả lời trong Vở Bài Tập của bạn.</p>
+<p><em>Đáp án: Quy trình Phát Triển Lịch Trình thực sự bao gồm mọi thứ bạn cần làm để phát triển một lịch trình được hoàn thiện, được ủng hộ, được phê duyệt, thực tế và chính thức. Đây là những gì phát triển lịch trình là về. Bạn cần làm gì để đưa nó đến cấp độ đó?</em></p>
+<ul class="content-list">
+<li>Làm việc với các ưu tiên của các bên liên quan.</li>
+<li>Tìm kiếm các cách thay thế để hoàn thành công việc.</li>
+<li>Tìm kiếm các tác động đến các dự án khác và đến hoạt động vận hành.</li>
+<li>Tính đến cấp độ kỹ năng và sự sẵn có của các nguồn lực đã biết được phân công cho nhóm.</li>
+<li>Áp dụng thời gian dẫn trước và trễ vào lịch trình.</li>
+<li>Nén lịch trình bằng cách crashing (bổ sung nguồn lực), fast tracking (chạy song song) và ước tính lại.</li>
+<li>Điều chỉnh các thành phần của kế hoạch quản lý dự án khi cần (ví dụ, thay đổi WBS để phản ánh các ứng phó rủi ro đã lên kế hoạch).</li>
+<li>Nhập dữ liệu vào công cụ lập lịch và thực hiện tính toán để xác định lịch trình tối ưu.</li>
+<li>Mô phỏng dự án bằng Monte Carlo và các kỹ thuật phân tích khác để xác định khả năng hoàn thành dự án theo lịch trình.</li>
+<li>Tối ưu hóa nguồn lực nếu cần thiết.</li>
+<li>Cho nhóm cơ hội phê duyệt lịch trình cuối cùng; họ nên xem xét phân bổ lịch của ước tính để xem chúng có còn khả thi không.</li>
+<li>Tổ chức các cuộc họp và cuộc trò chuyện để đạt được sự ủng hộ của các bên liên quan và phê duyệt quản lý chính thức.</li>
+</ul>
+<p><em>Quy trình Phát Triển Lịch Trình là lặp đi lặp lại và có thể xảy ra nhiều lần trong vòng đời của dự án (ít nhất một lần mỗi giai đoạn vòng đời dự án trong một dự án lớn). Quy trình Phát Triển Lịch Trình là nguồn gốc vấn đề trong bài thi cho nhiều quản lý dự án. Bài thi sẽ kiểm tra bạn như một chuyên gia trong việc xử lý phát triển lịch trình trong quá trình lập kế hoạch dự án và bất cứ khi nào có thay đổi cho dự án.</em></p>
+</div>
+
+<h4 id="ch8-schedule-network-analysis">Phân Tích Mạng Lịch Trình</h4>
+
+<p>Phân tích mạng lịch trình được sử dụng để phân tích và lặp lại mô hình lịch trình cho đến khi lịch trình dự án được phê duyệt. Phân tích này có thể sử dụng một hoặc nhiều kỹ thuật sau:</p>
+
+<ul class="content-list">
+<li>Phương pháp đường găng (Critical path method — CPM)</li>
+<li>Tối ưu hóa nguồn lực (Resource optimization)</li>
+<li>Nén lịch trình (Schedule compression)</li>
+<li>Lập kế hoạch phát hành Agile (Agile release planning)</li>
+<li>Phân tích giả định (What-if analysis — ví dụ phân tích Monte Carlo)</li>
+</ul>
+
+<h5>Phương Pháp Đường Găng (Critical Path Method — CPM)</h5>
+
+<p>Phương pháp đường găng liên quan đến việc xác định thời gian sớm nhất và muộn nhất mà mỗi hoạt động có thể bắt đầu, và thời gian sớm nhất và muộn nhất mà mỗi hoạt động có thể hoàn thành. Trong phần mềm, điều này có thể được thực hiện bằng cách nhập ngày bắt đầu và thời lượng hoạt động. Khi các hoạt động có các hoạt động phụ thuộc tiếp theo (hoặc kế tiếp) chúng, phần mềm có thể tính toán ngày bắt đầu và kết thúc kế tiếp bằng cách sử dụng dữ liệu thời lượng. Hiểu phương pháp này đòi hỏi bạn phải hiểu các khái niệm cơ bản sau.</p>
+
+<p><strong>Sử Dụng Đường Găng:</strong> Là đường có thời lượng dài nhất qua sơ đồ mạng lưới, đường găng xác định thời lượng ngắn nhất có thể cho dự án. Chính trên con đường này mà có ít linh hoạt lịch trình nhất. Cách dễ nhất để tìm đường găng là xác định tất cả các đường qua sơ đồ mạng lưới và cộng thời lượng hoạt động dọc theo mỗi đường. Đường có thời lượng dài nhất là đường găng. Hãy chắc chắn bạn thực hiện các bài tập sau và thực hành thực hiện công việc này cho bài thi.</p>
+
+<p><strong>Đường Gần Găng (Near-Critical Path):</strong> Con đường này gần nhất về thời lượng với đường găng và cũng cần được theo dõi chặt chẽ. Đường găng và đường gần găng càng gần nhau về độ dài, dự án càng có nhiều rủi ro. Cần theo dõi và kiểm soát chặt chẽ các hoạt động trên cả đường găng và đường gần găng (vâng, có thể có nhiều hơn một) để đảm bảo dự án có thể hoàn thành đúng hạn.</p>
+
+<p><strong>Sử Dụng Float:</strong> Trong bài thi, bạn nên hiểu float và có thể tính toán nó. Lưu ý rằng các thuật ngữ "float" và "slack" có cùng nghĩa. Slack là thuật ngữ cũ hơn và hiếm khi được sử dụng nữa. Không có khả năng bạn sẽ thấy nó trong bài thi nhưng hãy biết nó phòng trường hợp nó được sử dụng. Dưới đây là ba loại float cần biết cho bài thi.</p>
+
+<ul class="content-list">
+<li><strong>Float tổng (Total float):</strong> Lượng thời gian một hoạt động có thể bị trễ mà không làm trễ ngày kết thúc dự án (hoặc một mốc trung gian) trong khi vẫn tuân thủ các ràng buộc lịch trình đặt ra.</li>
+<li><strong>Float tự do (Free float):</strong> Đây là lượng thời gian một hoạt động có thể bị trễ mà không làm trễ ngày bắt đầu sớm của hoạt động kế tiếp trong khi vẫn tuân thủ các ràng buộc lịch trình đặt ra.</li>
+<li><strong>Float dự án (Project float):</strong> Còn được gọi là float tổng dương, đây là lượng thời gian một dự án có thể bị trễ mà không làm trễ ngày hoàn thành dự án được áp đặt từ bên ngoài theo yêu cầu của khách hàng hoặc quản lý, hoặc ngày đã cam kết trước đó bởi quản lý dự án.</li>
+</ul>
+
+<p>Các điều khác cần biết về float là:</p>
+
+<ul class="content-list">
+<li>Các hoạt động trên đường găng có float bằng không.</li>
+<li>Float tổng và float tự do liên quan đến các hoạt động.</li>
+<li>Float dự án dành riêng cho toàn bộ dự án.</li>
+<li>Float âm xảy ra khi các ngày hoàn thành được áp đặt từ bên ngoài không khả thi. Những vấn đề này phải được giải quyết trong quá trình lập kế hoạch để đảm bảo lịch trình được phê duyệt là có thể đạt được.</li>
+<li>Nếu các hoạt động trên đường găng bị trễ, phân tích float âm giúp tìm kiếm các hành động khắc phục để đưa lịch trình trở lại trong đường cơ sở lịch trình.</li>
+</ul>
+
+<p>Khi bạn biết các đường găng và đường gần găng, bạn có thể sử dụng float như một cách để đạt được phân bổ nguồn lực tốt hơn.</p>
+
+<div class="callout"><p><strong>Ví dụ:</strong> Nếu bạn có một nguồn lực có bộ kỹ năng cần thiết nhưng không có nhiều kinh nghiệm, bạn có thể giao cho họ làm việc trên các hoạt động có float. Ngay cả khi các hoạt động của họ mất nhiều thời gian hơn, dự án ít có khả năng bị trễ hơn.</p></div>
+
+<p>Biết float cũng giúp các thành viên nhóm điều phối công việc của họ trên nhiều dự án. Lượng float cho họ biết có bao nhiêu linh hoạt thời gian họ có thể có cho mỗi hoạt động được phân công. Cộng tác với quản lý dự án, họ có thể linh hoạt thời gian bắt đầu chính xác của một số hoạt động có float.</p>
+
+<p>Đôi khi các câu hỏi thi được trình bày theo cách bạn có thể thấy đơn giản là lượng float, nhưng những lúc khác bạn sẽ cần tính toán nó. Float được tính bằng một trong hai phương trình sau:</p>
+
+<ul class="content-list">
+<li>Float = Kết thúc muộn (LF — Late Finish) - Kết thúc sớm (EF — Early Finish)</li>
+<li>Float = Bắt đầu muộn (LS — Late Start) - Bắt đầu sớm (ES — Early Start)</li>
+</ul>
+
+<p>Một trong hai công thức cho bạn cùng một câu trả lời. Đây là một mẹo để nhớ các công thức:</p>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//726e4ffe-bde1-431e-b5c7-6085afc46402/markdown_2/imgs/img_in_image_box_45_792_109_845.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A40Z%2F-1%2F%2F8d8e829954c9967a517b9364d917f95f9dc0496afee70293dad47cfedf5cada6" alt="Image" width="7%" /></div>
+
+<p><em>"Có một công thức bắt đầu và một công thức kết thúc, và chúng ta luôn bắt đầu muộn."</em> Lưu ý rằng công thức sử dụng hai phần tử dữ liệu bắt đầu hoặc hai phần tử kết thúc và mỗi phần tử bắt đầu bằng "muộn."</p>
+
+<p><strong>Công thức Bắt đầu:</strong> Float = LS - ES &nbsp;&nbsp;&nbsp; <strong>Công thức Kết thúc:</strong> Float = LF - EF</p>
+
+<p>Bạn xác định có nên sử dụng công thức bắt đầu hay kết thúc dựa trên thông tin có sẵn.</p>
+
+<div class="callout"><p><strong>Ví dụ:</strong> Một câu hỏi thi cho biết: "Bạn có bắt đầu muộn là 30, bắt đầu sớm là 18, và kết thúc muộn là 34." Làm thế nào để tìm float? Bạn biết phải trừ hai giá trị bắt đầu hoặc hai giá trị kết thúc (sử dụng mẹo trước). Bạn chưa được cho hai giá trị kết thúc, vì vậy bạn sử dụng phương trình 30-18, bằng 12.</p></div>
+
+<h4 id="ch8-practice-with-the-critical-path-method">Thực Hành với Phương Pháp Đường Găng</h4>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//726e4ffe-bde1-431e-b5c7-6085afc46402/markdown_3/imgs/img_in_image_box_67_127_119_185.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A41Z%2F-1%2F%2F91981f0faa73700c520c6302b0639e0688be2d9dab11221dbba6790e2353b54d" alt="Image" width="6%" /></div>
+
+<div class="callout"><p><strong>Hãy Suy Nghĩ.</strong> Bây giờ chúng ta đã thảo luận về các khái niệm cơ bản, hãy xem cách phương pháp đường găng hoạt động. Chúng ta sẽ sử dụng sơ đồ mạng lưới trong hình 8.11 làm ví dụ. Các chữ cái trong các hộp cho biết các hoạt động, và các số phía trên các hộp cho biết thời lượng của mỗi hoạt động. Đường găng được xác định bởi các mũi tên in đậm.</p></div>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//726e4ffe-bde1-431e-b5c7-6085afc46402/markdown_3/imgs/img_in_image_box_218_229_627_344.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A41Z%2F-1%2F%2F7b55386b62d4032d3be2be0e6692d446fb96e4ab8cdd7d2501a7e977b608eb0f" alt="Image" width="49%" /></div>
+
+<div style="text-align: center;">HÌNH 8.11 Phương pháp đường găng</div>
+
+<ul class="content-list">
+<li>Để xác định thời điểm sớm nhất và muộn nhất mà mỗi hoạt động có thể bắt đầu, và thời điểm sớm nhất và muộn nhất mà mỗi hoạt động có thể kết thúc, hãy thực hiện lượt đi xuôi và lượt đi ngược qua sơ đồ mạng lưới.</li>
+<li><strong>Lượt đi xuôi (Forward pass):</strong> Các giá trị "sớm" được tìm thấy bằng cách tính từ &lt;Bắt đầu&gt; đến &lt;Kết thúc&gt; của dự án, theo các phụ thuộc trong sơ đồ mạng lưới.</li>
+<li><strong>Lượt đi ngược (Backward pass):</strong> Các giá trị "muộn" được tìm thấy bằng cách tính từ &lt;Kết thúc&gt; đến &lt;Bắt đầu&gt; của dự án, theo các phụ thuộc trong sơ đồ mạng lưới.</li>
+</ul>
+
+<p>Hãy bắt đầu với lượt đi xuôi. Bạn cần tính qua các hoạt động từ &lt;Bắt đầu&gt; đến &lt;Kết thúc&gt;, xác định các thời điểm bắt đầu sớm và kết thúc sớm cho tất cả các hoạt động. Ví dụ này sử dụng số không làm thời điểm bắt đầu sớm cho hoạt động đầu tiên. Sử dụng hình 8.12 để đi qua từng bước.</p>
+
+<div class="callout"><p><strong>Lưu ý:</strong> Một số người sử dụng 1 làm thời điểm bắt đầu sớm của hoạt động đầu tiên; những người khác dùng số không. Cả hai phương pháp đều cho bạn câu trả lời đúng. Hãy chọn một phương pháp và sử dụng nhất quán. Chúng tôi sử dụng số không làm thời điểm bắt đầu sớm của hoạt động đầu tiên vì mọi người thường thấy nó dễ hơn khi học khái niệm này.</p></div>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//726e4ffe-bde1-431e-b5c7-6085afc46402/markdown_3/imgs/img_in_image_box_191_653_613_804.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A41Z%2F-1%2F%2F25109fb95ef9f2d6bd4e8c7e79b7348af2a09d34f13edb83f112b9c00d53a16e" alt="Image" width="51%" /></div>
+
+<div style="text-align: center;">HÌNH 8.12 Lượt đi xuôi qua sơ đồ mạng lưới</div>
+
+<ul class="content-list">
+<li>Điều quan trọng là phải nhìn vào điểm hội tụ đường đi (nơi các đường gặp nhau). Để tính thời điểm bắt đầu sớm và kết thúc sớm trong lượt đi xuôi, bạn phải tính tất cả các đường dẫn đến hoạt động đó (chú ý các hoạt động F và G trong hình 8.12).</li>
+<li>Khái niệm tương tự áp dụng cho lượt đi ngược. Để tính kết thúc muộn và bắt đầu muộn, bạn cần xem xét tất cả các đường chạy ngược vào một hoạt động (các hoạt động D và F trong hình 8.12).</li>
+</ul>
+
+<p>Để dễ theo dõi hơn, chúng tôi sẽ hướng dẫn bạn qua lượt đi xuôi ở đây (EF và ES trong ngoặc đơn lần lượt là kết thúc sớm và bắt đầu sớm):</p>
+
+<ol class="content-list">
+<li>Trong hình 8.12, các đường hội tụ tại các hoạt động F và G.</li>
+<li>Do đó, bạn phải thực hiện lượt đi xuôi trên cả hai đường dẫn đến hoạt động F. Vì vậy:
+  <ul class="content-list">
+    <li>Tính các kết thúc sớm cho các hoạt động D (EF = 4) và A (EF = 3).</li>
+    <li>Chọn kết thúc sớm muộn nhất giữa các hoạt động D và A. Sử dụng nó làm thời điểm bắt đầu sớm cho hoạt động F (vì F không thể bắt đầu cho đến khi cả D và A đều hoàn thành).</li>
+    <li>Do đó, thời điểm bắt đầu sớm của hoạt động F là 4.</li>
+  </ul>
+</li>
+<li>Sử dụng cùng quy trình để tính kết thúc sớm của các hoạt động E (EF = 13) và F (EF = 12), trước khi xác định thời điểm bắt đầu sớm của hoạt động G (ES = 13).</li>
+</ol>
+
+<p>Sau khi hoàn thành lượt đi xuôi, bạn có thể bắt đầu lượt đi ngược, tính kết thúc muộn và bắt đầu muộn cho mỗi hoạt động. Lượt đi ngược sử dụng thời lượng của đường găng (trong trường hợp này là 26) làm kết thúc muộn của hoạt động cuối cùng (hoặc các hoạt động) trong sơ đồ mạng lưới.</p>
+
+<p>Xem hình 8.13 cho dữ liệu bắt đầu muộn và kết thúc muộn.</p>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//726e4ffe-bde1-431e-b5c7-6085afc46402/markdown_4/imgs/img_in_image_box_185_275_598_427.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A42Z%2F-1%2F%2Ffc94b17398d6243cffd53d6911c082be6c2edca617056a3851ae9b0e54893ca8" alt="Image" width="50%" /></div>
+
+<div style="text-align: center;">HÌNH 8.13 Lượt đi ngược qua sơ đồ mạng lưới</div>
+
+<ol class="content-list">
+<li>Hãy cẩn thận tại các điểm nơi các đường hội tụ khi bạn di chuyển qua sơ đồ mạng lưới.</li>
+<li>Các đường hội tụ tại hoạt động F và tại hoạt động G.</li>
+<li>Làm việc từ &lt;Kết thúc&gt; ngược lại. Đầu tiên tính bắt đầu muộn của các hoạt động B (LS = 22) và G (LS = 13).</li>
+<li>Chọn bắt đầu muộn sớm hơn cho kết thúc muộn của hoạt động F (vì hoạt động F phải hoàn thành trước khi cả hoạt động B hoặc G có thể bắt đầu).</li>
+<li>Kết thúc muộn của hoạt động F là 13.</li>
+<li>Quy trình tương tự nên được sử dụng cho các hoạt động E (LS = 4) và F (LS = 5) trước khi tính kết thúc muộn cho hoạt động D (LF = 4).</li>
+</ol>
+
+<p>Sau khi tính xong các thời điểm bắt đầu và kết thúc, bạn có dữ liệu cần thiết để tính float. Đã đến lúc sử dụng các công thức đó.</p>
+
+<p>Mẹo đó là gì? <em>"Có một công thức bắt đầu và một công thức kết thúc, và chúng ta luôn bắt đầu muộn."</em> Các công thức là:</p>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//726e4ffe-bde1-431e-b5c7-6085afc46402/markdown_4/imgs/img_in_image_box_57_672_119_724.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A42Z%2F-1%2F%2F4efff5046c49000b71b6371a3cf03a09d8f73eba5e875b7aa7367d0e1461dcc4" alt="Image" width="7%" /></div>
+
+<div class="table-wrap">
+<table>
+<tr><th>Công Thức Bắt Đầu (Cho Lượt Đi Xuôi)</th><th>Công Thức Kết Thúc (Cho Lượt Đi Ngược)</th></tr>
+<tr><td>Float = LS - ES</td><td>Float = LF - EF</td></tr>
+</table>
+</div>
+
+<p>Các hoạt động có float bằng không nằm trên đường găng (xem các mũi tên in đậm). Xem hình 8.14 cho float của mỗi hoạt động.</p>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//726e4ffe-bde1-431e-b5c7-6085afc46402/markdown_4/imgs/img_in_image_box_182_841_615_1000.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A42Z%2F-1%2F%2Fde9b4dfdf94c1caf3b971f59fd8f7bc07994ce4cf18a0ff810a3957c73bbde67" alt="Image" width="52%" /></div>
+
+<p>HÌNH 8.14 Float của các hoạt động trên sơ đồ mạng lưới</p>
+
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//fff9d0c0-cd37-4ae8-bb5b-449a936d9ac6/markdown_0/imgs/img_in_image_box_72_90_125_151.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A09Z%2F-1%2F%2Fcc4dc2d88620805a400bdf5859b67f09e135c471b3536874c9536c78d14fcdc6" alt="Image" width="6%" /></div>
+
+<div class="callout"><p><strong>Hãy Suy Nghĩ.</strong> Thực hành sẽ giúp bạn hiểu các khái niệm này tốt hơn. Khi bạn thực hiện bài tập sau, hãy nghĩ về cách biết float giúp bạn quản lý dự án của mình. Trong bài thi không có nhiều câu hỏi yêu cầu bạn thực hiện các tính toán này, và bạn có thể không được yêu cầu vẽ sơ đồ mạng lưới. Nhưng hiểu toàn bộ quy trình này sẽ giúp bạn trả lời đúng nhiều câu hỏi hơn.</p></div>
+
+<h4 id="ch8-bai-tap-8-4">8.4 Bài Tập</h4>
+<p>Kiểm tra bản thân. Trong Sổ tay Bài tập, hãy vẽ sơ đồ mạng dựa trên thông tin sau, sau đó trả lời các câu hỏi 1–7 bên dưới.</p>
+<p>Bạn là quản lý dự án cho một dự án mới và đã xác định được các phụ thuộc sau:</p>
+<ul class="content-list">
+<li>Hoạt động 1 có thể bắt đầu ngay lập tức và có thời gian ước tính là 3 tuần.</li>
+<li>Hoạt động 2 có thể bắt đầu sau khi hoạt động 1 hoàn thành và có thời gian ước tính là 3 tuần.</li>
+<li>Hoạt động 3 có thể bắt đầu sau khi hoạt động 1 hoàn thành và có thời gian ước tính là 6 tuần.</li>
+<li>Hoạt động 4 có thể bắt đầu sau khi hoạt động 2 hoàn thành và có thời gian ước tính là 8 tuần.</li>
+<li>Hoạt động 5 có thể bắt đầu sau khi hoạt động 4 hoàn thành và sau khi hoạt động 3 hoàn thành. Hoạt động này mất 4 tuần.</li>
+</ul>
+<p>Câu hỏi:</p>
+<ol class="content-list">
+<li>Thời gian của đường dẫn tới hạn là bao nhiêu?</li>
+<li>Float của hoạt động 3 là bao nhiêu?</li>
+<li>Float của hoạt động 2 là bao nhiêu?</li>
+<li>Float của đường dẫn có nhiều float nhất là bao nhiêu?</li>
+<li>Nguồn lực thực hiện hoạt động 3 được thay thế bằng một nguồn lực khác ít kinh nghiệm hơn. Hoạt động này sẽ mất 10 tuần. Điều này sẽ ảnh hưởng như thế nào đến tiến độ dự án?</li>
+<li>Một hoạt động mới là hoạt động 6 được thêm vào dự án. Hoạt động này mất 11 tuần để hoàn thành, phải hoàn thành trước hoạt động 5 và sau hoạt động 3. Ban quản lý lo ngại rằng việc thêm hoạt động này sẽ làm dự án trễ thêm 11 tuần. Một bên liên quan khác cho rằng thời gian trễ sẽ ít hơn 11 tuần. Ai đúng? Sử dụng thông tin ban đầu (không áp dụng thay đổi đối với hoạt động 3 như câu trước) để trả lời câu hỏi này.</li>
+<li>Dựa trên thông tin câu trước, dự án sẽ kéo dài thêm bao lâu?</li>
+</ol>
+<h5>Đáp Án</h5>
+<p>Có nhiều cách để trả lời các câu hỏi này. Nếu bạn đã học một cách khác trong các khóa đào tạo quản lý dự án khác và cảm thấy quen thuộc với phương pháp đó, hãy sử dụng nó. Đây là một cách đơn giản để tính toán các đáp án.</p>
+<ol class="content-list">
+<li>
+<p>Độ dài của đường dẫn tới hạn là 18. Có hai đường dẫn ở đây:</p>
+<div class="table-wrap"><table><tr><th>Đường dẫn</th><th>Thời gian</th></tr><tr><td>Bắt đầu, 1, 2, 4, 5, Kết thúc</td><td>18</td></tr></table></div>
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//fff9d0c0-cd37-4ae8-bb5b-449a936d9ac6/markdown_0/imgs/img_in_image_box_220_884_606_981.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A09Z%2F-1%2F%2F8dcefcbf31f83c8e8a5b331e6e5b9aa1d21843f840044d596716237e79cdc09d" alt="Image" width="46%" /></div>
+<p>Bắt đầu, 1, 2, 4, 5, Kết thúc là đường dẫn có thời gian dài nhất và do đó là đường dẫn tới hạn với 18 tuần.</p>
+</li>
+<li>
+<p>Float của hoạt động 3 là 5 tuần, theo sơ đồ sau đây, trong đó cho thấy cách tính float bằng bước chạy tiến và bước chạy lùi.</p>
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//fff9d0c0-cd37-4ae8-bb5b-449a936d9ac6/markdown_1/imgs/img_in_image_box_171_138_615_309.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A10Z%2F-1%2F%2Febb0fb8b882bde436c06071b4dbe2b8c910d707e9aeecb34f4913af24f7a6753" alt="Image" width="54%" /></div>
+<p>Bạn có thể sử dụng một trong hai công thức float để tính float:</p>
+<ul class="content-list">
+<li>Hoàn thành muộn nhất − Hoàn thành sớm nhất = 14 − 9 = 5, hoặc</li>
+<li>Bắt đầu muộn nhất − Bắt đầu sớm nhất = 8 − 3 = 5.</li>
+</ul>
+</li>
+<li>Float của hoạt động 2 bằng không; hoạt động này nằm trên đường dẫn tới hạn. Một hoạt động trên đường dẫn tới hạn thường có float bằng không.</li>
+<li>
+<p>Float của đường dẫn có float dài nhất là 5 tuần. Chỉ có hai đường dẫn trong ví dụ này.</p>
+<ol class="content-list" type="a">
+<li>Bắt đầu, 1, 2, 4, 5, Kết thúc và Bắt đầu, 1, 3, 5, Kết thúc.</li>
+<li>Chỉ đường dẫn không tới hạn (Bắt đầu, 1, 3, 5, Kết thúc) mới có float.</li>
+<li>Bạn có thể tính float cho đường dẫn này bằng cách cộng float của từng hoạt động: 0 + 5 + 0 = 5.</li>
+<li>Do đó, tổng float của đường dẫn có float dài nhất là 5.</li>
+</ol>
+</li>
+<li>
+<p>Việc thay đổi nguồn lực ở hoạt động 3 sẽ không có tác động gì.</p>
+<ol class="content-list" type="a">
+<li>Độ dài của đường dẫn gồm các hoạt động 1, 3 và 5 là 13.</li>
+<li>Thêm 4 tuần vào hoạt động 3 sẽ làm đường dẫn đó thành 17 tuần.</li>
+<li>Vì đường dẫn đó vẫn ngắn hơn đường dẫn tới hạn, đường dẫn tới hạn không thay đổi.</li>
+<li>Độ dài của đường dẫn tới hạn vẫn là 18 tuần vì hoạt động 3 không nằm trên đường dẫn tới hạn.</li>
+</ol>
+</li>
+<li>
+<p>Bên liên quan cho rằng thời gian thêm vào dự án sẽ ít hơn 11 tuần là đúng.</p>
+<ol class="content-list" type="a">
+<li>Hoạt động mới sẽ được thêm vào một đường dẫn không tới hạn có float 5 tuần.</li>
+<li>Do đó, việc thêm 11 tuần sẽ biến đường dẫn này thành đường dẫn tới hạn mới.</li>
+<li>Tác động của việc thêm một hoạt động mất 11 tuần là làm trễ dự án 6 tuần.</li>
+</ol>
+</li>
+<li>
+<p>Dự án sẽ kéo dài thêm 6 tuần. (Lưu ý: Nếu bạn trả lời 24, bạn đã không đọc câu hỏi đúng cách!) Hãy theo dõi các mũi tên đậm trong sơ đồ sau.</p>
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//fff9d0c0-cd37-4ae8-bb5b-449a936d9ac6/markdown_1/imgs/img_in_image_box_179_773_613_888.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A10Z%2F-1%2F%2F7b502b59f8955f88df85c65ab262a974e882110ab022cac58ff24d8d71319370" alt="Image" width="52%" /></div>
+</li>
+</ol>
+<div class="callout"><p>Lưu ý: Nếu bạn muốn luyện tập thêm, có một bài tập bổ sung về float và đường dẫn tới hạn trên trang RMC Resources (rmcls.com/rmc-resources).</p></div>
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//fff9d0c0-cd37-4ae8-bb5b-449a936d9ac6/markdown_2/imgs/img_in_image_box_85_101_138_153.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A11Z%2F-1%2F%2Fdd9a46de685b858622dc9d97f6f7033a7615672457d2a42278af1a681e4c9388" alt="Image" width="6%" /></div>
+<p>Sau đây là những câu hỏi hữu ích để luyện tập các khái niệm liên quan đến đường dẫn tới hạn, float và sơ đồ mạng:</p>
+<ul class="content-list">
+<li>Có thể có nhiều hơn một đường dẫn tới hạn không? Có; bạn có thể có hai, ba hoặc nhiều đường dẫn tới hạn.</li>
+<li>Bạn có muốn có nhiều đường dẫn tới hạn không? Không; việc có nhiều hơn một đường dẫn tới hạn sẽ làm tăng rủi ro.</li>
+<li>Đường dẫn tới hạn có thể thay đổi không? Có.</li>
+<li>Có thể có float âm không? Có; điều đó có nghĩa là bạn đang bị trễ tiến độ.</li>
+<li>Đường dẫn tới hạn có bao nhiêu float? Trong giai đoạn lập kế hoạch, đường dẫn tới hạn thường có tổng float bằng không. Trong quá trình thực hiện dự án, nếu một hoạt động trên đường dẫn tới hạn được hoàn thành sớm hơn hoặc muộn hơn kế hoạch, đường dẫn tới hạn có thể có float dương hoặc âm. Float âm trên đường dẫn tới hạn đòi hỏi phải có hành động khắc phục hoặc thay đổi dự án để đưa nó trở lại phù hợp với đường cơ sở tiến độ.</li>
+<li>Sơ đồ mạng có thay đổi khi ngày kết thúc thay đổi không? Không tự động, nhưng quản lý dự án nên xem xét các tùy chọn nén tiến độ như theo dõi nhanh và rút ngắn để đáp ứng ngày mới. Sau đó, với các thay đổi đã được phê duyệt, quản lý dự án nên cập nhật sơ đồ mạng. Xem phần Nén tiến độ ở phần tiếp theo của chương này.</li>
+<li>Bạn có để dự án với float âm không? Không; bạn sẽ nén tiến độ. Nếu các nỗ lực nén tiến độ không cho kết quả float bằng không hoặc dương, bạn cần yêu cầu thay đổi để điều chỉnh đường cơ sở.</li>
+</ul>
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//fff9d0c0-cd37-4ae8-bb5b-449a936d9ac6/markdown_2/imgs/img_in_image_box_83_413_137_465.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A11Z%2F-1%2F%2Fb6e055512adea593159139cc183c7b8fa023e6e140034ad20807972d9f58e40a" alt="Image" width="6%" /></div>
+<div class="highlight"><p>Nếu bạn tự vẽ sơ đồ mạng trong khi làm bài thi, hãy ghi nhãn bằng số câu hỏi, phòng khi bạn muốn quay lại sau. Bạn có thể tái sử dụng cùng một sơ đồ mạng để trả lời thêm câu hỏi trong bài thi.</p></div>
+<div class="highlight"><p>Rất dễ bỏ sót các đường dẫn trong sơ đồ mạng. Khi cố gắng xác định đường dẫn tới hạn, hãy xem xét cẩn thận từng đường dẫn để đảm bảo bạn tính toán tất cả trước khi xác định đường nào là tới hạn.</p></div>
+<h5>Các Phương Pháp Nén Tiến Độ</h5>
+<p>Một trong những vấn đề phổ biến nhất trong dự án là khung thời gian khó khăn hoặc không thực tế. Vấn đề này có thể phát sinh trong giai đoạn lập kế hoạch khi ban quản lý hoặc khách hàng yêu cầu một ngày hoàn thành không thể đáp ứng, hoặc trong giai đoạn thực hiện khi dự án cần được đưa trở lại phù hợp với đường cơ sở tiến độ do chậm trễ hoặc thay đổi. Trách nhiệm của quản lý dự án là trình bày các lựa chọn và đảm bảo dự án khả thi. Các kỹ thuật phân tích mạng tiến độ như nén tiến độ có thể hỗ trợ điều này.</p>
+<p>Nén tiến độ mô tả việc sử dụng các phương pháp như theo dõi nhanh và rút ngắn để giảm thời gian dự án. Nén tiến độ có thể được sử dụng trong giai đoạn lập kế hoạch. Sau giai đoạn lập kế hoạch ban đầu, nén tiến độ có thể được sử dụng trong quá trình Thực hiện Kiểm soát Thay đổi Tích hợp và Kiểm soát Tiến độ để đánh giá các lựa chọn và quản lý tác động của thay đổi. Trong trường hợp này, mục tiêu là kiểm soát tiến độ mà không thay đổi đường cơ sở tiến độ.</p>
+<h5>Theo Dõi Nhanh (Fast Tracking)</h5>
+<p>Kỹ thuật này liên quan đến việc lấy các hoạt động trên đường dẫn tới hạn vốn được lên kế hoạch thực hiện tuần tự và thực hiện chúng song song trong một phần hoặc toàn bộ thời gian của chúng, như minh họa trong hình 8.15. Nhược điểm: Theo dõi nhanh thường dẫn đến làm lại, thường làm tăng rủi ro và đòi hỏi chú ý nhiều hơn đến giao tiếp.</p>
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//fff9d0c0-cd37-4ae8-bb5b-449a936d9ac6/markdown_2/imgs/img_in_image_box_271_809_550_871.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A11Z%2F-1%2F%2Fc3ce2a1f3812e480009eab30047bf50b1366d174cb0daecef9e5832f759d3b24" alt="Image" width="33%" /></div>
+<p style="text-align:center;">HÌNH 8.15 Theo dõi nhanh</p>
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//fff9d0c0-cd37-4ae8-bb5b-449a936d9ac6/markdown_2/imgs/img_in_image_box_65_910_118_970.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A11Z%2F-1%2F%2F67ab04ce4fb6e300e87351aea65b3bcfa96feb4ba0f9c0172efd16d16dd09891" alt="Image" width="6%" /></div>
+<div class="callout"><p>Hãy Suy Nghĩ. Trong hình 8.16, bạn sẽ theo dõi nhanh hoạt động nào để rút ngắn dự án?</p></div>
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//fff9d0c0-cd37-4ae8-bb5b-449a936d9ac6/markdown_3/imgs/img_in_image_box_161_105_620_219.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A12Z%2F-1%2F%2Fdd7802e8cedbd87ae2abee7b05d6ae313ec7aae3c089251f2cbc356eb35173b0" alt="Image" width="55%" /></div>
+<p style="text-align:center;">HÌNH 8.16 Bạn sẽ theo dõi nhanh hoạt động nào?</p>
+<p>Giả sử các phụ thuộc là tùy ý:</p>
+<ul class="content-list">
+<li>Hoạt động H có thể được theo dõi nhanh bằng cách để nó diễn ra cùng lúc (song song) với Hoạt động G.</li>
+<li>Hoạt động C và H có thể được theo dõi nhanh bằng cách thực hiện một phần Hoạt động C song song với Hoạt động H.</li>
+<li>Bất kỳ cặp hoạt động nào khác trên đường dẫn tới hạn đều có thể được theo dõi nhanh.</li>
+</ul>
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//fff9d0c0-cd37-4ae8-bb5b-449a936d9ac6/markdown_3/imgs/img_in_image_box_47_368_97_427.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A12Z%2F-1%2F%2F081b7685c2d18251a3022afdb5e8415c8de30cc72e5e55ff7061b3422c683254" alt="Image" width="6%" /></div>
+<div class="callout"><p>Hãy Suy Nghĩ. Hãy xem một tình huống ví dụ để giúp bạn suy nghĩ thêm về theo dõi nhanh và tạo ra các lựa chọn. Ví dụ này có thể hoặc không sử dụng sơ đồ mạng.</p></div>
+<p><strong>Ví dụ:</strong> Một nhà cung cấp truyền hình cáp đang sử dụng phương pháp kết hợp để triển khai các công cụ phân tích web. Nhóm được yêu cầu theo dõi nhanh việc ra mắt sản phẩm để trùng với một chiến dịch marketing lớn nhằm đáp lại cạnh tranh từ các kênh truyền phát trực tuyến.</p>
+<ul class="content-list">
+<li>Chủ sản phẩm đã gặp ban quản lý để xem xét bản đồ phát hành và backlog sản phẩm.</li>
+<li>Họ xác định phạm vi có thể hoãn lại sau khi ra mắt ban đầu, cho phép hầu hết chức năng được cung cấp đúng hạn và phù hợp với chương trình khuyến mãi mới.</li>
+<li>Khách hàng ban đầu có thể tạo một số báo cáo trong bảng tính thay vì dựa vào công cụ, và một số chỉ số có thể được loại bỏ khỏi phạm vi hoặc hoãn lại.</li>
+<li>Khung dữ liệu cốt lõi và ra quyết định sẽ được cung cấp đúng hạn.</li>
+<li>Ban quản lý chấp thuận chức năng giảm bớt và các giải pháp thay thế.</li>
+<li>Nhóm tiến hành và cung cấp phần lớn giá trị kinh doanh kịp thời cho chiến dịch.</li>
+<li>Nhóm chuẩn bị hướng dẫn và đào tạo cho người mua sớm để giảm thiểu tác động của chức năng báo cáo bị giảm bớt.</li>
+<li>Một phiên bản dự án tương lai đã hoàn thiện chức năng và loại bỏ các bảng tính.</li>
+</ul>
+<p>Ở đây, phạm vi đã bị thu hẹp tạm thời để theo dõi nhanh tiến độ. Điều này thêm một số rủi ro và giảm chức năng ban đầu. Tuy nhiên, đây là cách hiệu quả để đáp ứng yêu cầu tiến độ rút ngắn.</p>
+<h5>Rút Ngắn (Crashing)</h5>
+<p>Phương pháp nén tiến độ gọi là "rút ngắn" liên quan đến việc thêm hoặc điều chỉnh nguồn lực trong khi vẫn duy trì phạm vi dự án ban đầu. Rút ngắn theo định nghĩa dẫn đến tăng chi phí. Nó đánh đổi thời gian lấy tiền. Nó cũng có thể làm tăng rủi ro.</p>
+<p><strong>Ví dụ:</strong> Trong sơ đồ mạng ở hình 8.16, một nguồn lực hợp đồng có thể bổ sung cho nỗ lực của các nguồn lực nội bộ trong một hoạt động trên đường dẫn tới hạn. Một lựa chọn khác để rút ngắn dự án có thể là mua một ứng dụng phần mềm. Điều này giả định rằng một trong hai lựa chọn sẽ thêm chi phí nhưng giúp nhóm tiết kiệm thời gian.</p>
+<p>Trong tình huống nhà cung cấp truyền hình cáp, cũng có thể rút ngắn bằng cách thêm nguồn lực và hoàn thiện tất cả chức năng kịp thời cho chiến dịch. Trong kỳ thi, hãy nhớ rằng bạn cần xác định tất cả các lựa chọn có thể, và nếu được lựa chọn giữa rút ngắn hoặc theo dõi nhanh, hãy chọn lựa chọn hoặc kết hợp có tác động tiêu cực ít nhất đến dự án và thêm ít rủi ro nhất.</p>
+<div class="callout"><p>Hãy Suy Nghĩ. Nếu bạn có float dự án âm (có nghĩa là ngày hoàn thành ước tính sau ngày mong muốn), lựa chọn đầu tiên của bạn có phải là nói với khách hàng rằng ngày không thể đáp ứng và yêu cầu thêm thời gian không? Không; lựa chọn đầu tiên là phân tích những gì có thể làm về float âm bằng cách nén tiến độ. Khi rút ngắn hoặc theo dõi nhanh, tốt nhất là xem xét cẩn thận tất cả các lựa chọn tiềm năng rồi chọn lựa chọn hoặc các lựa chọn có tác động tiêu cực ít nhất đến dự án và/hoặc thêm ít rủi ro bổ sung nhất.</p></div>
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//fff9d0c0-cd37-4ae8-bb5b-449a936d9ac6/markdown_3/imgs/img_in_image_box_46_924_98_984.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A12Z%2F-1%2F%2F2611294225d8ceb79c4d931215bcd8e413678283852bb19b2ad891dcfbbd3015" alt="Image" width="6%" /></div>
+<p>Nhiều quản lý dự án có lỗ hổng kiến thức trong lĩnh vực này. Hãy xem xét một tình huống khác. Hình 8.16 cho thấy thời gian dự án được ước tính là 33 tháng. Nhưng nếu bạn được cho một ràng buộc là 30 tháng thì sao? Các lựa chọn được liệt kê trong bảng sau để minh họa cách thời gian dự án có thể được rút ngắn ba tháng.</p>
+<div class="table-wrap"><table>
+<tr><th></th><th>Cách Thực Hiện (hoặc tên gọi)</th><th>Giải Thích (bao gồm các giả định)</th></tr>
+<tr><td>Lựa chọn</td><td>Giảm rủi ro.</td><td>Xem xét các ước tính và tìm ra những ước tính nào chứa rủi ro ẩn. Bằng cách giảm rủi ro, ước tính thường có thể được giảm xuống. Bằng cách này, dự án sẽ hoàn thành nhanh hơn.</td></tr>
+<tr><td>Thực hiện Hoạt động H và C song song.</td><td>Theo dõi nhanh (nén tiến độ).</td><td>Sẽ hiệu quả nếu sự phụ thuộc giữa hoạt động H và C là tùy ý. Hoặc có thể thêm rủi ro.</td></tr>
+<tr><td>Thêm nguồn lực cho Hoạt động G từ nội bộ tổ chức (tăng chi phí).</td><td>Rút ngắn (nén tiến độ).</td><td>Sẽ hiệu quả nếu việc thêm nguồn lực cho hoạt động G là thực tế và có nguồn lực sẵn có.</td></tr>
+<tr><td>Cắt Hoạt động H.</td><td>Giảm phạm vi.</td><td>Không phải lựa chọn đầu tiên vì có thể ảnh hưởng đến khách hàng; tuy nhiên, giảm phạm vi vẫn nên được coi là một lựa chọn.</td></tr>
+<tr><td>Thuê tư vấn hỗ trợ Hoạt động G, H, hoặc C (tăng chi phí).</td><td>Rút ngắn (nén tiến độ).</td><td>Sẽ hiệu quả nếu việc thêm nguồn lực bên ngoài vào các hoạt động này là thực tế và có nguồn lực sẵn có.</td></tr>
+<tr><td>Chuyển những người có kinh nghiệm hơn vào các hoạt động trên đường dẫn tới hạn (hoạt động G, H, hoặc C).</td><td>Nén tiến độ.</td><td>Sẽ hiệu quả nếu một số hoạt động trên đường dẫn tới hạn đang được thực hiện bởi những người ít kinh nghiệm hơn, và những người có kinh nghiệm hơn có sẵn.</td></tr>
+<tr><td>Cắt giảm thời gian bằng cách cắt giảm chất lượng. (Đừng vội lo lắng! Hãy đọc tiếp.)</td><td>Hạ tiêu chuẩn chất lượng.</td><td>Chất lượng là một ràng buộc của dự án; hạ tiêu chuẩn chất lượng là một lựa chọn. Nếu khả thi, việc hoàn thành dự án với tiêu chuẩn chất lượng thấp hơn có thể sẽ nhanh hơn. Có thể thêm rủi ro.</td></tr>
+<tr><td>Hoàn thành nhiều công việc hơn với cùng số lượng nguồn lực.</td><td>Làm thêm giờ.</td><td>Không phải là lựa chọn trong giai đoạn lập kế hoạch dự án. Có nhiều cách khác để nén tiến độ mà không có tác động tiêu cực của làm thêm giờ. Hãy để đây là lựa chọn cuối cùng.</td></tr>
+<tr><td>Nói không; dự án phải mất 33 tháng.</td><td>Nói rằng không thể thực hiện được.</td><td>Chỉ là lựa chọn khả thi sau khi tất cả các lựa chọn khác đã được khai thác. Luôn cố gắng cung cấp các lựa chọn.</td></tr>
+</table></div>
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//fff9d0c0-cd37-4ae8-bb5b-449a936d9ac6/markdown_4/imgs/img_in_image_box_67_734_119_792.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A12Z%2F-1%2F%2F43fe0fcc0fc2116303580b67d3a697bcf1801d2198fa7d142d9c8b1821242704" alt="Image" width="6%" /></div>
+<div class="callout"><p>Hãy Suy Nghĩ. Bây giờ hãy xem xét các câu hỏi sau để suy nghĩ về lựa chọn nào trong các lựa chọn được liệt kê là tốt nhất. Không có cách nào để biết vì tình huống còn hạn chế. Mục tiêu ở đây, như thường lệ, là xem xét tác động của từng lựa chọn:</p></div>
+<ul class="content-list">
+<li>Lựa chọn tốt nhất có phải là cắt giảm thời gian bằng cách hạ tiêu chuẩn chất lượng không?</li>
+<li>Tác động của việc cắt giảm chất lượng là gì?</li>
+<li>Có lựa chọn nào khác không?</li>
+<li>Tại sao không làm điều mà nhiều quản lý dự án làm — yêu cầu thêm nguồn lực? Nhưng thêm nguồn lực cũng thêm chi phí.</li>
+<li>Tại sao không làm thêm giờ? Làm thêm giờ không miễn phí. Hầu hết các tổ chức đang hoạt động gần 100% công suất. Nhóm dự án làm thêm giờ sẽ có nguy cơ kiệt sức. Ngoài ra, khả năng ứng phó với các tình huống khẩn cấp cho các dự án khác bị thu hẹp, gây rủi ro cho các dự án khác. Trong kỳ thi, đừng coi làm thêm giờ là lựa chọn khả thi cho đến khi tất cả các lựa chọn khác đã được khai thác.</li>
+<li>Nhìn chung, tốt nhất là xem xét rủi ro rồi ước tính lại. Khi bạn biết tiến độ (hoặc ngân sách) phải được giảm xuống, hãy điều tra các ước tính hoạt động chứa nhiều ẩn số nhất. Giảm hoặc loại bỏ những rủi ro này, từ đó giảm tiến độ. Loại bỏ thêm rủi ro; mọi người đều được lợi! Nếu điều này chỉ mang lại giải pháp một phần, bạn có thể tiếp tục tìm cách rút ngắn tiến độ bằng các phương pháp khác.</li>
+</ul>
+<h5>Tóm Tắt Nén Tiến Độ</h5>
+<p>Hãy xem lại các lựa chọn nén tiến độ và xem xét tác động của từng lựa chọn. Lưu ý rằng các phương pháp này có thể áp dụng cho một dự án sử dụng bất kỳ vòng đời và phương pháp phát triển nào.</p>
+<div class="table-wrap"><table>
+<tr><th>Lựa chọn</th><th>Tác Động Chung đến Dự Án</th></tr>
+<tr><td>Theo dõi nhanh</td><td><ul class="content-list"><li>Luôn thêm rủi ro</li><li>Có thể thêm thời gian quản lý cho quản lý dự án</li></ul></td></tr>
+<tr><td>Rút ngắn</td><td><ul class="content-list"><li>Luôn thêm chi phí</li><li>Có thể thêm thời gian quản lý cho quản lý dự án</li><li>Có thể thêm rủi ro</li></ul></td></tr>
+<tr><td>Giảm phạm vi</td><td><ul class="content-list"><li>Có thể tiết kiệm chi phí, nguồn lực và thời gian</li><li>Có thể ảnh hưởng tiêu cực đến sự hài lòng của khách hàng</li></ul></td></tr>
+<tr><td>Cắt giảm chất lượng</td><td><ul class="content-list"><li>Có thể tiết kiệm chi phí, nguồn lực và thời gian</li><li>Có thể tăng rủi ro</li><li>Cần có các chỉ số tốt về mức chất lượng hiện tại và mong muốn để có hiệu quả</li><li>Có thể ảnh hưởng tiêu cực đến sự hài lòng của khách hàng</li></ul></td></tr>
+</table></div>
+<p>Có một bài tập nén tiến độ bổ sung trên trang RMC Resources (rmcls.com/rmc-resources).</p>
+<h4 id="ch8-bai-tap-8-5">8.5 Bài Tập</h4>
+<p>Hãy xem xét câu hỏi sau và viết câu trả lời. Bạn có thể thực hiện trong Sổ tay Bài tập.</p>
+<p>Ban quản lý yêu cầu hoàn thành dự án sớm hơn hai tuần. Điều tốt nhất nên làm là gì?</p>
+<ol class="content-list" type="A">
+<li>Tham khảo ý kiến nhà tài trợ dự án</li>
+<li>Rút ngắn (Crash)</li>
+<li>Theo dõi nhanh (Fast track)</li>
+<li>Thông báo cho ban quản lý về tác động của thay đổi</li>
+</ol>
+<h5>Đáp Án</h5>
+<p>Bạn có bị đánh lừa bởi câu hỏi này không? Bạn có nghĩ mình phải chọn giữa rút ngắn và theo dõi nhanh không? Không có thông tin nào được cung cấp để giúp bạn xác định cái nào tốt hơn. Do đó, lựa chọn tốt nhất được trình bày là D — thông báo cho ban quản lý về tác động của thay đổi. Đây là lựa chọn tốt nhất vì dù sao bạn cũng phải đánh giá tác động của thay đổi và thông báo cho ban quản lý về điều đó. Không có dữ liệu nào để hỗ trợ các câu trả lời có thể khác.</p>
+<p>Bài thi sẽ bao gồm nhiều câu hỏi như vậy yêu cầu bạn biết rằng quản lý dự án cần phân tích trước, tạo ra các lựa chọn để đối phó với thay đổi, sau đó thông báo cho ban quản lý, nhà tài trợ, khách hàng hoặc các bên liên quan khác về tác động của yêu cầu của họ (xem quy trình bốn bước để xử lý thay đổi trong chương "Tích hợp"). Quản lý dự án không chỉ đơn giản nói có! Thay vào đó, sau khi phân tích tác động của thay đổi đối với tất cả các lĩnh vực của dự án (chi phí, rủi ro, nguồn lực, v.v.), họ có thể nói điều gì đó như "Có, tôi rất vui được thực hiện thay đổi, nhưng dự án sẽ bị trễ hai tuần. Và tôi sẽ cần thêm hai nguồn lực, hoặc dự án sẽ tốn thêm 25.000 đô la."</p>
+<p>Đối với các câu hỏi về thay đổi đối với sơ đồ mạng, hãy đảm bảo bạn tìm kiếm sự dịch chuyển sang các đường dẫn tới hạn mới do các thay đổi đối với sơ đồ mạng hoặc thời gian hoạt động.</p>
+<h5>Phân Tích Dữ Liệu và Mô Phỏng</h5>
+<p>Khi tạo ra một tiến độ cuối cùng, thực tế, việc đặt câu hỏi "Điều gì sẽ xảy ra nếu một yếu tố cụ thể thay đổi trong dự án? Điều đó có tạo ra tiến độ ngắn hơn không?" là rất hữu ích. Các giả định cho mỗi hoạt động có thể thay đổi và do đó thời gian hoạt động cũng có thể thay đổi. Một trong những cách để tính toán tác động của những thay đổi này là thông qua phân tích kịch bản giả định. Một ví dụ là phân tích Monte Carlo.</p>
+<h5>Phân Tích Monte Carlo</h5>
+<p>Kỹ thuật này sử dụng phần mềm máy tính để mô phỏng kết quả của một dự án, dựa trên các ước tính ba điểm (lạc quan, bi quan và có khả năng nhất) cho mỗi hoạt động và sơ đồ mạng. Nó chính xác hơn các phương pháp khác vì nó mô phỏng các chi tiết thực tế của dự án và tính toán xác suất.</p>
+<p>Mô phỏng có thể cho bạn biết:</p>
+<ul class="content-list">
+<li>Xác suất hoàn thành dự án vào bất kỳ ngày cụ thể nào</li>
+<li>Xác suất hoàn thành dự án với bất kỳ chi phí cụ thể nào</li>
+<li>Xác suất của bất kỳ hoạt động nào thực sự nằm trên đường dẫn tới hạn</li>
+<li>Chỉ số về rủi ro tổng thể của dự án</li>
+</ul>
+<p>Phân tích Monte Carlo có thể giúp xử lý "hội tụ đường dẫn" — những nơi trong sơ đồ mạng mà nhiều đường dẫn hội tụ vào một hoặc nhiều hoạt động, từ đó làm tăng rủi ro cho dự án (xem hình 8.17). Phân tích Monte Carlo cũng được sử dụng như một công cụ quản lý rủi ro để phân tích rủi ro một cách định lượng (xem chương "Rủi ro").</p>
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//ce73c23d-1765-470e-8f2a-4129039327ed/markdown_1/imgs/img_in_image_box_269_446_476_666.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A38Z%2F-1%2F%2F984780d2dc6d3b551377db9c88dfecece406fbd208997f69cfba1fe334082fda" alt="Image" width="25%" /></div>
+<p style="text-align:center;">HÌNH 8.17 Hội tụ đường dẫn</p>
+<h4 id="ch8-toi-uu-hoa-nguon-luc">Tối Ưu Hóa Nguồn Lực</h4>
+<p>Tối ưu hóa nguồn lực đề cập đến việc tìm cách điều chỉnh việc sử dụng nguồn lực. Có hai kỹ thuật có thể đạt được kết quả này.</p>
+<h5>Cân Bằng Nguồn Lực (Resource Leveling)</h5>
+<p>Cân bằng nguồn lực được sử dụng để tạo ra tiến độ bị giới hạn bởi nguồn lực. Cân bằng kéo dài tiến độ và tăng chi phí để giải quyết số lượng nguồn lực hạn chế, tình trạng sẵn có của nguồn lực và các ràng buộc nguồn lực khác. Là một chức năng ít được sử dụng trong phần mềm quản lý dự án, kỹ thuật này cho phép bạn cân bằng các đỉnh và thung lũng của tiến độ từ tháng này sang tháng khác, dẫn đến số lượng nguồn lực được sử dụng ổn định hơn trong dự án của bạn.</p>
+<p>Bạn có thể cân bằng nguồn lực nếu dự án của bạn sử dụng 5 nguồn lực một tháng, 15 vào tháng tiếp theo và 3 vào tháng sau, hoặc một số mô hình tăng giảm khác không được chấp nhận. Cân bằng cũng có thể được sử dụng nếu bạn không có sẵn 15 nguồn lực và muốn kéo dài dự án (đây là kết quả của cân bằng) thay vì thuê thêm nguồn lực.</p>
+
+<h5>Làm Mịn Nguồn Lực (Resource Smoothing)</h5>
+<p>Làm mịn nguồn lực là một hình thức cân bằng nguồn lực được sửa đổi, trong đó nguồn lực chỉ được cân bằng trong giới hạn float của các hoạt động, vì vậy ngày hoàn thành của các hoạt động không bị trì hoãn.</p>
+<h4 id="ch8-phat-trien-tien-do-agile">Phát Triển Tiến Độ Agile</h4>
+<p>Các nhóm Agile cố gắng giữ ổn định tiến độ và chi phí trong khi đàm phán phạm vi để thực hiện điều đó. Khái niệm float chắc chắn áp dụng cho Agile mặc dù các chuyên gia Agile không phải lúc nào cũng sử dụng sơ đồ mạng tiến độ dự án. Thay vào đó, dựa trên kích thước story ước tính và mức độ ưu tiên, một nhóm Agile sẽ tập hợp các story cho mỗi iteration và ước tính lượng công việc có thể hoàn thành trong một iteration nhất định, điều chỉnh ước tính cho đến khi vận tốc trung bình được xác lập.</p>
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//ce73c23d-1765-470e-8f2a-4129039327ed/markdown_2/imgs/img_in_image_box_671_123_721_181.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A38Z%2F-1%2F%2F235eb10dd30099ced0c4d724d5d6775bd4919c32fccf32af3f9a863add8c1937" alt="Image" width="6%" /></div>
+<h5>Lập Kế Hoạch Phát Hành Agile</h5>
+<p>Các dự án Agile thường được chia thành các release và iteration. Một iteration là một giai đoạn phát triển ngắn, có khung thời gian cố định, thường kéo dài từ một đến bốn tuần. Một release là một nhóm các iteration dẫn đến việc hoàn thành một sản phẩm bàn giao có giá trị trong dự án. Một dự án Agile sẽ có một hoặc nhiều release, mỗi release sẽ chứa một hoặc nhiều iteration, như minh họa trong hình 8.18.</p>
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//ce73c23d-1765-470e-8f2a-4129039327ed/markdown_2/imgs/img_in_image_box_49_322_740_497.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A39Z%2F-1%2F%2F49be450093a6d71b271289a8beeb2a3e53db56f4d21bddc30b5db5689cd59215" alt="Image" width="84%" /></div>
+<p style="text-align:center;">HÌNH 8.18 Dự án được chia thành các release và iteration</p>
+<p>Sơ đồ này cho thấy một dự án đơn lẻ với bốn release được lên kế hoạch. Các nhóm Agile bắt đầu lập kế hoạch release và iteration sớm trong vòng đời dự án và liên tục tinh chỉnh nỗ lực lập kế hoạch nhiều lần khi dự án tiến triển.</p>
+<p>Bạn có nhớ thảo luận của chúng ta về backlog và lộ trình sản phẩm trong chương "Phạm vi" không? Trong khi backlog và lộ trình sản phẩm giúp xác định và quản lý phạm vi dự án, chúng cũng là những công cụ có giá trị giúp phát triển và quản lý tiến độ dự án.</p>
+<p>Trong các dự án Agile, các nhóm chọn từ các mục backlog có độ ưu tiên cao nhất để đặt ra mục tiêu cho iteration tiếp theo. Sau đó, họ phân rã mục tiêu iteration thành các user story để có được kế hoạch iteration. Việc lập kế hoạch tiếp tục bằng cách phân rã các user story đó thành các task. Trong khi công việc đang được thực hiện, nhóm thảo luận về các chi tiết của công việc trong các cuộc họp standup hàng ngày.</p>
+<h5>Biểu Đồ Luồng Tích Lũy (Cumulative Flow Diagrams)</h5>
+<p>Biểu đồ luồng tích lũy (CFD) là công cụ có giá trị để theo dõi và dự báo việc cung cấp giá trị. Chúng có thể giúp quản lý dự án hiểu rõ hơn về các vấn đề của dự án, thời gian chu kỳ và ngày hoàn thành có thể. Về cơ bản, CFD là các biểu đồ vùng xếp chồng mô tả các tính năng đang được thực hiện, còn lại và đã hoàn thành theo thời gian. Một ví dụ về CFD được minh họa trong hình 8.19.</p>
+<p>Hình này cho thấy các tính năng đã hoàn thành so với các tính năng còn lại cho một dự án hư cấu vẫn đang tiến hành. Vùng màu cam biểu thị tất cả các tính năng theo kế hoạch cần xây dựng. Con số này tăng từ 400 lên 450 trong tháng 6 và sau đó lên 500 trong tháng 8 khi các tính năng bổ sung được thêm vào</p>
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//ce73c23d-1765-470e-8f2a-4129039327ed/markdown_2/imgs/img_in_chart_box_399_666_753_963.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A39Z%2F-1%2F%2F3b503575aeaae3da68b8e65f96bf74815fc8ef511dc5bf18ae4d7f83bbd7372a" alt="Image" width="43%" /></div>
+<p style="text-align:center;">HÌNH 8.19 Ví dụ về biểu đồ luồng tích lũy</p>
+<p>dự án. Phần chấm vẽ biểu đồ công việc đang thực hiện, và phần kẻ sọc cho thấy tổng số tính năng đã hoàn thành trong dự án.</p>
+<h5>Vận Tốc (Velocity)</h5>
+<p>Như đã đề cập trong phần trước của chương này, các nhóm xác lập vận tốc trung bình, mô tả lượng công việc (những story nào) có thể được hoàn thành trong một iteration nhất định. Nhóm liên tục phân tích vận tốc thực tế của họ so với các story trong backlog cần hoàn thành, vì vậy thực hành này hoạt động như một phương pháp lập kế hoạch và như một phương pháp kiểm soát. Vận tốc hoạt động như sau:</p>
+<ul class="content-list">
+<li>Trước iteration đầu tiên của dự án, nhóm thiết lập vận tốc khởi đầu. Chỉ số này thường là story point. Điều này giúp ước tính những story có thể được hoàn thành trong iteration đầu tiên.</li>
+<li>Cho iteration đầu tiên, nhóm chọn và xây dựng các story từ đỉnh backlog được ưu tiên dựa trên vận tốc khởi đầu.</li>
+<li>Sau iteration đầu tiên (không bao gồm iteration không), ước tính được so sánh với những gì nhóm thực sự hoàn thành, và cho iteration thứ hai, nhóm sẽ sử dụng vận tốc thực tế từ iteration đầu tiên. Họ chọn story từ đỉnh backlog được ưu tiên dựa trên con số này.</li>
+<li>Sau vài iteration, nhóm có vận tốc trung bình hoặc đang hoạt động. Họ sẽ tiếp tục chọn story từ đỉnh backlog dựa trên vận tốc trung bình. Họ tính lại vận tốc trung bình khi nó ổn định.</li>
+</ul>
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//ce73c23d-1765-470e-8f2a-4129039327ed/markdown_3/imgs/img_in_chart_box_183_416_615_660.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A39Z%2F-1%2F%2Fe45db03341fc768ea2781e63261228bbdec5d9a76bdb09493c013fd27161eeea" alt="Image" width="52%" /></div>
+<p style="text-align:center;">HÌNH 8.20 Biểu đồ theo dõi vận tốc</p>
+<p><strong>Lưu Ý Về Ước Tính Story Point và Vận Tốc</strong></p>
+<p>Việc sử dụng story point là một phương pháp ước tính tương đối rất hiệu quả. Nhưng các vấn đề với phương pháp này chỉ có thể tránh được nếu các nhóm sử dụng đúng cách và kỹ năng lãnh đạo tốt cũng như giao tiếp đảm bảo rằng các bên liên quan khác hiểu được nó. Story point trong ước tính và vận tốc trong thực hành được điều chỉnh hoàn toàn phù hợp với mỗi nhóm và mỗi dự án. Để phân tích hiệu suất, tiến trình của không có hai nhóm nào có thể được so sánh dựa trên story point hoặc vận tốc, và không có nhóm nào có thể so sánh story point hoặc vận tốc từ dự án này sang dự án khác.</p>
+<div class="callout"><p>Hãy Suy Nghĩ. Xem xét tình huống này. Một nhóm hybrid đang sử dụng story point để theo dõi vận tốc của họ trong việc viết lại website quản lý tài khoản khách hàng. Nhóm đang sử dụng các iteration ngắn và demo để cung cấp chức năng trong một tổ chức chủ yếu là dự đoán. Sau khi ủy ban điều hành biết nhóm đang sử dụng story point và vận tốc để theo dõi tiến độ, họ tập trung vào các con số vận tốc hàng tuần.</p>
+<p>Nếu số điểm hoàn thành không tăng mỗi tuần, nhóm bị yêu cầu giải thích. Một cách có ý thức hoặc vô thức, nhóm bắt đầu thổi phồng ước tính story point cho công việc. Bằng cách đó, họ sẽ có nhiều điểm hơn để báo cáo là đã hoàn thành mỗi tuần. Một màn hình có thể ban đầu được ước tính là ba điểm trở thành năm điểm. Tuy nhiên, các điểm bây giờ vô nghĩa với nhóm vì họ không thể so sánh hiệu suất hiện tại với quá khứ. Các câu hỏi như "đây là năm điểm mới hay năm điểm cũ?" trở thành lãng phí thời gian phổ biến.</p></div>
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//ce73c23d-1765-470e-8f2a-4129039327ed/markdown_3/imgs/img_in_image_box_71_837_121_898.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A39Z%2F-1%2F%2F7258d1731542db5ebad8bd5c15bb2fcf705d5273e43d399678d8342f86fa7866" alt="Image" width="6%" /></div>
+<p>Để thiết lập lại quy trình, nhóm đã sử dụng ước tính affinity để so sánh và thiết lập lại các story mới với giá trị điểm từ các story trước đây có kích thước và độ phức tạp tương đương. Việc thổi phồng story point đã được đảo ngược và các điểm trở nên hữu ích cho nhóm một lần nữa. Quản lý dự án giải thích tình huống cho ủy ban điều hành, người đồng ý không tập trung vào vận tốc hàng tuần mà chỉ sử dụng vận tốc để theo dõi tiến độ dự án thực tế so với kế hoạch qua các iteration hướng đến một release theo lịch. Quản lý dự án không còn hiển thị các chỉ số vận tốc chi tiết cho ban quản lý mà thay vào đó sử dụng đồ họa như biểu đồ burndown sau. Hình 8.21 cho thấy tiến độ dự án qua 4 iteration. Nó biến dữ liệu thành thông tin, sử dụng vận tốc nhưng biểu diễn tiến độ dự án tốt hơn so với việc tập trung vào dữ liệu vận tốc thực tế.</p>
+<p style="text-align:center;">Công Việc Theo Kế Hoạch So Với Thực Tế Hướng Đến Release 1</p>
+<div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//ce73c23d-1765-470e-8f2a-4129039327ed/markdown_4/imgs/img_in_chart_box_202_269_577_468.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A40Z%2F-1%2F%2F1c58e4ce2a5b63c4238de96dff34331109d1451ab9ad47ff88763239852382f3" alt="Image" width="45%" /></div>
+<p style="text-align:center;">HÌNH 8.21 Biểu đồ burndown theo dõi tiến độ</p>
+<h4 id="ch8-dau-ra-phat-trien-tien-do">Đầu Ra Của Quá Trình Phát Triển Tiến Độ Theo Kế Hoạch</h4>
+<p>Quá trình Phát triển Tiến độ cho ra tiến độ dự án, đường cơ sở tiến độ, dữ liệu tiến độ, yêu cầu thay đổi và các cập nhật cho bất kỳ tài liệu dự án liên quan nào. Các phần sau mô tả những đầu ra này.</p>
+<h5>Tiến Độ Dự Án</h5>
+<p>Tiến độ dự án là kết quả của các quá trình lập kế hoạch trước đó và phân tích mạng tiến độ được thực hiện như một phần của quá trình Phát triển Tiến độ. Khi lập kế hoạch tiến triển, tiến độ sẽ được lặp đi lặp lại để đáp ứng quản lý rủi ro và các phần khác của lập kế hoạch dự án cho đến khi đạt được tiến độ chấp nhận được và thực tế. Tiến độ được lặp lại và thực tế là kết quả của nỗ lực này được gọi là đường cơ sở tiến độ, trở thành một phần của kế hoạch quản lý dự án.</p>
+<p>Tiến độ dự án bao gồm các hoạt động dự án với ngày được chỉ định cho mỗi hoạt động, và bao gồm các mốc được chèn bởi quản lý dự án hoặc ban quản lý. Tiến độ dự án có thể được biểu diễn ở các định dạng như biểu đồ thanh hoặc sơ đồ mạng.</p>
+<p>Tiến độ dự án có thể được hiển thị có hoặc không có phụ thuộc (quan hệ logic) và có thể được hiển thị ở bất kỳ bản trình bày nào sau đây được tạo từ mô hình tiến độ, tùy thuộc vào nhu cầu của dự án:</p>
+<ul class="content-list">
+<li>Sơ đồ mạng (được mô tả trước đó trong chương này)</li>
+<li>Biểu đồ mốc</li>
+<li>Biểu đồ thanh</li>
+</ul>
+<h5>Biểu Đồ Mốc</h5>
+<p>Những biểu đồ này tương tự như biểu đồ thanh (được mô tả tiếp theo), nhưng chúng chỉ hiển thị các sự kiện chính. Hãy nhớ rằng các mốc không có thời gian; chúng chỉ đơn giản đại diện cho sự hoàn thành của các hoạt động. Các mốc, có thể bao gồm "yêu cầu đã hoàn thành" hoặc "thiết kế đã xong", là một phần của đầu vào cho quá trình Sắp xếp Trình tự Hoạt động. Biểu đồ mốc là công cụ tốt để báo cáo cho ban quản lý và khách hàng. Xem ví dụ trong hình 8.22.</p>
+<div class="table-wrap"><table>
+<tr><th>ID</th><th>Mốc</th><th>Tháng 12</th><th>Tháng 1</th><th>Tháng 2</th><th>Tháng 3</th><th>Tháng 4</th></tr>
+<tr><td>1</td><td>Bắt đầu</td><td>*12/14</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>2</td><td>Thu thập yêu cầu</td><td>4 ▶ 12/31</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>3</td><td>Hoàn thành thiết kế</td><td></td><td>*1/17</td><td></td><td></td><td></td></tr>
+<tr><td>4</td><td>Hoàn thành lập trình</td><td></td><td></td><td>*2/15</td><td></td><td></td></tr>
+<tr><td>5</td><td>Hoàn thành kiểm thử</td><td></td><td></td><td></td><td>*3/15</td><td></td></tr>
+<tr><td>6</td><td>Hoàn thành triển khai</td><td></td><td></td><td></td><td></td><td>*4/4</td></tr>
+<tr><td>7</td><td>Kết thúc</td><td></td><td></td><td></td><td></td><td>*4/15</td></tr>
+</table></div>
+<p><strong>HÌNH 8.22 Biểu đồ mốc</strong></p>
+<h4 id="ch8-bieu-do-thanh">Biểu Đồ Thanh</h4>
+<p>Biểu đồ thanh là công cụ lập kế hoạch yếu, nhưng chúng hiệu quả để báo cáo tiến độ và kiểm soát. Chúng không phải là kế hoạch quản lý dự án. Biểu đồ theo dõi vận tốc trong hình 8.20 là một biểu đồ thanh.</p>
+<h5>Đường Cơ Sở Tiến Độ</h5>
+<p>Đường cơ sở tiến độ là phiên bản được phê duyệt của mô hình tiến độ được sử dụng để quản lý dự án; cái mà hiệu suất của dự án và nhóm được đo lường so với. Trong các dự án theo kế hoạch, đường cơ sở chỉ có thể được thay đổi do các thay đổi được phê duyệt chính thức. Nếu dự án có thể hoàn thành nhanh hơn yêu cầu của khách hàng, có thể có sự khác biệt giữa đường cơ sở tiến độ và ngày kết thúc mà khách hàng yêu cầu. Sự khác biệt này là float dự án. Các dự án Agile có xu hướng có "đường cơ sở di chuyển" cho vận tốc nhưng được giả định rằng điều này sẽ sớm ổn định sau vài iteration. Tiến độ dự án Agile thường được đặt đường cơ sở vì phạm vi chính xác có thể đàm phán được.</p>
+<p><strong>Dữ Liệu Tiến Độ:</strong> Dữ liệu tiến độ bao gồm tất cả dữ liệu được sử dụng để tạo mô hình tiến độ, bao gồm các mốc, hoạt động dự án, thuộc tính hoạt động, ước tính thời gian, phụ thuộc và các giả định và ràng buộc được sử dụng khi tạo tiến độ.</p>
+<p><strong>Yêu Cầu Thay Đổi:</strong> Đây là một quy trình lập kế hoạch khác với yêu cầu thay đổi là đầu ra. Khi dự án tiến triển, bất kỳ thay đổi nào đối với tiến độ có thể cần thay đổi các phần khác của kế hoạch quản lý dự án. Các yêu cầu thay đổi được giải quyết thông qua quy trình kiểm soát thay đổi tích hợp.</p>
+<p><strong>Cập Nhật Tài Liệu Dự Án:</strong> Quá trình tạo ra tiến độ cuối cùng và thực tế có thể dẫn đến các cập nhật cho tài liệu dự án bao gồm ước tính thời gian, yêu cầu nguồn lực, thuộc tính hoạt động, sổ đăng ký rủi ro, nhật ký giả định và sổ đăng ký bài học kinh nghiệm.</p>
+<h4 id="ch8-hieu-loi-ich-trinh-bay">Hiểu Lợi Ích Của Các Định Dạng Trình Bày Khác Nhau</h4>
+<p>Dù bạn biết bao nhiêu về quản lý dự án, luôn có những câu hỏi trong bài thi sẽ khó nếu bạn chưa bao giờ nghĩ đến chúng trước đây. Các loại trình bày tiến độ khác nhau có thể là một trong những lĩnh vực đó. Hãy suy nghĩ qua bài tập tiếp theo. Hãy đảm bảo bạn tìm kiếm bất cứ điều gì bạn chưa biết và tổ chức kiến thức của mình theo câu trả lời bài tập. Bạn có thể trả lời đúng khá nhiều câu hỏi trong bài thi nếu bạn biết mỗi bản trình bày tiến độ được sử dụng để làm gì.</p>
+<h4 id="ch8-bai-tap-8-6">8.6 Bài Tập</h4>
+<p>Kiểm tra bản thân! Trong Sổ tay Bài tập, ghi lại câu trả lời cho các câu hỏi sau.</p>
+<ol class="content-list">
+<li>Trong hoàn cảnh nào bạn sẽ sử dụng sơ đồ mạng?</li>
+<li>Trong hoàn cảnh nào bạn sẽ sử dụng biểu đồ mốc?</li>
+<li>Trong hoàn cảnh nào bạn sẽ sử dụng biểu đồ thanh?</li>
+</ol>
+<h5>Đáp Án</h5>
+<ol class="content-list">
+<li>Để hiển thị sự phụ thuộc giữa các hoạt động; để tính toán đường dẫn tới hạn; để hiển thị độ dài của dự án</li>
+<li>Để báo cáo cho ban quản lý cấp cao</li>
+<li>Để theo dõi tiến độ; để báo cáo cho nhóm</li>
+</ol>
+<h4 id="ch8-kiem-soat-tien-do">Kiểm Soát Tiến Độ</h4>
+<p>Một thước đo quan trọng của thành công dự án (và quản lý dự án) là đường cơ sở tiến độ — ngày kết thúc đã được đồng ý trong lập kế hoạch và điều chỉnh cho các thay đổi được phê duyệt — được đáp ứng. Các nỗ lực giám sát và kiểm soát cũng như thực hiện các hành động phòng ngừa và khắc phục trong suốt dự án giúp nó phù hợp với kế hoạch. Điều này cũng quan trọng đối với thành công của dự án như việc lập kế hoạch tốt.</p>
+<p>Kiểm soát tiến độ bao gồm việc tìm kiếm những thứ gây ra các thay đổi có thể ngăn chặn được và ảnh hưởng đến các nguồn gốc, hoặc nguyên nhân gốc rễ của các thay đổi.</p>
+<p><strong>Ví dụ:</strong> Có một người hoặc một phần công việc gây ra nhiều thay đổi.</p>
+<p>Đây là dấu hiệu cho thấy quản lý dự án và nhóm cần đánh giá nó và làm gì đó về nó thay vì để các vấn đề và số lượng thay đổi lớn tiếp tục. Sử dụng sự cẩn thận và chủ động là chìa khóa để thành công.</p>
+<h5>Mô Hình Nhóm Quy Trình</h5>
+<p><strong>Nhóm Quy Trình:</strong> Giám sát và Kiểm soát</p>
+<p><strong>Quy trình:</strong> Kiểm soát Tiến độ</p>
+<p><strong>ECO — Lĩnh vực II, Nhiệm vụ 6:</strong> Lập kế hoạch và quản lý tiến độ</p>
+<p><strong>Hướng dẫn PMBOK®, Lĩnh vực 2.7:</strong> Đo lường</p>
+<p>Nếu dự án không còn có thể đáp ứng ngày hoàn thành đã thỏa thuận và việc đạt được ngày hoàn thành là yếu tố quan trọng cho sự thành công của dự án, quản lý dự án có thể đề xuất chấm dứt dự án trước khi lãng phí thêm thời gian của công ty.</p>
+<p>Hãy coi kiểm soát tiến độ là việc bảo vệ công sức của tất cả những người tham gia lập kế hoạch để đảm bảo những gì đã được lập kế hoạch xảy ra càng gần với kế hoạch càng tốt. Hãy nghĩ đến việc liên tục theo dõi bất cứ điều gì có thể ảnh hưởng đến tiến độ. Sau đây là một số hoạt động có thể được sử dụng để giúp kiểm soát tiến độ:</p>
+<ul class="content-list">
+<li>Truy cập PMIS để xem dữ liệu hiệu suất công việc hiện tại và so sánh tiến độ thực tế với những gì đã được lập kế hoạch.</li>
+<li>Ước tính lại các thành phần còn lại của dự án ở giữa dự án (xem thảo luận sau).</li>
+<li>Tiến hành đánh giá hiệu suất bằng cách phân tích chính thức dự án đang làm như thế nào (xem thảo luận Quản lý Giá trị Kiếm được trong chương "Ngân sách và Nguồn lực").</li>
+<li>Thực hiện phân tích dữ liệu (điều này có thể bao gồm phân tích giá trị kiếm được, phân tích xu hướng, phân tích phương sai và phân tích kịch bản giả định) về hiệu suất dự án.</li>
+<li>Xác nhận rằng các hoạt động trên đường dẫn tới hạn đang được hoàn thành trong đường cơ sở tiến độ. Nếu không, điều chỉnh đường dẫn tới hạn bằng cách tận dụng float có sẵn.</li>
+<li>Điều chỉnh các phần tương lai của dự án để đối phó với sự chậm trễ, thay vì yêu cầu gia hạn tiến độ (sử dụng các kỹ thuật nén tiến độ như dẫn và trễ, rút ngắn và theo dõi nhanh).</li>
+<li>Xem xét việc điều chỉnh để tối ưu hóa các nguồn lực được chỉ định cho các hoạt động nhằm cải thiện hiệu suất.</li>
+<li>Tiếp tục nỗ lực tối ưu hóa tiến độ.</li>
+<li>Điều chỉnh các chỉ số không cung cấp cho quản lý dự án thông tin cần thiết để hiểu đúng về hiệu suất và quản lý dự án. Thêm chỉ số mới nếu cần.</li>
+<li>Điều chỉnh định dạng hoặc nội dung yêu cầu của báo cáo khi cần thiết để nắm bắt thông tin cần thiết để kiểm soát và quản lý dự án (xem thảo luận Báo cáo Tiến độ trong chương "Ngân sách và Nguồn lực").</li>
+<li>Xác định nhu cầu thay đổi, bao gồm các hành động khắc phục và phòng ngừa.</li>
+<li>Tuân theo quy trình kiểm soát thay đổi.</li>
+</ul>
+<p>Các nỗ lực kiểm soát tiến độ khi dự án sử dụng phương pháp hướng thay đổi bao gồm:</p>
+<ul class="content-list">
+<li>So sánh công việc thực sự được hoàn thành với những gì được dự đoán sẽ hoàn thành trong một chu kỳ làm việc nhất định bằng biểu đồ burndown iteration.</li>
+<li>Tổ chức các buổi cải tiến (retrospective) để giải quyết các cải tiến quy trình có thể.</li>
+<li>Ưu tiên lại backlog công việc.</li>
+<li>Xác định và quản lý các thay đổi khi chúng phát sinh.</li>
+</ul>
+<h4 id="ch8-phuong-phap-kiem-soat">Các Phương Pháp Kiểm Soát Tiến Độ</h4>
+<p>Mặc dù quản lý dự án đã cố gắng hết sức để hiểu dự án đủ để ước tính nó đầy đủ trong lập kế hoạch, luôn có những thay đổi xảy ra trong dự án ảnh hưởng đến những kế hoạch đó. Đo lường hiệu suất thường xuyên, sử dụng các phương pháp nén tiến độ khi cần thiết và ước tính lại khi cần là các phương pháp phổ biến để điều chỉnh các thay đổi bình thường đối với quản lý thời gian trong các dự án.</p>
+<h5>Đo Lường</h5>
+<p>Tiến độ tự nó có một tập hợp chỉ số tự nhiên để đo lường tiến độ. EVM truyền thống là thực hành phổ biến trong các dự án theo kế hoạch và các nhóm Agile sử dụng vận tốc để liên tục đo lường tiến độ thực tế so với kế hoạch, và điều chỉnh khi cần thiết. Các nhóm Agile cũng sử dụng biểu đồ burnup và burndown để đo lường tiến độ dự án tổng thể.</p>
+<h5>Ước Tính Lại</h5>
+<p>Đây là thực hành tiêu chuẩn để ước tính lại công việc còn lại vào các thời điểm được lên kế hoạch và bất cứ khi nào có vẻ thận trọng. Đây là cách quản lý dự án đảm bảo họ vẫn có thể đáp ứng các mục tiêu dự án trong tiến độ, ngân sách và các ràng buộc dự án khác, và điều chỉnh đường cơ sở đo lường hiệu suất nếu họ không thể.</p>
+<h4 id="ch8-ket-qua-kiem-soat">Kết Quả Của Kiểm Soát Tiến Độ</h4>
+<p>Quá trình Kiểm soát Tiến độ cho ra thông tin hiệu suất công việc, dự báo tiến độ và đôi khi là yêu cầu thay đổi. Ví dụ, một thay đổi đối với tiến độ có thể đòi hỏi thêm nguồn lực hoặc thay đổi phạm vi. Những thay đổi như vậy phải được xử lý như một phần của quá trình Thực hiện Kiểm soát Thay đổi Tích hợp. Hãy đảm bảo bạn xem xét quy trình quan trọng này trong chương "Tích hợp". Trong các dự án Agile, một lần nữa, thường là phạm vi — tính năng và chức năng — được đàm phán lại nếu, như thường lệ, tiến độ cần được giữ ổn định và nhóm đang chậm hơn so với kế hoạch.</p>
+<p>Quá trình này cũng có thể dẫn đến các cập nhật cho kế hoạch quản lý tiến độ và đường cơ sở đo lường hiệu suất ngoài các tài liệu dự án như nhật ký giả định, sổ đăng ký rủi ro và sổ đăng ký bài học kinh nghiệm, và các thay đổi đối với bất kỳ phần nào khác của dự án.</p>
+<h4 id="ch8-tong-ket">Kết Hợp Tất Cả Lại</h4>
+<p>Bạn có ngạc nhiên về lượng công sức cần thiết để lập kế hoạch và quản lý tiến độ dự án không? Đây là trách nhiệm của quản lý dự án để tạo ra tiến độ thực tế và giám sát, kiểm soát nó. Để chuẩn bị thi, hãy đảm bảo bạn hiểu phương pháp sơ đồ ưu tiên và biết cách ước tính được thực hiện trong cả môi trường dự đoán và thích nghi. Hãy xem lại Kiểm tra Nhanh ở đầu chương để giúp xác định bất kỳ khoảng trống nào trong kiến thức của bạn. Xem xét các khái niệm bạn vẫn chưa chắc chắn.</p>
+<p>Hoàn thành các bài tập sau dựa trên nghiên cứu trường hợp thư viện của chúng ta.</p>
+<h4 id="ch8-bai-tap-8-7">8.7 Bài Tập</h4>
+<p>Xem xét danh sách công việc mà quản lý dự án cần thực hiện để tạo tiến độ dự án. Tại đây hoặc trong Sổ tay Bài tập của bạn, hãy chỉ ra thứ tự mà công việc này nên được hoàn thành bằng cách đặt chữ cái được gán cho mỗi mục vào bảng thứ tự bên dưới. Cũng chỉ ra quy trình nào mà công việc này mô tả.</p>
+<p>A. Mỗi bên liên quan hoặc thành viên nhóm chịu trách nhiệm cho một hoạt động sẽ chịu trách nhiệm xác định hoạt động đó mất bao lâu.</p>
+<p>B. Quản lý dự án sẽ tập hợp kiến trúc sư, trưởng nhóm xây dựng, thủ thư và các thành viên nhóm khác để xem xét cấu trúc phân tích công việc và xác định các hoạt động cần thiết để hoàn thành dự án.</p>
+<p>C. Quản lý dự án cần suy nghĩ về những người sẽ cần thiết để hoàn thành dự án và cách đo lường hiệu suất.</p>
+<p>D. Tất cả các hoạt động sẽ được đặt lên lịch dựa trên sự sẵn có của người được giao hoàn thành nó.</p>
+<p>E. Nhóm sẽ thảo luận về từng hoạt động cần thiết và xác định các hoạt động tiền nhiệm và kế nhiệm của nó.</p>
+<div class="table-wrap"><table>
+<tr><th>Thứ Tự</th><th>Công Việc</th><th>Tên Mô Hình Nhóm Quy Trình</th></tr>
+<tr><td>Thứ 1</td><td></td><td></td></tr>
+<tr><td>Thứ 2</td><td></td><td></td></tr>
+<tr><td>Thứ 3</td><td></td><td></td></tr>
+<tr><td>Thứ 4</td><td></td><td></td></tr>
+<tr><td>Thứ 5</td><td></td><td></td></tr>
+</table></div>
+
+<h5>Đáp Án</h5>
+<div class="table-wrap"><table>
+<tr><th>Thứ Tự</th><th>Công Việc</th><th>Tên Mô Hình Nhóm Quy Trình</th></tr>
+<tr><td>Thứ 1</td><td>C</td><td>Lập kế hoạch Quản lý Tiến độ</td></tr>
+<tr><td>Thứ 2</td><td>B</td><td>Xác định Hoạt động</td></tr>
+<tr><td>Thứ 3</td><td>E</td><td>Sắp xếp Trình tự Hoạt động</td></tr>
+<tr><td>Thứ 4</td><td>A</td><td>Ước tính Thời gian Hoạt động</td></tr>
+<tr><td>Thứ 5</td><td>D</td><td>Phát triển Tiến độ</td></tr>
+</table></div>
+<h4 id="ch8-bai-tap-8-8">8.8 Bài Tập</h4>
+<p>Hãy thử bài tập này dựa trên nghiên cứu trường hợp sử dụng công cụ thích nghi.</p>
+<p>Ứng dụng phần mềm thư viện cần được nâng cấp. Một backlog các tính năng được yêu cầu đã được thu thập và ưu tiên trong backlog sau. Xem xét danh sách này và với thông tin được cung cấp, hãy soạn thảo Lộ trình Sản phẩm với ba release. Mỗi release nên bao gồm một tính năng bổ sung nếu nhóm có thời gian (mục tiêu mở rộng). Hãy đảm bảo xem xét các phụ thuộc.</p>
+<h5>Backlog</h5>
+<div class="table-wrap"><table>
+<tr><th>Số Tính Năng</th><th>Tính Năng</th><th>Ưu Tiên</th><th>Phụ Thuộc</th><th>Ước Tính</th></tr>
+<tr><td>1</td><td>Bản đồ thư viện</td><td>Cao</td><td>Không có</td><td>1 story point</td></tr>
+<tr><td>2</td><td>Thu thập thông tin hồ sơ độc giả</td><td>Trung bình</td><td>Không có</td><td>3 story point</td></tr>
+<tr><td>3</td><td>Cho phép độc giả thiết lập ID đăng nhập và mật khẩu</td><td>Cao</td><td>2</td><td>5 story point</td></tr>
+<tr><td>4</td><td>"Trình tạo Hồ sơ Xin việc"</td><td>Cao</td><td>3</td><td>5 story point</td></tr>
+<tr><td>5</td><td>"Trình tạo Thư xin việc"</td><td>Trung bình</td><td>4</td><td>3 story point</td></tr>
+<tr><td>6</td><td>Kết nối với các bảng việc làm phổ biến</td><td>Trung bình</td><td>Không có</td><td>5 story point mỗi cái</td></tr>
+<tr><td>7</td><td>Tìm kiếm theo tên tác giả</td><td>Trung bình</td><td>Không có</td><td>3 story point</td></tr>
+<tr><td>8</td><td>Tìm kiếm theo tên sách</td><td>Cao</td><td>Không có</td><td>5 story point</td></tr>
+<tr><td>9</td><td>Tìm kiếm theo tiêu đề bài báo tạp chí</td><td>Trung bình</td><td>Không có</td><td>8 story point</td></tr>
+<tr><td>10</td><td>Khả năng tham gia câu lạc bộ sách</td><td>Trung bình</td><td>11</td><td>3 story point</td></tr>
+<tr><td>11</td><td>Khả năng thêm câu lạc bộ sách mới</td><td>Trung bình</td><td>3</td><td>5 story point</td></tr>
+</table></div>
+<h5>Lộ Trình Sản Phẩm</h5>
+<div class="table-wrap"><table>
+<tr><th></th><th colspan="2">Release 1</th><th colspan="2">Release 2</th><th colspan="2">Release 3</th></tr>
+<tr><th></th><th>Tính Năng</th><th>Ước Tính</th><th>Tính Năng</th><th>Ước Tính</th><th>Tính Năng</th><th>Ước Tính</th></tr>
+<tr><td rowspan="3">Ưu tiên cao</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Tổng</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Mục tiêu mở rộng</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Tổng với Mục tiêu mở rộng</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</table></div>
+<h5>Đáp Án</h5>
+<p>Lộ trình sản phẩm của bạn có giống như thế này không? Trong ngoặc đơn là số tính năng của mỗi story. Nếu bạn có các biến thể, hãy đảm bảo bạn hiểu sự khác biệt và suy nghĩ về lý do tại sao phiên bản của bạn là một cách hợp lý để tiếp cận dự án cũng như tại sao phiên bản của chúng ta là một phiên bản hợp lý để hoàn thành dự án.</p>
+<div class="table-wrap"><table>
+<tr><th rowspan="2"></th><th colspan="2">Release 1</th><th colspan="2">Release 2</th><th colspan="2">Release 3</th></tr>
+<tr><th>Tính Năng</th><th>Ước Tính</th><th>Tính Năng</th><th>Ước Tính</th><th>Tính Năng</th><th>Ước Tính</th></tr>
+<tr><td rowspan="3">Ưu tiên cao</td><td>Bản đồ thư viện (1)</td><td>1</td><td>Tìm kiếm theo tên sách (8)</td><td>5</td><td>Kết nối với bảng việc làm đầu tiên (6)</td><td>5</td></tr>
+<tr><td>Thu thập hồ sơ độc giả (2)</td><td>3</td><td>"Trình tạo Hồ sơ Xin việc" (4)</td><td>5</td><td>"Trình tạo Thư xin việc" (5)</td><td>3</td></tr>
+<tr><td>Cho phép độc giả thiết lập ID đăng nhập và mật khẩu (3)</td><td>5</td><td>Khả năng thêm câu lạc bộ sách (11)</td><td>5</td><td>Khả năng tham gia câu lạc bộ sách trực tuyến (10)</td><td>3</td></tr>
+<tr><td>Tổng</td><td></td><td>9</td><td></td><td>15</td><td></td><td>11</td></tr>
+<tr><td>Mục tiêu mở rộng</td><td>Tìm kiếm theo tiêu đề bài báo tạp chí (9)</td><td>8</td><td>Tìm kiếm theo tên tác giả (7)</td><td>3</td><td>Kết nối với bảng việc làm thứ hai (6)</td><td>5</td></tr>
+<tr><td>Tổng với Mục tiêu mở rộng</td><td></td><td>17</td><td></td><td>18</td><td></td><td>16</td></tr>
+</table></div>
+
+
+</main>
+<button id="back-top" aria-label="Về đầu trang">↑</button>
+<script>
+const pb=document.getElementById('progress-bar');
+function updPB(){const d=document.documentElement;pb.style.width=Math.min((d.scrollTop/(d.scrollHeight-d.clientHeight))*100,100)+'%'}
+window.addEventListener('scroll',updPB,{passive:true});
+const bt=document.getElementById('back-top');
+window.addEventListener('scroll',()=>{bt.style.opacity=scrollY>400?'1':'0';},{passive:true});
+bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+const mb=document.getElementById('menu-btn'),sb=document.getElementById('sidebar');
+mb.addEventListener('click',()=>sb.classList.toggle('open'));
+document.addEventListener('click',e=>{if(!sb.contains(e.target)&&e.target!==mb)sb.classList.remove('open')});
+const tocLinks=document.querySelectorAll('#sidebar-toc a[href^="#"]');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){tocLinks.forEach(a=>a.classList.remove('active'));const a=document.querySelector('#sidebar-toc a[href="#'+e.target.id+'"]');if(a){a.classList.add('active');a.scrollIntoView({block:'nearest',behavior:'smooth'})}}})},{rootMargin:'-20% 0px -75% 0px'});
+document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
+
+// ── THEME + READING POSITION ───────────────────────────
+(function(){
+  var THEME_KEY='rita_theme', READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var chapNum=m?m[1]:null;
+
+  // Build & inject theme toggle button
+  var hdr=document.getElementById('sidebar-header');
+  if(hdr){
+    var btn=document.createElement('button');
+    btn.id='theme-btn';
+    var curTheme=document.documentElement.getAttribute('data-theme')||'light';
+    btn.textContent=curTheme==='dark'?'☀':'🌙';
+    btn.title='Giao diện sáng / tối';
+    hdr.appendChild(btn);
+    btn.addEventListener('click',function(){
+      var next=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+      document.documentElement.setAttribute('data-theme',next);
+      localStorage.setItem(THEME_KEY,next);
+      btn.textContent=next==='dark'?'☀':'🌙';
+    });
+  }
+
+  if(!chapNum) return;
+
+  // Save last chapter visited
+  try{
+    var rd=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    rd.lastChap='rita_chap'+chapNum;
+    if(!rd.scrollPos) rd.scrollPos={};
+    localStorage.setItem(READ_KEY,JSON.stringify(rd));
+  }catch(e){}
+
+  // Restore scroll position
+  try{
+    var rdR=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    var savedPos=rdR.scrollPos&&rdR.scrollPos[chapNum]||0;
+    if(savedPos>200) setTimeout(function(){window.scrollTo(0,savedPos);},120);
+  }catch(e){}
+
+  // Save scroll position (debounced 600ms)
+  var saveT;
+  window.addEventListener('scroll',function(){
+    clearTimeout(saveT);
+    saveT=setTimeout(function(){
+      try{
+        var r2=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+        if(!r2.scrollPos) r2.scrollPos={};
+        r2.scrollPos[chapNum]=window.scrollY;
+        r2.lastChap='rita_chap'+chapNum;
+        localStorage.setItem(READ_KEY,JSON.stringify(r2));
+      }catch(e){}
+    },600);
+  },{passive:true});
+})();
+
+// ── HIGHLIGHT / NOTES SYSTEM ────────────────────────────
+(function(){
+  var READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  if(!m) return;
+  var chapNum=m[1];
+  var HL_KEY='rita_hl_'+chapNum;
+
+  // ── STORAGE ──
+  function loadHL(){try{return JSON.parse(localStorage.getItem(HL_KEY)||'[]')}catch(e){return[]}}
+  function saveHL(arr){localStorage.setItem(HL_KEY,JSON.stringify(arr));window.__ritaSyncTrigger&&window.__ritaSyncTrigger();}
+  function genId(){return 'h'+Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
+
+  // ── XPATH HELPERS ──
+  var mainEl=document.getElementById('main');
+  function getXPath(node){
+    if(!node||node===mainEl) return '.';
+    var parts=[];
+    var cur=node.nodeType===3?node.parentNode:node;
+    while(cur&&cur!==mainEl&&cur!==document.body){
+      var tag=cur.tagName.toLowerCase();
+      var idx=1,sib=cur.previousElementSibling;
+      while(sib){if(sib.tagName&&sib.tagName.toLowerCase()===tag)idx++;sib=sib.previousElementSibling;}
+      parts.unshift(tag+'['+idx+']');
+      cur=cur.parentElement;
+    }
+    return parts.join('/');
+  }
+  function resolveXPath(xpath){
+    if(!mainEl||xpath==='.') return mainEl;
+    try{
+      var r=document.evaluate('.//'+xpath,mainEl,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);
+      return r.singleNodeValue;
+    }catch(e){return null;}
+  }
+  function findTextAt(el,offset){
+    var walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null);
+    var count=0,node;
+    while((node=walker.nextNode())){
+      var len=node.textContent.length;
+      if(count+len>=offset) return{node:node,localOffset:offset-count};
+      count+=len;
+    }
+    return null;
+  }
+
+  // ── APPLY MARK TO DOM ──
+  function applyMark(hl){
+    try{
+      var sEl=resolveXPath(hl.sxp), eEl=resolveXPath(hl.exp);
+      if(!sEl||!eEl) return false;
+      var sInfo=sEl.nodeType===3?{node:sEl,localOffset:hl.so}:findTextAt(sEl,hl.so);
+      var eInfo=eEl.nodeType===3?{node:eEl,localOffset:hl.eo}:findTextAt(eEl,hl.eo);
+      if(!sInfo||!eInfo) return false;
+      var range=document.createRange();
+      range.setStart(sInfo.node,sInfo.localOffset);
+      range.setEnd(eInfo.node,eInfo.localOffset);
+      applyRange(range,hl.id,hl.color,hl.note||'');
+      return true;
+    }catch(e){return false;}
+  }
+  function applyRange(range,hlId,color,note){
+    var walker=document.createTreeWalker(
+      range.commonAncestorContainer.nodeType===3
+        ?range.commonAncestorContainer.parentNode
+        :range.commonAncestorContainer,
+      NodeFilter.SHOW_TEXT,null
+    );
+    var nodes=[],node;
+    while((node=walker.nextNode())){if(range.intersectsNode(node))nodes.push(node);}
+    nodes.forEach(function(tn){
+      var s=tn===range.startContainer?range.startOffset:0;
+      var e=tn===range.endContainer?range.endOffset:tn.textContent.length;
+      if(s>=e) return;
+      var nr=document.createRange();
+      nr.setStart(tn,s); nr.setEnd(tn,Math.min(e,tn.textContent.length));
+      try{
+        var mk=document.createElement('mark');
+        mk.className='hl'; mk.setAttribute('data-hl-id',hlId);
+        mk.setAttribute('data-color',color); mk.setAttribute('data-note',note);
+        nr.surroundContents(mk);
+      }catch(err){
+        try{
+          var c=nr.extractContents(),mk2=document.createElement('mark');
+          mk2.className='hl'; mk2.setAttribute('data-hl-id',hlId);
+          mk2.setAttribute('data-color',color); mk2.setAttribute('data-note',note);
+          mk2.appendChild(c); nr.insertNode(mk2);
+        }catch(_){}
+      }
+    });
+  }
+  function removeMarks(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      var p=mk.parentNode;
+      while(mk.firstChild)p.insertBefore(mk.firstChild,mk);
+      p.removeChild(mk);
+      p.normalize();
+    });
+  }
+  function updateMarks(hlId,color,note){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.setAttribute('data-color',color);
+      mk.setAttribute('data-note',note);
+    });
+  }
+
+  // ── RESTORE HIGHLIGHTS ON LOAD ──
+  var highlights=loadHL();
+  // Sort by sxp+so descending so earlier ranges aren't offset by later insertions
+  // Actually apply in order (each one is independent)
+  highlights.forEach(applyMark);
+  // Expose re-apply for sync module
+  window.__ritaReapplyMarks=function(){
+    document.querySelectorAll('mark.hl').forEach(function(mk){
+      var p=mk.parentNode;while(mk.firstChild)p.insertBefore(mk.firstChild,mk);p.removeChild(mk);p.normalize();
+    });
+    loadHL().forEach(applyMark);
+    if(typeof updateBadge==='function') updateBadge();
+    if(typeof renderPanelIfOpen==='function') renderPanelIfOpen();
+  };
+
+  // ── SIDEBAR BUTTON ──
+  function updateBadge(){
+    var hls=loadHL();
+    var badge=document.getElementById('hl-badge');
+    if(badge) badge.textContent=hls.length||'0';
+  }
+  var sidebarNav=document.getElementById('sidebar-toc');
+  if(sidebarNav){
+    var hlBtn=document.createElement('button');
+    hlBtn.id='hl-sidebar-btn';
+    hlBtn.innerHTML='<span>✏ Ghi chú & Highlight</span><span id="hl-badge">0</span>';
+    hlBtn.addEventListener('click',function(){openPanel();});
+    // Insert before sidebar-nav (bottom buttons)
+    var sidebarNavBottom=document.getElementById('sidebar-nav');
+    if(sidebarNavBottom) sidebarNavBottom.parentNode.insertBefore(hlBtn,sidebarNavBottom);
+    else document.getElementById('sidebar').appendChild(hlBtn);
+  }
+  updateBadge();
+
+  // ── PANEL ──
+  var panel=document.createElement('div');
+  panel.id='hl-panel';
+  panel.innerHTML='<div id="hl-panel-hdr"><h3>✏ Ghi Chú & Highlight</h3><button id="hl-panel-close">×</button></div><div id="hl-panel-list"></div>';
+  document.body.appendChild(panel);
+  document.getElementById('hl-panel-close').addEventListener('click',closePanel);
+  function openPanel(){renderPanel();panel.classList.add('open');}
+  function closePanel(){panel.classList.remove('open');}
+  function renderPanel(){
+    var list=document.getElementById('hl-panel-list');
+    var hls=loadHL();
+    list.innerHTML='';
+    hls.forEach(function(hl){
+      var item=document.createElement('div');
+      item.className='hl-item'; item.setAttribute('data-color',hl.color);
+      var noteHtml=hl.note?'<div class="hl-item-note">✏ '+escHtml(hl.note)+'</div>':'';
+      item.innerHTML='<button class="hl-item-del" data-id="'+hl.id+'">🗑</button>'
+        +'<div class="hl-item-text">'+escHtml(hl.text||'')+'</div>'+noteHtml;
+      item.addEventListener('click',function(e){
+        if(e.target.classList.contains('hl-item-del')) return;
+        var mk=document.querySelector('mark.hl[data-hl-id="'+hl.id+'"]');
+        if(mk){mk.scrollIntoView({behavior:'smooth',block:'center'});flashMark(hl.id);}
+        closePanel();
+      });
+      item.querySelector('.hl-item-del').addEventListener('click',function(e){
+        e.stopPropagation(); deleteHL(hl.id); renderPanel();
+      });
+      list.appendChild(item);
+    });
+  }
+
+  // ── POPUP ──
+  var popup=document.createElement('div');
+  popup.id='hl-popup'; popup.className='hidden';
+  popup.innerHTML=
+    '<button class="hl-color-btn" data-color="yellow" title="Vàng"></button>'
+    +'<button class="hl-color-btn" data-color="green" title="Xanh"></button>'
+    +'<button class="hl-color-btn" data-color="red" title="Đỏ"></button>'
+    +'<div class="hl-sep"></div>'
+    +'<button class="hl-note-btn" title="Thêm ghi chú">✏</button>'
+    +'<button class="hl-del-btn hl-del-action" title="Xóa">🗑</button>';
+  document.body.appendChild(popup);
+
+  var currentHlId=null;    // id being edited (null = new)
+  var pendingRange=null;   // Range for new highlight
+  var pendingXP=null;      // serialized position for new highlight
+
+  // Position popup near a rect
+  function positionPopup(rect){
+    var pw=popup.offsetWidth||160,ph=popup.offsetHeight||40;
+    var top=rect.top-ph-10+window.scrollY;
+    var left=rect.left+(rect.width-pw)/2;
+    if(top<window.scrollY+8) top=rect.bottom+10+window.scrollY;
+    left=Math.max(8,Math.min(left,window.innerWidth-pw-8));
+    popup.style.top=top+'px';
+    popup.style.left=left+'px';
+  }
+  function showPopup(rect,hlId){
+    currentHlId=hlId||null;
+    var isEdit=!!hlId;
+    popup.querySelector('.hl-del-action').style.display=isEdit?'':'none';
+    popup.querySelector('.hl-note-btn').style.display='';
+    popup.classList.remove('hidden');
+    positionPopup(rect);
+  }
+  function hidePopup(){
+    popup.classList.add('hidden');
+    pendingRange=null; pendingXP=null; currentHlId=null;
+  }
+
+  // Color buttons
+  popup.querySelectorAll('.hl-color-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var color=btn.getAttribute('data-color');
+      if(currentHlId){
+        // Update existing
+        var hls=loadHL();
+        var idx=hls.findIndex(function(h){return h.id===currentHlId;});
+        if(idx>=0){hls[idx].color=color;saveHL(hls);}
+        updateMarks(currentHlId,color,hls[idx]?hls[idx].note||'':'');
+        updateBadge(); renderPanelIfOpen();
+      } else if(pendingRange&&pendingXP){
+        // Create new
+        var id=genId();
+        var text=pendingRange.toString().substring(0,500);
+        applyRange(pendingRange,id,color,'');
+        pendingRange.collapse();
+        window.getSelection()&&window.getSelection().removeAllRanges();
+        var hls=loadHL();
+        hls.push({id:id,color:color,note:'',text:text,
+          sxp:pendingXP.sxp,so:pendingXP.so,exp:pendingXP.exp,eo:pendingXP.eo});
+        saveHL(hls); updateBadge(); renderPanelIfOpen();
+      }
+      hidePopup();
+    });
+  });
+
+  // Note button
+  popup.querySelector('.hl-note-btn').addEventListener('click',function(){
+    var id=currentHlId;
+    var existing='';
+    if(id){var hls=loadHL();var h=hls.find(function(x){return x.id===id;});if(h)existing=h.note||'';}
+    hidePopup();
+    openNoteModal(id,existing);
+  });
+
+  // Delete button
+  popup.querySelector('.hl-del-action').addEventListener('click',function(){
+    if(currentHlId) deleteHL(currentHlId);
+    hidePopup();
+  });
+
+  function deleteHL(id){
+    removeMarks(id);
+    var hls=loadHL().filter(function(h){return h.id!==id;});
+    saveHL(hls); updateBadge(); renderPanelIfOpen();
+  }
+
+  // ── NOTE MODAL ──
+  var noteModal=document.createElement('div');
+  noteModal.id='hl-note-modal'; noteModal.className='hidden';
+  noteModal.innerHTML='<div id="hl-note-box">'
+    +'<h3>✏ Ghi chú</h3>'
+    +'<textarea id="hl-note-ta" placeholder="Nhập ghi chú..."></textarea>'
+    +'<div class="hl-note-actions">'
+    +'<button class="hl-note-cancel">Hủy</button>'
+    +'<button class="hl-note-save">Lưu</button>'
+    +'</div></div>';
+  document.body.appendChild(noteModal);
+  var _noteTargetId=null;
+  function openNoteModal(hlId,existing){
+    _noteTargetId=hlId;
+    document.getElementById('hl-note-ta').value=existing||'';
+    noteModal.classList.remove('hidden');
+    setTimeout(function(){document.getElementById('hl-note-ta').focus();},50);
+  }
+  noteModal.querySelector('.hl-note-cancel').addEventListener('click',function(){noteModal.classList.add('hidden');});
+  noteModal.querySelector('.hl-note-save').addEventListener('click',function(){
+    var note=document.getElementById('hl-note-ta').value.trim();
+    if(_noteTargetId){
+      var hls=loadHL();
+      var idx=hls.findIndex(function(h){return h.id===_noteTargetId;});
+      if(idx>=0){hls[idx].note=note;saveHL(hls);updateMarks(_noteTargetId,hls[idx].color,note);updateBadge();renderPanelIfOpen();}
+    }
+    noteModal.classList.add('hidden');
+  });
+  noteModal.addEventListener('click',function(e){if(e.target===noteModal)noteModal.classList.add('hidden');});
+
+  // ── SELECTION HANDLER ──
+  document.addEventListener('mouseup',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    setTimeout(function(){
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed||!sel.rangeCount){hidePopup();return;}
+      var range=sel.getRangeAt(0);
+      var text=range.toString().trim();
+      if(!text||text.length<2){hidePopup();return;}
+      // Only highlight within #main
+      if(!mainEl||!mainEl.contains(range.commonAncestorContainer)){hidePopup();return;}
+      // Serialize positions
+      var sNode=range.startContainer,eNode=range.endContainer;
+      var sParent=sNode.nodeType===3?sNode.parentNode:sNode;
+      var eParent=eNode.nodeType===3?eNode.parentNode:eNode;
+      var sxp=getXPath(sParent),exp=getXPath(eParent);
+      // calc offsets within parent element
+      var so=0,eo=0;
+      var w=document.createTreeWalker(sParent,NodeFilter.SHOW_TEXT,null);
+      var n;while((n=w.nextNode())){if(n===sNode){so+=range.startOffset;break;}so+=n.textContent.length;}
+      var w2=document.createTreeWalker(eParent,NodeFilter.SHOW_TEXT,null);
+      while((n=w2.nextNode())){if(n===eNode){eo+=range.endOffset;break;}eo+=n.textContent.length;}
+      pendingRange=range.cloneRange();
+      pendingXP={sxp:sxp,so:so,exp:exp,eo:eo};
+      currentHlId=null;
+      var rect=range.getBoundingClientRect();
+      showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width});
+    },10);
+  });
+
+  // ── CLICK ON EXISTING MARK ──
+  document.addEventListener('click',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    var mk=e.target.closest('mark.hl');
+    if(!mk){
+      // click outside: if selection is collapsed, hide popup
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed) hidePopup();
+      return;
+    }
+    e.stopPropagation();
+    var hlId=mk.getAttribute('data-hl-id');
+    var rect=mk.getBoundingClientRect();
+    currentHlId=hlId;
+    pendingRange=null;pendingXP=null;
+    showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width},hlId);
+  });
+
+  // ── FLASH EFFECT ──
+  function flashMark(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.style.transition='outline .2s';mk.style.outline='3px solid #c9a84c';
+      setTimeout(function(){mk.style.outline='none';},1500);
+    });
+  }
+
+  function renderPanelIfOpen(){if(panel.classList.contains('open'))renderPanel();}
+
+  function escHtml(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+})();
+
+
+// ── CHAPTER NAV PANEL ───────────────────────────────────
+(function(){
+  var CHAPS=[
+    [1,'rita_chap01.html','Mẹo & Thủ Thuật Ôn Thi PMP®'],
+    [2,'rita_chap02.html','Tài Liệu Tham Khảo Kỳ Thi'],
+    [3,'rita_chap03.html','Nền Tảng Quản Lý Dự Án'],
+    [4,'rita_chap04.html','Tích Hợp'],
+    [5,'rita_chap05.html','Kỹ Năng Lãnh Đạo'],
+    [6,'rita_chap06.html','Xây Dựng & Hỗ Trợ Hiệu Suất Nhóm'],
+    [7,'rita_chap07.html','Phạm Vi Dự Án'],
+    [8,'rita_chap08.html','Tiến Độ & Ngân Sách Dự Án'],
+    [10,'rita_chap10.html','Chất Lượng Sản Phẩm Bàn Giao'],
+    [11,'rita_chap11.html','Truyền Thông'],
+    [12,'rita_chap12.html','Rủi Ro & Vấn Đề'],
+    [13,'rita_chap13.html','Mua Sắm'],
+    [14,'rita_chap14.html','Các Bên Liên Quan'],
+    [15,'rita_chap15.html','Tuân Thủ & Mang Lại Giá Trị'],
+    [16,'rita_chap16.html','Mẹo Vượt Qua Kỳ Thi PMP®'],
+    [17,'rita_chap17.html','Các Phương Pháp Agile Phổ Biến'],
+    [18,'rita_chap18.html','Hướng Dẫn PMBOK & Tiêu Chuẩn PM']
+  ];
+
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var curNum=m?parseInt(m[1]):null;
+  var READ_KEY='rita_reading';
+
+  // Build panel DOM
+  var panel=document.createElement('div');
+  panel.id='chap-panel'; panel.className='hidden';
+  var listHtml='';
+  CHAPS.forEach(function(c){
+    var isActive=c[0]===curNum;
+    listHtml+='<a class="chap-panel-item'+(isActive?' active':'')+'" href="'+c[1]+'">'
+      +'<span class="cpanel-num">Ch'+c[0]+'</span>'
+      +'<span class="cpanel-title">'+c[2]+'</span>'
+      +(isActive?'<span class="cpanel-status">● Đang đọc</span>':'')
+      +'</a>';
+  });
+  panel.innerHTML='<div id="chap-panel-overlay"></div>'
+    +'<div id="chap-panel-box">'
+    +'<div id="chap-panel-hdr"><h3>☰ Danh Sách Chương</h3><button id="chap-panel-close">×</button></div>'
+    +'<div id="chap-panel-list">'+listHtml+'</div>'
+    +'</div>';
+  document.body.appendChild(panel);
+
+  function openChapPanel(){panel.classList.remove('hidden');}
+  function closeChapPanel(){panel.classList.add('hidden');}
+  document.getElementById('chap-panel-overlay').addEventListener('click',closeChapPanel);
+  document.getElementById('chap-panel-close').addEventListener('click',closeChapPanel);
+
+  // Wire up the Mục lục button
+  var mucLucBtn=document.getElementById('chap-muc-luc-btn');
+  if(mucLucBtn) mucLucBtn.addEventListener('click',function(e){e.preventDefault();openChapPanel();});
+})();
+
+
+// ── GITHUB HIGHLIGHTS SYNC ──────────────────────────
+(function(){
+  var REPO='goukakujlptsuport-beep/pmbok6';
+  var TOKEN_KEY='rita_gh_token';
+  var API_URL='https://api.github.com/repos/'+REPO+'/contents/data/rita_highlights.json';
+  var fileSha=null;
+  var syncTimer=null;
+
+  // Called by patched saveHL after every highlight change
+  window.__ritaSyncTrigger=function(){
+    clearTimeout(syncTimer);
+    syncTimer=setTimeout(pushToGitHub,3000);
+  };
+
+  // ── STATUS BUTTON (inserted before #sidebar-nav) ──
+  var btn=document.createElement('button');
+  btn.id='sync-btn'; btn.dataset.state='no-token';
+  btn.innerHTML='<span>☁ Sync Git</span><span id="sync-status-text">Đang kết nối…</span>';
+  btn.title='Đồng bộ highlight / ghi chú lên GitHub';
+  btn.addEventListener('click',handleSyncClick);
+  var sidebarNavEl=document.getElementById('sidebar-nav');
+  if(sidebarNavEl) sidebarNavEl.parentNode.insertBefore(btn,sidebarNavEl);
+
+  var statusText=document.getElementById('sync-status-text');
+  function setStatus(state,msg){
+    btn.dataset.state=state;
+    if(statusText) statusText.textContent=msg;
+  }
+
+  // ── TOKEN MODAL ──
+  var modal=document.createElement('div');
+  modal.id='sync-modal'; modal.className='hidden';
+  modal.innerHTML='<div id="sync-modal-box">'
+    +'<h3>☁ Cấu Hình GitHub Sync</h3>'
+    +'<p>Nhập <strong style="color:var(--gold)">GitHub Personal Access Token (PAT)</strong> để đồng bộ highlight giữa các thiết bị.<br>'
+    +'Token cần quyền <strong style="color:var(--gold-lt)">Contents: Read &amp; Write</strong> trên repo pmbok6.<br>'
+    +'Token được lưu trong localStorage của trình duyệt này.</p>'
+    +'<input id="sync-token-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" spellcheck="false" autocomplete="off">'
+    +'<div class="sync-modal-btns">'
+    +'<button id="sync-clear-btn">🗑 Xóa token</button>'
+    +'<button id="sync-cancel-btn">Hủy</button>'
+    +'<button id="sync-save-btn">💾 Lưu &amp; Sync</button>'
+    +'</div></div>';
+  document.body.appendChild(modal);
+
+  document.getElementById('sync-cancel-btn').addEventListener('click',function(){modal.classList.add('hidden');});
+  document.getElementById('sync-save-btn').addEventListener('click',function(){
+    var t=(document.getElementById('sync-token-input').value||'').trim();
+    if(!t){alert('Vui lòng nhập GitHub PAT!');return;}
+    localStorage.setItem(TOKEN_KEY,t);
+    modal.classList.add('hidden');
+    fileSha=null;
+    initSync();
+  });
+  document.getElementById('sync-clear-btn').addEventListener('click',function(){
+    if(!confirm('Xóa token? Highlights sẽ không được sync cho đến khi cấu hình lại.')) return;
+    localStorage.removeItem(TOKEN_KEY);
+    fileSha=null;
+    modal.classList.add('hidden');
+    setStatus('no-token','Chưa cấu hình');
+  });
+  modal.addEventListener('click',function(e){if(e.target===modal)modal.classList.add('hidden');});
+
+  function handleSyncClick(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){
+      var inp=document.getElementById('sync-token-input');
+      if(inp) inp.value='';
+      modal.classList.remove('hidden');
+      setTimeout(function(){if(inp)inp.focus();},80);
+    } else {
+      // Manual re-sync
+      fileSha=null;
+      initSync();
+    }
+  }
+
+  // ── HELPERS ──
+  var ALL_CHAPS=['01','02','03','04','05','06','07','08','10','11','12','13','14','15','16','17','18'];
+
+  function getAllLocal(){
+    var all={};
+    ALL_CHAPS.forEach(function(n){
+      try{
+        var v=JSON.parse(localStorage.getItem('rita_hl_'+n)||'[]');
+        if(v&&v.length>0) all[n]=v;
+      }catch(e){}
+    });
+    return all;
+  }
+
+  function countHL(obj){
+    return Object.values(obj).reduce(function(s,a){return s+(a?a.length:0);},0);
+  }
+
+  // Union merge: keep all highlights by id, prefer local note if different
+  function mergeHL(local,remote){
+    var merged={};
+    var allChaps=new Set(Object.keys(local).concat(Object.keys(remote)));
+    allChaps.forEach(function(chap){
+      var loc=local[chap]||[];
+      var rem=remote[chap]||[];
+      var byId={};
+      loc.forEach(function(h){byId[h.id]=h;});
+      rem.forEach(function(h){if(!byId[h.id])byId[h.id]=h;});
+      var arr=Object.values(byId);
+      if(arr.length>0) merged[chap]=arr;
+    });
+    return merged;
+  }
+
+  function applyToLocal(highlights){
+    Object.keys(highlights).forEach(function(chap){
+      localStorage.setItem('rita_hl_'+chap,JSON.stringify(highlights[chap]));
+    });
+  }
+
+  // base64 encode/decode with Unicode support
+  function b64enc(str){
+    return btoa(unescape(encodeURIComponent(str)));
+  }
+  function b64dec(b64){
+    return decodeURIComponent(escape(atob(b64.replace(/[\r\n]/g,''))));
+  }
+
+  // ── FETCH FROM GITHUB ──
+  async function fetchFromGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    var headers={'Accept':'application/vnd.github.v3+json'};
+    if(token) headers['Authorization']='token '+token;
+    try{
+      var resp=await fetch(API_URL,{headers:headers});
+      if(resp.status===404){fileSha=null;return null;}
+      if(!resp.ok) throw new Error('HTTP '+resp.status);
+      var data=await resp.json();
+      fileSha=data.sha;
+      var content=JSON.parse(b64dec(data.content));
+      return content;
+    }catch(e){
+      console.warn('[sync] fetch:',e);
+      return 'error';
+    }
+  }
+
+  // ── PUSH TO GITHUB ──
+  async function pushToGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang sync…');
+    var local=getAllLocal();
+    var payload={version:1,lastSync:new Date().toISOString(),highlights:local};
+    var encoded=b64enc(JSON.stringify(payload,null,2));
+    var body={message:'sync: rita highlights ['+countHL(local)+' HL]',content:encoded};
+    if(fileSha) body.sha=fileSha;
+    try{
+      var resp=await fetch(API_URL,{
+        method:'PUT',
+        headers:{
+          'Authorization':'token '+token,
+          'Content-Type':'application/json',
+          'Accept':'application/vnd.github.v3+json'
+        },
+        body:JSON.stringify(body)
+      });
+      if(!resp.ok){
+        var err=await resp.json().catch(function(){return{};});
+        throw new Error(err.message||'HTTP '+resp.status);
+      }
+      var result=await resp.json();
+      fileSha=result.content.sha;
+      setStatus('ok','✓ Đã sync ('+countHL(local)+' HL)');
+    }catch(e){
+      setStatus('err','✗ '+e.message.slice(0,28));
+      console.error('[sync] push:',e);
+    }
+  }
+
+  // ── INIT ──
+  async function initSync(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang tải…');
+
+    var ghData=await fetchFromGitHub();
+    if(ghData==='error'){
+      setStatus('err','✗ Không kết nối được');
+      return;
+    }
+    if(ghData&&ghData.highlights){
+      var local=getAllLocal();
+      var merged=mergeHL(local,ghData.highlights);
+      applyToLocal(merged);
+      // Re-apply marks on current chapter from updated localStorage
+      if(typeof window.__ritaReapplyMarks==='function') window.__ritaReapplyMarks();
+      var ghN=countHL(ghData.highlights), mergedN=countHL(merged);
+      if(mergedN>ghN){
+        // New highlights from remote — push merged back
+        setTimeout(pushToGitHub,1200);
+      } else {
+        setStatus('ok','✓ Sync OK ('+mergedN+' HL)');
+      }
+    } else {
+      // File doesn't exist yet — push current local state
+      await pushToGitHub();
+    }
+  }
+
+  initSync();
+})();
+
+</script>
+</body></html>

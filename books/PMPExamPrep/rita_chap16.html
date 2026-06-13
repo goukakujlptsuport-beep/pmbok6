@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mẹo Vượt Qua Kỳ Thi PMP® | Rita PMP® Exam Prep 11</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:     #1a2744;
+  --red:      #8b1a1a;
+  --gold:     #c9a84c;
+  --gold-lt:  #e8d5a3;
+  --cream:    #fdf8f0;
+  --text:     #2c2c2c;
+  --text-dim: #5a5a5a;
+  --border:   #d4c89a;
+  --sidebar-w: 268px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ── PROGRESS BAR ── */
+#progress-bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--gold);z-index:200;transition:width .1s}
+
+/* ── SIDEBAR ── */
+#sidebar{
+  width:var(--sidebar-w);background:var(--navy);color:#ccd4e8;
+  position:fixed;top:0;left:0;bottom:0;overflow-y:auto;z-index:100;
+  border-right:3px solid var(--gold);display:flex;flex-direction:column;
+}
+#sidebar-header{
+  background:linear-gradient(135deg,#0f1d3a 0%,#1a2744 100%);
+  padding:1.4rem 1.2rem;border-bottom:2px solid var(--gold);flex-shrink:0;
+}
+#sidebar-header .book-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.62rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;
+}
+#sidebar-header h2{font-size:.92rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:.25rem}
+#sidebar-header .edition{font-family:'Source Sans 3',sans-serif;font-size:.7rem;color:var(--gold-lt);font-style:italic}
+#sidebar-toc{flex:1;overflow-y:auto;padding:.6rem 0}
+#sidebar-toc a{
+  display:block;font-family:'Source Sans 3',sans-serif;font-size:.78rem;
+  color:#aab8d0;text-decoration:none;padding:.4rem 1.2rem;line-height:1.4;
+  transition:all .15s;border-left:3px solid transparent;
+}
+#sidebar-toc a:hover,#sidebar-toc a.active{color:#fff;background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+#sidebar-toc a.toc-h4{padding-left:2.2rem;font-size:.72rem;color:#8896b0}
+#sidebar-toc a.toc-h4:hover{color:#ccd4e8}
+#sidebar-toc .toc-group-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.6rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  padding:.7rem 1.2rem .25rem;opacity:.85;
+}
+#sidebar-nav{
+  flex-shrink:0;border-top:1px solid rgba(255,255,255,.08);
+  display:flex;justify-content:space-between;padding:.7rem .8rem;gap:.5rem;
+}
+#sidebar-nav a{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;color:var(--gold-lt);
+  text-decoration:none;padding:.4rem .7rem;border:1px solid rgba(201,168,76,.3);
+  border-radius:4px;transition:all .2s;line-height:1.3;text-align:center;flex:1;
+}
+#sidebar-nav a:hover{background:rgba(201,168,76,.15);color:#fff}
+#sidebar-nav a.disabled{opacity:.35;pointer-events:none}
+
+/* ── HAMBURGER (mobile) ── */
+#menu-btn{
+  display:none;position:fixed;top:.7rem;left:.8rem;z-index:150;
+  background:var(--navy);border:1px solid var(--gold);color:var(--gold);
+  width:36px;height:36px;border-radius:6px;font-size:1.1rem;cursor:pointer;
+  align-items:center;justify-content:center;
+}
+
+/* ── MAIN ── */
+#main{margin-left:var(--sidebar-w);max-width:880px;padding:0 2.8rem 5rem}
+
+/* ── CHAPTER HERO ── */
+.chapter-hero{
+  background:linear-gradient(135deg,var(--navy) 0%,#2a3a6a 100%);
+  color:white;padding:2.8rem 2.8rem 2.2rem;margin:0 -2.8rem 2.8rem;
+  border-bottom:4px solid var(--gold);position:relative;overflow:hidden;
+}
+.chapter-hero::before{
+  content:'16';position:absolute;right:1.5rem;top:50%;
+  transform:translateY(-50%);font-size:10rem;font-weight:700;
+  color:rgba(255,255,255,.05);font-family:'Merriweather',serif;line-height:1;
+}
+.chapter-hero .ch-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;font-weight:700;
+  letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;
+}
+.chapter-hero h1{font-size:2rem;font-weight:700;line-height:1.2;margin-bottom:.35rem}
+.chapter-hero .ch-en{font-family:'Source Sans 3',sans-serif;font-size:.95rem;color:rgba(255,255,255,.5);font-style:italic}
+
+/* ── CONTENT HEADINGS ── */
+h3{
+  font-family:'Merriweather',serif;font-size:1.25rem;color:var(--navy);
+  margin:2.5rem 0 .85rem;padding-bottom:.45rem;border-bottom:2px solid var(--gold);
+}
+h4{
+  font-family:'Merriweather',serif;font-size:1.05rem;color:var(--navy);
+  margin:2rem 0 .65rem;padding-left:.75rem;border-left:4px solid var(--gold);
+}
+h5{
+  font-family:'Source Sans 3',sans-serif;font-size:.9rem;font-weight:700;
+  color:var(--red);margin:1.4rem 0 .45rem;text-transform:uppercase;letter-spacing:.05em;
+}
+p{font-family:'Merriweather',serif;font-size:.94rem;line-height:1.88;margin-bottom:.95rem;color:var(--text)}
+
+/* ── LISTS ── */
+ul.content-list,ol.content-list{
+  margin:.5rem 0 1rem;padding:0;list-style:none;
+}
+ul.content-list li{
+  position:relative;padding:.28rem 0 .28rem 1.6rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);
+}
+ul.content-list li::before{
+  content:'◆';position:absolute;left:0;color:var(--gold);font-size:.65rem;top:.45rem;
+}
+ol.content-list{counter-reset:ol-c;list-style:none}
+ol.content-list li{
+  position:relative;padding:.28rem 0 .28rem 2rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);counter-increment:ol-c;
+}
+ol.content-list li::before{
+  content:counter(ol-c)'.';position:absolute;left:0;color:var(--navy);
+  font-weight:700;font-size:.85rem;min-width:1.5rem;
+}
+ul.content-list ul.content-list li::before{content:'–';color:var(--text-dim);font-size:.9rem;top:.35rem}
+
+/* ── CALLOUT / DEF BOX ── */
+.callout{
+  background:linear-gradient(135deg,#f5f0e8,#ede8d8);
+  border:1px solid var(--border);border-left:5px solid var(--gold);
+  border-radius:0 6px 6px 0;padding:1rem 1.2rem;margin:1.3rem 0;
+}
+.callout p{font-size:.9rem;margin-bottom:.5rem}
+.callout p:last-child{margin-bottom:0}
+.callout ul.content-list li{font-size:.88rem}
+.callout-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.65rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;
+}
+.callout.tip{border-left-color:#2d7a2d;background:linear-gradient(135deg,#f0f7f0,#e4f0e4)}
+.callout.tip .callout-label{color:#2d7a2d}
+
+/* ── HIGHLIGHT (quicktest / exam alert) ── */
+.highlight{
+  background:var(--navy);color:#e8d5a3;
+  border-radius:8px;padding:1.1rem 1.3rem;margin:1.5rem 0;
+}
+.highlight h5,.highlight strong{color:var(--gold-lt)}
+.highlight p,.highlight li{color:#ccd4e8;font-size:.88rem}
+.highlight ul.content-list li::before{color:var(--gold)}
+
+/* ── FIGURE ── */
+.img-center{
+  text-align:center;margin:1.8rem 0;padding:1rem;
+  background:#f8f5ee;border:1px solid var(--border);border-radius:8px;
+}
+.img-center img{max-width:100%;height:auto;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.img-center p,.img-center div{
+  margin-top:.65rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.8rem;color:var(--text-dim);font-style:italic;
+}
+
+/* ── TABLES ── */
+.table-wrap{overflow-x:auto;margin:1.5rem 0}
+table{width:100%;border-collapse:collapse;font-family:'Source Sans 3',sans-serif;font-size:.84rem}
+table th{background:var(--navy);color:white;padding:.6rem .8rem;text-align:center;font-weight:600;font-size:.79rem}
+table td{padding:.5rem .8rem;border:1px solid #ddd;vertical-align:top;line-height:1.5}
+table tr:nth-child(even) td{background:#f9f6ef}
+
+/* ── BACK TO TOP ── */
+#back-top{
+  position:fixed;bottom:1.5rem;right:1.5rem;
+  background:var(--navy);color:var(--gold);border:1px solid var(--gold);
+  width:38px;height:38px;border-radius:50%;font-size:1.2rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .25s;z-index:99;
+}
+#back-top:hover{background:var(--gold);color:var(--navy)}
+
+/* ── MOBILE ── */
+@media(max-width:860px){
+  #sidebar{transform:translateX(-100%);transition:transform .25s;top:3rem}
+  #sidebar.open{transform:translateX(0)}
+  #menu-btn{display:flex}
+  #main{margin-left:0;padding:3.5rem 1.2rem 4rem}
+  .chapter-hero{margin:0 -1.2rem 2rem;padding:2rem 1.4rem}
+  .chapter-hero::before{display:none}
+}
+
+/* ── DARK / LIGHT MODE ─────────────────────────────── */
+html[data-theme=dark]{--cream:#0f1520;--text:#dde4f0;--text-dim:#8899bb;--border:#253048;--gold-lt:#c9a84c}
+html[data-theme=dark] body{background:#0f1520;color:#dde4f0}
+html[data-theme=dark] #main{background:#0f1520}
+html[data-theme=dark] h1,html[data-theme=dark] h2{color:#e8d5a3}
+html[data-theme=dark] h3{color:#e8d5a3;border-bottom-color:var(--gold)}
+html[data-theme=dark] h4{color:#b8ccee;border-left-color:var(--gold)}
+html[data-theme=dark] p,html[data-theme=dark] li,html[data-theme=dark] td{color:#dde4f0}
+html[data-theme=dark] strong{color:#e8d5a3}
+html[data-theme=dark] em{color:#b8ccee}
+html[data-theme=dark] .callout{background:linear-gradient(135deg,#1a2436,#1e2d45);border-left-color:var(--gold);color:#dde4f0}
+html[data-theme=dark] .callout p{color:#dde4f0}
+html[data-theme=dark] blockquote{background:#1a2436;border-left-color:var(--gold);color:#b0c0d8}
+html[data-theme=dark] table{background:#131c2b}
+html[data-theme=dark] th{background:#1a2744;color:#e8d5a3;border-color:#253048}
+html[data-theme=dark] td{border-color:#253048}
+html[data-theme=dark] tr:nth-child(even) td{background:#1a2436}
+html[data-theme=dark] .highlight,.highlight-box{background:#1a2436!important;border-color:#253048!important;color:#dde4f0!important}
+html[data-theme=dark] #back-top{background:#1a2744;color:var(--gold);border:1px solid rgba(201,168,76,.4)}
+html[data-theme=dark] ul.content-list li,html[data-theme=dark] ol.content-list li{color:#dde4f0}
+html[data-theme=dark] .chapter-hero{background:linear-gradient(135deg,#0a1228 0%,#142040 100%)}
+html[data-theme=dark] .exercise-card{background:#1a2436;border-color:#253048}
+html[data-theme=dark] .answer-box{background:#152035;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] .answer-box p{color:#dde4f0}
+/* theme toggle button */
+#theme-btn{position:absolute;top:.65rem;right:.7rem;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.35);color:var(--gold);width:28px;height:28px;border-radius:5px;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+#theme-btn:hover{background:rgba(201,168,76,.2)}
+#sidebar-header{position:relative}
+
+/* ── HIGHLIGHT SYSTEM ─────────────────────────────────── */
+mark.hl{border-radius:2px;cursor:pointer;padding:1px 0;background:transparent}
+mark.hl[data-color=yellow]{background:rgba(255,241,118,.75)}
+mark.hl[data-color=green]{background:rgba(165,214,167,.75)}
+mark.hl[data-color=red]{background:rgba(239,154,154,.75)}
+mark.hl::after{display:none}
+mark.hl[data-note]:not([data-note=""])::after{content:"✏";font-size:.6rem;vertical-align:super;margin-left:1px;opacity:.65;display:inline}
+/* selection popup */
+#hl-popup{position:fixed;z-index:9999;background:#1a2744;border:1px solid rgba(201,168,76,.5);border-radius:8px;padding:.45rem .6rem;display:flex;align-items:center;gap:.35rem;box-shadow:0 4px 20px rgba(0,0,0,.4);pointer-events:all}
+#hl-popup.hidden{display:none!important}
+.hl-color-btn{width:24px;height:24px;border-radius:50%;border:2px solid rgba(255,255,255,.25);cursor:pointer;transition:transform .15s,border-color .15s;flex-shrink:0}
+.hl-color-btn:hover{transform:scale(1.2);border-color:rgba(255,255,255,.7)}
+.hl-color-btn[data-color=yellow]{background:#fff176}
+.hl-color-btn[data-color=green]{background:#a5d6a7}
+.hl-color-btn[data-color=red]{background:#ef9a9a}
+.hl-sep{width:1px;height:20px;background:rgba(255,255,255,.2);margin:0 .1rem}
+.hl-note-btn{background:none;border:none;color:rgba(255,255,255,.7);font-size:.9rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-note-btn:hover{color:#fff;background:rgba(255,255,255,.1)}
+.hl-del-btn{background:none;border:none;color:rgba(239,154,154,.8);font-size:.85rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-del-btn:hover{color:#ef9a9a;background:rgba(239,154,154,.12)}
+/* note modal */
+#hl-note-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center}
+#hl-note-modal.hidden{display:none!important}
+#hl-note-box{background:#fff;border-radius:10px;padding:1.4rem;width:min(420px,90vw);box-shadow:0 8px 32px rgba(0,0,0,.25)}
+#hl-note-box h3{font-size:.95rem;color:#1a2744;margin-bottom:.7rem;font-family:'Merriweather',serif}
+#hl-note-ta{width:100%;border:1px solid #d4c89a;border-radius:6px;padding:.6rem .8rem;font-size:.88rem;font-family:'Source Sans 3',sans-serif;resize:vertical;min-height:80px;color:#2c2c2c;outline:none}
+#hl-note-ta:focus{border-color:#c9a84c;box-shadow:0 0 0 2px rgba(201,168,76,.25)}
+.hl-note-actions{display:flex;justify-content:flex-end;gap:.6rem;margin-top:.8rem}
+.hl-note-cancel{background:transparent;border:1px solid #ccc;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+.hl-note-save{background:#1a2744;color:#fff;border:none;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+/* highlights panel */
+#hl-panel{position:fixed;top:0;right:0;bottom:0;width:300px;background:#fff;border-left:3px solid var(--gold);z-index:500;display:flex;flex-direction:column;box-shadow:-4px 0 20px rgba(0,0,0,.15);transform:translateX(100%);transition:transform .25s}
+#hl-panel.open{transform:translateX(0)}
+#hl-panel-hdr{background:#1a2744;padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--gold)}
+#hl-panel-hdr h3{font-size:.88rem;color:#fff;font-family:'Source Sans 3',sans-serif;font-weight:700;letter-spacing:.05em}
+#hl-panel-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.2rem;cursor:pointer;padding:.2rem;line-height:1}
+#hl-panel-close:hover{color:#fff}
+#hl-panel-list{flex:1;overflow-y:auto;padding:.6rem}
+#hl-panel-list:empty::before{content:"Chưa có ghi chú nào trong chương này.";font-size:.82rem;color:#999;display:block;padding:.8rem;text-align:center;font-style:italic}
+.hl-item{padding:.65rem .8rem;border-radius:6px;margin-bottom:.5rem;border-left:4px solid #ddd;background:#fafafa;cursor:pointer;transition:background .15s}
+.hl-item:hover{background:#f0f0f0}
+.hl-item[data-color=yellow]{border-left-color:#fdd835}
+.hl-item[data-color=green]{border-left-color:#66bb6a}
+.hl-item[data-color=red]{border-left-color:#ef5350}
+.hl-item-text{font-size:.8rem;color:#2c2c2c;line-height:1.5;margin-bottom:.3rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.hl-item-note{font-size:.75rem;color:#666;font-style:italic;margin-bottom:.3rem}
+.hl-item-del{float:right;background:none;border:none;color:#bbb;cursor:pointer;font-size:.8rem;padding:.1rem .3rem;border-radius:3px;line-height:1}
+.hl-item-del:hover{color:#ef5350;background:rgba(239,83,80,.08)}
+/* sidebar hl badge */
+#hl-sidebar-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:var(--gold);cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#hl-sidebar-btn:hover{background:rgba(201,168,76,.1)}
+#hl-badge{background:rgba(201,168,76,.2);color:var(--gold);font-size:.65rem;font-weight:700;padding:.1rem .4rem;border-radius:10px;min-width:18px;text-align:center}
+html[data-theme=dark] #hl-note-box{background:#1a2436;border:1px solid #253048}
+html[data-theme=dark] #hl-note-box h3{color:#e8d5a3}
+html[data-theme=dark] #hl-note-ta{background:#0f1520;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] #hl-panel{background:#131c2b;border-left-color:var(--gold)}
+html[data-theme=dark] .hl-item{background:#1a2436;border-bottom:1px solid #1e2d45}
+html[data-theme=dark] .hl-item:hover{background:#1e2d45}
+html[data-theme=dark] .hl-item-text{color:#dde4f0}
+html[data-theme=dark] .hl-item-note{color:#8899bb}
+html[data-theme=dark] .hl-note-cancel{border-color:#253048;color:#dde4f0;background:#1a2436}
+html[data-theme=dark] .hl-note-save{background:#c9a84c;color:#0a0f1a}
+
+/* ── CHAPTER NAV PANEL ─────────────────────────────────── */
+#chap-panel{position:fixed;inset:0;z-index:9000;display:flex;align-items:stretch}
+#chap-panel.hidden{display:none!important}
+#chap-panel-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);cursor:pointer}
+#chap-panel-box{position:relative;z-index:1;width:min(360px,90vw);background:#0f1d3a;border-right:3px solid var(--gold);display:flex;flex-direction:column;animation:slideInLeft .2s ease}
+@keyframes slideInLeft{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+#chap-panel-hdr{background:linear-gradient(135deg,#0a1228,#1a2744);padding:1.2rem 1.3rem;border-bottom:2px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
+#chap-panel-hdr h3{font-family:'Source Sans 3',sans-serif;font-size:.85rem;font-weight:700;color:#fff;letter-spacing:.1em;text-transform:uppercase}
+#chap-panel-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.3rem;cursor:pointer;padding:.2rem;line-height:1;transition:color .15s}
+#chap-panel-close:hover{color:#fff}
+#chap-panel-list{flex:1;overflow-y:auto;padding:.5rem 0}
+.chap-panel-item{display:flex;align-items:center;gap:.8rem;padding:.7rem 1.3rem;cursor:pointer;transition:background .15s;border-left:3px solid transparent;text-decoration:none}
+.chap-panel-item:hover{background:rgba(201,168,76,.1);border-left-color:var(--gold)}
+.chap-panel-item.active{background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+.cpanel-num{font-family:'Source Sans 3',sans-serif;font-size:.7rem;font-weight:700;color:var(--gold);min-width:28px;flex-shrink:0}
+.cpanel-title{font-family:'Source Sans 3',sans-serif;font-size:.8rem;color:#ccd4e8;line-height:1.35}
+.cpanel-item-active .cpanel-title{color:#fff;font-weight:600}
+.cpanel-status{margin-left:auto;font-size:.72rem;flex-shrink:0;opacity:.6}
+
+/* ── GITHUB SYNC ──────────────────────────────────── */
+#sync-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:#8899bb;cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s,color .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#sync-btn:hover{background:rgba(201,168,76,.08);color:var(--gold)}
+#sync-btn[data-state=ok]{color:#4caf50}
+#sync-btn[data-state=syncing]{color:var(--gold)}
+#sync-btn[data-state=err]{color:#ef5350}
+#sync-btn[data-state=no-token]{color:#8899bb}
+#sync-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center}
+#sync-modal.hidden{display:none!important}
+#sync-modal-box{background:#0f1d3a;border:2px solid var(--gold);border-radius:10px;padding:1.8rem 2rem;width:min(420px,90vw);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+#sync-modal-box h3{font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:.9rem;text-transform:uppercase;letter-spacing:.1em}
+#sync-modal-box p{font-size:.77rem;color:#aab8d0;line-height:1.6;margin-bottom:.9rem}
+#sync-modal-box input{width:100%;background:#0a1228;border:1px solid rgba(201,168,76,.4);color:#fff;font-family:monospace;font-size:.8rem;padding:.55rem .8rem;border-radius:5px;outline:none;margin-bottom:.8rem;box-sizing:border-box}
+#sync-modal-box input:focus{border-color:var(--gold)}
+.sync-modal-btns{display:flex;gap:.6rem;justify-content:flex-end;flex-wrap:wrap}
+.sync-modal-btns button{font-family:'Source Sans 3',sans-serif;font-size:.77rem;font-weight:700;padding:.42rem .9rem;border-radius:5px;cursor:pointer;border:none;transition:background .15s}
+#sync-save-btn{background:var(--gold);color:#0a0f1a}
+#sync-save-btn:hover{background:#e8c47a}
+#sync-cancel-btn{background:rgba(255,255,255,.1);color:#aab8d0}
+#sync-cancel-btn:hover{background:rgba(255,255,255,.18)}
+#sync-clear-btn{background:rgba(239,83,80,.18);color:#ef9090;margin-right:auto}
+#sync-clear-btn:hover{background:rgba(239,83,80,.32)}
+</style>
+</head>
+<script>
+(function(){var t=localStorage.getItem('rita_theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+</script>
+<body>
+<div id="progress-bar"></div>
+<button id="menu-btn" aria-label="Menu">☰</button>
+
+<aside id="sidebar">
+<div id="sidebar-header">
+  <div class="book-label">Rita PMP® Exam Prep</div>
+  <h2>Ôn Thi PMP®</h2>
+  <div class="edition">Rita Mulcahy · 11th Edition 2023 · Tiếng Việt</div>
+</div>
+<div id="sidebar-toc">
+  <div class="toc-group-label">Nội Dung Chương</div>
+  <a href="#ch16-gioi-thieu" class="">Giới Thiệu</a>
+<a href="#ch16-on-tap-khai-niem-cot-loi" class="toc-h4">Ôn Tập Các Khái Niệm Cốt Lõi</a>
+<a href="#ch16-lap-ke-hoach-thuc-hien-do-luong-ban-giao" class="toc-h4">Lập Kế Hoạch, Thực Hiện, Đo Lường và Bàn Giao</a>
+<a href="#ch16-bai-tap-16-1" class="">Bài Tập 16.1</a>
+<a href="#ch16-dap-an-16-1" class="toc-h4">Đáp Án</a>
+<a href="#ch16-bai-tap-16-2" class="">Bài Tập 16.2</a>
+<a href="#ch16-dap-an-16-2" class="toc-h4">Đáp Án</a>
+<a href="#ch16-cac-quy-trinh-duoc-mo-ta-du-an-theo-ke-hoach" class="toc-h4">Các Quy Trình Được Mô Tả (Trong Dự Án Theo Kế Hoạch)</a>
+<a href="#ch16-bai-tap-16-3" class="">Bài Tập 16.3</a>
+<a href="#ch16-dap-an-16-3" class="toc-h4">Đáp Án</a>
+<a href="#ch16-cac-quy-trinh-duoc-mo-ta-agile" class="toc-h4">Các Hoạt Động Được Mô Tả (Trong Dự Án Agile)</a>
+<a href="#ch16-y-nghia-do-luong-dinh-luong-tren-bai-thi" class="toc-h4">Tầm Quan Trọng Của Các Chỉ Số Định Lượng Trên Bài Thi</a>
+<a href="#ch16-cong-thuc-can-hieu-cho-bai-thi" class="toc-h4">Các Công Thức Cần Hiểu Cho Bài Thi</a>
+<a href="#ch16-them-meo-chuan-bi-thi" class="toc-h4">Thêm Mẹo Chuẩn Bị Cho Kỳ Thi</a>
+<a href="#ch16-chuan-bi-cho-moi-truong-thi" class="toc-h4">Chuẩn Bị Cho Môi Trường Thi</a>
+<a href="#ch16-loi-va-bay-pho-bien-trong-quan-ly-du-an" class="toc-h4">Lỗi và Bẫy Phổ Biến Trong Quản Lý Dự Án</a>
+<a href="#ch16-mot-ngay-lam-viec" class="">Một Ngày Làm Việc</a>
+<a href="#ch16-bai-tap-16-4" class="">Bài Tập 16.4</a>
+<a href="#ch16-dap-an-16-4" class="toc-h4">Đáp Án</a>
+
+</div>
+<div id="sidebar-nav">
+  <a href="rita_chap15.html" class="" title="Tuân Thủ & Giá Trị">← Ch15</a>
+  <a href="#" id="chap-muc-luc-btn">☰ Mục lục</a>
+  <a href="rita_chap17.html" class="" title="Phương Pháp Agile">Ch17 →</a>
+</div></aside>
+
+<main id="main">
+  <div class="chapter-hero">
+    <div class="ch-label">Chương 16</div>
+    <h1>Mẹo Vượt Qua Kỳ Thi PMP®</h1>
+    <div class="ch-en">Tips for Passing the PMP Exam</div>
+  </div>
+<h3 id="ch16-gioi-thieu">Giới Thiệu</h3>
+<p>Chương này đóng vai trò ôn tập một số điểm mấu chốt bạn cần nắm vững khi chuẩn bị thi. Sau khi đã học từng chủ đề riêng lẻ, hãy cùng kết nối toàn bộ kiến thức và hiểu biết lại với nhau. Sơ đồ Quy trình của Rita và Sơ đồ Quy trình Agile của Rita sẽ giúp bạn liên kết các khái niệm trong cuốn sách này. Đến đây, bạn nên hiểu được toàn bộ quy trình quản lý dự án, bao gồm tất cả các nỗ lực liên quan. Bạn cũng nên nắm được các thuật ngữ và khái niệm thường gặp được đề cập trong chương "Nền tảng". Hiểu rõ những thuật ngữ và khái niệm đó sẽ giúp bạn thấy được mối liên hệ giữa từng yếu tố với toàn bộ quy trình quản lý dự án.</p>
+<p>Khi làm việc qua chương này, hãy tận dụng cơ hội để tìm ra những lỗ hổng kiến thức còn lại, từ đó ôn lại nội dung liên quan và sẵn sàng vượt qua kỳ thi ngay lần đầu.</p>
+
+<h4 id="ch16-on-tap-khai-niem-cot-loi">Ôn Tập Các Khái Niệm Cốt Lõi</h4>
+<p>Trong vài trang tiếp theo, chúng ta ôn lại một số thuật ngữ và khái niệm thường xuất hiện mà bạn cần hiểu để làm bài thi. Phần này ôn tập các khái niệm và sản phẩm liên quan đến lập kế hoạch, thực hiện và bàn giao. Ngoài ra còn có phần về công thức và tính toán, mẹo chuẩn bị cho kỳ thi, mẹo ứng phó với môi trường thi, các lỗi và bẫy thường gặp trong quản lý dự án, cùng một số bài tập để bạn tương tác nhiều hơn với tài liệu.</p>
+
+<h4 id="ch16-lap-ke-hoach-thuc-hien-do-luong-ban-giao">Lập Kế Hoạch, Thực Hiện, Đo Lường và Bàn Giao</h4>
+<p>Lập kế hoạch là bước then chốt để giải quyết các lĩnh vực yêu cầu và phạm vi, tiến độ, chi phí, chất lượng, nguồn lực, truyền thông, rủi ro, mua sắm và các bên liên quan, cũng như kế hoạch quản lý cấu hình (hay kiểm soát phiên bản sản phẩm) và quản lý thay đổi. Đây là bước then chốt trong công việc của người quản lý dự án trong môi trường dự đoán được.</p>
+<p>Các lĩnh vực lập kế hoạch này cũng diễn ra trong môi trường agile và hybrid, nhưng có thể ít trang trọng hơn hoặc mang hình thức khác. Lập kế hoạch giải quyết phần lớn các câu hỏi và mối lo ngại có thể nảy sinh trong suốt vòng đời dự án, đồng thời cho phép người quản lý dự án và nhóm dành nhiều thời gian hơn để hoàn thành công việc của dự án và ít thời gian hơn để xử lý sự cố và vấn đề.</p>
+
+<div class="callout">
+<strong>KIỂM TRA NHANH</strong>
+<ul class="content-list">
+  <li>Lập kế hoạch, dự đoán so với thích nghi</li>
+  <li>Bối cảnh áp dụng công thức</li>
+  <li>Mẹo chuẩn bị cho kỳ thi</li>
+  <li>Chuẩn bị cho môi trường thi</li>
+</ul>
+</div>
+
+<p>Ôn lại một số hình thức lập kế hoạch và sản phẩm trong môi trường dự đoán và thích nghi:</p>
+
+<div class="table-wrap"><table>
+  <thead>
+    <tr>
+      <th>Kế Hoạch và Sản Phẩm Trong Môi Trường Dự Đoán</th>
+      <th>Kế Hoạch và Sản Phẩm Trong Môi Trường Thích Nghi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Kế hoạch quản lý dự án (kế hoạch về phạm vi, tiến độ, chi phí, chất lượng và các ràng buộc khác cũng như các khía cạnh quản lý dự án quan trọng khác như truyền thông và quan hệ với các bên liên quan)</td>
+      <td>Bản đồ phát hành, kế hoạch phát hành, kế hoạch lặp, lộ trình sản phẩm</td>
+    </tr>
+    <tr>
+      <td>Nhật ký giả định, nhật ký thay đổi và vấn đề, sổ đăng ký các bên liên quan và rủi ro, bài học kinh nghiệm</td>
+      <td>Product backlog và project backlog (backlog điều chỉnh theo rủi ro)</td>
+    </tr>
+    <tr>
+      <td>Vòng đời dự án và phương pháp phát triển, được điều chỉnh phù hợp với dự án</td>
+      <td>Tính năng, story, định nghĩa hoàn thành</td>
+    </tr>
+    <tr>
+      <td>Tài liệu yêu cầu</td>
+      <td>Persona</td>
+    </tr>
+    <tr>
+      <td>Đường cơ sở về phạm vi, tiến độ và chi phí (đường cơ sở đo lường hiệu suất — thuộc kế hoạch quản lý dự án)</td>
+      <td>Các cuộc họp: Lập kế hoạch phát hành, lập kế hoạch lặp, xem xét lặp, cải tiến lặp</td>
+    </tr>
+    <tr>
+      <td>Mẫu báo cáo và báo cáo: Báo cáo rủi ro, EVM (đo lường giá trị thu được), dự báo, báo cáo chất lượng</td>
+      <td>Bộ chỉ số thông tin trực quan: ví dụ, lộ trình sản phẩm, bảng Kanban</td>
+    </tr>
+    <tr>
+      <td>Điều lệ dự án và nhóm</td>
+      <td>Sơ đồ dòng giá trị</td>
+    </tr>
+    <tr>
+      <td>Phạm vi công việc mua sắm</td>
+      <td>Biểu đồ burnup, biểu đồ burndown, velocity của nhóm</td>
+    </tr>
+    <tr>
+      <td>Thỏa thuận và hợp đồng</td>
+      <td>Ưu tiên lại backlog</td>
+    </tr>
+    <tr>
+      <td>Số liệu kiểm soát chất lượng</td>
+      <td>Thương lượng thay đổi; chấp nhận thay đổi thường xuyên</td>
+    </tr>
+    <tr>
+      <td>Phân tích giả định và ràng buộc</td>
+      <td>Thương lượng phạm vi trong khi giữ cố định tiến độ và chi phí</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 id="ch16-bai-tap-16-1">Bài Tập 16.1</h3>
+<p>Đây là cách để bạn làm quen hơn với các quy trình quản lý dự án từ góc nhìn mô hình Nhóm Quy Trình. Trong Sổ Bài Tập, hãy vẽ một bảng với tiêu đề như dưới đây. Với mỗi quy trình được liệt kê, hãy điền thông tin phù hợp vào từng cột. Đừng lo nếu bạn không làm đúng hoàn toàn. Chính việc thực hành sẽ giúp bạn hiểu rõ từng thành phần một cách riêng lẻ lẫn tổng thể.</p>
+
+<div class="table-wrap"><table>
+  <thead>
+    <tr>
+      <th>Quy Trình Quản Lý Dự Án</th>
+      <th>Nhóm Quy Trình</th>
+      <th>Bao Gồm Những Gì?</th>
+      <th>Quy Trình Nào Đến Trước?</th>
+      <th>Quy Trình Nào Đến Sau?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Xác Định Hoạt Động</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Lập Kế Hoạch Quản Lý Mua Sắm</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Giám Sát và Kiểm Soát Công Việc Dự Án</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Sắp Xếp Thứ Tự Hoạt Động</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Thu Thập Yêu Cầu</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Chỉ Đạo và Quản Lý Công Việc Dự Án</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Xây Dựng Kế Hoạch Quản Lý Dự Án</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Xây Dựng Tiến Độ</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Xác Nhận Phạm Vi</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Thực Hiện Phân Tích Rủi Ro Định Tính</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Xác Định Các Bên Liên Quan</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Tiến Hành Mua Sắm</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Xác Định Phạm Vi</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>Thực Hiện Kiểm Soát Thay Đổi Tích Hợp</td><td></td><td></td><td></td><td></td></tr>
+  </tbody>
+</table></div>
+
+<h4 id="ch16-dap-an-16-1">Đáp Án</h4>
+<p>Đáp án của bài tập này cung cấp mô tả và các hành động liên quan đến quy trình đã cho. Những mô tả này phù hợp với các kỹ năng giao tiếp cần thiết cũng như hoạt động quản lý dự án và kỹ thuật.</p>
+
+<div class="table-wrap"><table>
+  <thead>
+    <tr>
+      <th>Quy Trình Quản Lý Dự Án</th>
+      <th>Nhóm Quy Trình</th>
+      <th>Bao Gồm Những Gì?</th>
+      <th>Quy Trình Nào Đến Trước?</th>
+      <th>Quy Trình Nào Đến Sau?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Xác Định Hoạt Động</td>
+      <td>Lập kế hoạch</td>
+      <td>Tạo danh sách hoạt động từ mỗi gói công việc</td>
+      <td>Lập Kế Hoạch Quản Lý Tiến Độ</td>
+      <td>Sắp Xếp Thứ Tự Hoạt Động</td>
+    </tr>
+    <tr>
+      <td>Lập Kế Hoạch Quản Lý Mua Sắm</td>
+      <td>Lập kế hoạch</td>
+      <td>Tạo phạm vi công việc mua sắm, tài liệu đấu thầu và kế hoạch quản lý mua sắm</td>
+      <td>Không có</td>
+      <td>Tiến Hành Mua Sắm</td>
+    </tr>
+    <tr>
+      <td>Giám Sát và Kiểm Soát Công Việc Dự Án</td>
+      <td>Giám sát và kiểm soát</td>
+      <td>Đo lường và phân tích hiệu suất so với kế hoạch quản lý dự án và các đường cơ sở</td>
+      <td>Quản Lý Kiến Thức Dự Án</td>
+      <td>Thực Hiện Kiểm Soát Thay Đổi Tích Hợp</td>
+    </tr>
+    <tr>
+      <td>Sắp Xếp Thứ Tự Hoạt Động</td>
+      <td>Lập kế hoạch</td>
+      <td>Tạo sơ đồ mạng lưới</td>
+      <td>Xác Định Hoạt Động</td>
+      <td>Ước Tính Thời Gian Hoạt Động</td>
+    </tr>
+    <tr>
+      <td>Thu Thập Yêu Cầu</td>
+      <td>Lập kế hoạch</td>
+      <td>Lập tài liệu yêu cầu chi tiết và tạo ma trận truy xuất nguồn gốc yêu cầu</td>
+      <td>Lập Kế Hoạch Quản Lý Phạm Vi</td>
+      <td>Xác Định Phạm Vi</td>
+    </tr>
+    <tr>
+      <td>Chỉ Đạo và Quản Lý Công Việc Dự Án</td>
+      <td>Thực hiện</td>
+      <td>Tạo điều kiện và tạo ra công việc theo kế hoạch quản lý dự án</td>
+      <td>Xây Dựng Kế Hoạch Quản Lý Dự Án</td>
+      <td>Quản Lý Kiến Thức Dự Án</td>
+    </tr>
+    <tr>
+      <td>Xây Dựng Kế Hoạch Quản Lý Dự Án</td>
+      <td>Lập kế hoạch</td>
+      <td>Tích hợp tất cả các kế hoạch và đường cơ sở quản lý riêng lẻ, tạo kế hoạch quản lý dự án được phê duyệt, thực tế và chính thức</td>
+      <td>Xây Dựng Điều Lệ Dự Án</td>
+      <td>Chỉ Đạo và Quản Lý Công Việc Dự Án</td>
+    </tr>
+    <tr>
+      <td>Xây Dựng Tiến Độ</td>
+      <td>Lập kế hoạch</td>
+      <td>Tạo tiến độ và đường cơ sở tiến độ được phê duyệt, thực tế và chính thức</td>
+      <td>Ước Tính Thời Gian Hoạt Động</td>
+      <td>Kiểm Soát Tiến Độ</td>
+    </tr>
+    <tr>
+      <td>Xác Nhận Phạm Vi</td>
+      <td>Giám sát và kiểm soát</td>
+      <td>Gặp gỡ khách hàng để đạt được sự chấp nhận chính thức đối với các sản phẩm bàn giao trung gian</td>
+      <td>Tạo WBS</td>
+      <td>Kiểm Soát Phạm Vi</td>
+    </tr>
+    <tr>
+      <td>Thực Hiện Phân Tích Rủi Ro Định Tính</td>
+      <td>Lập kế hoạch</td>
+      <td>Phân tích xác suất và tác động của các rủi ro tiềm năng để xác định rủi ro nào cần có phản hồi hoặc phân tích thêm</td>
+      <td>Xác Định Rủi Ro</td>
+      <td>Thực Hiện Phân Tích Rủi Ro Định Lượng (lưu ý rằng một số dự án hoặc rủi ro riêng lẻ có thể bỏ qua bước này và chuyển thẳng đến Lập Kế Hoạch Ứng Phó Rủi Ro)</td>
+    </tr>
+    <tr>
+      <td>Xác Định Các Bên Liên Quan</td>
+      <td>Khởi động</td>
+      <td>Xác định, lập tài liệu và phân tích thông tin về các bên liên quan trong dự án</td>
+      <td>Không có</td>
+      <td>Lập Kế Hoạch Gắn Kết Các Bên Liên Quan</td>
+    </tr>
+    <tr>
+      <td>Tiến Hành Mua Sắm</td>
+      <td>Thực hiện</td>
+      <td>Lựa chọn nhà cung cấp và ký kết hợp đồng</td>
+      <td>Lập Kế Hoạch Quản Lý Mua Sắm</td>
+      <td>Kiểm Soát Mua Sắm</td>
+    </tr>
+    <tr>
+      <td>Xác Định Phạm Vi</td>
+      <td>Lập kế hoạch</td>
+      <td>Tạo bản mô tả phạm vi dự án</td>
+      <td>Thu Thập Yêu Cầu</td>
+      <td>Tạo WBS</td>
+    </tr>
+    <tr>
+      <td>Thực Hiện Kiểm Soát Thay Đổi Tích Hợp</td>
+      <td>Giám sát và kiểm soát</td>
+      <td>Đánh giá tác động của các thay đổi được yêu cầu đối với dự án và phê duyệt hoặc từ chối các yêu cầu thay đổi</td>
+      <td>Giám Sát và Kiểm Soát Công Việc Dự Án</td>
+      <td>Đóng Dự Án hoặc Giai Đoạn</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h3 id="ch16-bai-tap-16-2">Bài Tập 16.2</h3>
+<p>Nếu bài tập này có ích, bạn có thể tiếp tục tự kiểm tra với các quy trình khác chưa được liệt kê ở đây, và đối chiếu đáp án của mình với mô tả quy trình trong cuốn sách này. Trong bài tập này dành cho các dự án theo kế hoạch, hãy đọc từng tình huống và ghi lại bạn đang thực hiện quy trình nào khi thực hiện hoạt động đó.</p>
+
+<h5>Tình Huống</h5>
+<ol class="content-list">
+  <li>Khi gặp khách hàng để nhận sự chấp nhận đối với các sản phẩm bàn giao trung gian</li>
+  <li>Khi đo lường hiệu suất dự án so với đường cơ sở đo lường hiệu suất</li>
+  <li>Khi đảm bảo mọi người đang sử dụng đúng các quy trình</li>
+  <li>Khi đánh giá xem các báo cáo hiệu suất có đáp ứng nhu cầu của các bên liên quan hay không</li>
+  <li>Khi làm việc với nhóm dự án</li>
+  <li>Khi đánh giá các mối quan hệ với các bên liên quan</li>
+  <li>Khi bạn nhận thấy có nhiều rủi ro chưa được xác định đang xảy ra</li>
+  <li>Khi đánh giá hiệu suất của nhà cung cấp</li>
+  <li>Khi đánh giá hiệu suất của các thành viên trong nhóm</li>
+  <li>Khi đảm bảo các sản phẩm bàn giao đáp ứng tiêu chuẩn chất lượng</li>
+  <li>Khi giao tiếp với các bên liên quan để giải quyết vấn đề và quản lý nhận thức của họ về dự án</li>
+</ol>
+
+<h4 id="ch16-dap-an-16-2">Đáp Án</h4>
+<h4 id="ch16-cac-quy-trinh-duoc-mo-ta-du-an-theo-ke-hoach">Các Quy Trình Được Mô Tả (Trong Dự Án Theo Kế Hoạch)</h4>
+<ol class="content-list">
+  <li>Xác Nhận Phạm Vi</li>
+  <li>Kiểm Soát Phạm Vi. Kiểm Soát Tiến Độ. Kiểm Soát Chi Phí</li>
+  <li>Quản Lý Chất Lượng</li>
+  <li>Giám Sát Truyền Thông</li>
+  <li>Quản Lý Nhóm</li>
+  <li>Giám Sát Gắn Kết Các Bên Liên Quan</li>
+  <li>Giám Sát Rủi Ro</li>
+  <li>Kiểm Soát Mua Sắm</li>
+  <li>Quản Lý Nhóm</li>
+  <li>Kiểm Soát Chất Lượng</li>
+  <li>Quản Lý Gắn Kết Các Bên Liên Quan</li>
+</ol>
+
+<h3 id="ch16-bai-tap-16-3">Bài Tập 16.3</h3>
+<p>Bây giờ hãy chuyển sang agile. Đối với các dự án agile, hãy đọc từng tình huống và ghi lại bạn đang thực hiện hoạt động nào trong tình huống đó, hoặc các công cụ hay phương pháp bạn sẽ sử dụng để thực hiện hoạt động đó. Nhiều hoạt động khác nhau có thể phù hợp với mô tả của từng tình huống.</p>
+
+<h5>Tình Huống</h5>
+<ol class="content-list">
+  <li>Khi gặp khách hàng để nhận sự chấp nhận đối với các sản phẩm bàn giao trung gian (từ lặp)</li>
+  <li>Khi hiệu suất được đo lường so với các số liệu hiệu suất</li>
+  <li>Khi đảm bảo mọi người đang sử dụng đúng các quy trình và cách họ thực hiện</li>
+  <li>Khi và ở đâu các nhóm đánh giá hiệu suất dự án có đáp ứng nhu cầu của các bên liên quan hay không</li>
+  <li>Khi làm việc với nhóm dự án; hỗ trợ nhóm</li>
+  <li>Khi đánh giá và đảm bảo các mối quan hệ tốt với các bên liên quan</li>
+  <li>Khi có rủi ro chưa được xác định xảy ra (Phải làm gì?)</li>
+  <li>Khi đánh giá hiệu suất của nhà cung cấp</li>
+  <li>Khi đánh giá và giúp cải thiện hiệu suất của các thành viên trong nhóm</li>
+  <li>Khi đảm bảo các sản phẩm bàn giao đáp ứng tiêu chuẩn chất lượng</li>
+  <li>Khi giao tiếp với các bên liên quan để giải quyết vấn đề và quản lý nhận thức của họ về dự án</li>
+</ol>
+
+<h4 id="ch16-dap-an-16-3">Đáp Án</h4>
+<h4 id="ch16-cac-quy-trinh-duoc-mo-ta-agile">Các Hoạt Động Được Mô Tả (Trong Dự Án Agile)</h4>
+<ol class="content-list">
+  <li>Product owner làm việc với các bên liên quan để ưu tiên các mục backlog; cuộc họp xem xét lặp (hoặc Sprint)</li>
+  <li>Velocity trung bình của nhóm, biểu đồ burnup, biểu đồ burndown; cải tiến nơi nhóm tự phản ánh hiệu suất của mình</li>
+  <li>Người quản lý dự án (agile coach, trưởng nhóm, Scrum Master) sử dụng phong cách lãnh đạo phục vụ để giúp nhóm tự tổ chức tinh chỉnh và tuân theo các quy trình đã thống nhất</li>
+  <li>Xem xét lặp (Sprint review); giao tiếp hàng ngày với product owner (khách hàng); cải tiến; giao tiếp trực tiếp</li>
+  <li>Lãnh đạo phục vụ; đảm bảo nhóm được đào tạo đầy đủ; loại bỏ các trở ngại</li>
+  <li>Giao tiếp trực tiếp và các phương pháp truyền thông khác; product owner (đại diện khách hàng) là thành viên nhóm không thể thiếu; bàn giao giá trị liên tục; cuộc họp xem xét lặp</li>
+  <li>Đánh giá lại rủi ro thường xuyên; ưu tiên lại backlog điều chỉnh theo rủi ro</li>
+  <li>Hợp đồng agile; kiểm soát mua sắm; xem xét lặp</li>
+  <li>Lãnh đạo phục vụ; đảm bảo đào tạo đầy đủ; loại bỏ các trở ngại; cải tiến nhóm</li>
+  <li>Nhóm tự tổ chức công việc; nhóm kiểm soát chất lượng, làm việc với product owner; nhóm tự kiểm tra công việc; tránh lỗi và đảm bảo thiết kế tốt hơn thông qua lập trình theo cặp</li>
+  <li>Làm việc với product owner để đảm bảo ưu tiên của các bên liên quan được xem xét; đảm bảo hiểu biết chung; quản lý gắn kết các bên liên quan</li>
+</ol>
+
+<h4 id="ch16-y-nghia-do-luong-dinh-luong-tren-bai-thi">Tầm Quan Trọng Của Các Chỉ Số Định Lượng Trên Bài Thi</h4>
+<p>Bài thi sẽ không có nhiều câu hỏi yêu cầu bạn thực hiện tính toán. Tuy nhiên, điều quan trọng là phải hiểu bối cảnh áp dụng các công thức trong quản lý dự án.</p>
+
+<div class="callout tip">
+<strong>Hãy suy nghĩ.</strong> Có rất ít câu hỏi về công thức trên bài thi. Bạn phải tự quyết định có nên ghi nhớ tất cả hoặc một số công thức này cho những câu hỏi tính toán ít ỏi hay không. Dù vậy, bạn nên dùng hình 16.1 để ôn lại các chương trong cuốn sách này có đề cập đến các công thức. Biết được bối cảnh áp dụng công thức sẽ giúp bạn trả lời đúng câu hỏi. Ví dụ, dù bạn không được hỏi để tính SPI (chỉ số hiệu suất tiến độ) hay CPI (chỉ số hiệu suất chi phí), hoặc tính EMV (giá trị tiền tệ kỳ vọng của rủi ro), bạn vẫn phải biết câu trả lời. Dưới đây là hai câu hỏi ví dụ để thử sức.
+</div>
+
+<p><strong>Ví dụ 1:</strong> Người quản lý dự án đang làm việc cho một công ty dược phẩm rất chú trọng chi phí và chỉ linh hoạt hơn một chút về tiến độ. Người quản lý dự án chuẩn bị báo cáo hàng tháng và nhận thấy SPI là 1,3 và CPI là 0,89. Người quản lý dự án nên làm gì?</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//2535066f-79d9-4a7a-8543-1abee4a95e84/markdown_4/imgs/img_in_image_box_37_193_88_253.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A22Z%2F-1%2F%2Fa98389d16946135059d8dcd84d5a96ea69fdda2ffd38e0a2571b4ce5c4fc10b0" alt="Image" width="6%" /></div></div>
+
+<p>Ngay cả trước khi xem các đáp án, bạn phải biết những con số này có ý nghĩa gì với dự án. Đây là một bộ đáp án trắc nghiệm có thể có:</p>
+<ol class="content-list" style="list-style-type: upper-alpha;">
+  <li>Chuẩn bị các phương án để đưa tiến độ về kiểm soát.</li>
+  <li>Không làm gì; tiến độ và chi phí đều đang trong tầm kiểm soát.</li>
+  <li>Chuẩn bị các phương án để đưa cả tiến độ và chi phí về kiểm soát.</li>
+  <li>Chuẩn bị các phương án để đưa chi phí về kiểm soát.</li>
+</ol>
+
+<p><strong>Ví dụ 2:</strong> Người quản lý dự án và nhóm đang phân tích các rủi ro mới trong một dự án xây dựng trị giá hàng triệu đô la. Không có vấn đề an toàn nào liên quan. Rủi ro nào có mức ưu tiên cao nhất? Rủi ro Z là một mặt hàng cung cấp sẽ đến muộn, có EMV là 4.500 đô la và kế hoạch dự phòng rẻ nhất sẽ tốn 4.600 đô la. Rủi ro X là một hoạt động trên đường găng có thể hoàn thành sớm và EMV của nó là 38.000 đô la. Rủi ro Y là một hoạt động sẽ bị trễ, có EMV là 770 đô la và phản hồi rẻ nhất sẽ tốn 650 đô la. Rủi ro W là một hoạt động sẽ hoàn thành sớm, EMV là 2.200 đô la và không nằm trên đường găng.</p>
+<ol class="content-list" style="list-style-type: upper-alpha;">
+  <li>Rủi ro Z và X có mức ưu tiên bằng nhau</li>
+  <li>Rủi ro W có mức ưu tiên cao nhất</li>
+  <li>Rủi ro X có mức ưu tiên cao nhất</li>
+  <li>Rủi ro Z có mức ưu tiên cao nhất</li>
+</ol>
+
+<h5>Đáp Án:</h5>
+<p><strong>Ví dụ 1:</strong> Đáp án là D. Giải thích: Với SPI hoặc CPI, bạn cần biết rằng lớn hơn một là tốt và nhỏ hơn một là xấu. Vậy từ những con số này bạn thấy rằng dự án đang đi trước tiến độ (1,3 lớn hơn một) nhưng vượt ngân sách (0,89 nhỏ hơn một). Điều này loại bỏ các đáp án còn lại.</p>
+<p><strong>Ví dụ 2:</strong> Đáp án là C. Giải thích: Nếu có thể hoàn thành sớm một hoạt động trên đường găng và tiết kiệm 38.000 đô la, chúng ta nên ưu tiên kế hoạch dự phòng này. Tại sao? Rủi ro Z có phương án dự phòng rẻ nhất với chi phí cao hơn một chút so với EMV nếu rủi ro xảy ra. Chúng ta có thể giữ kế hoạch dự phòng đó nhưng không có nhiều việc có thể làm thêm ở đây. Rủi ro Y sẽ không phải ưu tiên trong một dự án hàng triệu đô la, đặc biệt khi chênh lệch giữa EMV rủi ro và chi phí dự phòng quá nhỏ. Rủi ro W sẽ tốt nếu có thể tiết kiệm 2.000 đô la, nhưng mức tiết kiệm không đáng kể và không nằm trên đường găng nên không có mức ưu tiên cao nhất.</p>
+
+<h4 id="ch16-cong-thuc-can-hieu-cho-bai-thi">Các Công Thức Cần Hiểu Cho Bài Thi</h4>
+
+<div class="table-wrap"><table>
+  <thead>
+    <tr>
+      <th>Tên</th>
+      <th>Công Thức</th>
+      <th>Chương Tham Khảo Trong Sách Ôn Thi PMP</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Giá trị hiện tại (PV)</td>
+      <td>FV / (1 + r)^n</td>
+      <td>Nền Tảng Quản Lý Dự Án</td>
+    </tr>
+    <tr>
+      <td>Thời gian hoạt động kỳ vọng (phân phối tam giác)*</td>
+      <td>(P + M + O) / 3</td>
+      <td>Tiến Độ</td>
+    </tr>
+    <tr>
+      <td>Thời gian hoạt động kỳ vọng (phân phối beta)*</td>
+      <td>(P + 4M + O) / 6</td>
+      <td>Tiến Độ</td>
+    </tr>
+    <tr>
+      <td>Tổng dự phòng</td>
+      <td>LS − ES hoặc LF − EF</td>
+      <td>Tiến Độ</td>
+    </tr>
+    <tr>
+      <td>Sai lệch chi phí (CV)</td>
+      <td>EV − AC</td>
+      <td>Ngân Sách và Nguồn Lực</td>
+    </tr>
+    <tr>
+      <td>Sai lệch tiến độ (SV)</td>
+      <td>EV − PV</td>
+      <td>Ngân Sách và Nguồn Lực</td>
+    </tr>
+    <tr>
+      <td>Chỉ số hiệu suất chi phí (CPI)</td>
+      <td>EV / AC</td>
+      <td>Ngân Sách và Nguồn Lực</td>
+    </tr>
+    <tr>
+      <td>Chỉ số hiệu suất tiến độ (SPI)</td>
+      <td>EV / PV</td>
+      <td>Ngân Sách và Nguồn Lực</td>
+    </tr>
+    <tr>
+      <td>Ước tính khi hoàn thành (EAC)</td>
+      <td>AC + ETC từ dưới lên</td>
+      <td>Ngân Sách và Nguồn Lực</td>
+    </tr>
+    <tr>
+      <td>Ước tính khi hoàn thành (EAC)</td>
+      <td>BAC / CPI</td>
+      <td>Ngân Sách và Nguồn Lực</td>
+    </tr>
+    <tr>
+      <td>Ước tính khi hoàn thành (EAC)</td>
+      <td>AC + (BAC − EV)</td>
+      <td>Ngân Sách và Nguồn Lực</td>
+    </tr>
+    <tr>
+      <td>Ước tính khi hoàn thành (EAC)</td>
+      <td>AC + (BAC − EV) / (CPI × SPI)</td>
+      <td>Ngân Sách và Nguồn Lực</td>
+    </tr>
+    <tr>
+      <td>Chỉ số hiệu suất cần đạt (TCPI)</td>
+      <td>(BAC − EV) / (BAC − AC)</td>
+      <td>Ngân Sách và Nguồn Lực</td>
+    </tr>
+    <tr>
+      <td>Ước tính để hoàn thành (ETC)</td>
+      <td>EAC − AC</td>
+      <td>Ngân Sách và Nguồn Lực</td>
+    </tr>
+    <tr>
+      <td>Sai lệch khi hoàn thành (VAC)</td>
+      <td>BAC − EAC</td>
+      <td>Ngân Sách và Nguồn Lực</td>
+    </tr>
+    <tr>
+      <td>Kênh truyền thông</td>
+      <td>n(n − 1) / 2</td>
+      <td>Truyền Thông</td>
+    </tr>
+    <tr>
+      <td>Giá trị tiền tệ kỳ vọng (EMV — Chi phí)</td>
+      <td>P × I</td>
+      <td>Rủi Ro và Vấn Đề</td>
+    </tr>
+    <tr>
+      <td>Giá trị kỳ vọng (EV — Tiến độ)</td>
+      <td>P × I</td>
+      <td>Rủi Ro và Vấn Đề</td>
+    </tr>
+  </tbody>
+</table></div>
+<p><em>* Lưu ý rằng các công thức này có thể được dùng cho cả chi phí lẫn thời gian hoạt động.</em></p>
+
+<p><strong>HÌNH 16.1</strong> Các công thức có thể xuất hiện trên bài thi</p>
+<p>Nếu bạn muốn luyện tập thêm về các khái niệm và công thức đo lường giá trị thu được (EVM), hãy quay lại phần Quản Lý Giá Trị Thu Được trong chương "Ngân Sách và Nguồn Lực". Bạn có thể làm lại bài tập Hàng Rào để cảm thấy tự tin hơn với các khái niệm này. Ngoài ra, chúng tôi có thêm bài tập về EVM cũng như các chủ đề khác trên trang RMC Resources.</p>
+
+<div class="callout">
+<strong>TÀI NGUYÊN RMC</strong>
+</div>
+
+<h4 id="ch16-them-meo-chuan-bi-thi">Thêm Mẹo Chuẩn Bị Cho Kỳ Thi</h4>
+<p>Nhiều người thi trượt vì không chuẩn bị đúng cách. Bạn có thể tránh sai lầm đó. Hãy đọc chậm rãi các mẹo sau và tự đánh giá thành thật xem từng điểm áp dụng cho bạn như thế nào:</p>
+
+<ul class="content-list">
+  <li>Nắm vững tài liệu, nhưng đừng tiếp cận bài thi với giả định rằng nó chỉ kiểm tra các sự kiện cần ghi nhớ. Bài thi còn kiểm tra khả năng áp dụng và phân tích. Hãy chuẩn bị để áp dụng các khái niệm và phương pháp trong nhiều tình huống khác nhau, kể cả cách chúng hoạt động kết hợp với nhau.</li>
+  <li>Có kinh nghiệm thực tế sử dụng các phương pháp quản lý dự án chính. Cố gắng tích lũy kinh nghiệm với các phương pháp mà bạn còn thiếu sót. Với những khoảng trống còn lại trong kinh nghiệm (ai cũng có), hãy thực hành biến các phương pháp đó thành thực tế bằng cách áp dụng và tạo ra các sản phẩm liên quan thông qua tình huống nghiên cứu từ công việc của bạn hoặc tình huống thư viện trong cuốn sách này.</li>
+  <li>Đảm bảo bạn có thể nhanh chóng hình dung cách các công cụ và quy trình được sử dụng trong một dự án. Đặc biệt luyện tập hình dung với các công cụ và phương pháp bạn chưa quen khi bắt đầu khóa học này. Việc hình dung sẽ giúp bạn chuẩn bị cho các câu hỏi tình huống trong bài thi.</li>
+  <li>Khi trả lời các câu hỏi dự đoán được trong bài thi, hãy nghĩ theo hướng các dự án lớn. Điều này sẽ giúp bạn nhớ tầm quan trọng của các quy trình và phương pháp mà bạn có thể chưa sử dụng trong quản lý dự án thực tế. Thu nhỏ dễ hơn mở rộng.</li>
+  <li>Khi trả lời các câu hỏi thích nghi trong bài thi, hãy nhớ rằng phạm vi đang phát triển khi công việc dự án diễn ra và sự thay đổi là điều bình thường.</li>
+  <li>Khi trả lời các câu hỏi hybrid trong bài thi, hãy tìm manh mối xem câu trả lời cụ thể đó yêu cầu phương pháp từ cách tiếp cận thích nghi hay dự đoán. Các dự án hybrid sử dụng cả hai.</li>
+  <li>Hiểu các lĩnh vực mà PMI nhấn mạnh (PMI-isms, được giải thích trong chương 1 và chương "Chất Lượng Sản Phẩm và Kết Quả Bàn Giao").</li>
+  <li>Làm quen với các dạng câu hỏi trong bài thi, nhưng đừng lo lắng nếu bạn gặp các dạng câu hỏi mới khi thi thật.</li>
+  <li>Chuẩn bị để gặp các tình huống mơ hồ hoặc dài dòng trong bài thi. Luyện tập diễn giải các dạng câu hỏi này bằng Bài Kiểm Tra Chương của RMC hoặc FASTrack® (nếu có). Luyện tập sử dụng phân tích để chọn câu trả lời tốt nhất trong số các đáp án có vẻ đều đúng.</li>
+  <li>Xử lý căng thẳng trước khi thi. Nếu bạn là người hay hồi hộp khi thi, PM FASTrack® có thể cho bạn cơ hội luyện kiểm soát căng thẳng.</li>
+  <li>Nếu đến trung tâm thi, đừng kỳ vọng không khí yên tĩnh. Hãy dùng FASTrack® để luyện tập trả lời câu hỏi trong môi trường không hoàn toàn yên tĩnh.</li>
+  <li>Lên kế hoạch và sử dụng chiến lược làm bài thi. Điều này có thể có nghĩa là bạn sẽ nghỉ giải lao sau mỗi 50 câu, hoặc trả lời tất cả câu hỏi càng nhanh càng tốt rồi nghỉ giải lao trước khi xem lại và điều chỉnh đáp án.</li>
+  <li>Chấp nhận rằng sẽ có những câu hỏi bạn không thể trả lời hoặc thậm chí không hiểu. Điều này xảy ra với tất cả mọi người. Hãy chuẩn bị tinh thần để không lo lắng hay nghi ngờ bản thân trong khi thi.</li>
+  <li>Nếu thi trực tuyến có giám thị, hãy đảm bảo có khu vực thi không bị gián đoạn (kể cả thú cưng). Sắp xếp không gian thoải mái, nhưng hãy đọc kỹ hướng dẫn PMI gửi về việc thi trực tuyến. Đừng để việc thi tại nhà hay văn phòng trở thành thêm một nguồn căng thẳng.</li>
+  <li>Đừng học quá mức. Bạn không thể đạt điểm A trong kỳ thi này. Việc hoàn toàn thoải mái với tất cả tài liệu trong cuốn sách này là không thể. Học hàng trăm giờ không đáng và cũng không đảm bảo bạn sẽ qua.</li>
+  <li>Đừng học vào tối trước ngày thi. Thay vào đó, hãy làm điều gì đó thư giãn và ngủ thêm. Bạn cần đến trạng thái tươi tắn và được nghỉ ngơi đầy đủ.</li>
+</ul>
+
+<h4 id="ch16-chuan-bi-cho-moi-truong-thi">Chuẩn Bị Cho Môi Trường Thi</h4>
+<p>Cuốn sách này đã trình bày những gì bạn nên làm và biết trước khi thi. Bây giờ, hãy chuẩn bị cho ngày trọng đại. Dưới đây là một số mẹo để làm bài thi và đỗ kỳ thi (tại trung tâm khảo thí).</p>
+
+<ol class="content-list">
+  <li>Bạn phải mang theo email xác nhận từ PMI đến địa điểm thi, cùng với hai loại giấy tờ tùy thân có đúng tên bạn đã nhập trên đơn đăng ký thi.</li>
+  <li>Đảm bảo bạn thoải mái trong suốt kỳ thi. Mặc nhiều lớp quần áo để bạn có thể cởi bớt lớp ngoài nếu quá nóng. (Tuy nhiên, lưu ý rằng có thể có những yêu cầu cụ thể về quần áo đã cởi ra trong khi thi.)</li>
+  <li>Chuẩn bị thức ăn hoặc đồ uống phòng trường hợp cần trong kỳ thi. Bạn không thể tiếp cận những thứ này khi đang thi nhưng có thể nghỉ giải lao, và bạn có thể đói hoặc khát và muốn loại bỏ yếu tố gây xao nhãng đó.</li>
+  <li>Bạn sẽ được cung cấp thứ gì đó để ghi chú trong khi thi. Có thể là vật lý như giấy và bút chì hoặc bảng trắng nhỏ, hoặc có thể là điện tử. (Lưu ý: Nếu thi trực tuyến, bạn sẽ không được phép có bảng trắng vật lý hay giấy bút chì. Bạn sẽ có bảng trắng điện tử.)</li>
+  <li>Sau khi bắt đầu thi, hãy cân nhắc dành không quá năm đến bảy phút thời gian thi để tạo "trang ghi nhớ" — nơi bạn ghi xuống bất cứ điều gì bạn khó nhớ. Điều này giải phóng tâm trí để xử lý các câu hỏi khi thông tin bạn lo lắng nhất đã được ghi xuống.</li>
+  <li>Bạn có thể sẽ có một hoặc hai bài hướng dẫn công nghệ và/hoặc máy tính (hướng dẫn thi chung và hướng dẫn thi PMP cụ thể) cần hoàn thành trước khi bắt đầu thi. Điều này giúp bạn làm quen với chức năng thi trên máy tính. Bạn cần bắt đầu và hoàn thành những hướng dẫn đó trong thời gian quy định. Sau đó bạn có thể bắt đầu kỳ thi bốn giờ của mình.</li>
+  <li>Bạn sẽ có máy tính trong khi thi. Máy tính sẽ có chức năng máy tính tay và bài hướng dẫn sẽ chỉ bạn cách sử dụng.</li>
+  <li>Bài thi không điều chỉnh theo câu trả lời của bạn. Điều này có nghĩa là 180 câu hỏi được chọn khi bài thi của bạn bắt đầu và 180 câu hỏi đó sẽ không thay đổi.</li>
+  <li>Sử dụng kỹ thuật thở sâu để giúp bạn thư giãn và tập trung. Điều này đặc biệt hữu ích nếu bạn rất lo lắng trước hoặc trong khi thi và khi bạn thấy mình đọc đi đọc lại cùng một câu hỏi hai ba lần. Kỹ thuật thở có thể đơn giản như thở sâu năm lần, cung cấp thêm oxy cho não. Nhiều người cũng thấy hữu ích khi nhắm mắt lại khi làm điều này.</li>
+  <li>Mỉm cười khi làm bài thi. Điều này nghe có vẻ khó khi bạn đang căng thẳng và làm bài thi bốn tiếng, nhưng các nghiên cứu cho thấy mỉm cười giảm căng thẳng và khiến bạn cảm thấy tự tin hơn.</li>
+  <li>Sử dụng hết thời gian thi. Đừng nộp bài sớm trừ khi bạn đã xem lại mọi câu hỏi đã bỏ qua hoặc đánh dấu để xem lại.</li>
+  <li>Mỗi người có những thói quen và phong cách làm bài riêng. Khi làm bài mô phỏng trong PM FASTrack®, hãy chú ý đến những thói quen của mình. Bạn có thể phải lên kế hoạch để vượt qua những thói quen có thể ảnh hưởng tiêu cực đến bạn khi thi.</li>
+  <li>Kiểm soát bài thi; đừng để bài thi kiểm soát bạn. Bạn sẽ cảm thấy thế nào nếu đọc câu hỏi đầu tiên mà không biết đáp án? Và điều tương tự xảy ra sau khi đọc câu hai và câu ba? Điều này có thể xảy ra vì mức độ căng thẳng của bạn không cho phép bạn suy nghĩ. Vậy phải làm gì? Nếu bạn không biết ngay câu trả lời cho một câu hỏi, hãy bỏ trống hoặc dùng chức năng Đánh Dấu Để Xem Lại và quay lại sau.</li>
+  <li>Kiểm soát sự thất vọng và duy trì sự tập trung vào từng câu hỏi. Bạn có thể không thích hoặc không đồng ý với một số câu hỏi trong bài thi này. Bạn cũng có thể ngạc nhiên trước số lượng câu hỏi bạn đánh dấu để xem lại. Hãy đảm bảo bạn tập trung vào câu hỏi hiện tại. Nếu bạn vẫn đang nghĩ về câu 20 khi đến câu 120, thì đã có 100 câu hỏi không được bạn chú ý đầy đủ.</li>
+  <li>Trả lời mỗi câu hỏi dựa trên kiến thức của bạn về các thực hành tốt trong quản lý dự án. Hãy chuẩn bị để tách biệt kinh nghiệm của bạn khỏi quan điểm của PMI (thường phù hợp với các thực hành "lý thuyết" hơn thực tế). Nhiều người thi trượt vì cố gắng trả lời câu hỏi từ kinh nghiệm thực tế. Kinh nghiệm của bạn sẽ hữu ích nhưng đừng quên dựa vào đào tạo của mình.</li>
+  <li>Đầu tiên, xác định câu hỏi thực sự trong những từ được cung cấp (thường là câu cuối cùng), rồi đọc phần còn lại. Ghi nhớ các chủ đề được thảo luận trong câu hỏi và các mô tả. Điều này sẽ giúp bạn hiểu câu hỏi đang hỏi gì.</li>
+  <li>Xem xét kỹ từng đáp án và chọn đáp án tốt nhất trong số các lựa chọn đã cho. Đừng đọc quá nhiều vào các đáp án. Chúng ta thường mắc sai lầm khi đưa ra các giả định tự động vì kinh nghiệm người lớn dẫn đến các giả định. Hãy tiếp nhận câu hỏi và đáp án theo nghĩa đen.</li>
+  <li>Đừng mắc sai lầm này. Một lý do phổ biến khiến mọi người trả lời sai là không đọc hết bốn đáp án. Hãy đảm bảo đọc từng câu hỏi và tất cả bốn lựa chọn. Điều này sẽ giúp bạn chọn đáp án tốt nhất. Nếu bạn thấy mình quên đọc hết các đáp án, hãy bắt đầu đọc ngược (đáp án D trước, rồi C, v.v.).</li>
+  <li>Có thể có nhiều hơn một đáp án có vẻ đúng cho mỗi câu hỏi. Nhưng sẽ chỉ có một đáp án "tốt nhất". Hãy đảm bảo bạn đang tìm đáp án tốt nhất.</li>
+  <li>Sẽ có những đáp án được thiết kế để đánh lạc hướng bạn khỏi câu trả lời đúng. Chúng trình bày hơn một lựa chọn hợp lý, khiến có vẻ như một số câu hỏi có hai hoặc nhiều đáp án đúng. Thường chỉ có sự khác biệt nhỏ giữa các lựa chọn. Như đã lưu ý trước đó, hãy đảm bảo bạn tìm đáp án tốt nhất và suy nghĩ về tình huống theo các thực hành tốt trong quản lý dự án.</li>
+  <li>Lưu ý rằng câu hỏi cũng có thể bao gồm thông tin không liên quan.</li>
+  <li>Chú ý đến các từ và cụm từ như "vẫn còn", "chưa", "đầu tiên", "cuối cùng", "tiếp theo", "ngoại trừ", "không", "nhiều khả năng nhất", "ít khả năng hơn", "chủ yếu", "ban đầu" và "phần lớn". Hãy đảm bảo đọc rõ ràng câu hỏi và ghi nhớ những từ này để trả lời đúng.</li>
+  <li>Hãy cảnh giác với các đáp án là nhận định đúng nhưng không trả lời được câu hỏi.</li>
+  <li>Hãy cảnh giác với các đáp án chứa lỗi quản lý dự án phổ biến. Chúng được đặt vào có chủ ý để xác định xem bạn có thực sự hiểu quản lý dự án hay không. Bạn có thể khắc phục điều này bằng cách tìm kiếm và sửa những lỗ hổng trong kiến thức khi bạn đọc cuốn sách này và làm việc với Bài Kiểm Tra Chương và/hoặc FASTrack® của RMC. (Xem phần "Lỗi và Bẫy Phổ Biến Trong Quản Lý Dự Án" trong chương này.)</li>
+  <li>Các đáp án đại diện cho sự khái quát hóa rộng, quét sạch có xu hướng sai, vì vậy hãy cảnh giác với các từ như "luôn luôn", "không bao giờ", "phải", "hoàn toàn", "tất cả", v.v. Ngược lại, các đáp án đại diện cho các nhận định được định tính cẩn thận có xu hướng đúng, vì vậy hãy chú ý đến các từ như "thường", "đôi khi", "có lẽ", "có thể" và "nói chung".</li>
+  <li>Bạn có thể gặp một số câu hỏi hoặc đáp án diễn đạt kém hoặc sai ngữ pháp trong bài thi; đừng để điều này làm bạn mất tập trung.</li>
+  <li>Tìm kiếm các đáp án ủng hộ giá trị của quản lý dự án và chứng tỏ quản lý dự án đúng đắn đã được thực hiện, trừ khi bằng chứng trong câu hỏi cho bạn biết khác.</li>
+</ol>
+
+<p>Bài thi sẽ không được chấm điểm cho đến khi bạn cho biết bạn đã sẵn sàng, hoặc sau khi bốn giờ đã trôi qua. Bạn cũng sẽ được hỏi liệu bạn có chắc chắn muốn chấm điểm bài thi sau khi nộp hay không. Bạn sẽ nhận được tóm tắt kết quả thi. Nếu không đỗ, PMI sẽ gửi thông tin về việc thi lại. Bạn sẽ phải trả thêm phí để thi lại.</p>
+
+<p>Bạn đã sẵn sàng cho một số mẹo rất quan trọng cần ghi nhớ khi làm bài thi chưa? Hãy chú ý thật kỹ:</p>
+
+<ul class="content-list">
+  <li>Nhận ra rằng "quy tắc" (điều chúng ta cho là tốt nhất) được tạo ra để bị phá vỡ. Các quy tắc, chẳng hạn như phải làm gì khi có xung đột, có thể thay đổi tùy thuộc vào tình huống. Điều này khiến một số người khó chịu — đặc biệt là những người kỳ vọng bài thi chỉ kiểm tra sự kiện. Bạn cần có khả năng đọc và hiểu các tình huống trong bài thi rồi tìm ra điều tốt nhất cần làm trong tình huống đó.</li>
+  <li>Trừ khi có ghi khác, hãy giả định rằng quản lý dự án đúng đắn đã được thực hiện. Nếu bạn trả lời câu hỏi dựa trên các dự án thực tế không áp dụng quản lý dự án đúng đắn, bạn có thể bỏ lỡ câu trả lời đúng. Nếu câu hỏi rõ ràng cho thấy quản lý dự án đúng đắn chưa được thực hiện, bạn sẽ cần nghĩ về những gì còn thiếu, cách giải quyết nguyên nhân gốc rễ của vấn đề và cách đảm bảo quản lý dự án đúng đắn được thực hiện tiếp theo trong dự án.</li>
+  <li>Với mỗi câu hỏi, hãy chú ý dự án đang ở phần nào. Nếu tình huống được mô tả đang diễn ra trong lập kế hoạch, câu trả lời của bạn có thể khác so với khi nó đang diễn ra trong thực hiện.</li>
+  <li>Hãy chuẩn bị cho các câu hỏi có nhiều vấn đề. Một câu hỏi có thể mô tả tình huống với nhiều vấn đề khác nhau và yêu cầu bạn xác định vấn đề nào cần giải quyết trước. Đây là ví dụ:<br><br>
+  <em>Hai bên liên quan đang tranh luận qua một loạt email về việc liệu một sản phẩm bàn giao có đáp ứng tiêu chí chấp nhận hay không. Phân tích chi phí-lợi ích được thực hiện trong lập kế hoạch không hỗ trợ việc cung cấp mức hiệu suất cao hơn và các bên liên quan đã đồng ý. Một thành viên nhóm vừa thông báo rằng có vấn đề với công việc của anh ta. Sản phẩm bàn giao anh ta đang làm phải được giao hôm nay, nếu không sẽ vi phạm hợp đồng dự án. Một trong những bên liên quan đang tranh luận qua email đến gặp bạn để phàn nàn về người kia. Bạn nên làm gì?</em></li>
+</ul>
+
+<p>Các mẹo sau đây sẽ giúp bạn tập trung vào vấn đề quan trọng nhất để chọn đáp án tốt nhất. Điều quan trọng cần lưu ý là không phải tất cả các mẹo này đều áp dụng mọi lúc và chúng không có thứ tự quan trọng.</p>
+
+<ul class="content-list">
+  <li>Xác định vấn đề trực tiếp cần giải quyết.</li>
+  <li>Giải quyết nguyên nhân gốc rễ trước.</li>
+  <li>Giải quyết vấn đề có tác động tiêu cực lớn nhất trước.</li>
+  <li>Giải quyết vấn đề xảy ra sớm nhất.</li>
+  <li>Tìm kiếm giải pháp chủ động.</li>
+</ul>
+
+<h4 id="ch16-loi-va-bay-pho-bien-trong-quan-ly-du-an">Lỗi và Bẫy Phổ Biến Trong Quản Lý Dự Án</h4>
+
+<p>Như đã đề cập ở các phần khác trong cuốn sách này, bài thi thường đưa các lỗi phổ biến trong quản lý dự án vào như các đáp án có thể chọn. Hãy đọc phần tóm tắt sau về một số lỗi lớn mà ngay cả những người quản lý dự án giàu kinh nghiệm cũng mắc phải, và đảm bảo bạn hiểu tại sao đây là những lỗi.</p>
+
+<p>Các lỗi phổ biến trong quản lý dự án bao gồm:</p>
+<ul class="content-list">
+  <li>Tập trung chủ yếu vào phần trăm hoàn thành để theo dõi trạng thái hoạt động</li>
+  <li>Tổ chức các cuộc họp báo cáo trạng thái theo kiểu "mỗi người lần lượt phát biểu"</li>
+  <li>Dành hầu hết thời gian quản lý vi mô các thành viên nhóm bằng cách liên tục kiểm tra họ</li>
+  <li>Yêu cầu các thành viên nhóm cắt giảm 10% ước tính của họ</li>
+  <li>Nghĩ rằng biểu đồ thanh (Gantt) từ phần mềm lập lịch là một kế hoạch quản lý dự án</li>
+  <li>Không cố gắng đạt được yêu cầu đã được xác định cuối cùng</li>
+  <li>Không có được cam kết nguồn lực thực sự</li>
+  <li>Không có hệ thống khen thưởng và ghi nhận</li>
+  <li>Không tập trung vào chất lượng</li>
+  <li>Không có hệ thống kiểm soát thay đổi</li>
+  <li>Không có các kế hoạch quản lý (trong môi trường dự đoán)</li>
+  <li>Không đo lường so với kế hoạch quản lý dự án (trong môi trường dự đoán)</li>
+  <li>Không tạo ra các số liệu để đo lường và đánh giá hiệu suất</li>
+  <li>Không dành thời gian tìm và loại bỏ nguyên nhân gốc rễ của các vấn đề hoặc sai lệch</li>
+  <li>Không thực hiện các hành động khắc phục để giữ dự án phù hợp với kế hoạch quản lý dự án</li>
+  <li>Không đánh giá lại hiệu quả của kế hoạch quản lý dự án</li>
+  <li>Không đánh giá lại tính chính xác hoặc đầy đủ của phạm vi, tiến độ hoặc chi phí</li>
+  <li>Không cập nhật kế hoạch quản lý dự án và các tài liệu dự án để phản ánh các thay đổi và thông tin sửa đổi về dự án</li>
+  <li>Bỏ qua trách nhiệm của người quản lý nguồn lực trong việc quản lý các hoạt động kinh doanh đang diễn ra bên cạnh việc đáp ứng nhu cầu dự án (tài nguyên nhóm và vật chất)</li>
+  <li>Không nhận ra rằng dự án có thể ảnh hưởng đến danh tiếng của các thành viên nhóm</li>
+  <li>Không nhận ra rằng người quản lý dự án có trách nhiệm về nguồn lực; những trách nhiệm này có thể bao gồm trách nhiệm với nhóm dự án (chẳng hạn như tạo mô tả công việc dự án, đánh giá hiệu suất cá nhân và nhóm trong dự án, và thêm thư giới thiệu vào hồ sơ nhân sự của các thành viên nhóm) cũng như trách nhiệm liên quan đến nguồn lực vật chất</li>
+  <li>Đổ lỗi cho ban quản lý về tiến độ không thực tế thay vì nhận ra rằng xây dựng tiến độ thực tế là trách nhiệm của người quản lý dự án</li>
+</ul>
+
+<h3 id="ch16-mot-ngay-lam-viec">Một Ngày Làm Việc</h3>
+<p>Bài tập sau đây cung cấp cơ hội cuối cùng để tự kiểm tra xem bạn có thực sự hiểu người quản lý dự án làm gì hay không.</p>
+
+<h3 id="ch16-bai-tap-16-4">Bài Tập 16.4</h3>
+<p>Nhiều người không thực hành đầy đủ các thực hành quản lý dự án được mô tả trong ECO và các tài liệu tham khảo khác của PMI trong các dự án thực tế của họ. Bài tập này được thiết kế để giúp bạn khám phá những gì bạn có thể đang làm khác với các thực hành quản lý dự án theo góc nhìn PMI.</p>
+
+<p>Trong Sổ Bài Tập, hãy liệt kê các hoạt động mà người quản lý dự án nên dành nhiều thời gian nhất, tính trung bình trong một ngày làm việc điển hình, và những gì họ nên dành ít thời gian nhất. Đây là sau khi lập kế hoạch đã hoàn thành (ở mức độ cần thiết cho giai đoạn, lặp hiện tại, v.v.) và nhóm đang làm việc để xây dựng sản phẩm.</p>
+
+<h4 id="ch16-dap-an-16-4">Đáp Án</h4>
+<p>Có nhiều cách để trả lời đúng câu hỏi này. Hãy xem xét một số mục không nên chiếm phần lớn thời gian của bạn, và những gì thường nên có trong suốt một ngày làm việc. Hãy suy nghĩ về các mục được liệt kê ở đây và xác định xem bạn có hiểu nhầm gì về những gì bạn nên làm với tư cách là người quản lý dự án hay không. Nếu có, hãy làm rõ và sửa những hiểu nhầm này trước khi thi.</p>
+
+<div class="table-wrap"><table>
+  <thead>
+    <tr>
+      <th>Cách bạn KHÔNG nên dành hầu hết thời gian</th>
+      <th>Những gì thường nên có trong ngày làm việc của bạn</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Xử lý các vấn đề và thay đổi bất ngờ (thay vì ngăn chặn chúng và có kế hoạch dự phòng rủi ro)</td>
+      <td>Sử dụng các sản phẩm như WBS hay product backlog và kế hoạch quản lý dự án</td>
+    </tr>
+    <tr>
+      <td>Tiến độ và các mục liên quan đến quản lý tiến độ</td>
+      <td>Đo lường và đánh giá</td>
+    </tr>
+    <tr>
+      <td>Các cuộc họp</td>
+      <td>Phục vụ nhóm</td>
+    </tr>
+    <tr>
+      <td>Quản lý vi mô</td>
+      <td>Loại bỏ các trở ngại cho tiến trình của nhóm</td>
+    </tr>
+    <tr>
+      <td>Hoàn thành các hoạt động công việc</td>
+      <td>Đề xuất và thực hiện các hành động khắc phục và phòng ngừa</td>
+    </tr>
+    <tr>
+      <td>Xử lý các vấn đề phát sinh từ các bên liên quan không hài lòng</td>
+      <td>Thực hiện các phản hồi rủi ro hoặc truyền thông với chủ nhân rủi ro về chúng</td>
+    </tr>
+    <tr>
+      <td>Giải quyết các vấn đề truyền thông</td>
+      <td>Huấn luyện, cố vấn và xây dựng nhóm</td>
+    </tr>
+    <tr>
+      <td>Quản lý xung đột giữa các thành viên nhóm mà họ có thể tự giải quyết</td>
+      <td>Liên tục truyền đạt tầm nhìn với nhóm và các bên liên quan</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Giao tiếp và sử dụng lắng nghe chủ động</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Quản lý theo ngoại lệ so với kế hoạch</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Tương tác với các bên liên quan để duy trì và cải thiện mức độ gắn kết của họ</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td>Tìm kiếm các thay đổi có thể xảy ra</td>
+    </tr>
+  </tbody>
+</table></div>
+
+
+</main>
+
+<button id="back-top" aria-label="Về đầu trang">↑</button>
+
+<script>
+// Progress bar
+const pb=document.getElementById('progress-bar');
+function updPB(){const d=document.documentElement;pb.style.width=Math.min((d.scrollTop/(d.scrollHeight-d.clientHeight))*100,100)+'%'}
+window.addEventListener('scroll',updPB,{passive:true});
+
+// Back to top
+const bt=document.getElementById('back-top');
+window.addEventListener('scroll',()=>{bt.style.opacity=scrollY>400?'1':'0';},{passive:true});
+bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+// Mobile menu
+const mb=document.getElementById('menu-btn'),sb=document.getElementById('sidebar');
+mb.addEventListener('click',()=>sb.classList.toggle('open'));
+document.addEventListener('click',e=>{if(!sb.contains(e.target)&&e.target!==mb)sb.classList.remove('open')});
+
+// Active TOC highlight on scroll
+const tocLinks=document.querySelectorAll('#sidebar-toc a[href^="#"]');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      tocLinks.forEach(a=>a.classList.remove('active'));
+      const a=document.querySelector('#sidebar-toc a[href="#'+e.target.id+'"]');
+      if(a){a.classList.add('active');a.scrollIntoView({block:'nearest',behavior:'smooth'})}
+    }
+  })
+},{rootMargin:'-20% 0px -75% 0px'});
+document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
+
+// ── THEME + READING POSITION ───────────────────────────
+(function(){
+  var THEME_KEY='rita_theme', READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var chapNum=m?m[1]:null;
+
+  // Build & inject theme toggle button
+  var hdr=document.getElementById('sidebar-header');
+  if(hdr){
+    var btn=document.createElement('button');
+    btn.id='theme-btn';
+    var curTheme=document.documentElement.getAttribute('data-theme')||'light';
+    btn.textContent=curTheme==='dark'?'☀':'🌙';
+    btn.title='Giao diện sáng / tối';
+    hdr.appendChild(btn);
+    btn.addEventListener('click',function(){
+      var next=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+      document.documentElement.setAttribute('data-theme',next);
+      localStorage.setItem(THEME_KEY,next);
+      btn.textContent=next==='dark'?'☀':'🌙';
+    });
+  }
+
+  if(!chapNum) return;
+
+  // Save last chapter visited
+  try{
+    var rd=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    rd.lastChap='rita_chap'+chapNum;
+    if(!rd.scrollPos) rd.scrollPos={};
+    localStorage.setItem(READ_KEY,JSON.stringify(rd));
+  }catch(e){}
+
+  // Restore scroll position
+  try{
+    var rdR=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    var savedPos=rdR.scrollPos&&rdR.scrollPos[chapNum]||0;
+    if(savedPos>200) setTimeout(function(){window.scrollTo(0,savedPos);},120);
+  }catch(e){}
+
+  // Save scroll position (debounced 600ms)
+  var saveT;
+  window.addEventListener('scroll',function(){
+    clearTimeout(saveT);
+    saveT=setTimeout(function(){
+      try{
+        var r2=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+        if(!r2.scrollPos) r2.scrollPos={};
+        r2.scrollPos[chapNum]=window.scrollY;
+        r2.lastChap='rita_chap'+chapNum;
+        localStorage.setItem(READ_KEY,JSON.stringify(r2));
+      }catch(e){}
+    },600);
+  },{passive:true});
+})();
+
+// ── HIGHLIGHT / NOTES SYSTEM ────────────────────────────
+(function(){
+  var READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  if(!m) return;
+  var chapNum=m[1];
+  var HL_KEY='rita_hl_'+chapNum;
+
+  // ── STORAGE ──
+  function loadHL(){try{return JSON.parse(localStorage.getItem(HL_KEY)||'[]')}catch(e){return[]}}
+  function saveHL(arr){localStorage.setItem(HL_KEY,JSON.stringify(arr));window.__ritaSyncTrigger&&window.__ritaSyncTrigger();}
+  function genId(){return 'h'+Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
+
+  // ── XPATH HELPERS ──
+  var mainEl=document.getElementById('main');
+  function getXPath(node){
+    if(!node||node===mainEl) return '.';
+    var parts=[];
+    var cur=node.nodeType===3?node.parentNode:node;
+    while(cur&&cur!==mainEl&&cur!==document.body){
+      var tag=cur.tagName.toLowerCase();
+      var idx=1,sib=cur.previousElementSibling;
+      while(sib){if(sib.tagName&&sib.tagName.toLowerCase()===tag)idx++;sib=sib.previousElementSibling;}
+      parts.unshift(tag+'['+idx+']');
+      cur=cur.parentElement;
+    }
+    return parts.join('/');
+  }
+  function resolveXPath(xpath){
+    if(!mainEl||xpath==='.') return mainEl;
+    try{
+      var r=document.evaluate('.//'+xpath,mainEl,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);
+      return r.singleNodeValue;
+    }catch(e){return null;}
+  }
+  function findTextAt(el,offset){
+    var walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null);
+    var count=0,node;
+    while((node=walker.nextNode())){
+      var len=node.textContent.length;
+      if(count+len>=offset) return{node:node,localOffset:offset-count};
+      count+=len;
+    }
+    return null;
+  }
+
+  // ── APPLY MARK TO DOM ──
+  function applyMark(hl){
+    try{
+      var sEl=resolveXPath(hl.sxp), eEl=resolveXPath(hl.exp);
+      if(!sEl||!eEl) return false;
+      var sInfo=sEl.nodeType===3?{node:sEl,localOffset:hl.so}:findTextAt(sEl,hl.so);
+      var eInfo=eEl.nodeType===3?{node:eEl,localOffset:hl.eo}:findTextAt(eEl,hl.eo);
+      if(!sInfo||!eInfo) return false;
+      var range=document.createRange();
+      range.setStart(sInfo.node,sInfo.localOffset);
+      range.setEnd(eInfo.node,eInfo.localOffset);
+      applyRange(range,hl.id,hl.color,hl.note||'');
+      return true;
+    }catch(e){return false;}
+  }
+  function applyRange(range,hlId,color,note){
+    var walker=document.createTreeWalker(
+      range.commonAncestorContainer.nodeType===3
+        ?range.commonAncestorContainer.parentNode
+        :range.commonAncestorContainer,
+      NodeFilter.SHOW_TEXT,null
+    );
+    var nodes=[],node;
+    while((node=walker.nextNode())){if(range.intersectsNode(node))nodes.push(node);}
+    nodes.forEach(function(tn){
+      var s=tn===range.startContainer?range.startOffset:0;
+      var e=tn===range.endContainer?range.endOffset:tn.textContent.length;
+      if(s>=e) return;
+      var nr=document.createRange();
+      nr.setStart(tn,s); nr.setEnd(tn,Math.min(e,tn.textContent.length));
+      try{
+        var mk=document.createElement('mark');
+        mk.className='hl'; mk.setAttribute('data-hl-id',hlId);
+        mk.setAttribute('data-color',color); mk.setAttribute('data-note',note);
+        nr.surroundContents(mk);
+      }catch(err){
+        try{
+          var c=nr.extractContents(),mk2=document.createElement('mark');
+          mk2.className='hl'; mk2.setAttribute('data-hl-id',hlId);
+          mk2.setAttribute('data-color',color); mk2.setAttribute('data-note',note);
+          mk2.appendChild(c); nr.insertNode(mk2);
+        }catch(_){}
+      }
+    });
+  }
+  function removeMarks(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      var p=mk.parentNode;
+      while(mk.firstChild)p.insertBefore(mk.firstChild,mk);
+      p.removeChild(mk);
+      p.normalize();
+    });
+  }
+  function updateMarks(hlId,color,note){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.setAttribute('data-color',color);
+      mk.setAttribute('data-note',note);
+    });
+  }
+
+  // ── RESTORE HIGHLIGHTS ON LOAD ──
+  var highlights=loadHL();
+  // Sort by sxp+so descending so earlier ranges aren't offset by later insertions
+  // Actually apply in order (each one is independent)
+  highlights.forEach(applyMark);
+  // Expose re-apply for sync module
+  window.__ritaReapplyMarks=function(){
+    document.querySelectorAll('mark.hl').forEach(function(mk){
+      var p=mk.parentNode;while(mk.firstChild)p.insertBefore(mk.firstChild,mk);p.removeChild(mk);p.normalize();
+    });
+    loadHL().forEach(applyMark);
+    if(typeof updateBadge==='function') updateBadge();
+    if(typeof renderPanelIfOpen==='function') renderPanelIfOpen();
+  };
+
+  // ── SIDEBAR BUTTON ──
+  function updateBadge(){
+    var hls=loadHL();
+    var badge=document.getElementById('hl-badge');
+    if(badge) badge.textContent=hls.length||'0';
+  }
+  var sidebarNav=document.getElementById('sidebar-toc');
+  if(sidebarNav){
+    var hlBtn=document.createElement('button');
+    hlBtn.id='hl-sidebar-btn';
+    hlBtn.innerHTML='<span>✏ Ghi chú & Highlight</span><span id="hl-badge">0</span>';
+    hlBtn.addEventListener('click',function(){openPanel();});
+    // Insert before sidebar-nav (bottom buttons)
+    var sidebarNavBottom=document.getElementById('sidebar-nav');
+    if(sidebarNavBottom) sidebarNavBottom.parentNode.insertBefore(hlBtn,sidebarNavBottom);
+    else document.getElementById('sidebar').appendChild(hlBtn);
+  }
+  updateBadge();
+
+  // ── PANEL ──
+  var panel=document.createElement('div');
+  panel.id='hl-panel';
+  panel.innerHTML='<div id="hl-panel-hdr"><h3>✏ Ghi Chú & Highlight</h3><button id="hl-panel-close">×</button></div><div id="hl-panel-list"></div>';
+  document.body.appendChild(panel);
+  document.getElementById('hl-panel-close').addEventListener('click',closePanel);
+  function openPanel(){renderPanel();panel.classList.add('open');}
+  function closePanel(){panel.classList.remove('open');}
+  function renderPanel(){
+    var list=document.getElementById('hl-panel-list');
+    var hls=loadHL();
+    list.innerHTML='';
+    hls.forEach(function(hl){
+      var item=document.createElement('div');
+      item.className='hl-item'; item.setAttribute('data-color',hl.color);
+      var noteHtml=hl.note?'<div class="hl-item-note">✏ '+escHtml(hl.note)+'</div>':'';
+      item.innerHTML='<button class="hl-item-del" data-id="'+hl.id+'">🗑</button>'
+        +'<div class="hl-item-text">'+escHtml(hl.text||'')+'</div>'+noteHtml;
+      item.addEventListener('click',function(e){
+        if(e.target.classList.contains('hl-item-del')) return;
+        var mk=document.querySelector('mark.hl[data-hl-id="'+hl.id+'"]');
+        if(mk){mk.scrollIntoView({behavior:'smooth',block:'center'});flashMark(hl.id);}
+        closePanel();
+      });
+      item.querySelector('.hl-item-del').addEventListener('click',function(e){
+        e.stopPropagation(); deleteHL(hl.id); renderPanel();
+      });
+      list.appendChild(item);
+    });
+  }
+
+  // ── POPUP ──
+  var popup=document.createElement('div');
+  popup.id='hl-popup'; popup.className='hidden';
+  popup.innerHTML=
+    '<button class="hl-color-btn" data-color="yellow" title="Vàng"></button>'
+    +'<button class="hl-color-btn" data-color="green" title="Xanh"></button>'
+    +'<button class="hl-color-btn" data-color="red" title="Đỏ"></button>'
+    +'<div class="hl-sep"></div>'
+    +'<button class="hl-note-btn" title="Thêm ghi chú">✏</button>'
+    +'<button class="hl-del-btn hl-del-action" title="Xóa">🗑</button>';
+  document.body.appendChild(popup);
+
+  var currentHlId=null;    // id being edited (null = new)
+  var pendingRange=null;   // Range for new highlight
+  var pendingXP=null;      // serialized position for new highlight
+
+  // Position popup near a rect
+  function positionPopup(rect){
+    var pw=popup.offsetWidth||160,ph=popup.offsetHeight||40;
+    var top=rect.top-ph-10+window.scrollY;
+    var left=rect.left+(rect.width-pw)/2;
+    if(top<window.scrollY+8) top=rect.bottom+10+window.scrollY;
+    left=Math.max(8,Math.min(left,window.innerWidth-pw-8));
+    popup.style.top=top+'px';
+    popup.style.left=left+'px';
+  }
+  function showPopup(rect,hlId){
+    currentHlId=hlId||null;
+    var isEdit=!!hlId;
+    popup.querySelector('.hl-del-action').style.display=isEdit?'':'none';
+    popup.querySelector('.hl-note-btn').style.display='';
+    popup.classList.remove('hidden');
+    positionPopup(rect);
+  }
+  function hidePopup(){
+    popup.classList.add('hidden');
+    pendingRange=null; pendingXP=null; currentHlId=null;
+  }
+
+  // Color buttons
+  popup.querySelectorAll('.hl-color-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var color=btn.getAttribute('data-color');
+      if(currentHlId){
+        // Update existing
+        var hls=loadHL();
+        var idx=hls.findIndex(function(h){return h.id===currentHlId;});
+        if(idx>=0){hls[idx].color=color;saveHL(hls);}
+        updateMarks(currentHlId,color,hls[idx]?hls[idx].note||'':'');
+        updateBadge(); renderPanelIfOpen();
+      } else if(pendingRange&&pendingXP){
+        // Create new
+        var id=genId();
+        var text=pendingRange.toString().substring(0,500);
+        applyRange(pendingRange,id,color,'');
+        pendingRange.collapse();
+        window.getSelection()&&window.getSelection().removeAllRanges();
+        var hls=loadHL();
+        hls.push({id:id,color:color,note:'',text:text,
+          sxp:pendingXP.sxp,so:pendingXP.so,exp:pendingXP.exp,eo:pendingXP.eo});
+        saveHL(hls); updateBadge(); renderPanelIfOpen();
+      }
+      hidePopup();
+    });
+  });
+
+  // Note button
+  popup.querySelector('.hl-note-btn').addEventListener('click',function(){
+    var id=currentHlId;
+    var existing='';
+    if(id){var hls=loadHL();var h=hls.find(function(x){return x.id===id;});if(h)existing=h.note||'';}
+    hidePopup();
+    openNoteModal(id,existing);
+  });
+
+  // Delete button
+  popup.querySelector('.hl-del-action').addEventListener('click',function(){
+    if(currentHlId) deleteHL(currentHlId);
+    hidePopup();
+  });
+
+  function deleteHL(id){
+    removeMarks(id);
+    var hls=loadHL().filter(function(h){return h.id!==id;});
+    saveHL(hls); updateBadge(); renderPanelIfOpen();
+  }
+
+  // ── NOTE MODAL ──
+  var noteModal=document.createElement('div');
+  noteModal.id='hl-note-modal'; noteModal.className='hidden';
+  noteModal.innerHTML='<div id="hl-note-box">'
+    +'<h3>✏ Ghi chú</h3>'
+    +'<textarea id="hl-note-ta" placeholder="Nhập ghi chú..."></textarea>'
+    +'<div class="hl-note-actions">'
+    +'<button class="hl-note-cancel">Hủy</button>'
+    +'<button class="hl-note-save">Lưu</button>'
+    +'</div></div>';
+  document.body.appendChild(noteModal);
+  var _noteTargetId=null;
+  function openNoteModal(hlId,existing){
+    _noteTargetId=hlId;
+    document.getElementById('hl-note-ta').value=existing||'';
+    noteModal.classList.remove('hidden');
+    setTimeout(function(){document.getElementById('hl-note-ta').focus();},50);
+  }
+  noteModal.querySelector('.hl-note-cancel').addEventListener('click',function(){noteModal.classList.add('hidden');});
+  noteModal.querySelector('.hl-note-save').addEventListener('click',function(){
+    var note=document.getElementById('hl-note-ta').value.trim();
+    if(_noteTargetId){
+      var hls=loadHL();
+      var idx=hls.findIndex(function(h){return h.id===_noteTargetId;});
+      if(idx>=0){hls[idx].note=note;saveHL(hls);updateMarks(_noteTargetId,hls[idx].color,note);updateBadge();renderPanelIfOpen();}
+    }
+    noteModal.classList.add('hidden');
+  });
+  noteModal.addEventListener('click',function(e){if(e.target===noteModal)noteModal.classList.add('hidden');});
+
+  // ── SELECTION HANDLER ──
+  document.addEventListener('mouseup',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    setTimeout(function(){
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed||!sel.rangeCount){hidePopup();return;}
+      var range=sel.getRangeAt(0);
+      var text=range.toString().trim();
+      if(!text||text.length<2){hidePopup();return;}
+      // Only highlight within #main
+      if(!mainEl||!mainEl.contains(range.commonAncestorContainer)){hidePopup();return;}
+      // Serialize positions
+      var sNode=range.startContainer,eNode=range.endContainer;
+      var sParent=sNode.nodeType===3?sNode.parentNode:sNode;
+      var eParent=eNode.nodeType===3?eNode.parentNode:eNode;
+      var sxp=getXPath(sParent),exp=getXPath(eParent);
+      // calc offsets within parent element
+      var so=0,eo=0;
+      var w=document.createTreeWalker(sParent,NodeFilter.SHOW_TEXT,null);
+      var n;while((n=w.nextNode())){if(n===sNode){so+=range.startOffset;break;}so+=n.textContent.length;}
+      var w2=document.createTreeWalker(eParent,NodeFilter.SHOW_TEXT,null);
+      while((n=w2.nextNode())){if(n===eNode){eo+=range.endOffset;break;}eo+=n.textContent.length;}
+      pendingRange=range.cloneRange();
+      pendingXP={sxp:sxp,so:so,exp:exp,eo:eo};
+      currentHlId=null;
+      var rect=range.getBoundingClientRect();
+      showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width});
+    },10);
+  });
+
+  // ── CLICK ON EXISTING MARK ──
+  document.addEventListener('click',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    var mk=e.target.closest('mark.hl');
+    if(!mk){
+      // click outside: if selection is collapsed, hide popup
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed) hidePopup();
+      return;
+    }
+    e.stopPropagation();
+    var hlId=mk.getAttribute('data-hl-id');
+    var rect=mk.getBoundingClientRect();
+    currentHlId=hlId;
+    pendingRange=null;pendingXP=null;
+    showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width},hlId);
+  });
+
+  // ── FLASH EFFECT ──
+  function flashMark(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.style.transition='outline .2s';mk.style.outline='3px solid #c9a84c';
+      setTimeout(function(){mk.style.outline='none';},1500);
+    });
+  }
+
+  function renderPanelIfOpen(){if(panel.classList.contains('open'))renderPanel();}
+
+  function escHtml(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+})();
+
+
+// ── CHAPTER NAV PANEL ───────────────────────────────────
+(function(){
+  var CHAPS=[
+    [1,'rita_chap01.html','Mẹo & Thủ Thuật Ôn Thi PMP®'],
+    [2,'rita_chap02.html','Tài Liệu Tham Khảo Kỳ Thi'],
+    [3,'rita_chap03.html','Nền Tảng Quản Lý Dự Án'],
+    [4,'rita_chap04.html','Tích Hợp'],
+    [5,'rita_chap05.html','Kỹ Năng Lãnh Đạo'],
+    [6,'rita_chap06.html','Xây Dựng & Hỗ Trợ Hiệu Suất Nhóm'],
+    [7,'rita_chap07.html','Phạm Vi Dự Án'],
+    [8,'rita_chap08.html','Tiến Độ & Ngân Sách Dự Án'],
+    [10,'rita_chap10.html','Chất Lượng Sản Phẩm Bàn Giao'],
+    [11,'rita_chap11.html','Truyền Thông'],
+    [12,'rita_chap12.html','Rủi Ro & Vấn Đề'],
+    [13,'rita_chap13.html','Mua Sắm'],
+    [14,'rita_chap14.html','Các Bên Liên Quan'],
+    [15,'rita_chap15.html','Tuân Thủ & Mang Lại Giá Trị'],
+    [16,'rita_chap16.html','Mẹo Vượt Qua Kỳ Thi PMP®'],
+    [17,'rita_chap17.html','Các Phương Pháp Agile Phổ Biến'],
+    [18,'rita_chap18.html','Hướng Dẫn PMBOK & Tiêu Chuẩn PM']
+  ];
+
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var curNum=m?parseInt(m[1]):null;
+  var READ_KEY='rita_reading';
+
+  // Build panel DOM
+  var panel=document.createElement('div');
+  panel.id='chap-panel'; panel.className='hidden';
+  var listHtml='';
+  CHAPS.forEach(function(c){
+    var isActive=c[0]===curNum;
+    listHtml+='<a class="chap-panel-item'+(isActive?' active':'')+'" href="'+c[1]+'">'
+      +'<span class="cpanel-num">Ch'+c[0]+'</span>'
+      +'<span class="cpanel-title">'+c[2]+'</span>'
+      +(isActive?'<span class="cpanel-status">● Đang đọc</span>':'')
+      +'</a>';
+  });
+  panel.innerHTML='<div id="chap-panel-overlay"></div>'
+    +'<div id="chap-panel-box">'
+    +'<div id="chap-panel-hdr"><h3>☰ Danh Sách Chương</h3><button id="chap-panel-close">×</button></div>'
+    +'<div id="chap-panel-list">'+listHtml+'</div>'
+    +'</div>';
+  document.body.appendChild(panel);
+
+  function openChapPanel(){panel.classList.remove('hidden');}
+  function closeChapPanel(){panel.classList.add('hidden');}
+  document.getElementById('chap-panel-overlay').addEventListener('click',closeChapPanel);
+  document.getElementById('chap-panel-close').addEventListener('click',closeChapPanel);
+
+  // Wire up the Mục lục button
+  var mucLucBtn=document.getElementById('chap-muc-luc-btn');
+  if(mucLucBtn) mucLucBtn.addEventListener('click',function(e){e.preventDefault();openChapPanel();});
+})();
+
+
+// ── GITHUB HIGHLIGHTS SYNC ──────────────────────────
+(function(){
+  var REPO='goukakujlptsuport-beep/pmbok6';
+  var TOKEN_KEY='rita_gh_token';
+  var API_URL='https://api.github.com/repos/'+REPO+'/contents/data/rita_highlights.json';
+  var fileSha=null;
+  var syncTimer=null;
+
+  // Called by patched saveHL after every highlight change
+  window.__ritaSyncTrigger=function(){
+    clearTimeout(syncTimer);
+    syncTimer=setTimeout(pushToGitHub,3000);
+  };
+
+  // ── STATUS BUTTON (inserted before #sidebar-nav) ──
+  var btn=document.createElement('button');
+  btn.id='sync-btn'; btn.dataset.state='no-token';
+  btn.innerHTML='<span>☁ Sync Git</span><span id="sync-status-text">Đang kết nối…</span>';
+  btn.title='Đồng bộ highlight / ghi chú lên GitHub';
+  btn.addEventListener('click',handleSyncClick);
+  var sidebarNavEl=document.getElementById('sidebar-nav');
+  if(sidebarNavEl) sidebarNavEl.parentNode.insertBefore(btn,sidebarNavEl);
+
+  var statusText=document.getElementById('sync-status-text');
+  function setStatus(state,msg){
+    btn.dataset.state=state;
+    if(statusText) statusText.textContent=msg;
+  }
+
+  // ── TOKEN MODAL ──
+  var modal=document.createElement('div');
+  modal.id='sync-modal'; modal.className='hidden';
+  modal.innerHTML='<div id="sync-modal-box">'
+    +'<h3>☁ Cấu Hình GitHub Sync</h3>'
+    +'<p>Nhập <strong style="color:var(--gold)">GitHub Personal Access Token (PAT)</strong> để đồng bộ highlight giữa các thiết bị.<br>'
+    +'Token cần quyền <strong style="color:var(--gold-lt)">Contents: Read &amp; Write</strong> trên repo pmbok6.<br>'
+    +'Token được lưu trong localStorage của trình duyệt này.</p>'
+    +'<input id="sync-token-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" spellcheck="false" autocomplete="off">'
+    +'<div class="sync-modal-btns">'
+    +'<button id="sync-clear-btn">🗑 Xóa token</button>'
+    +'<button id="sync-cancel-btn">Hủy</button>'
+    +'<button id="sync-save-btn">💾 Lưu &amp; Sync</button>'
+    +'</div></div>';
+  document.body.appendChild(modal);
+
+  document.getElementById('sync-cancel-btn').addEventListener('click',function(){modal.classList.add('hidden');});
+  document.getElementById('sync-save-btn').addEventListener('click',function(){
+    var t=(document.getElementById('sync-token-input').value||'').trim();
+    if(!t){alert('Vui lòng nhập GitHub PAT!');return;}
+    localStorage.setItem(TOKEN_KEY,t);
+    modal.classList.add('hidden');
+    fileSha=null;
+    initSync();
+  });
+  document.getElementById('sync-clear-btn').addEventListener('click',function(){
+    if(!confirm('Xóa token? Highlights sẽ không được sync cho đến khi cấu hình lại.')) return;
+    localStorage.removeItem(TOKEN_KEY);
+    fileSha=null;
+    modal.classList.add('hidden');
+    setStatus('no-token','Chưa cấu hình');
+  });
+  modal.addEventListener('click',function(e){if(e.target===modal)modal.classList.add('hidden');});
+
+  function handleSyncClick(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){
+      var inp=document.getElementById('sync-token-input');
+      if(inp) inp.value='';
+      modal.classList.remove('hidden');
+      setTimeout(function(){if(inp)inp.focus();},80);
+    } else {
+      // Manual re-sync
+      fileSha=null;
+      initSync();
+    }
+  }
+
+  // ── HELPERS ──
+  var ALL_CHAPS=['01','02','03','04','05','06','07','08','10','11','12','13','14','15','16','17','18'];
+
+  function getAllLocal(){
+    var all={};
+    ALL_CHAPS.forEach(function(n){
+      try{
+        var v=JSON.parse(localStorage.getItem('rita_hl_'+n)||'[]');
+        if(v&&v.length>0) all[n]=v;
+      }catch(e){}
+    });
+    return all;
+  }
+
+  function countHL(obj){
+    return Object.values(obj).reduce(function(s,a){return s+(a?a.length:0);},0);
+  }
+
+  // Union merge: keep all highlights by id, prefer local note if different
+  function mergeHL(local,remote){
+    var merged={};
+    var allChaps=new Set(Object.keys(local).concat(Object.keys(remote)));
+    allChaps.forEach(function(chap){
+      var loc=local[chap]||[];
+      var rem=remote[chap]||[];
+      var byId={};
+      loc.forEach(function(h){byId[h.id]=h;});
+      rem.forEach(function(h){if(!byId[h.id])byId[h.id]=h;});
+      var arr=Object.values(byId);
+      if(arr.length>0) merged[chap]=arr;
+    });
+    return merged;
+  }
+
+  function applyToLocal(highlights){
+    Object.keys(highlights).forEach(function(chap){
+      localStorage.setItem('rita_hl_'+chap,JSON.stringify(highlights[chap]));
+    });
+  }
+
+  // base64 encode/decode with Unicode support
+  function b64enc(str){
+    return btoa(unescape(encodeURIComponent(str)));
+  }
+  function b64dec(b64){
+    return decodeURIComponent(escape(atob(b64.replace(/[\r\n]/g,''))));
+  }
+
+  // ── FETCH FROM GITHUB ──
+  async function fetchFromGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    var headers={'Accept':'application/vnd.github.v3+json'};
+    if(token) headers['Authorization']='token '+token;
+    try{
+      var resp=await fetch(API_URL,{headers:headers});
+      if(resp.status===404){fileSha=null;return null;}
+      if(!resp.ok) throw new Error('HTTP '+resp.status);
+      var data=await resp.json();
+      fileSha=data.sha;
+      var content=JSON.parse(b64dec(data.content));
+      return content;
+    }catch(e){
+      console.warn('[sync] fetch:',e);
+      return 'error';
+    }
+  }
+
+  // ── PUSH TO GITHUB ──
+  async function pushToGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang sync…');
+    var local=getAllLocal();
+    var payload={version:1,lastSync:new Date().toISOString(),highlights:local};
+    var encoded=b64enc(JSON.stringify(payload,null,2));
+    var body={message:'sync: rita highlights ['+countHL(local)+' HL]',content:encoded};
+    if(fileSha) body.sha=fileSha;
+    try{
+      var resp=await fetch(API_URL,{
+        method:'PUT',
+        headers:{
+          'Authorization':'token '+token,
+          'Content-Type':'application/json',
+          'Accept':'application/vnd.github.v3+json'
+        },
+        body:JSON.stringify(body)
+      });
+      if(!resp.ok){
+        var err=await resp.json().catch(function(){return{};});
+        throw new Error(err.message||'HTTP '+resp.status);
+      }
+      var result=await resp.json();
+      fileSha=result.content.sha;
+      setStatus('ok','✓ Đã sync ('+countHL(local)+' HL)');
+    }catch(e){
+      setStatus('err','✗ '+e.message.slice(0,28));
+      console.error('[sync] push:',e);
+    }
+  }
+
+  // ── INIT ──
+  async function initSync(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang tải…');
+
+    var ghData=await fetchFromGitHub();
+    if(ghData==='error'){
+      setStatus('err','✗ Không kết nối được');
+      return;
+    }
+    if(ghData&&ghData.highlights){
+      var local=getAllLocal();
+      var merged=mergeHL(local,ghData.highlights);
+      applyToLocal(merged);
+      // Re-apply marks on current chapter from updated localStorage
+      if(typeof window.__ritaReapplyMarks==='function') window.__ritaReapplyMarks();
+      var ghN=countHL(ghData.highlights), mergedN=countHL(merged);
+      if(mergedN>ghN){
+        // New highlights from remote — push merged back
+        setTimeout(pushToGitHub,1200);
+      } else {
+        setStatus('ok','✓ Sync OK ('+mergedN+' HL)');
+      }
+    } else {
+      // File doesn't exist yet — push current local state
+      await pushToGitHub();
+    }
+  }
+
+  initSync();
+})();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2039 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tích Hợp | Rita PMP® Exam Prep 11</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:     #1a2744;
+  --red:      #8b1a1a;
+  --gold:     #c9a84c;
+  --gold-lt:  #e8d5a3;
+  --cream:    #fdf8f0;
+  --text:     #2c2c2c;
+  --text-dim: #5a5a5a;
+  --border:   #d4c89a;
+  --sidebar-w: 268px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ── PROGRESS BAR ── */
+#progress-bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--gold);z-index:200;transition:width .1s}
+
+/* ── SIDEBAR ── */
+#sidebar{
+  width:var(--sidebar-w);background:var(--navy);color:#ccd4e8;
+  position:fixed;top:0;left:0;bottom:0;overflow-y:auto;z-index:100;
+  border-right:3px solid var(--gold);display:flex;flex-direction:column;
+}
+#sidebar-header{
+  background:linear-gradient(135deg,#0f1d3a 0%,#1a2744 100%);
+  padding:1.4rem 1.2rem;border-bottom:2px solid var(--gold);flex-shrink:0;
+}
+#sidebar-header .book-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.62rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;
+}
+#sidebar-header h2{font-size:.92rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:.25rem}
+#sidebar-header .edition{font-family:'Source Sans 3',sans-serif;font-size:.7rem;color:var(--gold-lt);font-style:italic}
+#sidebar-toc{flex:1;overflow-y:auto;padding:.6rem 0}
+#sidebar-toc a{
+  display:block;font-family:'Source Sans 3',sans-serif;font-size:.78rem;
+  color:#aab8d0;text-decoration:none;padding:.4rem 1.2rem;line-height:1.4;
+  transition:all .15s;border-left:3px solid transparent;
+}
+#sidebar-toc a:hover,#sidebar-toc a.active{color:#fff;background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+#sidebar-toc a.toc-h4{padding-left:2.2rem;font-size:.72rem;color:#8896b0}
+#sidebar-toc a.toc-h4:hover{color:#ccd4e8}
+#sidebar-toc .toc-group-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.6rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  padding:.7rem 1.2rem .25rem;opacity:.85;
+}
+#sidebar-nav{
+  flex-shrink:0;border-top:1px solid rgba(255,255,255,.08);
+  display:flex;justify-content:space-between;padding:.7rem .8rem;gap:.5rem;
+}
+#sidebar-nav a{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;color:var(--gold-lt);
+  text-decoration:none;padding:.4rem .7rem;border:1px solid rgba(201,168,76,.3);
+  border-radius:4px;transition:all .2s;line-height:1.3;text-align:center;flex:1;
+}
+#sidebar-nav a:hover{background:rgba(201,168,76,.15);color:#fff}
+#sidebar-nav a.disabled{opacity:.35;pointer-events:none}
+
+/* ── HAMBURGER (mobile) ── */
+#menu-btn{
+  display:none;position:fixed;top:.7rem;left:.8rem;z-index:150;
+  background:var(--navy);border:1px solid var(--gold);color:var(--gold);
+  width:36px;height:36px;border-radius:6px;font-size:1.1rem;cursor:pointer;
+  align-items:center;justify-content:center;
+}
+
+/* ── MAIN ── */
+#main{margin-left:var(--sidebar-w);max-width:880px;padding:0 2.8rem 5rem}
+
+/* ── CHAPTER HERO ── */
+.chapter-hero{
+  background:linear-gradient(135deg,var(--navy) 0%,#2a3a6a 100%);
+  color:white;padding:2.8rem 2.8rem 2.2rem;margin:0 -2.8rem 2.8rem;
+  border-bottom:4px solid var(--gold);position:relative;overflow:hidden;
+}
+.chapter-hero::before{
+  content:'4';position:absolute;right:1.5rem;top:50%;
+  transform:translateY(-50%);font-size:10rem;font-weight:700;
+  color:rgba(255,255,255,.05);font-family:'Merriweather',serif;line-height:1;
+}
+.chapter-hero .ch-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;font-weight:700;
+  letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;
+}
+.chapter-hero h1{font-size:2rem;font-weight:700;line-height:1.2;margin-bottom:.35rem}
+.chapter-hero .ch-en{font-family:'Source Sans 3',sans-serif;font-size:.95rem;color:rgba(255,255,255,.5);font-style:italic}
+
+/* ── CONTENT HEADINGS ── */
+h3{
+  font-family:'Merriweather',serif;font-size:1.25rem;color:var(--navy);
+  margin:2.5rem 0 .85rem;padding-bottom:.45rem;border-bottom:2px solid var(--gold);
+}
+h4{
+  font-family:'Merriweather',serif;font-size:1.05rem;color:var(--navy);
+  margin:2rem 0 .65rem;padding-left:.75rem;border-left:4px solid var(--gold);
+}
+h5{
+  font-family:'Source Sans 3',sans-serif;font-size:.9rem;font-weight:700;
+  color:var(--red);margin:1.4rem 0 .45rem;text-transform:uppercase;letter-spacing:.05em;
+}
+p{font-family:'Merriweather',serif;font-size:.94rem;line-height:1.88;margin-bottom:.95rem;color:var(--text)}
+
+/* ── LISTS ── */
+ul.content-list,ol.content-list{
+  margin:.5rem 0 1rem;padding:0;list-style:none;
+}
+ul.content-list li{
+  position:relative;padding:.28rem 0 .28rem 1.6rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);
+}
+ul.content-list li::before{
+  content:'◆';position:absolute;left:0;color:var(--gold);font-size:.65rem;top:.45rem;
+}
+ol.content-list{counter-reset:ol-c;list-style:none}
+ol.content-list li{
+  position:relative;padding:.28rem 0 .28rem 2rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);counter-increment:ol-c;
+}
+ol.content-list li::before{
+  content:counter(ol-c)'.';position:absolute;left:0;color:var(--navy);
+  font-weight:700;font-size:.85rem;min-width:1.5rem;
+}
+ul.content-list ul.content-list li::before{content:'–';color:var(--text-dim);font-size:.9rem;top:.35rem}
+
+/* ── CALLOUT / DEF BOX ── */
+.callout{
+  background:linear-gradient(135deg,#f5f0e8,#ede8d8);
+  border:1px solid var(--border);border-left:5px solid var(--gold);
+  border-radius:0 6px 6px 0;padding:1rem 1.2rem;margin:1.3rem 0;
+}
+.callout p{font-size:.9rem;margin-bottom:.5rem}
+.callout p:last-child{margin-bottom:0}
+.callout ul.content-list li{font-size:.88rem}
+.callout-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.65rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;
+}
+.callout.tip{border-left-color:#2d7a2d;background:linear-gradient(135deg,#f0f7f0,#e4f0e4)}
+.callout.tip .callout-label{color:#2d7a2d}
+
+/* ── HIGHLIGHT (quicktest / exam alert) ── */
+.highlight{
+  background:var(--navy);color:#e8d5a3;
+  border-radius:8px;padding:1.1rem 1.3rem;margin:1.5rem 0;
+}
+.highlight h5,.highlight strong{color:var(--gold-lt)}
+.highlight p,.highlight li{color:#ccd4e8;font-size:.88rem}
+.highlight ul.content-list li::before{color:var(--gold)}
+
+/* ── FIGURE ── */
+.img-center{
+  text-align:center;margin:1.8rem 0;padding:1rem;
+  background:#f8f5ee;border:1px solid var(--border);border-radius:8px;
+}
+.img-center img{max-width:100%;height:auto;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.img-center p,.img-center div{
+  margin-top:.65rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.8rem;color:var(--text-dim);font-style:italic;
+}
+
+/* ── TABLES ── */
+.table-wrap{overflow-x:auto;margin:1.5rem 0}
+table{width:100%;border-collapse:collapse;font-family:'Source Sans 3',sans-serif;font-size:.84rem}
+table th{background:var(--navy);color:white;padding:.6rem .8rem;text-align:center;font-weight:600;font-size:.79rem}
+table td{padding:.5rem .8rem;border:1px solid #ddd;vertical-align:top;line-height:1.5}
+table tr:nth-child(even) td{background:#f9f6ef}
+
+/* ── BACK TO TOP ── */
+#back-top{
+  position:fixed;bottom:1.5rem;right:1.5rem;
+  background:var(--navy);color:var(--gold);border:1px solid var(--gold);
+  width:38px;height:38px;border-radius:50%;font-size:1.2rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .25s;z-index:99;
+}
+#back-top:hover{background:var(--gold);color:var(--navy)}
+
+/* ── MOBILE ── */
+@media(max-width:860px){
+  #sidebar{transform:translateX(-100%);transition:transform .25s;top:3rem}
+  #sidebar.open{transform:translateX(0)}
+  #menu-btn{display:flex}
+  #main{margin-left:0;padding:3.5rem 1.2rem 4rem}
+  .chapter-hero{margin:0 -1.2rem 2rem;padding:2rem 1.4rem}
+  .chapter-hero::before{display:none}
+}
+
+/* ── DARK / LIGHT MODE ─────────────────────────────── */
+html[data-theme=dark]{--cream:#0f1520;--text:#dde4f0;--text-dim:#8899bb;--border:#253048;--gold-lt:#c9a84c}
+html[data-theme=dark] body{background:#0f1520;color:#dde4f0}
+html[data-theme=dark] #main{background:#0f1520}
+html[data-theme=dark] h1,html[data-theme=dark] h2{color:#e8d5a3}
+html[data-theme=dark] h3{color:#e8d5a3;border-bottom-color:var(--gold)}
+html[data-theme=dark] h4{color:#b8ccee;border-left-color:var(--gold)}
+html[data-theme=dark] p,html[data-theme=dark] li,html[data-theme=dark] td{color:#dde4f0}
+html[data-theme=dark] strong{color:#e8d5a3}
+html[data-theme=dark] em{color:#b8ccee}
+html[data-theme=dark] .callout{background:linear-gradient(135deg,#1a2436,#1e2d45);border-left-color:var(--gold);color:#dde4f0}
+html[data-theme=dark] .callout p{color:#dde4f0}
+html[data-theme=dark] blockquote{background:#1a2436;border-left-color:var(--gold);color:#b0c0d8}
+html[data-theme=dark] table{background:#131c2b}
+html[data-theme=dark] th{background:#1a2744;color:#e8d5a3;border-color:#253048}
+html[data-theme=dark] td{border-color:#253048}
+html[data-theme=dark] tr:nth-child(even) td{background:#1a2436}
+html[data-theme=dark] .highlight,.highlight-box{background:#1a2436!important;border-color:#253048!important;color:#dde4f0!important}
+html[data-theme=dark] #back-top{background:#1a2744;color:var(--gold);border:1px solid rgba(201,168,76,.4)}
+html[data-theme=dark] ul.content-list li,html[data-theme=dark] ol.content-list li{color:#dde4f0}
+html[data-theme=dark] .chapter-hero{background:linear-gradient(135deg,#0a1228 0%,#142040 100%)}
+html[data-theme=dark] .exercise-card{background:#1a2436;border-color:#253048}
+html[data-theme=dark] .answer-box{background:#152035;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] .answer-box p{color:#dde4f0}
+/* theme toggle button */
+#theme-btn{position:absolute;top:.65rem;right:.7rem;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.35);color:var(--gold);width:28px;height:28px;border-radius:5px;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+#theme-btn:hover{background:rgba(201,168,76,.2)}
+#sidebar-header{position:relative}
+
+/* ── HIGHLIGHT SYSTEM ─────────────────────────────────── */
+mark.hl{border-radius:2px;cursor:pointer;padding:1px 0;background:transparent}
+mark.hl[data-color=yellow]{background:rgba(255,241,118,.75)}
+mark.hl[data-color=green]{background:rgba(165,214,167,.75)}
+mark.hl[data-color=red]{background:rgba(239,154,154,.75)}
+mark.hl::after{display:none}
+mark.hl[data-note]:not([data-note=""])::after{content:"✏";font-size:.6rem;vertical-align:super;margin-left:1px;opacity:.65;display:inline}
+/* selection popup */
+#hl-popup{position:fixed;z-index:9999;background:#1a2744;border:1px solid rgba(201,168,76,.5);border-radius:8px;padding:.45rem .6rem;display:flex;align-items:center;gap:.35rem;box-shadow:0 4px 20px rgba(0,0,0,.4);pointer-events:all}
+#hl-popup.hidden{display:none!important}
+.hl-color-btn{width:24px;height:24px;border-radius:50%;border:2px solid rgba(255,255,255,.25);cursor:pointer;transition:transform .15s,border-color .15s;flex-shrink:0}
+.hl-color-btn:hover{transform:scale(1.2);border-color:rgba(255,255,255,.7)}
+.hl-color-btn[data-color=yellow]{background:#fff176}
+.hl-color-btn[data-color=green]{background:#a5d6a7}
+.hl-color-btn[data-color=red]{background:#ef9a9a}
+.hl-sep{width:1px;height:20px;background:rgba(255,255,255,.2);margin:0 .1rem}
+.hl-note-btn{background:none;border:none;color:rgba(255,255,255,.7);font-size:.9rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-note-btn:hover{color:#fff;background:rgba(255,255,255,.1)}
+.hl-del-btn{background:none;border:none;color:rgba(239,154,154,.8);font-size:.85rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-del-btn:hover{color:#ef9a9a;background:rgba(239,154,154,.12)}
+/* note modal */
+#hl-note-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center}
+#hl-note-modal.hidden{display:none!important}
+#hl-note-box{background:#fff;border-radius:10px;padding:1.4rem;width:min(420px,90vw);box-shadow:0 8px 32px rgba(0,0,0,.25)}
+#hl-note-box h3{font-size:.95rem;color:#1a2744;margin-bottom:.7rem;font-family:'Merriweather',serif}
+#hl-note-ta{width:100%;border:1px solid #d4c89a;border-radius:6px;padding:.6rem .8rem;font-size:.88rem;font-family:'Source Sans 3',sans-serif;resize:vertical;min-height:80px;color:#2c2c2c;outline:none}
+#hl-note-ta:focus{border-color:#c9a84c;box-shadow:0 0 0 2px rgba(201,168,76,.25)}
+.hl-note-actions{display:flex;justify-content:flex-end;gap:.6rem;margin-top:.8rem}
+.hl-note-cancel{background:transparent;border:1px solid #ccc;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+.hl-note-save{background:#1a2744;color:#fff;border:none;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+/* highlights panel */
+#hl-panel{position:fixed;top:0;right:0;bottom:0;width:300px;background:#fff;border-left:3px solid var(--gold);z-index:500;display:flex;flex-direction:column;box-shadow:-4px 0 20px rgba(0,0,0,.15);transform:translateX(100%);transition:transform .25s}
+#hl-panel.open{transform:translateX(0)}
+#hl-panel-hdr{background:#1a2744;padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--gold)}
+#hl-panel-hdr h3{font-size:.88rem;color:#fff;font-family:'Source Sans 3',sans-serif;font-weight:700;letter-spacing:.05em}
+#hl-panel-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.2rem;cursor:pointer;padding:.2rem;line-height:1}
+#hl-panel-close:hover{color:#fff}
+#hl-panel-list{flex:1;overflow-y:auto;padding:.6rem}
+#hl-panel-list:empty::before{content:"Chưa có ghi chú nào trong chương này.";font-size:.82rem;color:#999;display:block;padding:.8rem;text-align:center;font-style:italic}
+.hl-item{padding:.65rem .8rem;border-radius:6px;margin-bottom:.5rem;border-left:4px solid #ddd;background:#fafafa;cursor:pointer;transition:background .15s}
+.hl-item:hover{background:#f0f0f0}
+.hl-item[data-color=yellow]{border-left-color:#fdd835}
+.hl-item[data-color=green]{border-left-color:#66bb6a}
+.hl-item[data-color=red]{border-left-color:#ef5350}
+.hl-item-text{font-size:.8rem;color:#2c2c2c;line-height:1.5;margin-bottom:.3rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.hl-item-note{font-size:.75rem;color:#666;font-style:italic;margin-bottom:.3rem}
+.hl-item-del{float:right;background:none;border:none;color:#bbb;cursor:pointer;font-size:.8rem;padding:.1rem .3rem;border-radius:3px;line-height:1}
+.hl-item-del:hover{color:#ef5350;background:rgba(239,83,80,.08)}
+/* sidebar hl badge */
+#hl-sidebar-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:var(--gold);cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#hl-sidebar-btn:hover{background:rgba(201,168,76,.1)}
+#hl-badge{background:rgba(201,168,76,.2);color:var(--gold);font-size:.65rem;font-weight:700;padding:.1rem .4rem;border-radius:10px;min-width:18px;text-align:center}
+html[data-theme=dark] #hl-note-box{background:#1a2436;border:1px solid #253048}
+html[data-theme=dark] #hl-note-box h3{color:#e8d5a3}
+html[data-theme=dark] #hl-note-ta{background:#0f1520;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] #hl-panel{background:#131c2b;border-left-color:var(--gold)}
+html[data-theme=dark] .hl-item{background:#1a2436;border-bottom:1px solid #1e2d45}
+html[data-theme=dark] .hl-item:hover{background:#1e2d45}
+html[data-theme=dark] .hl-item-text{color:#dde4f0}
+html[data-theme=dark] .hl-item-note{color:#8899bb}
+html[data-theme=dark] .hl-note-cancel{border-color:#253048;color:#dde4f0;background:#1a2436}
+html[data-theme=dark] .hl-note-save{background:#c9a84c;color:#0a0f1a}
+
+/* ── CHAPTER NAV PANEL ─────────────────────────────────── */
+#chap-panel{position:fixed;inset:0;z-index:9000;display:flex;align-items:stretch}
+#chap-panel.hidden{display:none!important}
+#chap-panel-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);cursor:pointer}
+#chap-panel-box{position:relative;z-index:1;width:min(360px,90vw);background:#0f1d3a;border-right:3px solid var(--gold);display:flex;flex-direction:column;animation:slideInLeft .2s ease}
+@keyframes slideInLeft{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+#chap-panel-hdr{background:linear-gradient(135deg,#0a1228,#1a2744);padding:1.2rem 1.3rem;border-bottom:2px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
+#chap-panel-hdr h3{font-family:'Source Sans 3',sans-serif;font-size:.85rem;font-weight:700;color:#fff;letter-spacing:.1em;text-transform:uppercase}
+#chap-panel-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.3rem;cursor:pointer;padding:.2rem;line-height:1;transition:color .15s}
+#chap-panel-close:hover{color:#fff}
+#chap-panel-list{flex:1;overflow-y:auto;padding:.5rem 0}
+.chap-panel-item{display:flex;align-items:center;gap:.8rem;padding:.7rem 1.3rem;cursor:pointer;transition:background .15s;border-left:3px solid transparent;text-decoration:none}
+.chap-panel-item:hover{background:rgba(201,168,76,.1);border-left-color:var(--gold)}
+.chap-panel-item.active{background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+.cpanel-num{font-family:'Source Sans 3',sans-serif;font-size:.7rem;font-weight:700;color:var(--gold);min-width:28px;flex-shrink:0}
+.cpanel-title{font-family:'Source Sans 3',sans-serif;font-size:.8rem;color:#ccd4e8;line-height:1.35}
+.cpanel-item-active .cpanel-title{color:#fff;font-weight:600}
+.cpanel-status{margin-left:auto;font-size:.72rem;flex-shrink:0;opacity:.6}
+
+/* ── GITHUB SYNC ──────────────────────────────────── */
+#sync-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:#8899bb;cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s,color .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#sync-btn:hover{background:rgba(201,168,76,.08);color:var(--gold)}
+#sync-btn[data-state=ok]{color:#4caf50}
+#sync-btn[data-state=syncing]{color:var(--gold)}
+#sync-btn[data-state=err]{color:#ef5350}
+#sync-btn[data-state=no-token]{color:#8899bb}
+#sync-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center}
+#sync-modal.hidden{display:none!important}
+#sync-modal-box{background:#0f1d3a;border:2px solid var(--gold);border-radius:10px;padding:1.8rem 2rem;width:min(420px,90vw);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+#sync-modal-box h3{font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:.9rem;text-transform:uppercase;letter-spacing:.1em}
+#sync-modal-box p{font-size:.77rem;color:#aab8d0;line-height:1.6;margin-bottom:.9rem}
+#sync-modal-box input{width:100%;background:#0a1228;border:1px solid rgba(201,168,76,.4);color:#fff;font-family:monospace;font-size:.8rem;padding:.55rem .8rem;border-radius:5px;outline:none;margin-bottom:.8rem;box-sizing:border-box}
+#sync-modal-box input:focus{border-color:var(--gold)}
+.sync-modal-btns{display:flex;gap:.6rem;justify-content:flex-end;flex-wrap:wrap}
+.sync-modal-btns button{font-family:'Source Sans 3',sans-serif;font-size:.77rem;font-weight:700;padding:.42rem .9rem;border-radius:5px;cursor:pointer;border:none;transition:background .15s}
+#sync-save-btn{background:var(--gold);color:#0a0f1a}
+#sync-save-btn:hover{background:#e8c47a}
+#sync-cancel-btn{background:rgba(255,255,255,.1);color:#aab8d0}
+#sync-cancel-btn:hover{background:rgba(255,255,255,.18)}
+#sync-clear-btn{background:rgba(239,83,80,.18);color:#ef9090;margin-right:auto}
+#sync-clear-btn:hover{background:rgba(239,83,80,.32)}
+</style>
+</head>
+<script>
+(function(){var t=localStorage.getItem('rita_theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+</script>
+<body>
+<div id="progress-bar"></div>
+<button id="menu-btn" aria-label="Menu">☰</button>
+
+<aside id="sidebar">
+<div id="sidebar-header">
+  <div class="book-label">Rita PMP® Exam Prep</div>
+  <h2>Ôn Thi PMP®</h2>
+  <div class="edition">Rita Mulcahy · 11th Edition 2023 · Tiếng Việt</div>
+</div>
+<div id="sidebar-toc">
+  <div class="toc-group-label">Nội Dung Chương</div>
+  <a href="#ch4-integration" class="">4 Tích Hợp</a>
+<a href="#ch4-introduction" class="toc-h4">Giới Thiệu</a>
+<a href="#ch4-quicktest" class="toc-h4">KIỂM TRA NHANH</a>
+<a href="#ch4-integration-overview" class="toc-h4">Tổng Quan Quản Lý Tích Hợp</a>
+<a href="#ch4-eco-process-groups" class="toc-h4">Đề Cương Nội Dung Kỳ Thi và Mô Hình Nhóm Quy Trình</a>
+<a href="#ch4-develop-project-charter" class="toc-h4">Phát Triển Điều Lệ Dự Án</a>
+<a href="#ch4-creating-project-charter" class="toc-h4">Tạo Điều Lệ Dự Án</a>
+<a href="#ch4-exercise-4-1" class="">4.1 Bài Tập</a>
+<a href="#ch4-exercise-4-1-answer" class="toc-h4">Đáp Án</a>
+<a href="#ch4-project-charter-example" class="toc-h4">Điều Lệ Dự Án</a>
+<a href="#ch4-develop-project-management-plan" class="toc-h4">Phát Triển Kế Hoạch Quản Lý Dự Án</a>
+<a href="#ch4-kickoff-meeting" class="toc-h4">Cuộc Họp Khởi Động</a>
+<a href="#ch4-direct-manage-project-work" class="toc-h4">Chỉ đạo và Quản lý Công việc Dự án</a>
+<a href="#ch4-exercise-4-3" class="">4.3 Bài Tập</a>
+<a href="#ch4-exercise-4-3-answer" class="toc-h4">Đáp Án</a>
+<a href="#ch4-manage-project-knowledge" class="toc-h4">Quản lý Kiến thức Dự án</a>
+<a href="#ch4-information-knowledge-management" class="toc-h4">Quản lý Thông tin và Kiến thức</a>
+<a href="#ch4-managing-project-knowledge" class="toc-h4">Quản lý Kiến thức Dự án (Thực hành)</a>
+<a href="#ch4-giam-sat-kiem-soat-cong-viec-du-an" class="toc-h4">Giám Sát và Kiểm Soát Công Việc Dự Án</a>
+<a href="#ch4-san-pham-giam-sat-kiem-soat-cong-viec" class="toc-h4">Sản Phẩm Đầu Ra của Giám Sát và Kiểm Soát Công Việc Dự Án</a>
+<a href="#ch4-yeu-cau-thay-doi" class="toc-h4">Yêu Cầu Thay Đổi</a>
+<a href="#ch4-kiem-soat-thay-doi-tich-hop" class="toc-h4">Thực Hiện Kiểm Soát Thay Đổi Tích Hợp</a>
+<a href="#ch4-ban-kiem-soat-thay-doi" class="toc-h4">Ban Kiểm Soát Thay Đổi (CCB)</a>
+<a href="#ch4-quy-trinh-tom-tat-thay-doi" class="toc-h4">Quy Trình Tóm Tắt Để Thực Hiện Thay Đổi Trong Các Dự Án Theo Kế Hoạch</a>
+<a href="#ch4-quy-trinh-chi-tiet-thay-doi" class="toc-h4">Quy Trình Chi Tiết Để Thực Hiện Thay Đổi</a>
+<a href="#ch4-quan-ly-thay-doi-agile" class="toc-h4">Quản Lý Thay Đổi Theo Agile</a>
+<a href="#ch4-bai-tap-4-4" class="">4.4 Bài Tập</a>
+<a href="#ch4-dap-an-bai-tap-4-4" class="toc-h4">Đáp Án</a>
+<a href="#ch4-ket-thuc-du-an-hoac-giai-doan" class="">Kết Thúc Dự Án Hoặc Giai Đoạn</a>
+<a href="#ch4-word-on-transitions" class="">Một Vài Lời Về Chuyển Đổi</a>
+<a href="#ch4-case-study" class="">Một Tình Huống Thực Tế Bạn Có Thể Sử Dụng</a>
+<a href="#ch4-putting-it-all-together" class="toc-h4">Tổng Hợp Lại</a>
+<a href="#ch4-library-case-study" class="toc-h4">Giới Thiệu Tình Huống Nghiên Cứu Thư Viện</a>
+<a href="#ch4-exercise-45" class="">4.5 Bài Tập</a>
+<a href="#ch4-answer" class="">Đáp Án</a>
+<a href="#ch4-section-iii" class="">Phần III</a>
+<a href="#ch4-domain-i-people" class="toc-h4">Lĩnh vực I: Con Người</a>
+
+</div>
+<div id="sidebar-nav">
+  <a href="rita_chap03.html" class="" title="Nền Tảng QLDA">← Ch3</a>
+  <a href="#" id="chap-muc-luc-btn">☰ Mục lục</a>
+  <a href="rita_chap05.html" class="" title="Kỹ Năng Lãnh Đạo">Ch5 →</a>
+</div></aside>
+
+<main id="main">
+  <div class="chapter-hero">
+    <div class="ch-label">Chương 4</div>
+    <h1>Tích Hợp</h1>
+    <div class="ch-en">Integration</div>
+  </div>
+<h3 id="ch4-integration">4 Tích Hợp</h3>
+
+<h4 id="ch4-introduction">Giới Thiệu</h4>
+
+<p>Bạn sẽ trả lời thế nào nếu được hỏi: "Vai trò chính của một quản lý dự án là gì?" Câu trả lời đúng là: Thực hiện quản lý tích hợp—kết hợp tất cả các thành phần của một dự án thành một thể thống nhất—các quy trình, con người và mục tiêu mà dự án được thực hiện. Đây là phần quan trọng đến mức có thể nói đây là lý do tồn tại của quản lý dự án trong một tổ chức và trên một dự án.</p>
+
+<p>Tất cả các bên liên quan đều có mục đích chung là đạt được các mục tiêu dự án một cách hiệu quả và tuân thủ các đường cơ sở phạm vi, lịch trình và chi phí cũng như các yêu cầu chất lượng đã thỏa thuận, đồng thời quản lý hiệu quả sự không chắc chắn. Trong khi công việc đang được thực hiện:</p>
+
+<ul class="content-list">
+  <li>Các thành viên nhóm tập trung vào việc hoàn thành các gói công việc hoặc các hạng mục (story).</li>
+  <li>Nhà tài trợ dự án đang hỗ trợ dự án và nhóm, bảo vệ các nguồn lực được phân công khỏi bị chuyển hướng sang các hoạt động khác trong tổ chức, và đóng vai trò là cố vấn quản lý cho quản lý dự án.</li>
+  <li>Quản lý dự án đang tích hợp tất cả các thành phần dự án—nhóm và tất cả các bên liên quan khác, các ràng buộc dự án, các quy trình, và các yếu tố bên trong lẫn bên ngoài có thể ảnh hưởng đến dự án cả bên trong lẫn bên ngoài dự án và tổ chức.</li>
+  <li>Quản lý dự án cũng đang giao tiếp trong tổ chức, thường với ban quản lý, để tích hợp nhu cầu của dự án với các danh mục đầu tư và chương trình liên quan trong tổ chức lớn hơn, và trong xã hội nói chung.</li>
+</ul>
+
+<p>Công việc khó khăn và đầy thách thức này đòi hỏi quản lý dự án phải có các kỹ năng quản lý dự án kỹ thuật, tất nhiên, nhưng họ cũng phải là một nhà tư duy sáng tạo, lãnh đạo hợp tác, và có sự đồng cảm cũng như hiểu biết kinh doanh.</p>
+
+<p>Hãy nghĩ về tích hợp như là cân bằng tất cả các hoạt động dự án với nhau, đồng thời trở thành đại sứ dự án cho tất cả các bên liên quan: Nhóm, khách hàng, ban quản lý, các cơ quan quản lý nhà nước và bất kỳ ai khác có liên quan.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//3c7a284f-714b-423e-a9d7-01a113ef8c5a/markdown_0/imgs/img_in_image_box_71_637_124_691.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A53Z%2F-1%2F%2Fe33b4c8612acadf661adc32be83f39d6f2fc0913f4e2e3eba72034bcb50c2617" alt="Image" width="6%" /></div></div>
+
+<p>Hãy nhớ rằng các hoạt động quản lý dự án không xảy ra độc lập với nhau.</p>
+
+<div class="callout">
+  <p><strong>Ví dụ:</strong> Để hoàn thành ngân sách ước tính, cần tính đến các yếu tố như thời gian và nguồn lực cần thiết để tạo ra các gói công việc hoặc hạng mục riêng lẻ (tức là các gia số sản phẩm), các nguồn lực sẵn có và chi phí quản lý các rủi ro đã xác định. Dự thảo ngân sách cũng phải được đối chiếu với các cân nhắc tài chính trong tổ chức lớn hơn trước khi được phê duyệt.</p>
+</div>
+
+<p>Hãy đọc chương này cẩn thận. Quản lý tích hợp có thể là một lĩnh vực nội dung khó vì đây là điều chúng ta làm với tư cách là quản lý dự án, nhưng chúng ta có thể không thường xuyên nghĩ về nó như một quy trình riêng biệt, với tất cả những gì quy trình đó đòi hỏi.</p>
+
+<h4 id="ch4-quicktest">KIỂM TRA NHANH</h4>
+
+<ul class="content-list">
+  <li>Quy trình Quản lý Tích hợp</li>
+  <li>Điều lệ dự án</li>
+  <li>Kế hoạch quản lý dự án</li>
+  <li>Các kế hoạch quản lý riêng lẻ</li>
+  <li>Vòng đời dự án</li>
+  <li>Phương pháp phát triển</li>
+  <li>Đánh giá quản lý</li>
+  <li>Điều chỉnh (Tailoring)</li>
+  <li>Đường cơ sở đo lường hiệu suất</li>
+  <li>Kế hoạch quản lý yêu cầu</li>
+  <li>Kế hoạch quản lý thay đổi</li>
+  <li>Kế hoạch quản lý cấu hình</li>
+  <li>Tài liệu dự án</li>
+  <li>Cuộc họp khởi động (Kickoff meeting)</li>
+  <li>Hệ thống ủy quyền công việc</li>
+  <li>Quản lý kiến thức</li>
+  <li>Kiến thức tường minh (Explicit knowledge)</li>
+  <li>Kiến thức ẩn (Tacit knowledge)</li>
+  <li>Giao tiếp thẩm thấu (Osmotic communications)</li>
+  <li>Bài học kinh nghiệm</li>
+  <li>Yêu cầu thay đổi</li>
+  <li>Hành động khắc phục</li>
+  <li>Hành động phòng ngừa</li>
+  <li>Sửa chữa lỗi</li>
+  <li>Ban kiểm soát thay đổi (CCB)</li>
+  <li>Quy trình thực hiện thay đổi trong dự án theo hướng kế hoạch</li>
+  <li>Quản lý thay đổi Agile</li>
+  <li>Chuyển giao (Transitions)</li>
+</ul>
+
+<h4 id="ch4-integration-overview">Tổng Quan Quản Lý Tích Hợp</h4>
+
+<p>Như đã đề cập trong chương 1, chúng tôi sẽ đưa vào đây một hình minh họa cho thấy các nhiệm vụ được chọn từ Đề Cương Nội Dung Kỳ Thi (ECO) bên cạnh mô hình Nhóm Quy Trình của PMI cho quy trình đó. Điều này sẽ giúp bạn hiểu một quy trình tổng thể—trong trường hợp này là Quản lý Tích hợp. Một lần nữa, các lĩnh vực PMBOK Guide được liệt kê ở đây là những lĩnh vực chúng tôi cho rằng phù hợp với việc thảo luận về quy trình, nhưng chúng tôi sẽ đi sâu vào PMBOK Guide chi tiết hơn trong chương 18.</p>
+
+<p>Hiện tại, hãy tập trung vào các quy trình được thể hiện bởi mô hình Nhóm Quy Trình, các nhiệm vụ ECO và các khái niệm agile và hybrid liên quan.</p>
+
+<h4 id="ch4-eco-process-groups">Đề Cương Nội Dung Kỳ Thi và Mô Hình Nhóm Quy Trình</h4>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//3c7a284f-714b-423e-a9d7-01a113ef8c5a/markdown_1/imgs/img_in_image_box_65_309_116_370.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A54Z%2F-1%2F%2F81489cce686823f3b80f4842173e932b8b57d69f52e4181a846456c5eec9af98" alt="Image" width="6%" /></div></div>
+
+<div class="callout tip">
+  <p><strong>Hãy Suy Nghĩ Về Điều Này.</strong> Trong ECO, lĩnh vực II có bảy nhiệm vụ gắn liền nhất với quản lý tích hợp trong mô hình Nhóm Quy Trình. Một số nhiệm vụ có thể không dễ dàng chuyển đổi, nhưng trên thực tế, tích hợp và các nhiệm vụ liên quan đến nó là một trong những nhiệm vụ quan trọng nhất của quản lý dự án. Nếu bạn chưa làm, hãy lấy bản ECO của mình và xem lại các nhiệm vụ lĩnh vực II này và các yếu tố thúc đẩy của chúng khi bạn xem lại trang này trong sách.</p>
+</div>
+
+<div class="callout">
+  <p><strong>Ví dụ:</strong> Nhiệm vụ 1: "Thực hiện dự án với sự khẩn cấp cần thiết để mang lại giá trị kinh doanh." Chẳng phải đó chính xác là những gì chúng ta đang làm mọi lúc với tư cách là quản lý dự án? Chúng ta đang thực hiện dự án với sự khẩn cấp cần thiết để mang lại giá trị kinh doanh cho tổ chức và khách hàng, vì mục đích mà dự án được lựa chọn và thực hiện.</p>
+  <p>Nhiệm vụ 1 cũng liên quan đến việc chỉ đạo và quản lý công việc dự án, quản lý kiến thức dự án, giám sát và kiểm soát công việc dự án, kiểm soát thay đổi, và đóng giai đoạn dự án và dự án—tất cả các quy trình trong lĩnh vực Quản lý Tích hợp của mô hình Nhóm Quy Trình.</p>
+</div>
+
+<h5>Lĩnh Vực II</h5>
+
+<ul class="content-list">
+  <li>Nhiệm vụ 9: Tích hợp các hoạt động lập kế hoạch dự án</li>
+  <li>Nhiệm vụ 12: Quản lý các tạo phẩm dự án</li>
+  <li>Nhiệm vụ 13: Xác định phương pháp/phương thức và thực tiễn dự án phù hợp</li>
+  <li>Nhiệm vụ 16: Đảm bảo chuyển giao kiến thức để duy trì tính liên tục của dự án</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//3c7a284f-714b-423e-a9d7-01a113ef8c5a/markdown_1/imgs/img_in_image_box_66_512_770_829.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A54Z%2F-1%2F%2Ffdc97526a65d001aec7bccec09b4fefc9b2ff410f69bdfe4d8840f5338828a42" alt="Image" width="85%" /></div></div>
+
+<p>Bây giờ hãy nghĩ về các nhiệm vụ ECO lĩnh vực II khác khi chúng liên quan đến những gì trong mô hình Nhóm Quy Trình:</p>
+
+<ul class="content-list">
+  <li><strong>Nhiệm vụ 9:</strong> Tích hợp các hoạt động lập kế hoạch dự án bắt đầu từ Khởi xướng với việc phát triển điều lệ dự án (và phân tích bên liên quan cũng như phát triển sổ đăng ký bên liên quan).</li>
+  <li><strong>Nhiệm vụ 13:</strong> Xác định phương pháp và thực tiễn phù hợp giống như hoạt động đầu tiên trong cột Lập kế hoạch của Biểu đồ Quy trình của Rita™ (trong chương "Nền tảng Quản lý Dự án"). Mặc dù không được liệt kê trực tiếp là một quy trình tích hợp trong mô hình Nhóm Quy Trình, nhưng đây là điều quản lý dự án cần bắt đầu tạo kế hoạch quản lý dự án.</li>
+  <li><strong>Nhiệm vụ 9 và 12:</strong> Điều đầu tiên trong số này là hiển nhiên—nhiệm vụ 9. Quản lý dự án cần tích hợp nhiều hoạt động lập kế hoạch để phát triển kế hoạch quản lý dự án (một tạo phẩm dự án). Kế hoạch quản lý dự án là một chuỗi các kế hoạch cho mỗi ràng buộc dự án (phạm vi, lịch trình, chi phí, chất lượng, rủi ro, v.v.), cộng với các kế hoạch cho quản lý yêu cầu, quản lý cấu hình và quản lý thay đổi. Các kế hoạch này được bắt đầu riêng lẻ nhưng khi mỗi kế hoạch trưởng thành, nó đòi hỏi sự tích hợp với các kế hoạch khác, vì mỗi ràng buộc dự án phụ thuộc lẫn nhau và có thể ảnh hưởng đến tất cả các ràng buộc còn lại.</li>
+  <li><strong>Nhiệm vụ 10:</strong> Các thay đổi dự án sẽ được quản lý theo kế hoạch quản lý thay đổi.</li>
+  <li><strong>Nhiệm vụ 16:</strong> Khi quản lý dự án và nhóm học hỏi trong suốt dự án, quản lý dự án sẽ cần đảm bảo rằng kiến thức này được chia sẻ để mang lại lợi ích cho dự án và được ghi chép lại để các tạo phẩm dự án có thể mang lại lợi ích cho tổ chức trong tương lai. Bạn cũng có thể ánh xạ nhiệm vụ 16 với các quy trình mô hình Nhóm Quy Trình: Chỉ đạo và Quản lý Công việc Dự án và Quản lý Kiến thức Dự án.</li>
+  <li><strong>Nhiệm vụ 17:</strong> Bạn có thể thấy từ cách diễn đạt của nhiệm vụ này rằng nó mang cùng trách nhiệm như Đóng Dự án hoặc Giai đoạn trong mô hình Nhóm Quy Trình không?</li>
+</ul>
+
+<p>Hình 4.1 là hình ảnh trực quan về các quy trình quản lý tích hợp từ mô hình Nhóm Quy Trình. Hãy nhớ rằng đối với mỗi chương trong đó các quy trình lĩnh vực II được thảo luận, chúng tôi sẽ sử dụng mô hình Nhóm Quy Trình để giúp bạn hiểu quy trình chung. Vì mô hình Nhóm Quy Trình được tạo ra dựa trên việc quản lý các dự án theo hướng kế hoạch, chúng tôi cũng giải thích các phương pháp khác nhau mà các nhà thực hành agile sử dụng để đạt được cùng mục tiêu. Đáng để nhắc lại: Mục tiêu là làm việc để đáp ứng các yêu cầu dự án với sự khẩn cấp cần thiết để mang lại lợi ích và giá trị mà dự án được lựa chọn và thực hiện.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//3c7a284f-714b-423e-a9d7-01a113ef8c5a/markdown_2/imgs/img_in_image_box_164_400_663_694.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A55Z%2F-1%2F%2F4d4cecce5094f64482d1992ae3716427b68f36c30fca13a7d4ad1e3e744c7da1" alt="Image" width="60%" /></div></div>
+
+<div style="text-align: center;">HÌNH 4.1 Quy trình quản lý tích hợp</div>
+
+<p>Ngoài năm nhóm quy trình, mô hình Nhóm Quy Trình xác định một số lĩnh vực mà công việc được tập trung vào (hầu hết trong số đó là các ràng buộc dự án). Các danh mục này là tích hợp, bên liên quan, truyền thông, nguồn lực, phạm vi, lịch trình, chi phí, chất lượng, rủi ro và mua sắm. Hình 4.2 cho thấy mối quan hệ giữa các danh mục này và các nhóm quy trình từ mô hình Nhóm Quy Trình. Với hình 4.2, bạn có thể dễ dàng thấy các hoạt động của quản lý dự án được tập trung theo danh mục ở đâu. Ví dụ:</p>
+
+<ul class="content-list">
+  <li>Tất cả các danh mục quản lý dự án đều có các quy trình quản lý dự án trong lập kế hoạch và giám sát và kiểm soát.</li>
+  <li>Phạm vi, lịch trình và chi phí không có hoạt động quản lý dự án trong thực hiện vì đó là nhóm đang thực hiện công việc để xây dựng sản phẩm của dự án, trong khi quản lý dự án giám sát và kiểm soát tất cả công việc dự án.</li>
+  <li>Sự tham gia của bên liên quan không có quy trình đóng vì khi một dự án hoặc giai đoạn được đóng, quản lý dự án đã quản lý sự tham gia của bên liên quan cho giai đoạn đó hoặc dự án.</li>
+  <li>Bạn có nhận thấy rằng Quản lý Tích hợp là danh mục quản lý dự án duy nhất có các quy trình xảy ra trong tất cả các nhóm quy trình không? Quản lý dự án luôn luôn đang tích hợp.</li>
+</ul>
+
+<p>Chúng tôi khuyến khích bạn quay lại hình 4.2 sau khi bạn có cơ hội nghiên cứu các chương liên quan đến quy trình trong cuốn sách này. Các chương liên quan đến quy trình giúp bạn hiểu các chi tiết trong khi hình này giúp bạn hiểu bức tranh tổng thể.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//3c7a284f-714b-423e-a9d7-01a113ef8c5a/markdown_3/imgs/img_in_chart_box_155_156_668_459.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A55Z%2F-1%2F%2F970893588d0b7d34d7f3dfeff0667fe084e4da268619228bf2cd6f0a6b76a193" alt="Image" width="62%" /></div></div>
+
+<div style="text-align: center;">HÌNH 4.2 Mối quan hệ giữa các nhóm quy trình và các danh mục quy trình quản lý dự án chính</div>
+
+<h4 id="ch4-develop-project-charter">Phát Triển Điều Lệ Dự Án</h4>
+
+<p>Quy trình Phát triển Điều lệ Dự án bao gồm việc sử dụng tất cả thông tin đã biết về một dự án từ quá trình lựa chọn dự án để đạt được điều lệ dự án đã được phê duyệt (ký kết). Điều lệ dự án ủy quyền cho dự án tiếp tục. Quy trình này cũng bao gồm việc tạo ra nhật ký giả định, là một tạo phẩm của việc phát triển điều lệ dự án. Nhật ký giả định được cập nhật trong suốt dự án, khi các giả định và ràng buộc thay đổi và các giả định mới được phát hiện.</p>
+
+<h4 id="ch4-creating-project-charter">Tạo Điều Lệ Dự Án</h4>
+
+<p>Mục đích của điều lệ là lập kế hoạch dự án ở cấp độ tổng thể để đánh giá tính khả thi trong phạm vi các ràng buộc đã cho. Việc lập kế hoạch chi tiết chỉ bắt đầu sau khi điều lệ được ký duyệt. Trong giai đoạn khởi tạo dự án, người quản lý dự án gặp gỡ các bên liên quan chủ chốt để tinh chỉnh các mục tiêu, yêu cầu, phạm vi, rủi ro, giả định và các ràng buộc khác ở cấp độ tổng thể. Sau đó, thông tin thu thập được sử dụng để xác nhận rằng dự án là thực tế, phù hợp với các mục tiêu chiến lược của tổ chức, và có khả năng mang lại lợi ích và giá trị như kỳ vọng. Các nguồn lực bổ sung (thời gian và tiền bạc) chỉ được chi dùng sau khi điều lệ dự án được phê duyệt.</p>
+
+<p>Người quản lý dự án thường là người tạo ra điều lệ dự án, nhưng điều lệ được ban hành (ký duyệt) bởi nhà tài trợ trong giai đoạn khởi tạo. Điều lệ phải đủ rộng để không cần thay đổi khi dự án tiến triển. Những thay đổi đối với điều lệ dự án sau giai đoạn khởi tạo cần đặt ra câu hỏi liệu dự án có nên tiếp tục hay không.</p>
+
+<p>Các dự án có áp dụng phương pháp Agile hoặc hybrid sẽ điều chỉnh tài liệu điều lệ cho phù hợp. Ví dụ, điều lệ dự án có thể nêu rõ rằng có nhiều sự không chắc chắn hơn về các yêu cầu hoặc sản phẩm bàn giao ở giai đoạn đầu dự án. Cách thức quản trị dự án được trình bày cũng có thể chứa thông tin khác nhau. Chẳng hạn, thay vì một ban kiểm soát thay đổi chính thức, người sở hữu sản phẩm của dự án thường có thẩm quyền ra quyết định về quản lý thay đổi và ưu tiên hóa các yêu cầu.</p>
+
+<h3 id="ch4-exercise-4-1">4.1 Bài Tập</h3>
+
+<p>Hãy tự kiểm tra! Trả lời các câu hỏi sau trong Sổ Tay Bài Tập của bạn.</p>
+
+<ul class="content-list">
+  <li>Điều lệ dự án làm gì cho dự án và tổ chức?</li>
+  <li>Tại sao nó lại cần thiết đến vậy?</li>
+</ul>
+
+<h4 id="ch4-exercise-4-1-answer">Đáp Án</h4>
+
+<p>Điều lệ dự án mô tả các mục tiêu và đích đến của dự án, đồng thời xác định cách đo lường sự thành công. Trong kỳ thi, cần biết rằng điều lệ tối thiểu thực hiện những điều sau:</p>
+
+<ul class="content-list">
+  <li>Chính thức ủy quyền cho sự tồn tại của dự án, hoặc thiết lập dự án</li>
+  <li>Trao cho người quản lý dự án thẩm quyền huy động nguồn lực cho dự án</li>
+  <li>Cung cấp các mục tiêu dự án, yêu cầu cấp cao và tiêu chí thành công</li>
+  <li>Xác định các vai trò và trách nhiệm ở cấp độ tổng thể</li>
+  <li>Làm rõ sự hiểu biết chung về các sản phẩm bàn giao và mốc quan trọng chính của dự án, giữa nhà tài trợ và người quản lý dự án</li>
+  <li>Liên kết dự án với công việc đang diễn ra của tổ chức</li>
+</ul>
+
+<p>Trong kỳ thi, hãy giả định rằng điều lệ dự án là thứ trao cho người quản lý dự án thẩm quyền trong dự án (để sử dụng nguồn lực của tổ chức cho nhu cầu của dự án). Thẩm quyền này giúp người quản lý dự án hoàn thành công việc thông qua những người không trực tiếp báo cáo cho họ.</p>
+
+<p>Quá trình tạo điều lệ làm xuất hiện các giả định được ghi lại như phần khởi đầu của nhật ký giả định. Những giả định này sau đó sẽ được cập nhật hoặc giải quyết trong các nỗ lực thu thập yêu cầu chi tiết, xác định phạm vi và quản lý rủi ro. Bạn có thể thấy rằng việc tạo điều lệ dự án cần giải quyết và ảnh hưởng đến tất cả các ràng buộc quản lý dự án không? Ngoài nhật ký giả định và điều lệ, bạn cần có những nội dung sau được ghi lại trong các tài liệu dự án tương ứng:</p>
+
+<ul class="content-list">
+  <li>Đã xác định và phân tích các bên liên quan</li>
+  <li>Đã xác định mục tiêu, ràng buộc và tiêu chí thành công của dự án</li>
+  <li>Đã xác nhận các yêu cầu cấp cao</li>
+  <li>Định nghĩa phạm vi sản phẩm sơ bộ</li>
+  <li>Đã ghi chép các rủi ro và vấn đề ban đầu</li>
+</ul>
+
+<p>Một số công cụ và kỹ thuật có thể được sử dụng trong quá trình này bao gồm thu thập dữ liệu (phỏng vấn, động não, nhóm tập trung, v.v.), quản lý xung đột và quản lý cuộc họp. Trong các cuộc họp với nhà tài trợ và các bên liên quan chủ chốt, người quản lý dự án có thể thu thập thông tin cần thiết và cộng tác với các chuyên gia để hiểu và giải quyết chiến lược tổ chức, đồng thời phát triển các mục tiêu dự án có thể đo lường được.</p>
+
+<div class="callout">
+  <p><strong>Lưu ý:</strong> Ví dụ điều lệ sau đây không phải là một mẫu chính xác; điều lệ cần được điều chỉnh để đáp ứng nhu cầu của doanh nghiệp và dự án. Ví dụ này nhằm cho bạn thấy các loại mục có thể được đưa vào và những mục đó có thể tóm tắt những gì. Cũng lưu ý rằng điều lệ này đề cập đến các tài liệu đính kèm không được bao gồm trong ví dụ này.</p>
+</div>
+
+<h4 id="ch4-project-charter-example">Điều Lệ Dự Án</h4>
+
+<p><strong>Tên và Mô Tả Dự Án (Dự án là gì?)</strong> Nâng Cấp Hệ Thống Tính Lương</p>
+
+<p>Chúng tôi là một tổ chức đa quốc gia lớn với hơn 20.000 nhân viên, vì vậy quản lý nguồn nhân lực là yếu tố then chốt cho sự thành công. Để thanh toán lương cho nhân viên hiệu quả hơn, chúng tôi muốn thay thế hoặc nâng cấp các hệ thống tính lương nhân viên nhằm phản ánh tốt hơn tính chất thay đổi của lực lượng lao động. Hiện nay nhân viên làm việc ở nhiều địa điểm khác nhau (văn phòng và tại nhà) trên toàn thế giới, làm việc đồng thời cho nhiều đơn vị kinh doanh và có lịch làm việc đa dạng hơn bao giờ hết. Các hệ thống tính lương hiện tại tập trung theo địa lý không được tích hợp với nhau, thiếu linh hoạt và đòi hỏi nhiều thời gian hành chính để duy trì thủ công. Với các hệ thống hiện tại, báo cáo và phân tích tập trung ở cấp công ty rất tốn kém và kém hiệu quả.</p>
+
+<p><strong>Người Quản Lý Dự Án Được Phân Công và Mức Độ Thẩm Quyền (Ai được trao thẩm quyền lãnh đạo dự án, và họ có thể xác định, quản lý và phê duyệt các thay đổi về ngân sách, lịch trình, nhân sự, v.v. không?)</strong></p>
+
+<p>Isaiah Higgins sẽ là người quản lý dự án cho dự án này. Ông có thể yêu cầu bất kỳ thành viên nhóm nào ông thấy phù hợp và sẽ làm việc với các quản lý nguồn lực để đảm bảo các nguồn lực cần thiết. Ông có thẩm quyền ký duyệt lên đến 10.000 đô la. Ashley Chan được phân công là trợ lý người quản lý dự án.</p>
+
+<p><strong>Trường Hợp Kinh Doanh (Tại sao dự án được thực hiện? Trên cơ sở tài chính hoặc cơ sở nào khác chúng ta có thể biện minh cho việc thực hiện dự án này?)</strong></p>
+
+<p>Hiện tại việc quản lý tính lương tốn 2,4 triệu đô la hàng năm cùng với các chi phí không đo lường được từ sự kém hiệu quả trong quy trình. Chi phí xử lý tính lương trung bình của ngành cho một công ty toàn cầu ở quy mô của chúng tôi là 100 đô la mỗi nhân viên mỗi năm, tức là 2 triệu đô la tổng cộng mỗi năm. Tiết kiệm dự kiến 400.000 đô la mỗi năm (giả sử thời gian hoàn vốn ba năm) biện minh cho việc phê duyệt dự án này. Xem trường hợp kinh doanh chi tiết đính kèm điều lệ này.</p>
+
+<h5>Nguồn Lực Được Phân Công Trước (Bao nhiêu hoặc nguồn lực nào sẽ được cung cấp?)</h5>
+
+<p>Nhóm xử lý tính lương công ty sẽ tham gia chặt chẽ vào dự án này, cùng với các chuyên gia tính lương làm việc tại các văn phòng địa phương của chúng tôi. Một nhóm cấp cao gồm các nhà phân tích kinh doanh, kiến trúc sư doanh nghiệp và nhà thiết kế phần mềm đã được xác định cho giai đoạn nghiên cứu và phân tích ban đầu. Các đại diện mua sắm và pháp lý sẽ tham gia vào các quy trình hợp đồng với nhà cung cấp, bao gồm phát triển RFP và hợp đồng khi cần thiết. Tiếng Anh sẽ là ngôn ngữ dự án chính; các chuyên gia ngôn ngữ địa phương sẽ tham gia để đảm bảo hiểu đúng các quy định và luật pháp theo từng quốc gia. Các nguồn lực cần thiết khác phải được người quản lý dự án xác định và đàm phán.</p>
+
+<p><strong>Danh Sách Các Bên Liên Quan Chính (Ai sẽ ảnh hưởng hoặc bị ảnh hưởng bởi dự án [có ảnh hưởng đến dự án], theo thông tin hiện có?)</strong></p>
+
+<p>Đính kèm là danh sách các nhóm bên liên quan sẽ bị tác động bởi dự án này. Danh sách bao gồm tất cả nhân viên, chia thành: người nhận lương, ban quản lý công ty, bộ phận pháp lý, bộ phận mua sắm và quản trị viên tính lương. Ngoài ra còn có đại diện bên ngoài của các cơ quan thuế chính phủ, nhà cung cấp phúc lợi và nhà cung cấp giải pháp xử lý tính lương.</p>
+
+<p><strong>Yêu Cầu Của Các Bên Liên Quan Đã Biết (Các yêu cầu liên quan đến phạm vi dự án và phạm vi sản phẩm.)</strong></p>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Số Yêu Cầu</th>
+        <th>Yêu Cầu Cấp Cao</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Y1</td>
+        <td>Thanh toán lương cho nhân viên theo mức lương/thù lao đã thỏa thuận theo lịch trình đã thỏa thuận.</td>
+      </tr>
+      <tr>
+        <td>Y2</td>
+        <td>Tuân thủ các yêu cầu của chính phủ từng quốc gia liên quan đến khấu trừ thuế và lịch thanh toán.</td>
+      </tr>
+      <tr>
+        <td>Y3</td>
+        <td>Tuân thủ các yêu cầu của chính quyền tiểu bang, tỉnh, quận hoặc địa phương khác liên quan đến khấu trừ thuế và lịch thanh toán.</td>
+      </tr>
+      <tr>
+        <td>Y4</td>
+        <td>Cho phép công ty cung cấp phúc lợi cho nhân viên theo phê duyệt của Hội đồng Quản trị.</td>
+      </tr>
+      <tr>
+        <td>Y5</td>
+        <td>Cho phép công ty thu phí bảo hiểm phúc lợi từ lương nhân viên theo thỏa thuận của từng nhân viên.</td>
+      </tr>
+      <tr>
+        <td>Y6</td>
+        <td>Giữ bí mật, bảo mật và lưu trữ tất cả dữ liệu nhân viên theo yêu cầu của pháp luật tại mỗi khu vực pháp lý.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<p><strong>Mô Tả Sản Phẩm/Sản Phẩm Bàn Giao Chính Cấp Cao (Các sản phẩm bàn giao chính của sản phẩm là gì và kết quả cuối cùng của dự án là gì?)</strong></p>
+
+<p>Kết quả của dự án này phải là một hoặc nhiều hệ thống hỗ trợ xử lý tính lương cho tất cả nhân viên, ở mức bằng hoặc thấp hơn chi phí trung bình của ngành. Các tính năng mong muốn cụ thể bao gồm:</p>
+
+<ul class="content-list">
+  <li>Các hệ thống phải cho phép chuyển khoản lương trực tiếp vào bất kỳ tổ chức tài chính nào trên thế giới, kèm theo thông báo nộp tiền qua email hoặc tin nhắn văn bản đến bất kỳ thiết bị nào.</li>
+  <li>Người lao động có thể thay đổi địa chỉ, số người phụ thuộc, tham số khấu trừ thuế và các đặc điểm phúc lợi qua một trang web bất cứ lúc nào từ bất kỳ địa điểm nào.</li>
+  <li>Các hệ thống phải hỗ trợ quản lý và báo cáo tập trung về xử lý tính lương công ty, cộng với các báo cáo và thanh toán bắt buộc theo yêu cầu của chính phủ.</li>
+</ul>
+
+<p><strong>Giả Định Cấp Cao (Điều gì được cho là đúng hoặc đáng tin cậy trong tình huống này? Điều gì chúng ta tin là như vậy nhưng chưa có bằng chứng hoặc dữ liệu? Xem chi tiết trong nhật ký giả định.)</strong></p>
+
+<ul class="content-list">
+  <li>Có các ứng dụng tính lương hỗ trợ các quốc gia nơi nhân viên của chúng tôi đang làm việc.</li>
+  <li>Chi phí trung bình 100 đô la mỗi nhân viên mỗi năm là chính xác cho ngành của chúng tôi.</li>
+  <li>Mỗi nhân viên khai báo nơi cư trú chính ở chỉ một quốc gia cho mục đích kê khai thuế.</li>
+  <li>Chúng tôi có nguồn lực nội bộ sẵn sàng để đánh giá và thực hiện công việc được giao.</li>
+</ul>
+
+<p><strong>Ràng Buộc Cấp Cao (Những yếu tố nào có thể hạn chế khả năng bàn giao của chúng ta? Các ranh giới hoặc thông số nào mà dự án phải hoạt động trong đó?)</strong></p>
+
+<ul class="content-list">
+  <li>Hệ thống phải có khả năng tuân thủ tất cả các quy tắc tính lương quốc tế và thực hiện chuyển khoản trực tiếp trên toàn cầu.</li>
+  <li>Giải pháp và các hệ thống hỗ trợ phải có khả năng duy trì các tiêu chuẩn bảo mật thông tin tổ chức đáp ứng hoặc vượt tiêu chuẩn từng quốc gia.</li>
+  <li>Báo cáo thuế cuối năm phải được hoàn thành bởi hệ thống mới trong năm triển khai (dữ liệu tính lương phải được chuyển đổi).</li>
+  <li>Lịch mốc tóm tắt: Hạn chót không muộn hơn ngày 6 tháng 10, 20XX</li>
+  <li>Nguồn tài chính được phê duyệt trước: 1.200.000 đô la</li>
+</ul>
+
+<p><strong>Mục Tiêu Dự Án Có Thể Đo Lường (Dự án liên kết như thế nào với các mục tiêu chiến lược của tổ chức? Những mục tiêu dự án nào hỗ trợ các mục tiêu đó? Các mục tiêu cần phải đo lường được và sẽ phụ thuộc vào mức độ ưu tiên đã xác định của các ràng buộc dự án.)</strong></p>
+
+<p>Mục tiêu chính của dự án này là giảm chi phí ít nhất 400.000 đô la hàng năm. Mục tiêu thứ hai, hỗ trợ mục tiêu đầu tiên, là tăng năng suất cho nhân viên mới và nhân viên xử lý tính lương.</p>
+
+<ul class="content-list">
+  <li>Giảm chi phí xử lý tính lương 15 phần trăm trong hai năm bằng cách giảm các quy trình thủ công hành chính.</li>
+  <li>Giảm thời gian quy trình onboarding nhân viên mới từ trung bình 5 ngày làm việc xuống còn 2 ngày làm việc trong vòng 18 tháng.</li>
+</ul>
+
+<p><strong>Yêu Cầu Phê Duyệt Dự Án (Những hạng mục nào cần được phê duyệt cho dự án, và ai sẽ có thẩm quyền ký duyệt? Điều gì xác định sự thành công?)</strong></p>
+
+<p>Các phê duyệt cho dự án này bao gồm:</p>
+
+<ul class="content-list">
+  <li>Quyết định mua phần mềm ứng dụng hỗ trợ hệ thống tính lương (Phó Chủ Tịch Điều Hành)</li>
+  <li>Lựa chọn gói ứng dụng của nhà cung cấp (Giám Đốc Nhân Sự)</li>
+  <li>Thiết kế cấp cao của hệ thống mới (Giám Đốc Nhân Sự)</li>
+  <li>Kế hoạch chuyển đổi toàn cầu cho việc triển khai hệ thống mới (Phó Chủ Tịch Điều Hành)</li>
+</ul>
+
+<p><strong>Rủi Ro Tổng Thể của Dự Án (Các mối đe dọa và cơ hội tiềm năng tổng thể cho dự án)</strong></p>
+
+<ul class="content-list">
+  <li>Do độ phức tạp của các phép tính lương nhân viên và số lượng nhân viên lớn, chúng tôi có thể gặp lỗi trong tính lương nhân viên trong quá trình triển khai hệ thống mới. (Tác động cao)</li>
+  <li>Do số lượng địa phương được hỗ trợ và các quy định khác nhau, chúng tôi có thể gặp lỗi trong thanh toán thuế chính phủ và tuân thủ quy định trong quá trình triển khai hệ thống mới. (Tác động cao)</li>
+  <li>Do sự biến động trên thị trường ứng dụng phần mềm, chúng tôi có thể lựa chọn một nhà cung cấp không đáng tin cậy để cung cấp các ứng dụng xử lý tính lương. (Tác động cao)</li>
+</ul>
+
+<p><strong>Tiêu Chí Thoát Dự Án (Các yêu cầu nào cần được đáp ứng để người quản lý dự án có thể đóng hoặc chấm dứt dự án hoặc giai đoạn?)</strong></p>
+
+<ul class="content-list">
+  <li>Một hệ thống xử lý tính lương mới đáp ứng các mục tiêu và yêu cầu dự án, kết hợp tất cả các sản phẩm bàn giao chính được mô tả ở đây sẽ được bàn giao trong các ràng buộc chi phí và ngân sách đã xác định.</li>
+  <li>Hoặc, nếu xác định rằng các mục tiêu tiết kiệm chi phí của dự án không thể đạt được, người quản lý dự án sẽ khuyến nghị chấm dứt dự án.</li>
+  <li>Hoặc, nếu xác định rằng một giải pháp khác sẽ đáp ứng nhu cầu tổ chức tốt hơn, nhà tài trợ cần được thông báo để phê duyệt đóng dự án, và một trường hợp kinh doanh sẽ được phát triển cho giải pháp mới.</li>
+</ul>
+
+<p><strong>Nhà Tài Trợ Dự Án Ủy Quyền Cho Dự Án Này</strong></p>
+
+<p>___</p>
+
+<p>Muhammad Chauhan, Phó Chủ Tịch Điều Hành &nbsp;&nbsp;&nbsp; Jessica Bouchard, Giám Đốc Nhân Sự</p>
+
+<h4 id="ch4-develop-project-management-plan">Phát Triển Kế Hoạch Quản Lý Dự Án</h4>
+
+<p>Vì kế hoạch quản lý dự án là một tài liệu chính thức, nó đòi hỏi sự phê duyệt chính thức từ ban quản lý, nhà tài trợ, nhóm dự án và các bên liên quan chính khác. Phê duyệt chính thức có nghĩa là ký xác nhận (chữ ký). Nếu người quản lý dự án đã xác định được tất cả các bên liên quan cùng yêu cầu và mục tiêu của họ, đưa phạm vi dự án và sản phẩm phù hợp vào kế hoạch, và xử lý trước các ưu tiên xung đột, thì việc phê duyệt kế hoạch quản lý dự án sẽ tương đối đơn giản.</p>
+
+<h4 id="ch4-kickoff-meeting">Cuộc Họp Khởi Động</h4>
+
+<p>Trước khi quy trình Xây dựng Kế hoạch Quản lý Dự án được coi là hoàn tất và việc thực hiện dự án bắt đầu, một cuộc họp khởi động nên được tổ chức. Đây là cuộc họp của các bên chủ chốt tham gia vào dự án nhằm thông báo sự khởi đầu của dự án, đảm bảo mọi người đều quen thuộc với các chi tiết của dự án — bao gồm mục tiêu, vai trò và trách nhiệm — đồng thời đảm bảo sự cam kết của tất cả mọi người đối với dự án. Ngoài việc giới thiệu những người tham gia dự án, cuộc họp có thể xem xét các hạng mục như cột mốc, rủi ro, kế hoạch quản lý truyền thông và lịch trình họp.</p>
+
+<p>Mặc dù các cuộc họp khởi động rất phổ biến trong các dự án agile, thông tin dự án được trao đổi tại cuộc họp này vẫn ở mức độ tổng quan. Thông tin chi tiết về các tính năng sản phẩm và các giai đoạn tăng trưởng sản phẩm xuất hiện khi việc lập kế hoạch phát hành và lặp tiếp tục diễn ra, tiếp theo là các buổi đánh giá lặp với khách hàng và/hoặc đại diện ban quản lý trong các cuộc họp đánh giá lặp.</p>
+
+<h4 id="ch4-direct-manage-project-work">Chỉ đạo và Quản lý Công việc Dự án</h4>
+
+<p>Quy trình này đại diện cho khía cạnh tích hợp của việc thực hiện dự án — phần của dự án mà nhóm thực hiện công việc để tạo ra sản phẩm của dự án. Trong Chỉ đạo và Quản lý Công việc Dự án, người quản lý dự án tích hợp tất cả các công việc thực hiện thành một nỗ lực phối hợp nhằm hoàn thành kế hoạch quản lý dự án và tạo ra các sản phẩm bàn giao. Ngoài ra, quy trình này bao gồm thu thập dữ liệu hiệu suất công việc, tạo và sử dụng nhật ký vấn đề, yêu cầu thay đổi, và hoàn thành công việc phát sinh từ các yêu cầu thay đổi đã được phê duyệt.</p>
+
+<p>Các nhiệm vụ này liên quan đến việc quản lý công việc và giữ cho mọi người gắn kết. Về cơ bản, đây là việc phục vụ nhóm để giúp họ hoàn thành công việc, đảm bảo sự hiểu biết chung về dự án giữa các bên liên quan, và giữ cho mọi người được thông tin bằng cách ghi chép và tạo điều kiện giải quyết vấn đề. Người quản lý dự án cũng tạo điều kiện cho các cuộc họp và thảo luận kỹ thuật, và trên các dự án theo kế hoạch sử dụng hệ thống ủy quyền công việc (một phần của hệ thống thông tin quản lý dự án hay PMIS) để giữ cho nhóm và các quản lý chức năng được thông tin về các phân công công việc và cột mốc sắp tới. Người quản lý dự án cũng loại bỏ các trở ngại cho nhóm, làm việc về cải tiến quy trình, và thông báo cho các bộ phận khác trong tổ chức biết dự án có thể ảnh hưởng đến công việc của họ như thế nào.</p>
+
+<h5>Mô hình Nhóm Quy trình</h5>
+
+<div class="table-wrap">
+<table>
+<tr><td><strong>Nhóm Quy trình (PG):</strong> Thực hiện</td></tr>
+<tr><td><strong>Quy trình:</strong> Chỉ đạo và Quản lý Công việc Dự án</td></tr>
+</table>
+</div>
+
+<h5>ECO</h5>
+
+<div class="table-wrap">
+<table>
+<tr><td>Lĩnh vực II</td></tr>
+<tr><td>Nhiệm vụ 1 — Cung cấp giá trị kinh doanh một cách hiệu quả</td></tr>
+<tr><td>Nhiệm vụ 10 — Quản lý thay đổi dự án</td></tr>
+<tr><td>Nhiệm vụ 12 — Quản lý các tạo phẩm dự án</td></tr>
+<tr><td>Nhiệm vụ 16 — Đảm bảo chuyển giao kiến thức</td></tr>
+<tr><td>Nhiệm vụ 17 — Lập kế hoạch và quản lý việc đóng dự án/giai đoạn hoặc chuyển tiếp</td></tr>
+</table>
+</div>
+
+<h5>PMBOK® Guide</h5>
+
+<div class="table-wrap">
+<table>
+<tr><td>Lĩnh vực 2.5 — Công việc Dự án</td></tr>
+<tr><td>Lĩnh vực 2.6 — Bàn giao</td></tr>
+<tr><td>Lĩnh vực 2.8 — Sự không chắc chắn</td></tr>
+</table>
+</div>
+
+<p>Quản lý tích hợp yêu cầu người quản lý dự án luôn ghi nhớ tất cả các ràng buộc và xem xét đúng đắn cách các vấn đề liên quan đến một ràng buộc ảnh hưởng đến các ràng buộc khác. Ví dụ, các vấn đề quản lý phạm vi có thể ảnh hưởng đến các số liệu chất lượng và quản lý nguồn lực.</p>
+
+<p>Nếu bạn chưa bao giờ sử dụng hệ thống ủy quyền công việc, hãy tưởng tượng một dự án xây dựng lớn với hàng trăm người làm việc trong dự án. Bạn có thể để một thợ ống nước và một thợ điện xuất hiện làm việc trong một khu vực nhỏ cùng một lúc không? Không thể. Hãy nhớ rằng một dự án được lập kế hoạch đến mức độ chi tiết cần thiết cho dự án đó. Để xử lý các tình huống loại này, hệ thống ủy quyền công việc đảm bảo công việc chỉ được bắt đầu khi có lệnh chính thức. Trong nhiều trường hợp, công cụ này là một hệ thống toàn công ty chứ không phải được tạo riêng cho dự án. Thuật ngữ "hệ thống ủy quyền công việc" có thể xuất hiện trong một câu hỏi trên kỳ thi hoặc được bao gồm như một lựa chọn trả lời.</p>
+
+<p>Tùy thuộc vào nhu cầu của dự án và cách tiếp cận phát triển của nó, việc sử dụng các cuộc họp như một phương pháp có thể dao động từ các phiên standup không chính thức đến các cuộc họp có cấu trúc với chương trình nghị sự tập trung vào một khía cạnh cụ thể của dự án. Các cuộc họp khác có thể liên quan đến cập nhật dự án, bài học kinh nghiệm, các hoạt động dự án sắp tới (như cuộc họp lập kế hoạch lặp) và quản lý rủi ro hoặc kiểm soát thay đổi.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e77c0d3c-5eb3-4cce-bfb0-85a48056c0bc/markdown_3/imgs/img_in_image_box_68_519_124_575.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A58Z%2F-1%2F%2F5c2d92597f5cb9ae6b78d05c397bde84f0597f928db23e4ae48634df9277df57" alt="Image" width="6%" /></div></div>
+
+<p>Quy trình Chỉ đạo và Quản lý Công việc Dự án có thể được minh họa như trong hình 4.4. Các đầu ra chính của quy trình này bao gồm các sản phẩm bàn giao đã hoàn thành cùng với bất kỳ dữ liệu hiệu suất công việc mới và yêu cầu thay đổi nào. Các đầu ra khác là các cập nhật đối với tài sản quy trình tổ chức và các tạo phẩm dự án.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e77c0d3c-5eb3-4cce-bfb0-85a48056c0bc/markdown_3/imgs/img_in_image_box_172_761_665_998.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A58Z%2F-1%2F%2Fe5c0f69e010fd141afdf1fc2d5f6642a2960efc4f4bf7ba13d3c6adca5d8a0c7" alt="Image" width="59%" /></div></div>
+
+<div class="table-wrap"><table><tr><td style="text-align:center;"><em>HÌNH 4.4 Quy trình Chỉ đạo và Quản lý Công việc Dự án</em></td></tr></table></div>
+
+<h3 id="ch4-exercise-4-3">4.3 Bài Tập</h3>
+
+<p>Một số tạo phẩm dự án có khả năng được cập nhật nhất như là kết quả của quy trình Chỉ đạo và Quản lý Công việc Dự án là gì? Viết câu trả lời vào Sổ Bài Tập của bạn.</p>
+
+<h4 id="ch4-exercise-4-3-answer">Đáp Án</h4>
+
+<p>Các tạo phẩm dự án có thể được cập nhật như một phần của quy trình này bao gồm:</p>
+
+<ul class="content-list">
+<li>Kế hoạch quản lý dự án</li>
+<li>Tài liệu yêu cầu</li>
+<li>Danh sách hoạt động</li>
+<li>Nhật ký giả định và vấn đề</li>
+<li>Sổ đăng ký bài học kinh nghiệm, bên liên quan và rủi ro</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e77c0d3c-5eb3-4cce-bfb0-85a48056c0bc/markdown_4/imgs/img_in_image_box_35_367_100_422.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A59Z%2F-1%2F%2F4dcce09abed112de98be760400c3c67d84b05d91b5fc6c65aada5ab78fc468e2" alt="Image" width="7%" /></div></div>
+
+<p>Hãy ghi nhớ khi bạn đọc phần còn lại của cuốn sách này rằng đối với mỗi quy trình đều có các tạo phẩm dự án có thể được cập nhật khi dự án tiến triển.</p>
+
+<h4 id="ch4-manage-project-knowledge">Quản lý Kiến thức Dự án</h4>
+
+<p>Hãy nghĩ về lượng kiến thức khổng lồ cần thiết để lập kế hoạch và thực hiện đúng đắn một dự án. Người quản lý dự án có thể hưởng lợi từ nền tảng kiến thức mà tổ chức đã tích lũy theo thời gian, đặc biệt từ những kinh nghiệm và khám phá của người khác trong các dự án tương tự trong quá khứ. Quy trình Quản lý Kiến thức Dự án yêu cầu mỗi dự án phải chủ động đóng góp vào nền tảng kiến thức đó. Điều này bao gồm việc chia sẻ các quy trình mới, thành công, v.v., nội bộ trong dự án, cũng như làm cho kiến thức đó có thể tiếp cận được trong toàn bộ tổ chức.</p>
+
+<h4 id="ch4-information-knowledge-management">Quản lý Thông tin và Kiến thức</h4>
+
+<p>Việc chia sẻ kiến thức và thông tin thành công và nhất quán góp phần tạo ra môi trường làm việc hiệu quả và tăng khả năng của các nhóm dự án để đạt được các mục tiêu dự án và tổ chức. Quản lý kiến thức thành công đòi hỏi một văn hóa tổ chức tin tưởng trong đó người quản lý dự án và các bên liên quan trao đổi kiến thức mà không sợ bị phán xét. Người quản lý dự án cần</p>
+
+<div class="table-wrap">
+<table>
+<tr><th colspan="2">Mô hình Nhóm Quy trình</th></tr>
+<tr><td><strong>Nhóm Quy trình (PG):</strong></td><td>Thực hiện</td></tr>
+<tr><td><strong>Quy trình:</strong></td><td>Quản lý Kiến thức Dự án</td></tr>
+<tr><th colspan="2">ECO</th></tr>
+<tr><td colspan="2">Lĩnh vực II</td></tr>
+<tr><td colspan="2">Nhiệm vụ 10 — Quản lý thay đổi dự án</td></tr>
+<tr><td colspan="2">Nhiệm vụ 12 — Quản lý các tạo phẩm dự án</td></tr>
+<tr><td colspan="2">Nhiệm vụ 16 — Đảm bảo chuyển giao kiến thức</td></tr>
+<tr><th colspan="2">PMBOK® Guide</th></tr>
+<tr><td colspan="2">Lĩnh vực 2.8 — Sự không chắc chắn</td></tr>
+</table>
+</div>
+
+<p>tạo dựng một môi trường hỗ trợ sự hợp tác và chia sẻ kiến thức. Ví dụ, các diễn đàn thảo luận và các công cụ trực tuyến tương tác khác có thể giúp tạo điều kiện cho loại môi trường này.</p>
+
+<p>Kiến thức mới quan trọng cần chia sẻ thường liên quan đến những kinh nghiệm không diễn ra như kế hoạch. Người quản lý dự án có thể học hỏi từ mỗi bên liên quan chưa được xác định, mỗi dấu hiệu kích hoạt rủi ro bị bỏ lỡ, và mỗi thành phần lịch trình không thực tế. Việc chia sẻ thông tin như vậy và có thể giúp một dự án hoặc người khác tránh khỏi một vấn đề tương tự là vô giá. Triết lý này đã phát triển trong thế giới quản lý dự án truyền thống và được tích hợp vào các thực hành quản lý dự án agile kể từ khi mọi người bắt đầu sử dụng agile.</p>
+
+<p>Quản lý kiến thức bao gồm hai loại kiến thức riêng biệt — kiến thức tường minh và kiến thức ẩn.</p>
+
+<ul class="content-list">
+<li><strong>Kiến thức tường minh</strong> dựa trên thực tế và có thể được truyền đạt dễ dàng qua ngôn ngữ và ký hiệu. Bài học kinh nghiệm truyền thống, các quy trình và thủ tục, cũng như các kho lưu trữ thông tin khác thuộc loại kiến thức này. Chúng được tạo ra và chia sẻ trong khi dự án đang diễn ra và được hợp nhất như một phần của việc đóng dự án. Tuy nhiên, kiến thức tường minh có thể cần giải thích hoặc bối cảnh để cung cấp giá trị.</li>
+<li><strong>Kiến thức ẩn</strong> có thể cung cấp bối cảnh hoặc giải thích cho kiến thức tường minh. Nó không dễ ghi lại thành tài liệu. Nó bao gồm cảm xúc, kinh nghiệm và khả năng, những điều khó truyền đạt bằng ngôn ngữ và ký hiệu nhưng có thể học được thông qua việc theo dõi công việc thực tế hoặc học việc.</li>
+</ul>
+
+<div class="callout">
+<p><strong>Ví dụ:</strong> Bạn có thể học được rất nhiều về cách thực hiện một hoạt động bằng cách đọc tài liệu của tổ chức về hoạt động đó và được đào tạo bởi một nhân viên có kinh nghiệm. Đây là kiến thức tường minh. Tuy nhiên, bạn sẽ học được các thủ thuật và phím tắt bằng cách theo dõi công việc thực tế. Xem một người có kinh nghiệm đang làm công việc sẽ cho bạn kiến thức ẩn mà họ có thể không nghĩ đến khi đào tạo bạn về hoạt động đó.</p>
+</div>
+
+<p>Trong kỳ thi, bạn có thể thấy các câu hỏi liên quan đến việc tạo dựng môi trường khuyến khích nhóm dự án chia sẻ kiến thức ẩn và tường minh. Hoặc một câu hỏi dựa trên kịch bản có thể có giả định ngầm rằng việc chia sẻ kiến thức là một phần của việc thực hiện dự án.</p>
+
+<p>Bạn cũng cần biết rằng các yêu cầu và ràng buộc pháp lý và quy định như thỏa thuận bảo mật thông tin (NDA) có thể hạn chế hoặc ảnh hưởng đến việc thu thập và chia sẻ thông tin cụ thể.</p>
+
+<div class="callout">
+<p><strong>Ví dụ:</strong> Trong một dự án phát triển phần mềm ngân hàng, nhóm có thể có quyền truy cập vào thông tin cá nhân và tài chính của khách hàng của ngân hàng mà phần mềm đang được phát triển. Rõ ràng là các thành viên nhóm sẽ không được phép chia sẻ thông tin này ngoài mục đích công việc dự án.</p>
+</div>
+
+<h4 id="ch4-managing-project-knowledge">Quản lý Kiến thức Dự án (Thực hành)</h4>
+
+<p>Các tạo phẩm dự án như kế hoạch quản lý dự án, tài liệu dự án (như sổ đăng ký bài học kinh nghiệm và phân công nhóm dự án), và các sản phẩm bàn giao là các đầu vào của quy trình Quản lý Kiến thức Dự án. Các kỹ thuật học hỏi và chia sẻ kiến thức có thể bao gồm hội thảo, đào tạo và quan sát. Đơn giản là hỏi "Hãy hướng dẫn tôi cách bạn sẽ thực hiện nhiệm vụ này" có thể khuyến khích sự hiểu biết.</p>
+
+<div class="callout tip">
+<p><strong>Giao tiếp thẩm thấu (Osmotic Communication):</strong> Việc chia sẻ không chính thức xảy ra thông qua việc áp dụng các kỹ năng giao tiếp cá nhân và nhóm, bao gồm lắng nghe tích cực và kết nối mạng lưới. Khái niệm giao tiếp thẩm thấu trong agile mô tả hiện tượng giao tiếp và chia sẻ kiến thức được tạo điều kiện và nâng cao đơn giản bằng cách các thành viên nhóm ở gần nhau.</p>
+</div>
+
+<div class="callout">
+<p><strong>Ví dụ:</strong> Hãy tưởng tượng bạn làm việc trong một phòng riêng và ở phía bên kia vách ngăn là một đồng nghiệp thân thiết. Bạn cũng có một đồng nghiệp mà bạn cộng tác chặt chẽ, nhưng bàn làm việc của họ ở cuối hành lang. Bạn có đồng ý rằng ngay cả khi không cố ý, bạn sẽ biết nhiều hơn về người đồng nghiệp làm việc ngay bên kia vách ngăn của bạn, chỉ từ việc nghe lén cuộc trò chuyện hàng ngày của họ không? Đó chính là giao tiếp thẩm thấu.</p>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//419a690a-3f59-4463-b0b7-b305dae2fc58/markdown_0/imgs/img_in_image_box_713_436_763_494.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A58Z%2F-1%2F%2F03c3d008afda425f260405fb4045d463912f11fddb50336b1825b56cff9516f6" alt="Image" width="6%" /></div></div>
+
+<h5>Bài Học Kinh Nghiệm</h5>
+
+<p>Bạn sẽ thấy bài học kinh nghiệm được đề cập xuyên suốt cuốn sách này, vừa là đầu vào vừa là đầu ra của nhiều quy trình. Là đầu vào, chúng giúp cải thiện dự án hiện tại. Là đầu ra, chúng giúp tổ chức tốt hơn bằng cách cung cấp bài học kinh nghiệm lịch sử cho các dự án và người quản lý dự án trong tương lai. Chúng mô tả "điều gì đã được thực hiện đúng, điều gì đã được thực hiện sai, và điều gì sẽ được thực hiện khác đi." Ghi lại bài học kinh nghiệm một cách chính xác và đầy đủ là một trách nhiệm nghề nghiệp, và sổ đăng ký bài học kinh nghiệm là đầu ra chính của việc quản lý kiến thức dự án. Bài học kinh nghiệm nên bao gồm tổng quan về mỗi tình huống, các hành động khắc phục đã được thực hiện, tác động của các hành động đã thực hiện, và các cập nhật kết quả đối với các tạo phẩm dự án.</p>
+
+<p>Trong chương đầu tiên của cuốn sách này, chúng tôi đã mô tả bài học kinh nghiệm dưới mục PMI-isms Chung. Bài học kinh nghiệm là một tài sản thiết yếu trong việc quản lý dự án, vì chúng được xem xét cũng như được tạo ra xuyên suốt một dự án.</p>
+
+<p>Một số danh mục bài học kinh nghiệm hữu ích cần được ghi lại là:</p>
+
+<ul class="content-list">
+<li><strong>Bài học kinh nghiệm kỹ thuật:</strong> Điều gì đúng và sai trong cách chúng ta hoàn thành công việc? Chúng ta đã học được gì sẽ hữu ích trong tương lai? (Ví dụ bao gồm các số liệu chấp nhận được và mức độ sai lệch, các quy trình mới, các quy trình đã được cải thiện hoặc sửa đổi cho các kết quả cụ thể, và tính hiệu quả của các tiêu chí chấp thuận cụ thể.)</li>
+<li><strong>Bài học kinh nghiệm quản lý dự án:</strong> Chúng ta đã làm như thế nào với việc tạo WBS, lập kế hoạch rủi ro, v.v.? Chúng ta đã học được gì sẽ hữu ích trong tương lai? (Ví dụ bao gồm các khuyến nghị chuyển giao kết quả dự án cho nhóm kinh doanh và vận hành, các thay đổi được khuyến nghị cho quy trình mua sắm của tổ chức, và kinh nghiệm làm việc với các nhà cung cấp cụ thể.)</li>
+<li><strong>Bài học kinh nghiệm quản lý:</strong> Chúng ta đã học được gì từ các nỗ lực truyền thông và lãnh đạo sẽ hữu ích trong tương lai? (Ví dụ bao gồm kết quả phân tích bên liên quan và các nỗ lực gắn kết bên liên quan.)</li>
+</ul>
+
+<p>Nhiều người quản lý dự án không hiểu vai trò của bài học kinh nghiệm trong các dự án. Hình 4.5 minh họa chức năng của chúng.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//419a690a-3f59-4463-b0b7-b305dae2fc58/markdown_1/imgs/img_in_image_box_152_149_638_266.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A59Z%2F-1%2F%2F4215c2a50bf37b1c4c189ab1c31f52c7b74f863aea380ae7ff5ed4ad28439629" alt="Image" width="59%" /></div></div>
+
+<div class="table-wrap"><table><tr><td style="text-align:center;"><em>HÌNH 4.5 Bài học kinh nghiệm trong một dự án</em></td></tr></table></div>
+
+<h4 id="ch4-giam-sat-kiem-soat-cong-viec-du-an">Giám Sát và Kiểm Soát Công Việc Dự Án</h4>
+
+<p>Giám Sát và Kiểm Soát Công Việc Dự Án diễn ra từ giai đoạn khởi xướng cho đến khi kết thúc dự án. Quy trình này bao gồm việc quan sát các hoạt động của dự án và kết quả của chúng, đồng thời so sánh hiệu suất thực tế và dự báo với những gì đã được lập kế hoạch. Quy trình này liên quan đến việc tổng hợp thông tin hiệu suất công việc từ các quy trình quản lý dự án để đánh giá và xem xét cách mà các kết quả đó ảnh hưởng đến kế hoạch và đường cơ sở. Quy trình này còn bao gồm việc giám sát mọi yêu cầu về hiệu suất đã được đưa vào kế hoạch quản lý dự án.</p>
+
+<div class="callout">
+<p><strong>Ví dụ:</strong> Phạm vi có thể hoàn thành nhưng chất lượng có thể không đạt yêu cầu. Tiến độ có thể được đáp ứng nhưng với chi phí quá cao.</p>
+</div>
+
+<p>Công việc này khuyến khích cái nhìn toàn diện về hiệu suất dự án và cho phép người quản lý dự án thực hiện hành động phù hợp để giữ dự án đi đúng hướng. Quy trình cũng bao gồm các hoạt động như phân tích và theo dõi rủi ro, thực hiện các hoạt động kiểm soát chất lượng, đánh giá các kết quả có thể xảy ra trong toàn dự án bằng cách sử dụng các kỹ thuật phân tích dữ liệu (bao gồm phân tích phương án thay thế, phân tích chi phí-lợi ích, phân tích EVM, phân tích nguyên nhân gốc rễ, phân tích xu hướng và phân tích phương sai), đồng thời xem xét các thay đổi và hành động khắc phục đã thực hiện trên dự án để xem chúng có hiệu quả không.</p>
+
+<div class="table-wrap">
+<table>
+<tr>
+<th>Nhóm Quy Trình</th>
+<th>Quy Trình</th>
+<th>ECO</th>
+<th>PMBOK</th>
+</tr>
+<tr>
+<td>Giám Sát và Kiểm Soát</td>
+<td>Giám Sát và Kiểm Soát Công Việc Dự Án</td>
+<td>
+<strong>Lĩnh vực II</strong><br>
+Nhiệm vụ 1: Chuyển giao giá trị kinh doanh một cách hiệu quả<br>
+Nhiệm vụ 12: Quản lý tài liệu dự án<br>
+Nhiệm vụ 13: Sử dụng phương pháp và thực hành phù hợp<br>
+Nhiệm vụ 17: Lập kế hoạch và quản lý việc đóng dự án/giai đoạn hoặc chuyển tiếp
+</td>
+<td>
+Lĩnh vực 2.7 Đo lường<br>
+Lĩnh vực 2.8 Sự không chắc chắn
+</td>
+</tr>
+</table>
+</div>
+
+<h4 id="ch4-san-pham-giam-sat-kiem-soat-cong-viec">Sản Phẩm Đầu Ra của Giám Sát và Kiểm Soát Công Việc Dự Án</h4>
+
+<p>Nỗ lực này có thể tạo ra các yêu cầu thay đổi, báo cáo hiệu suất công việc và các cập nhật cho tài liệu dự án. Các yêu cầu thay đổi từ quy trình này và các quy trình khác được đánh giá và phê duyệt, từ chối hoặc hoãn lại trong quy trình Thực Hiện Kiểm Soát Thay Đổi Tích Hợp, được mô tả ở phần sau trong chương này.</p>
+
+<h4 id="ch4-yeu-cau-thay-doi">Yêu Cầu Thay Đổi</h4>
+
+<p>Các yêu cầu thay đổi có thể có trọng tâm khác nhau tùy thuộc vào quy trình nào tạo ra chúng. Ví dụ về các thay đổi bao gồm: bổ sung phạm vi dự án theo yêu cầu của khách hàng, thay đổi kế hoạch mà nhóm cho rằng sẽ giúp công việc hiệu quả hơn, hoặc thậm chí thay đổi các chính sách và quy trình được sử dụng trong dự án. Các thay đổi cần thiết được xác định khi người quản lý dự án quản lý việc thực hiện dự án và như một phần của hoạt động giám sát và kiểm soát khi hiệu suất dự án được đo lường theo đường cơ sở.</p>
+
+<p>Không phải tất cả các thay đổi đều yêu cầu yêu cầu thay đổi chính thức, nhưng yêu cầu thay đổi được tạo ra từ nhiều quy trình nếu chúng yêu cầu thay đổi kế hoạch quản lý dự án hoặc đường cơ sở đo lường hiệu suất. Ba danh mục chính mà các thay đổi thuộc về là hành động khắc phục, hành động phòng ngừa và sửa chữa khiếm khuyết.</p>
+
+<h5>Hành Động Khắc Phục</h5>
+
+<p>Bất kỳ hành động nào được thực hiện để đưa hiệu suất dự án dự kiến trong tương lai trở lại phù hợp với kế hoạch quản lý dự án đều là hành động khắc phục. Vì hành động khắc phục liên quan đến các sai lệch thực tế, cần có đường cơ sở đo lường hiệu suất và/hoặc kế hoạch quản lý dự án thực tế, bao gồm các sai lệch chấp nhận được, để xác định khi nào sai lệch xảy ra và khi nào cần hành động khắc phục. Những ai gặp khó khăn với điều này trong thực tế sẽ gặp khó khăn trong bài thi.</p>
+
+<p>Bạn làm gì trong các dự án của mình? Bạn có các lĩnh vực được xác định trước để đo lường không, và bạn đã xác định phạm vi chấp nhận được mà các phép đo có thể nằm trong đó (giới hạn kiểm soát) để xác định xem dự án có đúng tiến độ và ngân sách không?</p>
+
+<p>Bạn cần:</p>
+<ul class="content-list">
+  <li>Có kế hoạch quản lý dự án thực tế để đo lường đối chiếu</li>
+  <li>Có các chỉ số được tạo ra trong quá trình lập kế hoạch dự án bao phủ tất cả các khía cạnh của dự án</li>
+  <li>Tập trung có ý thức vào việc xác định các lĩnh vực cần hành động khắc phục</li>
+  <li>Tìm kiếm vấn đề bằng cách quan sát, lắng nghe tích cực và đo lường thay vì chờ vấn đề được trình lên</li>
+  <li>Biết khi nào dự án đi lệch hướng và cần hành động khắc phục</li>
+  <li>Tìm nguyên nhân gốc rễ của các sai lệch</li>
+  <li>Đo lường hiệu suất dự án sau khi hành động khắc phục được thực hiện để đánh giá hiệu quả của hành động khắc phục</li>
+  <li>Xác định xem có cần đề xuất hành động khắc phục thêm không</li>
+  <li>Tiếp tục đo lường trong suốt dự án</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//419a690a-3f59-4463-b0b7-b305dae2fc58/markdown_2/imgs/img_in_image_box_83_486_142_538.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A00Z%2F-1%2F%2Fbd979907f2571c888d30e3c45b7105a41d23590896c8b6955cf6fcd3d47d6420" alt="Image" width="7%" /></div></div>
+
+<p>Như bạn thấy, một phần đáng kể thời gian của người quản lý dự án trong khi công việc dự án đang được thực hiện là đo lường hiệu suất và thực hiện các hành động khắc phục khi cần. Bạn có thể gặp các câu hỏi về điều này trong bài thi. Đừng mong tất cả những câu hỏi này đều sử dụng cụm từ "hành động khắc phục."</p>
+
+<h5 id="ch4-hanh-dong-phong-ngua">Hành Động Phòng Ngừa</h5>
+
+<p>Trong khi hành động khắc phục liên quan đến việc xử lý các sai lệch thực tế so với đường cơ sở đo lường hiệu suất hoặc các chỉ số khác, hành động phòng ngừa có nghĩa là xử lý các sai lệch dự kiến so với đường cơ sở và các chỉ số khác. Biết khi nào cần hành động phòng ngừa đòi hỏi nhiều kinh nghiệm hơn là tính toán vì người quản lý dự án đang đánh giá xu hướng trong phân tích đo lường và dự đoán rằng nếu chúng tiếp tục, chúng có thể dẫn đến sai lệch so với đường cơ sở hoặc các chỉ số khác. Ví dụ về hành động phòng ngừa bao gồm:</p>
+
+<ul class="content-list">
+  <li>Điều chỉnh dự án để ngăn vấn đề tương tự xảy ra lại trong dự án</li>
+  <li>Thay đổi một nguồn lực vì hoạt động cuối cùng của nguồn lực đó gần như không đáp ứng được tiêu chí chấp nhận</li>
+  <li>Sắp xếp để các thành viên nhóm tham gia đào tạo trong một lĩnh vực cụ thể vì không có ai có kỹ năng cần thiết để dự phòng cho một thành viên nhóm có thể bị ốm đột xuất</li>
+</ul>
+
+<p>Các thay đổi được đề xuất ảnh hưởng đến đường cơ sở, chính sách hoặc quy trình, điều lệ, hợp đồng, hoặc phạm vi công việc (SOW) thường phải được trình lên ban kiểm soát thay đổi hoặc nhà tài trợ để phê duyệt, theo quy định trong kế hoạch quản lý thay đổi.</p>
+
+<h5 id="ch4-sua-chua-khiem-khuyet">Sửa Chữa Khiếm Khuyết</h5>
+
+<p>Sửa chữa khiếm khuyết là một cách khác để nói "làm lại." Sửa chữa khiếm khuyết có thể cần thiết khi một cấu phần của dự án không đáp ứng yêu cầu. Cũng giống như hành động khắc phục và phòng ngừa, sửa chữa khiếm khuyết có thể được xem xét và phê duyệt hoặc từ chối như một phần của Thực Hiện Kiểm Soát Thay Đổi Tích Hợp.</p>
+
+<h4 id="ch4-kiem-soat-thay-doi-tich-hop">Thực Hiện Kiểm Soát Thay Đổi Tích Hợp</h4>
+
+<p>Trong phần trước, chúng ta đã thảo luận về ba danh mục chính của các thay đổi được yêu cầu trong một dự án. Đối với các dự án theo kế hoạch, các yêu cầu thay đổi được đánh giá và chấp nhận, từ chối hoặc hoãn lại trong quy trình Thực Hiện Kiểm Soát Thay Đổi Tích Hợp. Trọng tâm chính của kiểm soát thay đổi tích hợp là xem xét tác động của từng thay đổi đối với tất cả các ràng buộc của dự án, giá trị của việc này là giảm thiểu rủi ro tiềm ẩn không đáp ứng được các mục tiêu dự án. Ví dụ, bất kỳ thay đổi phạm vi nào cũng cần được đánh giá về tác động đối với chất lượng, rủi ro, tiến độ, chi phí, nguồn lực và sự hài lòng của khách hàng. Sau đó, nó cần được phê duyệt thông qua kiểm soát thay đổi tích hợp trước khi có thể triển khai, vì đường cơ sở phạm vi là một phần của đường cơ sở đo lường hiệu suất.</p>
+
+<p>Kiểm soát thay đổi tích hợp đảm bảo rằng khi các thay đổi được chấp nhận, các cập nhật và nỗ lực lập kế hoạch lại được hoàn thành và tài liệu dự án được cập nhật. Các thay đổi được phê duyệt được triển khai như một chức năng của quy trình Chỉ Đạo và Quản Lý Công Việc Dự Án, Kiểm Soát Chất Lượng và Kiểm Soát Mua Sắm.</p>
+
+<p>Vậy, bạn có cần thực hiện qua Thực Hiện Kiểm Soát Thay Đổi Tích Hợp để thực hiện thay đổi đối với các quy trình hoặc kế hoạch chưa được hoàn thiện không? Không.</p>
+
+<div class="table-wrap">
+<table>
+<tr>
+<th>Nhóm Quy Trình</th>
+<th>Quy Trình</th>
+<th>ECO</th>
+<th>PMBOK</th>
+</tr>
+<tr>
+<td>Giám Sát và Kiểm Soát</td>
+<td>Thực Hiện Kiểm Soát Thay Đổi Tích Hợp</td>
+<td>
+<strong>Lĩnh vực II</strong><br>
+Nhiệm vụ 10: Quản lý thay đổi dự án<br>
+Nhiệm vụ 12: Quản lý tài liệu dự án<br>
+Nhiệm vụ 16: Đảm bảo chuyển giao kiến thức<br>
+Nhiệm vụ 17: Lập kế hoạch và quản lý việc đóng dự án/giai đoạn hoặc chuyển tiếp
+</td>
+<td>
+Lĩnh vực 2.7 Đo lường<br>
+Lĩnh vực 2.8 Sự không chắc chắn
+</td>
+</tr>
+</table>
+</div>
+
+<p>Khi xây dựng điều lệ dự án, kế hoạch quản lý dự án và đường cơ sở, các thay đổi có thể được thực hiện mà không cần yêu cầu thay đổi chính thức. Nhưng sau khi điều lệ và kế hoạch quản lý dự án đã được phê duyệt, các thay đổi được yêu cầu cần được đánh giá trong bối cảnh kiểm soát thay đổi tích hợp. Các thay đổi tài liệu dự án như thay đổi đối với bài học kinh nghiệm và nhật ký vấn đề không yêu cầu yêu cầu thay đổi nếu chúng không ảnh hưởng đến đường cơ sở đo lường hiệu suất hoặc thành phần khác của kế hoạch quản lý dự án.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//419a690a-3f59-4463-b0b7-b305dae2fc58/markdown_3/imgs/img_in_image_box_57_508_113_561.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A00Z%2F-1%2F%2Fe993e78bbd6ee5b45bc27465b3544a63f9847c3d51c62077d185a5d88e907dbf" alt="Image" width="6%" /></div></div>
+
+<p>Đọc kỹ các câu hỏi thi để hiểu xem thay đổi được yêu cầu có liên quan đến điều gì đó vẫn đang trong quá trình hoàn thiện hay đã được hoàn thiện. Điều này sẽ giúp bạn xác định xem kiểm soát thay đổi tích hợp có được yêu cầu hay không.</p>
+
+<p>Kiểm soát thay đổi tích hợp có thể là một chủ đề khó trong bài thi đối với những người không làm việc trên các dự án có quy trình thay đổi chính thức. Nó cũng có thể khó đối với các quản lý dự án chỉ ước tính tác động chi phí và/hoặc tiến độ của một thay đổi rồi dừng lại, thay vì tìm kiếm tác động của thay đổi đối với tất cả các ràng buộc dự án. Kiểm tra sự hiểu biết của bạn về chủ đề này với ví dụ sau.</p>
+
+<div class="callout">
+<p><strong>Hãy Suy Nghĩ.</strong> Một bên liên quan muốn bổ sung phạm vi vào dự án. Bạn ước tính rằng thay đổi sẽ thêm hai tuần vào thời gian dự án. Bạn nên làm gì tiếp theo?</p>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//419a690a-3f59-4463-b0b7-b305dae2fc58/markdown_3/imgs/img_in_image_box_46_649_97_705.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A00Z%2F-1%2F%2F33c9080714aca78f37275c6fe50aa004bf6206051ef5917fd5d8cb47cccf677f" alt="Image" width="6%" /></div></div>
+
+<p>Hãy cố gắng trả lời câu hỏi. Câu trả lời của bạn có phải là tìm cách tiết kiệm thời gian để thay đổi có thể được đáp ứng không? Hay bạn nên xin phê duyệt thay đổi? Còn đề nghị gia hạn thời gian để đáp ứng thay đổi thì sao?</p>
+
+<p>Không có lựa chọn nào trong số đó là đúng. Điều tiếp theo cần làm là xem xét thay đổi được đề xuất ảnh hưởng như thế nào đến chi phí, chất lượng, rủi ro, nguồn lực và có thể cả sự hài lòng của khách hàng của dự án. Bất cứ khi nào đề thi đề cập đến thay đổi, hãy nhớ rằng thay đổi đối với một ràng buộc dự án cần được đánh giá về tác động đối với tất cả các ràng buộc khác.</p>
+
+<p>Thay đổi có phải là điều xấu không? Trong quản lý dự án theo kế hoạch và trong một số ngành, đây có thể là một câu hỏi gây tranh cãi. Các thay đổi có thể có tác động tiêu cực vì chúng có thể tốn kém hoặc làm gián đoạn dự án. Chi phí của thay đổi có xu hướng tăng lên khi dự án tiến triển. Chức năng của mỗi quy trình trong giám sát và kiểm soát là kiểm soát các thay đổi.</p>
+
+<p>Trong môi trường thích ứng, việc đáp ứng nhiều thay đổi được coi là một phần liên tục của quy trình quản lý dự án. Định nghĩa phạm vi mang tính phát sinh hơn là được xác định ngay từ đầu dự án. Nhưng ngay cả trong môi trường theo hướng thay đổi, thay đổi cũng cần được lập kế hoạch và quản lý cẩn thận.</p>
+
+<p>Người quản lý dự án nên nỗ lực ngăn chặn nguyên nhân gốc rễ của những thay đổi không cần thiết. Sự cần thiết của nhiều thay đổi trong môi trường dự đoán có thể cho thấy người quản lý dự án đã không xác định đầy đủ các bên liên quan và khám phá yêu cầu của họ, lập kế hoạch cho rủi ro, hoặc hoàn thành đúng các hành động quản lý dự án khác.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//419a690a-3f59-4463-b0b7-b305dae2fc58/markdown_3/imgs/img_in_image_box_679_852_727_908.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A01Z%2F-1%2F%2Fb43c65a22fbf32af586bd5ca9804eabf60d4b6478343a6015368db1d88e4afee" alt="Image" width="5%" /></div></div>
+
+<p>Để kiểm soát các thay đổi trong dự án theo kế hoạch, người quản lý dự án nên:</p>
+
+<ul class="content-list">
+  <li>Nỗ lực thu thập các yêu cầu đầy đủ và toàn diện càng sớm càng tốt</li>
+  <li>Tiếp tục quan sát môi trường để phát hiện khả năng có các bên liên quan mới hoặc bị bỏ sót và các yêu cầu mới hoặc bị bỏ sót</li>
+  <li>Dành đủ thời gian cho quản lý rủi ro để xác định toàn diện các rủi ro của dự án</li>
+  <li>Thiết lập dự phòng tiến độ và chi phí (xem chương "Rủi Ro và Vấn Đề")</li>
+  <li>Có quy trình để quản lý thay đổi</li>
+  <li>Tuân theo quy trình quản lý thay đổi</li>
+  <li>Có quy trình và mẫu biểu để tạo yêu cầu thay đổi</li>
+  <li>Có vai trò và trách nhiệm rõ ràng cho việc phê duyệt thay đổi</li>
+  <li>Chỉ cho phép thực hiện những thay đổi đã được phê duyệt</li>
+  <li>Đánh giá lại trường hợp kinh doanh trong điều lệ dự án nếu số lượng thay đổi trở nên quá nhiều</li>
+  <li>Cân nhắc việc chấm dứt dự án có quá nhiều thay đổi và bắt đầu một dự án mới với bộ yêu cầu đầy đủ hơn</li>
+</ul>
+
+<p>Các thay đổi có thể được nhóm thành hai danh mục rộng — những thay đổi ảnh hưởng đến đường cơ sở, chính sách và quy trình, điều lệ, hợp đồng, hoặc SOW, và những thay đổi không ảnh hưởng đến chúng. Nếu thay đổi không ảnh hưởng đến các tài liệu này, chính sách quản lý thay đổi có thể cho phép người quản lý dự án phê duyệt thay đổi. Nếu thay đổi có ảnh hưởng đến các yếu tố quan trọng đó, thay đổi thường cần được trình lên ban kiểm soát thay đổi và/hoặc nhà tài trợ để ra quyết định. Chủ sở hữu sản phẩm thường đưa ra những quyết định này trong các dự án Agile.</p>
+
+<h4 id="ch4-ban-kiem-soat-thay-doi">Ban Kiểm Soát Thay Đổi (CCB)</h4>
+
+<p>Tùy thuộc vào mức độ thẩm quyền của người quản lý dự án, vai trò của họ có thể là tạo điều kiện cho các quyết định về một số thay đổi nhất định, thay vì tự mình ra quyết định. Nhiều dự án có ban kiểm soát thay đổi được thành lập chính thức, có nhiệm vụ xem xét các yêu cầu thay đổi theo kế hoạch quản lý thay đổi của dự án. CCB (đôi khi được gọi là ban chỉ đạo) phê duyệt, hoãn lại hoặc từ chối các thay đổi. Kết quả của các quyết định này được ghi lại trong nhật ký thay đổi của dự án. Ban này có thể bao gồm người quản lý dự án, khách hàng, chuyên gia, nhà tài trợ, người quản lý chức năng và những người khác. Trong kỳ thi, hãy giả định rằng các dự án theo kế hoạch đều có ban kiểm soát thay đổi.</p>
+
+<h4 id="ch4-quy-trinh-tom-tat-thay-doi">Quy Trình Tóm Tắt Để Thực Hiện Thay Đổi Trong Các Dự Án Theo Kế Hoạch</h4>
+
+<p>Kỳ thi có nhiều câu hỏi tình huống liên quan đến cách quản lý thay đổi dự án. Dưới đây là hai ví dụ.</p>
+
+<div class="callout">
+  <p><strong>Câu hỏi:</strong> Một người quản lý chức năng muốn thực hiện thay đổi đối với dự án. Điều đầu tiên người quản lý dự án nên làm là gì?</p>
+  <p><strong>Câu hỏi:</strong> Ai đó muốn thay đổi phạm vi dự án. Điều tốt nhất cần làm trước tiên là gì?</p>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//419a690a-3f59-4463-b0b7-b305dae2fc58/markdown_4/imgs/img_in_image_box_75_767_129_817.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A01Z%2F-1%2F%2Febc0bf082b0a940db6fbbd76b083ab3f239e3bbbe6918487e0e5d11eb9922a9e" alt="Image" width="6%" /></div></div>
+
+<p>Câu trả lời giống nhau trong cả hai trường hợp. Một mẹo để trả lời các câu hỏi hỏi về quy trình thực hiện thay đổi là cần biết rằng, ở cấp độ tổng quan, người quản lý dự án (và nhóm) nên tuân theo các bước sau:</p>
+
+<ol class="content-list">
+  <li><strong>Đánh giá tác động</strong> — Đánh giá tác động của thay đổi đối với tất cả các khía cạnh của dự án (ví dụ: thay đổi này sẽ cộng thêm ba tuần vào thời gian dự án, đòi hỏi thêm 20.000 đô tài trợ và không ảnh hưởng đến nguồn lực).</li>
+  <li><strong>Xác định các phương án</strong> — Điều này có thể bao gồm cắt giảm các hoạt động khác, nén lịch trình bằng cách tăng tốc (crashing) hoặc thực hiện song song (fast tracking), hoặc tìm kiếm các phương án khác. Ví dụ: bạn có thể giảm thiểu tác động tiềm tàng của thay đổi đối với dự án bằng cách dành thêm thời gian để giảm rủi ro dự án, hoặc bổ sung thêm một nguồn lực vào nhóm dự án.</li>
+  <li><strong>Phê duyệt yêu cầu thay đổi nội bộ</strong> (thông qua CCB)</li>
+  <li><strong>Nhận được sự đồng thuận của khách hàng</strong> (nếu cần thiết)</li>
+</ol>
+
+<p>Lưu ý rằng các thay đổi luôn được đánh giá trước khi thực hiện bất kỳ hành động nào khác. Trong nhiều trường hợp, việc đánh giá bao gồm sử dụng các kỹ thuật phân tích dữ liệu để xác định tác động của thay đổi đối với tất cả các ràng buộc của dự án.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//a154db5b-c721-465c-a791-81e4e57af1ef/markdown_0/imgs/img_in_image_box_42_148_92_207.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A11Z%2F-1%2F%2F8063a589422ed59a3998b1cffa7ab27334694222d4a1ecf5944888a1c83fba34" alt="Image" width="6%" /></div></div>
+
+<div class="callout tip">
+  <p><strong>Hãy suy nghĩ về điều này.</strong> Bạn có nhớ câu hỏi sau đây từ phần trước trong chương không? Đây là ví dụ về loại câu hỏi bạn có thể gặp trong kỳ thi:</p>
+  <p><em>Một bên liên quan muốn thêm phạm vi vào dự án. Bạn ước tính rằng thay đổi này sẽ cộng thêm hai tuần vào thời gian dự án. Bạn sẽ làm gì tiếp theo?</em></p>
+  <p>Hãy chú ý sự khác biệt của câu hỏi sau:</p>
+  <p><em>Một thay đổi về phạm vi được xác định là không có ảnh hưởng gì đến các ràng buộc của dự án. Điều tốt nhất cần làm là gì?</em></p>
+  <p>Hãy cẩn thận khi đọc các câu hỏi này. Câu trả lời đúng phụ thuộc vào các chi tiết khác trong câu hỏi. Đôi khi việc đánh giá đã được thực hiện, vì vậy điều tốt nhất cần làm là tìm kiếm các phương án. Đôi khi việc đánh giá và tìm kiếm phương án đã được thực hiện, và điều tốt nhất cần làm là gặp nhà tài trợ hoặc ban kiểm soát thay đổi để xin phê duyệt, hoãn lại hoặc từ chối thay đổi.</p>
+  <p>Trong câu hỏi thứ hai, việc đánh giá (bước 1 trong Thủ thuật Giao thương™ trước đó) đã được thực hiện. Câu trả lời sẽ là tìm kiếm các phương án (bước 2), rồi gặp nhà tài trợ hoặc ban kiểm soát thay đổi (bước 3) để thảo luận về thay đổi và việc nó không ảnh hưởng đến các ràng buộc của dự án. Sau khi thông báo cho nhà tài trợ hoặc ban kiểm soát thay đổi, người quản lý dự án có thể thông báo cho khách hàng bằng quy trình được xác định trong kế hoạch quản lý truyền thông (bước 4).</p>
+</div>
+
+<h4 id="ch4-quy-trinh-chi-tiet-thay-doi">Quy Trình Chi Tiết Để Thực Hiện Thay Đổi</h4>
+
+<p>Bây giờ bạn đã biết quy trình tổng quan, hãy cùng xem xét một quy trình chi tiết hơn để thực hiện thay đổi:</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//a154db5b-c721-465c-a791-81e4e57af1ef/markdown_0/imgs/img_in_image_box_51_433_106_486.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A11Z%2F-1%2F%2F5149730527178ed715ca1f4727df8634e8167d1dc1cfde04e3999d72bc8adb62" alt="Image" width="6%" /></div></div>
+
+<ol class="content-list">
+  <li><strong>Ngăn chặn nguyên nhân gốc rễ của các thay đổi</strong> — Người quản lý dự án không nên chỉ tập trung vào việc quản lý các thay đổi; họ nên chủ động giảm thiểu nhu cầu thay đổi.</li>
+  <li><strong>Xác định nhu cầu thay đổi</strong> — Các thay đổi có thể đến từ người quản lý dự án, do đo lường so với đường cơ sở đo lường hiệu suất, từ nhà tài trợ hoặc bất kỳ bên liên quan nào khác. Người quản lý dự án nên tích cực tìm kiếm các thay đổi từ tất cả các nguồn vì phát hiện sớm một thay đổi sẽ làm giảm tác động của nó.</li>
+  <li><strong>Đánh giá tác động của thay đổi trong các ràng buộc của dự án</strong> — Nếu đây là thay đổi về phạm vi, nó sẽ ảnh hưởng đến phần còn lại của phạm vi dự án như thế nào? Nếu đây là thay đổi về lịch trình, nó sẽ ảnh hưởng đến phần còn lại của lịch trình dự án như thế nào?</li>
+  <li><strong>Tạo yêu cầu thay đổi</strong> — Các thay đổi có thể được thực hiện đối với phạm vi sản phẩm, bất kỳ phần nào của kế hoạch quản lý dự án, hợp đồng, điều lệ, báo cáo phạm vi công việc, chính sách và quy trình, hoặc thậm chí là đường cơ sở đo lường hiệu suất. Quy trình thực hiện thay đổi phải tuân theo kế hoạch quản lý thay đổi.</li>
+  <li><strong>Thực hiện kiểm soát thay đổi tích hợp</strong> — Thay đổi này sẽ ảnh hưởng đến tất cả các ràng buộc khác của dự án như thế nào?
+    <ol class="content-list" type="a">
+      <li><strong>Đánh giá thay đổi</strong> — Thay đổi có nằm trong phạm vi điều lệ dự án không? Nếu không, đây không nên là thay đổi cho dự án; đó có thể là một dự án hoàn toàn khác. Nếu thay đổi không có lợi cho dự án, nó không nên được phê duyệt. Cũng cần lưu ý rằng bất kỳ thay đổi nào mà dự phòng đã được tạo ra (một sự kiện rủi ro đã được xác định trước đó) sẽ được tính trong kế hoạch quản lý dự án như một phần của nỗ lực quản lý rủi ro và nên được xử lý như một phần của quy trình Thực hiện Phản hồi Rủi ro thay vì Thực hiện Kiểm soát Thay đổi Tích hợp. Các kỹ thuật phân tích phương án thay thế và phân tích chi phí-lợi ích rất hữu ích trong việc hiểu đầy đủ tác động của một yêu cầu thay đổi.</li>
+      <li><strong>Xác định các phương án</strong> — Các hành động để giảm thiểu mối đe dọa hoặc tăng cơ hội bao gồm nén lịch trình thông qua tăng tốc (crashing) hoặc thực hiện song song (fast tracking), thay đổi cách thức thực hiện công việc, điều chỉnh chất lượng hoặc cắt giảm phạm vi để tác động của thay đổi được giảm thiểu. Đôi khi có thể cần chấp nhận những hậu quả tiêu cực của một thay đổi, nếu tác động tích cực từ thay đổi đó có giá trị hơn cho dự án. Đây là vấn đề cân bằng các ràng buộc dự án.
+        <div class="callout"><p><strong>Ví dụ:</strong> Lợi ích của việc thêm phạm vi mới vào dự án có thể vượt trội hơn bất kỳ tác động tiêu cực nào. (Xem chương "Lịch Trình" để thảo luận về đường tới hạn.)</p></div>
+      </li>
+      <li><strong>Phê duyệt, từ chối hoặc hoãn lại thay đổi</strong> — Một lần nữa, người quản lý dự án có thể tự phê duyệt nhiều thay đổi. Nhưng những thay đổi ảnh hưởng đến kế hoạch quản lý dự án, đường cơ sở, điều lệ, v.v. có thể sẽ cần chuyển đến ban kiểm soát thay đổi và/hoặc nhà tài trợ. Các thay đổi được phê duyệt sau đó được thực hiện trong các quy trình Chỉ đạo và Quản lý Công việc Dự án, Kiểm soát Chất lượng và Kiểm soát Mua sắm.</li>
+      <li><strong>Cập nhật trạng thái của thay đổi trong nhật ký thay đổi</strong> — Điều này giúp mọi người biết trạng thái của thay đổi. Nếu một thay đổi không được phê duyệt, lý do từ chối cần được ghi lại.</li>
+      <li><strong>Điều chỉnh kế hoạch quản lý dự án, tài liệu dự án và đường cơ sở khi cần thiết</strong> — Một số thay đổi đã được phê duyệt cần được đưa vào đường cơ sở dự án. Các thay đổi có thể ảnh hưởng đến các phần khác của kế hoạch quản lý dự án hoặc tài liệu dự án hoặc có thể ảnh hưởng đến cách người quản lý dự án sẽ quản lý dự án. Tài liệu dự án phải được cập nhật để phản ánh các thay đổi. Điều này có nghĩa là việc tái lập kế hoạch phải được thực hiện để đưa các tác động của thay đổi vào phiên bản mới của các tài liệu và kế hoạch trước khi nhóm bắt đầu thực hiện thay đổi. Ví dụ: nếu có thay đổi về phạm vi, đường cơ sở phạm vi (WBS, từ điển WBS và bản mô tả phạm vi dự án), kế hoạch quản lý dự án và ma trận truy xuất yêu cầu cần được cập nhật. Nếu thay đổi phạm vi đó ảnh hưởng đến các khu vực khác của dự án, tài liệu liên quan (như danh sách hoạt động, kế hoạch quản lý nguồn lực và tài liệu nguồn lực khác, lịch trình, ngân sách hoặc sổ đăng ký rủi ro) cũng cần được cập nhật.</li>
+    </ol>
+  </li>
+  <li><strong>Quản lý kỳ vọng của các bên liên quan bằng cách truyền đạt thay đổi đến các bên liên quan bị ảnh hưởng bởi thay đổi</strong> — Bạn có thường xuyên nhớ làm điều này không? Bạn có thể coi đây, một phần, là quản lý cấu hình (kiểm soát phiên bản để đảm bảo mọi người đều làm việc với cùng một tài liệu dự án).</li>
+  <li><strong>Quản lý dự án theo kế hoạch quản lý dự án đã được sửa đổi và các tài sản dự án khác</strong></li>
+</ol>
+
+<h4 id="ch4-quan-ly-thay-doi-agile">Quản Lý Thay Đổi Theo Agile</h4>
+
+<p>Trong môi trường agile và kết hợp, kiểm soát thay đổi được tinh gọn hơn vì thường có nhiều thay đổi cần đánh giá và đưa ra quyết định mỗi ngày. Chủ sản phẩm (product owner) là thành viên của nhóm và có nhiều thẩm quyền phê duyệt thay đổi. Họ sẽ ủy quyền cho các thay đổi không làm thay đổi đáng kể kết quả hoặc lợi ích của dự án.</p>
+
+<p>Lưu ý rằng có một số hướng dẫn bổ sung liên quan đến quản lý thay đổi agile. Ví dụ: chủ sản phẩm thường được giao một mô tả về các lợi ích kinh doanh cần đạt được trong ngân sách và thời gian cố định. Các thay đổi sẽ ảnh hưởng đến các lợi ích dự kiến hoặc đòi hỏi nhiều thời gian hoặc ngân sách hơn mức cho phép vẫn cần được báo cáo lên bên ngoài dự án cho ban chỉ đạo hoặc nhà tài trợ để phê duyệt. Tuy nhiên, các quyết định hàng ngày và những thay đổi nhỏ đi kèm với việc xây dựng một thứ gì đó mới hoặc phức tạp được quản lý trong nội bộ nhóm.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//a154db5b-c721-465c-a791-81e4e57af1ef/markdown_1/imgs/img_in_image_box_702_534_752_592.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A12Z%2F-1%2F%2Fd897193a2cba7ab2573f08763ad5c09f606663f729e0f0e6e53d7f93cf628867" alt="Image" width="6%" /></div></div>
+
+<h3 id="ch4-bai-tap-4-4">4.4 Bài Tập</h3>
+
+<p>Hãy tự kiểm tra! Trong Sổ Ghi Chép Bài Tập của bạn, hãy liệt kê một số thay đổi phổ biến trong dự án và những gì bạn sẽ làm để quản lý mỗi thay đổi đó.</p>
+
+<h4 id="ch4-dap-an-bai-tap-4-4">Đáp Án</h4>
+
+<p>Do có rất nhiều loại thay đổi có thể xảy ra trong suốt vòng đời của một dự án, bài tập này chỉ bao gồm một đáp án, nhưng nó sẽ giúp bạn chuẩn bị cho các câu hỏi liên quan đến thay đổi trong kỳ thi.</p>
+
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>Thay Đổi Phổ Biến</th>
+        <th>Cách Xử Lý</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Khách hàng muốn thêm phạm vi</td>
+        <td>Đảm bảo bạn biết phạm vi cụ thể là gì và tại sao nó cần thiết. Đảm bảo tất cả dữ liệu cần thiết trong yêu cầu thay đổi được điền đầy đủ. Đánh giá thay đổi, bao gồm việc liệu dự phòng rủi ro có được phân bổ để phù hợp với việc bổ sung phạm vi hay không. Đánh giá tác động của thay đổi đối với tất cả các ràng buộc. Tìm kiếm các phương án. Yêu cầu ban kiểm soát thay đổi xem xét nếu cần thiết.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 id="ch4-ket-thuc-du-an-hoac-giai-doan">Kết Thúc Dự Án Hoặc Giai Đoạn</h3>
+
+<p>Trong ECO, lĩnh vực II, đây được biết đến là nhiệm vụ 17: "Lên kế hoạch và Quản lý Việc Kết Thúc Dự Án/Giai Đoạn hoặc Chuyển tiếp." Quy trình này hoàn tất tất cả các hoạt động trên các nhiệm vụ và quy trình để chính thức kết thúc dự án, giai đoạn và chuyển giao sản phẩm cho khách hàng hoặc bộ phận vận hành. Các dự án theo kế hoạch thường có sự chuyển tiếp giữa các giai đoạn và sau đó là một sự chuyển tiếp ở cuối, trong khi các dự án theo thay đổi được tổ chức xung quanh các chu kỳ lặp xảy ra thường xuyên hơn theo kế hoạch phát hành sản phẩm. Trong cả hai trường hợp, các hoạt động tương tự cần được hoàn thành để kết thúc một dự án khi các giai đoạn hoặc lần lặp của nó đã hoàn thành. Đây là lĩnh vực thường bị bỏ qua hoặc thực hiện không đầy đủ, vì vậy hãy suy nghĩ cẩn thận về phần này.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//a154db5b-c721-465c-a791-81e4e57af1ef/markdown_2/imgs/img_in_image_box_442_141_493_201.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A12Z%2F-1%2F%2F48fc4308e427bb815d0a28247ed82228b8ffd85194c40c5da98a882cb6c386a3" alt="Image" width="6%" /></div></div>
+
+<p>Người quản lý dự án sẽ làm việc với các chuyên gia chuyên môn để phân tích dữ liệu, bao gồm tất cả các tài sản dự án, và hoàn thành công việc cuối cùng để kết thúc dự án. Phân tích hồi quy sẽ được thực hiện để xem xét các biến số của dự án — như lịch trình, ngân sách và các rủi ro đã xảy ra — và cách chúng tác động đến dự án.</p>
+
+<div class="highlight">
+  <p><strong>Mô Hình Nhóm Quy Trình</strong></p>
+  <p><strong>Nhóm Quy Trình:</strong> Kết Thúc</p>
+  <p><strong>Quy Trình:</strong> Kết Thúc Dự Án Hoặc Giai Đoạn</p>
+</div>
+
+<h5>ECO</h5>
+<p>Nhiệm vụ 16: Đảm bảo chuyển giao kiến thức</p>
+<p>Nhiệm vụ 17: Lập kế hoạch và quản lý việc đóng dự án/giai đoạn hoặc các chuyển đổi</p>
+
+<p>dự án và các kết quả của nó. Quản lý dự án sẽ xem xét kết quả dự án theo kế hoạch so với thực tế, xác định các sai lệch so với kế hoạch cùng với tác động của chúng, và xác định các bài học kinh nghiệm bổ sung có thể được chia sẻ hoặc sử dụng trong tổ chức.</p>
+
+<p>Quản lý dự án phải nhận được sự chấp thuận chính thức đối với dự án và các sản phẩm bàn giao của nó, ban hành báo cáo cuối cùng cho thấy dự án đã thành công, ban hành các bài học kinh nghiệm cuối cùng, và lập chỉ mục cũng như lưu trữ toàn bộ hồ sơ dự án. Bạn có hiểu tầm quan trọng của các mục trong cột Đóng dự án được đưa vào Biểu đồ Quy trình của Rita™ không? Hãy đảm bảo bạn nắm vững các khái niệm và hành động được liệt kê ở đây, và nếu bạn hiện chưa thực hiện những việc này trong các dự án của mình, hãy tưởng tượng việc hoàn thành các hoạt động này trong thực tế. Đối với kỳ thi, hãy nhớ rằng bạn luôn phải đóng dự án, bất kể hoàn cảnh nào dẫn đến việc dự án dừng lại, bị chấm dứt hay hoàn thành!</p>
+
+<p>Dự án của bạn có thực sự hoàn thành khi công việc kỹ thuật đã xong không? Không, nếu bạn chưa đóng dự án! Quy trình Đóng Dự án hoặc Giai đoạn bao gồm các hành động đóng như được nêu trong kế hoạch quản lý dự án. Bạn phải đảm bảo các yêu cầu cuối cùng đã được đáp ứng và toàn bộ công việc chấp nhận sản phẩm đã hoàn tất. Điều này bạn có thể đã đoán được. Tuy nhiên, thường có những công việc bị bỏ qua vốn là một phần của công việc dự án, hoặc được biết là công việc dự án nhưng bị lãng quên trong sự vội vàng chuyển sang dự án tiếp theo được tổ chức phân công.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//a154db5b-c721-465c-a791-81e4e57af1ef/markdown_2/imgs/img_in_image_box_47_556_103_610.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A13Z%2F-1%2F%2F9a954033fdca3828d6551bd528a466c14224a99eb47acd4193c26451c7267297" alt="Image" width="6%" /></div></div>
+
+<p>Ví dụ: Các công việc tài chính còn tồn đọng cần được phối hợp với bộ phận tài chính của tổ chức (bao gồm đảm bảo đóng mua sắm đúng cách). Sản phẩm được bàn giao cho khách hàng và phản hồi của khách hàng được thu thập. Thường cần có sự hỗ trợ cho khách hàng hoặc bộ phận vận hành như đào tạo và giám sát để đảm bảo hoạt động vận hành diễn ra theo đúng mục tiêu. Đây là một phần trong kế hoạch quản lý dự án hay là một dự án riêng biệt? Trong cả hai trường hợp, các chuyển đổi như thế này thường rất tản mạn, nhưng PMI giả định rằng chúng được lập kế hoạch tốt như một phần của dự án.</p>
+
+<p>Cuối cùng, việc lập chỉ mục và lưu trữ hồ sơ một cách phù hợp cũng diễn ra, bao gồm cả bài học kinh nghiệm cuối cùng. Đây là một bước chuyển đổi khác thường bị bỏ qua vào cuối dự án, nhưng PMI giả định rằng nó được thực hiện đúng cách và đầy đủ.</p>
+
+<p>Đối với kỳ thi, đừng quên rằng có các công việc tài chính, pháp lý và hành chính liên quan đến việc đóng dự án. Hãy nhìn lại các hoạt động được trình bày trong Biểu đồ Quy trình của Rita:</p>
+
+<ul class="content-list">
+  <li>Xác nhận công việc đã hoàn thành theo yêu cầu</li>
+  <li>Hoàn tất đóng mua sắm cuối cùng</li>
+  <li>Nhận được sự chấp thuận cuối cùng đối với sản phẩm</li>
+  <li>Hoàn tất đóng tài chính</li>
+  <li>Bàn giao sản phẩm đã hoàn thành</li>
+  <li>Thu thập phản hồi của khách hàng về dự án</li>
+  <li>Hoàn tất báo cáo hiệu suất cuối cùng</li>
+  <li>Lập chỉ mục và lưu trữ hồ sơ</li>
+  <li>Thu thập bài học kinh nghiệm cuối cùng và cập nhật cơ sở kiến thức</li>
+</ul>
+
+<p>Lưu ý rằng quy trình Đóng Dự án hoặc Giai đoạn liên quan đến việc nhận được sự chấp thuận chính thức cuối cùng đối với toàn bộ dự án hoặc giai đoạn từ khách hàng, trong khi Xác nhận Phạm vi (một quy trình giám sát và kiểm soát) liên quan đến việc nhận được sự chấp thuận chính thức từ khách hàng đối với các sản phẩm bàn giao tạm thời. Dự án cần cả hai quy trình.</p>
+
+<p>Bạn có thấy hợp lý khi quy trình Đóng Dự án hoặc Giai đoạn là một chức năng quản lý tích hợp không? Nếu chưa, hãy nghĩ đến ví dụ về báo cáo hiệu suất cuối cùng. Bạn có thấy rằng bạn sẽ phải báo cáo về tất cả các ràng buộc của dự án không? Hãy đảm bảo bạn nắm vững việc đóng dự án và cách áp dụng nó vào quản lý dự án đúng đắn trước khi tham dự kỳ thi.</p>
+
+<h3 id="ch4-word-on-transitions">Một Vài Lời Về Chuyển Đổi</h3>
+
+<p>Đôi khi các chuyển đổi sang khách hàng hoặc bộ phận vận hành, đối với các sản phẩm hoặc dịch vụ được xây dựng trong dự án của bạn, được bao gồm trong dự án như một giai đoạn hoặc phân tăng sản phẩm. Nhưng nếu nhu cầu chuyển đổi nhiều và phức tạp, các chuyển đổi là một dự án riêng trong một chương trình. Trong cả hai trường hợp, các chuyển đổi đòi hỏi quản lý dự án phải có sự hiểu biết tinh tế về môi trường kinh doanh mà dự án đang diễn ra. Thông tin thêm về chủ đề này được thảo luận trong phần Môi trường Kinh doanh của cuốn sách này.</p>
+
+<h3 id="ch4-case-study">Một Tình Huống Thực Tế Bạn Có Thể Sử Dụng</h3>
+
+<p>Trong suốt cuốn sách này, chúng tôi cung cấp nhiều ví dụ và ẩn dụ để giúp bạn suy nghĩ về tài liệu được trình bày. Vì kinh nghiệm thực tế của bạn là cần thiết để đủ điều kiện và vượt qua kỳ thi, nhưng các quy trình và từ vựng của khung PMI không phải lúc nào cũng phù hợp với kinh nghiệm của bạn, nên một loạt các ví dụ và ẩn dụ sẽ giúp bạn "hình dung vào thực tế" những gì bạn cần biết cho kỳ thi. Chúng tôi đã chọn một tình huống nghiên cứu để sử dụng xuyên suốt cuốn sách này nhằm giúp bạn áp dụng nhất quán các khái niệm được thảo luận.</p>
+
+<h4 id="ch4-putting-it-all-together">Tổng Hợp Lại</h4>
+
+<p>Quản lý tích hợp xảy ra trong suốt dự án. Quản lý dự án liên tục kéo tất cả các phần của dự án lại thành một tổng thể mạch lạc. Chính trong quy trình này mà điều lệ dự án và kế hoạch quản lý dự án được phát triển. Hai sản phẩm này sẽ hướng dẫn công việc của quản lý dự án. Quản lý dự án làm việc để quản lý các thay đổi và sản phẩm của dự án. Trong quá trình tích hợp dự án, họ cũng xác định các phương pháp luận và thực hành nào phù hợp nhất với dự án; nói cách khác, họ đang điều chỉnh để đáp ứng nhu cầu của dự án. Cuối cùng, họ đảm bảo rằng dự án hoặc giai đoạn được đóng lại đúng cách.</p>
+
+<p>Bạn có nhớ mọi thứ liên quan đến tích hợp dự án không? Hãy xem lại phần Kiểm tra Nhanh ở đầu chương này và đảm bảo bạn đã lấp đầy tất cả các khoảng trống mà bạn đã xác định khi bắt đầu chương. Hãy đọc lại chương để xem xét các lĩnh vực mà bạn vẫn chưa chắc chắn.</p>
+
+<p>Đây là tình huống nghiên cứu sẽ được trình bày xuyên suốt cuốn sách này. Trong mỗi chương, bạn sẽ tìm hiểu thêm về dự án này và trả lời các câu hỏi để củng cố việc học của mình. Hãy đọc tổng quan ở đây và sau đó hoàn thành bài tập sau.</p>
+
+<h4 id="ch4-library-case-study">Giới Thiệu Tình Huống Nghiên Cứu Thư Viện</h4>
+
+<p>Một quản lý dự án được thuê để giám sát việc tạo ra một thư viện cộng đồng mới. Phạm vi của dự án bao gồm xây dựng tòa nhà mới, mua sắm nội thất, di chuyển các tài nguyên từ thư viện cũ, và nâng cấp ứng dụng phần mềm cho những người dùng thư viện.</p>
+
+<h3 id="ch4-exercise-45">4.5 Bài Tập</h3>
+
+<p>Xem xét từng mô tả về công việc của quản lý dự án như một phần của Quản lý Tích hợp. Trong Sổ Tay Bài Tập của bạn, hãy ghi lại quy trình tích hợp và các ràng buộc quản lý dự án cũng như các danh mục khác (phạm vi, tiến độ, chi phí, chất lượng, truyền thông, rủi ro, các bên liên quan và mua sắm) liên quan.</p>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+    <td style="text-align: center; word-wrap: break-word;">Tích hợp</td>
+    <td style="text-align: center; word-wrap: break-word;">Các ràng buộc; các lĩnh vực quản lý dự án khác liên quan</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">Công việc của QLDA</td>
+    <td style="text-align: center; word-wrap: break-word;">Quy trình</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">1. Chuẩn bị một báo cáo cho hội đồng thành phố bao gồm chi tiêu thực tế so với ngân sách kế hoạch, tiến độ thực tế so với kế hoạch, và các rủi ro được xác định kể từ báo cáo hàng tháng gần nhất.</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">2. Gặp gỡ nhóm để thảo luận về các ước tính cho các gói công việc, nói về lịch nghỉ phép và quyết định các phương pháp truyền thông tốt nhất để nhóm sử dụng.</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">3. Sau khi nền móng tòa nhà hoàn thành, quản lý dự án tổ chức cuộc họp nhóm để thảo luận về những gì diễn ra tốt, các vấn đề chất lượng xảy ra trong quá trình thực hiện và cách giải quyết những vấn đề đó. Họ cũng nói về những thay đổi đối với thiết kế ban đầu có thể cần thiết trong tương lai.</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">4. Các điều chỉnh nền móng công trình sẽ yêu cầu thay đổi thiết kế của kiến trúc sư. Những thay đổi này đòi hỏi thêm thời gian và chi phí, những điều này phải được CCB phê duyệt.</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">5. Quản lý dự án xem xét dự án vào mỗi thứ Sáu. Họ xem xét sổ đăng ký rủi ro và dữ liệu hiệu suất công việc so sánh với tiến độ và ngân sách kế hoạch. Họ cũng đọc báo địa phương và đọc, phản hồi các thông tin liên lạc từ các thành viên hội đồng thành phố, thị trưởng và trưởng thư viện.</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">6. Trong buổi khai trương thư viện, người dùng được yêu cầu hoàn thành một cuộc khảo sát về suy nghĩ của họ về cơ sở mới.</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">7. Quản lý dự án phỏng vấn thị trưởng để hiểu các mục tiêu cộng đồng của thư viện mới và các bên liên quan chính.</td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+    <td style="text-align: center; word-wrap: break-word;"></td>
+  </tr>
+</table>
+</div>
+
+<h3 id="ch4-answer">Đáp Án</h3>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">Công việc của QLDA</td>
+    <td style="text-align: center; word-wrap: break-word;">Quy trình Tích hợp</td>
+    <td style="text-align: center; word-wrap: break-word;">Các ràng buộc; các lĩnh vực quản lý dự án khác liên quan</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">1. Chuẩn bị một báo cáo cho hội đồng thành phố bao gồm chi tiêu thực tế so với ngân sách kế hoạch, tiến độ thực tế so với kế hoạch, và các rủi ro được xác định kể từ báo cáo hàng tháng gần nhất.</td>
+    <td style="text-align: center; word-wrap: break-word;">Chỉ đạo và Quản lý Công việc Dự án</td>
+    <td style="text-align: center; word-wrap: break-word;">• Chi phí• Tiến độ• Rủi ro• Các bên liên quan• Truyền thông</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">2. Gặp gỡ nhóm để thảo luận về các ước tính cho các gói công việc, nói về lịch nghỉ phép và quyết định các phương pháp truyền thông tốt nhất để nhóm sử dụng.</td>
+    <td style="text-align: center; word-wrap: break-word;">Phát triển Kế hoạch Quản lý Dự án</td>
+    <td style="text-align: center; word-wrap: break-word;">• Truyền thông• Nguồn lực• Tiến độ</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">3. Sau khi nền móng tòa nhà hoàn thành, quản lý dự án tổ chức cuộc họp nhóm để thảo luận về những gì diễn ra tốt, các vấn đề chất lượng xảy ra trong quá trình thực hiện và cách giải quyết những vấn đề đó. Họ cũng nói về những thay đổi đối với thiết kế ban đầu có thể cần thiết trong tương lai.</td>
+    <td style="text-align: center; word-wrap: break-word;">Quản lý Kiến thức Dự án</td>
+    <td style="text-align: center; word-wrap: break-word;">• Phạm vi (thiết kế)• Chất lượng</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">4. Các điều chỉnh nền móng công trình sẽ yêu cầu thay đổi thiết kế của kiến trúc sư. Những thay đổi này đòi hỏi thêm thời gian và chi phí, những điều này phải được CCB phê duyệt.</td>
+    <td style="text-align: center; word-wrap: break-word;">Thực hiện Kiểm soát Thay đổi Tích hợp</td>
+    <td style="text-align: center; word-wrap: break-word;">• Phạm vi• Tiến độ• Chi phí</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">5. Quản lý dự án xem xét dự án vào mỗi thứ Sáu. Họ xem xét sổ đăng ký rủi ro và dữ liệu hiệu suất công việc so sánh với tiến độ và ngân sách kế hoạch. Họ cũng đọc báo địa phương và đọc, phản hồi các thông tin liên lạc từ các thành viên hội đồng thành phố, thị trưởng và trưởng thư viện.</td>
+    <td style="text-align: center; word-wrap: break-word;">Giám sát và Kiểm soát Công việc Dự án</td>
+    <td style="text-align: center; word-wrap: break-word;">• Rủi ro• Truyền thông với các bên liên quan• Nguồn lực• Chi phí• Tiến độ</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">6. Trong buổi khai trương thư viện, người dùng được yêu cầu hoàn thành một cuộc khảo sát về suy nghĩ của họ về cơ sở mới.</td>
+    <td style="text-align: center; word-wrap: break-word;">Đóng Giai đoạn Dự án</td>
+    <td style="text-align: center; word-wrap: break-word;">• Các bên liên quan• Chất lượng• Truyền thông</td>
+  </tr>
+  <tr>
+    <td style="text-align: center; word-wrap: break-word;">7. Quản lý dự án phỏng vấn thị trưởng để hiểu các mục tiêu cộng đồng của thư viện mới và các bên liên quan chính.</td>
+    <td style="text-align: center; word-wrap: break-word;">Phát triển Điều lệ Dự án</td>
+    <td style="text-align: center; word-wrap: break-word;">• Các bên liên quan</td>
+  </tr>
+</table>
+</div>
+
+<h3 id="ch4-section-iii">Phần III</h3>
+
+<h4 id="ch4-domain-i-people">Lĩnh vực I: Con Người</h4>
+
+<p>Trong phần này, bao gồm 42% đề thi, chúng ta sẽ xem xét các khía cạnh quan trọng nhất của lãnh đạo mà bạn cần biết cho kỳ thi. Lĩnh vực Con người liên quan đến các kỹ năng và phương pháp giúp bạn thành công với tư cách là quản lý dự án và bạn có thể sử dụng để giúp người khác thành công trong các dự án. Chúng ta sẽ tập trung vào các nhiệm vụ cụ thể được liệt kê trong ECO, phù hợp với từng chương sau đây. Đầu tiên, chúng ta thảo luận về các mô hình liên quan đến lãnh đạo và truyền thông. Sau đó, chúng ta nói về cách một nhà lãnh đạo giỏi tạo ra một nhóm hiệu suất cao.</p>
+
+<p>Trong phần này, chúng ta đề cập đến:</p>
+
+<ul class="content-list">
+  <li>Lãnh đạo phụng sự</li>
+  <li>Trí tuệ cảm xúc</li>
+  <li>Tư duy phản biện</li>
+  <li>Kỹ năng và mô hình truyền thông</li>
+  <li>Sử dụng khéo léo công nghệ truyền thông</li>
+  <li>Các phương pháp truyền thông</li>
+  <li>Các mô hình động lực</li>
+  <li>Các mô hình thành thạo kỹ năng</li>
+  <li>Các mô hình lãnh đạo tình huống</li>
+  <li>Các mô hình phát triển nhóm</li>
+  <li>Quản lý xung đột</li>
+  <li>Trách nhiệm lãnh đạo</li>
+  <li>Kế hoạch quản lý nguồn lực</li>
+  <li>Điều lệ nhóm</li>
+  <li>Ước tính yêu cầu nguồn lực</li>
+  <li>Thu nạp nguồn lực</li>
+  <li>Các loại cấu hình nhóm</li>
+  <li>Các phương pháp phát triển nhóm hiệu suất cao</li>
+  <li>Đặt địa điểm chung và nhóm ảo</li>
+  <li>Đánh giá cá nhân và nhóm, và đánh giá hiệu suất dự án</li>
+  <li>Các chỉ số hiệu suất chính (KPIs)</li>
+  <li>Các phương pháp quản lý nhóm</li>
+</ul>
+
+
+</main>
+
+<button id="back-top" aria-label="Về đầu trang">↑</button>
+
+<script>
+// Progress bar
+const pb=document.getElementById('progress-bar');
+function updPB(){const d=document.documentElement;pb.style.width=Math.min((d.scrollTop/(d.scrollHeight-d.clientHeight))*100,100)+'%'}
+window.addEventListener('scroll',updPB,{passive:true});
+
+// Back to top
+const bt=document.getElementById('back-top');
+window.addEventListener('scroll',()=>{bt.style.opacity=scrollY>400?'1':'0';},{passive:true});
+bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+// Mobile menu
+const mb=document.getElementById('menu-btn'),sb=document.getElementById('sidebar');
+mb.addEventListener('click',()=>sb.classList.toggle('open'));
+document.addEventListener('click',e=>{if(!sb.contains(e.target)&&e.target!==mb)sb.classList.remove('open')});
+
+// Active TOC highlight on scroll
+const tocLinks=document.querySelectorAll('#sidebar-toc a[href^="#"]');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      tocLinks.forEach(a=>a.classList.remove('active'));
+      const a=document.querySelector('#sidebar-toc a[href="#'+e.target.id+'"]');
+      if(a){a.classList.add('active');a.scrollIntoView({block:'nearest',behavior:'smooth'})}
+    }
+  })
+},{rootMargin:'-20% 0px -75% 0px'});
+document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
+
+// ── THEME + READING POSITION ───────────────────────────
+(function(){
+  var THEME_KEY='rita_theme', READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var chapNum=m?m[1]:null;
+
+  // Build & inject theme toggle button
+  var hdr=document.getElementById('sidebar-header');
+  if(hdr){
+    var btn=document.createElement('button');
+    btn.id='theme-btn';
+    var curTheme=document.documentElement.getAttribute('data-theme')||'light';
+    btn.textContent=curTheme==='dark'?'☀':'🌙';
+    btn.title='Giao diện sáng / tối';
+    hdr.appendChild(btn);
+    btn.addEventListener('click',function(){
+      var next=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+      document.documentElement.setAttribute('data-theme',next);
+      localStorage.setItem(THEME_KEY,next);
+      btn.textContent=next==='dark'?'☀':'🌙';
+    });
+  }
+
+  if(!chapNum) return;
+
+  // Save last chapter visited
+  try{
+    var rd=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    rd.lastChap='rita_chap'+chapNum;
+    if(!rd.scrollPos) rd.scrollPos={};
+    localStorage.setItem(READ_KEY,JSON.stringify(rd));
+  }catch(e){}
+
+  // Restore scroll position
+  try{
+    var rdR=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    var savedPos=rdR.scrollPos&&rdR.scrollPos[chapNum]||0;
+    if(savedPos>200) setTimeout(function(){window.scrollTo(0,savedPos);},120);
+  }catch(e){}
+
+  // Save scroll position (debounced 600ms)
+  var saveT;
+  window.addEventListener('scroll',function(){
+    clearTimeout(saveT);
+    saveT=setTimeout(function(){
+      try{
+        var r2=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+        if(!r2.scrollPos) r2.scrollPos={};
+        r2.scrollPos[chapNum]=window.scrollY;
+        r2.lastChap='rita_chap'+chapNum;
+        localStorage.setItem(READ_KEY,JSON.stringify(r2));
+      }catch(e){}
+    },600);
+  },{passive:true});
+})();
+
+// ── HIGHLIGHT / NOTES SYSTEM ────────────────────────────
+(function(){
+  var READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  if(!m) return;
+  var chapNum=m[1];
+  var HL_KEY='rita_hl_'+chapNum;
+
+  // ── STORAGE ──
+  function loadHL(){try{return JSON.parse(localStorage.getItem(HL_KEY)||'[]')}catch(e){return[]}}
+  function saveHL(arr){localStorage.setItem(HL_KEY,JSON.stringify(arr));window.__ritaSyncTrigger&&window.__ritaSyncTrigger();}
+  function genId(){return 'h'+Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
+
+  // ── XPATH HELPERS ──
+  var mainEl=document.getElementById('main');
+  function getXPath(node){
+    if(!node||node===mainEl) return '.';
+    var parts=[];
+    var cur=node.nodeType===3?node.parentNode:node;
+    while(cur&&cur!==mainEl&&cur!==document.body){
+      var tag=cur.tagName.toLowerCase();
+      var idx=1,sib=cur.previousElementSibling;
+      while(sib){if(sib.tagName&&sib.tagName.toLowerCase()===tag)idx++;sib=sib.previousElementSibling;}
+      parts.unshift(tag+'['+idx+']');
+      cur=cur.parentElement;
+    }
+    return parts.join('/');
+  }
+  function resolveXPath(xpath){
+    if(!mainEl||xpath==='.') return mainEl;
+    try{
+      var r=document.evaluate('.//'+xpath,mainEl,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);
+      return r.singleNodeValue;
+    }catch(e){return null;}
+  }
+  function findTextAt(el,offset){
+    var walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null);
+    var count=0,node;
+    while((node=walker.nextNode())){
+      var len=node.textContent.length;
+      if(count+len>=offset) return{node:node,localOffset:offset-count};
+      count+=len;
+    }
+    return null;
+  }
+
+  // ── APPLY MARK TO DOM ──
+  function applyMark(hl){
+    try{
+      var sEl=resolveXPath(hl.sxp), eEl=resolveXPath(hl.exp);
+      if(!sEl||!eEl) return false;
+      var sInfo=sEl.nodeType===3?{node:sEl,localOffset:hl.so}:findTextAt(sEl,hl.so);
+      var eInfo=eEl.nodeType===3?{node:eEl,localOffset:hl.eo}:findTextAt(eEl,hl.eo);
+      if(!sInfo||!eInfo) return false;
+      var range=document.createRange();
+      range.setStart(sInfo.node,sInfo.localOffset);
+      range.setEnd(eInfo.node,eInfo.localOffset);
+      applyRange(range,hl.id,hl.color,hl.note||'');
+      return true;
+    }catch(e){return false;}
+  }
+  function applyRange(range,hlId,color,note){
+    var walker=document.createTreeWalker(
+      range.commonAncestorContainer.nodeType===3
+        ?range.commonAncestorContainer.parentNode
+        :range.commonAncestorContainer,
+      NodeFilter.SHOW_TEXT,null
+    );
+    var nodes=[],node;
+    while((node=walker.nextNode())){if(range.intersectsNode(node))nodes.push(node);}
+    nodes.forEach(function(tn){
+      var s=tn===range.startContainer?range.startOffset:0;
+      var e=tn===range.endContainer?range.endOffset:tn.textContent.length;
+      if(s>=e) return;
+      var nr=document.createRange();
+      nr.setStart(tn,s); nr.setEnd(tn,Math.min(e,tn.textContent.length));
+      try{
+        var mk=document.createElement('mark');
+        mk.className='hl'; mk.setAttribute('data-hl-id',hlId);
+        mk.setAttribute('data-color',color); mk.setAttribute('data-note',note);
+        nr.surroundContents(mk);
+      }catch(err){
+        try{
+          var c=nr.extractContents(),mk2=document.createElement('mark');
+          mk2.className='hl'; mk2.setAttribute('data-hl-id',hlId);
+          mk2.setAttribute('data-color',color); mk2.setAttribute('data-note',note);
+          mk2.appendChild(c); nr.insertNode(mk2);
+        }catch(_){}
+      }
+    });
+  }
+  function removeMarks(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      var p=mk.parentNode;
+      while(mk.firstChild)p.insertBefore(mk.firstChild,mk);
+      p.removeChild(mk);
+      p.normalize();
+    });
+  }
+  function updateMarks(hlId,color,note){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.setAttribute('data-color',color);
+      mk.setAttribute('data-note',note);
+    });
+  }
+
+  // ── RESTORE HIGHLIGHTS ON LOAD ──
+  var highlights=loadHL();
+  // Sort by sxp+so descending so earlier ranges aren't offset by later insertions
+  // Actually apply in order (each one is independent)
+  highlights.forEach(applyMark);
+  // Expose re-apply for sync module
+  window.__ritaReapplyMarks=function(){
+    document.querySelectorAll('mark.hl').forEach(function(mk){
+      var p=mk.parentNode;while(mk.firstChild)p.insertBefore(mk.firstChild,mk);p.removeChild(mk);p.normalize();
+    });
+    loadHL().forEach(applyMark);
+    if(typeof updateBadge==='function') updateBadge();
+    if(typeof renderPanelIfOpen==='function') renderPanelIfOpen();
+  };
+
+  // ── SIDEBAR BUTTON ──
+  function updateBadge(){
+    var hls=loadHL();
+    var badge=document.getElementById('hl-badge');
+    if(badge) badge.textContent=hls.length||'0';
+  }
+  var sidebarNav=document.getElementById('sidebar-toc');
+  if(sidebarNav){
+    var hlBtn=document.createElement('button');
+    hlBtn.id='hl-sidebar-btn';
+    hlBtn.innerHTML='<span>✏ Ghi chú & Highlight</span><span id="hl-badge">0</span>';
+    hlBtn.addEventListener('click',function(){openPanel();});
+    // Insert before sidebar-nav (bottom buttons)
+    var sidebarNavBottom=document.getElementById('sidebar-nav');
+    if(sidebarNavBottom) sidebarNavBottom.parentNode.insertBefore(hlBtn,sidebarNavBottom);
+    else document.getElementById('sidebar').appendChild(hlBtn);
+  }
+  updateBadge();
+
+  // ── PANEL ──
+  var panel=document.createElement('div');
+  panel.id='hl-panel';
+  panel.innerHTML='<div id="hl-panel-hdr"><h3>✏ Ghi Chú & Highlight</h3><button id="hl-panel-close">×</button></div><div id="hl-panel-list"></div>';
+  document.body.appendChild(panel);
+  document.getElementById('hl-panel-close').addEventListener('click',closePanel);
+  function openPanel(){renderPanel();panel.classList.add('open');}
+  function closePanel(){panel.classList.remove('open');}
+  function renderPanel(){
+    var list=document.getElementById('hl-panel-list');
+    var hls=loadHL();
+    list.innerHTML='';
+    hls.forEach(function(hl){
+      var item=document.createElement('div');
+      item.className='hl-item'; item.setAttribute('data-color',hl.color);
+      var noteHtml=hl.note?'<div class="hl-item-note">✏ '+escHtml(hl.note)+'</div>':'';
+      item.innerHTML='<button class="hl-item-del" data-id="'+hl.id+'">🗑</button>'
+        +'<div class="hl-item-text">'+escHtml(hl.text||'')+'</div>'+noteHtml;
+      item.addEventListener('click',function(e){
+        if(e.target.classList.contains('hl-item-del')) return;
+        var mk=document.querySelector('mark.hl[data-hl-id="'+hl.id+'"]');
+        if(mk){mk.scrollIntoView({behavior:'smooth',block:'center'});flashMark(hl.id);}
+        closePanel();
+      });
+      item.querySelector('.hl-item-del').addEventListener('click',function(e){
+        e.stopPropagation(); deleteHL(hl.id); renderPanel();
+      });
+      list.appendChild(item);
+    });
+  }
+
+  // ── POPUP ──
+  var popup=document.createElement('div');
+  popup.id='hl-popup'; popup.className='hidden';
+  popup.innerHTML=
+    '<button class="hl-color-btn" data-color="yellow" title="Vàng"></button>'
+    +'<button class="hl-color-btn" data-color="green" title="Xanh"></button>'
+    +'<button class="hl-color-btn" data-color="red" title="Đỏ"></button>'
+    +'<div class="hl-sep"></div>'
+    +'<button class="hl-note-btn" title="Thêm ghi chú">✏</button>'
+    +'<button class="hl-del-btn hl-del-action" title="Xóa">🗑</button>';
+  document.body.appendChild(popup);
+
+  var currentHlId=null;    // id being edited (null = new)
+  var pendingRange=null;   // Range for new highlight
+  var pendingXP=null;      // serialized position for new highlight
+
+  // Position popup near a rect
+  function positionPopup(rect){
+    var pw=popup.offsetWidth||160,ph=popup.offsetHeight||40;
+    var top=rect.top-ph-10+window.scrollY;
+    var left=rect.left+(rect.width-pw)/2;
+    if(top<window.scrollY+8) top=rect.bottom+10+window.scrollY;
+    left=Math.max(8,Math.min(left,window.innerWidth-pw-8));
+    popup.style.top=top+'px';
+    popup.style.left=left+'px';
+  }
+  function showPopup(rect,hlId){
+    currentHlId=hlId||null;
+    var isEdit=!!hlId;
+    popup.querySelector('.hl-del-action').style.display=isEdit?'':'none';
+    popup.querySelector('.hl-note-btn').style.display='';
+    popup.classList.remove('hidden');
+    positionPopup(rect);
+  }
+  function hidePopup(){
+    popup.classList.add('hidden');
+    pendingRange=null; pendingXP=null; currentHlId=null;
+  }
+
+  // Color buttons
+  popup.querySelectorAll('.hl-color-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var color=btn.getAttribute('data-color');
+      if(currentHlId){
+        // Update existing
+        var hls=loadHL();
+        var idx=hls.findIndex(function(h){return h.id===currentHlId;});
+        if(idx>=0){hls[idx].color=color;saveHL(hls);}
+        updateMarks(currentHlId,color,hls[idx]?hls[idx].note||'':'');
+        updateBadge(); renderPanelIfOpen();
+      } else if(pendingRange&&pendingXP){
+        // Create new
+        var id=genId();
+        var text=pendingRange.toString().substring(0,500);
+        applyRange(pendingRange,id,color,'');
+        pendingRange.collapse();
+        window.getSelection()&&window.getSelection().removeAllRanges();
+        var hls=loadHL();
+        hls.push({id:id,color:color,note:'',text:text,
+          sxp:pendingXP.sxp,so:pendingXP.so,exp:pendingXP.exp,eo:pendingXP.eo});
+        saveHL(hls); updateBadge(); renderPanelIfOpen();
+      }
+      hidePopup();
+    });
+  });
+
+  // Note button
+  popup.querySelector('.hl-note-btn').addEventListener('click',function(){
+    var id=currentHlId;
+    var existing='';
+    if(id){var hls=loadHL();var h=hls.find(function(x){return x.id===id;});if(h)existing=h.note||'';}
+    hidePopup();
+    openNoteModal(id,existing);
+  });
+
+  // Delete button
+  popup.querySelector('.hl-del-action').addEventListener('click',function(){
+    if(currentHlId) deleteHL(currentHlId);
+    hidePopup();
+  });
+
+  function deleteHL(id){
+    removeMarks(id);
+    var hls=loadHL().filter(function(h){return h.id!==id;});
+    saveHL(hls); updateBadge(); renderPanelIfOpen();
+  }
+
+  // ── NOTE MODAL ──
+  var noteModal=document.createElement('div');
+  noteModal.id='hl-note-modal'; noteModal.className='hidden';
+  noteModal.innerHTML='<div id="hl-note-box">'
+    +'<h3>✏ Ghi chú</h3>'
+    +'<textarea id="hl-note-ta" placeholder="Nhập ghi chú..."></textarea>'
+    +'<div class="hl-note-actions">'
+    +'<button class="hl-note-cancel">Hủy</button>'
+    +'<button class="hl-note-save">Lưu</button>'
+    +'</div></div>';
+  document.body.appendChild(noteModal);
+  var _noteTargetId=null;
+  function openNoteModal(hlId,existing){
+    _noteTargetId=hlId;
+    document.getElementById('hl-note-ta').value=existing||'';
+    noteModal.classList.remove('hidden');
+    setTimeout(function(){document.getElementById('hl-note-ta').focus();},50);
+  }
+  noteModal.querySelector('.hl-note-cancel').addEventListener('click',function(){noteModal.classList.add('hidden');});
+  noteModal.querySelector('.hl-note-save').addEventListener('click',function(){
+    var note=document.getElementById('hl-note-ta').value.trim();
+    if(_noteTargetId){
+      var hls=loadHL();
+      var idx=hls.findIndex(function(h){return h.id===_noteTargetId;});
+      if(idx>=0){hls[idx].note=note;saveHL(hls);updateMarks(_noteTargetId,hls[idx].color,note);updateBadge();renderPanelIfOpen();}
+    }
+    noteModal.classList.add('hidden');
+  });
+  noteModal.addEventListener('click',function(e){if(e.target===noteModal)noteModal.classList.add('hidden');});
+
+  // ── SELECTION HANDLER ──
+  document.addEventListener('mouseup',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    setTimeout(function(){
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed||!sel.rangeCount){hidePopup();return;}
+      var range=sel.getRangeAt(0);
+      var text=range.toString().trim();
+      if(!text||text.length<2){hidePopup();return;}
+      // Only highlight within #main
+      if(!mainEl||!mainEl.contains(range.commonAncestorContainer)){hidePopup();return;}
+      // Serialize positions
+      var sNode=range.startContainer,eNode=range.endContainer;
+      var sParent=sNode.nodeType===3?sNode.parentNode:sNode;
+      var eParent=eNode.nodeType===3?eNode.parentNode:eNode;
+      var sxp=getXPath(sParent),exp=getXPath(eParent);
+      // calc offsets within parent element
+      var so=0,eo=0;
+      var w=document.createTreeWalker(sParent,NodeFilter.SHOW_TEXT,null);
+      var n;while((n=w.nextNode())){if(n===sNode){so+=range.startOffset;break;}so+=n.textContent.length;}
+      var w2=document.createTreeWalker(eParent,NodeFilter.SHOW_TEXT,null);
+      while((n=w2.nextNode())){if(n===eNode){eo+=range.endOffset;break;}eo+=n.textContent.length;}
+      pendingRange=range.cloneRange();
+      pendingXP={sxp:sxp,so:so,exp:exp,eo:eo};
+      currentHlId=null;
+      var rect=range.getBoundingClientRect();
+      showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width});
+    },10);
+  });
+
+  // ── CLICK ON EXISTING MARK ──
+  document.addEventListener('click',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    var mk=e.target.closest('mark.hl');
+    if(!mk){
+      // click outside: if selection is collapsed, hide popup
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed) hidePopup();
+      return;
+    }
+    e.stopPropagation();
+    var hlId=mk.getAttribute('data-hl-id');
+    var rect=mk.getBoundingClientRect();
+    currentHlId=hlId;
+    pendingRange=null;pendingXP=null;
+    showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width},hlId);
+  });
+
+  // ── FLASH EFFECT ──
+  function flashMark(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.style.transition='outline .2s';mk.style.outline='3px solid #c9a84c';
+      setTimeout(function(){mk.style.outline='none';},1500);
+    });
+  }
+
+  function renderPanelIfOpen(){if(panel.classList.contains('open'))renderPanel();}
+
+  function escHtml(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+})();
+
+
+// ── CHAPTER NAV PANEL ───────────────────────────────────
+(function(){
+  var CHAPS=[
+    [1,'rita_chap01.html','Mẹo & Thủ Thuật Ôn Thi PMP®'],
+    [2,'rita_chap02.html','Tài Liệu Tham Khảo Kỳ Thi'],
+    [3,'rita_chap03.html','Nền Tảng Quản Lý Dự Án'],
+    [4,'rita_chap04.html','Tích Hợp'],
+    [5,'rita_chap05.html','Kỹ Năng Lãnh Đạo'],
+    [6,'rita_chap06.html','Xây Dựng & Hỗ Trợ Hiệu Suất Nhóm'],
+    [7,'rita_chap07.html','Phạm Vi Dự Án'],
+    [8,'rita_chap08.html','Tiến Độ & Ngân Sách Dự Án'],
+    [10,'rita_chap10.html','Chất Lượng Sản Phẩm Bàn Giao'],
+    [11,'rita_chap11.html','Truyền Thông'],
+    [12,'rita_chap12.html','Rủi Ro & Vấn Đề'],
+    [13,'rita_chap13.html','Mua Sắm'],
+    [14,'rita_chap14.html','Các Bên Liên Quan'],
+    [15,'rita_chap15.html','Tuân Thủ & Mang Lại Giá Trị'],
+    [16,'rita_chap16.html','Mẹo Vượt Qua Kỳ Thi PMP®'],
+    [17,'rita_chap17.html','Các Phương Pháp Agile Phổ Biến'],
+    [18,'rita_chap18.html','Hướng Dẫn PMBOK & Tiêu Chuẩn PM']
+  ];
+
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var curNum=m?parseInt(m[1]):null;
+  var READ_KEY='rita_reading';
+
+  // Build panel DOM
+  var panel=document.createElement('div');
+  panel.id='chap-panel'; panel.className='hidden';
+  var listHtml='';
+  CHAPS.forEach(function(c){
+    var isActive=c[0]===curNum;
+    listHtml+='<a class="chap-panel-item'+(isActive?' active':'')+'" href="'+c[1]+'">'
+      +'<span class="cpanel-num">Ch'+c[0]+'</span>'
+      +'<span class="cpanel-title">'+c[2]+'</span>'
+      +(isActive?'<span class="cpanel-status">● Đang đọc</span>':'')
+      +'</a>';
+  });
+  panel.innerHTML='<div id="chap-panel-overlay"></div>'
+    +'<div id="chap-panel-box">'
+    +'<div id="chap-panel-hdr"><h3>☰ Danh Sách Chương</h3><button id="chap-panel-close">×</button></div>'
+    +'<div id="chap-panel-list">'+listHtml+'</div>'
+    +'</div>';
+  document.body.appendChild(panel);
+
+  function openChapPanel(){panel.classList.remove('hidden');}
+  function closeChapPanel(){panel.classList.add('hidden');}
+  document.getElementById('chap-panel-overlay').addEventListener('click',closeChapPanel);
+  document.getElementById('chap-panel-close').addEventListener('click',closeChapPanel);
+
+  // Wire up the Mục lục button
+  var mucLucBtn=document.getElementById('chap-muc-luc-btn');
+  if(mucLucBtn) mucLucBtn.addEventListener('click',function(e){e.preventDefault();openChapPanel();});
+})();
+
+
+// ── GITHUB HIGHLIGHTS SYNC ──────────────────────────
+(function(){
+  var REPO='goukakujlptsuport-beep/pmbok6';
+  var TOKEN_KEY='rita_gh_token';
+  var API_URL='https://api.github.com/repos/'+REPO+'/contents/data/rita_highlights.json';
+  var fileSha=null;
+  var syncTimer=null;
+
+  // Called by patched saveHL after every highlight change
+  window.__ritaSyncTrigger=function(){
+    clearTimeout(syncTimer);
+    syncTimer=setTimeout(pushToGitHub,3000);
+  };
+
+  // ── STATUS BUTTON (inserted before #sidebar-nav) ──
+  var btn=document.createElement('button');
+  btn.id='sync-btn'; btn.dataset.state='no-token';
+  btn.innerHTML='<span>☁ Sync Git</span><span id="sync-status-text">Đang kết nối…</span>';
+  btn.title='Đồng bộ highlight / ghi chú lên GitHub';
+  btn.addEventListener('click',handleSyncClick);
+  var sidebarNavEl=document.getElementById('sidebar-nav');
+  if(sidebarNavEl) sidebarNavEl.parentNode.insertBefore(btn,sidebarNavEl);
+
+  var statusText=document.getElementById('sync-status-text');
+  function setStatus(state,msg){
+    btn.dataset.state=state;
+    if(statusText) statusText.textContent=msg;
+  }
+
+  // ── TOKEN MODAL ──
+  var modal=document.createElement('div');
+  modal.id='sync-modal'; modal.className='hidden';
+  modal.innerHTML='<div id="sync-modal-box">'
+    +'<h3>☁ Cấu Hình GitHub Sync</h3>'
+    +'<p>Nhập <strong style="color:var(--gold)">GitHub Personal Access Token (PAT)</strong> để đồng bộ highlight giữa các thiết bị.<br>'
+    +'Token cần quyền <strong style="color:var(--gold-lt)">Contents: Read &amp; Write</strong> trên repo pmbok6.<br>'
+    +'Token được lưu trong localStorage của trình duyệt này.</p>'
+    +'<input id="sync-token-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" spellcheck="false" autocomplete="off">'
+    +'<div class="sync-modal-btns">'
+    +'<button id="sync-clear-btn">🗑 Xóa token</button>'
+    +'<button id="sync-cancel-btn">Hủy</button>'
+    +'<button id="sync-save-btn">💾 Lưu &amp; Sync</button>'
+    +'</div></div>';
+  document.body.appendChild(modal);
+
+  document.getElementById('sync-cancel-btn').addEventListener('click',function(){modal.classList.add('hidden');});
+  document.getElementById('sync-save-btn').addEventListener('click',function(){
+    var t=(document.getElementById('sync-token-input').value||'').trim();
+    if(!t){alert('Vui lòng nhập GitHub PAT!');return;}
+    localStorage.setItem(TOKEN_KEY,t);
+    modal.classList.add('hidden');
+    fileSha=null;
+    initSync();
+  });
+  document.getElementById('sync-clear-btn').addEventListener('click',function(){
+    if(!confirm('Xóa token? Highlights sẽ không được sync cho đến khi cấu hình lại.')) return;
+    localStorage.removeItem(TOKEN_KEY);
+    fileSha=null;
+    modal.classList.add('hidden');
+    setStatus('no-token','Chưa cấu hình');
+  });
+  modal.addEventListener('click',function(e){if(e.target===modal)modal.classList.add('hidden');});
+
+  function handleSyncClick(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){
+      var inp=document.getElementById('sync-token-input');
+      if(inp) inp.value='';
+      modal.classList.remove('hidden');
+      setTimeout(function(){if(inp)inp.focus();},80);
+    } else {
+      // Manual re-sync
+      fileSha=null;
+      initSync();
+    }
+  }
+
+  // ── HELPERS ──
+  var ALL_CHAPS=['01','02','03','04','05','06','07','08','10','11','12','13','14','15','16','17','18'];
+
+  function getAllLocal(){
+    var all={};
+    ALL_CHAPS.forEach(function(n){
+      try{
+        var v=JSON.parse(localStorage.getItem('rita_hl_'+n)||'[]');
+        if(v&&v.length>0) all[n]=v;
+      }catch(e){}
+    });
+    return all;
+  }
+
+  function countHL(obj){
+    return Object.values(obj).reduce(function(s,a){return s+(a?a.length:0);},0);
+  }
+
+  // Union merge: keep all highlights by id, prefer local note if different
+  function mergeHL(local,remote){
+    var merged={};
+    var allChaps=new Set(Object.keys(local).concat(Object.keys(remote)));
+    allChaps.forEach(function(chap){
+      var loc=local[chap]||[];
+      var rem=remote[chap]||[];
+      var byId={};
+      loc.forEach(function(h){byId[h.id]=h;});
+      rem.forEach(function(h){if(!byId[h.id])byId[h.id]=h;});
+      var arr=Object.values(byId);
+      if(arr.length>0) merged[chap]=arr;
+    });
+    return merged;
+  }
+
+  function applyToLocal(highlights){
+    Object.keys(highlights).forEach(function(chap){
+      localStorage.setItem('rita_hl_'+chap,JSON.stringify(highlights[chap]));
+    });
+  }
+
+  // base64 encode/decode with Unicode support
+  function b64enc(str){
+    return btoa(unescape(encodeURIComponent(str)));
+  }
+  function b64dec(b64){
+    return decodeURIComponent(escape(atob(b64.replace(/[\r\n]/g,''))));
+  }
+
+  // ── FETCH FROM GITHUB ──
+  async function fetchFromGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    var headers={'Accept':'application/vnd.github.v3+json'};
+    if(token) headers['Authorization']='token '+token;
+    try{
+      var resp=await fetch(API_URL,{headers:headers});
+      if(resp.status===404){fileSha=null;return null;}
+      if(!resp.ok) throw new Error('HTTP '+resp.status);
+      var data=await resp.json();
+      fileSha=data.sha;
+      var content=JSON.parse(b64dec(data.content));
+      return content;
+    }catch(e){
+      console.warn('[sync] fetch:',e);
+      return 'error';
+    }
+  }
+
+  // ── PUSH TO GITHUB ──
+  async function pushToGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang sync…');
+    var local=getAllLocal();
+    var payload={version:1,lastSync:new Date().toISOString(),highlights:local};
+    var encoded=b64enc(JSON.stringify(payload,null,2));
+    var body={message:'sync: rita highlights ['+countHL(local)+' HL]',content:encoded};
+    if(fileSha) body.sha=fileSha;
+    try{
+      var resp=await fetch(API_URL,{
+        method:'PUT',
+        headers:{
+          'Authorization':'token '+token,
+          'Content-Type':'application/json',
+          'Accept':'application/vnd.github.v3+json'
+        },
+        body:JSON.stringify(body)
+      });
+      if(!resp.ok){
+        var err=await resp.json().catch(function(){return{};});
+        throw new Error(err.message||'HTTP '+resp.status);
+      }
+      var result=await resp.json();
+      fileSha=result.content.sha;
+      setStatus('ok','✓ Đã sync ('+countHL(local)+' HL)');
+    }catch(e){
+      setStatus('err','✗ '+e.message.slice(0,28));
+      console.error('[sync] push:',e);
+    }
+  }
+
+  // ── INIT ──
+  async function initSync(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang tải…');
+
+    var ghData=await fetchFromGitHub();
+    if(ghData==='error'){
+      setStatus('err','✗ Không kết nối được');
+      return;
+    }
+    if(ghData&&ghData.highlights){
+      var local=getAllLocal();
+      var merged=mergeHL(local,ghData.highlights);
+      applyToLocal(merged);
+      // Re-apply marks on current chapter from updated localStorage
+      if(typeof window.__ritaReapplyMarks==='function') window.__ritaReapplyMarks();
+      var ghN=countHL(ghData.highlights), mergedN=countHL(merged);
+      if(mergedN>ghN){
+        // New highlights from remote — push merged back
+        setTimeout(pushToGitHub,1200);
+      } else {
+        setStatus('ok','✓ Sync OK ('+mergedN+' HL)');
+      }
+    } else {
+      // File doesn't exist yet — push current local state
+      await pushToGitHub();
+    }
+  }
+
+  initSync();
+})();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kỹ Năng Lãnh Đạo | Rita PMP® Exam Prep 11</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:     #1a2744;
+  --red:      #8b1a1a;
+  --gold:     #c9a84c;
+  --gold-lt:  #e8d5a3;
+  --cream:    #fdf8f0;
+  --text:     #2c2c2c;
+  --text-dim: #5a5a5a;
+  --border:   #d4c89a;
+  --sidebar-w: 268px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ── PROGRESS BAR ── */
+#progress-bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--gold);z-index:200;transition:width .1s}
+
+/* ── SIDEBAR ── */
+#sidebar{
+  width:var(--sidebar-w);background:var(--navy);color:#ccd4e8;
+  position:fixed;top:0;left:0;bottom:0;overflow-y:auto;z-index:100;
+  border-right:3px solid var(--gold);display:flex;flex-direction:column;
+}
+#sidebar-header{
+  background:linear-gradient(135deg,#0f1d3a 0%,#1a2744 100%);
+  padding:1.4rem 1.2rem;border-bottom:2px solid var(--gold);flex-shrink:0;
+}
+#sidebar-header .book-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.62rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;
+}
+#sidebar-header h2{font-size:.92rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:.25rem}
+#sidebar-header .edition{font-family:'Source Sans 3',sans-serif;font-size:.7rem;color:var(--gold-lt);font-style:italic}
+#sidebar-toc{flex:1;overflow-y:auto;padding:.6rem 0}
+#sidebar-toc a{
+  display:block;font-family:'Source Sans 3',sans-serif;font-size:.78rem;
+  color:#aab8d0;text-decoration:none;padding:.4rem 1.2rem;line-height:1.4;
+  transition:all .15s;border-left:3px solid transparent;
+}
+#sidebar-toc a:hover,#sidebar-toc a.active{color:#fff;background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+#sidebar-toc a.toc-h4{padding-left:2.2rem;font-size:.72rem;color:#8896b0}
+#sidebar-toc a.toc-h4:hover{color:#ccd4e8}
+#sidebar-toc .toc-group-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.6rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  padding:.7rem 1.2rem .25rem;opacity:.85;
+}
+#sidebar-nav{
+  flex-shrink:0;border-top:1px solid rgba(255,255,255,.08);
+  display:flex;justify-content:space-between;padding:.7rem .8rem;gap:.5rem;
+}
+#sidebar-nav a{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;color:var(--gold-lt);
+  text-decoration:none;padding:.4rem .7rem;border:1px solid rgba(201,168,76,.3);
+  border-radius:4px;transition:all .2s;line-height:1.3;text-align:center;flex:1;
+}
+#sidebar-nav a:hover{background:rgba(201,168,76,.15);color:#fff}
+#sidebar-nav a.disabled{opacity:.35;pointer-events:none}
+
+/* ── HAMBURGER (mobile) ── */
+#menu-btn{
+  display:none;position:fixed;top:.7rem;left:.8rem;z-index:150;
+  background:var(--navy);border:1px solid var(--gold);color:var(--gold);
+  width:36px;height:36px;border-radius:6px;font-size:1.1rem;cursor:pointer;
+  align-items:center;justify-content:center;
+}
+
+/* ── MAIN ── */
+#main{margin-left:var(--sidebar-w);max-width:880px;padding:0 2.8rem 5rem}
+
+/* ── CHAPTER HERO ── */
+.chapter-hero{
+  background:linear-gradient(135deg,var(--navy) 0%,#2a3a6a 100%);
+  color:white;padding:2.8rem 2.8rem 2.2rem;margin:0 -2.8rem 2.8rem;
+  border-bottom:4px solid var(--gold);position:relative;overflow:hidden;
+}
+.chapter-hero::before{
+  content:'5';position:absolute;right:1.5rem;top:50%;
+  transform:translateY(-50%);font-size:10rem;font-weight:700;
+  color:rgba(255,255,255,.05);font-family:'Merriweather',serif;line-height:1;
+}
+.chapter-hero .ch-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;font-weight:700;
+  letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;
+}
+.chapter-hero h1{font-size:2rem;font-weight:700;line-height:1.2;margin-bottom:.35rem}
+.chapter-hero .ch-en{font-family:'Source Sans 3',sans-serif;font-size:.95rem;color:rgba(255,255,255,.5);font-style:italic}
+
+/* ── CONTENT HEADINGS ── */
+h3{
+  font-family:'Merriweather',serif;font-size:1.25rem;color:var(--navy);
+  margin:2.5rem 0 .85rem;padding-bottom:.45rem;border-bottom:2px solid var(--gold);
+}
+h4{
+  font-family:'Merriweather',serif;font-size:1.05rem;color:var(--navy);
+  margin:2rem 0 .65rem;padding-left:.75rem;border-left:4px solid var(--gold);
+}
+h5{
+  font-family:'Source Sans 3',sans-serif;font-size:.9rem;font-weight:700;
+  color:var(--red);margin:1.4rem 0 .45rem;text-transform:uppercase;letter-spacing:.05em;
+}
+p{font-family:'Merriweather',serif;font-size:.94rem;line-height:1.88;margin-bottom:.95rem;color:var(--text)}
+
+/* ── LISTS ── */
+ul.content-list,ol.content-list{
+  margin:.5rem 0 1rem;padding:0;list-style:none;
+}
+ul.content-list li{
+  position:relative;padding:.28rem 0 .28rem 1.6rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);
+}
+ul.content-list li::before{
+  content:'◆';position:absolute;left:0;color:var(--gold);font-size:.65rem;top:.45rem;
+}
+ol.content-list{counter-reset:ol-c;list-style:none}
+ol.content-list li{
+  position:relative;padding:.28rem 0 .28rem 2rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);counter-increment:ol-c;
+}
+ol.content-list li::before{
+  content:counter(ol-c)'.';position:absolute;left:0;color:var(--navy);
+  font-weight:700;font-size:.85rem;min-width:1.5rem;
+}
+ul.content-list ul.content-list li::before{content:'–';color:var(--text-dim);font-size:.9rem;top:.35rem}
+
+/* ── CALLOUT / DEF BOX ── */
+.callout{
+  background:linear-gradient(135deg,#f5f0e8,#ede8d8);
+  border:1px solid var(--border);border-left:5px solid var(--gold);
+  border-radius:0 6px 6px 0;padding:1rem 1.2rem;margin:1.3rem 0;
+}
+.callout p{font-size:.9rem;margin-bottom:.5rem}
+.callout p:last-child{margin-bottom:0}
+.callout ul.content-list li{font-size:.88rem}
+.callout-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.65rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;
+}
+.callout.tip{border-left-color:#2d7a2d;background:linear-gradient(135deg,#f0f7f0,#e4f0e4)}
+.callout.tip .callout-label{color:#2d7a2d}
+
+/* ── HIGHLIGHT (quicktest / exam alert) ── */
+.highlight{
+  background:var(--navy);color:#e8d5a3;
+  border-radius:8px;padding:1.1rem 1.3rem;margin:1.5rem 0;
+}
+.highlight h5,.highlight strong{color:var(--gold-lt)}
+.highlight p,.highlight li{color:#ccd4e8;font-size:.88rem}
+.highlight ul.content-list li::before{color:var(--gold)}
+
+/* ── FIGURE ── */
+.img-center{
+  text-align:center;margin:1.8rem 0;padding:1rem;
+  background:#f8f5ee;border:1px solid var(--border);border-radius:8px;
+}
+.img-center img{max-width:100%;height:auto;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.img-center p,.img-center div{
+  margin-top:.65rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.8rem;color:var(--text-dim);font-style:italic;
+}
+
+/* ── TABLES ── */
+.table-wrap{overflow-x:auto;margin:1.5rem 0}
+table{width:100%;border-collapse:collapse;font-family:'Source Sans 3',sans-serif;font-size:.84rem}
+table th{background:var(--navy);color:white;padding:.6rem .8rem;text-align:center;font-weight:600;font-size:.79rem}
+table td{padding:.5rem .8rem;border:1px solid #ddd;vertical-align:top;line-height:1.5}
+table tr:nth-child(even) td{background:#f9f6ef}
+
+/* ── BACK TO TOP ── */
+#back-top{
+  position:fixed;bottom:1.5rem;right:1.5rem;
+  background:var(--navy);color:var(--gold);border:1px solid var(--gold);
+  width:38px;height:38px;border-radius:50%;font-size:1.2rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .25s;z-index:99;
+}
+#back-top:hover{background:var(--gold);color:var(--navy)}
+
+/* ── MOBILE ── */
+@media(max-width:860px){
+  #sidebar{transform:translateX(-100%);transition:transform .25s;top:3rem}
+  #sidebar.open{transform:translateX(0)}
+  #menu-btn{display:flex}
+  #main{margin-left:0;padding:3.5rem 1.2rem 4rem}
+  .chapter-hero{margin:0 -1.2rem 2rem;padding:2rem 1.4rem}
+  .chapter-hero::before{display:none}
+}
+
+/* ── DARK / LIGHT MODE ─────────────────────────────── */
+html[data-theme=dark]{--cream:#0f1520;--text:#dde4f0;--text-dim:#8899bb;--border:#253048;--gold-lt:#c9a84c}
+html[data-theme=dark] body{background:#0f1520;color:#dde4f0}
+html[data-theme=dark] #main{background:#0f1520}
+html[data-theme=dark] h1,html[data-theme=dark] h2{color:#e8d5a3}
+html[data-theme=dark] h3{color:#e8d5a3;border-bottom-color:var(--gold)}
+html[data-theme=dark] h4{color:#b8ccee;border-left-color:var(--gold)}
+html[data-theme=dark] p,html[data-theme=dark] li,html[data-theme=dark] td{color:#dde4f0}
+html[data-theme=dark] strong{color:#e8d5a3}
+html[data-theme=dark] em{color:#b8ccee}
+html[data-theme=dark] .callout{background:linear-gradient(135deg,#1a2436,#1e2d45);border-left-color:var(--gold);color:#dde4f0}
+html[data-theme=dark] .callout p{color:#dde4f0}
+html[data-theme=dark] blockquote{background:#1a2436;border-left-color:var(--gold);color:#b0c0d8}
+html[data-theme=dark] table{background:#131c2b}
+html[data-theme=dark] th{background:#1a2744;color:#e8d5a3;border-color:#253048}
+html[data-theme=dark] td{border-color:#253048}
+html[data-theme=dark] tr:nth-child(even) td{background:#1a2436}
+html[data-theme=dark] .highlight,.highlight-box{background:#1a2436!important;border-color:#253048!important;color:#dde4f0!important}
+html[data-theme=dark] #back-top{background:#1a2744;color:var(--gold);border:1px solid rgba(201,168,76,.4)}
+html[data-theme=dark] ul.content-list li,html[data-theme=dark] ol.content-list li{color:#dde4f0}
+html[data-theme=dark] .chapter-hero{background:linear-gradient(135deg,#0a1228 0%,#142040 100%)}
+html[data-theme=dark] .exercise-card{background:#1a2436;border-color:#253048}
+html[data-theme=dark] .answer-box{background:#152035;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] .answer-box p{color:#dde4f0}
+/* theme toggle button */
+#theme-btn{position:absolute;top:.65rem;right:.7rem;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.35);color:var(--gold);width:28px;height:28px;border-radius:5px;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+#theme-btn:hover{background:rgba(201,168,76,.2)}
+#sidebar-header{position:relative}
+
+/* ── HIGHLIGHT SYSTEM ─────────────────────────────────── */
+mark.hl{border-radius:2px;cursor:pointer;padding:1px 0;background:transparent}
+mark.hl[data-color=yellow]{background:rgba(255,241,118,.75)}
+mark.hl[data-color=green]{background:rgba(165,214,167,.75)}
+mark.hl[data-color=red]{background:rgba(239,154,154,.75)}
+mark.hl::after{display:none}
+mark.hl[data-note]:not([data-note=""])::after{content:"✏";font-size:.6rem;vertical-align:super;margin-left:1px;opacity:.65;display:inline}
+/* selection popup */
+#hl-popup{position:fixed;z-index:9999;background:#1a2744;border:1px solid rgba(201,168,76,.5);border-radius:8px;padding:.45rem .6rem;display:flex;align-items:center;gap:.35rem;box-shadow:0 4px 20px rgba(0,0,0,.4);pointer-events:all}
+#hl-popup.hidden{display:none!important}
+.hl-color-btn{width:24px;height:24px;border-radius:50%;border:2px solid rgba(255,255,255,.25);cursor:pointer;transition:transform .15s,border-color .15s;flex-shrink:0}
+.hl-color-btn:hover{transform:scale(1.2);border-color:rgba(255,255,255,.7)}
+.hl-color-btn[data-color=yellow]{background:#fff176}
+.hl-color-btn[data-color=green]{background:#a5d6a7}
+.hl-color-btn[data-color=red]{background:#ef9a9a}
+.hl-sep{width:1px;height:20px;background:rgba(255,255,255,.2);margin:0 .1rem}
+.hl-note-btn{background:none;border:none;color:rgba(255,255,255,.7);font-size:.9rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-note-btn:hover{color:#fff;background:rgba(255,255,255,.1)}
+.hl-del-btn{background:none;border:none;color:rgba(239,154,154,.8);font-size:.85rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-del-btn:hover{color:#ef9a9a;background:rgba(239,154,154,.12)}
+/* note modal */
+#hl-note-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center}
+#hl-note-modal.hidden{display:none!important}
+#hl-note-box{background:#fff;border-radius:10px;padding:1.4rem;width:min(420px,90vw);box-shadow:0 8px 32px rgba(0,0,0,.25)}
+#hl-note-box h3{font-size:.95rem;color:#1a2744;margin-bottom:.7rem;font-family:'Merriweather',serif}
+#hl-note-ta{width:100%;border:1px solid #d4c89a;border-radius:6px;padding:.6rem .8rem;font-size:.88rem;font-family:'Source Sans 3',sans-serif;resize:vertical;min-height:80px;color:#2c2c2c;outline:none}
+#hl-note-ta:focus{border-color:#c9a84c;box-shadow:0 0 0 2px rgba(201,168,76,.25)}
+.hl-note-actions{display:flex;justify-content:flex-end;gap:.6rem;margin-top:.8rem}
+.hl-note-cancel{background:transparent;border:1px solid #ccc;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+.hl-note-save{background:#1a2744;color:#fff;border:none;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+/* highlights panel */
+#hl-panel{position:fixed;top:0;right:0;bottom:0;width:300px;background:#fff;border-left:3px solid var(--gold);z-index:500;display:flex;flex-direction:column;box-shadow:-4px 0 20px rgba(0,0,0,.15);transform:translateX(100%);transition:transform .25s}
+#hl-panel.open{transform:translateX(0)}
+#hl-panel-hdr{background:#1a2744;padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--gold)}
+#hl-panel-hdr h3{font-size:.88rem;color:#fff;font-family:'Source Sans 3',sans-serif;font-weight:700;letter-spacing:.05em}
+#hl-panel-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.2rem;cursor:pointer;padding:.2rem;line-height:1}
+#hl-panel-close:hover{color:#fff}
+#hl-panel-list{flex:1;overflow-y:auto;padding:.6rem}
+#hl-panel-list:empty::before{content:"Chưa có ghi chú nào trong chương này.";font-size:.82rem;color:#999;display:block;padding:.8rem;text-align:center;font-style:italic}
+.hl-item{padding:.65rem .8rem;border-radius:6px;margin-bottom:.5rem;border-left:4px solid #ddd;background:#fafafa;cursor:pointer;transition:background .15s}
+.hl-item:hover{background:#f0f0f0}
+.hl-item[data-color=yellow]{border-left-color:#fdd835}
+.hl-item[data-color=green]{border-left-color:#66bb6a}
+.hl-item[data-color=red]{border-left-color:#ef5350}
+.hl-item-text{font-size:.8rem;color:#2c2c2c;line-height:1.5;margin-bottom:.3rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.hl-item-note{font-size:.75rem;color:#666;font-style:italic;margin-bottom:.3rem}
+.hl-item-del{float:right;background:none;border:none;color:#bbb;cursor:pointer;font-size:.8rem;padding:.1rem .3rem;border-radius:3px;line-height:1}
+.hl-item-del:hover{color:#ef5350;background:rgba(239,83,80,.08)}
+/* sidebar hl badge */
+#hl-sidebar-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:var(--gold);cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#hl-sidebar-btn:hover{background:rgba(201,168,76,.1)}
+#hl-badge{background:rgba(201,168,76,.2);color:var(--gold);font-size:.65rem;font-weight:700;padding:.1rem .4rem;border-radius:10px;min-width:18px;text-align:center}
+html[data-theme=dark] #hl-note-box{background:#1a2436;border:1px solid #253048}
+html[data-theme=dark] #hl-note-box h3{color:#e8d5a3}
+html[data-theme=dark] #hl-note-ta{background:#0f1520;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] #hl-panel{background:#131c2b;border-left-color:var(--gold)}
+html[data-theme=dark] .hl-item{background:#1a2436;border-bottom:1px solid #1e2d45}
+html[data-theme=dark] .hl-item:hover{background:#1e2d45}
+html[data-theme=dark] .hl-item-text{color:#dde4f0}
+html[data-theme=dark] .hl-item-note{color:#8899bb}
+html[data-theme=dark] .hl-note-cancel{border-color:#253048;color:#dde4f0;background:#1a2436}
+html[data-theme=dark] .hl-note-save{background:#c9a84c;color:#0a0f1a}
+
+/* ── CHAPTER NAV PANEL ─────────────────────────────────── */
+#chap-panel{position:fixed;inset:0;z-index:9000;display:flex;align-items:stretch}
+#chap-panel.hidden{display:none!important}
+#chap-panel-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);cursor:pointer}
+#chap-panel-box{position:relative;z-index:1;width:min(360px,90vw);background:#0f1d3a;border-right:3px solid var(--gold);display:flex;flex-direction:column;animation:slideInLeft .2s ease}
+@keyframes slideInLeft{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+#chap-panel-hdr{background:linear-gradient(135deg,#0a1228,#1a2744);padding:1.2rem 1.3rem;border-bottom:2px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
+#chap-panel-hdr h3{font-family:'Source Sans 3',sans-serif;font-size:.85rem;font-weight:700;color:#fff;letter-spacing:.1em;text-transform:uppercase}
+#chap-panel-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.3rem;cursor:pointer;padding:.2rem;line-height:1;transition:color .15s}
+#chap-panel-close:hover{color:#fff}
+#chap-panel-list{flex:1;overflow-y:auto;padding:.5rem 0}
+.chap-panel-item{display:flex;align-items:center;gap:.8rem;padding:.7rem 1.3rem;cursor:pointer;transition:background .15s;border-left:3px solid transparent;text-decoration:none}
+.chap-panel-item:hover{background:rgba(201,168,76,.1);border-left-color:var(--gold)}
+.chap-panel-item.active{background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+.cpanel-num{font-family:'Source Sans 3',sans-serif;font-size:.7rem;font-weight:700;color:var(--gold);min-width:28px;flex-shrink:0}
+.cpanel-title{font-family:'Source Sans 3',sans-serif;font-size:.8rem;color:#ccd4e8;line-height:1.35}
+.cpanel-item-active .cpanel-title{color:#fff;font-weight:600}
+.cpanel-status{margin-left:auto;font-size:.72rem;flex-shrink:0;opacity:.6}
+
+/* ── GITHUB SYNC ──────────────────────────────────── */
+#sync-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:#8899bb;cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s,color .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#sync-btn:hover{background:rgba(201,168,76,.08);color:var(--gold)}
+#sync-btn[data-state=ok]{color:#4caf50}
+#sync-btn[data-state=syncing]{color:var(--gold)}
+#sync-btn[data-state=err]{color:#ef5350}
+#sync-btn[data-state=no-token]{color:#8899bb}
+#sync-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center}
+#sync-modal.hidden{display:none!important}
+#sync-modal-box{background:#0f1d3a;border:2px solid var(--gold);border-radius:10px;padding:1.8rem 2rem;width:min(420px,90vw);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+#sync-modal-box h3{font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:.9rem;text-transform:uppercase;letter-spacing:.1em}
+#sync-modal-box p{font-size:.77rem;color:#aab8d0;line-height:1.6;margin-bottom:.9rem}
+#sync-modal-box input{width:100%;background:#0a1228;border:1px solid rgba(201,168,76,.4);color:#fff;font-family:monospace;font-size:.8rem;padding:.55rem .8rem;border-radius:5px;outline:none;margin-bottom:.8rem;box-sizing:border-box}
+#sync-modal-box input:focus{border-color:var(--gold)}
+.sync-modal-btns{display:flex;gap:.6rem;justify-content:flex-end;flex-wrap:wrap}
+.sync-modal-btns button{font-family:'Source Sans 3',sans-serif;font-size:.77rem;font-weight:700;padding:.42rem .9rem;border-radius:5px;cursor:pointer;border:none;transition:background .15s}
+#sync-save-btn{background:var(--gold);color:#0a0f1a}
+#sync-save-btn:hover{background:#e8c47a}
+#sync-cancel-btn{background:rgba(255,255,255,.1);color:#aab8d0}
+#sync-cancel-btn:hover{background:rgba(255,255,255,.18)}
+#sync-clear-btn{background:rgba(239,83,80,.18);color:#ef9090;margin-right:auto}
+#sync-clear-btn:hover{background:rgba(239,83,80,.32)}
+</style>
+</head>
+<script>
+(function(){var t=localStorage.getItem('rita_theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+</script>
+<body>
+<div id="progress-bar"></div>
+<button id="menu-btn" aria-label="Menu">☰</button>
+
+<aside id="sidebar">
+<div id="sidebar-header">
+  <div class="book-label">Rita PMP® Exam Prep</div>
+  <h2>Ôn Thi PMP®</h2>
+  <div class="edition">Rita Mulcahy · 11th Edition 2023 · Tiếng Việt</div>
+</div>
+<div id="sidebar-toc">
+  <div class="toc-group-label">Nội Dung Chương</div>
+  <a href="#ch5-ky-nang-lanh-dao" class="">5 Kỹ Năng Lãnh Đạo</a>
+<a href="#ch5-gioi-thieu" class="toc-h4">Giới Thiệu</a>
+<a href="#ch5-tong-quan-lanh-dao" class="toc-h4">Tổng Quan Về Lãnh Đạo</a>
+<a href="#ch5-bai-tap-5-1" class="toc-h4">5.1 Bài Tập</a>
+<a href="#ch5-dinh-nghia-lanh-dao" class="toc-h4">Các Định Nghĩa Liên Quan Đến Lãnh Đạo</a>
+<a href="#ch5-tu-duy-phan-bien" class="toc-h4">Tư Duy Phản Biện</a>
+<a href="#ch5-tri-tue-cam-xuc" class="toc-h4">Trí Tuệ Cảm Xúc</a>
+<a href="#ch5-ky-nang-giao-tiep" class="toc-h4">Kỹ Năng Giao Tiếp</a>
+<a href="#ch5-dong-chay-giao-tiep" class="toc-h4">Dòng Chảy Giao Tiếp</a>
+<a href="#ch5-cac-loai-giao-tiep" class="toc-h4">Các Loại Giao Tiếp</a>
+<a href="#ch5-bai-tap-5-2" class="toc-h4">5.2 Bài Tập</a>
+<a href="#ch5-nam-cs-giao-tiep" class="toc-h4">Năm Cs Của Giao Tiếp</a>
+<a href="#ch5-cac-mo-hinh-giao-tiep" class="toc-h4">Các Mô Hình Giao Tiếp</a>
+<a href="#ch5-giao-tiep-tuong-tac" class="">Giao Tiếp Tương Tác</a>
+<a href="#ch5-gui-giao-tiep-hieu-qua" class="toc-h4">Gửi Thông Điệp Giao Tiếp Hiệu Quả</a>
+<a href="#ch5-lang-nghe-hieu-qua" class="toc-h4">Lắng Nghe Hiệu Quả</a>
+<a href="#ch5-vat-can-giao-tiep" class="toc-h4">Vật Cản Giao Tiếp</a>
+<a href="#ch5-su-dung-cong-nghe-giao-tiep" class="toc-h4">Sử Dụng Thành Thạo Công Nghệ Giao Tiếp</a>
+<a href="#ch5-phuong-phap-giao-tiep" class="toc-h4">Phương Pháp Giao Tiếp</a>
+<a href="#ch5-kenh-giao-tiep" class="toc-h4">Kênh Giao Tiếp</a>
+<a href="#ch5-mo-hinh-dong-luc" class="toc-h4">Các Mô Hình Động Lực</a>
+<a href="#ch5-dong-luc-noi-ngoai-tai" class="toc-h4">Động Lực Nội Tại và Ngoại Tại</a>
+<a href="#ch5-thap-nhu-cau-maslow" class="toc-h4">Tháp Nhu Cầu Maslow</a>
+<a href="#ch5-ly-thuyet-mcclelland" class="toc-h4">Lý Thuyết Nhu Cầu của McClelland (hay Lý Thuyết Nhu Cầu Mắc Phải)</a>
+<a href="#ch5-ly-thuyet-herzberg" class="toc-h4">Lý Thuyết Hai Nhân Tố về Động Lực của Herzberg</a>
+<a href="#ch5-mo-hinh-thanh-thao-ky-nang" class="toc-h4">Các Mô Hình Thành Thạo Kỹ Năng</a>
+<a href="#ch5-shu-ha-ri" class="toc-h4">Mô Hình Shu-Ha-Ri về Thành Thạo Kỹ Năng</a>
+<a href="#ch5-mo-hinh-dreyfus" class="toc-h4">Mô Hình Dreyfus về Tiếp Thu Kỹ Năng của Người Trưởng Thành</a>
+<a href="#ch5-ky-nang-hinh-chu-t" class="toc-h4">Kỹ Năng Hình Chữ T</a>
+<a href="#ch5-mo-hinh-lanh-dao-tinh-huong" class="toc-h4">Các Mô Hình Lãnh Đạo Tình Huống</a>
+<a href="#ch5-situational-leadership-ii" class="toc-h4">Situational Leadership II</a>
+
+</div>
+<div id="sidebar-nav">
+  <a href="rita_chap04.html" class="" title="Tích Hợp">← Ch4</a>
+  <a href="#" id="chap-muc-luc-btn">☰ Mục lục</a>
+  <a href="rita_chap06.html" class="" title="Hiệu Suất Nhóm">Ch6 →</a>
+</div></aside>
+
+<main id="main">
+  <div class="chapter-hero">
+    <div class="ch-label">Chương 5</div>
+    <h1>Kỹ Năng Lãnh Đạo</h1>
+    <div class="ch-en">Leadership Skills</div>
+  </div>
+<h3 id="ch5-ky-nang-lanh-dao">5 Kỹ Năng Lãnh Đạo</h3>
+
+<h4 id="ch5-gioi-thieu">Giới Thiệu</h4>
+
+<p>Phần lớn công việc của một quản lý dự án liên quan đến việc tương tác và giao tiếp với mọi người, vì vậy điều quan trọng là bạn phải có kỹ năng giao tiếp cá nhân và làm việc nhóm tốt, bao gồm nhận thức văn hóa và quản lý xung đột. Bạn cần phải là một nhà lãnh đạo, người tạo động lực và người xây dựng nhóm. Bạn cần có khả năng xây dựng sự tin tưởng trong dự án, dễ tiếp cận và có tầm ảnh hưởng, đồng thời là người lắng nghe hiệu quả. Công việc của bạn với tư cách là quản lý dự án là điều phối và tạo điều kiện cho sự thành công của các chuyên gia khác trong lĩnh vực của họ. Bạn cũng nên lưu ý khi bắt đầu chương này rằng, mặc dù các nhiệm vụ liên quan trong Outline Nội Dung Kỳ Thi (ECO) thường tập trung vào nhóm, các kỹ năng này cũng áp dụng cho việc làm việc với tất cả các bên liên quan.</p>
+
+<p>Nếu không có kỹ năng giao tiếp con người, với tư cách là quản lý dự án bạn sẽ bỏ lỡ cơ hội tìm hiểu về các vấn đề trước khi chúng trở thành những vấn đề nghiêm trọng. Ngoài ra, bạn cần sẵn sàng giải quyết xung đột một cách trực tiếp và kịp thời. Xung đột là điều không thể tránh khỏi. Luôn cho rằng bạn sẽ tiếp cận xung đột như một cơ hội để cải thiện dự án và mối quan hệ với các bên liên quan.</p>
+
+<p>Cái gọi là "kỹ năng con người" quan trọng đến mức ECO dành cả một lĩnh vực riêng cho nó. Bằng cách xây dựng những kỹ năng này và làm việc hiệu quả với nhóm, bạn có thể thành công trong việc tạo ra một nhóm có hiệu suất cao. Trong chương này chúng ta trình bày các mô hình và lý thuyết khác nhau liên quan đến học tập, động lực và các kỹ năng nền tảng khác mà bạn cần hiểu và áp dụng khi lãnh đạo mọi người và dự án.</p>
+
+<p>Nhiều học viên nghĩ rằng tất cả những điều này đều mang tính trực giác và không học kỹ các phần này. Họ thường gặp khó khăn trong kỳ thi, hoặc thậm chí đạt điểm dưới mục tiêu. Hãy chú ý kỹ đến chương này và đảm bảo bạn hiểu các khái niệm được trình bày ở đây.</p>
+
+<h4 id="ch5-tong-quan-lanh-dao">Tổng Quan Về Lãnh Đạo</h4>
+
+<p>Các quản lý dự án phải là những nhà lãnh đạo và người giao tiếp hiệu quả, có khả năng truyền cảm hứng cho người khác. Không có một cách lãnh đạo đúng duy nhất. Bạn cần biết khoa học quản lý dự án và có khả năng sử dụng các kỹ năng và phong cách lãnh đạo khác nhau dựa trên từng tình huống cụ thể trong suốt vòng đời dự án. Điều này có nghĩa là bạn cũng phải có khả năng đưa ra các quyết định chuyên môn về những gì bạn đang làm, ngay cả khi liên quan đến việc tương tác và quản lý con người. Ví dụ, đôi khi bạn có thể cần huấn luyện các thành viên trong nhóm, và đôi khi chỉ cần ủy quyền công việc. Trong một số trường hợp, bạn có thể thu thập ý kiến của nhóm hoặc cho nhóm tham gia vào việc ra quyết định. Dù trường hợp nào đi nữa, quản lý dự án phải có trực giác khi lãnh đạo các thành viên trong nhóm để đạt được hiệu suất dự án tốt nhất có thể.</p>
+
+<p>Lãnh đạo đòi hỏi một cách tiếp cận tinh tế trong việc làm việc với mọi người. Chúng ta không quản lý con người; chúng ta hoàn thành công việc thông qua người khác. Khi lãnh đạo một nhóm dự án, hãy xem xét các kỹ năng, phong cách học tập và động lực của nhóm, và điều chỉnh các nhiệm vụ và mục tiêu dự án cho phù hợp. Điều này sẽ tạo ra năng suất cao hơn.</p>
+
+<p>Biểu đồ sau đây cho thấy một số điểm khác biệt chính giữa quản lý và lãnh đạo.</p>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <th>Trọng Tâm Quản Lý</th>
+    <th>Trọng Tâm Lãnh Đạo</th>
+  </tr>
+  <tr>
+    <td>Nhiệm vụ/sự vật</td>
+    <td>Con người</td>
+  </tr>
+  <tr>
+    <td>Kiểm soát</td>
+    <td>Trao quyền</td>
+  </tr>
+  <tr>
+    <td>Hiệu suất</td>
+    <td>Hiệu quả</td>
+  </tr>
+  <tr>
+    <td>Làm đúng cách</td>
+    <td>Làm đúng việc</td>
+  </tr>
+  <tr>
+    <td>Tốc độ</td>
+    <td>Định hướng</td>
+  </tr>
+  <tr>
+    <td>Thực hành</td>
+    <td>Nguyên tắc</td>
+  </tr>
+  <tr>
+    <td>Chỉ huy</td>
+    <td>Giao tiếp</td>
+  </tr>
+</table>
+</div>
+
+<div class="callout">
+<h4>KIỂM TRA NHANH</h4>
+<ul class="content-list">
+  <li>Lãnh đạo</li>
+  <li>Quản lý so với lãnh đạo</li>
+  <li>Tư duy phản biện</li>
+  <li>Trí tuệ cảm xúc</li>
+  <li>Lãnh đạo phục vụ</li>
+  <li>Quản lý và lãnh đạo tập trung so với phân tán</li>
+  <li>Dòng chảy giao tiếp</li>
+  <li>Các loại giao tiếp</li>
+  <li>Năm Cs của Giao Tiếp</li>
+  <li>Các mô hình giao tiếp</li>
+  <li>Lắng nghe chủ động</li>
+  <li>Khoảng cách thực thi</li>
+  <li>Khoảng cách đánh giá</li>
+  <li>Các rào cản giao tiếp</li>
+  <li>Công nghệ giao tiếp</li>
+  <li>Phương pháp giao tiếp</li>
+  <li>Kênh giao tiếp</li>
+  <li>Động lực nội tại so với ngoại tại</li>
+  <li>Các mô hình động lực
+    <ul class="content-list">
+      <li>Thuyết X, Y, Z</li>
+      <li>Tháp Nhu Cầu Maslow</li>
+      <li>Thuyết Nhu Cầu McClelland</li>
+      <li>Thuyết Hai Nhân Tố của Herzberg</li>
+    </ul>
+  </li>
+  <li>Các mô hình thành thạo kỹ năng
+    <ul class="content-list">
+      <li>Shu-Ha-Ri</li>
+      <li>Mô Hình Dreyfus về Tiếp Thu Kỹ Năng của Người Lớn</li>
+    </ul>
+  </li>
+  <li>Kỹ năng hình chữ T</li>
+  <li>Các mô hình lãnh đạo tình huống
+    <ul class="content-list">
+      <li>Lãnh đạo tình huống</li>
+      <li>OSCAR</li>
+    </ul>
+  </li>
+  <li>Các mô hình phát triển nhóm
+    <ul class="content-list">
+      <li>Thang Tuckman về Hình Thành Nhóm</li>
+      <li>Mô Hình Hiệu Suất Nhóm Drexler/Sibbet</li>
+    </ul>
+  </li>
+  <li>Niềm tin</li>
+  <li>Đàm phán</li>
+  <li>Ảnh hưởng</li>
+  <li>Đào tạo</li>
+  <li>Huấn luyện</li>
+  <li>Công nhận và khen thưởng</li>
+  <li>Quản lý xung đột</li>
+  <li>Mô hình xung đột</li>
+</ul>
+</div>
+
+<p>Lãnh đạo có độc lập với quản lý không? Bạn có thực hành cái này mà không thực hành cái kia khi quản lý một dự án không? Một quản lý dự án phải có khả năng vừa quản lý vừa lãnh đạo trong các dự án, với trọng tâm là lãnh đạo giúp nhóm và các bên liên quan khác hoạt động tốt nhất.</p>
+
+<h4 id="ch5-bai-tap-5-1">5.1 Bài Tập</h4>
+
+<p>Xem xét các hoạt động dưới đây và xác định chúng chủ yếu dựa trên lãnh đạo hay quản lý.</p>
+
+<ol class="content-list">
+  <li>Quản lý nguồn nhân lực</li>
+  <li>Lập kế hoạch nghề nghiệp</li>
+  <li>Theo dõi thời gian của nhóm</li>
+  <li>Công nhận thành viên nhóm</li>
+  <li>Phân công nhiệm vụ</li>
+  <li>Động não nhóm</li>
+  <li>Hội thảo lập kế hoạch</li>
+  <li>Đàm phán hợp đồng</li>
+</ol>
+
+<h5>Đáp Án</h5>
+
+<ol class="content-list">
+  <li>Quản lý</li>
+  <li>Lãnh đạo</li>
+  <li>Quản lý</li>
+  <li>Lãnh đạo</li>
+  <li>Quản lý</li>
+  <li>Lãnh đạo</li>
+  <li>Lãnh đạo</li>
+  <li>Quản lý</li>
+</ol>
+
+<h4 id="ch5-dinh-nghia-lanh-dao">Các Định Nghĩa Liên Quan Đến Lãnh Đạo</h4>
+
+<h4 id="ch5-tu-duy-phan-bien">Tư Duy Phản Biện</h4>
+
+<p>Trách nhiệm của quản lý dự án là áp dụng kỹ năng tư duy phản biện để quản lý dự án một cách hiệu quả. Giống như giải khối Rubik, quản lý dự án nên nhìn nhận dự án từ mọi góc độ, và di chuyển các mảnh đến đúng chỗ vào đúng thời điểm. Các lựa chọn khác nhau sẽ xuất hiện, cảm xúc sẽ nảy sinh, nhưng quản lý dự án suy nghĩ chiến lược về cách tạo ra kết quả tốt nhất. Tư duy phản biện bao gồm những điều sau:</p>
+
+<ul class="content-list">
+  <li>Thu thập thông tin không thiên vị</li>
+  <li>Phản hồi một cách logic, không đưa thêm cảm xúc vào tình huống</li>
+  <li>Giải quyết vấn đề bằng kỹ năng phân tích</li>
+  <li>Phân tích dữ liệu để giải quyết vấn đề và chọn hướng đi đúng</li>
+  <li>Nhận biết về các mối quan hệ và các mẫu liên quan</li>
+  <li>Xác định khi nào ai đó đang lý luận sai</li>
+</ul>
+
+<h4 id="ch5-tri-tue-cam-xuc">Trí Tuệ Cảm Xúc</h4>
+
+<p>Trí tuệ cảm xúc là một tập hợp kỹ năng giao tiếp cá nhân nổi tiếng gắn liền với thành công lãnh đạo lớn hơn. Nó mô tả khả năng nhận thức, đánh giá và kiểm soát cảm xúc trong bản thân và người khác. Ví dụ, một quản lý dự án có trí tuệ cảm xúc có khả năng thiết lập và duy trì các mối quan hệ tích cực bằng cách điều chỉnh giao tiếp và dự đoán nhu cầu của người khác. Họ hiểu cách cảm xúc có thể thúc đẩy hành vi của người khác và có khả năng sử dụng sự hiểu biết này khi giải quyết các vấn đề và mối quan tâm của nhóm. Các quản lý dự án có trí tuệ cảm xúc có khả năng sử dụng hiệu quả các kỹ thuật giải quyết xung đột (được thảo luận ở phần sau trong chương này) vì họ được coi là đáng tin cậy và công bằng.</p>
+
+<p>Trí tuệ cảm xúc là điều có thể học và phát triển được. Nó cho phép quản lý dự án khai thác tốt nhất ở đồng nghiệp và thành viên nhóm bằng cách khiến họ cảm thấy được đánh giá cao và quan trọng. Hình 5.1 cho thấy bốn phần tư của trí tuệ cảm xúc: tự nhận thức, tự quản lý, nhận thức xã hội và quản lý mối quan hệ. Các năng lực cốt lõi được liệt kê trong mỗi phần tư.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//91b07afd-e39c-413f-b29e-6e19fcfef13d/markdown_0/imgs/img_in_image_box_181_190_609_427.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A32Z%2F-1%2F%2Fe8780aab81d2856decac37081957cab69c4d126e9be5e473aa823c3f3f1b87bf" alt="Image" width="52%" /></div></div>
+
+<p>Động lực, hay hiểu điều gì thúc đẩy và truyền cảm hứng cho mọi người, thường được mô tả là thành phần thứ năm của trí tuệ cảm xúc.</p>
+
+<p><em>HÌNH 5.1 Các phần tư của trí tuệ cảm xúc</em></p>
+
+<h5 id="ch5-lanh-dao-phuc-vu">Lãnh Đạo Phục Vụ</h5>
+
+<p>So với lãnh đạo phân cấp truyền thống nơi nhấn mạnh vào quyền lực của nhà lãnh đạo, lãnh đạo phục vụ có nghĩa là nhà lãnh đạo chia sẻ quyền lực và giúp những người họ lãnh đạo thực hiện tốt nhất và phát triển. Một quản lý dự án với tư cách là nhà lãnh đạo phục vụ, ví dụ, đảm bảo các thành viên trong nhóm có thể thực hiện công việc hiệu quả để mang lại giá trị kinh doanh. Có những khía cạnh nhất định đối với loại lãnh đạo này và trọng tâm luôn là tối đa hóa năng suất của nhóm bằng cách loại bỏ các trở ngại và hỗ trợ công việc của nhóm. Nếu bạn thấy một câu hỏi về Agile trong kỳ thi liên quan đến lãnh đạo, hãy nghĩ đến lãnh đạo phục vụ.</p>
+
+<p>Có bốn nhiệm vụ chính mà một nhà lãnh đạo thực hiện trong vai trò phục vụ nhóm:</p>
+
+<ol class="content-list">
+  <li>Quản lý dự án sẽ đảm bảo các thành viên nhóm đi đúng hướng và không bị gián đoạn không cần thiết, và công việc không liên quan đến dự án sẽ không được thêm vào.</li>
+  <li>Trong cuộc họp standup hàng ngày, các thành viên nhóm nêu tên bất kỳ trở ngại nào. Đây có thể là các vấn đề liên quan đến tuân thủ hoặc tài liệu. Quản lý dự án làm việc để loại bỏ các trở ngại nhằm giữ cho nhóm tiến lên phía trước.</li>
+  <li>Nhà lãnh đạo phục vụ sẽ liên tục truyền đạt tầm nhìn dự án để các thành viên nhóm hiểu rõ về mục tiêu cuối cùng. Bằng cách đó, nhóm có thể đưa ra các quyết định tốt để tạo ra sản phẩm cuối cùng.</li>
+  <li>Nhà lãnh đạo phục vụ cung cấp cho nhóm tất cả những gì họ cần để năng suất và có động lực. Những yếu tố thiết yếu có thể bao gồm mọi thứ từ phần thưởng, thù lao, hỗ trợ hay khuyến khích.</li>
+</ol>
+
+<h5 id="ch5-quan-ly-tap-trung-phan-tan">Quản Lý Và Lãnh Đạo Tập Trung So Với Phân Tán</h5>
+
+<p>PMBOK® Guide phác thảo những khác biệt giữa lãnh đạo tập trung và phân tán. Các nhóm tập trung báo cáo cho một nhà lãnh đạo, chẳng hạn như quản lý dự án. Quản lý phân tán là khi nhóm theo sự lãnh đạo của nhiều cá nhân. Đây có thể là quản lý dự án cộng với đội quản lý dự án. Hoặc nhóm có thể tự tổ chức và không có một người cụ thể nào dẫn dắt nhóm mà họ chia sẻ trách nhiệm.</p>
+
+<h4 id="ch5-ky-nang-giao-tiep">Kỹ Năng Giao Tiếp</h4>
+
+<p>Giao tiếp là một phần quan trọng của lãnh đạo, và giao tiếp hiệu quả là nền tảng cho thành công của dự án. Bạn sẽ cần hiểu các khía cạnh giao tiếp sau đây cho kỳ thi.</p>
+
+<h4 id="ch5-dong-chay-giao-tiep">Dòng Chảy Giao Tiếp</h4>
+
+<p>Điều quan trọng là phải chú ý đến cách giao tiếp diễn ra trong một dự án.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//91b07afd-e39c-413f-b29e-6e19fcfef13d/markdown_1/imgs/img_in_image_box_84_248_143_298.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A33Z%2F-1%2F%2F6c5e1ee29119e77fdda3753a6ce648bbc042127332235c523bb213864ba88a82" alt="Image" width="7%" /></div></div>
+
+<p>Giao tiếp dự án xảy ra bên trong và bên ngoài nhóm dự án cốt lõi — theo chiều dọc (lên và xuống các cấp của tổ chức) và theo chiều ngang (giữa các đồng nghiệp). Hãy đảm bảo kế hoạch của bạn bao gồm giao tiếp theo tất cả các hướng, như được thể hiện trong hình 5.2.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//91b07afd-e39c-413f-b29e-6e19fcfef13d/markdown_1/imgs/img_in_image_box_186_316_646_522.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A33Z%2F-1%2F%2F4aa2567ac7949d38ff146fca98a41d65414e6d6d655f81a41e9d2b40ae933a1b" alt="Image" width="55%" /></div></div>
+
+<p><em>HÌNH 5.2 Dòng chảy giao tiếp trong một dự án</em></p>
+
+<h4 id="ch5-cac-loai-giao-tiep">Các Loại Giao Tiếp</h4>
+
+<p>Bước đầu tiên trong giao tiếp hiệu quả là chọn loại giao tiếp tốt nhất cho từng tình huống. Thông tin có thể được diễn đạt theo những cách khác nhau — chính thức hoặc không chính thức, bằng văn bản hoặc bằng lời nói. Bạn cần quyết định cách tiếp cận nào sẽ sử dụng cho từng trường hợp giao tiếp. Hãy đảm bảo bạn hiểu biểu đồ sau đây.</p>
+
+<div class="table-wrap">
+<table>
+  <tr>
+    <th>Loại Giao Tiếp</th>
+    <th>Khi Nào Sử Dụng</th>
+  </tr>
+  <tr>
+    <td>Văn bản chính thức</td>
+    <td>Điều lệ dự án, tài liệu lập kế hoạch, backlog, hợp đồng và báo cáo; có thể là bản vật lý và điện tử</td>
+  </tr>
+  <tr>
+    <td>Lời nói chính thức</td>
+    <td>Các cuộc họp được lên kế hoạch và thuyết trình với các bên liên quan; các cuộc họp standup và buổi họp hồi tưởng; có thể là trực tiếp hoặc từ xa</td>
+  </tr>
+  <tr>
+    <td>Văn bản không chính thức</td>
+    <td>Email, ghi chú viết tay, tin nhắn văn bản, nhắn tin tức thời, mạng xã hội và trang web</td>
+  </tr>
+  <tr>
+    <td>Lời nói không chính thức</td>
+    <td>Các cuộc họp không theo lịch, các cuộc trò chuyện và các cuộc thảo luận bình thường khác</td>
+  </tr>
+</table>
+</div>
+
+<h4 id="ch5-bai-tap-5-2">5.2 Bài Tập</h4>
+
+<p>Tự kiểm tra! Loại giao tiếp nào là tốt nhất trong các tình huống sau?</p>
+
+<h5>Tình Huống</h5>
+
+<ol class="content-list">
+  <li>Cập nhật các chiến lược giao tiếp dự án</li>
+  <li>Thuyết trình cho ban quản lý</li>
+  <li>Cố gắng giải quyết một vấn đề phức tạp</li>
+  <li>Cập nhật product backlog</li>
+  <li>Ghi chú về một cuộc trò chuyện qua điện thoại</li>
+  <li>Thực hiện thay đổi hợp đồng</li>
+  <li>Lên lịch một cuộc họp</li>
+  <li>Làm rõ một gói công việc</li>
+  <li>Yêu cầu thêm nguồn lực</li>
+  <li>Cố gắng tìm ra nguyên nhân gốc rễ của một vấn đề</li>
+  <li>Gửi email để yêu cầu làm rõ một vấn đề</li>
+  <li>Tổ chức tiệc mốc quan trọng</li>
+  <li>Tổ chức hội nghị nhà thầu trực tuyến</li>
+</ol>
+
+<h5>Đáp Án</h5>
+
+<p>Hãy tưởng tượng những điều này như là các câu hỏi tình huống. Các câu hỏi trong kỳ thi có thể có nhiều chữ hơn, nhưng chúng sẽ quy về các tình huống đơn giản như được mô tả trong bảng bài tập.</p>
+
+<ol class="content-list">
+  <li>Văn bản chính thức</li>
+  <li>Lời nói chính thức</li>
+  <li>Văn bản chính thức</li>
+  <li>Văn bản chính thức</li>
+  <li>Văn bản không chính thức</li>
+  <li>Văn bản chính thức</li>
+  <li>Văn bản không chính thức</li>
+  <li>Văn bản chính thức</li>
+  <li>Văn bản chính thức</li>
+  <li>Lời nói không chính thức</li>
+  <li>Văn bản không chính thức</li>
+  <li>Lời nói không chính thức</li>
+  <li>Văn bản chính thức</li>
+</ol>
+
+<h4 id="ch5-nam-cs-giao-tiep">Năm Cs Của Giao Tiếp</h4>
+
+<p>Một số phẩm chất nhất định của giao tiếp bằng văn bản làm tăng khả năng giao tiếp được diễn giải và hiểu đúng bởi người nhận. Các phẩm chất sau đây nên được quản lý dự án kết hợp để đảm bảo rằng các thông điệp có hiệu quả:</p>
+
+<ul class="content-list">
+  <li>Ngữ pháp và chính tả đúng (Correct grammar and spelling)</li>
+  <li>Súc tích và được soạn thảo tốt (Concise and well-crafted)</li>
+  <li>Rõ ràng và có mục đích (Clear and purposeful)</li>
+  <li>Mạch lạc và logic (Coherent and logical)</li>
+  <li>Dòng chảy từ ngữ và ý tưởng có kiểm soát (Controlled flow of words and ideas)</li>
+</ul>
+
+<h4 id="ch5-cac-mo-hinh-giao-tiep">Các Mô Hình Giao Tiếp</h4>
+
+<h3 id="ch5-giao-tiep-tuong-tac">Giao Tiếp Tương Tác</h3>
+
+<p>Mô hình giao tiếp cơ bản nhất chỉ đảm bảo rằng một thông điệp đã được truyền đi, nhưng giao tiếp dự án xuất sắc đòi hỏi một cách tiếp cận toàn diện hơn. Mô hình giao tiếp đầy đủ hơn — giao tiếp tương tác — bao gồm ba thành phần chính: người gửi, người nhận, và xác nhận rằng thông điệp được hiểu đúng. Mỗi thông điệp được mã hóa bởi người gửi và giải mã bởi người nhận. Người nhận xác nhận đã nhận được thông điệp, và cả người gửi lẫn người nhận đều có trách nhiệm xác nhận rằng thông điệp đã được người nhận diễn giải đúng.</p>
+
+<p>Các yếu tố như làm việc với các ngôn ngữ và văn hóa khác nhau là quan trọng, nhưng ngay cả nhận thức của người nhận về thông điệp, những sao lãng thường ngày, hoặc thiếu sự quan tâm cũng có thể ảnh hưởng đến cách người nhận giải mã thông điệp. Các mô hình giao tiếp thường gọi những yếu tố này là "nhiễu" vì chúng có thể cản trở khả năng hiểu thông điệp của người nhận.</p>
+
+<p>Có những mô hình giao tiếp phức tạp hơn, và các mô hình khác nhau có thể phù hợp với các dự án khác nhau hoặc các thành phần của một dự án. Hãy ghi nhớ mô hình giao tiếp tương tác, như được trình bày trong hình 5.3, khi trả lời các câu hỏi trong kỳ thi liên quan đến giao tiếp.</p>
+
+<h4 id="ch5-gui-giao-tiep-hieu-qua">Gửi Thông Điệp Giao Tiếp Hiệu Quả</h4>
+
+<p>Người gửi cần xác định phương pháp giao tiếp nào sẽ được dùng để truyền thông điệp, sau đó mã hóa thông điệp một cách cẩn thận và xác nhận rằng thông điệp đã được hiểu. Khi mã hóa thông điệp, người gửi cần lưu ý các yếu tố giao tiếp sau:</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//91b07afd-e39c-413f-b29e-6e19fcfef13d/markdown_3/imgs/img_in_image_box_65_584_121_637.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A34Z%2F-1%2F%2F61f13389266cedaab8e1a8e8fe1a0d9ad5565f7c5766f1f31543a443bba52927" alt="Image" width="6%" /></div></div>
+
+<ul class="content-list">
+  <li><strong>Phi ngôn ngữ</strong> — Một phần đáng kể trong giao tiếp trực tiếp là phi ngôn ngữ; điều này có thể bao gồm cử chỉ, nét mặt và ngôn ngữ cơ thể.</li>
+  <li><strong>Ngôn ngữ</strong> — Có hai khía cạnh quan trọng của giao tiếp bằng lời nói:
+    <ul class="content-list">
+      <li>Các từ và cụm từ mà người gửi chọn là những thành phần thiết yếu của thông điệp, nhưng ý nghĩa của chúng có thể bị mờ đi bởi các yếu tố phi ngôn ngữ đi kèm.</li>
+      <li>Cao độ và giọng điệu cũng giúp truyền tải một thông điệp được nói.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Để xác nhận thông điệp được hiểu, người gửi nên yêu cầu phản hồi bằng các câu hỏi như: "Bạn có thể diễn đạt lại những gì tôi vừa nói theo cách của bạn không?" Nhưng người nhận cũng có trách nhiệm đảm bảo rằng họ đã nhận và hiểu toàn bộ thông điệp.</p>
+
+<p>Điều này đặc biệt đúng trong các tình huống liên quan đến giao tiếp đa văn hóa. Người gửi và người nhận phải nhận thức được sự khác biệt văn hóa, bao gồm tuổi tác, giới tính và quốc tịch, và tính đến những yếu tố đó khi lập kế hoạch, truyền tải và diễn giải các thông điệp.</p>
+
+<p>Nếu một thông điệp không được hiểu, người nhận nên xác nhận thông điệp bằng cách nói điều gì đó như: "Tôi không chắc tôi hiểu. Bạn có thể giải thích lại không?" Giống như người gửi, người nhận cần mã hóa phản hồi của mình một cách cẩn thận, ghi nhớ những tác động tiềm ẩn của giao tiếp bằng lời và phi ngôn ngữ, khi đưa ra phản hồi cho người gửi, như được minh họa trong hình 5.3.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//91b07afd-e39c-413f-b29e-6e19fcfef13d/markdown_4/imgs/img_in_image_box_208_179_587_425.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A35Z%2F-1%2F%2Fab89f47d1798ceab4f8777b7444a2b92de50009904607f0657f863c3b28cb55a" alt="Image" width="46%" /></div></div>
+
+<div style="text-align: center;">HÌNH 5.3 Mô hình giao tiếp tương tác</div>
+
+<p>Những yếu tố này áp dụng cho cả các tương tác cá nhân lẫn giao tiếp dự án. Có thể lập kế hoạch không chỉ cho các loại hình giao tiếp sẽ được sử dụng, mà còn cho các cách để người gửi xác nhận người nhận đã diễn giải thông điệp đúng như dự định. Người quản lý dự án cung cấp hướng dẫn cho các bên liên quan về những gì cần truyền đạt và khi nào cần truyền đạt. Hướng dẫn này có thể được đưa vào các tài liệu lập kế hoạch, bảng thông tin, và bằng lời nói, đồng thời cũng có thể bao gồm chỉ dẫn về cách xác nhận sự hiểu biết của các thông điệp.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//91b07afd-e39c-413f-b29e-6e19fcfef13d/markdown_4/imgs/img_in_image_box_50_579_105_632.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A35Z%2F-1%2F%2F8ffc44a0c0377e3e9665c2fd39bfbb218ee07d112bc9c5c4b55678f02029865e" alt="Image" width="6%" /></div></div>
+
+<h4 id="ch5-lang-nghe-hieu-qua">Lắng Nghe Hiệu Quả</h4>
+
+<p>Vậy người nhận nên làm gì trong quá trình giao tiếp trực tiếp để giải mã thông điệp một cách chính xác và xác nhận rằng thông điệp đã được hiểu? Người nhận nên chú ý đến cử chỉ và nét mặt của người gửi, và cố gắng tập trung vào nội dung của thông điệp mà không bị sao lãng. Điều quan trọng là người nhận phải thực hành <strong>lắng nghe tích cực</strong>. Lắng nghe tích cực có nghĩa là người nhận xác nhận rằng họ đang lắng nghe, phản ánh lại chính xác những nhận xét của người nói, bày tỏ sự đồng ý hoặc không đồng ý, và yêu cầu làm rõ khi cần thiết.</p>
+
+<p>Khoảng cách trong giao tiếp có thể gây ra hiện tượng được gọi là <strong>hố thực thi</strong> hoặc <strong>hố đánh giá</strong>.</p>
+
+<p><strong>Hố thực thi</strong> liên quan đến mức độ một tính năng hoặc sản phẩm có thể được triển khai thực tế so với những gì người dùng muốn. Ví dụ, các nhà phát triển nội dung cho một trang web sở thú muốn người dùng có thể tìm thấy nội dung liên quan đến một tìm kiếm về một chủ đề cụ thể, chẳng hạn như "gấu." Các nhà phát triển nội dung muốn người dùng có thể xem hình ảnh, thông tin, bài đăng blog, v.v., chỉ với một cú nhấp chuột. Do lượng nội dung khổng lồ trong cơ sở dữ liệu của họ, các nhà phát triển phát hiện ra rằng người dùng sẽ phải chọn loại gấu mà họ muốn thêm thông tin. Đó là gấu bắc cực, gấu đen hay gấu xám? Có một khoảng cách, hay hố, giữa những gì các nhà phát triển nội dung hình dung và những gì thực sự có thể. Thao tác một cú nhấp thực ra cần nhiều hơn một cú nhấp.</p>
+
+<p><strong>Hố đánh giá</strong> là khoảng cách giao tiếp giữa người dùng và nhà phát triển. Nó giống như một trò chơi "điện thoại truyền tin." Những gì một người nghe khác với những gì họ nói với người tiếp theo. Điều này củng cố sự cần thiết phải có một mô hình giao tiếp tương tác tốt. Hình 5.4 cho thấy điều gì xảy ra khi có hố đánh giá trong dự án.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e98c78e5-bef9-4a3e-ad67-1b21a23866d8/markdown_0/imgs/img_in_image_box_153_169_676_407.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A16Z%2F-1%2F%2F3dd35358db977169ced0c584ff0bcfb9e2d211d0a0ac4002ffc1e0768d1d83f7" alt="Image" width="63%" /></div></div>
+
+<div style="text-align: center;">HÌNH 5.4 Hố Đánh Giá</div>
+
+<h4 id="ch5-vat-can-giao-tiep">Vật Cản Giao Tiếp</h4>
+
+<p>Giống như nhiễu trong kênh giao tiếp, các vật cản có thể dao động từ thiếu nhạy cảm văn hóa đến việc không cung cấp các thông điệp súc tích. Các vật cản gây ra sự giao tiếp sai và có thể dẫn đến bất đồng và nhầm lẫn. Kỳ thi thường bao gồm một hoặc hai câu hỏi hỏi: "Điều gì có thể cản trở giao tiếp?" hoặc "Sự việc sau đây đã xảy ra; điều gì không ổn?" Câu trả lời đúng có thể bao gồm:</p>
+
+<ul class="content-list">
+  <li>Môi trường xung quanh ồn ào</li>
+  <li>Thách thức ngôn ngữ</li>
+  <li>Khoảng cách giữa những người đang cố giao tiếp</li>
+  <li>Văn hóa</li>
+  <li>Mã hóa thông điệp không đúng cách</li>
+</ul>
+
+<h4 id="ch5-su-dung-cong-nghe-giao-tiep">Sử Dụng Thành Thạo Công Nghệ Giao Tiếp</h4>
+
+<p>Giao tiếp có thể diễn ra theo nhiều cách: trực tiếp hoặc ảo, qua điện thoại, bằng văn bản, qua tin nhắn tức thời hoặc tin nhắn văn bản, và qua email. Các phương tiện giao tiếp này được gọi chung là <strong>công nghệ giao tiếp</strong>. Một khía cạnh quan trọng của lập kế hoạch giao tiếp là xác định công nghệ tối ưu để truyền đạt thông tin. Agile nhấn mạnh giao tiếp trực tiếp nhiều hơn, trong khi giao tiếp bằng văn bản chính thức hơn là cần thiết khi sử dụng phương pháp dự đoán. Bạn có thể sử dụng danh sách câu hỏi sau để xác định công nghệ phù hợp dựa trên tình huống:</p>
+
+<ul class="content-list">
+  <li>Truyền đạt thông tin này trực tiếp hay ảo sẽ tốt hơn?</li>
+  <li>Truyền đạt thông tin qua email hay điện thoại sẽ tốt hơn?</li>
+  <li>Công nghệ nào mà nhóm quen thuộc và thoải mái?</li>
+  <li>Thông tin cần được truyền đạt nhanh chóng và thường xuyên đến mức nào?</li>
+  <li>Có các vấn đề bảo mật hoặc bảo mật cần được xem xét khi chọn phương tiện truyền đạt thông tin không?</li>
+  <li>Một bức thư gửi qua bưu điện có nhận được sự chú ý nhiều hơn không?</li>
+</ul>
+
+<p>Ngoài ra, hãy xem xét độ phức tạp của thông tin cần được truyền đạt. Alistair Cockburn đã phát triển một mô hình hiệu quả giao tiếp để so sánh các phương pháp giao tiếp về tính hiệu quả và độ phong phú, hay "nhiệt độ" của chúng. Hình 5.5 dựa trên mô hình của Cockburn. Chú ý hai yếu tố quan trọng — tính tương tác và mật độ thông tin — đối với một số phương pháp giao tiếp. Khái niệm này đặc biệt quan trọng trong môi trường Agile nơi thông tin phức tạp được truyền đạt theo những cách ít chính thức hơn.</p>
+
+<p>Tính tương tác và mật độ thông tin cho biết khả năng của một phương pháp giao tiếp trong việc truyền tải thông tin phức tạp một cách hiệu quả so với các phương pháp khác. Trong hình 5.5, giao tiếp dựa trên giấy tờ có tính tương tác và mật độ thông tin thấp nhất. Các tài liệu viết tốn nhiều thời gian để tạo ra và phải được viết sao cho tất cả các bên liên quan có thể hiểu thông tin, bất kể chuyên môn của họ. Tài liệu giấy cũng có băng thông thấp, vì vậy chúng không truyền đạt được giọng điệu cảm xúc, cảm giác, hoặc các giả định ngầm.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e98c78e5-bef9-4a3e-ad67-1b21a23866d8/markdown_1/imgs/img_in_image_box_167_208_629_461.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A16Z%2F-1%2F%2F8d919a9e830c4c5d41e2281b09cab2361d7f7b87c09d982bb63e6fe7afca7784" alt="Image" width="56%" /></div></div>
+
+<div style="text-align: center;">HÌNH 5.5 Hiệu quả truyền thông tin qua công nghệ</div>
+
+<p>Ở đầu kia của thang đo, giao tiếp mặt đối mặt tại bảng trắng điện tử hoặc công nghệ thấp có hiệu quả cao nhất. Những người tham gia có thể trò chuyện và vẽ ý tưởng của họ lên bảng trắng. Họ có thể sử dụng các phím tắt cho các khái niệm đã được hiểu rõ để tăng tốc độ trao đổi thông tin, và họ có thể đặt câu hỏi cho nhau và nhận phản hồi ngay lập tức. Giao tiếp phi ngôn ngữ như cử chỉ, nét mặt và giọng điệu cũng được bao gồm.</p>
+
+<p>Giao tiếp mặt đối mặt cho phép truyền đạt nhiều thông tin nhất trong một khoảng thời gian nhất định, nhưng nó kém tiện lợi hơn các hình thức giao tiếp khác. Bạn có thể thấy cách tiếp cận này sẽ hữu ích như thế nào cho nhóm dự án, nhưng có thể không thể thực hiện với tất cả các bên liên quan trong một dự án? Hãy suy nghĩ về cách bạn sẽ sử dụng mô hình này cho các dự án thực tế của bạn.</p>
+
+<h4 id="ch5-phuong-phap-giao-tiep">Phương Pháp Giao Tiếp</h4>
+
+<p>Các phương pháp giao tiếp có thể được nhóm thành các loại sau: tương tác, đẩy và kéo. Khi chọn phương pháp giao tiếp, bạn nên xem xét liệu có cần phản hồi hay chỉ cần cung cấp thông tin là đủ. Khi có thể, việc thu hút các bên liên quan vào quyết định cuối cùng về phương pháp nào sẽ đáp ứng nhu cầu giao tiếp của họ là điều đáng làm. Những quyết định như vậy sẽ hỗ trợ các nỗ lực gắn kết bên liên quan trong dự án.</p>
+
+<ul class="content-list">
+  <li><strong>Giao tiếp tương tác</strong> — Phương pháp này có tính qua lại và liên quan đến hai hay nhiều người. Một người cung cấp thông tin; những người khác nhận và sau đó phản hồi lại thông tin đó. Ví dụ về giao tiếp tương tác bao gồm các cuộc trò chuyện, cuộc gọi điện thoại, các cuộc họp, tin nhắn tức thời và các cuộc gọi video.</li>
+  <li><strong>Giao tiếp đẩy</strong> — Phương pháp này liên quan đến một luồng thông tin một chiều. Người gửi cung cấp thông tin cho những người cần nó nhưng không mong đợi phản hồi từ người nhận. Ví dụ về giao tiếp đẩy là các báo cáo trạng thái, cập nhật qua email, blog và thông báo nội bộ công ty.</li>
+  <li><strong>Giao tiếp kéo</strong> — Trong phương pháp này, người gửi đặt thông tin tại một vị trí trung tâm. Người nhận sau đó có trách nhiệm lấy thông tin từ vị trí đó. Phương pháp này thường được sử dụng để phân phối các tài liệu lớn hoặc cung cấp thông tin cho nhiều người.</li>
+</ul>
+
+<h4 id="ch5-kenh-giao-tiep">Kênh Giao Tiếp</h4>
+<p>Kênh giao tiếp có thể được hiểu là số lượng đường truyền thông tin giữa các bên. Khi bạn thêm một người vào nhóm, liệu số kênh giao tiếp có chỉ tăng thêm một không? Không. Thực tế, số kênh giao tiếp tăng lên đáng kể. Vì vậy, nhu cầu giao tiếp có thể tăng nhanh chóng với mỗi bên liên quan được thêm vào.</p>
+<p>Số kênh giao tiếp có thể được tính bằng công thức sau:</p>
+<div class="highlight">
+<p><strong>n(n − 1) / 2</strong> &nbsp;&nbsp;&nbsp; trong đó <strong>n = số lượng bên liên quan</strong></p>
+</div>
+<p>Lưu ý rằng n bằng tổng số bên liên quan. Đối với kỳ thi, hãy chắc chắn hiểu khái niệm này và biết cách tính số kênh giao tiếp.</p>
+<p>Hãy thực hành công thức này với một ví dụ. Nếu bạn có bốn người trong dự án và thêm một người nữa, bạn có thêm bao nhiêu kênh giao tiếp? Để có câu trả lời, bạn tính số kênh giao tiếp với nhóm bốn người và nhóm năm người, sau đó lấy hiệu để tìm sự khác biệt.</p>
+<p><strong>Ví dụ:</strong> Với nhóm bốn người: tính 4 nhân 3 (tức là n - 1) được 12, rồi chia cho 2 để ra đáp án là 6.</p>
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e98c78e5-bef9-4a3e-ad67-1b21a23866d8/markdown_2/imgs/img_in_image_box_190_383_383_592.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A17Z%2F-1%2F%2F3cad87dc9403eb58951e7bf91ac28f52cf3a1302d7196f4c1ea2d05af16d62c3" alt="Image" width="23%" /></div></div>
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e98c78e5-bef9-4a3e-ad67-1b21a23866d8/markdown_2/imgs/img_in_image_box_476_431_583_510.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A17Z%2F-1%2F%2F4a47914a5e202faf7d4a7a5cdc09b906d51e3fca608fd0397754d93b78cf4875" alt="Image" width="13%" /></div></div>
+<p><strong>Ví dụ:</strong> Với nhóm năm người: tính 5 nhân 4 (tức là n - 1) được 20, rồi chia cho 2 để ra đáp án là 10. Hiệu giữa 10 và 6 là 4. Đơn giản!</p>
+<div class="img-center"><p style="text-align:center;"><em>HÌNH 5.7 Nếu bạn thêm một người nữa, bạn có thêm bao nhiêu?</em></p></div>
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e98c78e5-bef9-4a3e-ad67-1b21a23866d8/markdown_2/imgs/img_in_image_box_61_650_120_702.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A17Z%2F-1%2F%2F6bc880a542d6983c5628ba230305d9f4ea3c12c34716f0a438423363fdaa5b1d" alt="Image" width="7%" /></div></div>
+<div class="callout">
+<p>Bạn có nghĩ câu trả lời là 10 không? Hãy cẩn thận với cách diễn đạt của các câu hỏi thi. Câu hỏi này không hỏi tổng số kênh bạn có; nó hỏi bạn có thêm bao nhiêu kênh. Cũng lưu ý điều này: Thật ngạc nhiên khi số kênh giao tiếp tăng lên bao nhiêu khi bạn thêm một người vào nhóm! Công thức đơn giản nhưng không trực quan. Dù bạn có phải tính công thức này trong kỳ thi hay không, bạn vẫn cần hiểu các hàm ý của nó.</p>
+</div>
+<p>Tôi hiểu các hàm ý của nó.</p>
+
+<h4 id="ch5-mo-hinh-dong-luc">Các Mô Hình Động Lực</h4>
+<p>Làm sao bạn có thể duy trì sự hợp tác và động lực của nhóm nếu bạn không hiểu điều gì thúc đẩy các thành viên? Ở đây, chúng ta sẽ xem xét một số mô hình lý thuyết về động lực. Bạn có thể cần nhận diện một số lý thuyết này trong kỳ thi, hoặc chúng có thể xuất hiện như các lựa chọn đáp án.</p>
+
+<h4 id="ch5-dong-luc-noi-ngoai-tai">Động Lực Nội Tại và Ngoại Tại</h4>
+<p>Theo Daniel Pink, các yếu tố động lực ngoại tại (bên ngoài) như lương bổng là những yếu tố thúc đẩy có giới hạn và ngắn hạn. Một khi một người được trả thù lao xứng đáng cho công việc của họ, chính các yếu tố nội tại (bên trong) mới thúc đẩy con người. May mắn thay, đây là những yếu tố mà bạn có thể tác động nhiều nhất với tư cách là một quản lý dự án.</p>
+<p>Pink chia các yếu tố động lực nội tại thành ba nhóm: tự chủ, thành thạo, và mục đích.</p>
+<ul class="content-list">
+  <li><strong>Tự chủ:</strong> Yếu tố động lực này đáp ứng mong muốn của con người được tự điều hành cuộc sống của mình. Ví dụ: giờ làm việc linh hoạt, làm việc từ xa, và khả năng ảnh hưởng đến việc tham gia vào dự án nào. Mặc dù các nhóm tự quản thường gắn liền với Agile, lãnh đạo tốt trong bất kỳ dự án nào cũng có nghĩa là mọi người trong bất kỳ nhóm dự án nào cũng nên có thể tự quản lý công việc của mình.</li>
+  <li><strong>Thành thạo:</strong> Đây là mong muốn được cải thiện, xuất sắc, học hỏi và làm tốt công việc. Bạn nên có thể cho rằng những thành viên bạn làm việc cùng mong muốn điều này và sau đó làm những gì bạn có thể để giúp họ phát huy tốt nhất.</li>
+  <li><strong>Mục đích:</strong> Con người cũng có nhu cầu nội tại về ý nghĩa và mục đích. Đảm bảo một nhóm gắn kết, tầm nhìn dự án rõ ràng và hiểu biết chung sẽ giúp đáp ứng mục tiêu này, cũng như đơn giản là cho mọi người biết họ đang làm tốt và tạo ra sự khác biệt.</li>
+</ul>
+
+<h5>Các Lý Thuyết X, Y và Z</h5>
+<p>McGregor đã tạo ra các mô hình Lý thuyết X và Y về động lực của người lao động và đề xuất các phong cách quản lý tối ưu liên quan. Maslow bổ sung chiều Lý thuyết Z, và Ouchi phát triển phiên bản Lý thuyết Z của riêng mình.</p>
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e98c78e5-bef9-4a3e-ad67-1b21a23866d8/markdown_3/imgs/img_in_image_box_67_270_121_322.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A17Z%2F-1%2F%2F06803ee2e9584dc45dc462dbccc70225a71a2bddfda3fcc05bfbdca125abbeaa" alt="Image" width="6%" /></div></div>
+<p><strong>Lý thuyết X:</strong> Dựa vào hình ảnh đầu tiên bên phải, hãy đoán xem Lý thuyết X là gì.</p>
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e98c78e5-bef9-4a3e-ad67-1b21a23866d8/markdown_3/imgs/img_in_image_box_675_245_751_314.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A17Z%2F-1%2F%2F0b6541f11798007dc1b13121c343ca354aeace47303e0b6668b44e5f84640e41" alt="Image" width="9%" /></div></div>
+<p><strong>Đáp án:</strong> Các quản lý chấp nhận lý thuyết này tin rằng mọi người cần được giám sát từng phút. Họ cho rằng nhân viên không có năng lực, né tránh trách nhiệm và né tránh công việc bất cứ khi nào có thể.</p>
+<p><strong>Lý thuyết Y:</strong> Dựa vào hình ảnh thứ hai bên phải, hãy đoán xem Lý thuyết Y là gì.</p>
+<p><strong>Đáp án:</strong> Các quản lý chấp nhận lý thuyết này tin rằng mọi người sẵn sàng làm việc mà không cần giám sát và muốn đạt được thành tích. Họ cho rằng nhân viên có thể tự định hướng nỗ lực của mình. Theo quan điểm của PMI, đây chính là cách các thành viên nhóm hành xử, vì vậy trừ khi được chỉ dẫn khác, hãy giả định theo quan điểm này khi trả lời các câu hỏi thi.</p>
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e98c78e5-bef9-4a3e-ad67-1b21a23866d8/markdown_3/imgs/img_in_image_box_674_347_752_422.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A18Z%2F-1%2F%2Fec845b634b505c109070caeca5e9e529effbdd0a1d7265519514ae3b202ff40c" alt="Image" width="9%" /></div></div>
+<p><strong>Lý thuyết Z:</strong> Maslow đề xuất chiều Z là vượt trên định hướng mục tiêu hay thậm chí có động lực nội tại. Ở đây, động lực gắn liền với sự tự nhận thức, các giá trị và sứ mệnh cao cả hơn.</p>
+<p>Phiên bản Lý thuyết Z của Ouchi tập trung vào phúc lợi của nhân viên và gia đình họ — một công việc lâu dài chăm lo cho họ sẽ thúc đẩy tinh thần và năng suất.</p>
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e98c78e5-bef9-4a3e-ad67-1b21a23866d8/markdown_3/imgs/img_in_image_box_674_485_752_567.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A18Z%2F-1%2F%2F83df6731a4bc10674ca53610ec822f768b45b9d31d45bf4f5b1cf89ec7cc44c9" alt="Image" width="9%" /></div></div>
+
+<h4 id="ch5-thap-nhu-cau-maslow">Tháp Nhu Cầu Maslow</h4>
+<p>Thông điệp của Maslow là động lực cao nhất của hầu hết mọi người là được đóng góp, phát triển và sử dụng kỹ năng của mình. Maslow gọi điều này là "tự hiện thực hóa." Ông đã tạo ra một hệ thống phân cấp nhu cầu để giải thích cách con người được thúc đẩy và nêu rằng một khi các nhu cầu ở đáy kim tự tháp được đáp ứng, mọi người sẽ tiến lên cấp độ tiếp theo. Một người không thể lên cấp độ tiếp theo cho đến khi các cấp độ bên dưới được thỏa mãn như thể hiện trong hình 5.8.</p>
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//e98c78e5-bef9-4a3e-ad67-1b21a23866d8/markdown_3/imgs/img_in_image_box_86_692_673_940.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A18Z%2F-1%2F%2Fc233be04175e6a9262624880f1430a71ca3881e506382223cbf978b4450ba27e" alt="Image" width="71%" /></div></div>
+<p style="text-align:center;"><em>HÌNH 5.8 Minh họa tháp nhu cầu của Maslow</em></p>
+
+<h4 id="ch5-ly-thuyet-mcclelland">Lý Thuyết Nhu Cầu của McClelland (hay Lý Thuyết Nhu Cầu Mắc Phải)</h4>
+<p>Lý thuyết này cho rằng con người được thúc đẩy nhiều nhất bởi một trong ba nhu cầu. Một người thuộc nhóm nhu cầu này sẽ được quản lý khác với người thuộc nhóm nhu cầu khác. Bảng sau giải thích ba nhóm nhu cầu.</p>
+<div class="table-wrap">
+<table>
+  <tr>
+    <td style="text-align:center;"><strong>Nhu Cầu Chính</strong></td>
+    <td style="text-align:center;"><strong>Phong Cách Hành Vi</strong></td>
+  </tr>
+  <tr>
+    <td style="text-align:center;">Thành tích</td>
+    <td>Những người này nên được giao các dự án có thách thức nhưng có thể đạt được. Họ thích được công nhận.</td>
+  </tr>
+  <tr>
+    <td style="text-align:center;">Liên kết</td>
+    <td>Những người này làm việc tốt nhất khi hợp tác với người khác. Họ tìm kiếm sự chấp thuận hơn là sự công nhận.</td>
+  </tr>
+  <tr>
+    <td style="text-align:center;">Quyền lực</td>
+    <td>Những người có nhu cầu quyền lực hướng về xã hội, thay vì hướng về cá nhân, là những nhà lãnh đạo hiệu quả và nên được phép quản lý người khác. Những người này thích tổ chức và ảnh hưởng đến người khác.</td>
+  </tr>
+</table>
+</div>
+
+<h4 id="ch5-ly-thuyet-herzberg">Lý Thuyết Hai Nhân Tố về Động Lực của Herzberg</h4>
+<p>Lý thuyết của Herzberg đề cập đến các yếu tố vệ sinh và các tác nhân tạo động lực.</p>
+<p><strong>Các Yếu Tố Vệ Sinh:</strong> Các yếu tố vệ sinh kém có thể phá hủy động lực, nhưng việc cải thiện chúng, trong hầu hết các trường hợp, sẽ không cải thiện được động lực. Các yếu tố vệ sinh không đủ để tạo động lực cho mọi người. Ví dụ về các yếu tố vệ sinh bao gồm:</p>
+<ul class="content-list">
+  <li>Điều kiện làm việc</li>
+  <li>Các mối quan hệ tại nơi làm việc</li>
+  <li>Lương bổng</li>
+  <li>An toàn và bảo đảm công việc</li>
+  <li>Cuộc sống cá nhân</li>
+  <li>Địa vị</li>
+</ul>
+<p><strong>Các Tác Nhân Tạo Động Lực:</strong> Giả sử các yếu tố vệ sinh được thỏa mãn, mọi người được thúc đẩy, có năng lượng và gắn kết bởi chính công việc, bao gồm các yếu tố như:</p>
+<ul class="content-list">
+  <li>Trách nhiệm</li>
+  <li>Phát triển chuyên môn</li>
+  <li>Tự hiện thực hóa</li>
+  <li>Sự công nhận</li>
+</ul>
+<p>Vì vậy, bài học ở đây là tạo động lực cho mọi người tốt nhất bằng cách khen thưởng và tạo cơ hội phát triển. Việc giải quyết vấn đề của cá nhân hay nhóm có thể có nghĩa là quản lý dự án phải đảm bảo một số nhu cầu cơ bản được đáp ứng trong dự án. Sau đó, họ có thể sử dụng phần thưởng, sự công nhận và các vai trò, trách nhiệm được giao cho cá nhân và nhóm.</p>
+
+<h4 id="ch5-mo-hinh-thanh-thao-ky-nang">Các Mô Hình Thành Thạo Kỹ Năng</h4>
+
+<h4 id="ch5-shu-ha-ri">Mô Hình Shu-Ha-Ri về Thành Thạo Kỹ Năng</h4>
+<p>Mô hình shu-ha-ri xuất phát từ việc luyện võ thuật. Nó đã được các nhà thực hành Agile áp dụng như một cách để tiến qua ba cấp độ làm chủ một kỹ năng hoặc quy trình mới. Ba cấp độ như sau:</p>
+<ol class="content-list">
+  <li><strong>Shu:</strong> Đây là nơi các quy tắc được học và tuân thủ — shu có nghĩa là "giữ gìn, bảo vệ hoặc duy trì"</li>
+  <li><strong>Ha:</strong> Đây là khi các quy tắc đã được làm chủ thông qua thực hành — ha có nghĩa là "tách rời hoặc thoát ra"</li>
+  <li><strong>Ri:</strong> Đây là giai đoạn cuối khi các quy tắc trở thành bản năng thứ hai. Những người hành nghề ở giai đoạn này cũng có thể dạy và dẫn dắt người khác — ri có nghĩa là "vượt ra ngoài hoặc vượt qua"</li>
+</ol>
+<p>Người lãnh đạo trong một nhóm Agile sử dụng mô hình này để phát triển một nhóm hiệu suất cao.</p>
+
+<h4 id="ch5-mo-hinh-dreyfus">Mô Hình Dreyfus về Tiếp Thu Kỹ Năng của Người Trưởng Thành</h4>
+<p>Mô hình này đề xuất rằng người trưởng thành học các kỹ năng mới qua năm giai đoạn khác nhau: người mới bắt đầu, người mới bắt đầu nâng cao, người có năng lực, người thành thạo và chuyên gia. Giống như mô hình shu-ha-ri, ý tưởng là kiến thức được tích lũy khi người đó tiến qua từng giai đoạn. Như trong hình 5.9, cam kết, kỹ năng ra quyết định và quan điểm cũng thay đổi khi người đó tiến qua các giai đoạn. Ở đây, bạn có thể thấy rằng ở hàng trên cùng, người mới bắt đầu với cam kết tách rời, và cam kết đó phát triển dần. Ở hàng thứ hai, kỹ năng ra quyết định bắt đầu ở mức phân tích và chuyển sang trực giác khi chuyên môn được tích lũy. Ở hàng dưới cùng, quan điểm thay đổi từ không có hoặc không có ý kiến, đến kinh nghiệm. Người đó trở thành chuyên gia trong quan điểm của mình.</p>
+
+<h4 id="ch5-ky-nang-hinh-chu-t">Kỹ Năng Hình Chữ T</h4>
+<p>Một phép ẩn dụ để đánh giá bộ kỹ năng cần thiết cho các thành viên nhóm cá nhân là gọi họ là hình chữ I hoặc hình chữ T. Các thành viên nhóm hình chữ I chuyên sâu</p>
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//088a67d1-d2e1-46f4-a609-54a238a74760/markdown_0/imgs/img_in_image_box_372_117_727_406.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A04Z%2F-1%2F%2Fb42f1bf09b5c4345a444aec5eb208f0dea4720ca819ce78307c121db99b4d6eb" alt="Image" width="43%" /></div></div>
+<p style="text-align:center;"><em>HÌNH 5.9 Mô Hình Dreyfus về Thành Thạo Kỹ Năng</em></p>
+<p>vào một lĩnh vực, trong khi các thành viên nhóm hình chữ T có phạm vi kỹ năng rộng. Trong các dự án hybrid và Agile nơi công việc được thực hiện theo vòng lặp và gia tăng, các nhóm ưa thích những người hình chữ T có thể giúp chia sẻ khối lượng công việc hoặc thích nghi với nhu cầu thay đổi của dự án. Những người hình chữ T giúp tối ưu hóa giá trị cho dự án bằng cách giảm điểm nghẽn cổ chai.</p>
+<div class="callout tip">
+<p><strong>Lưu ý:</strong> Mặc dù mô hình này trong quản lý dự án hiện đang gắn liền với các dự án hybrid và Agile, thực tế là các thành viên nhóm trong tất cả các dự án và nhân viên nói chung đang được yêu cầu mở rộng bộ kỹ năng của họ để nhiều thành viên nhóm hơn sẽ có bộ kỹ năng hình chữ T. Quan trọng nhất cần lưu ý ở đây là những người có bộ kỹ năng hình chữ T xuất sắc trong năng lực cốt lõi của họ. Các chuyên gia vẫn cần thiết: do đó có thuật ngữ Agile là "chuyên gia tổng hợp" (generalizing specialists).</p>
+</div>
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//088a67d1-d2e1-46f4-a609-54a238a74760/markdown_0/imgs/img_in_image_box_661_469_712_527.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A04Z%2F-1%2F%2Ffe9aeaadc4b86559af2f1aab6003db26336718f34d4c1ee964536d9516c9c52e" alt="Image" width="6%" /></div></div>
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//088a67d1-d2e1-46f4-a609-54a238a74760/markdown_0/imgs/img_in_image_box_163_635_616_902.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A04Z%2F-1%2F%2F9fa67cf5b4373ae85ec133ff57edade052b11d8af2f8279ef3d47c7e6bc85f98" alt="Image" width="55%" /></div></div>
+<p style="text-align:center;"><em>HÌNH 5.10 Các thành viên nhóm hình chữ I và hình chữ T</em></p>
+
+<h4 id="ch5-mo-hinh-lanh-dao-tinh-huong">Các Mô Hình Lãnh Đạo Tình Huống</h4>
+<p>Lãnh đạo đòi hỏi các cách tiếp cận khác nhau trong các tình huống khác nhau, vì vậy tất nhiên bạn phải điều chỉnh cách tiếp cận giao tiếp cá nhân và lãnh đạo tùy thuộc vào tình huống. Có nhiều mô hình lãnh đạo tình huống, nhưng ở đây chúng ta đề cập đến hai mô hình có trong PMBOK: mô hình Situational Leadership II do Ken Blanchard đề xuất, và mô hình OSCAR của Whittlesworth và Gilbert.</p>
+
+<h4 id="ch5-situational-leadership-ii">Situational Leadership II</h4>
+<p>Hãy nghĩ về nhiều người mà bạn tương tác. Bạn có lẽ có cảm giác trực giác về cách tương tác với họ dựa trên một số điều bạn có thể biết về họ: cách họ tiếp nhận thông tin, cách họ phản ứng với mọi thứ nói chung, và các yếu tố liên quan đến nội dung của những gì bạn đang truyền đạt. Mô hình Situational Leadership II của Blanchard rất hữu ích trong quản lý dự án vì nó tập trung vào hai yếu tố: năng lực và cam kết. Khi bạn tìm hiểu năng lực của một người và biết cách giúp họ liên tục cải thiện kỹ năng và khả năng, và bạn biết cam kết của họ vững chắc, cách tiếp cận lãnh đạo của bạn sẽ phát triển từ chỉ đạo rồi huấn luyện, đến hỗ trợ và cuối cùng là ủy quyền.</p>
+<ul class="content-list">
+  <li><strong>Năng lực:</strong> Biến số này đúng như bạn kỳ vọng: là sự kết hợp của kiến thức, kỹ năng và năng lực.</li>
+  <li><strong>Cam kết:</strong> Yếu tố này liên quan đến sự tự tin và động lực của một người.</li>
+</ul>
+
+<h5 id="ch5-mo-hinh-oscar">Mô Hình OSCAR</h5>
+
+
+</main>
+
+<button id="back-top" aria-label="Về đầu trang">↑</button>
+
+<script>
+// Progress bar
+const pb=document.getElementById('progress-bar');
+function updPB(){const d=document.documentElement;pb.style.width=Math.min((d.scrollTop/(d.scrollHeight-d.clientHeight))*100,100)+'%'}
+window.addEventListener('scroll',updPB,{passive:true});
+
+// Back to top
+const bt=document.getElementById('back-top');
+window.addEventListener('scroll',()=>{bt.style.opacity=scrollY>400?'1':'0';},{passive:true});
+bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+// Mobile menu
+const mb=document.getElementById('menu-btn'),sb=document.getElementById('sidebar');
+mb.addEventListener('click',()=>sb.classList.toggle('open'));
+document.addEventListener('click',e=>{if(!sb.contains(e.target)&&e.target!==mb)sb.classList.remove('open')});
+
+// Active TOC highlight on scroll
+const tocLinks=document.querySelectorAll('#sidebar-toc a[href^="#"]');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      tocLinks.forEach(a=>a.classList.remove('active'));
+      const a=document.querySelector('#sidebar-toc a[href="#'+e.target.id+'"]');
+      if(a){a.classList.add('active');a.scrollIntoView({block:'nearest',behavior:'smooth'})}
+    }
+  })
+},{rootMargin:'-20% 0px -75% 0px'});
+document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
+
+// ── THEME + READING POSITION ───────────────────────────
+(function(){
+  var THEME_KEY='rita_theme', READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var chapNum=m?m[1]:null;
+
+  // Build & inject theme toggle button
+  var hdr=document.getElementById('sidebar-header');
+  if(hdr){
+    var btn=document.createElement('button');
+    btn.id='theme-btn';
+    var curTheme=document.documentElement.getAttribute('data-theme')||'light';
+    btn.textContent=curTheme==='dark'?'☀':'🌙';
+    btn.title='Giao diện sáng / tối';
+    hdr.appendChild(btn);
+    btn.addEventListener('click',function(){
+      var next=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+      document.documentElement.setAttribute('data-theme',next);
+      localStorage.setItem(THEME_KEY,next);
+      btn.textContent=next==='dark'?'☀':'🌙';
+    });
+  }
+
+  if(!chapNum) return;
+
+  // Save last chapter visited
+  try{
+    var rd=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    rd.lastChap='rita_chap'+chapNum;
+    if(!rd.scrollPos) rd.scrollPos={};
+    localStorage.setItem(READ_KEY,JSON.stringify(rd));
+  }catch(e){}
+
+  // Restore scroll position
+  try{
+    var rdR=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    var savedPos=rdR.scrollPos&&rdR.scrollPos[chapNum]||0;
+    if(savedPos>200) setTimeout(function(){window.scrollTo(0,savedPos);},120);
+  }catch(e){}
+
+  // Save scroll position (debounced 600ms)
+  var saveT;
+  window.addEventListener('scroll',function(){
+    clearTimeout(saveT);
+    saveT=setTimeout(function(){
+      try{
+        var r2=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+        if(!r2.scrollPos) r2.scrollPos={};
+        r2.scrollPos[chapNum]=window.scrollY;
+        r2.lastChap='rita_chap'+chapNum;
+        localStorage.setItem(READ_KEY,JSON.stringify(r2));
+      }catch(e){}
+    },600);
+  },{passive:true});
+})();
+
+// ── HIGHLIGHT / NOTES SYSTEM ────────────────────────────
+(function(){
+  var READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  if(!m) return;
+  var chapNum=m[1];
+  var HL_KEY='rita_hl_'+chapNum;
+
+  // ── STORAGE ──
+  function loadHL(){try{return JSON.parse(localStorage.getItem(HL_KEY)||'[]')}catch(e){return[]}}
+  function saveHL(arr){localStorage.setItem(HL_KEY,JSON.stringify(arr));window.__ritaSyncTrigger&&window.__ritaSyncTrigger();}
+  function genId(){return 'h'+Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
+
+  // ── XPATH HELPERS ──
+  var mainEl=document.getElementById('main');
+  function getXPath(node){
+    if(!node||node===mainEl) return '.';
+    var parts=[];
+    var cur=node.nodeType===3?node.parentNode:node;
+    while(cur&&cur!==mainEl&&cur!==document.body){
+      var tag=cur.tagName.toLowerCase();
+      var idx=1,sib=cur.previousElementSibling;
+      while(sib){if(sib.tagName&&sib.tagName.toLowerCase()===tag)idx++;sib=sib.previousElementSibling;}
+      parts.unshift(tag+'['+idx+']');
+      cur=cur.parentElement;
+    }
+    return parts.join('/');
+  }
+  function resolveXPath(xpath){
+    if(!mainEl||xpath==='.') return mainEl;
+    try{
+      var r=document.evaluate('.//'+xpath,mainEl,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);
+      return r.singleNodeValue;
+    }catch(e){return null;}
+  }
+  function findTextAt(el,offset){
+    var walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null);
+    var count=0,node;
+    while((node=walker.nextNode())){
+      var len=node.textContent.length;
+      if(count+len>=offset) return{node:node,localOffset:offset-count};
+      count+=len;
+    }
+    return null;
+  }
+
+  // ── APPLY MARK TO DOM ──
+  function applyMark(hl){
+    try{
+      var sEl=resolveXPath(hl.sxp), eEl=resolveXPath(hl.exp);
+      if(!sEl||!eEl) return false;
+      var sInfo=sEl.nodeType===3?{node:sEl,localOffset:hl.so}:findTextAt(sEl,hl.so);
+      var eInfo=eEl.nodeType===3?{node:eEl,localOffset:hl.eo}:findTextAt(eEl,hl.eo);
+      if(!sInfo||!eInfo) return false;
+      var range=document.createRange();
+      range.setStart(sInfo.node,sInfo.localOffset);
+      range.setEnd(eInfo.node,eInfo.localOffset);
+      applyRange(range,hl.id,hl.color,hl.note||'');
+      return true;
+    }catch(e){return false;}
+  }
+  function applyRange(range,hlId,color,note){
+    var walker=document.createTreeWalker(
+      range.commonAncestorContainer.nodeType===3
+        ?range.commonAncestorContainer.parentNode
+        :range.commonAncestorContainer,
+      NodeFilter.SHOW_TEXT,null
+    );
+    var nodes=[],node;
+    while((node=walker.nextNode())){if(range.intersectsNode(node))nodes.push(node);}
+    nodes.forEach(function(tn){
+      var s=tn===range.startContainer?range.startOffset:0;
+      var e=tn===range.endContainer?range.endOffset:tn.textContent.length;
+      if(s>=e) return;
+      var nr=document.createRange();
+      nr.setStart(tn,s); nr.setEnd(tn,Math.min(e,tn.textContent.length));
+      try{
+        var mk=document.createElement('mark');
+        mk.className='hl'; mk.setAttribute('data-hl-id',hlId);
+        mk.setAttribute('data-color',color); mk.setAttribute('data-note',note);
+        nr.surroundContents(mk);
+      }catch(err){
+        try{
+          var c=nr.extractContents(),mk2=document.createElement('mark');
+          mk2.className='hl'; mk2.setAttribute('data-hl-id',hlId);
+          mk2.setAttribute('data-color',color); mk2.setAttribute('data-note',note);
+          mk2.appendChild(c); nr.insertNode(mk2);
+        }catch(_){}
+      }
+    });
+  }
+  function removeMarks(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      var p=mk.parentNode;
+      while(mk.firstChild)p.insertBefore(mk.firstChild,mk);
+      p.removeChild(mk);
+      p.normalize();
+    });
+  }
+  function updateMarks(hlId,color,note){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.setAttribute('data-color',color);
+      mk.setAttribute('data-note',note);
+    });
+  }
+
+  // ── RESTORE HIGHLIGHTS ON LOAD ──
+  var highlights=loadHL();
+  // Sort by sxp+so descending so earlier ranges aren't offset by later insertions
+  // Actually apply in order (each one is independent)
+  highlights.forEach(applyMark);
+  // Expose re-apply for sync module
+  window.__ritaReapplyMarks=function(){
+    document.querySelectorAll('mark.hl').forEach(function(mk){
+      var p=mk.parentNode;while(mk.firstChild)p.insertBefore(mk.firstChild,mk);p.removeChild(mk);p.normalize();
+    });
+    loadHL().forEach(applyMark);
+    if(typeof updateBadge==='function') updateBadge();
+    if(typeof renderPanelIfOpen==='function') renderPanelIfOpen();
+  };
+
+  // ── SIDEBAR BUTTON ──
+  function updateBadge(){
+    var hls=loadHL();
+    var badge=document.getElementById('hl-badge');
+    if(badge) badge.textContent=hls.length||'0';
+  }
+  var sidebarNav=document.getElementById('sidebar-toc');
+  if(sidebarNav){
+    var hlBtn=document.createElement('button');
+    hlBtn.id='hl-sidebar-btn';
+    hlBtn.innerHTML='<span>✏ Ghi chú & Highlight</span><span id="hl-badge">0</span>';
+    hlBtn.addEventListener('click',function(){openPanel();});
+    // Insert before sidebar-nav (bottom buttons)
+    var sidebarNavBottom=document.getElementById('sidebar-nav');
+    if(sidebarNavBottom) sidebarNavBottom.parentNode.insertBefore(hlBtn,sidebarNavBottom);
+    else document.getElementById('sidebar').appendChild(hlBtn);
+  }
+  updateBadge();
+
+  // ── PANEL ──
+  var panel=document.createElement('div');
+  panel.id='hl-panel';
+  panel.innerHTML='<div id="hl-panel-hdr"><h3>✏ Ghi Chú & Highlight</h3><button id="hl-panel-close">×</button></div><div id="hl-panel-list"></div>';
+  document.body.appendChild(panel);
+  document.getElementById('hl-panel-close').addEventListener('click',closePanel);
+  function openPanel(){renderPanel();panel.classList.add('open');}
+  function closePanel(){panel.classList.remove('open');}
+  function renderPanel(){
+    var list=document.getElementById('hl-panel-list');
+    var hls=loadHL();
+    list.innerHTML='';
+    hls.forEach(function(hl){
+      var item=document.createElement('div');
+      item.className='hl-item'; item.setAttribute('data-color',hl.color);
+      var noteHtml=hl.note?'<div class="hl-item-note">✏ '+escHtml(hl.note)+'</div>':'';
+      item.innerHTML='<button class="hl-item-del" data-id="'+hl.id+'">🗑</button>'
+        +'<div class="hl-item-text">'+escHtml(hl.text||'')+'</div>'+noteHtml;
+      item.addEventListener('click',function(e){
+        if(e.target.classList.contains('hl-item-del')) return;
+        var mk=document.querySelector('mark.hl[data-hl-id="'+hl.id+'"]');
+        if(mk){mk.scrollIntoView({behavior:'smooth',block:'center'});flashMark(hl.id);}
+        closePanel();
+      });
+      item.querySelector('.hl-item-del').addEventListener('click',function(e){
+        e.stopPropagation(); deleteHL(hl.id); renderPanel();
+      });
+      list.appendChild(item);
+    });
+  }
+
+  // ── POPUP ──
+  var popup=document.createElement('div');
+  popup.id='hl-popup'; popup.className='hidden';
+  popup.innerHTML=
+    '<button class="hl-color-btn" data-color="yellow" title="Vàng"></button>'
+    +'<button class="hl-color-btn" data-color="green" title="Xanh"></button>'
+    +'<button class="hl-color-btn" data-color="red" title="Đỏ"></button>'
+    +'<div class="hl-sep"></div>'
+    +'<button class="hl-note-btn" title="Thêm ghi chú">✏</button>'
+    +'<button class="hl-del-btn hl-del-action" title="Xóa">🗑</button>';
+  document.body.appendChild(popup);
+
+  var currentHlId=null;    // id being edited (null = new)
+  var pendingRange=null;   // Range for new highlight
+  var pendingXP=null;      // serialized position for new highlight
+
+  // Position popup near a rect
+  function positionPopup(rect){
+    var pw=popup.offsetWidth||160,ph=popup.offsetHeight||40;
+    var top=rect.top-ph-10+window.scrollY;
+    var left=rect.left+(rect.width-pw)/2;
+    if(top<window.scrollY+8) top=rect.bottom+10+window.scrollY;
+    left=Math.max(8,Math.min(left,window.innerWidth-pw-8));
+    popup.style.top=top+'px';
+    popup.style.left=left+'px';
+  }
+  function showPopup(rect,hlId){
+    currentHlId=hlId||null;
+    var isEdit=!!hlId;
+    popup.querySelector('.hl-del-action').style.display=isEdit?'':'none';
+    popup.querySelector('.hl-note-btn').style.display='';
+    popup.classList.remove('hidden');
+    positionPopup(rect);
+  }
+  function hidePopup(){
+    popup.classList.add('hidden');
+    pendingRange=null; pendingXP=null; currentHlId=null;
+  }
+
+  // Color buttons
+  popup.querySelectorAll('.hl-color-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var color=btn.getAttribute('data-color');
+      if(currentHlId){
+        // Update existing
+        var hls=loadHL();
+        var idx=hls.findIndex(function(h){return h.id===currentHlId;});
+        if(idx>=0){hls[idx].color=color;saveHL(hls);}
+        updateMarks(currentHlId,color,hls[idx]?hls[idx].note||'':'');
+        updateBadge(); renderPanelIfOpen();
+      } else if(pendingRange&&pendingXP){
+        // Create new
+        var id=genId();
+        var text=pendingRange.toString().substring(0,500);
+        applyRange(pendingRange,id,color,'');
+        pendingRange.collapse();
+        window.getSelection()&&window.getSelection().removeAllRanges();
+        var hls=loadHL();
+        hls.push({id:id,color:color,note:'',text:text,
+          sxp:pendingXP.sxp,so:pendingXP.so,exp:pendingXP.exp,eo:pendingXP.eo});
+        saveHL(hls); updateBadge(); renderPanelIfOpen();
+      }
+      hidePopup();
+    });
+  });
+
+  // Note button
+  popup.querySelector('.hl-note-btn').addEventListener('click',function(){
+    var id=currentHlId;
+    var existing='';
+    if(id){var hls=loadHL();var h=hls.find(function(x){return x.id===id;});if(h)existing=h.note||'';}
+    hidePopup();
+    openNoteModal(id,existing);
+  });
+
+  // Delete button
+  popup.querySelector('.hl-del-action').addEventListener('click',function(){
+    if(currentHlId) deleteHL(currentHlId);
+    hidePopup();
+  });
+
+  function deleteHL(id){
+    removeMarks(id);
+    var hls=loadHL().filter(function(h){return h.id!==id;});
+    saveHL(hls); updateBadge(); renderPanelIfOpen();
+  }
+
+  // ── NOTE MODAL ──
+  var noteModal=document.createElement('div');
+  noteModal.id='hl-note-modal'; noteModal.className='hidden';
+  noteModal.innerHTML='<div id="hl-note-box">'
+    +'<h3>✏ Ghi chú</h3>'
+    +'<textarea id="hl-note-ta" placeholder="Nhập ghi chú..."></textarea>'
+    +'<div class="hl-note-actions">'
+    +'<button class="hl-note-cancel">Hủy</button>'
+    +'<button class="hl-note-save">Lưu</button>'
+    +'</div></div>';
+  document.body.appendChild(noteModal);
+  var _noteTargetId=null;
+  function openNoteModal(hlId,existing){
+    _noteTargetId=hlId;
+    document.getElementById('hl-note-ta').value=existing||'';
+    noteModal.classList.remove('hidden');
+    setTimeout(function(){document.getElementById('hl-note-ta').focus();},50);
+  }
+  noteModal.querySelector('.hl-note-cancel').addEventListener('click',function(){noteModal.classList.add('hidden');});
+  noteModal.querySelector('.hl-note-save').addEventListener('click',function(){
+    var note=document.getElementById('hl-note-ta').value.trim();
+    if(_noteTargetId){
+      var hls=loadHL();
+      var idx=hls.findIndex(function(h){return h.id===_noteTargetId;});
+      if(idx>=0){hls[idx].note=note;saveHL(hls);updateMarks(_noteTargetId,hls[idx].color,note);updateBadge();renderPanelIfOpen();}
+    }
+    noteModal.classList.add('hidden');
+  });
+  noteModal.addEventListener('click',function(e){if(e.target===noteModal)noteModal.classList.add('hidden');});
+
+  // ── SELECTION HANDLER ──
+  document.addEventListener('mouseup',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    setTimeout(function(){
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed||!sel.rangeCount){hidePopup();return;}
+      var range=sel.getRangeAt(0);
+      var text=range.toString().trim();
+      if(!text||text.length<2){hidePopup();return;}
+      // Only highlight within #main
+      if(!mainEl||!mainEl.contains(range.commonAncestorContainer)){hidePopup();return;}
+      // Serialize positions
+      var sNode=range.startContainer,eNode=range.endContainer;
+      var sParent=sNode.nodeType===3?sNode.parentNode:sNode;
+      var eParent=eNode.nodeType===3?eNode.parentNode:eNode;
+      var sxp=getXPath(sParent),exp=getXPath(eParent);
+      // calc offsets within parent element
+      var so=0,eo=0;
+      var w=document.createTreeWalker(sParent,NodeFilter.SHOW_TEXT,null);
+      var n;while((n=w.nextNode())){if(n===sNode){so+=range.startOffset;break;}so+=n.textContent.length;}
+      var w2=document.createTreeWalker(eParent,NodeFilter.SHOW_TEXT,null);
+      while((n=w2.nextNode())){if(n===eNode){eo+=range.endOffset;break;}eo+=n.textContent.length;}
+      pendingRange=range.cloneRange();
+      pendingXP={sxp:sxp,so:so,exp:exp,eo:eo};
+      currentHlId=null;
+      var rect=range.getBoundingClientRect();
+      showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width});
+    },10);
+  });
+
+  // ── CLICK ON EXISTING MARK ──
+  document.addEventListener('click',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    var mk=e.target.closest('mark.hl');
+    if(!mk){
+      // click outside: if selection is collapsed, hide popup
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed) hidePopup();
+      return;
+    }
+    e.stopPropagation();
+    var hlId=mk.getAttribute('data-hl-id');
+    var rect=mk.getBoundingClientRect();
+    currentHlId=hlId;
+    pendingRange=null;pendingXP=null;
+    showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width},hlId);
+  });
+
+  // ── FLASH EFFECT ──
+  function flashMark(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.style.transition='outline .2s';mk.style.outline='3px solid #c9a84c';
+      setTimeout(function(){mk.style.outline='none';},1500);
+    });
+  }
+
+  function renderPanelIfOpen(){if(panel.classList.contains('open'))renderPanel();}
+
+  function escHtml(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+})();
+
+
+// ── CHAPTER NAV PANEL ───────────────────────────────────
+(function(){
+  var CHAPS=[
+    [1,'rita_chap01.html','Mẹo & Thủ Thuật Ôn Thi PMP®'],
+    [2,'rita_chap02.html','Tài Liệu Tham Khảo Kỳ Thi'],
+    [3,'rita_chap03.html','Nền Tảng Quản Lý Dự Án'],
+    [4,'rita_chap04.html','Tích Hợp'],
+    [5,'rita_chap05.html','Kỹ Năng Lãnh Đạo'],
+    [6,'rita_chap06.html','Xây Dựng & Hỗ Trợ Hiệu Suất Nhóm'],
+    [7,'rita_chap07.html','Phạm Vi Dự Án'],
+    [8,'rita_chap08.html','Tiến Độ & Ngân Sách Dự Án'],
+    [10,'rita_chap10.html','Chất Lượng Sản Phẩm Bàn Giao'],
+    [11,'rita_chap11.html','Truyền Thông'],
+    [12,'rita_chap12.html','Rủi Ro & Vấn Đề'],
+    [13,'rita_chap13.html','Mua Sắm'],
+    [14,'rita_chap14.html','Các Bên Liên Quan'],
+    [15,'rita_chap15.html','Tuân Thủ & Mang Lại Giá Trị'],
+    [16,'rita_chap16.html','Mẹo Vượt Qua Kỳ Thi PMP®'],
+    [17,'rita_chap17.html','Các Phương Pháp Agile Phổ Biến'],
+    [18,'rita_chap18.html','Hướng Dẫn PMBOK & Tiêu Chuẩn PM']
+  ];
+
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var curNum=m?parseInt(m[1]):null;
+  var READ_KEY='rita_reading';
+
+  // Build panel DOM
+  var panel=document.createElement('div');
+  panel.id='chap-panel'; panel.className='hidden';
+  var listHtml='';
+  CHAPS.forEach(function(c){
+    var isActive=c[0]===curNum;
+    listHtml+='<a class="chap-panel-item'+(isActive?' active':'')+'" href="'+c[1]+'">'
+      +'<span class="cpanel-num">Ch'+c[0]+'</span>'
+      +'<span class="cpanel-title">'+c[2]+'</span>'
+      +(isActive?'<span class="cpanel-status">● Đang đọc</span>':'')
+      +'</a>';
+  });
+  panel.innerHTML='<div id="chap-panel-overlay"></div>'
+    +'<div id="chap-panel-box">'
+    +'<div id="chap-panel-hdr"><h3>☰ Danh Sách Chương</h3><button id="chap-panel-close">×</button></div>'
+    +'<div id="chap-panel-list">'+listHtml+'</div>'
+    +'</div>';
+  document.body.appendChild(panel);
+
+  function openChapPanel(){panel.classList.remove('hidden');}
+  function closeChapPanel(){panel.classList.add('hidden');}
+  document.getElementById('chap-panel-overlay').addEventListener('click',closeChapPanel);
+  document.getElementById('chap-panel-close').addEventListener('click',closeChapPanel);
+
+  // Wire up the Mục lục button
+  var mucLucBtn=document.getElementById('chap-muc-luc-btn');
+  if(mucLucBtn) mucLucBtn.addEventListener('click',function(e){e.preventDefault();openChapPanel();});
+})();
+
+
+// ── GITHUB HIGHLIGHTS SYNC ──────────────────────────
+(function(){
+  var REPO='goukakujlptsuport-beep/pmbok6';
+  var TOKEN_KEY='rita_gh_token';
+  var API_URL='https://api.github.com/repos/'+REPO+'/contents/data/rita_highlights.json';
+  var fileSha=null;
+  var syncTimer=null;
+
+  // Called by patched saveHL after every highlight change
+  window.__ritaSyncTrigger=function(){
+    clearTimeout(syncTimer);
+    syncTimer=setTimeout(pushToGitHub,3000);
+  };
+
+  // ── STATUS BUTTON (inserted before #sidebar-nav) ──
+  var btn=document.createElement('button');
+  btn.id='sync-btn'; btn.dataset.state='no-token';
+  btn.innerHTML='<span>☁ Sync Git</span><span id="sync-status-text">Đang kết nối…</span>';
+  btn.title='Đồng bộ highlight / ghi chú lên GitHub';
+  btn.addEventListener('click',handleSyncClick);
+  var sidebarNavEl=document.getElementById('sidebar-nav');
+  if(sidebarNavEl) sidebarNavEl.parentNode.insertBefore(btn,sidebarNavEl);
+
+  var statusText=document.getElementById('sync-status-text');
+  function setStatus(state,msg){
+    btn.dataset.state=state;
+    if(statusText) statusText.textContent=msg;
+  }
+
+  // ── TOKEN MODAL ──
+  var modal=document.createElement('div');
+  modal.id='sync-modal'; modal.className='hidden';
+  modal.innerHTML='<div id="sync-modal-box">'
+    +'<h3>☁ Cấu Hình GitHub Sync</h3>'
+    +'<p>Nhập <strong style="color:var(--gold)">GitHub Personal Access Token (PAT)</strong> để đồng bộ highlight giữa các thiết bị.<br>'
+    +'Token cần quyền <strong style="color:var(--gold-lt)">Contents: Read &amp; Write</strong> trên repo pmbok6.<br>'
+    +'Token được lưu trong localStorage của trình duyệt này.</p>'
+    +'<input id="sync-token-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" spellcheck="false" autocomplete="off">'
+    +'<div class="sync-modal-btns">'
+    +'<button id="sync-clear-btn">🗑 Xóa token</button>'
+    +'<button id="sync-cancel-btn">Hủy</button>'
+    +'<button id="sync-save-btn">💾 Lưu &amp; Sync</button>'
+    +'</div></div>';
+  document.body.appendChild(modal);
+
+  document.getElementById('sync-cancel-btn').addEventListener('click',function(){modal.classList.add('hidden');});
+  document.getElementById('sync-save-btn').addEventListener('click',function(){
+    var t=(document.getElementById('sync-token-input').value||'').trim();
+    if(!t){alert('Vui lòng nhập GitHub PAT!');return;}
+    localStorage.setItem(TOKEN_KEY,t);
+    modal.classList.add('hidden');
+    fileSha=null;
+    initSync();
+  });
+  document.getElementById('sync-clear-btn').addEventListener('click',function(){
+    if(!confirm('Xóa token? Highlights sẽ không được sync cho đến khi cấu hình lại.')) return;
+    localStorage.removeItem(TOKEN_KEY);
+    fileSha=null;
+    modal.classList.add('hidden');
+    setStatus('no-token','Chưa cấu hình');
+  });
+  modal.addEventListener('click',function(e){if(e.target===modal)modal.classList.add('hidden');});
+
+  function handleSyncClick(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){
+      var inp=document.getElementById('sync-token-input');
+      if(inp) inp.value='';
+      modal.classList.remove('hidden');
+      setTimeout(function(){if(inp)inp.focus();},80);
+    } else {
+      // Manual re-sync
+      fileSha=null;
+      initSync();
+    }
+  }
+
+  // ── HELPERS ──
+  var ALL_CHAPS=['01','02','03','04','05','06','07','08','10','11','12','13','14','15','16','17','18'];
+
+  function getAllLocal(){
+    var all={};
+    ALL_CHAPS.forEach(function(n){
+      try{
+        var v=JSON.parse(localStorage.getItem('rita_hl_'+n)||'[]');
+        if(v&&v.length>0) all[n]=v;
+      }catch(e){}
+    });
+    return all;
+  }
+
+  function countHL(obj){
+    return Object.values(obj).reduce(function(s,a){return s+(a?a.length:0);},0);
+  }
+
+  // Union merge: keep all highlights by id, prefer local note if different
+  function mergeHL(local,remote){
+    var merged={};
+    var allChaps=new Set(Object.keys(local).concat(Object.keys(remote)));
+    allChaps.forEach(function(chap){
+      var loc=local[chap]||[];
+      var rem=remote[chap]||[];
+      var byId={};
+      loc.forEach(function(h){byId[h.id]=h;});
+      rem.forEach(function(h){if(!byId[h.id])byId[h.id]=h;});
+      var arr=Object.values(byId);
+      if(arr.length>0) merged[chap]=arr;
+    });
+    return merged;
+  }
+
+  function applyToLocal(highlights){
+    Object.keys(highlights).forEach(function(chap){
+      localStorage.setItem('rita_hl_'+chap,JSON.stringify(highlights[chap]));
+    });
+  }
+
+  // base64 encode/decode with Unicode support
+  function b64enc(str){
+    return btoa(unescape(encodeURIComponent(str)));
+  }
+  function b64dec(b64){
+    return decodeURIComponent(escape(atob(b64.replace(/[\r\n]/g,''))));
+  }
+
+  // ── FETCH FROM GITHUB ──
+  async function fetchFromGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    var headers={'Accept':'application/vnd.github.v3+json'};
+    if(token) headers['Authorization']='token '+token;
+    try{
+      var resp=await fetch(API_URL,{headers:headers});
+      if(resp.status===404){fileSha=null;return null;}
+      if(!resp.ok) throw new Error('HTTP '+resp.status);
+      var data=await resp.json();
+      fileSha=data.sha;
+      var content=JSON.parse(b64dec(data.content));
+      return content;
+    }catch(e){
+      console.warn('[sync] fetch:',e);
+      return 'error';
+    }
+  }
+
+  // ── PUSH TO GITHUB ──
+  async function pushToGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang sync…');
+    var local=getAllLocal();
+    var payload={version:1,lastSync:new Date().toISOString(),highlights:local};
+    var encoded=b64enc(JSON.stringify(payload,null,2));
+    var body={message:'sync: rita highlights ['+countHL(local)+' HL]',content:encoded};
+    if(fileSha) body.sha=fileSha;
+    try{
+      var resp=await fetch(API_URL,{
+        method:'PUT',
+        headers:{
+          'Authorization':'token '+token,
+          'Content-Type':'application/json',
+          'Accept':'application/vnd.github.v3+json'
+        },
+        body:JSON.stringify(body)
+      });
+      if(!resp.ok){
+        var err=await resp.json().catch(function(){return{};});
+        throw new Error(err.message||'HTTP '+resp.status);
+      }
+      var result=await resp.json();
+      fileSha=result.content.sha;
+      setStatus('ok','✓ Đã sync ('+countHL(local)+' HL)');
+    }catch(e){
+      setStatus('err','✗ '+e.message.slice(0,28));
+      console.error('[sync] push:',e);
+    }
+  }
+
+  // ── INIT ──
+  async function initSync(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang tải…');
+
+    var ghData=await fetchFromGitHub();
+    if(ghData==='error'){
+      setStatus('err','✗ Không kết nối được');
+      return;
+    }
+    if(ghData&&ghData.highlights){
+      var local=getAllLocal();
+      var merged=mergeHL(local,ghData.highlights);
+      applyToLocal(merged);
+      // Re-apply marks on current chapter from updated localStorage
+      if(typeof window.__ritaReapplyMarks==='function') window.__ritaReapplyMarks();
+      var ghN=countHL(ghData.highlights), mergedN=countHL(merged);
+      if(mergedN>ghN){
+        // New highlights from remote — push merged back
+        setTimeout(pushToGitHub,1200);
+      } else {
+        setStatus('ok','✓ Sync OK ('+mergedN+' HL)');
+      }
+    } else {
+      // File doesn't exist yet — push current local state
+      await pushToGitHub();
+    }
+  }
+
+  initSync();
+})();
+
+</script>
+
+</body>
+</html>

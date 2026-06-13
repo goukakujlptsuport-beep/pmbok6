@@ -1,0 +1,1829 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tuân Thủ & Mang Lại Giá Trị | Rita PMP® Exam Prep 11</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:     #1a2744;
+  --red:      #8b1a1a;
+  --gold:     #c9a84c;
+  --gold-lt:  #e8d5a3;
+  --cream:    #fdf8f0;
+  --text:     #2c2c2c;
+  --text-dim: #5a5a5a;
+  --border:   #d4c89a;
+  --sidebar-w: 268px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ── PROGRESS BAR ── */
+#progress-bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--gold);z-index:200;transition:width .1s}
+
+/* ── SIDEBAR ── */
+#sidebar{
+  width:var(--sidebar-w);background:var(--navy);color:#ccd4e8;
+  position:fixed;top:0;left:0;bottom:0;overflow-y:auto;z-index:100;
+  border-right:3px solid var(--gold);display:flex;flex-direction:column;
+}
+#sidebar-header{
+  background:linear-gradient(135deg,#0f1d3a 0%,#1a2744 100%);
+  padding:1.4rem 1.2rem;border-bottom:2px solid var(--gold);flex-shrink:0;
+}
+#sidebar-header .book-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.62rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;
+}
+#sidebar-header h2{font-size:.92rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:.25rem}
+#sidebar-header .edition{font-family:'Source Sans 3',sans-serif;font-size:.7rem;color:var(--gold-lt);font-style:italic}
+#sidebar-toc{flex:1;overflow-y:auto;padding:.6rem 0}
+#sidebar-toc a{
+  display:block;font-family:'Source Sans 3',sans-serif;font-size:.78rem;
+  color:#aab8d0;text-decoration:none;padding:.4rem 1.2rem;line-height:1.4;
+  transition:all .15s;border-left:3px solid transparent;
+}
+#sidebar-toc a:hover,#sidebar-toc a.active{color:#fff;background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+#sidebar-toc a.toc-h4{padding-left:2.2rem;font-size:.72rem;color:#8896b0}
+#sidebar-toc a.toc-h4:hover{color:#ccd4e8}
+#sidebar-toc .toc-group-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.6rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  padding:.7rem 1.2rem .25rem;opacity:.85;
+}
+#sidebar-nav{
+  flex-shrink:0;border-top:1px solid rgba(255,255,255,.08);
+  display:flex;justify-content:space-between;padding:.7rem .8rem;gap:.5rem;
+}
+#sidebar-nav a{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;color:var(--gold-lt);
+  text-decoration:none;padding:.4rem .7rem;border:1px solid rgba(201,168,76,.3);
+  border-radius:4px;transition:all .2s;line-height:1.3;text-align:center;flex:1;
+}
+#sidebar-nav a:hover{background:rgba(201,168,76,.15);color:#fff}
+#sidebar-nav a.disabled{opacity:.35;pointer-events:none}
+
+/* ── HAMBURGER (mobile) ── */
+#menu-btn{
+  display:none;position:fixed;top:.7rem;left:.8rem;z-index:150;
+  background:var(--navy);border:1px solid var(--gold);color:var(--gold);
+  width:36px;height:36px;border-radius:6px;font-size:1.1rem;cursor:pointer;
+  align-items:center;justify-content:center;
+}
+
+/* ── MAIN ── */
+#main{margin-left:var(--sidebar-w);max-width:880px;padding:0 2.8rem 5rem}
+
+/* ── CHAPTER HERO ── */
+.chapter-hero{
+  background:linear-gradient(135deg,var(--navy) 0%,#2a3a6a 100%);
+  color:white;padding:2.8rem 2.8rem 2.2rem;margin:0 -2.8rem 2.8rem;
+  border-bottom:4px solid var(--gold);position:relative;overflow:hidden;
+}
+.chapter-hero::before{
+  content:'15';position:absolute;right:1.5rem;top:50%;
+  transform:translateY(-50%);font-size:10rem;font-weight:700;
+  color:rgba(255,255,255,.05);font-family:'Merriweather',serif;line-height:1;
+}
+.chapter-hero .ch-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;font-weight:700;
+  letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;
+}
+.chapter-hero h1{font-size:2rem;font-weight:700;line-height:1.2;margin-bottom:.35rem}
+.chapter-hero .ch-en{font-family:'Source Sans 3',sans-serif;font-size:.95rem;color:rgba(255,255,255,.5);font-style:italic}
+
+/* ── CONTENT HEADINGS ── */
+h3{
+  font-family:'Merriweather',serif;font-size:1.25rem;color:var(--navy);
+  margin:2.5rem 0 .85rem;padding-bottom:.45rem;border-bottom:2px solid var(--gold);
+}
+h4{
+  font-family:'Merriweather',serif;font-size:1.05rem;color:var(--navy);
+  margin:2rem 0 .65rem;padding-left:.75rem;border-left:4px solid var(--gold);
+}
+h5{
+  font-family:'Source Sans 3',sans-serif;font-size:.9rem;font-weight:700;
+  color:var(--red);margin:1.4rem 0 .45rem;text-transform:uppercase;letter-spacing:.05em;
+}
+p{font-family:'Merriweather',serif;font-size:.94rem;line-height:1.88;margin-bottom:.95rem;color:var(--text)}
+
+/* ── LISTS ── */
+ul.content-list,ol.content-list{
+  margin:.5rem 0 1rem;padding:0;list-style:none;
+}
+ul.content-list li{
+  position:relative;padding:.28rem 0 .28rem 1.6rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);
+}
+ul.content-list li::before{
+  content:'◆';position:absolute;left:0;color:var(--gold);font-size:.65rem;top:.45rem;
+}
+ol.content-list{counter-reset:ol-c;list-style:none}
+ol.content-list li{
+  position:relative;padding:.28rem 0 .28rem 2rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);counter-increment:ol-c;
+}
+ol.content-list li::before{
+  content:counter(ol-c)'.';position:absolute;left:0;color:var(--navy);
+  font-weight:700;font-size:.85rem;min-width:1.5rem;
+}
+ul.content-list ul.content-list li::before{content:'–';color:var(--text-dim);font-size:.9rem;top:.35rem}
+
+/* ── CALLOUT / DEF BOX ── */
+.callout{
+  background:linear-gradient(135deg,#f5f0e8,#ede8d8);
+  border:1px solid var(--border);border-left:5px solid var(--gold);
+  border-radius:0 6px 6px 0;padding:1rem 1.2rem;margin:1.3rem 0;
+}
+.callout p{font-size:.9rem;margin-bottom:.5rem}
+.callout p:last-child{margin-bottom:0}
+.callout ul.content-list li{font-size:.88rem}
+.callout-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.65rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;
+}
+.callout.tip{border-left-color:#2d7a2d;background:linear-gradient(135deg,#f0f7f0,#e4f0e4)}
+.callout.tip .callout-label{color:#2d7a2d}
+
+/* ── HIGHLIGHT (quicktest / exam alert) ── */
+.highlight{
+  background:var(--navy);color:#e8d5a3;
+  border-radius:8px;padding:1.1rem 1.3rem;margin:1.5rem 0;
+}
+.highlight h5,.highlight strong{color:var(--gold-lt)}
+.highlight p,.highlight li{color:#ccd4e8;font-size:.88rem}
+.highlight ul.content-list li::before{color:var(--gold)}
+
+/* ── FIGURE ── */
+.img-center{
+  text-align:center;margin:1.8rem 0;padding:1rem;
+  background:#f8f5ee;border:1px solid var(--border);border-radius:8px;
+}
+.img-center img{max-width:100%;height:auto;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.img-center p,.img-center div{
+  margin-top:.65rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.8rem;color:var(--text-dim);font-style:italic;
+}
+
+/* ── TABLES ── */
+.table-wrap{overflow-x:auto;margin:1.5rem 0}
+table{width:100%;border-collapse:collapse;font-family:'Source Sans 3',sans-serif;font-size:.84rem}
+table th{background:var(--navy);color:white;padding:.6rem .8rem;text-align:center;font-weight:600;font-size:.79rem}
+table td{padding:.5rem .8rem;border:1px solid #ddd;vertical-align:top;line-height:1.5}
+table tr:nth-child(even) td{background:#f9f6ef}
+
+/* ── BACK TO TOP ── */
+#back-top{
+  position:fixed;bottom:1.5rem;right:1.5rem;
+  background:var(--navy);color:var(--gold);border:1px solid var(--gold);
+  width:38px;height:38px;border-radius:50%;font-size:1.2rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .25s;z-index:99;
+}
+#back-top:hover{background:var(--gold);color:var(--navy)}
+
+/* ── MOBILE ── */
+@media(max-width:860px){
+  #sidebar{transform:translateX(-100%);transition:transform .25s;top:3rem}
+  #sidebar.open{transform:translateX(0)}
+  #menu-btn{display:flex}
+  #main{margin-left:0;padding:3.5rem 1.2rem 4rem}
+  .chapter-hero{margin:0 -1.2rem 2rem;padding:2rem 1.4rem}
+  .chapter-hero::before{display:none}
+}
+
+/* ── DARK / LIGHT MODE ─────────────────────────────── */
+html[data-theme=dark]{--cream:#0f1520;--text:#dde4f0;--text-dim:#8899bb;--border:#253048;--gold-lt:#c9a84c}
+html[data-theme=dark] body{background:#0f1520;color:#dde4f0}
+html[data-theme=dark] #main{background:#0f1520}
+html[data-theme=dark] h1,html[data-theme=dark] h2{color:#e8d5a3}
+html[data-theme=dark] h3{color:#e8d5a3;border-bottom-color:var(--gold)}
+html[data-theme=dark] h4{color:#b8ccee;border-left-color:var(--gold)}
+html[data-theme=dark] p,html[data-theme=dark] li,html[data-theme=dark] td{color:#dde4f0}
+html[data-theme=dark] strong{color:#e8d5a3}
+html[data-theme=dark] em{color:#b8ccee}
+html[data-theme=dark] .callout{background:linear-gradient(135deg,#1a2436,#1e2d45);border-left-color:var(--gold);color:#dde4f0}
+html[data-theme=dark] .callout p{color:#dde4f0}
+html[data-theme=dark] blockquote{background:#1a2436;border-left-color:var(--gold);color:#b0c0d8}
+html[data-theme=dark] table{background:#131c2b}
+html[data-theme=dark] th{background:#1a2744;color:#e8d5a3;border-color:#253048}
+html[data-theme=dark] td{border-color:#253048}
+html[data-theme=dark] tr:nth-child(even) td{background:#1a2436}
+html[data-theme=dark] .highlight,.highlight-box{background:#1a2436!important;border-color:#253048!important;color:#dde4f0!important}
+html[data-theme=dark] #back-top{background:#1a2744;color:var(--gold);border:1px solid rgba(201,168,76,.4)}
+html[data-theme=dark] ul.content-list li,html[data-theme=dark] ol.content-list li{color:#dde4f0}
+html[data-theme=dark] .chapter-hero{background:linear-gradient(135deg,#0a1228 0%,#142040 100%)}
+html[data-theme=dark] .exercise-card{background:#1a2436;border-color:#253048}
+html[data-theme=dark] .answer-box{background:#152035;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] .answer-box p{color:#dde4f0}
+/* theme toggle button */
+#theme-btn{position:absolute;top:.65rem;right:.7rem;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.35);color:var(--gold);width:28px;height:28px;border-radius:5px;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+#theme-btn:hover{background:rgba(201,168,76,.2)}
+#sidebar-header{position:relative}
+
+/* ── HIGHLIGHT SYSTEM ─────────────────────────────────── */
+mark.hl{border-radius:2px;cursor:pointer;padding:1px 0;background:transparent}
+mark.hl[data-color=yellow]{background:rgba(255,241,118,.75)}
+mark.hl[data-color=green]{background:rgba(165,214,167,.75)}
+mark.hl[data-color=red]{background:rgba(239,154,154,.75)}
+mark.hl::after{display:none}
+mark.hl[data-note]:not([data-note=""])::after{content:"✏";font-size:.6rem;vertical-align:super;margin-left:1px;opacity:.65;display:inline}
+/* selection popup */
+#hl-popup{position:fixed;z-index:9999;background:#1a2744;border:1px solid rgba(201,168,76,.5);border-radius:8px;padding:.45rem .6rem;display:flex;align-items:center;gap:.35rem;box-shadow:0 4px 20px rgba(0,0,0,.4);pointer-events:all}
+#hl-popup.hidden{display:none!important}
+.hl-color-btn{width:24px;height:24px;border-radius:50%;border:2px solid rgba(255,255,255,.25);cursor:pointer;transition:transform .15s,border-color .15s;flex-shrink:0}
+.hl-color-btn:hover{transform:scale(1.2);border-color:rgba(255,255,255,.7)}
+.hl-color-btn[data-color=yellow]{background:#fff176}
+.hl-color-btn[data-color=green]{background:#a5d6a7}
+.hl-color-btn[data-color=red]{background:#ef9a9a}
+.hl-sep{width:1px;height:20px;background:rgba(255,255,255,.2);margin:0 .1rem}
+.hl-note-btn{background:none;border:none;color:rgba(255,255,255,.7);font-size:.9rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-note-btn:hover{color:#fff;background:rgba(255,255,255,.1)}
+.hl-del-btn{background:none;border:none;color:rgba(239,154,154,.8);font-size:.85rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-del-btn:hover{color:#ef9a9a;background:rgba(239,154,154,.12)}
+/* note modal */
+#hl-note-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center}
+#hl-note-modal.hidden{display:none!important}
+#hl-note-box{background:#fff;border-radius:10px;padding:1.4rem;width:min(420px,90vw);box-shadow:0 8px 32px rgba(0,0,0,.25)}
+#hl-note-box h3{font-size:.95rem;color:#1a2744;margin-bottom:.7rem;font-family:'Merriweather',serif}
+#hl-note-ta{width:100%;border:1px solid #d4c89a;border-radius:6px;padding:.6rem .8rem;font-size:.88rem;font-family:'Source Sans 3',sans-serif;resize:vertical;min-height:80px;color:#2c2c2c;outline:none}
+#hl-note-ta:focus{border-color:#c9a84c;box-shadow:0 0 0 2px rgba(201,168,76,.25)}
+.hl-note-actions{display:flex;justify-content:flex-end;gap:.6rem;margin-top:.8rem}
+.hl-note-cancel{background:transparent;border:1px solid #ccc;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+.hl-note-save{background:#1a2744;color:#fff;border:none;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+/* highlights panel */
+#hl-panel{position:fixed;top:0;right:0;bottom:0;width:300px;background:#fff;border-left:3px solid var(--gold);z-index:500;display:flex;flex-direction:column;box-shadow:-4px 0 20px rgba(0,0,0,.15);transform:translateX(100%);transition:transform .25s}
+#hl-panel.open{transform:translateX(0)}
+#hl-panel-hdr{background:#1a2744;padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--gold)}
+#hl-panel-hdr h3{font-size:.88rem;color:#fff;font-family:'Source Sans 3',sans-serif;font-weight:700;letter-spacing:.05em}
+#hl-panel-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.2rem;cursor:pointer;padding:.2rem;line-height:1}
+#hl-panel-close:hover{color:#fff}
+#hl-panel-list{flex:1;overflow-y:auto;padding:.6rem}
+#hl-panel-list:empty::before{content:"Chưa có ghi chú nào trong chương này.";font-size:.82rem;color:#999;display:block;padding:.8rem;text-align:center;font-style:italic}
+.hl-item{padding:.65rem .8rem;border-radius:6px;margin-bottom:.5rem;border-left:4px solid #ddd;background:#fafafa;cursor:pointer;transition:background .15s}
+.hl-item:hover{background:#f0f0f0}
+.hl-item[data-color=yellow]{border-left-color:#fdd835}
+.hl-item[data-color=green]{border-left-color:#66bb6a}
+.hl-item[data-color=red]{border-left-color:#ef5350}
+.hl-item-text{font-size:.8rem;color:#2c2c2c;line-height:1.5;margin-bottom:.3rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.hl-item-note{font-size:.75rem;color:#666;font-style:italic;margin-bottom:.3rem}
+.hl-item-del{float:right;background:none;border:none;color:#bbb;cursor:pointer;font-size:.8rem;padding:.1rem .3rem;border-radius:3px;line-height:1}
+.hl-item-del:hover{color:#ef5350;background:rgba(239,83,80,.08)}
+/* sidebar hl badge */
+#hl-sidebar-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:var(--gold);cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#hl-sidebar-btn:hover{background:rgba(201,168,76,.1)}
+#hl-badge{background:rgba(201,168,76,.2);color:var(--gold);font-size:.65rem;font-weight:700;padding:.1rem .4rem;border-radius:10px;min-width:18px;text-align:center}
+html[data-theme=dark] #hl-note-box{background:#1a2436;border:1px solid #253048}
+html[data-theme=dark] #hl-note-box h3{color:#e8d5a3}
+html[data-theme=dark] #hl-note-ta{background:#0f1520;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] #hl-panel{background:#131c2b;border-left-color:var(--gold)}
+html[data-theme=dark] .hl-item{background:#1a2436;border-bottom:1px solid #1e2d45}
+html[data-theme=dark] .hl-item:hover{background:#1e2d45}
+html[data-theme=dark] .hl-item-text{color:#dde4f0}
+html[data-theme=dark] .hl-item-note{color:#8899bb}
+html[data-theme=dark] .hl-note-cancel{border-color:#253048;color:#dde4f0;background:#1a2436}
+html[data-theme=dark] .hl-note-save{background:#c9a84c;color:#0a0f1a}
+
+/* ── CHAPTER NAV PANEL ─────────────────────────────────── */
+#chap-panel{position:fixed;inset:0;z-index:9000;display:flex;align-items:stretch}
+#chap-panel.hidden{display:none!important}
+#chap-panel-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);cursor:pointer}
+#chap-panel-box{position:relative;z-index:1;width:min(360px,90vw);background:#0f1d3a;border-right:3px solid var(--gold);display:flex;flex-direction:column;animation:slideInLeft .2s ease}
+@keyframes slideInLeft{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+#chap-panel-hdr{background:linear-gradient(135deg,#0a1228,#1a2744);padding:1.2rem 1.3rem;border-bottom:2px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
+#chap-panel-hdr h3{font-family:'Source Sans 3',sans-serif;font-size:.85rem;font-weight:700;color:#fff;letter-spacing:.1em;text-transform:uppercase}
+#chap-panel-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.3rem;cursor:pointer;padding:.2rem;line-height:1;transition:color .15s}
+#chap-panel-close:hover{color:#fff}
+#chap-panel-list{flex:1;overflow-y:auto;padding:.5rem 0}
+.chap-panel-item{display:flex;align-items:center;gap:.8rem;padding:.7rem 1.3rem;cursor:pointer;transition:background .15s;border-left:3px solid transparent;text-decoration:none}
+.chap-panel-item:hover{background:rgba(201,168,76,.1);border-left-color:var(--gold)}
+.chap-panel-item.active{background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+.cpanel-num{font-family:'Source Sans 3',sans-serif;font-size:.7rem;font-weight:700;color:var(--gold);min-width:28px;flex-shrink:0}
+.cpanel-title{font-family:'Source Sans 3',sans-serif;font-size:.8rem;color:#ccd4e8;line-height:1.35}
+.cpanel-item-active .cpanel-title{color:#fff;font-weight:600}
+.cpanel-status{margin-left:auto;font-size:.72rem;flex-shrink:0;opacity:.6}
+
+/* ── GITHUB SYNC ──────────────────────────────────── */
+#sync-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:#8899bb;cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s,color .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#sync-btn:hover{background:rgba(201,168,76,.08);color:var(--gold)}
+#sync-btn[data-state=ok]{color:#4caf50}
+#sync-btn[data-state=syncing]{color:var(--gold)}
+#sync-btn[data-state=err]{color:#ef5350}
+#sync-btn[data-state=no-token]{color:#8899bb}
+#sync-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center}
+#sync-modal.hidden{display:none!important}
+#sync-modal-box{background:#0f1d3a;border:2px solid var(--gold);border-radius:10px;padding:1.8rem 2rem;width:min(420px,90vw);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+#sync-modal-box h3{font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:.9rem;text-transform:uppercase;letter-spacing:.1em}
+#sync-modal-box p{font-size:.77rem;color:#aab8d0;line-height:1.6;margin-bottom:.9rem}
+#sync-modal-box input{width:100%;background:#0a1228;border:1px solid rgba(201,168,76,.4);color:#fff;font-family:monospace;font-size:.8rem;padding:.55rem .8rem;border-radius:5px;outline:none;margin-bottom:.8rem;box-sizing:border-box}
+#sync-modal-box input:focus{border-color:var(--gold)}
+.sync-modal-btns{display:flex;gap:.6rem;justify-content:flex-end;flex-wrap:wrap}
+.sync-modal-btns button{font-family:'Source Sans 3',sans-serif;font-size:.77rem;font-weight:700;padding:.42rem .9rem;border-radius:5px;cursor:pointer;border:none;transition:background .15s}
+#sync-save-btn{background:var(--gold);color:#0a0f1a}
+#sync-save-btn:hover{background:#e8c47a}
+#sync-cancel-btn{background:rgba(255,255,255,.1);color:#aab8d0}
+#sync-cancel-btn:hover{background:rgba(255,255,255,.18)}
+#sync-clear-btn{background:rgba(239,83,80,.18);color:#ef9090;margin-right:auto}
+#sync-clear-btn:hover{background:rgba(239,83,80,.32)}
+</style>
+</head>
+<script>
+(function(){var t=localStorage.getItem('rita_theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+</script>
+<body>
+<div id="progress-bar"></div>
+<button id="menu-btn" aria-label="Menu">☰</button>
+
+<aside id="sidebar">
+<div id="sidebar-header">
+  <div class="book-label">Rita PMP® Exam Prep</div>
+  <h2>Ôn Thi PMP®</h2>
+  <div class="edition">Rita Mulcahy · 11th Edition 2023 · Tiếng Việt</div>
+</div>
+<div id="sidebar-toc">
+  <div class="toc-group-label">Nội Dung Chương</div>
+  <a href="#ch15-compliance-delivering-value" class="">15. Tuân Thủ và Tạo Ra Giá Trị</a>
+<a href="#ch15-introduction" class="toc-h4">Giới Thiệu</a>
+<a href="#ch15-eco-overview" class="toc-h4">Tổng Quan về Lĩnh Vực Môi Trường Kinh Doanh trong ECO</a>
+<a href="#ch15-planning-managing-compliance" class="toc-h4">Lập Kế Hoạch và Quản Lý Tuân Thủ Dự Án</a>
+<a href="#ch15-business-env-compliance" class="toc-h4">Yêu Cầu Tuân Thủ Môi Trường Kinh Doanh</a>
+<a href="#ch15-govt-societal-compliance" class="toc-h4">Tuân Thủ Quy Định Chính Phủ và Chuẩn Mực Xã Hội</a>
+<a href="#ch15-org-governance-compliance" class="toc-h4">Tuân Thủ Quản Trị Tổ Chức</a>
+<a href="#ch15-pm-compliance" class="toc-h4">Tuân Thủ Quản Lý Dự Án</a>
+<a href="#ch15-delivering-value" class="toc-h4">Cung Cấp Giá Trị</a>
+<a href="#ch15-systems-thinking" class="toc-h4">Tư Duy Hệ Thống</a>
+<a href="#ch15-project-value-delivery-system" class="toc-h4">Dự Án Như Một Hệ Thống Cung Cấp Giá Trị</a>
+<a href="#ch15-exercise-151" class="toc-h4">Bài Tập 15.1</a>
+<a href="#ch15-process-analysis" class="toc-h4">Phân Tích Quy Trình</a>
+<a href="#ch15-pm-principles" class="toc-h4">Các Nguyên Tắc Quản Lý Dự Án</a>
+<a href="#ch15-external-env-changes" class="toc-h4">Đánh Giá và Xử Lý Các Thay Đổi Môi Trường Kinh Doanh Bên Ngoài Ảnh Hưở</a>
+<a href="#ch15-exercise-152" class="toc-h4">Bài Tập 15.2</a>
+<a href="#ch15-exercise-152-part1" class="toc-h4">Bài Tập 15.2 — Phần I</a>
+<a href="#ch15-exercise-153" class="toc-h4">Bài Tập 15.3</a>
+<a href="#ch15-support-org-change" class="toc-h4">Hỗ Trợ Thay Đổi Tổ Chức</a>
+<a href="#ch15-org-culture" class="toc-h4">Văn Hóa Tổ Chức</a>
+<a href="#ch15-project-change" class="toc-h4">Thay Đổi Dự Án</a>
+<a href="#ch15-transitional-change" class="toc-h4">Thay Đổi Chuyển Tiếp</a>
+<a href="#ch15-change-models" class="toc-h4">Các Mô Hình Thay Đổi</a>
+<a href="#ch15-adkar-model" class="toc-h4">Mô Hình ADKAR</a>
+<a href="#ch15-8-step-change" class="toc-h4">Quy Trình 8 Bước Dẫn Dắt Thay Đổi</a>
+<a href="#ch15-satir-model" class="toc-h4">Mô Hình Thay Đổi Virginia Satir</a>
+<a href="#ch15-transition-model" class="toc-h4">Mô Hình Chuyển Đổi</a>
+
+</div>
+<div id="sidebar-nav">
+  <a href="rita_chap14.html" class="" title="Các Bên Liên Quan">← Ch14</a>
+  <a href="#" id="chap-muc-luc-btn">☰ Mục lục</a>
+  <a href="rita_chap16.html" class="" title="Mẹo Vượt Qua Kỳ Thi">Ch16 →</a>
+</div></aside>
+
+<main id="main">
+  <div class="chapter-hero">
+    <div class="ch-label">Chương 15</div>
+    <h1>Tuân Thủ & Mang Lại Giá Trị</h1>
+    <div class="ch-en">Compliance and Delivering Value</div>
+  </div>
+<h3 id="ch15-compliance-delivering-value">15. Tuân Thủ và Tạo Ra Giá Trị</h3>
+
+<h4 id="ch15-introduction">Giới Thiệu</h4>
+
+<p>Khi chuẩn bị chương này để xuất bản, những bông tuyết đầu tiên của mùa đông đang rơi xuống tại bang Minnesota, Hoa Kỳ — nơi đặt trụ sở của RMC. Chúng tôi đang dần quen lại với cái lạnh, điều chỉnh hệ thống sưởi để giữ ấm ngôi nhà trong khi tiêu thụ ít năng lượng nhất có thể. Những chiếc áo khoác đã được lấy ra khỏi tủ, và tủ quần áo mùa đông, may mắn thay, đã sẵn sàng. Lần đầu tiên trong mùa này, nhiều người trong chúng ta đang nghĩ đến chuyến đi làm về hay việc dọn tuyết — hoặc cả hai. Nhiều người đang tiếc nuối những việc của mùa thu vẫn chưa hoàn thành. Đó là một vòng lặp bất tận của những thay đổi trong môi trường sống và con người thích nghi với những thay đổi đó. Chúng ta và môi trường sống là một thể không thể tách rời. Đây là một phép ẩn dụ tốt cho dự án và môi trường kinh doanh.</p>
+
+<p>Hiểu rõ môi trường kinh doanh mà một dự án đang hoạt động trong đó giúp người quản lý dự án phản ứng phù hợp, nhằm mang lại các lợi ích và giá trị mà dự án được khởi xướng để thực hiện. Điều quan trọng là phải có sự hiểu biết sâu sắc về môi trường kinh doanh, bởi vì môi trường kinh doanh tác động đến dự án. Dự án và kết quả của nó cũng tác động ngược lại đến môi trường kinh doanh. Chúng được tích hợp và không thể tách rời. Bạn có xem xét môi trường kinh doanh khi quản lý một dự án không? Bạn có hiểu môi trường kinh doanh — cả bên trong lẫn bên ngoài tổ chức — có thể tác động đến dự án của bạn như thế nào, và ngược lại không?</p>
+
+<p>Thuật ngữ "môi trường kinh doanh" có thể mang nhiều ý nghĩa. Nhiệm vụ đầu tiên của lĩnh vực III trong ECO đề cập đến tuân thủ dự án liên quan đến bảo mật, sức khỏe và an toàn, quy định pháp lý, và các yêu cầu liên quan đến chính sách khác — cả bên trong lẫn bên ngoài tổ chức. Điều quan trọng đối với người quản lý dự án là thu thập tất cả các yêu cầu liên quan đến tuân thủ. Cũng quan trọng không kém là đảm bảo toàn bộ công việc liên quan đến dự án luôn tuân thủ các yêu cầu đó. Nhiệm vụ thứ hai của lĩnh vực III là dành riêng cho việc mang lại lợi ích và giá trị của dự án.</p>
+
+<p>Hai nhiệm vụ cuối cùng trong lĩnh vực này liên quan đến quản lý sự thay đổi. Nhiệm vụ thứ ba là về việc xử lý các thay đổi trong môi trường kinh doanh bên ngoài khi chúng có thể tác động đến phạm vi, và nhiệm vụ thứ tư là hỗ trợ thay đổi tổ chức (bên trong).</p>
+
+<p>PMI cho rằng lĩnh vực này chỉ chiếm khoảng 8% câu hỏi trong kỳ thi, nhưng đừng đánh giá thấp tầm quan trọng của nó. Xét cho cùng, nó được dành riêng một lĩnh vực hoàn chỉnh. Câu hỏi thi có thể liên quan đến bất kỳ chủ đề nào về quản lý dự án, kể cả lĩnh vực Môi Trường Kinh Doanh. Hiểu các yếu tố môi trường kinh doanh sẽ giúp ích cho bạn trong kỳ thi cũng như trong kinh nghiệm thực tế.</p>
+
+<h5>Các Định Nghĩa Liên Quan đến Tuân Thủ và Cung Cấp Giá Trị</h5>
+
+<p>Dưới đây là một số từ vựng cơ bản được sử dụng xuyên suốt các cuộc thảo luận về quản lý chung, quản lý dự án, và trong trường hợp này là môi trường kinh doanh. Những thuật ngữ này có thể không được sử dụng thường xuyên trong cuốn sách này, nhưng trong kỳ thi bạn được kỳ vọng là đã biết và hiểu chúng.</p>
+
+<div class="callout">
+<strong>KIỂM TRA NHANH</strong>
+<ul class="content-list">
+  <li>Chuỗi giá trị</li>
+  <li>Lập bản đồ luồng giá trị</li>
+  <li>Hệ thống</li>
+  <li>Độ phức tạp</li>
+  <li>Tuân thủ
+    <ul class="content-list">
+      <li>Tuân thủ chính phủ</li>
+      <li>Tuân thủ xã hội</li>
+      <li>Quản trị tổ chức</li>
+      <li>Quản lý dự án</li>
+    </ul>
+  </li>
+  <li>Tư duy hệ thống</li>
+  <li>Cung cấp giá trị</li>
+  <li>Quản lý có trách nhiệm</li>
+  <li>Tính năng tối thiểu có thể tiếp thị (MMF)</li>
+  <li>Văn hóa tổ chức</li>
+  <li>Thay đổi chuyển tiếp</li>
+</ul>
+</div>
+
+<h5>Tuân Thủ</h5>
+
+<p>Trong bối cảnh quản lý dự án, tuân thủ có thể có nghĩa là tuân theo:</p>
+
+<ul class="content-list">
+  <li>Cung cấp phạm vi sản phẩm phù hợp với các mục tiêu chiến lược mà sản phẩm được thiết kế để đáp ứng hoặc hỗ trợ đáp ứng cho tổ chức và các bên liên quan</li>
+  <li>Các ràng buộc của dự án</li>
+  <li>Các quy tắc và hướng dẫn của tổ chức liên quan đến sức khỏe và an toàn, yêu cầu nhân sự, và các nhu cầu vận hành nội bộ khác</li>
+  <li>Các yêu cầu của dự án và sản phẩm</li>
+  <li>Hướng dẫn từ PMO về các thực hành quản lý dự án trong tổ chức (được điều chỉnh phù hợp với nhu cầu cụ thể của từng dự án)</li>
+  <li>Các quy tắc và hướng dẫn quản lý pháp lý bên ngoài</li>
+</ul>
+
+<h5>Chuỗi Giá Trị</h5>
+
+<p>Một chuỗi các bước có hệ thống tạo nên quá trình tạo ra một sản phẩm được giao gọi là chuỗi giá trị. Chuỗi giá trị xác định từng bước trong quy trình từ khi bắt đầu đến khi giao hàng. Đây là một khái niệm quan trọng vì mục đích của mọi người trong dự án là tìm cách mang lại giá trị ở từng bước dọc theo chuỗi giá trị.</p>
+
+<p><strong>Ví dụ</strong> Sản phẩm là một chiếc bánh táo làm tại nhà từ táo tươi địa phương. Đây là cách chuỗi giá trị có thể được biểu diễn.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//08fb06b0-2ced-4209-9b92-3b4da4d5ddef/markdown_1/imgs/img_in_image_box_88_397_741_493.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A13Z%2F-1%2F%2F67a258a35612b1fa9fcbd5e79f4a41f3b72da8ba10cd6d69bb1ef8b3e6d30e24" alt="Image" width="79%" /></div></div>
+
+<p style="text-align:center"><em>HÌNH 15.1 Chuỗi giá trị cho sản phẩm bánh</em></p>
+
+<h5>Lập Bản Đồ Luồng Giá Trị</h5>
+
+<p>Đây là một khái niệm của Lean (xem thêm về Lean trong chương "Các Phương Pháp Agile"). Trong lập bản đồ luồng giá trị, một nhóm (trong trường hợp này là nhóm dự án) trực quan hóa, thảo luận và phân tích tất cả các bước trong quy trình cung cấp sản phẩm để loại bỏ lãng phí và đạt được hiệu quả trong quy trình đó.</p>
+
+<h5>Hệ Thống</h5>
+
+<p>Một nhóm các mục hoặc hoạt động liên tục tương tác và phụ thuộc lẫn nhau. Một số phần của hệ thống có thể hoạt động độc lập hoặc kết hợp với các phần khác trong hệ thống, trong khi các phần khác chỉ hoạt động trong hệ thống và không có tác dụng độc lập.</p>
+
+<h5>Độ Phức Tạp</h5>
+
+<p>Các dự án vốn dĩ phức tạp; chúng được cấu thành từ nhiều bộ phận có mối quan hệ với nhau. Những bộ phận liên quan này xuất phát từ đặc điểm của bản thân dự án và cũng từ các hệ thống có liên quan mà người quản lý dự án làm việc cùng trong các dự án, vốn thuộc về các tổ chức, và các tổ chức đó lại thuộc về xã hội nói chung. Điều này sẽ được giải thích chi tiết hơn ở phần sau trong chương này.</p>
+
+<h4 id="ch15-eco-overview">Tổng Quan về Lĩnh Vực Môi Trường Kinh Doanh trong ECO</h4>
+
+<p>Trước khi thảo luận về các nhiệm vụ trong lĩnh vực này, hãy dành thời gian nghiên cứu Hình 15.2 cùng với ECO. Hình 15.2 minh họa rằng con người và các quy trình tồn tại trong môi trường kinh doanh. Đối với các dự án và cho kỳ thi, việc suy nghĩ toàn diện về mọi thứ trong ECO là điều quan trọng.</p>
+
+<h5>Môi Trường Kinh Doanh</h5>
+
+<ul class="content-list">
+  <li>Tuân thủ dự án</li>
+  <li>Cung cấp lợi ích và giá trị</li>
+  <li>Thay đổi môi trường kinh doanh bên ngoài — tác động đến phạm vi</li>
+  <li>Hỗ trợ thay đổi tổ chức (bên trong)</li>
+</ul>
+
+<h5>Lĩnh Vực Quy Trình — Lập Kế Hoạch và Quản Lý</h5>
+
+<ul class="content-list">
+  <li><strong>Tích hợp:</strong> Phương pháp luận &amp; thực hành, lập kế hoạch, thực hiện khẩn trương, các thay đổi và tài liệu, đảm bảo chuyển giao kiến thức để duy trì tính liên tục, đóng cửa/chuyển tiếp.</li>
+  <li><strong>Các ràng buộc:</strong> Phạm vi, lịch trình, chi phí, chất lượng và tài nguyên. Mua sắm có liên quan ở chỗ qua đó chúng ta có được và tích hợp một phần phạm vi dự án từ bên ngoài.</li>
+  <li><strong>Sự không chắc chắn:</strong> Rủi ro</li>
+  <li><strong>Mối quan hệ:</strong> Sự tham gia của các bên liên quan và truyền thông. Những yếu tố này nằm ở giao điểm giữa con người và quy trình. (Xem "Mối quan hệ" trong phần Con người.)</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//08fb06b0-2ced-4209-9b92-3b4da4d5ddef/markdown_2/imgs/img_in_chart_box_406_98_751_428.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A14Z%2F-1%2F%2Fd8a33e0688492d1c7411b1a80e661abb6d2bd7115b6f269be9be15313d943fdc" alt="Image" width="41%" /></div></div>
+
+<h5>Lĩnh Vực Con Người — Lãnh Đạo và Hiệu Suất</h5>
+
+<p style="text-align:center"><em>HÌNH 15.2 Tất cả các lĩnh vực: con người và quy trình tồn tại trong môi trường kinh doanh</em></p>
+
+<ul class="content-list">
+  <li><strong>Kỹ năng lãnh đạo:</strong> Nền tảng của mọi năng lực trong lĩnh vực con người.</li>
+  <li><strong>Xây dựng hiệu suất:</strong> Xây dựng đội nhóm hiệu suất cao; thu hút các bên liên quan.</li>
+  <li><strong>Hỗ trợ hiệu suất:</strong> Hỗ trợ hiệu suất cho tất cả các bên liên quan.</li>
+  <li><strong>Mối quan hệ:</strong> Sự tham gia của các bên liên quan và truyền thông. Sử dụng kỹ năng của lĩnh vực Con người. Cung cấp lãnh đạo phục vụ để thiết lập/đảm bảo sự hiểu biết chung và hoàn thành công việc thông qua người khác.</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//08fb06b0-2ced-4209-9b92-3b4da4d5ddef/markdown_2/imgs/img_in_image_box_20_589_73_656.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A14Z%2F-1%2F%2F11675b2e9f62719f0ced4d719d7f5b8b6b611ba55d3fe3f606b17819df58b0f6" alt="Image" width="6%" /></div></div>
+
+<div class="callout tip">
+<strong>Hãy Suy Nghĩ.</strong> Lấy ECO của bạn ra và so sánh các nhiệm vụ trong ba lĩnh vực của nó với thông tin được trình bày trong Hình 15.2. Trong hình này, chúng tôi đã kết hợp ba lĩnh vực ECO và tóm tắt chúng. Bạn có thể vẽ các nhiệm vụ ECO tương ứng vào trong hình này không? Bạn có thể tự nhiên suy nghĩ toàn diện về các nhiệm vụ ECO sao cho khi nghĩ về bất kỳ nhiệm vụ nào cũng khiến bạn xem xét các nhiệm vụ khác không? Hãy rèn luyện năng lực đó cho kỳ thi.
+</div>
+
+<p>Hình 15.2 bao gồm tất cả các nhiệm vụ nhưng cũng ngụ ý các mối quan hệ giữa các nhiệm vụ trong ba lĩnh vực:</p>
+
+<ul class="content-list">
+  <li>Môi trường kinh doanh là vòng tròn lớn hơn trong ba vòng tròn vì con người và quy trình tồn tại trong đó. Dự án cũng tồn tại trong môi trường này. Một cái nhìn toàn diện về các dự án và môi trường mà chúng tồn tại là điều cần thiết để thành công với tư cách là người quản lý dự án.</li>
+  <li>Lĩnh vực Quy trình chứa các nhiệm vụ mô tả công việc được thực hiện bởi các kỹ năng và quy trình kỹ thuật quản lý dự án. Nó bao gồm các nhiệm vụ liên quan đến việc lập kế hoạch và quản lý tích hợp cùng các ràng buộc của dự án. Nhớ rằng tất cả các ràng buộc của dự án phải được cân bằng. Điều này có nghĩa là ưu tiên chúng so với nhau để giải quyết các ràng buộc cạnh tranh.</li>
+  <li>Lĩnh vực Quy trình bao gồm lập kế hoạch và quản lý sự không chắc chắn, nghĩa là các rủi ro (cả cơ hội lẫn mối đe dọa) vốn là một phần của bất kỳ dự án nào (và bất kỳ môi trường kinh doanh nào).</li>
+  <li>Sự tham gia của các bên liên quan và truyền thông trong dự án đều có quy trình và do đó có các kỹ năng kỹ thuật quản lý dự án liên quan, nhưng giống như mọi thứ khác trong dự án, chúng không đứng một mình. Các kỹ năng cần thiết từ lĩnh vực Con người là nền tảng cho các mối quan hệ cần thiết để thành công trong các lĩnh vực này.</li>
+  <li>Lĩnh vực Con người là về việc đạt được và sử dụng năng lực lãnh đạo phục vụ khéo léo để xây dựng và hỗ trợ hiệu suất cho đội nhóm cũng như cho tất cả các bên liên quan khác liên quan đến dự án. Tất cả chúng ta đều cùng nhau trong đó.</li>
+  <li>Một lần nữa, dù có kỹ năng quản lý kỹ thuật và quy trình tốt nhất, cũng không thể thành công nếu thiếu các kỹ năng được mô tả trong lĩnh vực Con người. Kỹ năng của lĩnh vực Con người tạo ra các mối quan hệ thành công cần thiết trong suốt quá trình làm việc dự án và xuyên suốt các dự án, để đạt được thành công.</li>
+</ul>
+
+<p>Bây giờ hãy xem xét kỹ hơn từng trong bốn nhiệm vụ của lĩnh vực Môi Trường Kinh Doanh. Các nhiệm vụ này bao gồm tất cả các quy trình trong mô hình Nhóm Quy Trình và tất cả các lĩnh vực trong PMBOK Guide.</p>
+
+<div class="table-wrap"><table>
+  <thead>
+    <tr>
+      <th>ECO — Lĩnh Vực III</th>
+      <th>Mô Hình Nhóm Quy Trình</th>
+      <th>PMBOK® Guide</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Nhiệm vụ 1: Lập kế hoạch và quản lý tuân thủ dự án</td>
+      <td rowspan="4">Tất cả các quy trình</td>
+      <td rowspan="4">Tất cả các lĩnh vực<br><br>Xem thêm mục 2 và 3 của Tiêu Chuẩn Quản Lý Dự Án</td>
+    </tr>
+    <tr>
+      <td>Nhiệm vụ 2: Đánh giá và cung cấp lợi ích và giá trị dự án</td>
+    </tr>
+    <tr>
+      <td>Nhiệm vụ 3: Đánh giá và xử lý các thay đổi trong môi trường kinh doanh bên ngoài ảnh hưởng đến phạm vi</td>
+    </tr>
+    <tr>
+      <td>Nhiệm vụ 4: Hỗ trợ thay đổi tổ chức</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h4 id="ch15-planning-managing-compliance">Lập Kế Hoạch và Quản Lý Tuân Thủ Dự Án</h4>
+
+<p>Giống như thuật ngữ "môi trường kinh doanh", thuật ngữ "tuân thủ" có thể mang nhiều ý nghĩa. Các quy định, quy tắc và hướng dẫn tuân thủ có thể đến từ nhiều nơi: một cơ quan quản lý nhà nước, cơ cấu quản lý của tổ chức, một quản lý hoặc giám đốc cụ thể, người quản lý dự án, điều lệ dự án, hoặc điều lệ nhóm. Dưới đây là một số loại tuân thủ:</p>
+
+<div class="table-wrap"><table>
+  <thead>
+    <tr>
+      <th>Môi Trường Kinh Doanh (Tổ Chức)</th>
+      <th>Dự Án (Quản Lý &amp; Kiểm Soát)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <ul class="content-list">
+          <li>Sức khỏe và an toàn</li>
+          <li>Tài chính</li>
+          <li>Môi trường</li>
+          <li>Xã hội</li>
+          <li>Pháp lý</li>
+          <li>Chất lượng</li>
+          <li>Mua sắm</li>
+          <li>Các quy trình và phương pháp Agile</li>
+          <li>Chính sách, thủ tục của PMO, v.v.</li>
+          <li>Đường cơ sở đo lường hiệu suất</li>
+        </ul>
+      </td>
+      <td>
+        <ul class="content-list">
+          <li>Bảo mật</li>
+          <li>Điều lệ dự án và nhóm</li>
+          <li>Các ràng buộc dự án (phạm vi, lịch trình, chi phí, chất lượng, tài nguyên)</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>Bảng trên chỉ là ví dụ về các loại mà yêu cầu tuân thủ có thể phù hợp. Các loại này không loại trừ lẫn nhau. Ví dụ, "Chính sách, thủ tục của PMO, v.v." có thể dễ dàng nằm trong cả hai cột của bảng này.</p>
+
+<p><strong>Ví dụ</strong> PMO tồn tại để hỗ trợ quản lý dự án và vì vậy cung cấp các hướng dẫn quản lý dự án để tuân theo, chẳng hạn như báo cáo tình trạng dự án hàng tháng cho ủy ban điều hành. Các chính sách và thủ tục của PMO, nhiều trong số đó chỉ là hướng dẫn, có liên quan đến một môi trường kinh doanh cụ thể trong một tổ chức. Người quản lý dự án xử lý việc tuân thủ các hướng dẫn của PMO khi cần thiết trên dự án của họ. Nhưng những hướng dẫn này được phát triển trong một tổ chức trong bối cảnh của môi trường kinh doanh bên ngoài rộng lớn hơn, với các lực lượng thị trường và xã hội ảnh hưởng đến tổ chức và các dự án của nó.</p>
+
+<p>Tiếp theo, chúng ta sẽ thảo luận về tuân thủ liên quan đến môi trường kinh doanh. Đây là các khái niệm tuân thủ có thể được ánh xạ gần nhất với lĩnh vực III, nhiệm vụ 1 của ECO (lập kế hoạch và quản lý tuân thủ dự án).</p>
+
+<h4 id="ch15-business-env-compliance">Yêu Cầu Tuân Thủ Môi Trường Kinh Doanh</h4>
+
+<p>Như đã đề cập, điều quan trọng là người quản lý dự án phải thu thập tất cả các yêu cầu tuân thủ. Các yêu cầu tuân thủ từ môi trường kinh doanh thường thuộc một trong hai phụ loại: yêu cầu tuân thủ liên quan đến quy định chính phủ và chuẩn mực xã hội (bên ngoài tổ chức), và yêu cầu tuân thủ liên quan đến cấu trúc và quản trị nội bộ của tổ chức thực hiện.</p>
+
+<h4 id="ch15-govt-societal-compliance">Tuân Thủ Quy Định Chính Phủ và Chuẩn Mực Xã Hội</h4>
+
+<p>Không có gì nghi ngờ rằng tuân thủ quy định là bắt buộc. Tuân thủ quy định là động lực duy nhất cho nhiều dự án, và ít nhất là một phần của nhiều dự án khác. Các ví dụ bao gồm:</p>
+
+<ul class="content-list">
+  <li>Các tổ chức hiện có ở bất kỳ loại nào phải nghiên cứu các khía cạnh pháp lý và quy định của bất kỳ dự án nào được tổ chức lựa chọn.</li>
+  <li>Các quy định mới có nghĩa là tất cả các tổ chức thuộc một loại nhất định phải tuân thủ và điều này có thể yêu cầu các dự án để thực hiện thay đổi sản phẩm, quy trình hoặc dịch vụ.</li>
+  <li>Những thay đổi đối với các quy định hiện có có nghĩa là các tổ chức tuân thủ phải khởi xướng các dự án để thực hiện công việc nhằm duy trì tuân thủ.</li>
+  <li>Một tổ chức mới phải bao gồm các dự án nghiên cứu quy định và tuân thủ cùng với các dự án liên quan đến khởi nghiệp khác.</li>
+  <li>Một tổ chức bị cơ quan quản lý phát hiện không tuân thủ phải tuân thủ trước một ngày nhất định.</li>
+</ul>
+
+<p>Tuân thủ quy định thường bao gồm nhiều công việc để nghiên cứu và diễn giải các quy định có liên quan, nghiên cứu và xác định tác động của chúng đến tổ chức và/hoặc các dự án của nó, thực hiện thêm công việc để xác thực những gì đã học được trước khi có thể thu thập các yêu cầu kinh doanh và thiết kế, triển khai giải pháp. Các ví dụ thực tế sau đây về các tình huống tuân thủ quy định có thể giúp bạn hiểu các yêu cầu quy định trong các bối cảnh tổ chức khác nhau.</p>
+
+<p><strong>Ví dụ</strong></p>
+
+<ul class="content-list">
+  <li>Một tổ chức y tế phải đảm bảo rằng dự án nâng cấp công nghệ sắp tới cho cổng thông tin bệnh nhân của họ bao gồm các yêu cầu tuân thủ quy định HIPAA (Đạo Luật về Khả Năng Chuyển Đổi và Trách Nhiệm Giải Trình Bảo Hiểm Sức Khỏe).</li>
+  <li>Một ngân hàng muốn thay đổi quy trình kinh doanh quan trọng phải đưa vào dự án của họ một giai đoạn phân tích tuân thủ và thu thập yêu cầu. Các sản phẩm bàn giao kết quả bao gồm các yêu cầu tuân thủ cho từng dự án liên quan trong chương trình.</li>
+  <li>Một tiểu bang Hoa Kỳ phải chuẩn bị báo cáo hàng năm về các vi phạm quy định nước uống chính quốc gia của các hệ thống cấp nước công cộng.</li>
+  <li>Một trường học mới đang khai trương phải nghiên cứu, thu thập và thực hiện các yêu cầu quy định liên quan đến trách nhiệm của họ về tuân thủ dân quyền trong chương trình dinh dưỡng trẻ em.</li>
+</ul>
+
+<p>Ngoài các yêu cầu quy định, các tổ chức phải tìm cách hiểu và tuân thủ các chuẩn mực xã hội được chấp nhận. Những điều này có thể bao gồm những thứ có vẻ hiển nhiên như quy định về trang phục trong một ngành cụ thể — so sánh làm việc tại ngân hàng so với trồng cây cho công ty cảnh quan; khi nghĩ đến việc xây dựng tòa nhà, nhiều người ngay lập tức nghĩ đến mũ bảo hộ. Các chuẩn mực cũng bao gồm những điều mà chúng ta có thể nghĩ là đương nhiên, nhưng điều này không phải lúc nào cũng đúng. Điều này bao gồm "chuẩn mực" về môi trường làm việc an toàn và thân thiện. Mọi người đều đồng ý với kỳ vọng này, nhưng các phương tiện truyền thông đầy rẫy các câu chuyện về vi phạm "chuẩn mực" này.</p>
+
+<p>Các chuẩn mực xã hội thay đổi và luôn phát triển. Một ví dụ ảnh hưởng đến tổ chức và xã hội nói chung là các thực hành môi trường đang phát triển liên quan đến mọi thứ từ tái chế đến xây dựng xanh và cảnh quan thân thiện với động vật hoang dã, đến việc tạo ra các thực hành phát triển sản phẩm, sản xuất và hỗ trợ bền vững hơn với môi trường.</p>
+
+<p>Bạn có thể thấy rằng không có thực hành nào nằm gọn trong một loại quản trị duy nhất không? Ví dụ, quản trị của tổ chức bạn có thể đi trước xã hội lớn hơn trong việc phát triển các thực hành phát triển sản phẩm bền vững hơn với môi trường, điều này lần lượt sẽ ảnh hưởng đến cách các dự án phát triển sản phẩm mới được quản trị trong tổ chức của bạn. Cuối cùng, các thực hành của tổ chức bạn hoặc các thực hành tương tự có thể trở thành quy định khi các quy định môi trường mới được thông qua. Mọi thứ đều được kết nối.</p>
+
+<h4 id="ch15-org-governance-compliance">Tuân Thủ Quản Trị Tổ Chức</h4>
+
+<p>Một số loại tuân thủ liên quan đến các quy tắc và hướng dẫn nội bộ của tổ chức đã có sẵn. Các quy tắc và hướng dẫn như vậy có thể liên quan đến các chính sách và thủ tục nội bộ về nhân sự, sức khỏe và an toàn — một số hoặc tất cả trong số đó sẽ gắn liền với quản trị quy định. Quản trị tổ chức khác có thể dựa trên hệ thống phân cấp, văn hóa và hoạt động của chính tổ chức. Những điều này sẽ bao gồm tất cả các chính sách và thủ tục được thiết lập bởi PMO để giúp các nhà quản lý danh mục đầu tư, chương trình và dự án. Ví dụ về các thực hành và tài liệu quản trị tổ chức bao gồm:</p>
+
+<ul class="content-list">
+  <li>Các công cụ, mẫu và thủ tục do PMO thiết lập cho quản lý dự án, ví dụ:
+    <ul class="content-list">
+      <li>Các mẫu điều lệ dự án và định nghĩa phạm vi</li>
+      <li>PMIS (hệ thống thông tin quản lý dự án) được sử dụng để lưu trữ tài liệu dự án và chia sẻ kiến thức dự án</li>
+      <li>Hướng dẫn về quản lý nguồn lực của các nhà quản lý chức năng và dự án trong các dự án</li>
+      <li>Các thực hành được ghi lại cụ thể cho các loại vòng đời dự án và phương pháp phát triển được tổ chức sử dụng, từ dự đoán đến Agile hoặc kết hợp</li>
+    </ul>
+  </li>
+  <li>Quản trị tổ chức quản lý liên quan đến:
+    <ul class="content-list">
+      <li>Thủ tục và hướng dẫn truyền thông về việc xin nghỉ phép có lương (PTO)</li>
+      <li>Hướng dẫn và các thực hành được thiết lập đảm bảo đối xử công bằng và bình đẳng với nhân viên</li>
+      <li>Hướng dẫn về cách nộp đơn khiếu nại chống lại quản lý</li>
+      <li>Đề xuất cải tiến liên tục của công ty trong bất kỳ lĩnh vực nào của doanh nghiệp</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="ch15-pm-compliance">Tuân Thủ Quản Lý Dự Án</h4>
+
+<p>Các thực hành và công cụ của tổ chức do PMO cung cấp được người quản lý dự án xem xét khi họ điều chỉnh quản trị cho dự án cụ thể của mình, bắt đầu từ giai đoạn khởi xướng và lập kế hoạch. Danh sách dưới đây đưa ra các ví dụ về yêu cầu tuân thủ cụ thể cho một dự án. Một số yêu cầu tuân thủ này đến từ môi trường tổ chức trong khi số khác là đặc thù của việc quản lý khéo léo một dự án cụ thể.</p>
+
+<ul class="content-list">
+  <li>Quản trị dự án phải xuất phát từ quản trị tổ chức. Quản trị của một dự án phải được tạo ra với ý thức về và tuân thủ các hướng dẫn và quy tắc của tổ chức áp dụng trong dự án.
+    <div class="callout"><strong>Ví dụ</strong> Người quản lý dự án cần hiểu và sử dụng các chính sách và thủ tục của công ty liên quan đến việc tuyển dụng nhân viên mới hoặc nhân viên theo hợp đồng cho dự án.</div>
+  </li>
+  <li>Người quản lý dự án cần tích hợp các yêu cầu tuân thủ quy định vào các hoạt động của dự án.</li>
+  <li>Việc tuân theo các thủ tục làm việc với bộ phận mua sắm để được hỗ trợ các hoạt động mua sắm dự án thường là cần thiết. Có thể có những nhà cung cấp và nhà thầu phụ được phê duyệt mà người quản lý dự án sẽ cần sử dụng trong dự án của họ.</li>
+  <li>Các thủ tục kiểm soát thay đổi tích hợp và các mẫu yêu cầu thay đổi thường được điều chỉnh theo dự án nhưng cần thiết cho các nỗ lực quản lý thay đổi trên các dự án theo hướng kế hoạch.</li>
+  <li>Trong các dự án Agile, chủ sản phẩm thường chủ trì các yêu cầu thay đổi liên quan đến phạm vi, trong khi nhóm cùng nhau làm việc về các thay đổi đối với phương pháp xây dựng sản phẩm và người quản lý dự án đảm bảo rằng các phương pháp Agile đang được thực hiện được hiểu và tuân thủ.</li>
+  <li>Người quản lý dự án phải thực hiện quản lý có trách nhiệm một cách tận tâm đối với dự án để nó có thể đáp ứng các yêu cầu và mục tiêu của mình trong khi vẫn tuân thủ các ràng buộc của dự án (phạm vi, lịch trình, chi phí, chất lượng, rủi ro, tài nguyên). Để làm điều này, việc cân bằng các ràng buộc cạnh tranh thường là cần thiết.</li>
+</ul>
+
+<h4 id="ch15-delivering-value">Cung Cấp Giá Trị</h4>
+
+<p>Khi bạn được giao một dự án mới để quản lý, bạn có tự động tự hỏi "hãy xem dự án này được thiết kế để mang lại giá trị gì cho tổ chức và các bên liên quan của chúng ta không?" Có lẽ không hẳn bằng những từ ngữ đó, nhưng bạn có thể làm điều tương đương. Bạn nhanh chóng tìm kiếm lý do tổ chức lựa chọn dự án (kế hoạch kinh doanh) và những sản phẩm bàn giao cùng kết quả nào mà dự án cần tạo ra (mục tiêu, đích đến và giá trị của dự án). Bạn cũng đang nghĩ cách làm tốt nhất của mình và truyền cảm hứng cho người khác làm tốt của họ để dự án sẽ thành công.</p>
+
+<div class="table-wrap"><table>
+  <thead>
+    <tr>
+      <th>Mô Hình Nhóm Quy Trình</th>
+      <th>ECO</th>
+      <th>PMBOK® Guide</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Tất cả các quy trình</td>
+      <td>Lĩnh vực III<br>Nhiệm vụ 2: Đánh giá và cung cấp lợi ích và giá trị dự án</td>
+      <td>Tất cả các lĩnh vực<br><br>Xem thêm mục 2 và 3 của Tiêu Chuẩn Quản Lý Dự Án</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h4 id="ch15-systems-thinking">Tư Duy Hệ Thống</h4>
+
+<p>Người quản lý dự án cần hiểu và thực hành tư duy hệ thống. Các tổ chức tồn tại như những hệ thống cung cấp giá trị cho các bên liên quan của họ. Vì mục đích đó, bất kỳ tổ chức nào — công ty, tổ chức phi lợi nhuận hay cơ quan chính phủ — đều tồn tại trong bối cảnh của nhiều hệ thống làm việc cùng nhau vì lợi ích chung.</p>
+
+<p>Hình 15.3 minh họa một số trong nhiều hệ thống mà một tổ chức tồn tại và tương tác trong đó, để cung cấp giá trị cho các bên liên quan.</p>
+
+<p>Như đã thảo luận trước đó trong chương này, các tổ chức hỗ trợ tuân thủ dựa trên môi trường pháp lý. Các tổ chức cũng tương tác trong nhiều bối cảnh khác nhau: vị trí hoạt động, thị trường và cạnh tranh, các công nghệ có sẵn, và các lực lượng kinh tế và pháp lý hiện tại.</p>
+
+<p>Bây giờ, bạn có thể đã biết tại sao các dự án tồn tại.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//9d59d814-2c3f-4172-8f11-a972a6190f48/markdown_1/imgs/img_in_image_box_41_405_92_465.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A52%3A06Z%2F-1%2F%2F0564e42a2c07961fb6bbd2229bf13cf82db0446744a82071f42974af2f65e8b4" alt="Image" width="6%" /></div></div>
+
+<div class="callout tip">
+<strong>Hãy Suy Nghĩ.</strong> Các dự án tồn tại để tạo ra và cung cấp giá trị được xác định rất cụ thể cho tổ chức thực hiện và các bên liên quan của tổ chức đó. Giống như một tổ chức, một dự án là một hệ thống cung cấp giá trị. Mỗi dự án được thực hiện để cung cấp một tập hợp con của tổng giá trị mà tổ chức tìm cách cung cấp theo thời gian cho các bên liên quan.
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//9d59d814-2c3f-4172-8f11-a972a6190f48/markdown_1/imgs/img_in_image_box_34_546_401_910.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A52%3A06Z%2F-1%2F%2F27f3d04c901a4f56f6b7c0e062514b60d98265796a04a50d02523fef2a999aab" alt="Image" width="44%" /></div></div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//9d59d814-2c3f-4172-8f11-a972a6190f48/markdown_1/imgs/img_in_image_box_405_113_741_471.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A52%3A06Z%2F-1%2F%2Fc3850df2518f6af75ebbc583bf7b180ab898caa6e5add334a336d58d8866ed29" alt="Image" width="40%" /></div></div>
+
+<p style="text-align:center"><em>HÌNH 15.4 Tổ chức và các hệ thống nội bộ tương tác với nó</em></p>
+
+<p style="text-align:center"><em>HÌNH 15.3 Tổ chức và các hệ thống bên ngoài mà nó tương tác</em></p>
+
+<p>Hình 15.4 cho thấy một tổ chức như một hệ thống với các hệ thống nội bộ khác hoạt động độc lập và kết hợp với tổ chức.</p>
+
+<p>Ví dụ bao gồm:</p>
+
+<ul class="content-list">
+  <li>PMO</li>
+  <li>Danh mục đầu tư, chương trình và các dự án khác</li>
+  <li>Vận hành</li>
+  <li>Quản trị (tổ chức và dự án)</li>
+</ul>
+
+<p>Các hệ thống con của tổ chức giúp nó cung cấp giá trị dự định cho các bên liên quan (và xã hội nói chung).</p>
+
+<div class="highlight">
+<p><strong>CÁC TỔ CHỨC</strong> là những hệ thống phức tạp tồn tại để cung cấp giá trị cho các bên liên quan (và xã hội rộng lớn hơn) và từ đó đạt được các mục tiêu chiến lược và chiến thuật của riêng mình.</p>
+
+<p>Quản trị tổ chức là một hệ thống trong tổ chức tồn tại để hỗ trợ việc cung cấp giá trị cho các bên liên quan. Quản trị được thể hiện qua khung đã thiết lập gồm các chính sách, thủ tục, thực hành và các hướng dẫn khác có liên quan đến tính bền vững của tổ chức.</p>
+
+<p>Các hệ thống con trong một tổ chức cung cấp giá trị:</p>
+<ul class="content-list">
+  <li>Dự án, chương trình, danh mục đầu tư và PMO quản trị chúng</li>
+  <li>Sản phẩm và dịch vụ (kết quả của danh mục đầu tư, chương trình và dự án)</li>
+  <li>Vận hành (hỗ trợ sản phẩm và dịch vụ; các chức năng duy trì như nhân sự, tài chính và các nhóm chức năng khác)</li>
+</ul>
+<p>Những điều này phải hoạt động độc lập và kết hợp với nhau.</p>
+
+<p>Quản trị dự án hướng dẫn các hoạt động quản lý dự án hướng tới mục tiêu tạo ra sản phẩm của dự án.</p>
+<ul class="content-list">
+  <li>Dựa trên quản trị tổ chức và hướng dẫn của PMO</li>
+  <li>Được điều chỉnh phù hợp với dự án</li>
+</ul>
+
+<p>Quản trị chương trình giúp định hướng hướng dẫn giữa các dự án liên kết và công việc vận hành.</p>
+<ul class="content-list">
+  <li>Dựa trên quản trị tổ chức và hướng dẫn của PMO</li>
+  <li>Công cụ, phương pháp, mẫu, v.v.</li>
+</ul>
+
+<p>PMO cung cấp một khung quản trị dự án (dựa trên quản trị tổ chức) để tiêu chuẩn hóa:</p>
+<ul class="content-list">
+  <li>Hướng dẫn về tuân thủ</li>
+  <li>Được điều chỉnh phù hợp với chương trình và các dự án của nó</li>
+  <li>Hướng dẫn, nguồn lực</li>
+</ul>
+
+<p>Quản trị danh mục đầu tư định hướng hướng dẫn giữa các chương trình liên kết và vận hành.</p>
+<ul class="content-list">
+  <li>Dựa trên quản trị tổ chức và vận hành</li>
+  <li>Được điều chỉnh phù hợp với bối cảnh hiện tại của danh mục đầu tư</li>
+</ul>
+</div>
+
+<h4 id="ch15-project-value-delivery-system">Dự Án Như Một Hệ Thống Cung Cấp Giá Trị</h4>
+
+<p>Chúng ta đã xác lập dự án như một cơ chế cung cấp giá trị mà với tư cách là người quản lý dự án, bạn phải nhìn nhận qua tư duy hệ thống. Chúng ta cũng đã xác lập rằng một dự án với tư cách là một hệ thống là một tập hợp con của nhiều hệ thống khác, không kém phần quan trọng trong số đó là tổ chức mà nó được thực hiện. Bây giờ hãy tập trung vào dự án như một hệ thống cung cấp giá trị. Một dự án tạo ra các sản phẩm bàn giao được thiết kế để vừa tạo ra kết quả vừa có tính bền vững.</p>
+
+<p><strong>Ví dụ</strong></p>
+
+<ul class="content-list">
+  <li><strong>Phạm vi sản phẩm:</strong> Cần có một dịch vụ thư viện mới để giúp những người thất nghiệp sử dụng internet để nộp đơn xin việc.</li>
+  <li><strong>Sản phẩm bàn giao:</strong> Nâng cấp phòng máy tính, đào tạo đặc biệt cho nhân viên thư viện sẽ hướng dẫn những người dùng cần trợ giúp về công nghệ.</li>
+  <li><strong>Kết quả:</strong> Số người được giúp đỡ trong việc nộp đơn xin việc sẽ tăng X%, được đo bởi nhân viên thư viện và khảo sát nhanh khi người dùng ra về. Thư viện có kết quả phân tích dữ liệu cho thấy số người hiện đang được giúp đỡ với việc nộp đơn xin việc. Thông tin này có thể được so sánh với một phân tích tương tự, hàng tháng sau khi hoàn thành dự án.</li>
+  <li><strong>Kế hoạch quản lý lợi ích:</strong> Kế hoạch này bao gồm số người hưởng lợi từ phòng máy tính, số sách được mượn và kết quả khảo sát cộng đồng, chỉ kể một vài ví dụ. Dịch vụ sẽ được đánh giá lại sau sáu tháng và sau một năm để đánh giá thành công và đánh giá các nhu cầu bổ sung của phòng máy tính hoặc dịch vụ.</li>
+</ul>
+
+<h4 id="ch15-exercise-151">Bài Tập 15.1</h4>
+
+<p>Việc cung cấp giá trị cho một số lượng lớn các bên liên quan là khó khăn. Một kỹ thuật thường được sử dụng là khảo sát hoặc bảng câu hỏi. Hãy tưởng tượng nhóm dự án thư viện muốn gửi bảng câu hỏi cho những công dân sẽ có quyền truy cập vào thư viện mới, để xác định giá trị tiềm năng. Bạn sẽ hỏi những "người dùng" thư viện này những câu hỏi gì? Viết câu trả lời của bạn vào Sổ Tay Bài Tập trước khi đọc các câu trả lời có thể có dưới đây.</p>
+
+<h5>Đáp Án</h5>
+
+<p>Dưới đây là một số ví dụ về câu hỏi bạn có thể đã nghĩ ra.</p>
+
+<ul class="content-list">
+  <li>Bạn thường xuyên ghé thăm thư viện công cộng như thế nào?</li>
+  <li>Bạn tìm kiếm những dịch vụ nào trong thư viện?</li>
+  <li>Bạn muốn sử dụng loại thiết bị nào trong thư viện (ví dụ: máy tính, máy tính bảng, máy in)?</li>
+  <li>Bạn thường dành bao nhiêu thời gian trong thư viện mỗi lần ghé thăm?</li>
+  <li>Bạn quan tâm đến loại sách nào nhất (ví dụ: tiểu thuyết, sách thiếu nhi, lịch sử)?</li>
+  <li>Bạn thích sách bìa cứng hay sách bìa mềm?</li>
+  <li>Bạn có thích được thủ thư tư vấn về sách không?</li>
+  <li>Bạn có thích có đồ ăn nhẹ trong thư viện không (ví dụ: cà phê, nước ngọt)?</li>
+  <li>Bạn thích phòng đọc sách lớn hay các góc nhỏ hơn?</li>
+</ul>
+
+<h4 id="ch15-process-analysis">Phân Tích Quy Trình</h4>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//9d59d814-2c3f-4172-8f11-a972a6190f48/markdown_3/imgs/img_in_image_box_39_421_89_484.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A52%3A07Z%2F-1%2F%2F9bf30a00811851a04b69e5762d30d89f966e0380f6db5845a1bc967714c9c210" alt="Image" width="6%" /></div></div>
+
+<div class="callout tip">
+<strong>Hãy Suy Nghĩ.</strong> Ở đầu chương này, chúng ta đã định nghĩa thuật ngữ luồng giá trị. Hãy xem lại luồng giá trị từ Hình 15.1, về việc làm bánh từ các nguyên liệu tươi được thu thập. Chúng ta sẽ phân tích nó theo góc độ cung cấp giá trị. Ví dụ sau đây có thể minh họa cách bạn đi qua việc lập kế hoạch và quản lý bất kỳ dự án nào để cung cấp giá trị đã hứa một cách hiệu quả và hiệu suất nhất có thể. Làm thế nào chúng ta có thể làm cho quy trình này hiệu quả hơn?
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//9d59d814-2c3f-4172-8f11-a972a6190f48/markdown_3/imgs/img_in_image_box_59_495_700_578.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A52%3A07Z%2F-1%2F%2F9206443376155441788b798f58a0f29c0593441b726a8b5012d3ea95f8b38b7a" alt="Image" width="77%" /></div></div>
+
+<p>Trong phần thảo luận sau đây, <em>người</em> được thể hiện bằng chữ nghiêng và <strong>hoạt động</strong> được thể hiện bằng chữ đậm.</p>
+
+<ul class="content-list">
+  <li>Có vẻ như có rất nhiều việc lái xe phụ nếu <em>Người Làm Bánh</em> phải làm tất cả những việc này. Đó là rất nhiều thời gian của <em>Người Làm Bánh</em> cộng thêm năng lượng có thể bị lãng phí. Có ai khác có thể giúp hiệu quả hơn không?
+    <ul class="content-list">
+      <li>Có. Thành viên nhóm <em>Người Mua Tạp Hóa</em> nói rằng họ có thể đến cửa hàng tạp hóa mỗi ngày và có thể dừng lại để <strong>Lấy nguyên liệu khác</strong> trên đường <strong>Về nhà</strong>, vì họ đang đi đó dù sao cũng vì các hoạt động liên quan đến một dự án khác.</li>
+      <li><em>Người Mua Tạp Hóa</em> sẽ dừng lại trên đường <strong>Về nhà</strong>.</li>
+      <li>Điều đó loại bỏ lãng phí từ hai hoạt động. Nó làm cho <strong>Đến cửa hàng tạp hóa</strong> ít tốn kém nguồn lực hơn và loại bỏ <strong>Về nhà</strong> vì chuyến xe đó đã xảy ra như một phần của hoạt động vận hành.</li>
+      <li>Nó cũng tiết kiệm một phần thời gian của <em>Người Làm Bánh</em>, cộng thêm tiết kiệm các nguồn lực khác (xăng, hao mòn xe).</li>
+    </ul>
+  </li>
+  <li>Còn hoạt động <strong>Lấy táo</strong> thì sao? Chúng ta có thể loại bỏ hoạt động đó và kết hợp <strong>Lấy táo</strong> với <strong>Lấy nguyên liệu khác</strong> không?
+    <ul class="content-list">
+      <li>Không. Có nhiều giá trị hơn trong <strong>Lấy táo</strong> nếu chúng được hái tươi từ vườn. Giá trị đó có thể không dễ dàng đo lường được, nhưng hoạt động đó xứng đáng với giá trị của nó.</li>
+      <li>Khách hàng của chúng ta sẽ hài lòng hơn với sự lựa chọn này.</li>
+    </ul>
+  </li>
+  <li>Bởi vì <em>Người Mua Tạp Hóa</em> đang tiết kiệm thời gian cho <em>Người Làm Bánh</em>, <em>Người Làm Bánh</em> tập trung nhiều hơn vào việc cải tiến liên tục các hoạt động <strong>Chuẩn bị bếp</strong> và <strong>Chuẩn bị nguyên liệu</strong>.</li>
+  <li>Còn thời gian của <em>Người Mua Tạp Hóa</em> thì sao? Tại sao chúng ta không chỉ đặt hàng tạp hóa trực tuyến và tiết kiệm thêm thời gian?
+    <ul class="content-list">
+      <li><em>Người Mua Tạp Hóa</em> có thể chọn các nguyên liệu mà họ biết là tốt nhất.</li>
+      <li>Chi phí giao hàng sẽ cao hơn.</li>
+      <li>Chúng ta tiếp thị sản phẩm của mình là có chứa các nguyên liệu tươi, tự thu thập. Hãy trung thực với lời hứa đó với khách hàng.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Một nỗ lực lập bản đồ luồng giá trị thực sự sẽ đã phân tích chi tiết từng hoạt động nhiều hơn những gì được trình bày ở đây. Tuy nhiên, trong tình huống này, người quản lý dự án và nhóm là những người quản lý có trách nhiệm và tận tâm đối với thời gian và các nguồn lực khác cần thiết trong quy trình "làm bánh táo tươi". Họ nhận thức được cách một dự án khác có thể ảnh hưởng đến dự án của họ và đã sử dụng thông tin đó. Các thành viên nhóm đã đóng góp ý tưởng để loại bỏ lãng phí và đạt được hiệu quả trong việc sử dụng nguồn lực và tăng thêm giá trị. Họ hành động với sự chính trực phù hợp với cam kết với khách hàng và thực hành cải tiến liên tục như một phần của quy trình.</p>
+
+<h5>Cách Chúng Ta Cung Cấp Giá Trị Trong Các Dự Án</h5>
+
+<p>Mọi người được phân công cho dự án phần lớn vì kỹ năng kỹ thuật của họ, nhưng kỹ năng kỹ thuật đơn thuần không làm cho bất kỳ ai thành công. Người quản lý dự án và nhóm phải làm việc cùng nhau để cung cấp giá trị đã hứa của phạm vi dự án và sản phẩm, và điều đó đòi hỏi các kỹ năng giao tiếp và nhóm. Một người quản lý dự án hiểu biết, tài năng và tận tâm làm việc để cung cấp giá trị trong dự án trong mọi việc họ làm, và điều tương tự có thể nói về nhóm. Tất cả cùng nhau làm việc để cung cấp sản phẩm của dự án và thiết lập quá trình chuyển đổi sang hoạt động vận hành để sản phẩm có cơ hội tốt nhất cung cấp các lợi ích liên tục mà nó được tạo ra. Cuốn sách này thảo luận chi tiết về nhiều cách mà dự án — với tư cách là một hệ thống — thực hiện điều này. Hãy chuyển sang các nguyên tắc có thể hướng dẫn những hành vi này cho người quản lý dự án và nhóm.</p>
+
+<div class="callout tip">
+<strong>Hãy Suy Nghĩ.</strong> Các hành vi quản lý và cung cấp dự án được định hướng bởi các kỹ năng của lĩnh vực Con người và Quy trình, nhưng chúng cũng nên được định hướng bởi một tập hợp các nguyên tắc. Là mối liên hệ với môi trường kinh doanh, và với môi trường làm việc cũng như vị trí của bạn trong đó, hãy suy nghĩ về các nguyên tắc có thể hướng dẫn hành vi của người quản lý dự án và nhóm khi họ tích cực làm việc để cung cấp giá trị thông qua phạm vi dự án và sản phẩm. PMI đã đề xuất mười hai nguyên tắc quản lý dự án trong Tiêu Chuẩn Quản Lý Dự Án hiện tại được xuất bản cùng với PMBOK Guide, Phiên Bản Thứ Bảy. Bạn sẽ thấy hầu hết hoặc tất cả chúng đều quen thuộc.
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//9d59d814-2c3f-4172-8f11-a972a6190f48/markdown_4/imgs/img_in_image_box_70_366_121_425.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A52%3A09Z%2F-1%2F%2F45ed171bd21edd447907a1f5d9fb865068258bed763141c114fae8b0dfeb7a4e" alt="Image" width="6%" /></div></div>
+
+<h4 id="ch15-pm-principles">Các Nguyên Tắc Quản Lý Dự Án</h4>
+
+<p><strong>Quản lý có trách nhiệm</strong> Đây là về việc hành động với sự quan tâm và chính trực, và thiết lập cũng như duy trì niềm tin. Trong việc quản lý các dự án cho tổ chức và môi trường kinh doanh rộng lớn hơn, làm việc cùng nhau sẽ dễ dàng hơn cho tất cả mọi người khi một môi trường tin tưởng và quan tâm được tạo ra. Đây cũng là về việc sử dụng cẩn thận các nguồn lực được tổ chức và các bên liên quan tin tưởng giao cho người quản lý dự án.</p>
+
+<p>Nguyên tắc này có thể được thực hành trong tổ chức bằng cách đảm bảo sự liên kết của dự án với các mục tiêu chiến lược của tổ chức. Người quản lý dự án cũng có thể là người quản lý tài chính cẩn thận của tổ chức; họ có thể đơn giản là đối xử tốt với các thành viên nhóm khác và sử dụng quyền hạn của mình một cách cẩn thận.</p>
+
+<p>Mặc dù tính bền vững lâu dài của sản phẩm thường về mặt kỹ thuật là một phần của phạm vi dự án cụ thể, người quản lý dự án nên hiểu toàn bộ vòng đời sản phẩm và luôn có thể tìm cách đóng góp vào nó thông qua các quá trình chuyển đổi dự án suôn sẻ và nhìn xa trông rộng. Ngoài tổ chức, người quản lý dự án có thể là người quản lý cẩn thận các nguồn lực môi trường. Họ cũng có thể cải thiện các ngành nghề mà họ thực hành như một phần của cộng đồng xã hội rộng lớn hơn.</p>
+
+<p><strong>Nhóm</strong> Với tư cách là những nhà lãnh đạo phục vụ, việc tạo ra và đảm bảo một môi trường nhóm hợp tác và an toàn đáp ứng tinh thần của nguyên tắc này. Sự an toàn và niềm tin kết quả cho phép mỗi thành viên nhóm đóng góp tài năng và kỹ năng độc đáo của họ, cả độc lập lẫn cùng nhau với nhóm. Các yếu tố khác hỗ trợ môi trường nhóm an toàn và hợp tác bao gồm các thỏa thuận nhóm (ví dụ: điều lệ nhóm), cơ cấu tổ chức và các quy trình mà các nhà lãnh đạo phục vụ có thể giúp thiết lập.</p>
+
+<p><strong>Các bên liên quan</strong> Đây là tất cả về cách quản lý sự tham gia của các bên liên quan. Người quản lý dự án có thể chủ động thu hút các bên liên quan ở mức độ cần thiết để thành công của dự án và của tất cả các bên liên quan dự án (bao gồm nhóm và người quản lý dự án).</p>
+
+<p><strong>Giá trị</strong> Chúng ta đã nói về một dự án như một hệ thống cung cấp giá trị. Người quản lý dự án có thể tiếp tục trong suốt dự án để đảm bảo rằng dự án và sản phẩm của nó được liên kết với các mục tiêu kinh doanh của tổ chức.</p>
+
+<p><strong>Tư duy hệ thống</strong> Sự hiểu biết của bạn về các hệ thống và tư duy hệ thống giờ đây có thể giúp bạn hiểu rằng nguyên tắc này là về sự phản ứng chủ động liên tục của người quản lý dự án đối với các hoàn cảnh năng động và thay đổi của hệ thống.</p>
+
+<p><strong>Lãnh đạo</strong> Thực hành lãnh đạo phục vụ, thúc đẩy môi trường nhóm hợp tác, và cân bằng cẩn thận nhu cầu của cá nhân với nhu cầu của nhóm là tinh thần của nguyên tắc này.</p>
+
+<p><strong>Điều chỉnh</strong> Mọi thứ bạn đã đọc trong các nguyên tắc trước đều nói lên sự cần thiết phải điều chỉnh phương pháp tiếp cận dự án, các thực hành quản lý dự án và lãnh đạo theo từng dự án cụ thể và nhu cầu của nó. Đúng vậy, người quản lý dự án sẽ quyết định một phương pháp phát triển cụ thể, dù đó là theo hướng kế hoạch, Agile hay kết hợp. Tuy nhiên, trong bối cảnh đó, tất cả các thực hành cụ thể được sử dụng trong một dự án nên được xem xét để đảm bảo rằng nó hữu ích cho dự án hiện tại.</p>
+
+<p><strong>Chất lượng</strong> Tập trung vào chất lượng sẽ đảm bảo rằng sản phẩm của dự án đáp ứng các yêu cầu dự án như đã thỏa thuận với các bên liên quan chính. Các danh mục yêu cầu chất lượng có thể bao gồm:</p>
+
+<ul class="content-list">
+  <li><strong>Hiệu suất</strong> Đáp ứng các yêu cầu này đảm bảo sản phẩm (hoặc dịch vụ) hoạt động đúng như dự định.</li>
+  <li><strong>Sự phù hợp</strong> Điều này trả lời câu hỏi về sản phẩm: "Nó có đáp ứng các thông số kỹ thuật và phù hợp để sử dụng không?"</li>
+  <li><strong>Độ tin cậy</strong> có nghĩa là tính nhất quán của hiệu suất theo yêu cầu.</li>
+  <li><strong>Sự hài lòng</strong> có nghĩa là chức năng, khả năng sử dụng và trải nghiệm người dùng của sản phẩm đạt đến mức hài lòng của khách hàng.</li>
+  <li><strong>Tính đồng nhất</strong> Các sản phẩm bàn giao có đồng nhất với những sản phẩm khác được sản xuất theo cùng một cách không?</li>
+  <li><strong>Hiệu quả</strong> có nghĩa là người quản lý dự án và nhóm có thể và thực sự đạt được hiệu suất sản phẩm tốt nhất với ít đầu vào và nỗ lực nhất không?</li>
+  <li><strong>Tính bền vững</strong> có nghĩa là tạo ra các sản phẩm có tác động tích cực đến các yếu tố kinh tế xã hội và với sự bền vững môi trường.</li>
+</ul>
+
+<p><strong>Điều hướng độ phức tạp</strong> Liên quan đến điều chỉnh, người quản lý dự án nên liên tục đánh giá các phương pháp tiếp cận, phương pháp và kế hoạch của họ trong dự án để đảm bảo chúng phù hợp với độ phức tạp của dự án (cũng như của tổ chức và xã hội). Điều này cũng bao gồm việc tạo điều kiện cho một vòng đời dự án (và có thể nói là sản phẩm) thành công.</p>
+
+<p><strong>Rủi ro</strong> Nguyên tắc này là về việc liên tục đánh giá rủi ro và các kế hoạch phản ứng rủi ro cùng việc thực thi chúng, để đảm bảo rằng chúng vẫn phù hợp với các rủi ro dự án thực tế và tác động của chúng.</p>
+
+<p><strong>Khả năng thích ứng và khả năng phục hồi</strong> Với tư cách là người quản lý dự án, bạn cần xây dựng khả năng thích ứng và khả năng phục hồi vào thực hành quản lý dự án của chính mình và giúp tạo điều kiện cho khả năng thích ứng và khả năng phục hồi trong nhóm và tổ chức.</p>
+
+<p><strong>Tạo điều kiện thay đổi để đạt được trạng thái tương lai được hình dung</strong> Mỗi dự án bắt đầu với một trạng thái hiện tại. Mỗi dự án được thiết kế để kết thúc với một trạng thái tương lai mong muốn được thực hiện (ít nhất là một phần) bởi sản phẩm của dự án. Người quản lý dự án tạo điều kiện thay đổi để đạt được trạng thái tương lai được hình dung đó bằng cách chuẩn bị cho các bên liên quan bị ảnh hưởng bởi dự án. Họ chỉ có thể làm điều này bằng cách xây dựng các quá trình chuyển đổi hiệu quả, được thực hiện như một phần của các hoạt động đóng giai đoạn và dự án.</p>
+
+<p>Bạn có nhận thấy rằng hai trong số các nguyên tắc này là về điều hướng độ phức tạp và tạo điều kiện thay đổi không? Đây là những khía cạnh của quản lý dự án thường không được chú ý rõ ràng nhiều nhưng mà người quản lý dự án tập trung vào một cách ngầm ẩn trong suốt dự án. Hai phần tiếp theo của chương này đề cập đến các nhiệm vụ của lĩnh vực Môi Trường Kinh Doanh mang lại sự chú ý cần thiết cho độ phức tạp và thay đổi.</p>
+
+<h4 id="ch15-external-env-changes">Đánh Giá và Xử Lý Các Thay Đổi Môi Trường Kinh Doanh Bên Ngoài Ảnh Hưởng đến Phạm Vi</h4>
+
+<p>Chúng ta đã thảo luận khá chi tiết về các môi trường bên ngoài dự án và các tác động tiềm năng của chúng. Điều gì xảy ra khi các thay đổi xảy ra với môi trường bên ngoài sau khi dự án đã bắt đầu? Trong môi trường dự đoán, thách thức là liên tục đảm bảo rằng các lợi ích được thỏa thuận trong quá trình khởi xướng và lập kế hoạch vẫn còn hiệu lực, và rằng giải pháp đang phát triển sẽ cung cấp những lợi ích đó. Những thay đổi nhỏ đối với môi trường kinh doanh có thể chỉ đơn giản là thúc đẩy những thay đổi nhỏ, được phê duyệt khi chúng phát sinh. Mặt khác, các thay đổi có thể phức tạp hơn và yêu cầu việc sắp xếp lại ưu tiên hoặc đánh giá lại và tái định nghĩa phạm vi đã xác định của dự án. Một thay đổi phạm vi thường cũng đòi hỏi các thay đổi đối với lịch trình, ngân sách hoặc các ràng buộc dự án khác.</p>
+
+<p>Đối với các loại dự án có thể sử dụng phương pháp Agile, các môi trường thích ứng được thiết lập ngay từ đầu để điều chỉnh tương đối dễ dàng với các thay đổi phạm vi. Đó là lợi ích của việc lập kế hoạch dự án và xây dựng sản phẩm theo từng lần lặp và tăng dần. Các khái niệm xây dựng Tính Năng Tối Thiểu Có Thể Tiếp Thị (MMF) và cung cấp Sản Phẩm Khả Thi Tối Thiểu (MVP) tóm tắt những lợi ích này:</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//54e8a66b-fa64-4f85-b04b-488845e2ea6a/markdown_1/imgs/img_in_image_box_706_96_757_155.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A20Z%2F-1%2F%2F2ea1c35d75c3547ea2f02b0b524c58e99b6991edcbd4ea7b97fd0b47ca9ea886" alt="Image" width="6%" /></div></div>
+
+<ul class="content-list">
+  <li><strong>MMF (tính năng tối thiểu có thể tiếp thị)</strong> Hãy coi MMF là tính năng nhỏ nhất có thể được phát hành ra thị trường, mà các bên liên quan cần hoặc thấy hữu ích.
+    <div class="callout"><strong>Ví dụ</strong> Nếu Hoa Kỳ quyết định không còn sử dụng Giờ Mùa Hè nữa thì sao? Tất cả các đồng hồ máy tính (như những đồng hồ trong điện thoại thông minh) sẽ phải được đẩy cập nhật tính năng vào thời điểm thích hợp để chúng vẫn chính xác.</div>
+  </li>
+  <li><strong>MVP (sản phẩm khả thi tối thiểu)</strong> MVP là một phiên bản của sản phẩm với đủ các tính năng để nó hữu ích. Các tính năng quan trọng nhất có thể được sử dụng bởi những khách hàng đầu tiên.
+    <div class="callout"><strong>Ví dụ</strong> Nhiều xe mới hiện nay có hệ thống kiểm soát hành trình thích ứng, giúp người lái giữ khoảng cách đủ xa với xe phía trước. Điều này có thể giảm khả năng xảy ra tai nạn. Mặc dù đây là một tính năng hoàn chỉnh (không phải tối thiểu khả thi) trên các xe mới có người lái, nó có các khả năng đang ở giai đoạn "tối thiểu khả thi" của sản phẩm xe không người lái, vốn vẫn nói chung được coi là chỉ mang tính thử nghiệm.</div>
+  </li>
+</ul>
+
+<p>MMF được cung cấp thường xuyên dưới dạng các cập nhật cho các sản phẩm tiêu dùng đã có — đặc biệt là những sản phẩm sử dụng phần mềm. Điều này cho phép nhóm dự án tìm hiểu nhiều nhất về khách hàng và môi trường kinh doanh với nỗ lực ít nhất có thể, theo từng bước. MVP cho phép người quản lý dự án và nhóm xem xét cách sản phẩm tăng dần thu hút khách hàng như thế nào và cách khách hàng sử dụng sản phẩm. Sau đó nhóm sử dụng phản hồi để cập nhật sản phẩm nhằm tăng khả năng của nó hoặc thậm chí hủy toàn bộ dự án khi cần thiết.</p>
+
+<p>Một trong nhiều lợi ích của việc xây dựng sản phẩm theo từng bước và lặp đi lặp lại là khi môi trường bên ngoài thay đổi, người quản lý dự án và nhóm Agile có thể dễ dàng thay đổi phạm vi dự án của họ để thích ứng với những thay đổi này. Tuy nhiên, bất kỳ loại dự án nào cũng phải được quản lý cẩn thận với môi trường kinh doanh bên ngoài trong đầu để đảm bảo rằng phạm vi dự án vẫn còn hiệu lực và sẽ mang lại giá trị cho khách hàng của sản phẩm được đại diện ở đầu dự án. Nếu giá trị của phạm vi sản phẩm thay đổi, thì phạm vi dự án và sản phẩm cũng phải thay đổi.</p>
+
+<p>Ngành bạn đang làm việc, công nghệ, quy định, các yếu tố địa chính trị và các lĩnh vực thị trường đều có thể trải qua các thay đổi sẽ tác động đến dự án của bạn.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//54e8a66b-fa64-4f85-b04b-488845e2ea6a/markdown_1/imgs/img_in_image_box_45_595_99_658.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A20Z%2F-1%2F%2F4a91b220794135d39a7ddc2688d83ad3ed5648255ea145556d897c4631249471" alt="Image" width="6%" /></div></div>
+
+<div class="callout tip">
+<strong>Hãy Suy Nghĩ.</strong> Hãy xem xét những ví dụ về thay đổi môi trường này:
+<ul class="content-list">
+  <li>Dự án lớn của bạn là phát triển công nghệ pin cho xe điện. Một đối thủ cạnh tranh phát hành pin ra thị trường với dung lượng vượt trội nhẹ so với pin bạn đặt mục tiêu đạt được với dự án của mình. Bạn sẽ cần lãnh đạo một nỗ lực thay đổi dự án trong tổ chức của mình.</li>
+  <li>Một thảm họa thiên nhiên ảnh hưởng đến khu vực mà dự án của bạn đang được quản lý sẽ ảnh hưởng đến dự án của bạn. Việc lập kế hoạch quản lý rủi ro phải tính đến điều này.</li>
+  <li>Một quy định quản lý sản phẩm của bạn đã hết hạn nên dự án của bạn có thể bắt đầu đóng sớm hơn dự kiến, sau khi hoàn thành tất cả công việc vẫn phù hợp với điều lệ dự án. Bạn có thể chuyển giao sản phẩm theo đúng trạng thái hiện tại ra thị trường.</li>
+</ul>
+</div>
+
+<p>Bạn xử lý các thay đổi môi trường như thế nào? Bất kể loại thay đổi nào đang xảy ra trong dự án hoặc môi trường của bạn, quy trình đều như nhau!</p>
+
+<ol class="content-list">
+  <li>Có hiểu biết sâu sắc cao về các sản phẩm và dịch vụ, tổ chức và môi trường của bạn.</li>
+  <li>Duy trì ý thức và giám sát khả năng thay đổi ở bất kỳ loại nào.</li>
+  <li>Khi các thay đổi tiềm năng được xác định, đánh giá các thay đổi và tác động của chúng.</li>
+  <li>Lập kế hoạch phản ứng của bạn.</li>
+  <li>Lãnh đạo nhóm hoạt động trong tổ chức và dự án để hỗ trợ phản ứng đã lập kế hoạch của bạn.</li>
+</ol>
+
+<h4 id="ch15-exercise-152">Bài Tập 15.2</h4>
+
+<h4 id="ch15-exercise-152-part1">Bài Tập 15.2 — Phần I</h4>
+
+<p>Hãy xem đồ họa dưới đây với một số tổ chức hoặc hệ thống bên ngoài mà thư viện mới sẽ tồn tại trong đó. Bạn có thể nghĩ ra một thay đổi có thể tác động đến dự án từ mỗi tổ chức/hệ thống này không?</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//54e8a66b-fa64-4f85-b04b-488845e2ea6a/markdown_2/imgs/img_in_image_box_63_177_339_439.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A20Z%2F-1%2F%2F8602e83c7bc6ede614711d5ef38ff8a381394c1fc698e70feae53f4c2bdee128" alt="Image" width="33%" /></div></div>
+
+<div class="table-wrap"><table>
+  <thead>
+    <tr>
+      <th>Bên ngoài</th>
+      <th>Thay đổi tiềm năng</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Người dùng thư viện</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Công nghệ</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Kinh tế thành phố</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Cạnh tranh</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Khu phố và đường sá địa phương</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Quy định chính phủ</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Các công ty xuất bản</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h5>Đáp Án</h5>
+
+<p>Dưới đây là một số câu trả lời có thể. Bạn có thể đã nghĩ ra thêm một số thay đổi tiềm năng khác.</p>
+
+<div class="table-wrap"><table>
+  <thead>
+    <tr>
+      <th>Bên ngoài</th>
+      <th>Thay đổi tiềm năng</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Người dùng thư viện</td>
+      <td>Nhiều người dùng lái xe đến thư viện hơn dự kiến, dẫn đến vấn đề đỗ xe và khiếu nại.</td>
+    </tr>
+    <tr>
+      <td>Công nghệ</td>
+      <td>Một trang mạng xã hội mới xuất hiện, người dùng muốn sử dụng trên thiết bị của thư viện, nhưng nó có một số nội dung phản cảm.</td>
+    </tr>
+    <tr>
+      <td>Kinh tế thành phố</td>
+      <td>Thành phố không có đủ kinh phí để hỗ trợ chi phí bảo trì thư viện.</td>
+    </tr>
+    <tr>
+      <td>Cạnh tranh</td>
+      <td>Một hiệu sách mới mở gần thư viện.</td>
+    </tr>
+    <tr>
+      <td>Khu phố và đường sá địa phương</td>
+      <td>Tội phạm trong khu vực thư viện đã tăng lên. Các vấn đề giao thông.</td>
+    </tr>
+    <tr>
+      <td>Quy định chính phủ</td>
+      <td>Một quy định bắt buộc đeo khẩu trang mới được áp dụng cho tất cả các tòa nhà chính phủ và công cộng.</td>
+    </tr>
+    <tr>
+      <td>Các công ty xuất bản</td>
+      <td>Sách sẽ chỉ có trên máy tính bảng hoặc thiết bị di động.</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<h4 id="ch15-exercise-153">Bài Tập 15.3</h4>
+
+<p>Phần II: Hãy nghĩ lại về đồ họa trong bài tập trước, với một số tổ chức hoặc hệ thống bên ngoài mà thư viện mới sẽ tồn tại trong đó. Trong khi quản lý dự án thư viện mới, người quản lý dự án nên làm gì để theo dõi môi trường bên ngoài về các thay đổi? Viết câu trả lời vào Sổ Tay Bài Tập trước khi xem các câu trả lời có thể có dưới đây.</p>
+
+<h5>Đáp Án</h5>
+
+<p>Các câu trả lời có thể:</p>
+
+<ul class="content-list">
+  <li>Liên hệ với các giám đốc thư viện ở các cộng đồng khác để tìm hiểu về những thành công và thách thức của họ</li>
+  <li>Thiết lập các mối liên hệ với các công ty xuất bản và kiểm tra với họ mỗi vài tháng</li>
+  <li>Đăng các bài viết trên báo địa phương và trang web với báo cáo tiến độ dự án, cung cấp địa chỉ email để người dùng đặt câu hỏi</li>
+  <li>Trả lời các câu hỏi từ người dùng, thành viên hội đồng thành phố, thị trưởng, v.v.</li>
+  <li>Tham dự các cuộc họp hội đồng thành phố, cuộc họp cộng đồng khu phố và cuộc họp quy hoạch thành phố</li>
+  <li>Đọc tin tức địa phương, tìm kiếm các dự án gần đó khác có thể xung đột với thư viện</li>
+  <li>Kiểm tra với công ty xây dựng về các quy định xây dựng hiện hành và các thủ tục tuân thủ</li>
+</ul>
+
+<h4 id="ch15-support-org-change">Hỗ Trợ Thay Đổi Tổ Chức</h4>
+
+<p>Nhiệm vụ ECO này là về việc hỗ trợ các thay đổi đối với dự án có thể xuất phát từ các thay đổi trong tổ chức thực hiện, và các thay đổi trong tổ chức có thể xuất phát từ một dự án hoặc sản phẩm của nó. Văn hóa tổ chức cũng quan trọng cần xem xét như loại và mức độ của sự thay đổi tiềm năng đối với dự án, tổ chức, hoặc cả hai.</p>
+
+<h4 id="ch15-org-culture">Văn Hóa Tổ Chức</h4>
+
+<p>Các dự án bị tác động bởi và có tác động đến các chuẩn mực văn hóa nội bộ và các chính sách và thủ tục quản lý tổ chức. Những yếu tố này ngày càng trở nên quan trọng trong các tổ chức toàn cầu, nơi các thành viên nhóm thường làm việc từ các văn phòng khác nhau và đôi khi là từ xa, mỗi nơi có văn hóa riêng. Nhân viên của bất kỳ tổ chức nào đều phải là một phần của văn hóa tổ chức và tuân thủ các chính sách và thủ tục của nó. Đồng thời, người quản lý dự án phải tôn trọng tất cả mọi người trong dự án và nhiều nền văn hóa mà những người được giao cho dự án phải hoạt động trong đó. Người quản lý dự án nên có khả năng thích ứng cách tiếp cận lãnh đạo bằng cách hiểu nhiều nhất có thể về văn hóa của nhóm và các bên liên quan.</p>
+
+<p>Những thay đổi tổ chức nội bộ có thể yêu cầu thay đổi nhóm dự án, làm lại công việc, thay đổi lịch trình, phạm vi dự án, hoặc thậm chí hủy bỏ dự án. Hiểu văn hóa tổ chức, chính trị và quản trị sẽ giúp người quản lý dự án thực hiện những thay đổi cần thiết trong các dự án của họ theo những cách giảm thiểu các tác động tiêu cực và duy trì dự án tiến về phía trước. Trong trường hợp một dự án bị hủy bỏ, người quản lý dự án phải có khả năng lãnh đạo quá trình chuyển đổi một cách suôn sẻ.</p>
+
+<div class="callout tip">
+<strong>Hãy Suy Nghĩ.</strong> Điều quan trọng là phải xem xét văn hóa tổ chức không chỉ khi khởi xướng một dự án mà còn trong suốt vòng đời của nó. Tại sao? Hãy tưởng tượng bạn đã lập kế hoạch cho một dự án và phát hiện ra các yêu cầu chính mà tổ chức hỗ trợ ban đầu không tiết lộ. Kế hoạch chắc chắn sẽ cần phải thay đổi để đáp ứng các yêu cầu mới. Nhưng tại sao những yêu cầu này lại không được tiết lộ? Đó có phải là sự thiếu sót hay có một lý do cụ thể khác khiến các yêu cầu vẫn chưa được trình bày? Văn hóa tổ chức sẽ bị ảnh hưởng như thế nào bởi những thay đổi này? Tương tự, những thay đổi này sẽ ảnh hưởng đến văn hóa tổ chức như thế nào? Nhóm có ủng hộ những thay đổi cần thiết đối với dự án không? Khách hàng có ủng hộ những thay đổi không? Người quản lý dự án phải trả lời tất cả những câu hỏi này và nhiều hơn nữa để lãnh đạo nhóm hướng đến những thay đổi đúng đắn.
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//54e8a66b-fa64-4f85-b04b-488845e2ea6a/markdown_3/imgs/img_in_image_box_53_840_106_901.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A21Z%2F-1%2F%2Fd7bc69965c8b7ad461965e2d1c9726bffac8693961a463c748a3f31ecea19934" alt="Image" width="6%" /></div></div>
+
+<p>Với tư cách là người quản lý dự án, bạn càng biết và hiểu văn hóa của tổ chức, bạn sẽ càng dễ dàng trả lời những câu hỏi này và cung cấp sự lãnh đạo phù hợp cho nhóm vì lợi ích tốt nhất của dự án. Dưới đây là các ví dụ bổ sung về những thay đổi tổ chức sẽ ảnh hưởng đến một dự án:</p>
+
+<ul class="content-list">
+  <li>Tổ chức của bạn đã sáp nhập với một công ty khác và bạn sẽ lãnh đạo các nỗ lực đánh giá khả năng tồn tại tiếp tục của dự án trong tổ chức mới.</li>
+  <li>Tổ chức của bạn đã thay đổi định hướng và sản phẩm của bạn đã trở nên quan trọng hơn đối với sự thành công của định hướng tổ chức mới. Bạn sẽ được cung cấp nhiều nguồn lực hơn để làm việc nhưng cần lập kế hoạch lại dự án để hoàn thành sớm hơn sáu tháng so với kế hoạch ban đầu.</li>
+  <li>Một thành viên nhóm chủ chốt đang rời công ty. Bạn sẽ cần đàm phán để có một nguồn lực mới phù hợp nhất với điểm tiến độ hiện tại của dự án và kỹ năng của nhóm dự án hiện tại.</li>
+  <li>Tổ chức của bạn đang đóng cửa ba trong số mười tám văn phòng mà bạn đang lên kế hoạch triển khai bản build phần mềm máy tính để bàn mới. Một trong những văn phòng bị đóng cửa đã là nhóm thử nghiệm thí điểm cho sản phẩm của dự án. Bạn sẽ phải lập kế hoạch lại dự án mà không có những văn phòng này và lập kế hoạch để có được một nhóm thử nghiệm thí điểm mới.</li>
+</ul>
+
+<h4 id="ch15-project-change">Thay Đổi Dự Án</h4>
+
+<p>Quản lý thay đổi dự án được thảo luận chi tiết hơn trong chương "Tích Hợp", nhưng dưới đây là danh sách các ví dụ về các thực hành quản lý dự án tốt sẽ giúp quản lý các thay đổi dự án ảnh hưởng đến tổ chức.</p>
+
+<ul class="content-list">
+  <li>Trong quản lý dự án truyền thống, sự tiến triển từ ước tính thứ tự độ lớn sơ bộ (ROM) được thực hiện để lựa chọn dự án sẽ được đánh giá lại trong quá trình khởi xướng với việc phát triển điều lệ dự án. Tiếp theo là ước tính chi tiết hơn sử dụng các công cụ như phân tích phạm vi, lập sơ đồ mạng lưới và ước tính ba điểm trong quá trình lập kế hoạch chi tiết. Việc kiểm tra các ước tính chi tiết với điều lệ dự án là quan trọng để đảm bảo rằng các giả định của ban quản lý tổ chức về tính khả thi của dự án vẫn còn hiệu lực.</li>
+  <li>Các hệ thống cổng giai đoạn cho các dự án cho phép nhóm và các bên liên quan dừng lại, đánh giá và phê duyệt những gì đã xảy ra cho đến nay trong dự án và sau đó quyết định có tiếp tục sang giai đoạn tiếp theo không. Các thay đổi có thể được thực hiện đối với các chính sách và thủ tục tại các cột mốc này, đại diện cho các cập nhật đối với tài sản quy trình tổ chức.</li>
+  <li>Điều gì đó được phát hiện trong một dự án không ảnh hưởng đến dự án đó nhưng có thể ảnh hưởng đến một dự án khác trong chương trình mà dự án đó thuộc về. Việc báo cáo lên người quản lý dự án khác hoặc người quản lý chương trình sẽ đảm bảo rằng vấn đề được tính đến vì lợi ích của tổ chức.</li>
+  <li>Kiểm soát thay đổi tích hợp là quy trình quản lý các thay đổi trong dự án, đảm bảo rằng các thay đổi đối với dự án là cần thiết và được thực hiện một cách có hệ thống. Nếu thay đổi không được quản lý đúng cách trong các dự án, nó sẽ có tác động tiêu cực đến dự án và do đó đến tổ chức.</li>
+  <li>Quản lý dự án Agile hỗ trợ trạng thái thay đổi dự án liên tục thông qua lập kế hoạch lặp đi lặp lại và tăng dần cùng với phát triển sản phẩm. Điều này có thể có nghĩa là cung cấp giá trị liên tục cho khách hàng.</li>
+</ul>
+
+<h4 id="ch15-transitional-change">Thay Đổi Chuyển Tiếp</h4>
+
+<p>Tại sao chúng ta thực hiện dự án ngay từ đầu? Một dự án được thực hiện với mục đích rõ ràng là đáp ứng nhu cầu kinh doanh để mang lại thay đổi có tính chất cụ thể cho tổ chức và các bên liên quan. Trước khi một dự án bắt đầu, một tổ chức hoặc khách hàng của nó đang ở trong một môi trường gọi là trạng thái hiện tại. Dự án được thiết kế để đưa các bên liên quan đến một trạng thái tương lai được xác định bởi các mục tiêu dự án và được gói gọn trong phạm vi và yêu cầu của dự án. Quản lý dự án hướng đến việc xây dựng sản phẩm của dự án. Ngầm định trong công việc của người quản lý dự án là đảm bảo rằng các bên liên quan có thể thực hiện quá trình chuyển đổi từ trạng thái hiện tại sang trạng thái tương lai với ít gián đoạn nhất có thể đối với hoạt động hiện tại của họ. Theo bản chất của chúng, các dự án là về việc tạo ra và quản lý sự thay đổi.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//16c708c6-8550-4aab-8a3b-c6cb7b242dcb/markdown_0/imgs/img_in_image_box_73_80_123_141.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A47%3A18Z%2F-1%2F%2F64f47f5ff9ecd036df1ce8de0d7cc835f95cea38129c268f690f0075f24565e3" alt="Image" width="6%" /></div></div>
+
+<div class="callout tip">
+<strong>Hãy Suy Nghĩ.</strong> Dù một giải pháp mới có giá trị đến đâu, mọi người vẫn cần được giúp đỡ để chuyển đổi sang nó. Dưới đây là một số ví dụ về cách điều đó có thể được quản lý:
+<ul class="content-list">
+  <li>Một thay đổi đơn giản đối với sản phẩm phần mềm đã có sẵn được xây dựng để tự động tải xuống trên các thiết bị của bên liên quan và một cửa sổ bật lên tóm tắt các thay đổi.</li>
+  <li>Việc triển khai phần mềm mới sẽ thay đổi hoàn toàn cách hoàn thành các quy trình trong bộ phận bị ảnh hưởng trong tổ chức. Dự án là một phần của chương trình bao gồm một giám đốc truyền thông quản lý một dự án truyền thông được lập kế hoạch cẩn thận trong khi một giám đốc đào tạo quản lý một dự án triển khai và đào tạo.</li>
+  <li>Một sản phẩm đã xuất sắc đang được cập nhật với công nghệ hiện đại hơn. Bao gồm trong việc triển khai sản phẩm mới là một chương trình đổi máy và hoàn tiền cho khách hàng mua sản phẩm mới.</li>
+</ul>
+</div>
+
+<p>Trong lịch sử, các dự án trong tổ chức không chú ý đủ đến các quá trình chuyển đổi giữa trạng thái hiện tại và trạng thái tương lai. Làm thế nào mọi người có thể thấy giá trị trong những thay đổi đối với cách họ làm việc mà không có sự trợ giúp trong việc chuyển đổi sang trạng thái tương lai? Ngày nay, các dự án và chương trình thích hợp dành nhiều sự chú ý hơn đến việc quản lý các quá trình chuyển đổi so với trước đây.</p>
+
+<p>Để thi, bạn cần hiểu rằng những thay đổi được mang lại cho người dùng khi kết thúc các dự án phát triển sản phẩm hoặc dịch vụ mới cần được quản lý, hoặc như một phần của quy trình Đóng Dự Án hoặc Giai Đoạn (thuộc Quản Lý Tích Hợp), hoặc như một phần của một dự án riêng biệt, tùy thuộc vào quy mô và độ phức tạp của sự thay đổi.</p>
+
+<h4 id="ch15-change-models">Các Mô Hình Thay Đổi</h4>
+
+<p>PMI đã xuất bản một khung quản lý thay đổi trong tài liệu <em>Quản Lý Thay Đổi Trong Các Tổ Chức: Hướng Dẫn Thực Hành</em> (2013). Khung này dựa trên năm yếu tố chung của nhiều mô hình thay đổi cùng với một loạt vòng phản hồi.</p>
+
+<ul class="content-list">
+  <li>Xây dựng kế hoạch thay đổi</li>
+  <li>Quản lý quá trình chuyển đổi</li>
+  <li>Lập kế hoạch cho sự thay đổi</li>
+  <li>Duy trì sự thay đổi</li>
+  <li>Thực hiện sự thay đổi</li>
+</ul>
+
+<p>Hiểu cách mọi người phản ứng và chấp nhận sự thay đổi cho phép các tổ chức lập kế hoạch và kết hợp các thay đổi tốt hơn. Các bên liên quan bị ảnh hưởng là những người bên trong và bên ngoài cần được biết về cách và lý do tại sao các thay đổi ảnh hưởng đến họ. Một số mô hình thay đổi hữu ích được mô tả tiếp theo. Bạn có thể thấy một trong những tên mô hình này như một lựa chọn câu trả lời trong câu hỏi thi.</p>
+
+<h4 id="ch15-adkar-model">Mô Hình ADKAR</h4>
+
+<p>ADKAR là viết tắt của Awareness (Nhận thức), Desire (Mong muốn), Knowledge (Kiến thức), Ability (Khả năng) và Reinforcement (Củng cố), là năm bước mà một cá nhân trải qua để thích ứng với sự thay đổi. Mô hình này được phát triển bởi Jeff Hiatt vào năm 2006 khi ông nghiên cứu các thay đổi trong hơn 700 tổ chức. Mô hình giúp các chuyên gia quản lý thay đổi phát triển các thông tin liên lạc và hoạt động cho các bên liên quan bị ảnh hưởng đang trải qua sự thay đổi ở từng giai đoạn trong hành trình của họ.</p>
+
+<h4 id="ch15-8-step-change">Quy Trình 8 Bước Dẫn Dắt Thay Đổi</h4>
+
+<p>Quy Trình 8 Bước Dẫn Dắt Thay Đổi tập trung vào cách tiếp cận từ trên xuống để quản lý các tổ chức cỡ trung bình đến lớn. John Kotter đã xuất bản khung của mình vào năm 1995 và khuyến khích các nhà lãnh đạo tạo ra sự nhiệt tình cho sự thay đổi bằng cách truyền đạt tầm nhìn và xác định các nhà lãnh đạo thay đổi của công ty để tác động đến các bên liên quan bị ảnh hưởng.</p>
+
+<h4 id="ch15-satir-model">Mô Hình Thay Đổi Virginia Satir</h4>
+
+<p>Mô Hình Satir, được xuất bản lần đầu vào năm 1991, được thiết kế để cải thiện các mối quan hệ và giao tiếp trong các đơn vị gia đình và giải thích cách mọi người trải qua sự thay đổi. Nó cũng được các tổ chức sử dụng để lập kế hoạch thay đổi bằng cách dự đoán các tác động dự kiến đối với các bên liên quan. Mô Hình Satir thừa nhận rằng mọi thứ thường trở nên tệ hơn trước khi trở nên tốt hơn, nhưng cuối cùng chúng sẽ trở nên tốt hơn với sự giao tiếp rõ ràng và hỗ trợ. Virginia Satir là một nhà tâm lý trị liệu làm việc trong các hệ thống gia đình.</p>
+
+<h4 id="ch15-transition-model">Mô Hình Chuyển Đổi</h4>
+
+<p>Mô Hình Chuyển Đổi của William Bridges cung cấp sự hiểu biết về cách mọi người chuyển đổi qua một sự thay đổi. Chuyển đổi là một quá trình tâm lý trong đó mọi người dần dần chấp nhận tình huống mới của họ sau sự thay đổi. Nó bao gồm các giai đoạn: 1. kết thúc, mất mát và buông bỏ; 2. vùng trung lập; và 3. khởi đầu mới. Mô hình của Bridges được xuất bản lần đầu vào năm 1980 trong cuốn sách <em>Transitions: Making Sense of Life's Changes</em> (Chuyển Đổi: Hiểu Ý Nghĩa của Những Thay Đổi Trong Cuộc Sống).</p>
+
+
+</main>
+
+<button id="back-top" aria-label="Về đầu trang">↑</button>
+
+<script>
+// Progress bar
+const pb=document.getElementById('progress-bar');
+function updPB(){const d=document.documentElement;pb.style.width=Math.min((d.scrollTop/(d.scrollHeight-d.clientHeight))*100,100)+'%'}
+window.addEventListener('scroll',updPB,{passive:true});
+
+// Back to top
+const bt=document.getElementById('back-top');
+window.addEventListener('scroll',()=>{bt.style.opacity=scrollY>400?'1':'0';},{passive:true});
+bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+// Mobile menu
+const mb=document.getElementById('menu-btn'),sb=document.getElementById('sidebar');
+mb.addEventListener('click',()=>sb.classList.toggle('open'));
+document.addEventListener('click',e=>{if(!sb.contains(e.target)&&e.target!==mb)sb.classList.remove('open')});
+
+// Active TOC highlight on scroll
+const tocLinks=document.querySelectorAll('#sidebar-toc a[href^="#"]');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      tocLinks.forEach(a=>a.classList.remove('active'));
+      const a=document.querySelector('#sidebar-toc a[href="#'+e.target.id+'"]');
+      if(a){a.classList.add('active');a.scrollIntoView({block:'nearest',behavior:'smooth'})}
+    }
+  })
+},{rootMargin:'-20% 0px -75% 0px'});
+document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
+
+// ── THEME + READING POSITION ───────────────────────────
+(function(){
+  var THEME_KEY='rita_theme', READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var chapNum=m?m[1]:null;
+
+  // Build & inject theme toggle button
+  var hdr=document.getElementById('sidebar-header');
+  if(hdr){
+    var btn=document.createElement('button');
+    btn.id='theme-btn';
+    var curTheme=document.documentElement.getAttribute('data-theme')||'light';
+    btn.textContent=curTheme==='dark'?'☀':'🌙';
+    btn.title='Giao diện sáng / tối';
+    hdr.appendChild(btn);
+    btn.addEventListener('click',function(){
+      var next=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+      document.documentElement.setAttribute('data-theme',next);
+      localStorage.setItem(THEME_KEY,next);
+      btn.textContent=next==='dark'?'☀':'🌙';
+    });
+  }
+
+  if(!chapNum) return;
+
+  // Save last chapter visited
+  try{
+    var rd=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    rd.lastChap='rita_chap'+chapNum;
+    if(!rd.scrollPos) rd.scrollPos={};
+    localStorage.setItem(READ_KEY,JSON.stringify(rd));
+  }catch(e){}
+
+  // Restore scroll position
+  try{
+    var rdR=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    var savedPos=rdR.scrollPos&&rdR.scrollPos[chapNum]||0;
+    if(savedPos>200) setTimeout(function(){window.scrollTo(0,savedPos);},120);
+  }catch(e){}
+
+  // Save scroll position (debounced 600ms)
+  var saveT;
+  window.addEventListener('scroll',function(){
+    clearTimeout(saveT);
+    saveT=setTimeout(function(){
+      try{
+        var r2=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+        if(!r2.scrollPos) r2.scrollPos={};
+        r2.scrollPos[chapNum]=window.scrollY;
+        r2.lastChap='rita_chap'+chapNum;
+        localStorage.setItem(READ_KEY,JSON.stringify(r2));
+      }catch(e){}
+    },600);
+  },{passive:true});
+})();
+
+// ── HIGHLIGHT / NOTES SYSTEM ────────────────────────────
+(function(){
+  var READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  if(!m) return;
+  var chapNum=m[1];
+  var HL_KEY='rita_hl_'+chapNum;
+
+  // ── STORAGE ──
+  function loadHL(){try{return JSON.parse(localStorage.getItem(HL_KEY)||'[]')}catch(e){return[]}}
+  function saveHL(arr){localStorage.setItem(HL_KEY,JSON.stringify(arr));window.__ritaSyncTrigger&&window.__ritaSyncTrigger();}
+  function genId(){return 'h'+Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
+
+  // ── XPATH HELPERS ──
+  var mainEl=document.getElementById('main');
+  function getXPath(node){
+    if(!node||node===mainEl) return '.';
+    var parts=[];
+    var cur=node.nodeType===3?node.parentNode:node;
+    while(cur&&cur!==mainEl&&cur!==document.body){
+      var tag=cur.tagName.toLowerCase();
+      var idx=1,sib=cur.previousElementSibling;
+      while(sib){if(sib.tagName&&sib.tagName.toLowerCase()===tag)idx++;sib=sib.previousElementSibling;}
+      parts.unshift(tag+'['+idx+']');
+      cur=cur.parentElement;
+    }
+    return parts.join('/');
+  }
+  function resolveXPath(xpath){
+    if(!mainEl||xpath==='.') return mainEl;
+    try{
+      var r=document.evaluate('.//'+xpath,mainEl,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);
+      return r.singleNodeValue;
+    }catch(e){return null;}
+  }
+  function findTextAt(el,offset){
+    var walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null);
+    var count=0,node;
+    while((node=walker.nextNode())){
+      var len=node.textContent.length;
+      if(count+len>=offset) return{node:node,localOffset:offset-count};
+      count+=len;
+    }
+    return null;
+  }
+
+  // ── APPLY MARK TO DOM ──
+  function applyMark(hl){
+    try{
+      var sEl=resolveXPath(hl.sxp), eEl=resolveXPath(hl.exp);
+      if(!sEl||!eEl) return false;
+      var sInfo=sEl.nodeType===3?{node:sEl,localOffset:hl.so}:findTextAt(sEl,hl.so);
+      var eInfo=eEl.nodeType===3?{node:eEl,localOffset:hl.eo}:findTextAt(eEl,hl.eo);
+      if(!sInfo||!eInfo) return false;
+      var range=document.createRange();
+      range.setStart(sInfo.node,sInfo.localOffset);
+      range.setEnd(eInfo.node,eInfo.localOffset);
+      applyRange(range,hl.id,hl.color,hl.note||'');
+      return true;
+    }catch(e){return false;}
+  }
+  function applyRange(range,hlId,color,note){
+    var walker=document.createTreeWalker(
+      range.commonAncestorContainer.nodeType===3
+        ?range.commonAncestorContainer.parentNode
+        :range.commonAncestorContainer,
+      NodeFilter.SHOW_TEXT,null
+    );
+    var nodes=[],node;
+    while((node=walker.nextNode())){if(range.intersectsNode(node))nodes.push(node);}
+    nodes.forEach(function(tn){
+      var s=tn===range.startContainer?range.startOffset:0;
+      var e=tn===range.endContainer?range.endOffset:tn.textContent.length;
+      if(s>=e) return;
+      var nr=document.createRange();
+      nr.setStart(tn,s); nr.setEnd(tn,Math.min(e,tn.textContent.length));
+      try{
+        var mk=document.createElement('mark');
+        mk.className='hl'; mk.setAttribute('data-hl-id',hlId);
+        mk.setAttribute('data-color',color); mk.setAttribute('data-note',note);
+        nr.surroundContents(mk);
+      }catch(err){
+        try{
+          var c=nr.extractContents(),mk2=document.createElement('mark');
+          mk2.className='hl'; mk2.setAttribute('data-hl-id',hlId);
+          mk2.setAttribute('data-color',color); mk2.setAttribute('data-note',note);
+          mk2.appendChild(c); nr.insertNode(mk2);
+        }catch(_){}
+      }
+    });
+  }
+  function removeMarks(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      var p=mk.parentNode;
+      while(mk.firstChild)p.insertBefore(mk.firstChild,mk);
+      p.removeChild(mk);
+      p.normalize();
+    });
+  }
+  function updateMarks(hlId,color,note){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.setAttribute('data-color',color);
+      mk.setAttribute('data-note',note);
+    });
+  }
+
+  // ── RESTORE HIGHLIGHTS ON LOAD ──
+  var highlights=loadHL();
+  // Sort by sxp+so descending so earlier ranges aren't offset by later insertions
+  // Actually apply in order (each one is independent)
+  highlights.forEach(applyMark);
+  // Expose re-apply for sync module
+  window.__ritaReapplyMarks=function(){
+    document.querySelectorAll('mark.hl').forEach(function(mk){
+      var p=mk.parentNode;while(mk.firstChild)p.insertBefore(mk.firstChild,mk);p.removeChild(mk);p.normalize();
+    });
+    loadHL().forEach(applyMark);
+    if(typeof updateBadge==='function') updateBadge();
+    if(typeof renderPanelIfOpen==='function') renderPanelIfOpen();
+  };
+
+  // ── SIDEBAR BUTTON ──
+  function updateBadge(){
+    var hls=loadHL();
+    var badge=document.getElementById('hl-badge');
+    if(badge) badge.textContent=hls.length||'0';
+  }
+  var sidebarNav=document.getElementById('sidebar-toc');
+  if(sidebarNav){
+    var hlBtn=document.createElement('button');
+    hlBtn.id='hl-sidebar-btn';
+    hlBtn.innerHTML='<span>✏ Ghi chú & Highlight</span><span id="hl-badge">0</span>';
+    hlBtn.addEventListener('click',function(){openPanel();});
+    // Insert before sidebar-nav (bottom buttons)
+    var sidebarNavBottom=document.getElementById('sidebar-nav');
+    if(sidebarNavBottom) sidebarNavBottom.parentNode.insertBefore(hlBtn,sidebarNavBottom);
+    else document.getElementById('sidebar').appendChild(hlBtn);
+  }
+  updateBadge();
+
+  // ── PANEL ──
+  var panel=document.createElement('div');
+  panel.id='hl-panel';
+  panel.innerHTML='<div id="hl-panel-hdr"><h3>✏ Ghi Chú & Highlight</h3><button id="hl-panel-close">×</button></div><div id="hl-panel-list"></div>';
+  document.body.appendChild(panel);
+  document.getElementById('hl-panel-close').addEventListener('click',closePanel);
+  function openPanel(){renderPanel();panel.classList.add('open');}
+  function closePanel(){panel.classList.remove('open');}
+  function renderPanel(){
+    var list=document.getElementById('hl-panel-list');
+    var hls=loadHL();
+    list.innerHTML='';
+    hls.forEach(function(hl){
+      var item=document.createElement('div');
+      item.className='hl-item'; item.setAttribute('data-color',hl.color);
+      var noteHtml=hl.note?'<div class="hl-item-note">✏ '+escHtml(hl.note)+'</div>':'';
+      item.innerHTML='<button class="hl-item-del" data-id="'+hl.id+'">🗑</button>'
+        +'<div class="hl-item-text">'+escHtml(hl.text||'')+'</div>'+noteHtml;
+      item.addEventListener('click',function(e){
+        if(e.target.classList.contains('hl-item-del')) return;
+        var mk=document.querySelector('mark.hl[data-hl-id="'+hl.id+'"]');
+        if(mk){mk.scrollIntoView({behavior:'smooth',block:'center'});flashMark(hl.id);}
+        closePanel();
+      });
+      item.querySelector('.hl-item-del').addEventListener('click',function(e){
+        e.stopPropagation(); deleteHL(hl.id); renderPanel();
+      });
+      list.appendChild(item);
+    });
+  }
+
+  // ── POPUP ──
+  var popup=document.createElement('div');
+  popup.id='hl-popup'; popup.className='hidden';
+  popup.innerHTML=
+    '<button class="hl-color-btn" data-color="yellow" title="Vàng"></button>'
+    +'<button class="hl-color-btn" data-color="green" title="Xanh"></button>'
+    +'<button class="hl-color-btn" data-color="red" title="Đỏ"></button>'
+    +'<div class="hl-sep"></div>'
+    +'<button class="hl-note-btn" title="Thêm ghi chú">✏</button>'
+    +'<button class="hl-del-btn hl-del-action" title="Xóa">🗑</button>';
+  document.body.appendChild(popup);
+
+  var currentHlId=null;    // id being edited (null = new)
+  var pendingRange=null;   // Range for new highlight
+  var pendingXP=null;      // serialized position for new highlight
+
+  // Position popup near a rect
+  function positionPopup(rect){
+    var pw=popup.offsetWidth||160,ph=popup.offsetHeight||40;
+    var top=rect.top-ph-10+window.scrollY;
+    var left=rect.left+(rect.width-pw)/2;
+    if(top<window.scrollY+8) top=rect.bottom+10+window.scrollY;
+    left=Math.max(8,Math.min(left,window.innerWidth-pw-8));
+    popup.style.top=top+'px';
+    popup.style.left=left+'px';
+  }
+  function showPopup(rect,hlId){
+    currentHlId=hlId||null;
+    var isEdit=!!hlId;
+    popup.querySelector('.hl-del-action').style.display=isEdit?'':'none';
+    popup.querySelector('.hl-note-btn').style.display='';
+    popup.classList.remove('hidden');
+    positionPopup(rect);
+  }
+  function hidePopup(){
+    popup.classList.add('hidden');
+    pendingRange=null; pendingXP=null; currentHlId=null;
+  }
+
+  // Color buttons
+  popup.querySelectorAll('.hl-color-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var color=btn.getAttribute('data-color');
+      if(currentHlId){
+        // Update existing
+        var hls=loadHL();
+        var idx=hls.findIndex(function(h){return h.id===currentHlId;});
+        if(idx>=0){hls[idx].color=color;saveHL(hls);}
+        updateMarks(currentHlId,color,hls[idx]?hls[idx].note||'':'');
+        updateBadge(); renderPanelIfOpen();
+      } else if(pendingRange&&pendingXP){
+        // Create new
+        var id=genId();
+        var text=pendingRange.toString().substring(0,500);
+        applyRange(pendingRange,id,color,'');
+        pendingRange.collapse();
+        window.getSelection()&&window.getSelection().removeAllRanges();
+        var hls=loadHL();
+        hls.push({id:id,color:color,note:'',text:text,
+          sxp:pendingXP.sxp,so:pendingXP.so,exp:pendingXP.exp,eo:pendingXP.eo});
+        saveHL(hls); updateBadge(); renderPanelIfOpen();
+      }
+      hidePopup();
+    });
+  });
+
+  // Note button
+  popup.querySelector('.hl-note-btn').addEventListener('click',function(){
+    var id=currentHlId;
+    var existing='';
+    if(id){var hls=loadHL();var h=hls.find(function(x){return x.id===id;});if(h)existing=h.note||'';}
+    hidePopup();
+    openNoteModal(id,existing);
+  });
+
+  // Delete button
+  popup.querySelector('.hl-del-action').addEventListener('click',function(){
+    if(currentHlId) deleteHL(currentHlId);
+    hidePopup();
+  });
+
+  function deleteHL(id){
+    removeMarks(id);
+    var hls=loadHL().filter(function(h){return h.id!==id;});
+    saveHL(hls); updateBadge(); renderPanelIfOpen();
+  }
+
+  // ── NOTE MODAL ──
+  var noteModal=document.createElement('div');
+  noteModal.id='hl-note-modal'; noteModal.className='hidden';
+  noteModal.innerHTML='<div id="hl-note-box">'
+    +'<h3>✏ Ghi chú</h3>'
+    +'<textarea id="hl-note-ta" placeholder="Nhập ghi chú..."></textarea>'
+    +'<div class="hl-note-actions">'
+    +'<button class="hl-note-cancel">Hủy</button>'
+    +'<button class="hl-note-save">Lưu</button>'
+    +'</div></div>';
+  document.body.appendChild(noteModal);
+  var _noteTargetId=null;
+  function openNoteModal(hlId,existing){
+    _noteTargetId=hlId;
+    document.getElementById('hl-note-ta').value=existing||'';
+    noteModal.classList.remove('hidden');
+    setTimeout(function(){document.getElementById('hl-note-ta').focus();},50);
+  }
+  noteModal.querySelector('.hl-note-cancel').addEventListener('click',function(){noteModal.classList.add('hidden');});
+  noteModal.querySelector('.hl-note-save').addEventListener('click',function(){
+    var note=document.getElementById('hl-note-ta').value.trim();
+    if(_noteTargetId){
+      var hls=loadHL();
+      var idx=hls.findIndex(function(h){return h.id===_noteTargetId;});
+      if(idx>=0){hls[idx].note=note;saveHL(hls);updateMarks(_noteTargetId,hls[idx].color,note);updateBadge();renderPanelIfOpen();}
+    }
+    noteModal.classList.add('hidden');
+  });
+  noteModal.addEventListener('click',function(e){if(e.target===noteModal)noteModal.classList.add('hidden');});
+
+  // ── SELECTION HANDLER ──
+  document.addEventListener('mouseup',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    setTimeout(function(){
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed||!sel.rangeCount){hidePopup();return;}
+      var range=sel.getRangeAt(0);
+      var text=range.toString().trim();
+      if(!text||text.length<2){hidePopup();return;}
+      // Only highlight within #main
+      if(!mainEl||!mainEl.contains(range.commonAncestorContainer)){hidePopup();return;}
+      // Serialize positions
+      var sNode=range.startContainer,eNode=range.endContainer;
+      var sParent=sNode.nodeType===3?sNode.parentNode:sNode;
+      var eParent=eNode.nodeType===3?eNode.parentNode:eNode;
+      var sxp=getXPath(sParent),exp=getXPath(eParent);
+      // calc offsets within parent element
+      var so=0,eo=0;
+      var w=document.createTreeWalker(sParent,NodeFilter.SHOW_TEXT,null);
+      var n;while((n=w.nextNode())){if(n===sNode){so+=range.startOffset;break;}so+=n.textContent.length;}
+      var w2=document.createTreeWalker(eParent,NodeFilter.SHOW_TEXT,null);
+      while((n=w2.nextNode())){if(n===eNode){eo+=range.endOffset;break;}eo+=n.textContent.length;}
+      pendingRange=range.cloneRange();
+      pendingXP={sxp:sxp,so:so,exp:exp,eo:eo};
+      currentHlId=null;
+      var rect=range.getBoundingClientRect();
+      showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width});
+    },10);
+  });
+
+  // ── CLICK ON EXISTING MARK ──
+  document.addEventListener('click',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    var mk=e.target.closest('mark.hl');
+    if(!mk){
+      // click outside: if selection is collapsed, hide popup
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed) hidePopup();
+      return;
+    }
+    e.stopPropagation();
+    var hlId=mk.getAttribute('data-hl-id');
+    var rect=mk.getBoundingClientRect();
+    currentHlId=hlId;
+    pendingRange=null;pendingXP=null;
+    showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width},hlId);
+  });
+
+  // ── FLASH EFFECT ──
+  function flashMark(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.style.transition='outline .2s';mk.style.outline='3px solid #c9a84c';
+      setTimeout(function(){mk.style.outline='none';},1500);
+    });
+  }
+
+  function renderPanelIfOpen(){if(panel.classList.contains('open'))renderPanel();}
+
+  function escHtml(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+})();
+
+
+// ── CHAPTER NAV PANEL ───────────────────────────────────
+(function(){
+  var CHAPS=[
+    [1,'rita_chap01.html','Mẹo & Thủ Thuật Ôn Thi PMP®'],
+    [2,'rita_chap02.html','Tài Liệu Tham Khảo Kỳ Thi'],
+    [3,'rita_chap03.html','Nền Tảng Quản Lý Dự Án'],
+    [4,'rita_chap04.html','Tích Hợp'],
+    [5,'rita_chap05.html','Kỹ Năng Lãnh Đạo'],
+    [6,'rita_chap06.html','Xây Dựng & Hỗ Trợ Hiệu Suất Nhóm'],
+    [7,'rita_chap07.html','Phạm Vi Dự Án'],
+    [8,'rita_chap08.html','Tiến Độ & Ngân Sách Dự Án'],
+    [10,'rita_chap10.html','Chất Lượng Sản Phẩm Bàn Giao'],
+    [11,'rita_chap11.html','Truyền Thông'],
+    [12,'rita_chap12.html','Rủi Ro & Vấn Đề'],
+    [13,'rita_chap13.html','Mua Sắm'],
+    [14,'rita_chap14.html','Các Bên Liên Quan'],
+    [15,'rita_chap15.html','Tuân Thủ & Mang Lại Giá Trị'],
+    [16,'rita_chap16.html','Mẹo Vượt Qua Kỳ Thi PMP®'],
+    [17,'rita_chap17.html','Các Phương Pháp Agile Phổ Biến'],
+    [18,'rita_chap18.html','Hướng Dẫn PMBOK & Tiêu Chuẩn PM']
+  ];
+
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var curNum=m?parseInt(m[1]):null;
+  var READ_KEY='rita_reading';
+
+  // Build panel DOM
+  var panel=document.createElement('div');
+  panel.id='chap-panel'; panel.className='hidden';
+  var listHtml='';
+  CHAPS.forEach(function(c){
+    var isActive=c[0]===curNum;
+    listHtml+='<a class="chap-panel-item'+(isActive?' active':'')+'" href="'+c[1]+'">'
+      +'<span class="cpanel-num">Ch'+c[0]+'</span>'
+      +'<span class="cpanel-title">'+c[2]+'</span>'
+      +(isActive?'<span class="cpanel-status">● Đang đọc</span>':'')
+      +'</a>';
+  });
+  panel.innerHTML='<div id="chap-panel-overlay"></div>'
+    +'<div id="chap-panel-box">'
+    +'<div id="chap-panel-hdr"><h3>☰ Danh Sách Chương</h3><button id="chap-panel-close">×</button></div>'
+    +'<div id="chap-panel-list">'+listHtml+'</div>'
+    +'</div>';
+  document.body.appendChild(panel);
+
+  function openChapPanel(){panel.classList.remove('hidden');}
+  function closeChapPanel(){panel.classList.add('hidden');}
+  document.getElementById('chap-panel-overlay').addEventListener('click',closeChapPanel);
+  document.getElementById('chap-panel-close').addEventListener('click',closeChapPanel);
+
+  // Wire up the Mục lục button
+  var mucLucBtn=document.getElementById('chap-muc-luc-btn');
+  if(mucLucBtn) mucLucBtn.addEventListener('click',function(e){e.preventDefault();openChapPanel();});
+})();
+
+
+// ── GITHUB HIGHLIGHTS SYNC ──────────────────────────
+(function(){
+  var REPO='goukakujlptsuport-beep/pmbok6';
+  var TOKEN_KEY='rita_gh_token';
+  var API_URL='https://api.github.com/repos/'+REPO+'/contents/data/rita_highlights.json';
+  var fileSha=null;
+  var syncTimer=null;
+
+  // Called by patched saveHL after every highlight change
+  window.__ritaSyncTrigger=function(){
+    clearTimeout(syncTimer);
+    syncTimer=setTimeout(pushToGitHub,3000);
+  };
+
+  // ── STATUS BUTTON (inserted before #sidebar-nav) ──
+  var btn=document.createElement('button');
+  btn.id='sync-btn'; btn.dataset.state='no-token';
+  btn.innerHTML='<span>☁ Sync Git</span><span id="sync-status-text">Đang kết nối…</span>';
+  btn.title='Đồng bộ highlight / ghi chú lên GitHub';
+  btn.addEventListener('click',handleSyncClick);
+  var sidebarNavEl=document.getElementById('sidebar-nav');
+  if(sidebarNavEl) sidebarNavEl.parentNode.insertBefore(btn,sidebarNavEl);
+
+  var statusText=document.getElementById('sync-status-text');
+  function setStatus(state,msg){
+    btn.dataset.state=state;
+    if(statusText) statusText.textContent=msg;
+  }
+
+  // ── TOKEN MODAL ──
+  var modal=document.createElement('div');
+  modal.id='sync-modal'; modal.className='hidden';
+  modal.innerHTML='<div id="sync-modal-box">'
+    +'<h3>☁ Cấu Hình GitHub Sync</h3>'
+    +'<p>Nhập <strong style="color:var(--gold)">GitHub Personal Access Token (PAT)</strong> để đồng bộ highlight giữa các thiết bị.<br>'
+    +'Token cần quyền <strong style="color:var(--gold-lt)">Contents: Read &amp; Write</strong> trên repo pmbok6.<br>'
+    +'Token được lưu trong localStorage của trình duyệt này.</p>'
+    +'<input id="sync-token-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" spellcheck="false" autocomplete="off">'
+    +'<div class="sync-modal-btns">'
+    +'<button id="sync-clear-btn">🗑 Xóa token</button>'
+    +'<button id="sync-cancel-btn">Hủy</button>'
+    +'<button id="sync-save-btn">💾 Lưu &amp; Sync</button>'
+    +'</div></div>';
+  document.body.appendChild(modal);
+
+  document.getElementById('sync-cancel-btn').addEventListener('click',function(){modal.classList.add('hidden');});
+  document.getElementById('sync-save-btn').addEventListener('click',function(){
+    var t=(document.getElementById('sync-token-input').value||'').trim();
+    if(!t){alert('Vui lòng nhập GitHub PAT!');return;}
+    localStorage.setItem(TOKEN_KEY,t);
+    modal.classList.add('hidden');
+    fileSha=null;
+    initSync();
+  });
+  document.getElementById('sync-clear-btn').addEventListener('click',function(){
+    if(!confirm('Xóa token? Highlights sẽ không được sync cho đến khi cấu hình lại.')) return;
+    localStorage.removeItem(TOKEN_KEY);
+    fileSha=null;
+    modal.classList.add('hidden');
+    setStatus('no-token','Chưa cấu hình');
+  });
+  modal.addEventListener('click',function(e){if(e.target===modal)modal.classList.add('hidden');});
+
+  function handleSyncClick(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){
+      var inp=document.getElementById('sync-token-input');
+      if(inp) inp.value='';
+      modal.classList.remove('hidden');
+      setTimeout(function(){if(inp)inp.focus();},80);
+    } else {
+      // Manual re-sync
+      fileSha=null;
+      initSync();
+    }
+  }
+
+  // ── HELPERS ──
+  var ALL_CHAPS=['01','02','03','04','05','06','07','08','10','11','12','13','14','15','16','17','18'];
+
+  function getAllLocal(){
+    var all={};
+    ALL_CHAPS.forEach(function(n){
+      try{
+        var v=JSON.parse(localStorage.getItem('rita_hl_'+n)||'[]');
+        if(v&&v.length>0) all[n]=v;
+      }catch(e){}
+    });
+    return all;
+  }
+
+  function countHL(obj){
+    return Object.values(obj).reduce(function(s,a){return s+(a?a.length:0);},0);
+  }
+
+  // Union merge: keep all highlights by id, prefer local note if different
+  function mergeHL(local,remote){
+    var merged={};
+    var allChaps=new Set(Object.keys(local).concat(Object.keys(remote)));
+    allChaps.forEach(function(chap){
+      var loc=local[chap]||[];
+      var rem=remote[chap]||[];
+      var byId={};
+      loc.forEach(function(h){byId[h.id]=h;});
+      rem.forEach(function(h){if(!byId[h.id])byId[h.id]=h;});
+      var arr=Object.values(byId);
+      if(arr.length>0) merged[chap]=arr;
+    });
+    return merged;
+  }
+
+  function applyToLocal(highlights){
+    Object.keys(highlights).forEach(function(chap){
+      localStorage.setItem('rita_hl_'+chap,JSON.stringify(highlights[chap]));
+    });
+  }
+
+  // base64 encode/decode with Unicode support
+  function b64enc(str){
+    return btoa(unescape(encodeURIComponent(str)));
+  }
+  function b64dec(b64){
+    return decodeURIComponent(escape(atob(b64.replace(/[\r\n]/g,''))));
+  }
+
+  // ── FETCH FROM GITHUB ──
+  async function fetchFromGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    var headers={'Accept':'application/vnd.github.v3+json'};
+    if(token) headers['Authorization']='token '+token;
+    try{
+      var resp=await fetch(API_URL,{headers:headers});
+      if(resp.status===404){fileSha=null;return null;}
+      if(!resp.ok) throw new Error('HTTP '+resp.status);
+      var data=await resp.json();
+      fileSha=data.sha;
+      var content=JSON.parse(b64dec(data.content));
+      return content;
+    }catch(e){
+      console.warn('[sync] fetch:',e);
+      return 'error';
+    }
+  }
+
+  // ── PUSH TO GITHUB ──
+  async function pushToGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang sync…');
+    var local=getAllLocal();
+    var payload={version:1,lastSync:new Date().toISOString(),highlights:local};
+    var encoded=b64enc(JSON.stringify(payload,null,2));
+    var body={message:'sync: rita highlights ['+countHL(local)+' HL]',content:encoded};
+    if(fileSha) body.sha=fileSha;
+    try{
+      var resp=await fetch(API_URL,{
+        method:'PUT',
+        headers:{
+          'Authorization':'token '+token,
+          'Content-Type':'application/json',
+          'Accept':'application/vnd.github.v3+json'
+        },
+        body:JSON.stringify(body)
+      });
+      if(!resp.ok){
+        var err=await resp.json().catch(function(){return{};});
+        throw new Error(err.message||'HTTP '+resp.status);
+      }
+      var result=await resp.json();
+      fileSha=result.content.sha;
+      setStatus('ok','✓ Đã sync ('+countHL(local)+' HL)');
+    }catch(e){
+      setStatus('err','✗ '+e.message.slice(0,28));
+      console.error('[sync] push:',e);
+    }
+  }
+
+  // ── INIT ──
+  async function initSync(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang tải…');
+
+    var ghData=await fetchFromGitHub();
+    if(ghData==='error'){
+      setStatus('err','✗ Không kết nối được');
+      return;
+    }
+    if(ghData&&ghData.highlights){
+      var local=getAllLocal();
+      var merged=mergeHL(local,ghData.highlights);
+      applyToLocal(merged);
+      // Re-apply marks on current chapter from updated localStorage
+      if(typeof window.__ritaReapplyMarks==='function') window.__ritaReapplyMarks();
+      var ghN=countHL(ghData.highlights), mergedN=countHL(merged);
+      if(mergedN>ghN){
+        // New highlights from remote — push merged back
+        setTimeout(pushToGitHub,1200);
+      } else {
+        setStatus('ok','✓ Sync OK ('+mergedN+' HL)');
+      }
+    } else {
+      // File doesn't exist yet — push current local state
+      await pushToGitHub();
+    }
+  }
+
+  initSync();
+})();
+
+</script>
+
+</body>
+</html>

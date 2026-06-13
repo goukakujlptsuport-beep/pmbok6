@@ -1,0 +1,3522 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hướng Dẫn PMBOK & Tiêu Chuẩn PM | Rita PMP® Exam Prep 11</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:     #1a2744;
+  --red:      #8b1a1a;
+  --gold:     #c9a84c;
+  --gold-lt:  #e8d5a3;
+  --cream:    #fdf8f0;
+  --text:     #2c2c2c;
+  --text-dim: #5a5a5a;
+  --border:   #d4c89a;
+  --sidebar-w: 268px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ── PROGRESS BAR ── */
+#progress-bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--gold);z-index:200;transition:width .1s}
+
+/* ── SIDEBAR ── */
+#sidebar{
+  width:var(--sidebar-w);background:var(--navy);color:#ccd4e8;
+  position:fixed;top:0;left:0;bottom:0;overflow-y:auto;z-index:100;
+  border-right:3px solid var(--gold);display:flex;flex-direction:column;
+}
+#sidebar-header{
+  background:linear-gradient(135deg,#0f1d3a 0%,#1a2744 100%);
+  padding:1.4rem 1.2rem;border-bottom:2px solid var(--gold);flex-shrink:0;
+}
+#sidebar-header .book-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.62rem;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;
+}
+#sidebar-header h2{font-size:.92rem;font-weight:700;color:#fff;line-height:1.3;margin-bottom:.25rem}
+#sidebar-header .edition{font-family:'Source Sans 3',sans-serif;font-size:.7rem;color:var(--gold-lt);font-style:italic}
+#sidebar-toc{flex:1;overflow-y:auto;padding:.6rem 0}
+#sidebar-toc a{
+  display:block;font-family:'Source Sans 3',sans-serif;font-size:.78rem;
+  color:#aab8d0;text-decoration:none;padding:.4rem 1.2rem;line-height:1.4;
+  transition:all .15s;border-left:3px solid transparent;
+}
+#sidebar-toc a:hover,#sidebar-toc a.active{color:#fff;background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+#sidebar-toc a.toc-h4{padding-left:2.2rem;font-size:.72rem;color:#8896b0}
+#sidebar-toc a.toc-h4:hover{color:#ccd4e8}
+#sidebar-toc .toc-group-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.6rem;font-weight:700;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--gold);
+  padding:.7rem 1.2rem .25rem;opacity:.85;
+}
+#sidebar-nav{
+  flex-shrink:0;border-top:1px solid rgba(255,255,255,.08);
+  display:flex;justify-content:space-between;padding:.7rem .8rem;gap:.5rem;
+}
+#sidebar-nav a{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;color:var(--gold-lt);
+  text-decoration:none;padding:.4rem .7rem;border:1px solid rgba(201,168,76,.3);
+  border-radius:4px;transition:all .2s;line-height:1.3;text-align:center;flex:1;
+}
+#sidebar-nav a:hover{background:rgba(201,168,76,.15);color:#fff}
+#sidebar-nav a.disabled{opacity:.35;pointer-events:none}
+
+/* ── HAMBURGER (mobile) ── */
+#menu-btn{
+  display:none;position:fixed;top:.7rem;left:.8rem;z-index:150;
+  background:var(--navy);border:1px solid var(--gold);color:var(--gold);
+  width:36px;height:36px;border-radius:6px;font-size:1.1rem;cursor:pointer;
+  align-items:center;justify-content:center;
+}
+
+/* ── MAIN ── */
+#main{margin-left:var(--sidebar-w);max-width:880px;padding:0 2.8rem 5rem}
+
+/* ── CHAPTER HERO ── */
+.chapter-hero{
+  background:linear-gradient(135deg,var(--navy) 0%,#2a3a6a 100%);
+  color:white;padding:2.8rem 2.8rem 2.2rem;margin:0 -2.8rem 2.8rem;
+  border-bottom:4px solid var(--gold);position:relative;overflow:hidden;
+}
+.chapter-hero::before{
+  content:'18';position:absolute;right:1.5rem;top:50%;
+  transform:translateY(-50%);font-size:10rem;font-weight:700;
+  color:rgba(255,255,255,.05);font-family:'Merriweather',serif;line-height:1;
+}
+.chapter-hero .ch-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.72rem;font-weight:700;
+  letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;
+}
+.chapter-hero h1{font-size:2rem;font-weight:700;line-height:1.2;margin-bottom:.35rem}
+.chapter-hero .ch-en{font-family:'Source Sans 3',sans-serif;font-size:.95rem;color:rgba(255,255,255,.5);font-style:italic}
+
+/* ── CONTENT HEADINGS ── */
+h3{
+  font-family:'Merriweather',serif;font-size:1.25rem;color:var(--navy);
+  margin:2.5rem 0 .85rem;padding-bottom:.45rem;border-bottom:2px solid var(--gold);
+}
+h4{
+  font-family:'Merriweather',serif;font-size:1.05rem;color:var(--navy);
+  margin:2rem 0 .65rem;padding-left:.75rem;border-left:4px solid var(--gold);
+}
+h5{
+  font-family:'Source Sans 3',sans-serif;font-size:.9rem;font-weight:700;
+  color:var(--red);margin:1.4rem 0 .45rem;text-transform:uppercase;letter-spacing:.05em;
+}
+p{font-family:'Merriweather',serif;font-size:.94rem;line-height:1.88;margin-bottom:.95rem;color:var(--text)}
+
+/* ── LISTS ── */
+ul.content-list,ol.content-list{
+  margin:.5rem 0 1rem;padding:0;list-style:none;
+}
+ul.content-list li{
+  position:relative;padding:.28rem 0 .28rem 1.6rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);
+}
+ul.content-list li::before{
+  content:'◆';position:absolute;left:0;color:var(--gold);font-size:.65rem;top:.45rem;
+}
+ol.content-list{counter-reset:ol-c;list-style:none}
+ol.content-list li{
+  position:relative;padding:.28rem 0 .28rem 2rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.92rem;line-height:1.72;color:var(--text);counter-increment:ol-c;
+}
+ol.content-list li::before{
+  content:counter(ol-c)'.';position:absolute;left:0;color:var(--navy);
+  font-weight:700;font-size:.85rem;min-width:1.5rem;
+}
+ul.content-list ul.content-list li::before{content:'–';color:var(--text-dim);font-size:.9rem;top:.35rem}
+
+/* ── CALLOUT / DEF BOX ── */
+.callout{
+  background:linear-gradient(135deg,#f5f0e8,#ede8d8);
+  border:1px solid var(--border);border-left:5px solid var(--gold);
+  border-radius:0 6px 6px 0;padding:1rem 1.2rem;margin:1.3rem 0;
+}
+.callout p{font-size:.9rem;margin-bottom:.5rem}
+.callout p:last-child{margin-bottom:0}
+.callout ul.content-list li{font-size:.88rem}
+.callout-label{
+  font-family:'Source Sans 3',sans-serif;font-size:.65rem;font-weight:700;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;
+}
+.callout.tip{border-left-color:#2d7a2d;background:linear-gradient(135deg,#f0f7f0,#e4f0e4)}
+.callout.tip .callout-label{color:#2d7a2d}
+
+/* ── HIGHLIGHT (quicktest / exam alert) ── */
+.highlight{
+  background:var(--navy);color:#e8d5a3;
+  border-radius:8px;padding:1.1rem 1.3rem;margin:1.5rem 0;
+}
+.highlight h5,.highlight strong{color:var(--gold-lt)}
+.highlight p,.highlight li{color:#ccd4e8;font-size:.88rem}
+.highlight ul.content-list li::before{color:var(--gold)}
+
+/* ── FIGURE ── */
+.img-center{
+  text-align:center;margin:1.8rem 0;padding:1rem;
+  background:#f8f5ee;border:1px solid var(--border);border-radius:8px;
+}
+.img-center img{max-width:100%;height:auto;border-radius:4px;box-shadow:0 2px 12px rgba(0,0,0,.12)}
+.img-center p,.img-center div{
+  margin-top:.65rem;font-family:'Source Sans 3',sans-serif;
+  font-size:.8rem;color:var(--text-dim);font-style:italic;
+}
+
+/* ── TABLES ── */
+.table-wrap{overflow-x:auto;margin:1.5rem 0}
+table{width:100%;border-collapse:collapse;font-family:'Source Sans 3',sans-serif;font-size:.84rem}
+table th{background:var(--navy);color:white;padding:.6rem .8rem;text-align:center;font-weight:600;font-size:.79rem}
+table td{padding:.5rem .8rem;border:1px solid #ddd;vertical-align:top;line-height:1.5}
+table tr:nth-child(even) td{background:#f9f6ef}
+
+/* ── BACK TO TOP ── */
+#back-top{
+  position:fixed;bottom:1.5rem;right:1.5rem;
+  background:var(--navy);color:var(--gold);border:1px solid var(--gold);
+  width:38px;height:38px;border-radius:50%;font-size:1.2rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .25s;z-index:99;
+}
+#back-top:hover{background:var(--gold);color:var(--navy)}
+
+/* ── MOBILE ── */
+@media(max-width:860px){
+  #sidebar{transform:translateX(-100%);transition:transform .25s;top:3rem}
+  #sidebar.open{transform:translateX(0)}
+  #menu-btn{display:flex}
+  #main{margin-left:0;padding:3.5rem 1.2rem 4rem}
+  .chapter-hero{margin:0 -1.2rem 2rem;padding:2rem 1.4rem}
+  .chapter-hero::before{display:none}
+}
+
+/* ── DARK / LIGHT MODE ─────────────────────────────── */
+html[data-theme=dark]{--cream:#0f1520;--text:#dde4f0;--text-dim:#8899bb;--border:#253048;--gold-lt:#c9a84c}
+html[data-theme=dark] body{background:#0f1520;color:#dde4f0}
+html[data-theme=dark] #main{background:#0f1520}
+html[data-theme=dark] h1,html[data-theme=dark] h2{color:#e8d5a3}
+html[data-theme=dark] h3{color:#e8d5a3;border-bottom-color:var(--gold)}
+html[data-theme=dark] h4{color:#b8ccee;border-left-color:var(--gold)}
+html[data-theme=dark] p,html[data-theme=dark] li,html[data-theme=dark] td{color:#dde4f0}
+html[data-theme=dark] strong{color:#e8d5a3}
+html[data-theme=dark] em{color:#b8ccee}
+html[data-theme=dark] .callout{background:linear-gradient(135deg,#1a2436,#1e2d45);border-left-color:var(--gold);color:#dde4f0}
+html[data-theme=dark] .callout p{color:#dde4f0}
+html[data-theme=dark] blockquote{background:#1a2436;border-left-color:var(--gold);color:#b0c0d8}
+html[data-theme=dark] table{background:#131c2b}
+html[data-theme=dark] th{background:#1a2744;color:#e8d5a3;border-color:#253048}
+html[data-theme=dark] td{border-color:#253048}
+html[data-theme=dark] tr:nth-child(even) td{background:#1a2436}
+html[data-theme=dark] .highlight,.highlight-box{background:#1a2436!important;border-color:#253048!important;color:#dde4f0!important}
+html[data-theme=dark] #back-top{background:#1a2744;color:var(--gold);border:1px solid rgba(201,168,76,.4)}
+html[data-theme=dark] ul.content-list li,html[data-theme=dark] ol.content-list li{color:#dde4f0}
+html[data-theme=dark] .chapter-hero{background:linear-gradient(135deg,#0a1228 0%,#142040 100%)}
+html[data-theme=dark] .exercise-card{background:#1a2436;border-color:#253048}
+html[data-theme=dark] .answer-box{background:#152035;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] .answer-box p{color:#dde4f0}
+/* theme toggle button */
+#theme-btn{position:absolute;top:.65rem;right:.7rem;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.35);color:var(--gold);width:28px;height:28px;border-radius:5px;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+#theme-btn:hover{background:rgba(201,168,76,.2)}
+#sidebar-header{position:relative}
+
+/* ── HIGHLIGHT SYSTEM ─────────────────────────────────── */
+mark.hl{border-radius:2px;cursor:pointer;padding:1px 0;background:transparent}
+mark.hl[data-color=yellow]{background:rgba(255,241,118,.75)}
+mark.hl[data-color=green]{background:rgba(165,214,167,.75)}
+mark.hl[data-color=red]{background:rgba(239,154,154,.75)}
+mark.hl::after{display:none}
+mark.hl[data-note]:not([data-note=""])::after{content:"✏";font-size:.6rem;vertical-align:super;margin-left:1px;opacity:.65;display:inline}
+/* selection popup */
+#hl-popup{position:fixed;z-index:9999;background:#1a2744;border:1px solid rgba(201,168,76,.5);border-radius:8px;padding:.45rem .6rem;display:flex;align-items:center;gap:.35rem;box-shadow:0 4px 20px rgba(0,0,0,.4);pointer-events:all}
+#hl-popup.hidden{display:none!important}
+.hl-color-btn{width:24px;height:24px;border-radius:50%;border:2px solid rgba(255,255,255,.25);cursor:pointer;transition:transform .15s,border-color .15s;flex-shrink:0}
+.hl-color-btn:hover{transform:scale(1.2);border-color:rgba(255,255,255,.7)}
+.hl-color-btn[data-color=yellow]{background:#fff176}
+.hl-color-btn[data-color=green]{background:#a5d6a7}
+.hl-color-btn[data-color=red]{background:#ef9a9a}
+.hl-sep{width:1px;height:20px;background:rgba(255,255,255,.2);margin:0 .1rem}
+.hl-note-btn{background:none;border:none;color:rgba(255,255,255,.7);font-size:.9rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-note-btn:hover{color:#fff;background:rgba(255,255,255,.1)}
+.hl-del-btn{background:none;border:none;color:rgba(239,154,154,.8);font-size:.85rem;cursor:pointer;padding:.1rem .25rem;border-radius:4px;line-height:1;transition:color .15s}
+.hl-del-btn:hover{color:#ef9a9a;background:rgba(239,154,154,.12)}
+/* note modal */
+#hl-note-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center}
+#hl-note-modal.hidden{display:none!important}
+#hl-note-box{background:#fff;border-radius:10px;padding:1.4rem;width:min(420px,90vw);box-shadow:0 8px 32px rgba(0,0,0,.25)}
+#hl-note-box h3{font-size:.95rem;color:#1a2744;margin-bottom:.7rem;font-family:'Merriweather',serif}
+#hl-note-ta{width:100%;border:1px solid #d4c89a;border-radius:6px;padding:.6rem .8rem;font-size:.88rem;font-family:'Source Sans 3',sans-serif;resize:vertical;min-height:80px;color:#2c2c2c;outline:none}
+#hl-note-ta:focus{border-color:#c9a84c;box-shadow:0 0 0 2px rgba(201,168,76,.25)}
+.hl-note-actions{display:flex;justify-content:flex-end;gap:.6rem;margin-top:.8rem}
+.hl-note-cancel{background:transparent;border:1px solid #ccc;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+.hl-note-save{background:#1a2744;color:#fff;border:none;padding:.4rem .9rem;border-radius:5px;cursor:pointer;font-size:.83rem}
+/* highlights panel */
+#hl-panel{position:fixed;top:0;right:0;bottom:0;width:300px;background:#fff;border-left:3px solid var(--gold);z-index:500;display:flex;flex-direction:column;box-shadow:-4px 0 20px rgba(0,0,0,.15);transform:translateX(100%);transition:transform .25s}
+#hl-panel.open{transform:translateX(0)}
+#hl-panel-hdr{background:#1a2744;padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--gold)}
+#hl-panel-hdr h3{font-size:.88rem;color:#fff;font-family:'Source Sans 3',sans-serif;font-weight:700;letter-spacing:.05em}
+#hl-panel-close{background:none;border:none;color:rgba(255,255,255,.7);font-size:1.2rem;cursor:pointer;padding:.2rem;line-height:1}
+#hl-panel-close:hover{color:#fff}
+#hl-panel-list{flex:1;overflow-y:auto;padding:.6rem}
+#hl-panel-list:empty::before{content:"Chưa có ghi chú nào trong chương này.";font-size:.82rem;color:#999;display:block;padding:.8rem;text-align:center;font-style:italic}
+.hl-item{padding:.65rem .8rem;border-radius:6px;margin-bottom:.5rem;border-left:4px solid #ddd;background:#fafafa;cursor:pointer;transition:background .15s}
+.hl-item:hover{background:#f0f0f0}
+.hl-item[data-color=yellow]{border-left-color:#fdd835}
+.hl-item[data-color=green]{border-left-color:#66bb6a}
+.hl-item[data-color=red]{border-left-color:#ef5350}
+.hl-item-text{font-size:.8rem;color:#2c2c2c;line-height:1.5;margin-bottom:.3rem;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.hl-item-note{font-size:.75rem;color:#666;font-style:italic;margin-bottom:.3rem}
+.hl-item-del{float:right;background:none;border:none;color:#bbb;cursor:pointer;font-size:.8rem;padding:.1rem .3rem;border-radius:3px;line-height:1}
+.hl-item-del:hover{color:#ef5350;background:rgba(239,83,80,.08)}
+/* sidebar hl badge */
+#hl-sidebar-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:var(--gold);cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#hl-sidebar-btn:hover{background:rgba(201,168,76,.1)}
+#hl-badge{background:rgba(201,168,76,.2);color:var(--gold);font-size:.65rem;font-weight:700;padding:.1rem .4rem;border-radius:10px;min-width:18px;text-align:center}
+html[data-theme=dark] #hl-note-box{background:#1a2436;border:1px solid #253048}
+html[data-theme=dark] #hl-note-box h3{color:#e8d5a3}
+html[data-theme=dark] #hl-note-ta{background:#0f1520;border-color:#253048;color:#dde4f0}
+html[data-theme=dark] #hl-panel{background:#131c2b;border-left-color:var(--gold)}
+html[data-theme=dark] .hl-item{background:#1a2436;border-bottom:1px solid #1e2d45}
+html[data-theme=dark] .hl-item:hover{background:#1e2d45}
+html[data-theme=dark] .hl-item-text{color:#dde4f0}
+html[data-theme=dark] .hl-item-note{color:#8899bb}
+html[data-theme=dark] .hl-note-cancel{border-color:#253048;color:#dde4f0;background:#1a2436}
+html[data-theme=dark] .hl-note-save{background:#c9a84c;color:#0a0f1a}
+
+/* ── CHAPTER NAV PANEL ─────────────────────────────────── */
+#chap-panel{position:fixed;inset:0;z-index:9000;display:flex;align-items:stretch}
+#chap-panel.hidden{display:none!important}
+#chap-panel-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);cursor:pointer}
+#chap-panel-box{position:relative;z-index:1;width:min(360px,90vw);background:#0f1d3a;border-right:3px solid var(--gold);display:flex;flex-direction:column;animation:slideInLeft .2s ease}
+@keyframes slideInLeft{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+#chap-panel-hdr{background:linear-gradient(135deg,#0a1228,#1a2744);padding:1.2rem 1.3rem;border-bottom:2px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
+#chap-panel-hdr h3{font-family:'Source Sans 3',sans-serif;font-size:.85rem;font-weight:700;color:#fff;letter-spacing:.1em;text-transform:uppercase}
+#chap-panel-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.3rem;cursor:pointer;padding:.2rem;line-height:1;transition:color .15s}
+#chap-panel-close:hover{color:#fff}
+#chap-panel-list{flex:1;overflow-y:auto;padding:.5rem 0}
+.chap-panel-item{display:flex;align-items:center;gap:.8rem;padding:.7rem 1.3rem;cursor:pointer;transition:background .15s;border-left:3px solid transparent;text-decoration:none}
+.chap-panel-item:hover{background:rgba(201,168,76,.1);border-left-color:var(--gold)}
+.chap-panel-item.active{background:rgba(201,168,76,.12);border-left-color:var(--gold)}
+.cpanel-num{font-family:'Source Sans 3',sans-serif;font-size:.7rem;font-weight:700;color:var(--gold);min-width:28px;flex-shrink:0}
+.cpanel-title{font-family:'Source Sans 3',sans-serif;font-size:.8rem;color:#ccd4e8;line-height:1.35}
+.cpanel-item-active .cpanel-title{color:#fff;font-weight:600}
+.cpanel-status{margin-left:auto;font-size:.72rem;flex-shrink:0;opacity:.6}
+
+/* ── GITHUB SYNC ──────────────────────────────────── */
+#sync-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:#8899bb;cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s,color .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
+#sync-btn:hover{background:rgba(201,168,76,.08);color:var(--gold)}
+#sync-btn[data-state=ok]{color:#4caf50}
+#sync-btn[data-state=syncing]{color:var(--gold)}
+#sync-btn[data-state=err]{color:#ef5350}
+#sync-btn[data-state=no-token]{color:#8899bb}
+#sync-modal{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center}
+#sync-modal.hidden{display:none!important}
+#sync-modal-box{background:#0f1d3a;border:2px solid var(--gold);border-radius:10px;padding:1.8rem 2rem;width:min(420px,90vw);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+#sync-modal-box h3{font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:700;color:var(--gold);margin-bottom:.9rem;text-transform:uppercase;letter-spacing:.1em}
+#sync-modal-box p{font-size:.77rem;color:#aab8d0;line-height:1.6;margin-bottom:.9rem}
+#sync-modal-box input{width:100%;background:#0a1228;border:1px solid rgba(201,168,76,.4);color:#fff;font-family:monospace;font-size:.8rem;padding:.55rem .8rem;border-radius:5px;outline:none;margin-bottom:.8rem;box-sizing:border-box}
+#sync-modal-box input:focus{border-color:var(--gold)}
+.sync-modal-btns{display:flex;gap:.6rem;justify-content:flex-end;flex-wrap:wrap}
+.sync-modal-btns button{font-family:'Source Sans 3',sans-serif;font-size:.77rem;font-weight:700;padding:.42rem .9rem;border-radius:5px;cursor:pointer;border:none;transition:background .15s}
+#sync-save-btn{background:var(--gold);color:#0a0f1a}
+#sync-save-btn:hover{background:#e8c47a}
+#sync-cancel-btn{background:rgba(255,255,255,.1);color:#aab8d0}
+#sync-cancel-btn:hover{background:rgba(255,255,255,.18)}
+#sync-clear-btn{background:rgba(239,83,80,.18);color:#ef9090;margin-right:auto}
+#sync-clear-btn:hover{background:rgba(239,83,80,.32)}
+</style>
+</head>
+<script>
+(function(){var t=localStorage.getItem('rita_theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+</script>
+<body>
+<div id="progress-bar"></div>
+<button id="menu-btn" aria-label="Menu">☰</button>
+
+<aside id="sidebar">
+<div id="sidebar-header">
+  <div class="book-label">Rita PMP® Exam Prep</div>
+  <h2>Ôn Thi PMP®</h2>
+  <div class="edition">Rita Mulcahy · 11th Edition 2023 · Tiếng Việt</div>
+</div>
+<div id="sidebar-toc">
+  <div class="toc-group-label">Nội Dung Chương</div>
+  <a href="#ch18-gioi-thieu" class="">Giới Thiệu</a>
+<a href="#ch18-pmbok-eco-process-groups" class="toc-h4">PMBOK Guide, ECO và Process Groups</a>
+<a href="#ch18-domain-stakeholders" class="toc-h4">Các Bên Liên Quan (Stakeholders)</a>
+<a href="#ch18-domain-team" class="toc-h4">Nhóm (Team)</a>
+<a href="#ch18-domain-development-approach" class="toc-h4">Phương Pháp Phát Triển và Vòng Đời (Development Approach and Life Cycl</a>
+<a href="#ch18-domain-planning" class="toc-h4">Lập Kế Hoạch (Planning)</a>
+<a href="#ch18-domain-project-work" class="toc-h4">Công Việc Dự Án (Project Work)</a>
+<a href="#ch18-domain-delivery" class="toc-h4">Bàn Giao (Delivery)</a>
+<a href="#ch18-domain-measurement" class="toc-h4">Đo Lường (Measurement)</a>
+<a href="#ch18-domain-uncertainty" class="toc-h4">Sự Không Chắc Chắn (Uncertainty)</a>
+<a href="#ch18-mapping-pmbok-eco" class="toc-h4">Ánh Xạ PMBOK Guide với ECO và Process Groups</a>
+<a href="#ch18-standard-and-pmbok" class="toc-h4">The Standard và PMBOK Guide</a>
+<a href="#ch18-ket-luan" class="">Kết Luận</a>
+<a href="#ch18-index" class="">Chỉ Mục</a>
+<a href="#ch18-index-symbols" class="toc-h4">Ký Hiệu</a>
+<a href="#ch18-index-a" class="toc-h4">A</a>
+<a href="#ch18-index-b" class="toc-h4">B</a>
+<a href="#ch18-index-c" class="toc-h4">C</a>
+<a href="#ch18-index-d" class="toc-h4">D</a>
+<a href="#ch18-index-e" class="toc-h4">E</a>
+<a href="#ch18-index-f" class="toc-h4">F</a>
+<a href="#ch18-index-g" class="toc-h4">G</a>
+<a href="#ch18-index-h" class="toc-h4">H</a>
+<a href="#ch18-index-i" class="toc-h4">I</a>
+<a href="#ch18-index-j" class="toc-h4">J</a>
+<a href="#ch18-index-k" class="toc-h4">K</a>
+<a href="#ch18-index-l" class="toc-h4">L</a>
+<a href="#ch18-index-m" class="toc-h4">M</a>
+<a href="#ch18-index-n" class="toc-h4">N</a>
+<a href="#ch18-index-o" class="toc-h4">O</a>
+<a href="#ch18-index-p" class="toc-h4">P</a>
+<a href="#ch18-index-q" class="toc-h4">Q</a>
+<a href="#ch18-index-r" class="toc-h4">R</a>
+<a href="#ch18-index-s" class="toc-h4">S</a>
+<a href="#ch18-index-t" class="toc-h4">T</a>
+<a href="#ch18-index-u" class="toc-h4">U</a>
+<a href="#ch18-index-v" class="toc-h4">V</a>
+<a href="#ch18-index-w" class="toc-h4">W</a>
+<a href="#ch18-index-x" class="toc-h4">X</a>
+
+</div>
+<div id="sidebar-nav">
+  <a href="rita_chap17.html" class="" title="Phương Pháp Agile">← Ch17</a>
+  <a href="#" id="chap-muc-luc-btn">☰ Mục lục</a>
+  <a href="#" class=" disabled" title=""></a>
+</div></aside>
+
+<main id="main">
+  <div class="chapter-hero">
+    <div class="ch-label">Chương 18</div>
+    <h1>Hướng Dẫn PMBOK & Tiêu Chuẩn PM</h1>
+    <div class="ch-en">PMBOK Guide and PM Standard</div>
+  </div>
+<h3 id="ch18-gioi-thieu">Giới Thiệu</h3>
+
+<p>Sau khi đọc cuốn sách này, bạn đã nắm được phần lớn kiến thức cần thiết cho kỳ thi từ PMBOK Guide Ấn bản Thứ Bảy. Chúng tôi đã lồng ghép thông tin từ PMBOK Guide vào nội dung cuốn sách, dù không phải lúc nào cũng chỉ rõ đây là nội dung của PMBOK Guide. Cho đến giờ, điều quan trọng hơn là bạn tập trung vào Examination Content Outline (ECO), mô hình Process Groups, và phổ các phương pháp quản lý dự án bao gồm Agile, định hướng kế hoạch và phương pháp kết hợp.</p>
+
+<p>Bây giờ là lúc lấp đầy một số khoảng trống để bạn có cái nhìn toàn diện hơn về cách nội dung kỳ thi và các ấn phẩm của PMI liên kết với nhau.</p>
+
+<div class="callout tip">
+<p><strong>Hãy suy nghĩ.</strong> Trước khi tiếp tục đọc chương này, bạn nên ôn lại các khái niệm đã học. Hãy nghĩ về cách tất cả các mảnh ghép khớp với nhau khi bạn ôn lại các phần sau của chương "PMP Exam References in Context" (Tài liệu tham khảo kỳ thi PMP trong bối cảnh):</p>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//a3915c09-299e-4b09-97b5-18b6015c9f75/markdown_1/imgs/img_in_image_box_42_472_93_529.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A12Z%2F-1%2F%2F18dc29692c41cbbe9085f9d66c92f9ea4afe17ec98332e7178091eb4e4662ad8" alt="Image" width="6%" /></div></div>
+
+<ul class="content-list">
+<li>Tổng quan về Examination Content Outline (ECO).</li>
+<li>Tổng quan về Mô hình Process Groups.</li>
+<li>Trò chơi "Rita's Process Chart": Bạn nên đã chơi trò này một lần khi lần đầu đọc chương đó. Bây giờ sau khi đã đọc thêm về các quy trình quản lý dự án dự đoán trong cuốn sách này, đây là thời điểm tốt để chơi lại nhằm ôn tập.</li>
+<li>Trò chơi "Rita's Agile Process Chart": Bạn có thể muốn luyện tập lại trò này để ôn tập.</li>
+</ul>
+
+<p>Ôn tập thông tin này sẽ kích hoạt trí nhớ của bạn để bạn thoải mái hơn với các khái niệm này khi chúng tôi bổ sung thêm thông tin từ PMBOK Guide và The Standard for Project Management của PMI.</p>
+
+<p>Khi bạn đọc về các lĩnh vực hiệu suất (performance domains) của PMBOK Guide trong phần tiếp theo của chương này, chúng tôi sẽ chỉ ra sự tương đồng giữa các khái niệm về performance domains này với ECO và mô hình Process Groups mà bạn đã được giới thiệu.</p>
+
+<p>Để bắt đầu, hãy biết rằng PMBOK Guide không dựa trên quy trình và cũng không mang tính quy định. Nó được xây dựng dựa trên các lĩnh vực hiệu suất. Một performance domain là một nhóm các hoạt động có liên quan, tương tác và phụ thuộc lẫn nhau. Hãy nhớ rằng trong khi việc nhóm các hoạt động quản lý dự án quan trọng vào các lĩnh vực riêng biệt là hữu ích, quản lý dự án cần được nhìn nhận một cách toàn diện.</p>
+
+<h4 id="ch18-pmbok-eco-process-groups">PMBOK Guide, ECO và Process Groups</h4>
+
+<p>Trong mỗi chương của ECO Process (domain II), chúng tôi đã lập bản đồ ba bộ khái niệm:</p>
+
+<ul class="content-list">
+<li>Các nhiệm vụ ECO áp dụng nhiều nhất cho nội dung chương đó</li>
+<li>Các quy trình trong mô hình Process Groups áp dụng và phù hợp nhất với nội dung chương</li>
+<li>Các performance domains của PMBOK Guide liên quan chặt chẽ nhất với các nhiệm vụ ECO và các quy trình mô hình Process Groups đã xác định cho chương đó</li>
+</ul>
+
+<div class="callout">
+<h5>KIỂM TRA NHANH</h5>
+<ul class="content-list">
+<li>Các Performance Domains</li>
+<li>Các Nguyên tắc trong The Standard for Project Management</li>
+</ul>
+</div>
+
+<p>Trong chương này, chúng ta xem lại các biểu đồ đó với sự chú ý đến các domains của PMBOK Guide. Các khái niệm không mới nên bạn sẽ dễ dàng liên hệ chúng với những gì bạn đã biết về các quy trình ECO, các quy trình mô hình Process Groups, cũng như các phương pháp Agile và kết hợp. Các performance domains của PMBOK Guide chắc chắn sẽ nghe quen thuộc vì PMBOK Guide đang nhìn các khái niệm tương tự qua một lăng kính khác.</p>
+
+<p>Các performance domains của PMBOK Guide như sau:</p>
+
+<ul class="content-list">
+<li>Các Bên Liên Quan (Stakeholders)</li>
+<li>Công Việc Dự Án (Project Work)</li>
+<li>Nhóm (Team)</li>
+<li>Bàn Giao (Delivery)</li>
+<li>Phương Pháp Phát Triển và Vòng Đời (Development Approach and Life Cycle)</li>
+<li>Đo Lường (Measurement)</li>
+<li>Lập Kế Hoạch (Planning)</li>
+<li>Sự Không Chắc Chắn (Uncertainty)</li>
+</ul>
+
+<p>Chúng tôi sẽ yêu cầu bạn nhìn vào các performance domains này và suy nghĩ về hình dưới đây từ góc độ quản lý tích hợp. Quản lý tích hợp liên quan đến và ảnh hưởng đến tất cả các performance domains này.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//a3915c09-299e-4b09-97b5-18b6015c9f75/markdown_2/imgs/img_in_image_box_61_325_778_658.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A13Z%2F-1%2F%2F929eca2cc2ad301bff9519c791bab9302033f69417234bf3eb85481ec36d032b" alt="Image" width="87%" /></div></div>
+
+<p style="text-align:center;"><em>HÌNH 18.1 Bản đồ quản lý tích hợp</em></p>
+
+<p>Với quản lý tích hợp, trưởng dự án đang tạo ra một hệ thống tổ chức gắn kết và toàn diện cho hầu hết mọi thứ mà bản thân họ, nhóm và các bên liên quan khác thực hiện trong dự án. Mục đích là để đảm bảo tất cả các bên liên quan có chung sự hiểu biết, dự án tiến hành theo trật tự và có thể dự đoán, và tổ chức cũng như các bên liên quan của nó nhận được các yêu cầu và kết quả mong muốn mà dự án được thực hiện. Hiệu suất cao được yêu cầu đối với trưởng dự án và nhóm trong tất cả các performance domains của PMBOK Guide.</p>
+
+<p>Với điều đó trong đầu, hãy cùng xem xét từng performance domain của PMBOK Guide.</p>
+
+<h4 id="ch18-domain-stakeholders">Các Bên Liên Quan (Stakeholders)</h4>
+
+<p>Domain này liên quan đến việc thực hiện các công việc cần thiết để đảm bảo các kết quả mong muốn từ các bên liên quan trong và sau dự án cùng các sản phẩm bàn giao của nó. Các kết quả này bao gồm các mối quan hệ làm việc tốt, hiệu quả và truyền thông với tất cả các bên liên quan trong dự án, cũng như sự hiểu biết chung và đồng thuận về các mục tiêu và đích đến của dự án. Những kết quả này giúp đảm bảo sự hài lòng của khách hàng với dự án và các sản phẩm bàn giao. Một kết quả mong muốn khác của hiệu suất cao trong domain này là sự phản đối dự án không dẫn đến những tác động tiêu cực đối với dự án hoặc các bên liên quan.</p>
+
+<div class="callout tip">
+<p><strong>Hãy suy nghĩ.</strong> Bạn có thể thấy domain này liên quan như thế nào đến các nhiệm vụ ECO liên quan và các quy trình tích hợp mô hình Process Groups trong hình tích hợp (hình 18.1) không?</p>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//a3915c09-299e-4b09-97b5-18b6015c9f75/markdown_2/imgs/img_in_image_box_54_967_107_1029.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A13Z%2F-1%2F%2F5321248e1c0fd8a0c20a1a2a3a8b8571dc8e2a7da92847075dfbbe51ef2e6487" alt="Image" width="6%" /></div></div>
+
+<h4 id="ch18-domain-team">Nhóm (Team)</h4>
+
+<p>Chúng ta đã thảo luận về các nhóm hiệu suất cao trong phần People domain của cuốn sách này. Các nhóm hiệu suất cao có thể đạt được và duy trì không chỉ với những người có kỹ năng và động lực mà còn với sự lãnh đạo phục vụ tốt. Các nhóm hiệu suất cao sẽ có sự tổ chức và sở hữu chung trong công việc của họ. Các thành viên nhóm sẽ áp dụng trí tuệ cảm xúc, kỹ năng lãnh đạo và các kỹ năng giao tiếp giữa các cá nhân và nhóm trong các mối quan hệ và công việc trong dự án.</p>
+
+<div class="callout tip">
+<p><strong>Hãy suy nghĩ.</strong> Bạn có thể thấy domain này liên quan như thế nào đến các nhiệm vụ ECO liên quan và các quy trình tích hợp mô hình Process Groups trong hình 18.1 không? Bạn có thể thấy tất cả các nhiệm vụ và quy trình này phụ thuộc vào hiệu suất nhóm không?</p>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//a3915c09-299e-4b09-97b5-18b6015c9f75/markdown_3/imgs/img_in_image_box_51_198_101_255.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A14Z%2F-1%2F%2F04755a40f88eed68482d536da3adf8dbd93af95768014d61a3ae8a786edd374f" alt="Image" width="6%" /></div></div>
+
+<h4 id="ch18-domain-development-approach">Phương Pháp Phát Triển và Vòng Đời (Development Approach and Life Cycle)</h4>
+
+<p>Hiệu suất cao trong domain này có thể đạt được các kết quả mong muốn là sử dụng phương pháp phát triển và vòng đời cho mỗi dự án phù hợp với quản trị tổ chức nhưng cũng được điều chỉnh theo đặc điểm và nhu cầu cụ thể của từng dự án.</p>
+
+<p>Một phương pháp phát triển và vòng đời được chọn và thực hiện đúng đắn cũng sẽ dẫn đến việc sử dụng các giai đoạn (và/hoặc các vòng lặp) để bàn giao giá trị kinh doanh mong muốn cho các bên liên quan dự án theo tốc độ phù hợp với nhu cầu của dự án, việc xây dựng các sản phẩm bàn giao và duy trì lợi ích của dự án sau khi kết thúc dự án.</p>
+
+<div class="callout tip">
+<p><strong>Hãy suy nghĩ.</strong> Bạn có thể thấy domain này liên quan như thế nào đến các nhiệm vụ ECO liên quan và các quy trình mô hình Process Groups trong hình tích hợp (hình 18.1) không? Phương pháp phát triển và vòng đời dự án được chọn cẩn thận ngay từ đầu giai đoạn lập kế hoạch (hoặc sớm hơn trong giai đoạn khởi động) và được điều chỉnh cẩn thận trong suốt dự án theo nhu cầu của dự án.</p>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//a3915c09-299e-4b09-97b5-18b6015c9f75/markdown_3/imgs/img_in_image_box_51_399_100_459.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A14Z%2F-1%2F%2F4c8891d419f68ec8e5856a26eb915d54e6f6f25c3b72ad8e8d293d7fbc0791a7" alt="Image" width="5%" /></div></div>
+
+<h4 id="ch18-domain-planning">Lập Kế Hoạch (Planning)</h4>
+
+<p>Làm sao bạn có thể có một dự án thành công mà không có kế hoạch? Bạn không thể. Lập kế hoạch, tất nhiên, liên quan đến tất cả các nhiệm vụ trong ECO process domain và phụ thuộc vào các kết quả tốt từ các nhiệm vụ ECO People và Business Environment domain. Lập kế hoạch dự án (và performance domain này) là về việc đạt được các kết quả mong muốn sau:</p>
+
+<ul class="content-list">
+<li>Kế hoạch được điều chỉnh theo nhu cầu của dự án sao cho sự tham gia của các bên liên quan và mỗi giai đoạn, vòng lặp và sản phẩm bàn giao được lập kế hoạch với sự chặt chẽ nhưng vừa đủ chi tiết, không nhiều hơn mức cần thiết.</li>
+<li>Dự án tiến hành theo trật tự với ít hoặc không có rủi ro nào chưa được tính đến bằng các kế hoạch ứng phó rủi ro trong backlog (hoặc WBS) và lịch trình, cũng như dự phòng ngân sách.</li>
+<li>Khi có thông tin mới, lập kế hoạch lặp lại và phân tích chi tiết dần dần về các kế hoạch quản lý dự án tiếp tục phát triển, cùng với các chiến lược công việc và đo lường, để đạt được các kết quả dự án đã xác định.</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//a3915c09-299e-4b09-97b5-18b6015c9f75/markdown_3/imgs/img_in_image_box_57_669_106_726.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A14Z%2F-1%2F%2F18a70db1f5d882e8cec0e8138744b5188507d4ff5de425136ee02e61821f205d" alt="Image" width="5%" /></div></div>
+
+<div class="callout tip">
+<p><strong>Hãy suy nghĩ.</strong> Bạn có thể thấy domain này liên quan như thế nào đến các nhiệm vụ ECO và các quy trình mô hình Process Groups trong hình tích hợp (hình 18.1) không? Performance domain này tóm tắt lý do tại sao lập kế hoạch lại quan trọng đối với mọi khía cạnh của quản lý dự án và bàn giao sản phẩm cho các bên liên quan.</p>
+</div>
+
+<h4 id="ch18-domain-project-work">Công Việc Dự Án (Project Work)</h4>
+
+<p>Cũng giống như nhóm quy trình thực thi (executing process group) ăn khớp với nhóm quy trình lập kế hoạch (planning process group), các performance domains Lập Kế Hoạch và Công Việc Dự Án đến với nhau. Các kết quả mong muốn từ domain này là hiệu suất dự án hiệu quả và hiệu quả từ tất cả các bên liên quan tham gia, trong đó không kém phần quan trọng là trưởng dự án và nhóm.</p>
+
+<p>Công việc quản lý dự án tốt có nghĩa là các yếu tố sau tạo ra kết quả phù hợp với nhu cầu của dự án và cải tiến quy trình liên tục cho tổ chức:</p>
+
+<ul class="content-list">
+<li>Các quy trình dự án</li>
+<li>Quản lý hiệu quả các nguồn lực vật chất và mua sắm</li>
+<li>Sự tham gia và truyền thông với các bên liên quan</li>
+<li>Cải tiến liên tục và học hỏi cho nhóm và các quy trình</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//a3915c09-299e-4b09-97b5-18b6015c9f75/markdown_4/imgs/img_in_image_box_76_96_126_154.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A15Z%2F-1%2F%2F400c901143495a7f7232dae1d5e976094eec30575da3cd1e9e9461d811e18d07" alt="Image" width="6%" /></div></div>
+
+<div class="callout tip">
+<p><strong>Hãy suy nghĩ.</strong> Xem lại hình tích hợp (hình 18.1). Bạn có thể thấy domain này liên quan như thế nào đến các nhiệm vụ ECO và các quy trình mô hình Process Groups trong hình không? Hãy suy nghĩ trước về cách công việc và kết quả của domain Công Việc Dự Án này cũng sẽ ăn khớp với những kết quả của các domains Bàn Giao và Đo Lường.</p>
+</div>
+
+<h4 id="ch18-domain-delivery">Bàn Giao (Delivery)</h4>
+
+<p>Domain này liên quan đến việc bàn giao phạm vi mà dự án được thực hiện, với chất lượng phù hợp theo yêu cầu sản phẩm và chất lượng. Hãy nhớ các kết nối của các quy trình phạm vi và chất lượng:</p>
+
+<ul class="content-list">
+<li>Quy trình đo lường (giám sát và kiểm soát) Kiểm Soát Chất Lượng (Control Quality) trong khi nhóm đang xây dựng sản phẩm bàn giao dẫn đến...</li>
+<li>Khả năng của nhóm và trưởng dự án trình bày sản phẩm bàn giao cho các bên liên quan (hoặc khách hàng) để chấp thuận. Quy trình này được gọi là Xác Nhận Phạm Vi (Validate Scope).</li>
+</ul>
+
+<p>Thực hiện thành công lập kế hoạch, công việc dự án (cùng với việc đo lường trong suốt quá trình) dẫn đến các kết quả mong muốn của bàn giao. Sự hiểu biết của trưởng dự án và nhóm cũng như khả năng thực thi dựa trên sự hiểu biết rõ ràng về các yêu cầu dự án sẽ dẫn đến các kết quả mong muốn sau. Đó là việc đạt được:</p>
+
+<ul class="content-list">
+<li>Các mục tiêu và đích đến của dự án</li>
+<li>Việc hoàn thành dự án đúng lịch trình</li>
+<li>Đóng góp của dự án vào các mục tiêu kinh doanh của tổ chức (gắn với việc thúc đẩy chiến lược kinh doanh của nó)</li>
+<li>Sự chấp thuận và hài lòng của các bên liên quan với các sản phẩm bàn giao dự án</li>
+</ul>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//a3915c09-299e-4b09-97b5-18b6015c9f75/markdown_4/imgs/img_in_image_box_76_465_126_525.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A15Z%2F-1%2F%2F0f1ff3208a60b418fb6b603a31aeea1c2b306ed7b1077205004e97cd474f6a71" alt="Image" width="6%" /></div></div>
+
+<div class="callout tip">
+<p><strong>Hãy suy nghĩ.</strong> Xem lại hình tích hợp (hình 18.1). Hãy suy nghĩ toàn diện về các domains đã thảo luận cho đến nay và các nhiệm vụ ECO liên quan cũng như các quy trình quản lý dự án của chúng. Làm như vậy sẽ cho bạn cái nhìn tổng quan thoải mái về các quy trình dự án và các kỹ năng con người hỗ trợ chúng. Bạn nên hiểu rằng kiến thức về và sự tương tác với môi trường kinh doanh đảm bảo rằng các dự án được quản trị phù hợp và vì lợi ích của tổ chức cũng như các bên liên quan. Nếu bạn chưa thoải mái với cách tất cả các khái niệm này kết hợp với nhau, điều đó chỉ có nghĩa là bạn cần thêm thời gian ôn lại cuốn sách này và các tương tác, bài tập của nó.</p>
+</div>
+
+<p>Bây giờ hãy xem hai performance domains cuối cùng của PMBOK Guide.</p>
+
+<h4 id="ch18-domain-measurement">Đo Lường (Measurement)</h4>
+
+<p>Bạn có nhớ nhóm quy trình Giám Sát và Kiểm Soát (Monitoring and Controlling) trong mô hình Process Groups không? Đo Lường là về việc giám sát và kiểm soát; quan sát và đo lường từ khi dự án bắt đầu cho đến khi hoàn thành. Mục đích của Đo Lường là có thể nhận biết khi nào cần thực hiện thay đổi để cải thiện hiệu suất dự án. Các kết quả đo lường bao gồm khả năng lấy dữ liệu quan sát về dự án và tạo ra các dự báo đáng tin cậy trong suốt vòng đời dự án. Các kết quả từ đo lường phải liên tục và phải có sự hiểu biết chung về trạng thái dự án giữa tất cả các bên liên quan. Kết quả này đến lượt nó sẽ dẫn đến những thay đổi kịp thời trong dự án khi cần thiết để giữ cho hiệu suất dự án đi đúng hướng và đạt được các mục tiêu đã lên kế hoạch cũng như giá trị kinh doanh.</p>
+
+<h4 id="ch18-domain-uncertainty">Sự Không Chắc Chắn (Uncertainty)</h4>
+
+<p>PMI định nghĩa sự không chắc chắn là thiếu hiểu biết hoặc nhận thức về các vấn đề, sự kiện, các con đường cần đi theo hoặc các giải pháp cần thực hiện.</p>
+
+<p>Sự không chắc chắn xuất phát từ sự kết hợp của rủi ro, sự mơ hồ, độ phức tạp và tính biến động. Hãy xem xét các khái niệm này, điều giúp giải thích tại sao sự không chắc chắn lại xứng đáng có một performance domain riêng:</p>
+
+<ul class="content-list">
+<li><strong>Sự mơ hồ (Ambiguity)</strong> là khi các sự kiện, điều kiện và nguyên nhân của chúng có thể có nhiều hơn một cách giải thích và lựa chọn giải pháp.</li>
+<li><strong>Độ phức tạp (Complexity)</strong> có nghĩa là có nhiều yếu tố liên quan và phụ thuộc lẫn nhau cần được xem xét đồng thời. Sự mơ hồ góp phần vào độ phức tạp và với độ phức tạp thường có vẻ như có những sự kiện hay điều kiện mâu thuẫn cùng đúng tại một thời điểm. Những yếu tố hay điều kiện có vẻ mâu thuẫn này không thể điều hòa được, vì vậy thay vào đó cần phải đưa ra lựa chọn tốt nhất dù có thể không có đầy đủ thông tin để đưa ra quyết định đó.</li>
+<li><strong>Rủi ro (Risks)</strong> là các sự kiện không chắc chắn có thể xảy ra hoặc không trong dự án. Chúng tồn tại ở hai dạng cơ bản: mối đe dọa và cơ hội. Mối đe dọa sẽ gây ra vấn đề với việc đạt được cân bằng các ràng buộc dự án nếu xảy ra trong khi cơ hội có thể cho phép chúng ta đạt được các mục tiêu dự án với hiệu suất thậm chí còn tốt hơn kế hoạch.</li>
+</ul>
+
+<p>Trong khi PMI phân tách các ý nghĩa khác nhau này và tóm tắt chúng là sự không chắc chắn, những gì chúng ta biết mà không cần tất cả những điều này là các dự án liên quan đến việc đạt được những mục tiêu cho tổ chức và các bên liên quan của họ mà chưa từng được thực hiện trước đây, trong các điều kiện mà không thể có đầy đủ thông tin vì lý do chính xác là nó chưa từng được thực hiện trước đây.</p>
+
+<p>Các kết quả của việc điều hướng thành công sự không chắc chắn bao gồm sự nhận thức và thoải mái với khả năng quản lý môi trường không chắc chắn và các dự án phức tạp có rủi ro. Có thể chủ động quản lý sự không chắc chắn có nghĩa là khả năng lập kế hoạch, đo lường và kiểm soát dự án trong khi dự đoán và lập kế hoạch cho các rủi ro sao cho các mối đe dọa tạo ra ít hoặc không có tác động tiêu cực đến các mục tiêu và đích đến dự án. Chúng ta cũng có thể thêm vào đây rằng điều hướng sự không chắc chắn thành công có nghĩa là đạt được kết quả bàn giao giá trị mà dự án được thực hiện đúng lịch trình, trong ngân sách và ở mức chất lượng phù hợp. Theo cách này, các dự án cũng đóng góp vào các mục tiêu kinh doanh dài hạn của tổ chức.</p>
+
+<h4 id="ch18-mapping-pmbok-eco">Ánh Xạ PMBOK Guide với ECO và Process Groups</h4>
+
+<p>Các trách nhiệm quản lý tích hợp của trưởng dự án là lựa chọn hoàn hảo để thảo luận về các domains của PMBOK Guide vì tích hợp bao gồm tất cả. Bây giờ, dành thêm thời gian ôn lại các nhiệm vụ còn lại của ECO Process (domain II) và các quy trình liên quan của chúng qua lăng kính của PMBOK Guide domains sẽ giúp bạn tiếp tục ôn tập tài liệu này.</p>
+
+<div class="callout tip">
+<p><strong>Hãy suy nghĩ.</strong> Chúng tôi đã tái bản tất cả các hình từ các chương Process domain ở đây để tiện cho bạn. Đối với mỗi hình, chúng tôi đã cung cấp các cụm từ chính để giúp kích thích tư duy của bạn. Hãy nghiên cứu chúng bây giờ để ôn lại các nhiệm vụ ECO cùng với các quy trình mô hình Process Groups, nhưng quan trọng nhất là liên hệ chúng với các performance domains của PMBOK Guide được liệt kê.</p>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//c7ed9bf5-3174-40bf-85e0-eaf18eef51c7/markdown_0/imgs/img_in_image_box_47_387_98_449.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A52%3A08Z%2F-1%2F%2Ff58aac79161ef51dc91e9821fc449afea31350c36fffb1f598cf6b69f708a737" alt="Image" width="6%" /></div></div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//c7ed9bf5-3174-40bf-85e0-eaf18eef51c7/markdown_0/imgs/img_in_image_box_52_470_740_907.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A52%3A08Z%2F-1%2F%2Ff3ca4f62aba3ae40dcaae2938aed0fc7243569496e7bb1f923c3bfd310386915" alt="Image" width="83%" /></div></div>
+
+<p style="text-align:center;"><em>Phạm vi: Được lên kế hoạch, đo lường, bàn giao qua sự không chắc chắn, điều chỉnh</em></p>
+
+<p style="text-align:center;"><em>Lịch trình: Lập kế hoạch và thực thi đúng tiến độ qua sự không chắc chắn, điều chỉnh</em></p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//c7ed9bf5-3174-40bf-85e0-eaf18eef51c7/markdown_1/imgs/img_in_image_box_82_105_762_993.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A52%3A09Z%2F-1%2F%2F258e8f63dca3112b0ec3dc2d892cff94c110248368ad4f1a4a6ceb0045e60951" alt="Image" width="82%" /></div></div>
+
+<p><em>Chất lượng: Phạm vi, lịch trình và chi phí được quản lý theo yêu cầu qua sự không chắc chắn, điều chỉnh</em></p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>ECO</th>
+<th>Mô Hình Process Groups</th>
+<th>PMBOK Guide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>Quản Lý Nhóm (Manage Team)<br>Phát Triển Nhóm (Develop Team)<br>Thực Thi (Executing)</td>
+<td>Domain 2.2 Nhóm<br>Domain 2.4 Lập Kế Hoạch<br>Domain 2.5 Công Việc Dự Án</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p><em>Nguồn lực: Lãnh đạo phục vụ đòi hỏi tất cả kỹ năng People domain; điều chỉnh</em></p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>ECO</th>
+<th>Mô Hình Process Groups</th>
+<th>PMBOK Guide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nhiệm Vụ 2: Quản lý truyền thông</td>
+<td>Quản Lý Truyền Thông (Communications Management)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//c7ed9bf5-3174-40bf-85e0-eaf18eef51c7/markdown_2/imgs/img_in_image_box_43_107_768_650.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A52%3A09Z%2F-1%2F%2Fd75f24bb4771a515e89c5878bf03e0563e97c50ccec69816e47957e4dbcd5374" alt="Image" width="88%" /></div></div>
+
+<p><em>Truyền thông: Gắn chặt với tất cả các mối quan hệ bên liên quan tốt; điều chỉnh</em></p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>ECO</th>
+<th>Mô Hình Process Groups</th>
+<th>PMBOK Guide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>Quản Lý Rủi Ro (Risk Management)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p style="text-align:center;"><em>Rủi ro: Hiện thân của sự không chắc chắn; lập kế hoạch, điều hướng, đo lường, điều chỉnh</em></p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>ECO</th>
+<th>Mô Hình Process Groups</th>
+<th>PMBOK Guide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Domain I, Nhiệm Vụ 8: Đàm phán các thỏa thuận dự án</td>
+<td>Quản Lý Mua Sắm (Procurement Management)<br>Lập Kế Hoạch Quản Lý Mua Sắm — Lập Kế Hoạch</td>
+<td>Domain 2.5<br>Domain 2.7 Đo Lường<br>Domain 2.8 Sự Không Chắc Chắn</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p style="text-align:center;"><em>Mua sắm: Đạt được một phần phạm vi qua các đối tác; lập kế hoạch, thực thi, đo lường qua sự không chắc chắn</em></p>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>ECO</th>
+<th>Mô Hình Process Groups</th>
+<th>PMBOK Guide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Domain I<br>
+Trao quyền cho các thành viên nhóm và các bên liên quan (Nhiệm Vụ 9)<br>
+Hợp tác với các bên liên quan (Nhiệm Vụ 10)<br>
+Xây dựng hiểu biết chung (Nhiệm Vụ 13)<br>
+Cố vấn cho các bên liên quan có liên quan (Nhiệm Vụ 13)<br>
+Domain II<br>
+Gắn kết các bên liên quan (Nhiệm Vụ 4)
+</td>
+<td>Quản Lý Các Bên Liên Quan (Stakeholder Management)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//c7ed9bf5-3174-40bf-85e0-eaf18eef51c7/markdown_3/imgs/img_in_image_box_296_107_753_352.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A52%3A10Z%2F-1%2F%2F8d9112f792f0eaf8ee116dd2053d217e71f151952d93611caeae023e09df3a03" alt="Image" width="55%" /></div></div>
+
+<p><em>Các bên liên quan: Những người chúng ta làm tất cả vì họ; gắn với truyền thông; điều chỉnh qua sự không chắc chắn</em></p>
+
+<h4 id="ch18-standard-and-pmbok">The Standard và PMBOK Guide</h4>
+
+<p>The Standard for Project Management (The Standard) của PMI và PMBOK Guide bổ sung cho nhau và cả hai đều hướng đến cùng mục đích và kết quả. Nhưng PMBOK Guide được tổ chức theo các performance domains, trong khi The Standard dựa trên các nguyên tắc.</p>
+
+<p>Cả PMBOK Guide và The Standard đều nói về các dự án như một hệ thống để bàn giao giá trị — một khái niệm đã được thảo luận trước đó trong cuốn sách này và xuyên suốt tất cả các cuộc thảo luận về quản lý dự án. Mục đích của The Standard là cung cấp sự hiểu biết về cách quản lý dự án giúp đạt được các kết quả dự định. Các nguyên tắc trong The Standard, do đó, giúp đạt được thành công trong các performance domains.</p>
+
+<p>Đầu tiên, những nguyên tắc cơ bản nhất được nêu trong The Standard là trách nhiệm, tôn trọng, công bằng và trung thực, phù hợp với các nguyên tắc nền tảng của Bộ Quy Tắc Đạo Đức và Ứng Xử Chuyên Nghiệp của PMI. Bạn nên dành một chút thời gian xem xét Hình 18.2, minh họa các nguyên tắc của The Standard cùng với các performance domains của PMBOK Guide. Khi bạn nghiên cứu hình này, hãy nhớ rằng các nguyên tắc của The Standard hỗ trợ và tạo điều kiện cho các domains và kết quả được mô tả trong PMBOK Guide.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//c7ed9bf5-3174-40bf-85e0-eaf18eef51c7/markdown_4/imgs/img_in_image_box_64_117_737_635.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A52%3A11Z%2F-1%2F%2F6ce865dde65460bd9fa155e92bf3342da5807861476ece45723646d730aad055" alt="Image" width="81%" /></div></div>
+
+<p style="text-align:center;"><em>HÌNH 18.2 Các Nguyên Tắc của The Standard hỗ trợ các Performance Domains của PMBOK Guide</em></p>
+
+<h3 id="ch18-ket-luan">Kết Luận</h3>
+
+<p>Bạn đã đến cuối cuốn sách này! Xin chúc mừng!</p>
+
+<p>Như đã lưu ý trong chương 1, chúng tôi khuyên bạn nên ôn lại thông tin trong cuốn sách này nhiều lần để thực sự ghi nhớ những gì bạn đã học. Vì vậy hãy đọc lại cuốn sách này, tập trung vào các lĩnh vực mà bạn đã xác định có khoảng trống trong kiến thức. Khi đọc lại lần hai, bạn sẽ thấy rằng bạn hiểu một số chủ đề theo cách khác so với lần đầu, và các khái niệm khác sẽ nổi bật hơn mà trước đây bạn đã bỏ lỡ.</p>
+
+<p>Hãy chắc chắn rằng bạn sử dụng các công cụ chúng tôi đã cung cấp để giúp bạn vượt qua kỳ thi. Xem lại các Quicktest ở đầu mỗi chương để đảm bảo bạn biết từng mục được trình bày. Nếu bạn không biết điều gì đó, hãy ghi chú đó là một khoảng trống và xem lại phần đó để làm quen với chủ đề đó. Hãy chơi trò chơi Rita's Process Chart và Rita's Agile Process Chart trên trang RMC Resources của chúng tôi. Quay lại bất kỳ bài tập nào bạn gặp khó khăn và thử lại. Và, hãy sử dụng RMC Interactive Chapter Quizzes để có kinh nghiệm trả lời các câu hỏi tương tự như những câu hỏi bạn sẽ tìm thấy trong kỳ thi.</p>
+
+<p>Có sự hiểu biết vững chắc về quy trình quản lý dự án và tài liệu được trình bày trong cuốn sách này sẽ không chỉ giúp bạn vượt qua kỳ thi (bạn có thể sử dụng logic thay vì phải ghi nhớ thông tin), mà còn giúp bạn áp dụng những gì đã học vào các dự án thực tế của mình.</p>
+
+<div class="img-center"><div style="text-align: center;"><img src="https://pplines-online.bj.bcebos.com/deploy/official/paddleocr/pp-ocr-vl-15//52af65cd-cad1-4587-a7f7-c666f862bff7/markdown_0/imgs/img_in_image_box_635_258_747_366.jpg?authorization=bce-auth-v1%2FALTAKDN8mY5KlNI7zaRpLmOqrw%2F2026-05-20T17%3A48%3A00Z%2F-1%2F%2F00389ee9e9be9ce4b1d432cf7f6b64abb14197ab2e8f2a9107428a762471a360" alt="Image" width="13%" /></div></div>
+
+<div class="callout">
+<p><strong>TÀI NGUYÊN RMC</strong></p>
+<p>Cảm ơn bạn đã đồng hành cùng chúng tôi trong hành trình này. Chúng tôi hy vọng bạn sẽ quay lại RMC Learning Solutions sau khi đã đạt được chứng chỉ PMP. Chúng tôi có thể giúp bạn tiếp tục đào tạo và kiếm PDU để duy trì chứng chỉ của mình thông qua các khóa học và sản phẩm eLearning cũng như do giảng viên hướng dẫn nâng cao của chúng tôi. Vì vậy, chúc may mắn và chúng tôi mong được gặp lại bạn sau khi bạn vượt qua kỳ thi!</p>
+</div>
+
+<h3 id="ch18-index">Chỉ Mục</h3>
+
+<h4 id="ch18-index-symbols">Ký Hiệu</h4>
+
+<ul class="content-list">
+<li>Quy trình 8 bước lãnh đạo thay đổi — trang 392</li>
+<li>Quy tắc 80/20 — trang 265</li>
+</ul>
+
+<h4 id="ch18-index-a">A</h4>
+
+<ul class="content-list">
+<li>AC. Xem chi phí thực tế (AC)</li>
+<li>Chấp nhận (accept) — 302</li>
+<li>Tiêu chí chấp nhận (acceptance criteria) — 169, 264</li>
+<li>Phát triển theo kiểm thử nghiệm chấp nhận (acceptance test-driven development — ATDD) — 181</li>
+<li>Sản phẩm bàn giao đã được chấp nhận (accepted deliverables) — 185</li>
+<li>Lý thuyết nhu cầu được tiếp thu (Acquired needs theory) — 116</li>
+<li>Thu Hút Nguồn Lực (Acquire Resources) — 136–139
+  <ul class="content-list">
+    <li>Agile — 137</li>
+    <li>Sản phẩm của quy trình — 139</li>
+    <li>Kết hợp (hybrid) — 137</li>
+    <li>Các phương pháp — 138</li>
+  </ul>
+</li>
+<li>Thuộc tính hoạt động (activity attributes) — 133, 198</li>
+<li>Ước tính hoạt động (activity estimates) — 198</li>
+<li>Danh sách hoạt động (activity list) — 198</li>
+<li>Độ lệch chuẩn hoạt động (activity standard deviation) — 202–203</li>
+<li>Chi phí thực tế (actual cost — AC) — 240</li>
+<li>Thích ứng (adaptive) — 7</li>
+<li>Mô hình ADKAR — 392</li>
+<li>Sơ đồ ái lực (affinity diagram) — 165, 263</li>
+<li>Ước tính ái lực (affinity estimating) — 203, 235</li>
+<li>Agile — 69, 166, 409–422
+  <ul class="content-list">
+    <li>Và gắn kết các bên liên quan — 368–373</li>
+    <li>Đóng dự án — 99</li>
+    <li>Phương pháp phát triển — 7</li>
+    <li>Phương pháp thực thi — 35</li>
+    <li>Khởi động (initiating) — 45</li>
+    <li>Các vòng lặp — 48</li>
+    <li>Lập kế hoạch nguồn lực — 129</li>
+    <li>Các nguyên tắc — 419</li>
+    <li>Tổng quan quy trình — 44–49, 51–52</li>
+    <li>Đóng (closing) — 48</li>
+    <li>Tính khả thi — 45</li>
+    <li>Khởi tạo (initiation) — 45–47</li>
+    <li>Lập kế hoạch phát hành — 47</li>
+    <li>Điều lệ dự án — 45</li>
+    <li>Phân tích sự cố trước khi xảy ra (pre-mortem) — 293</li>
+    <li>Quản lý chất lượng — 267–270</li>
+    <li>Định nghĩa rủi ro — 287–288</li>
+    <li>Giám sát rủi ro — 311</li>
+    <li>Lập kế hoạch phạm vi — 158–160</li>
+    <li>Các giá trị — 418</li>
+  </ul>
+</li>
+<li>Các buổi lễ Agile (agile ceremonies) — 184–185, 268
+  <ul class="content-list">
+    <li>Standup hàng ngày — 268</li>
+    <li>Cuộc họp lập kế hoạch vòng lặp — 268</li>
+    <li>Hồi cố (retrospective) — 268</li>
+  </ul>
+</li>
+<li>Huấn luyện viên Agile (agile coach) — 69</li>
+<li>Thuật ngữ chung Agile và Scrum — 412</li>
+<li>Tuyên ngôn Agile (agile manifesto) — 331</li>
+<li>Các phương pháp luận Agile — 409–422
+  <ul class="content-list">
+    <li>Tổng quan — 409</li>
+  </ul>
+</li>
+<li>Tư duy Agile (Agile Mindset) — 420–421</li>
+<li>Mô hình hóa Agile (agile modeling) — 369–372</li>
+<li>Lập kế hoạch phát hành Agile — 47, 219</li>
+<li>Phát triển lịch trình Agile — 219</li>
+<li>Các phương pháp phân tách user story Agile — 181–182</li>
+<li>Trưởng nhóm Agile. Xem thêm agile coach; Xem thêm Scrum Master
+  <ul class="content-list">
+    <li>Danh sách trách nhiệm — 72</li>
+    <li>Vai trò — 69</li>
+  </ul>
+</li>
+<li>Nhóm Agile (agile teams) — 137</li>
+<li>Cấu trúc nhóm Agile — 137</li>
+<li>Tam giác Agile (agile triangle) — 421–422</li>
+<li>Thỏa thuận (agreements) — 162
+  <ul class="content-list">
+    <li>Định nghĩa — 321–322</li>
+  </ul>
+</li>
+<li>Phân tích các lựa chọn thay thế (alternatives analysis) — 192, 205, 234, 263, 366</li>
+<li>Sự mơ hồ (ambiguity) — 426</li>
+<li>Rủi ro mơ hồ (ambiguity risk) — 292</li>
+<li>Ước tính tương tự (analogous estimating) — 199</li>
+<li>Thẩm định (appraisal) — 260</li>
+<li>Đột phá kiến trúc (architectural spike) — 287, 414</li>
+<li>Lưu trữ (archive) — 82</li>
+<li>Nguyên nhân có thể gán (assignable cause) — 267</li>
+<li>Nhật ký giả định (assumption log) — 65, 80, 162, 198, 256</li>
+<li>Các giả định (assumptions) — 65
+  <ul class="content-list">
+    <li>Mức cao — 83</li>
+  </ul>
+</li>
+<li>Giả định và ràng buộc — 360</li>
+<li>Kiểm toán (audit) — 263–264, 311</li>
+<li>Tự chủ (autonomy) — 114</li>
+<li>Tránh (avoid) — 301</li>
+</ul>
+
+<h4 id="ch18-index-b">B</h4>
+
+<ul class="content-list">
+<li>BAC. Xem ngân sách khi hoàn thành (BAC)</li>
+<li>Backlog — 69, 153, 158, 171, 185, 194, 197, 219, 220, 229, 239, 313, 368. Xem thêm product backlog
+  <ul class="content-list">
+    <li>Và lộ trình (roadmap) — 159</li>
+    <li>Ưu tiên — 47, 87</li>
+    <li>Điều chỉnh rủi ro — 308–309</li>
+    <li>Các user story — 159–160</li>
+  </ul>
+</li>
+<li>Chuyển ngược (backward pass) — 210–211</li>
+<li>Ma trận cân bằng (balanced matrix) — 56</li>
+<li>Biểu đồ thanh (bar chart) — 207, 222</li>
+<li>Đường cơ sở (baselines) — 86. Xem thêm cost baseline; schedule baseline, scope baseline</li>
+<li>Cơ sở ước tính (basis of estimates) — 206, 235</li>
+<li>Điểm chuẩn (benchmarking) — 163, 259</li>
+<li>Kế hoạch quản lý lợi ích (benefits management plan) — 234</li>
+<li>Phân phối beta (beta distribution) — 201</li>
+<li>Hồ sơ dự thầu (bid) — 340</li>
+<li>Hội nghị nhà thầu (bidder conference) — 340</li>
+<li>Tài liệu đấu thầu (bid documents) — 338–339</li>
+<li>Blanchard, Ken — 118</li>
+<li>Ước tính từ dưới lên (bottom-up estimating) — 199</li>
+<li>Động não (brainstorming) — 162, 259, 356</li>
+<li>Ngân sách (budget) — 241
+  <ul class="content-list">
+    <li>Dự án Agile — 229</li>
+    <li>Các định nghĩa liên quan — 229–230</li>
+    <li>Chuẩn bị ngân sách — 236</li>
+  </ul>
+</li>
+<li>Quản lý ngân sách và nguồn lực — 229–248
+  <ul class="content-list">
+    <li>Các kết quả mong muốn — 231</li>
+  </ul>
+</li>
+<li>Ngân sách khi hoàn thành (budget at completion — BAC) — 240</li>
+<li>Ước tính ngân sách (budget estimate) — 234</li>
+<li>Xây dựng và hỗ trợ hiệu suất nhóm — 125–150
+  <ul class="content-list">
+    <li>Tổng quan — 125–128</li>
+  </ul>
+</li>
+<li>Biểu đồ burndown — 144, 221, 224
+  <ul class="content-list">
+    <li>Biểu đồ burndown rủi ro — 312–313</li>
+  </ul>
+</li>
+<li>Tốc độ đốt (burn rate) — 237</li>
+<li>Biểu đồ burnup — 144</li>
+<li>Trường hợp kinh doanh (business case) — 64, 65, 82, 153</li>
+<li>Môi trường kinh doanh (business environment) — 19, 377</li>
+<li>Business Environment domain
+  <ul class="content-list">
+    <li>Tổng quan — 378–380</li>
+  </ul>
+</li>
+<li>Rủi ro kinh doanh (business risk) — 292</li>
+<li>Người mua và người bán (buyers and sellers)
+  <ul class="content-list">
+    <li>Định nghĩa — 322</li>
+  </ul>
+</li>
+</ul>
+
+<h4 id="ch18-index-c">C</h4>
+
+<ul class="content-list">
+<li>Nghiên cứu tình huống (case study) — 100–102, 146–147, 186–187, 224–227, 247–248, 272, 282–283, 317–319, 372–373</li>
+<li>Sơ đồ nguyên nhân - kết quả (cause-and-effect diagram) — 261–262, 263, 264</li>
+<li>Ký hợp đồng tập trung (centralized contracting) — 325</li>
+<li>Quản lý và lãnh đạo tập trung so với phân tán — 107</li>
+<li>CFDs. Xem biểu đồ dòng chảy tích lũy (CFDs)</li>
+<li>Thay đổi (change) — 312
+  <ul class="content-list">
+    <li>Quản lý — 238</li>
+    <li>Các mô hình — 392</li>
+    <li>Thông lệ quản lý dự án — 391</li>
+    <li>Chuyển tiếp (transitional) — 391–392</li>
+  </ul>
+</li>
+<li>Ban kiểm soát thay đổi (change control board — CCB) — 96</li>
+<li>Phương pháp phát triển theo hướng thay đổi (change-driven development approach) — 7</li>
+<li>Quản lý thay đổi (change management)
+  <ul class="content-list">
+    <li>Agile — 98</li>
+  </ul>
+</li>
+<li>Kế hoạch quản lý thay đổi (change management plan) — 85, 87</li>
+<li>Yêu cầu thay đổi (change request) — 239</li>
+<li>Các yêu cầu thay đổi (change requests) — 90, 93–94, 143, 185, 222, 342–343, 346
+  <ul class="content-list">
+    <li>Hành động khắc phục (corrective action) — 94</li>
+    <li>Sửa lỗi (defect repair) — 94</li>
+    <li>Hành động phòng ngừa (preventive action) — 94</li>
+  </ul>
+</li>
+<li>Các thay đổi (changes) — 66, 192
+  <ul class="content-list">
+    <li>Môi trường thích ứng — 95</li>
+    <li>Thay đổi mang tính xây dựng (constructive) — 346</li>
+    <li>Dự án theo kế hoạch
+      <ul class="content-list">
+        <li>Quy trình chi tiết — 97–98</li>
+        <li>Quy trình tóm tắt — 96–97</li>
+      </ul>
+    </li>
+  </ul>
+</li>
+<li>Xây dựng điều lệ (chartering) — 171</li>
+<li>Danh sách kiểm tra (checklist) — 261, 264</li>
+<li>Phiếu kiểm tra (checksheet) — 255, 265</li>
+<li>Mua sắm đã đóng (closed procurements) — 347</li>
+<li>Đóng Dự Án hoặc Giai Đoạn (Close Project or Phase) — 99–100, 185</li>
+<li>Đóng (closing) — 44, 84
+  <ul class="content-list">
+    <li>Lý do để vào giai đoạn — 35</li>
+  </ul>
+</li>
+<li>Huấn luyện (coaching) — 121</li>
+<li>Thu Thập Yêu Cầu (Collect Requirements) — 161–162
+  <ul class="content-list">
+    <li>Các sản phẩm cần thiết — 162</li>
+  </ul>
+</li>
+<li>Đặt cùng địa điểm (colocation) — 141</li>
+<li>Hiểu biết chung (common understanding) — 354</li>
+<li>Truyền thông (communication) — 367
+  <ul class="content-list">
+    <li>Các yếu tố cản trở — 112</li>
+    <li>Kênh (channels) — 114, 277</li>
+    <li>Năm chữ C (five Cs) — 110</li>
+    <li>Luồng (flow) — 108</li>
+    <li>Khoảng cách (gap) — 111–112</li>
+    <li>Các phương pháp — 67, 113</li>
+    <li>Các mô hình — 110–111</li>
+    <li>Kỹ năng — 108–114</li>
+    <li>Chiến lược — 275</li>
+    <li>Công nghệ — 112–113</li>
+    <li>Các loại — 108</li>
+  </ul>
+</li>
+<li>Quản lý truyền thông (communications management)
+  <ul class="content-list">
+    <li>Các kết quả mong muốn — 275</li>
+    <li>Tổng quan — 273–275</li>
+  </ul>
+</li>
+<li>Kế hoạch quản lý truyền thông (communications management plan) — 19, 278, 362</li>
+<li>Chiến lược truyền thông (communication strategies) — 275</li>
+<li>Văn hóa công ty (company culture) — 130, 193</li>
+<li>Độ phức tạp (complexity) — 285, 378, 426
+  <ul class="content-list">
+    <li>Của thông tin — 112–113</li>
+  </ul>
+</li>
+<li>Tuân thủ (compliance). Xem thêm tuân thủ dự án (project compliance)
+  <ul class="content-list">
+    <li>Định nghĩa — 378</li>
+    <li>Các định nghĩa liên quan — 377–378</li>
+    <li>Quản trị tổ chức — 381–382</li>
+    <li>Quản lý dự án — 382</li>
+    <li>Các yêu cầu — 59, 380–382</li>
+  </ul>
+</li>
+<li>Tuân thủ và bàn giao giá trị — 377–392</li>
+<li>Tiến Hành Mua Sắm (Conduct Procurements) — 340–343
+  <ul class="content-list">
+    <li>Sản phẩm của quy trình — 342–343</li>
+    <li>Các phương pháp — 340</li>
+  </ul>
+</li>
+<li>Kế hoạch quản lý cấu hình (configuration management plan) — 85, 87</li>
+<li>Xung đột (conflict) — 71, 345
+  <ul class="content-list">
+    <li>Quản lý — 81, 122–123</li>
+    <li>Quản lý giải thích hợp đồng — 345</li>
+    <li>Mô hình — 123</li>
+    <li>Giải quyết — 106, 144</li>
+    <li>Nguồn — 123</li>
+  </ul>
+</li>
+<li>Chi phí tuân thủ (conformance, cost of) — 260</li>
+<li>Các ràng buộc (constraints) — 65–66, 167
+  <ul class="content-list">
+    <li>Mức cao — 83</li>
+    <li>Ràng buộc lịch trình dự án — 241</li>
+  </ul>
+</li>
+<li>Thay đổi mang tính xây dựng (constructive changes) — 346</li>
+<li>Sơ đồ ngữ cảnh (context diagram) — 164–165</li>
+<li>Sơ đồ luồng dữ liệu mức ngữ cảnh (context level data flow diagram) — 164</li>
+<li>Kế hoạch dự phòng (contingency plans) — 305</li>
+<li>Dự phòng (contingency reserves) — 197, 205, 236, 239, 305–307</li>
+<li>Cải tiến liên tục (continuous improvement) — 184, 364
+  <ul class="content-list">
+    <li>Định nghĩa — 251</li>
+  </ul>
+</li>
+<li>Hợp đồng (contract) — 305. Xem thêm các loại hợp đồng (contract types)
+  <ul class="content-list">
+    <li>Mua sắm Agile — 331</li>
+    <li>Định nghĩa — 321</li>
+    <li>Giải thích — 345–346</li>
+    <li>Đàm phán — 326</li>
+    <li>Chấm dứt — 347</li>
+    <li>Điều khoản và điều kiện — 332–333</li>
+    <li>Hiểu hợp đồng — 325–335</li>
+  </ul>
+</li>
+<li>Ký hợp đồng, các thuật ngữ cần biết — 332</li>
+<li>Các loại hợp đồng (contract types) — 327–329
+  <ul class="content-list">
+    <li>Ưu điểm và nhược điểm — 329</li>
+    <li>Và rủi ro — 329</li>
+  </ul>
+</li>
+<li>Tài khoản kiểm soát (control account) — 175</li>
+<li>Biểu đồ kiểm soát (control chart) — 266–267</li>
+<li>Kiểm Soát Chi Phí (Control Costs) — 237–246</li>
+<li>Giới hạn kiểm soát (control limits) — 266</li>
+<li>Kiểm Soát Mua Sắm (Control Procurement) — 343–348
+  <ul class="content-list">
+    <li>Sản phẩm của quy trình — 346–347</li>
+    <li>Các phương pháp — 345</li>
+  </ul>
+</li>
+<li>Kiểm Soát Chất Lượng (Control Quality) — 254–255, 258–259
+  <ul class="content-list">
+    <li>Sản phẩm — 258</li>
+    <li>Các phương pháp — 264–267</li>
+    <li>Mối quan hệ với Xác Nhận Phạm Vi — 185–186</li>
+    <li>Thuật ngữ — 258</li>
+  </ul>
+</li>
+<li>Kiểm Soát Lịch Trình (Control Schedule) — 223–224
+  <ul class="content-list">
+    <li>Sản phẩm — 224</li>
+    <li>Các phương pháp — 224</li>
+  </ul>
+</li>
+<li>Kiểm Soát Phạm Vi (Control Scope) — 182–186, 184–185
+  <ul class="content-list">
+    <li>Agile — 184</li>
+    <li>Sản phẩm — 185–186</li>
+    <li>Định nghĩa — 182</li>
+  </ul>
+</li>
+<li>COQ. Xem chi phí chất lượng (COQ)</li>
+<li>Các khái niệm cốt lõi — 395–399</li>
+<li>Hành động khắc phục (corrective action) — 94</li>
+<li>Chi phí (cost)
+  <ul class="content-list">
+    <li>Và chất lượng — 260</li>
+    <li>Chi phí tuân thủ — 260</li>
+    <li>Chi phí không tuân thủ — 260</li>
+  </ul>
+</li>
+<li>Tổng hợp chi phí (cost aggregation) — 236</li>
+<li>Đường cơ sở chi phí (cost baseline) — 133, 136, 129, 232, 234–237, 239, 300, 305–306</li>
+<li>Phân tích chi phí-lợi ích (cost-benefit analysis) — 61–62, 255, 259, 304</li>
+<li>Hợp đồng chi phí (cost contract) — 329</li>
+<li>Ước tính chi phí (cost estimates) — 133, 235, 237</li>
+<li>Quản lý chi phí (cost management)
+  <ul class="content-list">
+    <li>Quy trình — 230–231</li>
+  </ul>
+</li>
+<li>Kế hoạch quản lý chi phí (cost management plan) — 232</li>
+<li>Chi phí thay đổi (cost of change) — 267
+  <ul class="content-list">
+    <li>Định nghĩa — 351</li>
+  </ul>
+</li>
+<li>Đường cong chi phí thay đổi (cost of change curve) — 267</li>
+<li>Chi phí tuân thủ (cost of conformance) — 260</li>
+<li>Chi phí không tuân thủ (cost of non-conformance) — 260</li>
+<li>Chi phí chất lượng (cost of quality — COQ) — 260</li>
+<li>Chỉ số hiệu suất chi phí (cost performance index — CPI)
+  <ul class="content-list">
+    <li>Công thức — 241</li>
+  </ul>
+</li>
+<li>Hợp đồng hoàn trả chi phí (cost-reimbursable — CR) — 328–329</li>
+<li>Chênh lệch chi phí (cost variance — CV)
+  <ul class="content-list">
+    <li>Công thức — 241</li>
+  </ul>
+</li>
+<li>CR. Xem hợp đồng hoàn trả chi phí (CR)</li>
+<li>Rút ngắn tiến độ (crashing) — 215</li>
+<li>Tạo, Đọc, Cập Nhật, Xóa (CRUD) — 181–182</li>
+<li>Tạo WBS (Create WBS) — 173–182</li>
+<li>Đường dẫn tới hạn (critical path) — 208
+  <ul class="content-list">
+    <li>Các hoạt động — 223</li>
+    <li>Định nghĩa — 189</li>
+    <li>Phương pháp — 208–214</li>
+  </ul>
+</li>
+<li>Tư duy phê phán (critical thinking) — 106</li>
+<li>Crystal — 416</li>
+<li>Biểu đồ dòng chảy tích lũy (cumulative flow diagrams — CFDs) — 219–220</li>
+<li>Sự hài lòng của khách hàng (customer satisfaction) — 354</li>
+<li>Ưu tiên dựa trên giá trị khách hàng (customer-valued prioritization) — 185</li>
+<li>Thời gian chu kỳ (cycle time) — 268–269</li>
+</ul>
+
+<h4 id="ch18-index-d">D</h4>
+
+<ul class="content-list">
+<li>Vòng phản hồi hàng ngày (daily feedback loop) — 267</li>
+<li>Scrum hàng ngày (daily scrum) — 413–414</li>
+<li>Standup hàng ngày (daily standup) — 48, 268, 279, 281, 413. Xem thêm standup</li>
+<li>Phân tích dữ liệu (data analysis) — 184, 192, 259
+  <ul class="content-list">
+    <li>Các phương pháp — 66</li>
+  </ul>
+</li>
+<li>Thu thập dữ liệu (data gathering) — 81
+  <ul class="content-list">
+    <li>Các phương pháp — 66</li>
+  </ul>
+</li>
+<li>Trình bày dữ liệu (data representation) — 295, 356
+  <ul class="content-list">
+    <li>Các phương pháp — 66</li>
+  </ul>
+</li>
+<li>Ký hợp đồng phi tập trung (decentralized contracting) — 325</li>
+<li>Ra quyết định (decision making) — 184, 234
+  <ul class="content-list">
+    <li>Các phương pháp — 206</li>
+  </ul>
+</li>
+<li>Ra quyết định (decision-making)
+  <ul class="content-list">
+    <li>Các phương pháp — 67, 259</li>
+  </ul>
+</li>
+<li>Phân tích cây quyết định (decision tree analysis) — 298–299</li>
+<li>Phân tách (decomposition) — 194
+  <ul class="content-list">
+    <li>Agile — 158</li>
+    <li>Ví dụ — 180</li>
+    <li>Phạm vi — 173–182</li>
+  </ul>
+</li>
+<li>Nhóm chuyên dụng (dedicated team) — 137</li>
+<li>Thời gian chu kỳ lỗi (defect cycle time) — 269</li>
+<li>Sửa lỗi (defect repair) — 94</li>
+<li>Lỗi (defects) — 265, 269</li>
+<li>Xác Định Hoạt Động (Define Activities) — 193–194</li>
+<li>Xác Định Phạm Vi (Define Scope) — 171–172
+  <ul class="content-list">
+    <li>Sản phẩm — 172</li>
+  </ul>
+</li>
+<li>Định nghĩa hoàn thành (definition of done) — 169, 369
+  <ul class="content-list">
+    <li>Định nghĩa — 250</li>
+  </ul>
+</li>
+<li>Ước tính xác định (definitive estimate) — 234</li>
+<li>Sản phẩm bàn giao (deliverable) — 264</li>
+<li>Sản phẩm bàn giao (deliverables) — 157, 192, 261. Xem thêm sản phẩm bàn giao đã được chấp nhận</li>
+<li>Bàn giao giá trị (delivering value) — 382–387</li>
+<li>Domain bàn giao (delivery), PMBOK Guide — 426</li>
+<li>Các phụ thuộc (dependencies) — 194, 221
+  <ul class="content-list">
+    <li>Định nghĩa — 189</li>
+    <li>Các loại — 195</li>
+  </ul>
+</li>
+<li>Khấu hao (depreciation) — 63–64
+  <ul class="content-list">
+    <li>Khấu hao nhanh — 64</li>
+    <li>Khấu hao đường thẳng — 63</li>
+  </ul>
+</li>
+<li>Thiết kế cho X (design for X) — 264</li>
+<li>Thiết kế thực nghiệm (design of experiments — DOE) — 263</li>
+<li>Xác Định Ngân Sách (Determine Budget) — 234–237
+  <ul class="content-list">
+    <li>Các đầu ra — 237</li>
+  </ul>
+</li>
+<li>Phương pháp phát triển (development approach) — 7, 84, 86, 193, 276, 425</li>
+<li>Domain phương pháp phát triển và vòng đời (development approach and life cycle), PMBOK Guide — 425</li>
+<li>Xây Dựng Điều Lệ Dự Án (Develop Project Charter) — 80–84</li>
+<li>Xây Dựng Kế Hoạch Quản Lý Dự Án (Develop Project Management Plan) — 84–89, 193</li>
+<li>Xây Dựng Lịch Trình (Develop Schedule) — 207–223
+  <ul class="content-list">
+    <li>Các đầu ra — 221–222</li>
+  </ul>
+</li>
+<li>Phát Triển Nhóm (Develop Team) — 139–143
+  <ul class="content-list">
+    <li>Sản phẩm của quy trình — 143</li>
+    <li>Các phương pháp — 140</li>
+  </ul>
+</li>
+<li>Chỉ Đạo và Quản Lý Công Việc Dự Án (Direct and Manage Project Work) — 90–91</li>
+<li>Chi phí trực tiếp (direct costs) — 233</li>
+<li>Phụ thuộc tùy chọn (discretionary dependency) — 195</li>
+<li>Phân tích tài liệu (document analysis) — 262, 356</li>
+<li>DOE. Xem thiết kế thực nghiệm (DOE)</li>
+<li>Mô hình Hiệu Suất Nhóm Drexler/Sibbet — 120</li>
+<li>Mô hình Tiếp Thu Kỹ Năng Người Lớn Dreyfus — 117</li>
+<li>DSDM. Xem phương pháp phát triển hệ thống động (DSDM)</li>
+<li>Phương pháp phát triển hệ thống động (DSDM) — 416</li>
+</ul>
+
+<h4 id="ch18-index-e">E</h4>
+
+<ul class="content-list">
+<li>EAC. Xem ước tính khi hoàn thành (EAC)</li>
+<li>Phân tích giá trị thu được (earned value analysis — EVA) — 142
+  <ul class="content-list">
+    <li>Định nghĩa — 230</li>
+    <li>Các công thức — 240–242</li>
+  </ul>
+</li>
+<li>Giá trị thu được (earned value — EV) — 240
+  <ul class="content-list">
+    <li>Định nghĩa — 229</li>
+    <li>Không hành động — 243</li>
+    <li>Các báo cáo — 276</li>
+    <li>Thuật ngữ, hiểu rõ — 242</li>
+  </ul>
+</li>
+<li>Quản lý giá trị thu được (earned value management — EVM) — 60, 229, 239–240
+  <ul class="content-list">
+    <li>Định nghĩa — 230</li>
+  </ul>
+</li>
+<li>Đo lường giá trị thu được (earned value measurement) — 142, 144, 157, 196
+  <ul class="content-list">
+    <li>Dự án Agile — 279</li>
+  </ul>
+</li>
+<li>Các biện pháp kinh tế (economic measures) — 336</li>
+<li>Giá trị kinh tế gia tăng (economic value added — EVA) — 63</li>
+<li>EEF. Xem các yếu tố môi trường doanh nghiệp (EEF)</li>
+<li>Lắng nghe hiệu quả (effective listening) — 111</li>
+<li>Phát biểu thang máy (elevator pitch). Xem elevator statement</li>
+<li>Loại bỏ lãng phí (eliminate waste) — 378</li>
+<li>Trí tuệ cảm xúc (emotional intelligence) — 106–107, 144</li>
+<li>EMV. Xem giá trị tiền tệ kỳ vọng (EMV)</li>
+<li>Tăng cường (enhance) — 302</li>
+<li>Các yếu tố môi trường doanh nghiệp (enterprise environmental factors — EEF) — 53, 65–66, 130</li>
+<li>Sơ đồ quan hệ thực thể (entity relationship diagram — ERD) — 260</li>
+<li>Thay đổi môi trường (environmental changes)
+  <ul class="content-list">
+    <li>Quy trình quản lý — 388</li>
+  </ul>
+</li>
+<li>Epic — 180</li>
+<li>ERD. Xem sơ đồ quan hệ thực thể (ERD)</li>
+<li>Các lỗi và cạm bẫy thường gặp — 406–407</li>
+<li>Leo thang (escalate) — 302</li>
+<li>Ước Tính Thời Gian Hoạt Động (Estimate Activity Durations) — 197–206
+  <ul class="content-list">
+    <li>Sản phẩm — 206</li>
+    <li>Phân tích dữ liệu, các phương pháp — 205</li>
+  </ul>
+</li>
+<li>Ước tính khi hoàn thành (estimate at completion)
+  <ul class="content-list">
+    <li>Công thức — 241</li>
+  </ul>
+</li>
+<li>Ước tính khi hoàn thành (estimate at completion — EAC) — 240
+  <ul class="content-list">
+    <li>Công thức — 241</li>
+  </ul>
+</li>
+<li>Ước Tính Chi Phí (Estimate Costs) — 197, 231–234
+  <ul class="content-list">
+    <li>Sản phẩm cần thiết — 233</li>
+  </ul>
+</li>
+<li>Các dải ước tính (estimate ranges) — 234</li>
+<li>Ước Tính Yêu Cầu Nguồn Lực (Estimate Resource Requirements) — 133–136
+  <ul class="content-list">
+    <li>Sản phẩm cần thiết — 133</li>
+    <li>Sản phẩm của quy trình — 134</li>
+    <li>Các phương pháp — 134</li>
+  </ul>
+</li>
+<li>Ước tính để hoàn thành (estimate to complete — ETC) — 197, 240
+  <ul class="content-list">
+    <li>Công thức — 241</li>
+  </ul>
+</li>
+<li>Ước tính (estimating)
+  <ul class="content-list">
+    <li>Thích ứng — 203–205</li>
+    <li>Các phương pháp — 67</li>
+    <li>Dự đoán — 199–203</li>
+    <li>Những điều cần biết cho kỳ thi — 197</li>
+  </ul>
+</li>
+<li>Các phương pháp ước tính (estimating methods)
+  <ul class="content-list">
+    <li>Thích ứng — 235</li>
+    <li>Ưu điểm và nhược điểm — 233–234</li>
+  </ul>
+</li>
+<li>ETC. Xem ước tính để hoàn thành (ETC)</li>
+<li>EV. Xem giá trị thu được (EV)</li>
+<li>EVA. Xem giá trị kinh tế gia tăng (EVA)</li>
+<li>Đánh giá và giải quyết các thay đổi môi trường kinh doanh bên ngoài về tác động đến phạm vi — 387–390</li>
+<li>EVM. Xem quản lý giá trị thu được (EVM)</li>
+<li>Môi trường thi cử, chuẩn bị — 404–406</li>
+<li>Examination Content Outline (ECO) — 30–31, 55
+  <ul class="content-list">
+    <li>Và quản lý truyền thông — 274</li>
+    <li>Và tích hợp — 78–79</li>
+    <li>Và chất lượng — 252</li>
+    <li>Và lịch trình — 190–191</li>
+    <li>Và quản lý phạm vi — 155</li>
+    <li>Và hiệu suất nhóm — 125–127</li>
+    <li>Và ngân sách và nguồn lực — 230–231</li>
+    <li>Và Business Environment domain — 378–380</li>
+    <li>Domain III: Môi trường kinh doanh — 31</li>
+    <li>Domain II: Quy trình — 30</li>
+    <li>Domain I: Con người — 30</li>
+    <li>Và quản lý mua sắm — 322</li>
+    <li>Và quản lý rủi ro — 288</li>
+    <li>Và gắn kết các bên liên quan — 352–353</li>
+  </ul>
+</li>
+<li>Thực thi (executing) — 42
+  <ul class="content-list">
+    <li>Lý do để vào giai đoạn — 35</li>
+  </ul>
+</li>
+<li>Sổ Tay Bài Tập (Exercise Notebook) — 9</li>
+<li>Kỳ vọng các bên liên quan (expectations, stakeholder) — 353–354</li>
+<li>Giá trị tiền tệ kỳ vọng (expected monetary value — EMV) — 297–298</li>
+<li>Giá trị kỳ vọng (expected value — EV) — 306</li>
+<li>Phán đoán chuyên gia (expert judgment) — 67, 192, 199</li>
+<li>Kiến thức hiện (explicit knowledge) — 91</li>
+<li>Khai thác (exploit) — 302</li>
+<li>Phụ thuộc bên ngoài (external dependency) — 195</li>
+<li>Lỗi bên ngoài (external failure) — 260</li>
+<li>Lập trình cực đoan (eXtreme programming — XP) — 414–416. Xem thêm XP</li>
+</ul>
+
+<h4 id="ch18-index-f">F</h4>
+
+<ul class="content-list">
+<li>Giao tiếp mặt đối mặt (face-to-face communication) — 113</li>
+<li>Tạo thuận lợi (facilitation) — 163</li>
+<li>Thất bại (failure) — 260</li>
+<li>Phân tích thất bại (failure analysis) — 263</li>
+<li>Kế hoạch dự phòng (fallback plans) — 305</li>
+<li>Thất bại nhanh (fast failure) — 288</li>
+<li>Theo dõi song song (fast tracking) — 214–215</li>
+<li>FDD. Xem Phát triển Theo Hướng Tính Năng (FDD)</li>
+<li>Tính khả thi (feasibility) — 45</li>
+<li>Backlog tính năng (feature backlog) — 47</li>
+<li>Phát Triển Theo Hướng Tính Năng (Feature Driven Development — FDD) — 418</li>
+<li>Các tính năng (features) — 180</li>
+<li>Phản hồi (feedback) — 113, 275</li>
+<li>Công thức kết thúc (finish formula) — 209</li>
+<li>Kết thúc-đến-kết thúc (finish-to-finish — FF) — 195</li>
+<li>Kết thúc-đến-bắt đầu (finish-to-start — FS) — 195</li>
+<li>Sơ đồ xương cá (fishbone diagram). Xem sơ đồ nguyên nhân - kết quả</li>
+<li>Nắm tay năm ngón (fist of five) — 206</li>
+<li>Chi phí cố định (fixed costs) — 232</li>
+<li>Hợp đồng giá cố định (fixed-price contract — FP) — 327</li>
+<li>Thời gian trôi (float) — 209
+  <ul class="content-list">
+    <li>Định nghĩa — 189</li>
+  </ul>
+</li>
+<li>Lưu đồ (flowchart) — 261</li>
+<li>Nhóm tập trung (focus groups) — 163, 355</li>
+<li>Sự kiện bất khả kháng (force majeure) — 333</li>
+<li>Dự báo (forecasts) — 192, 426</li>
+<li>Các công thức (formulas) — 402
+  <ul class="content-list">
+    <li>Giá trị thu được — 240–242</li>
+  </ul>
+</li>
+<li>Chuyển tiến (forward pass) — 210–211</li>
+<li>FP. Xem hợp đồng giá cố định (FP)</li>
+<li>Thời gian trôi tự do (free float) — 209</li>
+<li>Xác minh và kiểm tra thường xuyên (frequent verification and validation) — 268</li>
+<li>Quản lý chức năng (functional manager)
+  <ul class="content-list">
+    <li>Danh sách trách nhiệm — 74</li>
+    <li>Vai trò — 71</li>
+  </ul>
+</li>
+<li>Tài trợ (funding) — 290</li>
+<li>Yêu cầu tài trợ (funding requirements) — 237</li>
+</ul>
+
+<h4 id="ch18-index-g">G</h4>
+
+<ul class="content-list">
+<li>Biểu đồ Gantt — 175, 195, 276</li>
+<li>镀金 mạ vàng (gold plating) — 19, 153
+  <ul class="content-list">
+    <li>Định nghĩa — 251</li>
+  </ul>
+</li>
+<li>Quản trị (governance)
+  <ul class="content-list">
+    <li>Tổ chức — 19, 55</li>
+    <li>Dự án — 55–56</li>
+  </ul>
+</li>
+<li>Cấp độ (grade) — 250–251</li>
+<li>Quy tắc nền tảng (ground rules) — 129, 133</li>
+<li>Vịnh đánh giá (gulf of evaluation) — 111–112, 364</li>
+<li>Vịnh thực thi (gulf of execution) — 111–112, 364</li>
+</ul>
+
+<h4 id="ch18-index-h">H</h4>
+
+<ul class="content-list">
+<li>Hiệu ứng hào quang (halo effect) — 138</li>
+<li>Lý Thuyết Hai Yếu Tố Động Lực của Herzberg — 116</li>
+<li>Nhóm hiệu suất cao (high-performing team) — 116, 119, 425</li>
+<li>Biểu đồ histogram — 262, 264
+  <ul class="content-list">
+    <li>Nguồn lực — 134</li>
+  </ul>
+</li>
+<li>Dữ liệu lịch sử (historical data) — 199</li>
+<li>Thông tin lịch sử (historical information) — 64–65, 197, 199</li>
+<li>Hồ sơ lịch sử (historical records) — 278</li>
+<li>Mức chi phí nhân lực và vật liệu (human and material resource cost rates) — 234</li>
+<li>Kế hoạch quản lý nhân lực (human resources — team management plan) — 132</li>
+<li>Kết hợp (hybrid) — 48–49
+  <ul class="content-list">
+    <li>Thu hút nguồn lực — 137</li>
+    <li>Đánh giá — 142</li>
+    <li>Các phụ thuộc — 195–196</li>
+    <li>Lập kế hoạch — 160–161</li>
+    <li>Phương pháp phát triển — 7</li>
+  </ul>
+</li>
+<li>Các yếu tố vệ sinh (hygiene factors) — 116</li>
+</ul>
+
+<h4 id="ch18-index-i">I</h4>
+
+<ul class="content-list">
+<li>Xác Định Rủi Ro (Identify Risks) — 291–293
+  <ul class="content-list">
+    <li>Sản phẩm của quy trình — 293</li>
+    <li>Các phương pháp — 293</li>
+  </ul>
+</li>
+<li>Xác Định Các Bên Liên Quan (Identify Stakeholders) — 355–358
+  <ul class="content-list">
+    <li>Sản phẩm của quy trình — 357–358</li>
+    <li>Các phương pháp — 355–357</li>
+  </ul>
+</li>
+<li>IDIQ. Xem hợp đồng giao hàng vô thời hạn, số lượng vô thời hạn (IDIQ)</li>
+<li>IFB. Xem lời mời thầu (IFB)</li>
+<li>Thực Hiện Ứng Phó Rủi Ro (Implement Risk Responses) — 310
+  <ul class="content-list">
+    <li>Sản phẩm của quy trình — 310</li>
+  </ul>
+</li>
+<li>Ưu đãi (incentives) — 333</li>
+<li>Bàn giao sản phẩm gia tăng (incremental product delivery) — 185</li>
+<li>Hợp đồng giao hàng vô thời hạn, số lượng vô thời hạn (IDIQ) — 329</li>
+<li>Ước tính chi phí độc lập (independent cost estimates) — 341</li>
+<li>Chi phí gián tiếp (indirect costs) — 233</li>
+<li>Đánh giá cá nhân và nhóm (individual and team assessments) — 141–142</li>
+<li>Gây ảnh hưởng (influencing) — 121</li>
+<li>Mật độ thông tin (information density) — 112–113</li>
+<li>Bộ phát thông tin (information radiators) — 281, 368–372</li>
+<li>Khởi động (initiating) — 39
+  <ul class="content-list">
+    <li>Lý do để vào giai đoạn — 34</li>
+  </ul>
+</li>
+<li>Khởi tạo (initiation) — 176</li>
+<li>Người khởi tạo (initiator), vai trò — 70</li>
+<li>Kiểm tra (inspection) — 184, 266</li>
+<li>Kiểm soát thay đổi tích hợp (integrated change control) — 179, 391</li>
+<li>Tích hợp (integration) — 77–102
+  <ul class="content-list">
+    <li>Quản lý, tổng quan — 78–80</li>
+  </ul>
+</li>
+<li>Truyền thông tương tác (interactive communication) — 113
+  <ul class="content-list">
+    <li>Mô hình — 278</li>
+  </ul>
+</li>
+<li>Tính tương tác (interactivity) — 112–113</li>
+<li>Phụ thuộc nội bộ (internal dependency) — 195</li>
+<li>Lỗi nội bộ (internal failure) — 260</li>
+<li>Tỷ suất hoàn vốn nội bộ (internal rate of return — IRR) — 61</li>
+<li>Kỹ năng giao tiếp giữa các cá nhân và nhóm — 71, 105, 144, 367
+  <ul class="content-list">
+    <li>Lý Thuyết Hai Yếu Tố Động Lực của Herzberg — 116</li>
+    <li>Tháp Nhu Cầu Maslow — 115</li>
+    <li>Lý Thuyết Nhu Cầu của McClelland — 116</li>
+    <li>Lý Thuyết X và Y của McGregor — 115</li>
+    <li>Các phương pháp — 67</li>
+    <li>Xây dựng nhóm — 116</li>
+  </ul>
+</li>
+<li>Phỏng vấn (interviews) — 162, 259, 355</li>
+<li>Động lực nội tại so với ngoại tại (intrinsic vs. extrinsic motivation) — 114–115</li>
+<li>Lời mời thầu (invitation for bid — IFB) — 338, 340</li>
+<li>IRR. Xem tỷ suất hoàn vốn nội bộ (IRR)</li>
+<li>Kỹ năng hình chữ I (I-shaped skills) — 117</li>
+<li>Sơ đồ Ishikawa. Xem sơ đồ nguyên nhân - kết quả</li>
+<li>Nhật ký vấn đề (issue log) — 90, 144, 145–146</li>
+<li>Các vấn đề (issues) — 268</li>
+<li>Vòng lặp (iteration) — 47, 219, 220, 267. Xem thêm Agile, các vòng lặp
+  <ul class="content-list">
+    <li>Các chu kỳ — 99</li>
+    <li>Định nghĩa — 154</li>
+    <li>Lập kế hoạch — 160</li>
+    <li>Cuộc họp lập kế hoạch — 268</li>
+    <li>Đánh giá — 48, 169, 280</li>
+  </ul>
+</li>
+<li>Phát triển lặp và gia tăng (iterative and incremental development) — 267</li>
+</ul>
+
+<h4 id="ch18-index-j">J</h4>
+
+<ul class="content-list">
+<li>JAD. Xem thiết kế ứng dụng chung (JAD)</li>
+<li>JIT. Xem đúng lúc (JIT)</li>
+<li>Thiết kế ứng dụng chung (joint application design — JAD) — 164</li>
+<li>Đúng lúc (just in time — JIT) — 132, 180
+  <ul class="content-list">
+    <li>Định nghĩa — 251</li>
+  </ul>
+</li>
+</ul>
+
+<h4 id="ch18-index-k">K</h4>
+
+<ul class="content-list">
+<li>Kaizen — 132, 251</li>
+<li>Kanban — 410–411
+  <ul class="content-list">
+    <li>Các nguyên tắc cốt lõi — 411</li>
+  </ul>
+</li>
+<li>Bảng Kanban (Kanban board) — 268, 281, 369, 411
+  <ul class="content-list">
+    <li>Ảo — 141</li>
+  </ul>
+</li>
+<li>Các Chỉ Số Hiệu Suất Chính (Key Performance Indicators — KPIs) — 142</li>
+<li>Cuộc họp khởi động (kickoff meeting) — 89
+  <ul class="content-list">
+    <li>Agile — 89</li>
+  </ul>
+</li>
+<li>Quản lý kiến thức (knowledge management) — 91–92</li>
+<li>Chia sẻ kiến thức (knowledge sharing) — 280–281
+  <ul class="content-list">
+    <li>Dự án Agile — 281</li>
+  </ul>
+</li>
+<li>KPIs. Xem Các Chỉ Số Hiệu Suất Chính (KPIs)</li>
+</ul>
+
+<h4 id="ch18-index-l">L</h4>
+
+<ul class="content-list">
+<li>Quy luật lợi nhuận giảm dần (law of diminishing returns) — 63</li>
+<li>Lãnh đạo (leadership)
+  <ul class="content-list">
+    <li>Dự án Agile — 127–128</li>
+    <li>Các khái niệm — 121</li>
+    <li>Các định nghĩa liên quan — 106</li>
+    <li>Tổng quan — 105–107</li>
+    <li>Nguyên tắc quản lý dự án — 386</li>
+    <li>Trách nhiệm — 127–128</li>
+    <li>So với quản lý — 105</li>
+  </ul>
+</li>
+<li>Kỹ năng lãnh đạo (leadership skills) — 105–124</li>
+<li>Ưu và độ trễ (leads and lags) — 196, 198
+  <ul class="content-list">
+    <li>Định nghĩa — 189</li>
+  </ul>
+</li>
+<li>Thời gian dẫn đầu (lead time) — 269</li>
+<li>Lean — 132, 410
+  <ul class="content-list">
+    <li>Bảy nguyên tắc — 410</li>
+  </ul>
+</li>
+<li>Đường cong học tập (learning curve) — 200</li>
+<li>Hợp đồng pháp lý (legal contract) — 342</li>
+<li>Bài học kinh nghiệm (lessons learned) — 65, 90, 92–93, 231, 239, 340
+  <ul class="content-list">
+    <li>Cuối cùng — 99</li>
+    <li>Kỹ thuật — 92</li>
+  </ul>
+</li>
+<li>Sổ đăng ký bài học kinh nghiệm (lessons learned register) — 198, 313</li>
+<li>Vòng đời (life cycle) — 7, 84, 276, 425. Xem thêm vòng đời dự án</li>
+<li>Mô hình dữ liệu logic (logical data model) — 260</li>
+<li>Mối quan hệ logic (logical relationships) — 195</li>
+<li>Quản lý logistics và chuỗi cung ứng (logistics and supply chain management) — 336</li>
+<li>Nguyên mẫu độ trung thực thấp (low-fidelity prototype) — 370–371</li>
+</ul>
+
+<h4 id="ch18-index-m">M</h4>
+
+<ul class="content-list">
+<li>Phân tích tự làm hay thuê ngoài (make-or-buy analysis) — 335, 336, 339</li>
+<li>Quyết định tự làm hay thuê ngoài (make-or-buy decisions) — 337</li>
+<li>Quản Lý Truyền Thông (Manage Communications) — 278–281
+  <ul class="content-list">
+    <li>Sản phẩm của quy trình — 281</li>
+    <li>Dự án kết hợp — 278</li>
+    <li>Các phương pháp — 278–280</li>
+  </ul>
+</li>
+<li>Quản lý (management)
+  <ul class="content-list">
+    <li>So với lãnh đạo — 105</li>
+  </ul>
+</li>
+<li>Các kế hoạch quản lý (management plans) — 84–85. Xem thêm kế hoạch quản lý thay đổi; xem thêm kế hoạch quản lý cấu hình; xem thêm kế hoạch quản lý yêu cầu
+  <ul class="content-list">
+    <li>Agile — 85</li>
+    <li>Kết hợp — 85</li>
+  </ul>
+</li>
+<li>Dự phòng quản lý (management reserves) — 205, 236, 239, 305–306</li>
+<li>Đánh giá quản lý (management reviews) — 86</li>
+<li>Quản Lý Kiến Thức Dự Án (Manage Project Knowledge) — 91–93</li>
+<li>Quản Lý Chất Lượng (Manage Quality) — 254–255, 257–258
+  <ul class="content-list">
+    <li>Và Kiểm Soát Chất Lượng — 257</li>
+    <li>Sản phẩm — 258</li>
+    <li>Các phương pháp — 261–264</li>
+  </ul>
+</li>
+<li>Quản Lý Lịch Trình (Manage Schedule)
+  <ul class="content-list">
+    <li>Các định nghĩa liên quan — 189–190</li>
+  </ul>
+</li>
+<li>Quản Lý Gắn Kết Các Bên Liên Quan (Manage Stakeholder Engagement) — 362–366
+  <ul class="content-list">
+    <li>Sản phẩm của quy trình — 364</li>
+    <li>Các phương pháp — 364</li>
+  </ul>
+</li>
+<li>Quản Lý Nhóm (Manage Team) — 144–146
+  <ul class="content-list">
+    <li>Sản phẩm cần thiết — 144</li>
+    <li>Sản phẩm của quy trình — 145–146</li>
+    <li>Các phương pháp — 144</li>
+  </ul>
+</li>
+<li>Phụ thuộc bắt buộc (mandatory dependency) — 195</li>
+<li>Phân tích biên (marginal analysis) — 260</li>
+<li>Tháp Nhu Cầu Maslow — 115</li>
+<li>Vi phạm hợp đồng nghiêm trọng (material breach) — 333</li>
+<li>Ma trận (matrix) — 260</li>
+<li>Các biểu diễn ma trận (matrix representations) — 260</li>
+<li>Lý Thuyết Nhu Cầu của McClelland — 116</li>
+<li>Lý Thuyết X và Y của McGregor — 115</li>
+<li>Giá trị trung bình (mean) — 266</li>
+<li>Đo lường (measurement) — 224
+  <ul class="content-list">
+    <li>Domain, PMBOK Guide — 426</li>
+  </ul>
+</li>
+<li>Quản lý cuộc họp (meeting management) — 81</li>
+<li>Các cuộc họp (meetings) — 67, 90, 279
+  <ul class="content-list">
+    <li>Agile — 184–185, 268</li>
+    <li>Dự án kết hợp — 279</li>
+    <li>Quy tắc — 279</li>
+  </ul>
+</li>
+<li>Các phương pháp thường dùng — 66–68</li>
+<li>Số liệu (metrics) — 254</li>
+<li>Biểu đồ cột mốc (milestone chart) — 207, 222</li>
+<li>Danh sách cột mốc (milestone list) — 336, 344</li>
+<li>Cột mốc (milestones) — 86, 90
+  <ul class="content-list">
+    <li>Định nghĩa — 190</li>
+  </ul>
+</li>
+<li>Bản đồ tư duy (mind map) — 164, 260</li>
+<li>Tính năng tối thiểu có thể thương mại hóa (minimally marketable feature — MMF) — 185, 388</li>
+<li>Sản phẩm tối thiểu khả dụng (minimally viable product — MVP) — 388
+  <ul class="content-list">
+    <li>Định nghĩa — 154</li>
+  </ul>
+</li>
+<li>Giảm thiểu (mitigate) — 301</li>
+<li>Mô hình, định nghĩa — 50</li>
+<li>Giám Sát và Kiểm Soát Công Việc Dự Án (Monitor and Control Project Work) — 93–94
+  <ul class="content-list">
+    <li>Sản phẩm của quy trình — 93–94</li>
+  </ul>
+</li>
+<li>Giám Sát Truyền Thông (Monitor Communications) — 282</li>
+<li>Giám sát và kiểm soát (monitoring and controlling) — 32, 34, 43
+  <ul class="content-list">
+    <li>Lý do để vào giai đoạn — 35–36</li>
+  </ul>
+</li>
+<li>Giám Sát Rủi Ro (Monitor Risks) — 311–314
+  <ul class="content-list">
+    <li>Sản phẩm của quy trình — 313–314</li>
+    <li>Các phương pháp — 311–313</li>
+  </ul>
+</li>
+<li>Giám Sát Gắn Kết Các Bên Liên Quan (Monitor Stakeholder Engagement) — 365–368
+  <ul class="content-list">
+    <li>Sản phẩm — 366</li>
+    <li>Sản phẩm của quy trình — 368</li>
+    <li>Các phương pháp — 366–367</li>
+  </ul>
+</li>
+<li>Phân tích Monte Carlo — 218, 297</li>
+<li>Phân tích MoSCoW — 181</li>
+<li>Các tác nhân động lực (motivating agents) — 116</li>
+<li>Động lực (motivation)
+  <ul class="content-list">
+    <li>Nội tại so với ngoại tại — 114–115</li>
+    <li>Các mô hình — 114–116</li>
+  </ul>
+</li>
+<li>Phân tích tiêu chí đa chiều (multicriteria decision analysis) — 163, 259, 263, 304</li>
+<li>Phân tích trọng số đa tiêu chí (multicriteria weighted analysis) — 259</li>
+<li>Loại trừ lẫn nhau (mutual exclusivity) — 258</li>
+</ul>
+
+<h4 id="ch18-index-n">N</h4>
+
+<ul class="content-list">
+<li>Đường dẫn gần tới hạn (near-critical path) — 209</li>
+<li>Thời gian trôi âm (negative float) — 214, 215</li>
+<li>Đàm phán (negotiation) — 121, 342</li>
+<li>Giá trị hiện tại thuần (net present value — NPV) — 60–61</li>
+<li>Sơ đồ mạng (network diagram) — 133, 194, 196, 207, 214, 218. Xem thêm sơ đồ mạng lịch trình dự án</li>
+<li>Nhiễu (noise) — 110</li>
+<li>Kỹ thuật nhóm danh nghĩa (nominal group technique) — 163</li>
+<li>Chi phí không tuân thủ (nonconformance, cost of) — 260</li>
+<li>Thỏa thuận không tiết lộ (nondisclosure agreement) — 332</li>
+<li>Phân phối chuẩn (normal distribution) — 259</li>
+<li>NPV. Xem giá trị hiện tại thuần (NPV)</li>
+</ul>
+
+<h4 id="ch18-index-o">O</h4>
+
+<ul class="content-list">
+<li>Quan sát (observation) — 163</li>
+<li>Ước tính một điểm (one-point estimating) — 200</li>
+<li>OPA. Xem tài sản quy trình tổ chức (OPA)</li>
+<li>Công việc vận hành (operational work) — 53</li>
+<li>Các cơ hội (opportunities) — 286
+  <ul class="content-list">
+    <li>Các chiến lược ứng phó rủi ro — 302</li>
+  </ul>
+</li>
+<li>Chi phí cơ hội (opportunity cost) — 63</li>
+<li>Cấu trúc phân tách tổ chức (organizational breakdown structure) — 131</li>
+<li>Thay đổi tổ chức (organizational change) — 166</li>
+<li>Văn hóa tổ chức (organizational culture) — 390–391</li>
+<li>Quản trị tổ chức (organizational governance) — 19, 55
+  <ul class="content-list">
+    <li>Tuân thủ — 381–382</li>
+  </ul>
+</li>
+<li>Kho kiến thức tổ chức (organizational knowledge repositories) — 53, 64</li>
+<li>Tài sản quy trình tổ chức (organizational process assets — OPA) — 53, 64–65, 130, 133, 162, 175, 193, 231, 249, 290, 314</li>
+<li>Quản lý dự án tổ chức (organizational project management — OPM) — 55</li>
+<li>Cơ cấu tổ chức (organizational structure) — 56, 71
+  <ul class="content-list">
+    <li>Tổ chức chức năng — 56</li>
+    <li>Tổ chức theo hướng dự án — 56</li>
+  </ul>
+</li>
+<li>Lý thuyết tổ chức (organizational theory) — 132</li>
+<li>Mô hình OSCAR — 118</li>
+<li>Giao tiếp thẩm thấu (osmotic communication) — 92</li>
+<li>Ouchi — 115</li>
+<li>Mất kiểm soát (out of control) — 266</li>
+<li>Đầu ra (output) — 177</li>
+</ul>
+
+<h4 id="ch18-index-p">P</h4>
+
+<ul class="content-list">
+<li>Độn thêm (padding) — 197, 198</li>
+<li>Ước tính tham số (parametric estimating) — 199–200</li>
+<li>Biểu đồ Pareto — 264–265</li>
+<li>Đối tác (partnership) — 137</li>
+<li>Nhóm bán thời gian (part-time team) — 137</li>
+<li>Lịch sử hiệu suất trong quá khứ (past performance history) — 341</li>
+<li>Hội tụ đường dẫn (path convergence) — 196, 218</li>
+<li>Phân kỳ đường dẫn (path divergence) — 196</li>
+<li>Thời gian hoàn vốn (payback period) — 61</li>
+<li>PDM. Xem phương pháp sơ đồ ưu tiên (PDM)</li>
+<li>Đánh giá hiệu suất (performance assessments) — 144</li>
+<li>Đo lường hiệu suất (performance measurement) — 179, 235</li>
+<li>Đường cơ sở đo lường hiệu suất (performance measurement baseline) — 86, 224, 229</li>
+<li>Đánh giá hiệu suất (performance reviews) — 265</li>
+<li>Thực Hiện Kiểm Soát Thay Đổi Tích Hợp (Perform Integrated Change Control) — 86, 94, 95–98, 186</li>
+<li>Thực Hiện Phân Tích Rủi Ro Định Tính (Perform Qualitative Risk Analysis) — 294–296
+  <ul class="content-list">
+    <li>Sản phẩm của quy trình — 296</li>
+    <li>Các phương pháp — 294–296</li>
+  </ul>
+</li>
+<li>Thực Hiện Phân Tích Rủi Ro Định Lượng (Perform Quantitative Risk Analysis) — 296–300
+  <ul class="content-list">
+    <li>Sản phẩm của quy trình — 300</li>
+    <li>Các phương pháp — 297–299</li>
+  </ul>
+</li>
+<li>Persona — 46, 277, 281, 357, 368</li>
+<li>Cổng giai đoạn (phase gate) — 33, 391</li>
+<li>Pink, Daniel — 114</li>
+<li>Phương pháp phát triển theo kế hoạch (plan-based development approach) — 7</li>
+<li>Lập Kế Hoạch Truyền Thông (Plan Communications) — 276–278
+  <ul class="content-list">
+    <li>Sản phẩm — 277–278</li>
+  </ul>
+</li>
+<li>Lập Kế Hoạch Quản Lý Chi Phí (Plan Cost Management) — 231–232</li>
+<li>Định hướng kế hoạch (plan-driven) — 69</li>
+<li>Giá trị kế hoạch (planned value — PV) — 60, 240</li>
+<li>Lập kế hoạch (planning) — 40, 176
+  <ul class="content-list">
+    <li>Domain, PMBOK Guide — 425</li>
+    <li>Lý do để vào giai đoạn — 34</li>
+  </ul>
+</li>
+<li>Poker lập kế hoạch (Planning Poker) — 204–205, 235</li>
+<li>Lập Kế Hoạch Quản Lý Mua Sắm (Plan Procurement Management) — 335–339
+  <ul class="content-list">
+    <li>Sản phẩm cần thiết — 335–336</li>
+    <li>Sản phẩm của quy trình — 337–339</li>
+    <li>Các phương pháp — 336–337</li>
+  </ul>
+</li>
+<li>Lập Kế Hoạch Quản Lý Chất Lượng (Plan Quality Management) — 254–255, 256–257
+  <ul class="content-list">
+    <li>Sản phẩm — 257</li>
+    <li>Các phương pháp — 259–261</li>
+  </ul>
+</li>
+<li>Lập Kế Hoạch Quản Lý Nguồn Lực (Plan Resource Management) — 129–133
+  <ul class="content-list">
+    <li>Sản phẩm cần thiết (đầu vào) — 130</li>
+    <li>Sản phẩm của quy trình — 132–133</li>
+  </ul>
+</li>
+<li>Lập kế hoạch nguồn lực
+  <ul class="content-list">
+    <li>Dự án Agile — 129</li>
+  </ul>
+</li>
+<li>Lập Kế Hoạch Quản Lý Rủi Ro (Plan Risk Management) — 290–291</li>
+<li>Lập Kế Hoạch Ứng Phó Rủi Ro (Plan Risk Responses) — 300–309
+  <ul class="content-list">
+    <li>Sản phẩm của quy trình — 304–306</li>
+  </ul>
+</li>
+<li>Lập Kế Hoạch Quản Lý Lịch Trình (Plan Schedule Management) — 192–193</li>
+<li>Lập Kế Hoạch Gắn Kết Các Bên Liên Quan (Plan Stakeholder Engagement) — 358–362
+  <ul class="content-list">
+    <li>Sản phẩm của quy trình — 362</li>
+    <li>Các phương pháp — 360–361</li>
+  </ul>
+</li>
+<li>Phân tách theo nền tảng (platform-based breakdown) — 181</li>
+<li>PMBOK Guide
+  <ul class="content-list">
+    <li>Và The Standard — 423–430</li>
+    <li>Ánh xạ với ECO và Mô hình Process Groups — 427</li>
+    <li>Tổng quan — 49–50</li>
+    <li>Các performance domains — 424</li>
+  </ul>
+</li>
+<li>PM FASTTrack Cloud Exam Simulator
+  <ul class="content-list">
+    <li>Sử dụng cuốn sách này với — 10</li>
+  </ul>
+</li>
+<li>PMI-isms — 18–22, 198
+  <ul class="content-list">
+    <li>Liên quan đến chất lượng — 252</li>
+  </ul>
+</li>
+<li>PMIS. Xem hệ thống thông tin quản lý dự án (PMIS)</li>
+<li>PMO. Xem văn phòng quản lý dự án (PMO)</li>
+<li>Kỳ thi PMP
+  <ul class="content-list">
+    <li>Đăng ký — 4</li>
+    <li>Cách ôn thi — 22–25</li>
+    <li>Sẵn sàng — 5</li>
+    <li>Điều kiện — 3–4</li>
+    <li>Ví dụ câu hỏi — 12–17</li>
+    <li>Kế hoạch ôn thi — 22–25</li>
+    <li>Kỳ thi như thế nào? — 11–12</li>
+  </ul>
+</li>
+<li>Danh mục đầu tư (portfolio)
+  <ul class="content-list">
+    <li>Định nghĩa — 55</li>
+  </ul>
+</li>
+<li>Quản lý danh mục đầu tư (portfolio management) — 54–55</li>
+<li>Quản lý danh mục đầu tư (portfolio manager)
+  <ul class="content-list">
+    <li>Danh sách trách nhiệm — 75</li>
+    <li>Vai trò — 71</li>
+  </ul>
+</li>
+<li>Lưới quyền lực/mối quan tâm (power/interest grid) — 356</li>
+<li>Danh sách nhà bán hàng được chấp thuận trước (preapproved seller list) — 336</li>
+<li>Thành viên nhóm được phân công trước (pre-assigned team members) — 137</li>
+<li>Phân công trước (pre-assignment) — 138</li>
+<li>Phương pháp sơ đồ ưu tiên (precedence diagramming method — PDM) — 194–196</li>
+<li>Bài thuyết trình (presentations) — 342</li>
+<li>Giá trị hiện tại (present value — PV) — 60</li>
+<li>Phòng ngừa (prevention) — 260</li>
+<li>Phòng ngừa hơn kiểm tra (prevention over inspection)
+  <ul class="content-list">
+    <li>Định nghĩa — 251</li>
+  </ul>
+</li>
+<li>Hành động phòng ngừa (preventive action) — 94</li>
+<li>Báo giá (price quote) — 340</li>
+<li>Sơ đồ ưu tiên (prioritization diagram) — 259</li>
+<li>Ma trận ưu tiên (prioritization matrix) — 261, 263</li>
+<li>Mức độ ưu tiên (priority) — 332</li>
+<li>Xác suất (probability) — 258</li>
+<li>Xác suất và tác động (probability and impact)
+  <ul class="content-list">
+    <li>Các định nghĩa — 291</li>
+    <li>Ma trận — 295</li>
+  </ul>
+</li>
+<li>Giải quyết vấn đề (problem-solving) — 264</li>
+<li>Phân tích quy trình (process analysis) — 263, 385–386</li>
+<li>Phân tách theo quy trình (process-based breakdown) — 181</li>
+<li>Luồng quy trình. Xem lưu đồ</li>
+<li>Mô hình Process Groups — 31–36, 69, 274–275
+  <ul class="content-list">
+    <li>Và ngân sách và nguồn lực — 230–231</li>
+    <li>Và tích hợp — 78–79</li>
+    <li>Và quản lý mua sắm — 322–323</li>
+    <li>Và chất lượng — 253–255</li>
+    <li>Và quản lý rủi ro — 288–289</li>
+    <li>Và lịch trình — 190–191</li>
+    <li>Và quản lý phạm vi — 155</li>
+    <li>Và gắn kết các bên liên quan — 352–354</li>
+    <li>Và hiệu suất nhóm — 125–126</li>
+  </ul>
+</li>
+<li>Bản đồ quy trình. Xem lưu đồ</li>
+<li>Mua sắm (procurement) — 321–350
+  <ul class="content-list">
+    <li>Định nghĩa — 321</li>
+    <li>Các hình thức không cạnh tranh — 339</li>
+    <li>Vai trò của trưởng dự án — 325</li>
+  </ul>
+</li>
+<li>Quản lý mua sắm (procurement management)
+  <ul class="content-list">
+    <li>Các định nghĩa liên quan — 321–322</li>
+    <li>Các kết quả mong muốn — 324–325</li>
+    <li>Kết quả chi tiết — 325</li>
+    <li>Tổng quan — 322–325</li>
+  </ul>
+</li>
+<li>Kế hoạch quản lý mua sắm (procurement management plan) — 130, 337, 344</li>
+<li>Quy trình mua sắm, ví dụ — 324–325</li>
+<li>Phát biểu phạm vi công việc mua sắm (procurement statement of work — SOW) — 337–338. Xem thêm phát biểu phạm vi công việc (SOW)</li>
+<li>Phân tích sản phẩm (product analysis) — 172</li>
+<li>Product backlog — 46, 159–160, 193. Xem thêm backlog
+  <ul class="content-list">
+    <li>Ví dụ — 160</li>
+  </ul>
+</li>
+<li>Demo sản phẩm (product demos) — 169, 281</li>
+<li>Vòng đời sản phẩm (product life cycle) — 268</li>
+<li>Quản lý sản phẩm (product manager)
+  <ul class="content-list">
+    <li>Vai trò — 70</li>
+  </ul>
+</li>
+<li>Product owner — 18, 19, 47, 71, 80, 87, 159, 185, 194, 195, 368
+  <ul class="content-list">
+    <li>Danh sách trách nhiệm — 73</li>
+    <li>Vai trò — 69</li>
+  </ul>
+</li>
+<li>Phát hành sản phẩm (product release) — 185</li>
+<li>Lộ trình sản phẩm (product roadmap) — 46, 47, 87, 158–159. Xem thêm release map; xem thêm story map</li>
+<li>Phạm vi sản phẩm (product scope)
+  <ul class="content-list">
+    <li>Dự án Agile — 157</li>
+    <li>Định nghĩa — 154</li>
+  </ul>
+</li>
+<li>Tuyên bố tầm nhìn sản phẩm (Product Vision Statement) — 360</li>
+<li>Trách nhiệm chuyên nghiệp (professional responsibility) — 122</li>
+<li>Chương trình (program), định nghĩa — 54</li>
+<li>Quản lý chương trình (program management) — 54</li>
+<li>Quản lý chương trình (program manager)
+  <ul class="content-list">
+    <li>Danh sách trách nhiệm — 75</li>
+    <li>Vai trò — 71</li>
+  </ul>
+</li>
+<li>Phân tích chi tiết dần dần (progressive elaboration) — 29, 41, 88</li>
+<li>Báo cáo tiến độ (progress reporting) — 239</li>
+<li>Dự án (project)
+  <ul class="content-list">
+    <li>Các đặc điểm — 54</li>
+    <li>Định nghĩa — 53–54</li>
+  </ul>
+</li>
+<li>Các thỏa thuận dự án (project agreements) — 129</li>
+<li>Phương pháp tiếp cận dự án (project approach) — 7. Xem thêm phương pháp phát triển</li>
+<li>Các tạo phẩm dự án (project artifacts) — 91</li>
+<li>Project backlog — 412. Xem thêm backlog</li>
+<li>Điều lệ dự án (project charter) — 19, 45, 65, 80–84, 89, 162, 237, 380
+  <ul class="content-list">
+    <li>Agile — 80</li>
+    <li>Tạo — 80–81</li>
+    <li>Ví dụ — 82–84</li>
+  </ul>
+</li>
+<li>Tuân thủ dự án (project compliance) — 166. Xem thêm tuân thủ
+  <ul class="content-list">
+    <li>Lập kế hoạch và quản lý — 380–382</li>
+  </ul>
+</li>
+<li>Điều phối viên dự án (project coordinator) — 56</li>
+<li>Tài liệu dự án (project documents) — 89, 130</li>
+<li>Phát biểu thang máy dự án (project elevator statement) — 360</li>
+<li>Môi trường dự án (project environment) — 7</li>
+<li>Người đẩy dự án (project expediter) — 56</li>
+<li>Thời gian trôi dự án (project float) — 209</li>
+<li>Quản trị dự án (project governance) — 55–56</li>
+<li>Vòng đời dự án (project life cycle) — 7, 86, 193. Xem thêm vòng đời</li>
+<li>Phương pháp quản lý dự án (project management approach) — 7</li>
+<li>Hệ thống thông tin quản lý dự án (project management information system — PMIS) — 67, 90, 196, 207, 223, 234</li>
+<li>Văn phòng quản lý dự án (project management office — PMO) — 18, 58–59
+  <ul class="content-list">
+    <li>Kiểm soát — 58</li>
+    <li>Chỉ thị — 58</li>
+    <li>Hỗ trợ — 58</li>
+  </ul>
+</li>
+<li>Kế hoạch quản lý dự án (project management plan) — 19, 20, 21, 84, 85–88, 193
+  <ul class="content-list">
+    <li>Agile — 87</li>
+    <li>Phê duyệt — 89</li>
+    <li>Kết hợp — 87</li>
+    <li>Cập nhật — 185</li>
+  </ul>
+</li>
+<li>Các nguyên tắc quản lý dự án (project management principles) — 386–387</li>
+<li>Trưởng dự án (project manager)
+  <ul class="content-list">
+    <li>Trong dự án Agile — 127</li>
+    <li>Danh sách trách nhiệm — 72</li>
+    <li>Vai trò trong môi trường thích ứng — 69</li>
+    <li>Vai trò trong môi trường dự đoán — 68</li>
+    <li>Vai trò — 68–69</li>
+  </ul>
+</li>
+<li>Đánh giá hiệu suất dự án (project performance appraisals) — 142</li>
+<li>Phân tích sự cố dự án (project pre-mortem) — 293</li>
+<li>Báo cáo dự án (project reporting) — 280</li>
+<li>Rủi ro dự án, định nghĩa — 285</li>
+<li>Quản lý rủi ro dự án, định nghĩa — 286</li>
+<li>Các vai trò dự án (project roles) — 68–76
+  <ul class="content-list">
+    <li>Trưởng nhóm Agile — 69</li>
+    <li>Quản lý chức năng — 71</li>
+    <li>Quản lý danh mục đầu tư — 71</li>
+    <li>Quản lý sản phẩm — 70</li>
+    <li>Product owner — 69</li>
+    <li>Quản lý chương trình — 71</li>
+    <li>Trưởng dự án — 68–69</li>
+    <li>Nhà tài trợ dự án — 70</li>
+    <li>Nhóm dự án — 70</li>
+    <li>Quản lý nguồn lực — 71</li>
+    <li>Các danh sách trách nhiệm — 72</li>
+    <li>Các bên liên quan — 70–71</li>
+  </ul>
+</li>
+<li>Lịch trình dự án (project schedule) — 175, 221. Xem thêm lịch trình</li>
+<li>Sơ đồ mạng lịch trình dự án (project schedule network diagram) — 194, 196. Xem thêm sơ đồ mạng</li>
+<li>Phạm vi dự án, định nghĩa — 154</li>
+<li>Phát biểu phạm vi dự án (project scope statement) — 172</li>
+<li>Lựa chọn dự án (project selection) — 59–64, 176
+  <ul class="content-list">
+    <li>Các khái niệm — 64</li>
+    <li>Các biện pháp kinh tế để lựa chọn — 60</li>
+    <li>Các phương pháp — 64</li>
+  </ul>
+</li>
+<li>Nhà tài trợ dự án (project sponsor)
+  <ul class="content-list">
+    <li>Danh sách trách nhiệm — 73–74</li>
+    <li>Vai trò — 70</li>
+  </ul>
+</li>
+<li>Nhóm dự án (project team)
+  <ul class="content-list">
+    <li>Danh sách trách nhiệm — 74</li>
+    <li>Vai trò — 70</li>
+  </ul>
+</li>
+<li>Phân công nhóm dự án (project team assignments) — 144, 198</li>
+<li>Domain công việc dự án (project work), PMBOK Guide — 425–426</li>
+<li>Đánh giá đề xuất (proposal evaluation) — 340–341</li>
+<li>Nguyên mẫu (prototype) — 163</li>
+<li>Truyền thông kéo (pull communication) — 113</li>
+<li>Đơn đặt hàng (purchase order) — 328</li>
+<li>Rủi ro thuần túy (pure risk) — 292, 302</li>
+<li>Truyền thông đẩy (push communication) — 113</li>
+<li>PV. Xem giá trị kế hoạch (PV); xem giá trị hiện tại (PV)</li>
+</ul>
+
+<h4 id="ch18-index-q">Q</h4>
+
+<ul class="content-list">
+<li>QFD. Xem triển khai chức năng chất lượng (QFD)</li>
+<li>Phân tích định tính so với định lượng — 294</li>
+<li>Chất lượng (quality)
+  <ul class="content-list">
+    <li>Định nghĩa — 249–250</li>
+    <li>Các định nghĩa liên quan — 249–251</li>
+    <li>Nguyên tắc quản lý dự án — 387</li>
+    <li>Yêu cầu — 256</li>
+  </ul>
+</li>
+<li>Triển khai chức năng chất lượng (quality functional deployment — QFD) — 164</li>
+<li>Quản lý chất lượng (quality management) — 256–257
+  <ul class="content-list">
+    <li>Agile — 267–270</li>
+    <li>Các kết quả mong muốn — 255</li>
+    <li>Các phương pháp — 259</li>
+    <li>Tổng quan — 252–255</li>
+  </ul>
+</li>
+<li>Kế hoạch quản lý chất lượng (quality management plan) — 130, 264</li>
+<li>Số liệu chất lượng (quality metrics) — 257</li>
+<li>Chất lượng của sản phẩm và hàng hóa bàn giao — 249–272</li>
+<li>Phân tích định lượng so với định tính — 294</li>
+<li>Phân tích rủi ro định lượng (quantitative risk analysis) — 294</li>
+<li>Bảng câu hỏi (questionnaires) — 265</li>
+<li>Và khảo sát — 163</li>
+<li>Quicktest — 29, 53, 77, 105, 153, 189, 229, 249, 273, 321, 351, 409, 423</li>
+</ul>
+
+<h4 id="ch18-index-r">R</h4>
+
+<ul class="content-list">
+<li>Biểu đồ RACI — 131</li>
+<li>RAM. Xem ma trận phân công trách nhiệm (RAM)</li>
+<li>RBS. Xem cấu trúc phân tách nguồn lực (RBS)</li>
+<li>Công nhận và khen thưởng (recognition and rewards) — 121</li>
+<li>Kế hoạch công nhận (recognition plan) — 132</li>
+<li>Hệ thống quản lý hồ sơ (records management system) — 347</li>
+<li>Ước tính lại (reestimating) — 224</li>
+<li>Phân tích hồi quy (regression analysis) — 200</li>
+<li>Tuân thủ quy định (regulatory compliance) — 381</li>
+<li>Yêu cầu quy định (regulatory requirements) — 59</li>
+<li>Định cỡ tương đối (relative sizing) — 204</li>
+<li>Phát hành (release) — 250
+  <ul class="content-list">
+    <li>Và lập kế hoạch vòng lặp — 87, 281</li>
+  </ul>
+</li>
+<li>Bản đồ phát hành (release map) — 47. Xem thêm lộ trình sản phẩm</li>
+<li>Kế hoạch phát hành (release plan) — 171</li>
+<li>Các loại báo cáo (reports, types) — 280</li>
+<li>Yêu cầu thông tin (request for information — RFI) — 338</li>
+<li>Yêu cầu đề xuất (request for proposal — RFP) — 338, 340</li>
+<li>Yêu cầu báo giá (request for quotation — RFQ) — 338</li>
+<li>Yêu cầu báo giá (request for quote — RFQ) — 340</li>
+<li>Yêu cầu (requirements) — 134, 155
+  <ul class="content-list">
+    <li>Dự án Agile — 162</li>
+    <li>Phân tích — 161–170
+      <ul class="content-list">
+        <li>Các phương pháp — 162–165</li>
+      </ul>
+    </li>
+    <li>Cân bằng — 166</li>
+    <li>Các danh mục — 161</li>
+    <li>Truyền thông — 276</li>
+    <li>Tuân thủ — 380–382</li>
+    <li>Mâu thuẫn — 167</li>
+    <li>Chi tiết — 171</li>
+    <li>Tài liệu hóa — 162, 169–170</li>
+    <li>Thu thập — 153, 161–170
+      <ul class="content-list">
+        <li>Các phương pháp — 162–165</li>
+      </ul>
+    </li>
+    <li>Bị bỏ sót — 267</li>
+    <li>Quy định — 381</li>
+    <li>Nguồn lực — 198</li>
+    <li>Các bên liên quan — 353</li>
+    <li>Xác minh — 169</li>
+  </ul>
+</li>
+<li>Kế hoạch quản lý yêu cầu (requirements management plan) — 85, 87, 158</li>
+<li>Ma trận truy xuất nguồn gốc yêu cầu (requirements traceability matrix) — 162, 170, 256</li>
+<li>Phân tích dự phòng (reserve analysis) — 205, 234, 239, 312</li>
+<li>Dự phòng (reserves) — 305–306</li>
+<li>Rủi ro còn lại (residual risks) — 301</li>
+<li>Phân công nguồn lực (resource assignments) — 139</li>
+<li>Sự sẵn có của nguồn lực (resource availability) — 136</li>
+<li>Cấu trúc phân tách nguồn lực (resource breakdown structure — RBS) — 131, 134, 198</li>
+<li>Lịch nguồn lực (resource calendar) — 133, 139, 198</li>
+<li>Biểu đồ histogram nguồn lực (resource histogram) — 134</li>
+<li>Cân bằng nguồn lực (resource leveling) — 134, 218</li>
+<li>Quản lý Nguồn Lực (Resource Management) — 128</li>
+<li>Kế hoạch quản lý nguồn lực (resource management plan) — 130, 132, 133</li>
+<li>Quản lý nguồn lực (resource manager)
+  <ul class="content-list">
+    <li>Danh sách trách nhiệm — 74</li>
+    <li>Vai trò — 71</li>
+  </ul>
+</li>
+<li>Tối ưu hóa nguồn lực (resource optimization) — 218</li>
+<li>Đàm phán nguồn lực (resources, negotiating for) — 138</li>
+<li>Làm mịn nguồn lực (resource smoothing) — 218</li>
+<li>Trách nhiệm (responsibility) — 116</li>
+<li>Ma trận phân công trách nhiệm (responsibility assignment matrix — RAM) — 131</li>
+<li>Kết quả hồi cố (retrospective findings) — 280</li>
+<li>Hồi cố (retrospectives) — 235, 268, 281, 312</li>
+<li>Lợi tức đầu tư (return on investment — ROI) — 55, 60, 234</li>
+<li>Làm lại (rework) — 267</li>
+<li>RFI. Xem yêu cầu thông tin (RFI)</li>
+<li>RFP. Xem yêu cầu đề xuất (RFP)</li>
+<li>RFQ. Xem yêu cầu báo giá (RFQ)</li>
+<li>Rủi ro (risk) — 230
+  <ul class="content-list">
+    <li>Còn lại — 301</li>
+  </ul>
+</li>
+<li>Backlog được điều chỉnh theo rủi ro (risk-adjusted backlog) — 308–309</li>
+<li>Khẩu vị rủi ro (risk appetite) — 287</li>
+<li>Né tránh rủi ro (risk averse) — 287</li>
+<li>Cấu trúc phân tách rủi ro (risk breakdown structure — RBS) — 291</li>
+<li>Biểu đồ burndown rủi ro (risk burndown chart) — 312–313</li>
+<li>Các danh mục rủi ro (risk categories) — 291–292, 294</li>
+<li>Đánh giá chất lượng dữ liệu rủi ro (risk data quality assessment) — 294</li>
+<li>Các định nghĩa rủi ro (risk definitions)
+  <ul class="content-list">
+    <li>Agile — 287–288</li>
+  </ul>
+</li>
+<li>Sự kiện rủi ro (risk event) — 286</li>
+<li>Các yếu tố rủi ro (risk factors) — 286</li>
+<li>Quản lý rủi ro (risk management) — 86, 197
+  <ul class="content-list">
+    <li>Các lỗi thường gặp — 314</li>
+    <li>Các định nghĩa liên quan — 285–286</li>
+    <li>Các kết quả mong muốn — 290</li>
+    <li>Tổng quan — 288–289</li>
+  </ul>
+</li>
+<li>Giám sát rủi ro (risk monitoring)
+  <ul class="content-list">
+    <li>Agile — 311</li>
+  </ul>
+</li>
+<li>Chủ sở hữu rủi ro (risk owner) — 301, 305</li>
+<li>Đánh giá các thông số rủi ro (risk parameters assessments) — 295–296</li>
+<li>Đánh giá lại rủi ro (risk reassessments) — 311</li>
+<li>Sổ đăng ký rủi ro (risk register) — 198, 237, 293
+  <ul class="content-list">
+    <li>Cập nhật — 305, 313–314</li>
+  </ul>
+</li>
+<li>Báo cáo rủi ro (risk report) — 304</li>
+<li>Dự phòng rủi ro (risk reserves) — 236</li>
+<li>Các ứng phó rủi ro (risk responses)
+  <ul class="content-list">
+    <li>Agile — 308–309</li>
+  </ul>
+</li>
+<li>Các chiến lược ứng phó rủi ro (risk response strategies) — 301–304
+  <ul class="content-list">
+    <li>Cho các cơ hội — 302</li>
+    <li>Cho các mối đe dọa — 301–302</li>
+  </ul>
+</li>
+<li>Đánh giá rủi ro (risk reviews) — 311</li>
+<li>Rủi ro (risks) — 426
+  <ul class="content-list">
+    <li>Còn lại — 305</li>
+  </ul>
+</li>
+<li>Rủi ro và vấn đề — 285–320</li>
+<li>Spike rủi ro (risk spike) — 414</li>
+<li>Chiến lược rủi ro (risk strategy) — 290</li>
+<li>Ngưỡng rủi ro (risk threshold) — 287</li>
+<li>Các tác nhân kích hoạt rủi ro (risk triggers) — 305</li>
+<li>Rita's Agile Process Chart — 44–48</li>
+<li>Rita's Process Chart — 37–44, 87, 99
+  <ul class="content-list">
+    <li>Trò chơi — 44</li>
+    <li>Cách sử dụng — 37</li>
+  </ul>
+</li>
+<li>RMC Interactive Chapter Quizzes — 10</li>
+<li>Tài nguyên RMC — 9, 189</li>
+<li>ROI. Xem lợi tức đầu tư (ROI)</li>
+<li>Các vai trò và trách nhiệm — 68–75, 116, 129</li>
+<li>Lập kế hoạch cuộn sóng (rolling wave planning) — 29, 41</li>
+<li>ROM. Xem ước tính bậc đại khái (ROM)</li>
+<li>Phân tích nguyên nhân gốc rễ (root cause analysis) — 263, 264, 360, 366</li>
+<li>Ước tính bậc đại khái (rough order of magnitude — ROM estimate) — 234</li>
+<li>Chủ sở hữu rủi ro (risk owner)
+  <ul class="content-list">
+    <li>Định nghĩa — 286</li>
+  </ul>
+</li>
+<li>Quy tắc bảy (rule of seven) — 266</li>
+</ul>
+
+<h4 id="ch18-index-s">S</h4>
+
+<ul class="content-list">
+<li>SAFe. Xem thêm khung Agile mở rộng (SAFe)
+  <ul class="content-list">
+    <li>Các giá trị cốt lõi — 417</li>
+    <li>Lãnh đạo — 418</li>
+  </ul>
+</li>
+<li>Mô hình nổi bật (salience model) — 356</li>
+<li>Khung Agile mở rộng (scaled agile framework — SAFe) — 417</li>
+<li>Sơ đồ phân tán (scatter diagram) — 200, 259, 262, 264</li>
+<li>Lịch trình (schedule) — 241–243
+  <ul class="content-list">
+    <li>Lập kế hoạch</li>
+    <li>Dự án Agile — 192</li>
+    <li>Các định nghĩa liên quan — 189–190</li>
+    <li>Dự án kết hợp — 192</li>
+  </ul>
+</li>
+<li>Đường cơ sở lịch trình (schedule baseline) — 86, 192–193, 214, 222, 223, 306</li>
+<li>Rút ngắn lịch trình (schedule compression)
+  <ul class="content-list">
+    <li>Các phương pháp — 214–217</li>
+    <li>Tóm tắt — 217</li>
+  </ul>
+</li>
+<li>Dữ liệu lịch trình (schedule data) — 222</li>
+<li>Quản lý lịch trình (schedule management)
+  <ul class="content-list">
+    <li>Các kết quả mong muốn — 191–192</li>
+    <li>Tổng quan quy trình — 190–192</li>
+  </ul>
+</li>
+<li>Kế hoạch quản lý lịch trình (schedule management plan) — 193, 224</li>
+<li>Mô hình lịch trình, định nghĩa — 190</li>
+<li>Phân tích mạng lịch trình (schedule network analysis) — 208, 214</li>
+<li>Chỉ số hiệu suất lịch trình (schedule performance index — SPI)
+  <ul class="content-list">
+    <li>Công thức — 241</li>
+  </ul>
+</li>
+<li>Chênh lệch lịch trình (schedule variance — SV)
+  <ul class="content-list">
+    <li>Công thức — 241</li>
+  </ul>
+</li>
+<li>Phạm vi (scope) — 153–188
+  <ul class="content-list">
+    <li>Xác định
+      <ul class="content-list">
+        <li>Thích ứng — 171</li>
+        <li>Dự đoán — 171</li>
+      </ul>
+    </li>
+    <li>Trong dự án Agile — 95, 153</li>
+  </ul>
+</li>
+<li>Đường cơ sở phạm vi (scope baseline) — 98, 130, 133, 178–179, 182, 186, 193, 235, 256</li>
+<li>Phân tách phạm vi (scope decomposition)
+  <ul class="content-list">
+    <li>Agile — 179–182</li>
+  </ul>
+</li>
+<li>Quản lý phạm vi (scope management)
+  <ul class="content-list">
+    <li>Agile — 157</li>
+    <li>Các định nghĩa liên quan — 154</li>
+    <li>Các kết quả mong muốn — 157</li>
+    <li>Tổng quan — 155–157</li>
+    <li>Định hướng kế hoạch — 156</li>
+    <li>Lập kế hoạch — 158–161</li>
+    <li>Những điều cần biết (cho kỳ thi) — 153–154</li>
+  </ul>
+</li>
+<li>Kế hoạch quản lý phạm vi (scope management plan) — 158</li>
+<li>Lập kế hoạch phạm vi (scope planning)
+  <ul class="content-list">
+    <li>Agile — 158–160</li>
+  </ul>
+</li>
+<li>Scrum — 412–414
+  <ul class="content-list">
+    <li>Và các thuật ngữ chung Agile — 412–413</li>
+    <li>Các khái niệm cốt lõi — 413</li>
+  </ul>
+</li>
+<li>Scrum Master — 18, 69</li>
+<li>Rủi ro thứ cấp (secondary risk) — 30, 305</li>
+<li>Nhà bán hàng được chọn (selected sellers) — 342</li>
+<li>Tự hiện thực hóa (self-actualization) — 115</li>
+<li>Danh sách tự đánh giá (self-evaluation checklist) — 6</li>
+<li>Nhóm tự quản (self-managing team) — 114</li>
+<li>Đề xuất của nhà bán hàng (seller proposal) — 340</li>
+<li>Phân tích độ nhạy (sensitivity analysis) — 297</li>
+<li>Sắp Xếp Trình Tự Hoạt Động (Sequence Activities) — 194–196</li>
+<li>Lãnh đạo phục vụ (servant leadership) — 19, 107, 231</li>
+<li>Thiết kế dựa trên tập hợp (set-based design) — 309</li>
+<li>Chia sẻ (share) — 302</li>
+<li>Mô hình shu-ha-ri — 116</li>
+<li>Sigma — 259. Xem thêm six sigma
+  <ul class="content-list">
+    <li>Định nghĩa — 251</li>
+  </ul>
+</li>
+<li>Mô phỏng (simulations) — 297</li>
+<li>Ước tính một điểm. Xem ước tính một điểm</li>
+<li>Các mô hình lãnh đạo theo tình huống (situational leadership models) — 118</li>
+<li>Lãnh đạo theo Tình Huống II (Situational Leadership II) — 118</li>
+<li>Six sigma — 132. Xem thêm sigma
+  <ul class="content-list">
+    <li>Định nghĩa — 251</li>
+  </ul>
+</li>
+<li>Thành thạo kỹ năng (skill mastery)
+  <ul class="content-list">
+    <li>Các mô hình — 116–117</li>
+  </ul>
+</li>
+<li>Cắt nhỏ user story (slice stories) — 47, 171</li>
+<li>Phân tích lựa chọn nguồn cung (source selection analysis) — 337</li>
+<li>Tiêu chí lựa chọn nguồn cung (source selection criteria) — 337, 339</li>
+<li>SOW. Xem phát biểu phạm vi công việc (SOW)</li>
+<li>Biến thiên nguyên nhân đặc biệt (special cause variation) — 267</li>
+<li>Các điều khoản đặc biệt (special provisions) — 332</li>
+<li>Giới hạn kỹ thuật (specification limits) — 266</li>
+<li>SPI. Xem chỉ số hiệu suất lịch trình (SPI)</li>
+<li>Spike — 287, 414</li>
+<li>Nhà tài trợ (sponsor). Xem thêm nhà tài trợ dự án</li>
+<li>Sprint backlog — 412</li>
+<li>Các bên liên quan (stakeholder) — 19, 351–374
+  <ul class="content-list">
+    <li>Và các yêu cầu — 161–167</li>
+    <li>Dự án Agile — 352</li>
+    <li>Định nghĩa — 351–352</li>
+    <li>Domain, PMBOK Guide — 424</li>
+    <li>Kế hoạch gắn kết — 19</li>
+    <li>Nguyên tắc quản lý dự án — 386</li>
+    <li>Danh sách trách nhiệm — 74</li>
+    <li>Vai trò — 70–71</li>
+  </ul>
+</li>
+<li>Phân tích các bên liên quan (stakeholder analysis) — 356</li>
+<li>Hình khối các bên liên quan (stakeholder cube) — 356</li>
+<li>Gắn kết các bên liên quan (stakeholder engagement)
+  <ul class="content-list">
+    <li>Và Agile — 368–373</li>
+    <li>Các định nghĩa liên quan — 351</li>
+    <li>Các kết quả mong muốn — 354</li>
+    <li>Tổng quan — 352–354</li>
+    <li>Quy trình — 353–354</li>
+  </ul>
+</li>
+<li>Biểu đồ đánh giá gắn kết các bên liên quan (stakeholder engagement assessment chart) — 360</li>
+<li>Kế hoạch gắn kết các bên liên quan (stakeholder engagement plan) — 130, 277, 362, 368</li>
+<li>Kỳ vọng các bên liên quan (stakeholder expectations) — 162</li>
+<li>Lập bản đồ các bên liên quan (stakeholder mapping) — 356</li>
+<li>Sổ đăng ký các bên liên quan (stakeholder register) — 130, 162, 277, 355, 357–358</li>
+<li>Độ lệch chuẩn (standard deviation) — 259</li>
+<li>Standup — 181, 280. Xem thêm standup hàng ngày</li>
+<li>Công thức bắt đầu (start formula) — 209</li>
+<li>Bắt đầu-đến-kết thúc (start-to-finish — SF) — 195</li>
+<li>Bắt đầu-đến-bắt đầu (start-to-start — SS) — 195</li>
+<li>Phát biểu phạm vi công việc (statement of work — SOW) — 327</li>
+<li>Độc lập thống kê (statistical independence) — 259</li>
+<li>Lấy mẫu thống kê (statistical sampling) — 265</li>
+<li>Quản lý tài sản (stewardship)
+  <ul class="content-list">
+    <li>Nguyên tắc quản lý dự án — 386</li>
+  </ul>
+</li>
+<li>User story — 47, 159–160, 197, 250</li>
+<li>Thẻ story (story cards) — 193</li>
+<li>Bản đồ story (story map) — 46, 235</li>
+<li>Điểm story (story points) — 220</li>
+<li>Ma trận mạnh (strong matrix) — 56</li>
+<li>Chuyên gia lĩnh vực (subject matter experts) — 355</li>
+<li>Chuyên gia lĩnh vực (subject matter expert — SME) — 70</li>
+<li>Chi phí chìm (sunk costs) — 63</li>
+<li>Hỗ trợ thay đổi tổ chức (support organizational change) — 390–392</li>
+<li>Hỗ trợ hiệu suất (support performance) — 129</li>
+<li>Khảo sát (surveys) — 265, 355</li>
+<li>SV. Xem chênh lệch lịch trình (SV)</li>
+<li>Hệ thống (system) — 378</li>
+<li>Tư duy hệ thống (systems thinking) — 383–384
+  <ul class="content-list">
+    <li>Nguyên tắc quản lý dự án — 386</li>
+  </ul>
+</li>
+</ul>
+
+<h4 id="ch18-index-t">T</h4>
+
+<ul class="content-list">
+<li>T&M. Xem hợp đồng thời gian và vật liệu (T&M)</li>
+<li>Kiến thức ẩn (tacit knowledge) — 91–92</li>
+<li>Điều chỉnh (tailoring) — 86
+  <ul class="content-list">
+    <li>Nguyên tắc quản lý dự án — 387</li>
+  </ul>
+</li>
+<li>TCPI. Xem chỉ số hiệu suất cần đạt (TCPI)</li>
+<li>Nhóm (team)
+  <ul class="content-list">
+    <li>Nguyên tắc quản lý dự án — 386</li>
+  </ul>
+</li>
+<li>Đánh giá nhóm (team assessments) — 141–142</li>
+<li>Xây dựng nhóm (teambuilding) — 140</li>
+<li>Điều lệ nhóm (team charter) — 133, 144, 380</li>
+<li>Các cấu hình nhóm (team configurations)
+  <ul class="content-list">
+    <li>Các loại — 137–138</li>
+  </ul>
+</li>
+<li>Văn hóa nhóm (team culture) — 140–141</li>
+<li>Phát triển nhóm (team development)
+  <ul class="content-list">
+    <li>Các mô hình — 119–120</li>
+  </ul>
+</li>
+<li>Trưởng nhóm (team lead) — 69</li>
+<li>Hiệu suất nhóm (team performance) — 125–150
+  <ul class="content-list">
+    <li>Domain, PMBOK Guide — 425</li>
+  </ul>
+</li>
+<li>Phân tích hiệu suất kỹ thuật (technical performance analysis) — 312</li>
+<li>Thuật ngữ (terminology)
+  <ul class="content-list">
+    <li>Cách sử dụng — 7</li>
+  </ul>
+</li>
+<li>Điều khoản và điều kiện (terms and conditions) — 332–333, 339</li>
+<li>Điều khoản tham chiếu (terms of reference — TOR) — 338</li>
+<li>Lập kế hoạch kiểm tra và kiểm định (test and inspection planning) — 261</li>
+<li>Lý thuyết X, Y và Z — 115</li>
+<li>Mối đe dọa (threats) — 286
+  <ul class="content-list">
+    <li>Và các chiến lược ứng phó rủi ro — 301–302</li>
+  </ul>
+</li>
+<li>Mối đe dọa và cơ hội (threats and opportunities)
+  <ul class="content-list">
+    <li>Định nghĩa — 286</li>
+  </ul>
+</li>
+<li>Ước tính ba điểm (three-point estimating) — 200–201</li>
+<li>Thông lượng (throughput) — 269</li>
+<li>Hợp đồng thời gian và vật liệu (time and material — T&M) — 328</li>
+<li>Hộp thời gian (timebox) — 172
+  <ul class="content-list">
+    <li>Định nghĩa — 154</li>
+  </ul>
+</li>
+<li>Vòng lặp giới hạn thời gian (time-boxed iteration) — 268</li>
+<li>Mẹo chuẩn bị thi — 403</li>
+<li>Chỉ số hiệu suất cần đạt (to-complete performance index — TCPI)
+  <ul class="content-list">
+    <li>Công thức — 241</li>
+  </ul>
+</li>
+<li>Ước tính từ trên xuống. Xem ước tính tương tự</li>
+<li>TOR. Xem điều khoản tham chiếu (TOR)</li>
+<li>Sơ đồ lốc xoáy (tornado diagram) — 297</li>
+<li>Tổng thời gian trôi (total float) — 209</li>
+<li>Quản lý chất lượng toàn diện (total quality management — TQM) — 251</li>
+<li>TQM. Xem quản lý chất lượng toàn diện (TQM)</li>
+<li>Đào tạo (training) — 121</li>
+<li>Chuyển giao (deflect, allocate) (transfer) — 302</li>
+<li>Chuyển đổi (transition) — 100, 392</li>
+<li>Thay đổi chuyển tiếp (transitional change) — 391–392</li>
+<li>Mô hình chuyển đổi (Transition Model) — 392</li>
+<li>Phân phối tam giác (triangular distribution) — 200–202</li>
+<li>Tin tưởng (trust) — 121</li>
+<li>Kỹ năng hình chữ T (T-shaped skills) — 117</li>
+<li>Định cỡ áo phông (t-shirt sizing) — 203–204, 235</li>
+<li>Mô hình Tháp Hình Thành Nhóm của Tuckman (Tuckman's Ladder Model of Team Formation)</li>
+<li>Các loại chi phí (types of cost) — 232–233</li>
+</ul>
+
+<h4 id="ch18-index-u">U</h4>
+
+<ul class="content-list">
+<li>Sự không chắc chắn (uncertainty) — 285, 427
+  <ul class="content-list">
+    <li>Domain, PMBOK Guide — 426–427</li>
+  </ul>
+</li>
+<li>Phân tách theo người dùng (user-based breakdown) — 181</li>
+<li>User story — 163–164, 204</li>
+<li>Tận dụng dữ liệu (utilizing data) — 366–367</li>
+</ul>
+
+<h4 id="ch18-index-v">V</h4>
+
+<ul class="content-list">
+<li>VAC. Xem chênh lệch khi hoàn thành (VAC)</li>
+<li>Xác Nhận Phạm Vi (Validate Scope) — 182–186, 426
+  <ul class="content-list">
+    <li>Agile — 184–185</li>
+    <li>Sản phẩm — 185–186</li>
+    <li>Định nghĩa — 182</li>
+    <li>Các phương pháp — 184–185</li>
+    <li>Quy trình — 169</li>
+    <li>Mối quan hệ với Kiểm Soát Chất Lượng — 185–186</li>
+  </ul>
+</li>
+<li>Giá trị (value)
+  <ul class="content-list">
+    <li>Nguyên tắc quản lý dự án — 386</li>
+  </ul>
+</li>
+<li>Chuỗi giá trị (value chain)
+  <ul class="content-list">
+    <li>Định nghĩa — 378</li>
+  </ul>
+</li>
+<li>Bàn giao giá trị (value delivery)
+  <ul class="content-list">
+    <li>Các định nghĩa liên quan — 377–378</li>
+    <li>Hệ thống — 49</li>
+  </ul>
+</li>
+<li>Văn phòng bàn giao giá trị (value delivery office — VDO) — 58</li>
+<li>Hệ thống bàn giao giá trị (value delivery system) — 384</li>
+<li>Bàn giao theo giá trị (value-driven delivery) — 230</li>
+<li>Nhóm quản lý giá trị (value management team) — 71</li>
+<li>Luồng giá trị (value stream) — 385
+  <ul class="content-list">
+    <li>Lập bản đồ — 378, 386</li>
+  </ul>
+</li>
+<li>Rủi ro biến thiên (variability risk) — 292</li>
+<li>Chi phí biến đổi (variable costs) — 232</li>
+<li>Chênh lệch khi hoàn thành (variance at completion — VAC) — 240
+  <ul class="content-list">
+    <li>Công thức — 241</li>
+  </ul>
+</li>
+<li>VDO. Xem văn phòng bàn giao giá trị (VDO)</li>
+<li>Tốc độ (velocity) — 47, 220, 237</li>
+<li>Mô hình Thay Đổi Virginia Satir — 392</li>
+<li>Nhóm ảo (virtual team) — 137, 141</li>
+<li>Xây dựng tầm nhìn (visioning) — 158, 171</li>
+<li>Tính biến động (volatility) — 285, 426</li>
+<li>Bỏ phiếu (voting) — 163
+  <ul class="content-list">
+    <li>La Mã — 206</li>
+  </ul>
+</li>
+</ul>
+
+<h4 id="ch18-index-w">W</h4>
+
+<ul class="content-list">
+<li>Danh sách theo dõi (watch list)
+  <ul class="content-list">
+    <li>Định nghĩa — 286</li>
+  </ul>
+</li>
+<li>Thác nước (waterfall) — 7</li>
+<li>WBS. Xem cấu trúc phân tách công việc (WBS)</li>
+<li>Từ điển WBS (WBS dictionary) — 19, 177–178</li>
+<li>Ma trận yếu (weak matrix) — 56</li>
+<li>Hệ thống tính điểm (weighting system) — 341</li>
+<li>Toàn bộ nhóm (whole team) — 415</li>
+<li>Sơ đồ tại sao-tại sao (why-why diagram). Xem sơ đồ nguyên nhân - kết quả</li>
+<li>WIP. Xem công việc đang thực hiện (WIP)</li>
+<li>Khung dây (wireframe) — 281, 372</li>
+<li>Giải pháp tạm thời (workarounds) — 311</li>
+<li>Hệ thống ủy quyền công việc (work authorization system) — 90, 193</li>
+<li>Cấu trúc phân tách công việc (work breakdown structure — WBS) — 19, 131, 133, 153, 156, 173–179, 193
+  <ul class="content-list">
+    <li>Hướng dẫn — 174–175</li>
+  </ul>
+</li>
+<li>Thông tin dữ liệu công việc (work data information) — 93</li>
+<li>Hệ thống theo dõi nhân lực (workforce tracking system) — 370</li>
+<li>Vốn lưu động (working capital) — 63</li>
+<li>Mối quan hệ làm việc (working relationships) — 354</li>
+<li>Công việc đang thực hiện (work in progress — WIP) — 268–269, 281</li>
+<li>Gói công việc (work package) — 175, 177
+  <ul class="content-list">
+    <li>Các hoạt động — 194</li>
+  </ul>
+</li>
+<li>Dữ liệu hiệu suất công việc (work performance data) — 67–68, 90, 313</li>
+<li>Thông tin hiệu suất công việc (work performance information) — 67–68, 185, 313, 368</li>
+<li>Báo cáo hiệu suất công việc (work performance reports) — 67–68, 144, 278</li>
+</ul>
+
+<h4 id="ch18-index-x">X</h4>
+
+<ul class="content-list">
+<li>XP. Xem thêm lập trình cực đoan (XP)
+  <ul class="content-list">
+    <li>Các thông lệ cốt lõi — 415</li>
+    <li>Các giá trị — 414</li>
+  </ul>
+</li>
+</ul>
+
+
+</main>
+
+<button id="back-top" aria-label="Về đầu trang">↑</button>
+
+<script>
+// Progress bar
+const pb=document.getElementById('progress-bar');
+function updPB(){const d=document.documentElement;pb.style.width=Math.min((d.scrollTop/(d.scrollHeight-d.clientHeight))*100,100)+'%'}
+window.addEventListener('scroll',updPB,{passive:true});
+
+// Back to top
+const bt=document.getElementById('back-top');
+window.addEventListener('scroll',()=>{bt.style.opacity=scrollY>400?'1':'0';},{passive:true});
+bt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+// Mobile menu
+const mb=document.getElementById('menu-btn'),sb=document.getElementById('sidebar');
+mb.addEventListener('click',()=>sb.classList.toggle('open'));
+document.addEventListener('click',e=>{if(!sb.contains(e.target)&&e.target!==mb)sb.classList.remove('open')});
+
+// Active TOC highlight on scroll
+const tocLinks=document.querySelectorAll('#sidebar-toc a[href^="#"]');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      tocLinks.forEach(a=>a.classList.remove('active'));
+      const a=document.querySelector('#sidebar-toc a[href="#'+e.target.id+'"]');
+      if(a){a.classList.add('active');a.scrollIntoView({block:'nearest',behavior:'smooth'})}
+    }
+  })
+},{rootMargin:'-20% 0px -75% 0px'});
+document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
+
+// ── THEME + READING POSITION ───────────────────────────
+(function(){
+  var THEME_KEY='rita_theme', READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var chapNum=m?m[1]:null;
+
+  // Build & inject theme toggle button
+  var hdr=document.getElementById('sidebar-header');
+  if(hdr){
+    var btn=document.createElement('button');
+    btn.id='theme-btn';
+    var curTheme=document.documentElement.getAttribute('data-theme')||'light';
+    btn.textContent=curTheme==='dark'?'☀':'🌙';
+    btn.title='Giao diện sáng / tối';
+    hdr.appendChild(btn);
+    btn.addEventListener('click',function(){
+      var next=document.documentElement.getAttribute('data-theme')==='light'?'dark':'light';
+      document.documentElement.setAttribute('data-theme',next);
+      localStorage.setItem(THEME_KEY,next);
+      btn.textContent=next==='dark'?'☀':'🌙';
+    });
+  }
+
+  if(!chapNum) return;
+
+  // Save last chapter visited
+  try{
+    var rd=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    rd.lastChap='rita_chap'+chapNum;
+    if(!rd.scrollPos) rd.scrollPos={};
+    localStorage.setItem(READ_KEY,JSON.stringify(rd));
+  }catch(e){}
+
+  // Restore scroll position
+  try{
+    var rdR=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+    var savedPos=rdR.scrollPos&&rdR.scrollPos[chapNum]||0;
+    if(savedPos>200) setTimeout(function(){window.scrollTo(0,savedPos);},120);
+  }catch(e){}
+
+  // Save scroll position (debounced 600ms)
+  var saveT;
+  window.addEventListener('scroll',function(){
+    clearTimeout(saveT);
+    saveT=setTimeout(function(){
+      try{
+        var r2=JSON.parse(localStorage.getItem(READ_KEY)||'{}');
+        if(!r2.scrollPos) r2.scrollPos={};
+        r2.scrollPos[chapNum]=window.scrollY;
+        r2.lastChap='rita_chap'+chapNum;
+        localStorage.setItem(READ_KEY,JSON.stringify(r2));
+      }catch(e){}
+    },600);
+  },{passive:true});
+})();
+
+// ── HIGHLIGHT / NOTES SYSTEM ────────────────────────────
+(function(){
+  var READ_KEY='rita_reading';
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  if(!m) return;
+  var chapNum=m[1];
+  var HL_KEY='rita_hl_'+chapNum;
+
+  // ── STORAGE ──
+  function loadHL(){try{return JSON.parse(localStorage.getItem(HL_KEY)||'[]')}catch(e){return[]}}
+  function saveHL(arr){localStorage.setItem(HL_KEY,JSON.stringify(arr));window.__ritaSyncTrigger&&window.__ritaSyncTrigger();}
+  function genId(){return 'h'+Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
+
+  // ── XPATH HELPERS ──
+  var mainEl=document.getElementById('main');
+  function getXPath(node){
+    if(!node||node===mainEl) return '.';
+    var parts=[];
+    var cur=node.nodeType===3?node.parentNode:node;
+    while(cur&&cur!==mainEl&&cur!==document.body){
+      var tag=cur.tagName.toLowerCase();
+      var idx=1,sib=cur.previousElementSibling;
+      while(sib){if(sib.tagName&&sib.tagName.toLowerCase()===tag)idx++;sib=sib.previousElementSibling;}
+      parts.unshift(tag+'['+idx+']');
+      cur=cur.parentElement;
+    }
+    return parts.join('/');
+  }
+  function resolveXPath(xpath){
+    if(!mainEl||xpath==='.') return mainEl;
+    try{
+      var r=document.evaluate('.//'+xpath,mainEl,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null);
+      return r.singleNodeValue;
+    }catch(e){return null;}
+  }
+  function findTextAt(el,offset){
+    var walker=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,null);
+    var count=0,node;
+    while((node=walker.nextNode())){
+      var len=node.textContent.length;
+      if(count+len>=offset) return{node:node,localOffset:offset-count};
+      count+=len;
+    }
+    return null;
+  }
+
+  // ── APPLY MARK TO DOM ──
+  function applyMark(hl){
+    try{
+      var sEl=resolveXPath(hl.sxp), eEl=resolveXPath(hl.exp);
+      if(!sEl||!eEl) return false;
+      var sInfo=sEl.nodeType===3?{node:sEl,localOffset:hl.so}:findTextAt(sEl,hl.so);
+      var eInfo=eEl.nodeType===3?{node:eEl,localOffset:hl.eo}:findTextAt(eEl,hl.eo);
+      if(!sInfo||!eInfo) return false;
+      var range=document.createRange();
+      range.setStart(sInfo.node,sInfo.localOffset);
+      range.setEnd(eInfo.node,eInfo.localOffset);
+      applyRange(range,hl.id,hl.color,hl.note||'');
+      return true;
+    }catch(e){return false;}
+  }
+  function applyRange(range,hlId,color,note){
+    var walker=document.createTreeWalker(
+      range.commonAncestorContainer.nodeType===3
+        ?range.commonAncestorContainer.parentNode
+        :range.commonAncestorContainer,
+      NodeFilter.SHOW_TEXT,null
+    );
+    var nodes=[],node;
+    while((node=walker.nextNode())){if(range.intersectsNode(node))nodes.push(node);}
+    nodes.forEach(function(tn){
+      var s=tn===range.startContainer?range.startOffset:0;
+      var e=tn===range.endContainer?range.endOffset:tn.textContent.length;
+      if(s>=e) return;
+      var nr=document.createRange();
+      nr.setStart(tn,s); nr.setEnd(tn,Math.min(e,tn.textContent.length));
+      try{
+        var mk=document.createElement('mark');
+        mk.className='hl'; mk.setAttribute('data-hl-id',hlId);
+        mk.setAttribute('data-color',color); mk.setAttribute('data-note',note);
+        nr.surroundContents(mk);
+      }catch(err){
+        try{
+          var c=nr.extractContents(),mk2=document.createElement('mark');
+          mk2.className='hl'; mk2.setAttribute('data-hl-id',hlId);
+          mk2.setAttribute('data-color',color); mk2.setAttribute('data-note',note);
+          mk2.appendChild(c); nr.insertNode(mk2);
+        }catch(_){}
+      }
+    });
+  }
+  function removeMarks(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      var p=mk.parentNode;
+      while(mk.firstChild)p.insertBefore(mk.firstChild,mk);
+      p.removeChild(mk);
+      p.normalize();
+    });
+  }
+  function updateMarks(hlId,color,note){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.setAttribute('data-color',color);
+      mk.setAttribute('data-note',note);
+    });
+  }
+
+  // ── RESTORE HIGHLIGHTS ON LOAD ──
+  var highlights=loadHL();
+  // Sort by sxp+so descending so earlier ranges aren't offset by later insertions
+  // Actually apply in order (each one is independent)
+  highlights.forEach(applyMark);
+  // Expose re-apply for sync module
+  window.__ritaReapplyMarks=function(){
+    document.querySelectorAll('mark.hl').forEach(function(mk){
+      var p=mk.parentNode;while(mk.firstChild)p.insertBefore(mk.firstChild,mk);p.removeChild(mk);p.normalize();
+    });
+    loadHL().forEach(applyMark);
+    if(typeof updateBadge==='function') updateBadge();
+    if(typeof renderPanelIfOpen==='function') renderPanelIfOpen();
+  };
+
+  // ── SIDEBAR BUTTON ──
+  function updateBadge(){
+    var hls=loadHL();
+    var badge=document.getElementById('hl-badge');
+    if(badge) badge.textContent=hls.length||'0';
+  }
+  var sidebarNav=document.getElementById('sidebar-toc');
+  if(sidebarNav){
+    var hlBtn=document.createElement('button');
+    hlBtn.id='hl-sidebar-btn';
+    hlBtn.innerHTML='<span>✏ Ghi chú & Highlight</span><span id="hl-badge">0</span>';
+    hlBtn.addEventListener('click',function(){openPanel();});
+    // Insert before sidebar-nav (bottom buttons)
+    var sidebarNavBottom=document.getElementById('sidebar-nav');
+    if(sidebarNavBottom) sidebarNavBottom.parentNode.insertBefore(hlBtn,sidebarNavBottom);
+    else document.getElementById('sidebar').appendChild(hlBtn);
+  }
+  updateBadge();
+
+  // ── PANEL ──
+  var panel=document.createElement('div');
+  panel.id='hl-panel';
+  panel.innerHTML='<div id="hl-panel-hdr"><h3>✏ Ghi Chú & Highlight</h3><button id="hl-panel-close">×</button></div><div id="hl-panel-list"></div>';
+  document.body.appendChild(panel);
+  document.getElementById('hl-panel-close').addEventListener('click',closePanel);
+  function openPanel(){renderPanel();panel.classList.add('open');}
+  function closePanel(){panel.classList.remove('open');}
+  function renderPanel(){
+    var list=document.getElementById('hl-panel-list');
+    var hls=loadHL();
+    list.innerHTML='';
+    hls.forEach(function(hl){
+      var item=document.createElement('div');
+      item.className='hl-item'; item.setAttribute('data-color',hl.color);
+      var noteHtml=hl.note?'<div class="hl-item-note">✏ '+escHtml(hl.note)+'</div>':'';
+      item.innerHTML='<button class="hl-item-del" data-id="'+hl.id+'">🗑</button>'
+        +'<div class="hl-item-text">'+escHtml(hl.text||'')+'</div>'+noteHtml;
+      item.addEventListener('click',function(e){
+        if(e.target.classList.contains('hl-item-del')) return;
+        var mk=document.querySelector('mark.hl[data-hl-id="'+hl.id+'"]');
+        if(mk){mk.scrollIntoView({behavior:'smooth',block:'center'});flashMark(hl.id);}
+        closePanel();
+      });
+      item.querySelector('.hl-item-del').addEventListener('click',function(e){
+        e.stopPropagation(); deleteHL(hl.id); renderPanel();
+      });
+      list.appendChild(item);
+    });
+  }
+
+  // ── POPUP ──
+  var popup=document.createElement('div');
+  popup.id='hl-popup'; popup.className='hidden';
+  popup.innerHTML=
+    '<button class="hl-color-btn" data-color="yellow" title="Vàng"></button>'
+    +'<button class="hl-color-btn" data-color="green" title="Xanh"></button>'
+    +'<button class="hl-color-btn" data-color="red" title="Đỏ"></button>'
+    +'<div class="hl-sep"></div>'
+    +'<button class="hl-note-btn" title="Thêm ghi chú">✏</button>'
+    +'<button class="hl-del-btn hl-del-action" title="Xóa">🗑</button>';
+  document.body.appendChild(popup);
+
+  var currentHlId=null;    // id being edited (null = new)
+  var pendingRange=null;   // Range for new highlight
+  var pendingXP=null;      // serialized position for new highlight
+
+  // Position popup near a rect
+  function positionPopup(rect){
+    var pw=popup.offsetWidth||160,ph=popup.offsetHeight||40;
+    var top=rect.top-ph-10+window.scrollY;
+    var left=rect.left+(rect.width-pw)/2;
+    if(top<window.scrollY+8) top=rect.bottom+10+window.scrollY;
+    left=Math.max(8,Math.min(left,window.innerWidth-pw-8));
+    popup.style.top=top+'px';
+    popup.style.left=left+'px';
+  }
+  function showPopup(rect,hlId){
+    currentHlId=hlId||null;
+    var isEdit=!!hlId;
+    popup.querySelector('.hl-del-action').style.display=isEdit?'':'none';
+    popup.querySelector('.hl-note-btn').style.display='';
+    popup.classList.remove('hidden');
+    positionPopup(rect);
+  }
+  function hidePopup(){
+    popup.classList.add('hidden');
+    pendingRange=null; pendingXP=null; currentHlId=null;
+  }
+
+  // Color buttons
+  popup.querySelectorAll('.hl-color-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var color=btn.getAttribute('data-color');
+      if(currentHlId){
+        // Update existing
+        var hls=loadHL();
+        var idx=hls.findIndex(function(h){return h.id===currentHlId;});
+        if(idx>=0){hls[idx].color=color;saveHL(hls);}
+        updateMarks(currentHlId,color,hls[idx]?hls[idx].note||'':'');
+        updateBadge(); renderPanelIfOpen();
+      } else if(pendingRange&&pendingXP){
+        // Create new
+        var id=genId();
+        var text=pendingRange.toString().substring(0,500);
+        applyRange(pendingRange,id,color,'');
+        pendingRange.collapse();
+        window.getSelection()&&window.getSelection().removeAllRanges();
+        var hls=loadHL();
+        hls.push({id:id,color:color,note:'',text:text,
+          sxp:pendingXP.sxp,so:pendingXP.so,exp:pendingXP.exp,eo:pendingXP.eo});
+        saveHL(hls); updateBadge(); renderPanelIfOpen();
+      }
+      hidePopup();
+    });
+  });
+
+  // Note button
+  popup.querySelector('.hl-note-btn').addEventListener('click',function(){
+    var id=currentHlId;
+    var existing='';
+    if(id){var hls=loadHL();var h=hls.find(function(x){return x.id===id;});if(h)existing=h.note||'';}
+    hidePopup();
+    openNoteModal(id,existing);
+  });
+
+  // Delete button
+  popup.querySelector('.hl-del-action').addEventListener('click',function(){
+    if(currentHlId) deleteHL(currentHlId);
+    hidePopup();
+  });
+
+  function deleteHL(id){
+    removeMarks(id);
+    var hls=loadHL().filter(function(h){return h.id!==id;});
+    saveHL(hls); updateBadge(); renderPanelIfOpen();
+  }
+
+  // ── NOTE MODAL ──
+  var noteModal=document.createElement('div');
+  noteModal.id='hl-note-modal'; noteModal.className='hidden';
+  noteModal.innerHTML='<div id="hl-note-box">'
+    +'<h3>✏ Ghi chú</h3>'
+    +'<textarea id="hl-note-ta" placeholder="Nhập ghi chú..."></textarea>'
+    +'<div class="hl-note-actions">'
+    +'<button class="hl-note-cancel">Hủy</button>'
+    +'<button class="hl-note-save">Lưu</button>'
+    +'</div></div>';
+  document.body.appendChild(noteModal);
+  var _noteTargetId=null;
+  function openNoteModal(hlId,existing){
+    _noteTargetId=hlId;
+    document.getElementById('hl-note-ta').value=existing||'';
+    noteModal.classList.remove('hidden');
+    setTimeout(function(){document.getElementById('hl-note-ta').focus();},50);
+  }
+  noteModal.querySelector('.hl-note-cancel').addEventListener('click',function(){noteModal.classList.add('hidden');});
+  noteModal.querySelector('.hl-note-save').addEventListener('click',function(){
+    var note=document.getElementById('hl-note-ta').value.trim();
+    if(_noteTargetId){
+      var hls=loadHL();
+      var idx=hls.findIndex(function(h){return h.id===_noteTargetId;});
+      if(idx>=0){hls[idx].note=note;saveHL(hls);updateMarks(_noteTargetId,hls[idx].color,note);updateBadge();renderPanelIfOpen();}
+    }
+    noteModal.classList.add('hidden');
+  });
+  noteModal.addEventListener('click',function(e){if(e.target===noteModal)noteModal.classList.add('hidden');});
+
+  // ── SELECTION HANDLER ──
+  document.addEventListener('mouseup',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    setTimeout(function(){
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed||!sel.rangeCount){hidePopup();return;}
+      var range=sel.getRangeAt(0);
+      var text=range.toString().trim();
+      if(!text||text.length<2){hidePopup();return;}
+      // Only highlight within #main
+      if(!mainEl||!mainEl.contains(range.commonAncestorContainer)){hidePopup();return;}
+      // Serialize positions
+      var sNode=range.startContainer,eNode=range.endContainer;
+      var sParent=sNode.nodeType===3?sNode.parentNode:sNode;
+      var eParent=eNode.nodeType===3?eNode.parentNode:eNode;
+      var sxp=getXPath(sParent),exp=getXPath(eParent);
+      // calc offsets within parent element
+      var so=0,eo=0;
+      var w=document.createTreeWalker(sParent,NodeFilter.SHOW_TEXT,null);
+      var n;while((n=w.nextNode())){if(n===sNode){so+=range.startOffset;break;}so+=n.textContent.length;}
+      var w2=document.createTreeWalker(eParent,NodeFilter.SHOW_TEXT,null);
+      while((n=w2.nextNode())){if(n===eNode){eo+=range.endOffset;break;}eo+=n.textContent.length;}
+      pendingRange=range.cloneRange();
+      pendingXP={sxp:sxp,so:so,exp:exp,eo:eo};
+      currentHlId=null;
+      var rect=range.getBoundingClientRect();
+      showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width});
+    },10);
+  });
+
+  // ── CLICK ON EXISTING MARK ──
+  document.addEventListener('click',function(e){
+    if(popup.contains(e.target)||noteModal.contains(e.target)||panel.contains(e.target)) return;
+    var mk=e.target.closest('mark.hl');
+    if(!mk){
+      // click outside: if selection is collapsed, hide popup
+      var sel=window.getSelection();
+      if(!sel||sel.isCollapsed) hidePopup();
+      return;
+    }
+    e.stopPropagation();
+    var hlId=mk.getAttribute('data-hl-id');
+    var rect=mk.getBoundingClientRect();
+    currentHlId=hlId;
+    pendingRange=null;pendingXP=null;
+    showPopup({top:rect.top+window.scrollY,bottom:rect.bottom+window.scrollY,left:rect.left,width:rect.width},hlId);
+  });
+
+  // ── FLASH EFFECT ──
+  function flashMark(hlId){
+    document.querySelectorAll('mark.hl[data-hl-id="'+hlId+'"]').forEach(function(mk){
+      mk.style.transition='outline .2s';mk.style.outline='3px solid #c9a84c';
+      setTimeout(function(){mk.style.outline='none';},1500);
+    });
+  }
+
+  function renderPanelIfOpen(){if(panel.classList.contains('open'))renderPanel();}
+
+  function escHtml(s){
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+})();
+
+
+// ── CHAPTER NAV PANEL ───────────────────────────────────
+(function(){
+  var CHAPS=[
+    [1,'rita_chap01.html','Mẹo & Thủ Thuật Ôn Thi PMP®'],
+    [2,'rita_chap02.html','Tài Liệu Tham Khảo Kỳ Thi'],
+    [3,'rita_chap03.html','Nền Tảng Quản Lý Dự Án'],
+    [4,'rita_chap04.html','Tích Hợp'],
+    [5,'rita_chap05.html','Kỹ Năng Lãnh Đạo'],
+    [6,'rita_chap06.html','Xây Dựng & Hỗ Trợ Hiệu Suất Nhóm'],
+    [7,'rita_chap07.html','Phạm Vi Dự Án'],
+    [8,'rita_chap08.html','Tiến Độ & Ngân Sách Dự Án'],
+    [10,'rita_chap10.html','Chất Lượng Sản Phẩm Bàn Giao'],
+    [11,'rita_chap11.html','Truyền Thông'],
+    [12,'rita_chap12.html','Rủi Ro & Vấn Đề'],
+    [13,'rita_chap13.html','Mua Sắm'],
+    [14,'rita_chap14.html','Các Bên Liên Quan'],
+    [15,'rita_chap15.html','Tuân Thủ & Mang Lại Giá Trị'],
+    [16,'rita_chap16.html','Mẹo Vượt Qua Kỳ Thi PMP®'],
+    [17,'rita_chap17.html','Các Phương Pháp Agile Phổ Biến'],
+    [18,'rita_chap18.html','Hướng Dẫn PMBOK & Tiêu Chuẩn PM']
+  ];
+
+  var m=location.pathname.match(/rita_chap(\d+)/);
+  var curNum=m?parseInt(m[1]):null;
+  var READ_KEY='rita_reading';
+
+  // Build panel DOM
+  var panel=document.createElement('div');
+  panel.id='chap-panel'; panel.className='hidden';
+  var listHtml='';
+  CHAPS.forEach(function(c){
+    var isActive=c[0]===curNum;
+    listHtml+='<a class="chap-panel-item'+(isActive?' active':'')+'" href="'+c[1]+'">'
+      +'<span class="cpanel-num">Ch'+c[0]+'</span>'
+      +'<span class="cpanel-title">'+c[2]+'</span>'
+      +(isActive?'<span class="cpanel-status">● Đang đọc</span>':'')
+      +'</a>';
+  });
+  panel.innerHTML='<div id="chap-panel-overlay"></div>'
+    +'<div id="chap-panel-box">'
+    +'<div id="chap-panel-hdr"><h3>☰ Danh Sách Chương</h3><button id="chap-panel-close">×</button></div>'
+    +'<div id="chap-panel-list">'+listHtml+'</div>'
+    +'</div>';
+  document.body.appendChild(panel);
+
+  function openChapPanel(){panel.classList.remove('hidden');}
+  function closeChapPanel(){panel.classList.add('hidden');}
+  document.getElementById('chap-panel-overlay').addEventListener('click',closeChapPanel);
+  document.getElementById('chap-panel-close').addEventListener('click',closeChapPanel);
+
+  // Wire up the Mục lục button
+  var mucLucBtn=document.getElementById('chap-muc-luc-btn');
+  if(mucLucBtn) mucLucBtn.addEventListener('click',function(e){e.preventDefault();openChapPanel();});
+})();
+
+
+// ── GITHUB HIGHLIGHTS SYNC ──────────────────────────
+(function(){
+  var REPO='goukakujlptsuport-beep/pmbok6';
+  var TOKEN_KEY='rita_gh_token';
+  var API_URL='https://api.github.com/repos/'+REPO+'/contents/data/rita_highlights.json';
+  var fileSha=null;
+  var syncTimer=null;
+
+  // Called by patched saveHL after every highlight change
+  window.__ritaSyncTrigger=function(){
+    clearTimeout(syncTimer);
+    syncTimer=setTimeout(pushToGitHub,3000);
+  };
+
+  // ── STATUS BUTTON (inserted before #sidebar-nav) ──
+  var btn=document.createElement('button');
+  btn.id='sync-btn'; btn.dataset.state='no-token';
+  btn.innerHTML='<span>☁ Sync Git</span><span id="sync-status-text">Đang kết nối…</span>';
+  btn.title='Đồng bộ highlight / ghi chú lên GitHub';
+  btn.addEventListener('click',handleSyncClick);
+  var sidebarNavEl=document.getElementById('sidebar-nav');
+  if(sidebarNavEl) sidebarNavEl.parentNode.insertBefore(btn,sidebarNavEl);
+
+  var statusText=document.getElementById('sync-status-text');
+  function setStatus(state,msg){
+    btn.dataset.state=state;
+    if(statusText) statusText.textContent=msg;
+  }
+
+  // ── TOKEN MODAL ──
+  var modal=document.createElement('div');
+  modal.id='sync-modal'; modal.className='hidden';
+  modal.innerHTML='<div id="sync-modal-box">'
+    +'<h3>☁ Cấu Hình GitHub Sync</h3>'
+    +'<p>Nhập <strong style="color:var(--gold)">GitHub Personal Access Token (PAT)</strong> để đồng bộ highlight giữa các thiết bị.<br>'
+    +'Token cần quyền <strong style="color:var(--gold-lt)">Contents: Read &amp; Write</strong> trên repo pmbok6.<br>'
+    +'Token được lưu trong localStorage của trình duyệt này.</p>'
+    +'<input id="sync-token-input" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" spellcheck="false" autocomplete="off">'
+    +'<div class="sync-modal-btns">'
+    +'<button id="sync-clear-btn">🗑 Xóa token</button>'
+    +'<button id="sync-cancel-btn">Hủy</button>'
+    +'<button id="sync-save-btn">💾 Lưu &amp; Sync</button>'
+    +'</div></div>';
+  document.body.appendChild(modal);
+
+  document.getElementById('sync-cancel-btn').addEventListener('click',function(){modal.classList.add('hidden');});
+  document.getElementById('sync-save-btn').addEventListener('click',function(){
+    var t=(document.getElementById('sync-token-input').value||'').trim();
+    if(!t){alert('Vui lòng nhập GitHub PAT!');return;}
+    localStorage.setItem(TOKEN_KEY,t);
+    modal.classList.add('hidden');
+    fileSha=null;
+    initSync();
+  });
+  document.getElementById('sync-clear-btn').addEventListener('click',function(){
+    if(!confirm('Xóa token? Highlights sẽ không được sync cho đến khi cấu hình lại.')) return;
+    localStorage.removeItem(TOKEN_KEY);
+    fileSha=null;
+    modal.classList.add('hidden');
+    setStatus('no-token','Chưa cấu hình');
+  });
+  modal.addEventListener('click',function(e){if(e.target===modal)modal.classList.add('hidden');});
+
+  function handleSyncClick(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){
+      var inp=document.getElementById('sync-token-input');
+      if(inp) inp.value='';
+      modal.classList.remove('hidden');
+      setTimeout(function(){if(inp)inp.focus();},80);
+    } else {
+      // Manual re-sync
+      fileSha=null;
+      initSync();
+    }
+  }
+
+  // ── HELPERS ──
+  var ALL_CHAPS=['01','02','03','04','05','06','07','08','10','11','12','13','14','15','16','17','18'];
+
+  function getAllLocal(){
+    var all={};
+    ALL_CHAPS.forEach(function(n){
+      try{
+        var v=JSON.parse(localStorage.getItem('rita_hl_'+n)||'[]');
+        if(v&&v.length>0) all[n]=v;
+      }catch(e){}
+    });
+    return all;
+  }
+
+  function countHL(obj){
+    return Object.values(obj).reduce(function(s,a){return s+(a?a.length:0);},0);
+  }
+
+  // Union merge: keep all highlights by id, prefer local note if different
+  function mergeHL(local,remote){
+    var merged={};
+    var allChaps=new Set(Object.keys(local).concat(Object.keys(remote)));
+    allChaps.forEach(function(chap){
+      var loc=local[chap]||[];
+      var rem=remote[chap]||[];
+      var byId={};
+      loc.forEach(function(h){byId[h.id]=h;});
+      rem.forEach(function(h){if(!byId[h.id])byId[h.id]=h;});
+      var arr=Object.values(byId);
+      if(arr.length>0) merged[chap]=arr;
+    });
+    return merged;
+  }
+
+  function applyToLocal(highlights){
+    Object.keys(highlights).forEach(function(chap){
+      localStorage.setItem('rita_hl_'+chap,JSON.stringify(highlights[chap]));
+    });
+  }
+
+  // base64 encode/decode with Unicode support
+  function b64enc(str){
+    return btoa(unescape(encodeURIComponent(str)));
+  }
+  function b64dec(b64){
+    return decodeURIComponent(escape(atob(b64.replace(/[\r\n]/g,''))));
+  }
+
+  // ── FETCH FROM GITHUB ──
+  async function fetchFromGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    var headers={'Accept':'application/vnd.github.v3+json'};
+    if(token) headers['Authorization']='token '+token;
+    try{
+      var resp=await fetch(API_URL,{headers:headers});
+      if(resp.status===404){fileSha=null;return null;}
+      if(!resp.ok) throw new Error('HTTP '+resp.status);
+      var data=await resp.json();
+      fileSha=data.sha;
+      var content=JSON.parse(b64dec(data.content));
+      return content;
+    }catch(e){
+      console.warn('[sync] fetch:',e);
+      return 'error';
+    }
+  }
+
+  // ── PUSH TO GITHUB ──
+  async function pushToGitHub(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang sync…');
+    var local=getAllLocal();
+    var payload={version:1,lastSync:new Date().toISOString(),highlights:local};
+    var encoded=b64enc(JSON.stringify(payload,null,2));
+    var body={message:'sync: rita highlights ['+countHL(local)+' HL]',content:encoded};
+    if(fileSha) body.sha=fileSha;
+    try{
+      var resp=await fetch(API_URL,{
+        method:'PUT',
+        headers:{
+          'Authorization':'token '+token,
+          'Content-Type':'application/json',
+          'Accept':'application/vnd.github.v3+json'
+        },
+        body:JSON.stringify(body)
+      });
+      if(!resp.ok){
+        var err=await resp.json().catch(function(){return{};});
+        throw new Error(err.message||'HTTP '+resp.status);
+      }
+      var result=await resp.json();
+      fileSha=result.content.sha;
+      setStatus('ok','✓ Đã sync ('+countHL(local)+' HL)');
+    }catch(e){
+      setStatus('err','✗ '+e.message.slice(0,28));
+      console.error('[sync] push:',e);
+    }
+  }
+
+  // ── INIT ──
+  async function initSync(){
+    var token=localStorage.getItem(TOKEN_KEY);
+    if(!token){setStatus('no-token','Chưa cấu hình');return;}
+    setStatus('syncing','⟳ Đang tải…');
+
+    var ghData=await fetchFromGitHub();
+    if(ghData==='error'){
+      setStatus('err','✗ Không kết nối được');
+      return;
+    }
+    if(ghData&&ghData.highlights){
+      var local=getAllLocal();
+      var merged=mergeHL(local,ghData.highlights);
+      applyToLocal(merged);
+      // Re-apply marks on current chapter from updated localStorage
+      if(typeof window.__ritaReapplyMarks==='function') window.__ritaReapplyMarks();
+      var ghN=countHL(ghData.highlights), mergedN=countHL(merged);
+      if(mergedN>ghN){
+        // New highlights from remote — push merged back
+        setTimeout(pushToGitHub,1200);
+      } else {
+        setStatus('ok','✓ Sync OK ('+mergedN+' HL)');
+      }
+    } else {
+      // File doesn't exist yet — push current local state
+      await pushToGitHub();
+    }
+  }
+
+  initSync();
+})();
+
+</script>
+
+</body>
+</html>
