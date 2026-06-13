@@ -1,1 +1,18 @@
-{"version":1,"lastSync":"2026-06-13T00:00:00Z","highlights":{}}
+{
+  "version": 1,
+  "lastSync": "2026-06-13T02:03:25.726Z",
+  "highlights": {
+    "01": [
+      {
+        "id": "hmqboxy6ghm9s",
+        "color": "yellow",
+        "note": "",
+        "text": "Chuẩn bị cho kỳ thi PMP® là mộ",
+        "sxp": "p[1]",
+        "so": 0,
+        "exp": "p[1]",
+        "eo": 30
+      }
+    ]
+  }
+}
