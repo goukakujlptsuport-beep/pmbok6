@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Học Thuật Ngữ PM — PMLib</title>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="font-settings.js"></script>
+<style>
+:root {
+  --navy:  #1a2744;
+  --gold:  #c9a84c;
+  --gold-l:#e8d5a3;
+  --cream: #fdf8f0;
+  --text:  #2c2c2c;
+  --dim:   #666;
+  --border:#ddd5c0;
+  --green: #27ae60;
+  --red:   #e74c3c;
+  --blue:  #2980b9;
+  --r: 10px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;}
+
+/* ── TOP NAV ── */
+.top-nav{
+  position:sticky;top:0;z-index:100;
+  background:var(--navy);border-bottom:3px solid var(--gold);
+  display:flex;align-items:center;gap:10px;padding:0 20px;height:52px;
+  box-shadow:0 2px 12px rgba(0,0,0,.2);
+}
+.nav-back{color:var(--gold-l);text-decoration:none;font-size:13px;
+  display:flex;align-items:center;gap:5px;padding:5px 10px;
+  border:1px solid rgba(201,168,76,.3);border-radius:4px;transition:all .2s;white-space:nowrap;}
+.nav-back:hover{background:rgba(201,168,76,.15);color:#fff;}
+.nav-title{font-family:'Merriweather',serif;font-size:15px;color:rgba(255,255,255,.8);flex:1;text-align:center;}
+.nav-stats{font-size:12px;color:var(--gold-l);opacity:.8;white-space:nowrap;}
+.nav-font-btn{background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.3);
+  color:var(--gold);font-weight:700;font-size:13px;padding:5px 10px;border-radius:4px;cursor:pointer;}
+.nav-font-btn:hover{background:rgba(201,168,76,.15);color:#fff;}
+
+/* ── LAYOUT ── */
+.wrap{max-width:860px;margin:0 auto;padding:24px 16px 80px;}
+
+/* ── CATEGORY TABS ── */
+.cat-scroll{overflow-x:auto;margin-bottom:16px;-webkit-overflow-scrolling:touch;}
+.cat-scroll::-webkit-scrollbar{height:4px;}
+.cat-scroll::-webkit-scrollbar-thumb{background:rgba(201,168,76,.3);border-radius:2px;}
+.cat-tabs{display:flex;gap:6px;padding-bottom:4px;white-space:nowrap;}
+.cat-tab{
+  padding:6px 14px;border-radius:20px;border:1px solid var(--border);
+  background:#fff;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;
+  color:var(--dim);flex-shrink:0;
+}
+.cat-tab:hover{border-color:var(--gold);color:var(--navy);}
+.cat-tab.active{background:var(--navy);border-color:var(--navy);color:#fff;}
+.cat-count{opacity:.65;font-weight:400;margin-left:3px;}
+
+/* ── MODE SWITCH ── */
+.mode-row{display:flex;align-items:center;gap:8px;margin-bottom:20px;flex-wrap:wrap;}
+.mode-btn{
+  padding:8px 18px;border-radius:6px;border:1px solid var(--border);
+  background:#fff;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;gap:6px;
+}
+.mode-btn:hover{border-color:var(--gold);}
+.mode-btn.active{background:var(--navy);border-color:var(--navy);color:#fff;}
+.mode-spacer{flex:1;}
+.shuffle-btn{
+  padding:7px 14px;border-radius:6px;border:1px solid var(--border);
+  background:#fff;font-size:12px;cursor:pointer;transition:all .2s;color:var(--dim);
+}
+.shuffle-btn:hover{border-color:var(--gold);color:var(--navy);}
+
+/* ── PROGRESS BAR ── */
+.prog-wrap{margin-bottom:18px;}
+.prog-bar-bg{height:6px;background:#e8dcc8;border-radius:3px;overflow:hidden;margin-bottom:6px;}
+.prog-bar-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--navy));border-radius:3px;transition:width .4s;}
+.prog-label{display:flex;gap:16px;font-size:12px;color:var(--dim);}
+.prog-label .known{color:var(--green);font-weight:600;}
+.prog-label .unknown{color:var(--red);font-weight:600;}
+
+/* ── FLASHCARD ── */
+.card-area{perspective:1000px;margin-bottom:20px;cursor:pointer;user-select:none;}
+.card-inner{
+  position:relative;width:100%;min-height:220px;
+  transform-style:preserve-3d;transition:transform .5s cubic-bezier(.4,0,.2,1);
+}
+.card-inner.flipped{transform:rotateY(180deg);}
+.card-face{
+  position:absolute;width:100%;min-height:220px;backface-visibility:hidden;
+  border-radius:var(--r);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;padding:28px 32px;
+  box-shadow:0 4px 24px rgba(0,0,0,.10);
+}
+.card-front{
+  background:var(--navy);color:#fff;
+  border-bottom:4px solid var(--gold);
+}
+.card-back{
+  background:#fff;border:2px solid var(--gold);
+  transform:rotateY(180deg);
+}
+.card-badge{font-size:10px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  opacity:.6;margin-bottom:12px;align-self:flex-start;}
+.card-vi{font-family:'Merriweather',serif;font-size:1.5rem;font-weight:700;
+  text-align:center;line-height:1.4;margin-bottom:8px;}
+.card-cat-tag{font-size:11px;padding:3px 10px;background:rgba(201,168,76,.2);
+  color:var(--gold);border-radius:12px;margin-top:8px;}
+.card-en{font-family:'Merriweather',serif;font-size:1.3rem;font-weight:700;
+  color:var(--navy);text-align:center;line-height:1.4;margin-bottom:8px;}
+.card-hint{font-size:12px;color:var(--dim);text-align:center;font-style:italic;margin-top:6px;}
+.card-flip-hint{font-size:11px;opacity:.45;margin-top:16px;display:flex;align-items:center;gap:4px;}
+.card-num{font-size:11px;color:var(--gold-l);opacity:.7;align-self:flex-end;margin-top:8px;}
+
+/* ── CARD ACTIONS ── */
+.card-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.btn-prev,.btn-next,.btn-know,.btn-dontknow,.btn-reset{
+  padding:10px 22px;border-radius:7px;border:none;font-size:13px;font-weight:700;
+  cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px;
+}
+.btn-prev,.btn-next{background:#fff;border:1px solid var(--border);color:var(--navy);}
+.btn-prev:hover,.btn-next:hover{border-color:var(--gold);}
+.btn-know{background:var(--green);color:#fff;}
+.btn-know:hover{background:#1e8449;}
+.btn-dontknow{background:var(--red);color:#fff;}
+.btn-dontknow:hover{background:#c0392b;}
+.btn-reset{background:#fff;border:1px solid var(--border);color:var(--dim);}
+.btn-reset:hover{border-color:var(--red);color:var(--red);}
+
+/* ── QUIZ MODE ── */
+.quiz-wrap{background:#fff;border-radius:var(--r);padding:28px;
+  box-shadow:0 2px 12px rgba(0,0,0,.07);border:1px solid var(--border);}
+.quiz-num{font-size:12px;color:var(--dim);margin-bottom:4px;}
+.quiz-question{font-family:'Merriweather',serif;font-size:1.2rem;font-weight:700;
+  color:var(--navy);margin-bottom:6px;line-height:1.4;}
+.quiz-sub{font-size:13px;color:var(--dim);margin-bottom:22px;font-style:italic;}
+.quiz-opts{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
+.quiz-opt{
+  padding:13px 18px;border-radius:8px;border:2px solid var(--border);
+  background:#fafaf7;cursor:pointer;transition:all .2s;
+  font-size:13.5px;font-weight:600;text-align:left;
+  display:flex;align-items:center;gap:10px;
+}
+.quiz-opt:hover:not(.disabled){border-color:var(--gold);background:rgba(201,168,76,.06);}
+.quiz-opt.correct{border-color:var(--green);background:rgba(39,174,96,.1);color:var(--green);}
+.quiz-opt.wrong  {border-color:var(--red);background:rgba(231,76,60,.1);color:var(--red);}
+.quiz-opt.disabled{cursor:default;}
+.quiz-opt .opt-letter{
+  width:26px;height:26px;border-radius:50%;background:var(--border);
+  color:var(--dim);font-size:12px;display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;font-weight:700;transition:all .2s;
+}
+.quiz-opt.correct .opt-letter{background:var(--green);color:#fff;}
+.quiz-opt.wrong .opt-letter{background:var(--red);color:#fff;}
+.quiz-foot{display:flex;align-items:center;gap:12px;}
+.quiz-exp{font-size:13px;color:var(--dim);flex:1;font-style:italic;}
+.quiz-exp.correct-msg{color:var(--green);font-style:normal;font-weight:600;}
+.quiz-exp.wrong-msg{color:var(--red);font-style:normal;font-weight:600;}
+.btn-quiz-next{padding:10px 24px;background:var(--navy);color:#fff;
+  border:none;border-radius:7px;font-size:13px;font-weight:700;cursor:pointer;
+  transition:background .2s;}
+.btn-quiz-next:hover{background:#2a3a6a;}
+.quiz-score{display:flex;gap:16px;font-size:13px;margin-bottom:18px;}
+.quiz-score .q-correct{color:var(--green);font-weight:700;}
+.quiz-score .q-wrong{color:var(--red);font-weight:700;}
+
+/* ── QUIZ RESULT ── */
+.quiz-result{text-align:center;padding:40px 20px;}
+.qr-circle{width:110px;height:110px;border-radius:50%;background:var(--navy);
+  border:5px solid var(--gold);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;margin:0 auto 20px;}
+.qr-pct{font-size:1.8rem;font-weight:700;color:var(--gold);}
+.qr-lbl{font-size:11px;color:rgba(255,255,255,.6);}
+.qr-msg{font-family:'Merriweather',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.qr-sub{font-size:13px;color:var(--dim);margin-bottom:24px;}
+.btn-retry{padding:11px 28px;background:var(--gold);color:var(--navy);
+  border:none;border-radius:7px;font-size:14px;font-weight:700;cursor:pointer;margin:0 6px;}
+.btn-retry:hover{background:#b8941e;}
+
+/* ── BROWSE MODE ── */
+.browse-wrap{}
+.search-bar{position:relative;margin-bottom:14px;}
+.search-bar input{
+  width:100%;padding:11px 14px 11px 38px;border:1px solid var(--border);border-radius:8px;
+  font-size:13px;background:#fff;outline:none;transition:border .2s;
+  font-family:'Source Sans 3',sans-serif;
+}
+.search-bar input:focus{border-color:var(--gold);}
+.search-bar .s-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);
+  font-size:15px;opacity:.4;pointer-events:none;}
+.browse-count{font-size:12px;color:var(--dim);margin-bottom:10px;}
+.term-list{display:flex;flex-direction:column;gap:6px;}
+.term-row{
+  display:flex;align-items:center;gap:12px;padding:11px 16px;
+  background:#fff;border:1px solid var(--border);border-radius:8px;
+  transition:all .15s;
+}
+.term-row:hover{border-color:var(--gold);box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.term-row.known-row{border-left:3px solid var(--green);}
+.term-vi{font-weight:700;font-size:14px;color:var(--navy);flex:0 0 auto;min-width:200px;}
+.term-en{font-size:13px;color:var(--dim);flex:1;font-style:italic;}
+.term-cat-badge{font-size:10px;padding:2px 8px;border-radius:10px;
+  background:rgba(201,168,76,.15);color:#7a5c00;font-weight:600;flex-shrink:0;}
+.term-known-btn{
+  width:26px;height:26px;border-radius:50%;border:2px solid var(--border);
+  background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:12px;flex-shrink:0;transition:all .15s;
+}
+.term-known-btn:hover{border-color:var(--green);}
+.term-known-btn.known{background:var(--green);border-color:var(--green);color:#fff;}
+
+/* ── EMPTY STATE ── */
+.empty{text-align:center;padding:40px 20px;color:var(--dim);}
+.empty-icon{font-size:3rem;margin-bottom:12px;}
+
+@media(max-width:600px){
+  .card-vi{font-size:1.2rem;}
+  .card-en{font-size:1.1rem;}
+  .card-face{padding:22px 20px;}
+  .quiz-wrap{padding:18px;}
+  .term-vi{min-width:140px;}
+  .cat-tab{padding:5px 10px;font-size:11px;}
+}
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="home.html" class="nav-back">&#8592; Thư Viện</a>
+  <div class="nav-title">🔤 Học Thuật Ngữ PM</div>
+  <div class="nav-stats" id="nav-stats"></div>
+  <button class="nav-font-btn" id="vocab-font-btn" title="Font Settings">Aa</button>
+</nav>
+
+<div class="wrap">
+
+  <!-- CATEGORY TABS -->
+  <div class="cat-scroll"><div class="cat-tabs" id="cat-tabs"></div></div>
+
+  <!-- MODE SWITCH -->
+  <div class="mode-row">
+    <button class="mode-btn active" data-mode="flash" id="btn-flash">🃏 Flashcard</button>
+    <button class="mode-btn" data-mode="quiz"  id="btn-quiz" >📝 Quiz</button>
+    <button class="mode-btn" data-mode="browse" id="btn-browse">📋 Duyệt</button>
+    <div class="mode-spacer"></div>
+    <button class="shuffle-btn" id="btn-shuffle" title="Xáo bài">🔀 Xáo</button>
+  </div>
+
+  <!-- PROGRESS BAR (flash / quiz) -->
+  <div class="prog-wrap" id="prog-wrap">
+    <div class="prog-bar-bg"><div class="prog-bar-fill" id="prog-fill" style="width:0%"></div></div>
+    <div class="prog-label">
+      <span>Tổng: <strong id="stat-total">0</strong></span>
+      <span class="known">✓ Đã biết: <strong id="stat-known">0</strong></span>
+      <span class="unknown">✗ Chưa biết: <strong id="stat-unknown">0</strong></span>
+    </div>
+  </div>
+
+  <!-- FLASHCARD MODE -->
+  <div id="mode-flash">
+    <div class="card-area" id="card-area" title="Click để lật thẻ">
+      <div class="card-inner" id="card-inner">
+        <div class="card-face card-front" id="card-front">
+          <div class="card-badge">Tiếng Việt → Click để xem tiếng Anh</div>
+          <div class="card-vi" id="cf-vi">—</div>
+          <div class="card-cat-tag" id="cf-cat"></div>
+          <div class="card-flip-hint">👆 Click hoặc nhấn Space</div>
+          <div class="card-num" id="cf-num"></div>
+        </div>
+        <div class="card-face card-back" id="card-back">
+          <div class="card-badge" style="color:var(--dim)">English Equivalent</div>
+          <div class="card-en" id="cb-en">—</div>
+          <div class="card-hint" id="cb-hint"></div>
+          <div class="card-flip-hint" style="color:var(--dim)">👆 Click để lật lại</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-actions">
+      <button class="btn-prev" id="btn-prev">← Trước</button>
+      <button class="btn-dontknow" id="btn-dontknow">✗ Chưa biết</button>
+      <button class="btn-know" id="btn-know">✓ Đã biết</button>
+      <button class="btn-next" id="btn-next">Tiếp →</button>
+    </div>
+    <div style="text-align:center;margin-top:14px;">
+      <button class="btn-reset" id="btn-reset-known">🔄 Đặt lại tiến độ</button>
+    </div>
+  </div>
+
+  <!-- QUIZ MODE -->
+  <div id="mode-quiz" style="display:none;">
+    <div class="quiz-score">
+      <span>Câu: <strong id="q-num">0</strong>/<strong id="q-total">0</strong></span>
+      <span class="q-correct">✓ <strong id="q-correct">0</strong></span>
+      <span class="q-wrong">✗ <strong id="q-wrong">0</strong></span>
+    </div>
+    <div class="quiz-wrap" id="quiz-body">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+
+  <!-- BROWSE MODE -->
+  <div id="mode-browse" style="display:none;">
+    <div class="search-bar">
+      <span class="s-icon">🔍</span>
+      <input type="text" id="search-input" placeholder="Tìm thuật ngữ Việt hoặc Anh…">
+    </div>
+    <div class="browse-count" id="browse-count"></div>
+    <div class="term-list" id="term-list"></div>
+  </div>
+
+</div><!-- /wrap -->
+
+<script>
+// ── FULL VOCABULARY ──────────────────────────────────────────────────────────
+var VOCAB = [
+  // cat: 'init' | 'plan' | 'exec' | 'monitor' | 'close' | 'agile' | 'risk' | 'proc' | 'people' | 'quality' | 'cost' | 'comm'
+
+  // ── KHỞI TẠO ──────────────────────────────────────────────────────────────
+  {vi:'Điều lệ dự án',               en:'Project Charter',                       cat:'init'},
+  {vi:'Phát triển Điều lệ Dự án',    en:'Develop Project Charter',               cat:'init'},
+  {vi:'Nhật ký giả định',            en:'Assumption Log',                        cat:'init'},
+  {vi:'Phân tích bên liên quan',     en:'Stakeholder Analysis',                  cat:'init'},
+  {vi:'Sổ đăng ký bên liên quan',    en:'Stakeholder Register',                  cat:'init'},
+  {vi:'Nhà tài trợ dự án',           en:'Project Sponsor',                       cat:'init'},
+  {vi:'Nhóm quy trình Khởi tạo',     en:'Initiating Process Group',              cat:'init'},
+  {vi:'Trường hợp kinh doanh',       en:'Business Case',                         cat:'init'},
+  {vi:'Tổ chức ma trận',             en:'Matrix Organization',                   cat:'init'},
+  {vi:'Tổ chức theo dự án',          en:'Projectized Organization',              cat:'init'},
+  {vi:'Tổ chức chức năng',           en:'Functional Organization',               cat:'init'},
+  {vi:'Văn phòng quản lý dự án',     en:'PMO – Project Management Office',       cat:'init'},
+  {vi:'Vòng đời dự án',              en:'Project Life Cycle',                    cat:'init'},
+
+  // ── LẬP KẾ HOẠCH ──────────────────────────────────────────────────────────
+  {vi:'Kế hoạch quản lý dự án',      en:'Project Management Plan',               cat:'plan'},
+  {vi:'Cấu trúc phân chia công việc',en:'WBS – Work Breakdown Structure',        cat:'plan'},
+  {vi:'Gói công việc',               en:'Work Package',                          cat:'plan'},
+  {vi:'Sơ đồ Gantt',                 en:'Gantt Chart',                           cat:'plan'},
+  {vi:'Sơ đồ mạng',                  en:'Network Diagram',                       cat:'plan'},
+  {vi:'Đường găng',                  en:'Critical Path',                         cat:'plan'},
+  {vi:'Phương pháp đường găng',      en:'Critical Path Method (CPM)',            cat:'plan'},
+  {vi:'Đường cơ sở lịch trình',      en:'Schedule Baseline',                     cat:'plan'},
+  {vi:'Đường cơ sở ngân sách',       en:'Cost Baseline',                         cat:'plan'},
+  {vi:'Đường cơ sở phạm vi',         en:'Scope Baseline',                        cat:'plan'},
+  {vi:'Đường cơ sở đo lường hiệu suất',en:'Performance Measurement Baseline',   cat:'plan'},
+  {vi:'Mô tả phạm vi dự án',         en:'Project Scope Statement',               cat:'plan'},
+  {vi:'Danh sách hoạt động',         en:'Activity List',                         cat:'plan'},
+  {vi:'Sắp xếp thứ tự hoạt động',   en:'Activity Sequencing',                   cat:'plan'},
+  {vi:'Ước tính thời gian hoạt động',en:'Activity Duration Estimating',          cat:'plan'},
+  {vi:'Ma trận trách nhiệm',         en:'Responsibility Assignment Matrix (RACI)',cat:'plan'},
+  {vi:'Lịch nguồn lực',              en:'Resource Calendar',                     cat:'plan'},
+  {vi:'Kế hoạch quản lý phạm vi',    en:'Scope Management Plan',                 cat:'plan'},
+  {vi:'Kế hoạch quản lý lịch trình', en:'Schedule Management Plan',              cat:'plan'},
+  {vi:'Kế hoạch quản lý chi phí',    en:'Cost Management Plan',                  cat:'plan'},
+  {vi:'Kế hoạch quản lý chất lượng', en:'Quality Management Plan',               cat:'plan'},
+  {vi:'Kế hoạch quản lý nguồn lực',  en:'Resource Management Plan',              cat:'plan'},
+  {vi:'Kế hoạch quản lý truyền thông',en:'Communications Management Plan',       cat:'plan'},
+  {vi:'Kế hoạch quản lý rủi ro',     en:'Risk Management Plan',                  cat:'plan'},
+  {vi:'Kế hoạch quản lý mua sắm',    en:'Procurement Management Plan',           cat:'plan'},
+  {vi:'Kế hoạch tham gia bên liên quan',en:'Stakeholder Engagement Plan',        cat:'plan'},
+  {vi:'Nhóm quy trình Lập kế hoạch', en:'Planning Process Group',                cat:'plan'},
+
+  // ── THỰC HIỆN ─────────────────────────────────────────────────────────────
+  {vi:'Cuộc họp khởi động',          en:'Kickoff Meeting',                       cat:'exec'},
+  {vi:'Quản lý kiến thức',           en:'Knowledge Management',                  cat:'exec'},
+  {vi:'Kiến thức tường minh',        en:'Explicit Knowledge',                    cat:'exec'},
+  {vi:'Kiến thức ẩn',                en:'Tacit Knowledge',                       cat:'exec'},
+  {vi:'Giao tiếp thẩm thấu',        en:'Osmotic Communication',                 cat:'exec'},
+  {vi:'Xây dựng nhóm',               en:'Team Building',                         cat:'exec'},
+  {vi:'Phát triển nhóm',             en:'Team Development',                      cat:'exec'},
+  {vi:'Nhóm tự tổ chức',             en:'Self-Organizing Team',                  cat:'exec'},
+  {vi:'Hệ thống ủy quyền công việc', en:'Work Authorization System',             cat:'exec'},
+  {vi:'Thúc đẩy nhóm',              en:'Team Motivation',                       cat:'exec'},
+  {vi:'Nhóm quy trình Thực hiện',    en:'Executing Process Group',               cat:'exec'},
+  {vi:'Bài học kinh nghiệm',         en:'Lessons Learned',                       cat:'exec'},
+  {vi:'Tài liệu mua sắm',            en:'Procurement Documents',                 cat:'exec'},
+  {vi:'Phát biểu công việc',         en:'Statement of Work (SOW)',               cat:'exec'},
+
+  // ── GIÁM SÁT & KIỂM SOÁT ─────────────────────────────────────────────────
+  {vi:'Quản lý giá trị kiếm được',   en:'Earned Value Management (EVM)',         cat:'monitor'},
+  {vi:'Giá trị kiếm được',           en:'EV – Earned Value',                     cat:'monitor'},
+  {vi:'Giá trị kế hoạch',            en:'PV – Planned Value',                    cat:'monitor'},
+  {vi:'Chi phí thực tế',             en:'AC – Actual Cost',                      cat:'monitor'},
+  {vi:'Ngân sách hoàn thành',        en:'BAC – Budget at Completion',            cat:'monitor'},
+  {vi:'Chỉ số hiệu suất chi phí',    en:'CPI – Cost Performance Index',          cat:'monitor'},
+  {vi:'Chỉ số hiệu suất lịch trình', en:'SPI – Schedule Performance Index',      cat:'monitor'},
+  {vi:'Sai lệch chi phí',            en:'CV – Cost Variance',                    cat:'monitor'},
+  {vi:'Sai lệch lịch trình',         en:'SV – Schedule Variance',                cat:'monitor'},
+  {vi:'Ước tính đến hoàn thành',     en:'ETC – Estimate to Complete',            cat:'monitor'},
+  {vi:'Ước tính lúc hoàn thành',     en:'EAC – Estimate at Completion',          cat:'monitor'},
+  {vi:'Ban kiểm soát thay đổi',      en:'Change Control Board (CCB)',            cat:'monitor'},
+  {vi:'Kiểm soát thay đổi',          en:'Change Control',                        cat:'monitor'},
+  {vi:'Yêu cầu thay đổi',            en:'Change Request',                        cat:'monitor'},
+  {vi:'Hành động khắc phục',         en:'Corrective Action',                     cat:'monitor'},
+  {vi:'Hành động phòng ngừa',        en:'Preventive Action',                     cat:'monitor'},
+  {vi:'Sửa chữa lỗi',                en:'Defect Repair',                         cat:'monitor'},
+  {vi:'Thông tin hiệu suất công việc',en:'Work Performance Information',         cat:'monitor'},
+  {vi:'Dữ liệu hiệu suất công việc', en:'Work Performance Data',                 cat:'monitor'},
+  {vi:'Nhóm quy trình Kiểm soát',    en:'Monitoring & Controlling Process Group',cat:'monitor'},
+
+  // ── KẾT THÚC ──────────────────────────────────────────────────────────────
+  {vi:'Đóng dự án',                  en:'Project Closure',                       cat:'close'},
+  {vi:'Đóng mua sắm',                en:'Procurement Closure',                   cat:'close'},
+  {vi:'Kiểm toán mua sắm',           en:'Procurement Audit',                     cat:'close'},
+  {vi:'Nhóm quy trình Kết thúc',     en:'Closing Process Group',                 cat:'close'},
+  {vi:'Lưu trữ dự án',               en:'Project Archive',                       cat:'close'},
+  {vi:'Tổng kết dự án',              en:'Project Review',                        cat:'close'},
+
+  // ── AGILE & HYBRID ────────────────────────────────────────────────────────
+  {vi:'Tồn đọng sản phẩm',           en:'Product Backlog',                       cat:'agile'},
+  {vi:'Tồn đọng Sprint',             en:'Sprint Backlog',                        cat:'agile'},
+  {vi:'Chủ sở hữu sản phẩm',         en:'Product Owner',                        cat:'agile'},
+  {vi:'Scrum Master',                en:'Scrum Master',                          cat:'agile'},
+  {vi:'Nhóm Scrum',                  en:'Scrum Team',                            cat:'agile'},
+  {vi:'Phiên retrospective',         en:'Retrospective',                         cat:'agile'},
+  {vi:'Lập kế hoạch lặp',            en:'Iteration Planning',                    cat:'agile'},
+  {vi:'Phương pháp Agile',           en:'Agile Methodology',                     cat:'agile'},
+  {vi:'Phương pháp hỗn hợp',         en:'Hybrid Approach',                       cat:'agile'},
+  {vi:'Phương pháp Scrum',           en:'Scrum Framework',                       cat:'agile'},
+  {vi:'Phương pháp Kanban',          en:'Kanban Method',                         cat:'agile'},
+  {vi:'Phương pháp XP',              en:'Extreme Programming (XP)',              cat:'agile'},
+  {vi:'Vòng lặp Sprint',             en:'Sprint',                                cat:'agile'},
+  {vi:'Lãnh đạo phục vụ',            en:'Servant Leader',                        cat:'agile'},
+  {vi:'Câu chuyện người dùng',       en:'User Story',                            cat:'agile'},
+  {vi:'Định nghĩa hoàn thành',       en:'Definition of Done (DoD)',              cat:'agile'},
+  {vi:'Điểm câu chuyện',             en:'Story Points',                          cat:'agile'},
+  {vi:'Sơ đồ tốc độ',               en:'Velocity Chart',                        cat:'agile'},
+  {vi:'Biểu đồ burndown',            en:'Burndown Chart',                        cat:'agile'},
+  {vi:'Biểu đồ burnup',              en:'Burnup Chart',                          cat:'agile'},
+  {vi:'Kiểm tra lặp',                en:'Sprint Review',                         cat:'agile'},
+
+  // ── RỦI RO ────────────────────────────────────────────────────────────────
+  {vi:'Nhật ký rủi ro',              en:'Risk Register',                         cat:'risk'},
+  {vi:'Nhận diện rủi ro',            en:'Risk Identification',                   cat:'risk'},
+  {vi:'Phân tích rủi ro định tính',  en:'Qualitative Risk Analysis',             cat:'risk'},
+  {vi:'Phân tích rủi ro định lượng', en:'Quantitative Risk Analysis',            cat:'risk'},
+  {vi:'Kế hoạch ứng phó rủi ro',     en:'Risk Response Plan',                    cat:'risk'},
+  {vi:'Tránh rủi ro',                en:'Risk Avoidance',                        cat:'risk'},
+  {vi:'Giảm thiểu rủi ro',           en:'Risk Mitigation',                       cat:'risk'},
+  {vi:'Chuyển giao rủi ro',          en:'Risk Transfer / Deflect',               cat:'risk'},
+  {vi:'Chấp nhận rủi ro',            en:'Risk Acceptance',                       cat:'risk'},
+  {vi:'Khai thác cơ hội',            en:'Exploit Opportunity',                   cat:'risk'},
+  {vi:'Tăng cường cơ hội',           en:'Enhance Opportunity',                   cat:'risk'},
+  {vi:'Chia sẻ cơ hội',              en:'Share Opportunity',                     cat:'risk'},
+  {vi:'Dự phòng quản lý',            en:'Management Reserve',                    cat:'risk'},
+  {vi:'Dự phòng dự phòng',           en:'Contingency Reserve',                   cat:'risk'},
+  {vi:'Phân tích cây quyết định',    en:'Decision Tree Analysis',                cat:'risk'},
+  {vi:'Phân tích Monte Carlo',       en:'Monte Carlo Analysis',                  cat:'risk'},
+  {vi:'Rủi ro còn sót lại',          en:'Residual Risk',                         cat:'risk'},
+  {vi:'Rủi ro thứ cấp',              en:'Secondary Risk',                        cat:'risk'},
+  {vi:'Giá trị tiền tệ kỳ vọng',     en:'EMV – Expected Monetary Value',        cat:'risk'},
+
+  // ── MUA SẮM ───────────────────────────────────────────────────────────────
+  {vi:'Hợp đồng giá cố định',        en:'Fixed-Price Contract (FP)',             cat:'proc'},
+  {vi:'Hợp đồng chi phí cộng',       en:'Cost-Plus Contract (CP)',               cat:'proc'},
+  {vi:'Hợp đồng thời gian & vật liệu',en:'Time & Material Contract (T&M)',      cat:'proc'},
+  {vi:'Hợp đồng giá cố định chắc chắn',en:'Firm Fixed Price (FFP)',             cat:'proc'},
+  {vi:'Hợp đồng tổng giá cố định + phí khích lệ',en:'Fixed Price Incentive Fee (FPIF)',cat:'proc'},
+  {vi:'Chi phí cộng phí cố định',    en:'Cost Plus Fixed Fee (CPFF)',            cat:'proc'},
+  {vi:'Yêu cầu đề xuất',             en:'RFP – Request for Proposal',            cat:'proc'},
+  {vi:'Yêu cầu báo giá',             en:'RFQ – Request for Quotation',           cat:'proc'},
+  {vi:'Phân tích tự làm hay mua',    en:'Make-or-Buy Analysis',                  cat:'proc'},
+  {vi:'Đàm phán',                    en:'Negotiation',                           cat:'proc'},
+  {vi:'Nhà cung cấp',                en:'Vendor / Supplier',                     cat:'proc'},
+  {vi:'Quản lý hợp đồng',            en:'Contract Management',                   cat:'proc'},
+
+  // ── CON NGƯỜI & LÃNH ĐẠO ─────────────────────────────────────────────────
+  {vi:'Kỹ năng lãnh đạo',            en:'Leadership Skills',                     cat:'people'},
+  {vi:'Phong cách lãnh đạo',         en:'Leadership Style',                      cat:'people'},
+  {vi:'Lãnh đạo tình huống',         en:'Situational Leadership',                cat:'people'},
+  {vi:'Quản lý xung đột',            en:'Conflict Management',                   cat:'people'},
+  {vi:'Kỹ năng giao tiếp',           en:'Communication Skills',                  cat:'people'},
+  {vi:'Thúc đẩy',                    en:'Motivation',                            cat:'people'},
+  {vi:'Lý thuyết Maslow',            en:'Maslow\'s Hierarchy of Needs',          cat:'people'},
+  {vi:'Lý thuyết Herzberg',          en:'Herzberg\'s Motivation-Hygiene Theory', cat:'people'},
+  {vi:'Lý thuyết McGregor X-Y',      en:'McGregor\'s Theory X and Y',            cat:'people'},
+  {vi:'Lý thuyết kỳ vọng Vroom',     en:'Vroom\'s Expectancy Theory',            cat:'people'},
+  {vi:'Văn hóa tổ chức',             en:'Organizational Culture',                cat:'people'},
+  {vi:'Bên liên quan',               en:'Stakeholder',                           cat:'people'},
+  {vi:'Quản lý bên liên quan',       en:'Stakeholder Management',                cat:'people'},
+  {vi:'Ma trận quyền lực/quan tâm',  en:'Power/Interest Grid',                   cat:'people'},
+  {vi:'Đánh giá hiệu suất',          en:'Performance Review',                    cat:'people'},
+  {vi:'Tạo điều kiện',               en:'Facilitation',                          cat:'people'},
+
+  // ── CHẤT LƯỢNG ────────────────────────────────────────────────────────────
+  {vi:'Đảm bảo chất lượng',          en:'Quality Assurance (QA)',                cat:'quality'},
+  {vi:'Kiểm soát chất lượng',        en:'Quality Control (QC)',                  cat:'quality'},
+  {vi:'Tiêu chí chấp nhận',          en:'Acceptance Criteria',                   cat:'quality'},
+  {vi:'Kiểm tra',                    en:'Inspection',                            cat:'quality'},
+  {vi:'Sơ đồ nguyên nhân-kết quả',   en:'Cause-and-Effect Diagram (Fishbone)',   cat:'quality'},
+  {vi:'Sơ đồ xương cá',              en:'Fishbone / Ishikawa Diagram',           cat:'quality'},
+  {vi:'Biểu đồ Pareto',              en:'Pareto Chart',                          cat:'quality'},
+  {vi:'Biểu đồ kiểm soát',           en:'Control Chart',                         cat:'quality'},
+  {vi:'Đường trung tâm',             en:'Mean / Central Line',                   cat:'quality'},
+  {vi:'Giới hạn kiểm soát',          en:'Control Limits',                        cat:'quality'},
+  {vi:'Giới hạn đặc tả',             en:'Specification Limits',                  cat:'quality'},
+  {vi:'Phân tích nguyên nhân gốc rễ',en:'Root Cause Analysis (RCA)',             cat:'quality'},
+  {vi:'Cải tiến liên tục',           en:'Continuous Improvement (Kaizen)',        cat:'quality'},
+
+  // ── CHI PHÍ ───────────────────────────────────────────────────────────────
+  {vi:'Ước tính tương tự',           en:'Analogous Estimating',                  cat:'cost'},
+  {vi:'Ước tính thông số',           en:'Parametric Estimating',                 cat:'cost'},
+  {vi:'Ước tính ba điểm',            en:'Three-Point Estimating (PERT)',         cat:'cost'},
+  {vi:'Ước tính từ dưới lên',        en:'Bottom-Up Estimating',                  cat:'cost'},
+  {vi:'Phân tích chi phí-lợi ích',   en:'Cost-Benefit Analysis',                 cat:'cost'},
+  {vi:'Giá trị hiện tại ròng',       en:'NPV – Net Present Value',               cat:'cost'},
+  {vi:'Tỷ suất hoàn vốn nội bộ',     en:'IRR – Internal Rate of Return',         cat:'cost'},
+  {vi:'Phân tích hòa vốn',           en:'Break-Even Analysis',                   cat:'cost'},
+  {vi:'Thời gian hoàn vốn',          en:'Payback Period',                        cat:'cost'},
+  {vi:'San bằng nguồn lực',          en:'Resource Leveling',                     cat:'cost'},
+  {vi:'Phân bổ nguồn lực',           en:'Resource Allocation',                   cat:'cost'},
+
+  // ── TRUYỀN THÔNG ──────────────────────────────────────────────────────────
+  {vi:'Kế hoạch truyền thông',       en:'Communications Management Plan',        cat:'comm'},
+  {vi:'Sản phẩm bàn giao',           en:'Deliverable',                           cat:'comm'},
+  {vi:'Mốc quan trọng',              en:'Milestone',                             cat:'comm'},
+  {vi:'Báo cáo hiệu suất',           en:'Performance Report',                    cat:'comm'},
+  {vi:'Biên bản cuộc họp',           en:'Meeting Minutes',                       cat:'comm'},
+  {vi:'Tài liệu dự án',              en:'Project Document',                      cat:'comm'},
+  {vi:'Nhật ký vấn đề',              en:'Issue Log',                             cat:'comm'},
+  {vi:'Kênh truyền thông',           en:'Communication Channel',                 cat:'comm'},
+  {vi:'Công thức kênh truyền thông', en:'N*(N-1)/2 channels formula',            cat:'comm'},
+];
+
+// ── CATEGORIES ───────────────────────────────────────────────────────────────
+var CATS = [
+  {id:'all',     label:'Tất cả'},
+  {id:'init',    label:'🚀 Khởi tạo'},
+  {id:'plan',    label:'📋 Lập kế hoạch'},
+  {id:'exec',    label:'⚙️ Thực hiện'},
+  {id:'monitor', label:'📊 Kiểm soát'},
+  {id:'close',   label:'🏁 Kết thúc'},
+  {id:'agile',   label:'🔄 Agile'},
+  {id:'risk',    label:'⚠️ Rủi ro'},
+  {id:'proc',    label:'🤝 Mua sắm'},
+  {id:'people',  label:'👥 Con người'},
+  {id:'quality', label:'✅ Chất lượng'},
+  {id:'cost',    label:'💰 Chi phí'},
+  {id:'comm',    label:'📢 Truyền thông'},
+];
+
+// ── STATE ─────────────────────────────────────────────────────────────────────
+var LS_KEY   = 'pmlib_vocab_v1';
+var mode     = 'flash';   // 'flash' | 'quiz' | 'browse'
+var curCat   = 'all';
+var deck     = [];        // current filtered + shuffled deck
+var cardIdx  = 0;
+var flipped  = false;
+var quizState = null;
+
+function loadProgress() {
+  try { return JSON.parse(localStorage.getItem(LS_KEY) || '{}'); } catch(e) { return {}; }
+}
+function saveProgress(p) {
+  try { localStorage.setItem(LS_KEY, JSON.stringify(p)); } catch(e) {}
+}
+
+function isKnown(term) { return !!loadProgress()[term]; }
+function setKnown(term, val) {
+  var p = loadProgress(); p[term] = val ? 1 : 0; saveProgress(p);
+}
+
+// ── DECK ─────────────────────────────────────────────────────────────────────
+function buildDeck(cat) {
+  var list = cat === 'all' ? VOCAB.slice() : VOCAB.filter(function(t){return t.cat===cat;});
+  return list;
+}
+function shuffle(arr) {
+  for (var i = arr.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i+1));
+    var tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
+  }
+  return arr;
+}
+
+// ── CAT LABELS ───────────────────────────────────────────────────────────────
+var CAT_MAP = {};
+CATS.forEach(function(c){ CAT_MAP[c.id] = c.label; });
+function catLabel(id) { return (CAT_MAP[id] || id).replace(/^[^\s]+ /,''); }
+
+// ── PROGRESS ─────────────────────────────────────────────────────────────────
+function updateProgress() {
+  var prog   = loadProgress();
+  var total  = deck.length;
+  var known  = deck.filter(function(t){ return prog[t.vi]; }).length;
+  var unknown= total - known;
+  var pct    = total > 0 ? Math.round(known/total*100) : 0;
+
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('stat-total').textContent   = total;
+  document.getElementById('stat-known').textContent   = known;
+  document.getElementById('stat-unknown').textContent = unknown;
+  document.getElementById('nav-stats').textContent    =
+    known + '/' + (curCat==='all'?VOCAB.length:deck.length) + ' đã biết';
+}
+
+// ── FLASH MODE ───────────────────────────────────────────────────────────────
+function renderCard() {
+  if (deck.length === 0) return;
+  var t = deck[cardIdx];
+  var prog = loadProgress();
+
+  var inner = document.getElementById('card-inner');
+  inner.classList.remove('flipped'); flipped = false;
+
+  document.getElementById('cf-vi').textContent  = t.vi;
+  document.getElementById('cb-en').textContent  = t.en;
+  document.getElementById('cf-cat').textContent = catLabel(t.cat);
+  document.getElementById('cf-num').textContent = (cardIdx+1) + ' / ' + deck.length;
+  document.getElementById('cb-hint').textContent = catLabel(t.cat);
+
+  // Highlight card if known
+  var front = document.getElementById('card-front');
+  front.style.borderTop = prog[t.vi] ? '4px solid var(--green)' : '';
+}
+
+function flipCard() {
+  flipped = !flipped;
+  document.getElementById('card-inner').classList.toggle('flipped', flipped);
+}
+
+function nextCard(delta) {
+  cardIdx = (cardIdx + delta + deck.length) % deck.length;
+  renderCard();
+}
+
+document.getElementById('card-area').addEventListener('click', flipCard);
+document.getElementById('btn-prev').addEventListener('click', function(){ nextCard(-1); });
+document.getElementById('btn-next').addEventListener('click', function(){ nextCard(1); });
+document.getElementById('btn-know').addEventListener('click', function(){
+  if (deck.length === 0) return;
+  setKnown(deck[cardIdx].vi, true); updateProgress(); nextCard(1);
+});
+document.getElementById('btn-dontknow').addEventListener('click', function(){
+  if (deck.length === 0) return;
+  setKnown(deck[cardIdx].vi, false); updateProgress(); nextCard(1);
+});
+document.getElementById('btn-reset-known').addEventListener('click', function(){
+  if (!confirm('Đặt lại toàn bộ tiến độ học?')) return;
+  saveProgress({}); updateProgress(); renderCard();
+});
+
+// Keyboard
+document.addEventListener('keydown', function(e) {
+  if (mode !== 'flash') return;
+  if (e.target.tagName === 'INPUT') return;
+  if (e.code === 'Space' || e.code === 'ArrowDown') { e.preventDefault(); flipCard(); }
+  if (e.code === 'ArrowRight') { e.preventDefault(); nextCard(1); }
+  if (e.code === 'ArrowLeft')  { e.preventDefault(); nextCard(-1); }
+  if (e.key === '1') { setKnown(deck[cardIdx]?.vi, true);  updateProgress(); nextCard(1); }
+  if (e.key === '2') { setKnown(deck[cardIdx]?.vi, false); updateProgress(); nextCard(1); }
+});
+
+// ── QUIZ MODE ─────────────────────────────────────────────────────────────────
+function startQuiz() {
+  var q = shuffle(deck.slice());
+  quizState = { questions: q, idx: 0, correct: 0, wrong: 0, answered: false };
+  renderQuizQ();
+}
+
+function getWrongOptions(correct, count) {
+  var pool = VOCAB.filter(function(t){ return t.en !== correct.en; });
+  shuffle(pool);
+  return pool.slice(0, count);
+}
+
+function renderQuizQ() {
+  if (!quizState) return;
+  var q = quizState;
+
+  if (q.idx >= q.questions.length) {
+    renderQuizResult(); return;
+  }
+
+  var t = q.questions[q.idx];
+  document.getElementById('q-num').textContent     = q.idx + 1;
+  document.getElementById('q-total').textContent   = q.questions.length;
+  document.getElementById('q-correct').textContent = q.correct;
+  document.getElementById('q-wrong').textContent   = q.wrong;
+  q.answered = false;
+
+  var wrongs = getWrongOptions(t, 3);
+  var opts = shuffle([t].concat(wrongs));
+  var letters = ['A','B','C','D'];
+
+  var body = document.getElementById('quiz-body');
+  body.innerHTML =
+    '<div class="quiz-num">Câu ' + (q.idx+1) + ' / ' + q.questions.length + '</div>' +
+    '<div class="quiz-question">"' + t.vi + '" trong tiếng Anh là gì?</div>' +
+    '<div class="quiz-sub">Chọn câu trả lời đúng:</div>' +
+    '<div class="quiz-opts" id="quiz-opts"></div>' +
+    '<div class="quiz-foot">' +
+      '<div class="quiz-exp" id="quiz-exp"></div>' +
+      '<button class="btn-quiz-next" id="quiz-next" style="display:none">Tiếp →</button>' +
+    '</div>';
+
+  var optsDiv = document.getElementById('quiz-opts');
+  opts.forEach(function(opt, i) {
+    var btn = document.createElement('button');
+    btn.className = 'quiz-opt';
+    btn.dataset.en = opt.en;
+    btn.innerHTML = '<span class="opt-letter">' + letters[i] + '</span>' + opt.en;
+    btn.addEventListener('click', function() { answerQuiz(opt.en, t.en, t.vi); });
+    optsDiv.appendChild(btn);
+  });
+
+  document.getElementById('quiz-next').addEventListener('click', function(){
+    q.idx++; renderQuizQ();
+  });
+}
+
+function answerQuiz(chosen, correct, vi) {
+  if (!quizState || quizState.answered) return;
+  quizState.answered = true;
+  var isCorrect = chosen === correct;
+  if (isCorrect) quizState.correct++; else quizState.wrong++;
+  setKnown(vi, isCorrect); updateProgress();
+
+  var opts = document.querySelectorAll('.quiz-opt');
+  opts.forEach(function(b){
+    b.classList.add('disabled');
+    if (b.dataset.en === correct) b.classList.add('correct');
+    else if (b.dataset.en === chosen && !isCorrect) b.classList.add('wrong');
+  });
+
+  var expEl = document.getElementById('quiz-exp');
+  expEl.textContent = isCorrect ? '✓ Chính xác!' : '✗ Sai. Đáp án đúng: ' + correct;
+  expEl.className   = 'quiz-exp ' + (isCorrect ? 'correct-msg' : 'wrong-msg');
+
+  document.getElementById('quiz-next').style.display = 'block';
+  document.getElementById('q-correct').textContent = quizState.correct;
+  document.getElementById('q-wrong').textContent   = quizState.wrong;
+}
+
+function renderQuizResult() {
+  var q = quizState;
+  var total = q.questions.length;
+  var pct   = total > 0 ? Math.round(q.correct / total * 100) : 0;
+  var msg   = pct >= 80 ? '🎉 Xuất sắc!' : pct >= 60 ? '👍 Khá tốt!' : '💪 Cần ôn thêm!';
+  var sub   = 'Đúng ' + q.correct + ' / ' + total + ' câu (' + pct + '%)';
+
+  document.getElementById('quiz-body').innerHTML =
+    '<div class="quiz-result">' +
+      '<div class="qr-circle"><div class="qr-pct">' + pct + '%</div><div class="qr-lbl">Điểm</div></div>' +
+      '<div class="qr-msg">' + msg + '</div>' +
+      '<div class="qr-sub">' + sub + '</div>' +
+      '<button class="btn-retry" onclick="startQuiz()">🔄 Làm lại</button>' +
+      '<button class="btn-retry" style="background:var(--navy);color:#fff;" onclick="switchMode(\'flash\')">🃏 Ôn flashcard</button>' +
+    '</div>';
+}
+
+// ── BROWSE MODE ───────────────────────────────────────────────────────────────
+function renderBrowse(filter) {
+  var prog = loadProgress();
+  filter = (filter || '').toLowerCase();
+  var list = deck.filter(function(t){
+    if (!filter) return true;
+    return t.vi.toLowerCase().includes(filter) || t.en.toLowerCase().includes(filter);
+  });
+  document.getElementById('browse-count').textContent = list.length + ' thuật ngữ';
+  var ul = document.getElementById('term-list');
+  ul.innerHTML = '';
+  if (list.length === 0) {
+    ul.innerHTML = '<div class="empty"><div class="empty-icon">🔍</div>Không tìm thấy thuật ngữ phù hợp</div>';
+    return;
+  }
+  list.forEach(function(t) {
+    var known = !!prog[t.vi];
+    var row = document.createElement('div');
+    row.className = 'term-row' + (known ? ' known-row' : '');
+    row.innerHTML =
+      '<span class="term-vi">' + t.vi + '</span>' +
+      '<span class="term-en">' + t.en + '</span>' +
+      '<span class="term-cat-badge">' + catLabel(t.cat) + '</span>' +
+      '<button class="term-known-btn' + (known ? ' known' : '') + '" data-vi="' + encodeURIComponent(t.vi) + '" title="Đánh dấu đã biết">' +
+        (known ? '✓' : '') +
+      '</button>';
+    ul.appendChild(row);
+  });
+  ul.querySelectorAll('.term-known-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var vi = decodeURIComponent(btn.dataset.vi);
+      var nowKnown = !btn.classList.contains('known');
+      setKnown(vi, nowKnown);
+      btn.classList.toggle('known', nowKnown);
+      btn.textContent = nowKnown ? '✓' : '';
+      btn.closest('.term-row').classList.toggle('known-row', nowKnown);
+      updateProgress();
+    });
+  });
+}
+
+document.getElementById('search-input').addEventListener('input', function(){
+  renderBrowse(this.value);
+});
+
+// ── MODE SWITCH ───────────────────────────────────────────────────────────────
+function switchMode(m) {
+  mode = m;
+  ['flash','quiz','browse'].forEach(function(x){
+    document.getElementById('mode-' + x).style.display = x === m ? 'block' : 'none';
+    document.getElementById('btn-' + x).classList.toggle('active', x === m);
+  });
+  document.getElementById('prog-wrap').style.display = m === 'browse' ? 'none' : 'block';
+
+  if (m === 'flash') { cardIdx = 0; renderCard(); updateProgress(); }
+  if (m === 'quiz')  { startQuiz(); updateProgress(); }
+  if (m === 'browse'){ renderBrowse(''); }
+}
+
+['flash','quiz','browse'].forEach(function(m){
+  document.getElementById('btn-' + m).addEventListener('click', function(){ switchMode(m); });
+});
+
+// ── SHUFFLE ───────────────────────────────────────────────────────────────────
+document.getElementById('btn-shuffle').addEventListener('click', function(){
+  shuffle(deck); cardIdx = 0;
+  if (mode === 'flash') renderCard();
+  if (mode === 'quiz')  startQuiz();
+  if (mode === 'browse') renderBrowse(document.getElementById('search-input').value);
+});
+
+// ── CATEGORY TABS ─────────────────────────────────────────────────────────────
+function buildCatTabs() {
+  var container = document.getElementById('cat-tabs');
+  CATS.forEach(function(c) {
+    var count = c.id === 'all' ? VOCAB.length : VOCAB.filter(function(t){return t.cat===c.id;}).length;
+    var btn = document.createElement('button');
+    btn.className = 'cat-tab' + (c.id === curCat ? ' active' : '');
+    btn.dataset.cat = c.id;
+    btn.innerHTML = c.label + '<span class="cat-count">(' + count + ')</span>';
+    btn.addEventListener('click', function(){
+      curCat = c.id;
+      document.querySelectorAll('.cat-tab').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      deck = buildDeck(curCat);
+      cardIdx = 0;
+      if (mode === 'flash') renderCard();
+      if (mode === 'quiz')  startQuiz();
+      if (mode === 'browse') renderBrowse('');
+      updateProgress();
+    });
+    container.appendChild(btn);
+  });
+}
+
+// ── FONT BUTTON ───────────────────────────────────────────────────────────────
+document.getElementById('vocab-font-btn').addEventListener('click', function(e){
+  e.stopPropagation();
+  var existing = document.getElementById('pmlib-font-panel');
+  if (existing) { existing.remove(); return; }
+  if (window.PMFontSettings) PMFontSettings.buildPanel(e.currentTarget, {side:'bottom'});
+});
+
+// ── INIT ─────────────────────────────────────────────────────────────────────
+buildCatTabs();
+deck = buildDeck('all');
+renderCard();
+updateProgress();
+</script>
+</body>
+</html>

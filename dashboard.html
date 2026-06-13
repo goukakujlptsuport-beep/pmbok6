@@ -3,94 +3,486 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thống kê học tập – PMBOK LMS</title>
+  <title>Dashboard – PMLib</title>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="lms.css">
+  <script src="font-settings.js"></script>
   <style>
-    body { background: #fdf8f0; margin: 0; font-family: 'Source Sans 3', sans-serif; }
-    .dash-wrap { max-width: 900px; margin: 0 auto; padding: 30px 20px; }
-    .dash-back { display: inline-block; margin-bottom: 20px; color: #1a2744; text-decoration: none; font-weight: 600; }
-    .dash-back:hover { color: #c9a84c; }
-    .dash-title { font-family: 'Merriweather', serif; color: #1a2744; font-size: 1.8rem; margin-bottom: 6px; }
-    .dash-sub { color: #888; font-size: 0.9rem; margin-bottom: 30px; }
+    :root {
+      --navy:   #1a2744;
+      --gold:   #c9a84c;
+      --gold-l: #e8d5a3;
+      --cream:  #fdf8f0;
+      --text:   #2c2c2c;
+      --dim:    #666;
+      --border: #e0d8c8;
+      --green:  #27ae60;
+      --blue:   #2980b9;
+      --red:    #e74c3c;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+    }
 
-    .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin-bottom: 36px; }
-    .stat-card { background: white; border: 2px solid #1a2744; border-radius: 8px; padding: 20px; text-align: center; }
-    .stat-card .val { font-size: 2.2rem; font-weight: 700; color: #c9a84c; line-height: 1; margin-bottom: 8px; }
-    .stat-card .label { font-size: 0.8rem; color: #666; text-transform: uppercase; letter-spacing: 0.04em; }
+    /* ── NAV ── */
+    .top-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--navy);
+      border-bottom: 3px solid var(--gold);
+      display: flex; align-items: center; gap: 12px;
+      padding: 0 24px; height: 52px;
+      box-shadow: 0 2px 16px rgba(0,0,0,.2);
+    }
+    .nav-back {
+      color: var(--gold-l); text-decoration: none; font-size: 13px;
+      display: flex; align-items: center; gap: 6px;
+      padding: 5px 10px; border: 1px solid rgba(201,168,76,.3); border-radius: 4px;
+      transition: all .2s;
+    }
+    .nav-back:hover { background: rgba(201,168,76,.15); color: #fff; }
+    .nav-title {
+      font-family: 'Merriweather', serif; font-size: 15px;
+      color: rgba(255,255,255,.75); flex: 1; text-align: center;
+    }
+    .nav-font-btn {
+      background: rgba(255,255,255,.08); border: 1px solid rgba(201,168,76,.3);
+      color: var(--gold); font-weight: 700; font-size: 13px;
+      padding: 5px 10px; border-radius: 4px; cursor: pointer; transition: all .2s;
+    }
+    .nav-font-btn:hover { background: rgba(201,168,76,.15); color: #fff; }
 
-    .ch-section h3 { color: #1a2744; margin-bottom: 12px; font-family: 'Merriweather', serif; }
-    .ch-row { display: flex; align-items: center; gap: 10px; margin: 8px 0; font-size: 13px; }
-    .ch-name { width: 220px; flex-shrink: 0; color: #333; }
-    .ch-bar-wrap { flex: 1; height: 12px; background: #f0ead6; border-radius: 6px; overflow: hidden; }
-    .ch-bar-fill { height: 100%; background: linear-gradient(90deg, #c9a84c, #1a2744); border-radius: 6px; }
-    .ch-pct { width: 42px; text-align: right; font-weight: 600; color: #1a2744; font-size: 12px; }
+    /* ── LAYOUT ── */
+    .wrap { max-width: 1000px; margin: 0 auto; padding: 32px 20px 80px; }
 
-#lms-progress-panel, #lms-review-badge, #lms-dashboard-btn { display: none !important; }
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--navy);
+      margin-bottom: 14px; padding-bottom: 8px;
+      border-bottom: 2px solid var(--gold);
+      display: flex; align-items: center; gap: 10px;
+    }
+
+    /* ── STATS GRID ── */
+    .stat-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(140px,1fr));
+      gap: 12px; margin-bottom: 36px;
+    }
+    .stat-card {
+      background: white; border: 1px solid var(--border);
+      border-radius: 8px; padding: 18px 16px; text-align: center;
+      box-shadow: 0 1px 6px rgba(0,0,0,.05);
+    }
+    .stat-card .val { font-size: 2rem; font-weight: 700; color: var(--gold); line-height: 1; margin-bottom: 6px; }
+    .stat-card .lbl { font-size: 11px; color: var(--dim); text-transform: uppercase; letter-spacing: .06em; }
+
+    /* ── BOOK CARDS ── */
+    .book-grid { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+    .book-card {
+      background: white; border: 1px solid var(--border);
+      border-radius: 10px; overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+      transition: box-shadow .2s;
+    }
+    .book-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.10); }
+    .book-card-head {
+      background: linear-gradient(135deg, var(--navy) 0%, #2a3a6a 100%);
+      padding: 16px 20px;
+      display: flex; align-items: center; gap: 14px;
+      border-bottom: 3px solid var(--gold);
+    }
+    .book-num {
+      font-family: 'Merriweather', serif; font-size: 22px; font-weight: 700;
+      color: var(--gold-l); min-width: 36px; text-align: center;
+    }
+    .book-info { flex: 1; }
+    .book-title { font-family: 'Merriweather', serif; font-size: 15px; color: #fff; font-weight: 700; margin-bottom: 2px; }
+    .book-sub { font-size: 12px; color: rgba(255,255,255,.5); font-style: italic; }
+    .book-pct-badge {
+      font-size: 20px; font-weight: 700; color: var(--gold);
+      min-width: 52px; text-align: right;
+    }
+    .book-card-body { padding: 16px 20px; }
+
+    /* ── overall progress bar ── */
+    .book-prog-bar { height: 8px; background: #f0ead6; border-radius: 4px; overflow: hidden; margin-bottom: 14px; }
+    .book-prog-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--navy)); border-radius: 4px; transition: width .5s; }
+
+    /* ── per-chapter rows ── */
+    .chap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px,1fr)); gap: 6px; }
+    .chap-pill {
+      display: flex; align-items: center; gap: 6px;
+      padding: 5px 9px; border-radius: 5px;
+      font-size: 11.5px; font-weight: 600; white-space: nowrap; overflow: hidden;
+      text-overflow: ellipsis; cursor: default;
+      border: 1px solid transparent;
+    }
+    .chap-pill.done   { background: rgba(39,174,96,.12);  border-color: rgba(39,174,96,.3);  color: #1e7a44; }
+    .chap-pill.reading{ background: rgba(201,168,76,.12); border-color: rgba(201,168,76,.35); color: #7a5c00; }
+    .chap-pill.unread { background: #f5f2eb; border-color: var(--border); color: #999; }
+    .chap-pill .pill-icon { font-size: 11px; flex-shrink: 0; }
+    .chap-pill .pill-txt { overflow: hidden; text-overflow: ellipsis; }
+
+    /* ── chapter stat summary ── */
+    .chap-summary {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      margin-bottom: 12px;
+      font-size: 12px; color: var(--dim);
+    }
+    .chap-summary span { display: flex; align-items: center; gap: 4px; }
+
+    /* ── HIGHLIGHTS ── */
+    .hl-bar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 32px; }
+    .hl-card {
+      flex: 1; min-width: 140px; background: white;
+      border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.05);
+    }
+    .hl-card .hl-cnt { font-size: 1.8rem; font-weight: 700; margin-bottom: 4px; }
+    .hl-card .hl-lbl { font-size: 11px; color: var(--dim); text-transform: uppercase; letter-spacing: .06em; }
+    .hl-card.yellow .hl-cnt { color: #b8860b; }
+    .hl-card.green  .hl-cnt { color: var(--green); }
+    .hl-card.red    .hl-cnt { color: var(--red); }
+    .hl-card.total  .hl-cnt { color: var(--navy); }
+
+    /* ── recent activity ── */
+    .activity-list { display: flex; flex-direction: column; gap: 6px; }
+    .activity-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 14px; background: white; border-radius: 7px;
+      border: 1px solid var(--border); font-size: 13px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.04);
+    }
+    .activity-row .act-icon { font-size: 16px; flex-shrink: 0; }
+    .activity-row .act-text { flex: 1; }
+    .activity-row .act-book { color: var(--dim); font-size: 11px; }
+    .activity-row .act-time { font-size: 11px; color: #aaa; white-space: nowrap; }
+
+    .empty-msg { color: #aaa; font-size: 13px; font-style: italic; padding: 12px 0; }
+
+    @media (max-width: 600px) {
+      .wrap { padding: 20px 12px 60px; }
+      .stat-grid { grid-template-columns: repeat(2,1fr); }
+      .chap-grid { grid-template-columns: repeat(auto-fill, minmax(110px,1fr)); }
+    }
   </style>
 </head>
 <body>
-<div class="dash-wrap">
-  <a href="index.html" class="dash-back">← Quay lại đọc sách</a>
-  <h1 class="dash-title">📊 Thống kê học tập</h1>
-  <p class="dash-sub">Tiến độ học PMBOK® Guide Lần 6 của bạn</p>
 
+<nav class="top-nav">
+  <a href="home.html" class="nav-back">&#8592; Thư Viện</a>
+  <div class="nav-title">Dashboard – Tiến Độ Học Tập</div>
+  <button class="nav-font-btn" id="dash-font-btn" title="Cài đặt font chữ">Aa Font</button>
+</nav>
+
+<div class="wrap">
+
+  <!-- ── OVERALL STATS ─────────────────────────────────────────── -->
+  <div class="section-label">Tổng quan</div>
   <div class="stat-grid">
-    <div class="stat-card"><div class="val" id="d-pct">0%</div><div class="label">Hoàn thành</div></div>
-    <div class="stat-card"><div class="val" id="d-learned">0</div><div class="label">Mục đã học</div></div>
-    <div class="stat-card"><div class="val" id="d-due">0</div><div class="label">Cần ôn tập</div></div>
-    <div class="stat-card"><div class="val" id="d-scheduled">0</div><div class="label">Đã lên lịch ôn</div></div>
+    <div class="stat-card"><div class="val" id="total-pct">0%</div><div class="lbl">Hoàn thành tổng</div></div>
+    <div class="stat-card"><div class="val" id="total-done">0</div><div class="lbl">Chương đã xong</div></div>
+    <div class="stat-card"><div class="val" id="total-reading">0</div><div class="lbl">Đang đọc</div></div>
+    <div class="stat-card"><div class="val" id="total-hl">0</div><div class="lbl">Tổng highlight</div></div>
+    <div class="stat-card"><div class="val" id="total-notes">0</div><div class="lbl">Ghi chú</div></div>
+    <div class="stat-card"><div class="val" id="total-books">2</div><div class="lbl">Cuốn đang học</div></div>
   </div>
 
-  <div class="ch-section">
-    <h3>Tiến độ từng chương</h3>
-    <div id="d-chapters"></div>
+  <!-- ── HIGHLIGHTS BY COLOUR ───────────────────────────────────── -->
+  <div class="section-label">Highlights theo loại</div>
+  <div class="hl-bar" style="margin-bottom:36px;">
+    <div class="hl-card yellow"><div class="hl-cnt" id="hl-yellow">0</div><div class="hl-lbl">🟡 Định nghĩa</div></div>
+    <div class="hl-card green" ><div class="hl-cnt" id="hl-green" >0</div><div class="hl-lbl">🟢 Quan trọng</div></div>
+    <div class="hl-card red"   ><div class="hl-cnt" id="hl-red"   >0</div><div class="hl-lbl">🔴 Ghi nhớ</div></div>
+    <div class="hl-card total" ><div class="hl-cnt" id="hl-total" >0</div><div class="hl-lbl">📑 Tổng cộng</div></div>
   </div>
 
+  <!-- ── PMBOK6 BOOK ──────────────────────────────────────────── -->
+  <div class="section-label">Tiến độ từng cuốn</div>
+  <div class="book-grid" id="book-grid"></div>
+
+  <!-- ── RECENT ACTIVITY ──────────────────────────────────────── -->
+  <div class="section-label">Hoạt động gần đây</div>
+  <div class="activity-list" id="activity-list"></div>
 
 </div>
 
-<script src="lms.js"></script>
 <script>
-  const chapterNames = {
-    '01_instruction': '1. Giới Thiệu',
-    '02_environment': '2. Môi Trường Dự Án',
-    '03_pm_role': '3. Vai Trò PM',
-    '04_integration_management': '4. Quản Lý Tích Hợp',
-    '05_scope_management': '5. Quản Lý Phạm Vi',
-    '06_schedule_management': '6. Quản Lý Tiến Độ',
-    '07_cost_management': '7. Quản Lý Chi Phí',
-    '08_quality_management': '8. Quản Lý Chất Lượng',
-    '09_resource_management': '9. Quản Lý Nguồn Lực',
-    '10_communications_management': '10. Truyền Thông',
-    '11_risk_management': '11. Quản Lý Rủi Ro',
-    '12_procurement_management': '12. Quản Lý Mua Sắm',
-    '13_stakeholder_management': '13. Các Bên Liên Quan',
-    '14_standard_for_pm': '14. Tiêu Chuẩn PM',
-    '15_appendices_glossary': '15. Phụ Lục & Từ Điển',
-    '16_agile_practice_guide': '16. Hướng Dẫn Agile',
-  };
+// ── DATA ─────────────────────────────────────────────────────────────────────
+var PMBOK6_CHAPTERS = [
+  { id:'01_instruction',               num:1,  title:'Giới Thiệu' },
+  { id:'02_environment',               num:2,  title:'Môi Trường Dự Án' },
+  { id:'03_pm_role',                   num:3,  title:'Vai Trò PM' },
+  { id:'04_integration_management',    num:4,  title:'Quản Lý Tích Hợp' },
+  { id:'05_scope_management',          num:5,  title:'Quản Lý Phạm Vi' },
+  { id:'06_schedule_management',       num:6,  title:'Quản Lý Tiến Độ' },
+  { id:'07_cost_management',           num:7,  title:'Quản Lý Chi Phí' },
+  { id:'08_quality_management',        num:8,  title:'Quản Lý Chất Lượng' },
+  { id:'09_resource_management',       num:9,  title:'Quản Lý Nguồn Lực' },
+  { id:'10_communications_management', num:10, title:'Truyền Thông' },
+  { id:'11_risk_management',           num:11, title:'Quản Lý Rủi Ro' },
+  { id:'12_procurement_management',    num:12, title:'Quản Lý Mua Sắm' },
+  { id:'13_stakeholder_management',    num:13, title:'Bên Liên Quan' },
+  { id:'14_standard_for_pm',           num:14, title:'Tiêu Chuẩn PM' },
+  { id:'15_appendices_glossary',       num:15, title:'Phụ Lục & Từ Điển' },
+  { id:'16_agile_practice_guide',      num:16, title:'Hướng Dẫn Agile' },
+];
 
-  const stats = Analytics.compute();
+var RITA_CHAPTERS = [
+  { id:'rita_chap01', num:1,  title:'Mẹo Ôn Thi PMP®' },
+  { id:'rita_chap02', num:2,  title:'Tài Liệu Tham Khảo' },
+  { id:'rita_chap03', num:3,  title:'Nền Tảng Quản Lý Dự Án' },
+  { id:'rita_chap04', num:4,  title:'Tích Hợp' },
+  { id:'rita_chap05', num:5,  title:'Kỹ Năng Lãnh Đạo' },
+  { id:'rita_chap06', num:6,  title:'Xây Dựng Nhóm' },
+  { id:'rita_chap07', num:7,  title:'Phạm Vi Dự Án' },
+  { id:'rita_chap08', num:8,  title:'Tiến Độ & Ngân Sách' },
+  { id:'rita_chap10', num:10, title:'Chất Lượng Sản Phẩm' },
+  { id:'rita_chap11', num:11, title:'Truyền Thông' },
+  { id:'rita_chap12', num:12, title:'Rủi Ro & Vấn Đề' },
+  { id:'rita_chap13', num:13, title:'Mua Sắm' },
+  { id:'rita_chap14', num:14, title:'Các Bên Liên Quan' },
+  { id:'rita_chap15', num:15, title:'Tuân Thủ & Giá Trị' },
+  { id:'rita_chap16', num:16, title:'Mẹo Vượt Qua Kỳ Thi' },
+  { id:'rita_chap17', num:17, title:'Các Phương Pháp Agile' },
+  { id:'rita_chap18', num:18, title:'Hướng Dẫn PMBOK' },
+];
 
-  document.getElementById('d-pct').textContent = stats.completionPct + '%';
-  document.getElementById('d-learned').textContent = stats.totalLearned;
-  document.getElementById('d-due').textContent = stats.dueToday;
-  document.getElementById('d-scheduled').textContent = stats.totalScheduled;
+// ── LOAD PMBOK6 PROGRESS ─────────────────────────────────────────────────────
+function loadPMBOK6() {
+  try {
+    var raw = localStorage.getItem('pmbok6_progress');
+    if (!raw) return null;
+    var data = JSON.parse(raw);
+    return data;
+  } catch(e) { return null; }
+}
 
-  const chEl = document.getElementById('d-chapters');
-  if (stats.byChapter.length === 0) {
-    chEl.innerHTML = '<p style="color:#999">Chưa có dữ liệu. Hãy đánh dấu một số mục là đã học.</p>';
-  } else {
-    chEl.innerHTML = stats.byChapter.map(ch => `
-      <div class="ch-row">
-        <div class="ch-name">${escHtml(chapterNames[ch.id] || ch.id)}</div>
-        <div class="ch-bar-wrap"><div class="ch-bar-fill" style="width:${ch.pct}%"></div></div>
-        <div class="ch-pct">${ch.pct}%</div>
-      </div>
-    `).join('');
+// ── COUNT RITA CHAPTERS VISITED (by highlights or last-read record) ──────────
+function loadRitaProgress() {
+  var lastChap = null;
+  try {
+    var rd = JSON.parse(localStorage.getItem('rita_reading') || '{}');
+    lastChap = rd.lastChap || null;
+  } catch(e) {}
+
+  var visited = {};
+  RITA_CHAPTERS.forEach(function(ch) {
+    try {
+      var hl = JSON.parse(localStorage.getItem('rita_hl_' + ch.id) || '[]');
+      if (hl.length > 0) visited[ch.id] = { status: 'reading', hlCount: hl.length };
+    } catch(e) {}
+  });
+  if (lastChap && !visited[lastChap]) visited[lastChap] = { status: 'reading', hlCount: 0 };
+  return { visited: visited, lastChap: lastChap };
+}
+
+// ── COUNT ALL HIGHLIGHTS ──────────────────────────────────────────────────────
+function countHighlights(pmbok6Data) {
+  var counts = { yellow: 0, green: 0, red: 0, total: 0, notes: 0 };
+  // PMBOK6
+  if (pmbok6Data && pmbok6Data.highlights) {
+    Object.values(pmbok6Data.highlights).forEach(function(chapHls) {
+      (chapHls || []).forEach(function(hl) {
+        counts.total++;
+        if (hl.color === 'yellow') counts.yellow++;
+        else if (hl.color === 'green') counts.green++;
+        else if (hl.color === 'red') counts.red++;
+        if (hl.note && hl.note.trim()) counts.notes++;
+      });
+    });
   }
+  // Rita
+  RITA_CHAPTERS.forEach(function(ch) {
+    try {
+      var hls = JSON.parse(localStorage.getItem('rita_hl_' + ch.id) || '[]');
+      hls.forEach(function(hl) {
+        counts.total++;
+        if (hl.color === 'yellow') counts.yellow++;
+        else if (hl.color === 'green') counts.green++;
+        else if (hl.color === 'red') counts.red++;
+        if (hl.note && hl.note.trim()) counts.notes++;
+      });
+    } catch(e) {}
+  });
+  return counts;
+}
+
+// ── RENDER BOOK CARD ──────────────────────────────────────────────────────────
+function renderBookCard(bookInfo) {
+  var chapters   = bookInfo.chapters;
+  var getStatus  = bookInfo.getStatus; // fn(ch) → 'done'|'reading'|'unread'
+  var readLink   = bookInfo.readLink;
+  var icon       = bookInfo.icon;
+  var idx        = bookInfo.index;
+
+  var done = 0, reading = 0, unread = 0;
+  chapters.forEach(function(ch) {
+    var st = getStatus(ch);
+    if (st === 'done')    done++;
+    else if (st === 'reading') reading++;
+    else unread++;
+  });
+  var total = chapters.length;
+  var pct   = total > 0 ? Math.round(done / total * 100) : 0;
+
+  var card = document.createElement('div');
+  card.className = 'book-card';
+
+  // head
+  card.innerHTML =
+    '<div class="book-card-head">' +
+      '<div class="book-num">' + icon + '</div>' +
+      '<div class="book-info">' +
+        '<div class="book-title">' + bookInfo.title + '</div>' +
+        '<div class="book-sub">' + bookInfo.subtitle + '</div>' +
+      '</div>' +
+      '<div class="book-pct-badge">' + pct + '%</div>' +
+    '</div>' +
+    '<div class="book-card-body">' +
+      '<div class="book-prog-bar"><div class="book-prog-fill" style="width:' + pct + '%"></div></div>' +
+      '<div class="chap-summary">' +
+        '<span>✓ <strong>' + done + '</strong> xong</span>' +
+        '<span>● <strong>' + reading + '</strong> đang đọc</span>' +
+        '<span>○ <strong>' + unread + '</strong> chưa đọc</span>' +
+        '<span>📚 <strong>' + total + '</strong> chương</span>' +
+        '<a href="' + readLink + '" style="color:var(--gold);font-weight:600;margin-left:auto;font-size:12px;text-decoration:none;">Đọc ngay →</a>' +
+      '</div>' +
+      '<div class="chap-grid" id="chap-grid-' + idx + '"></div>' +
+    '</div>';
+
+  document.getElementById('book-grid').appendChild(card);
+
+  var grid = document.getElementById('chap-grid-' + idx);
+  chapters.forEach(function(ch) {
+    var st = getStatus(ch);
+    var pill = document.createElement('div');
+    pill.className = 'chap-pill ' + st;
+    var icon2 = st === 'done' ? '✓' : st === 'reading' ? '●' : '○';
+    pill.innerHTML = '<span class="pill-icon">' + icon2 + '</span><span class="pill-txt">' + ch.num + '. ' + ch.title + '</span>';
+    pill.title = ch.title + ' — ' + (st === 'done' ? 'Đã xong' : st === 'reading' ? 'Đang đọc' : 'Chưa đọc');
+    grid.appendChild(pill);
+  });
+
+  return { done: done, reading: reading };
+}
+
+// ── RENDER ACTIVITY ───────────────────────────────────────────────────────────
+function renderActivity(pmbok6Data, ritaProgress) {
+  var items = [];
+
+  // Last-read PMBOK6 chapter
+  if (pmbok6Data && pmbok6Data.lastChapter) {
+    var ch6 = PMBOK6_CHAPTERS.find(function(c) { return c.id === pmbok6Data.lastChapter; });
+    if (ch6) {
+      items.push({ icon:'📖', text: ch6.num + '. ' + ch6.title, book:'PMBOK® Guide 6', time:'Gần nhất' });
+    }
+  }
+
+  // Last-read Rita chapter
+  if (ritaProgress.lastChap) {
+    var ritaCh = RITA_CHAPTERS.find(function(c) { return c.id === ritaProgress.lastChap; });
+    if (ritaCh) {
+      items.push({ icon:'📖', text: 'Ch.' + ritaCh.num + ' ' + ritaCh.title, book:'Rita PMP® Exam Prep', time:'Gần nhất' });
+    }
+  }
+
+  // Chapters recently marked done (PMBOK6)
+  if (pmbok6Data && pmbok6Data.progress) {
+    PMBOK6_CHAPTERS.slice().reverse().forEach(function(ch) {
+      var p = pmbok6Data.progress[ch.id];
+      if (p && p.status === 'done' && items.length < 8) {
+        items.push({ icon:'✅', text: ch.num + '. ' + ch.title, book:'PMBOK® Guide 6', time:'Xong' });
+      }
+    });
+  }
+
+  var list = document.getElementById('activity-list');
+  if (items.length === 0) {
+    list.innerHTML = '<div class="empty-msg">Chưa có hoạt động nào. Hãy bắt đầu đọc!</div>';
+    return;
+  }
+  items.slice(0, 8).forEach(function(item) {
+    var row = document.createElement('div');
+    row.className = 'activity-row';
+    row.innerHTML =
+      '<span class="act-icon">' + item.icon + '</span>' +
+      '<span class="act-text">' + item.text + '<br><span class="act-book">' + item.book + '</span></span>' +
+      '<span class="act-time">' + item.time + '</span>';
+    list.appendChild(row);
+  });
+}
+
+// ── MAIN ─────────────────────────────────────────────────────────────────────
+(function() {
+  var pmbok6 = loadPMBOK6();
+  var rita   = loadRitaProgress();
+  var hls    = countHighlights(pmbok6);
+
+  // Highlight stats
+  document.getElementById('hl-yellow').textContent = hls.yellow;
+  document.getElementById('hl-green' ).textContent = hls.green;
+  document.getElementById('hl-red'   ).textContent = hls.red;
+  document.getElementById('hl-total' ).textContent = hls.total;
+
+  // PMBOK6 book card
+  var pmbok6Done = 0, pmbok6Reading = 0;
+  var pmbok6Result = renderBookCard({
+    index: 'pmbok',
+    title: 'PMBOK® Guide Lần 6',
+    subtitle: 'Hướng dẫn Quản Lý Dự Án · 16 Chương · Tiếng Việt',
+    icon: '📗',
+    readLink: 'index.html',
+    chapters: PMBOK6_CHAPTERS,
+    getStatus: function(ch) {
+      if (!pmbok6 || !pmbok6.progress || !pmbok6.progress[ch.id]) return 'unread';
+      return pmbok6.progress[ch.id].status || 'unread';
+    }
+  });
+  pmbok6Done    = pmbok6Result.done;
+  pmbok6Reading = pmbok6Result.reading;
+
+  // Rita book card
+  var ritaResult = renderBookCard({
+    index: 'rita',
+    title: 'Rita PMP® Exam Prep 11th Edition',
+    subtitle: 'Giáo trình luyện thi PMP nổi tiếng · 17 Chương · Tiếng Việt + Song ngữ',
+    icon: '📘',
+    readLink: 'rita.html?list',
+    chapters: RITA_CHAPTERS,
+    getStatus: function(ch) {
+      return rita.visited[ch.id] ? 'reading' : 'unread';
+    }
+  });
+
+  // Overall stats
+  var allDone    = pmbok6Done + ritaResult.done;
+  var allReading = pmbok6Reading + ritaResult.reading;
+  var allTotal   = PMBOK6_CHAPTERS.length + RITA_CHAPTERS.length;
+  var overallPct = allTotal > 0 ? Math.round(allDone / allTotal * 100) : 0;
+
+  document.getElementById('total-pct').textContent    = overallPct + '%';
+  document.getElementById('total-done').textContent   = allDone;
+  document.getElementById('total-reading').textContent = allReading;
+  document.getElementById('total-hl').textContent     = hls.total;
+  document.getElementById('total-notes').textContent  = hls.notes;
+
+  // Recent activity
+  renderActivity(pmbok6, rita);
+
+  // Font button
+  document.getElementById('dash-font-btn').addEventListener('click', function(e) {
+    e.stopPropagation();
+    var existing = document.getElementById('pmlib-font-panel');
+    if (existing) { existing.remove(); return; }
+    if (window.PMFontSettings) {
+      PMFontSettings.buildPanel(e.currentTarget, { side: 'bottom' });
+    }
+  });
+})();
 </script>
 </body>
 </html>
