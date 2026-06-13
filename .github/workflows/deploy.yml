@@ -34,7 +34,9 @@ jobs:
 
           # New pages
           [ -f home.html ]      && cp home.html _site/
+          [ -f rita.html ]      && cp rita.html _site/
           [ -f rita-quiz.html ] && cp rita-quiz.html _site/
+          [ -f dashboard.html ] && cp dashboard.html _site/
 
           # Directories
           [ -d books ]    && cp -r books    _site/
