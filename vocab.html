@@ -85,12 +85,12 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
 /* ── FLASHCARD ── */
 .card-area{perspective:1000px;margin-bottom:20px;cursor:pointer;user-select:none;}
 .card-inner{
-  position:relative;width:100%;min-height:220px;
+  position:relative;width:100%;min-height:280px;
   transform-style:preserve-3d;transition:transform .5s cubic-bezier(.4,0,.2,1);
 }
 .card-inner.flipped{transform:rotateY(180deg);}
 .card-face{
-  position:absolute;width:100%;min-height:220px;backface-visibility:hidden;
+  position:absolute;width:100%;min-height:280px;backface-visibility:hidden;
   border-radius:var(--r);display:flex;flex-direction:column;
   align-items:center;justify-content:center;padding:28px 32px;
   box-shadow:0 4px 24px rgba(0,0,0,.10);
@@ -112,6 +112,11 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
 .card-en{font-family:'Merriweather',serif;font-size:1.3rem;font-weight:700;
   text-align:center;line-height:1.4;margin-bottom:8px;}
 .card-hint{font-size:12px;color:var(--dim);text-align:center;font-style:italic;margin-top:6px;}
+.card-desc{font-size:13px;color:#444;text-align:center;line-height:1.6;margin-top:10px;max-width:380px;}
+.card-example{font-size:12px;color:var(--blue);font-style:italic;text-align:center;margin-top:8px;
+  padding:8px 12px;background:rgba(41,128,185,.07);border-radius:6px;max-width:380px;line-height:1.5;}
+.card-example:empty{display:none;}
+.card-desc:empty{display:none;}
 .card-flip-hint{font-size:11px;opacity:.45;margin-top:16px;display:flex;align-items:center;gap:4px;}
 .card-num{font-size:11px;color:var(--gold-l);opacity:.7;align-self:flex-end;margin-top:8px;}
 
@@ -193,17 +198,20 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
   font-size:15px;opacity:.4;pointer-events:none;}
 .browse-count{font-size:12px;color:var(--dim);margin-bottom:10px;}
 .term-list{display:flex;flex-direction:column;gap:6px;}
+.term-card{background:#fff;border:1px solid var(--border);border-radius:8px;
+  transition:all .15s;overflow:hidden;}
+.term-card:hover{border-color:var(--gold);box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.term-card.known-row{border-left:3px solid var(--green);}
 .term-row{
-  display:flex;align-items:center;gap:12px;padding:11px 16px;
-  background:#fff;border:1px solid var(--border);border-radius:8px;
-  transition:all .15s;
+  display:flex;align-items:center;gap:12px;padding:11px 16px;cursor:pointer;
 }
-.term-row:hover{border-color:var(--gold);box-shadow:0 2px 8px rgba(0,0,0,.06);}
-.term-row.known-row{border-left:3px solid var(--green);}
 .term-en{font-weight:700;font-size:14px;color:var(--navy);flex:0 0 auto;min-width:200px;}
 .term-vi{font-size:13px;color:var(--dim);flex:1;font-style:italic;}
 .term-cat-badge{font-size:10px;padding:2px 8px;border-radius:10px;
   background:rgba(201,168,76,.15);color:#7a5c00;font-weight:600;flex-shrink:0;}
+.term-expand-btn{font-size:11px;color:var(--dim);flex-shrink:0;transition:transform .2s;
+  border:none;background:none;cursor:pointer;padding:2px 4px;}
+.term-card.open .term-expand-btn{transform:rotate(180deg);}
 .term-known-btn{
   width:26px;height:26px;border-radius:50%;border:2px solid var(--border);
   background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;
@@ -211,6 +219,11 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
 }
 .term-known-btn:hover{border-color:var(--green);}
 .term-known-btn.known{background:var(--green);border-color:var(--green);color:#fff;}
+.term-detail{display:none;padding:0 16px 14px;border-top:1px solid var(--border);}
+.term-card.open .term-detail{display:block;}
+.term-detail-desc{font-size:13px;color:#444;line-height:1.6;margin-bottom:6px;}
+.term-detail-example{font-size:12px;color:var(--blue);font-style:italic;
+  padding:7px 10px;background:rgba(41,128,185,.07);border-radius:5px;line-height:1.5;}
 
 /* ── EMPTY STATE ── */
 .empty{text-align:center;padding:40px 20px;color:var(--dim);}
@@ -221,7 +234,8 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
   .card-en{font-size:1.1rem;}
   .card-face{padding:22px 20px;}
   .quiz-wrap{padding:18px;}
-  .term-en{min-width:140px;}
+  .term-en{min-width:130px;font-size:13px;}
+  .term-vi{font-size:12px;}
   .cat-tab{padding:5px 10px;font-size:11px;}
 }
 </style>
@@ -273,6 +287,8 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
         <div class="card-face card-back" id="card-back">
           <div class="card-badge" style="color:var(--dim)">Tiếng Việt</div>
           <div class="card-vi" id="cb-vi">—</div>
+          <div class="card-desc" id="cb-desc"></div>
+          <div class="card-example" id="cb-example"></div>
           <div class="card-hint" id="cb-hint"></div>
           <div class="card-flip-hint" style="color:var(--dim)">👆 Click để lật lại</div>
         </div>
@@ -399,11 +415,13 @@ function renderCard() {
   var inner = document.getElementById('card-inner');
   inner.classList.remove('flipped'); flipped = false;
 
-  document.getElementById('cf-en').textContent  = t.en;
-  document.getElementById('cb-vi').textContent  = t.vi;
-  document.getElementById('cf-cat').textContent = catLabel(t.cat);
-  document.getElementById('cf-num').textContent = (cardIdx+1) + ' / ' + deck.length;
-  document.getElementById('cb-hint').textContent = catLabel(t.cat);
+  document.getElementById('cf-en').textContent      = t.en;
+  document.getElementById('cb-vi').textContent      = t.vi;
+  document.getElementById('cf-cat').textContent     = catLabel(t.cat);
+  document.getElementById('cf-num').textContent     = (cardIdx+1) + ' / ' + deck.length;
+  document.getElementById('cb-desc').textContent    = t.desc || '';
+  document.getElementById('cb-example').textContent = t.example ? '💡 ' + t.example : '';
+  document.getElementById('cb-hint').textContent    = catLabel(t.cat);
 
   // Highlight card if known
   var front = document.getElementById('card-front');
@@ -562,25 +580,50 @@ function renderBrowse(filter) {
   }
   list.forEach(function(t) {
     var known = !!prog[t.vi];
+    var card = document.createElement('div');
+    card.className = 'term-card' + (known ? ' known-row' : '');
+
+    var hasDetail = t.desc || t.example;
     var row = document.createElement('div');
-    row.className = 'term-row' + (known ? ' known-row' : '');
+    row.className = 'term-row';
     row.innerHTML =
       '<span class="term-en">' + t.en + '</span>' +
       '<span class="term-vi">' + t.vi + '</span>' +
       '<span class="term-cat-badge">' + catLabel(t.cat) + '</span>' +
+      (hasDetail ? '<button class="term-expand-btn" title="Xem chi tiết">▼</button>' : '') +
       '<button class="term-known-btn' + (known ? ' known' : '') + '" data-vi="' + encodeURIComponent(t.vi) + '" title="Đánh dấu đã biết">' +
         (known ? '✓' : '') +
       '</button>';
-    ul.appendChild(row);
+
+    var detail = document.createElement('div');
+    detail.className = 'term-detail';
+    if (t.desc)    detail.innerHTML += '<div class="term-detail-desc">'    + t.desc    + '</div>';
+    if (t.example) detail.innerHTML += '<div class="term-detail-example">💡 ' + t.example + '</div>';
+
+    card.appendChild(row);
+    if (hasDetail) card.appendChild(detail);
+    ul.appendChild(card);
+
+    if (hasDetail) {
+      row.querySelector('.term-expand-btn').addEventListener('click', function(e) {
+        e.stopPropagation();
+        card.classList.toggle('open');
+      });
+      row.addEventListener('click', function(e) {
+        if (e.target.classList.contains('term-known-btn') || e.target.classList.contains('term-expand-btn')) return;
+        card.classList.toggle('open');
+      });
+    }
   });
   ul.querySelectorAll('.term-known-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
       var vi = decodeURIComponent(btn.dataset.vi);
       var nowKnown = !btn.classList.contains('known');
       setKnown(vi, nowKnown);
       btn.classList.toggle('known', nowKnown);
       btn.textContent = nowKnown ? '✓' : '';
-      btn.closest('.term-row').classList.toggle('known-row', nowKnown);
+      btn.closest('.term-card').classList.toggle('known-row', nowKnown);
       updateProgress();
     });
   });
