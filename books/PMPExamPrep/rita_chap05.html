@@ -285,24 +285,6 @@ html[data-theme=dark] .hl-item-note{color:#8899bb}
 html[data-theme=dark] .hl-note-cancel{border-color:#253048;color:#dde4f0;background:#1a2436}
 html[data-theme=dark] .hl-note-save{background:#c9a84c;color:#0a0f1a}
 
-/* ── CHAPTER NAV PANEL ─────────────────────────────────── */
-#chap-panel{position:fixed;inset:0;z-index:9000;display:flex;align-items:stretch}
-#chap-panel.hidden{display:none!important}
-#chap-panel-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);cursor:pointer}
-#chap-panel-box{position:relative;z-index:1;width:min(360px,90vw);background:#0f1d3a;border-right:3px solid var(--gold);display:flex;flex-direction:column;animation:slideInLeft .2s ease}
-@keyframes slideInLeft{from{transform:translateX(-100%)}to{transform:translateX(0)}}
-#chap-panel-hdr{background:linear-gradient(135deg,#0a1228,#1a2744);padding:1.2rem 1.3rem;border-bottom:2px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
-#chap-panel-hdr h3{font-family:'Source Sans 3',sans-serif;font-size:.85rem;font-weight:700;color:#fff;letter-spacing:.1em;text-transform:uppercase}
-#chap-panel-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.3rem;cursor:pointer;padding:.2rem;line-height:1;transition:color .15s}
-#chap-panel-close:hover{color:#fff}
-#chap-panel-list{flex:1;overflow-y:auto;padding:.5rem 0}
-.chap-panel-item{display:flex;align-items:center;gap:.8rem;padding:.7rem 1.3rem;cursor:pointer;transition:background .15s;border-left:3px solid transparent;text-decoration:none}
-.chap-panel-item:hover{background:rgba(201,168,76,.1);border-left-color:var(--gold)}
-.chap-panel-item.active{background:rgba(201,168,76,.12);border-left-color:var(--gold)}
-.cpanel-num{font-family:'Source Sans 3',sans-serif;font-size:.7rem;font-weight:700;color:var(--gold);min-width:28px;flex-shrink:0}
-.cpanel-title{font-family:'Source Sans 3',sans-serif;font-size:.8rem;color:#ccd4e8;line-height:1.35}
-.cpanel-item-active .cpanel-title{color:#fff;font-weight:600}
-.cpanel-status{margin-left:auto;font-size:.72rem;flex-shrink:0;opacity:.6}
 
 /* ── GITHUB SYNC ──────────────────────────────────── */
 #sync-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:#8899bb;cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s,color .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
@@ -312,6 +294,16 @@ html[data-theme=dark] .hl-note-save{background:#c9a84c;color:#0a0f1a}
 #sync-btn[data-state=err]{color:#ef5350}
 #sync-btn[data-state=no-token]{color:#8899bb}
 
+
+/* ── CHAPTER LIST IN SIDEBAR ──────────────────── */
+#sidebar-toc{flex:1;overflow-y:auto;padding:.4rem 0}
+#sidebar-toc .chap-list-item{display:flex;align-items:center;gap:.55rem;padding:.42rem 1rem;cursor:pointer;text-decoration:none;border-left:3px solid transparent;transition:all .15s}
+#sidebar-toc .chap-list-item:hover{background:rgba(201,168,76,.1);border-left-color:var(--gold)}
+#sidebar-toc .chap-list-item.active{background:rgba(201,168,76,.13);border-left-color:var(--gold)}
+#sidebar-toc .cli-num{font-family:'Source Sans 3',sans-serif;font-size:.65rem;font-weight:700;color:var(--gold);min-width:26px;flex-shrink:0;opacity:.9}
+#sidebar-toc .cli-title{font-family:'Source Sans 3',sans-serif;font-size:.76rem;color:#aab8d0;line-height:1.3}
+#sidebar-toc .chap-list-item.active .cli-title{color:#fff;font-weight:600}
+#sidebar-nav a#chap-home-btn{flex:none;padding:.4rem .6rem;font-size:.75rem}
 </style>
 </head>
 <script>
@@ -327,44 +319,10 @@ html[data-theme=dark] .hl-note-save{background:#c9a84c;color:#0a0f1a}
   <h2>Ôn Thi PMP®</h2>
   <div class="edition">Rita Mulcahy · 11th Edition 2023 · Tiếng Việt</div>
 </div>
-<div id="sidebar-toc">
-  <div class="toc-group-label">Nội Dung Chương</div>
-  <a href="#ch5-ky-nang-lanh-dao" class="">5 Kỹ Năng Lãnh Đạo</a>
-<a href="#ch5-gioi-thieu" class="toc-h4">Giới Thiệu</a>
-<a href="#ch5-tong-quan-lanh-dao" class="toc-h4">Tổng Quan Về Lãnh Đạo</a>
-<a href="#ch5-bai-tap-5-1" class="toc-h4">5.1 Bài Tập</a>
-<a href="#ch5-dinh-nghia-lanh-dao" class="toc-h4">Các Định Nghĩa Liên Quan Đến Lãnh Đạo</a>
-<a href="#ch5-tu-duy-phan-bien" class="toc-h4">Tư Duy Phản Biện</a>
-<a href="#ch5-tri-tue-cam-xuc" class="toc-h4">Trí Tuệ Cảm Xúc</a>
-<a href="#ch5-ky-nang-giao-tiep" class="toc-h4">Kỹ Năng Giao Tiếp</a>
-<a href="#ch5-dong-chay-giao-tiep" class="toc-h4">Dòng Chảy Giao Tiếp</a>
-<a href="#ch5-cac-loai-giao-tiep" class="toc-h4">Các Loại Giao Tiếp</a>
-<a href="#ch5-bai-tap-5-2" class="toc-h4">5.2 Bài Tập</a>
-<a href="#ch5-nam-cs-giao-tiep" class="toc-h4">Năm Cs Của Giao Tiếp</a>
-<a href="#ch5-cac-mo-hinh-giao-tiep" class="toc-h4">Các Mô Hình Giao Tiếp</a>
-<a href="#ch5-giao-tiep-tuong-tac" class="">Giao Tiếp Tương Tác</a>
-<a href="#ch5-gui-giao-tiep-hieu-qua" class="toc-h4">Gửi Thông Điệp Giao Tiếp Hiệu Quả</a>
-<a href="#ch5-lang-nghe-hieu-qua" class="toc-h4">Lắng Nghe Hiệu Quả</a>
-<a href="#ch5-vat-can-giao-tiep" class="toc-h4">Vật Cản Giao Tiếp</a>
-<a href="#ch5-su-dung-cong-nghe-giao-tiep" class="toc-h4">Sử Dụng Thành Thạo Công Nghệ Giao Tiếp</a>
-<a href="#ch5-phuong-phap-giao-tiep" class="toc-h4">Phương Pháp Giao Tiếp</a>
-<a href="#ch5-kenh-giao-tiep" class="toc-h4">Kênh Giao Tiếp</a>
-<a href="#ch5-mo-hinh-dong-luc" class="toc-h4">Các Mô Hình Động Lực</a>
-<a href="#ch5-dong-luc-noi-ngoai-tai" class="toc-h4">Động Lực Nội Tại và Ngoại Tại</a>
-<a href="#ch5-thap-nhu-cau-maslow" class="toc-h4">Tháp Nhu Cầu Maslow</a>
-<a href="#ch5-ly-thuyet-mcclelland" class="toc-h4">Lý Thuyết Nhu Cầu của McClelland (hay Lý Thuyết Nhu Cầu Mắc Phải)</a>
-<a href="#ch5-ly-thuyet-herzberg" class="toc-h4">Lý Thuyết Hai Nhân Tố về Động Lực của Herzberg</a>
-<a href="#ch5-mo-hinh-thanh-thao-ky-nang" class="toc-h4">Các Mô Hình Thành Thạo Kỹ Năng</a>
-<a href="#ch5-shu-ha-ri" class="toc-h4">Mô Hình Shu-Ha-Ri về Thành Thạo Kỹ Năng</a>
-<a href="#ch5-mo-hinh-dreyfus" class="toc-h4">Mô Hình Dreyfus về Tiếp Thu Kỹ Năng của Người Trưởng Thành</a>
-<a href="#ch5-ky-nang-hinh-chu-t" class="toc-h4">Kỹ Năng Hình Chữ T</a>
-<a href="#ch5-mo-hinh-lanh-dao-tinh-huong" class="toc-h4">Các Mô Hình Lãnh Đạo Tình Huống</a>
-<a href="#ch5-situational-leadership-ii" class="toc-h4">Situational Leadership II</a>
-
-</div>
+<div id="sidebar-toc"></div>
 <div id="sidebar-nav">
+  <a href="../../home.html" id="chap-home-btn">🏠 Home</a>
   <a href="rita_chap04.html" class="" title="Tích Hợp">← Ch4</a>
-  <a href="#" id="chap-muc-luc-btn">☰ Mục lục</a>
   <a href="rita_chap06.html" class="" title="Hiệu Suất Nhóm">Ch6 →</a>
 </div></aside>
 
@@ -1336,7 +1294,7 @@ document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
 })();
 
 
-// ── CHAPTER NAV PANEL ───────────────────────────────────
+// ── CHAPTER LIST IN SIDEBAR ─────────────────────────────
 (function(){
   var CHAPS=[
     [1,'rita_chap01.html','Mẹo & Thủ Thuật Ôn Thi PMP®'],
@@ -1357,39 +1315,22 @@ document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
     [17,'rita_chap17.html','Các Phương Pháp Agile Phổ Biến'],
     [18,'rita_chap18.html','Hướng Dẫn PMBOK & Tiêu Chuẩn PM']
   ];
-
   var m=location.pathname.match(/rita_chap(\d+)/);
   var curNum=m?parseInt(m[1]):null;
-  var READ_KEY='rita_reading';
-
-  // Build panel DOM
-  var panel=document.createElement('div');
-  panel.id='chap-panel'; panel.className='hidden';
-  var listHtml='';
+  var toc=document.getElementById('sidebar-toc');
+  if(!toc) return;
+  toc.innerHTML='';
   CHAPS.forEach(function(c){
-    var isActive=c[0]===curNum;
-    listHtml+='<a class="chap-panel-item'+(isActive?' active':'')+'" href="'+c[1]+'">'
-      +'<span class="cpanel-num">Ch'+c[0]+'</span>'
-      +'<span class="cpanel-title">'+c[2]+'</span>'
-      +(isActive?'<span class="cpanel-status">● Đang đọc</span>':'')
-      +'</a>';
+    var a=document.createElement('a');
+    a.className='chap-list-item'+(c[0]===curNum?' active':'');
+    a.href=c[1];
+    a.innerHTML='<span class="cli-num">Ch'+c[0]+'</span><span class="cli-title">'+c[2]+'</span>';
+    toc.appendChild(a);
   });
-  panel.innerHTML='<div id="chap-panel-overlay"></div>'
-    +'<div id="chap-panel-box">'
-    +'<div id="chap-panel-hdr"><h3>☰ Danh Sách Chương</h3><button id="chap-panel-close">×</button></div>'
-    +'<div id="chap-panel-list">'+listHtml+'</div>'
-    +'</div>';
-  document.body.appendChild(panel);
-
-  function openChapPanel(){panel.classList.remove('hidden');}
-  function closeChapPanel(){panel.classList.add('hidden');}
-  document.getElementById('chap-panel-overlay').addEventListener('click',closeChapPanel);
-  document.getElementById('chap-panel-close').addEventListener('click',closeChapPanel);
-
-  // Wire up the Mục lục button
-  var mucLucBtn=document.getElementById('chap-muc-luc-btn');
-  if(mucLucBtn) mucLucBtn.addEventListener('click',function(e){e.preventDefault();openChapPanel();});
+  var active=toc.querySelector('.active');
+  if(active) setTimeout(function(){active.scrollIntoView({block:'nearest'});},80);
 })();
+
 
 
 // ── GITHUB HIGHLIGHTS SYNC ──────────────────────────

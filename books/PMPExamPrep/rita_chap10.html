@@ -285,24 +285,6 @@ html[data-theme=dark] .hl-item-note{color:#8899bb}
 html[data-theme=dark] .hl-note-cancel{border-color:#253048;color:#dde4f0;background:#1a2436}
 html[data-theme=dark] .hl-note-save{background:#c9a84c;color:#0a0f1a}
 
-/* ── CHAPTER NAV PANEL ─────────────────────────────────── */
-#chap-panel{position:fixed;inset:0;z-index:9000;display:flex;align-items:stretch}
-#chap-panel.hidden{display:none!important}
-#chap-panel-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);cursor:pointer}
-#chap-panel-box{position:relative;z-index:1;width:min(360px,90vw);background:#0f1d3a;border-right:3px solid var(--gold);display:flex;flex-direction:column;animation:slideInLeft .2s ease}
-@keyframes slideInLeft{from{transform:translateX(-100%)}to{transform:translateX(0)}}
-#chap-panel-hdr{background:linear-gradient(135deg,#0a1228,#1a2744);padding:1.2rem 1.3rem;border-bottom:2px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
-#chap-panel-hdr h3{font-family:'Source Sans 3',sans-serif;font-size:.85rem;font-weight:700;color:#fff;letter-spacing:.1em;text-transform:uppercase}
-#chap-panel-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.3rem;cursor:pointer;padding:.2rem;line-height:1;transition:color .15s}
-#chap-panel-close:hover{color:#fff}
-#chap-panel-list{flex:1;overflow-y:auto;padding:.5rem 0}
-.chap-panel-item{display:flex;align-items:center;gap:.8rem;padding:.7rem 1.3rem;cursor:pointer;transition:background .15s;border-left:3px solid transparent;text-decoration:none}
-.chap-panel-item:hover{background:rgba(201,168,76,.1);border-left-color:var(--gold)}
-.chap-panel-item.active{background:rgba(201,168,76,.12);border-left-color:var(--gold)}
-.cpanel-num{font-family:'Source Sans 3',sans-serif;font-size:.7rem;font-weight:700;color:var(--gold);min-width:28px;flex-shrink:0}
-.cpanel-title{font-family:'Source Sans 3',sans-serif;font-size:.8rem;color:#ccd4e8;line-height:1.35}
-.cpanel-item-active .cpanel-title{color:#fff;font-weight:600}
-.cpanel-status{margin-left:auto;font-size:.72rem;flex-shrink:0;opacity:.6}
 
 /* ── GITHUB SYNC ──────────────────────────────────── */
 #sync-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:#8899bb;cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s,color .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
@@ -312,6 +294,16 @@ html[data-theme=dark] .hl-note-save{background:#c9a84c;color:#0a0f1a}
 #sync-btn[data-state=err]{color:#ef5350}
 #sync-btn[data-state=no-token]{color:#8899bb}
 
+
+/* ── CHAPTER LIST IN SIDEBAR ──────────────────── */
+#sidebar-toc{flex:1;overflow-y:auto;padding:.4rem 0}
+#sidebar-toc .chap-list-item{display:flex;align-items:center;gap:.55rem;padding:.42rem 1rem;cursor:pointer;text-decoration:none;border-left:3px solid transparent;transition:all .15s}
+#sidebar-toc .chap-list-item:hover{background:rgba(201,168,76,.1);border-left-color:var(--gold)}
+#sidebar-toc .chap-list-item.active{background:rgba(201,168,76,.13);border-left-color:var(--gold)}
+#sidebar-toc .cli-num{font-family:'Source Sans 3',sans-serif;font-size:.65rem;font-weight:700;color:var(--gold);min-width:26px;flex-shrink:0;opacity:.9}
+#sidebar-toc .cli-title{font-family:'Source Sans 3',sans-serif;font-size:.76rem;color:#aab8d0;line-height:1.3}
+#sidebar-toc .chap-list-item.active .cli-title{color:#fff;font-weight:600}
+#sidebar-nav a#chap-home-btn{flex:none;padding:.4rem .6rem;font-size:.75rem}
 </style>
 </head>
 <script>
@@ -327,88 +319,10 @@ html[data-theme=dark] .hl-note-save{background:#c9a84c;color:#0a0f1a}
   <h2>Ôn Thi PMP®</h2>
   <div class="edition">Rita Mulcahy · 11th Edition 2023 · Tiếng Việt</div>
 </div>
-<div id="sidebar-toc">
-  <div class="toc-group-label">Nội Dung Chương</div>
-  <a href="#ch10-quality-deliverables-products" class="">10 Chất Lượng Sản Phẩm Bàn Giao và Sản Phẩm</a>
-<a href="#ch10-introduction" class="toc-h4">Giới Thiệu</a>
-<a href="#ch10-definitions-quality" class="toc-h4">Các Định Nghĩa Liên Quan Đến Chất Lượng</a>
-<a href="#ch10-quality" class="toc-h4">Chất Lượng</a>
-<a href="#ch10-grade" class="toc-h4">Cấp Độ (Grade)</a>
-<a href="#ch10-gold-plating" class="toc-h4">Mạ Vàng (Gold Plating)</a>
-<a href="#ch10-prevention-over-inspection" class="toc-h4">Phòng Ngừa Thay Vì Kiểm Tra</a>
-<a href="#ch10-cai-tien-lien-tuc" class="toc-h4">Cải Tiến Liên Tục</a>
-<a href="#ch10-just-in-time" class="toc-h4">Just in Time (JIT)</a>
-<a href="#ch10-tong-quan-lap-ke-hoach-quan-ly-chat-luong" class="">Tổng Quan về Lập Kế Hoạch và Quản Lý Chất Lượng</a>
-<a href="#ch10-eco" class="toc-h4">ECO</a>
-<a href="#ch10-hieu-su-khac-biet-lap-ke-hoach-quan-ly-kiem-soat" class="toc-h4">Hiểu Sự Khác Biệt giữa Lập Kế Hoạch, Quản Lý và Kiểm Soát Chất Lượng</a>
-<a href="#ch10-ket-qua-mong-muon-quan-ly-chat-luong" class="toc-h4">Kết Quả Mong Muốn Từ Quản Lý Chất Lượng Thành Công</a>
-<a href="#ch10-lap-ke-hoach-quan-ly-chat-luong" class="toc-h4">Lập Kế Hoạch Quản Lý Chất Lượng</a>
-<a href="#ch10-lap-ke-hoach-chat-luong" class="">Lập Kế Hoạch Quản Lý Chất Lượng</a>
-<a href="#ch10-xay-dung-ke-hoach-chat-luong" class="toc-h4">Xây Dựng Kế Hoạch Quản Lý Chất Lượng</a>
-<a href="#ch10-san-pham-lap-ke-hoach-chat-luong" class="toc-h4">Sản Phẩm của Lập Kế Hoạch Quản Lý Chất Lượng</a>
-<a href="#ch10-chi-so-chat-luong" class="toc-h4">Chỉ Số Chất Lượng</a>
-<a href="#ch10-quan-ly-chat-luong" class="">Quản Lý Chất Lượng</a>
-<a href="#ch10-san-pham-quan-ly-chat-luong" class="toc-h4">Sản Phẩm của Quản Lý Chất Lượng</a>
-<a href="#ch10-kiem-soat-chat-luong" class="">Kiểm Soát Chất Lượng</a>
-<a href="#ch10-san-pham-kiem-soat-chat-luong" class="toc-h4">Sản Phẩm của Kiểm Soát Chất Lượng</a>
-<a href="#ch10-thuat-ngu-kiem-soat-chat-luong" class="toc-h4">Thuật Ngữ Liên Quan đến Kiểm Soát Chất Lượng</a>
-<a href="#ch10-phuong-phap-quan-ly-chat-luong" class="">Các Phương Pháp Quản Lý Chất Lượng</a>
-<a href="#ch10-phuong-phap-lap-ke-hoach-chat-luong" class="toc-h4">Các Phương Pháp Lập Kế Hoạch Chất Lượng</a>
-<a href="#ch10-phong-van-brainstorming-benchmarking" class="toc-h4">Phỏng Vấn, Brainstorming và Benchmarking</a>
-<a href="#ch10-phuong-phap-ra-quyet-dinh" class="toc-h4">Các Phương Pháp Ra Quyết Định</a>
-<a href="#ch10-phan-tich-chi-phi-loi-ich" class="toc-h4">Phân Tích Chi Phí-Lợi Ích</a>
-<a href="#ch10-chi-phi-chat-luong" class="toc-h4">Chi Phí Chất Lượng (COQ)</a>
-<a href="#ch10-phan-tich-can-bien" class="toc-h4">Phân Tích Cận Biên</a>
-<a href="#ch10-mo-hinh-du-lieu-logic" class="toc-h4">Mô Hình Dữ Liệu Logic</a>
-<a href="#ch10-so-do-tu-duy" class="toc-h4">Sơ Đồ Tư Duy</a>
-<a href="#ch10-bieu-dien-ma-tran" class="toc-h4">Biểu Diễn Ma Trận</a>
-<a href="#ch10-ma-tran-uu-tien" class="toc-h4">Ma Trận Ưu Tiên (Biểu Đồ)</a>
-<a href="#ch10-flowcharts" class="toc-h4">Lưu Đồ (Flowcharts)</a>
-<a href="#ch10-methods-managing-quality" class="toc-h4">Các Phương Pháp Quản Lý Chất Lượng</a>
-<a href="#ch10-checklists" class="toc-h4">Danh Sách Kiểm Tra (Checklists)</a>
-<a href="#ch10-cause-effect-diagrams" class="toc-h4">Sơ Đồ Nhân Quả (Fishbone, Ishikawa, hoặc Why-Why)</a>
-<a href="#ch10-scatter-diagrams" class="toc-h4">Sơ Đồ Phân Tán (Scatter Diagrams)</a>
-<a href="#ch10-histograms" class="toc-h4">Biểu Đồ Tần Số (Histograms)</a>
-<a href="#ch10-document-analysis" class="toc-h4">Phân Tích Tài Liệu (Document Analysis)</a>
-<a href="#ch10-alternatives-analysis" class="toc-h4">Phân Tích Các Lựa Chọn Thay Thế (Alternatives Analysis)</a>
-<a href="#ch10-doe" class="toc-h4">Thiết Kế Thí Nghiệm - DOE (Design of Experiments)</a>
-<a href="#ch10-process-analysis" class="toc-h4">Phân Tích Quy Trình (Process Analysis)</a>
-<a href="#ch10-root-cause-analysis" class="toc-h4">Phân Tích Nguyên Nhân Gốc Rễ (Root Cause Analysis)</a>
-<a href="#ch10-failure-analysis" class="toc-h4">Phân Tích Thất Bại (Failure Analysis)</a>
-<a href="#ch10-multicriteria-decision" class="toc-h4">Phân Tích Quyết Định Đa Tiêu Chí (Multicriteria Decision Analysis)</a>
-<a href="#ch10-affinity-diagrams" class="toc-h4">Sơ Đồ Quan Hệ (Affinity Diagrams)</a>
-<a href="#ch10-audits" class="toc-h4">Kiểm Toán (Audits)</a>
-<a href="#ch10-design-for-x" class="toc-h4">Thiết Kế Cho X (Design for X)</a>
-<a href="#ch10-giai-quyet-van-de" class="toc-h4">Giải Quyết Vấn Đề</a>
-<a href="#ch10-phuong-phap-kiem-soat-chat-luong" class="toc-h4">Các Phương Pháp Kiểm Soát Chất Lượng</a>
-<a href="#ch10-phieu-kiem-tra" class="toc-h4">Phiếu Kiểm Tra</a>
-<a href="#ch10-lay-mau-thong-ke" class="toc-h4">Lấy Mẫu Thống Kê</a>
-<a href="#ch10-bieu-mau-khao-sat" class="toc-h4">Bảng Câu Hỏi và Khảo Sát</a>
-<a href="#ch10-danh-gia-hieu-suat-du-an" class="toc-h4">Đánh Giá Hiệu Suất Dự Án</a>
-<a href="#ch10-kiem-tra" class="toc-h4">Kiểm Tra</a>
-<a href="#ch10-bieu-do-kiem-soat" class="toc-h4">Biểu Đồ Kiểm Soát</a>
-<a href="#ch10-khai-niem-quan-ly-chat-luong-agile" class="">Các Khái Niệm Quản Lý Chất Lượng Agile</a>
-<a href="#ch10-chi-phi-thay-doi" class="toc-h4">Chi Phí Thay Đổi</a>
-<a href="#ch10-phat-trien-lap-va-tang-dan" class="toc-h4">Phát Triển Lặp Lại và Tăng Dần</a>
-<a href="#ch10-xac-minh-va-xac-nhan-thuong-xuyen" class="toc-h4">Xác Minh và Xác Nhận Thường Xuyên</a>
-<a href="#ch10-agile-meetings-quality" class="toc-h4">Các Cuộc Họp (Nghi Thức) Agile Tập Trung vào Chất Lượng</a>
-<a href="#ch10-iteration-planning-meeting" class="toc-h4">Cuộc Họp Lập Kế Hoạch Vòng Lặp</a>
-<a href="#ch10-daily-standup-meetings" class="toc-h4">Các Cuộc Họp Đứng Hàng Ngày</a>
-<a href="#ch10-retrospectives-meetings" class="toc-h4">Các Cuộc Họp Cải Tiến và Hồi Tố</a>
-<a href="#ch10-wip-cycle-time" class="toc-h4">Công Việc Đang Thực Hiện (WIP) và Thời Gian Chu Kỳ</a>
-<a href="#ch10-defects" class="toc-h4">Lỗi (Defects)</a>
-<a href="#ch10-open-safe-environments" class="toc-h4">Giữ Môi Trường Dự Án Cởi Mở và An Toàn cho Mọi Người</a>
-<a href="#ch10-quality-management-outcomes-summary" class="">Kết Quả Quản Lý Chất Lượng: Tóm Tắt</a>
-<a href="#ch10-tools-techniques-quality" class="">Hiểu Các Công Cụ và Kỹ Thuật Được Sử Dụng trong Quản Lý Chất Lượng</a>
-<a href="#ch10-exercise-10-1" class="">Bài Tập 10.1</a>
-<a href="#ch10-exercise-10-1-answer" class="toc-h4">Đáp Án</a>
-<a href="#ch10-putting-it-all-together" class="toc-h4">Tổng Hợp Lại</a>
-<a href="#ch10-exercise-10-2" class="">Bài Tập 10.2</a>
-
-</div>
+<div id="sidebar-toc"></div>
 <div id="sidebar-nav">
+  <a href="../../home.html" id="chap-home-btn">🏠 Home</a>
   <a href="rita_chap08.html" class="" title="Tiến Độ & Ngân Sách">← Ch8</a>
-  <a href="#" id="chap-muc-luc-btn">☰ Mục lục</a>
   <a href="rita_chap11.html" class="" title="Truyền Thông">Ch11 →</a>
 </div></aside>
 
@@ -2108,7 +2022,7 @@ document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
 })();
 
 
-// ── CHAPTER NAV PANEL ───────────────────────────────────
+// ── CHAPTER LIST IN SIDEBAR ─────────────────────────────
 (function(){
   var CHAPS=[
     [1,'rita_chap01.html','Mẹo & Thủ Thuật Ôn Thi PMP®'],
@@ -2129,39 +2043,22 @@ document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
     [17,'rita_chap17.html','Các Phương Pháp Agile Phổ Biến'],
     [18,'rita_chap18.html','Hướng Dẫn PMBOK & Tiêu Chuẩn PM']
   ];
-
   var m=location.pathname.match(/rita_chap(\d+)/);
   var curNum=m?parseInt(m[1]):null;
-  var READ_KEY='rita_reading';
-
-  // Build panel DOM
-  var panel=document.createElement('div');
-  panel.id='chap-panel'; panel.className='hidden';
-  var listHtml='';
+  var toc=document.getElementById('sidebar-toc');
+  if(!toc) return;
+  toc.innerHTML='';
   CHAPS.forEach(function(c){
-    var isActive=c[0]===curNum;
-    listHtml+='<a class="chap-panel-item'+(isActive?' active':'')+'" href="'+c[1]+'">'
-      +'<span class="cpanel-num">Ch'+c[0]+'</span>'
-      +'<span class="cpanel-title">'+c[2]+'</span>'
-      +(isActive?'<span class="cpanel-status">● Đang đọc</span>':'')
-      +'</a>';
+    var a=document.createElement('a');
+    a.className='chap-list-item'+(c[0]===curNum?' active':'');
+    a.href=c[1];
+    a.innerHTML='<span class="cli-num">Ch'+c[0]+'</span><span class="cli-title">'+c[2]+'</span>';
+    toc.appendChild(a);
   });
-  panel.innerHTML='<div id="chap-panel-overlay"></div>'
-    +'<div id="chap-panel-box">'
-    +'<div id="chap-panel-hdr"><h3>☰ Danh Sách Chương</h3><button id="chap-panel-close">×</button></div>'
-    +'<div id="chap-panel-list">'+listHtml+'</div>'
-    +'</div>';
-  document.body.appendChild(panel);
-
-  function openChapPanel(){panel.classList.remove('hidden');}
-  function closeChapPanel(){panel.classList.add('hidden');}
-  document.getElementById('chap-panel-overlay').addEventListener('click',closeChapPanel);
-  document.getElementById('chap-panel-close').addEventListener('click',closeChapPanel);
-
-  // Wire up the Mục lục button
-  var mucLucBtn=document.getElementById('chap-muc-luc-btn');
-  if(mucLucBtn) mucLucBtn.addEventListener('click',function(e){e.preventDefault();openChapPanel();});
+  var active=toc.querySelector('.active');
+  if(active) setTimeout(function(){active.scrollIntoView({block:'nearest'});},80);
 })();
+
 
 
 // ── GITHUB HIGHLIGHTS SYNC ──────────────────────────

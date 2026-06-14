@@ -285,24 +285,6 @@ html[data-theme=dark] .hl-item-note{color:#8899bb}
 html[data-theme=dark] .hl-note-cancel{border-color:#253048;color:#dde4f0;background:#1a2436}
 html[data-theme=dark] .hl-note-save{background:#c9a84c;color:#0a0f1a}
 
-/* ── CHAPTER NAV PANEL ─────────────────────────────────── */
-#chap-panel{position:fixed;inset:0;z-index:9000;display:flex;align-items:stretch}
-#chap-panel.hidden{display:none!important}
-#chap-panel-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55);cursor:pointer}
-#chap-panel-box{position:relative;z-index:1;width:min(360px,90vw);background:#0f1d3a;border-right:3px solid var(--gold);display:flex;flex-direction:column;animation:slideInLeft .2s ease}
-@keyframes slideInLeft{from{transform:translateX(-100%)}to{transform:translateX(0)}}
-#chap-panel-hdr{background:linear-gradient(135deg,#0a1228,#1a2744);padding:1.2rem 1.3rem;border-bottom:2px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:space-between}
-#chap-panel-hdr h3{font-family:'Source Sans 3',sans-serif;font-size:.85rem;font-weight:700;color:#fff;letter-spacing:.1em;text-transform:uppercase}
-#chap-panel-close{background:none;border:none;color:rgba(255,255,255,.6);font-size:1.3rem;cursor:pointer;padding:.2rem;line-height:1;transition:color .15s}
-#chap-panel-close:hover{color:#fff}
-#chap-panel-list{flex:1;overflow-y:auto;padding:.5rem 0}
-.chap-panel-item{display:flex;align-items:center;gap:.8rem;padding:.7rem 1.3rem;cursor:pointer;transition:background .15s;border-left:3px solid transparent;text-decoration:none}
-.chap-panel-item:hover{background:rgba(201,168,76,.1);border-left-color:var(--gold)}
-.chap-panel-item.active{background:rgba(201,168,76,.12);border-left-color:var(--gold)}
-.cpanel-num{font-family:'Source Sans 3',sans-serif;font-size:.7rem;font-weight:700;color:var(--gold);min-width:28px;flex-shrink:0}
-.cpanel-title{font-family:'Source Sans 3',sans-serif;font-size:.8rem;color:#ccd4e8;line-height:1.35}
-.cpanel-item-active .cpanel-title{color:#fff;font-weight:600}
-.cpanel-status{margin-left:auto;font-size:.72rem;flex-shrink:0;opacity:.6}
 
 /* ── GITHUB SYNC ──────────────────────────────────── */
 #sync-btn{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1.2rem;font-family:'Source Sans 3',sans-serif;font-size:.75rem;color:#8899bb;cursor:pointer;border-top:1px solid rgba(255,255,255,.07);transition:background .15s,color .15s;background:none;border-left:none;border-right:none;border-bottom:none;width:100%;text-align:left}
@@ -312,6 +294,16 @@ html[data-theme=dark] .hl-note-save{background:#c9a84c;color:#0a0f1a}
 #sync-btn[data-state=err]{color:#ef5350}
 #sync-btn[data-state=no-token]{color:#8899bb}
 
+
+/* ── CHAPTER LIST IN SIDEBAR ──────────────────── */
+#sidebar-toc{flex:1;overflow-y:auto;padding:.4rem 0}
+#sidebar-toc .chap-list-item{display:flex;align-items:center;gap:.55rem;padding:.42rem 1rem;cursor:pointer;text-decoration:none;border-left:3px solid transparent;transition:all .15s}
+#sidebar-toc .chap-list-item:hover{background:rgba(201,168,76,.1);border-left-color:var(--gold)}
+#sidebar-toc .chap-list-item.active{background:rgba(201,168,76,.13);border-left-color:var(--gold)}
+#sidebar-toc .cli-num{font-family:'Source Sans 3',sans-serif;font-size:.65rem;font-weight:700;color:var(--gold);min-width:26px;flex-shrink:0;opacity:.9}
+#sidebar-toc .cli-title{font-family:'Source Sans 3',sans-serif;font-size:.76rem;color:#aab8d0;line-height:1.3}
+#sidebar-toc .chap-list-item.active .cli-title{color:#fff;font-weight:600}
+#sidebar-nav a#chap-home-btn{flex:none;padding:.4rem .6rem;font-size:.75rem}
 </style>
 </head>
 <script>
@@ -327,72 +319,10 @@ html[data-theme=dark] .hl-note-save{background:#c9a84c;color:#0a0f1a}
   <h2>Ôn Thi PMP®</h2>
   <div class="edition">Rita Mulcahy · 11th Edition 2023 · Tiếng Việt</div>
 </div>
-<div id="sidebar-toc">
-  <div class="toc-group-label">Nội Dung Chương</div>
-  <a href="#ch12-rui-ro-va-van-de" class="">12 Rủi Ro Và Vấn Đề</a>
-<a href="#ch12-gioi-thieu" class="toc-h4">Giới Thiệu</a>
-<a href="#ch12-dinh-nghia-lien-quan" class="toc-h4">Các Định Nghĩa Liên Quan Đến Quản Lý Rủi Ro</a>
-<a href="#ch12-rui-ro-du-an" class="toc-h4">Rủi Ro Dự Án</a>
-<a href="#ch12-quan-ly-rui-ro-du-an" class="toc-h4">Quản Lý Rủi Ro Dự Án</a>
-<a href="#ch12-danh-sach-theo-doi" class="toc-h4">Danh Sách Theo Dõi</a>
-<a href="#ch12-chu-so-huu-rui-ro" class="toc-h4">Chủ Sở Hữu Rủi Ro</a>
-<a href="#ch12-moi-de-doa-va-co-hoi" class="toc-h4">Mối Đe Dọa Và Cơ Hội</a>
-<a href="#ch12-cac-yeu-to-rui-ro" class="toc-h4">Các Yếu Tố Rủi Ro</a>
-<a href="#ch12-khau-vi-va-nguong-rui-ro" class="toc-h4">Khẩu Vị Và Ngưỡng Rủi Ro</a>
-<a href="#ch12-dinh-nghia-rui-ro-agile" class="toc-h4">Các Định Nghĩa Rủi Ro Đặc Thù Cho Agile</a>
-<a href="#ch12-spikes" class="toc-h4">Spikes</a>
-<a href="#ch12-architectural-spike" class="toc-h4">Architectural Spike</a>
-<a href="#ch12-that-bai-nhanh" class="toc-h4">Thất Bại Nhanh</a>
-<a href="#ch12-tong-quan-quan-ly-rui-ro" class="toc-h4">Tổng Quan Về Quản Lý Rủi Ro</a>
-<a href="#ch12-eco-va-mo-hinh-nhom-quy-trinh" class="toc-h4">ECO Và Mô Hình Nhóm Quy Trình</a>
-<a href="#ch12-ket-qua-mong-muon" class="toc-h4">Kết Quả Mong Muốn Của Quản Lý Rủi Ro</a>
-<a href="#ch12-tom-tat-quan-ly-rui-ro" class="toc-h4">Tóm Tắt Quản Lý Rủi Ro</a>
-<a href="#ch12-lap-ke-hoach-quan-ly-rui-ro" class="toc-h4">Lập Kế Hoạch Quản Lý Rủi Ro</a>
-<a href="#ch12-artifacts-qualitative-risk-analysis" class="toc-h4">Kết quả của Phân tích Rủi ro Định tính</a>
-<a href="#ch12-perform-quantitative-risk-analysis" class="toc-h4">Thực hiện Phân tích Rủi ro Định lượng</a>
-<a href="#ch12-methods-quantitative-risk-analysis" class="toc-h4">Các Phương pháp Phân tích Rủi ro Định lượng</a>
-<a href="#ch12-simulations" class="toc-h4">Mô phỏng</a>
-<a href="#ch12-sensitivity-analysis" class="toc-h4">Phân tích Độ nhạy</a>
-<a href="#ch12-emv" class="toc-h4">Giá trị Tiền tệ Kỳ vọng (EMV)</a>
-<a href="#ch12-exercise-12-1" class="">Bài tập 12.1</a>
-<a href="#ch12-exercise-12-1-answer" class="toc-h4">Đáp án</a>
-<a href="#ch12-decision-tree-analysis" class="toc-h4">Phân tích Cây Quyết định</a>
-<a href="#ch12-exercise-12-2" class="">Bài tập 12.2</a>
-<a href="#ch12-exercise-12-2-answer" class="toc-h4">Đáp án</a>
-<a href="#ch12-artifacts-quantitative-risk-analysis" class="toc-h4">Kết quả của Thực hiện Phân tích Rủi ro Định lượng</a>
-<a href="#ch12-plan-risk-responses" class="toc-h4">Lập kế hoạch Ứng phó Rủi ro</a>
-<a href="#ch12-responses-top-risks" class="toc-h4">Các Phương án Ứng phó cho Rủi ro Hàng đầu</a>
-<a href="#ch12-responses-residual-risks" class="toc-h4">Các Phương án Ứng phó cho Rủi ro Còn lại</a>
-<a href="#ch12-risk-response-strategies" class="toc-h4">Các Chiến Lược Phản Ứng Rủi Ro</a>
-<a href="#ch12-response-strategies-threats" class="toc-h4">Các Chiến Lược Phản Ứng Đối Với Mối Đe Dọa</a>
-<a href="#ch12-response-strategies-opportunities" class="toc-h4">Các Chiến Lược Phản Ứng Đối Với Cơ Hội</a>
-<a href="#ch12-common-response-strategies" class="toc-h4">Các Chiến Lược Phản Ứng Chung Cho Mối Đe Dọa Hoặc Cơ Hội</a>
-<a href="#ch12-exercise-12-3" class="">12.3 Bài Tập</a>
-<a href="#ch12-artifacts-plan-risk-responses" class="toc-h4">Kết Quả Đầu Ra Của Lập Kế Hoạch Phản Ứng Rủi Ro</a>
-<a href="#ch12-risk-report" class="toc-h4">Báo Cáo Rủi Ro</a>
-<a href="#ch12-cap-nhat-so-dang-ky-rui-ro" class="toc-h4">Cập Nhật Sổ Đăng Ký Rủi Ro</a>
-<a href="#ch12-bai-tap-12-4" class="">Bài Tập 12.4</a>
-<a href="#ch12-du-lieu-du-an-12-4" class="toc-h4">Dữ Liệu Dự Án</a>
-<a href="#ch12-dap-an-12-4" class="toc-h4">Đáp Án</a>
-<a href="#ch12-bai-tap-12-5" class="">Bài Tập 12.5</a>
-<a href="#ch12-dap-an-12-5" class="toc-h4">Đáp Án</a>
-<a href="#ch12-ung-pho-rui-ro-agile" class="toc-h4">Ứng Phó Rủi Ro theo Agile</a>
-<a href="#ch12-backlog-dieu-chinh-rui-ro" class="toc-h4">Backlog Điều Chỉnh Rủi Ro</a>
-<a href="#ch12-thiet-ke-da-phuong-an" class="toc-h4">Thiết Kế Đa Phương Án</a>
-<a href="#ch12-thuc-hien-ung-pho-rui-ro" class="toc-h4">Thực Hiện Ứng Phó Rủi Ro</a>
-<a href="#ch12-implement-risk-responses" class="">Thực Hiện Các Phản Ứng Rủi Ro</a>
-<a href="#ch12-artifacts-implement-risk" class="toc-h4">Sản Phẩm của Thực Hiện Các Phản Ứng Rủi Ro</a>
-<a href="#ch12-monitor-risks" class="">Giám Sát Rủi Ro</a>
-<a href="#ch12-agile-risk-monitoring" class="toc-h4">Giám Sát Rủi Ro Agile</a>
-<a href="#ch12-methods-monitoring-risk" class="toc-h4">Các Phương Pháp Giám Sát Rủi Ro</a>
-<a href="#ch12-risk-reassessments" class="toc-h4">Đánh Giá Lại Rủi Ro</a>
-<a href="#ch12-reserve-analysis" class="toc-h4">Phân Tích Dự Trữ</a>
-<a href="#ch12-technical-performance-analysis" class="toc-h4">Phân Tích Hiệu Suất Kỹ Thuật</a>
-
-</div>
+<div id="sidebar-toc"></div>
 <div id="sidebar-nav">
+  <a href="../../home.html" id="chap-home-btn">🏠 Home</a>
   <a href="rita_chap11.html" class="" title="Truyền Thông">← Ch11</a>
-  <a href="#" id="chap-muc-luc-btn">☰ Mục lục</a>
   <a href="rita_chap13.html" class="" title="Mua Sắm">Ch13 →</a>
 </div></aside>
 
@@ -1857,7 +1787,7 @@ document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
 })();
 
 
-// ── CHAPTER NAV PANEL ───────────────────────────────────
+// ── CHAPTER LIST IN SIDEBAR ─────────────────────────────
 (function(){
   var CHAPS=[
     [1,'rita_chap01.html','Mẹo & Thủ Thuật Ôn Thi PMP®'],
@@ -1878,39 +1808,22 @@ document.querySelectorAll('h3[id],h4[id]').forEach(h=>obs.observe(h));
     [17,'rita_chap17.html','Các Phương Pháp Agile Phổ Biến'],
     [18,'rita_chap18.html','Hướng Dẫn PMBOK & Tiêu Chuẩn PM']
   ];
-
   var m=location.pathname.match(/rita_chap(\d+)/);
   var curNum=m?parseInt(m[1]):null;
-  var READ_KEY='rita_reading';
-
-  // Build panel DOM
-  var panel=document.createElement('div');
-  panel.id='chap-panel'; panel.className='hidden';
-  var listHtml='';
+  var toc=document.getElementById('sidebar-toc');
+  if(!toc) return;
+  toc.innerHTML='';
   CHAPS.forEach(function(c){
-    var isActive=c[0]===curNum;
-    listHtml+='<a class="chap-panel-item'+(isActive?' active':'')+'" href="'+c[1]+'">'
-      +'<span class="cpanel-num">Ch'+c[0]+'</span>'
-      +'<span class="cpanel-title">'+c[2]+'</span>'
-      +(isActive?'<span class="cpanel-status">● Đang đọc</span>':'')
-      +'</a>';
+    var a=document.createElement('a');
+    a.className='chap-list-item'+(c[0]===curNum?' active':'');
+    a.href=c[1];
+    a.innerHTML='<span class="cli-num">Ch'+c[0]+'</span><span class="cli-title">'+c[2]+'</span>';
+    toc.appendChild(a);
   });
-  panel.innerHTML='<div id="chap-panel-overlay"></div>'
-    +'<div id="chap-panel-box">'
-    +'<div id="chap-panel-hdr"><h3>☰ Danh Sách Chương</h3><button id="chap-panel-close">×</button></div>'
-    +'<div id="chap-panel-list">'+listHtml+'</div>'
-    +'</div>';
-  document.body.appendChild(panel);
-
-  function openChapPanel(){panel.classList.remove('hidden');}
-  function closeChapPanel(){panel.classList.add('hidden');}
-  document.getElementById('chap-panel-overlay').addEventListener('click',closeChapPanel);
-  document.getElementById('chap-panel-close').addEventListener('click',closeChapPanel);
-
-  // Wire up the Mục lục button
-  var mucLucBtn=document.getElementById('chap-muc-luc-btn');
-  if(mucLucBtn) mucLucBtn.addEventListener('click',function(e){e.preventDefault();openChapPanel();});
+  var active=toc.querySelector('.active');
+  if(active) setTimeout(function(){active.scrollIntoView({block:'nearest'});},80);
 })();
+
 
 
 // ── GITHUB HIGHLIGHTS SYNC ──────────────────────────

@@ -76,25 +76,6 @@ header {
 }
 .hero-text p { font-size: 0.95rem; color: var(--text-dim); max-width: 420px; line-height: 1.6; }
 
-/* Last-read banner */
-#last-read-banner {
-  margin-left: auto;
-  background: var(--surface2);
-  border: 1px solid rgba(201,168,76,0.25);
-  border-radius: var(--r);
-  padding: 1rem 1.3rem;
-  display: flex; align-items: center; gap: 1.1rem;
-  min-width: 260px; max-width: 340px;
-  text-decoration: none; color: var(--text);
-  transition: border-color 0.18s, background 0.18s;
-}
-#last-read-banner:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
-#last-read-banner[hidden] { display: none; }
-.lr-icon { font-size: 2rem; flex-shrink: 0; }
-.lr-label { font-size: 0.65rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 700; margin-bottom: 0.2rem; }
-.lr-title { font-size: 0.88rem; font-weight: 600; color: #fff; }
-.lr-sub   { font-size: 0.72rem; color: var(--text-dim); margin-top: 0.15rem; }
-.lr-arrow { margin-left: auto; color: var(--gold); font-size: 1.1rem; flex-shrink: 0; }
 
 /* ── SECTION ─────────────────────────── */
 .section {
@@ -259,7 +240,6 @@ footer {
   .header-stats { gap: 1rem; }
   .hero { padding: 2rem 1rem 0; }
   .section { padding: 2rem 1rem 0.5rem; }
-  #last-read-banner { min-width: unset; width: 100%; }
   .book-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
   .tools-grid { grid-template-columns: 1fr; }
 }
@@ -294,15 +274,6 @@ footer {
     <h1>Chào mừng trở lại 👋</h1>
     <p>Thư viện tài liệu luyện thi PMP — đọc, highlight &amp; ghi chú mọi lúc, mọi nơi.</p>
   </div>
-  <a href="#" id="last-read-banner" hidden>
-    <div class="lr-icon">📖</div>
-    <div>
-      <div class="lr-label">Tiếp tục đọc</div>
-      <div class="lr-title" id="lr-title">–</div>
-      <div class="lr-sub"  id="lr-sub">–</div>
-    </div>
-    <div class="lr-arrow">›</div>
-  </a>
 </div>
 
 <!-- BOOKS -->
@@ -346,13 +317,6 @@ footer {
       <div>
         <div class="tc-title">Rita Quiz — Luyện Thi PMP</div>
         <div class="tc-desc">20 câu tình huống/chương từ Rita Mulcahy 11th Ed — 17 chương, bao gồm Agile &amp; PMBOK7</div>
-      </div>
-    </a>
-    <a href="rita.html" class="tool-card">
-      <div class="tc-icon">📖</div>
-      <div>
-        <div class="tc-title">Rita PMP Exam Prep — 18 Chương</div>
-        <div class="tc-desc">Rita Mulcahy tiếng Việt — Đầy đủ 18 chương, bao gồm Agile & PMBOK7</div>
       </div>
     </a>
     <a href="books/PMPExamPrep/rita-questions.html" class="tool-card">
@@ -487,26 +451,6 @@ document.getElementById('header-stats').innerHTML = `
     <div class="stat-lbl">Chương đã đọc</div>
   </div>`;
 
-// ── LAST READ BANNER ──────────────────────────────────────────
-(function() {
-  // Find the most recently active book
-  const pmbok6 = BOOKS.find(b => b.id === 'pmbok6');
-  const lastCh  = getLastChapter(pmbok6);
-  const prog    = getProgress(pmbok6);
-
-  if (!lastCh || !prog) return;
-
-  const pmbok6Chapters = window.PMLibConfig ? window.PMLibConfig.getChapters('pmbok6') : [];
-  const chapObj = pmbok6Chapters.find(c => c.id === lastCh);
-  const chTitle = chapObj ? 'Chương ' + chapObj.num + ' – ' + chapObj.title : lastCh;
-  const pct     = Math.round(prog.done / prog.total * 100);
-
-  const banner = document.getElementById('last-read-banner');
-  banner.href = `index.html`;
-  document.getElementById('lr-title').textContent = 'PMBOK® Guide 6th – Tiếng Việt';
-  document.getElementById('lr-sub').textContent   = `${chTitle} · ${pct}% hoàn thành`;
-  banner.hidden = false;
-})();
 
 // Font button
 document.getElementById('home-font-btn').addEventListener('click', function(e) {
