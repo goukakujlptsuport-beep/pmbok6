@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "lastSync": "2026-06-13T02:03:25.726Z",
+  "lastSync": "2026-06-14T01:46:13.336Z",
   "highlights": {
     "01": [
       {
@@ -12,6 +12,18 @@
         "so": 0,
         "exp": "p[1]",
         "eo": 30
+      }
+    ],
+    "03": [
+      {
+        "id": "hmqbp859zk6j3",
+        "color": "yellow",
+        "note": "",
+        "text": "ọng. Có thể nói như vậy về mọi chương trong cuốn sách này, vì tất cả đều giúp bạn hiểu sâu hơn về quản lý dự án. Nhưng chương này đặc biệ",
+        "sxp": "p[1]",
+        "so": 29,
+        "exp": "p[1]",
+        "eo": 166
       }
     ]
   }
