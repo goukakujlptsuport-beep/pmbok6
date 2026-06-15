@@ -1,0 +1,40 @@
+<h2>Bạn muốn thêm tính năng gì nhờ có server?</h2>
+<p class="subtitle">Chọn tất cả những gì bạn quan tâm — đây sẽ quyết định tech stack và độ phức tạp.</p>
+
+<div class="options" data-multiselect>
+
+  <div class="option" data-choice="ai" onclick="toggleSelect(this)">
+    <div class="letter">🤖</div>
+    <div class="content">
+      <h3>AI / Claude integration</h3>
+      <p>Hỏi Claude giải thích khái niệm, tạo câu hỏi thi mới, phân tích điểm yếu của bạn. Cần server để giấu API key.</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="tts" onclick="toggleSelect(this)">
+    <div class="letter">🔊</div>
+    <div class="content">
+      <h3>Text-to-Speech / Audio</h3>
+      <p>Đọc to nội dung chương để nghe khi lái xe / chạy bộ. Bạn đã có scripts generate-audio.py + piper-setup.sh trong project!</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="sync" onclick="toggleSelect(this)">
+    <div class="letter">☁️</div>
+    <div class="content">
+      <h3>Sync thực sự</h3>
+      <p>Thay GitHub API hack bằng database thật. Highlights, notes, progress đồng bộ ngay lập tức giữa máy tính và điện thoại.</p>
+    </div>
+  </div>
+
+  <div class="option" data-choice="content" onclick="toggleSelect(this)">
+    <div class="letter">📝</div>
+    <div class="content">
+      <h3>Quản lý nội dung</h3>
+      <p>Sửa/thêm chương sách qua admin panel thay vì edit HTML thủ công. Serve nội dung từ database hoặc Markdown files.</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top:1.5rem">Còn tính năng nào khác? Gõ vào chat bên dưới.</p>

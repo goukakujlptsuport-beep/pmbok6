@@ -6,6 +6,7 @@
 </head>
 <body>
     
+<script src="../../lib/highlight-system.js"></script>
 </body>
 </html>
 <!DOCTYPE html>
@@ -248,6 +249,61 @@
     #main { margin-left: 0; padding: 0 1.2rem 4rem; }
     .chapter-hero { margin: 0 -1.2rem 2rem; padding: 2rem 1.5rem; }
   }
+
+  /* ── CHAPTER LIST NAV ─────────────────────────── */
+  #sidebar-nav {
+    padding: 0.4rem 0 0.5rem;
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+  #sidebar-nav .chap-nav-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 0.6rem 1.2rem 0.3rem;
+    opacity: 0.85;
+    display: block;
+  }
+  #sidebar-nav a {
+    display: block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.78rem;
+    color: #aab8d0;
+    text-decoration: none;
+    padding: 0.38rem 1.2rem;
+    line-height: 1.4;
+    border-left: 3px solid transparent;
+    transition: all 0.15s;
+  }
+  #sidebar-nav a:hover {
+    color: #fff;
+    background: rgba(201,168,76,0.1);
+    border-left-color: var(--gold);
+  }
+  #sidebar-nav a.active {
+    color: var(--gold);
+    background: rgba(201,168,76,0.1);
+    border-left-color: var(--gold);
+    font-weight: 600;
+  }
+  /* ── SIDEBAR FOOTER ───────────────────────────── */
+  #sidebar-footer {
+    padding: 0.7rem 1.2rem;
+    border-top: 1px solid rgba(201,168,76,0.15);
+  }
+  #btn-home-lib {
+    display: block;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.75rem;
+    color: #8899bb;
+    text-decoration: none;
+    padding: 0.45rem 0;
+    transition: color 0.15s;
+  }
+  #btn-home-lib:hover { color: var(--gold); }
+
 </style>
 </head>
 <body>
@@ -258,7 +314,7 @@
     <h2>Hướng Dẫn Quản Lý Dự Án</h2>
     <div class="edition">Lần xuất bản thứ 6 · Tiếng Việt</div>
   </div>
-  <nav>
+  <nav id="sidebar-sections">
     <div class="section-group">
     <div class="group-label">Chương 10 · Communications</div>
     <a href="#s10-1">10.1 Lập KH Quản Lý Truyền Thông</a>
@@ -266,6 +322,28 @@
     <a href="#s10-3">10.3 Giám Sát Truyền Thông</a>
     </div>
   </nav>
+<nav id="sidebar-nav">
+  <span class="chap-nav-label">📚 Danh Sách Chương</span>
+  <a href="01_instruction.html">1. Giới Thiệu</a>
+  <a href="02_environment.html">2. Môi Trường Dự Án</a>
+  <a href="03_pm_role.html">3. Vai Trò Người QLDA</a>
+  <a href="04_integration_management.html">4. Quản Lý Tích Hợp</a>
+  <a href="05_scope_management.html">5. Quản Lý Phạm Vi</a>
+  <a href="06_schedule_management.html">6. Quản Lý Tiến Độ</a>
+  <a href="07_cost_management.html">7. Quản Lý Chi Phí</a>
+  <a href="08_quality_management.html">8. Quản Lý Chất Lượng</a>
+  <a href="09_resource_management.html">9. Quản Lý Nguồn Lực</a>
+  <a href="10_communications_management.html" class="active">10. Quản Lý Truyền Thông</a>
+  <a href="11_risk_management.html">11. Quản Lý Rủi Ro</a>
+  <a href="12_procurement_management.html">12. Quản Lý Mua Sắm</a>
+  <a href="13_stakeholder_management.html">13. Quản Lý Bên Liên Quan</a>
+  <a href="14_standard_for_pm.html">14. Tiêu Chuẩn QLDA</a>
+  <a href="15_appendices_glossary.html">15. Phụ Lục & Thuật Ngữ</a>
+  <a href="16_agile_practice_guide.html">16. Hướng Dẫn Agile</a>
+</nav>
+<div id="sidebar-footer">
+  <a href="../../home.html" id="btn-home-lib">🏠 Thư Viện</a>
+</div>
 </aside>
 
 <main id="main">
@@ -952,5 +1030,6 @@
 </ul>
 
 </main>
+<script src="../../lib/highlight-system.js"></script>
 </body>
 </html>

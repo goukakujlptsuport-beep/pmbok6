@@ -400,7 +400,7 @@
       'display:none;padding:.7rem 1.2rem;border-top:1px solid rgba(255,255,255,.07);';
     biPanel.innerHTML =
       '<div style="display:flex;align-items:center;justify-content:space-between;gap:.5rem;">' +
-        '<div style="font-size:.65rem;font-weight:600;color:#888;font-family:'Source Sans 3',sans-serif;text-transform:uppercase;letter-spacing:.08em;">Song ngữ (Bilingual)</div>' +
+        '<div style="font-size:.65rem;font-weight:600;color:#888;font-family:\'Source Sans 3\',sans-serif;text-transform:uppercase;letter-spacing:.08em;">Song ngữ (Bilingual)</div>' +
         '<label style="position:relative;display:inline-block;width:36px;height:20px;cursor:pointer;">' +
           '<input type="checkbox" id="rita-bilingual-chk" style="opacity:0;width:0;height:0;" ' + (loadSettings().bilingualOff ? '' : 'checked') + '>' +
           '<span style="position:absolute;inset:0;background:#ccc;border-radius:20px;transition:.3s;" id="rita-bilingual-slider"></span>' +

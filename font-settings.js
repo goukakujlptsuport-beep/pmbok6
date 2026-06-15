@@ -123,13 +123,23 @@
     /* ── Position ─────────────────────────────────────────────── */
     var rect = anchorEl.getBoundingClientRect();
     var side = opts.side || 'bottom';
-    var posStyle = 'position:fixed;z-index:9500;width:272px;';
+    var panelH = 340; // estimated panel height
+    var panelW = 272;
+    var vw = global.innerWidth, vh = global.innerHeight;
+    var posStyle = 'position:fixed;z-index:9500;width:' + panelW + 'px;';
     if (side === 'bottom') {
-      posStyle += 'top:' + (rect.bottom + 6) + 'px;left:' + Math.max(4, rect.left) + 'px;';
+      var leftPos = Math.max(4, Math.min(rect.left, vw - panelW - 4));
+      if (rect.bottom + 6 + panelH <= vh) {
+        posStyle += 'top:' + (rect.bottom + 6) + 'px;left:' + leftPos + 'px;';
+      } else {
+        posStyle += 'bottom:' + (vh - rect.top + 6) + 'px;left:' + leftPos + 'px;';
+      }
     } else if (side === 'left') {
-      posStyle += 'top:' + rect.top + 'px;right:' + (global.innerWidth - rect.left + 6) + 'px;';
+      var topPos = Math.min(rect.top, vh - panelH - 4);
+      posStyle += 'top:' + Math.max(4, topPos) + 'px;right:' + (vw - rect.left + 6) + 'px;';
     } else {
-      posStyle += 'top:' + rect.top + 'px;left:' + (rect.right + 6) + 'px;';
+      var topPos2 = Math.min(rect.top, vh - panelH - 4);
+      posStyle += 'top:' + Math.max(4, topPos2) + 'px;left:' + (rect.right + 6) + 'px;';
     }
 
     panel.style.cssText = posStyle +
