@@ -1,63 +1,25 @@
-name: Deploy to GitHub Pages
+name: Deploy to Oracle Cloud
 
 on:
   push:
-    branches:
-      - main
-      - claude/rita-bilingual-font-editing-usw9tc
+    branches: [main]
   workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Assemble site
-        run: |
-          mkdir _site
-          touch _site/.nojekyll
-
-          # Core reader files
-          cp index.html style.css app.js _site/
-          [ -f font-settings.js ] && cp font-settings.js _site/
-
-          # New pages
-          [ -f home.html ]      && cp home.html _site/
-          [ -f rita.html ]      && cp rita.html _site/
-          [ -f rita-quiz.html ] && cp rita-quiz.html _site/
-          [ -f dashboard.html ] && cp dashboard.html _site/
-          [ -f vocab.html ]     && cp vocab.html _site/
-
-          # Shared libraries
-          [ -d lib ] && cp -r lib _site/
-
-          # Directories
-          [ -d books ]    && cp -r books    _site/
-          [ -d chapters ] && cp -r chapters _site/
-          [ -d pmp-exam ] && cp -r pmp-exam _site/
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
         with:
-          path: '_site'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          host: 138.2.6.44
+          username: ubuntu
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          script: |
+            cd /opt/pmp
+            git pull origin main
+            cd server
+            npm install --production=false
+            sudo systemctl restart pmp
+            sleep 2
+            curl -sf http://localhost:3000/api/health && echo "=== Deploy OK ===" || echo "Health check FAILED"
