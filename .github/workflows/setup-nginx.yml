@@ -1,0 +1,74 @@
+name: Setup Nginx Reverse Proxy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install nginx & configure proxy
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: 138.2.6.44
+          username: ubuntu
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          command_timeout: 5m
+          script: |
+            echo "====== INSTALL NGINX ======"
+            sudo apt-get update -q
+            sudo apt-get install -y nginx
+
+            echo ""
+            echo "====== CONFIGURE NGINX ======"
+            sudo tee /etc/nginx/sites-available/pmp << 'NGINX'
+            server {
+                listen 80;
+                server_name _;
+
+                client_max_body_size 50M;
+
+                location / {
+                    proxy_pass http://localhost:3000;
+                    proxy_http_version 1.1;
+                    proxy_set_header Upgrade $http_upgrade;
+                    proxy_set_header Connection 'upgrade';
+                    proxy_set_header Host $host;
+                    proxy_set_header X-Real-IP $remote_addr;
+                    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                    proxy_cache_bypass $http_upgrade;
+                    proxy_read_timeout 300s;
+                }
+            }
+            NGINX
+
+            echo ""
+            echo "====== ENABLE SITE ======"
+            sudo ln -sf /etc/nginx/sites-available/pmp /etc/nginx/sites-enabled/pmp
+            sudo rm -f /etc/nginx/sites-enabled/default
+
+            echo ""
+            echo "====== TEST CONFIG ======"
+            sudo nginx -t
+
+            echo ""
+            echo "====== RESTART NGINX ======"
+            sudo systemctl enable nginx
+            sudo systemctl restart nginx
+            sudo systemctl status nginx --no-pager -l
+
+            echo ""
+            echo "====== TEST VIA NGINX (port 80) ======"
+            sleep 2
+            curl -sf http://localhost/api/health && echo "NGINX PROXY OK ✅" || echo "NGINX PROXY FAILED ❌"
+
+            echo ""
+            echo "====== PERSIST IPTABLES PORT 80 ======"
+            sudo iptables -C INPUT -p tcp --dport 80 -j ACCEPT 2>/dev/null || \
+              sudo iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+            sudo sh -c 'iptables-save > /etc/iptables/rules.v4' 2>/dev/null && \
+              echo "iptables saved" || echo "could not save (ok if Oracle manages firewall)"
+
+            echo ""
+            echo "====== DONE ======"
+            echo "App accessible at: http://138.2.6.44"
