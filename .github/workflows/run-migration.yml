@@ -1,0 +1,45 @@
+name: Run DB Migration
+
+on:
+  workflow_dispatch:
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run migration on server
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: 138.2.6.44
+          username: ubuntu
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          command_timeout: 5m
+          script: |
+            echo "====== CHECK DB BEFORE MIGRATION ======"
+            sqlite3 /opt/pmp/server/data/pmp.db ".tables" 2>/dev/null || echo "(sqlite3 not available or no tables)"
+
+            echo ""
+            echo "====== RUN MIGRATION ======"
+            cd /opt/pmp/server
+            /usr/bin/node node_modules/.bin/tsx src/db/migrate.ts
+
+            echo ""
+            echo "====== CHECK DB AFTER MIGRATION ======"
+            sqlite3 /opt/pmp/server/data/pmp.db ".tables" 2>/dev/null || \
+              /usr/bin/node -e "
+                const db = require('better-sqlite3')('/opt/pmp/server/data/pmp.db');
+                const tables = db.prepare(\"SELECT name FROM sqlite_master WHERE type='table'\").all();
+                console.log('Tables:', tables.map(t=>t.name).join(', '));
+              "
+
+            echo ""
+            echo "====== TEST HIGHLIGHT API ======"
+            curl -sf -X GET 'http://localhost:3000/api/highlights?book=pmbok6&chap=01_instruction' && echo " — GET highlights OK" || echo "GET highlights FAILED"
+
+            curl -sf -X PUT http://localhost:3000/api/highlights \
+              -H 'Content-Type: application/json' \
+              -d '{"book":"test","chap":"test","color":"yellow","sxp":"p","so":0,"exp":"p","eo":5}' \
+              && echo "PUT highlight OK" || echo "PUT highlight FAILED"
+
+            echo ""
+            echo "====== DONE ======"

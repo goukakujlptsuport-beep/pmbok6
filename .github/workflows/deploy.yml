@@ -20,6 +20,7 @@ jobs:
             git pull origin main
             cd server
             npm install --production=false
+            npm run db:migrate
             sudo systemctl restart pmp
             sleep 2
             curl -sf http://localhost:3000/api/health && echo "=== Deploy OK ===" || echo "Health check FAILED"
