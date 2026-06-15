@@ -1,0 +1,78 @@
+name: Diagnose & Fix Server
+
+on:
+  workflow_dispatch:
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check server status & fix
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: 138.2.6.44
+          username: ubuntu
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          command_timeout: 5m
+          script: |
+            echo "====== NODE / NVM ======"
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+            node --version 2>/dev/null || echo "node NOT FOUND"
+            npm --version  2>/dev/null || echo "npm NOT FOUND"
+            which tsx     2>/dev/null || echo "tsx NOT FOUND"
+
+            echo ""
+            echo "====== SERVICE STATUS ======"
+            systemctl status pmp --no-pager -l || echo "pmp service not found"
+
+            echo ""
+            echo "====== PORT 3000 ======"
+            ss -tlnp | grep 3000 || echo "Nothing listening on 3000"
+
+            echo ""
+            echo "====== FIREWALL (iptables) ======"
+            sudo iptables -L INPUT -n --line-numbers | grep -E "3000|ACCEPT|DROP|REJECT" || true
+
+            echo ""
+            echo "====== UFW STATUS ======"
+            sudo ufw status || echo "ufw not active"
+
+            echo ""
+            echo "====== FILES /opt/pmp ======"
+            ls -la /opt/pmp/ 2>/dev/null || echo "/opt/pmp does NOT exist"
+
+            echo ""
+            echo "====== SERVER NODE_MODULES ======"
+            ls /opt/pmp/server/node_modules 2>/dev/null | wc -l || echo "node_modules missing"
+
+            echo ""
+            echo "====== DB FILES ======"
+            ls -lh /opt/pmp/server/data/ 2>/dev/null || echo "data/ missing"
+
+            echo ""
+            echo "====== .ENV ======"
+            cat /opt/pmp/server/.env 2>/dev/null || echo ".env missing (using defaults)"
+
+            echo ""
+            echo "====== LAST 50 LINES JOURNAL ======"
+            journalctl -u pmp -n 50 --no-pager 2>/dev/null || echo "no journal for pmp"
+
+            echo ""
+            echo "====== SYSTEMD UNIT FILE ======"
+            cat /etc/systemd/system/pmp.service 2>/dev/null || echo "pmp.service not found"
+
+            echo ""
+            echo "====== FIX: OPEN PORT 3000 IN IPTABLES ======"
+            sudo iptables -C INPUT -p tcp --dport 3000 -j ACCEPT 2>/dev/null || \
+              sudo iptables -I INPUT -p tcp --dport 3000 -j ACCEPT && echo "Port 3000 opened in iptables"
+
+            echo ""
+            echo "====== SAVE IPTABLES ======"
+            sudo netfilter-persistent save 2>/dev/null || \
+              sudo sh -c 'iptables-save > /etc/iptables/rules.v4' 2>/dev/null || \
+              echo "Could not persist iptables (may be ok)"
+
+            echo ""
+            echo "====== TEST HEALTH ======"
+            curl -sf http://localhost:3000/api/health && echo "HEALTH OK" || echo "HEALTH FAILED"
