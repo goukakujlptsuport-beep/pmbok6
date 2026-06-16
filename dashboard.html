@@ -2,9 +2,11 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Dashboard – PMLib</title>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/mobile-base.css">
+  <link rel="stylesheet" href="css/components.css">
   <script src="font-settings.js"></script>
   <script src="lib/books-config.js"></script>
   <script src="lib/progress.js"></script>
@@ -39,10 +41,10 @@
       box-shadow: 0 2px 16px rgba(0,0,0,.2);
     }
     .nav-back {
-      color: var(--gold-l); text-decoration: none; font-size: 13px;
+      color: var(--gold-l); text-decoration: none; font-size: 14px;
       display: flex; align-items: center; gap: 6px;
-      padding: 5px 10px; border: 1px solid rgba(201,168,76,.3); border-radius: 4px;
-      transition: all .2s;
+      padding: 8px 14px; border: 1px solid rgba(201,168,76,.3); border-radius: 6px;
+      transition: all .2s; min-height: 44px;
     }
     .nav-back:hover { background: rgba(201,168,76,.15); color: #fff; }
     .nav-title {
@@ -51,8 +53,9 @@
     }
     .nav-font-btn {
       background: rgba(255,255,255,.08); border: 1px solid rgba(201,168,76,.3);
-      color: var(--gold); font-weight: 700; font-size: 13px;
-      padding: 5px 10px; border-radius: 4px; cursor: pointer; transition: all .2s;
+      color: var(--gold); font-weight: 700; font-size: 14px;
+      padding: 8px 14px; border-radius: 6px; cursor: pointer; transition: all .2s;
+      min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center;
     }
     .nav-font-btn:hover { background: rgba(201,168,76,.15); color: #fff; }
 
@@ -165,10 +168,19 @@
 
     .empty-msg { color: #aaa; font-size: 13px; font-style: italic; padding: 12px 0; }
 
-    @media (max-width: 600px) {
-      .wrap { padding: 20px 12px 60px; }
-      .stat-grid { grid-template-columns: repeat(2,1fr); }
-      .chap-grid { grid-template-columns: repeat(auto-fill, minmax(110px,1fr)); }
+    @media (max-width: 768px) {
+      .top-nav { padding: 0 var(--page-pad); height: 52px; }
+      .nav-title { font-size: 13px; }
+      .wrap { padding: 20px var(--page-pad) 80px; }
+      .stat-grid { grid-template-columns: repeat(2,1fr); gap: 10px; }
+      .stat-card { padding: 14px 12px; }
+      .stat-card .val { font-size: 1.6rem; }
+      .stat-card .lbl { font-size: 11px; }
+      .chap-grid { grid-template-columns: repeat(auto-fill, minmax(100px,1fr)); }
+      body { padding-bottom: calc(var(--bottom-nav-h) + var(--safe-bottom)); }
+    }
+    @media (max-width: 380px) {
+      .stat-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -418,5 +430,14 @@ function renderActivity(pmbok6Data, ritaProgress) {
   });
 })();
 </script>
+
+<!-- BOTTOM NAV (mobile) -->
+<nav class="pm-bottom-nav light" aria-label="Main navigation">
+  <a href="home.html"><span class="nav-icon">🏠</span>Trang chủ</a>
+  <a href="rita.html"><span class="nav-icon">📖</span>Sách</a>
+  <a href="rita-quiz.html"><span class="nav-icon">✏️</span>Quiz</a>
+  <a href="vocab.html"><span class="nav-icon">🔤</span>Từ vựng</a>
+  <a href="dashboard.html" aria-current="page" class="active"><span class="nav-icon">📊</span>Dashboard</a>
+</nav>
 </body>
 </html>

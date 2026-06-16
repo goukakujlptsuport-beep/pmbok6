@@ -2,9 +2,11 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Học Thuật Ngữ PM — PMLib</title>
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/mobile-base.css">
+<link rel="stylesheet" href="css/components.css">
 <script src="font-settings.js"></script>
 <script src="lib/vocab-terms.js"></script>
 <style>
@@ -31,14 +33,16 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
   display:flex;align-items:center;gap:10px;padding:0 20px;height:52px;
   box-shadow:0 2px 12px rgba(0,0,0,.2);
 }
-.nav-back{color:var(--gold-l);text-decoration:none;font-size:13px;
-  display:flex;align-items:center;gap:5px;padding:5px 10px;
-  border:1px solid rgba(201,168,76,.3);border-radius:4px;transition:all .2s;white-space:nowrap;}
+.nav-back{color:var(--gold-l);text-decoration:none;font-size:14px;
+  display:flex;align-items:center;gap:6px;padding:8px 14px;
+  border:1px solid rgba(201,168,76,.3);border-radius:6px;transition:all .2s;white-space:nowrap;
+  min-height:44px;}
 .nav-back:hover{background:rgba(201,168,76,.15);color:#fff;}
 .nav-title{font-family:'Merriweather',serif;font-size:15px;color:rgba(255,255,255,.8);flex:1;text-align:center;}
 .nav-stats{font-size:12px;color:var(--gold-l);opacity:.8;white-space:nowrap;}
 .nav-font-btn{background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.3);
-  color:var(--gold);font-weight:700;font-size:13px;padding:5px 10px;border-radius:4px;cursor:pointer;}
+  color:var(--gold);font-weight:700;font-size:14px;padding:8px 14px;border-radius:6px;cursor:pointer;
+  min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;}
 .nav-font-btn:hover{background:rgba(201,168,76,.15);color:#fff;}
 
 /* ── LAYOUT ── */
@@ -50,9 +54,10 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
 .cat-scroll::-webkit-scrollbar-thumb{background:rgba(201,168,76,.3);border-radius:2px;}
 .cat-tabs{display:flex;gap:6px;padding-bottom:4px;white-space:nowrap;}
 .cat-tab{
-  padding:6px 14px;border-radius:20px;border:1px solid var(--border);
-  background:#fff;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s;
-  color:var(--dim);flex-shrink:0;
+  padding:10px 18px;border-radius:20px;border:1px solid var(--border);
+  background:#fff;font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;
+  color:var(--dim);flex-shrink:0;min-height:44px;
+  display:inline-flex;align-items:center;
 }
 .cat-tab:hover{border-color:var(--gold);color:var(--navy);}
 .cat-tab.active{background:var(--navy);border-color:var(--navy);color:#fff;}
@@ -135,55 +140,6 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
 .btn-reset{background:#fff;border:1px solid var(--border);color:var(--dim);}
 .btn-reset:hover{border-color:var(--red);color:var(--red);}
 
-/* ── QUIZ MODE ── */
-.quiz-wrap{background:#fff;border-radius:var(--r);padding:28px;
-  box-shadow:0 2px 12px rgba(0,0,0,.07);border:1px solid var(--border);}
-.quiz-num{font-size:12px;color:var(--dim);margin-bottom:4px;}
-.quiz-question{font-family:'Merriweather',serif;font-size:1.2rem;font-weight:700;
-  color:var(--navy);margin-bottom:6px;line-height:1.4;}
-.quiz-sub{font-size:13px;color:var(--dim);margin-bottom:22px;font-style:italic;}
-.quiz-opts{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
-.quiz-opt{
-  padding:13px 18px;border-radius:8px;border:2px solid var(--border);
-  background:#fafaf7;cursor:pointer;transition:all .2s;
-  font-size:13.5px;font-weight:600;text-align:left;
-  display:flex;align-items:center;gap:10px;
-}
-.quiz-opt:hover:not(.disabled){border-color:var(--gold);background:rgba(201,168,76,.06);}
-.quiz-opt.correct{border-color:var(--green);background:rgba(39,174,96,.1);color:var(--green);}
-.quiz-opt.wrong  {border-color:var(--red);background:rgba(231,76,60,.1);color:var(--red);}
-.quiz-opt.disabled{cursor:default;}
-.quiz-opt .opt-letter{
-  width:26px;height:26px;border-radius:50%;background:var(--border);
-  color:var(--dim);font-size:12px;display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;font-weight:700;transition:all .2s;
-}
-.quiz-opt.correct .opt-letter{background:var(--green);color:#fff;}
-.quiz-opt.wrong .opt-letter{background:var(--red);color:#fff;}
-.quiz-foot{display:flex;align-items:center;gap:12px;}
-.quiz-exp{font-size:13px;color:var(--dim);flex:1;font-style:italic;}
-.quiz-exp.correct-msg{color:var(--green);font-style:normal;font-weight:600;}
-.quiz-exp.wrong-msg{color:var(--red);font-style:normal;font-weight:600;}
-.btn-quiz-next{padding:10px 24px;background:var(--navy);color:#fff;
-  border:none;border-radius:7px;font-size:13px;font-weight:700;cursor:pointer;
-  transition:background .2s;}
-.btn-quiz-next:hover{background:#2a3a6a;}
-.quiz-score{display:flex;gap:16px;font-size:13px;margin-bottom:18px;}
-.quiz-score .q-correct{color:var(--green);font-weight:700;}
-.quiz-score .q-wrong{color:var(--red);font-weight:700;}
-
-/* ── QUIZ RESULT ── */
-.quiz-result{text-align:center;padding:40px 20px;}
-.qr-circle{width:110px;height:110px;border-radius:50%;background:var(--navy);
-  border:5px solid var(--gold);display:flex;flex-direction:column;
-  align-items:center;justify-content:center;margin:0 auto 20px;}
-.qr-pct{font-size:1.8rem;font-weight:700;color:var(--gold);}
-.qr-lbl{font-size:11px;color:rgba(255,255,255,.6);}
-.qr-msg{font-family:'Merriweather',serif;font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:8px;}
-.qr-sub{font-size:13px;color:var(--dim);margin-bottom:24px;}
-.btn-retry{padding:11px 28px;background:var(--gold);color:var(--navy);
-  border:none;border-radius:7px;font-size:14px;font-weight:700;cursor:pointer;margin:0 6px;}
-.btn-retry:hover{background:#b8941e;}
 
 /* ── BROWSE MODE ── */
 .browse-wrap{}
@@ -229,14 +185,31 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
 .empty{text-align:center;padding:40px 20px;color:var(--dim);}
 .empty-icon{font-size:3rem;margin-bottom:12px;}
 
-@media(max-width:600px){
-  .card-vi{font-size:1.2rem;}
-  .card-en{font-size:1.1rem;}
-  .card-face{padding:22px 20px;}
-  .quiz-wrap{padding:18px;}
-  .term-en{min-width:130px;font-size:13px;}
-  .term-vi{font-size:12px;}
-  .cat-tab{padding:5px 10px;font-size:11px;}
+@media(max-width:768px){
+  .top-nav{padding:0 var(--page-pad);}
+  .nav-title{font-size:13px;}
+  .nav-stats{display:none;}
+  .wrap{padding:16px var(--page-pad) 80px;}
+  .card-inner{min-height:calc(55vh - 60px);}
+  .card-face{min-height:calc(55vh - 60px);padding:24px 20px;}
+  .card-vi{font-size:1.4rem;}
+  .card-en{font-size:1.2rem;}
+  .card-desc{font-size:14px;}
+  .quiz-wrap{padding:16px;}
+  .term-row{padding:12px 14px;flex-wrap:wrap;row-gap:4px;}
+  .term-en{min-width:0;flex:1 1 auto;max-width:none;font-size:14px;}
+  .term-vi{flex:1 1 100%;order:99;font-size:13px;line-height:1.4;}
+  .cat-tab{padding:8px 14px;font-size:13px;min-height:40px;}
+  .mode-btn{padding:10px 16px;font-size:14px;min-height:44px;}
+  .shuffle-btn{padding:10px 14px;font-size:13px;min-height:44px;}
+  .btn-prev,.btn-next,.btn-know,.btn-dontknow,.btn-reset{
+    padding:12px 20px;font-size:14px;min-height:48px;
+  }
+  .card-actions{gap:8px;}
+  .search-bar input{padding:14px 14px 14px 42px;font-size:16px;}
+  .term-known-btn{width:32px;height:32px;font-size:14px;}
+  .term-expand-btn{padding:6px 8px;}
+  body{padding-bottom:calc(var(--bottom-nav-h) + var(--safe-bottom));}
 }
 </style>
 </head>
@@ -257,7 +230,6 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
   <!-- MODE SWITCH -->
   <div class="mode-row">
     <button class="mode-btn active" data-mode="flash" id="btn-flash">🃏 Flashcard</button>
-    <button class="mode-btn" data-mode="quiz"  id="btn-quiz" >📝 Quiz</button>
     <button class="mode-btn" data-mode="browse" id="btn-browse">📋 Duyệt</button>
     <div class="mode-spacer"></div>
     <button class="shuffle-btn" id="btn-shuffle" title="Xáo bài">🔀 Xáo</button>
@@ -305,18 +277,6 @@ body{font-family:'Source Sans 3',sans-serif;background:var(--cream);color:var(--
     </div>
   </div>
 
-  <!-- QUIZ MODE -->
-  <div id="mode-quiz" style="display:none;">
-    <div class="quiz-score">
-      <span>Câu: <strong id="q-num">0</strong>/<strong id="q-total">0</strong></span>
-      <span class="q-correct">✓ <strong id="q-correct">0</strong></span>
-      <span class="q-wrong">✗ <strong id="q-wrong">0</strong></span>
-    </div>
-    <div class="quiz-wrap" id="quiz-body">
-      <!-- rendered by JS -->
-    </div>
-  </div>
-
   <!-- BROWSE MODE -->
   <div id="mode-browse" style="display:none;">
     <div class="search-bar">
@@ -353,12 +313,12 @@ var CATS = [
 
 // ── STATE ─────────────────────────────────────────────────────────────────────
 var LS_KEY   = 'pmlib_vocab_v1';
-var mode     = 'flash';   // 'flash' | 'quiz' | 'browse'
+var mode     = 'flash';   // 'flash' | 'browse'
 var curCat   = 'all';
 var deck     = [];        // current filtered + shuffled deck
 var cardIdx  = 0;
 var flipped  = false;
-var quizState = null;
+
 
 function loadProgress() {
   try { return JSON.parse(localStorage.getItem(LS_KEY) || '{}'); } catch(e) { return {}; }
@@ -465,104 +425,6 @@ document.addEventListener('keydown', function(e) {
   if (e.key === '2') { setKnown(deck[cardIdx]?.vi, false); updateProgress(); nextCard(1); }
 });
 
-// ── QUIZ MODE ─────────────────────────────────────────────────────────────────
-function startQuiz() {
-  var q = shuffle(deck.slice());
-  quizState = { questions: q, idx: 0, correct: 0, wrong: 0, answered: false };
-  renderQuizQ();
-}
-
-function getWrongOptions(correct, count) {
-  var pool = VOCAB.filter(function(t){ return t.en !== correct.en; });
-  shuffle(pool);
-  return pool.slice(0, count);
-}
-
-function renderQuizQ() {
-  if (!quizState) return;
-  var q = quizState;
-
-  if (q.idx >= q.questions.length) {
-    renderQuizResult(); return;
-  }
-
-  var t = q.questions[q.idx];
-  document.getElementById('q-num').textContent     = q.idx + 1;
-  document.getElementById('q-total').textContent   = q.questions.length;
-  document.getElementById('q-correct').textContent = q.correct;
-  document.getElementById('q-wrong').textContent   = q.wrong;
-  q.answered = false;
-
-  var wrongs = getWrongOptions(t, 3);
-  var opts = shuffle([t].concat(wrongs));
-  var letters = ['A','B','C','D'];
-
-  var body = document.getElementById('quiz-body');
-  body.innerHTML =
-    '<div class="quiz-num">Câu ' + (q.idx+1) + ' / ' + q.questions.length + '</div>' +
-    '<div class="quiz-question">"' + t.en + '" trong tiếng Việt là gì?</div>' +
-    '<div class="quiz-sub">Chọn câu trả lời đúng:</div>' +
-    '<div class="quiz-opts" id="quiz-opts"></div>' +
-    '<div class="quiz-foot">' +
-      '<div class="quiz-exp" id="quiz-exp"></div>' +
-      '<button class="btn-quiz-next" id="quiz-next" style="display:none">Tiếp →</button>' +
-    '</div>';
-
-  var optsDiv = document.getElementById('quiz-opts');
-  opts.forEach(function(opt, i) {
-    var btn = document.createElement('button');
-    btn.className = 'quiz-opt';
-    btn.dataset.vi = opt.vi;
-    btn.innerHTML = '<span class="opt-letter">' + letters[i] + '</span>' + opt.vi;
-    btn.addEventListener('click', function() { answerQuiz(opt.vi, t.vi, t.en); });
-    optsDiv.appendChild(btn);
-  });
-
-  document.getElementById('quiz-next').addEventListener('click', function(){
-    q.idx++; renderQuizQ();
-  });
-}
-
-function answerQuiz(chosen, correct, vi) {
-  if (!quizState || quizState.answered) return;
-  quizState.answered = true;
-  var isCorrect = chosen === correct;
-  if (isCorrect) quizState.correct++; else quizState.wrong++;
-  setKnown(vi, isCorrect); updateProgress();
-
-  var opts = document.querySelectorAll('.quiz-opt');
-  opts.forEach(function(b){
-    b.classList.add('disabled');
-    if (b.dataset.vi === correct) b.classList.add('correct');
-    else if (b.dataset.vi === chosen && !isCorrect) b.classList.add('wrong');
-  });
-
-  var expEl = document.getElementById('quiz-exp');
-  expEl.textContent = isCorrect ? '✓ Chính xác!' : '✗ Sai. Đáp án đúng: ' + correct + ' (' + vi + ')';
-  expEl.className   = 'quiz-exp ' + (isCorrect ? 'correct-msg' : 'wrong-msg');
-
-  document.getElementById('quiz-next').style.display = 'block';
-  document.getElementById('q-correct').textContent = quizState.correct;
-  document.getElementById('q-wrong').textContent   = quizState.wrong;
-}
-
-function renderQuizResult() {
-  var q = quizState;
-  var total = q.questions.length;
-  var pct   = total > 0 ? Math.round(q.correct / total * 100) : 0;
-  var msg   = pct >= 80 ? '🎉 Xuất sắc!' : pct >= 60 ? '👍 Khá tốt!' : '💪 Cần ôn thêm!';
-  var sub   = 'Đúng ' + q.correct + ' / ' + total + ' câu (' + pct + '%)';
-
-  document.getElementById('quiz-body').innerHTML =
-    '<div class="quiz-result">' +
-      '<div class="qr-circle"><div class="qr-pct">' + pct + '%</div><div class="qr-lbl">Điểm</div></div>' +
-      '<div class="qr-msg">' + msg + '</div>' +
-      '<div class="qr-sub">' + sub + '</div>' +
-      '<button class="btn-retry" onclick="startQuiz()">🔄 Làm lại</button>' +
-      '<button class="btn-retry" style="background:var(--navy);color:#fff;" onclick="switchMode(\'flash\')">🃏 Ôn flashcard</button>' +
-    '</div>';
-}
-
 // ── BROWSE MODE ───────────────────────────────────────────────────────────────
 function renderBrowse(filter) {
   var prog = loadProgress();
@@ -636,26 +498,24 @@ document.getElementById('search-input').addEventListener('input', function(){
 // ── MODE SWITCH ───────────────────────────────────────────────────────────────
 function switchMode(m) {
   mode = m;
-  ['flash','quiz','browse'].forEach(function(x){
+  ['flash','browse'].forEach(function(x){
     document.getElementById('mode-' + x).style.display = x === m ? 'block' : 'none';
     document.getElementById('btn-' + x).classList.toggle('active', x === m);
   });
   document.getElementById('prog-wrap').style.display = m === 'browse' ? 'none' : 'block';
 
-  if (m === 'flash') { cardIdx = 0; renderCard(); updateProgress(); }
-  if (m === 'quiz')  { startQuiz(); updateProgress(); }
-  if (m === 'browse'){ renderBrowse(''); }
+  if (m === 'flash')  { cardIdx = 0; renderCard(); updateProgress(); }
+  if (m === 'browse') { renderBrowse(''); }
 }
 
-['flash','quiz','browse'].forEach(function(m){
+['flash','browse'].forEach(function(m){
   document.getElementById('btn-' + m).addEventListener('click', function(){ switchMode(m); });
 });
 
 // ── SHUFFLE ───────────────────────────────────────────────────────────────────
 document.getElementById('btn-shuffle').addEventListener('click', function(){
   shuffle(deck); cardIdx = 0;
-  if (mode === 'flash') renderCard();
-  if (mode === 'quiz')  startQuiz();
+  if (mode === 'flash')  renderCard();
   if (mode === 'browse') renderBrowse(document.getElementById('search-input').value);
 });
 
@@ -674,8 +534,7 @@ function buildCatTabs() {
       btn.classList.add('active');
       deck = buildDeck(curCat);
       cardIdx = 0;
-      if (mode === 'flash') renderCard();
-      if (mode === 'quiz')  startQuiz();
+      if (mode === 'flash')  renderCard();
       if (mode === 'browse') renderBrowse('');
       updateProgress();
     });
@@ -697,5 +556,14 @@ deck = buildDeck('all');
 renderCard();
 updateProgress();
 </script>
+
+<!-- BOTTOM NAV (mobile) -->
+<nav class="pm-bottom-nav light" aria-label="Main navigation">
+  <a href="home.html"><span class="nav-icon">🏠</span>Trang chủ</a>
+  <a href="rita.html"><span class="nav-icon">📖</span>Sách</a>
+  <a href="rita-quiz.html"><span class="nav-icon">✏️</span>Quiz</a>
+  <a href="vocab.html" aria-current="page" class="active"><span class="nav-icon">🔤</span>Từ vựng</a>
+  <a href="dashboard.html"><span class="nav-icon">📊</span>Dashboard</a>
+</nav>
 </body>
 </html>

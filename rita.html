@@ -2,9 +2,11 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Rita PMP® Exam Prep 11 — Thư Mục Chương</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/mobile-base.css">
+<link rel="stylesheet" href="css/components.css">
 <script src="font-settings.js"></script>
 <script src="lib/books-config.js"></script>
 <script src="lib/progress.js"></script>
@@ -40,11 +42,11 @@
   }
   .nav-back {
     color: var(--gold-lt); text-decoration: none;
-    font-size: 13px; letter-spacing: 0.5px;
+    font-size: 14px; letter-spacing: 0.5px;
     display: flex; align-items: center; gap: 6px;
-    padding: 6px 12px;
-    border: 1px solid rgba(201,151,58,0.35); border-radius: 4px;
-    transition: all 0.2s;
+    padding: 8px 14px;
+    border: 1px solid rgba(201,151,58,0.35); border-radius: 6px;
+    transition: all 0.2s; min-height: 44px;
   }
   .nav-back:hover { background: rgba(201,151,58,0.15); color: white; }
   .nav-title {
@@ -93,6 +95,7 @@
     overflow: hidden;
     transition: all 0.2s;
     box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    min-height: var(--touch-comfortable, 48px);
   }
   .chap-row:hover { border-color: var(--gold); box-shadow: 0 3px 12px rgba(201,151,58,0.15); transform: translateX(3px); }
   .chap-row.locked { opacity: 0.45; pointer-events: none; cursor: default; }
@@ -140,11 +143,24 @@
   .part-title { flex: 1; }
   .part-arrow { color: var(--gold); opacity: 0.6; }
 
-  @media (max-width: 600px) {
-    .hero { padding: 48px 24px 36px; }
-    .hero h1 { font-size: 28px; }
-    .content { padding: 32px 16px 60px; }
-    .chap-num { width: 48px; min-width: 48px; font-size: 15px; }
+  @media (max-width: 768px) {
+    .site-nav { padding: 0 var(--page-pad); height: 52px; gap: 8px; }
+    .nav-title { font-size: 13px; }
+    .hero { padding: 40px 20px 32px; }
+    .hero h1 { font-size: 26px; }
+    .hero p { font-size: 14px; }
+    .content { padding: 24px var(--page-pad) 80px; }
+    .chap-num { width: 44px; min-width: 44px; font-size: 14px; }
+    .chap-body { padding: 12px 14px; }
+    .chap-title-vi { font-size: 14px; }
+    .chap-title-en { font-size: 11px; }
+    .chap-part { padding: 12px 14px; font-size: 14px; min-height: var(--touch-min); }
+    .chap-parts { margin-left: 16px; }
+    body { padding-bottom: calc(var(--bottom-nav-h) + var(--safe-bottom)); }
+  }
+  @media (max-width: 380px) {
+    .hero .badge { font-size: 10px; letter-spacing: 2px; }
+    .hero h1 { font-size: 22px; }
   }
 </style>
 </head>
@@ -153,11 +169,12 @@
 <nav class="site-nav">
   <a href="home.html" class="nav-back">&#8592; Thư Viện</a>
   <div class="nav-title">Rita PMP® Exam Prep 11</div>
-  <a href="dashboard.html" class="nav-back" style="font-size:12px;">📊 Dashboard</a>
+  <a href="dashboard.html" class="nav-back hide-mobile" style="font-size:13px;">📊 Dashboard</a>
   <button id="rita-index-font-btn"
     style="background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.3);
-           color:#c9a84c;font-weight:700;font-size:13px;padding:5px 10px;
-           border-radius:4px;cursor:pointer;font-family:'Source Sans 3',sans-serif;">Aa</button>
+           color:#c9a84c;font-weight:700;font-size:14px;padding:8px 14px;
+           border-radius:6px;cursor:pointer;font-family:'Source Sans 3',sans-serif;
+           min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;">Aa</button>
 </nav>
 
 <div class="hero">
@@ -450,6 +467,15 @@
     });
   }
 </script>
+
+<!-- BOTTOM NAV (mobile) -->
+<nav class="pm-bottom-nav light" aria-label="Main navigation">
+  <a href="home.html"><span class="nav-icon">🏠</span>Trang chủ</a>
+  <a href="rita.html" aria-current="page" class="active"><span class="nav-icon">📖</span>Sách</a>
+  <a href="rita-quiz.html"><span class="nav-icon">✏️</span>Quiz</a>
+  <a href="vocab.html"><span class="nav-icon">🔤</span>Từ vựng</a>
+  <a href="dashboard.html"><span class="nav-icon">📊</span>Dashboard</a>
+</nav>
 
 </body>
 </html>

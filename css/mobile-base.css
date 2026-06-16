@@ -1,0 +1,101 @@
+/* ═══════════════════════════════════════════════════════════════
+   PMLibrary — Mobile-First Foundation
+   Shared CSS variables, resets, and utilities for mobile UX.
+   Include BEFORE page-specific styles.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Breakpoints (reference only, use in media queries) ── */
+  --bp-sm: 480px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+
+  /* ── Touch & Spacing ── */
+  --touch-min: 44px;
+  --touch-comfortable: 48px;
+  --page-pad: 16px;
+  --section-gap: 24px;
+  --card-pad: 16px;
+
+  /* ── Safe Areas (for notched devices) ── */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+
+  /* ── Bottom Nav ── */
+  --bottom-nav-h: 60px;
+}
+
+/* ── Touch Resets ── */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+a, button, [role="button"], input, select, textarea {
+  touch-action: manipulation;
+}
+
+/* ── Mobile Typography Baseline ── */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+  }
+}
+
+/* ── Safe Area Utilities ── */
+.safe-top { padding-top: var(--safe-top); }
+.safe-bottom { padding-bottom: var(--safe-bottom); }
+
+/* ── Bottom Nav Spacer (prevents content hiding behind bottom nav) ── */
+.has-bottom-nav {
+  padding-bottom: calc(var(--bottom-nav-h) + var(--safe-bottom));
+}
+
+/* ── Touch Target Enforcement ── */
+@media (max-width: 768px) {
+  a, button, [role="button"] {
+    min-height: var(--touch-min);
+    display: inline-flex;
+    align-items: center;
+  }
+  /* Exceptions for inline text links */
+  p a, li a, .prose a, td a {
+    min-height: unset;
+    display: inline;
+  }
+}
+
+/* ── Scroll Behavior ── */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+body {
+  overflow-x: hidden;
+}
+
+/* ── Focus visible (accessibility) ── */
+:focus-visible {
+  outline: 2px solid var(--gold, #c9a84c);
+  outline-offset: 2px;
+}
+
+/* ── Horizontal Scroll Indicator (for tables) ── */
+.scroll-hint {
+  position: relative;
+}
+.scroll-hint::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0;
+  width: 24px;
+  background: linear-gradient(to right, transparent, rgba(0,0,0,0.15));
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.scroll-hint.has-scroll::after {
+  opacity: 1;
+}

@@ -1,0 +1,262 @@
+/* ═══════════════════════════════════════════════════════════════
+   PMLibrary — Shared Components
+   Reusable UI patterns optimized for mobile-first.
+   Include AFTER mobile-base.css and BEFORE page-specific styles.
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ═══════════════════════════════════════
+   BOTTOM NAVIGATION BAR
+   ═══════════════════════════════════════ */
+.pm-bottom-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .pm-bottom-nav {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 9999;
+    height: var(--bottom-nav-h, 60px);
+    padding-bottom: var(--safe-bottom, 0px);
+    background: rgba(13, 20, 32, 0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(201, 168, 76, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .pm-bottom-nav a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    min-width: var(--touch-min);
+    min-height: var(--touch-min);
+    padding: 6px 8px;
+    text-decoration: none;
+    color: var(--text-dim, #7a8baa);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border-radius: 8px;
+    transition: color 0.15s, background 0.15s;
+  }
+
+  .pm-bottom-nav a .nav-icon {
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .pm-bottom-nav a.active,
+  .pm-bottom-nav a[aria-current="page"] {
+    color: var(--gold, #c9a84c);
+    background: rgba(201, 168, 76, 0.1);
+  }
+
+  .pm-bottom-nav a:active {
+    transform: scale(0.92);
+    background: rgba(201, 168, 76, 0.08);
+  }
+
+  /* Light theme variant */
+  .pm-bottom-nav.light {
+    background: rgba(253, 248, 240, 0.97);
+    border-top-color: rgba(26, 39, 68, 0.1);
+  }
+  .pm-bottom-nav.light a {
+    color: #6b7280;
+  }
+  .pm-bottom-nav.light a.active,
+  .pm-bottom-nav.light a[aria-current="page"] {
+    color: #1a2744;
+    background: rgba(26, 39, 68, 0.08);
+  }
+}
+
+/* ═══════════════════════════════════════
+   HEADER — Mobile Optimized
+   ═══════════════════════════════════════ */
+.pm-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  min-height: 56px;
+  padding: 0 var(--page-pad);
+  padding-top: var(--safe-top);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pm-header .nav-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--touch-min);
+  min-height: var(--touch-min);
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+
+.pm-header .nav-back:active {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+/* ═══════════════════════════════════════
+   BUTTONS — Touch-friendly
+   ═══════════════════════════════════════ */
+.btn-touch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch-min);
+  min-width: var(--touch-min);
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.1s, opacity 0.15s;
+}
+.btn-touch:active {
+  transform: scale(0.96);
+}
+
+/* ═══════════════════════════════════════
+   CARD GRID — Responsive
+   ═══════════════════════════════════════ */
+.pm-card-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 480px) {
+  .pm-card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .pm-card-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+  }
+}
+
+/* ═══════════════════════════════════════
+   TABS — Touch-optimized
+   ═══════════════════════════════════════ */
+.pm-tabs {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 4px;
+}
+.pm-tabs::-webkit-scrollbar { display: none; }
+
+.pm-tabs .tab {
+  flex-shrink: 0;
+  min-height: var(--touch-min);
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+
+/* ═══════════════════════════════════════
+   CHAPTER / LIST ROWS — Touch targets
+   ═══════════════════════════════════════ */
+.pm-list-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: var(--touch-comfortable);
+  padding: 12px var(--page-pad);
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+.pm-list-row:active {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* ═══════════════════════════════════════
+   BOOK READER — Mobile chapter nav
+   ═══════════════════════════════════════ */
+@media (max-width: 768px) {
+  .pm-reader-footer {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 90;
+    padding: 10px var(--page-pad);
+    padding-bottom: calc(10px + var(--safe-bottom));
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .pm-reader-footer a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--touch-min);
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+
+  /* Dark theme reader footer */
+  [data-theme="dark"] .pm-reader-footer {
+    background: rgba(13, 20, 32, 0.97);
+    border-top-color: rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* ═══════════════════════════════════════
+   OVERLAY / MODAL — Mobile full-screen
+   ═══════════════════════════════════════ */
+@media (max-width: 768px) {
+  .pm-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    padding: var(--page-pad);
+    padding-top: calc(var(--page-pad) + var(--safe-top));
+    padding-bottom: calc(var(--page-pad) + var(--safe-bottom));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ═══════════════════════════════════════
+   UTILITY: Hide on mobile / desktop
+   ═══════════════════════════════════════ */
+@media (max-width: 768px) {
+  .hide-mobile { display: none !important; }
+}
+@media (min-width: 769px) {
+  .hide-desktop { display: none !important; }
+}

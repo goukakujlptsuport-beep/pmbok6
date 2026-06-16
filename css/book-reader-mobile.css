@@ -1,0 +1,125 @@
+/* ═══════════════════════════════════════════════════════════════
+   PMLibrary — Book Reader Mobile Enhancements
+   Include in all book pages (PMBOK6, Rita) for improved mobile UX.
+   Path: ../../css/book-reader-mobile.css (relative from books/*)
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Mobile Reader: improved sidebar & content ── */
+@media (max-width: 860px) {
+  /* Sidebar drawer: wider, safer */
+  #sidebar {
+    width: 85vw;
+    max-width: 320px;
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  /* TOC links: larger touch targets */
+  #sidebar-toc a {
+    padding: 12px 16px;
+    font-size: 14px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+  #sidebar-toc a.toc-h4 {
+    padding-left: 28px;
+    font-size: 13px;
+    min-height: 40px;
+  }
+
+  /* Sidebar nav (prev/next chapter) */
+  #sidebar-nav a {
+    padding: 10px 12px;
+    font-size: 13px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Menu button: larger touch target */
+  #menu-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+    top: env(safe-area-inset-top, 0.5rem);
+    left: 0.5rem;
+  }
+
+  /* Main content: better reading width and spacing */
+  #main {
+    margin-left: 0;
+    padding: 3.5rem 16px 5rem;
+    max-width: 100%;
+  }
+
+  /* Full-width content on mobile */
+  p, ul.content-list, ol.content-list {
+    font-size: 1rem;
+    line-height: 1.85;
+  }
+  ul.content-list li, ol.content-list li {
+    font-size: 0.95rem;
+    padding: 6px 0 6px 1.6rem;
+  }
+
+  /* Chapter hero: compact on mobile */
+  .chapter-hero {
+    margin: 0 -16px 2rem;
+    padding: 2rem 20px;
+  }
+  .chapter-hero::before { display: none; }
+  .chapter-hero h1 { font-size: 1.5rem; }
+  .chapter-hero .ch-label { font-size: 0.68rem; }
+  .chapter-hero .ch-en { font-size: 0.85rem; }
+
+  /* Headings: more breathing room */
+  h3 { font-size: 1.15rem; margin: 2rem 0 0.75rem; }
+  h4 { font-size: 1rem; margin: 1.6rem 0 0.6rem; }
+  h5 { font-size: 0.88rem; margin: 1.2rem 0 0.4rem; }
+
+  /* Callouts: full width */
+  .callout {
+    margin-left: -4px;
+    margin-right: 0;
+    padding: 14px 16px;
+  }
+
+  /* Tables: scroll indicator */
+  .table-wrap, table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    display: block;
+    max-width: 100%;
+  }
+
+  /* Back to top button */
+  #back-top {
+    width: 48px;
+    height: 48px;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    right: 16px;
+    font-size: 1.2rem;
+  }
+
+  /* Dark mode toggle */
+  #theme-toggle, .theme-toggle-btn {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* ── Small phones ── */
+@media (max-width: 380px) {
+  #main {
+    padding: 3.5rem 12px 5rem;
+  }
+  .chapter-hero {
+    margin: 0 -12px 1.5rem;
+    padding: 1.5rem 14px;
+  }
+  .chapter-hero h1 { font-size: 1.3rem; }
+}

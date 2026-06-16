@@ -2,9 +2,11 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>PMLibrary — Thư Viện Học Tập PMP</title>
 <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/mobile-base.css">
+<link rel="stylesheet" href="css/components.css">
 <style>
 :root {
   --bg:        #0d1420;
@@ -235,13 +237,33 @@ footer {
 }
 
 /* ── RESPONSIVE ──────────────────────── */
-@media (max-width: 640px) {
-  header { padding: 0 1rem; }
-  .header-stats { gap: 1rem; }
-  .hero { padding: 2rem 1rem 0; }
-  .section { padding: 2rem 1rem 0.5rem; }
-  .book-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-  .tools-grid { grid-template-columns: 1fr; }
+@media (max-width: 768px) {
+  header { padding: 0 var(--page-pad); height: 52px; }
+  .header-stats { gap: 0.75rem; }
+  .stat-num { font-size: 0.9rem; }
+  .stat-lbl { font-size: 0.6rem; }
+  .logo-text { font-size: 0.95rem; }
+  .logo-sub { display: none; }
+  .hero { padding: 1.5rem var(--page-pad) 0; }
+  .hero-text h1 { font-size: 1.4rem; }
+  .hero-text p { font-size: 0.9rem; }
+  .section { padding: 1.5rem var(--page-pad) 0.5rem; }
+  .book-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .tools-grid { grid-template-columns: 1fr; gap: 10px; }
+  .tool-card { 
+    padding: 14px 16px; gap: 12px;
+    min-height: var(--touch-comfortable);
+  }
+  .tc-icon { font-size: 1.5rem; }
+  .tc-title { font-size: 0.88rem; }
+  .tc-desc { font-size: 0.76rem; }
+  .bi-cta { padding: 10px 12px; font-size: 0.82rem; min-height: var(--touch-min); display: flex; align-items: center; justify-content: center; }
+  footer { padding: 2rem var(--page-pad); margin-bottom: var(--bottom-nav-h); }
+  body { padding-bottom: calc(var(--bottom-nav-h) + var(--safe-bottom)); }
+}
+@media (max-width: 380px) {
+  .book-grid { grid-template-columns: 1fr; }
+  .header-stats { display: none; }
 }
 </style>
 <script src="font-settings.js"></script>
@@ -262,8 +284,9 @@ footer {
   <div class="header-stats" id="header-stats"></div>
   <button id="home-font-btn" title="Cài đặt font / Display Settings"
     style="background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.3);
-           color:var(--gold,#c9a84c);font-weight:700;font-size:13px;padding:5px 11px;
-           border-radius:4px;cursor:pointer;transition:all .2s;font-family:'Source Sans 3',sans-serif;">
+           color:var(--gold,#c9a84c);font-weight:700;font-size:14px;padding:8px 14px;
+           border-radius:6px;cursor:pointer;transition:all .2s;font-family:'Source Sans 3',sans-serif;
+           min-height:44px;min-width:44px;display:inline-flex;align-items:center;justify-content:center;">
     Aa
   </button>
 </header>
@@ -337,6 +360,15 @@ footer {
 </section>
 
 <footer>PMLibrary · Tài liệu chỉ dành cho mục đích học tập cá nhân.</footer>
+
+<!-- BOTTOM NAV (mobile) -->
+<nav class="pm-bottom-nav" aria-label="Main navigation">
+  <a href="home.html" aria-current="page" class="active"><span class="nav-icon">🏠</span>Trang chủ</a>
+  <a href="rita.html"><span class="nav-icon">📖</span>Sách</a>
+  <a href="rita-quiz.html"><span class="nav-icon">✏️</span>Quiz</a>
+  <a href="vocab.html"><span class="nav-icon">🔤</span>Từ vựng</a>
+  <a href="dashboard.html"><span class="nav-icon">📊</span>Dashboard</a>
+</nav>
 
 <script>
 // ── BOOKS & PROGRESS — loaded from lib/ ──────────────────────
