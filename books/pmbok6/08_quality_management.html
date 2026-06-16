@@ -350,8 +350,36 @@
   }
   #btn-home-lib:hover { color: var(--gold); }
 
+
+/* ── DARK THEME ──────────────────────────────────────────── */
+html[data-theme=dark]{--cream:#0f1520;--text:#dde4f0;--text-light:#8899bb;--gold:#c9a84c}
+html[data-theme=dark] body{background:#0f1520}
+html[data-theme=dark] #main{background:#0f1520}
+html[data-theme=dark] h2{color:#e8d5a3}
+html[data-theme=dark] h3{color:#e8d5a3;border-bottom-color:#c9a84c}
+html[data-theme=dark] h4,html[data-theme=dark] h5{color:#b8ccee}
+html[data-theme=dark] p,html[data-theme=dark] li{color:#dde4f0}
+html[data-theme=dark] strong{color:#e8d5a3}
+html[data-theme=dark] .term-en{color:#7a8faa}
+html[data-theme=dark] a{color:#b8ccee}
+html[data-theme=dark] table{background:#131c2b}
+html[data-theme=dark] th{background:#1a2744;color:#e8d5a3;border-color:#253048}
+html[data-theme=dark] td{border-color:#253048;color:#dde4f0}
+html[data-theme=dark] tr:nth-child(even) td{background:#1a2436}
+html[data-theme=dark] .chapter-hero{background:linear-gradient(135deg,#0a1228 0%,#142040 100%)}
+html[data-theme=dark] .figure-caption{color:#8899bb}
+html[data-theme=dark] blockquote{background:#1a2436;border-left-color:#c9a84c;color:#b0c0d8}
+html[data-theme=dark] code{background:#1a2436;color:#b8ccee}
+
+/* ── SIDEBAR HEADER (for absolute-positioned buttons) ── */
+#sidebar-header{position:relative}
+
+/* ── THEME BUTTON ── */
+#theme-btn{position:absolute;top:.65rem;right:.7rem;background:rgba(255,255,255,.08);border:1px solid rgba(201,168,76,.35);color:var(--gold);width:28px;height:28px;border-radius:5px;font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+#theme-btn:hover{background:rgba(201,168,76,.2)}
 </style>
 </head>
+<script>(function(){var t=localStorage.getItem('pmp_theme');if(t)document.documentElement.setAttribute('data-theme',t);})()</script>
 <body>
 
 <aside id="sidebar">
