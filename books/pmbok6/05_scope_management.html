@@ -280,10 +280,54 @@
     vertical-align: top;
     line-height: 1.5;
   }
+  table th, table td { overflow-wrap: anywhere; word-break: break-word; }
   table tr:nth-child(even) td { background: #f9f6ef; }
+  #menu-btn, #sidebar-overlay { display: none; }
   @media(max-width:900px){
-    #sidebar { display: none; }
-    #main { margin-left: 0; padding: 0 1.2rem 4rem; }
+    #sidebar {
+      display: block;
+      transform: translateX(-100%);
+      transition: transform .25s ease;
+      box-shadow: 8px 0 24px rgba(0,0,0,.25);
+    }
+    #sidebar.open { transform: translateX(0); }
+    #sidebar-overlay {
+      display: block;
+      position: fixed;
+      inset: 0;
+      background: rgba(10,16,28,.45);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease;
+      z-index: 90;
+    }
+    #sidebar-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    body.sidebar-open { overflow: hidden; }
+    #menu-btn {
+      display: inline-flex;
+      position: fixed;
+      top: calc(env(safe-area-inset-top, 0px) + .5rem);
+      left: .6rem;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(201,168,76,.45);
+      border-radius: 10px;
+      background: rgba(26,39,68,.94);
+      color: var(--gold);
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      z-index: 110;
+      cursor: pointer;
+    }
+    #main {
+      margin-left: 0;
+      max-width: 100%;
+      padding: 3.4rem 1.2rem 4rem;
+    }
     .chapter-hero { margin: 0 -1.2rem 2rem; padding: 2rem 1.5rem; }
   }
 
@@ -373,6 +417,8 @@ html[data-theme=dark] code{background:#1a2436;color:#b8ccee}
 <script>(function(){var t=localStorage.getItem('pmp_theme');if(t)document.documentElement.setAttribute('data-theme',t);})()</script>
 <body>
 
+<button id="menu-btn" aria-label="Mở mục lục" aria-controls="sidebar" aria-expanded="false">☰</button>
+<div id="sidebar-overlay" aria-hidden="true"></div>
 <aside id="sidebar">
   <div id="sidebar-header">
     <div class="book-label">Pmbok® Guide</div>
@@ -1244,5 +1290,47 @@ html[data-theme=dark] code{background:#1a2436;color:#b8ccee}
 
 </main>
 <script src="../../lib/highlight-system.js"></script>
+<script>
+  (function () {
+    var sidebar = document.getElementById('sidebar');
+    var overlay = document.getElementById('sidebar-overlay');
+    var menuBtn = document.getElementById('menu-btn');
+    if (!sidebar || !overlay || !menuBtn) return;
+
+    function closeSidebar() {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('open');
+      document.body.classList.remove('sidebar-open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    function openSidebar() {
+      sidebar.classList.add('open');
+      overlay.classList.add('open');
+      document.body.classList.add('sidebar-open');
+      menuBtn.setAttribute('aria-expanded', 'true');
+    }
+
+    menuBtn.addEventListener('click', function () {
+      if (sidebar.classList.contains('open')) {
+        closeSidebar();
+        return;
+      }
+      openSidebar();
+    });
+
+    overlay.addEventListener('click', closeSidebar);
+
+    sidebar.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (window.matchMedia('(max-width: 900px)').matches) closeSidebar();
+      });
+    });
+
+    window.addEventListener('resize', function () {
+      if (!window.matchMedia('(max-width: 900px)').matches) closeSidebar();
+    });
+  })();
+</script>
 </body>
 </html>
