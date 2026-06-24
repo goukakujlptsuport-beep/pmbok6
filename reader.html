@@ -1,0 +1,1425 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>PMLib Reader — Đang tải...</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/mobile-base.css">
+  <link rel="stylesheet" href="css/tailwind-output.css">
+  
+  <script src="lib/books-config.js"></script>
+  <script src="lib/progress.js"></script>
+  <script src="font-settings.js"></script>
+  
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(156, 163, 175, 0.3);
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(156, 163, 175, 0.5);
+    }
+    
+    /* ─── CUSTOM THEME VARIABLES ────────────────────────── */
+    :root {
+      --reader-bg: #fdf8f0;
+      --reader-text: #1e293b;
+    }
+    html[data-theme="sepia"] {
+      --reader-bg: #f4ecd8;
+      --reader-text: #5c4033;
+    }
+    html[data-theme="dark"] {
+      --reader-bg: #0f1520;
+      --reader-text: #cbd5e1;
+    }
+
+    /* Apply reader variables */
+    body {
+      background-color: var(--reader-bg) !important;
+      color: var(--reader-text) !important;
+    }
+
+    /* ─── TYPOGRAPHY & SPACING ─────────────────────────── */
+    .prose {
+      max-width: none !important;
+    }
+    .prose p {
+      margin-bottom: 1.5em;
+      line-height: 1.85;
+      text-align: justify;
+      color: var(--reader-text) !important;
+    }
+
+    /* Headings Outfit font & bold hierarchy */
+    .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+      font-family: 'Outfit', sans-serif !important;
+      font-weight: 700 !important;
+      line-height: 1.3 !important;
+    }
+    
+    .prose h1 {
+      font-size: 1.85rem !important;
+      margin-top: 2.5rem !important;
+      margin-bottom: 1.25rem !important;
+    }
+    
+    .prose h2 {
+      font-size: 1.5rem !important;
+      margin-top: 2.25rem !important;
+      margin-bottom: 1rem !important;
+      color: #c9a84c !important; /* Gold */
+      border-left: 4px solid #c9a84c;
+      padding-left: 0.75rem;
+    }
+    html[data-theme="sepia"] .prose h2 {
+      color: #8c6239 !important;
+      border-left-color: #8c6239;
+    }
+    html[data-theme="dark"] .prose h2 {
+      color: #e8d5a3 !important;
+      border-left-color: #e8d5a3;
+    }
+
+    .prose h3 {
+      font-size: 1.25rem !important;
+      margin-top: 1.75rem !important;
+      margin-bottom: 0.75rem !important;
+      color: #0f172a !important;
+    }
+    html[data-theme="sepia"] .prose h3 {
+      color: #4a3319 !important;
+    }
+    html[data-theme="dark"] .prose h3 {
+      color: #f1f5f9 !important;
+    }
+
+    .prose h4 {
+      font-size: 1.1rem !important;
+      margin-top: 1.5rem !important;
+      margin-bottom: 0.5rem !important;
+      color: #334155 !important;
+    }
+    html[data-theme="sepia"] .prose h4 {
+      color: #5c4033 !important;
+    }
+    html[data-theme="dark"] .prose h4 {
+      color: #cbd5e1 !important;
+    }
+
+    /* ─── MEDIA: IMAGES ────────────────────────────────── */
+    .prose img {
+      border-radius: 0.75rem !important;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06) !important;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s !important;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .prose img:hover {
+      transform: translateY(-2px) scale(1.005);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+    }
+
+    /* Center image and table captions */
+    .prose .figure-caption, 
+    .prose .table-caption,
+    .prose caption,
+    .prose figcaption {
+      text-align: center !important;
+      font-family: 'Source Sans 3', sans-serif !important;
+      font-size: 0.85rem !important;
+      font-weight: 600 !important;
+      color: #64748b !important;
+      margin-top: 0.75rem !important;
+      margin-bottom: 1.5rem !important;
+    }
+    html[data-theme="sepia"] .prose .figure-caption, 
+    html[data-theme="sepia"] .prose .table-caption,
+    html[data-theme="sepia"] .prose caption,
+    html[data-theme="sepia"] .prose figcaption {
+      color: #8c6239 !important;
+    }
+    html[data-theme="dark"] .prose .figure-caption, 
+    html[data-theme="dark"] .prose .table-caption,
+    html[data-theme="dark"] .prose caption,
+    html[data-theme="dark"] .prose figcaption {
+      color: #94a3b8 !important;
+    }
+
+    /* ─── MEDIA: TABLES ────────────────────────────────── */
+    .table-wrap {
+      margin-left: 0;
+      margin-right: 0;
+      width: 100% !important;
+      background-color: #ffffff !important;
+      border: 1px solid #e2e8f0 !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03) !important;
+      border-radius: 0.75rem !important;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+    }
+    html[data-theme="sepia"] .table-wrap {
+      background-color: #fcf8ee !important;
+      border-color: #e5d8b7 !important;
+    }
+    html[data-theme="dark"] .table-wrap {
+      background-color: #131c2b !important;
+      border-color: #253048 !important;
+    }
+
+    .table-wrap table {
+      width: 100% !important;
+      border-collapse: collapse !important;
+      font-size: 0.875rem !important;
+    }
+    
+    .table-wrap th {
+      background-color: #1a2744 !important; /* Navy */
+      color: #ffffff !important;
+      font-weight: 600 !important;
+      text-align: left !important;
+      padding: 0.85rem 1rem !important;
+      border-bottom: 2px solid #0f1d3a !important;
+    }
+    html[data-theme="sepia"] .table-wrap th {
+      background-color: #eae0c2 !important;
+      color: #4a3319 !important;
+      border-bottom-color: #dccaa0 !important;
+    }
+    html[data-theme="dark"] .table-wrap th {
+      background-color: #1a2744 !important;
+      color: #e8d5a3 !important;
+      border-bottom-color: #253048 !important;
+    }
+
+    .table-wrap td {
+      padding: 0.85rem 1rem !important;
+      border-bottom: 1px solid #e2e8f0 !important;
+      color: var(--reader-text) !important;
+    }
+    html[data-theme="sepia"] .table-wrap td {
+      border-bottom-color: #e5d8b7 !important;
+    }
+    html[data-theme="dark"] .table-wrap td {
+      border-bottom-color: #253048 !important;
+    }
+
+    .table-wrap tr:nth-child(even) td {
+      background-color: #f8fafc !important;
+    }
+    html[data-theme="sepia"] .table-wrap tr:nth-child(even) td {
+      background-color: #f6ebd0 !important;
+    }
+    html[data-theme="dark"] .table-wrap tr:nth-child(even) td {
+      background-color: #1a2436 !important;
+    }
+
+    /* ─── MOBILE SPECIFIC MEDIA RULES ─────────────────── */
+    @media (max-width: 768px) {
+      .prose p {
+        text-align: left;
+      }
+      /* Full bleed images on mobile */
+      .prose img {
+        width: 100vw !important;
+        max-width: none !important;
+        margin-left: calc(-50vw + 50%) !important;
+        margin-right: calc(-50vw + 50%) !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+      }
+      /* Full bleed table wraps on mobile */
+      .table-wrap {
+        margin-left: -1rem !important;
+        margin-right: -1rem !important;
+        border-left: none !important;
+        border-right: none !important;
+        border-radius: 0 !important;
+        width: calc(100% + 2rem) !important;
+        max-width: none !important;
+      }
+      #main table {
+        font-size: 0.82rem !important;
+      }
+    }
+
+    /* ─── TRANSITIONS FOR AUTO-HIDE TOOLBARS ────────── */
+    #top-bar {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s !important;
+    }
+    #bottom-bar {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s !important;
+    }
+
+    /* Sepia support for other parts of the UI */
+    html[data-theme="sepia"] #custom-sidebar {
+      background-color: #f4ecd8 !important;
+      border-color: #dccaa0 !important;
+    }
+    html[data-theme="sepia"] #custom-sidebar .bg-slate-100\/50,
+    html[data-theme="sepia"] #custom-sidebar .bg-slate-100\/30 {
+      background-color: rgba(220, 202, 160, 0.2) !important;
+    }
+    html[data-theme="sepia"] #custom-sidebar .bg-white {
+      background-color: #ebdcb9 !important;
+    }
+    html[data-theme="sepia"] #tab-toc, 
+    html[data-theme="sepia"] #tab-chaps {
+      color: #5c4033 !important;
+    }
+    html[data-theme="sepia"] #toc-list a:hover,
+    html[data-theme="sepia"] #chaps-list a:hover {
+      background-color: rgba(220, 202, 160, 0.3) !important;
+    }
+
+    /* Hide native rita-enhance buttons */
+    #rita-font-btn, #rita-bilingual-panel, #sync-btn, #hl-sidebar-btn, #theme-btn, #hl-mobile-bar {
+      display: none !important;
+    }
+    
+    /* Loading Skeleton Animation */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .4; }
+    }
+    .animate-pulse {
+      animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    /* Fullscreen Modal Table Styling */
+    #media-modal-content table {
+      width: auto !important;
+      min-width: 100% !important;
+      border-collapse: collapse !important;
+      font-size: 0.85rem !important;
+      color: #dde4f0 !important;
+      background: #131c2b !important;
+    }
+    #media-modal-content th {
+      background: #1a2744 !important;
+      color: #e8d5a3 !important;
+      font-weight: 600 !important;
+      padding: 10px 14px !important;
+      border: 1px solid #253048 !important;
+    }
+    #media-modal-content td {
+      padding: 10px 14px !important;
+      border: 1px solid #253048 !important;
+      color: #dde4f0 !important;
+      background: #131c2b !important;
+      line-height: 1.5 !important;
+    }
+    #media-modal-content tr:nth-child(even) td {
+      background: #1a2436 !important;
+    }
+  </style>
+  <script>
+    // Immediate Theme Apply to prevent flash of light theme
+    (function () {
+      var t = localStorage.getItem('rita_theme') || localStorage.getItem('pmp_theme') || 'light';
+      document.documentElement.setAttribute('data-theme', t);
+      if (t === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    })();
+  </script>
+</head>
+<body class="bg-[var(--reader-bg)] text-[var(--reader-text)] font-sans min-h-screen transition-colors duration-300 antialiased">
+
+  <!-- Header Nav -->
+  <header id="top-bar" class="fixed top-0 left-0 right-0 z-40 h-14 md:h-16 bg-white/80 dark:bg-slate-900/80 [data-theme=sepia]:bg-[#f4ecd8]/80 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800/50 [data-theme=sepia]:border-[#dccaa0]/50 flex items-center justify-between px-2 md:px-4 lg:px-6 shadow-sm transition-all duration-300 ease-in-out">
+    <div class="flex items-center gap-1 md:gap-3 shrink-0">
+      <a href="home.html" class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition-colors active:scale-95" title="Trở về thư viện">
+        <span class="text-xl">←</span>
+      </a>
+      <button id="toggle-sidebar-btn" class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition-colors active:scale-95" title="Menu mục lục">
+        <span class="text-xl">☰</span>
+      </button>
+    </div>
+    
+    <div class="text-center flex-1 px-2 overflow-hidden flex flex-col justify-center">
+      <h2 id="header-book-title" class="text-[10px] md:text-xs font-bold text-gold tracking-wider uppercase font-outfit truncate">Đang tải...</h2>
+      <h1 id="header-chap-title" class="text-xs md:text-sm font-bold text-slate-800 dark:text-white [data-theme=sepia]:text-[#4a3319] truncate">Chương...</h1>
+    </div>
+
+    <div class="flex items-center gap-1 md:gap-2 shrink-0">
+      <!-- Sync Status -->
+      <button id="custom-sync-btn" class="flex items-center gap-1 md:gap-1.5 px-2 md:px-3 py-1 md:py-1.5 text-[10px] md:text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 [data-theme=sepia]:bg-[#ebdcb9] hover:bg-slate-200 dark:hover:bg-slate-700 [data-theme=sepia]:hover:bg-[#dccaa0] text-slate-600 dark:text-slate-300 [data-theme=sepia]:text-[#5c4033] transition-colors border border-slate-200/50 dark:border-slate-700/50 [data-theme=sepia]:border-[#dccaa0]/50 active:scale-95">
+        <span class="relative flex h-2 w-2 shrink-0">
+          <span id="sync-dot-ping" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+          <span id="sync-dot" class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+        </span>
+        <span id="custom-sync-text" class="hidden sm:inline">Sync...</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Reading Progress Bar (top of screen, thin) -->
+  <div class="fixed top-0 left-0 right-0 h-0.5 bg-slate-100/10 dark:bg-slate-900/10 z-50">
+    <div id="custom-progress-bar" class="h-full bg-gold transition-all duration-150 w-0"></div>
+  </div>
+
+  <div class="flex min-h-[calc(100vh-4rem)]">
+    
+    <!-- Sidebar (Table of Contents & Chapters) -->
+    <aside id="custom-sidebar" class="fixed inset-y-0 left-0 z-50 w-80 transform -translate-x-full lg:translate-x-0 lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] bg-slate-50 dark:bg-slate-950 border-r border-slate-200 dark:border-slate-800 flex flex-col transition-all duration-300 shadow-2xl lg:shadow-none">
+      
+      <!-- Sidebar Header -->
+      <div class="p-5 border-b border-slate-200 dark:border-slate-800 flex flex-col gap-1.5 shrink-0 bg-slate-100/50 dark:bg-slate-900/30">
+        <span id="sb-book-tag" class="text-[10px] font-bold text-gold tracking-widest uppercase font-outfit">Cuốn Sách</span>
+        <h2 id="sb-book-title" class="text-sm font-bold text-slate-800 dark:text-white leading-snug">Đang tải...</h2>
+        <p id="sb-book-subtitle" class="text-xs text-slate-500 dark:text-slate-400 italic">Đang tải thông tin chi tiết...</p>
+      </div>
+
+      <!-- Sidebar Tabs -->
+      <div class="flex border-b border-slate-200 dark:border-slate-800 shrink-0 bg-white dark:bg-slate-950">
+        <button id="tab-toc" class="flex-1 py-3 text-xs font-bold tracking-wider uppercase text-center border-b-2 border-gold text-slate-800 dark:text-white transition-all">Mục Lục</button>
+        <button id="tab-chaps" class="flex-1 py-3 text-xs font-bold tracking-wider uppercase text-center border-b-2 border-transparent text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-all">Các Chương</button>
+      </div>
+
+      <!-- Tab Content Area -->
+      <div class="flex-1 overflow-y-auto p-4 flex flex-col gap-2">
+        
+        <!-- TOC Content -->
+        <div id="content-toc" class="flex flex-col gap-1">
+          <nav id="toc-list" class="flex flex-col gap-1">
+            <!-- Dynamically populated -->
+          </nav>
+        </div>
+
+        <!-- Chapters List Content -->
+        <div id="content-chaps" class="hidden flex flex-col gap-1.5">
+          <nav id="chaps-list" class="flex flex-col gap-1">
+            <!-- Dynamically populated -->
+          </nav>
+        </div>
+      </div>
+
+      <!-- Sidebar Footer -->
+      <div class="p-4 border-t border-slate-200 dark:border-slate-800 shrink-0 bg-slate-100/50 dark:bg-slate-900/30 flex items-center justify-between">
+        <a href="home.html" class="text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-gold dark:hover:text-gold transition-colors flex items-center gap-1">
+          <span>🏠</span> Thư Viện Chính
+        </a>
+        <a id="sb-dashboard-link" href="dashboard.html" class="text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-gold dark:hover:text-gold transition-colors flex items-center gap-1">
+          <span>📊</span> Tiến Độ
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Panel -->
+    <main class="flex-1 px-4 md:px-12 pt-20 pb-28 bg-[var(--reader-bg)] transition-colors duration-300 overflow-x-hidden min-w-0">
+      
+      <!-- Loading Skeleton -->
+      <div id="reader-skeleton" class="max-w-3xl mx-auto py-12 flex flex-col gap-6">
+        <div class="h-4 w-24 bg-slate-300/40 dark:bg-slate-800/40 rounded-full animate-pulse"></div>
+        <div class="h-10 w-2/3 bg-slate-300/40 dark:bg-slate-800/40 rounded-lg animate-pulse mb-4"></div>
+        <div class="space-y-3">
+          <div class="h-4 w-full bg-slate-300/40 dark:bg-slate-800/40 rounded animate-pulse"></div>
+          <div class="h-4 w-full bg-slate-300/40 dark:bg-slate-800/40 rounded animate-pulse"></div>
+          <div class="h-4 w-[92%] bg-slate-300/40 dark:bg-slate-800/40 rounded animate-pulse"></div>
+        </div>
+        <div class="space-y-3 mt-6">
+          <div class="h-4 w-full bg-slate-300/40 dark:bg-slate-800/40 rounded animate-pulse"></div>
+          <div class="h-4 w-[96%] bg-slate-300/40 dark:bg-slate-800/40 rounded animate-pulse"></div>
+          <div class="h-4 w-4/5 bg-slate-300/40 dark:bg-slate-800/40 rounded animate-pulse"></div>
+        </div>
+      </div>
+
+      <!-- Actual Chapter Content Container -->
+      <div id="reader-content" class="max-w-3xl mx-auto hidden">
+        
+        <!-- Injected Content Container -->
+        <article id="main" class="prose dark:prose-invert prose-slate max-w-none font-serif leading-relaxed text-slate-800 dark:text-slate-200">
+          <!-- Dynamically Injected Chapter HTML inside #main -->
+        </article>
+
+        <!-- Dynamic Chapter Navigation (Footer) -->
+        <nav class="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 mt-16 pt-8 pb-12 max-w-3xl mx-auto">
+          <a id="btn-prev-chap" href="#" class="flex flex-col gap-1 items-start text-left text-slate-500 dark:text-slate-400 hover:text-gold dark:hover:text-gold transition-colors font-outfit group">
+            <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase group-hover:text-gold transition-colors">← Chương trước</span>
+            <span id="prev-chap-title" class="text-sm font-semibold truncate max-w-[200px] md:max-w-[300px]">Đang tải...</span>
+          </a>
+          <a id="btn-next-chap" href="#" class="flex flex-col gap-1 items-end text-right text-slate-500 dark:text-slate-400 hover:text-gold dark:hover:text-gold transition-colors font-outfit group">
+            <span class="text-[10px] font-bold tracking-widest text-slate-400 uppercase group-hover:text-gold transition-colors">Chương sau →</span>
+            <span id="next-chap-title" class="text-sm font-semibold truncate max-w-[200px] md:max-w-[300px]">Đang tải...</span>
+          </a>
+        </nav>
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- Sidebar Backdrop Overlay (Mobile) -->
+  <div id="sidebar-backdrop" class="fixed inset-0 bg-slate-950/50 backdrop-blur-sm z-40 hidden transition-opacity duration-300 opacity-0"></div>
+
+  <!-- Floating Bottom Nav -->
+  <nav id="bottom-bar" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 w-[calc(100%-2rem)] max-w-md h-14 md:h-16 bg-white/85 dark:bg-slate-900/85 [data-theme=sepia]:bg-[#ebdcb9]/85 backdrop-blur-md border border-slate-200/50 dark:border-slate-800/50 [data-theme=sepia]:border-[#dccaa0]/50 shadow-xl rounded-2xl flex items-center justify-around px-2 z-40 transition-all duration-300 ease-in-out">
+    <!-- Progress Bar (Thin running along the top of bottom-bar) -->
+    <div class="absolute top-0 left-4 right-4 h-[2px] bg-slate-100 dark:bg-slate-800 [data-theme=sepia]:bg-[#ebdcb9]/20 rounded-full overflow-hidden">
+      <div id="nav-progress-bar" class="h-full bg-gold transition-all duration-150 w-0"></div>
+    </div>
+
+    <!-- Prev Chapter -->
+    <a id="btn-prev-chap-nav" href="#" class="flex flex-col items-center justify-center w-12 h-12 rounded-xl text-slate-500 hover:text-gold dark:text-slate-400 dark:hover:text-gold [data-theme=sepia]:text-[#5c4033]/70 [data-theme=sepia]:hover:text-[#8c6239] active:scale-90 transition-all" title="Chương trước">
+      <span class="text-xl">←</span>
+      <span class="text-[9px] font-semibold uppercase tracking-wider font-outfit mt-0.5">Trước</span>
+    </a>
+    
+    <!-- TOC Sidebar Trigger -->
+    <button id="nav-toc-btn" class="flex flex-col items-center justify-center w-12 h-12 rounded-xl text-slate-500 hover:text-gold dark:text-slate-400 dark:hover:text-gold [data-theme=sepia]:text-[#5c4033]/70 [data-theme=sepia]:hover:text-[#8c6239] active:scale-90 transition-all" title="Mục lục">
+      <span class="text-lg">☰</span>
+      <span class="text-[9px] font-semibold uppercase tracking-wider font-outfit mt-0.5">Mục lục</span>
+    </button>
+    
+    <!-- Aa Settings Trigger -->
+    <button id="nav-settings-btn" class="flex flex-col items-center justify-center w-12 h-12 rounded-xl text-slate-700 hover:text-gold dark:text-slate-200 dark:hover:text-gold [data-theme=sepia]:text-[#5c4033] [data-theme=sepia]:hover:text-[#8c6239] active:scale-90 transition-all font-outfit font-bold" title="Cài đặt hiển thị">
+      <span class="text-base leading-none">Aa</span>
+      <span class="text-[9px] font-semibold uppercase tracking-wider font-outfit mt-0.5">Cài đặt</span>
+    </button>
+    
+    <!-- Highlights Badge Trigger -->
+    <button id="nav-highlights-btn" class="flex flex-col items-center justify-center w-12 h-12 rounded-xl text-slate-700 hover:text-gold dark:text-slate-200 dark:hover:text-gold [data-theme=sepia]:text-[#5c4033] [data-theme=sepia]:hover:text-[#8c6239] active:scale-90 transition-all relative" title="Ghi chú">
+      <span class="text-lg leading-none">✏️</span>
+      <span id="nav-hl-badge" class="absolute top-1 right-2 min-w-3.5 h-3.5 px-0.5 flex items-center justify-center rounded-full bg-gold text-[8px] font-bold text-slate-900 border border-white dark:border-slate-900 shadow">0</span>
+      <span class="text-[9px] font-semibold uppercase tracking-wider font-outfit mt-0.5">Ghi chú</span>
+    </button>
+    
+    <!-- Next Chapter -->
+    <a id="btn-next-chap-nav" href="#" class="flex flex-col items-center justify-center w-12 h-12 rounded-xl text-slate-500 hover:text-gold dark:text-slate-400 dark:hover:text-gold [data-theme=sepia]:text-[#5c4033]/70 [data-theme=sepia]:hover:text-[#8c6239] active:scale-90 transition-all" title="Chương sau">
+      <span class="text-xl">→</span>
+      <span class="text-[9px] font-semibold uppercase tracking-wider font-outfit mt-0.5">Sau</span>
+    </a>
+  </nav>
+
+  <!-- Aa Font Display Settings Drawer -->
+  <div id="settings-drawer" class="fixed bottom-0 left-0 right-0 z-50 transform translate-y-full transition-transform duration-300 ease-out bg-white/95 dark:bg-slate-900/95 [data-theme=sepia]:bg-[#ebdcb9]/95 backdrop-blur-md border-t border-slate-200/50 dark:border-slate-800/50 [data-theme=sepia]:border-[#dccaa0]/50 rounded-t-2xl shadow-2xl max-w-xl mx-auto flex flex-col p-6 gap-5">
+    
+    <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 [data-theme=sepia]:border-[#dccaa0]/50 pb-3">
+      <h3 class="text-sm font-bold tracking-wider text-gold uppercase font-outfit">Cài đặt hiển thị</h3>
+      <button id="close-settings-btn" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 [data-theme=sepia]:text-[#5c4033] text-lg p-1">✕</button>
+    </div>
+
+    <!-- Theme Options -->
+    <div class="flex flex-col gap-2">
+      <label class="text-[10px] font-bold tracking-wider text-slate-400 uppercase font-outfit">Giao diện (Theme)</label>
+      <div id="drawer-theme" class="grid grid-cols-3 gap-2">
+        <button data-theme-id="light" class="flex items-center justify-center gap-2 p-2.5 rounded-lg border text-xs font-semibold bg-white border-slate-200 text-slate-800 hover:bg-slate-50 transition-all active:scale-95">
+          <span class="w-3 h-3 rounded-full bg-white border border-slate-300"></span> Sáng
+        </button>
+        <button data-theme-id="sepia" class="flex items-center justify-center gap-2 p-2.5 rounded-lg border text-xs font-semibold bg-[#f4ecd8] border-slate-300 text-[#5c4033] hover:bg-[#ebdcb9] transition-all active:scale-95">
+          <span class="w-3 h-3 rounded-full bg-[#f4ecd8] border border-[#dccaa0]"></span> Sepia
+        </button>
+        <button data-theme-id="dark" class="flex items-center justify-center gap-2 p-2.5 rounded-lg border text-xs font-semibold bg-slate-950 border-slate-800 text-slate-200 hover:bg-slate-900 transition-all active:scale-95">
+          <span class="w-3 h-3 rounded-full bg-slate-950 border border-slate-900"></span> Tối
+        </button>
+      </div>
+    </div>
+
+    <!-- Font Family Options -->
+    <div class="flex flex-col gap-2">
+      <label class="text-[10px] font-bold tracking-wider text-slate-400 uppercase font-outfit">Kiểu chữ (Font Family)</label>
+      <div id="drawer-font-family" class="grid grid-cols-2 gap-2">
+        <!-- JS populated -->
+      </div>
+    </div>
+
+    <!-- Font Size Options -->
+    <div class="flex flex-col gap-2">
+      <label class="text-[10px] font-bold tracking-wider text-slate-400 uppercase font-outfit">Cỡ chữ (Font Size)</label>
+      <div id="drawer-font-size" class="flex gap-2">
+        <!-- JS populated -->
+      </div>
+    </div>
+
+    <!-- Bilingual Switch -->
+    <div class="flex items-center justify-between border-t border-slate-100 dark:border-slate-800 [data-theme=sepia]:border-[#dccaa0]/50 pt-4">
+      <div class="flex flex-col">
+        <span class="text-xs font-bold text-slate-700 dark:text-slate-200 [data-theme=sepia]:text-[#5c4033]">Hiển thị song ngữ</span>
+        <span class="text-[10px] text-slate-400 [data-theme=sepia]:text-[#8c6239]">Hiển thị từ vựng tiếng Anh đi kèm</span>
+      </div>
+      <label class="relative inline-flex items-center cursor-pointer">
+        <input type="checkbox" id="drawer-bilingual-chk" class="sr-only peer" checked>
+        <div class="w-9 h-5 bg-slate-200 dark:bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-slate-600 peer-checked:bg-gold"></div>
+      </label>
+    </div>
+  </div>
+
+  <script>
+    // ── CORE READER SHELL CONTROLLER ──────────────────────────────────────────
+    (function () {
+      'use strict';
+
+      // Parse Query Params
+      var urlParams = new URLSearchParams(window.location.search);
+      var bookId = urlParams.get('book') || 'rita';
+      var chapId = urlParams.get('chap');
+
+      var book = PMLibConfig.getBook(bookId);
+      var chapters = PMLibConfig.getChapters(bookId);
+
+      // If chapter ID is missing, read first chapter or last read chapter
+      if (!chapId) {
+        var last = PMProgress.getLastChap(bookId);
+        chapId = last || (chapters.length ? chapters[0].id : null);
+        if (chapId) {
+          window.location.replace('reader.html?book=' + bookId + '&chap=' + chapId);
+          return;
+        }
+      }
+
+      var currentChapIndex = chapters.findIndex(c => c.id === chapId);
+      var currentChap = chapters[currentChapIndex];
+
+      if (!book || !currentChap) {
+        alert('Không tìm thấy cuốn sách hoặc chương này trong cơ sở dữ liệu!');
+        window.location.replace('home.html');
+        return;
+      }
+
+      // Populate Header Titles
+      document.getElementById('header-book-title').textContent = book.title + ' — ' + book.edition;
+      document.getElementById('header-chap-title').textContent = 'Chương ' + currentChap.num + ': ' + currentChap.title;
+      document.title = currentChap.title + ' | ' + book.title;
+
+      // Populate Sidebar Book Details
+      document.getElementById('sb-book-title').textContent = book.title;
+      document.getElementById('sb-book-subtitle').textContent = book.edition;
+
+      // ── SIDEBAR DRAWER TOGGLE ────────────────────────────────────────────────
+      var sidebar = document.getElementById('custom-sidebar');
+      var backdrop = document.getElementById('sidebar-backdrop');
+      var toggleBtn = document.getElementById('toggle-sidebar-btn');
+
+      function openSidebar() {
+        sidebar.classList.remove('-translate-x-full');
+        backdrop.classList.remove('hidden');
+        setTimeout(() => backdrop.classList.add('opacity-100', 'on'), 10);
+      }
+
+      function closeSidebar() {
+        sidebar.classList.add('-translate-x-full');
+        backdrop.classList.remove('opacity-100', 'on');
+        setTimeout(() => backdrop.classList.add('hidden'), 300);
+      }
+
+      toggleBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (sidebar.classList.contains('-translate-x-full')) {
+          openSidebar();
+        } else {
+          closeSidebar();
+        }
+      });
+
+      backdrop.addEventListener('click', closeSidebar);
+
+      // ── SIDEBAR TABS ──────────────────────────────────────────────────────────
+      var tabTOC = document.getElementById('tab-toc');
+      var tabChaps = document.getElementById('tab-chaps');
+      var contentTOC = document.getElementById('content-toc');
+      var contentChaps = document.getElementById('content-chaps');
+
+      tabTOC.addEventListener('click', function () {
+        tabTOC.classList.add('border-gold', 'text-slate-800', 'dark:text-white');
+        tabTOC.classList.remove('border-transparent', 'text-slate-400', 'dark:text-slate-500');
+        tabChaps.classList.remove('border-gold', 'text-slate-800', 'dark:text-white');
+        tabChaps.classList.add('border-transparent', 'text-slate-400', 'dark:text-slate-500');
+        
+        contentTOC.classList.remove('hidden');
+        contentChaps.classList.add('hidden');
+      });
+
+      tabChaps.addEventListener('click', function () {
+        tabChaps.classList.add('border-gold', 'text-slate-800', 'dark:text-white');
+        tabChaps.classList.remove('border-transparent', 'text-slate-400', 'dark:text-slate-500');
+        tabTOC.classList.remove('border-gold', 'text-slate-800', 'dark:text-white');
+        tabTOC.classList.add('border-transparent', 'text-slate-400', 'dark:text-slate-500');
+        
+        contentChaps.classList.remove('hidden');
+        contentTOC.classList.add('hidden');
+      });
+
+      // ── RENDER CHAPTERS IN SIDEBAR ───────────────────────────────────────────
+      var chapsNav = document.getElementById('chaps-list');
+      chapsNav.innerHTML = '';
+      chapters.forEach(function (ch) {
+        var status = PMProgress.getChapterStatus(bookId, ch.id);
+        var active = ch.id === chapId;
+        var item = document.createElement('a');
+        item.href = 'reader.html?book=' + bookId + '&chap=' + ch.id;
+        item.className = 'flex items-center gap-3 p-2.5 rounded-lg text-xs font-semibold transition-colors ' +
+          (active 
+            ? 'bg-gold/15 text-gold border border-gold/30' 
+            : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-900 hover:text-slate-900 dark:hover:text-white border border-transparent');
+        
+        var icon = status === 'done' ? '✓' : status === 'reading' ? '●' : '○';
+        var iconColor = status === 'done' ? 'text-emerald-500' : status === 'reading' ? 'text-gold' : 'text-slate-400';
+        
+        item.innerHTML = '<span class="w-4 text-center text-sm font-bold shrink-0 ' + iconColor + '">' + icon + '</span>' +
+          '<span class="truncate">Ch' + ch.num + '. ' + ch.title + '</span>';
+        chapsNav.appendChild(item);
+      });
+
+      // ── CHAPTER PREV/NEXT NAV ACTIONS ─────────────────────────────────────────
+      var prevBtn = document.getElementById('btn-prev-chap');
+      var nextBtn = document.getElementById('btn-next-chap');
+      
+      if (currentChapIndex > 0) {
+        var prevChap = chapters[currentChapIndex - 1];
+        prevBtn.href = 'reader.html?book=' + bookId + '&chap=' + prevChap.id;
+        document.getElementById('prev-chap-title').textContent = prevChap.title;
+      } else {
+        prevBtn.classList.add('opacity-30', 'pointer-events-none');
+        document.getElementById('prev-chap-title').textContent = 'Không có';
+      }
+
+      if (currentChapIndex < chapters.length - 1) {
+        var nextChap = chapters[currentChapIndex + 1];
+        nextBtn.href = 'reader.html?book=' + bookId + '&chap=' + nextChap.id;
+        document.getElementById('next-chap-title').textContent = nextChap.title;
+      } else {
+        nextBtn.classList.add('opacity-30', 'pointer-events-none');
+        document.getElementById('next-chap-title').textContent = 'Không có';
+      }
+
+      // ── DYNAMIC CONTENT FETCHING ─────────────────────────────────────────────
+      var chapUrl = '';
+      if (bookId === 'rita') {
+        chapUrl = 'books/PMPExamPrep/' + chapId + '.html';
+      } else if (bookId === 'pmbok6') {
+        chapUrl = 'books/pmbok6/' + chapId + '.html';
+      }
+
+      fetch(chapUrl)
+        .then(function (res) {
+          if (!res.ok) throw new Error('Không thể tải chương này. Lỗi HTTP ' + res.status);
+          return res.text();
+        })
+        .then(function (htmlText) {
+          var parser = new DOMParser();
+          var doc = parser.parseFromString(htmlText, 'text/html');
+          var mainContainer = doc.getElementById('main');
+          
+          if (!mainContainer) {
+            throw new Error('Định dạng nội dung chương không hợp lệ (thiếu thẻ #main).');
+          }
+
+          // Strip away structural components (header titles) if already present in shell
+          var chapHero = mainContainer.querySelector('.chapter-hero');
+          if (chapHero) chapHero.remove();
+
+          document.getElementById('main').innerHTML = mainContainer.innerHTML;
+          
+          // Show Content & Hide Skeleton
+          document.getElementById('reader-skeleton').classList.add('hidden');
+          document.getElementById('reader-content').classList.remove('hidden');
+
+          // Generate TOC & Init Scroll Spy
+          generateTOC();
+          initScrollSpy();
+          enhanceImagesAndTables();
+
+          // Save Reading State to LocalStorage
+          saveReadingState();
+
+          // Load Sub-scripts Dynamically
+          loadScriptsSequentially([
+            'lib/vocab-terms.js',
+            'books/PMPExamPrep/rita-enhance.js',
+            'lib/highlight-system.js'
+          ], function () {
+            // Apply current Display Settings
+            applyDisplaySettings();
+            
+            // Sync status hooking
+            hookHighlightSyncState();
+
+            // Mobile Selection Trigger for highlight-system popup
+            var isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+            if (isTouch) {
+              var selectTimer = null;
+              document.addEventListener('selectionchange', function () {
+                clearTimeout(selectTimer);
+                selectTimer = setTimeout(function () {
+                  var sel = window.getSelection();
+                  if (sel && !sel.isCollapsed && sel.rangeCount > 0) {
+                    var range = sel.getRangeAt(0);
+                    var main = document.getElementById('main');
+                    if (main && main.contains(range.commonAncestorContainer)) {
+                      var popup = document.getElementById('hl-popup');
+                      var panel = document.getElementById('hl-panel');
+                      var modal = document.getElementById('hl-note-modal');
+                      
+                      if (popup && popup.contains(range.commonAncestorContainer)) return;
+                      if (panel && panel.contains(range.commonAncestorContainer)) return;
+                      if (modal && modal.contains(range.commonAncestorContainer)) return;
+
+                      // Hide popup first to force processSelForPopup to re-evaluate and position correctly
+                      if (popup) {
+                        popup.classList.add('hidden');
+                      }
+
+                      var event = new MouseEvent('mouseup', {
+                        bubbles: true,
+                        cancelable: true,
+                        view: window
+                      });
+                      main.dispatchEvent(event);
+                    }
+                  }
+                }, 350);
+              });
+            }
+          });
+        })
+        .catch(function (err) {
+          document.getElementById('reader-skeleton').innerHTML = 
+            '<div class="p-8 text-center text-red-500 font-bold bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/50 rounded-lg">' +
+              '⚠️ Lỗi tải chương: ' + err.message +
+            '</div>';
+        });
+
+      // ── DYNAMIC TOC GENERATION ───────────────────────────────────────────────
+      function generateTOC() {
+        var main = document.getElementById('main');
+        var tocContainer = document.getElementById('toc-list');
+        tocContainer.innerHTML = '';
+
+        var headings = main.querySelectorAll('h2, h3, h4');
+        if (headings.length === 0) {
+          tocContainer.innerHTML = '<div class="px-4 py-2 text-xs text-slate-400 italic text-center">Không có mục lục phụ</div>';
+          return;
+        }
+
+        headings.forEach(function (h) {
+          if (!h.id) return;
+          var item = document.createElement('a');
+          item.href = '#' + h.id;
+          item.className = 'block py-2 px-3 text-xs text-slate-600 dark:text-slate-400 hover:text-gold dark:hover:text-gold hover:bg-slate-100 dark:hover:bg-slate-900 transition-all rounded-md font-medium truncate';
+          
+          if (h.tagName === 'H3') {
+            item.classList.add('pl-5');
+          } else if (h.tagName === 'H4') {
+            item.classList.add('pl-8', 'text-[11px]', 'opacity-80');
+          } else {
+            item.classList.add('font-bold', 'border-l-2', 'border-slate-200', 'dark:border-slate-800', 'pl-2');
+          }
+          
+          var textClone = h.cloneNode(true);
+          var enSpans = textClone.querySelectorAll('.term-en, .blt-en');
+          enSpans.forEach(s => s.remove());
+          item.textContent = textClone.textContent.trim();
+          
+          item.addEventListener('click', function(e) {
+            e.preventDefault();
+            var target = document.getElementById(h.id);
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              // Highlight target text briefly
+              target.classList.add('bg-gold/10');
+              setTimeout(() => target.classList.remove('bg-gold/10'), 2000);
+            }
+            if (window.innerWidth < 1024) closeSidebar();
+          });
+
+          tocContainer.appendChild(item);
+        });
+      }
+
+      // ── SCROLL SPY FOR ACTIVE TOC LINK ───────────────────────────────────────
+      function initScrollSpy() {
+        var main = document.getElementById('main');
+        var headings = Array.from(main.querySelectorAll('h2, h3, h4')).filter(h => h.id);
+        var tocLinks = document.querySelectorAll('#toc-list a');
+        var progressBar = document.getElementById('custom-progress-bar');
+
+        window.addEventListener('scroll', function () {
+          var fromTop = window.scrollY + 100;
+          var cur = null;
+
+          for (var i = 0; i < headings.length; i++) {
+            if (headings[i].offsetTop < fromTop) {
+              cur = headings[i];
+            } else {
+              break;
+            }
+          }
+
+          tocLinks.forEach(function (link) {
+            link.classList.remove('text-gold', 'bg-gold/10', 'border-gold');
+            if (cur && link.getAttribute('href') === '#' + cur.id) {
+              link.classList.add('text-gold', 'bg-gold/10');
+            }
+          });
+
+          // Update Progress Bar
+          var scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+          if (scrollHeight > 0) {
+            var pct = Math.round((window.scrollY / scrollHeight) * 100);
+            progressBar.style.width = pct + '%';
+          }
+        }, { passive: true });
+      }
+
+      // ── SAVE READING STATE TO LOCAL STORAGE ──────────────────────────────────
+      function saveReadingState() {
+        try {
+          var key = book.lsKey;
+          if (!key) return;
+          var data = JSON.parse(localStorage.getItem(key) || '{}');
+          if (bookId === 'pmbok6') {
+            data.lastChapter = chapId;
+            if (!data.progress) data.progress = {};
+            if (!data.progress[chapId]) data.progress[chapId] = {};
+            data.progress[chapId].status = 'reading';
+            localStorage.setItem(key, JSON.stringify(data));
+          } else if (bookId === 'rita') {
+            data.lastChap = chapId;
+            if (!data.scrollPos) data.scrollPos = {};
+            localStorage.setItem(key, JSON.stringify(data));
+          }
+        } catch(e) {}
+      }
+
+      // ── SEQUENTIAL SCRIPT LOADER ─────────────────────────────────────────────
+      function loadScriptsSequentially(urls, callback) {
+        var index = 0;
+        function next() {
+          if (index >= urls.length) {
+            if (callback) callback();
+            return;
+          }
+          var url = urls[index++];
+          var script = document.createElement('script');
+          script.src = url;
+          script.onload = next;
+          script.onerror = function() {
+            console.error('Failed to load script: ' + url);
+            next(); // proceed anyway
+          };
+          document.body.appendChild(script);
+        }
+        next();
+      }
+
+      // ── THEME MANAGER ────────────────────────────────────────────────────────
+      var themeGroup = document.getElementById('drawer-theme');
+      
+      function updateActiveThemeUI(t) {
+        if (!themeGroup) return;
+        themeGroup.querySelectorAll('button').forEach(function (btn) {
+          if (btn.dataset.themeId === t) {
+            btn.classList.add('border-gold', 'ring-2', 'ring-gold/20');
+            btn.classList.remove('border-slate-200', 'border-slate-300', 'border-slate-800');
+          } else {
+            btn.classList.remove('border-gold', 'ring-2', 'ring-gold/20');
+            if (btn.dataset.themeId === 'dark') {
+              btn.classList.add('border-slate-800');
+            } else {
+              btn.classList.add('border-slate-200');
+            }
+          }
+        });
+      }
+
+      function applyTheme(t) {
+        localStorage.setItem('rita_theme', t);
+        localStorage.setItem('pmp_theme', t);
+        
+        document.documentElement.classList.remove('dark');
+        document.documentElement.removeAttribute('data-theme');
+        
+        if (t === 'dark') {
+          document.documentElement.classList.add('dark');
+          document.documentElement.setAttribute('data-theme', 'dark');
+        } else if (t === 'sepia') {
+          document.documentElement.setAttribute('data-theme', 'sepia');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+        }
+        
+        updateActiveThemeUI(t);
+
+        // Try to trigger native theme toggle if needed by highlight system
+        var nativeThemeBtn = document.getElementById('theme-btn');
+        if (nativeThemeBtn) {
+          var nativeTheme = nativeThemeBtn.dataset.state || 'light';
+          if ((t === 'dark' && nativeTheme !== 'dark') || (t !== 'dark' && nativeTheme === 'dark')) {
+            nativeThemeBtn.click();
+          }
+        }
+      }
+
+      if (themeGroup) {
+        themeGroup.querySelectorAll('button').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            applyTheme(btn.dataset.themeId);
+          });
+        });
+      }
+
+      // Initial theme apply
+      var savedTheme = localStorage.getItem('rita_theme') || localStorage.getItem('pmp_theme') || 'light';
+      applyTheme(savedTheme);
+
+      // ── AA SETTINGS DRAWER CONTROLS ──────────────────────────────────────────
+      var settingsDrawer = document.getElementById('settings-drawer');
+      var openSettingsBtn = document.getElementById('nav-settings-btn');
+      var closeSettingsBtn = document.getElementById('close-settings-btn');
+      var bilingualChk = document.getElementById('drawer-bilingual-chk');
+
+      function openSettings() {
+        settingsDrawer.classList.remove('translate-y-full');
+      }
+
+      function closeSettings() {
+        settingsDrawer.classList.add('translate-y-full');
+      }
+
+      if (openSettingsBtn) {
+        openSettingsBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          if (settingsDrawer.classList.contains('translate-y-full')) {
+            openSettings();
+          } else {
+            closeSettings();
+          }
+        });
+      }
+
+      if (closeSettingsBtn) {
+        closeSettingsBtn.addEventListener('click', closeSettings);
+      }
+
+      document.addEventListener('click', function (e) {
+        if (settingsDrawer && !settingsDrawer.contains(e.target) && e.target !== openSettingsBtn && !openSettingsBtn.contains(e.target)) {
+          closeSettings();
+        }
+      });
+
+      // Font Families Populating
+      var drawerFontFamily = document.getElementById('drawer-font-family');
+      if (drawerFontFamily) {
+        drawerFontFamily.innerHTML = '';
+        PMFontSettings.FONTS.forEach(function (f) {
+          var btn = document.createElement('button');
+          btn.dataset.fid = f.id;
+          btn.className = 'flex flex-col p-2.5 rounded-lg border text-left transition-all hover:bg-slate-50 dark:hover:bg-slate-800 [data-theme=sepia]:hover:bg-[#f6ebd0]/50';
+          btn.style.fontFamily = f.css;
+          btn.innerHTML = '<span class="text-sm font-bold text-slate-800 dark:text-slate-100 [data-theme=sepia]:text-[#5c4033]">Aa</span>' +
+            '<span class="text-[10px] text-slate-400 [data-theme=sepia]:text-[#8c6239] font-sans mt-0.5">' + f.label + '</span>';
+          
+          btn.addEventListener('click', function () {
+            PMFontSettings.update(f.id, undefined);
+            updateActiveFontFamilyUI();
+          });
+          drawerFontFamily.appendChild(btn);
+        });
+      }
+
+      function updateActiveFontFamilyUI() {
+        var cur = PMFontSettings.load().fontId || 'merriweather';
+        if (drawerFontFamily) {
+          drawerFontFamily.querySelectorAll('button').forEach(function (b) {
+            if (b.dataset.fid === cur) {
+              b.className = 'flex flex-col p-2.5 rounded-lg border-2 border-gold bg-gold/10 text-left transition-all';
+            } else {
+              b.className = 'flex flex-col p-2.5 rounded-lg border border-slate-200 dark:border-slate-800 [data-theme=sepia]:border-[#dccaa0] bg-transparent text-left transition-all hover:bg-slate-50 dark:hover:bg-slate-800 [data-theme=sepia]:hover:bg-[#f6ebd0]/50';
+            }
+          });
+        }
+      }
+
+      // Font Sizes Populating
+      var drawerFontSize = document.getElementById('drawer-font-size');
+      if (drawerFontSize) {
+        drawerFontSize.innerHTML = '';
+        PMFontSettings.SIZES.forEach(function (z) {
+          var btn = document.createElement('button');
+          btn.dataset.sid = z.id;
+          btn.className = 'flex-1 py-2 text-center text-xs font-bold rounded-lg border transition-all hover:bg-slate-50 dark:hover:bg-slate-800 [data-theme=sepia]:hover:bg-[#f6ebd0]/50';
+          btn.textContent = z.label;
+          btn.addEventListener('click', function () {
+            PMFontSettings.update(undefined, z.id);
+            updateActiveFontSizeUI();
+          });
+          drawerFontSize.appendChild(btn);
+        });
+      }
+
+      function updateActiveFontSizeUI() {
+        var cur = PMFontSettings.load().sizeId || 'md';
+        if (drawerFontSize) {
+          drawerFontSize.querySelectorAll('button').forEach(function (b) {
+            if (b.dataset.sid === cur) {
+              b.className = 'flex-1 py-2 text-center text-xs font-bold rounded-lg border-2 border-gold bg-gold/10 text-gold transition-all';
+            } else {
+              b.className = 'flex-1 py-2 text-center text-xs font-bold rounded-lg border border-slate-200 dark:border-slate-800 [data-theme=sepia]:border-[#dccaa0] bg-transparent text-slate-500 dark:text-slate-400 [data-theme=sepia]:text-[#8c6239] hover:bg-slate-50 dark:hover:bg-slate-800 [data-theme=sepia]:hover:bg-[#f6ebd0]/50 transition-all';
+            }
+          });
+        }
+      }
+
+      function applyDisplaySettings() {
+        var s = PMFontSettings.load();
+        if (bilingualChk) bilingualChk.checked = !s.bilingualOff;
+        
+        updateActiveFontFamilyUI();
+        updateActiveFontSizeUI();
+        toggleBilingualState(!s.bilingualOff);
+      }
+
+      if (bilingualChk) {
+        bilingualChk.addEventListener('change', function () {
+          var s = PMFontSettings.load();
+          s.bilingualOff = !bilingualChk.checked;
+          PMFontSettings.save(s);
+          toggleBilingualState(bilingualChk.checked);
+        });
+      }
+
+      function toggleBilingualState(enabled) {
+        document.querySelectorAll('.blt-en').forEach(function (sp) {
+          sp.style.display = enabled ? '' : 'none';
+        });
+      }
+
+      // ── SYNC STATE SYNCING WITH NATIVE BUTTON ───────────────────────────────
+      function hookHighlightSyncState() {
+        var nativeSyncBtn = document.getElementById('sync-btn');
+        var customSyncBtn = document.getElementById('custom-sync-btn');
+        var customSyncText = document.getElementById('custom-sync-text');
+        var ping = document.getElementById('sync-dot-ping');
+        var dot = document.getElementById('sync-dot');
+
+        if (!nativeSyncBtn) return;
+
+        function updateSyncStatus() {
+          var state = nativeSyncBtn.dataset.state;
+          var statusText = nativeSyncBtn.querySelector('#sync-status-text') ? nativeSyncBtn.querySelector('#sync-status-text').textContent : 'Đã đồng bộ';
+          
+          if (customSyncText) customSyncText.textContent = statusText;
+          
+          if (state === 'ok') {
+            if (dot) dot.className = 'relative inline-flex rounded-full h-2 w-2 bg-emerald-500';
+            if (ping) ping.className = 'hidden';
+          } else if (state === 'syncing') {
+            if (dot) dot.className = 'relative inline-flex rounded-full h-2 w-2 bg-amber-500';
+            if (ping) ping.className = 'animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75';
+          } else if (state === 'err') {
+            dot.className = 'relative inline-flex rounded-full h-2 w-2 bg-slate-400';
+            ping.className = 'hidden';
+          }
+        }
+
+        // Custom sync btn triggers native sync click
+        customSyncBtn.addEventListener('click', function () {
+          nativeSyncBtn.click();
+        });
+
+        // Watch state change on native btn
+        var observer = new MutationObserver(updateSyncStatus);
+        observer.observe(nativeSyncBtn, { attributes: true, attributeFilter: ['data-state'] });
+        
+        // Also watch inside text changes if any
+        var textNode = nativeSyncBtn.querySelector('#sync-status-text');
+        if (textNode) {
+          var textObserver = new MutationObserver(updateSyncStatus);
+          textObserver.observe(textNode, { characterData: true, childList: true, subtree: true });
+        }
+
+        updateSyncStatus();
+      }
+
+      // ── HIGHLIGHTS PANEL (✏️) DOCK CONTROLLER ────────────────────────────────
+      var hlToggleBtn = document.getElementById('nav-highlights-btn');
+      if (hlToggleBtn) {
+        hlToggleBtn.addEventListener('click', function () {
+          var nativeHlBtn = document.getElementById('hl-sidebar-btn');
+          if (nativeHlBtn) {
+            nativeHlBtn.click();
+          }
+        });
+      }
+
+      // Sync badge counters with native badge
+      setInterval(function () {
+        var nativeBadge = document.getElementById('hl-badge');
+        var customBadge = document.getElementById('hl-custom-badge');
+        if (nativeBadge && customBadge) {
+          customBadge.textContent = nativeBadge.textContent;
+        }
+      }, 500);
+
+      // ── FULLSCREEN MEDIA ZOOM & PAN CONTROLLER ──────────────────────────────
+      // Deferred: modal HTML is below this script, wait for DOM parsing to complete
+      setTimeout(function() {
+        var modal = document.getElementById('media-modal');
+        if (!modal) return;
+        var closeBtn = document.getElementById('media-modal-close');
+        var viewport = document.getElementById('media-modal-viewport');
+        var container = document.getElementById('media-modal-content');
+        var zoomIn = document.getElementById('media-zoom-in');
+        var zoomOut = document.getElementById('media-zoom-out');
+        var zoomReset = document.getElementById('media-zoom-reset');
+        var zoomLevel = document.getElementById('media-zoom-level');
+        var modalTitle = document.getElementById('media-modal-title');
+
+        var scale = 1;
+        var panX = 0;
+        var panY = 0;
+        var isDragging = false;
+        var startX, startY;
+        
+        // Touch pinch variables
+        var startDist = 0;
+        var startScale = 1;
+
+        function updateTransform() {
+          container.style.transform = 'translate(' + panX + 'px, ' + panY + 'px) scale(' + scale + ')';
+          zoomLevel.textContent = Math.round(scale * 100) + '%';
+        }
+
+        function resetCoords() {
+          scale = 1;
+          panX = 0;
+          panY = 0;
+          updateTransform();
+        }
+
+        // Zoom handlers
+        zoomIn.addEventListener('click', function() {
+          scale = Math.min(4, scale + 0.25);
+          updateTransform();
+        });
+        zoomOut.addEventListener('click', function() {
+          scale = Math.max(0.5, scale - 0.25);
+          updateTransform();
+        });
+        zoomReset.addEventListener('click', resetCoords);
+
+        // Mouse Drag / Panning
+        viewport.addEventListener('mousedown', function(e) {
+          if (e.button !== 0) return; // only left click
+          isDragging = true;
+          startX = e.clientX - panX;
+          startY = e.clientY - panY;
+          e.preventDefault();
+        });
+
+        window.addEventListener('mousemove', function(e) {
+          if (!isDragging) return;
+          panX = e.clientX - startX;
+          panY = e.clientY - startY;
+          updateTransform();
+        });
+
+        window.addEventListener('mouseup', function() {
+          isDragging = false;
+        });
+
+        // Touch Panning & Pinch Zoom
+        viewport.addEventListener('touchstart', function(e) {
+          if (e.touches.length === 1) {
+            isDragging = true;
+            startX = e.touches[0].clientX - panX;
+            startY = e.touches[0].clientY - panY;
+          } else if (e.touches.length === 2) {
+            isDragging = false;
+            // Pinch init
+            var t1 = e.touches[0];
+            var t2 = e.touches[1];
+            startDist = Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+            startScale = scale;
+          }
+        }, { passive: true });
+
+        viewport.addEventListener('touchmove', function(e) {
+          if (isDragging && e.touches.length === 1) {
+            panX = e.touches[0].clientX - startX;
+            panY = e.touches[0].clientY - startY;
+            updateTransform();
+          } else if (e.touches.length === 2) {
+            var t1 = e.touches[0];
+            var t2 = e.touches[1];
+            var dist = Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+            if (startDist > 0) {
+              var factor = dist / startDist;
+              scale = Math.max(0.5, Math.min(4, startScale * factor));
+              updateTransform();
+            }
+          }
+        }, { passive: true });
+
+        viewport.addEventListener('touchend', function() {
+          isDragging = false;
+          startDist = 0;
+        });
+
+        // Wheel Zoom
+        viewport.addEventListener('wheel', function(e) {
+          e.preventDefault();
+          var delta = e.deltaY > 0 ? -0.1 : 0.1;
+          scale = Math.max(0.5, Math.min(4, scale + delta));
+          updateTransform();
+        }, { passive: false });
+
+        // Open Modal
+        window.openFullscreenMedia = function(elementOrSrc, type, title) {
+          container.innerHTML = '';
+          modalTitle.textContent = title || 'Xem toàn màn hình';
+          
+          if (type === 'image') {
+            var img = document.createElement('img');
+            img.src = elementOrSrc;
+            img.className = 'max-w-full max-h-[70vh] object-contain rounded-lg shadow-lg pointer-events-none';
+            container.appendChild(img);
+          } else if (type === 'table') {
+            // Clone table element
+            var tableClone = elementOrSrc.cloneNode(true);
+            tableClone.className = 'text-sm font-sans w-full max-w-full block overflow-x-auto border-collapse border border-[#253048] bg-[#131c2b] text-[#dde4f0] p-4 rounded-lg shadow-xl';
+            container.appendChild(tableClone);
+          }
+
+          resetCoords();
+          modal.classList.remove('hidden');
+          document.body.classList.add('overflow-hidden');
+        };
+
+        // Close Modal
+        function closeModal() {
+          modal.classList.add('hidden');
+          document.body.classList.remove('overflow-hidden');
+          container.innerHTML = '';
+        }
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', function(e) {
+          if (e.target === modal || e.target === viewport) closeModal();
+        });
+        
+        // Escape key to close
+        window.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+            closeModal();
+          }
+        });
+      }, 0);
+
+      // ── ENHANCE IMAGES AND TABLES FOR MOBILE READABILITY ─────────────────────
+      function enhanceImagesAndTables() {
+        var main = document.getElementById('main');
+        if (!main) return;
+
+        // 1. Enhance Images
+        var images = main.querySelectorAll('img');
+        images.forEach(function(img) {
+          img.classList.add('cursor-zoom-in', 'hover:opacity-95', 'transition-all', 'duration-200');
+          img.title = 'Click để xem toàn màn hình và phóng to';
+          img.addEventListener('click', function() {
+            var title = 'Hình ảnh';
+            // Try to find caption
+            var caption = img.closest('.figure-wrap') ? img.closest('.figure-wrap').querySelector('.figure-caption') : null;
+            if (!caption && img.nextElementSibling && img.nextElementSibling.tagName === 'P') caption = img.nextElementSibling;
+            if (caption) {
+              var clone = caption.cloneNode(true);
+              clone.querySelectorAll('.term-en, .blt-en').forEach(s => s.remove());
+              title = clone.textContent.trim();
+            }
+            window.openFullscreenMedia(img.src, 'image', title);
+          });
+        });
+
+        // 2. Enhance Tables
+        var tables = main.querySelectorAll('table');
+        tables.forEach(function(t) {
+          // Wrap table in scroll container if it isn't wrapped
+          var wrapper = t.closest('.table-wrap');
+          if (!wrapper) {
+            wrapper = document.createElement('div');
+            wrapper.className = 'table-wrap overflow-x-auto my-6 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm relative group/table';
+            t.parentNode.insertBefore(wrapper, t);
+            wrapper.appendChild(t);
+          } else {
+            wrapper.classList.add('relative', 'group/table', 'border', 'border-slate-200', 'dark:border-slate-800', 'rounded-lg', 'bg-white', 'dark:bg-slate-900', 'shadow-sm');
+          }
+
+          // Wrap scrollable indicator
+          var scrollHint = document.createElement('div');
+          scrollHint.className = 'scroll-hint-overlay absolute top-0 right-0 bottom-0 width-[24px] pointer-events-none bg-gradient-to-r from-transparent to-black/5 dark:to-black/20 opacity-0 transition-opacity duration-200';
+          wrapper.appendChild(scrollHint);
+
+          // Add Fullscreen Button
+          var fsBtn = document.createElement('button');
+          fsBtn.className = 'absolute top-2 right-2 bg-slate-900/80 hover:bg-slate-900 dark:bg-slate-800/80 dark:hover:bg-slate-700 text-white text-[10px] font-bold px-2.5 py-1.5 rounded-lg border border-white/10 dark:border-slate-700 shadow-md flex items-center gap-1 opacity-0 group-hover/table:opacity-100 transition-opacity z-10 select-none';
+          fsBtn.innerHTML = '<span>Xem bảng</span><span class="text-xs">⤢</span>';
+          fsBtn.title = 'Xem bảng toàn màn hình và phóng to';
+          fsBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            window.openFullscreenMedia(t, 'table', 'Bảng biểu');
+          });
+          wrapper.appendChild(fsBtn);
+
+          // Scroll listener to toggle overlay
+          function checkScroll() {
+            var canScroll = wrapper.scrollWidth > wrapper.clientWidth;
+            var isAtEnd = Math.abs(wrapper.scrollLeft + wrapper.clientWidth - wrapper.scrollWidth) < 5;
+            if (canScroll && !isAtEnd) {
+              scrollHint.classList.remove('opacity-0');
+              scrollHint.classList.add('opacity-100');
+            } else {
+              scrollHint.classList.remove('opacity-100');
+              scrollHint.classList.add('opacity-0');
+            }
+          }
+
+          wrapper.addEventListener('scroll', checkScroll, { passive: true });
+          window.addEventListener('resize', checkScroll, { passive: true });
+          setTimeout(checkScroll, 200);
+        });
+      }
+
+    })();
+  </script>
+
+  <!-- Fullscreen Media Viewport Modal (for Zooming Images/Tables on Mobile) -->
+  <div id="media-modal" class="fixed inset-0 z-50 hidden bg-slate-950/95 backdrop-blur-md flex flex-col justify-between p-4 select-none">
+    <!-- Header -->
+    <div class="flex items-center justify-between text-white border-b border-white/10 pb-3 shrink-0">
+      <span id="media-modal-title" class="text-xs font-semibold tracking-wider font-outfit uppercase text-slate-400">Xem toàn màn hình</span>
+      <button id="media-modal-close" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors text-white text-lg">✕</button>
+    </div>
+    
+    <!-- Viewport -->
+    <div id="media-modal-viewport" class="flex-1 flex items-center justify-center overflow-hidden relative cursor-grab active:cursor-grabbing my-4">
+      <div id="media-modal-content" class="origin-center transition-transform duration-75 ease-out select-none">
+        <!-- Cloned Element (Image or Table) goes here -->
+      </div>
+    </div>
+    
+    <!-- Controls footer -->
+    <div class="flex items-center justify-center gap-4 py-2 border-t border-white/10 shrink-0">
+      <button id="media-zoom-out" class="w-12 h-10 flex items-center justify-center rounded-lg bg-white/10 hover:bg-white/20 active:bg-white/30 transition-colors text-white font-bold text-lg select-none">-</button>
+      <span id="media-zoom-level" class="text-xs font-semibold text-white min-w-16 text-center font-outfit select-none">100%</span>
+      <button id="media-zoom-in" class="w-12 h-10 flex items-center justify-center rounded-lg bg-white/10 hover:bg-white/20 active:bg-white/30 transition-colors text-white font-bold text-lg select-none">+</button>
+      <button id="media-zoom-reset" class="px-4 h-10 flex items-center justify-center rounded-lg bg-white/10 hover:bg-white/20 active:bg-white/20 transition-colors text-white text-xs font-semibold select-none">Khôi phục</button>
+    </div>
+  </div>
+
+  <!-- Hidden elements to satisfy native highlight system selectors -->
+  <div id="sidebar" style="display: none !important;"><div id="sidebar-nav"></div></div>
+
+</body>
+</html>
