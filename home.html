@@ -449,8 +449,8 @@ document.getElementById('book-grid').innerHTML = BOOKS.map(renderCard).join('');
 (function() {
   var lastChap = window.PMProgress ? PMProgress.getLastChap('rita') : null;
   var target = lastChap
-    ? 'books/PMPExamPrep/' + lastChap + '.html'
-    : 'books/PMPExamPrep/rita_chap01.html';
+    ? 'reader.html?book=rita&chap=' + lastChap
+    : 'reader.html?book=rita&chap=rita_chap01';
   document.querySelectorAll('.book-card').forEach(function(card) {
     var onclick = card.getAttribute('onclick') || '';
     if (onclick.includes('rita.html')) {

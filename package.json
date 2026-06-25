@@ -1,5 +1,12 @@
 {
+  "scripts": {
+    "build:css": "tailwindcss -i ./css/tailwind-input.css -o ./css/tailwind-output.css",
+    "watch:css": "tailwindcss -i ./css/tailwind-input.css -o ./css/tailwind-output.css --watch"
+  },
   "dependencies": {
     "jsdom": "^29.1.1"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
   }
 }
