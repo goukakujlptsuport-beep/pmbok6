@@ -321,6 +321,26 @@
     #rita-font-btn, #rita-bilingual-panel, #sync-btn, #hl-sidebar-btn, #theme-btn, #hl-mobile-bar {
       display: none !important;
     }
+
+    /* ─── PC SIDEBAR: ALWAYS FIXED ──────────────────────────
+       html/body { overflow-x: hidden } in mobile-base.css breaks
+       `position: sticky`, so on lg+ we pin the sidebar with
+       `position: fixed` and push <main> over with margin-left. */
+    @media (min-width: 1024px) {
+      #custom-sidebar {
+        position: fixed !important;
+        top: 4rem !important;          /* below 4rem header */
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 20rem;                  /* w-80 */
+        height: auto !important;
+        transform: translateX(0) !important;
+      }
+      /* Push main content right so it isn't covered by the fixed sidebar */
+      body > div.flex > main {
+        margin-left: 20rem;
+      }
+    }
     
     /* Loading Skeleton Animation */
     @keyframes pulse {
