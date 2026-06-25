@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+<script>
+  // Redirect to new unified reader shell
+  (function() {
+    var path = window.location.pathname;
+    var matchPmbok = path.match(/books\/pmbok6\/(\d+_[^\/]+\.html)/);
+    var matchRita = path.match(/books\/PMPExamPrep\/(rita_chap\d+\.html)/);
+    if (matchPmbok) {
+      window.location.replace('../../reader.html?book=pmbok6&chap=' + matchPmbok[1].replace('.html', ''));
+    } else if (matchRita) {
+      window.location.replace('../../reader.html?book=rita&chap=' + matchRita[1].replace('.html', ''));
+    }
+  })();
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Chương 2 – Môi Trường Dự Án | PMBOK® Guide Lần 6</title>

@@ -459,4 +459,5 @@
   }
 
   init();
+  window.PMBilingualAnnotation = { run: runAnnotation };
 })();

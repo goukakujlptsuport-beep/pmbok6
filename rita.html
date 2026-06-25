@@ -435,9 +435,18 @@
     if (!location.search.includes('list')) {
       var lastChap = window.PMProgress ? PMProgress.getLastChap('rita') : null;
       if (lastChap) {
-        location.replace('books/PMPExamPrep/' + lastChap + '.html');
+        location.replace('reader.html?book=rita&chap=' + lastChap);
       }
     }
+
+    // Rewrite chapter links to point directly to unified reader shell
+    document.querySelectorAll('.chap-row').forEach(function(row) {
+      var href = row.getAttribute('href');
+      var match = href.match(/(rita_chap\d+)\.html/);
+      if (match) {
+        row.setAttribute('href', 'reader.html?book=rita&chap=' + match[1]);
+      }
+    });
   })()
 
   // Update chapter tags based on file availability

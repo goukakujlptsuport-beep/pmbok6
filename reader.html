@@ -155,6 +155,41 @@
       color: #94a3b8 !important;
     }
 
+    /* ─── LISTS: PMBOK STYLED ──────────────────────────── */
+    ul.pmbok { list-style: none; margin: 0.5rem 0 1rem 0; padding: 0; }
+    ul.pmbok li { position: relative; padding: 0.3rem 0 0.3rem 1.5rem; font-size: 0.95rem; line-height: 1.75; }
+    ul.pmbok li::before { content: '◆'; position: absolute; left: 0; color: #c9a84c; font-size: 0.7rem; top: 0.5rem; }
+    ul.pmbok.check li::before { content: '☑'; color: #2d7a2d; font-size: 0.9rem; top: 0.35rem; }
+    ul.pmbok.dash li::before { content: '—'; color: #1a2744; font-size: 0.9rem; top: 0.3rem; }
+    html[data-theme="dark"] ul.pmbok li::before { color: #e8d5a3; }
+    html[data-theme="dark"] ul.pmbok.dash li::before { color: #94a3b8; }
+    html[data-theme="sepia"] ul.pmbok li::before { color: #8c6239; }
+    html[data-theme="sepia"] ul.pmbok.dash li::before { color: #5c4033; }
+
+    /* ─── HEADING COPY BUTTON ──────────────────────────── */
+    .heading-copy-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      margin-left: 8px;
+      font-size: 0.7rem;
+      line-height: 1;
+      vertical-align: middle;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.15s, background 0.15s;
+    }
+    h2:hover .heading-copy-btn,
+    h3:hover .heading-copy-btn,
+    h4:hover .heading-copy-btn { opacity: 0.5; }
+    .heading-copy-btn:hover { opacity: 1 !important; background: rgba(201,168,76,0.1); border-color: rgba(201,168,76,0.3); }
+    .heading-copy-btn.copied { opacity: 1 !important; color: #22c55e; }
+
     /* ─── MEDIA: TABLES ────────────────────────────────── */
     .table-wrap {
       margin-left: 0;
@@ -731,6 +766,7 @@
           generateTOC();
           initScrollSpy();
           enhanceImagesAndTables();
+          addHeadingCopyButtons();
 
           // Save Reading State to LocalStorage
           saveReadingState();
@@ -1317,6 +1353,40 @@
           }
         });
       }, 0);
+
+      // ── COPY BUTTON ON HEADINGS ──────────────────────────────────────────────
+      function addHeadingCopyButtons() {
+        var main = document.getElementById('main');
+        if (!main) return;
+
+        var headings = main.querySelectorAll('h2, h3, h4');
+        headings.forEach(function(h) {
+          var btn = document.createElement('button');
+          btn.className = 'heading-copy-btn';
+          btn.title = 'Copy nội dung mục này';
+          btn.textContent = '📋';
+          btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            // Collect content until next same-level or higher heading
+            var content = [];
+            var level = parseInt(h.tagName[1]);
+            var sibling = h.nextElementSibling;
+            while (sibling) {
+              if (/^H[1-6]$/.test(sibling.tagName) && parseInt(sibling.tagName[1]) <= level) break;
+              content.push(sibling.textContent);
+              sibling = sibling.nextElementSibling;
+            }
+            var text = h.textContent.replace('📋', '').trim() + '\n\n' + content.join('\n').trim();
+            navigator.clipboard.writeText(text).then(function() {
+              btn.textContent = '✓';
+              btn.classList.add('copied');
+              setTimeout(function() { btn.textContent = '📋'; btn.classList.remove('copied'); }, 1500);
+            });
+          });
+          h.style.position = 'relative';
+          h.appendChild(btn);
+        });
+      }
 
       // ── ENHANCE IMAGES AND TABLES FOR MOBILE READABILITY ─────────────────────
       function enhanceImagesAndTables() {
