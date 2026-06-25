@@ -16,11 +16,16 @@ jobs:
           username: ubuntu
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           script: |
+            set -euo pipefail
             cd /opt/pmp
-            git pull origin main
+            # Discard any runtime-modified tracked files (legacy db-shm/db-wal
+            # tracked in earlier commits) so git pull never aborts.
+            git checkout -- . || true
+            git fetch origin main
+            git reset --hard origin/main
             cd server
             npm install --production=false
             npm run db:migrate
             sudo systemctl restart pmp
             sleep 2
-            curl -sf http://localhost:3000/api/health && echo "=== Deploy OK ===" || echo "Health check FAILED"
+            curl -sf http://localhost:3000/api/health && echo "=== Deploy OK ===" || (echo "Health check FAILED"; exit 1)
