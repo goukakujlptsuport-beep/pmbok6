@@ -23,3 +23,7 @@ test-gtts.mp3
 # Python
 __pycache__/
 *.py[cod]
+
+# SQLite runtime temp files
+*.db-shm
+*.db-wal
