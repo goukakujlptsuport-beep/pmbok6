@@ -598,8 +598,17 @@ Requirements:
 - Output: single JSON array, no markdown fences, no commentary
 - Schema: {"id":"PRC-9001","domain":"process","task":"2.1","approach":"agile","type":"single","question":"...","options":["...","...","...","..."],"correct":[1],"explanation":"...","explanation_vi":"...","difficulty":3,"tags":["..."]}
 - IDs: use prefix {PPL|PRC|BIZ}-9xxx (app will renumber on import)`;
-    navigator.clipboard.writeText(prompt)
-      .then(() => { const b=$('btn-copy-prompt'); b.textContent='✓ Copied!'; setTimeout(()=>b.textContent='Copy Generation Prompt',2000); });
+    copyText(prompt)
+      .then(() => {
+        const b = $('btn-copy-prompt');
+        if (!b) return;
+        b.textContent = '✓ Copied!';
+        setTimeout(() => b.textContent = 'Copy Generation Prompt', 2000);
+      })
+      .catch(err => {
+        console.error('Failed to copy generation prompt.', err);
+        showToast('Copy failed. Please select and copy manually.', 'error');
+      });
   });
 
   /* ═══════════════════════════════════════════════════════════
@@ -609,6 +618,40 @@ Requirements:
   function cap(s) { return s ? s[0].toUpperCase()+s.slice(1) : ''; }
   function escHtml(s) {
     return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function copyText(text) {
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function' && window.isSecureContext) {
+      return navigator.clipboard.writeText(text);
+    }
+    if (typeof document.execCommand !== 'function') {
+      return Promise.reject(new Error('No supported clipboard API.'));
+    }
+
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.setAttribute('readonly', '');
+    textArea.style.position = 'fixed';
+    textArea.style.top = '-9999px';
+    textArea.style.left = '-9999px';
+    textArea.style.opacity = '0';
+    document.body.appendChild(textArea);
+
+    textArea.focus();
+    textArea.select();
+    textArea.setSelectionRange(0, textArea.value.length);
+
+    let copied;
+    try {
+      copied = document.execCommand('copy');
+    } finally {
+      document.body.removeChild(textArea);
+    }
+
+    if (!copied) {
+      return Promise.reject(new Error('document.execCommand("copy") returned false.'));
+    }
+    return Promise.resolve();
   }
 
   let _toastTimer;

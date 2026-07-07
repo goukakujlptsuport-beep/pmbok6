@@ -189,6 +189,7 @@
     h4:hover .heading-copy-btn { opacity: 0.5; }
     .heading-copy-btn:hover { opacity: 1 !important; background: rgba(201,168,76,0.1); border-color: rgba(201,168,76,0.3); }
     .heading-copy-btn.copied { opacity: 1 !important; color: #22c55e; }
+    .heading-copy-btn.copy-failed { opacity: 1 !important; color: #ef4444; }
 
     /* ─── MEDIA: TABLES ────────────────────────────────── */
     .table-wrap {
@@ -1375,6 +1376,45 @@
       }, 0);
 
       // ── COPY BUTTON ON HEADINGS ──────────────────────────────────────────────
+      function legacyCopyText(text) {
+        if (typeof document.execCommand !== 'function') {
+          return Promise.reject(new Error('document.execCommand is not available.'));
+        }
+
+        var textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.setAttribute('readonly', '');
+        textArea.style.position = 'fixed';
+        textArea.style.top = '-9999px';
+        textArea.style.left = '-9999px';
+        textArea.style.opacity = '0';
+        document.body.appendChild(textArea);
+
+        textArea.focus();
+        textArea.select();
+        textArea.setSelectionRange(0, textArea.value.length);
+
+        var copied;
+        try {
+          copied = document.execCommand('copy');
+        } finally {
+          document.body.removeChild(textArea);
+        }
+
+        if (!copied) {
+          return Promise.reject(new Error('document.execCommand("copy") returned false.'));
+        }
+
+        return Promise.resolve();
+      }
+
+      function copyText(text) {
+        if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function' && window.isSecureContext) {
+          return navigator.clipboard.writeText(text);
+        }
+        return legacyCopyText(text);
+      }
+
       function addHeadingCopyButtons() {
         var main = document.getElementById('main');
         if (!main) return;
@@ -1383,7 +1423,8 @@
         headings.forEach(function(h) {
           var btn = document.createElement('button');
           btn.className = 'heading-copy-btn';
-          btn.title = 'Copy nội dung mục này';
+          var defaultTitle = 'Copy nội dung mục này';
+          btn.title = defaultTitle;
           btn.textContent = '📋';
           btn.addEventListener('click', function(e) {
             e.stopPropagation();
@@ -1396,11 +1437,33 @@
               content.push(sibling.textContent);
               sibling = sibling.nextElementSibling;
             }
-            var text = h.textContent.replace('📋', '').trim() + '\n\n' + content.join('\n').trim();
-            navigator.clipboard.writeText(text).then(function() {
+            var headingText = '';
+            for (var i = 0; i < h.childNodes.length; i++) {
+              var node = h.childNodes[i];
+              if (node !== btn) headingText += node.textContent;
+            }
+            var text = headingText.trim() + '\n\n' + content.join('\n').trim();
+            copyText(text).then(function() {
               btn.textContent = '✓';
+              btn.title = 'Đã copy!';
+              btn.classList.remove('copy-failed');
               btn.classList.add('copied');
-              setTimeout(function() { btn.textContent = '📋'; btn.classList.remove('copied'); }, 1500);
+              setTimeout(function() {
+                btn.textContent = '📋';
+                btn.title = defaultTitle;
+                btn.classList.remove('copied');
+              }, 1500);
+            }).catch(function(err) {
+              console.error('Failed to copy heading content.', err);
+              btn.textContent = '✕';
+              btn.title = 'Không thể copy. Hãy thử chọn và copy thủ công.';
+              btn.classList.remove('copied');
+              btn.classList.add('copy-failed');
+              setTimeout(function() {
+                btn.textContent = '📋';
+                btn.title = defaultTitle;
+                btn.classList.remove('copy-failed');
+              }, 1800);
             });
           });
           h.style.position = 'relative';
